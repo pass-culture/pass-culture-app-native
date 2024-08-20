@@ -1,13 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header should render correctly 1`] = `
+.c1 {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 20px;
+  color: #870087;
+  background-color: #ffffff;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c1:focus {
+  height: 44px !important;
+  margin: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  outline-offset: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #870087;
+  border-radius: 48px;
+}
+
+.c2 {
+  z-index: 1;
+  position: absolute;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.c2:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: inherit;
+  height: inherit;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-height: 80px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  background-color: #ffffff;
+  z-index: 1;
+  box-shadow: 0px 4px 12px rgba(105,106,111,0.1);
+}
+
 <div>
   <header
-    class="sc-kAyceB jfECAs"
+    class="c0"
     role="banner"
   >
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="c1 c2"
       href="#"
     >
       Aller au contenu principal
@@ -260,13 +332,85 @@ exports[`Header should render correctly 1`] = `
 `;
 
 exports[`Header should render correctly when FF is enabled 1`] = `
+.c1 {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 20px;
+  color: #870087;
+  background-color: #ffffff;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c1:focus {
+  height: 44px !important;
+  margin: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  outline-offset: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #870087;
+  border-radius: 48px;
+}
+
+.c2 {
+  z-index: 1;
+  position: absolute;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.c2:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: inherit;
+  height: inherit;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-height: 80px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  background-color: #ffffff;
+  z-index: 1;
+  box-shadow: 0px 4px 12px rgba(105,106,111,0.1);
+}
+
 <div>
   <header
-    class="sc-kAyceB jfECAs"
+    class="c0"
     role="banner"
   >
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="c1 c2"
       href="#"
     >
       Aller au contenu principal

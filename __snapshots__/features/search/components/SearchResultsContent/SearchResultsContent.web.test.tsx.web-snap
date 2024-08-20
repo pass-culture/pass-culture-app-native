@@ -1,12 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchResultsContent component should render correctly 1`] = `
+.c3 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c3:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c3:focus {
+  outline: auto;
+}
+
+.c3:disabled {
+  cursor: initial;
+}
+
+.c3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c3:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c0 {
+  overflow: hidden;
+  margin-left: 24px;
+  margin-right: 24px;
+  width: 1px;
+  height: 1px;
+}
+
+.c0:focus-within {
+  width: auto;
+  height: auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.c4 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 32px;
+  background-color: #ffffff;
+  border-color: #161617;
+  border-width: 1px;
+  border-radius: 24px;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  overflow: hidden;
+}
+
 <div>
   <div
-    class="sc-jlZhew ckUDSs"
+    class="c0"
   >
     <div
-      class="sc-cwHptR inrbmw"
+      class="c1"
     >
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
@@ -61,7 +174,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         class="css-view-175oi2r r-width-19wmn03"
       />
       <label
-        class="sc-kpDqfm gANNpQ"
+        class="c2"
         for="testUuidV4"
         id="testUuidV4"
       >
@@ -126,7 +239,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Lieu culturel"
-              class="sc-aXZVg igdJKW sc-jEACwC kfPftM sc-jEACwC kfPftM"
+              class="c3 c4 sc-jEACwC c4"
               data-testid="Lieu culturel"
               tabindex="0"
               title="Lieu culturel"
@@ -147,7 +260,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Catégories"
-              class="sc-aXZVg igdJKW sc-jEACwC kfPftM sc-jEACwC kfPftM"
+              class="c3 c4 sc-jEACwC c4"
               data-testid="Catégories"
               tabindex="0"
               title="Catégories"
@@ -168,7 +281,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Prix"
-              class="sc-aXZVg igdJKW sc-jEACwC kfPftM sc-jEACwC kfPftM"
+              class="c3 c4 sc-jEACwC c4"
               data-testid="Prix"
               tabindex="0"
               title="Prix"
@@ -189,7 +302,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Dates & heures"
-              class="sc-aXZVg igdJKW sc-jEACwC kfPftM sc-jEACwC kfPftM"
+              class="c3 c4 sc-jEACwC c4"
               data-testid="Dates & heures"
               tabindex="0"
               title="Dates & heures"
@@ -210,7 +323,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Accessibilité"
-              class="sc-aXZVg igdJKW sc-jEACwC kfPftM sc-jEACwC kfPftM"
+              class="c3 c4 sc-jEACwC c4"
               data-testid="Accessibilité"
               tabindex="0"
               title="Accessibilité"
@@ -488,7 +601,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
       >
         <button
-          class="sc-aXZVg igdJKW sc-eldPxv eImmxE sc-eldPxv eImmxE"
+          class="c3 c5 sc-eldPxv c5"
           tabindex="0"
           type="button"
         >
