@@ -329,6 +329,18 @@ describe('<Login/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
   })
 
+  it('should show appropriate message if account is deleted', async () => {
+    simulateSignin200(AccountState.DELETED)
+    renderLogin()
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    const errorMessage = screen.getByText('Ton compte à été supprimé')
+
+    expect(errorMessage).toBeTruthy()
+  })
+
   it('should show email error message WHEN invalid e-mail format', async () => {
     renderLogin()
 

@@ -130,7 +130,7 @@ const useHandleSigninSuccess = (
           case AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER:
             return navigate('SuspensionScreen')
           case AccountState.DELETED:
-            throw new Error(`Unexpected account state: ${accountState}`)
+            return setErrorMessage?.('Ton compte à été supprimé')
           case AccountState.ACTIVE:
             navigateForActiveState()
             return
