@@ -33,6 +33,7 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -277,7 +278,7 @@ export const SearchResultsContent: React.FC = () => {
 
   const transformedVenues = useMemo(() => {
     if (hits.venues && hits.venues.length > 0) {
-      return hits.venues
+      return adaptAlgoliaVenues(hits.venues)
     } else {
       return offerVenues
     }

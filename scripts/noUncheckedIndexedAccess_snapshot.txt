@@ -94,8 +94,8 @@
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:74
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:79
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:86
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:219
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:221
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:220
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:222
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:24
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:31
