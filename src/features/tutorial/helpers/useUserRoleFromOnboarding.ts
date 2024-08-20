@@ -23,6 +23,8 @@ export const useUserRoleFromOnboarding = () => {
       case NonEligible.OVER_18:
         setOnboardingRole(UserOnboardingRole.NON_ELIGIBLE)
         break
+      default:
+        throw new Error(`Unexpected value for userOnboardingAge ${String(userOnboardingAge)}`)
     }
   })
 

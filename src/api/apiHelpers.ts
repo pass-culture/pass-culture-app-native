@@ -93,13 +93,14 @@ export const safeFetch = async (
           return createNeedsAuthenticationResponse(url)
         case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
           throw new Error(UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN)
-      }
-      runtimeOptions = {
-        ...runtimeOptions,
-        headers: {
-          ...runtimeOptions.headers,
-          Authorization: `Bearer ${newAccessToken}`,
-        },
+        case undefined: // When no error
+          runtimeOptions = {
+            ...runtimeOptions,
+            headers: {
+              ...runtimeOptions.headers,
+              Authorization: `Bearer ${newAccessToken}`,
+            },
+          }
       }
     } catch (error) {
       const errorMessage = getErrorMessage(error)

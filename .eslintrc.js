@@ -44,6 +44,7 @@ module.exports = {
     'local-rules/use-the-right-test-utils': ['error'],
     'local-rules/no-use-of-algolia-multiple-queries': ['error'],
     'no-negated-condition': 'warn',
+    '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {
