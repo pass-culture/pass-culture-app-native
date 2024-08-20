@@ -1,7 +1,13 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
+import { EmailValidationRemainingResendsResponse, OauthStateResponse } from 'api/gen'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { env } from 'libs/environment/fixtures'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -35,6 +41,21 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SignupForm/>', () => {
+  beforeEach(() => {
+    mockServer.getApi<EmailValidationRemainingResendsResponse>(
+      '/v1/email_validation_remaining_resends/email%40gmail.com',
+      {
+        remainingResends: 3,
+      }
+    )
+    useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
+
+    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+      responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
+      requestOptions: { persist: true },
+    })
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {
       const { container } = renderSignupForm()
@@ -55,6 +76,7 @@ describe('<SignupForm/>', () => {
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
 
       const { container } = renderSignupForm()
+
       await act(async () => {})
 
       const results = await checkAccessibilityFor(container)
@@ -67,8 +89,10 @@ describe('<SignupForm/>', () => {
 const renderSignupForm = () =>
   render(
     reactQueryProviderHOC(
-      <SafeAreaProvider>
-        <SignupForm />
-      </SafeAreaProvider>
+      <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+        <SafeAreaProvider>
+          <SignupForm />
+        </SafeAreaProvider>
+      </GoogleOAuthProvider>
     )
   )

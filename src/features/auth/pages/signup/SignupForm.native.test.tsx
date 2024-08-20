@@ -97,9 +97,9 @@ describe('Signup Form', () => {
   it('should have accessibility label indicating current step and total steps', async () => {
     renderSignupForm()
 
-    expect(
-      await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
-    ).toBeOnTheScreen()
+    const step = await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
+
+    expect(step).toBeOnTheScreen()
   })
 
   describe('Quit button', () => {

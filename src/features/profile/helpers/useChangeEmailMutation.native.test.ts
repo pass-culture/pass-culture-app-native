@@ -1,5 +1,5 @@
 import { replace } from '__mocks__/@react-navigation/native'
-import { useChangeEmailMutationV2 } from 'features/profile/helpers/useChangeEmailMutationV2'
+import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -16,13 +16,13 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
 })
 jest.mock('libs/jwt/jwt')
 
-describe('useChangeEmailMutationV2', () => {
+describe('useChangeEmailMutation', () => {
   it('should show snack bar on success', async () => {
     mockServer.postApi('/v2/profile/update_email', {
       responseOptions: { statusCode: 204 },
     })
 
-    const changeEmail = renderUseChangeEmailMutationV2()
+    const changeEmail = renderuseChangeEmailMutation()
 
     await act(async () => changeEmail())
 
@@ -38,7 +38,7 @@ describe('useChangeEmailMutationV2', () => {
       responseOptions: { statusCode: 204 },
     })
 
-    const changeEmail = renderUseChangeEmailMutationV2()
+    const changeEmail = renderuseChangeEmailMutation()
 
     await act(async () => changeEmail())
 
@@ -50,7 +50,7 @@ describe('useChangeEmailMutationV2', () => {
       responseOptions: { statusCode: 400 },
     })
 
-    const changeEmail = renderUseChangeEmailMutationV2()
+    const changeEmail = renderuseChangeEmailMutation()
 
     await act(async () => changeEmail())
 
@@ -62,12 +62,12 @@ describe('useChangeEmailMutationV2', () => {
   })
 })
 
-const renderUseChangeEmailMutationV2 = () => {
+const renderuseChangeEmailMutation = () => {
   const {
     result: {
       current: { changeEmail },
     },
-  } = renderHook(() => useChangeEmailMutationV2(), {
+  } = renderHook(() => useChangeEmailMutation(), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
   return changeEmail

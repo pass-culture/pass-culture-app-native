@@ -18,11 +18,12 @@ describe('<NewEmailSelection />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<NewEmailSelection />))
 
+      let results
       await act(async () => {
-        const results = await checkAccessibilityFor(container)
-
-        expect(results).toHaveNoViolations()
+        results = await checkAccessibilityFor(container)
       })
+
+      expect(results).toHaveNoViolations()
     })
   })
 })

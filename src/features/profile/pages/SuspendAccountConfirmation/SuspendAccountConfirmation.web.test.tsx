@@ -9,7 +9,7 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
+type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
 jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   data: {
@@ -18,7 +18,7 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
     status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
   },
   isLoading: false,
-} as UseEmailUpdateStatusMock)
+} as useEmailUpdateStatusMock)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

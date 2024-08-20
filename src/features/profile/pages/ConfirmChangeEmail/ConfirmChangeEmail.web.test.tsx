@@ -1,24 +1,19 @@
 import React from 'react'
 
-import { EmailHistoryEventTypeEnum } from 'api/gen'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
-type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
-
-jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
-  data: {
-    expired: false,
-    newEmail: '',
-    status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
-  },
-  isLoading: false,
-} as UseEmailUpdateStatusMock)
+const mockIdentityCheckDispatch = jest.fn()
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+}))
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -28,7 +23,10 @@ describe('<ConfirmChangeEmail />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-      const results = await checkAccessibilityFor(container)
+      let results
+      await act(async () => {
+        results = await checkAccessibilityFor(container)
+      })
 
       expect(results).toHaveNoViolations()
     })

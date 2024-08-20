@@ -202,8 +202,10 @@ describe('<SetEmail />', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', () => {
+  it('should log screen view when the screen is mounted', async () => {
     renderSetEmail()
+
+    await act(() => {})
 
     expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
   })
@@ -258,12 +260,6 @@ describe('<SetEmail />', () => {
       useFeatureFlagSpy.mockReturnValue(false)
     })
 
-    it('should not display SSO button when FF is disabled', () => {
-      renderSetEmail()
-
-      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
-    })
-
     it('should display SSO button when FF is enabled', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
 
@@ -272,10 +268,13 @@ describe('<SetEmail />', () => {
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
     })
 
+    it('should not display SSO button when FF is disabled', () => {
+      renderSetEmail()
+
+      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
+    })
+
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
-      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
-        oauthStateToken: 'oauth_state_token',
-      })
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -287,6 +286,7 @@ describe('<SetEmail />', () => {
           },
         },
       })
+
       useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
       useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
 
@@ -305,9 +305,6 @@ describe('<SetEmail />', () => {
     })
 
     it('should display snackbar when SSO account is invalid', async () => {
-      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
-        oauthStateToken: 'oauth_state_token',
-      })
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 400,
@@ -317,6 +314,7 @@ describe('<SetEmail />', () => {
           },
         },
       })
+
       useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
       useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
 
@@ -337,5 +335,9 @@ describe('<SetEmail />', () => {
 })
 
 const renderSetEmail = (props: PreValidationSignupNormalStepProps = defaultProps) => {
+  mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    oauthStateToken: 'oauth_state_token',
+  })
+
   render(reactQueryProviderHOC(<SetEmail {...props} />))
 }

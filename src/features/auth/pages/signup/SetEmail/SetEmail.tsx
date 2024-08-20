@@ -11,7 +11,6 @@ import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEm
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-// eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
@@ -38,8 +37,8 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 }) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {

@@ -9,7 +9,7 @@ import {
   useSnackBarContext,
 } from 'ui/components/snackBar/SnackBarContext'
 
-export const useChangeEmailMutationV2 = () => {
+export const useChangeEmailMutation = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 

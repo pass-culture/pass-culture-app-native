@@ -92,16 +92,6 @@ describe('<Login/>', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  it('should render correctly', async () => {
-    mockUsePreviousRoute.mockReturnValueOnce(null)
-
-    renderLogin()
-
-    await screen.findByText('Connecte-toi')
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should render correctly when feature flag is enabled', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
@@ -137,7 +127,7 @@ describe('<Login/>', () => {
     )
   })
 
-  it('should sign in when SSO button is clicked with device info when feature flag is active', async () => {
+  it('should sign in when SSO button is clicked with device info', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(true)

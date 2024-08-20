@@ -23,12 +23,12 @@ jest.mock('uuid', () => {
   }
 })
 
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({

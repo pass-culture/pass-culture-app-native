@@ -83,7 +83,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       icon={BicolorPhonePending}
       titleComponent={Typo.Title3}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
-      subtitle={emailUpdateStatus?.newEmail}
+      subtitle={emailUpdateStatus?.newEmail || undefined}
       subtitleComponent={ValidateEmailChangeSubtitleComponent}
       separateIconFromTitle={false}
       mobileBottomFlex={0.3}>

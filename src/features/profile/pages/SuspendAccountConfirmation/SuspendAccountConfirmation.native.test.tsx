@@ -11,7 +11,7 @@ import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateSt
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
+type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
 const useEmailUpdateStatusSpy = jest
   .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
@@ -22,7 +22,7 @@ const useEmailUpdateStatusSpy = jest
       status: EmailHistoryEventTypeEnum.CANCELLATION,
     },
     isLoading: false,
-  } as UseEmailUpdateStatusMock)
+  } as useEmailUpdateStatusMock)
 
 jest.mock('features/navigation/helpers/navigateToHome')
 
@@ -58,7 +58,7 @@ describe('<SuspendAccountConfirmation />', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
         isLoading: false,
-      } as UseEmailUpdateStatusMock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       expect(navigateToHome).toHaveBeenCalledTimes(1)
@@ -72,7 +72,7 @@ describe('<SuspendAccountConfirmation />', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      } as UseEmailUpdateStatusMock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       fireEvent.press(screen.getByText('Ne pas suspendre mon compte'))
@@ -100,7 +100,7 @@ describe('<SuspendAccountConfirmation />', () => {
         status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
       },
       isLoading: false,
-    } as UseEmailUpdateStatusMock)
+    } as useEmailUpdateStatusMock)
     renderSuspendAccountConfirmation()
 
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeOnTheScreen()
@@ -148,7 +148,7 @@ describe('<SuspendAccountConfirmation />', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      } as UseEmailUpdateStatusMock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       expect(navigation.reset).toHaveBeenNthCalledWith(1, {

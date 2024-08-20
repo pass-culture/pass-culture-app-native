@@ -25,7 +25,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.mock('libs/network/NetInfoWrapper')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const apiGetOAuthState = jest.spyOn(API.api, 'getNativeV1OauthState')
 const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -48,14 +47,6 @@ describe('<SSOButton />', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
-  })
-
-  it('should not query auth state when FF is disabled', async () => {
-    renderSSOButton()
-
-    await screen.findByText('S’inscrire avec Google')
-
-    expect(apiGetOAuthState).not.toHaveBeenCalled()
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
