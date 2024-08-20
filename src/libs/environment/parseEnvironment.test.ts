@@ -1,3 +1,5 @@
+import { ValidationError } from 'yup'
+
 import { eventMonitoring } from 'libs/monitoring'
 
 import { parseBooleanVariables, parseEnvironment } from './parseEnvironment'
@@ -54,7 +56,8 @@ describe('parseEnvironment', () => {
     parseEnvironment(mockedConfig)
 
     expect(mockCaptureException).toHaveBeenCalledWith(
-      'Error parsing .env file: WEBAPP_V2_DOMAIN is a required field'
+      'Error parsing .env file: WEBAPP_V2_DOMAIN is a required field',
+      { extra: { error: new ValidationError('WEBAPP_V2_DOMAIN is a required field') } }
     )
   })
 })

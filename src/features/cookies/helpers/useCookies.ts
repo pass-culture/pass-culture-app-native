@@ -126,7 +126,7 @@ const usePersistCookieConsent = () => {
         const errorMessage = getErrorMessage(error)
         eventMonitoring.captureException(
           `can‘t log cookies consent choice ; reason: "${errorMessage}"`,
-          { level: logType }
+          { level: logType, extra: { error } }
         )
       }
     }

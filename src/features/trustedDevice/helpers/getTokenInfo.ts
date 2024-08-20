@@ -17,7 +17,7 @@ export const getTokenInfo = (token: string): TokenInfo | undefined => {
     eventMonitoring.captureException(
       `Failed to get token info from suspicious login email: ${errorMessage}`,
       {
-        extra: { token },
+        extra: { token, error },
       }
     )
 

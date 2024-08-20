@@ -45,7 +45,7 @@ export const SuspensionChoice = () => {
           const errorMessage = getErrorMessage(error)
           eventMonitoring.captureException(
             `Can’t suspend account for suspicious login ; reason: "${errorMessage}"`,
-            { level: logType }
+            { level: logType, extra: { error } }
           )
         }
       },

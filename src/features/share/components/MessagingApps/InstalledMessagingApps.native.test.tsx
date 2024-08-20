@@ -101,7 +101,8 @@ describe('<InstalledMessagingApps />', () => {
     await act(async () => {})
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      `Installed apps: ${error.message}`
+      `Installed apps: ${error.message}`,
+      { extra: { error } }
     )
   })
 
@@ -117,7 +118,8 @@ describe('<InstalledMessagingApps />', () => {
     })
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      `MessagingApp click: ${error.message}`
+      `MessagingApp click: ${error.message}`,
+      { extra: { error } }
     )
   })
 })

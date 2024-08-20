@@ -107,7 +107,7 @@ export const safeFetch = async (
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
       eventMonitoring.captureException(new Error(`safeFetch ${errorMessage}`, { cause: error }), {
-        extra: { url },
+        extra: { url, error },
       })
       return createNeedsAuthenticationResponse(url)
     }

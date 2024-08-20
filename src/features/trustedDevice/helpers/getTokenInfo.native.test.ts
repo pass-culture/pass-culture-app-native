@@ -1,3 +1,5 @@
+import { InvalidTokenError } from 'jwt-decode'
+
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { eventMonitoring } from 'libs/monitoring'
 
@@ -34,7 +36,14 @@ describe('getTokenInfo', () => {
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       "Failed to get token info from suspicious login email: Invalid token specified: Cannot read properties of undefined (reading 'replace')",
-      { extra: { token: INVALID_TOKEN } }
+      {
+        extra: {
+          token: INVALID_TOKEN,
+          error: new InvalidTokenError(
+            "Invalid token specified: Cannot read properties of undefined (reading 'replace')"
+          ),
+        },
+      }
     )
   })
 })

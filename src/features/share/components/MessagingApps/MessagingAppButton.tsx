@@ -27,7 +27,7 @@ export const MessagingAppButton = ({
       await share({ content: { ...shareContent, url: shareUrlWithUtmSource }, mode: network })
     } catch (error) {
       const errorMessage = getErrorMessage(error)
-      eventMonitoring.captureException(`MessagingApp click: ${errorMessage}`)
+      eventMonitoring.captureException(`MessagingApp click: ${errorMessage}`, { extra: { error } })
     }
   }
 

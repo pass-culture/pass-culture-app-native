@@ -107,3 +107,10 @@ export class VenueNotFoundError extends ScreenError {
     super(message, { Screen, callback, logType })
   }
 }
+
+export class FetchError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'FetchError'
+  }
+}

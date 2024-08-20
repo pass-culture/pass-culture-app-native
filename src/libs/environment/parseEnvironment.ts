@@ -33,7 +33,7 @@ export const parseEnvironment = (config: NativeConfig): Environment => {
       ? `Error parsing .env file: ${error.errors.join(', ')}`
       : `Error parsing .env file: ${errorMessage}`
     console.error(validationErrorMessage)
-    eventMonitoring.captureException(validationErrorMessage)
+    eventMonitoring.captureException(validationErrorMessage, { extra: { error } })
   }
 
   return configWithActualBooleans as Environment

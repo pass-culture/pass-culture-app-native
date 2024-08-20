@@ -57,7 +57,8 @@ describe('useIsMailAppAvailable', () => {
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-          'Error checking mail app availability: Error'
+          'Error checking mail app availability: Error',
+          { extra: { error } }
         )
       })
     })

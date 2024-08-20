@@ -20,7 +20,7 @@ export const InstalledMessagingApps = ({ shareContent, messagingAppAnalytics }: 
       .then(setInstalledApps)
       .catch((error) => {
         const errorMessage = getErrorMessage(error)
-        eventMonitoring.captureException(`Installed apps: ${errorMessage}`)
+        eventMonitoring.captureException(`Installed apps: ${errorMessage}`, { extra: { error } })
       })
   }, [])
 

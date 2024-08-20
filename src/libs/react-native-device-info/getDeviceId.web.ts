@@ -16,7 +16,9 @@ export async function getDeviceId() {
       await storage.saveString(DEVICE_ID_KEY, NEW_DEVICE_ID)
     } catch (error) {
       const errorMessage = getErrorMessage(error)
-      eventMonitoring.captureException(`Error when save device ID in storage: ${errorMessage}`)
+      eventMonitoring.captureException(`Error when save device ID in storage: ${errorMessage}`, {
+        extra: { error },
+      })
       return ''
     }
     return NEW_DEVICE_ID

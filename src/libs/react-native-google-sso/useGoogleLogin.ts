@@ -31,6 +31,7 @@ export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
         const errorMessage = getErrorMessage(error)
         eventMonitoring.captureException(`Can’t login via Google: ${errorMessage}`, {
           level: 'info',
+          extra: { error },
         })
       }
     }
