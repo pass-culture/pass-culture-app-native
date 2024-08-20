@@ -26,11 +26,9 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
-import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
@@ -179,11 +177,9 @@ export const SecondaryAndBiggerIcons = {
   BicolorLock,
   BicolorLogo,
   BicolorLostId,
-  BicolorNewIcon,
   BicolorNoId,
   BicolorNoPhone,
   BicolorOffers,
-  BicolorPhoneIcon,
   BicolorProfile,
   BicolorSearch,
   BicolorSearchV2,

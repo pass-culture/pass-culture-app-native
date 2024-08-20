@@ -1,4 +1,2 @@
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
-src/ui/svg/icons/BicolorNewIcon.tsx:48 - BicolorNewIcon
-src/ui/svg/icons/BicolorPhoneIcon.tsx:48 - BicolorPhoneIcon
