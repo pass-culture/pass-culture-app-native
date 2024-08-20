@@ -42,34 +42,7 @@ export const useVerticalVideoPlayer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onChangeState = useCallback(
-    (state: string) => {
-      setVideoState(state as PlayerState)
-      setShowErrorView(false)
-      if (state === PlayerState.ENDED) {
-        analytics.logHasSeenAllVideo(moduleId, currentVideoId)
-        setHasFinishedPlaying(true)
-        setIsPlaying(false)
-      } else if (state === PlayerState.PAUSED) {
-        setIsPlaying(false)
-      } else if (state === PlayerState.PLAYING) {
-        setIsPlaying(true)
-      } else if (state === PlayerState.UNSTARTED) {
-        setIsPlaying(true)
-      }
-    },
-    [setIsPlaying, setHasFinishedPlaying, currentVideoId, moduleId]
-  )
-
-  const getVideoDuration = useCallback(async () => {
-    return verticalPlayerRef.current?.getDuration()
-  }, [])
-
-  const getCurrentTime = useCallback(async () => {
-    return verticalPlayerRef.current?.getCurrentTime()
-  }, [])
-
-  const logPausedVideo = async () => {
+  const logPausedVideo = useCallback(async () => {
     const [currentTime = 0, videoDuration = 0] = await Promise.all([
       verticalPlayerRef.current?.getCurrentTime(),
       verticalPlayerRef.current?.getDuration(),
@@ -82,7 +55,41 @@ export const useVerticalVideoPlayer = ({
       homeEntryId,
       moduleId,
     })
-  }
+  }, [currentVideoId, moduleId, homeEntryId])
+
+  const pauseVideo = useCallback(() => {
+    if (isPlaying) {
+      setIsPlaying(false)
+      logPausedVideo()
+    }
+  }, [isPlaying, logPausedVideo, setIsPlaying])
+
+  const onChangeState = useCallback(
+    (state: string) => {
+      setVideoState(state as PlayerState)
+      setShowErrorView(false)
+      if (state === PlayerState.ENDED) {
+        analytics.logHasSeenAllVideo(moduleId, currentVideoId)
+        setHasFinishedPlaying(true)
+        setIsPlaying(false)
+      } else if (state === PlayerState.PAUSED) {
+        pauseVideo()
+      } else if (state === PlayerState.PLAYING) {
+        setIsPlaying(true)
+      } else if (state === PlayerState.UNSTARTED) {
+        setIsPlaying(true)
+      }
+    },
+    [currentVideoId, moduleId, setHasFinishedPlaying, setIsPlaying, pauseVideo]
+  )
+
+  const getVideoDuration = useCallback(async () => {
+    return verticalPlayerRef.current?.getDuration()
+  }, [])
+
+  const getCurrentTime = useCallback(async () => {
+    return verticalPlayerRef.current?.getCurrentTime()
+  }, [])
 
   const intersectionObserverListener = (isInView: boolean) => {
     if (!isInView) pauseVideo()
@@ -90,13 +97,6 @@ export const useVerticalVideoPlayer = ({
 
   const toggleMute = () => {
     setIsMuted(!isMuted)
-  }
-
-  const pauseVideo = () => {
-    if (isPlaying) {
-      setIsPlaying(false)
-      logPausedVideo()
-    }
   }
 
   const togglePlay = () => {
