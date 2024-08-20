@@ -312,7 +312,7 @@
     "fs-extra": "^9.1.0",
     "geckodriver": "^3.2.0",
     "git-revision-webpack-plugin": "^5.0.0",
-    "google-auth-library": "^8.7.0",
+    "google-auth-library": "^9.14.0",
     "googleapis": "^110.0.0",
     "html-webpack-plugin": "^4.5.2",
     "inspectpack": "^4.7.1",
