@@ -12,6 +12,9 @@ describe('formatFullAddress', () => {
   it.each`
     address               | postalCode   | city         | expected
     ${undefined}          | ${undefined} | ${undefined} | ${''}
+    ${undefined}          | ${'75015'}   | ${undefined} | ${'75015'}
+    ${undefined}          | ${undefined} | ${'Paris'}   | ${'Paris'}
+    ${'2 rue des champs'} | ${undefined} | ${undefined} | ${'2 rue des champs'}
     ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'2 rue des champs, 75015 Paris'}
     ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'2 rue des champs, Paris'}
     ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'2 rue des champs, Paris'}

@@ -28,12 +28,12 @@ export const EduConnectForm = () => {
       eduConnectClient
         ?.getAccessToken()
         .then((value) => {
-          if (value) {
-            setWebViewSource({
-              uri: eduConnectClient.getLoginUrl(),
-              headers: { Authorization: `Bearer ${value}` },
-            })
-          }
+          setWebViewSource({
+            uri: eduConnectClient.getLoginUrl(),
+            // TODO(PC-31394): Essayer de retirer la ligne en faisant une refacto
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            headers: { Authorization: `Bearer ${value}` },
+          })
         })
         .catch(setError)
     }

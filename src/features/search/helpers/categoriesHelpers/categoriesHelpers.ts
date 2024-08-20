@@ -383,8 +383,8 @@ function getFilterRowDescriptionFromNativeCategoryAndGenre(
   if (genreTypeId && nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    if (!nativeCategory || !genreType) return undefined
-    return nativeCategory.value ? `${nativeCategory.value} - ${genreType.value}` : undefined
+    if (!nativeCategory || !genreType || !nativeCategory.value) return undefined
+    return `${nativeCategory.value} - ${genreType.value}`
   }
 
   return undefined
