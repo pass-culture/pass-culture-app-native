@@ -761,12 +761,8 @@ function mockMeApiCall(response: UserProfileResponse) {
   mockServer.getApi<UserProfileResponse>('/v1/me', response)
 }
 
-type SigninResponseWithOptionalAccountState = Omit<SigninResponse, 'accountState'> & {
-  accountState?: AccountState
-}
-
-function simulateSignin200(accountState: AccountState | undefined) {
-  mockServer.postApi<SigninResponseWithOptionalAccountState>('/v1/signin', {
+function simulateSignin200(accountState: AccountState) {
+  mockServer.postApi<SigninResponse>('/v1/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
