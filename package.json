@@ -273,7 +273,7 @@
     "@vue/preload-webpack-plugin": "^2.0.0",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "appcenter-cli": "^2.14.0",
-    "babel-jest": "^29.6.2",
+    "babel-jest": "29.6.3",
     "babel-loader": "^8.2.5",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-module-resolver": "^4.0.0",
