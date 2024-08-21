@@ -227,7 +227,7 @@
     "@bam.tech/eslint-plugin": "^1.0.1",
     "@chanzuckerberg/axe-storybook-testing": "^8.0.2",
     "@google-cloud/local-auth": "^2.1.1",
-    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/eslint-config": "0.73.2",
     "@react-native/metro-config": "0.73.5",
     "@sentry/webpack-plugin": "^1.19.0",
     "@storybook/addon-a11y": "^6.5.16",
