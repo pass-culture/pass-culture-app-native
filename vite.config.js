@@ -23,6 +23,7 @@ const packageJson = require('./package.json')
 
 export default ({ mode }) => {
   // mode === 'production' =/= env.ENV === 'production'
+  // TODO: atm mode is only development & production, created commands for staging for example
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
@@ -91,9 +92,9 @@ export default ({ mode }) => {
           ],
         },
       }),
-      legacy({
-        targets: ['defaults', 'not IE 11'],
-      }),
+      // legacy({
+      //   targets: ['defaults', 'not IE 11'],
+      // }),
       // Put the Sentry vite plugin after all other plugins
       sentryVitePlugin({
         url: 'https://sentry.passculture.team/',
@@ -101,6 +102,10 @@ export default ({ mode }) => {
         project: 'application-native',
         authToken: env.SENTRY_AUTH_TOKEN, // locally from .env.local, otherwise will come from CI
         release: {
+          uploadLegacySourcemaps: {
+            paths: ['./dist'],
+            ignore: ['node_modules'],
+          },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
           name:
@@ -166,6 +171,7 @@ export default ({ mode }) => {
       },
     },
     build: {
+      sourcemap: true,
       commonjsOptions: {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:
