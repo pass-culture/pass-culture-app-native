@@ -36,22 +36,26 @@ const ScrollViewWithContext = forwardRef<
   const registerElement = useCallback(
     (id: string, ref: RefObject<View>, element: React.JSX.Element) => {
       elements.current[id] = { ref, element: () => element }
-      console.log('registering element', id)
     },
     []
   )
 
-  const rerenderElement = useCallback((id: string, element: React.JSX.Element) => {
-    console.log('rerendering element', id)
-
-    const elementtoUpdate = elements.current[id]
-
-    const Element = () => element
-    if (elementtoUpdate) {
-      elementtoUpdate.element = Element
-    }
-    // setStickyElements((stickyElements) => ({ ...stickyElements, [id]: <Element /> }))
-  }, [])
+  const rerenderElement = useCallback(
+    (id: string, ref: RefObject<View>, element: React.JSX.Element) => {
+      // const elementToUpdate = elements.current[id]
+      // if (elementToUpdate) {
+      //   const Element = () => element
+      //   elements.current[id] = { ref, element: () => element }
+      //   setStickyElements((stickyElements) => {
+      //     if (!stickyElements[id]) {
+      //       return stickyElements
+      //     }
+      //     return { ...stickyElements, [id]: <Element /> }
+      //   })
+      // }
+    },
+    []
+  )
 
   const contextValue: ScrollContextType = useMemo(
     () => ({
@@ -80,7 +84,7 @@ const ScrollViewWithContext = forwardRef<
           elements.current[id]?.ref.current?.measure((_x, _y, _width, height) => {
             const breakpoint = anchorY + anchorHeight
             if (elementY <= breakpoint && !!Element && !stickyElements[id]) {
-              setStickyElements((e) => ({ ...e, [id]: <Element key={id} /> }))
+              setStickyElements((e) => ({ ...e, [id]: <Element /> }))
               return
             }
             if (elementY > breakpoint - height && stickyElements[id]) {
