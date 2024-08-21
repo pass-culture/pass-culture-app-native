@@ -1,6 +1,262 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Venue /> Accessibility should render correctly 1`] = `
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c6:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c6:focus {
+  outline: auto;
+}
+
+.c6:disabled {
+  cursor: initial;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c8:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c8:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
+.c9:disabled {
+  background-color: #F1F1F4;
+}
+
+.c7 {
+  height: 96px;
+  width: 76px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border-radius: 40px;
+}
+
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
 <div>
   <div
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -27,7 +283,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
+          class="c0 c1 sc-feUZmu c1"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -99,7 +355,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
         />
         <button
           aria-label="Partager"
-          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
+          class="c0 c1 sc-feUZmu c1"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -257,7 +513,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 />
                 <button
                   aria-label="Copier l’adresse"
-                  class="sc-gEvEer fpRSjI sc-fqkvVR sc-fUnMCh hCDAkr bpJlue"
+                  class="c2 c3 c4"
                   data-testid="Copier l’adresse"
                   tabindex="0"
                   type="button"
@@ -296,7 +552,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 >
                   <a
                     aria-label="Voir l’itinéraire"
-                    class="sc-eqUAAy eBKxPc sc-fqkvVR hCDAkr"
+                    class="c5 c3"
                     data-testid="Voir l’itinéraire"
                     href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                     tabindex="0"
@@ -1732,7 +1988,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c6 c7 sc-jXbUNg c7"
                       tabindex="0"
                       type="button"
                     >
@@ -1771,7 +2027,7 @@ WhatsApp
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c6 c7 sc-jXbUNg c7"
                       tabindex="0"
                       type="button"
                     >
@@ -1810,7 +2066,7 @@ Telegram
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c6 c7 sc-jXbUNg c7"
                       tabindex="0"
                       type="button"
                     >
@@ -1849,7 +2105,7 @@ X
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c6 c7 sc-jXbUNg c7"
                       tabindex="0"
                       type="button"
                     >
@@ -1918,7 +2174,7 @@ d’options
         />
         <button
           aria-label="Rechercher une offre"
-          class="sc-gEvEer jdtKkG sc-imWYAI lgAUYa"
+          class="c8 c9"
           data-testid="Rechercher une offre"
           tabindex="0"
           type="button"
@@ -1965,6 +2221,318 @@ d’options
 `;
 
 exports[`<Venue /> Accessibility should render correctly with practical information 1`] = `
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c8:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c8:focus {
+  outline: auto;
+}
+
+.c8:disabled {
+  cursor: initial;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c8:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c10 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c10:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c10:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c10:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
+.c7 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c11:disabled {
+  background-color: #F1F1F4;
+}
+
+.c9 {
+  height: 96px;
+  width: 76px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border-radius: 40px;
+}
+
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
 <div>
   <div
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -1991,7 +2559,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
+          class="c0 c1 sc-feUZmu c1"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -2063,7 +2631,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
         />
         <button
           aria-label="Partager"
-          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
+          class="c0 c1 sc-feUZmu c1"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -2221,7 +2789,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 />
                 <button
                   aria-label="Copier l’adresse"
-                  class="sc-gEvEer fpRSjI sc-fqkvVR sc-fUnMCh hCDAkr bpJlue"
+                  class="c2 c3 c4"
                   data-testid="Copier l’adresse"
                   tabindex="0"
                   type="button"
@@ -2260,7 +2828,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 >
                   <a
                     aria-label="Voir l’itinéraire"
-                    class="sc-eqUAAy eBKxPc sc-fqkvVR hCDAkr"
+                    class="c5 c3"
                     data-testid="Voir l’itinéraire"
                     href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                     tabindex="0"
@@ -2466,7 +3034,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                       />
                       <a
                         aria-label="contact@venue.com"
-                        class="sc-eqUAAy jdrFiy sc-fqkvVR sc-gsFSXq hCDAkr iKlLVB"
+                        class="c6 c3 c7"
                         data-testid="contact@venue.com"
                         href="mailto:contact@venue.com"
                         tabindex="0"
@@ -2503,7 +3071,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                       </a>
                       <a
                         aria-label="+33102030405"
-                        class="sc-eqUAAy jdrFiy sc-fqkvVR sc-gsFSXq hCDAkr iKlLVB"
+                        class="c6 c3 c7"
                         data-testid="+33102030405"
                         href="tel:+33102030405"
                         tabindex="0"
@@ -2540,7 +3108,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                       </a>
                       <a
                         aria-label="https://my@website.com"
-                        class="sc-eqUAAy jdrFiy sc-fqkvVR sc-gsFSXq hCDAkr iKlLVB"
+                        class="c6 c3 c7"
                         data-testid="https://my@website.com"
                         href="https://my@website.com"
                         tabindex="0"
@@ -4129,7 +4697,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c8 c9 sc-jXbUNg c9"
                       tabindex="0"
                       type="button"
                     >
@@ -4168,7 +4736,7 @@ WhatsApp
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c8 c9 sc-jXbUNg c9"
                       tabindex="0"
                       type="button"
                     >
@@ -4207,7 +4775,7 @@ Telegram
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c8 c9 sc-jXbUNg c9"
                       tabindex="0"
                       type="button"
                     >
@@ -4246,7 +4814,7 @@ X
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
+                      class="c8 c9 sc-jXbUNg c9"
                       tabindex="0"
                       type="button"
                     >
@@ -4315,7 +4883,7 @@ d’options
         />
         <button
           aria-label="Rechercher une offre"
-          class="sc-gEvEer jdtKkG sc-imWYAI lgAUYa"
+          class="c10 c11"
           data-testid="Rechercher une offre"
           tabindex="0"
           type="button"

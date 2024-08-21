@@ -1,6 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotificationsSettings should render correctly 1`] = `
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
   <header
     class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
@@ -21,7 +152,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="sc-fqkvVR gugcSC sc-dhKdcB fyWoOd sc-dhKdcB fyWoOd"
+            class="c0 c1 sc-dhKdcB c1"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -126,7 +257,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-height-3da1kt"
         />
         <form
-          class="sc-jXbUNg eDWWms"
+          class="c2"
         >
           <div
             class="css-view-175oi2r r-paddingVertical-1yzf0co"
@@ -138,7 +269,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="1"
                 >
                   <div
@@ -237,7 +368,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="3"
                 >
                   <div
@@ -319,7 +450,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="5"
                 >
                   <div
@@ -398,7 +529,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="7"
                 >
                   <div
@@ -477,7 +608,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="9"
                 >
                   <div
@@ -556,7 +687,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="11"
                 >
                   <div
@@ -635,7 +766,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="13"
                 >
                   <div
@@ -714,7 +845,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="c3"
                   for="15"
                 >
                   <div
@@ -788,7 +919,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           />
           <button
             aria-label="Enregistrer les modifications"
-            class="sc-aXZVg fHvPyA sc-eqUAAy izgGWY"
+            class="c4 c5"
             data-testid="Enregistrer les modifications"
             disabled=""
             type="button"

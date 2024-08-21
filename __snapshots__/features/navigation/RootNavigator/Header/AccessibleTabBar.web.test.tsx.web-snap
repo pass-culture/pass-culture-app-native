@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccessibleTabBar renders correctly 1`] = `
+.c0 {
+  z-index: 2;
+}
+
 <div>
   <nav
-    class="sc-iGgWBj ejNqrU"
+    class="c0"
     id="tabBarID"
     role="navigation"
   >
@@ -223,9 +227,13 @@ exports[`AccessibleTabBar renders correctly 1`] = `
 `;
 
 exports[`AccessibleTabBar renders correctly when FF is enabled 1`] = `
+.c0 {
+  z-index: 2;
+}
+
 <div>
   <nav
-    class="sc-iGgWBj ejNqrU"
+    class="c0"
     id="tabBarID"
     role="navigation"
   >

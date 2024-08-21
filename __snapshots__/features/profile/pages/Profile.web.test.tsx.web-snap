@@ -1,6 +1,172 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Profile/> should render correctly on desktop 1`] = `
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 32px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #696A6F;
+  text-decoration-color: #696A6F;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #696A6F;
+  text-decoration-color: #696A6F;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  background-color: transparent;
+}
+
+.c2 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 72px;
+  padding-right: 72px;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
 <div>
   <div
     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -24,7 +190,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             >
               <button
                 aria-label="CheatMenu"
-                class="sc-gEvEer hdEzwv sc-fqkvVR hCDAkr"
+                class="c0 c1"
                 data-testid="CheatMenu"
                 tabindex="0"
                 type="button"
@@ -93,7 +259,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="sc-kAyceB fARJFW"
+                  class="c2"
                   data-testid="Créer un compte"
                   type="button"
                 >
@@ -264,7 +430,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-width-1jg9483"
                         />
                         <label
-                          class="sc-cwHptR daFOBn"
+                          class="c3"
                           for="testUuidV4"
                         >
                           <div
@@ -901,7 +1067,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                    class="c4 c5"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -939,7 +1105,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                    class="c4 c5"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.data-privacy-chart"
                     tabindex="0"
@@ -1008,6 +1174,169 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 `;
 
 exports[`<Profile/> should render correctly on mobile browser 1`] = `
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 32px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #696A6F;
+  text-decoration-color: #696A6F;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #696A6F;
+  text-decoration-color: #696A6F;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  background-color: transparent;
+}
+
+.c2 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
 <div>
   <div
     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -1031,7 +1360,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             >
               <button
                 aria-label="CheatMenu"
-                class="sc-gEvEer hdEzwv sc-fqkvVR hCDAkr"
+                class="c0 c1"
                 data-testid="CheatMenu"
                 tabindex="0"
                 type="button"
@@ -1100,7 +1429,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="sc-kAyceB dDHjLz"
+                  class="c2"
                   data-testid="Créer un compte"
                   type="button"
                 >
@@ -1271,7 +1600,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-width-1jg9483"
                         />
                         <label
-                          class="sc-cwHptR daFOBn"
+                          class="c3"
                           for="testUuidV4"
                         >
                           <div
@@ -1908,7 +2237,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                    class="c4 c5"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1946,7 +2275,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                    class="c4 c5"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.data-privacy-chart"
                     tabindex="0"

@@ -10,6 +10,205 @@ exports[`<WebShareModal/> should render correctly when hidden 1`] = `
 `;
 
 exports[`<WebShareModal/> should render correctly when shown 1`] = `
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 320px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6:disabled {
+  background-color: #F1F1F4;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
+.c1 {
+  padding: 4px;
+}
+
 <body
   tabindex="-1"
 >
@@ -78,7 +277,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="sc-fqkvVR gugcSC sc-kAyceB bMWfNz sc-kAyceB bMWfNz"
+                      class="c0 c1 sc-kAyceB c1"
                       data-testid="Fermer la modale"
                       tabindex="0"
                       title="Fermer la modale"
@@ -133,7 +332,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           >
                             <button
                               aria-label="Copier le lien"
-                              class="sc-aXZVg blCLeI sc-gsFSXq MhOrR"
+                              class="c2 c3"
                               data-testid="Copier le lien"
                               tabindex="0"
                               type="button"
@@ -173,7 +372,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           >
                             <a
                               aria-label="Ouvrir le gestionnaire mail"
-                              class="sc-gEvEer fpRSjI sc-gsFSXq MhOrR"
+                              class="c4 c3"
                               data-testid="Ouvrir le gestionnaire mail"
                               href="mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture !&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                               tabindex="0"
@@ -349,7 +548,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         />
                         <button
                           aria-label="Annuler"
-                          class="sc-aXZVg dArrwt sc-iGgWBj kxRSZa"
+                          class="c5 c6"
                           data-testid="Annuler"
                           tabindex="0"
                           type="button"
