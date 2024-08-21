@@ -36,6 +36,6 @@ export const createStore = <State, Actions extends Record<string, (payload: any)
             ...defaultState,
             actions: getActions(setState, getState, store),
           }),
-      { enabled: process.env.NODE_ENV === 'development', name }
+      { enabled: false, name }
     )
   )
