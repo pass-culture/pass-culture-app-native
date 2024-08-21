@@ -1,12 +1,10 @@
-// eslint-disable-next-line no-restricted-imports
-
 import firestore from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
 
 import { getCookiesLastUpdate } from './getCookiesLastUpdate'
 
 jest.mock('@react-native-firebase/firestore')
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/errors')
 
 const { collection } = firestore()
 

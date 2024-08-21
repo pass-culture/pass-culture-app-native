@@ -1,9 +1,7 @@
-// eslint-disable-next-line no-restricted-imports
-
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 
 export const getCookiesLastUpdate = async (): Promise<
   | void
