@@ -76,7 +76,7 @@
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:83
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:85
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:927
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:228
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:231
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
 ./src/features/search/api/useSearchResults/useSearchResults.ts:91
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:127

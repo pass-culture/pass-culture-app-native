@@ -80,7 +80,7 @@ describe('<Login/>', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
-    simulateSignin200()
+    simulateSignin200(AccountState.ACTIVE)
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: false,
@@ -327,6 +327,18 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+  })
+
+  it('should show appropriate message if account is deleted', async () => {
+    simulateSignin200(AccountState.DELETED)
+    renderLogin()
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    const errorMessage = screen.getByText('Ton compte à été supprimé')
+
+    expect(errorMessage).toBeTruthy()
   })
 
   it('should show email error message WHEN invalid e-mail format', async () => {
@@ -749,7 +761,7 @@ function mockMeApiCall(response: UserProfileResponse) {
   mockServer.getApi<UserProfileResponse>('/v1/me', response)
 }
 
-function simulateSignin200(accountState = AccountState.ACTIVE) {
+function simulateSignin200(accountState: AccountState) {
   mockServer.postApi<SigninResponse>('/v1/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',

@@ -178,6 +178,9 @@ export const getCtaWordingAndAction = ({
           },
           movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
         }
+      case undefined:
+      case null:
+        return
     }
   }
 

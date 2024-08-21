@@ -74,6 +74,9 @@ const handleBookingSteps = (
 
     case Step.DUO:
       return dispatch({ type: 'VALIDATE_OPTIONS' })
+
+    case Step.CONFIRMATION:
+      return // handled above
   }
 }
 

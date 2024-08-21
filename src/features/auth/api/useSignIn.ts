@@ -87,54 +87,58 @@ const useHandleSigninSuccess = (
 
   const offerId = params?.offerId
 
+  const navigateForActiveState = useCallback(async () => {
+    const user = await api.getNativeV1Me()
+    const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+
+    if (user?.recreditAmountToShow) {
+      navigate('RecreditBirthdayNotification')
+    } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+      navigate('EighteenBirthday')
+    } else if (shouldShowCulturalSurvey(user)) {
+      navigate('CulturalSurveyIntro')
+    } else if (offerId) {
+      switch (params.from) {
+        case StepperOrigin.BOOKING:
+          navigate('Offer', { id: offerId, openModalOnNavigation: true })
+          return
+
+        case StepperOrigin.FAVORITE:
+        case StepperOrigin.OFFER:
+          addFavorite({ offerId })
+          navigate('Offer', { id: offerId })
+          return
+        default:
+          navigateToHome()
+          return
+      }
+    } else {
+      navigateToHome()
+    }
+  }, [addFavorite, navigate, offerId, params?.from, shouldShowCulturalSurvey])
+
   return useCallback(
     async (accountState: AccountState) => {
       try {
         if (doNotNavigateOnSigninSuccess) {
           return
         }
-        if (accountState !== AccountState.ACTIVE) {
-          return navigate('SuspensionScreen')
-        }
-
-        const user = await api.getNativeV1Me()
-        const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-
-        if (user?.recreditAmountToShow) {
-          navigate('RecreditBirthdayNotification')
-        } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-          navigate('EighteenBirthday')
-        } else if (shouldShowCulturalSurvey(user)) {
-          navigate('CulturalSurveyIntro')
-        } else if (offerId) {
-          switch (params.from) {
-            case StepperOrigin.BOOKING:
-              navigate('Offer', { id: offerId, openModalOnNavigation: true })
-              return
-
-            case StepperOrigin.FAVORITE:
-            case StepperOrigin.OFFER:
-              addFavorite({ offerId })
-              navigate('Offer', { id: offerId })
-              return
-            default:
-              navigateToHome()
-          }
-        } else {
-          navigateToHome()
+        switch (accountState) {
+          case AccountState.INACTIVE:
+          case AccountState.SUSPENDED:
+          case AccountState.SUSPENDED_UPON_USER_REQUEST:
+          case AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER:
+            return navigate('SuspensionScreen')
+          case AccountState.DELETED:
+            return setErrorMessage?.('Ton compte à été supprimé')
+          case AccountState.ACTIVE:
+            navigateForActiveState()
+            return
         }
       } catch {
         setErrorMessage?.('Il y a eu un problème. Tu peux réessayer plus tard')
       }
     },
-    [
-      offerId,
-      navigate,
-      doNotNavigateOnSigninSuccess,
-      setErrorMessage,
-      params?.from,
-      addFavorite,
-      shouldShowCulturalSurvey,
-    ]
+    [doNotNavigateOnSigninSuccess, navigate, navigateForActiveState, setErrorMessage]
   )
 }
