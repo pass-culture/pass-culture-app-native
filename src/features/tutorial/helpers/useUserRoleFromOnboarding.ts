@@ -10,6 +10,7 @@ export const useUserRoleFromOnboarding = () => {
   )
 
   storage.readObject<number | string>('user_age').then((userOnboardingAge) => {
+    //eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (userOnboardingAge) {
       case 18:
         setOnboardingRole(UserOnboardingRole.EIGHTEEN)
@@ -23,8 +24,6 @@ export const useUserRoleFromOnboarding = () => {
       case NonEligible.OVER_18:
         setOnboardingRole(UserOnboardingRole.NON_ELIGIBLE)
         break
-      default:
-        throw new Error(`Unexpected value for userOnboardingAge ${String(userOnboardingAge)}`)
     }
   })
 
