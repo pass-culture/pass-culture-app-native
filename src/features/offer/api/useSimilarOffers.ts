@@ -73,7 +73,7 @@ export const useSimilarOffers = ({
         const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
 
         eventMonitoring.captureException(
-          `Error ${statusCode} with recommendation endpoint to get similar offers`,
+          new Error(`Error ${statusCode} with recommendation endpoint to get similar offers`),
           {
             extra: {
               offerId,

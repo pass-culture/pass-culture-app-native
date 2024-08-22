@@ -179,7 +179,7 @@ describe('useSimilarOffers', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error 503 with recommendation endpoint to get similar offers',
+        new Error('Error 503 with recommendation endpoint to get similar offers'),
         {
           extra: {
             categories: '["FILMS_SERIES_CINEMA"]',
