@@ -1,4 +1,4 @@
-import { NativeCategoryIdEnumv2 } from 'api/gen'
+import { CategoryIdEnum, NativeCategoryIdEnumv2 } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type ShareAppTrigger =
@@ -19,6 +19,7 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
+  reactionCategories: Record<'categories', (NativeCategoryIdEnumv2 | CategoryIdEnum)[]>
   sameAuthorPlaylist: string
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean

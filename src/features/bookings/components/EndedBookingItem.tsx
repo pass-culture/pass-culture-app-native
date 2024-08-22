@@ -12,6 +12,7 @@ import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -37,6 +38,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
   const { showErrorSnackBar } = useSnackBarContext()
   const iconFactory = useIconFactory()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const { reactionCategories } = useRemoteConfigContext()
 
   const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
     booking.userReaction
@@ -184,7 +186,9 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
             accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
           />
         </ShareContainer>
-        {shouldDisplayReactionFeature && !cancellationDate ? (
+        {shouldDisplayReactionFeature &&
+        reactionCategories.categories.includes(categoryId) &&
+        !cancellationDate ? (
           <ReactionContainer>
             <RoundedButton
               iconName="like"
