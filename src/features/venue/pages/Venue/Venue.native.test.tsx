@@ -88,19 +88,22 @@ describe('<Venue />', () => {
   })
 
   describe('analytics', () => {
-    it('should log consult venue when URL has from param with deeplink', async () => {
-      renderVenue(venueId, 'deeplink')
+    it.each([['deeplink'], ['venueMap']])(
+      'should log consult venue when URL from param equal to %s',
+      async (from) => {
+        renderVenue(venueId, from as Referrals)
 
-      await waitFor(() => {
-        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-          venueId,
-          from: 'deeplink',
+        await waitFor(() => {
+          expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+            venueId,
+            from,
+          })
         })
-      })
-    })
+      }
+    )
 
-    it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-      renderVenue(venueId, 'searchresults')
+    it('should not log consult venue when URL has unexpected "from" param', async () => {
+      renderVenue(venueId, 'unexpected_from_param' as Referrals)
 
       await screen.findByText('Infos pratiques')
 

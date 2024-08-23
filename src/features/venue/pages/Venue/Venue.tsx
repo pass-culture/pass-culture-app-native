@@ -15,7 +15,7 @@ export const Venue: FunctionComponent = () => {
   const { data: venueOffers } = useVenueOffers(venue)
 
   useEffect(() => {
-    if (params.from === 'deeplink' && venue?.id) {
+    if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
       analytics.logConsultVenue({ venueId: venue.id, from: params.from })
     }
   }, [params.from, venue?.id])
