@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: # Permet de swipe 2 jours plus tard (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    commands:
+      - swipe:
+          from:
+            id: 'android:id/numberpicker_input'
+          start: 29%, 73%
+          end: 29%, 60%
+      - swipe:
+          from:
+            id: 'android:id/numberpicker_input'
+          start: 29%, 73%
+          end: 29%, 60%
+
+- swipe: # Permet de swipe 2 jours plus tard (local)
+    from:
+      id: 'android:id/numberpicker_input'
+    start: 29%, 73%
+    end: 29%, 60%

@@ -12,3 +12,16 @@ flows:
   - 'subFolder/home/*'
   - 'subFolder/venue/*'
   - 'subFolder/analytics/*'
+
+executionOrder:
+    flowsOrder:
+      - SearchAndBookCinemaOffer.yml
+      - SearchAndBookDuoOffer.yml
+      - SearchAndBookOffers.yml
+
+notifications:
+  email:
+    enabled: true
+    onSuccess: true
+    recipients:
+      - equipe-e2e-jeunes-aaaakntkqy3ta5ksdafyew6dae@passcultureteam.slack.com
