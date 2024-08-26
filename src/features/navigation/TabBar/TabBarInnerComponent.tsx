@@ -3,22 +3,20 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarTitle as Title } from 'features/navigation/TabBar/TabBarTitle'
-import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TabInnerComponentProps } from 'features/navigation/TabBar/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer, getSpacing } from 'ui/theme'
 
 const SELECTOR_WIDTH = '80%'
 const SELECTOR_HEIGHT = getSpacing(1)
 
-interface Props {
-  isSelected?: boolean
-  BicolorIcon: React.FC<AccessibleBicolorIcon>
-  tabName: TabRouteName
-}
-
-export const TabBarInnerComponent: React.FC<Props> = ({ isSelected, BicolorIcon, tabName }) => {
+export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
+  isSelected,
+  BicolorIcon,
+  tabName,
+  badgeValue,
+}) => {
   const accessibilityLabel = menu[tabName].accessibilityLabel
   return (
     <React.Fragment>
@@ -30,7 +28,7 @@ export const TabBarInnerComponent: React.FC<Props> = ({ isSelected, BicolorIcon,
         />
       ) : null}
       <Spacer.Flex />
-      <StyledIcon as={BicolorIcon} selected={isSelected} />
+      <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
       <Title selected={isSelected} displayName={menu[tabName].displayName} />
       <Spacer.Flex />
       {isSelected ? <BicolorSelectorPlaceholder /> : null}

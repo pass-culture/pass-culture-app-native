@@ -3,6 +3,7 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
@@ -11,6 +12,7 @@ import {
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
@@ -51,6 +53,9 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
     },
   ],
 }))
+
+jest.mock('features/navigation/helpers/useTabBarItemBadges')
+const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 
 const mockTabNavigationState: TabNavigationState<ParamListBase> = {
   history: [{ key: 'Home-LzN9F8ePccY3NzxcsunpQ', type: 'route' }],
@@ -112,7 +117,11 @@ jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -129,6 +138,23 @@ describe('TabBar', () => {
       ...initialSearchState,
       locationFilter: mockDefaultLocationFilter,
     }
+    activateFeatureFlags()
+  })
+
+  beforeAll(() => {
+    mockUseTabBarItemBadges.mockReturnValue({
+      Bookings: 999,
+    })
+  })
+
+  it('render correctly when FF is enabled', async () => {
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
+      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+    ])
+    renderTabBar(mockTabNavigationState)
+
+    expect(await screen.findByText('99+')).toBeOnTheScreen()
   })
 
   it('should display the 5 following tabs with Home selected', async () => {

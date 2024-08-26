@@ -7,7 +7,7 @@ jest.useFakeTimers()
 
 describe('<BicolorBookingsCountV2 />', () => {
   it('should display booking icon with count', async () => {
-    render(<BicolorBookingsCountV2 />)
+    render(<BicolorBookingsCountV2 badgeValue={1} />)
 
     expect(await screen.findByText('1')).toBeOnTheScreen()
   })

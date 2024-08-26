@@ -14,6 +14,7 @@ interface NavItemInterface {
   BicolorIcon: React.FC<AccessibleBicolorIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   tabName: TabRouteName
+  badgeValue?: number
   onBeforeNavigate?: () => void
 }
 
@@ -22,6 +23,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
   navigateTo,
   tabName,
   isSelected,
+  badgeValue,
   onBeforeNavigate,
 }) => (
   <StyledTouchableLink
@@ -32,7 +34,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
     testID={`${tabName} tab`}
     onBeforeNavigate={onBeforeNavigate}
     accessibilityCurrent={isSelected ? 'page' : undefined}>
-    <StyledIcon as={BicolorIcon} selected={isSelected} />
+    <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
     <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
   </StyledTouchableLink>
 )

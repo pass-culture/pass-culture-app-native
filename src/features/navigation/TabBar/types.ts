@@ -6,6 +6,7 @@ import {
   SearchStackParamList,
 } from 'features/navigation/SearchStackNavigator/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
 export type TabRouteName = keyof TabParamList
 
@@ -27,3 +28,10 @@ export type TabStateRoute = ArrayElement<TabNavigationStateType['routes']> & {
 }
 
 export type TabRoute = GenericRoute<TabParamList>
+
+export type TabInnerComponentProps = {
+  isSelected?: boolean
+  BicolorIcon: React.FC<AccessibleBicolorIcon>
+  tabName: TabRouteName
+  badgeValue?: number
+}

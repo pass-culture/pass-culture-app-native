@@ -3,6 +3,7 @@ import { Animated } from 'react-native'
 import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -17,6 +18,7 @@ const MINIMUM_BRAND_SIZE = 140
 
 export const Header = memo(function Header({ mainId }: { mainId: string }) {
   const theme = useTheme()
+  const routeBadgeMap = useTabBarItemBadges()
 
   const fadeAnim = useRef({
     opacity: new Animated.Value(0),
@@ -110,6 +112,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
           maxWidth={theme.appContentWidth}
           height={theme.navTopHeight}
           noShadow={theme.isDesktopViewport}
+          routeBadgeMap={routeBadgeMap}
         />
         <RightContainer
           margin={margin}
