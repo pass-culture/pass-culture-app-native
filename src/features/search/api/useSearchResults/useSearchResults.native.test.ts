@@ -12,7 +12,7 @@ import {
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { GeoCoordinates, GeolocationError, GeolocPermissionState } from 'libs/location'
+import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -102,6 +102,33 @@ describe('useSearchResults', () => {
             },
             query: '',
           },
+          {
+            indexName: 'algoliaOffersIndexName',
+            params: {
+              attributesToHighlight: [],
+              attributesToRetrieve: [
+                'offer.dates',
+                'offer.isDigital',
+                'offer.isDuo',
+                'offer.isEducational',
+                'offer.name',
+                'offer.prices',
+                'offer.subcategoryId',
+                'offer.thumbUrl',
+                'objectID',
+                '_geoloc',
+                'venue',
+              ],
+              clickAnalytics: true,
+              distinct: false,
+              facetFilters: [['offer.isEducational:false']],
+              hitsPerPage: 1000,
+              numericFilters: [['offer.prices: 0 TO 300']],
+              page: 0,
+              typoTolerance: false,
+            },
+            query: '',
+          },
         ])
       })
     })
@@ -126,6 +153,7 @@ describe('useSearchResults', () => {
         offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
         venuesResponse: mockedAlgoliaVenueResponse,
         facetsResponse: algoliaFacets,
+        duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
       })
 
       const { result } = renderHook(
@@ -148,6 +176,7 @@ describe('useSearchResults', () => {
           offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
           venuesResponse: mockedAlgoliaVenueResponse,
           facetsResponse: algoliaFacets,
+          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
         })
         mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
       })
@@ -180,6 +209,7 @@ describe('useSearchResults', () => {
             userData: null,
           },
           facetsResponse: algoliaFacets,
+          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
         })
         mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
       })
@@ -204,6 +234,7 @@ describe('useSearchResults', () => {
           offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
           venuesResponse: mockedAlgoliaVenueResponse,
           facetsResponse: algoliaFacets,
+          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
         })
         mockUseLocation.mockReturnValue({ ...defaultUseLocation })
       })

@@ -35,7 +35,7 @@ describe('<SearchList />', () => {
 
   const props: SearchListProps = {
     nbHits: mockNbHits,
-    hits: { offers: mockHits, venues: [] },
+    hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits },
     renderItem,
     autoScrollEnabled: true,
     refreshing: false,
@@ -54,7 +54,11 @@ describe('<SearchList />', () => {
   })
 
   it('should not display search list header when number of offer results = 0', async () => {
-    const propsWithoutHits = { ...props, nbHits: 0, hits: { offers: [], venues: [] } }
+    const propsWithoutHits = {
+      ...props,
+      nbHits: 0,
+      hits: { offers: [], venues: [], duplicatedOffers: [] },
+    }
     render(reactQueryProviderHOC(<SearchList {...propsWithoutHits} />))
 
     expect(screen.queryByTestId('searchListHeader')).not.toBeInTheDocument()

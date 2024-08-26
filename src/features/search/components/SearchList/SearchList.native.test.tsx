@@ -25,7 +25,7 @@ describe('<SearchList />', () => {
 
   const props: SearchListProps = {
     nbHits: mockNbHits,
-    hits: { offers: mockHits, venues: [] },
+    hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits },
     renderItem,
     autoScrollEnabled: true,
     refreshing: false,
