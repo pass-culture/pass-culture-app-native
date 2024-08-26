@@ -15,6 +15,7 @@ import {
 } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGetOffersData } from 'features/home/api/useGetOffersData'
 import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
@@ -45,6 +46,9 @@ import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
+import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
+import { ScreenSeenCount, useScreenSeenCount } from '../api/useScreenSeenCount'
+
 type GenericHomeProps = {
   Header: React.JSX.Element
   HomeBanner?: React.JSX.Element
@@ -56,6 +60,7 @@ type GenericHomeProps = {
   videoModuleId?: string
   statusBar?: React.JSX.Element
 }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const keyExtractor = (item: any) => item.id
 
@@ -187,12 +192,34 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]
   )
+  const { height } = useWindowDimensions()
+  const { isLoggedIn } = useAuthContext()
+  const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
+
+  const triggerBatchAttrakdiffModal = async (screenSeenCount: ScreenSeenCount) => {
+    const data = new BatchEventData()
+    data.put('screen_seen_count', screenSeenCount)
+    data.put('home_id', homeId)
+    data.put('home_type', thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome')
+    data.put('home_name', thematicHeader ? thematicHeader.title : 'mainHome')
+
+    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent, undefined, data)
+  }
+
+  const { checkTrigger } = useScreenSeenCount({
+    isLoggedIn,
+    screenHeight: height,
+    onTrigger: triggerBatchAttrakdiffModal,
+    triggerStorage,
+  })
 
   const scrollListener = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (givenOnScroll) givenOnScroll(event)
+
+      checkTrigger(event.nativeEvent.contentOffset.y)
     },
-    [givenOnScroll]
+    [givenOnScroll, checkTrigger]
   )
 
   const { onScroll, scrollButtonTransition } = useOnScroll(scrollListenerToThrottle, scrollListener)
