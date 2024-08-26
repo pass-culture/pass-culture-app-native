@@ -102,16 +102,43 @@ export const fetchSearchResults = async ({
         'offer.showType',
       ],
     },
+    // Offers without duplication limit
+    {
+      indexName: offersIndex,
+      query: parameters.query || '',
+      params: {
+        page: parameters.page || 0,
+        ...buildHitsPerPage(1000),
+        ...buildOfferSearchParameters(
+          parameters,
+          buildLocationParameterParams,
+          isUserUnderage,
+          disabilitiesProperties
+        ),
+        attributesToRetrieve: offerAttributesToRetrieve,
+        attributesToHighlight: [], // We disable highlighting because we don't need it
+        /* Is needed to get a queryID, in order to send analytics events
+             https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
+        clickAnalytics: true,
+        // To use exactly the query and not limit the duplicate offers
+        distinct: false,
+        typoTolerance: false,
+      },
+    },
   ]
 
   try {
-    const [offersResponse, venuesResponse, facetsResponse] = (await multipleQueries<
-      Offer | AlgoliaVenue
-    >(queries)) as [SearchResponse<Offer>, SearchResponse<AlgoliaVenue>, SearchResponse<Offer>]
+    const [offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse] =
+      (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
+        SearchResponse<Offer>,
+        SearchResponse<AlgoliaVenue>,
+        SearchResponse<Offer>,
+        SearchResponse<Offer>,
+      ]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
 
-    return { offersResponse, venuesResponse, facetsResponse }
+    return { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse }
   } catch (error) {
     captureAlgoliaError(error)
     return {
@@ -124,6 +151,13 @@ export const fetchSearchResults = async ({
         userData: null,
       },
       facetsResponse: {},
+      duplicatedOffersResponse: {
+        hits: [] as Hit<Offer>[],
+        nbHits: 0,
+        page: 0,
+        nbPages: 0,
+        userData: null,
+      },
     }
   }
 }
