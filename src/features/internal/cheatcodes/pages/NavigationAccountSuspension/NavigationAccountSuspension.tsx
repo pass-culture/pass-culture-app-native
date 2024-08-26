@@ -17,6 +17,7 @@ export function NavigationAccountSuspension(): React.JSX.Element {
         <LinkToComponent name="DeleteProfileReason" />
         <LinkToComponent name="ConfirmDeleteProfile" />
         <LinkToComponent name="DeleteProfileSuccess" />
+        <LinkToComponent name="DeleteProfileConfirmation" />
         <LinkToComponent name="ResetPasswordExpiredLink" />
         <LinkToComponent
           name="ResetPasswordEmailSent"
