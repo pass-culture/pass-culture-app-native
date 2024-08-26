@@ -140,7 +140,7 @@ describe('useOfferPlaylist', () => {
       )
     })
 
-    it('should handle provided artist and EAN', async () => {
+    it('should handle provided artist', async () => {
       renderHook(() =>
         useOfferPlaylist({
           offer: { ...offer, extraData },
@@ -151,7 +151,6 @@ describe('useOfferPlaylist', () => {
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: 'Eiichiro Oda',
-        ean: '9782723492607',
         searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         venueLocation: { latitude: 20, longitude: 2 },
       })
