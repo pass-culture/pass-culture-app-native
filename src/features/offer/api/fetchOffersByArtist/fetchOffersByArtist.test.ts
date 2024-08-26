@@ -23,7 +23,7 @@ describe('fetchOffersByArtist', () => {
     expect(search).toHaveBeenCalledWith('', {
       page: 0,
       filters: 'offer.artist:"Eiichiro Oda"',
-      hitsPerPage: 30,
+      hitsPerPage: 100,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [],
       aroundRadius: 50000,

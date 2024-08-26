@@ -43,7 +43,7 @@ export const fetchOffersByArtist = async ({
     const response = await index.search<HitOfferWithArtistAndEan>('', {
       page: 0,
       filters: buildAlgoliaFilter({ artists }),
-      hitsPerPage: 30,
+      hitsPerPage: 100,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
       aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
