@@ -12,7 +12,7 @@ import { Emoji } from 'ui/components/Emoji'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Again } from 'ui/svg/icons/Again'
-import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
+import { ProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
@@ -27,7 +27,7 @@ export function DeleteProfileSuccess() {
   return (
     <GenericInfoPage
       title="Ton compte a été désactivé"
-      icon={ProfileDeletionIllustration}
+      icon={ProfileDeletion}
       buttons={[
         <InternalTouchableLink
           key={1}
