@@ -14,7 +14,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { useCategoryId } from 'libs/subcategories'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -32,7 +32,9 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
-  const categoryId = useCategoryId(stock.offer.subcategoryId)
+  const subcategoriesMapping = useSubcategoriesMapping()
+  const subCategory = subcategoriesMapping[stock.offer.subcategoryId]
+
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -99,7 +101,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       prePopulateOffer({
         ...offer,
-        categoryId,
+        categoryId: subCategory.categoryId,
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
@@ -156,6 +158,11 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       .join(' ')
   }
 
+  const canReact =
+    shouldDisplayReactionFeature &&
+    reactionCategories.categories.includes(subCategory.nativeCategoryId) &&
+    !cancellationDate
+
   return (
     <Container>
       <ContentContainer
@@ -167,7 +174,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         }
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
+        <OfferImage imageUrl={stock.offer.image?.url} categoryId={subCategory.categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
@@ -186,9 +193,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
             accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
           />
         </ShareContainer>
-        {shouldDisplayReactionFeature &&
-        reactionCategories.categories.includes(categoryId) &&
-        !cancellationDate ? (
+        {canReact ? (
           <ReactionContainer>
             <RoundedButton
               iconName="like"

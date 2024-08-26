@@ -33,7 +33,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
     configure: () => Promise.resolve(true),
     refresh: () => Promise.resolve(true),
     getValues: () => ({
-      reactionCategories: { categories: ['CINEMA'] },
+      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
     }),
   },
 }))

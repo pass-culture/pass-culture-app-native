@@ -1,7 +1,13 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import { Share } from 'react-native'
 
-import { BookingCancellationReasons, ReactionTypeEnum } from 'api/gen'
+import {
+  BookingCancellationReasons,
+  CategoryIdEnum,
+  NativeCategoryIdEnumv2,
+  ReactionTypeEnum,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
@@ -29,6 +35,25 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
 }))
 
+jest.mock('libs/subcategories/useSubcategory')
+
+const mockUseSubcategoriesMapping = jest.fn()
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+mockUseSubcategoriesMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CINEMA,
+    nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  },
+  [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CONFERENCE,
+    nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
+  },
+})
+
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -49,6 +74,7 @@ describe('EndedBookingItem', () => {
     })
 
     expect(screen.getByText('Réservation utilisée')).toBeOnTheScreen()
+
     expect(screen.getByText('le 16/03/2021')).toBeOnTheScreen()
   })
 
@@ -173,16 +199,14 @@ describe('EndedBookingItem', () => {
     beforeAll(() => {
       useFeatureFlagSpy.mockReturnValue(true)
       mockGetConfigValues.mockReturnValue({
-        reactionCategories: { categories: ['CINEMA'] },
+        reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
       })
     })
 
     it('should display reaction button', async () => {
       renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
-      await waitFor(() =>
-        expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
-      )
+      expect(await screen.findByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
     })
 
     it('should not display reaction button when category is not in remoteConfig param', async () => {
@@ -191,9 +215,9 @@ describe('EndedBookingItem', () => {
       })
       renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
-      await waitFor(() =>
-        expect(screen.queryByLabelText('Réagis à ta réservation')).not.toBeOnTheScreen()
-      )
+      await screen.findByText('Réservation utilisée')
+
+      expect(screen.queryByLabelText('Réagis à ta réservation')).not.toBeOnTheScreen()
     })
 
     it.each([
@@ -211,7 +235,7 @@ describe('EndedBookingItem', () => {
           RemoteConfigProvider
         )
 
-        await waitFor(() => expect(screen.getByLabelText(labelRegex)).toBeOnTheScreen())
+        expect(await screen.findByLabelText(labelRegex)).toBeOnTheScreen()
       }
     )
 
@@ -219,7 +243,8 @@ describe('EndedBookingItem', () => {
       renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
       fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
-      await waitFor(() => expect(screen.getByLabelText('Valider la réaction')).toBeOnTheScreen())
+
+      expect(await screen.findByLabelText('Valider la réaction')).toBeOnTheScreen()
     })
   })
 })
