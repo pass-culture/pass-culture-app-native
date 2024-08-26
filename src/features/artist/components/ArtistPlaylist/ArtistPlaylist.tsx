@@ -26,7 +26,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
 }) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('two-items')
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
 
   const artists = offer?.extraData?.author
   const venueLocation = offer?.venue.coordinates
