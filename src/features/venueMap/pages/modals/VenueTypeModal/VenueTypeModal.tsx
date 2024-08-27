@@ -17,7 +17,8 @@ import {
   useVenueTypeCode,
   useVenueTypeCodeActions,
 } from 'features/venueMap/store/venueTypeCodeStore'
-import { VenueTypeCode } from 'libs/parsers/venueType'
+import { analytics } from 'libs/analytics'
+import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -86,6 +87,8 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
   const handleSearchPress = useCallback(
     (form: VenueTypeModalFormProps) => {
       setVenueTypeCode(form.venueTypeCode)
+      if (form.venueTypeCode)
+        analytics.logApplyVenueMapFilter({ venueType: MAP_VENUE_TYPE_TO_LABEL[form.venueTypeCode] })
       hideModal()
     },
     [setVenueTypeCode, hideModal]
