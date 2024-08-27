@@ -15,7 +15,7 @@ jest.mock('features/auth/context/AuthContext')
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {
     mockServer.postApi<EmptyResponse>('/v1/recommendation/playlist', {
-      responseOptions: { statusCode: 502, data: {} },
+      responseOptions: { statusCode: 400, data: {} },
     })
 
     renderHook(
@@ -32,19 +32,49 @@ describe('useHomeRecommendedIdsQuery', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('Error 502 with recommendation endpoint'),
+        new Error('Error 400 with recommendation endpoint'),
         {
           extra: {
             playlistRequestBody: '{}',
             playlistRequestQuery: '{}',
-            statusCode: 502,
+            statusCode: 400,
             errorMessage:
-              'Échec de la requête https://localhost/native/v1/recommendation/playlist?, code: 502',
+              'Échec de la requête https://localhost/native/v1/recommendation/playlist?, code: 400',
           },
         }
       )
     })
   })
+
+  it.each([
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should not capture an exception when fetch call fails if ApiError and error code is %s',
+    async (statusCode) => {
+      mockServer.postApi<EmptyResponse>('/v1/recommendation/playlist', {
+        responseOptions: { statusCode, data: {} },
+      })
+
+      renderHook(
+        () =>
+          useHomeRecommendedIdsQuery({
+            playlistRequestBody: {},
+            playlistRequestQuery: {},
+            userId: 1,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      })
+    }
+  )
 
   it('should return playlist offer ids', async () => {
     mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {

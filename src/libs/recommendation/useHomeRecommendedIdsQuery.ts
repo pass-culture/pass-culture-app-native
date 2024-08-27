@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
+import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { eventMonitoring } from 'libs/monitoring'
@@ -35,18 +36,23 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
         const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
-
-        eventMonitoring.captureException(
-          new Error(`Error ${statusCode} with recommendation endpoint`),
-          {
-            extra: {
-              playlistRequestBody: stringifyPlaylistRequestBody,
-              playlistRequestQuery: stringifyPlaylistRequestQuery,
-              statusCode: statusCode,
-              errorMessage,
-            },
-          }
+        const shouldApiErrorNotCaptured = Boolean(
+          err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
         )
+
+        if (!shouldApiErrorNotCaptured) {
+          eventMonitoring.captureException(
+            new Error(`Error ${statusCode} with recommendation endpoint`),
+            {
+              extra: {
+                playlistRequestBody: stringifyPlaylistRequestBody,
+                playlistRequestQuery: stringifyPlaylistRequestQuery,
+                statusCode: statusCode,
+                errorMessage,
+              },
+            }
+          )
+        }
 
         return { playlistRecommendedOffers: [], params: undefined }
       }
