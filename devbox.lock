@@ -425,6 +425,54 @@
           "store_path": "/nix/store/dsnym6kh9jy2wl020jphwlm9kwp3w23p-ruby-2.7.5"
         }
       }
+    },
+    "watchman@latest": {
+      "last_modified": "2024-08-14T11:41:26Z",
+      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#watchman",
+      "source": "devbox-search",
+      "version": "2024.03.11.00",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xxncak93gjpann776dyy3q5042an8il4-watchman-2024.03.11.00",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xxncak93gjpann776dyy3q5042an8il4-watchman-2024.03.11.00"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mn1w30v068ybrl85f7hhingk7x7vxrxi-watchman-2024.03.11.00",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mn1w30v068ybrl85f7hhingk7x7vxrxi-watchman-2024.03.11.00"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/177ivhl8xq77cng83abnfmikbn7fsjsl-watchman-2024.03.11.00",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/177ivhl8xq77cng83abnfmikbn7fsjsl-watchman-2024.03.11.00"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m9122hba18a4lhdxjl4m29091j3yiy64-watchman-2024.03.11.00",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m9122hba18a4lhdxjl4m29091j3yiy64-watchman-2024.03.11.00"
+        }
+      }
     }
   }
 }
