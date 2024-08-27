@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
+import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { Position } from 'libs/location'
@@ -71,20 +72,25 @@ export const useSimilarOffers = ({
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
         const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
-
-        eventMonitoring.captureException(
-          new Error(`Error ${statusCode} with recommendation endpoint to get similar offers`),
-          {
-            extra: {
-              offerId,
-              longitude: position?.longitude,
-              latitude: position?.latitude,
-              categories: JSON.stringify(categories),
-              statusCode,
-              errorMessage,
-            },
-          }
+        const shouldApiErrorNotCaptured = Boolean(
+          err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
         )
+
+        if (!shouldApiErrorNotCaptured) {
+          eventMonitoring.captureException(
+            new Error(`Error ${statusCode} with recommendation endpoint to get similar offers`),
+            {
+              extra: {
+                offerId,
+                longitude: position?.longitude,
+                latitude: position?.latitude,
+                categories: JSON.stringify(categories),
+                statusCode,
+                errorMessage,
+              },
+            }
+          )
+        }
 
         return { params: {}, results: [] }
       }
