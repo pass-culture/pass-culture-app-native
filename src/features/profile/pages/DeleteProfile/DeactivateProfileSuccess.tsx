@@ -15,7 +15,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
-export function DeleteProfileSuccess() {
+export function DeactivateProfileSuccess() {
   const signOut = useLogoutRoutine()
   const { data: settings } = useSettingsContext()
   const reactivationLimit = settings?.accountUnsuspensionLimit
@@ -39,9 +39,12 @@ export function DeleteProfileSuccess() {
           key={2}
           as={ButtonTertiaryWhite}
           wording="Réactiver mon compte"
-          onBeforeNavigate={() => analytics.logAccountReactivation('deleteprofilesuccess')}
+          onBeforeNavigate={() => analytics.logAccountReactivation('deactivateprofilesuccess')}
           icon={Again}
-          navigateTo={{ screen: 'Login', params: { from: StepperOrigin.DELETE_PROFILE_SUCCESS } }}
+          navigateTo={{
+            screen: 'Login',
+            params: { from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS },
+          }}
         />,
       ]}>
       <StyledBody>

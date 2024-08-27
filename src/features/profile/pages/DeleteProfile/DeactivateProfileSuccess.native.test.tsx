@@ -8,7 +8,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { DeleteProfileSuccess } from './DeleteProfileSuccess'
+import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -19,21 +19,21 @@ jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('DeleteProfileSuccess component', () => {
+describe('DeactivateProfileSuccess component', () => {
   it('should render delete profile success', () => {
-    render(<DeleteProfileSuccess />)
+    render(<DeactivateProfileSuccess />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should log out user', () => {
-    render(<DeleteProfileSuccess />)
+    render(<DeactivateProfileSuccess />)
 
     expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to Home page when clicking on "Retourner à l’accueil" button', () => {
-    render(<DeleteProfileSuccess />)
+    render(<DeactivateProfileSuccess />)
 
     fireEvent.press(screen.getByText(`Retourner à l’accueil`))
 
@@ -44,14 +44,14 @@ describe('DeleteProfileSuccess component', () => {
   })
 
   it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
-    render(<DeleteProfileSuccess />)
+    render(<DeactivateProfileSuccess />)
 
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
     await waitFor(() => {
-      expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deleteprofilesuccess')
+      expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deactivateprofilesuccess')
       expect(navigate).toHaveBeenCalledWith('Login', {
-        from: StepperOrigin.DELETE_PROFILE_SUCCESS,
+        from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS,
       })
     })
   })

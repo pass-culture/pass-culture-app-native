@@ -27,7 +27,7 @@ export function ConfirmDeleteProfile() {
   function onAccountSuspendSuccess() {
     reset({
       index: 0,
-      routes: [{ name: 'DeleteProfileSuccess' }],
+      routes: [{ name: 'DeactivateProfileSuccess' }],
     })
   }
 
