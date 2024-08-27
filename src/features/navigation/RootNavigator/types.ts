@@ -219,6 +219,7 @@ export type RootStackParamList = {
   BookingDetails: { id: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
+  DeleteProfileConfirmation: undefined
   DeleteProfileSuccess: undefined
   Bookings: undefined
   EndedBookings: undefined
