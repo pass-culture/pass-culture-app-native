@@ -9,6 +9,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logActivateGeolocfromSearchResults: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
+  logApplyVenueMapFilter: jest.fn(),
   logBackToHomeFromEduconnectError: jest.fn(),
   logBookingConfirmation: jest.fn(),
   logBookingDetailsScrolledToBottom: jest.fn(),
