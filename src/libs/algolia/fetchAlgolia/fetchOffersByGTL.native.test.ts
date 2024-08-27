@@ -63,7 +63,7 @@ describe('fetchOffersByGTL', () => {
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
-        indexName: 'algoliaVenueOffersIndexName',
+        indexName: 'algoliaTopOffersIndexName',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: [
