@@ -12,7 +12,7 @@ import { Emoji } from 'ui/components/Emoji'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Again } from 'ui/svg/icons/Again'
-import { ProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
