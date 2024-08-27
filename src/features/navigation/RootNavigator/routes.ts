@@ -66,6 +66,7 @@ import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile
 import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
+import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
@@ -311,6 +312,12 @@ export const routes: RootRoute[] = [
     component: DeactivateProfileSuccess,
     path: 'profile/desactivation/succes',
     options: { title: 'Désactivation profil confirmée' },
+  },
+  {
+    name: 'DeleteProfileSuccess',
+    component: DeleteProfileSuccess,
+    path: 'profile/suppression/succes',
+    options: { title: 'Suppression profil confirmée' },
   },
   {
     name: 'Login',
