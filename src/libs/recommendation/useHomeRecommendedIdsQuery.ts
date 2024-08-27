@@ -36,14 +36,17 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
         const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
 
-        eventMonitoring.captureException(`Error ${statusCode} with recommendation endpoint`, {
-          extra: {
-            playlistRequestBody: stringifyPlaylistRequestBody,
-            playlistRequestQuery: stringifyPlaylistRequestQuery,
-            statusCode: statusCode,
-            errorMessage,
-          },
-        })
+        eventMonitoring.captureException(
+          new Error(`Error ${statusCode} with recommendation endpoint`),
+          {
+            extra: {
+              playlistRequestBody: stringifyPlaylistRequestBody,
+              playlistRequestQuery: stringifyPlaylistRequestQuery,
+              statusCode: statusCode,
+              errorMessage,
+            },
+          }
+        )
 
         return { playlistRecommendedOffers: [], params: undefined }
       }

@@ -32,7 +32,7 @@ describe('useHomeRecommendedIdsQuery', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error 502 with recommendation endpoint',
+        new Error('Error 502 with recommendation endpoint'),
         {
           extra: {
             playlistRequestBody: '{}',
