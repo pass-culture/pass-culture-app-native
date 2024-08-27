@@ -30,7 +30,7 @@ export const fetchOffersByArtist = async ({
   searchGroupName,
   venueLocation,
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
-  const index = client.initIndex(env.ALGOLIA_VENUE_OFFERS_INDEX_NAME)
+  const index = client.initIndex(env.ALGOLIA_TOP_OFFERS_INDEX_NAME)
 
   if (
     !artists ||

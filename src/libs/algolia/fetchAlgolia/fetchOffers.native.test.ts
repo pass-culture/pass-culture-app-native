@@ -1493,10 +1493,10 @@ describe('fetchOffer', () => {
         parameters: { query } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
-        indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+        indexSearch: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       })
 
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaVenueOffersIndexName')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaTopOffersIndexName')
     })
   })
 

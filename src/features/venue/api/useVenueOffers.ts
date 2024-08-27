@@ -7,7 +7,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
-import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { env } from 'libs/environment'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -38,7 +38,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
         },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-        indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+        indexSearch: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
       enabled: !!(netInfo.isConnected && venue),

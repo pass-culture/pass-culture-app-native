@@ -16,7 +16,7 @@ export async function fetchOffersByGTL(
 ) {
   // Build a query list to send to Algolia
   const queries = parameters.map(({ offerParams }) => ({
-    indexName: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+    indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
     params: {
       ...buildHitsPerPage(offerParams.hitsPerPage),
       ...buildOfferSearchParameters(
