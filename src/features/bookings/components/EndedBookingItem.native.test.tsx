@@ -1,21 +1,58 @@
-import React from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import { Share } from 'react-native'
 
-import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingCancellationReasons, ReactionTypeEnum } from 'api/gen'
+import {
+  BookingCancellationReasons,
+  CategoryIdEnum,
+  NativeCategoryIdEnumv2,
+  ReactionTypeEnum,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+const mockGetConfigValues = jest.fn()
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
+  remoteConfig: {
+    configure: () => Promise.resolve(true),
+    refresh: () => Promise.resolve(true),
+    getValues: () => mockGetConfigValues(),
+  },
+}))
 
 jest.mock('libs/network/NetInfoWrapper')
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+}))
+
+jest.mock('libs/subcategories/useSubcategory')
+
+const mockUseSubcategoriesMapping = jest.fn()
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+mockUseSubcategoriesMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CINEMA,
+    nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  },
+  [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CONFERENCE,
+    nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
+  },
+})
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
@@ -37,6 +74,7 @@ describe('EndedBookingItem', () => {
     })
 
     expect(screen.getByText('Réservation utilisée')).toBeOnTheScreen()
+
     expect(screen.getByText('le 16/03/2021')).toBeOnTheScreen()
   })
 
@@ -94,7 +132,7 @@ describe('EndedBookingItem', () => {
     fireEvent.press(item)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Offer', {
+      expect(mockNavigate).toHaveBeenCalledWith('Offer', {
         id: 147874,
         from: 'endedbookings',
       })
@@ -116,7 +154,7 @@ describe('EndedBookingItem', () => {
     fireEvent.press(item)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BookingDetails', {
+      expect(mockNavigate).toHaveBeenCalledWith('BookingDetails', {
         id: 321,
       })
     })
@@ -158,14 +196,28 @@ describe('EndedBookingItem', () => {
   })
 
   describe('when reaction feature flag is activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+      mockGetConfigValues.mockReturnValue({
+        reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
+      })
     })
 
-    it('should display reaction button', () => {
-      renderEndedBookingItem(bookingsSnap.ended_bookings[1])
+    it('should display reaction button', async () => {
+      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
-      expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
+    })
+
+    it('should not display reaction button when category is not in remoteConfig param', async () => {
+      mockGetConfigValues.mockReturnValueOnce({
+        reactionCategories: { categories: ['THEATRE'] },
+      })
+      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
+
+      await screen.findByText('Réservation utilisée')
+
+      expect(screen.queryByLabelText('Réagis à ta réservation')).not.toBeOnTheScreen()
     })
 
     it.each([
@@ -175,33 +227,31 @@ describe('EndedBookingItem', () => {
     ])(
       'should display correct icon and correct a11y label when data has reaction %s',
       async (userReaction, labelRegex) => {
-        renderEndedBookingItem({
-          ...bookingsSnap.ended_bookings[1],
-          userReaction,
-        })
+        renderEndedBookingItem(
+          {
+            ...bookingsSnap.ended_bookings[1],
+            userReaction,
+          },
+          RemoteConfigProvider
+        )
 
-        expect(screen.getByLabelText(labelRegex)).toBeOnTheScreen()
+        expect(await screen.findByLabelText(labelRegex)).toBeOnTheScreen()
       }
     )
 
-    it('should open reaction modal on press', () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: false,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
+    it('should open reaction modal on press', async () => {
+      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
-      renderEndedBookingItem(bookingsSnap.ended_bookings[1])
+      fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
 
-      fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
-
-      expect(mockShowModal).toHaveBeenCalledWith()
+      expect(await screen.findByLabelText('Valider la réaction')).toBeOnTheScreen()
     })
   })
 })
 
-function renderEndedBookingItem(booking: Booking) {
-  return render(reactQueryProviderHOC(<EndedBookingItem booking={booking} />))
+function renderEndedBookingItem(
+  booking: Booking,
+  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
+) {
+  return render(<Wrapper>{reactQueryProviderHOC(<EndedBookingItem booking={booking} />)}</Wrapper>)
 }

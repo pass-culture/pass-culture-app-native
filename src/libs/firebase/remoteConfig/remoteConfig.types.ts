@@ -19,6 +19,7 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
+  reactionCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
