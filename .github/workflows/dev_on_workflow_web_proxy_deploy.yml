@@ -49,9 +49,10 @@ jobs:
           key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install
-      - name: Install package for proxy
-        run: yarn install --immutable --cwd server
+      - name: Install app dependencies
+        run: yarn install
+      - name: Install packages for proxy
+        run: cd server && yarn install --immutable && cd ..
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
@@ -65,7 +66,7 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
       - name: 'Push proxy for input env'
-        run: yarn --cwd server deploy:${{ inputs.ENV }}
+        run: cd server && yarn deploy:${{ inputs.ENV }} && cd ..
 
       - name: 'Clear unused apps'
         run: |
