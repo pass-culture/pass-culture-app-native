@@ -155,6 +155,12 @@ describe('CreditHeader', () => {
       mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     })
 
+    it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
+      renderCreditHeader({ age })
+
+      expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    })
+
     it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
       renderCreditHeader({ age })
       const digitalCredit = screen.queryByTestId('domains-credit-digital')
@@ -169,6 +175,15 @@ describe('CreditHeader', () => {
 
       expect(screen.getByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
     })
+
+    it.each([15, 16, 17])(
+      'should render correctly with exhausted credit for %s year-old',
+      (age) => {
+        renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+
+        expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
+      }
+    )
 
     it('should display coming credit for 16-year-old beneficiary', () => {
       renderCreditHeader({ age: 16 })
