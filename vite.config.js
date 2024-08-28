@@ -69,9 +69,7 @@ export default ({ mode }) => {
             TWITTER_SITE: packageJson.author.twitter,
             META_NO_INDEX:
               env.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
-            PROD_CSS: '',
-            DEV_CSS: '',
-            CHUNK_PROTECTION_SCRIPT: '',
+            CHUNK_PROTECTION_SCRIPT: '', // Do we need?
             PUBLIC_URL: isProdMode ? env.APP_PUBLIC_URL : undefined,
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,

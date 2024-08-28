@@ -208,6 +208,7 @@
     "react-query": "3.39.3",
     "react-window": "^1.8.9",
     "react-youtube": "^10.1.0",
+    "reset-css": "^5.0.2",
     "resize-observer-polyfill": "^1.5.1",
     "search-insights": "^2.13.0",
     "styled-components": "^5.3.3",
