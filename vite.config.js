@@ -22,8 +22,6 @@ const libsThatHaveJSFilesContainingJSX = [
 const packageJson = require('./package.json')
 
 export default ({ mode }) => {
-  // mode === 'production' =/= env.ENV === 'production'
-  // TODO: atm mode is only development & production, created commands for staging for example
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
@@ -74,7 +72,7 @@ export default ({ mode }) => {
             PROD_CSS: '',
             DEV_CSS: '',
             CHUNK_PROTECTION_SCRIPT: '',
-            PUBLIC_URL: env.PUBLIC_URL,
+            PUBLIC_URL: isProdMode ? env.APP_PUBLIC_URL : undefined,
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,
             APPS_FLYER_WEB_PUBLIC_KEY: env.APPS_FLYER_WEB_PUBLIC_KEY,
