@@ -5713,936 +5713,665 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   ]
                 }
               />
-              <RCTScrollView
-                ItemSeparatorComponent={
-                  {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "attrs": [],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        [Function],
-                      ],
-                    },
-                    "render": [Function],
-                    "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
-                    "target": [Function],
-                    "withComponent": [Function],
-                  }
-                }
-                data={
+              <View
+                numberOfSpaces={4}
+                style={
                   [
                     {
-                      "body": <Styled(Text)>
-                        How to withdraw, https://test.com
-                      </Styled(Text)>,
-                      "isDisplayed": true,
-                      "title": "Modalités de retrait",
-                    },
-                    {
-                      "body": <Styled(Text)>
-                        https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-                      </Styled(Text)>,
-                      "isDisplayed": true,
-                      "title": "Description",
-                    },
-                    {
-                      "body": <ContactBlock
-                        venue={
-                          {
-                            "accessibility": {
-                              "audioDisability": false,
-                              "mentalDisability": false,
-                              "motorDisability": false,
-                              "visualDisability": true,
-                            },
-                            "address": "1 boulevard Poissonnière",
-                            "city": "Paris",
-                            "contact": {
-                              "email": "contact@venue.com",
-                              "phoneNumber": "+33102030405",
-                              "website": "https://my@website.com",
-                            },
-                            "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
-                            "externalAccessibilityData": {
-                              "audioDisability": {
-                                "deafAndHardOfHearing": [
-                                  "Boucle à induction magnétique portative",
-                                  "Autre système non renseigné",
-                                ],
-                              },
-                              "isAccessibleAudioDisability": false,
-                              "isAccessibleMentalDisability": true,
-                              "isAccessibleMotorDisability": false,
-                              "isAccessibleVisualDisability": false,
-                              "mentalDisability": {
-                                "trainedPersonnel": "Personnel formé",
-                              },
-                              "motorDisability": {
-                                "entrance": "Non renseigné",
-                                "exterior": "Non renseigné",
-                                "facilities": "Sanitaire non adapté",
-                                "parking": "Pas de stationnement adapté à proximité",
-                              },
-                              "visualDisability": {
-                                "audioDescription": [
-                                  "Non renseigné",
-                                ],
-                                "soundBeacon": "Non renseigné",
-                              },
-                            },
-                            "externalAccessibilityId": "slug-d-accessibilite-1",
-                            "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
-                            "id": 5543,
-                            "isPermanent": true,
-                            "isVirtual": false,
-                            "latitude": 48.87004,
-                            "longitude": 2.3785,
-                            "name": "Le Petit Rintintin 1",
-                            "openingHours": {
-                              "FRIDAY": [
-                                {
-                                  "close": "19:00",
-                                  "open": "09:00",
-                                },
-                              ],
-                              "MONDAY": [
-                                {
-                                  "close": "19:00",
-                                  "open": "09:00",
-                                },
-                              ],
-                              "THURSDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                              "TUESDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                              "WEDNESDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                            },
-                            "postalCode": "75000",
-                            "publicName": "Le Petit Rintintin 1",
-                            "timezone": "UTC",
-                            "venueTypeCode": "BOOKSTORE",
-                            "withdrawalDetails": "How to withdraw, https://test.com",
-                          }
-                        }
-                      />,
-                      "isDisplayed": true,
-                      "title": "Contact",
-                    },
-                    {
-                      "body": <AccessibilityBlock
-                        basicAccessibility={
-                          {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
-                          }
-                        }
-                        detailedAccessibilityData={
-                          {
-                            "audioDisability": {
-                              "deafAndHardOfHearing": [
-                                "Boucle à induction magnétique portative",
-                                "Autre système non renseigné",
-                              ],
-                            },
-                            "isAccessibleAudioDisability": false,
-                            "isAccessibleMentalDisability": true,
-                            "isAccessibleMotorDisability": false,
-                            "isAccessibleVisualDisability": false,
-                            "mentalDisability": {
-                              "trainedPersonnel": "Personnel formé",
-                            },
-                            "motorDisability": {
-                              "entrance": "Non renseigné",
-                              "exterior": "Non renseigné",
-                              "facilities": "Sanitaire non adapté",
-                              "parking": "Pas de stationnement adapté à proximité",
-                            },
-                            "visualDisability": {
-                              "audioDescription": [
-                                "Non renseigné",
-                              ],
-                              "soundBeacon": "Non renseigné",
-                            },
-                          }
-                        }
-                        detailedAccessibilityId="slug-d-accessibilite-1"
-                        detailedAccessibilityUrl="https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/"
-                      />,
-                      "isDisplayed": true,
-                      "title": "Accessibilité",
-                    },
-                    {
-                      "body": <OpeningHours
-                        openingHours={
-                          {
-                            "FRIDAY": [
-                              {
-                                "close": "19:00",
-                                "open": "09:00",
-                              },
-                            ],
-                            "MONDAY": [
-                              {
-                                "close": "19:00",
-                                "open": "09:00",
-                              },
-                            ],
-                            "THURSDAY": [
-                              {
-                                "close": "12:00",
-                                "open": "09:00",
-                              },
-                              {
-                                "close": "19:00",
-                                "open": "14:00",
-                              },
-                            ],
-                            "TUESDAY": [
-                              {
-                                "close": "12:00",
-                                "open": "09:00",
-                              },
-                              {
-                                "close": "19:00",
-                                "open": "14:00",
-                              },
-                            ],
-                            "WEDNESDAY": [
-                              {
-                                "close": "12:00",
-                                "open": "09:00",
-                              },
-                              {
-                                "close": "19:00",
-                                "open": "14:00",
-                              },
-                            ],
-                          }
-                        }
-                      />,
-                      "isDisplayed": true,
-                      "title": "Horaires d’ouverture",
+                      "height": 16,
                     },
                   ]
                 }
-                getItem={[Function]}
-                getItemCount={[Function]}
-                keyExtractor={[Function]}
-                onContentSizeChange={[Function]}
-                onLayout={[Function]}
-                onMomentumScrollBegin={[Function]}
-                onMomentumScrollEnd={[Function]}
-                onScroll={[Function]}
-                onScrollBeginDrag={[Function]}
-                onScrollEndDrag={[Function]}
-                removeClippedSubviews={false}
-                renderItem={[Function]}
-                scrollEnabled={false}
-                scrollEventThrottle={50}
-                stickyHeaderIndices={[]}
-                viewabilityConfigCallbackPairs={[]}
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
               >
-                <View>
+                Modalités de retrait
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                How to withdraw, https://test.com
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Description
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Contact
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="contact@venue.com"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="contact@venue.com"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={null}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
                     <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
                     >
-                      Modalités de retrait
-                    </Text>
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                     <View
-                      numberOfSpaces={4}
+                      numberOfSpaces={2}
                       style={
                         [
                           {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      How to withdraw, https://test.com
-                    </Text>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      highlighted={false}
-                      leadingItem={
-                        {
-                          "body": <Styled(Text)>
-                            How to withdraw, https://test.com
-                          </Styled(Text)>,
-                          "isDisplayed": true,
-                          "title": "Modalités de retrait",
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
+                            "width": 8,
                           },
                         ]
                       }
                     />
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    contact@venue.com
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="+33102030405"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="+33102030405"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={null}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
                     <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
                     >
-                      Description
-                    </Text>
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                     <View
-                      numberOfSpaces={4}
+                      numberOfSpaces={2}
                       style={
                         [
                           {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-                    </Text>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      highlighted={false}
-                      leadingItem={
-                        {
-                          "body": <Styled(Text)>
-                            https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-                          </Styled(Text)>,
-                          "isDisplayed": true,
-                          "title": "Description",
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
+                            "width": 8,
                           },
                         ]
                       }
                     />
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    +33102030405
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="https://my@website.com"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="https://my@website.com"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={null}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
                     <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
                     >
-                      Contact
-                    </Text>
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                     <View
-                      numberOfSpaces={4}
+                      numberOfSpaces={2}
                       style={
                         [
                           {
-                            "height": 16,
+                            "width": 8,
                           },
                         ]
                       }
                     />
-                    <View
-                      accessibilityLabel="contact@venue.com"
-                      accessibilityState={
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
                         {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    https://my@website.com
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Accessibilité
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityRole="list"
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "gap": 0,
+                      "justifyContent": "space-between",
+                      "overflow": "visible",
+                      "paddingLeft": 0,
+                      "width": "100%",
+                    },
+                  ]
+                }
+                testID="BasicAccessibilityInfo"
+              >
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "maxWidth": 72,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Handicap visuel : Accessible"
+                    accessibilityRole="image"
+                    style={
+                      [
                         {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="contact@venue.com"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                                "flexShrink": 0,
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "maxWidth": "100%",
-                              },
-                            ]
-                          }
-                        >
-                          contact@venue.com
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityLabel="+33102030405"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="+33102030405"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                                "flexShrink": 0,
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "maxWidth": "100%",
-                              },
-                            ]
-                          }
-                        >
-                          +33102030405
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityLabel="https://my@website.com"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="https://my@website.com"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                                "flexShrink": 0,
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Nouvelle fenêtre"
-                            height={20}
-                            testID="button-icon-left"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-left-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                        </View>
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "maxWidth": "100%",
-                              },
-                            ]
-                          }
-                        >
-                          https://my@website.com
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      highlighted={false}
-                      leadingItem={
-                        {
-                          "body": <ContactBlock
-                            venue={
-                              {
-                                "accessibility": {
-                                  "audioDisability": false,
-                                  "mentalDisability": false,
-                                  "motorDisability": false,
-                                  "visualDisability": true,
-                                },
-                                "address": "1 boulevard Poissonnière",
-                                "city": "Paris",
-                                "contact": {
-                                  "email": "contact@venue.com",
-                                  "phoneNumber": "+33102030405",
-                                  "website": "https://my@website.com",
-                                },
-                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
-                                "externalAccessibilityData": {
-                                  "audioDisability": {
-                                    "deafAndHardOfHearing": [
-                                      "Boucle à induction magnétique portative",
-                                      "Autre système non renseigné",
-                                    ],
-                                  },
-                                  "isAccessibleAudioDisability": false,
-                                  "isAccessibleMentalDisability": true,
-                                  "isAccessibleMotorDisability": false,
-                                  "isAccessibleVisualDisability": false,
-                                  "mentalDisability": {
-                                    "trainedPersonnel": "Personnel formé",
-                                  },
-                                  "motorDisability": {
-                                    "entrance": "Non renseigné",
-                                    "exterior": "Non renseigné",
-                                    "facilities": "Sanitaire non adapté",
-                                    "parking": "Pas de stationnement adapté à proximité",
-                                  },
-                                  "visualDisability": {
-                                    "audioDescription": [
-                                      "Non renseigné",
-                                    ],
-                                    "soundBeacon": "Non renseigné",
-                                  },
-                                },
-                                "externalAccessibilityId": "slug-d-accessibilite-1",
-                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
-                                "id": 5543,
-                                "isPermanent": true,
-                                "isVirtual": false,
-                                "latitude": 48.87004,
-                                "longitude": 2.3785,
-                                "name": "Le Petit Rintintin 1",
-                                "openingHours": {
-                                  "FRIDAY": [
-                                    {
-                                      "close": "19:00",
-                                      "open": "09:00",
-                                    },
-                                  ],
-                                  "MONDAY": [
-                                    {
-                                      "close": "19:00",
-                                      "open": "09:00",
-                                    },
-                                  ],
-                                  "THURSDAY": [
-                                    {
-                                      "close": "12:00",
-                                      "open": "09:00",
-                                    },
-                                    {
-                                      "close": "19:00",
-                                      "open": "14:00",
-                                    },
-                                  ],
-                                  "TUESDAY": [
-                                    {
-                                      "close": "12:00",
-                                      "open": "09:00",
-                                    },
-                                    {
-                                      "close": "19:00",
-                                      "open": "14:00",
-                                    },
-                                  ],
-                                  "WEDNESDAY": [
-                                    {
-                                      "close": "12:00",
-                                      "open": "09:00",
-                                    },
-                                    {
-                                      "close": "19:00",
-                                      "open": "14:00",
-                                    },
-                                  ],
-                                },
-                                "postalCode": "75000",
-                                "publicName": "Le Petit Rintintin 1",
-                                "timezone": "UTC",
-                                "venueTypeCode": "BOOKSTORE",
-                                "withdrawalDetails": "How to withdraw, https://test.com",
-                              }
-                            }
-                          />,
-                          "isDisplayed": true,
-                          "title": "Contact",
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={null}
+                        },
+                      ]
+                    }
+                    testID="accessibilityBadgeContainer"
                   >
+                    <View
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#CBCDD2",
+                            "borderRadius": 8,
+                            "borderWidth": 1,
+                            "height": 48,
+                            "width": 48,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        fill="#161617"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "bottom": -8,
+                              "position": "absolute",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Accessible"
+                          height={16}
+                          testID="valid-icon"
+                          width={16}
+                        >
+                          <Text>
+                            valid-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
                       numberOfSpaces={4}
                       style={
@@ -6661,955 +6390,768 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
                           },
                         ]
                       }
                     >
-                      Accessibilité
+                      Handicap visuel
                     </Text>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityRole="list"
-                      style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "gap": 0,
-                            "justifyContent": "space-between",
-                            "overflow": "visible",
-                            "paddingLeft": 0,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="BasicAccessibilityInfo"
-                    >
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Handicap visuel : Accessible"
-                          accessibilityRole="image"
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                              },
-                            ]
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "borderColor": "#CBCDD2",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1,
-                                  "height": 48,
-                                  "width": 48,
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "bottom": -8,
-                                    "position": "absolute",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                accessibilityLabel="Accessible"
-                                height={16}
-                                testID="valid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  valid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                  "paddingHorizontal": 1,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            Handicap visuel
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
-                          accessibilityRole="image"
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                              },
-                            ]
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "borderColor": "#CBCDD2",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1,
-                                  "height": 48,
-                                  "width": 48,
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "bottom": -8,
-                                    "position": "absolute",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                accessibilityLabel="Non accessible"
-                                fill="#696A6F"
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  invalid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                  "paddingHorizontal": 1,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            Handicap psychique ou cognitif
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Handicap moteur : Non accessible"
-                          accessibilityRole="image"
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                              },
-                            ]
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "borderColor": "#CBCDD2",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1,
-                                  "height": 48,
-                                  "width": 48,
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "bottom": -8,
-                                    "position": "absolute",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                accessibilityLabel="Non accessible"
-                                fill="#696A6F"
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  invalid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                  "paddingHorizontal": 1,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            Handicap moteur
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "maxWidth": 72,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Handicap auditif : Non accessible"
-                          accessibilityRole="image"
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                              },
-                            ]
-                          }
-                          testID="accessibilityBadgeContainer"
-                        >
-                          <View
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "borderColor": "#CBCDD2",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1,
-                                  "height": 48,
-                                  "width": 48,
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "bottom": -8,
-                                    "position": "absolute",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                accessibilityLabel="Non accessible"
-                                fill="#696A6F"
-                                height={16}
-                                testID="invalid-icon"
-                                width={16}
-                              >
-                                <Text>
-                                  invalid-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                  "paddingHorizontal": 1,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            Handicap auditif
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      highlighted={false}
-                      leadingItem={
-                        {
-                          "body": <AccessibilityBlock
-                            basicAccessibility={
-                              {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
-                              }
-                            }
-                            detailedAccessibilityData={
-                              {
-                                "audioDisability": {
-                                  "deafAndHardOfHearing": [
-                                    "Boucle à induction magnétique portative",
-                                    "Autre système non renseigné",
-                                  ],
-                                },
-                                "isAccessibleAudioDisability": false,
-                                "isAccessibleMentalDisability": true,
-                                "isAccessibleMotorDisability": false,
-                                "isAccessibleVisualDisability": false,
-                                "mentalDisability": {
-                                  "trainedPersonnel": "Personnel formé",
-                                },
-                                "motorDisability": {
-                                  "entrance": "Non renseigné",
-                                  "exterior": "Non renseigné",
-                                  "facilities": "Sanitaire non adapté",
-                                  "parking": "Pas de stationnement adapté à proximité",
-                                },
-                                "visualDisability": {
-                                  "audioDescription": [
-                                    "Non renseigné",
-                                  ],
-                                  "soundBeacon": "Non renseigné",
-                                },
-                              }
-                            }
-                            detailedAccessibilityId="slug-d-accessibilite-1"
-                            detailedAccessibilityUrl="https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/"
-                          />,
-                          "isDisplayed": true,
-                          "title": "Accessibilité",
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={null}
-                  >
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Horaires d’ouverture
-                    </Text>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityRole="list"
-                      style={
-                        [
-                          {
-                            "display": "flex",
-                            "flexDirection": "column",
-                            "gap": 8,
-                            "paddingLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Lundi 09:00 - 19:00"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Lundi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          09:00 - 19:00
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Mardi 09:00 - 12:00  puis  14:00 - 19:00"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Mardi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          09:00 - 12:00 / 14:00 - 19:00
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Mercredi 09:00 - 12:00  puis  14:00 - 19:00"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Mercredi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          09:00 - 12:00 / 14:00 - 19:00
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Jeudi 09:00 - 12:00  puis  14:00 - 19:00"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Jeudi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          09:00 - 12:00 / 14:00 - 19:00
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Vendredi 09:00 - 19:00"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Vendredi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          09:00 - 19:00
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Samedi Fermé"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Samedi
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Fermé
-                        </Text>
-                      </View>
-                      <View
-                        accessibilityLabel="Dimanche Fermé"
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Dimanche
-                        </Text>
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Fermé
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
-              </RCTScrollView>
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "maxWidth": 72,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
+                    accessibilityRole="image"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                        },
+                      ]
+                    }
+                    testID="accessibilityBadgeContainer"
+                  >
+                    <View
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#CBCDD2",
+                            "borderRadius": 8,
+                            "borderWidth": 1,
+                            "height": 48,
+                            "width": 48,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        fill="#161617"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "bottom": -8,
+                              "position": "absolute",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non accessible"
+                          fill="#696A6F"
+                          height={16}
+                          testID="invalid-icon"
+                          width={16}
+                        >
+                          <Text>
+                            invalid-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap psychique ou cognitif
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "maxWidth": 72,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Handicap moteur : Non accessible"
+                    accessibilityRole="image"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                        },
+                      ]
+                    }
+                    testID="accessibilityBadgeContainer"
+                  >
+                    <View
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#CBCDD2",
+                            "borderRadius": 8,
+                            "borderWidth": 1,
+                            "height": 48,
+                            "width": 48,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        fill="#161617"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "bottom": -8,
+                              "position": "absolute",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non accessible"
+                          fill="#696A6F"
+                          height={16}
+                          testID="invalid-icon"
+                          width={16}
+                        >
+                          <Text>
+                            invalid-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap moteur
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "maxWidth": 72,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Handicap auditif : Non accessible"
+                    accessibilityRole="image"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                        },
+                      ]
+                    }
+                    testID="accessibilityBadgeContainer"
+                  >
+                    <View
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#CBCDD2",
+                            "borderRadius": 8,
+                            "borderWidth": 1,
+                            "height": 48,
+                            "width": 48,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        fill="#161617"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "bottom": -8,
+                              "position": "absolute",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non accessible"
+                          fill="#696A6F"
+                          height={16}
+                          testID="invalid-icon"
+                          width={16}
+                        >
+                          <Text>
+                            invalid-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap auditif
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Horaires d’ouverture
+              </Text>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityRole="list"
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "gap": 8,
+                      "paddingLeft": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Lundi 09:00 - 19:00"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Lundi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    09:00 - 19:00
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Mardi 09:00 - 12:00  puis  14:00 - 19:00"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Mardi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    09:00 - 12:00 / 14:00 - 19:00
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Mercredi 09:00 - 12:00  puis  14:00 - 19:00"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Mercredi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    09:00 - 12:00 / 14:00 - 19:00
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Jeudi 09:00 - 12:00  puis  14:00 - 19:00"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Jeudi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    09:00 - 12:00 / 14:00 - 19:00
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Vendredi 09:00 - 19:00"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Vendredi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    09:00 - 19:00
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Samedi Fermé"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Samedi
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Fermé
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Dimanche Fermé"
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Dimanche
+                  </Text>
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Fermé
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
               <View
                 numberOfSpaces={2}
                 style={
