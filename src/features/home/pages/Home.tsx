@@ -1,12 +1,10 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
-import { useAttrakdiffModal } from 'features/home/api/useAttrakdiffModal'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
@@ -27,20 +25,16 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-
-import { createInMemoryAttrakdiff } from '../api/inMemoryAttrakdiff'
 
 const Header = () => (
   <ListHeaderContainer>
     <HomeHeader />
   </ListHeaderContainer>
 )
-
-const attrakdiff = createInMemoryAttrakdiff()
 
 export const Home: FunctionComponent = () => {
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
@@ -65,7 +59,6 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { height } = useWindowDimensions()
   const { shouldApplyGraphicRedesign, shareAppTrigger } = useRemoteConfigContext()
   const { data: bookings } = useBookings()
 
@@ -139,17 +132,6 @@ export const Home: FunctionComponent = () => {
     editor.save()
   }, [shouldApplyGraphicRedesign, bookings, user?.firstDepositActivationDate])
 
-  const triggerBatchAttrakdiffModal = async () => {
-    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent)
-  }
-
-  const { checkTrigger } = useAttrakdiffModal({
-    isLoggedIn,
-    screenHeight: height,
-    onTrigger: triggerBatchAttrakdiffModal,
-    attrakdiff,
-  })
-
   return (
     <React.Fragment>
       <GenericHome
@@ -161,9 +143,6 @@ export const Home: FunctionComponent = () => {
         }
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}
-        onScroll={({ nativeEvent }) => {
-          checkTrigger(nativeEvent.contentOffset.y)
-        }}
       />
       <OnboardingSubscriptionModal
         visible={onboardingSubscriptionModalVisible}
