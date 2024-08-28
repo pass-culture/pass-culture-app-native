@@ -38,7 +38,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour
-            anonymiser tes données. Tu peux en savoir plus en
+            anonymiser tes données. Tu peux en savoir plus en{' '}
             <ExternalTouchableLink
               as={StyledButtonInsideText}
               wording="consultant cette page"
