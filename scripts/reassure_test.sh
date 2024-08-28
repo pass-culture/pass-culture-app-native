@@ -4,6 +4,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+set -x
+
 # Test on branch master as baseline
 BASELINE_BRANCH=${BASELINE_BRANCH:="master"}
 
@@ -14,9 +16,10 @@ git fetch origin
 git switch "$BASELINE_BRANCH"
 yarn install --force
 yarn test:perf --baseline
+git diff
 git restore .
 
 # Gather current perf measurements & compare results
 git switch --detach -
-yarn install --force
+yarn install
 yarn test:perf
