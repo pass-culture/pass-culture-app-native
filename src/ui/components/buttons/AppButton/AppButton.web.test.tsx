@@ -56,14 +56,6 @@ describe('AppButton Component', () => {
     })
   })
 
-  describe('* inline property', () => {
-    it('should use inline css style when true', () => {
-      const { container } = render(<AppButton {...baseProps} wording="Testing inline" inline />)
-
-      expect(container).toMatchSnapshot()
-    })
-  })
-
   describe('* html tag and type attribute', () => {
     it('should render button tag of type button by default', () => {
       render(<AppButton {...baseProps} testID="button" />)

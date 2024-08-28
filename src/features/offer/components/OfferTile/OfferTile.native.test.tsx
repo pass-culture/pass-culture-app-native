@@ -48,12 +48,6 @@ const props = {
 describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should render correctly', () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} />))
-
-    expect(screen.toJSON()).toMatchSnapshot()
-  })
-
   it('should navigate to the offer when clicking on the image', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))

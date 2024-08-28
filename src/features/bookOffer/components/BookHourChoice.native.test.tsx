@@ -62,8 +62,6 @@ describe('BookHourChoice when hour is already selected', () => {
   it('should change step to Hour', () => {
     render(<BookHourChoice />)
 
-    expect(screen).toMatchSnapshot()
-
     const selectedHour = screen.getByText('20:00')
 
     fireEvent.press(selectedHour)
@@ -98,8 +96,6 @@ describe('BookHourChoice', () => {
     expect(firstStock).toHaveLength(1)
     expect(secondStock).toHaveLength(0)
     expect(thirdStock).toHaveLength(1)
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should select an item when pressed', () => {

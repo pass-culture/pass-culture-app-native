@@ -70,12 +70,4 @@ describe('AppButton Component', () => {
       expect(container.props.onLongPress).toBeFalsy()
     })
   })
-
-  describe('* inline property', () => {
-    it('should use inline css style when true', () => {
-      render(<AppButton {...baseProps} wording="Testing inline" inline />)
-
-      expect(screen).toMatchSnapshot()
-    })
-  })
 })

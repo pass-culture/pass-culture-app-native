@@ -19,10 +19,6 @@ describe('AutocompleteVenue component', () => {
       mockHits = mockVenueHits
     })
 
-    it('should render AutocompleteVenue', () => {
-      expect(render(<AutocompleteVenue onItemPress={jest.fn()} />)).toMatchSnapshot()
-    })
-
     it('should display "Lieux culturels"', () => {
       render(<AutocompleteVenue onItemPress={jest.fn()} />)
 

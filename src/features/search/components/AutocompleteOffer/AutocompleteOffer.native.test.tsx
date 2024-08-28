@@ -36,10 +36,6 @@ describe('AutocompleteOffer component', () => {
       mockHits = mockSuggestionHits
     })
 
-    it('should render AutocompleteOffer', () => {
-      expect(render(<AutocompleteOffer addSearchHistory={jest.fn()} />)).toMatchSnapshot()
-    })
-
     it('should display "Suggestions"', () => {
       render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
 

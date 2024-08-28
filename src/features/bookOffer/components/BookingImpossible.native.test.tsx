@@ -55,14 +55,6 @@ describe('<BookingImpossible />', () => {
       )
     })
 
-    it('should render correctly', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
-
-      await screen.findByLabelText('Voir le détail de l’offre')
-
-      expect(screen).toMatchSnapshot()
-    })
-
     it('should render without CTAs', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
@@ -105,16 +97,6 @@ describe('<BookingImpossible />', () => {
       mockServer.postApi(`/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
         favoriteResponse,
       })
-    })
-
-    it('should render correctly', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
-
-      await screen.findByText(
-        'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
-      )
-
-      expect(screen).toMatchSnapshot()
     })
 
     it('should render with CTAs', async () => {

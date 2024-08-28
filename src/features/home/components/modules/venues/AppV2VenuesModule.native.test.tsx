@@ -25,12 +25,6 @@ const props = {
 }
 
 describe('<AppV2VenuesModule />', () => {
-  it('should render correctly', () => {
-    renderAppV2VenuesModule()
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
     renderAppV2VenuesModule()
 

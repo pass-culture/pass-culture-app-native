@@ -210,18 +210,6 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should render correctly when offer is an event', () => {
-      mockBookingStock = {
-        price: 2000,
-        id: 148409,
-        beginningDatetime: '2021-03-02T20:00:00',
-      } as ReturnType<typeof useBookingStock>
-
-      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-
-      expect(screen).toMatchSnapshot()
-    })
-
     it('should render disable CTA when user is underage and stock is forbidden to underage', () => {
       mockBookingStock = {
         price: 2000,

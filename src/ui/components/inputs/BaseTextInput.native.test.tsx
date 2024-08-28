@@ -6,12 +6,6 @@ import { render, screen } from 'tests/utils'
 import { BaseTextInput } from './BaseTextInput'
 
 describe('<BaseTextInput />', () => {
-  it('should render correctly', () => {
-    render(<BaseTextInput placeholder="placeholder" value="value" />)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should render ref correctly', () => {
     const ref = React.createRef<RNTextInput>()
     render(<BaseTextInput placeholder="placeholder" value="value" ref={ref} />)

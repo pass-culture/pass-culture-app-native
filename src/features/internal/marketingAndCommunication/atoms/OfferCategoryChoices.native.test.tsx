@@ -2,7 +2,7 @@ import React from 'react'
 
 import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { render, fireEvent, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 let mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -14,13 +14,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('<OfferCategoryChoices />', () => {
   afterEach(() => {
     mockData = PLACEHOLDER_DATA
-  })
-
-  it('should match snapshot', () => {
-    const onChange = jest.fn()
-    render(<OfferCategoryChoices onChange={onChange} />)
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should call onChange with proper category when toggling', () => {

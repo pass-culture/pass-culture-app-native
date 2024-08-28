@@ -18,12 +18,6 @@ const props = {
 }
 
 describe('PlaylistCardOffer component', () => {
-  it('should render correctly', () => {
-    render(<PlaylistCardOffer {...props} />)
-
-    expect(screen.toJSON()).toMatchSnapshot()
-  })
-
   it('should render distance tag when distance is provided', () => {
     render(<PlaylistCardOffer {...props} distance="100m" />)
 

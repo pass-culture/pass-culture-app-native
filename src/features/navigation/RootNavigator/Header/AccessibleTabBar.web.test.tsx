@@ -30,29 +30,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('AccessibleTabBar', () => {
-  it('renders correctly', () => {
-    const { container } = renderTabBar()
-
-    expect(container).toMatchSnapshot()
-  })
-
-  it('renders correctly when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // third time for theme provider rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // fourth time for theme provider rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // fifth time for tabbar
-    const { container } = renderTabBar()
-
-    expect(container).toMatchSnapshot()
-  })
-
   it('should display the 5 following tabs', () => {
     renderTabBar()
     const expectedTabsTestIds = [

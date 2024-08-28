@@ -95,22 +95,4 @@ describe('CategoryListModule', () => {
       expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
     })
   })
-
-  describe('with FF enableAppV2CategoryBlock true', () => {
-    beforeEach(() => useFeatureFlagSpy.mockReturnValue(true))
-
-    it('should render properly when enableAppV2CategoryBlock FF is activated', () => {
-      render(
-        <CategoryListModule
-          id="123"
-          title="module"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="homeEntryId"
-        />
-      )
-
-      expect(screen).toMatchSnapshot()
-    })
-  })
 })

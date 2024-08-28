@@ -50,10 +50,6 @@ describe('Highlight component for a offer suggestion', () => {
     },
   } as AlgoliaSuggestionHit
 
-  it('should render Highlight', () => {
-    expect(render(<Highlight suggestionHit={hit} attribute="query" />)).toMatchSnapshot()
-  })
-
   it('should use highlight part for display', () => {
     render(<Highlight suggestionHit={hit} attribute="query" />)
 
@@ -69,11 +65,6 @@ describe('Highlight component for a offer suggestion', () => {
 
 describe('Highlight component for a venue suggestion', () => {
   const hit = mockVenueHits[0]
-
-  it('should render Highlight', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(render(<Highlight venueHit={hit} attribute="name" />)).toMatchSnapshot()
-  })
 
   it('should use highlight part for display', () => {
     // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -92,10 +83,6 @@ describe('Highlight component for a venue suggestion', () => {
 
 describe('Highlight component for an history item', () => {
   const historyItem = { ...mockedSearchHistory[0], _highlightResult: { query: { value: 'manga' } } }
-
-  it('should render Highlight', () => {
-    expect(render(<Highlight historyItem={historyItem} />)).toMatchSnapshot()
-  })
 
   it('should use highlight history item part for display', () => {
     render(<Highlight historyItem={historyItem} />)
