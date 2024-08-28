@@ -128,24 +128,21 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
             { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
           ],
         }}>
-        <FlatList
-          data={moviesOffers}
-          keyExtractor={(item) => item.offer.id.toString()}
-          renderItem={({ item, index }) => (
-            <MovieOfferTile
-              movieOffer={item}
-              venueOffers={venueOffers}
-              date={selectedDate}
-              isLast={getIsLast(index)}
-              setSelectedDate={setSelectedDate}
-              nextScreeningDate={item.nextDate}
-              nextDateIndex={item.nextDate ? getNextDateIndex(item.nextDate) : 0}
-              flatListRef={flatListRef}
-              flatListWidth={flatListWidth}
-              itemWidth={itemWidth}
-            />
-          )}
-        />
+        {moviesOffers.map((movie, index) => (
+          <MovieOfferTile
+            key={movie.offer.id}
+            movieOffer={movie}
+            venueOffers={venueOffers}
+            date={selectedDate}
+            isLast={getIsLast(index)}
+            setSelectedDate={setSelectedDate}
+            nextScreeningDate={movie.nextDate}
+            nextDateIndex={movie.nextDate ? getNextDateIndex(movie.nextDate) : 0}
+            flatListRef={flatListRef}
+            flatListWidth={flatListWidth}
+            itemWidth={itemWidth}
+          />
+        ))}
       </Animated.View>
     </React.Fragment>
   )
