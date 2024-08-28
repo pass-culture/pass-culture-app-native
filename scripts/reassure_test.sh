@@ -14,6 +14,7 @@ git fetch origin
 git switch "$BASELINE_BRANCH"
 yarn install --force
 yarn test:perf --baseline
+git restore .
 
 # Gather current perf measurements & compare results
 git switch --detach -
