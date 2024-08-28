@@ -125,6 +125,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
         }
       >
         À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour anonymiser tes données. Tu peux en savoir plus en
+         
         <View>
           <View
             accessibilityLabel="consultant cette page"

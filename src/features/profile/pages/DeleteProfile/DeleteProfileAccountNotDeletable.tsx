@@ -15,6 +15,7 @@ import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 
 export const DeleteProfileAccountNotDeletable: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -38,7 +39,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour
-            anonymiser tes données. Tu peux en savoir plus en{' '}
+            anonymiser tes données. Tu peux en savoir plus en{SPACE}
             <ExternalTouchableLink
               as={StyledButtonInsideText}
               wording="consultant cette page"
@@ -48,7 +49,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             .
           </TypoDS.BodyS>
           <TypoDS.BodyS>
-            Pour ne plus recevoir de communications du pass Culture, tu peux{' '}
+            Pour ne plus recevoir de communications du pass Culture, tu peux{SPACE}
             <StyledBoldText>désactiver tes notifications</StyledBoldText>.
           </TypoDS.BodyS>
         </ViewGap>
