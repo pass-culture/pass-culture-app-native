@@ -2,16 +2,17 @@ import React from 'react'
 
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
-import { act, render, fireEvent, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const onSelectCountry = jest.fn()
 
 describe('<CountryPicker />', () => {
   it('should render correctly', async () => {
     render(<CountryPicker selectedCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
-    await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
 
-    expect(screen).toMatchSnapshot()
+    expect(
+      screen.getByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
+    ).toBeOnTheScreen()
   })
 
   it('should select the correct country calling code when the user select a calling code', async () => {

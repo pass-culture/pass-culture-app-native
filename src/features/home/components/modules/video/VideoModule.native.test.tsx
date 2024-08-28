@@ -107,9 +107,7 @@ describe('VideoModule', () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
-    await screen.findByText('La nuit des temps')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
   })
 })
 

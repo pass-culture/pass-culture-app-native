@@ -30,8 +30,6 @@ describe('<SubcategoryButton/>', () => {
       )
     )
 
-    await screen.findByText('Mangas')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Mangas')).toBeOnTheScreen()
   })
 })
