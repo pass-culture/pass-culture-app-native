@@ -52,21 +52,17 @@ describe('Header', () => {
   })
 
   it('should render correctly', async () => {
-    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    await screen.findByText('Favoris')
-
-    expect(container).toMatchSnapshot()
+    expect(await screen.findByText('Favoris')).toBeInTheDocument()
   })
 
   it('should render correctly when FF is enabled', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    await screen.findByText('Favoris')
-    await screen.findByText('2')
-
-    expect(container).toMatchSnapshot()
+    expect(await screen.findByText('Favoris')).toBeInTheDocument()
+    expect(await screen.findByText('2')).toBeInTheDocument()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {

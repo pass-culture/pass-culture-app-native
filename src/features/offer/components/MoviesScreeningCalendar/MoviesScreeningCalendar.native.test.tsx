@@ -15,7 +15,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, render, act } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -85,24 +85,21 @@ describe('MoviesScreeningCalendar', () => {
   it('should render MoviesScreeningCalendar correctly on mobile', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: false, venueOffers: venueOffersMock })
 
-    await screen.findAllByText('Mer.')
-    await screen.findByText('8')
-    await screen.findAllByText('Mai')
-
     await act(async () => {})
 
-    expect(screen).toMatchSnapshot()
+    expect((await screen.findAllByText('Mer.'))[0]).toBeOnTheScreen()
+    expect(screen.getByText('8')).toBeOnTheScreen()
+    expect(screen.getAllByText('Mai')[0]).toBeOnTheScreen()
   })
 
   it('should render MoviesScreeningCalendar correctly on desktop', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
 
-    await screen.findAllByText('Mercredi')
-    await screen.findByText('8')
-    await screen.findAllByText('Mai')
     await act(async () => {})
 
-    expect(screen).toMatchSnapshot()
+    expect((await screen.findAllByText('Mercredi'))[0]).toBeOnTheScreen()
+    expect(screen.getByText('8')).toBeOnTheScreen()
+    expect(screen.getAllByText('Mai')[0]).toBeOnTheScreen()
   })
 })
 

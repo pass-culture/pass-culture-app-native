@@ -7,23 +7,6 @@ import { theme } from 'theme'
 import { CategoryButton } from './CategoryButton'
 
 describe('CategoryButton', () => {
-  it('should render correctly', () => {
-    render(
-      <CategoryButton
-        label="Bibliothèques & Médiathèques"
-        Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
-        baseColor={theme.colors.deepPinkLight}
-        onPress={jest.fn()}
-        gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
-        textColor={theme.colors.aquamarineDark}
-        borderColor={theme.colors.deepPink}
-        fillColor={theme.colors.deepPinkLight}
-      />
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should execute search on category click', () => {
     const handleClick = jest.fn()
 

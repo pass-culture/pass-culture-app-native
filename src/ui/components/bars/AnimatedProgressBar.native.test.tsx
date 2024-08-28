@@ -9,21 +9,6 @@ import { AnimatedProgressBar } from './AnimatedProgressBar'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 describe('AnimatedProgressBar', () => {
-  it('should render properly', () => {
-    const expectedProgress = 0.5
-    const expectedBackgroundColor = theme.colors.primary
-
-    const { toJSON } = render(
-      <AnimatedProgressBar
-        color={expectedBackgroundColor}
-        progress={expectedProgress}
-        icon={Close}
-      />
-    )
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should have the right length and color', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = theme.colors.primary

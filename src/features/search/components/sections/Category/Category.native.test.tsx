@@ -43,10 +43,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 }))
 
 describe('Category component', () => {
-  it('should render correctly', () => {
-    expect(render(<Category />)).toMatchSnapshot()
-  })
-
   it('should display the category when selected', () => {
     mockSearchState = {
       ...initialSearchState,

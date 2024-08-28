@@ -10,9 +10,15 @@ const props = {
 }
 
 describe('<ImageTile/>', () => {
-  it('should render correctly', () => {
+  it('should render image when uri defined', () => {
     render(<ImageTile {...props} onlyTopBorderRadius />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('tileImage')).toBeOnTheScreen()
+  })
+
+  it('should render image placeholder when uri not defined', () => {
+    render(<ImageTile {...props} onlyTopBorderRadius uri={undefined} />)
+
+    expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
   })
 })

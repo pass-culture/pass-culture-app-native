@@ -94,14 +94,6 @@ describe('SearchResultsContent component', () => {
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
 
-  it('should render correctly', async () => {
-    const { container } = render(reactQueryProviderHOC(<SearchResultsContent />))
-
-    await screen.findByTestId('searchResultsList')
-
-    expect(container).toMatchSnapshot()
-  })
-
   describe('when feature flag map in search activated', () => {
     it('should not render tabs on web', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)

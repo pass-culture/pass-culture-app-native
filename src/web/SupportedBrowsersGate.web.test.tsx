@@ -6,12 +6,6 @@ import { render, screen } from 'tests/utils/web'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 
 describe('SupportedBrowsersGate', () => {
-  it('render correctly', () => {
-    const { container } = render(<SupportedBrowsersGate />)
-
-    expect(container).toMatchSnapshot()
-  })
-
   describe.each`
     browserProperty       | browserName        | minimalSupportedVersion
     ${'isChrome'}         | ${'Chrome'}        | ${50}

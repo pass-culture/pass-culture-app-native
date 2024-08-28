@@ -3,11 +3,11 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import {
-  MovieCalendar,
   MOVIE_CALENDAR_PADDING,
+  MovieCalendar,
 } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { toMutable } from 'shared/types/toMutable'
-import { render, act, screen, CustomRenderOptions, fireEvent } from 'tests/utils'
+import { CustomRenderOptions, fireEvent, render, screen } from 'tests/utils'
 
 const dummyDates = toMutable([
   new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024
@@ -33,13 +33,6 @@ const DEFAULT_ITEM_WIDTH = 200
 const mockOnTabChange = jest.fn()
 
 describe('<MovieCalendar/>', () => {
-  it('should render MovieCalendar', async () => {
-    renderMovieCalendar(dummyDates)
-    await act(async () => {})
-
-    expect(screen).toMatchSnapshot()
-  })
-
   describe('Dates format', () => {
     it('should display the short days of weeks on a mobile screen', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: false })

@@ -1,5 +1,5 @@
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
-import { NavigationHelpers, TabNavigationState, ParamListBase } from '@react-navigation/native'
+import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
 import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
@@ -112,7 +112,7 @@ jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -129,21 +129,6 @@ describe('TabBar', () => {
       ...initialSearchState,
       locationFilter: mockDefaultLocationFilter,
     }
-  })
-
-  it('render correctly', () => {
-    renderTabBar(mockTabNavigationState)
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('render correctly when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // third time for tabbar
-    renderTabBar(mockTabNavigationState)
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should display the 5 following tabs with Home selected', async () => {

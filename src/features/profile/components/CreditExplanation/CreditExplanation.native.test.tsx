@@ -9,13 +9,13 @@ describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
     render(<CreditExplanation isDepositExpired age={18} />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByText('Mon crédit est expiré, que faire ?')).toBeOnTheScreen()
   })
 
   it('should render correctly for valid credit', () => {
     render(<CreditExplanation isDepositExpired={false} age={18} />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByText('Comment ça marche ?')).toBeOnTheScreen()
   })
 
   describe('With modal', () => {

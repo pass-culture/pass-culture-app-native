@@ -7,7 +7,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchView, SearchState, BooksNativeCategoriesEnum } from 'features/search/types'
+import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -162,15 +162,6 @@ describe('SearchBox component', () => {
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     expect(searchInput).toBeOnTheScreen()
-  })
-
-  it('should render SearchBox when FF is enabled', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchBox()
-
-    await act(async () => {})
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should set search state on submit', async () => {

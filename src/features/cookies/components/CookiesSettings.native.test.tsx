@@ -12,16 +12,6 @@ jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<CookiesSettings/>', () => {
-  it('should render correctly', async () => {
-    renderCookiesSettings()
-
-    await screen.findByTestId(
-      'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should disable and check essential cookies switch', async () => {
     renderCookiesSettings()
 

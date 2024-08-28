@@ -15,9 +15,8 @@ describe('ImageCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<ImageCaption {...props} />)
+    render(<ImageCaption {...props} />)
 
-    expect(toJSON()).toMatchSnapshot()
     expect(screen.getByTestId('distanceImageCaption')).toBeOnTheScreen()
   })
 

@@ -63,14 +63,16 @@ describe('VideoMonoOfferTile', () => {
     })
   })
 
-  it('should render properly with FF on', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  describe('With FF on', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
 
-    renderOfferVideoModule()
+    it('should render properly', async () => {
+      renderOfferVideoModule()
 
-    await screen.findByText('La nuit des temps')
-
-    expect(screen).toMatchSnapshot()
+      expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
+    })
   })
 })
 

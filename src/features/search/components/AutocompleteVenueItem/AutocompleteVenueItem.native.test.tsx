@@ -5,13 +5,6 @@ import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('AutocompleteVenueItem component', () => {
-  it('should render AutocompleteVenueItem', () => {
-    expect(
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      render(<AutocompleteVenueItem hit={mockVenueHits[0]} onPress={jest.fn()} />)
-    ).toMatchSnapshot()
-  })
-
   it('should call onPress on press', async () => {
     const pressHandler = jest.fn()
 

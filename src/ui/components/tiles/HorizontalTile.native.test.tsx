@@ -17,6 +17,6 @@ describe('HorizontalTile Component', () => {
   it('should render correctly', () => {
     render(<HorizontalTile {...props} />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByText('Harry Potter et l’ordre du phénix')).toBeOnTheScreen()
   })
 })

@@ -21,7 +21,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
@@ -171,9 +171,8 @@ describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
     jest.advanceTimersByTime(2000)
     renderSearchResultsContent()
-    await screen.findByText('Lieu culturel')
 
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Lieu culturel')).toBeOnTheScreen()
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {

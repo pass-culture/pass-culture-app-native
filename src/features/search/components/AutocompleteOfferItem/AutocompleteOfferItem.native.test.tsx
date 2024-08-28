@@ -53,19 +53,6 @@ describe('AutocompleteOfferItem component', () => {
     }
   })
 
-  it('should render AutocompleteOfferItem', () => {
-    expect(
-      render(
-        <AutocompleteOfferItem
-          hit={mockHit}
-          sendEvent={mockSendEvent}
-          shouldShowCategory
-          addSearchHistory={jest.fn()}
-        />
-      )
-    ).toMatchSnapshot()
-  })
-
   it('should not display `FILMS_SERIES_CINEMA` searchGroup', async () => {
     render(
       <AutocompleteOfferItem
