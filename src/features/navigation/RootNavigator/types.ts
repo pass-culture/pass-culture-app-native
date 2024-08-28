@@ -116,7 +116,7 @@ export enum StepperOrigin {
   VERIFY_ELIGIBILITY = 'verifyEligibility',
   LOGIN = 'login',
   BOOKING = 'booking',
-  DELETE_PROFILE_SUCCESS = 'deleteProfileSuccess',
+  DEACTIVATE_PROFILE_SUCCESS = 'DeactivateProfileSuccess',
   FORGOTTEN_PASSWORD = 'forgottenPassword',
   ONBOARDING = 'onboarding',
   RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',
@@ -221,6 +221,7 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeleteProfileConfirmation: undefined
   DeleteProfileSuccess: undefined
+  DeactivateProfileSuccess: undefined
   Bookings: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined

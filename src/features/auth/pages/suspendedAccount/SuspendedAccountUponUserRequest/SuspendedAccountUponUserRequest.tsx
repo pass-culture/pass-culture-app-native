@@ -15,8 +15,8 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { ProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
 const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000

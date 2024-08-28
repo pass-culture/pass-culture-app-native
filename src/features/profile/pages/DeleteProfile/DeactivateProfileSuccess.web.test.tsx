@@ -3,15 +3,15 @@ import React from 'react'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { DeleteProfileSuccess } from './DeleteProfileSuccess'
+import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('<DeleteProfileSuccess/>', () => {
+describe('<DeactivateProfileSuccess/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<DeleteProfileSuccess />))
+      const { container } = render(reactQueryProviderHOC(<DeactivateProfileSuccess />))
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
