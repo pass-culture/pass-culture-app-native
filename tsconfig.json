@@ -25,7 +25,7 @@
     "sourceMap": true,
     "removeComments": true,
     "downlevelIteration": true,
-    "types": ["@types/react-native"]
+    "types": ["@types/react-native", "@types/styled-components-react-native"]
   },
   "exclude": [
     "build/**",
