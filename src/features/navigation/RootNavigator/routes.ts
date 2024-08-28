@@ -63,6 +63,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
+import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
 import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
@@ -284,6 +285,13 @@ export const routes: RootRoute[] = [
     component: DeleteProfileAccountHacked,
     path: 'profil/suppression/compte-pirate',
     options: { title: 'Sécurise ton compte' },
+    secure: true,
+  },
+  {
+    name: 'DeleteProfileAccountNotDeletable',
+    component: DeleteProfileAccountNotDeletable,
+    path: 'profil/suppression/information',
+    options: { title: 'Compte non supprimable' },
     secure: true,
   },
   {
