@@ -6,6 +6,7 @@ import { EduConnectValidation } from './EduConnectValidation'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 jest.mock('features/auth/context/AuthContext')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<EduConnectValidation />', () => {
   it('should render EduConnectValidation component correctly', () => {

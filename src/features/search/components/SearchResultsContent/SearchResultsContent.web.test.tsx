@@ -87,6 +87,7 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('SearchResultsContent component', () => {
   beforeAll(() => {

@@ -37,6 +37,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

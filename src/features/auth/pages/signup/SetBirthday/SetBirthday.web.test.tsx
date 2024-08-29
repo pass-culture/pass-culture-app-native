@@ -21,6 +21,7 @@ const props = {
 }
 
 jest.mock('features/auth/context/SettingsContext')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SetBirthday />', () => {
   beforeEach(() => {

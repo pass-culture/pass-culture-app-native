@@ -59,6 +59,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
