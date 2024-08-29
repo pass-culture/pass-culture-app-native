@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -23,12 +24,14 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const navigateToNotifications = () => navigate('NotificationsSettings')
+  const { illustrations } = useTheme()
 
   return (
     <GenericInfoPageWhite
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorError}
+      iconSize={illustrations.sizes.medium}
       titleComponent={Typo.Title2}
       title="Nous ne pouvons pas encore supprimer ton compte">
       <Content>

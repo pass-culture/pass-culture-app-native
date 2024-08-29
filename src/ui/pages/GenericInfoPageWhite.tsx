@@ -26,6 +26,7 @@ type PropsWithAnimation = {
 
 type PropsWithIcon = {
   icon: React.FC<AccessibleIcon>
+  iconSize?: number
 }
 
 type Props = {
@@ -52,7 +53,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const grid = useGrid()
 
   const { animation } = props as PropsWithAnimation
-  const { icon: Icon } = props as PropsWithIcon
+  const { icon: Icon, iconSize } = props as PropsWithIcon
   const titleComponent = props.titleComponent ?? Typo.Title1
   const subtitleComponent = props.subtitleComponent ?? Typo.Title4
   const { isDesktopViewport } = useTheme()
@@ -66,7 +67,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const StyledIcon =
     Icon &&
     styled(Icon).attrs(({ theme }) => ({
-      size: theme.illustrations.sizes.fullPage,
+      size: iconSize || theme.illustrations.sizes.fullPage,
     }))({ width: '100%' })
 
   const StyledSubtitle = useMemo(() => {
