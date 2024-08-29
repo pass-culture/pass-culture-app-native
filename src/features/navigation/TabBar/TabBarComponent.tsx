@@ -15,6 +15,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 interface Props {
   v2: boolean
   isSelected?: boolean
+  badgeValue?: number
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void
@@ -30,6 +31,7 @@ export const TabBarComponent: React.FC<Props> = ({
   enableNavigate = true,
   onPress,
   tabName,
+  badgeValue,
 }) => {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const BicolorIcon = mapTabRouteToBicolorIcon({ route: tabName, v2, enableReactionFeature })
@@ -44,7 +46,12 @@ export const TabBarComponent: React.FC<Props> = ({
       accessibilityLabel={menu[tabName].accessibilityLabel}
       testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
       accessibilityCurrent={isSelected ? 'page' : undefined}>
-      <InnerComponent tabName={tabName} isSelected={isSelected} BicolorIcon={BicolorIcon} />
+      <InnerComponent
+        tabName={tabName}
+        isSelected={isSelected}
+        BicolorIcon={BicolorIcon}
+        badgeValue={badgeValue}
+      />
     </TabComponentContainer>
   )
 }

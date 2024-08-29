@@ -5,6 +5,7 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -23,10 +24,10 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { setDisabilities, disabilities } = useAccessibilityFiltersContext()
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const routeBadgeMap = useTabBarItemBadges()
   const { locationFilter } = searchState
 
   useTabBar({ state })
-
   return (
     <TabBarContainer v2={!!enableTabBarV2}>
       {tabRoutes.map((route) => {
@@ -91,6 +92,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}
+            badgeValue={routeBadgeMap[route.name]}
             onPress={onPress}
           />
         )

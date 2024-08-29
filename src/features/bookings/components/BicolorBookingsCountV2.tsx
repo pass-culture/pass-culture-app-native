@@ -13,19 +13,15 @@ export const BicolorBookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
   color,
   color2,
   testID,
+  badgeValue,
 }) => {
-  //TODO(PC-29452): Update when got back info
-  let bookingsCount: number
-  // eslint-disable-next-line prefer-const
-  bookingsCount = 1
+  const scale = useScaleAnimation(badgeValue)
 
-  const scale = useScaleAnimation(bookingsCount)
-
-  if (bookingsCount === 0) {
+  if (!badgeValue || badgeValue === 0) {
     return <BicolorBookingsV2 size={size} color={color} color2={color2} testID={testID} />
   }
 
-  const { fullCountLabel, accessibilityLabel } = createLabels(bookingsCount, 'réservations')
+  const { fullCountLabel, accessibilityLabel } = createLabels(badgeValue, 'réservations')
 
   return (
     <Container>

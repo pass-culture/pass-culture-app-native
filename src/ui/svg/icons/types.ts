@@ -20,6 +20,7 @@ export interface AccessibleIcon extends AccessibleIconSharedProperties {
 export interface AccessibleBicolorIcon extends AccessibleIcon {
   color2?: ColorsEnum | UniqueColors
   thin?: boolean
+  badgeValue?: number
 }
 
 export interface AccessibleRectangleIcon extends AccessibleIconSharedProperties {

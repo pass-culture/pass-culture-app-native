@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { FavoritesCountResponse } from 'api/gen'
+import { FavoritesCountResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
@@ -49,6 +50,7 @@ describe('<RootNavigator />', () => {
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
     mockServer.getApi<FavoritesCountResponse>('/v1/me/favorites/count', { count: 2 })
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {

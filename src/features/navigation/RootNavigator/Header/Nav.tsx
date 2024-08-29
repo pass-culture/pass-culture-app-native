@@ -6,6 +6,7 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/h
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabParamList } from 'features/navigation/TabBar/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -22,9 +23,10 @@ type Props = {
   maxWidth?: number
   height?: number
   noShadow?: boolean
+  routeBadgeMap?: Partial<Record<keyof TabParamList, number>>
 }
 
-export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
+export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap }) => {
   const enableNavBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { tabRoutes } = useTabNavigationContext()
@@ -64,6 +66,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }
+                badgeValue={routeBadgeMap?.[route.name]}
                 navigateTo={{
                   screen: tabNavConfig[0],
                   params: tabNavConfig[1],
