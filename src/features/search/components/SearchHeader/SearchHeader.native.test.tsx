@@ -53,6 +53,7 @@ jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {

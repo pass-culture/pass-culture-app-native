@@ -84,6 +84,8 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('features/navigation/TabBar/routes')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SearchLanding />', () => {
   describe('Accessibility', () => {

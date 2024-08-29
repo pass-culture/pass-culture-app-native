@@ -7,6 +7,7 @@ import { VenueListItem } from '../VenueSelectionList/VenueSelectionList'
 import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [

@@ -16,6 +16,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.mock('features/navigation/RootNavigator/routes')
 
 describe('EndedBookings', () => {
   describe('Accessibility', () => {

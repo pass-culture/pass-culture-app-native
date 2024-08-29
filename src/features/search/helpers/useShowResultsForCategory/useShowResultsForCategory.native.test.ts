@@ -23,6 +23,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('useShowResultsForCategory', () => {

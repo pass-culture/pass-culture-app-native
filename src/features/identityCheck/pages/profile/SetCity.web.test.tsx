@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { waitFor, screen, checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),
@@ -10,6 +10,7 @@ jest.mock('uuid', () => ({
 }))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
