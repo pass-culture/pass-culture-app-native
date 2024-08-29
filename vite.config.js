@@ -140,10 +140,6 @@ export default ({ mode }) => {
         },
       ],
     },
-    esbuild: {
-      jsxFactory: 'React.createElement',
-      jsxFragment: 'React.Fragment',
-    },
     server: proxyConfig,
     preview: proxyConfig,
     optimizeDeps: {

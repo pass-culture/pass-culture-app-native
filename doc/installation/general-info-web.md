@@ -90,7 +90,7 @@ There are certain number of optimizations/improvements and things that were done
 - Profiling tools (maybe vite offers something)
 - BundleAnalyzerPlugin
 - DuplicatesPlugin
-- It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react``
+- It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react`
 - Try to solve warnings on `vite serve` and `vite build`
 - Using vite's chunking technology to increase initial loading time of the web app
 
