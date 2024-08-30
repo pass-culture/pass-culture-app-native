@@ -1,7 +1,11 @@
+import { useRoute } from '@react-navigation/native'
 import { isSameDay, startOfDay } from 'date-fns'
 import React, { FunctionComponent, useMemo, useRef, useState, useCallback, useEffect } from 'react'
 import { FlatList, Animated, Easing } from 'react-native'
+import styled from 'styled-components/native'
 
+import { SubcategoryIdEnum } from 'api/gen'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { filterOffersStocksByDate } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
@@ -10,14 +14,27 @@ import {
   MovieOffer,
 } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
+import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { formatDates } from 'libs/parsers/formatDates'
+import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { getDates } from 'shared/date/getDates'
+import { Offer } from 'shared/offer/types'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useLayout } from 'ui/hooks/useLayout'
-import { Spacer } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   venueOffers: VenueOffers
 }
+
+const keyExtractor = (item: Offer) => item.objectID
 
 const useMoviesScreeningsList = (offerIds: number[]) => {
   const dates = getDates(new Date(), 15)
@@ -44,7 +61,9 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
     )
 
     return [...filteredOffersWithStocks, ...nextScreeningOffers]
-  }, [offersWithStocks?.offers, selectedInternalDate])
+  }, [offersWithStocks?.offers, selectedInternalDate]).filter(
+    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+  )
 
   return {
     dates,
@@ -57,6 +76,8 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
+  const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
+  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
   const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
   const flatListRef = useRef<FlatList | null>(null)
@@ -69,6 +90,9 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     setSelectedDate,
     moviesOffers,
   } = useMoviesScreeningsList(offerIds)
+  const nonScreeningOffers = venueOffers.hits.filter(
+    (offer) => offer.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
+  )
 
   useEffect(() => {
     translateAnim.setValue(0)
@@ -104,6 +128,33 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     },
     [nextFifteenDates]
   )
+
+  const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
+
+  const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
+    const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+    return (
+      <OfferTile
+        analyticsFrom="venue"
+        offerLocation={item._geoloc}
+        categoryLabel={labelMapping[item.offer.subcategoryId]}
+        categoryId={mapping[item.offer.subcategoryId]}
+        subcategoryId={item.offer.subcategoryId}
+        offerId={+item.objectID}
+        name={item.offer.name}
+        date={formatDates(timestampsInMillis)}
+        isDuo={item.offer.isDuo}
+        thumbUrl={item.offer.thumbUrl}
+        price={getDisplayPrice(item.offer.prices)}
+        venueId={item.venue?.id}
+        width={width}
+        height={height}
+        searchId={routeParams?.searchId}
+        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
+      />
+    )
+  }
 
   return (
     <React.Fragment>
@@ -144,6 +195,20 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           />
         ))}
       </Animated.View>
+      <SectionWithDivider visible margin={false} gap={6}>
+        <PassPlaylist
+          testID="offersModuleList"
+          title="Les autres offres"
+          TitleComponent={PlaylistTitleText}
+          data={nonScreeningOffers}
+          itemHeight={LENGTH_M}
+          itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      </SectionWithDivider>
     </React.Fragment>
   )
 }
+
+const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
