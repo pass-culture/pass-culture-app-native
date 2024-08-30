@@ -67,7 +67,8 @@ describe('useGTLPlaylists', () => {
             },
           ]),
           expect.any(Object),
-          false
+          false,
+          undefined
         )
       })
     })
@@ -166,7 +167,8 @@ describe('useGTLPlaylists', () => {
             },
           ]),
           expect.any(Object),
-          false
+          false,
+          undefined
         )
       })
     })
