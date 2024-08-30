@@ -52,8 +52,8 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             .
           </TypoDS.BodyS>
           <TypoDS.BodyS>
-            Pour ne plus recevoir de communications du pass Culture, tu peux{SPACE}
-            <StyledBoldText>désactiver tes notifications</StyledBoldText>.
+            Pour ne plus recevoir de communications du pass Culture, tu peux désactiver tes
+            notifications
           </TypoDS.BodyS>
         </ViewGap>
 
@@ -80,10 +80,6 @@ const ContentBottom = styled(ViewGap).attrs({
   gap: 6,
 })({
   alignItems: 'center',
-})
-
-const StyledBoldText = styled(TypoDS.BodyS)({
-  fontWeight: 'bold',
 })
 
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
