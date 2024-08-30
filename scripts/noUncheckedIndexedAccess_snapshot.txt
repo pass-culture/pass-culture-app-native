@@ -10,7 +10,7 @@
 ./src/features/auth/pages/signup/SignupForm.tsx:83
 ./src/features/auth/pages/signup/SignupForm.tsx:85
 ./src/features/auth/pages/signup/SignupForm.tsx:88
-./src/features/bookOffer/components/BookHourChoice.tsx:119
+./src/features/bookOffer/components/BookHourChoice.tsx:122
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:35
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:41
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:59
