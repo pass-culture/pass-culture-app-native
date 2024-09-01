@@ -42,8 +42,8 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
     }
   >
     <View
-      height={156}
-      width={200}
+      height={109.2}
+      width={140}
     >
       <Text>
         undefined-SVG-Mock
@@ -237,24 +237,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
           ]
         }
       >
-        Pour ne plus recevoir de communications du pass Culture, tu peux
-         
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "lineHeight": 22.4,
-              },
-            ]
-          }
-        >
-          désactiver tes notifications
-        </Text>
-        .
+        Pour ne plus recevoir de communications du pass Culture, tu peux désactiver tes notifications
       </Text>
     </View>
     <View
