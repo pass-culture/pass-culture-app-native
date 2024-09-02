@@ -76,6 +76,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasAccessToArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
@@ -147,7 +148,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
           {prices ? <OfferPrice prices={prices} /> : null}
 
-          <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
+          {isReactionFeatureActive ? (
+            <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
+          ) : null}
 
           {shouldDisplayReactionButton ? (
             <ToggleButton

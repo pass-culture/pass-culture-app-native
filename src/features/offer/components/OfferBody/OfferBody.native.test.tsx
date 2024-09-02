@@ -19,6 +19,7 @@ import {
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -47,7 +48,12 @@ jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
   navigate: mockNavigate,
 }))
 
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
+
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({
     reactionFakeDoorCategories: {
@@ -73,6 +79,13 @@ jest.mock('features/auth/context/AuthContext')
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST,
+      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
+      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+      RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR,
+      RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK,
+    ])
   })
 
   describe('Tags section', () => {
@@ -185,6 +198,21 @@ describe('<OfferBody />', () => {
       })
     })
 
+    it('should display reaction count when FF is enabled and other users have reacted to the offer', async () => {
+      renderOfferBody({})
+
+      expect(await screen.findByText('Aimé par 1 jeune')).toBeOnTheScreen()
+    })
+
+    it('should not display reaction count when FF is disabled', async () => {
+      activateFeatureFlags()
+      renderOfferBody({})
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Aimé par 1 jeune')).not.toBeOnTheScreen()
+    })
+
     it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
       renderOfferBody({
         offer: {
@@ -202,11 +230,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display reaction button when feature flag is disabled', async () => {
-      mockUseFeatureFlag
-        .mockReturnValueOnce(false) // Artist Fake Door
-        .mockReturnValueOnce(false) // Artist Page
-        .mockReturnValueOnce(false) // New XP cine from offer
-        .mockReturnValueOnce(false) // Reaction Fake Door
+      activateFeatureFlags()
 
       renderOfferBody({})
       await screen.findByText(offerResponseSnap.name)
@@ -278,7 +302,7 @@ describe('<OfferBody />', () => {
       expect(await screen.findByTestId('topSeparator')).toBeOnTheScreen()
     })
 
-    it('should not display top separator when venue button is displayed', async () => {
+    it('should not display top separator when there are no summaryInfo items to display', async () => {
       renderOfferBody({})
 
       await screen.findByTestId('VenuePreviewImage')
@@ -494,8 +518,6 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { author: 'Stephen King' },
     }
-    mockUseFeatureFlag.mockReturnValueOnce(true)
-    mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
       offer,
@@ -513,8 +535,6 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { author: 'Stephen King' },
     }
-    mockUseFeatureFlag.mockReturnValueOnce(true)
-    mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
       offer,
@@ -537,8 +557,6 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { author: artists },
     }
-    mockUseFeatureFlag.mockReturnValueOnce(true)
-    mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
       offer,
@@ -560,8 +578,7 @@ describe('<OfferBody />', () => {
       extraData: { author: 'Stephen King', ean: '123456' },
     }
 
-    mockUseFeatureFlag.mockReturnValueOnce(true)
-    mockUseFeatureFlag.mockReturnValueOnce(false)
+    activateFeatureFlags()
 
     renderOfferBody({
       offer,
@@ -580,8 +597,6 @@ describe('<OfferBody />', () => {
       extraData: { stageDirector: 'Stephen King' },
     }
 
-    mockUseFeatureFlag.mockReturnValueOnce(true)
-
     renderOfferBody({
       offer,
       subcategory: mockSubcategory,
@@ -598,8 +613,6 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
       extraData: { performer: 'Newjeans' },
     }
-
-    mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
       offer,
