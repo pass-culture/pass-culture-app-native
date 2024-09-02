@@ -7,11 +7,6 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 jest.unmock('react-query')
 
-/* Alerts cannot be opened in node.js environment */
-jest.mock('react-native/Libraries/Alert/Alert', () => ({
-  alert: jest.fn(),
-}))
-
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),

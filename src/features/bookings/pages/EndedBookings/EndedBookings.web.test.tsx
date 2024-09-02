@@ -18,6 +18,10 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('features/navigation/RootNavigator/routes')
 
+jest.mock('react-native/Libraries/Alert/Alert', () => ({
+  alert: jest.fn(),
+}))
+
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
