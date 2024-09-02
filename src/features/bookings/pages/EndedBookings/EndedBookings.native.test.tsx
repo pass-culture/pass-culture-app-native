@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
@@ -6,6 +6,7 @@ import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -25,6 +26,16 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 const mockMutate = jest.fn()
 jest.mock('features/reactions/api/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
+}))
+
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
+  remoteConfig: {
+    configure: () => Promise.resolve(true),
+    refresh: () => Promise.resolve(true),
+    getValues: () => ({
+      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
+    }),
+  },
 }))
 
 describe('EndedBookings', () => {
@@ -49,6 +60,7 @@ describe('EndedBookings', () => {
 
   it('should goBack when we press on the back button', () => {
     renderEndedBookings(bookingsSnap)
+
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
@@ -60,9 +72,9 @@ describe('EndedBookings', () => {
     })
 
     it('should send reaction from cinema offer', async () => {
-      renderEndedBookings(bookingsSnap)
+      renderEndedBookings(bookingsSnap, RemoteConfigProvider)
 
-      fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
+      fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
 
       fireEvent.press(await screen.findByText('J’aime'))
       fireEvent.press(screen.getByText('Valider la réaction'))
@@ -74,10 +86,15 @@ describe('EndedBookings', () => {
   })
 })
 
-const renderEndedBookings = (bookings: BookingsResponse) => {
+const renderEndedBookings = (
+  bookings: BookingsResponse,
+  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
+) => {
   jest
     .spyOn(bookingsAPI, 'useBookings')
     .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
 
-  return render(reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} />))
+  return render(
+    <Wrapper>{reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} />)}</Wrapper>
+  )
 }

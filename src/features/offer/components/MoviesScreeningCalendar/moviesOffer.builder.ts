@@ -2,7 +2,6 @@ import { addDays, differenceInMilliseconds, isAfter, isBefore, isSameDay } from 
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
-import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
   let movieOffers: MovieOffer[] = offersWithStocks.map((offer) => ({
@@ -35,7 +34,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
             ...offer,
             stocks: offer.stocks.filter((stock) => {
               if (!stock.beginningDatetime) {
-                return useIsFalseWithDelay
+                return false
               }
               const now = new Date()
               const isSameDate = isSameDay(new Date(stock.beginningDatetime), selectedDate)

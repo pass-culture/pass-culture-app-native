@@ -43,6 +43,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('<SearchFilter/>', () => {
   describe('Accessibility', () => {

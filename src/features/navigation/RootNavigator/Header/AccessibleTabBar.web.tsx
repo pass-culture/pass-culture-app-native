@@ -7,6 +7,7 @@ import {
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
@@ -24,6 +25,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { searchState, hideSuggestions } = useSearch()
   const { disabilities } = useAccessibilityFiltersContext()
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const routeBadgeMap = useTabBarItemBadges()
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
@@ -53,6 +55,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
                   onPress={route.name === 'SearchStackNavigator' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}
+                  badgeValue={routeBadgeMap[route.name]}
                   v2={!!enableTabBarV2}
                 />
               </LinkContainer>

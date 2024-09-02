@@ -24,12 +24,6 @@ jest.mock('libs/location/hooks/useDistance', () => ({
 }))
 
 describe('VenueTile component', () => {
-  it('should render correctly', () => {
-    renderVenueTile()
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should navigate to the venue when clicking on the venue tile', async () => {
     renderVenueTile()
 

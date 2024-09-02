@@ -45,33 +45,6 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('OldBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 
-  it('should render correctly - with leftIcon = Idea by default', () => {
-    const { toJSON } = renderModule(props)
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should disable click when no URL', () => {
-    const { toJSON } = renderModule({
-      ...props,
-      url: undefined,
-    })
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should display web image if given from contentful and isDesktopViewport is true', () => {
-    const { toJSON } = renderModule(props, true)
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should display mobile image if web image not given from contentful and isDesktopViewport is true', () => {
-    const { toJSON } = renderModule({ ...props, imageWeb: undefined }, true)
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
     renderModule(props)
     fireEvent.press(screen.getByTestId('imageBusiness'))

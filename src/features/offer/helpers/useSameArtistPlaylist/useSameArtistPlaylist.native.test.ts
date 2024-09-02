@@ -25,7 +25,6 @@ describe('useSameArtistPlaylist', () => {
       () =>
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
-          ean: '9782723492607',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
           venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),
@@ -37,7 +36,6 @@ describe('useSameArtistPlaylist', () => {
     await waitFor(() => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: 'Eiichiro Oda',
-        ean: '9782723492607',
         searchGroupName: SearchGroupNameEnumv2.LIVRES,
         venueLocation: { latitude: 47.65904, longitude: -2.75922 },
       })
@@ -50,7 +48,6 @@ describe('useSameArtistPlaylist', () => {
       () =>
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
-          ean: '9782723492607',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
           venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),

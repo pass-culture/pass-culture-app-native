@@ -12,6 +12,7 @@ import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/c
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { NativeCategoryEnum } from 'features/search/types'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
+import { env } from 'libs/environment'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 import { Spacer } from 'ui/theme'
@@ -26,6 +27,7 @@ export const SearchN1: React.FC = () => {
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
   const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
+    searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
   })
 
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]

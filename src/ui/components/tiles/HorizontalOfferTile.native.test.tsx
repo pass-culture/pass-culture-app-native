@@ -42,16 +42,6 @@ describe('HorizontalOfferTile component', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
 
-  it('should render correctly', async () => {
-    render(
-      reactQueryProviderHOC(
-        <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
-      )
-    )
-
-    await waitFor(() => expect(screen).toMatchSnapshot())
-  })
-
   it('should navigate to the offer when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(

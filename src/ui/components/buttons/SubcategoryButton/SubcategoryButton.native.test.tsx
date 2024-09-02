@@ -16,6 +16,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('<SubcategoryButton/>', () => {
   it('should render SubcategoryButton', async () => {
@@ -30,8 +31,6 @@ describe('<SubcategoryButton/>', () => {
       )
     )
 
-    await screen.findByText('Mangas')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Mangas')).toBeOnTheScreen()
   })
 })

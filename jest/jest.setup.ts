@@ -27,50 +27,19 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-/* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
-jest.mock('features/navigation/RootNavigator/routes')
-jest.mock('features/navigation/TabBar/routes')
-
-/* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
-jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
-
 /* See the corresponding mocks in libs/analytics/__mocks__ */
-jest.mock('libs/analytics/logEventAnalytics')
 jest.mock('libs/analytics/provider')
-
-jest.mock('libs/appState')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 jest.mock('libs/environment/env')
 
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
-// Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"
-jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
-jest.mock('libs/react-native-batch', () => jest.requireActual('__mocks__/libs/react-native-batch'))
-
 jest.unmock('react-native-modal')
-
-jest.mock('@shopify/flash-list', () => {
-  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
-  class MockFlashList extends ActualFlashList {
-    componentDidMount() {
-      super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
-        nativeEvent: { layout: { height: 250, width: 800 } },
-      })
-    }
-  }
-  return {
-    ...jest.requireActual('@shopify/flash-list'),
-    FlashList: MockFlashList,
-  }
-})
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { getErrorMessage } from '../src/shared/getErrorMessage/getErrorMessage'
 
 type Feature = { name: string; isActive: boolean }
 type Features = Array<Feature>

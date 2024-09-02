@@ -14,14 +14,16 @@ import { Offer } from 'shared/offer/types'
 type FetchMultipleOffersArgs = {
   paramsList: PlaylistOffersParams[]
   isUserUnderage: boolean
+  indexName?: string
 }
 
 export const fetchMultipleOffers = async ({
   paramsList,
   isUserUnderage,
+  indexName = env.ALGOLIA_OFFERS_INDEX_NAME,
 }: FetchMultipleOffersArgs): Promise<VenueOffers> => {
   const queries = paramsList.map((params) => ({
-    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+    indexName,
     query: params.offerParams.query,
     params: {
       ...buildHitsPerPage(params.offerParams.hitsPerPage),

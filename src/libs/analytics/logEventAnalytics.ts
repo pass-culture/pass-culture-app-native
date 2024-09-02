@@ -111,6 +111,8 @@ export const logEventAnalytics = {
     venueId?: number
     apiRecoParams?: RecommendationApiParams
   }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
+  logApplyVenueMapFilter: (params: { venueType: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.APPLY_VENUE_MAP_FILTER }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
   logBookingConfirmation: (params: {

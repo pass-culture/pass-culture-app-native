@@ -53,14 +53,13 @@ jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
-    await screen.findByText('Rechercher')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Rechercher')).toBeOnTheScreen()
   })
 
   it('should show LocationWidget when isDesktopViewport is false and SearchView is Landing', async () => {

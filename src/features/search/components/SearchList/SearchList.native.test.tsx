@@ -20,12 +20,28 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('@shopify/flash-list', () => {
+  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
+  class MockFlashList extends ActualFlashList {
+    componentDidMount() {
+      super.componentDidMount()
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
+        nativeEvent: { layout: { height: 250, width: 800 } },
+      })
+    }
+  }
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: MockFlashList,
+  }
+})
+
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
 
   const props: SearchListProps = {
     nbHits: mockNbHits,
-    hits: { offers: mockHits, venues: [] },
+    hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits },
     renderItem,
     autoScrollEnabled: true,
     refreshing: false,

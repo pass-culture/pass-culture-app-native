@@ -38,19 +38,19 @@ describe('CreditHeader', () => {
     it('should render correctly with valid non exhausted credit', () => {
       renderCreditHeader({ age: 18 })
 
-      expect(screen).toMatchSnapshot()
+      expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
     })
 
     it('should render correctly with expired credit', () => {
       renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
 
-      expect(screen).toMatchSnapshot()
+      expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
     })
 
     it('should render correctly with exhausted credit', () => {
       renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
 
-      expect(screen).toMatchSnapshot()
+      expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
     })
 
     it('should display user name', () => {
@@ -158,7 +158,7 @@ describe('CreditHeader', () => {
     it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
       renderCreditHeader({ age })
 
-      expect(screen).toMatchSnapshot({})
+      expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
     })
 
     it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
@@ -170,20 +170,20 @@ describe('CreditHeader', () => {
       expect(physicalCredit).not.toBeOnTheScreen()
     })
 
-    it.each([15, 16, 17])(
-      'should render correctly with exhausted credit for %s year-old',
-      (age) => {
-        renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
-
-        expect(screen).toMatchSnapshot()
-      }
-    )
-
     it('should display coming credit for 17-year-old beneficiary', () => {
       renderCreditHeader({ age: 17 })
 
       expect(screen.getByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
     })
+
+    it.each([15, 16, 17])(
+      'should render correctly with exhausted credit for %s year-old',
+      (age) => {
+        renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+
+        expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
+      }
+    )
 
     it('should display coming credit for 16-year-old beneficiary', () => {
       renderCreditHeader({ age: 16 })

@@ -69,6 +69,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({ shouldApplyGraphicRedesign: false }),
 }))
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<HomeModule />', () => {
   beforeEach(() => {

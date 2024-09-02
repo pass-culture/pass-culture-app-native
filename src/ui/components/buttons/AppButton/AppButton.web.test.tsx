@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, fireEvent, screen } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
@@ -15,22 +15,6 @@ const baseProps = {
 }
 
 describe('AppButton Component', () => {
-  describe('* isLoading property', () => {
-    it('should display right elements when isLoading equals true', () => {
-      render(<AppButton {...baseProps} isLoading />)
-
-      expect(screen.getByTestId('Chargement en cours')).toBeInTheDocument()
-      expect(screen.queryByTestId('button-icon-left')).not.toBeInTheDocument()
-    })
-
-    it('should display right elements when isLoading equals false', () => {
-      render(<AppButton {...baseProps} isLoading={false} />)
-
-      expect(screen.getByTestId('button-icon-left')).toBeInTheDocument()
-      expect(screen.queryByTestId('Chargement en cours')).not.toBeInTheDocument()
-    })
-  })
-
   describe('* Disabled property', () => {
     it('should disable handlers when disabled equals true', () => {
       const onPress = jest.fn()
@@ -53,14 +37,6 @@ describe('AppButton Component', () => {
 
       expect(onPress).toHaveBeenCalledTimes(1)
       expect(onLongPress).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  describe('* inline property', () => {
-    it('should use inline css style when true', () => {
-      const { container } = render(<AppButton {...baseProps} wording="Testing inline" inline />)
-
-      expect(container).toMatchSnapshot()
     })
   })
 

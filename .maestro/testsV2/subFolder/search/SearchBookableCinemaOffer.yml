@@ -32,11 +32,8 @@ appId: ${MAESTRO_APP_ID}
           start: 47%, 73%
           end: 47%, 65%
 
-- swipe:
-    from:
-      id: 'android:id/numberpicker_input'
-    start: 29%, 73%
-    end: 29%, 60%
+- runFlow:
+    file: ../../subFolder/cloud/commands/SwipeOnDatePicker.yml
 - tapOn: 'Valider la date'
 
 - tapOn: 'Appliquer le filtre'

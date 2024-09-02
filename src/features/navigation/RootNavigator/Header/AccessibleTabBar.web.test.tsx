@@ -2,10 +2,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,25 +34,35 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('AccessibleTabBar', () => {
-  it('renders correctly', () => {
-    const { container } = renderTabBar()
+jest.mock('features/navigation/helpers/useTabBarItemBadges')
+const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 
-    expect(container).toMatchSnapshot()
+describe('AccessibleTabBar', () => {
+  beforeAll(() => {
+    mockUseTabBarItemBadges.mockReturnValue({
+      Bookings: 999,
+    })
   })
 
-  it('renders correctly when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // third time for theme provider rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // fourth time for theme provider rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // fifth time for tabbar
-    const { container } = renderTabBar()
+  beforeEach(() => {
+    activateFeatureFlags()
+  })
 
-    expect(container).toMatchSnapshot()
+  it('renders correclty when FF is enabled', async () => {
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
+      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+    ])
+    renderTabBar()
+
+    expect(await screen.findByText('99+')).toBeInTheDocument()
   })
 
   it('should display the 5 following tabs', () => {

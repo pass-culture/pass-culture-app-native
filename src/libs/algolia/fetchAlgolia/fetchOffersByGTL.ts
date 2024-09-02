@@ -12,11 +12,12 @@ import { Offer } from 'shared/offer/types'
 export async function fetchOffersByGTL(
   parameters: PlaylistOffersParams[],
   buildLocationParameterParams: BuildLocationParameterParams,
-  isUserUnderage: boolean
+  isUserUnderage: boolean,
+  searchIndex?: string
 ) {
   // Build a query list to send to Algolia
   const queries = parameters.map(({ offerParams }) => ({
-    indexName: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+    indexName: searchIndex || env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
     params: {
       ...buildHitsPerPage(offerParams.hitsPerPage),
       ...buildOfferSearchParameters(

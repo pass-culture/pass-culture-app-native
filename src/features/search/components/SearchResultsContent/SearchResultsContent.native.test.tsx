@@ -21,7 +21,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
@@ -152,6 +152,22 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('@shopify/flash-list', () => {
+  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
+  class MockFlashList extends ActualFlashList {
+    componentDidMount() {
+      super.componentDidMount()
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
+        nativeEvent: { layout: { height: 250, width: 800 } },
+      })
+    }
+  }
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: MockFlashList,
+  }
+})
+
 describe('SearchResultsContent component', () => {
   beforeAll(() => {
     mockHits = []
@@ -171,9 +187,8 @@ describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
     jest.advanceTimersByTime(2000)
     renderSearchResultsContent()
-    await screen.findByText('Lieu culturel')
 
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Lieu culturel')).toBeOnTheScreen()
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {

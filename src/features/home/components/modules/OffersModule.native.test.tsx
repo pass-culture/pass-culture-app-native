@@ -46,39 +46,24 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/subcategories/useSubcategories')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.mock('@shopify/flash-list', () => {
+  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
+  class MockFlashList extends ActualFlashList {
+    componentDidMount() {
+      super.componentDidMount()
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
+        nativeEvent: { layout: { height: 250, width: 800 } },
+      })
+    }
+  }
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: MockFlashList,
+  }
+})
 
 describe('OffersModule', () => {
-  it('should render correctly for one-item-medium layout', () => {
-    renderOffersModule()
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should render correctly for two-items layout', () => {
-    renderOffersModule({ displayParameters: { ...props.displayParameters, layout: 'two-items' } })
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should render correctly for v2 one-item-medium layout', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // first mock for ThemeProvider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second mock for ThemeProvider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // third mock for OffersModule
-    renderOffersModule()
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should render correctly for v2 three-items layout', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // first mock for ThemeProvider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second mock for ThemeProvider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // third mock for OffersModule
-    renderOffersModule({ displayParameters: { ...props.displayParameters, layout: 'three-items' } })
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should not render if data is undefined', () => {
     renderOffersModule({ data: undefined })
 

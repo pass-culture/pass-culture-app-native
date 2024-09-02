@@ -8,6 +8,7 @@ export enum AnalyticsEvent {
   ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS = 'ActivateGeolocfromSearchResults',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
+  APPLY_VENUE_MAP_FILTER = 'ApplyVenueMapFilter',
   BACK_TO_HOME_FROM_EDUCONNECT_ERROR = 'BackToHomeFromEduconnectError',
   BOOKING_CONFIRMATION = 'BookingConfirmation',
   BOOKING_DETAILS_SCROLLED_TO_BOTTOM = 'BookingDetailsScrolledToBottom',

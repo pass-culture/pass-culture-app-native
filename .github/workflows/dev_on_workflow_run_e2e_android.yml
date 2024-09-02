@@ -99,3 +99,5 @@ jobs:
             MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
             MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
             MAESTRO_NUMBER_PHONE=0607080910
+            MAESTRO_RUN_TRACKING_TESTS=false
+            MAESTRO_RUN_CLOUD_COMMANDS=true

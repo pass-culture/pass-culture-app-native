@@ -24,13 +24,13 @@ describe('VenuesModule component', () => {
   it('should render correctly', () => {
     renderVenuesModule()
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('offersModuleList')).toBeOnTheScreen()
   })
 
   it('should not render if data is undefined', () => {
     renderVenuesModule({ data: undefined })
 
-    expect(screen.toJSON()).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('offersModuleList')).toBeNull()
   })
 })
 

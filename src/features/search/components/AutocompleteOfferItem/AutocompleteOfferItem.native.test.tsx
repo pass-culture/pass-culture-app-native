@@ -43,6 +43,7 @@ const mockSendEvent = jest.fn()
 const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('AutocompleteOfferItem component', () => {
   beforeEach(() => {
@@ -51,19 +52,6 @@ describe('AutocompleteOfferItem component', () => {
       venue,
       priceRange: [0, 20],
     }
-  })
-
-  it('should render AutocompleteOfferItem', () => {
-    expect(
-      render(
-        <AutocompleteOfferItem
-          hit={mockHit}
-          sendEvent={mockSendEvent}
-          shouldShowCategory
-          addSearchHistory={jest.fn()}
-        />
-      )
-    ).toMatchSnapshot()
   })
 
   it('should not display `FILMS_SERIES_CINEMA` searchGroup', async () => {

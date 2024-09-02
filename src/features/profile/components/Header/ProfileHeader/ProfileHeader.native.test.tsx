@@ -82,7 +82,9 @@ describe('ProfileHeader', () => {
   it('should display the LoggedOutHeader if no user', () => {
     renderProfileHeader({ user: undefined })
 
-    expect(screen).toMatchSnapshot()
+    expect(
+      screen.getByText('Identifie-toi pour bénéficier de ton crédit pass Culture')
+    ).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
@@ -115,18 +117,14 @@ describe('ProfileHeader', () => {
 
     renderProfileHeader({ user: notBeneficiaryUser })
 
-    await screen.findByText('Débloque tes 1000\u00a0€')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderProfileHeader({ user: exUnderageBeneficiaryUser })
 
-    await screen.findByText('Mon profil')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Mon profil')).toBeOnTheScreen()
   })
 })
 

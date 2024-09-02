@@ -8,8 +8,7 @@ import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
 type BuildAlgoliaFilterType = {
-  artists: string | null | undefined
-  ean: string | null | undefined
+  artists?: string | null
 }
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
@@ -28,11 +27,10 @@ const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
 
 export const fetchOffersByArtist = async ({
   artists,
-  ean,
   searchGroupName,
   venueLocation,
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
-  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
+  const index = client.initIndex(env.ALGOLIA_TOP_OFFERS_INDEX_NAME)
 
   if (
     !artists ||
@@ -44,8 +42,8 @@ export const fetchOffersByArtist = async ({
   try {
     const response = await index.search<HitOfferWithArtistAndEan>('', {
       page: 0,
-      filters: buildAlgoliaFilter({ artists, ean }),
-      hitsPerPage: 30,
+      filters: buildAlgoliaFilter({ artists }),
+      hitsPerPage: 100,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
       aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
@@ -62,13 +60,10 @@ export const fetchOffersByArtist = async ({
   }
 }
 
-export function buildAlgoliaFilter({ artists, ean }: BuildAlgoliaFilterType) {
+export function buildAlgoliaFilter({ artists }: BuildAlgoliaFilterType) {
   const firstArtist = artists?.split(' ; ')[0]
 
   if (!firstArtist) return ''
 
-  let filterString = `offer.artist:"${firstArtist}"`
-  if (ean) filterString += ` AND NOT offer.ean:"${ean}"`
-
-  return filterString
+  return `offer.artist:"${firstArtist}"`
 }

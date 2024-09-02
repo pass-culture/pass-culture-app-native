@@ -78,7 +78,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             imageWidth={VENUE_THUMBNAIL_SIZE}
             imageHeight={VENUE_THUMBNAIL_SIZE}
             tags={venueTags}
-            navigateTo={{ screen: 'Venue', params: { id: venue.venueId } }}
+            navigateTo={{ screen: 'Venue', params: { id: venue.venueId, from: 'venueMap' } }}
             noBorder
             testID="venueMapPreview"
             withRightArrow

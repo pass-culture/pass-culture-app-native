@@ -24,6 +24,9 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('features/navigation/RootNavigator/routes')
+jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<WebShareModal/>', () => {
   describe('Accessibility', () => {

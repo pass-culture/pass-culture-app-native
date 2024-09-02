@@ -61,7 +61,9 @@ import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
+import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
+import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
@@ -299,9 +301,22 @@ export const routes: RootRoute[] = [
     secure: true,
   },
   {
+    name: 'DeleteProfileConfirmation',
+    component: DeleteProfileConfirmation,
+    path: 'profile/suppression/confirmation',
+    options: { title: 'Suppression profil confirmation' },
+    secure: true,
+  },
+  {
+    name: 'DeactivateProfileSuccess',
+    component: DeactivateProfileSuccess,
+    path: 'profile/desactivation/succes',
+    options: { title: 'Désactivation profil confirmée' },
+  },
+  {
     name: 'DeleteProfileSuccess',
     component: DeleteProfileSuccess,
-    path: 'profile/suppression/confirmation',
+    path: 'profile/suppression/succes',
     options: { title: 'Suppression profil confirmée' },
   },
   {

@@ -5,22 +5,20 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
-import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TabInnerComponentProps } from 'features/navigation/TabBar/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
-interface Props {
-  tabName: TabRouteName
-  isSelected?: boolean
-  BicolorIcon: React.FC<AccessibleBicolorIcon>
-}
-
-export const TabBarInnerComponentV2: React.FC<Props> = ({ tabName, isSelected, BicolorIcon }) => (
+export const TabBarInnerComponentV2: React.FC<TabInnerComponentProps> = ({
+  tabName,
+  isSelected,
+  BicolorIcon,
+  badgeValue,
+}) => (
   <React.Fragment>
     {isSelected ? <Gradient /> : null}
     <Spacer.Flex />
-    <StyledIcon as={BicolorIcon} selected={isSelected} />
+    <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
     <Spacer.Column numberOfSpaces={2.5} />
     <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
     <Spacer.Flex />

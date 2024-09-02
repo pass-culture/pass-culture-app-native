@@ -21,11 +21,13 @@ type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   facets: Pick<SearchResponse<Offer>, 'facets'>
+  duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
 }
 
 export type SearchOfferHits = {
   offers: Offer[]
   venues: AlgoliaVenue[]
+  duplicatedOffers: Offer[]
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
@@ -48,22 +50,28 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       disabilities,
     ],
     async ({ pageParam: page = 0 }) => {
-      const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
-        parameters: { page, ...searchState },
-        buildLocationParameterParams: {
-          userLocation,
-          selectedLocationMode,
-          aroundPlaceRadius,
-          aroundMeRadius,
-        },
-        isUserUnderage,
-        storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
-        disabilitiesProperties: disabilities,
-      })
+      const { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse } =
+        await fetchSearchResults({
+          parameters: { page, ...searchState },
+          buildLocationParameterParams: {
+            userLocation,
+            selectedLocationMode,
+            aroundPlaceRadius,
+            aroundMeRadius,
+          },
+          isUserUnderage,
+          storeQueryID: setCurrentQueryID,
+          excludedObjectIds: previousPageObjectIds.current,
+          disabilitiesProperties: disabilities,
+        })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
-      return { offers: offersResponse, venues: venuesResponse, facets: facetsResponse }
+      return {
+        offers: offersResponse,
+        venues: venuesResponse,
+        facets: facetsResponse,
+        duplicatedOffers: duplicatedOffersResponse,
+      }
     },
     // first page is 0
     {
@@ -85,6 +93,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         (hit) => typeof hit.offer.subcategoryId !== 'undefined'
       ) as Offer[],
       venues,
+      duplicatedOffers: flatten(
+        data?.pages.map((page) => page.duplicatedOffers.hits.map(transformHits))
+      ).filter((hit) => typeof hit.offer.subcategoryId !== 'undefined') as Offer[],
     }
   }, [data?.pages, setInitialVenues, transformHits, userLocation])
 
@@ -95,7 +106,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
   const offerVenues = useMemo(() => {
     const venueMap = new Map()
-    hits.offers.forEach((hit) => {
+    hits.duplicatedOffers.forEach((hit) => {
       if (hit.venue) {
         const { id, name, address, city, ...restVenue } = hit.venue
         const venue = {
@@ -109,7 +120,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       }
     })
     return Array.from(venueMap.values())
-  }, [hits.offers])
+  }, [hits.duplicatedOffers])
 
   return {
     data,

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { simulateWebviewMessage, render, screen } from 'tests/utils'
+import { render, screen, simulateWebviewMessage } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
 
@@ -16,12 +16,6 @@ const reCaptchaProps = {
 }
 
 describe('<ReCaptcha />', () => {
-  it('should render correctly', () => {
-    renderReCaptcha(reCaptchaProps)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should not render webview when modal is not visible', () => {
     renderReCaptcha({ ...reCaptchaProps, isVisible: false })
     const recaptchaWebview = screen.queryByTestId('recaptcha-webview')

@@ -1,7 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { fetch } from '@react-native-community/netinfo'
 
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import firestore from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
 
@@ -18,7 +16,6 @@ const validFirebaseData = {
 }
 
 const mockGet = jest.fn()
-const mockFetch = fetch as jest.Mock
 const mockCaptureMonitoringError = captureMonitoringError as jest.Mock
 
 const mockFirestoreDocumentGet = collection('cookiesLastUpdate').doc('testing').get as jest.Mock
@@ -55,24 +52,6 @@ describe('[method] getCookiesLastUpdate', () => {
     const cookiesLastUpdate = await getCookiesLastUpdate()
 
     expect(cookiesLastUpdate).toBeUndefined()
-  })
-
-  it('should inform firestore to fetch data from its cache when internet is not reachable', async () => {
-    mockFetch.mockResolvedValueOnce({
-      isConnected: true,
-      isInternetReachable: false,
-      type: 'cellular',
-    })
-
-    await getCookiesLastUpdate()
-
-    expect(firestoreRemoteStore.disableNetwork).toHaveBeenCalledWith()
-  })
-
-  it('should inform firestore to fetch data from server when internet is reachable', async () => {
-    await getCookiesLastUpdate()
-
-    expect(firestoreRemoteStore.enableNetwork).toHaveBeenCalledWith()
   })
 
   it('should log error when firestore cannot retrieve collection', async () => {

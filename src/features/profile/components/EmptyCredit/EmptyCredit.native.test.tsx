@@ -11,10 +11,16 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 }))
 
 describe('<EmptyCredit />', () => {
-  it.each([15, 16, 17, 18])('should render correctly for %s yo', (age) => {
+  it.each([15, 16, 17])('should render correctly for %s yo', (age) => {
     render(<EmptyCredit age={age} />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByText('Profite d’offres gratuites')).toBeOnTheScreen()
+  })
+
+  it('should not render when age is 18', () => {
+    render(<EmptyCredit age={18} />)
+
+    expect(screen.queryByText('Profite d’offres gratuites')).not.toBeOnTheScreen()
   })
 
   it('should navigate to thematic home with remote config homeId on button press', () => {

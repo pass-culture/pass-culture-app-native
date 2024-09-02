@@ -1,5 +1,4 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import { FlatList, ListRenderItemInfo } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -62,20 +61,16 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   return (
     <Container>
       <Spacer.Column numberOfSpaces={2} />
-      <FlatList
-        scrollEnabled={false}
-        data={sectionsToDisplay}
-        renderItem={renderItem}
-        ItemSeparatorComponent={Separator.Horizontal}
-      />
+      {sectionsToDisplay.map((section, index) => (
+        <React.Fragment key={`${section.title}-${index}`}>
+          <Section title={section.title}>{section.body}</Section>
+          <Separator.Horizontal />
+        </React.Fragment>
+      ))}
       <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
 }
-
-const renderItem = ({ item: section }: ListRenderItemInfo<Section>) => (
-  <Section title={section.title}>{section.body}</Section>
-)
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

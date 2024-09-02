@@ -6,6 +6,8 @@ import { RadioSelector } from './RadioSelector'
 
 const onPress = jest.fn()
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
 describe('<RadioSelector />', () => {
   it('should call press when pressing Spacebar', () => {
     render(<RadioSelector label="label" onPress={onPress} checked={false} />)

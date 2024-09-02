@@ -11,7 +11,6 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export const useSameArtistPlaylist = ({
   artists,
-  ean,
   searchGroupName,
   venueLocation,
 }: FetchOfferByArtist) => {
@@ -19,9 +18,9 @@ export const useSameArtistPlaylist = ({
   const transformHits = useTransformOfferHits()
 
   const { data } = useQuery(
-    [QueryKeys.SAME_ARTIST_PLAYLIST, ean],
+    [QueryKeys.SAME_ARTIST_PLAYLIST, artists],
     () => {
-      return fetchOffersByArtist({ artists, ean, searchGroupName, venueLocation })
+      return fetchOffersByArtist({ artists, searchGroupName, venueLocation })
     },
     { enabled: !!netInfo.isConnected, initialData: [] }
   )

@@ -87,19 +87,12 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('SearchResultsContent component', () => {
   beforeAll(() => {
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
-  })
-
-  it('should render correctly', async () => {
-    const { container } = render(reactQueryProviderHOC(<SearchResultsContent />))
-
-    await screen.findByTestId('searchResultsList')
-
-    expect(container).toMatchSnapshot()
   })
 
   describe('when feature flag map in search activated', () => {

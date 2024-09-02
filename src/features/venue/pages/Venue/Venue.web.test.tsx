@@ -13,7 +13,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen, fireEvent } from 'tests/utils/web'
+import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -76,6 +76,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({ shouldApplyGraphicRedesign: false }),
 }))
+jest.mock('features/navigation/RootNavigator/routes')
+jest.mock('features/navigation/TabBar/routes')
+jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))

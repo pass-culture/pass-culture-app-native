@@ -63,7 +63,7 @@ describe('fetchOffersByGTL', () => {
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
-        indexName: 'algoliaVenueOffersIndexName',
+        indexName: 'algoliaTopOffersIndexName',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: [
@@ -98,6 +98,40 @@ describe('fetchOffersByGTL', () => {
     expect(result).toEqual([
       {
         hits: [],
+      },
+    ])
+  })
+
+  it('should execute query with given search index if given', async () => {
+    await fetchOffersByGTL(...params, 'algoliaTopOffersIndexNameB')
+
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+      {
+        indexName: 'algoliaTopOffersIndexNameB',
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: [
+            'offer.dates',
+            'offer.isDigital',
+            'offer.isDuo',
+            'offer.isEducational',
+            'offer.name',
+            'offer.prices',
+            'offer.subcategoryId',
+            'offer.thumbUrl',
+            'objectID',
+            '_geoloc',
+            'venue',
+          ],
+          facetFilters: [
+            ['offer.isEducational:false'],
+            ['offer.gtl_level3:Romance'],
+            ['venue.id:123'],
+          ],
+          hitsPerPage: 35,
+          numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 5']],
+        },
+        query: undefined,
       },
     ])
   })

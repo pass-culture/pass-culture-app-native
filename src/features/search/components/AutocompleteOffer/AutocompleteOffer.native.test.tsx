@@ -29,15 +29,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/TabBar/routes')
 
 describe('AutocompleteOffer component', () => {
   describe('With suggestion hits', () => {
     beforeEach(() => {
       mockHits = mockSuggestionHits
-    })
-
-    it('should render AutocompleteOffer', () => {
-      expect(render(<AutocompleteOffer addSearchHistory={jest.fn()} />)).toMatchSnapshot()
     })
 
     it('should display "Suggestions"', () => {

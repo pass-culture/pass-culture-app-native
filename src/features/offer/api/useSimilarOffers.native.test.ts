@@ -163,7 +163,7 @@ describe('useSimilarOffers', () => {
 
   it('should capture an exception when fetch call fails', async () => {
     mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
-      responseOptions: { statusCode: 503, data: {} },
+      responseOptions: { statusCode: 400, data: {} },
     })
     renderHook(
       () =>
@@ -179,21 +179,50 @@ describe('useSimilarOffers', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('Error 503 with recommendation endpoint to get similar offers'),
+        new Error('Error 400 with recommendation endpoint to get similar offers'),
         {
           extra: {
             categories: '["FILMS_SERIES_CINEMA"]',
             latitude: undefined,
             longitude: undefined,
             offerId: 1,
-            statusCode: 503,
+            statusCode: 400,
             errorMessage:
-              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA, code: 503',
+              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA, code: 400',
           },
         }
       )
     })
   })
+
+  it.each([
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should not capture an exception when fetch call fails if ApiError and error code is %s',
+    async (statusCode) => {
+      mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+        responseOptions: { statusCode, data: {} },
+      })
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            position: null,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      })
+    }
+  )
 })
 
 describe('getCategories', () => {

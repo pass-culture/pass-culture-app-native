@@ -8,7 +8,8 @@ import {
   useVenueTypeCodeActions,
 } from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
 
@@ -68,6 +69,32 @@ describe('<VenueTypeModal />', () => {
       await waitFor(() => {
         expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
+    })
+
+    it('should trigger ApplyVenueMapFilter log when pressing search button and venue type code selected', async () => {
+      render(<VenueTypeModal hideModal={mockHideModal} isVisible />)
+
+      fireEvent.press(screen.getByText('Cinéma - Salle de projections'))
+
+      fireEvent.press(screen.getByText('Rechercher'))
+
+      await waitFor(() => {
+        expect(analytics.logApplyVenueMapFilter).toHaveBeenNthCalledWith(1, {
+          venueType: 'Cinéma - Salle de projections',
+        })
+      })
+    })
+
+    it('should not trigger ApplyVenueMapFilter log when pressing search button and venue type code is "Tout"', async () => {
+      render(<VenueTypeModal hideModal={mockHideModal} isVisible />)
+
+      fireEvent.press(screen.getByText('Tout'))
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Rechercher'))
+      })
+
+      expect(analytics.logApplyVenueMapFilter).not.toHaveBeenCalled()
     })
 
     it('should close the modal when pressing search button', async () => {

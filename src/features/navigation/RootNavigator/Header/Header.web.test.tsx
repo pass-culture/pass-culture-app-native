@@ -5,9 +5,11 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, screen } from 'tests/utils/web'
@@ -17,6 +19,9 @@ import { Header } from './Header'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/favorites/context/FavoritesWrapper')
+
+jest.mock('features/navigation/helpers/useTabBarItemBadges')
+const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
@@ -37,6 +42,10 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
+
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -49,24 +58,31 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('Header', () => {
   beforeEach(() => {
     mockServer.getApi<FavoritesCountResponse>(`/v1/me/favorites/count`, { count: 2 })
+    activateFeatureFlags()
+  })
+
+  beforeAll(() => {
+    mockUseTabBarItemBadges.mockReturnValue({
+      Bookings: 999,
+    })
   })
 
   it('should render correctly', async () => {
-    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    await screen.findByText('Favoris')
-
-    expect(container).toMatchSnapshot()
+    expect(await screen.findByText('Favoris')).toBeInTheDocument()
   })
 
   it('should render correctly when FF is enabled', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
+      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+    ])
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    await screen.findByText('Favoris')
-    await screen.findByText('2')
-
-    expect(container).toMatchSnapshot()
+    expect(await screen.findByText('Favoris')).toBeInTheDocument()
+    expect(await screen.findByText('2')).toBeInTheDocument()
+    expect(await screen.findByText('99+')).toBeInTheDocument()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {

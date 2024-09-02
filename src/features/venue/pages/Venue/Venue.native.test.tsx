@@ -13,7 +13,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -66,6 +66,22 @@ mockUseGTLPlaylists.mockReturnValue({
   isLoading: false,
 })
 
+jest.mock('@shopify/flash-list', () => {
+  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
+  class MockFlashList extends ActualFlashList {
+    componentDidMount() {
+      super.componentDidMount()
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
+        nativeEvent: { layout: { height: 250, width: 800 } },
+      })
+    }
+  }
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: MockFlashList,
+  }
+})
+
 describe('<Venue />', () => {
   beforeEach(() => {
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
@@ -88,19 +104,22 @@ describe('<Venue />', () => {
   })
 
   describe('analytics', () => {
-    it('should log consult venue when URL has from param with deeplink', async () => {
-      renderVenue(venueId, 'deeplink')
+    it.each([['deeplink'], ['venueMap']])(
+      'should log consult venue when URL from param equal to %s',
+      async (from) => {
+        renderVenue(venueId, from as Referrals)
 
-      await waitFor(() => {
-        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-          venueId,
-          from: 'deeplink',
+        await waitFor(() => {
+          expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+            venueId,
+            from,
+          })
         })
-      })
-    })
+      }
+    )
 
-    it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-      renderVenue(venueId, 'searchresults')
+    it('should not log consult venue when URL has unexpected "from" param', async () => {
+      renderVenue(venueId, 'unexpected_from_param' as Referrals)
 
       await screen.findByText('Infos pratiques')
 

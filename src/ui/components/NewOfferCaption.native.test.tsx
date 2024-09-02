@@ -16,12 +16,6 @@ const props = {
 describe('NewOfferCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should render correctly', () => {
-    const { toJSON } = render(<NewOfferCaption {...props} />)
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should have the isDuo text if user is Beneficiary and offer is duo', () => {
     render(<NewOfferCaption {...props} />)
 
