@@ -10221,7 +10221,7 @@ babel-plugin-react-native-web@^0.18.7:
   resolved "https://registry.yarnpkg.com/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.18.7.tgz#d32750aca96e5518122504338196502034393261"
   integrity sha512-DF7huAePyphXsqWhGyshjQAU9qektOqOSP2NHevtUBhsgLu57D4gEGZM1xPtbJYvW6/DoxuaXUAqjYqfexT+gQ==
 
-"babel-plugin-styled-components@>= 1.12.0":
+"babel-plugin-styled-components@>= 1.12.0", babel-plugin-styled-components@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-2.1.4.tgz#9a1f37c7f32ef927b4b008b529feb4a2c82b1092"
   integrity sha512-Xgp9g+A/cG47sUyRwwYxGM4bR/jDRg5N6it/8+HxCnbT5XNKSKDT9xm4oag/osgqjC2It/vH0yXsomOG6k558g==
@@ -10231,22 +10231,6 @@ babel-plugin-react-native-web@^0.18.7:
     "@babel/plugin-syntax-jsx" "^7.22.5"
     lodash "^4.17.21"
     picomatch "^2.3.1"
-
-babel-plugin-styled-components@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-2.0.7.tgz#c81ef34b713f9da2b7d3f5550df0d1e19e798086"
-  integrity sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==
-  dependencies:
-    "@babel/helper-annotate-as-pure" "^7.16.0"
-    "@babel/helper-module-imports" "^7.16.0"
-    babel-plugin-syntax-jsx "^6.18.0"
-    lodash "^4.17.11"
-    picomatch "^2.3.0"
-
-babel-plugin-syntax-jsx@^6.18.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
-  integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
 babel-plugin-syntax-trailing-function-commas@^7.0.0-beta.0:
   version "7.0.0-beta.0"
