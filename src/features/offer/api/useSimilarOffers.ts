@@ -8,6 +8,7 @@ import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { Position } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type WithIncludeCategoryProps = {
@@ -54,6 +55,8 @@ export const useSimilarOffers = ({
   categoryExcluded,
   searchGroupList,
 }: Props) => {
+  const netInfo = useNetInfoContext()
+
   const categories: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
     [categoryExcluded, categoryIncluded, searchGroupList]
@@ -96,7 +99,7 @@ export const useSimilarOffers = ({
       }
     },
     {
-      enabled: !!categories,
+      enabled: !!categories && !!netInfo.isConnected,
     }
   )
 
