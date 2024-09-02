@@ -5,7 +5,7 @@ import { OfferResponseV2, UserProfileResponse } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   isLoggedIn: boolean
@@ -19,7 +19,7 @@ export const OfferReactions: FunctionComponent<Props> = ({ isLoggedIn, user, off
   const hasLikes = reactionsCount?.likes > 0
 
   const userHasLiked = useMemo(() => {
-    if (!bookings) return false
+    if (!bookings?.ended_bookings) return false
 
     return bookings.ended_bookings.some(
       (booking) => booking.stock.offer.id === offer.id && !!booking.userReaction
