@@ -10,6 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapOfferPlaylist'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -23,6 +24,7 @@ import { getSpacing } from 'ui/theme'
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
 
 interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
+  playlistType: PlaylistType
   onClose?: () => void
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
@@ -31,7 +33,14 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
   function VenueMapBottomSheet(
-    { onClose, venue, venueOffers, PlaylistContainer = Fragment, ...bottomSheetProps },
+    {
+      onClose,
+      venue,
+      venueOffers,
+      PlaylistContainer = Fragment,
+      playlistType,
+      ...bottomSheetProps
+    },
     ref
   ) {
     const distanceToVenue = useDistance({
@@ -57,13 +66,17 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
               <StyledSeparator />
             </StyledView>
             <ScrollView>
-              <VenueMapOfferPlaylist offers={venueOffers} onPressMore={handlePressMore} />
+              <VenueMapOfferPlaylist
+                offers={venueOffers}
+                onPressMore={handlePressMore}
+                playlistType={playlistType}
+              />
             </ScrollView>
           </PlaylistContainer>
         )
       }
       return null
-    }, [venueOffers, navigate, venue, PlaylistContainer])
+    }, [venueOffers, venue, PlaylistContainer, playlistType, navigate])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {

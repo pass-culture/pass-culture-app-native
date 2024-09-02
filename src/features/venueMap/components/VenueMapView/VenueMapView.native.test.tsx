@@ -1,6 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
+import { PlaylistType } from 'features/offer/enums'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
@@ -249,6 +250,7 @@ function getVenueMapViewComponent({
       currentRegion={currentRegion}
       setCurrentRegion={jest.fn()}
       setLastRegionSearched={jest.fn()}
+      playlistType={PlaylistType.TOP_OFFERS}
     />
   )
 }
