@@ -3,6 +3,11 @@ import React from 'react'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<NotificationsSettingsModal />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

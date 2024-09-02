@@ -12,6 +12,11 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<PhoneValidationTooManyAttempts/>', () => {
   describe('Contact support button', () => {
     it('should open mail app when clicking on contact support button', async () => {

@@ -71,6 +71,11 @@ mockUseStepperInfo.mockReturnValue({
   subtitle: 'Débloque ton crédit',
 })
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('Stepper navigation', () => {
   beforeEach(() => {
     mockServer.getApi('/v1/subscription/profile', profile)

@@ -10,6 +10,11 @@ import { SignUpSignInChoiceOfferModal } from './SignUpSignInChoiceOfferModal'
 const OFFER_ID = 123
 const dismissModal = jest.fn()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('SignUpSignInChoiceOfferModal', () => {
   it('should match previous snapshot', () => {
     render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)

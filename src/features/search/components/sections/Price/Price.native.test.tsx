@@ -19,6 +19,11 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('Price component', () => {
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }

@@ -9,6 +9,11 @@ import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeig
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('useGetFooterHeight', () => {
   it('should return correct footer height', () => {
     const footerHeight = 40

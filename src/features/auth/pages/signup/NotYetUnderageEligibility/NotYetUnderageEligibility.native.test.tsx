@@ -15,6 +15,11 @@ const navigationProps = {
   route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
 } as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<NotYetUnderageEligibility />', () => {
   it('should render properly', () => {
     render(<NotYetUnderageEligibility {...navigationProps} />)

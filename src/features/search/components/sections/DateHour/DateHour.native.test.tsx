@@ -17,6 +17,11 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('DateHour component', () => {
   it('should display only date when only date is selected', async () => {
     mockSearchState.mockReturnValueOnce({

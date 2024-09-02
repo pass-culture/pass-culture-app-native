@@ -10,6 +10,11 @@ import { AccessibilityFiltersModal, AccessibilityModalProps } from './Accessibil
 
 jest.useFakeTimers()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<AccessibilityFiltersModal />', () => {
   it('should render modal correctly', async () => {
     renderAccessibilityFiltersModal()

@@ -6,6 +6,11 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<SubscriptionSuccessModal />', () => {
   it.each(SUSBCRIPTION_THEMES)('should render correctly for %s', (theme) => {
     render(<SubscriptionSuccessModal visible theme={theme} dismissModal={jest.fn()} />)

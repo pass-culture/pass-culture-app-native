@@ -3,6 +3,11 @@ import React from 'react'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { render, screen } from 'tests/utils'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<VenueBanner />', () => {
   it('should display the Google watermark if the image is from Google', () => {
     render(<VenueBanner bannerUrl="https://image.com" bannerMeta={{ is_from_google: true }} />)

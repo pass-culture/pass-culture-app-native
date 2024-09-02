@@ -7,6 +7,11 @@ import { fireEvent, render, screen, act } from 'tests/utils'
 const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<UnsavedSettingsModal />', () => {
   it('should dismiss modal on press rightIconButton', () => {
     renderModal(true)

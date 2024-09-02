@@ -6,6 +6,11 @@ import { render } from 'tests/utils'
 const resetErrorBoundary = () => null
 const error = new Error('error')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<OfferNotFound />', () => {
   it('should render correctly', () => {
     expect(

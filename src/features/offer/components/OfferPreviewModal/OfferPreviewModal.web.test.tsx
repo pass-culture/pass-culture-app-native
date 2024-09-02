@@ -5,6 +5,11 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 import { OfferPreviewModal } from './OfferPreviewModal'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<OfferPreviewModal />', () => {
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation()

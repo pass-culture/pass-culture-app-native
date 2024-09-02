@@ -17,6 +17,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ dispatch: jest.fn(), ...mockState }),
 }))
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<SetName/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

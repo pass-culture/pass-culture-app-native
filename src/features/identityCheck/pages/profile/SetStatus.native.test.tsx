@@ -86,6 +86,11 @@ jest.mock('features/identityCheck/api/useActivityTypes', () => {
 jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
     mockServer.postApi('/v1/subscription/profile', {})

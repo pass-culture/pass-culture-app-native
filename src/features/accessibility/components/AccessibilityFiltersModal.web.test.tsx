@@ -5,6 +5,11 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<AccessibilityFiltersModal />', () => {
   it('should display mobile header modal if mobile viewport', () => {
     renderAccessibilityFiltersModal()

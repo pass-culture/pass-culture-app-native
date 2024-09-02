@@ -30,6 +30,11 @@ const postFeedbackSpy = jest.spyOn(API.api, 'postNativeV1Feedback')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<FeedbackInApp/>', () => {
   it('should match snapshot', () => {
     renderFeedBackInApp()

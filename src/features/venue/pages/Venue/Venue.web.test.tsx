@@ -81,6 +81,11 @@ jest.mock('features/navigation/TabBar/routes')
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 

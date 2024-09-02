@@ -4,6 +4,11 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('SelectPhoneStatus', () => {
   it('should render correctly', () => {
     const { container } = render(<SelectPhoneStatus />)

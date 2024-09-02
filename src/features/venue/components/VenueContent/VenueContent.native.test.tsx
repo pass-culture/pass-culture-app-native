@@ -52,6 +52,11 @@ const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<VenueContent />', () => {
   it('should search the offers associated when pressing "Rechercher une offre"', async () => {
     render(

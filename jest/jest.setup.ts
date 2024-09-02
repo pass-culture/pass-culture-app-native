@@ -7,11 +7,6 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 jest.unmock('react-query')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 jest.mock('libs/analytics/provider')
 

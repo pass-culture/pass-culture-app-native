@@ -13,6 +13,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ step: mockStep }),
 }))
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<QuitIdentityCheckModal/>', () => {
   it('should render correctly', () => {
     renderQuitIdentityCheckModal(true)

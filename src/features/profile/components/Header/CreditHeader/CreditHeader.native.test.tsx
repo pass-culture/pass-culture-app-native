@@ -33,6 +33,11 @@ const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {

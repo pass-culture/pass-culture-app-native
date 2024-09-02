@@ -14,6 +14,11 @@ const HeaderInterpolation = animatedValue.interpolate({
   outputRange: [0, 1],
 })
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('ThematicHomeHeader', () => {
   it('should navigate to home page on press go back button', () => {
     render(<ThematicHomeHeader title="Un titre" headerTransition={HeaderInterpolation} />)

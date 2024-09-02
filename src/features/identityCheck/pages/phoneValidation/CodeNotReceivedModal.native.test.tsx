@@ -45,6 +45,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 

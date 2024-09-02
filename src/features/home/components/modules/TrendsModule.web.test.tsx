@@ -19,6 +19,11 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('TrendsModule', () => {
   describe('When shouldApplyGraphicRedesign remote config is true', () => {
     beforeAll(() => {

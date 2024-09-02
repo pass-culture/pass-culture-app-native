@@ -10,6 +10,11 @@ import { AuthenticationModal } from './AuthenticationModal'
 const OFFER_ID = 123
 const hideModal = jest.fn()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {
     render(

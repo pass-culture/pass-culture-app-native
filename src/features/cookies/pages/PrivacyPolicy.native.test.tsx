@@ -34,6 +34,11 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<PrivacyPolicy />', () => {
   it('should not show cookies modal when fetching cookies is loading', async () => {
     mockUseCookies.mockReturnValueOnce({

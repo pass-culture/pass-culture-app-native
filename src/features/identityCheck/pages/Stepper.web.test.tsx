@@ -37,6 +37,11 @@ jest.mock('features/identityCheck/pages/helpers/useRehydrateProfile')
 const mockUseRehydrateProfile = useRehydrateProfile as jest.Mock
 mockUseRehydrateProfile.mockImplementation(jest.fn())
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<Stepper/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

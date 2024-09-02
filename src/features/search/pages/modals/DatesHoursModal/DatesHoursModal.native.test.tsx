@@ -33,6 +33,11 @@ const TODAY = new Date(2022, 9, 28)
 const TOMORROW = new Date(2022, 9, 29)
 const UNDEFINED_DATE = undefined
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<DatesHoursModal/>', () => {
   beforeAll(() => {
     mockdate.set(TODAY)

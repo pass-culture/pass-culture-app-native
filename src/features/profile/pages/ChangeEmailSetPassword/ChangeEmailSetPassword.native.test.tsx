@@ -21,6 +21,11 @@ useRoute.mockReturnValue({
   params: { token: 'reset_password_token', emailSelectionToken: 'email_selection_token' },
 })
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<ChangeEmailSetPassword />', () => {
   it('should match snapshot', async () => {
     render(reactQueryProviderHOC(<ChangeEmailSetPassword />))

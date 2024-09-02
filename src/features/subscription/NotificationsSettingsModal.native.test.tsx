@@ -13,6 +13,11 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
 const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<NotificationsSettingsModal />', () => {
   it('should render correctly', () => {
     renderModal(true)

@@ -9,6 +9,11 @@ const mockCloseModal = jest.fn()
 
 jest.mock('libs/subcategories/useSubcategory')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('ReactionChoiceModal', () => {
   it('should activate J’aime button when pressing it and it is deactivated', () => {
     render(

@@ -20,6 +20,11 @@ jest.mock('@react-native-clipboard/clipboard')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<VenueTopComponent />', () => {
   it('should display full venue address', async () => {
     render(<VenueTopComponent venue={venueDataTest} />)
