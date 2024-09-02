@@ -13,9 +13,14 @@ import { QueryKeys } from 'libs/queryKeys'
 type UseGTLPlaylistsProps = {
   queryKey: keyof typeof QueryKeys
   venue?: VenueResponse
+  searchIndex?: string
 }
 
-export function useGTLPlaylists({ queryKey: gtlPlaylistsQueryKey, venue }: UseGTLPlaylistsProps) {
+export function useGTLPlaylists({
+  queryKey: gtlPlaylistsQueryKey,
+  venue,
+  searchIndex,
+}: UseGTLPlaylistsProps) {
   const netInfo = useNetInfoContext()
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
@@ -49,7 +54,8 @@ export function useGTLPlaylists({ queryKey: gtlPlaylistsQueryKey, venue }: UseGT
           aroundMeRadius: 'all',
           aroundPlaceRadius: 'all',
         },
-        isUserUnderage
+        isUserUnderage,
+        searchIndex
       )
 
       return gtlPlaylistsConfig.map((item, index) => ({
