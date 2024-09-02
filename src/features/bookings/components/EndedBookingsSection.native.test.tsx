@@ -9,6 +9,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BookingNotFound/>', () => {
   it('should render correctly', () => {
     render(<EndedBookingsSection endedBookings={bookingsSnap.ended_bookings} />)

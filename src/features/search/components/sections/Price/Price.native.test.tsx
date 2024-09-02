@@ -17,6 +17,8 @@ jest.mock('features/profile/api/useUpdateProfileMutation')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Price component', () => {
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }

@@ -16,6 +16,8 @@ mockdate.set(Today)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getUtmParamsConsent', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)

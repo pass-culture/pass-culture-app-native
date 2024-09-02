@@ -20,6 +20,8 @@ const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidat
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<EmailResendModal />', () => {
   it('should render correctly', async () => {
     renderEmailResendModal({})

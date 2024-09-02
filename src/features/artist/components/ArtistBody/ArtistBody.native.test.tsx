@@ -37,6 +37,8 @@ useRoute.mockReturnValue({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ArtistBody />', () => {
   it('should display only the main artist when there are several artists on header title', () => {
     render(reactQueryProviderHOC(<ArtistBody />))

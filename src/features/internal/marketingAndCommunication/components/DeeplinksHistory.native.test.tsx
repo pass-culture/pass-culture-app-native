@@ -9,6 +9,8 @@ import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<DeeplinksHistory />', () => {
   const history = [
     {

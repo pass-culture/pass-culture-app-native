@@ -42,6 +42,8 @@ const props = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<AcceptCgu/>', () => {
   it('should render correctly', () => {
     renderAcceptCGU()

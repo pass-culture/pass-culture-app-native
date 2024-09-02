@@ -60,6 +60,8 @@ const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sh
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<Favorite /> component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)

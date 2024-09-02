@@ -32,6 +32,8 @@ jest.mock('features/navigation/navigationRef')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<PrivacyPolicy />', () => {
   it('should not show cookies modal when fetching cookies is loading', async () => {
     mockUseCookies.mockReturnValueOnce({

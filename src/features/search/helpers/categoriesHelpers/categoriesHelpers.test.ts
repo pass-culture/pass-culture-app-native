@@ -32,6 +32,8 @@ const tree = createMappingTree(subcategoriesDataTest, mockedFacets)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
     const categories = searchGroupsDataTest

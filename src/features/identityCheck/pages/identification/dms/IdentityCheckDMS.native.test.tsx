@@ -5,6 +5,8 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<IdentityCheckDMS />', () => {
   it('should render correctly', () => {
     render(<IdentityCheckDMS />)

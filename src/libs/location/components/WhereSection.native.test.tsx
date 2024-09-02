@@ -19,6 +19,8 @@ const beforeNavigateToItinerary = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('WhereSection', () => {
   it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
     render(

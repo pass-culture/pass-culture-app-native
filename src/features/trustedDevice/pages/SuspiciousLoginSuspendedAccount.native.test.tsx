@@ -9,6 +9,8 @@ jest.mock('features/auth/helpers/useLogoutRoutine')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SuspiciousLoginSuspendedAccount/>', () => {
   it('should match snapshot', () => {
     render(<SuspiciousLoginSuspendedAccount />)

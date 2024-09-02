@@ -220,6 +220,8 @@ const mockedEmptyHistory = {
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SearchLanding />', () => {
   beforeEach(() => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })

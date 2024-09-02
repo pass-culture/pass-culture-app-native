@@ -9,6 +9,8 @@ const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ContactSupportButton', () => {
   it('should open mail app when clicking on contact service button', () => {
     render(<AccessibilityEngagement />)

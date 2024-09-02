@@ -28,6 +28,8 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueMapView />', () => {
   beforeEach(() => {
     useFeatureFlagSpy.mockReturnValue(true)

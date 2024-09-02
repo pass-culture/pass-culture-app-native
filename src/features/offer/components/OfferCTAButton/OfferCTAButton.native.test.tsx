@@ -69,6 +69,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.useFakeTimers()
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })

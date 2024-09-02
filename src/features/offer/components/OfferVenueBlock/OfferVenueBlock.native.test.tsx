@@ -29,6 +29,8 @@ const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEA
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<OfferVenueBlock />', () => {
   it('should display title', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)

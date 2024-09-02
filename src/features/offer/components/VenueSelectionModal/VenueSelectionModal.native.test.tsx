@@ -23,6 +23,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [
     {

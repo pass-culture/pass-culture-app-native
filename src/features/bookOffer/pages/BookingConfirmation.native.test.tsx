@@ -44,6 +44,8 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({

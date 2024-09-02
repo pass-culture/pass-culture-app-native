@@ -5,6 +5,8 @@ import useOpenItinerary from './useOpenItinerary'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useOpenItinerary', () => {
   let useItinerary: jest.SpyInstance<ReturnType<typeof Itinerary.useItinerary>, []> | undefined
 

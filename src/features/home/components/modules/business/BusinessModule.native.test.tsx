@@ -33,6 +33,8 @@ const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteC
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('BusinessModule component', () => {
   describe('When shouldApplyGraphicRedesign remote config is false', () => {
     beforeAll(() => {

@@ -7,6 +7,8 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
     render(<SelectIDStatus />)

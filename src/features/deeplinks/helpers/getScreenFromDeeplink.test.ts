@@ -9,6 +9,8 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
     const url = getFullUrl('unknown-path')

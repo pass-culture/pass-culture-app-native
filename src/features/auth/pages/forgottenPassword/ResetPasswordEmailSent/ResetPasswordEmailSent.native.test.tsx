@@ -23,6 +23,8 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ResetPasswordEmailSent />', () => {
   beforeEach(() => {
     mockIsMailAppAvailable = true

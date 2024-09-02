@@ -17,6 +17,8 @@ const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useLogoutRoutine', () => {
   it('should remove batch identifier', async () => {
     await renderUseLogoutRoutine()

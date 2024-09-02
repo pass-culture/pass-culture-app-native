@@ -62,6 +62,8 @@ const mockUseRemoveFavorite = () => {
 
 jest.useFakeTimers()
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {
     renderFavoriteButton()

@@ -25,6 +25,8 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useShouldDisplayVenueMap', () => {
   it('should render venue map when user is located and feature flag enabled', () => {
     const { result } = renderHook(useShouldDisplayVenueMap)

@@ -11,6 +11,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('DetailedAccessibilityInfo', () => {
   it('should redirect to acceslibre when clicking on the banner link', async () => {
     render(

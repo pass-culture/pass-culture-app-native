@@ -9,6 +9,8 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('PracticalInformation', () => {
   it('should display withdrawal information', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))

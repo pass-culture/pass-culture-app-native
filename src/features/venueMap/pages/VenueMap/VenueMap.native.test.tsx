@@ -21,6 +21,8 @@ const mockSetVenueTypeCode = jest.fn()
 const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
 mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueMap />', () => {
   it('Should display venue map header', async () => {
     render(reactQueryProviderHOC(<VenueMap />))

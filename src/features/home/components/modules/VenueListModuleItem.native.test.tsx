@@ -9,6 +9,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueListModule />', () => {
   it('should redirect to target venue when pressing on it', async () => {
     render(

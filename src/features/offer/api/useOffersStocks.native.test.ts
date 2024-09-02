@@ -7,6 +7,8 @@ import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useOffersStocks', () => {
   beforeEach(() => {
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)

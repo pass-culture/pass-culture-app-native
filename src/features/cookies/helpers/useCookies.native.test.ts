@@ -46,6 +46,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useCookies', () => {
   beforeAll(() => {
     mockAuthContextWithoutUser({ persist: true })

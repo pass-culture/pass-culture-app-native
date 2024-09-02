@@ -7,11 +7,6 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 jest.unmock('react-query')
 
-/* We disable the following warning, which can be safely ignored as the code
-  is not executed on a device :
-  "Invariant Violation: Native module cannot be null." */
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 /* Alerts cannot be opened in node.js environment */
 jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),

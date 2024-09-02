@@ -41,6 +41,8 @@ const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('TrendsModule', () => {
   it('should not log analytics on render when FF is disabled', () => {
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)

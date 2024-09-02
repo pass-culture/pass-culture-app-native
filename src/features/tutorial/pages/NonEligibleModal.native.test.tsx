@@ -13,6 +13,8 @@ const hideModal = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('NonEligibleModal', () => {
   it('should render correctly for onboarding non-eligible under 15', () => {
     renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)

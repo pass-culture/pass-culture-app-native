@@ -14,6 +14,8 @@ const customChoice = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useCookiesModalContent hook description', () => {
   it('should display the CookiesDescription and not show back button if first step', () => {
     const { childrenProps } = useCookiesModalContent({

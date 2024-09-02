@@ -23,6 +23,8 @@ jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useHomeRecommendedOffers', () => {
   it('should call algolia hook', () => {
     jest

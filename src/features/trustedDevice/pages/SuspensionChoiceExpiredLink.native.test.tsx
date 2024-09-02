@@ -11,6 +11,8 @@ const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SuspensionChoiceExpiredLink/>', () => {
   it('should match snapshot', () => {
     render(<SuspensionChoiceExpiredLink />)

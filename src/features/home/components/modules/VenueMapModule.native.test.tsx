@@ -28,6 +28,8 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('VenueMapModule', () => {
   it('should render venue map block when user is located and feature flag enabled', () => {
     render(<VenueMapModule />)

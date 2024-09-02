@@ -32,6 +32,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Bookings', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

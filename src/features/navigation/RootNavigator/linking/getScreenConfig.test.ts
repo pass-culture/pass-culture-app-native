@@ -28,6 +28,8 @@ const validRoutes = [
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getScreensAndConfig()', () => {
   it('should throw if a screen without path or pathConfig is encountered', () => {
     const invalidRoutes = [

@@ -21,6 +21,8 @@ const props = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ExclusivityExternalLink component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
     render(<ExclusivityExternalLink {...props} />)

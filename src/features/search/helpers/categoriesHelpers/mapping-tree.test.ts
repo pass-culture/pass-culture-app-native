@@ -8,6 +8,8 @@ const mockedUndefinedFacets = undefined
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('MappingTree', () => {
   it('should return a mapping tree for book category ROMANS_ET_LITTERATURE', () => {
     const result = createMappingTree(mockedSubcateroriesV2Response, mockedUndefinedFacets)

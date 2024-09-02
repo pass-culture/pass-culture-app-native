@@ -39,6 +39,8 @@ mockedUseAuthContext.mockReturnValue(initialAuthContext)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('PersonalData', () => {
   beforeEach(() => {
     mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {

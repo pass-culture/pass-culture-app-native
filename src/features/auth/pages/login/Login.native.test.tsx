@@ -74,6 +74,8 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)

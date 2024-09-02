@@ -28,6 +28,8 @@ const TestOfferModal: FunctionComponent<OfferModalProps> = (props) => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useOfferModal', () => {
   it('do not display anything when there is no modal to display', () => {
     const { result } = renderHook(() =>

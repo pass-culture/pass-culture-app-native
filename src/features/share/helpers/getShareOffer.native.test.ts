@@ -13,6 +13,8 @@ const offer = mockOffer
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getShareOffer', () => {
   describe('should display share modal with data from offer', () => {
     it('for ios', async () => {

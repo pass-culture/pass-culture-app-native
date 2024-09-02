@@ -10,6 +10,8 @@ import { Email } from 'ui/svg/icons/Email'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('computePrimaryButtonToDisplay', () => {
   const defaultPrimaryButton = (
     <InternalTouchableLink

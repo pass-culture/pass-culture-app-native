@@ -140,6 +140,8 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BookingDetails />', () => {
   beforeAll(() => {
     mockVenueList = []

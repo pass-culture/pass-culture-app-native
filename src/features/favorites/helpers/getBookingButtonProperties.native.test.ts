@@ -25,6 +25,8 @@ const user = beneficiaryUser
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getBookingButtonProperties', () => {
   describe('when user is eligible', () => {
     it('should call eligible button props helpers', () => {

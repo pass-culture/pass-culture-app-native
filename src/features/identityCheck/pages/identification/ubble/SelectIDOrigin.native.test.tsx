@@ -16,6 +16,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
     render(<SelectIDOrigin />)

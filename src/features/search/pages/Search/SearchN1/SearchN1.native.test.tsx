@@ -49,6 +49,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SearchN1/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)

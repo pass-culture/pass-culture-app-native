@@ -26,6 +26,8 @@ const navigation = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('CheatCodes component', () => {
   it('should display code push button for testing environment', async () => {
     env.ENV = 'testing'

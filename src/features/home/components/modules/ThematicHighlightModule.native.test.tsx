@@ -22,6 +22,8 @@ const baseThematicHighlightModule = {
   homeEntryId: '6nVZ7vaaOM8qOO7wqduuo1',
 }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ThematicHighlightModule', () => {
   it('should render if the ending date is not passed', () => {
     render(

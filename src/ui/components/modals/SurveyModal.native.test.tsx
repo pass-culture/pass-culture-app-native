@@ -11,6 +11,8 @@ const hideModalMock = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SurveyModal />', () => {
   it('should redirect to survey when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })

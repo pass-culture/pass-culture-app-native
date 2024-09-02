@@ -17,6 +17,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('DMSIntroduction', () => {
   it('should log screen view when the screen is mounted', async () => {
     render(<DMSIntroduction />)

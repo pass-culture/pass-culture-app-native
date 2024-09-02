@@ -28,6 +28,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {
     await storage.clear('user_age')

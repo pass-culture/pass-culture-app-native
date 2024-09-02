@@ -11,6 +11,8 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 jest.mock('libs/network/NetInfoWrapper')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useOAuthState', () => {
   it('should not fetch oauth state when FF is disabled', async () => {
     const { result } = renderOAuthState()

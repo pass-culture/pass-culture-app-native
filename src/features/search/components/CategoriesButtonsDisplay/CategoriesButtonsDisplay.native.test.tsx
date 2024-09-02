@@ -33,6 +33,8 @@ jest.mock('libs/location', () => ({
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('CategoriesButtonsDisplay', () => {
   it('should display venue map block when geoloc position is activated and location mode is set to "around me"', async () => {
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)

@@ -34,6 +34,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {
     const onDismiss = jest.fn()

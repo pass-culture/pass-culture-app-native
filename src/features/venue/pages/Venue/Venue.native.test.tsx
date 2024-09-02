@@ -82,6 +82,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<Venue />', () => {
   beforeEach(() => {
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)

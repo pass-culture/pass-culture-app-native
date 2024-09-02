@@ -48,6 +48,8 @@ jest.mock('shared/performance/transactions', () => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

@@ -24,6 +24,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({

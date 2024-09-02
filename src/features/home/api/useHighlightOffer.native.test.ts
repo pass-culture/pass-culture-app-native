@@ -33,6 +33,8 @@ const mockUseLocation = jest.mocked(useLocation)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
     mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])

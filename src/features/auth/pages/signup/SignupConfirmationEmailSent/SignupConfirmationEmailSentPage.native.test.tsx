@@ -17,6 +17,8 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', async () => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(

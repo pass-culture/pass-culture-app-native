@@ -23,6 +23,8 @@ jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
   useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })

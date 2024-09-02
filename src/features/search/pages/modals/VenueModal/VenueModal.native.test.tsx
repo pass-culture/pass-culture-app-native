@@ -42,6 +42,8 @@ const mockedSearchWrapper = {
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
 mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('VenueModal', () => {
   it('should render correctly', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)

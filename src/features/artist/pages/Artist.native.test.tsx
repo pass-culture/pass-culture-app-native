@@ -35,6 +35,8 @@ useRoute.mockReturnValue({
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<Artist />', () => {
   useRoute.mockReturnValue({
     params: {

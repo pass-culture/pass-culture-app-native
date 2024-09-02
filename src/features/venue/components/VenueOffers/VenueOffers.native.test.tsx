@@ -91,6 +91,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({

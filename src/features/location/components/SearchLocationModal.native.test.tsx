@@ -67,6 +67,8 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   hideSuggestions: jest.fn(),
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()

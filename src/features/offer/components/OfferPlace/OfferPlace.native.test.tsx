@@ -95,6 +95,8 @@ jest.mock('libs/location', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockDistance = null

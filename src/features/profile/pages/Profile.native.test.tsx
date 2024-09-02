@@ -100,6 +100,8 @@ const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteC
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

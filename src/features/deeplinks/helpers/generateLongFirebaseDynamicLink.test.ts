@@ -5,6 +5,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 

@@ -16,6 +16,8 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
     mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })

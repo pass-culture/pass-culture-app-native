@@ -10,6 +10,8 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('LegalNotices', () => {
   it('should render correctly', async () => {
     render(<LegalNotices />)

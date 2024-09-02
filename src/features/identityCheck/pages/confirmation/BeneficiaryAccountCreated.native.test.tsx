@@ -16,6 +16,8 @@ jest
   .spyOn(ShareAppWrapperModule, 'useShareAppContext')
   .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {
     mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })

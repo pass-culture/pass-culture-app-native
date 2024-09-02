@@ -8,6 +8,8 @@ const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('AccessibilityActionPlan', () => {
   it('should render correctly', () => {
     render(<AccessibilityActionPlan />)

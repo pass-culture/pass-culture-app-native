@@ -28,6 +28,8 @@ const NUMBER_OF_LINES = 5
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<CollapsibleText />', () => {
   it('should not display all text', () => {
     render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)

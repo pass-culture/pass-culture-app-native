@@ -23,6 +23,8 @@ https://www.google.com/`
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('customFindUrlChunks', () => {
   it('finds url chunk and mark it as highlited', () => {
     const highlightedChunks1 = customFindUrlChunks({

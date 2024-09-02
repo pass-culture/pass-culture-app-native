@@ -11,6 +11,8 @@ jest.mock('features/profile/api/useUpdateProfileMutation')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<CookiesSettings/>', () => {
   it('should disable and check essential cookies switch', async () => {
     renderCookiesSettings()

@@ -15,6 +15,8 @@ const mockProps = {
   selectedPlace: mockPlaces[0],
 } as const
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useLocationSubmit', () => {
   it('should call dismissModal on onClose', () => {
     const { result } = renderHook(() => useLocationSubmit(mockProps))

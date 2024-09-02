@@ -20,6 +20,8 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('LocationWidget', () => {
   it('should show modal when pressing widget', async () => {
     renderLocationWidget()

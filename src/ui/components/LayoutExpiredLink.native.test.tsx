@@ -15,6 +15,8 @@ const renderResendEmailButton = () => (
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<LayoutExpiredLink/>', () => {
   it('should render correctly', () => {
     render(

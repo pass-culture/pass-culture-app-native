@@ -34,6 +34,8 @@ excluOfferAPISpy.mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
     const { result } = renderHook(() => useShouldDisplayExcluOffer(undefined, offerId))

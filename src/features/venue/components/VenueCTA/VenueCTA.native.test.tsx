@@ -50,6 +50,8 @@ jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
     render(<VenueCTA venue={venueDataTest} />)

@@ -32,6 +32,8 @@ const mockFirestore = jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('isCookiesListUpToDate', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 

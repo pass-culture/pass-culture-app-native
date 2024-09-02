@@ -65,6 +65,8 @@ const route = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ValidateEmailChange', () => {
   it('should render new email address', () => {
     renderValidateEmailChange()

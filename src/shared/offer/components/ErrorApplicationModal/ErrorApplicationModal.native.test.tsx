@@ -16,6 +16,8 @@ const offerId = 1
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
     render(

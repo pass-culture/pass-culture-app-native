@@ -32,6 +32,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
     renderConfirmDeleteProfile()

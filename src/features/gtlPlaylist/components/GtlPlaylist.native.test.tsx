@@ -60,6 +60,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('GtlPlaylist', () => {
   describe('on venue page', () => {
     it('should log ConsultOffer when pressing an item', () => {

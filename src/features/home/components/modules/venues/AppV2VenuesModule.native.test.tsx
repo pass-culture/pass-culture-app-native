@@ -24,6 +24,8 @@ const props = {
   homeEntryId: 'homeEntryId',
 }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<AppV2VenuesModule />', () => {
   it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
     renderAppV2VenuesModule()

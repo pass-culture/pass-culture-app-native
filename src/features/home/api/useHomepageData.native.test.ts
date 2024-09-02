@@ -19,6 +19,8 @@ const homepageEntryIds = [
   homepageEntriesAPIResponse.items[1].sys.id,
 ]
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useHomepageModules', () => {
   beforeEach(() => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)

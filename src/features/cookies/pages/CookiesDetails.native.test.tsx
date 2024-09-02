@@ -8,6 +8,8 @@ jest.mock('features/profile/api/useUpdateProfileMutation')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<CookiesDetails/>', () => {
   it('should render correctly', async () => {
     render(

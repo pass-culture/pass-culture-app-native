@@ -8,6 +8,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {
     beforeEach(() => {

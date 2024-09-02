@@ -30,6 +30,8 @@ jest.mock('features/auth/context/AuthContext')
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {

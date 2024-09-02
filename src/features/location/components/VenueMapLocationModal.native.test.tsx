@@ -56,6 +56,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal({})

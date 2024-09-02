@@ -52,6 +52,8 @@ const route = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SuspendAccountConfirmation />', () => {
   describe('should navigate to home', () => {
     it('When there is no email change', () => {

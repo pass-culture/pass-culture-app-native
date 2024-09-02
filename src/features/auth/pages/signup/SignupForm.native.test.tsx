@@ -67,6 +67,8 @@ mockdate.set(CURRENT_DATE)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Signup Form', () => {
   beforeEach(() => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(

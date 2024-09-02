@@ -64,6 +64,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('BookingDetails', () => {
   let ongoingBookings = mockBookings.ongoing_bookings[0]
   let endedBookings = mockBookings.ended_bookings[0]

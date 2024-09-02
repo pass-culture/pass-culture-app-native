@@ -16,6 +16,8 @@ jest.mock('features/profile/helpers/shouldOpenInbox', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SubscriptionMessageBadge />', () => {
   it('should display the subscription message', () => {
     renderSubscriptionMessageBadge({

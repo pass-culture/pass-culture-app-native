@@ -50,6 +50,8 @@ const defaultSearchParams = {
 
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueContent />', () => {
   it('should search the offers associated when pressing "Rechercher une offre"', async () => {
     render(

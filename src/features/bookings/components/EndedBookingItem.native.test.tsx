@@ -60,6 +60,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])

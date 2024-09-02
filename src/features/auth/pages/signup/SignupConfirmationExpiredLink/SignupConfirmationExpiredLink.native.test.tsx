@@ -32,6 +32,8 @@ function renderSignupConfirmationExpiredLink() {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     renderSignupConfirmationExpiredLink()

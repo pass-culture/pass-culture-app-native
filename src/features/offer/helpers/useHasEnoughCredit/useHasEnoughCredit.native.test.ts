@@ -20,6 +20,8 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('hasEnoughCredit', () => {
   it.each`
     domains                | price | domainsCredit

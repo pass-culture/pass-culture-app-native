@@ -8,6 +8,8 @@ import { BookingNotFound } from './BookingNotFound'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BookingNotFound/>', () => {
   it('should render correctly', () => {
     render(<BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />)

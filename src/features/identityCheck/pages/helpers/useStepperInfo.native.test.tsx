@@ -51,6 +51,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useStepperInfo', () => {
   it('should return title and subtitle', () => {
     const { title, subtitle } = useStepperInfo()

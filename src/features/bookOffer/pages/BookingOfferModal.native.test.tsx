@@ -129,6 +129,8 @@ const apiRecoParams: RecommendationApiParams = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))

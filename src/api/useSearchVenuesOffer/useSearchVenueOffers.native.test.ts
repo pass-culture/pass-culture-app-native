@@ -23,6 +23,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useSearchVenueOffers', () => {
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {

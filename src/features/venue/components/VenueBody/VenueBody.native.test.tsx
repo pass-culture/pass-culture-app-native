@@ -42,6 +42,8 @@ useRoute.mockImplementation(() => ({ params: { id: venueId } }))
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueBody />', () => {
   beforeEach(() => {
     // We mock only the first call to canOpenURL so we can wait for instagram to be displayed

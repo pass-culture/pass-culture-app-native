@@ -13,6 +13,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Venue component', () => {
   it('should display the venue label when a venue is selected', async () => {
     mockSearchState = {

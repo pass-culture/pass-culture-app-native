@@ -15,6 +15,8 @@ jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)

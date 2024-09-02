@@ -16,6 +16,8 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('AnimatedCategoryThematicHomeHeader', () => {
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is on', () => {
     beforeAll(() => {

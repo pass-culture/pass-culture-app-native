@@ -36,6 +36,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
 

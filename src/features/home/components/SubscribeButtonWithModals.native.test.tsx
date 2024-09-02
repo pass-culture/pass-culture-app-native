@@ -27,6 +27,8 @@ jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
   .mockReturnValue(SubscriptionTheme.CINEMA)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SubscribeButtonWithModals', () => {
   beforeEach(() => {
     storage.clear('times_user_subscribed_to_a_theme')

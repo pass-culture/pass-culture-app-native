@@ -38,6 +38,8 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
   },
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('EndedBookings', () => {
   it('should render correctly', () => {
     renderEndedBookings(bookingsSnap)

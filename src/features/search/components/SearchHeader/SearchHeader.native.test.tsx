@@ -55,6 +55,8 @@ jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })

@@ -6,6 +6,8 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Accessibility', () => {
   it('should render correctly', () => {
     render(<Accessibility />)

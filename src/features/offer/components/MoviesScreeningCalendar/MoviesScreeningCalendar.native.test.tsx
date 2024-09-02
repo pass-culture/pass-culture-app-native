@@ -48,6 +48,8 @@ const VenueOffersResponseMatchingFixture = [
 const venueOffersMock = { hits: VenueOffersResponseMatchingFixture, nbHits: 1 }
 const mockedOfferStockResponse = { offers: [offersStocksResponseSnap.offers[0]] }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('MoviesScreeningCalendar', () => {
   beforeEach(() => {
     mockdate.set(MOCK_DATE)

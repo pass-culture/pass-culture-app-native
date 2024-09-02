@@ -136,6 +136,8 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('SearchBox component', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({

@@ -14,6 +14,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ConfirmChangeEmail />', () => {
   it('should render correctly', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmail />))

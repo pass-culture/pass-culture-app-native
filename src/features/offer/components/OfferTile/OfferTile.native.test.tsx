@@ -45,6 +45,8 @@ const props = {
   height: 100,
 }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 

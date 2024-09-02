@@ -9,6 +9,8 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<OfferAbout />', () => {
   const metadata = [
     { label: 'Speaker', value: 'Donald' },

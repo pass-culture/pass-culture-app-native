@@ -1,6 +1,8 @@
 import { onScreenshot } from 'features/navigation/RootNavigator/useScreenshotListener'
 import { analytics } from 'libs/analytics'
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useScreenshotListener()', () => {
   describe('onScreenshot()', () => {
     it('should log analytics when user is on current page', () => {

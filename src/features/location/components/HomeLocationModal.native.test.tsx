@@ -41,6 +41,8 @@ jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderHomeLocationModal()

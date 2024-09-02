@@ -15,6 +15,8 @@ const COOKIES_CONSENT_KEY = 'cookies'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getStateFromPath()', () => {
   it('should return state for path accueil', async () => {
     const path = 'accueil'

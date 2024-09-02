@@ -37,6 +37,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ConfirmChangeEmail />', () => {
   it('should navigate to home when pressing cancel button', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))

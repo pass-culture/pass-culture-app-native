@@ -18,6 +18,8 @@ jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
     render(

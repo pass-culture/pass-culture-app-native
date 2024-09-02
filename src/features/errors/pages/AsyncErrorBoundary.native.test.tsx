@@ -22,6 +22,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {
     render(<AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />)

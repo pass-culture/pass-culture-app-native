@@ -21,6 +21,8 @@ jest.mock('features/navigation/navigationRef')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     mockServer.postApi('/v1/request_password_reset', {})

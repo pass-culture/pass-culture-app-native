@@ -39,6 +39,8 @@ const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockRetu
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<CategoriesModal/>', () => {
   afterEach(() => {
     mockData = PLACEHOLDER_DATA

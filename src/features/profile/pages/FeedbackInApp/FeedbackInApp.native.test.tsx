@@ -28,6 +28,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const postFeedbackSpy = jest.spyOn(API.api, 'postNativeV1Feedback')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<FeedbackInApp/>', () => {
   it('should match snapshot', () => {
     renderFeedBackInApp()

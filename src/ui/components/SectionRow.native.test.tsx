@@ -6,6 +6,8 @@ import { SectionRow } from './SectionRow'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<SectionRow/>', () => {
   it('should use TouchableLink when is internal navigate', () => {
     render(

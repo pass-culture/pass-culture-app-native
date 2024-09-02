@@ -38,6 +38,8 @@ jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<PriceModal/>', () => {
   beforeAll(() => {
     mockSearchState = { ...searchState, searchId }

@@ -42,6 +42,8 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('Category component', () => {
   it('should display the category when selected', () => {
     mockSearchState = {

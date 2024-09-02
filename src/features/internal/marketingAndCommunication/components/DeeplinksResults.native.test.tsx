@@ -6,6 +6,8 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<DeeplinksResult />', () => {
   const result: GeneratedDeeplink = {
     firebaseLink: 'https://passculture.app/recherche',

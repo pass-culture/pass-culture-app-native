@@ -18,6 +18,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('DeleteProfileConfirmation', () => {
   it('should match snapshot', () => {
     render(<DeleteProfileConfirmation />)

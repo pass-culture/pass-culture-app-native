@@ -20,6 +20,8 @@ const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ContactBlock/>', () => {
   it('should navigate to mail when pressing on email', async () => {
     render(<ContactBlock venue={venueDataTest} />)

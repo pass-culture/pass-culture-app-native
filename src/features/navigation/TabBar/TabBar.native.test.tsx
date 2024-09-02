@@ -125,6 +125,8 @@ const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('TabBar', () => {
   beforeEach(() => {
     mockedUseTabNavigationContext.mockReturnValue({

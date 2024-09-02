@@ -13,6 +13,8 @@ jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(build)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<ForceUpdate/>', () => {
   it('should match snapshot', async () => {
     await render(<ForceUpdate resetErrorBoundary={() => null} />)

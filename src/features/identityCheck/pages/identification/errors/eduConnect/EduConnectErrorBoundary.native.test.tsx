@@ -7,6 +7,8 @@ import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('EduConnectErrorBoundary component', () => {
   it('should not log error on sentry when error is an expected EduConnectError', () => {
     render(

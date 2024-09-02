@@ -42,6 +42,8 @@ const props: BusinessModuleProps = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('OldBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 

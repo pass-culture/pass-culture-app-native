@@ -17,6 +17,8 @@ const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_req
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
     storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)

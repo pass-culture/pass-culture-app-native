@@ -26,6 +26,8 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<OfferVenueBlockDeprecated />', () => {
   it('should display title', () => {
     render(

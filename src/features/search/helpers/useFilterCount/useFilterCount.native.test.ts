@@ -26,6 +26,8 @@ mockedUseMaxPrice.mockImplementation(() => MAX_PRICE)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useFilterCount', () => {
   it.each`
     section                                | partialSearchState                                                    | expected

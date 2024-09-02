@@ -18,6 +18,8 @@ jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<VenueTopComponent />', () => {
   it('should display full venue address', async () => {
     render(<VenueTopComponent venue={venueDataTest} />)

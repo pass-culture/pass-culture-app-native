@@ -19,6 +19,8 @@ useRemoteConfigContextSpy.mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
     render(<IdentificationFork />)

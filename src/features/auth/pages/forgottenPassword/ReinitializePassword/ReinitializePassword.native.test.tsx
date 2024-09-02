@@ -52,6 +52,8 @@ jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('ReinitializePassword Page', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({ params: ROUTE_PARAMS })

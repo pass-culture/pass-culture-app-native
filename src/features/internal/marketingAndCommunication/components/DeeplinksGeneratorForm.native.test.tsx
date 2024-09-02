@@ -16,6 +16,8 @@ mockdate.set(new Date('2022-08-09T00:00:00Z'))
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<DeeplinksGeneratorForm />', () => {
   it('should render deeplink generator form with marketing as default utm_gen', () => {
     const onCreate = jest.fn()
