@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { PlaylistType } from 'features/offer/enums'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
@@ -40,6 +41,7 @@ export const VenueMap: FunctionComponent = () => {
           currentRegion={currentRegion}
           setCurrentRegion={setCurrentRegion}
           setLastRegionSearched={setLastRegionSearched}
+          playlistType={PlaylistType.TOP_OFFERS}
         />
       </MapContainer>
     </VenueMapBase>

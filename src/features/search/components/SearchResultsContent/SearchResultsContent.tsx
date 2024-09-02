@@ -9,6 +9,7 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { PlaylistType } from 'features/offer/enums'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
@@ -284,6 +285,12 @@ export const SearchResultsContent: React.FC = () => {
     }
   }, [hits.venues, offerVenues])
 
+  const venueMapBottomSheetPlaylistType = useMemo(() => {
+    return hits.venues && hits.venues.length > 0
+      ? PlaylistType.TOP_OFFERS
+      : PlaylistType.SEARCH_RESULTS
+  }, [hits.venues])
+
   const {
     selectedVenue,
     venueTypeCode,
@@ -345,6 +352,7 @@ export const SearchResultsContent: React.FC = () => {
           currentRegion={currentRegion}
           setCurrentRegion={setCurrentRegion}
           setLastRegionSearched={setLastRegionSearched}
+          playlistType={venueMapBottomSheetPlaylistType}
         />
       ),
   }

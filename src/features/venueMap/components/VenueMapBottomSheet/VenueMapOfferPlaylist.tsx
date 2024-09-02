@@ -3,6 +3,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { PlaylistType } from 'features/offer/enums'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -13,6 +14,7 @@ import { getSpacing, LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
+  playlistType: PlaylistType
   onPressMore?: () => void
 }
 
@@ -21,7 +23,11 @@ const PLAYLIST_ITEM_WIDTH = PLAYLIST_ITEM_HEIGHT * RATIO_HOME_IMAGE
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const VenueMapOfferPlaylist = ({ offers, onPressMore }: VenueMapOfferPlaylistProps) => {
+export const VenueMapOfferPlaylist = ({
+  offers,
+  onPressMore,
+  playlistType,
+}: VenueMapOfferPlaylistProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -41,9 +47,10 @@ export const VenueMapOfferPlaylist = ({ offers, onPressMore }: VenueMapOfferPlay
         height={PLAYLIST_ITEM_HEIGHT}
         variant="new"
         isDuo={false}
+        playlistType={playlistType}
       />
     ),
-    [labelMapping, mapping]
+    [labelMapping, mapping, playlistType]
   )
 
   return (

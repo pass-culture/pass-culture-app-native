@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
@@ -23,7 +24,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing, LENGTH_L } from 'ui/theme'
+import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
@@ -37,6 +38,7 @@ interface Props {
   currentRegion: Region
   setCurrentRegion: (region: Region) => void
   setLastRegionSearched: (region: Region) => void
+  playlistType: PlaylistType
 }
 
 const PIN_MAX_Z_INDEX = 10_000
@@ -52,6 +54,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
   currentRegion,
   setCurrentRegion,
   setLastRegionSearched,
+  playlistType,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { tabBarHeight } = useCustomSafeInsets()
@@ -211,6 +214,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
         PlaylistContainer={PlaylistContainer}
         onAnimate={handleBottomSheetAnimation}
         onChange={setBottomSheetIndex}
+        playlistType={playlistType}
       />
       <StyledMapView
         ref={mapViewRef}
