@@ -4,7 +4,15 @@
 
 [Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
 
-[Install DirEnv](https://direnv.net/) 
+If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail
+
+In that case, you will need to install Nix as follows
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install  --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
+```
+
+[Install DirEnv](https://direnv.net/)
 
 ```sh
 brew install direnv
