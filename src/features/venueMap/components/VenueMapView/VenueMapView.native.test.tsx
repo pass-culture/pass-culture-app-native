@@ -38,7 +38,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should render map', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     const mapView = await screen.findByTestId('venue-map-view')
 
     expect(mapView).toBeOnTheScreen()
@@ -46,13 +46,13 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display search button after initializing the map', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
 
     expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
   })
 
   it('should display search button after region change', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     const mapView = await screen.findByTestId('venue-map-view')
 
     // Simulate region change
@@ -67,7 +67,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display search button after search press', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     const mapView = await screen.findByTestId('venue-map-view')
 
     // Simulate region change
@@ -83,7 +83,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should reset initial venues store when pressing search button', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     const mapView = screen.getByTestId('venue-map-view')
 
     // Simulate region change
@@ -100,7 +100,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should display venueMapPreview + venueMapList in bottom sheet when marker is pressed', async () => {
-    renderVenueMapView({ selectedVenue: venuesFixture[0] })
+    render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
       stopPropagation: () => false,
@@ -121,7 +121,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display preview is marker id has not been found in venue list', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
       stopPropagation: () => false,
@@ -140,7 +140,7 @@ describe('<VenueMapView />', () => {
   it('should not display preview is FF disabled', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(false)
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
       stopPropagation: () => false,
@@ -161,7 +161,7 @@ describe('<VenueMapView />', () => {
     useFeatureFlagSpy.mockImplementation((flagId: RemoteStoreFeatureFlags) =>
       flagId === RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET ? false : true
     )
-    renderVenueMapView({ selectedVenue: venuesFixture[0] })
+    render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
       stopPropagation: () => false,
@@ -182,7 +182,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should hide bottom sheet when a marker is selected and map is pressed', async () => {
-    renderVenueMapView({})
+    const { rerender } = render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
       stopPropagation: () => false,
@@ -197,11 +197,13 @@ describe('<VenueMapView />', () => {
 
     fireEvent.press(screen.getByTestId('venue-map-view'))
 
+    rerender(getVenueMapViewComponent({}))
+
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
   })
 
   it('should center map on bottom sheet animation', async () => {
-    renderVenueMapView({})
+    render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId('venue-map-view'))
 
@@ -229,26 +231,24 @@ const mockCurrentRegion = {
 
 type RenderVenueMapViewType = Partial<ComponentProps<typeof VenueMapView>>
 
-function renderVenueMapView({
+function getVenueMapViewComponent({
   selectedVenue = null,
   venues = venuesFixture,
   venueTypeCode = VenueTypeCodeKey.VISUAL_ARTS,
   currentRegion = mockCurrentRegion,
 }: RenderVenueMapViewType) {
-  return render(
-    reactQueryProviderHOC(
-      <VenueMapView
-        height={700}
-        from="venueMap"
-        venues={venues}
-        selectedVenue={selectedVenue}
-        venueTypeCode={venueTypeCode}
-        setSelectedVenue={jest.fn()}
-        removeSelectedVenue={jest.fn()}
-        currentRegion={currentRegion}
-        setCurrentRegion={jest.fn()}
-        setLastRegionSearched={jest.fn()}
-      />
-    )
+  return reactQueryProviderHOC(
+    <VenueMapView
+      height={700}
+      from="venueMap"
+      venues={venues}
+      selectedVenue={selectedVenue}
+      venueTypeCode={venueTypeCode}
+      setSelectedVenue={jest.fn()}
+      removeSelectedVenue={jest.fn()}
+      currentRegion={currentRegion}
+      setCurrentRegion={jest.fn()}
+      setLastRegionSearched={jest.fn()}
+    />
   )
 }
