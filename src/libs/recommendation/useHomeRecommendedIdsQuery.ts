@@ -6,6 +6,7 @@ import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { eventMonitoring } from 'libs/monitoring'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type Parameters = {
@@ -20,6 +21,7 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
   const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
   const { isLoggedIn } = useAuthContext()
+  const netInfo = useNetInfoContext()
 
   return useQuery(
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
@@ -57,6 +59,6 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: isLoggedIn && !!userId }
+    { staleTime: 1000 * 60 * 5, enabled: isLoggedIn && !!userId && !!netInfo.isConnected }
   )
 }
