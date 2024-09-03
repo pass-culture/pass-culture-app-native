@@ -9,6 +9,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useAvailableCredit', () => {
   mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 

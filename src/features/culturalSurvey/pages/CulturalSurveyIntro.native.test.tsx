@@ -6,7 +6,7 @@ import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -23,6 +23,10 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {

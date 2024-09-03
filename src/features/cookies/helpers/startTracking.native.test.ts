@@ -10,6 +10,10 @@ jest.mock('libs/campaign')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('startTracking', () => {
   it('should disable tracking if enabled = false', () => {
     startTracking(false)

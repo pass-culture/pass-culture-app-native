@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
-import { render, screen, fireEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
@@ -12,6 +12,10 @@ jest.mock('libs/firebase/analytics/analytics')
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('DetailedAccessibilityInfo', () => {
   it('should redirect to acceslibre when clicking on the banner link', async () => {

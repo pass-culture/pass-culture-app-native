@@ -6,7 +6,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -24,6 +24,10 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('ExpiredOrLostID', () => {
   it('should render correctly', () => {

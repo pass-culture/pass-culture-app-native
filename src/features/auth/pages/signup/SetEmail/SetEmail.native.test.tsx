@@ -58,6 +58,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
     renderSetEmail()

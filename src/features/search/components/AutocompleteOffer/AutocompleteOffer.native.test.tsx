@@ -33,6 +33,10 @@ jest.mock('features/navigation/TabBar/routes')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('AutocompleteOffer component', () => {
   describe('With suggestion hits', () => {
     beforeEach(() => {

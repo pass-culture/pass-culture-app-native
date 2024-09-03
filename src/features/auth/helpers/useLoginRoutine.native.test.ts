@@ -2,7 +2,7 @@ import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState } from 'api/gen'
 import * as RefreshAccessTokenAPI from 'api/refreshAccessToken'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
-import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
+import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics'
@@ -49,6 +49,10 @@ const scheduleAccessTokenRemovalSpy = jest.spyOn(
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('useLoginRoutine', () => {
   beforeEach(async () => {

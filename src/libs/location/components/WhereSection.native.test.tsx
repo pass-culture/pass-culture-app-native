@@ -21,6 +21,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('WhereSection', () => {
   it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
     render(

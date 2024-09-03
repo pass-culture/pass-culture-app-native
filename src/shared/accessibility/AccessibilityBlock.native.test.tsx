@@ -11,6 +11,10 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('AccessibilityBlock', () => {
   it('should display AccesLibre banner when url is provided and enableAccesLibre FF activated', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)

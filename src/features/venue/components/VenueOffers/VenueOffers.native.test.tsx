@@ -93,6 +93,10 @@ jest.mock('@shopify/flash-list', () => {
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({

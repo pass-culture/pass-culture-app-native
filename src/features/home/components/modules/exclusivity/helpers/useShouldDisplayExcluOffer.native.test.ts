@@ -36,6 +36,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
     const { result } = renderHook(() => useShouldDisplayExcluOffer(undefined, offerId))

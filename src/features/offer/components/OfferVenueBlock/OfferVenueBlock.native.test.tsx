@@ -31,6 +31,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<OfferVenueBlock />', () => {
   it('should display title', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)

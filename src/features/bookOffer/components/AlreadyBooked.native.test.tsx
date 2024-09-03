@@ -26,6 +26,10 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<AlreadyBooked />', () => {
   it('should dismiss modal when clicking on cta', () => {
     render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)

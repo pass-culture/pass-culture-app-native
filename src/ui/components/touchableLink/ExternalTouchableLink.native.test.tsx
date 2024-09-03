@@ -36,6 +36,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {
     it('should open url with expected parameters (nominal case)', async () => {

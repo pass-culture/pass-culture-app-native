@@ -136,6 +136,10 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))

@@ -35,6 +35,10 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useOfferModal', () => {
   it('do not display anything when there is no modal to display', () => {
     const { result } = renderHook(() =>

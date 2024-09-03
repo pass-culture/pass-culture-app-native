@@ -5,7 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 // eslint-disable-next-line no-restricted-imports
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -22,6 +22,10 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {

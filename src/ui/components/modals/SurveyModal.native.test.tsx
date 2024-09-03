@@ -13,6 +13,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<SurveyModal />', () => {
   it('should redirect to survey when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })

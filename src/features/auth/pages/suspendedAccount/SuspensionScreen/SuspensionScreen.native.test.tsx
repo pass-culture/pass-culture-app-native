@@ -39,6 +39,10 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<SuspensionScreen />', () => {
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST

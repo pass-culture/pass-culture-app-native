@@ -14,6 +14,10 @@ const RESULTS = Permissions.RESULTS
 
 const hideModal = jest.fn()
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('AskNotificationsModal', () => {
   it('should render properly', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)

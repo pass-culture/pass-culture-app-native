@@ -18,6 +18,10 @@ const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('startTrackingAcceptedCookies', () => {
   it('should disable tracking when refused all cookies', () => {
     startTrackingAcceptedCookies([])

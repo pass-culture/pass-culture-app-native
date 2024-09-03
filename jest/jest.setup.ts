@@ -11,13 +11,11 @@ jest.unmock('react-query')
 jest.mock('libs/analytics/provider')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
+/* I have problem in web test files, it doesn't work when use it directly */
 jest.mock('libs/environment/env')
 
+// I have a problem with mockRNDeviceInfo doesn't recognize by TS
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
-
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 jest.unmock('react-native-modal')
 

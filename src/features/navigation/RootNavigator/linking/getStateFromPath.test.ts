@@ -17,6 +17,10 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('getStateFromPath()', () => {
   it('should return state for path accueil', async () => {
     const path = 'accueil'

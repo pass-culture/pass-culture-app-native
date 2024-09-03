@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
-import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
+import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { BatchUser } from 'libs/react-native-batch'
@@ -22,6 +22,10 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {

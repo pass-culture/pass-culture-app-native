@@ -2,10 +2,10 @@ import mockdate from 'mockdate'
 
 import {
   OfferResponseV2,
-  YoungStatusType,
-  SubscriptionStatus,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
+  SubscriptionStatus,
+  YoungStatusType,
 } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
@@ -39,6 +39,10 @@ const defaultParameters = {
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
