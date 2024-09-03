@@ -4,8 +4,6 @@ import { act } from 'react-test-renderer'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
-import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
@@ -15,19 +13,12 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
-const mockShowAppModal = jest.fn()
-jest
-  .spyOn(ShareAppWrapperModule, 'useShareAppContext')
-  .mockReturnValue({ showShareAppModal: mockShowAppModal })
-
-const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
 const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_requested'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
-    storage.clear(SHARE_APP_MODAL_STORAGE_KEY)
     storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)
   })
 
@@ -91,41 +82,6 @@ describe('CulturalSurveyIntro page', () => {
     fireEvent.press(FAQButton)
 
     expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
-  })
-
-  it('should show ShareAppModal when pressing Plus tard', async () => {
-    render(<CulturalSurveyIntro />)
-
-    const laterButton = screen.getByText('Plus tard')
-    await act(() => {
-      fireEvent.press(laterButton)
-    })
-
-    expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
-  })
-
-  it('should not show ShareAppModal when ShareAppModal already shown', async () => {
-    storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
-
-    render(<CulturalSurveyIntro />)
-    const laterButton = screen.getByText('Plus tard')
-    await act(() => {
-      fireEvent.press(laterButton)
-    })
-
-    expect(mockShowAppModal).not.toHaveBeenCalled()
-  })
-
-  it('should save that ShareAppModal was shown in storage', async () => {
-    render(<CulturalSurveyIntro />)
-    const laterButton = screen.getByText('Plus tard')
-    await act(() => {
-      fireEvent.press(laterButton)
-    })
-
-    const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
-
-    expect(hasSeenShareAppModal).toBe(true)
   })
 
   it('should increment number of times cultural survey has been seen', async () => {
