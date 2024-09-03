@@ -6,7 +6,7 @@ import { useUtmParams } from 'libs/utm'
 
 export const oldCampaigns = ['calendrieravent23', 'poissondavril24', 'saintvalentin24'] // campaigns that should no longer be triggered but visible in metabase
 
-export const setFirebaseParams = (
+export const setFirebaseParams = async (
   campaignDate?: Date | null,
   campaign?: string | null,
   content?: string | null,
@@ -14,12 +14,6 @@ export const setFirebaseParams = (
   medium?: string | null,
   source?: string | null
 ) => {
-  if (campaign && oldCampaigns.includes(campaign)) {
-    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
-      extra: { campaignDate, campaign, content, gen, medium, source },
-    })
-  }
-
   const ago24Hours = new Date()
   ago24Hours.setDate(ago24Hours.getDate() - 1)
 
@@ -32,7 +26,14 @@ export const setFirebaseParams = (
       traffic_medium: null,
       traffic_source: null,
     }
-    firebaseAnalytics.setDefaultEventParameters(marketingParams)
+    eventMonitoring.addBreadcrumb({ message: 'before setDefaultEventParameters to null' })
+    await firebaseAnalytics.setDefaultEventParameters(marketingParams)
+    eventMonitoring.addBreadcrumb({ message: 'after setDefaultEventParameters to null' })
+  }
+  if (campaign && oldCampaigns.includes(campaign)) {
+    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
+      extra: { campaignDate, campaign, content, gen, medium, source },
+    })
   }
 }
 

@@ -10,7 +10,7 @@ export const setMarketingParams = async (params: UTMParams['params'], acceptedCo
   // we use setTimeout to ensure local storage is updated before reading it
   setTimeout(async () => {
     if (acceptedCookies.includes(CookieNameEnum.TRAFFIC_CAMPAIGN)) {
-      setFirebaseParams(getCampaignDate(params.campaign_date))
+      await setFirebaseParams(getCampaignDate(params.campaign_date))
       await setUtmParameters(params)
     }
   })
