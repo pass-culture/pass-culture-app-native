@@ -55,16 +55,18 @@ export async function setUtmParameters(queryParams: QueryParams) {
   if (campaign || content || gen || medium || source) {
     await storeUtmParams({ campaign, content, gen, medium, source })
   }
-  if (campaign && oldCampaigns.includes(campaign)) {
-    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
-      extra: { campaignDate, campaign, content, gen, medium, source },
-    })
-  }
-  firebaseAnalytics.setDefaultEventParameters({
+  eventMonitoring.addBreadcrumb({ message: 'before setDefaultEventParameters to campaign' })
+  await firebaseAnalytics.setDefaultEventParameters({
     traffic_campaign: campaign,
     traffic_content: content,
     traffic_gen: gen,
     traffic_medium: medium,
     traffic_source: source,
   })
+  eventMonitoring.addBreadcrumb({ message: 'after setDefaultEventParameters to campaign' })
+  if (campaign && oldCampaigns.includes(campaign)) {
+    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
+      extra: { campaignDate, campaign, content, gen, medium, source },
+    })
+  }
 }
