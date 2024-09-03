@@ -33,6 +33,12 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.universalGet<FeatureCollection<Point, Properties>>(

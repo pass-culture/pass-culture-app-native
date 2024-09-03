@@ -11,6 +11,12 @@ const visible = true
 const hideModal = jest.fn()
 const shareApp = jest.spyOn(Share, 'shareApp').mockResolvedValue()
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('ShareAppModal', () => {
   it('should match snapshot', () => {
     render(

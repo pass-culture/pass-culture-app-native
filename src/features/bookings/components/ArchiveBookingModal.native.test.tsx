@@ -45,6 +45,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {
     const onDismiss = jest.fn()

@@ -59,6 +59,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('FavoritesResults component', () => {
   it('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks

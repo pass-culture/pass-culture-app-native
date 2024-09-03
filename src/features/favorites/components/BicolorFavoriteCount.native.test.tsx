@@ -15,6 +15,12 @@ jest.mock('features/auth/context/AuthContext')
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe.each`
   v2       | component
   ${false} | ${'BicolorFavoriteCount'}

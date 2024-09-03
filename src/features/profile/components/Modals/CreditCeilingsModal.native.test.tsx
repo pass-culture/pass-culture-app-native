@@ -13,6 +13,12 @@ const domainsCreditWithoutPhysicalCeiling = {
   physical: null,
 }
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<CreditCeilingsModal/>', () => {
   it('should render correctly', async () => {
     render(

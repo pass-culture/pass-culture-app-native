@@ -44,6 +44,12 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('SetPhoneNumber', () => {
   it('should match snapshot without modal appearance', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({

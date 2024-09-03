@@ -50,6 +50,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('PersonalData', () => {
   beforeEach(() => {
     mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {

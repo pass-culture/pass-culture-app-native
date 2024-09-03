@@ -26,6 +26,12 @@ const trackEmailChangeContentFixture: EmailUpdateStatusResponse = {
   hasRecentlyResetPassword: false,
 }
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('TrackEmailChangeContent', () => {
   it('should open mail app when pressing first step and first step is active', async () => {
     mockServer.getApi<EmailUpdateStatusResponse>(

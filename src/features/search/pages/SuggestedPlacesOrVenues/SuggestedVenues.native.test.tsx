@@ -28,6 +28,12 @@ jest.mock('libs/place/useVenues', () => ({
 
 const mockSetSelectedVenue = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<SuggestedVenues/>', () => {
   it('should call setSelectedVenue when selecting a venue', () => {
     mockVenues = mockedSuggestedVenues

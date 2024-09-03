@@ -14,6 +14,12 @@ jest.mock('@react-navigation/bottom-tabs', () =>
   jest.requireActual('@react-navigation/bottom-tabs')
 )
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {
     navigationRender()

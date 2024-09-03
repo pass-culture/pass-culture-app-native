@@ -8,6 +8,15 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 jest.unmock('react-query')
 
 /* See the corresponding mocks in libs/analytics/__mocks__ */
+/* Tests passed but there is an error in web files */
+/*console.error
+[2021-07-01T00:00:00.000Z]  @firebase/analytics: FirebaseError: Analytics: Dynamic config fetch failed: [400] API key not valid. Please pass a valid API key. (analytics/config-fetch-failed).
+  code: 'analytics/config-fetch-failed',
+  customData: {
+    httpStatus: 400,
+    responseMessage: 'API key not valid. Please pass a valid API key.'
+  }
+}*/
 jest.mock('libs/analytics/provider')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
@@ -18,12 +27,6 @@ jest.mock('libs/environment/env')
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 jest.unmock('react-native-modal')
-
-jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
-  return function createAnimatedComponent(Component: unknown) {
-    return Component
-  }
-})
 
 jest.mock('@gorhom/bottom-sheet', () => {
   const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default

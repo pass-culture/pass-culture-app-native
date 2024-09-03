@@ -28,6 +28,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
     storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)
