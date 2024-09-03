@@ -2,7 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoriesResponseModelv2, VenueResponse, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoriesResponseModelv2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -14,6 +14,19 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
 
 jest.mock('features/search/context/SearchWrapper')
 
