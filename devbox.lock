@@ -1,54 +1,6 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "android-tools@latest": {
-      "last_modified": "2024-07-07T16:08:25Z",
-      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#android-tools",
-      "source": "devbox-search",
-      "version": "35.0.1",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/500mgsmj2z2vgdf02lvzm4pnri06pv0l-android-tools-35.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/500mgsmj2z2vgdf02lvzm4pnri06pv0l-android-tools-35.0.1"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/xwy6jk70x4sj3mbadvd4rx82mqyhfy4d-android-tools-35.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/xwy6jk70x4sj3mbadvd4rx82mqyhfy4d-android-tools-35.0.1"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/r38xjilx7rd16z3lmnhz421clm8n62xl-android-tools-35.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/r38xjilx7rd16z3lmnhz421clm8n62xl-android-tools-35.0.1"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/k2r8z4jd7nxnpv1b4q4l3dp0g746wk11-android-tools-35.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/k2r8z4jd7nxnpv1b4q4l3dp0g746wk11-android-tools-35.0.1"
-        }
-      }
-    },
     "git@latest": {
       "last_modified": "2024-07-31T08:48:38Z",
       "resolved": "github:NixOS/nixpkgs/c3392ad349a5227f4a3464dce87bcc5046692fce#git",
@@ -118,50 +70,6 @@
             }
           ],
           "store_path": "/nix/store/zlkbk9a9l6jw9ghaknlyk6l73q263m44-git-2.45.2"
-        }
-      }
-    },
-    "jdk11@latest": {
-      "last_modified": "2024-07-07T16:08:25Z",
-      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#jdk11",
-      "source": "devbox-search",
-      "version": "11.0.23+9",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "path": "/nix/store/9dn0hx7wghhdchxhjjf4xclfkdn60xv1-zulu-ca-jdk-11.0.22",
-              "default": true
-            }
-          ]
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/6ycdjkm7jnfskna370aw8mba84b7nnjy-openjdk-11.0.23+9",
-              "default": true
-            },
-            {
-              "name": "debug",
-              "path": "/nix/store/50gcn7636m8jjfl3xhm1gx95awyigi8y-openjdk-11.0.23+9-debug"
-            }
-          ],
-          "store_path": "/nix/store/6ycdjkm7jnfskna370aw8mba84b7nnjy-openjdk-11.0.23+9"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/5vh62610mfsv9a6q00r0dg9d0nb2dd94-openjdk-11.0.23+9",
-              "default": true
-            },
-            {
-              "name": "debug",
-              "path": "/nix/store/gdg55cskq5y131vw0hqbdq2m4pkj2ln0-openjdk-11.0.23+9-debug"
-            }
-          ],
-          "store_path": "/nix/store/5vh62610mfsv9a6q00r0dg9d0nb2dd94-openjdk-11.0.23+9"
         }
       }
     },
