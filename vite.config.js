@@ -49,7 +49,6 @@ export default ({ mode }) => {
         name: 'treat-js-files-as-jsx',
         async transform(code, id) {
           if (!libsThatHaveJSFilesContainingJSX.some((lib) => id.includes(lib))) return null
-          // Use the exposed transform from vite, instead of directly transforming with esbuild
           return transformWithEsbuild(code, id, {
             loader: 'jsx',
             jsx: 'automatic',
@@ -68,7 +67,6 @@ export default ({ mode }) => {
             TWITTER_SITE: packageJson.author.twitter,
             META_NO_INDEX:
               env.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
-            CHUNK_PROTECTION_SCRIPT: '', // Do we need?
             PUBLIC_URL: isProdMode ? env.APP_PUBLIC_URL : undefined,
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,
@@ -76,18 +74,9 @@ export default ({ mode }) => {
             COMMIT_HASH: env.COMMIT_HASH,
             VERSION: env.VERSION,
           },
-          tags: [
-            {
-              injectTo: 'body-prepend',
-              tag: 'div',
-              attrs: {
-                id: 'tag',
-              },
-            },
-          ],
         },
       }),
-      // Put the Sentry vite plugin after all other plugins
+      // Put the Sentry vite plugin after all other plugins as specified in plugin's documentation
       sentryVitePlugin({
         url: 'https://sentry.passculture.team/',
         org: 'sentry',
@@ -100,14 +89,8 @@ export default ({ mode }) => {
           },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
-          name:
-            env.ENV === 'testing'
-              ? `${packageJson.version}-web-${env.COMMIT_HASH}`
-              : `${packageJson.version}-web`,
-          dist:
-            env.ENV === 'testing'
-              ? `${packageJson.build}-web-${env.COMMIT_HASH}`
-              : `${packageJson.build}-web`,
+          name: `${packageJson.version}-web-${env.COMMIT_HASH}`,
+          dist: `${packageJson.build}-web-${env.COMMIT_HASH}`,
           deploy: {
             env: isDevMode ? 'development' : env.ENV,
             name: isDevMode ? 'development' : env.ENV,
@@ -127,7 +110,7 @@ export default ({ mode }) => {
         },
         { find: 'react-native-linear-gradient', replacement: 'react-native-web-linear-gradient' },
         {
-          find: /^react-native-fast-image$/,
+          find: 'react-native-fast-image',
           replacement: '/src/libs/react-native-web-fast-image',
         },
         {
@@ -142,17 +125,7 @@ export default ({ mode }) => {
       include: ['react-native', 'react-native-web'],
       esbuildOptions: {
         jsx: 'transform',
-        resolveExtensions: [
-          '.web.js',
-          '.web.ts',
-          '.web.tsx',
-          '.js',
-          '.jsx',
-          '.json',
-          '.ts',
-          '.tsx',
-          '.mjs',
-        ],
+        resolveExtensions: allExtensions,
         loader: {
           '.js': 'jsx',
         },
@@ -164,7 +137,6 @@ export default ({ mode }) => {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:
         transformMixedEsModules: true,
-        strictRequires: true, // safest setting 'true', best performance: 'auto'
         extensions: allExtensions,
       },
     },
