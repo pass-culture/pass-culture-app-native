@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
-import legacy from '@vitejs/plugin-legacy'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [
@@ -88,9 +87,6 @@ export default ({ mode }) => {
           ],
         },
       }),
-      // legacy({
-      //   targets: ['defaults', 'not IE 11'],
-      // }),
       // Put the Sentry vite plugin after all other plugins
       sentryVitePlugin({
         url: 'https://sentry.passculture.team/',

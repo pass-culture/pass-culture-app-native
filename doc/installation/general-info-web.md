@@ -2,7 +2,7 @@
 
 When this documentation was written, the project was using vite 5.3.1 and react-native-web 0.18.10.
 Our web app uses [react-native-web](https://necolas.github.io/react-native-web/docs/) as a base to generate a web app.
-Originally, we used webpack to generate the bundle, but in 2024, we decided to use vite for its simplicity and performances.
+We decided to use vite for its simplicity and performances.
 In this guide, you will find explanations of the main aspects of the vite configuration.
 
 ## The vite config
@@ -19,7 +19,7 @@ Let's start by breaking down the `vite.config.js` file.
 One of the most important aspects to understanding vite is that depending on if you serve or build, different technologies are used:
 
 - when you serve the app, the underlying technology is `esbuild` (written in Go)
-- vite serves source code over native ESM, allowing much better HMR than with webpack.
+- vite serves source code over native ESM, very performant HMR.
 - when you build the app, Rollup is used (maybe some day, Rolldown, written in Rust will be used instead)
 
 ### Defining environment variables
@@ -68,7 +68,7 @@ In this file, we receive variables from `vite.config.js`.
 We can use the variables with this syntax: `<%- VARIABLE %>`.
 For example, we set the page's title this way:
 `<meta name="title" content="<%- TITLE %>" />``
-It is in this `public/index.html` file that we also set the robots meta tag, link towards icons, the manifest file, fonts, the appsflyer sdk and more. For the most part, this file was kept as is when transitioning from webpack to vite.
+It is in this `public/index.html` file that we also set several meta tags.
 
 ## Building locally
 
@@ -88,11 +88,15 @@ There are certain number of optimizations/improvements and things that were done
 - PWA (it seems that vite generates a manifest but we should make sure the service worker is functioning)
 - Web vitals
 - Profiling tools (maybe vite offers something)
-- BundleAnalyzerPlugin
+- BundleAnalyzerPlugin and update `doc/development/optimization.md`
 - DuplicatesPlugin
-- It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react`
+- It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react` (for development mode)
 - Try to solve warnings on `vite serve` and `vite build`
-- Using vite's chunking technology to increase initial loading time of the web app
+- Using vite's chunking technology to reduce the initial loading time of the web app
+- Remove `deprecated-react-native-prop-types`
+- For the CI Guild: either include all the build commands (for the web) in the `package.json` (which means adding a command for vite preview) or remove them and create a separate script
+- Better handling (allowing empty string instead of making it optional) of `API_BASE_URL` in yup scheme (`src/libs/environment/schema.ts`)
+- Test if "Push debug log for testing" works (in script `.github/workflows/dev_on_workflow_web_deploy.yml`)
 
 ## Troubleshooting (issues meet when setting up vite)
 
@@ -101,10 +105,7 @@ There are certain number of optimizations/improvements and things that were done
 To avoid the circular dependency between chunks, we can simply avoid using the index. For example, in:
 `src/libs/firebase/firestore/getCookiesLastUpdate.ts`
 
-```ts
-// BEFORE:
-import { env } from 'libs/environment' // Using index.ts
-
-// AFTER:
-import { env } from 'libs/environment/env' // Direct import
+```diff
+-import { env } from 'libs/environment' // Using index.ts
++import { env } from 'libs/environment/env' // Direct import
 ```

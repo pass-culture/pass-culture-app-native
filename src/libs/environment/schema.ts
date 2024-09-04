@@ -64,7 +64,7 @@ export const EnvironmentSchema = yup.object({
   FRAUD_EMAIL_ADDRESS: yup.string().required(),
   URL_PREFIX: yup.string().required(),
   WEBAPP_V2_DOMAIN: yup.string().required(),
-  // Below envs are injected by webpack and are defined only on the Webapp
+  // Below envs are injected by vite and are defined only on the Webapp
   COMMIT_HASH: yup.string().optional(),
   BRANCH: yup.string().optional(),
   LAST_COMMIT_DATETIME: yup.string().optional(),
