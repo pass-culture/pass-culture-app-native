@@ -2,7 +2,7 @@
 
 ### Install global tools
 
-[Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
+#### Install `nix` package manager
 
 If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail
 
@@ -12,11 +12,15 @@ In that case, you will need to install Nix as follows
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install  --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
 ```
 
-[Install DirEnv](https://direnv.net/)
+If you want more information or if you have a problem you can consult [`nix` package manager installation](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
+
+#### Install DirEnv
 
 ```sh
 brew install direnv
 ```
+
+If you want more information or if you have a problem you can consult [DirEnv installation](https://direnv.net/)
 
 Then please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
 
