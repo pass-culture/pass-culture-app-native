@@ -370,5 +370,4 @@ class MswMockServer
     this.universalPatch(fullUrl, options)
   }
 }
-if (!env.API_BASE_URL) throw new Error('this should never be undefined, check your mock')
 export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native`)

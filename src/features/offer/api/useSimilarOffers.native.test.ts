@@ -85,8 +85,6 @@ describe('useSimilarOffers', () => {
       )
 
       await waitFor(() => {
-        if (!env.API_BASE_URL) throw new Error('this should never be undefined, check your mock')
-
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
           `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA`,
@@ -120,8 +118,6 @@ describe('useSimilarOffers', () => {
       )
 
       await waitFor(() => {
-        if (!env.API_BASE_URL) throw new Error('this should never be undefined, check your mock')
-
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
           `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA`,
