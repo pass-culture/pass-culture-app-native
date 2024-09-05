@@ -32,11 +32,11 @@
     ]
   },
   "scripts": {
-    "android": "react-native run-android --variant=developmentDebug --appId=app.passculture.testing",
-    "android:prod": "react-native run-android --variant=productionDebug --appId=app.passculture.webapp",
-    "android:staging": "react-native run-android --variant=stagingDebug --appId=app.passculture.staging",
-    "android:testing": "react-native run-android --variant=apptestingDebug --appId=app.passculture.testing",
-    "android:development": "react-native run-android --variant=developmentDebug --appId=app.passculture.testing",
+    "android": "react-native run-android",
+    "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
+    "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
+    "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
+    "android:development": "yarn android --variant=developmentDebug --appId=app.passculture.testing",
     "appcenter:install": "./scripts/appcenter-download-release.sh",
     "build": "NODE_OPTIONS=--openssl-legacy-provider SHOW_DUPLICATES_PLUGIN=${SHOW_DUPLICATES_PLUGIN:-true} node web/scripts/build.js",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook --static-dir ./public",
