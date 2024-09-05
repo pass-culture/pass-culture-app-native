@@ -57,7 +57,7 @@ export const ArtistBody: FunctionComponent = () => {
         onScroll={onScroll}
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
-          <ArtistTitle>{mainArtistName}</ArtistTitle>
+          <ArtistTitle isWeb={isWeb}>{mainArtistName}</ArtistTitle>
           <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={mainArtistName} />
         </ViewGap>
       </ContentContainer>
@@ -85,6 +85,7 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
   overflow: 'visible',
 })
 
-const ArtistTitle = styled(Typo.Title1)(({ theme }) => ({
-  marginLeft: theme.contentPage.marginHorizontal,
+const ArtistTitle = styled(Typo.Title1)<{ isWeb: boolean }>(({ theme, isWeb }) => ({
+  marginLeft: isWeb ? theme.contentPage.marginHorizontal : undefined,
+  alignSelf: isWeb ? 'start' : 'center',
 }))
