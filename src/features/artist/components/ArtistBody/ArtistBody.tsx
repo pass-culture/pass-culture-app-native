@@ -30,14 +30,14 @@ Curabitur consectetur sapien et convallis fringilla. Suspendisse consequat nec s
 export const ArtistBody: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
-  const theme = useTheme()
+  const { appBarHeight, isDesktopViewport } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
 
   const { data: offer } = useOffer({ offerId: params.fromOfferId })
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { top } = useSafeAreaInsets()
-  const headerHeight = theme.appBarHeight + top
+  const headerHeight = appBarHeight + top
 
   if (!offer) return null
 
@@ -66,7 +66,7 @@ export const ArtistBody: FunctionComponent = () => {
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-          <ArtistTitle isWeb={isWeb}>{mainArtistName}</ArtistTitle>
+            <ArtistTitle isDesktopViewport={isDesktopViewport}>{mainArtistName}</ArtistTitle>
             <Description gap={1}>
               <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
               <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
@@ -101,9 +101,10 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
   overflow: 'visible',
 })
 
-const ArtistTitle = styled(Typo.Title1)<{ isWeb: boolean }>(({ theme, isWeb }) => ({
-  marginLeft: isWeb ? theme.contentPage.marginHorizontal : undefined,
-  alignSelf: isWeb ? 'start' : 'center',
+const ArtistTitle = styled(Typo.Title1)<{ isDesktopViewport?: boolean }>(
+  ({ theme, isDesktopViewport }) => ({
+    marginLeft: isDesktopViewport ? theme.contentPage.marginHorizontal : undefined,
+    alignSelf: isDesktopViewport ? 'start' : 'center',
   })
 )
 
