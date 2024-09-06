@@ -14,9 +14,15 @@ export const Pastille: React.FunctionComponent<AccessibleRectangleIcon> = ({
   testID,
   style,
 }) => {
+  const getRx = () => {
+    if (typeof width === 'number') {
+      return width === height ? width * 0.5 : width / 3
+    }
+    return 7
+  }
+
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const fill = color || gradientFill
-  const rx = typeof width === 'string' || width !== height ? 7 : width * 0.5
   return (
     <AccessibleSvg
       width={width}
@@ -31,7 +37,7 @@ export const Pastille: React.FunctionComponent<AccessibleRectangleIcon> = ({
           <Stop offset="100%" stopColor="#320096" />
         </LinearGradient>
       </Defs>
-      <Rect fill={fill} fillRule="evenodd" width={width} height={height} x={0} y={0} rx={rx} />
+      <Rect fill={fill} fillRule="evenodd" width={width} height={height} x={0} y={0} rx={getRx()} />
     </AccessibleSvg>
   )
 }
