@@ -10,6 +10,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+jest.mock('libs/firebase/analytics/analytics')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -57,5 +58,12 @@ describe('<ArtistBody />', () => {
     fireEvent.press(backButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display artist description', () => {
+    render(reactQueryProviderHOC(<ArtistBody />))
+
+    expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
+    expect(screen.getByText(/Lorem ipsum dolor/i)).toBeOnTheScreen()
   })
 })
