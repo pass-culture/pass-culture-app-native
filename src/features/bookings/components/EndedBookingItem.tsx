@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { ComponentProps, FunctionComponent, useCallback, useMemo, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
@@ -25,10 +26,24 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Pastille } from 'ui/svg/icons/Pastille'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+function withSmallBadge<P extends object>(Component: FunctionComponent<P>) {
+  return function ComponentWithSmallBadge(props: P) {
+    return (
+      <View>
+        <Component {...props} />
+        <SmallBadge />
+      </View>
+    )
+  }
+}
+
+const SmallBadgedButton = withSmallBadge<ComponentProps<typeof RoundedButton>>(RoundedButton)
 
 export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
@@ -163,6 +178,8 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     reactionCategories.categories.includes(subCategory.nativeCategoryId) &&
     !cancellationDate
 
+  const ReactionButton = userReaction === null ? SmallBadgedButton : RoundedButton
+
   return (
     <Container>
       <ContentContainer
@@ -195,7 +212,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         </ShareContainer>
         {canReact ? (
           <ReactionContainer>
-            <RoundedButton
+            <ReactionButton
               iconName="like"
               Icon={getCustomReactionIcon(userReaction)}
               onPress={showReactionModal}
@@ -285,3 +302,14 @@ const ShareContainer = styled.View(({ theme }) => ({
 const ReactionContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
 }))
+
+const SmallBadge = styled(Pastille).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  width: 8,
+  height: 8,
+  testID: 'smallBadge',
+}))({
+  position: 'absolute',
+  top: 2,
+  right: 2,
+})

@@ -240,6 +240,18 @@ describe('EndedBookingItem', () => {
       }
     )
 
+    it('should display a small badge when offer is waiting for a reaction', async () => {
+      renderEndedBookingItem(
+        {
+          ...bookingsSnap.ended_bookings[1],
+          userReaction: null,
+        },
+        RemoteConfigProvider
+      )
+
+      expect(await screen.findByTestId('smallBadge')).toBeOnTheScreen()
+    })
+
     it('should open reaction modal on press', async () => {
       renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
