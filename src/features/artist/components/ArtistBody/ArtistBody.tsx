@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
+import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { Artist } from 'features/artist/pages/Artist'
@@ -31,7 +32,7 @@ type Props = {
 export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategory }) => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
-  const { appBarHeight, isDesktopViewport } = useTheme()
+  const { appBarHeight } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
 
   const { top } = useSafeAreaInsets()
@@ -58,7 +59,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-            <ArtistTitle isDesktopViewport={isDesktopViewport}>{name}</ArtistTitle>
+            <ArtistHeader name={name} />
             <Description gap={1}>
               <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
               <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
@@ -92,13 +93,6 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
 })({
   overflow: 'visible',
 })
-
-const ArtistTitle = styled(Typo.Title1)<{ isDesktopViewport?: boolean }>(
-  ({ theme, isDesktopViewport }) => ({
-    marginLeft: isDesktopViewport ? theme.contentPage.marginHorizontal : undefined,
-    alignSelf: isDesktopViewport ? 'start' : 'center',
-  })
-)
 
 const Description = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

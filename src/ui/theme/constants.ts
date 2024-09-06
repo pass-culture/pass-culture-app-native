@@ -20,6 +20,11 @@ export const SMALL_BUTTON_HEIGHT = getSpacing(10)
 export const EXTRA_SMALL_BUTTON_HEIGHT = getSpacing(8)
 export const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
 
+//avatars
+export const AVATAR_SMALL = getSpacing(8)
+export const AVATAR_MEDIUM = getSpacing(18)
+export const AVATAR_LARGE = getSpacing(26)
+
 // icons used for Secondary buttons or bigger should be imported with STANDARD_ICON_SIZE
 export const STANDARD_ICON_SIZE = getSpacing(8)
 // icons used for secondary buttons or bigger should be imported with SMALL_ICON_SIZE
