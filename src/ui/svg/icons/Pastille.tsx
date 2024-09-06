@@ -16,7 +16,7 @@ export const Pastille: React.FunctionComponent<AccessibleRectangleIcon> = ({
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const fill = color || gradientFill
-  const rx = typeof width === 'number' ? width / 3 : 7
+  const rx = typeof width === 'string' || width !== height ? 7 : width * 0.5
   return (
     <AccessibleSvg
       width={width}
