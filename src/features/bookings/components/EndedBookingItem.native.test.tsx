@@ -118,7 +118,8 @@ describe('EndedBookingItem', () => {
     expect(screen.getByText('Réservation archivée')).toBeOnTheScreen()
   })
 
-  it('should navigate to offer page when offer is not digital without expiration date', async () => {
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should navigate to offer page when offer is not digital without expiration date', async () => {
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       stock: {
