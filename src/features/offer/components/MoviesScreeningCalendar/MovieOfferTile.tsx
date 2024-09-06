@@ -15,6 +15,7 @@ import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useO
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -45,6 +46,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   itemWidth,
 }) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
+  const scrollToAnchor = useScrollToAnchor()
 
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(String(date))],
@@ -105,6 +107,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           <NextScreeningButton
             date={nextScreeningDate}
             onPress={() => {
+              scrollToAnchor('venue-calendar')
               setSelectedDate(nextScreeningDate)
               scrollToMiddleElement(nextDateIndex)
             }}

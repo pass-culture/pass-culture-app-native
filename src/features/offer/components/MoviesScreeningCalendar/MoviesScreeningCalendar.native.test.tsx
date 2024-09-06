@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
-import React from 'react'
+import React, { createRef } from 'react'
+import { ScrollView } from 'react-native'
 
 import {
   OfferResponseV2,
@@ -16,6 +17,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -127,7 +129,14 @@ const renderMoviesScreeningCalendar = ({
   isDesktopViewport?: boolean
   venueOffers: VenueOffers
 }) => {
-  render(reactQueryProviderHOC(<MoviesScreeningCalendar venueOffers={venueOffers} />), {
-    theme: { isDesktopViewport },
-  })
+  render(
+    reactQueryProviderHOC(
+      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+        <MoviesScreeningCalendar venueOffers={venueOffers} />
+      </AnchorProvider>
+    ),
+    {
+      theme: { isDesktopViewport },
+    }
+  )
 }

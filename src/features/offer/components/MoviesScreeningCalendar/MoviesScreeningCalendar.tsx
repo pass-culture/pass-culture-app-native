@@ -23,6 +23,7 @@ import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { getDates } from 'shared/date/getDates'
 import { Offer } from 'shared/offer/types'
+import { Anchor } from 'ui/components/anchor/Anchor'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -158,16 +159,18 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   return (
     <React.Fragment>
-      <MovieCalendar
-        dates={nextFifteenDates}
-        selectedDate={selectedDate}
-        onTabChange={setSelectedDate}
-        flatListRef={flatListRef}
-        flatListWidth={flatListWidth}
-        onFlatListLayout={onFlatListLayout}
-        itemWidth={itemWidth}
-        onItemLayout={onItemLayout}
-      />
+      <Anchor name="venue-calendar">
+        <MovieCalendar
+          dates={nextFifteenDates}
+          selectedDate={selectedDate}
+          onTabChange={setSelectedDate}
+          flatListRef={flatListRef}
+          flatListWidth={flatListWidth}
+          onFlatListLayout={onFlatListLayout}
+          itemWidth={itemWidth}
+          onItemLayout={onItemLayout}
+        />
+      </Anchor>
       <Spacer.Column numberOfSpaces={4} />
       <Animated.View
         onLayout={({ nativeEvent }) => {

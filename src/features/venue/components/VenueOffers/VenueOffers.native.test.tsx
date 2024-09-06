@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
-import React from 'react'
+import React, { createRef } from 'react'
+import { ScrollView } from 'react-native'
 import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
@@ -20,6 +21,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -243,7 +245,9 @@ const renderVenueOffers = ({
 }) => {
   return render(
     reactQueryProviderHOC(
-      <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+        <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+      </AnchorProvider>
     )
   )
 }
