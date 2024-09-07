@@ -32,7 +32,11 @@ One of the most important aspects to understanding vite is that depending on if 
 
 For our vite configuration to work in different environments, we need to define a certain number of variables that will be used throughout the config.
 
-First of all we set `global: 'window'`, then we use `loadEnv` offered by vite to load a .env file and set it to `'process.env': env` to make these variables usable in our app.
+First of all we set `global: 'window'`, then we use `loadEnv` offered by vite to load a .env file and set it to `'process.env': whiteListEnv(env)` to make these variables usable in our app.
+
+The `whiteListEnv` simply iterates over a list of authorized variables (the ones in `.env`), eliminating any variables that might be present in the CI, potentially exposing secrets.
+
+Vite offers a security mechanism by only exposing variables with the prefix `VITE_`, but since we didn't want to rename all the variables in the different `.env` and in the app, we had to find another way.
 
 Lastly, we have to define `__DEV__`.
 

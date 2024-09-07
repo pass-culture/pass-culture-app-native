@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
+import { whiteListEnv } from './whiteListEnv'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [
@@ -39,7 +40,7 @@ export default ({ mode }) => {
   return defineConfig({
     define: {
       global: 'window',
-      'process.env': env,
+      'process.env': whiteListEnv(env), // Do not expose the global object directly
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
