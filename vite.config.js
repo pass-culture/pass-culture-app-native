@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
@@ -122,7 +121,7 @@ export default ({ mode }) => {
         { find: 'react-native', replacement: 'react-native-web' },
         {
           find: 'react-native-email-link',
-          replacement: resolve(__dirname, 'src/libs/react-native-email-link'),
+          replacement: '/src/libs/react-native-email-link',
         },
         { find: 'react-native-linear-gradient', replacement: 'react-native-web-linear-gradient' },
         {
