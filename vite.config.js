@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
+import { execSync } from 'child_process'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [
@@ -20,6 +21,18 @@ const libsThatHaveJSFilesContainingJSX = [
 ]
 
 const packageJson = require('./package.json')
+
+function getGitInfo(command) {
+  try {
+    return execSync(command).toString().trim()
+  } catch (e) {
+    console.error(`Failed to execute command: ${command}`, e)
+    return 'unknown'
+  }
+}
+
+const branch = getGitInfo('git rev-parse --abbrev-ref HEAD')
+const commitHash = getGitInfo('git rev-parse --short HEAD')
 
 export default ({ mode }) => {
   const isDevMode = mode === 'development'
@@ -41,6 +54,8 @@ export default ({ mode }) => {
     define: {
       global: 'window',
       'process.env': whiteListEnv(env), // Do not expose the global object directly
+      'process.env.COMMIT_HASH': JSON.stringify(commitHash),
+      'process.env.BRANCH': JSON.stringify(branch),
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
@@ -64,6 +79,7 @@ export default ({ mode }) => {
           data: {
             TITLE: packageJson.author.name,
             DESCRIPTION: packageJson.description,
+            VERSION: packageJson.version,
             AUTHOR: packageJson.author.name,
             TWITTER_SITE: packageJson.author.twitter,
             META_NO_INDEX:
@@ -72,8 +88,7 @@ export default ({ mode }) => {
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,
             APPS_FLYER_WEB_PUBLIC_KEY: env.APPS_FLYER_WEB_PUBLIC_KEY,
-            COMMIT_HASH: env.COMMIT_HASH,
-            VERSION: env.VERSION,
+            COMMIT_HASH: commitHash,
           },
         },
       }),
@@ -90,8 +105,8 @@ export default ({ mode }) => {
           },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
-          name: `${packageJson.version}-web-${env.COMMIT_HASH}`,
-          dist: `${packageJson.build}-web-${env.COMMIT_HASH}`,
+          name: `${packageJson.version}-web-${commitHash}`,
+          dist: `${packageJson.build}-web-${commitHash}`,
           deploy: {
             env: isDevMode ? 'development' : env.ENV,
             name: isDevMode ? 'development' : env.ENV,
