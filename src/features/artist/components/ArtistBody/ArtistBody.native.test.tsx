@@ -5,11 +5,14 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+jest.mock('libs/firebase/analytics/analytics')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -44,18 +47,46 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+const mockArtist = {
+  name: 'Céline Dion',
+  bio: 'chanteuse',
+}
+
 describe('<ArtistBody />', () => {
   it('should display only the main artist when there are several artists on header title', () => {
-    render(reactQueryProviderHOC(<ArtistBody />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
 
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
   })
 
   it('should call goBack when pressing the back button', () => {
-    render(reactQueryProviderHOC(<ArtistBody />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
     const backButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(backButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display artist description', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
+
+    expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
+    expect(screen.getByText('chanteuse')).toBeOnTheScreen()
   })
 })

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { Artist } from 'features/artist/pages/Artist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -42,6 +43,17 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
+
 describe('<Artist />', () => {
   useRoute.mockReturnValue({
     params: {
@@ -58,6 +70,27 @@ describe('<Artist />', () => {
       render(reactQueryProviderHOC(<Artist />))
 
       expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
+    })
+
+    it('should not display artist page content when there is no artist', () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          extraData: undefined,
+        },
+      })
+      render(reactQueryProviderHOC(<Artist />))
+
+      expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
+    })
+
+    it('should not display artist page content when offer not found', () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: undefined,
+      })
+      render(reactQueryProviderHOC(<Artist />))
+
+      expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
     })
   })
 

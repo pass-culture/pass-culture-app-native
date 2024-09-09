@@ -5,47 +5,47 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { OfferResponseV2 } from 'api/gen'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
+import { Artist } from 'features/artist/pages/Artist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useOffer } from 'features/offer/api/useOffer'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { useSubcategoriesMapping } from 'libs/subcategories'
+import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
-export const ArtistBody: FunctionComponent = () => {
+const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
+
+type Props = {
+  offer: OfferResponseV2
+  artist: Artist
+  subcategory: Subcategory
+}
+
+export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategory }) => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
-  const theme = useTheme()
+  const { appBarHeight, isDesktopViewport } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
 
-  const { data: offer } = useOffer({ offerId: params.fromOfferId })
-  const subcategoriesMapping = useSubcategoriesMapping()
-
   const { top } = useSafeAreaInsets()
-  const headerHeight = theme.appBarHeight + top
+  const headerHeight = appBarHeight + top
 
-  if (!offer) return null
-
-  const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const artists = getOfferArtists(subcategory.categoryId, offer)
-  const mainArtistName = artists?.split(',')[0] ?? ''
-
-  if (mainArtistName === '') return null
+  const { name, bio } = artist
 
   return (
     <Container>
-      <ArtistWebMetaHeader artist={mainArtistName} />
+      <ArtistWebMetaHeader artist={name} />
       {/* On web header is called before Body for accessibility navigate order */}
       {isWeb ? (
         <ContentHeader
-          headerTitle={mainArtistName}
+          headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />
@@ -57,15 +57,23 @@ export const ArtistBody: FunctionComponent = () => {
         onScroll={onScroll}
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
-          <ArtistTitle isWeb={isWeb}>{mainArtistName}</ArtistTitle>
-          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={mainArtistName} />
+          <ViewGap gap={6}>
+            <ArtistTitle isDesktopViewport={isDesktopViewport}>{name}</ArtistTitle>
+            <Description gap={1}>
+              <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
+              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+                {bio}
+              </CollapsibleText>
+            </Description>
+          </ViewGap>
+          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={name} />
         </ViewGap>
       </ContentContainer>
 
       {/* On native header is called after Body to implement the BlurView for iOS */}
       {isWeb ? null : (
         <ContentHeader
-          headerTitle={mainArtistName}
+          headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />
@@ -85,7 +93,13 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
   overflow: 'visible',
 })
 
-const ArtistTitle = styled(Typo.Title1)<{ isWeb: boolean }>(({ theme, isWeb }) => ({
-  marginLeft: isWeb ? theme.contentPage.marginHorizontal : undefined,
-  alignSelf: isWeb ? 'start' : 'center',
+const ArtistTitle = styled(Typo.Title1)<{ isDesktopViewport?: boolean }>(
+  ({ theme, isDesktopViewport }) => ({
+    marginLeft: isDesktopViewport ? theme.contentPage.marginHorizontal : undefined,
+    alignSelf: isDesktopViewport ? 'start' : 'center',
+  })
+)
+
+const Description = styled(ViewGap)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
