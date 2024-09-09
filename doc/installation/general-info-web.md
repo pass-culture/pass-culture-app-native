@@ -50,7 +50,7 @@ There is also `vite-plugin-html` that allows us to easily pass variables to the 
 
 `@sentry/vite-plugin` is another important plugin that allows us to upload sourcemaps to sentry. The `uploadLegacySourcemaps` option is currently needed since our self-hosted Sentry is using an older version of Sentry. Atm, our self-hosted Sentry is at `23.6.1` and if we trust [the information in this thread](https://github.com/getsentry/sentry-javascript-bundler-plugins/issues/360), we can remove the `uploadLegacySourcemaps` once it is upgraded to `23.6.2` (or newer).
 
-To send events to Sentry from local environnement we have to create a `.env.local` containing a variable `SENTRY_AUTH_TOKEN` that is used in the sentry plugin.
+To send events to Sentry from local environnement we have to create a `.env.local` (loaded automatically by `vite`) containing a variable `SENTRY_AUTH_TOKEN` that is used in the sentry plugin.
 
 Lastly, to reset the css, we installed the `reset-css` plugin allowing us to be sure all users will see our app the same. With the webpack config, this css file was directly in our project and we had to load the css and then inject it in the `index.html` through a variable. The `reset-css` plugin makes things much easier. The plugin is imported in `App.web.tsx`.
 
