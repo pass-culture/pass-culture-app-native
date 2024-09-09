@@ -7,7 +7,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 // arbitrary. We have to make sure we invalidate the cache when adding/removing favorites. See above
-export const STALE_TIME_FAVORITES = 5 * 60 * 1000
+const STALE_TIME_FAVORITES = 5 * 60 * 1000
 
 export function useFavorites() {
   const netInfo = useNetInfoContext()

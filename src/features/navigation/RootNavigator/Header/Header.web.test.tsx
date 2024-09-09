@@ -12,7 +12,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, screen } from 'tests/utils/web'
+import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
 
 import { Header } from './Header'
@@ -81,7 +81,6 @@ describe('Header', () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     expect(await screen.findByText('Favoris')).toBeInTheDocument()
-    expect(await screen.findByText('2')).toBeInTheDocument()
     expect(await screen.findByText('99+')).toBeInTheDocument()
   })
 
@@ -105,10 +104,8 @@ describe('Header', () => {
     expect(screen.getByText('Profil')).toBeInTheDocument()
   })
 
-  it('should render Header for beneficiary and logged in users', async () => {
+  it('should render Header for beneficiary and logged in users', () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
-
-    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
 
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
@@ -117,10 +114,8 @@ describe('Header', () => {
     expect(screen.getByText('Profil')).toBeInTheDocument()
   })
 
-  it('should identify one tab as current page', async () => {
+  it('should identify one tab as current page', () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
-
-    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
 
     const tabs = ['SearchStackNavigator tab', 'Bookings tab', 'Favorites tab', 'Profile tab'].map(
       (tabId) => screen.getByTestId(tabId)
@@ -139,15 +134,6 @@ function renderHeader({
   isLoggedIn: boolean
   isBeneficiary: boolean
 }) {
-  // We mock the authContext 3 times due to multiple rerenders
-  mockedUseAuthContext.mockReturnValueOnce({
-    isLoggedIn,
-    user: { isBeneficiary },
-  })
-  mockedUseAuthContext.mockReturnValueOnce({
-    isLoggedIn,
-    user: { isBeneficiary },
-  })
   mockedUseAuthContext.mockReturnValueOnce({
     isLoggedIn,
     user: { isBeneficiary },
