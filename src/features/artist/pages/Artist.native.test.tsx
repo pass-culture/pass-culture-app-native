@@ -84,7 +84,7 @@ describe('<Artist />', () => {
       expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
     })
 
-    it('should not display artist page content', () => {
+    it('should not display artist page content when offer not found', () => {
       mockUseOffer.mockReturnValueOnce({
         data: undefined,
       })
