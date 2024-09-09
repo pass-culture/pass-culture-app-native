@@ -70,5 +70,4 @@ export const env: Environment = {
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
   COMMIT_HASH: '13371337',
-  BRANCH: 'master',
 }

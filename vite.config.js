@@ -6,10 +6,7 @@ import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
-const allExtensions = [
-  ...defaultExtensions.map((ext) => ext.replace(/^\./, '.web.')),
-  ...defaultExtensions,
-]
+const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
 
 const libsThatHaveJSFilesContainingJSX = [
   'node_modules/react-native-animatable',
@@ -30,7 +27,6 @@ function getGitInfo(command) {
   }
 }
 
-const branch = getGitInfo('git rev-parse --abbrev-ref HEAD')
 const commitHash = getGitInfo('git rev-parse --short HEAD')
 
 export default ({ mode }) => {
@@ -54,7 +50,6 @@ export default ({ mode }) => {
       global: 'window',
       'process.env': whiteListEnv(env), // Do not expose the global object directly
       'process.env.COMMIT_HASH': JSON.stringify(commitHash),
-      'process.env.BRANCH': JSON.stringify(branch),
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
@@ -104,7 +99,7 @@ export default ({ mode }) => {
           },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
-          name: `${packageJson.version}-web-${commitHash}`,
+          name: `${packageJson.version}-web`,
           dist: `${packageJson.build}-web-${commitHash}`,
           deploy: {
             env: isDevMode ? 'development' : env.ENV,

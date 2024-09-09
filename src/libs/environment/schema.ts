@@ -66,7 +66,6 @@ export const EnvironmentSchema = yup.object({
   WEBAPP_V2_DOMAIN: yup.string().required(),
   // Below envs are injected by vite and are defined only on the Webapp
   COMMIT_HASH: yup.string().optional(),
-  BRANCH: yup.string().optional(),
   PUBLIC_URL: yup.string().optional(),
 })
 export type Environment = yup.InferType<typeof EnvironmentSchema>
