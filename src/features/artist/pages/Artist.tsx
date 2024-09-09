@@ -30,12 +30,11 @@ export const Artist: FunctionComponent = () => {
 
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const artists = getOfferArtists(subcategory.categoryId, offer)
-  const mainArtistName = artists?.split(',')[0] ?? ''
 
-  if (mainArtistName === '') return null
+  if (!artists) return null
 
   const artistInfo: Artist = {
-    name: mainArtistName,
+    name: artists,
     bio: textTest,
   }
 

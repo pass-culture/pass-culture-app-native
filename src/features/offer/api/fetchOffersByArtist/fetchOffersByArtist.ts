@@ -23,7 +23,7 @@ export type HitOfferWithArtistAndEan = Offer & {
   }
 }
 
-const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
+export const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
 
 export const fetchOffersByArtist = async ({
   artists,

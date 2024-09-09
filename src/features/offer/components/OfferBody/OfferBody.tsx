@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { CategoryIdEnum, OfferResponseV2, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { EXCLUDED_ARTISTS } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -92,7 +93,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
-  const hasAccessToArtistPage = hasArtistPage && artists && !COMMA_OR_SEMICOLON_REGEX.test(artists)
+  const hasAccessToArtistPage =
+    hasArtistPage &&
+    artists &&
+    !COMMA_OR_SEMICOLON_REGEX.test(artists) &&
+    !EXCLUDED_ARTISTS.includes(artists.toLowerCase())
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
