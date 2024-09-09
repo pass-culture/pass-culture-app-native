@@ -1,4 +1,4 @@
 {
-  "ignore": "(.*\\.ios)|(.*\\.android)|(.*\\.web)|(src/api/gen/.*)|(.*\/fixtures\/.*)",
-  "skip": "(src/web/.*)|(web/config/.*)|(.*\\.stories\\.tsx)|(src/ui/storybook/.*)|(src/libs/monitoring/sentry\\.ts)|(src/libs/react-native-animatable/index\\.ts)|(src/libs/react-native-batch/index\\.ts)|(src/libs/react-native-share/index\\.tsx)|(src/libs/react-native-web-fast-image/index\\.((d\\.ts)|(js)))|(jest/.*)|(src/tests/utils\\.tsx)|(src/tests/utils/web\\.tsx)|(.*__mocks__/.*)|(src/features/internal/cheatcodes/.*)"
+  "ignore": "(.*\\.ios)|(.*\\.android)|(.*\\.web)|(src/api/gen/.*)|(.*/fixtures/.*)",
+  "skip": "(.*\\.stories\\.tsx)|(src/ui/storybook/.*)|(src/libs/monitoring/sentry\\.ts)|(src/libs/react-native-animatable/index\\.ts)|(src/libs/react-native-batch/index\\.ts)|(src/libs/react-native-share/index\\.tsx)|(src/libs/react-native-web-fast-image/index\\.((d\\.ts)|(js)))|(jest/.*)|(src/tests/utils\\.tsx)|(src/tests/utils/web\\.tsx)|(.*__mocks__/.*)|(src/features/internal/cheatcodes/.*)"
 }

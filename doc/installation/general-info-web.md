@@ -127,7 +127,7 @@ There are certain number of optimizations/improvements and things that were done
 
 - Chunk protection
 - CSP: atm, we haven't added any. In the webpack config we had them.
-- Testing older browser and increasing compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work)
+- Testing older browser and increasing compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work), and update `src/web/SupportedBrowsersGate.web.test.tsx` and `package.json.browserList`
 - PWA (it seems that vite generates a manifest but we should make sure the service worker is functioning)
 - Web vitals
 - Profiling tools (maybe vite offers something)
