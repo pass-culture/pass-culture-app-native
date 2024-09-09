@@ -71,6 +71,27 @@ describe('<Artist />', () => {
 
       expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
     })
+
+    it('should not display artist page content when there is no artist', () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          extraData: undefined,
+        },
+      })
+      render(reactQueryProviderHOC(<Artist />))
+
+      expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
+    })
+
+    it('should not display artist page content', () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: undefined,
+      })
+      render(reactQueryProviderHOC(<Artist />))
+
+      expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
+    })
   })
 
   describe('When enablePageArtist feature flag deactivated', () => {
