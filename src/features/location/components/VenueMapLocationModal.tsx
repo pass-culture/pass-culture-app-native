@@ -11,6 +11,7 @@ import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -71,6 +72,7 @@ export const VenueMapLocationModal = ({
     ...locationStateProps,
     ...locationSubmitProps,
   })
+  const { removeSelectedVenue } = useSelectedVenueActions()
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
   const theme = useTheme()
 
@@ -83,6 +85,7 @@ export const VenueMapLocationModal = ({
     : theme.colors.black
 
   const handleSubmit = () => {
+    removeSelectedVenue()
     setTempLocationMode?.(tempLocationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {

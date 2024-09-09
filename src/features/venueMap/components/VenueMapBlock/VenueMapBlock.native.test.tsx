@@ -9,6 +9,12 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+const mockRemoveSelectedVenue = jest.fn()
+jest.mock('features/venueMap/store/selectedVenueStore', () => ({
+  useSelectedVenueActions: () => ({
+    removeSelectedVenue: mockRemoveSelectedVenue,
+  }),
+}))
 
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {
@@ -52,6 +58,16 @@ describe('<VenueMapBlock />', () => {
       render(<VenueMapBlock from="searchLanding" />)
 
       expect(screen.queryByText('EXPLORE LA CARTE')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should reset selected venue in store', async () => {
+    render(<VenueMapBlock from="searchLanding" />)
+
+    fireEvent.press(screen.getByText('Explorer les lieux'))
+
+    await waitFor(() => {
+      expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
     })
   })
 

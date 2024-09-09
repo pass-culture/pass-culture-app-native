@@ -69,6 +69,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockRemoveSelectedVenue = jest.fn()
+jest.mock('features/venueMap/store/selectedVenueStore', () => ({
+  useSelectedVenueActions: () => ({
+    removeSelectedVenue: mockRemoveSelectedVenue,
+  }),
+}))
+
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal({})
@@ -169,6 +176,37 @@ describe('VenueMapLocationModal', () => {
     fireEvent.press(validateButon)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+  })
+
+  it('should reset selected venue in store on submit when we choose a location', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    renderVenueMapLocationModal({})
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    await act(async () => {
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+    })
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    await act(async () => {
+      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChange([mockRadiusPlace])
+    })
+
+    const validateButon = screen.getByText('Valider et voir sur la carte')
+    fireEvent.press(validateButon)
+
+    expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
   })
 
   it('should not navigate to venue map on submit when we choose a location and shouldOpenMapInTab is true', async () => {
