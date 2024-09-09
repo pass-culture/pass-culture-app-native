@@ -36,6 +36,13 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+const mockRemoveSelectedVenue = jest.fn()
+jest.mock('features/venueMap/store/selectedVenueStore', () => ({
+  useSelectedVenueActions: () => ({
+    removeSelectedVenue: mockRemoveSelectedVenue,
+  }),
+}))
+
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -131,6 +138,17 @@ describe('TrendsModule', () => {
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('VenueMap', undefined)
+      })
+    })
+
+    it('should reset selected venue in store when pressing venue map block content type and user location is not everywhere', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+
+      fireEvent.press(screen.getByText('Accès carte des lieux'))
+
+      await waitFor(() => {
+        expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
       })
     })
 

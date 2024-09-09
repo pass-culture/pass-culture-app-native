@@ -144,6 +144,15 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+const mockRemoveSelectedVenue = jest.fn()
+jest.mock('features/venueMap/store/selectedVenueStore', () => ({
+  useSelectedVenueActions: () => ({
+    removeSelectedVenue: mockRemoveSelectedVenue,
+    setSelectedVenue: jest.fn(),
+  }),
+  useSelectedVenue: jest.fn(),
+}))
+
 jest.mock('libs/subcategories/useSubcategories')
 
 const venue = mockedSuggestedVenue
@@ -859,6 +868,14 @@ describe('SearchResultsContent component', () => {
         from: 'search',
         searchId: 'testUuidV4',
       })
+    })
+
+    it('should reset selected venue in store when pressing map tab', async () => {
+      render(reactQueryProviderHOC(<SearchResultsContent />))
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
     })
 
     it('should display empty state view when there is no search result', async () => {

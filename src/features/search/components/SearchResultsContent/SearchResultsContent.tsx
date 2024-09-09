@@ -253,6 +253,7 @@ export const SearchResultsContent: React.FC = () => {
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
   const triggerMapTab = () => {
+    removeSelectedVenue()
     setDefaultTab(Tab.MAP)
     if (selectedLocationMode === LocationMode.EVERYWHERE) {
       showVenueMapLocationModal()
