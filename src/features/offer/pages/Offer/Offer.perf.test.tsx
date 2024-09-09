@@ -4,8 +4,12 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
+import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { Offer } from 'features/offer/pages/Offer/Offer'
-import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import {
+  mockedAlgoliaOffersWithSameArtistResponse,
+  mockedAlgoliaResponse,
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Network } from 'libs/share/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -27,6 +31,10 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockImplementation().mockReturnValue({
+  sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+})
 
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')

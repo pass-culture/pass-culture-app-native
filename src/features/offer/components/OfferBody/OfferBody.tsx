@@ -28,6 +28,7 @@ import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOff
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -78,10 +79,16 @@ export const OfferBody: FunctionComponent<Props> = ({
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+  const { sameArtistPlaylist: artistOffers } = useSameArtistPlaylist({
+    artists,
+    searchGroupName: subcategory.searchGroupName,
+    venueLocation: {},
+  })
 
   const hasAccessToArtistPage =
     hasArtistPage &&
     artists &&
+    artistOffers?.length > 1 &&
     !COMMA_OR_SEMICOLON_REGEX.test(artists) &&
     !EXCLUDED_ARTISTS.includes(artists.toLowerCase())
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA

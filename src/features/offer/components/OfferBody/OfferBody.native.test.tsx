@@ -17,6 +17,8 @@ import {
   mockSubcategoryCD,
 } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -86,6 +88,13 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+
+const useSameArtistPlaylistSpy = jest
+  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
+  .mockImplementation()
+  .mockReturnValue({
+    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+  })
 
 describe('<OfferBody />', () => {
   beforeEach(() => {
@@ -587,6 +596,27 @@ describe('<OfferBody />', () => {
     })
 
     fireEvent.press(await screen.findByText('Collectif'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should not redirect to artist page when FF is enabled and artist has less than 2 offers"', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'J.K Rowling' },
+    }
+
+    useSameArtistPlaylistSpy.mockReturnValueOnce({
+      sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
+    })
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('J.K Rowling'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
