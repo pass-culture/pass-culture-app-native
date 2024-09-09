@@ -1,4 +1,5 @@
 import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
+import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -22,8 +23,6 @@ export type HitOfferWithArtistAndEan = Offer & {
     ean: string
   }
 }
-
-export const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
 
 export const fetchOffersByArtist = async ({
   artists,

@@ -3,10 +3,9 @@ import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponseV2, SearchGroupNameEnumv2 } from 'api/gen'
+import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { EXCLUDED_ARTISTS } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -17,6 +16,13 @@ import { OfferReactions } from 'features/offer/components/OfferReactions/OfferRe
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
+import {
+  ARTIST_SURVEY_MODAL_DATA,
+  COMMA_OR_SEMICOLON_REGEX,
+  DEFAULT_SURVEY_MODAL_DATA,
+  EXCLUDED_ARTISTS,
+  FAKE_DOOR_ARTIST_SEARCH_GROUPS,
+} from 'features/offer/helpers/constants'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
@@ -44,26 +50,6 @@ type Props = {
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
 }
-
-const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [
-  SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-  SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-]
-
-const DEFAULT_SURVEY_MODAL_DATA = {
-  title: 'Encore un peu de patience…',
-  description: 'Cette action n’est pas encore disponible, mais elle le sera bientôt\u00a0!',
-  surveyURL: '',
-}
-
-const ARTIST_SURVEY_MODAL_DATA = {
-  title: 'Encore un peu de patience…',
-  description:
-    'Ce contenu n’est pas encore disponible.\n\nAide-nous à le mettre en place en répondant au questionnaire.',
-  surveyURL: 'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
-}
-
-const COMMA_OR_SEMICOLON_REGEX = /[,;]/
 
 export const OfferBody: FunctionComponent<Props> = ({
   offer,
