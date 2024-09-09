@@ -523,7 +523,7 @@ describe('<OfferBody />', () => {
     expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
   })
 
-  it('should redirect to artist page when FF is enabled and artist not contain a comma or a semicolon', async () => {
+  it('should redirect to artist page when FF is enabled, artist not contain a comma or a semicolon, and artist name is not collectif/s', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -570,6 +570,23 @@ describe('<OfferBody />', () => {
     })
 
     fireEvent.press(await screen.findByText('Stephen King; Clive Barker'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should not redirect to artist page when FF is enabled and artist name is collectif/s"', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Collectif' },
+    }
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Collectif'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
