@@ -5,6 +5,8 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -45,15 +47,28 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+const mockArtist = {
+  name: 'Céline Dion',
+  bio: 'chanteuse',
+}
+
 describe('<ArtistBody />', () => {
   it('should display only the main artist when there are several artists on header title', () => {
-    render(reactQueryProviderHOC(<ArtistBody />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
 
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
   })
 
   it('should call goBack when pressing the back button', () => {
-    render(reactQueryProviderHOC(<ArtistBody />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
     const backButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(backButton)
 
@@ -61,9 +76,13 @@ describe('<ArtistBody />', () => {
   })
 
   it('should display artist description', () => {
-    render(reactQueryProviderHOC(<ArtistBody />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
-    expect(screen.getByText(/Lorem ipsum dolor/i)).toBeOnTheScreen()
+    expect(screen.getByText('chanteuse')).toBeOnTheScreen()
   })
 })

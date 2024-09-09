@@ -5,13 +5,13 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { OfferResponseV2 } from 'api/gen'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
+import { Artist } from 'features/artist/pages/Artist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useOffer } from 'features/offer/api/useOffer'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { useSubcategoriesMapping } from 'libs/subcategories'
+import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -22,38 +22,30 @@ const isWeb = Platform.OS === 'web'
 
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
-// To remove when description is going to be provided
-const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan sodales metus efficitur accumsan. Etiam aliquam lorem scelerisque volutpat dapibus. Nam sollicitudin quam a turpis mattis gravida ut at dolor. Sed leo lorem, vulputate vitae nulla elementum, ultricies varius velit. Curabitur felis lorem, hendrerit vitae purus aliquam, euismod dictum nisl. Nam vel gravida libero, non maximus nibh. In hac habitasse platea dictumst. Morbi ut magna vel elit dapibus sollicitudin et eu orci. Quisque commodo bibendum risus, nec aliquam dolor consequat vel. Nam quam nulla, pretium non vestibulum nec, convallis et elit.
+type Props = {
+  offer: OfferResponseV2
+  artist: Artist
+  subcategory: Subcategory
+}
 
-Curabitur consectetur sapien et convallis fringilla. Suspendisse consequat nec sem non convallis. Aliquam pulvinar mi vitae felis commodo, eget ornare nulla lacinia. Fusce ultricies nibh dui, eget tempus orci placerat eu. Nam pulvinar metus quis purus semper, eu hendrerit justo consequat. Suspendisse potenti. Proin in elementum risus, nec porttitor purus. Vestibulum sodales, turpis eget feugiat maximus, purus nisl laoreet est, euismod pulvinar tellus elit quis enim. Mauris id scelerisque orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac interdum leo. Fusce non est nisi. Nam imperdiet in sem eu semper.`
-
-export const ArtistBody: FunctionComponent = () => {
+export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategory }) => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
   const { appBarHeight, isDesktopViewport } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
 
-  const { data: offer } = useOffer({ offerId: params.fromOfferId })
-  const subcategoriesMapping = useSubcategoriesMapping()
-
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  if (!offer) return null
-
-  const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const artists = getOfferArtists(subcategory.categoryId, offer)
-  const mainArtistName = artists?.split(',')[0] ?? ''
-
-  if (mainArtistName === '') return null
+  const { name, bio } = artist
 
   return (
     <Container>
-      <ArtistWebMetaHeader artist={mainArtistName} />
+      <ArtistWebMetaHeader artist={name} />
       {/* On web header is called before Body for accessibility navigate order */}
       {isWeb ? (
         <ContentHeader
-          headerTitle={mainArtistName}
+          headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />
@@ -66,22 +58,22 @@ export const ArtistBody: FunctionComponent = () => {
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-            <ArtistTitle isDesktopViewport={isDesktopViewport}>{mainArtistName}</ArtistTitle>
+            <ArtistTitle isDesktopViewport={isDesktopViewport}>{name}</ArtistTitle>
             <Description gap={1}>
               <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
               <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                {text}
+                {bio}
               </CollapsibleText>
             </Description>
           </ViewGap>
-          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={mainArtistName} />
+          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={name} />
         </ViewGap>
       </ContentContainer>
 
       {/* On native header is called after Body to implement the BlurView for iOS */}
       {isWeb ? null : (
         <ContentHeader
-          headerTitle={mainArtistName}
+          headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />
