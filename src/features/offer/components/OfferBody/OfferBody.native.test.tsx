@@ -523,7 +523,7 @@ describe('<OfferBody />', () => {
     expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
   })
 
-  it('should redirect to artist page when FF is enabled', async () => {
+  it('should redirect to artist page when FF is enabled and artist not contain a comma or a semicolon', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -538,6 +538,40 @@ describe('<OfferBody />', () => {
     fireEvent.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
+  })
+
+  it('should not redirect to artist page when FF is enabled artist contain a comma', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King, Clive Barker' },
+    }
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King, Clive Barker'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should not redirect to artist page when FF is enabled artist contain a semicolon', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King; Clive Barker' },
+    }
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King; Clive Barker'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
   })
 
   it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
@@ -560,9 +594,8 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should log ConsultArtist with the main artist if there are several when pressing artist name button and FF is enabled', async () => {
-    const artists = 'Stephen King,Robert McCammon'
-    const mainArtist = artists.split(',')[0]
+  it('should not log ConsultArtist when pressing artist name if artist name contain a comma and FF is enabled', async () => {
+    const artists = 'Stephen King, Robert McCammon'
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -574,12 +607,27 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King,Robert McCammon'))
+    fireEvent.press(await screen.findByText('Stephen King, Robert McCammon'))
 
-    expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-      offerId: offerResponseSnap.id,
-      artistName: mainArtist,
+    expect(analytics.logConsultArtist).not.toHaveBeenCalled()
+  })
+
+  it('should not log ConsultArtist when pressing artist name if artist name contain a semicolon and FF is enabled', async () => {
+    const artists = 'Stephen King; Robert McCammon'
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: artists },
+    }
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
     })
+
+    fireEvent.press(await screen.findByText('Stephen King; Robert McCammon'))
+
+    expect(analytics.logConsultArtist).not.toHaveBeenCalled()
   })
 
   it('should not redirect to artist page when FF is disabled', async () => {
