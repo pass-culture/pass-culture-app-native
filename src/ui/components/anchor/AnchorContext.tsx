@@ -21,9 +21,7 @@ export const AnchorProvider = ({
   handleCheckScrollY,
   children,
 }: AnchorProviderProps) => {
-  const anchors = useRef<Record<AnchorName, RefObject<View>>>(
-    {} as Record<AnchorName, RefObject<View>>
-  )
+  const anchors = useRef<Partial<Record<AnchorName, RefObject<View>>>>({})
 
   const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View>) => {
     anchors.current[name] = ref
