@@ -62,6 +62,8 @@ const ARTIST_SURVEY_MODAL_DATA = {
   surveyURL: 'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
 }
 
+const COMMA_OR_SEMICOLON_REGEX = /[,;]/
+
 export const OfferBody: FunctionComponent<Props> = ({
   offer,
   subcategory,
@@ -75,7 +77,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { isLoggedIn, user } = useAuthContext()
   const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
-  const hasAccessToArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
@@ -90,6 +92,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
+  const hasAccessToArtistPage = hasArtistPage && artists && !COMMA_OR_SEMICOLON_REGEX.test(artists)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
