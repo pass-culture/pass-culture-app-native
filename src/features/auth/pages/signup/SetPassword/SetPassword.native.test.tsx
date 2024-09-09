@@ -18,6 +18,12 @@ const props = {
   onDefaultEmailSignup: jest.fn(),
 }
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('SetPassword Page', () => {
   it('should render correctly', () => {
     render(<SetPassword {...props} />)

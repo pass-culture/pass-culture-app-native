@@ -17,6 +17,8 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<HomeBanner/>', () => {
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
     beforeAll(() => {

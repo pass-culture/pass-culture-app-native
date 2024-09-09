@@ -34,6 +34,12 @@ const props: ExclusivityModuleProps = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('ExclusivityModule component', () => {
   it('should render ExclusivityOffer component when an offer id is provided', () => {
     render(<ExclusivityModule {...props} />)

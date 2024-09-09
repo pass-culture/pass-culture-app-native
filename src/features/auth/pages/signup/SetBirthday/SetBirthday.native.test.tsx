@@ -34,6 +34,12 @@ const nonSpecificUserAges = [null, NonEligible.UNDER_15, NonEligible.OVER_18]
 
 jest.mock('features/auth/context/SettingsContext')
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)

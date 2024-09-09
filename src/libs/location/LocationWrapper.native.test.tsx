@@ -26,6 +26,8 @@ const onRefusal = jest.fn()
 
 const MOCK_POSITION = { latitude: 90, longitude: 90 }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useLocation()', () => {
   describe('requestGeolocPermission()', () => {
     beforeEach(() => {

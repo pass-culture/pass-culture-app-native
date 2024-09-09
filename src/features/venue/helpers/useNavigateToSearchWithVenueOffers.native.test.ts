@@ -39,6 +39,12 @@ jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useNavigateToSearchWithVenueOffers', () => {
   it('should give the config according to the venue', () => {
     const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueDataTest))

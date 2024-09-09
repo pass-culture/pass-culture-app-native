@@ -18,6 +18,15 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('features/navigation/RootNavigator/routes')
 
+jest.mock('react-native/Libraries/Alert/Alert', () => ({
+  alert: jest.fn(),
+}))
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
     // eslint-disable-next-line jest/no-disabled-tests

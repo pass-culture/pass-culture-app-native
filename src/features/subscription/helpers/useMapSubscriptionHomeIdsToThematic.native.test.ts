@@ -16,6 +16,8 @@ useRemoteConfigContextSpy.mockReturnValue({
   },
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useMapSubscriptionHomeIdsToThematic', () => {
   it('should return correct theme when homeId is found in remote config', () => {
     const result = useMapSubscriptionHomeIdsToThematic('spectaclesId')

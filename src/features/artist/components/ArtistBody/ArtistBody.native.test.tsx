@@ -37,6 +37,13 @@ useRoute.mockReturnValue({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<ArtistBody />', () => {
   it('should display only the main artist when there are several artists on header title', () => {
     render(reactQueryProviderHOC(<ArtistBody />))

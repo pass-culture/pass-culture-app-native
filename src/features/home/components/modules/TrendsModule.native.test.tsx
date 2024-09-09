@@ -41,6 +41,13 @@ const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('TrendsModule', () => {
   it('should not log analytics on render when FF is disabled', () => {
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)

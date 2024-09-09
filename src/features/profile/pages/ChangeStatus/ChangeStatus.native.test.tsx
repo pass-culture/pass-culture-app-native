@@ -93,6 +93,17 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser)
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<ChangeStatus/>', () => {
   beforeEach(async () => {
     mockServer.postApi('/v1/subscription/profile', {})

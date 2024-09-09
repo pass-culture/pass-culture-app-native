@@ -11,6 +11,12 @@ const props = {
   onBackdropPress: jest.fn(),
 }
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('MarketingModal', () => {
   it('should render correctly', () => {
     render(<MarketingModal {...props} />)

@@ -14,7 +14,7 @@ import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, act, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -56,6 +56,23 @@ jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => {

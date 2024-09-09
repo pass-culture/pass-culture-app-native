@@ -8,6 +8,8 @@ import { render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<FeatureFlag />', () => {
   const children = <View testID="children" />
 

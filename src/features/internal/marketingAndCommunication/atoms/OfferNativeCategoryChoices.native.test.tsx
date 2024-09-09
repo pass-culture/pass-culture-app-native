@@ -8,6 +8,12 @@ jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<OfferNativeCategoryChoices />', () => {
   it('should call onChange with proper subcategory when toggling', () => {
     const onChange = jest.fn()

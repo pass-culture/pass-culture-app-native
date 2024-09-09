@@ -5,6 +5,8 @@ import { renderHook } from 'tests/utils'
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useHasGraphicRedesign', () => {
   describe('When shouldApplyGraphicRedesign remote config is false', () => {
     beforeAll(() => {

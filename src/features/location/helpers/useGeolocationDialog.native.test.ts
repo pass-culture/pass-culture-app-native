@@ -15,6 +15,8 @@ const mockProps = {
   shouldOpenDirectlySettings: false,
 } as const
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useGeolocationDialogs', () => {
   describe('When permission is NEVER_ASK_AGAIN', () => {
     it('should reset place selection', async () => {

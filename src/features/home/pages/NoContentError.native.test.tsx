@@ -4,6 +4,17 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('NoContentError', () => {
   it('should render correctly', () => {
     render(<NoContentError />)

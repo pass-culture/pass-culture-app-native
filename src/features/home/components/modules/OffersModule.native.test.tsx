@@ -63,6 +63,8 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('OffersModule', () => {
   it('should not render if data is undefined', () => {
     renderOffersModule({ data: undefined })

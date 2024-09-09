@@ -6,6 +6,12 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 const active = false
 const toggle = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<FilterSwitch />', () => {
   it('should call toggle when press on switch', () => {
     render(<FilterSwitch active={active} toggle={toggle} />)

@@ -10,7 +10,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
-import { saveRefreshToken, clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
+import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -37,6 +37,12 @@ const decodeTokenSpy = jest.spyOn(jwt, 'default')
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
 
 describe('AuthContext', () => {
   beforeEach(async () => {

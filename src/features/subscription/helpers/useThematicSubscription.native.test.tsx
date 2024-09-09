@@ -67,6 +67,8 @@ const userWithoutNotificationsAndWithoutSubscriptions: UserProfileResponse = {
 }
 const homeId = 'homeId'
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useThematicSubscription', () => {
   describe('when the user has notifications on', () => {
     it('should give us the information that at least one notification is active', async () => {

@@ -15,6 +15,12 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueDataTest.id}`, venueDataTest)

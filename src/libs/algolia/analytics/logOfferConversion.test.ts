@@ -21,6 +21,10 @@ mockGetAcceptedCookieConsent.mockResolvedValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('logOfferConversion', () => {
   it('should send the corresponding Algolia conversion event when called', async () => {
     await logOfferConversion('abc123')('object123')

@@ -6,6 +6,17 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('CulturalSurveyThanksPage page', () => {
   it('should render the page with correct layout', () => {
     render(<CulturalSurveyThanks />)

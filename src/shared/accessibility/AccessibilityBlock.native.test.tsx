@@ -9,6 +9,12 @@ import { AccessibilityBlock } from './AccessibilityBlock'
 jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('AccessibilityBlock', () => {
   it('should display AccesLibre banner when url is provided and enableAccesLibre FF activated', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)

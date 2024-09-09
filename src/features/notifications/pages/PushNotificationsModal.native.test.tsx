@@ -8,6 +8,12 @@ import { PushNotificationsModal } from './PushNotificationsModal'
 const onDismiss = jest.fn()
 const onRequestPermission = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('PushNotificationsModal', () => {
   it('should render properly', () => {
     render(

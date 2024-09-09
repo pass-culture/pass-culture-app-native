@@ -7,6 +7,11 @@ import { CalendarPicker } from './CalendarPicker.web'
 const mockHideCalendar = jest.fn()
 const mockSetSelectedDate = jest.fn()
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('CalendarPicker web component', () => {
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation()

@@ -15,6 +15,11 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('<Profile/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

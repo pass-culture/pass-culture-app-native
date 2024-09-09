@@ -5,6 +5,8 @@ import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
 import { DEFAULT_TIME_VALUE } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { act, render, screen } from 'tests/utils'
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('<HoursSlider />', () => {
   const onChangeMock = jest.fn()
 

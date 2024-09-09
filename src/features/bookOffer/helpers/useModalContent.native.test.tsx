@@ -33,6 +33,12 @@ const onPressBookOffer = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useModalContent', () => {
   it('show default modal if no information yet', () => {
     mockOffer = undefined

@@ -3,14 +3,14 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
+import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { BatchUser } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { render, fireEvent, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
@@ -23,6 +23,21 @@ const mockShowAppModal = jest.fn()
 jest
   .spyOn(ShareAppWrapperModule, 'useShareAppContext')
   .mockReturnValue({ showShareAppModal: mockShowAppModal })
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
 
 describe('<AccountCreated />', () => {
   it('should render correctly', async () => {

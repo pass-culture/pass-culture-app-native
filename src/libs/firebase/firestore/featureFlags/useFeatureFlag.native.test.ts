@@ -20,6 +20,8 @@ const mockGet = jest.fn()
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useFeatureFlag', () => {
   beforeAll(() =>
     collection(featureFlag)

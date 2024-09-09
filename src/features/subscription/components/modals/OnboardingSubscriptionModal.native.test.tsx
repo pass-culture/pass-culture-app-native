@@ -4,6 +4,17 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { screen, render, fireEvent, waitFor } from 'tests/utils'
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<OnboardingSubscriptionModal />', () => {
   it('should display correctly', () => {
     render(<OnboardingSubscriptionModal visible dismissModal={jest.fn()} />)

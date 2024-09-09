@@ -3,6 +3,8 @@ import Geolocation from 'react-native-geolocation-service'
 import { getGeolocPosition } from './getGeolocPosition'
 import { EiffelTourCoordinates, getCurrentPositionSuccess } from './tests.utils'
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('getGeolocPosition()', () => {
   it('should resolve with the geolocation', async () => {
     const getCurrentPositionSpy = jest

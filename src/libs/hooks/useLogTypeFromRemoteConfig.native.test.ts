@@ -6,6 +6,8 @@ import { renderHook } from 'tests/utils'
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('useLogTypeFromRemoteConfig', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {

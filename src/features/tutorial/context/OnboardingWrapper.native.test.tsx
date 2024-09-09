@@ -17,6 +17,12 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
 describe('useOnboardingContext()', () => {
   it.each(Object.values(NonEligible))(
     'should show modal when showNonEligibleModal is called',

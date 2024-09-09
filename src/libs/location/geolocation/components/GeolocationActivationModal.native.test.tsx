@@ -15,6 +15,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('GeolocationActivationModal', () => {
   it('should render properly', () => {
     mockPermissionState = GeolocPermissionState.DENIED

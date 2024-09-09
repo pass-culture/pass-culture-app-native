@@ -5,6 +5,12 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 describe('<ExpiredCreditModal/>', () => {
   it('should render correctly', () => {
     render(<ExpiredCreditModal visible hideModal={hideModalMock} />)

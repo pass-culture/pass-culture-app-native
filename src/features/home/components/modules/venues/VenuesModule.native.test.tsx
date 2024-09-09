@@ -20,6 +20,8 @@ const props = {
   },
 }
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 describe('VenuesModule component', () => {
   it('should render correctly', () => {
     renderVenuesModule()
