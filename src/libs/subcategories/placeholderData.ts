@@ -229,7 +229,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CARTE_JEUNES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_JEUNES,
+      nativeCategoryId: NativeCategoryIdEnumv2.NATIVE_CATEGORY_NONE,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_MUSEE,
@@ -790,6 +790,15 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
   ],
   nativeCategories: [
     {
+      name: NativeCategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
+      value: 'Abonnements aux plateformes de streaming',
+      genreType: null,
+      parents: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+      ],
+    },
+    {
       name: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE,
       value: 'Abonnements mus\u00e9e',
       genreType: null,
@@ -803,7 +812,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
-      value: 'Achat & location d‘instrument',
+      value: "Achat & location d'instrument",
       genreType: null,
       parents: [SearchGroupNameEnumv2.INSTRUMENTS],
     },
@@ -905,15 +914,6 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: '\u00c9v\u00e8nements autour du livre',
       genreType: null,
       parents: [SearchGroupNameEnumv2.LIVRES],
-    },
-    {
-      name: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
-      value: 'Films, s\u00e9ries en ligne',
-      genreType: null,
-      parents: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
-      ],
     },
     {
       name: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,
@@ -1031,7 +1031,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      value: 'S\u00e9ances de cin\u00e9ma',
+      value: "Films \u00e0 l'affiche",
       genreType: GenreType.MOVIE,
       parents: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, SearchGroupNameEnumv2.CINEMA],
     },
@@ -1046,6 +1046,15 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: 'Spectacles & repr\u00e9sentations',
       genreType: GenreType.SHOW,
       parents: [SearchGroupNameEnumv2.SPECTACLES],
+    },
+    {
+      name: NativeCategoryIdEnumv2.VIDEOS_ET_DOCUMENTAIRES,
+      value: 'Vid\u00e9os et documentaires',
+      genreType: null,
+      parents: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+      ],
     },
     {
       name: NativeCategoryIdEnumv2.VINYLES,

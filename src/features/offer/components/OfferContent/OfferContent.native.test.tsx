@@ -507,7 +507,6 @@ describe('<OfferContent />', () => {
       NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
       NativeCategoryIdEnumv2.CONCOURS,
       NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
-      NativeCategoryIdEnumv2.CARTES_JEUNES,
     ])(
       'should not trigger has_seen_offer_for_survey event for uneligible offer type %s',
       async (nativeCategoryId) => {

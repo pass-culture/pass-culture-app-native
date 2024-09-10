@@ -271,7 +271,7 @@ export const subcategoriesMappingSnap = {
     categoryId: 'CARTE_JEUNES',
     homepageLabelName: 'CARTE_JEUNES',
     isEvent: false,
-    nativeCategoryId: 'CARTES_JEUNES',
+    nativeCategoryId: 'NO_NATIVE_CATEGORY',
     onlineOfflinePlatform: 'OFFLINE',
     searchGroupName: 'CARTES_JEUNES',
   },
