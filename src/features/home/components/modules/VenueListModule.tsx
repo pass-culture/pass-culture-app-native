@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueListModuleItem } from 'features/home/components/modules/VenueListModuleItem'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
@@ -26,9 +27,11 @@ type HeaderProps = {
 const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
   const focusProps = useHandleFocus()
   const { removeSelectedVenue } = useSelectedVenueActions()
+  const { setInitialVenues } = useInitialVenuesActions()
 
   const handleOnBeforeNavigate = () => {
     removeSelectedVenue()
+    setInitialVenues([])
     analytics.logConsultVenueMap({ from: 'venueList' })
   }
 

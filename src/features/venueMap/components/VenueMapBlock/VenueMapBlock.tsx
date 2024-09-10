@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
 import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
+import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -27,11 +28,13 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
     RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK
   )
   const { removeSelectedVenue } = useSelectedVenueActions()
+  const { setInitialVenues } = useInitialVenuesActions()
 
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
 
   const handleOnBeforeNavigate = () => {
     removeSelectedVenue()
+    setInitialVenues([])
     analytics.logConsultVenueMap({ from })
   }
 

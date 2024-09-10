@@ -15,6 +15,12 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
     removeSelectedVenue: mockRemoveSelectedVenue,
   }),
 }))
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({
+    setInitialVenues: mockSetInitialVenues,
+  }),
+}))
 
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {
@@ -68,6 +74,16 @@ describe('<VenueMapBlock />', () => {
 
     await waitFor(() => {
       expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should reset initial venues in store', async () => {
+    render(<VenueMapBlock from="searchLanding" />)
+
+    fireEvent.press(screen.getByText('Explorer les lieux'))
+
+    await waitFor(() => {
+      expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
     })
   })
 
