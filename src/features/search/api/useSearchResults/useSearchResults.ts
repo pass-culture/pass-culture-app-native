@@ -8,6 +8,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
@@ -38,6 +39,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
   const { setInitialVenues } = useInitialVenuesActions()
+  const { removeSelectedVenue } = useSelectedVenueActions()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [
@@ -82,6 +84,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   )
 
   const hits = useMemo<SearchOfferHits>(() => {
+    removeSelectedVenue()
     const venues = flatten(data?.pages?.[0]?.venues.hits)
     if (userLocation && venues.length) {
       setInitialVenues(adaptAlgoliaVenues(venues))
@@ -97,7 +100,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         data?.pages.map((page) => page.duplicatedOffers.hits.map(transformHits))
       ).filter((hit) => typeof hit.offer.subcategoryId !== 'undefined') as Offer[],
     }
-  }, [data?.pages, setInitialVenues, transformHits, userLocation])
+  }, [data?.pages, removeSelectedVenue, setInitialVenues, transformHits, userLocation])
 
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }
