@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { BicolorBookingsCountV2 } from 'features/bookings/components/BicolorBookingsCountV2'
-import { BicolorFavoriteCount } from 'features/favorites/components/BicolorFavoriteCount'
-import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFavoriteCountV2'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
+import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorFavoriteV2 } from 'ui/svg/icons/BicolorFavoriteV2'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
@@ -34,7 +34,7 @@ export function mapTabRouteToBicolorIcon({
     case 'Bookings':
       return v2 ? BicolorBookingsIcon : BicolorBookings
     case 'Favorites':
-      return v2 ? BicolorFavoriteCountV2 : BicolorFavoriteCount
+      return v2 ? BicolorFavoriteV2 : BicolorFavorite
     case 'Profile':
       return v2 ? BicolorTabBarProfileV2 : BicolorTabBarProfile
     default:
