@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
@@ -18,6 +18,8 @@ const MODAL_MAX_WIDTH = Breakpoints.LG
 const MODAL_PADDING = { x: getSpacing(10), y: getSpacing(10) }
 const MODAL_HEADER_HEIGHT = getSpacing(7)
 
+type CarouselSize = { width: number; height: number }
+
 type OfferPreviewModalProps = {
   offerImages: string[]
   isVisible?: boolean
@@ -33,14 +35,16 @@ export const OfferPreviewModal = ({
   onClose,
   isVisible = false,
 }: OfferPreviewModalProps) => {
-  const [carouselSize, setCarouselSize] = useState<{ width: number; height: number }>()
+  const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
   const { isDesktopViewport } = useTheme()
 
-  const getTitleLabel = (progressValue: number) =>
-    `${Math.round(progressValue) + 1}/${offerImages.length}`
+  const getTitleLabel = useCallback(
+    (progressValue: number) => `${Math.round(progressValue) + 1}/${offerImages.length}`,
+    [offerImages]
+  )
 
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
 
@@ -61,6 +65,14 @@ export const OfferPreviewModal = ({
     carouselRef.current?.scrollTo({ index: newIndex, animated: true })
   }
 
+  const handleProgressChange = useCallback(
+    (_: unknown, absoluteProgress: number) => {
+      progressValue.value = absoluteProgress
+      setTitle(getTitleLabel(absoluteProgress))
+    },
+    [getTitleLabel, progressValue]
+  )
+
   const displayCarousel = () => (
     <React.Fragment>
       <RoundedButton
@@ -68,7 +80,6 @@ export const OfferPreviewModal = ({
         onPress={() => handlePressButton(-1)}
         accessibilityLabel="Image précédente"
       />
-
       {carouselSize ? (
         <Carousel
           ref={carouselRef}
@@ -80,17 +91,13 @@ export const OfferPreviewModal = ({
           defaultIndex={defaultIndex}
           enabled={false}
           scrollAnimationDuration={500}
-          onProgressChange={(_, absoluteProgress) => {
-            progressValue.value = absoluteProgress
-            setTitle(getTitleLabel(absoluteProgress))
-          }}
+          onProgressChange={handleProgressChange}
           data={offerImages}
           renderItem={({ item: image, index }) => (
             <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
           )}
         />
       ) : null}
-
       <RoundedButton
         iconName="next"
         onPress={() => handlePressButton(1)}
