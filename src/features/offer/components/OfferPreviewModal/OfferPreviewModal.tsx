@@ -33,7 +33,7 @@ export const OfferPreviewModal = ({
   onClose,
   isVisible = false,
 }: OfferPreviewModalProps) => {
-  const [carouselSize, setCarouselSize] = useState({ width: 100, height: 100 })
+  const [carouselSize, setCarouselSize] = useState<{ width: number; height: number }>()
   const carouselRef = useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
@@ -69,25 +69,27 @@ export const OfferPreviewModal = ({
         accessibilityLabel="Image précédente"
       />
 
-      <Carousel
-        ref={carouselRef}
-        testID="offerImageContainerCarousel"
-        vertical={false}
-        width={carouselSize.width}
-        height={carouselSize.height}
-        loop={false}
-        defaultIndex={defaultIndex}
-        enabled={false}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setTitle(getTitleLabel(absoluteProgress))
-        }}
-        data={offerImages}
-        renderItem={({ item: image, index }) => (
-          <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
-        )}
-      />
+      {carouselSize ? (
+        <Carousel
+          ref={carouselRef}
+          testID="offerImageContainerCarousel"
+          vertical={false}
+          width={carouselSize.width}
+          height={carouselSize.height}
+          loop={false}
+          defaultIndex={defaultIndex}
+          enabled={false}
+          scrollAnimationDuration={500}
+          onProgressChange={(_, absoluteProgress) => {
+            progressValue.value = absoluteProgress
+            setTitle(getTitleLabel(absoluteProgress))
+          }}
+          data={offerImages}
+          renderItem={({ item: image, index }) => (
+            <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
+          )}
+        />
+      ) : null}
 
       <RoundedButton
         iconName="next"
