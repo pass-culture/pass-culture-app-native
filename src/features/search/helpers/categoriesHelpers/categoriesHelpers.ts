@@ -341,25 +341,33 @@ export function getNativeCategories(
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
 }
 
-export const useNativeCategories = (nativeCategory?: SearchGroupNameEnumv2) => {
+export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
 
   const tree = createMappingTree(subcategories, facets)
 
-  const nativeCategories =
-    nativeCategory &&
-    nativeCategory !== SearchGroupNameEnumv2.NONE &&
-    (tree[nativeCategory].children as MappedNativeCategories)
+  const mappedNativeCategories =
+    searchGroup &&
+    searchGroup !== SearchGroupNameEnumv2.NONE &&
+    (tree[searchGroup].children as MappedNativeCategories)
 
-  const nativeCategoriesMap = nativeCategories ? Object.entries(nativeCategories) : []
+  const nativeCategories = mappedNativeCategories ? Object.entries(mappedNativeCategories) : []
 
-  if (nativeCategory === SearchGroupNameEnumv2.LIVRES)
-    return nativeCategoriesMap.filter(
-      ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
+  if (searchGroup === SearchGroupNameEnumv2.LIVRES) {
+    const bookNativeCategories = nativeCategories.filter(
+      ([_k, item]) => item.genreTypeKey === GenreType.BOOK
+    )
+    const additionalBookNativeCategories = nativeCategories.filter(
+      ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
     )
 
-  return nativeCategoriesMap
+    return [...bookNativeCategories, ...additionalBookNativeCategories].filter(
+      ([_k, item]) => item.label !== 'Livres papier'
+    )
+  }
+
+  return nativeCategories
 }
 
 function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {

@@ -1458,6 +1458,406 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                 Tourisme & Voyages
               </Text>
             </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#FFD7E9",
+                      "borderColor": "#EC3478",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "flexDirection": "row",
+                      "height": 56,
+                      "maxWidth": 182.5,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "textAlign": "left",
+                      "width": 343,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Abonnements aux médiathèques et bibliothèques"
+            >
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={2}
+                paddingRight={16}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Abonnements aux médiathèques et bibliothèques
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="E-books"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#FFD7E9",
+                      "borderColor": "#EC3478",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "flexDirection": "row",
+                      "height": 56,
+                      "maxWidth": 182.5,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "textAlign": "left",
+                      "width": 343,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="E-books"
+            >
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={2}
+                paddingRight={16}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                E-books
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Évènements autour du livre"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#FFD7E9",
+                      "borderColor": "#EC3478",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "flexDirection": "row",
+                      "height": 56,
+                      "maxWidth": 182.5,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "textAlign": "left",
+                      "width": 343,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Évènements autour du livre"
+            >
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={2}
+                paddingRight={16}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Évènements autour du livre
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Livres audio"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#FFD7E9",
+                      "borderColor": "#EC3478",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "flexDirection": "row",
+                      "height": 56,
+                      "maxWidth": 182.5,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "textAlign": "left",
+                      "width": 343,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Livres audio"
+            >
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={2}
+                paddingRight={16}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Livres audio
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={4}
