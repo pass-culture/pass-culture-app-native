@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useRef, RefObject, useMemo, useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { AnchorName } from 'ui/components/anchor/anchor-name'
 
@@ -21,6 +22,7 @@ export const AnchorProvider = ({
   handleCheckScrollY,
   children,
 }: AnchorProviderProps) => {
+  const { top } = useSafeAreaInsets()
   const anchors = useRef<Partial<Record<AnchorName, RefObject<View>>>>({})
 
   const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View>) => {
@@ -42,14 +44,14 @@ export const AnchorProvider = ({
           ) => {
             const currentPageScroll = handleCheckScrollY()
             scrollViewRef.current?.scrollTo({
-              y: pageY + currentPageScroll - height,
+              y: pageY + currentPageScroll - height - top,
               animated: true,
             })
           }
         )
       }
     },
-    [handleCheckScrollY, scrollViewRef]
+    [handleCheckScrollY, scrollViewRef, top]
   )
 
   const value = useMemo(
