@@ -44,6 +44,12 @@ jest.mock('features/venueMap/store/initialVenuesStore', () => ({
   useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
   useInitialVenues: jest.fn(),
 }))
+const mockRemoveSelectedVenue = jest.fn()
+jest.mock('features/venueMap/store/selectedVenueStore', () => ({
+  useSelectedVenueActions: () => ({
+    removeSelectedVenue: mockRemoveSelectedVenue,
+  }),
+}))
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
@@ -173,6 +179,19 @@ describe('useSearchResults', () => {
         const hitNumber = result.current.nbHits
 
         expect(hitNumber).toEqual(4)
+      })
+    })
+
+    it('should reset selected venue in store', async () => {
+      renderHook(
+        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(mockRemoveSelectedVenue).toHaveBeenCalledWith()
       })
     })
 

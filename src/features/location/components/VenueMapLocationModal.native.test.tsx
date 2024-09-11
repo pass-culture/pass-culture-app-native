@@ -75,6 +75,12 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
     removeSelectedVenue: mockRemoveSelectedVenue,
   }),
 }))
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({
+    setInitialVenues: mockSetInitialVenues,
+  }),
+}))
 
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
@@ -207,6 +213,19 @@ describe('VenueMapLocationModal', () => {
     fireEvent.press(validateButon)
 
     expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
+  })
+
+  it('should reset initial venues in store on modal openning', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    renderVenueMapLocationModal({})
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+
+    expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
   })
 
   it('should not navigate to venue map on submit when we choose a location and shouldOpenMapInTab is true', async () => {
