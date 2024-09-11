@@ -114,7 +114,11 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         </ContainerWithMargin>
       ) : (
-        <EventCardList data={eventCardData} />
+        <EventCardList
+          data={eventCardData}
+          analyticsFrom="venue"
+          offerId={Number(offerScreeningOnSelectedDates?.objectID)}
+        />
       )}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
