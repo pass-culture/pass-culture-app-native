@@ -32,7 +32,7 @@ jest.mock('@batch.com/react-native-plugin', () =>
 describe('useSearchVenueOffers', () => {
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {
-      const offerVenues = getVenueList(mockedAlgoliaResponse.hits)
+      const offerVenues = getVenueList(mockedAlgoliaResponse.hits, mockUserLocation)
 
       expect(offerVenues).toEqual([
         {
@@ -109,7 +109,7 @@ describe('useSearchVenueOffers', () => {
           },
         },
       ]
-      const offerVenues = getVenueList(hits)
+      const offerVenues = getVenueList(hits, mockUserLocation)
 
       expect(offerVenues).toEqual([
         {
