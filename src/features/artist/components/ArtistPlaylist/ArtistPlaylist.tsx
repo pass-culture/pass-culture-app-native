@@ -4,6 +4,7 @@ import { OfferResponseV2 } from 'api/gen'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
+import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -28,7 +29,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const labelMapping = useCategoryHomeLabelMapping()
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
 
-  const artists = offer?.extraData?.author
+  const artists = getOfferArtists(subcategory.categoryId, offer)
   const { sameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     searchGroupName: subcategory.searchGroupName,
