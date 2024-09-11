@@ -1,6 +1,4 @@
 vite.config.js:32 - default
-src/web/SupportedBrowsersGate.tsx:68 - BrowserNotSupportedPage (used in module)
-src/web/useServiceWorker.tsx:152 - useServiceWorker
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
