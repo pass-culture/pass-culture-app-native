@@ -46,6 +46,11 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/subcategories/useSubcategories')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 const defaultParams = {
   date: null,
   hitsPerPage: 30,
