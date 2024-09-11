@@ -31,8 +31,8 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   const handleEventCardPress = () => {
-    if (analyticsFrom === 'venue') {
-      analytics.logConsultOffer({ offerId: offerId as number, from: analyticsFrom })
+    if (analyticsFrom === 'venue' && offerId !== undefined) {
+      analytics.logConsultOffer({ offerId, from: analyticsFrom })
     }
     onPress()
   }
