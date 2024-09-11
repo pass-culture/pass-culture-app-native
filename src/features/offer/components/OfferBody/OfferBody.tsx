@@ -82,7 +82,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { sameArtistPlaylist: artistOffers } = useSameArtistPlaylist({
     artists,
     searchGroupName: subcategory.searchGroupName,
-    venueLocation: {},
   })
 
   const hasAccessToArtistPage =

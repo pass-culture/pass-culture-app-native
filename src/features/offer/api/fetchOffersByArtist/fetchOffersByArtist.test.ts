@@ -17,7 +17,6 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.LIVRES,
-      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
     expect(search).toHaveBeenCalledWith('', {
@@ -26,8 +25,6 @@ describe('fetchOffersByArtist', () => {
       hitsPerPage: 100,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [],
-      aroundRadius: 50000,
-      aroundLatLng: '47.65904, -2.75922',
     })
   })
 
@@ -35,7 +32,6 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
     expect(search).not.toHaveBeenCalled()
@@ -45,7 +41,6 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIF',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
     expect(search).not.toHaveBeenCalled()
@@ -55,7 +50,6 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIFS',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
     expect(search).not.toHaveBeenCalled()

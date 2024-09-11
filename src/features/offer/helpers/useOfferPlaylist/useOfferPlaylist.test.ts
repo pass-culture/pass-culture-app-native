@@ -156,7 +156,6 @@ describe('useOfferPlaylist', () => {
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: 'Eiichiro Oda',
         searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        venueLocation: { latitude: 20, longitude: 2 },
       })
     })
 
@@ -173,7 +172,6 @@ describe('useOfferPlaylist', () => {
         artists: undefined,
         ean: undefined,
         searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        venueLocation: { latitude: 20, longitude: 2 },
       })
     })
   })

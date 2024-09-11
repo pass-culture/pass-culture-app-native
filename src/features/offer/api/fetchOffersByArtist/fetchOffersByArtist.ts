@@ -1,10 +1,8 @@
-import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { convertKmToMeters } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
@@ -14,7 +12,6 @@ type BuildAlgoliaFilterType = {
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
   searchGroupName: SearchGroupNameEnumv2
-  venueLocation: Coordinates
 }
 
 export type HitOfferWithArtistAndEan = Offer & {
@@ -27,7 +24,6 @@ export type HitOfferWithArtistAndEan = Offer & {
 export const fetchOffersByArtist = async ({
   artists,
   searchGroupName,
-  venueLocation,
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
   const index = client.initIndex(env.ALGOLIA_TOP_OFFERS_INDEX_NAME)
 
@@ -45,11 +41,6 @@ export const fetchOffersByArtist = async ({
       hitsPerPage: 100,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
-      aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
-      aroundLatLng:
-        venueLocation.latitude && venueLocation.longitude
-          ? `${venueLocation.latitude}, ${venueLocation.longitude}`
-          : undefined,
     })
 
     return response.hits
