@@ -47,7 +47,7 @@ export function BookCategoriesSection<
     ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
   )
   const otherBookCategories = categories.filter(
-    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
+    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK && item.label !== 'Livres papier'
   )
 
   return (
