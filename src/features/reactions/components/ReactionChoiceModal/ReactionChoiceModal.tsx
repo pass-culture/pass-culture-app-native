@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BookingOfferResponse, OfferResponse, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { IconNames } from 'ui/components/icons/iconFactory'
@@ -24,6 +25,7 @@ type Props = {
   defaultReaction?: ReactionTypeEnum | null
   closeModal: () => void
   onSave?: ({ offerId, reactionType }: PostReactionRequest) => void
+  from: ReactionFromEnum
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
@@ -33,6 +35,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   defaultReaction,
   closeModal,
   onSave,
+  from,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -50,11 +53,19 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
     setIsButtonDisabled(false)
     setButtonWording('Valider la réaction')
     setReactionStatus((previousValue) => {
+      if (reactionType === previousValue && from === ReactionFromEnum.HOME)
+        setIsButtonDisabled(true)
       return reactionType === previousValue ? ReactionTypeEnum.NO_REACTION : reactionType
     })
   }
 
   const handleCloseModal = () => {
+    if (from === ReactionFromEnum.HOME) {
+      onSave?.({
+        offerId: offer.id,
+        reactionType: ReactionTypeEnum.NO_REACTION,
+      })
+    }
     closeModal()
   }
 
@@ -67,10 +78,14 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   }, [visible, defaultReaction])
 
   useEffect(() => {
-    if (!isButtonDisabled && reactionStatus === ReactionTypeEnum.NO_REACTION) {
+    if (
+      !isButtonDisabled &&
+      reactionStatus === ReactionTypeEnum.NO_REACTION &&
+      from === ReactionFromEnum.ENDED_BOOKING
+    ) {
       setButtonWording('Confirmer')
     }
-  }, [reactionStatus, isButtonDisabled])
+  }, [reactionStatus, isButtonDisabled, from])
 
   const getStyledIcon = useCallback(
     (name: IconNames, props?: object) =>

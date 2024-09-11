@@ -7,6 +7,7 @@ import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
@@ -237,6 +238,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
           visible={reactionModalVisible}
           defaultReaction={userReaction}
           onSave={handleSaveReaction}
+          from={ReactionFromEnum.ENDED_BOOKING}
         />
       ) : null}
     </Container>
