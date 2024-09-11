@@ -1,5 +1,3 @@
-import React, { Fragment } from 'react'
-
 type OfferPreviewModalProps = {
   offerImages: string[]
   isVisible?: boolean
@@ -8,4 +6,4 @@ type OfferPreviewModalProps = {
   defaultIndex?: number
 }
 
-export const OfferPreviewModal = (_props: OfferPreviewModalProps) => <Fragment />
+export const OfferPreviewModal = (_props: OfferPreviewModalProps) => null
