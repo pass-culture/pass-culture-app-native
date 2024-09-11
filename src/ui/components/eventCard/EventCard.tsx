@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Referrals } from 'features/navigation/RootNavigator/types'
+import { analytics } from 'libs/analytics'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -15,18 +17,30 @@ export type EventCardProps = {
   title: string
   subtitleLeft: string
   subtitleRight?: string
+  analyticsFrom?: Referrals
 }
 
-export const EventCard: React.FC<EventCardProps> = ({
+export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   onPress,
   isDisabled,
   title,
   subtitleLeft,
   subtitleRight,
+  analyticsFrom,
+  offerId,
 }) => {
   const hasSubtitleRight = !!subtitleRight
+  const handleEventCardPress = () => {
+    if (analyticsFrom === 'venue') {
+      analytics.logConsultOffer({ offerId: offerId as number, from: analyticsFrom })
+    }
+    onPress()
+  }
   return (
-    <StyledTouchableOpacity testID="event-card" disabled={isDisabled} onPress={onPress}>
+    <StyledTouchableOpacity
+      testID="event-card"
+      disabled={isDisabled}
+      onPress={handleEventCardPress}>
       <Title accessibilityLabel={title} numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>
