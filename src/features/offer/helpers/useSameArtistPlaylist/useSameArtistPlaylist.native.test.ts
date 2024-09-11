@@ -65,4 +65,23 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
     })
   })
+
+  it('should return an empty array if no data is returned', async () => {
+    fetchOffersByArtistSpy.mockResolvedValueOnce([])
+
+    const { result } = renderHook(
+      () =>
+        useSameArtistPlaylist({
+          artists: 'Eiichiro Oda',
+          searchGroupName: SearchGroupNameEnumv2.LIVRES,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(result.current.sameArtistPlaylist).toEqual([])
+    })
+  })
 })
