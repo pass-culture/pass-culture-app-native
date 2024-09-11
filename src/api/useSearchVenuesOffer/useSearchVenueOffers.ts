@@ -11,9 +11,9 @@ import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsW
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit, Geoloc } from 'libs/algolia/types'
-import { Position } from 'libs/location'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { Position, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
@@ -45,7 +45,7 @@ type FilterVenueOfferType = {
 // Radius in meters
 const AROUND_RADIUS = 50 * 1000
 
-export function getVenueList(hits: Offer[]) {
+export function getVenueList(hits: Offer[], userLocation: Position) {
   const offerVenues: OfferVenueType[] = []
 
   hits.forEach((hit) => {
@@ -84,7 +84,7 @@ export function getVenueList(hits: Offer[]) {
       offerId: offerVenue.offerId,
       title: offerVenue.title,
       address: offerVenue.address,
-      distance: useDistance(offerVenue.coordinates),
+      distance: formatDistance(offerVenue.coordinates, userLocation),
     }
   })
 
@@ -109,6 +109,7 @@ export const useSearchVenueOffers = ({
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
+  const { userLocation } = useLocation()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, query }],
@@ -150,8 +151,8 @@ export const useSearchVenueOffers = ({
       filterVenueOfferHit({ hit, offerId, venueId })
     ) as Offer[]
 
-    return getVenueList(filteredHits)
-  }, [data?.pages, offerId, transformHits, venueId])
+    return getVenueList(filteredHits, userLocation)
+  }, [data?.pages, offerId, transformHits, venueId, userLocation])
 
   const nbVenueItems = venueList.length
 
