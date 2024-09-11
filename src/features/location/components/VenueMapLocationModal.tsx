@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -11,6 +11,7 @@ import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -73,6 +74,7 @@ export const VenueMapLocationModal = ({
     ...locationSubmitProps,
   })
   const { removeSelectedVenue } = useSelectedVenueActions()
+  const { setInitialVenues } = useInitialVenuesActions()
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
   const theme = useTheme()
 
@@ -83,6 +85,10 @@ export const VenueMapLocationModal = ({
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
     ? theme.colors.primary
     : theme.colors.black
+
+  useEffect(() => {
+    setInitialVenues([])
+  }, [setInitialVenues])
 
   const handleSubmit = () => {
     removeSelectedVenue()

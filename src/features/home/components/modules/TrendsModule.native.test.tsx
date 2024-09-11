@@ -42,12 +42,6 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
     removeSelectedVenue: mockRemoveSelectedVenue,
   }),
 }))
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({
-    setInitialVenues: mockSetInitialVenues,
-  }),
-}))
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
@@ -155,17 +149,6 @@ describe('TrendsModule', () => {
 
       await waitFor(() => {
         expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
-      })
-    })
-
-    it('should reset initial venues in store when pressing venue map block content type and user location is not everywhere', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-      render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
-
-      fireEvent.press(screen.getByText('Accès carte des lieux'))
-
-      await waitFor(() => {
-        expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
       })
     })
 

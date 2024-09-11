@@ -40,12 +40,6 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
     removeSelectedVenue: mockRemoveSelectedVenue,
   }),
 }))
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({
-    setInitialVenues: mockSetInitialVenues,
-  }),
-}))
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
@@ -96,22 +90,6 @@ describe('<VenueListModule />', () => {
 
     await waitFor(() => {
       expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  it('should reset initial venues in store when pressing on venue list title', async () => {
-    render(
-      <VenueListModule
-        venues={venuesSearchFixture.hits}
-        moduleId="toto"
-        homeVenuesListEntryId="tata"
-      />
-    )
-
-    fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
-
-    await waitFor(() => {
-      expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
     })
   })
 
