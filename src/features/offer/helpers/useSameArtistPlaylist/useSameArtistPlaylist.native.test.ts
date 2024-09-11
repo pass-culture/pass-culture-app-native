@@ -1,6 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -18,6 +19,13 @@ const fetchOffersByArtistSpy = jest
   .spyOn(fetchOffersByArtist, 'fetchOffersByArtist')
   .mockResolvedValue(mockedAlgoliaOffersWithSameArtistResponse)
 
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockUserLocation,
+  }),
+}))
+
 describe('useSameArtistPlaylist', () => {
   it('should fetch same artist playlist when user has Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
@@ -26,7 +34,6 @@ describe('useSameArtistPlaylist', () => {
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
-          venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -37,7 +44,6 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: 'Eiichiro Oda',
         searchGroupName: SearchGroupNameEnumv2.LIVRES,
-        venueLocation: { latitude: 47.65904, longitude: -2.75922 },
       })
     })
   })
@@ -49,7 +55,6 @@ describe('useSameArtistPlaylist', () => {
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
-          venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),

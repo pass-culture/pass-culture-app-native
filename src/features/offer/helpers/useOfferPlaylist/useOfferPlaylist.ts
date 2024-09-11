@@ -34,11 +34,9 @@ export const useOfferPlaylist = ({
   const { userLocation } = useLocation()
 
   const artists = offer.extraData?.author
-  const venueLocation = offer.venue.coordinates
   const { sameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     searchGroupName: offerSearchGroup,
-    venueLocation,
   })
 
   const { latitude, longitude } = userLocation ?? {}

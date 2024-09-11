@@ -29,11 +29,9 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
 
   const artists = offer?.extraData?.author
-  const venueLocation = offer?.venue.coordinates
   const { sameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     searchGroupName: subcategory.searchGroupName,
-    venueLocation,
   })
 
   return sameArtistPlaylist.length > 0 ? (
