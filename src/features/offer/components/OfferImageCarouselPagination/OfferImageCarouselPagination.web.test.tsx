@@ -1,15 +1,18 @@
 import React from 'react'
+import { SharedValue } from 'react-native-reanimated'
 
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination.web'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 const mockHandlePressButton = jest.fn()
 
+const PROGRESS_VALUE = { value: 0 } as SharedValue<number>
+
 describe('<OfferImageCarouselPagination />', () => {
   it('should display pagination with dots and buttons', () => {
     render(
       <OfferImageCarouselPagination
-        progressValue={{ value: 0 }}
+        progressValue={PROGRESS_VALUE}
         offerImages={['image1', 'image2']}
         handlePressButton={mockHandlePressButton}
       />
@@ -21,7 +24,7 @@ describe('<OfferImageCarouselPagination />', () => {
   it('should not display pagination with only dots', () => {
     render(
       <OfferImageCarouselPagination
-        progressValue={{ value: 0 }}
+        progressValue={PROGRESS_VALUE}
         offerImages={['image1', 'image2']}
         handlePressButton={mockHandlePressButton}
       />
@@ -33,7 +36,7 @@ describe('<OfferImageCarouselPagination />', () => {
   it('should handle previous button clicking', () => {
     render(
       <OfferImageCarouselPagination
-        progressValue={{ value: 0 }}
+        progressValue={PROGRESS_VALUE}
         offerImages={['image1', 'image2']}
         handlePressButton={mockHandlePressButton}
       />
@@ -48,7 +51,7 @@ describe('<OfferImageCarouselPagination />', () => {
   it('should handle next button clicking', () => {
     render(
       <OfferImageCarouselPagination
-        progressValue={{ value: 0 }}
+        progressValue={PROGRESS_VALUE}
         offerImages={['image1', 'image2']}
         handlePressButton={mockHandlePressButton}
       />

@@ -11,6 +11,26 @@ jest.mock('react-native-safe-area-context', () => ({
 }))
 
 describe('<OfferPreviewModal />', () => {
+  let mockCallback: (
+    entries: {
+      target: HTMLElement
+      contentRect: Partial<DOMRectReadOnly>
+    }[]
+  ) => void
+
+  beforeAll(() => {
+    const mockResizeObserver = jest.fn().mockImplementation((callback) => {
+      mockCallback = callback
+      return {
+        observe: jest.fn(),
+        disconnect: jest.fn(),
+        unobserve: jest.fn(),
+      }
+    })
+
+    global.ResizeObserver = mockResizeObserver
+  })
+
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation()
   })
@@ -22,6 +42,29 @@ describe('<OfferPreviewModal />', () => {
     jest.useRealTimers()
   })
 
+  const forceOnLayout = async () => {
+    // Simuler un changement de taille
+    const view = screen.getByTestId('modalContainer')
+    Object.defineProperties(view, {
+      offsetHeight: { value: 600 },
+      offsetWidth: { value: 800 },
+      offsetLeft: { value: 10 },
+      offsetTop: { value: 20 },
+      offsetParent: { value: null },
+    })
+
+    await act(async () => {
+      if (mockCallback) {
+        mockCallback([
+          {
+            target: view,
+            contentRect: { width: 500, height: 200, top: 0, left: 0 },
+          },
+        ])
+      }
+    })
+  }
+
   it('should display offer preview modal correctly with several images', async () => {
     render(
       <OfferPreviewModal
@@ -31,12 +74,14 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await screen.findByAltText('Image 1')
+    await forceOnLayout()
+
+    await screen.findByTestId('offerImageContainerCarousel')
 
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
     expect(screen.getByText('1/3')).toBeInTheDocument()
-    expect(screen.getAllByTestId(/__CAROUSEL_ITEM_/)).toHaveLength(3)
+    expect(screen.getAllByLabelText(/Image [0-9]/)).toHaveLength(3)
   })
 
   it('should display offer preview modal correctly with one image', async () => {
@@ -60,6 +105,8 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
+    await forceOnLayout()
+
     await act(async () => {
       jest.advanceTimersByTime(500)
     })
@@ -77,14 +124,16 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    const nextButton = await screen.findByTestId('Image suivante')
-    fireEvent.click(nextButton)
+    await forceOnLayout()
+    await screen.findByTestId('offerImageContainerCarousel')
+
+    fireEvent.click(await screen.findByTestId('Image suivante'))
 
     await act(async () => {
       jest.advanceTimersByTime(500)
     })
 
-    expect(screen.getByText('2/3')).toBeInTheDocument()
+    expect(await screen.findByText('2/3')).toBeInTheDocument()
   })
 
   it('should display previous image', async () => {
@@ -98,16 +147,17 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
+    await forceOnLayout()
+
     await screen.findByText('3/3')
 
-    const previousButton = screen.getByTestId('Image précédente')
-    fireEvent.click(previousButton)
+    fireEvent.click(screen.getByTestId('Image précédente'))
 
     await act(async () => {
       jest.advanceTimersByTime(500)
     })
 
-    expect(screen.getByText('2/3')).toBeInTheDocument()
+    expect(await screen.findByText('2/3')).toBeInTheDocument()
   })
 
   it('should close modal on click on close button', async () => {
