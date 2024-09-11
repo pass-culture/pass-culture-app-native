@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Platform } from 'react-native'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -15,6 +15,7 @@ import { isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Spacer } from 'ui/theme'
 
@@ -33,6 +34,8 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   venueOffers,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollYRef = useRef<number>(0)
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -50,6 +53,18 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     },
   })
 
+  const handleCheckScrollY = () => {
+    return scrollYRef.current
+  }
+
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      onScroll(event)
+      scrollYRef.current = event.nativeEvent.contentOffset.y
+    },
+    [onScroll]
+  )
+
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
@@ -62,17 +77,23 @@ export const VenueContent: React.FunctionComponent<Props> = ({
       <VenueWebMetaHeader venue={venue} />
       {/* On web VenueHeader is called before Body for accessibility navigate order */}
       {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
-      <ContentContainer onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
-        {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
-        <VenueTopComponent venue={venue} />
-        <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-        <VenueBody
-          venue={venue}
-          playlists={gtlPlaylists}
-          venueOffers={venueOffers}
-          shouldDisplayCTA={shouldDisplayCTA}
-        />
-      </ContentContainer>
+      <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <ContentContainer
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+          bounces={false}
+          ref={scrollViewRef}>
+          {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
+          <VenueTopComponent venue={venue} />
+          <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+          <VenueBody
+            venue={venue}
+            playlists={gtlPlaylists}
+            venueOffers={venueOffers}
+            shouldDisplayCTA={shouldDisplayCTA}
+          />
+        </ContentContainer>
+      </AnchorProvider>
       {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
       {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
       {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
