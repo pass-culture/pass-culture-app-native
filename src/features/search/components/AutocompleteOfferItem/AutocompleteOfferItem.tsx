@@ -38,9 +38,10 @@ export function AutocompleteOfferItem({
 }: AutocompleteOfferItemProps) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
-  const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    indexInfos.facets.analytics
+  const {
+    ['offer.searchGroupNamev2']: categories = [],
+    ['offer.nativeCategoryId']: nativeCategories = [],
+  } = indexInfos?.facets?.analytics || {}
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const routes = useNavigationState((state) => state?.routes)
