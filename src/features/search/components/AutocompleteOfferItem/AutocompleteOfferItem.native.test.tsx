@@ -64,7 +64,7 @@ describe('AutocompleteOfferItem component', () => {
     }
   })
 
-  it('should not display `FILMS_SERIES_CINEMA` searchGroup', async () => {
+  it('should not display `CINEMA` searchGroup', async () => {
     render(
       <AutocompleteOfferItem
         hit={mockHit}
@@ -79,7 +79,7 @@ describe('AutocompleteOfferItem component', () => {
 
     await screen.findByText('Séances de cinéma')
 
-    expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Cinéma')).not.toBeOnTheScreen()
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
@@ -284,7 +284,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHit.query,
-            offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+            offerCategories: [SearchGroupNameEnumv2.CINEMA],
             offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,

@@ -146,14 +146,14 @@ describe('[Analytics utils]', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
-          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+          offerCategories: [SearchGroupNameEnumv2.CINEMA],
         },
         'SearchResults'
       )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchCategories: JSON.stringify([SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]),
+        searchCategories: JSON.stringify([SearchGroupNameEnumv2.CINEMA]),
         searchView: SearchView.Results,
       })
     })

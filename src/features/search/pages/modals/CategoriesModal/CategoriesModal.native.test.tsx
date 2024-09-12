@@ -78,7 +78,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
+      expect(screen.getByText('Cinéma')).toBeOnTheScreen()
       expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
       expect(screen.getByText('Jeux & jeux vidéos')).toBeOnTheScreen()
     })
@@ -88,7 +88,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Cinéma')).not.toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
@@ -96,14 +96,12 @@ describe('<CategoriesModal/>', () => {
     it('should show only categories exisiting in categories return from backend', () => {
       mockData = {
         ...mockData,
-        searchGroups: [
-          { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Cinéma, films et séries' },
-        ],
+        searchGroups: [{ name: SearchGroupNameEnumv2.CINEMA, value: 'Cinéma' }],
       }
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
+      expect(screen.getByText('Cinéma')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
@@ -197,7 +195,7 @@ describe('<CategoriesModal/>', () => {
     beforeAll(() => {
       mockSearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
@@ -231,7 +229,7 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
         offerGenreTypes: [],
       }
@@ -254,7 +252,7 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
@@ -289,7 +287,7 @@ describe('<CategoriesModal/>', () => {
 
         // Cartes cinéma
         expect(screen.getByText('7')).toBeOnTheScreen()
-        // DVD, Blu-Ray
+        // Séances de cinéma
         expect(screen.getByText('54')).toBeOnTheScreen()
       })
     })
@@ -304,7 +302,7 @@ describe('<CategoriesModal/>', () => {
 
         // Cartes cinéma
         expect(screen.queryByText('7')).not.toBeOnTheScreen()
-        // DVD, Blu-Ray
+        // Séances de cinéma
         expect(screen.queryByText('54')).not.toBeOnTheScreen()
       })
     })

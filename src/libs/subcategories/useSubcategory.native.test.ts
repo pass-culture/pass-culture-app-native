@@ -13,7 +13,7 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.ABO_LUDOTHEQUE}                  | ${false} | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
     ${SubcategoryIdEnum.ABO_MEDIATHEQUE}                 | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}          | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
-    ${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}            | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}            | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES}
     ${SubcategoryIdEnum.ABO_PRATIQUE_ART}                | ${false} | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.ABO_PRESSE_EN_LIGNE}             | ${false} | ${CategoryIdEnum.MEDIA}               | ${SearchGroupNameEnumv2.MEDIA_PRESSE}
     ${SubcategoryIdEnum.ABO_SPECTACLE}                   | ${false} | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
@@ -22,26 +22,26 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.ACTIVATION_THING}                | ${false} | ${CategoryIdEnum.TECHNIQUE}           | ${SearchGroupNameEnumv2.NONE}
     ${SubcategoryIdEnum.APP_CULTURELLE}                  | ${false} | ${CategoryIdEnum.MEDIA}               | ${SearchGroupNameEnumv2.MEDIA_PRESSE}
     ${SubcategoryIdEnum.ATELIER_PRATIQUE_ART}            | ${true}  | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
-    ${SubcategoryIdEnum.AUTRE_SUPPORT_NUMERIQUE}         | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.AUTRE_SUPPORT_NUMERIQUE}         | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES}
     ${SubcategoryIdEnum.BON_ACHAT_INSTRUMENT}            | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.INSTRUMENTS}
     ${SubcategoryIdEnum.CAPTATION_MUSIQUE}               | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
-    ${SubcategoryIdEnum.CARTE_CINE_ILLIMITE}             | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
-    ${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}         | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.CARTE_CINE_ILLIMITE}             | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
+    ${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}         | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.CARTE_JEUNES}                    | ${false} | ${CategoryIdEnum.CARTE_JEUNES}        | ${SearchGroupNameEnumv2.CARTES_JEUNES}
     ${SubcategoryIdEnum.CARTE_MUSEE}                     | ${false} | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
-    ${SubcategoryIdEnum.CINE_PLEIN_AIR}                  | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
-    ${SubcategoryIdEnum.CINE_VENTE_DISTANCE}             | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.CINE_PLEIN_AIR}                  | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
+    ${SubcategoryIdEnum.CINE_VENTE_DISTANCE}             | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.CONCERT}                         | ${true}  | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}
     ${SubcategoryIdEnum.CONCOURS}                        | ${true}  | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
     ${SubcategoryIdEnum.CONFERENCE}                      | ${true}  | ${CategoryIdEnum.CONFERENCE}          | ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}
     ${SubcategoryIdEnum.DECOUVERTE_METIERS}              | ${true}  | ${CategoryIdEnum.CONFERENCE}          | ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}
     ${SubcategoryIdEnum.ESCAPE_GAME}                     | ${false} | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
-    ${SubcategoryIdEnum.EVENEMENT_CINE}                  | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.EVENEMENT_CINE}                  | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.EVENEMENT_JEU}                   | ${true}  | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
     ${SubcategoryIdEnum.EVENEMENT_MUSIQUE}               | ${true}  | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}
     ${SubcategoryIdEnum.EVENEMENT_PATRIMOINE}            | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.FESTIVAL_ART_VISUEL}             | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
-    ${SubcategoryIdEnum.FESTIVAL_CINE}                   | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.FESTIVAL_CINE}                   | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.FESTIVAL_LIVRE}                  | ${true}  | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.FESTIVAL_MUSIQUE}                | ${true}  | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}
     ${SubcategoryIdEnum.FESTIVAL_SPECTACLE}              | ${true}  | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
@@ -65,19 +65,19 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.RENCONTRE_EN_LIGNE}              | ${true}  | ${CategoryIdEnum.CONFERENCE}          | ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}
     ${SubcategoryIdEnum.RENCONTRE_JEU}                   | ${true}  | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
     ${SubcategoryIdEnum.SALON}                           | ${true}  | ${CategoryIdEnum.CONFERENCE}          | ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}
-    ${SubcategoryIdEnum.SEANCE_CINE}                     | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.SEANCE_CINE}                     | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.SEANCE_ESSAI_PRATIQUE_ART}       | ${true}  | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.SPECTACLE_ENREGISTRE}            | ${false} | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
     ${SubcategoryIdEnum.SPECTACLE_REPRESENTATION}        | ${true}  | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
     ${SubcategoryIdEnum.SPECTACLE_VENTE_DISTANCE}        | ${false} | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
-    ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}           | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}           | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES}
     ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD}     | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE} | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}          | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.VISITE}                          | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.VISITE_GUIDEE}                   | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.VISITE_VIRTUELLE}                | ${false} | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
-    ${SubcategoryIdEnum.VOD}                             | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
+    ${SubcategoryIdEnum.VOD}                             | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES}
   `(
     'useSubcategory($subcategory) = { isEvent: $isEvent, categoryId: $categoryId, searchGroupName: $searchGroupName }',
     ({ subcategory, isEvent, categoryId, searchGroupName }) => {

@@ -8,6 +8,7 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
@@ -143,7 +144,7 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
   return data.searchGroups
     .filter(
       (searchGroup) =>
-        searchGroup.name !== SearchGroupNameEnumv2.NONE &&
+        Object.keys(availableCategories).includes(searchGroup.name) &&
         Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
     )
     .sort((a, b) => {

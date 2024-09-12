@@ -2,7 +2,10 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 
 export const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
 
-export const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]
+export const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [
+  SearchGroupNameEnumv2.CINEMA,
+  SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+]
 
 export const DEFAULT_SURVEY_MODAL_DATA = {
   title: 'Encore un peu de patience…',

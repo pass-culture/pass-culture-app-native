@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Li } from 'ui/components/Li'
@@ -17,7 +16,7 @@ interface Props {
 export const OfferCategoryChoices = (props: Props) => {
   const [selection, setSelection] = useState<SearchGroupNameEnumv2[]>([] as SearchGroupNameEnumv2[])
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const categories = useAvailableCategories(availableCategories)
+  const categories = useAvailableCategories()
 
   const { onChange } = props
 

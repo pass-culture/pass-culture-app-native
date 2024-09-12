@@ -1,12 +1,12 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- tapOn: 'Cinéma, films et séries'
+- tapOn: 'Cinéma'
 
 # TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
-- assertVisible: 'Cinéma, films et séries'
+- assertVisible: 'Cinéma'
 - tapOn: 'Séances de cinéma'
 
 - assertVisible: 'Séances de cinéma'

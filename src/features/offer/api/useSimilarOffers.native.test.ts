@@ -43,7 +43,7 @@ describe('useSimilarOffers', () => {
           useSimilarOffers({
             offerId: mockOfferId,
             position,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           }),
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -60,7 +60,7 @@ describe('useSimilarOffers', () => {
           useSimilarOffers({
             offerId: mockOfferId,
             position,
-            categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryExcluded: SearchGroupNameEnumv2.CINEMA,
           }),
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -76,7 +76,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: { latitude: 10, longitude: 15 },
           }),
         {
@@ -87,7 +87,7 @@ describe('useSimilarOffers', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA`,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=CINEMA`,
           {
             credentials: 'omit',
             headers: {
@@ -109,7 +109,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),
         {
@@ -120,7 +120,7 @@ describe('useSimilarOffers', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA`,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=CINEMA`,
           {
             credentials: 'omit',
             headers: {
@@ -147,7 +147,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),
         {
@@ -169,7 +169,7 @@ describe('useSimilarOffers', () => {
       () =>
         useSimilarOffers({
           offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           position: null,
         }),
       {
@@ -182,13 +182,13 @@ describe('useSimilarOffers', () => {
         new Error('Error 400 with recommendation endpoint to get similar offers'),
         {
           extra: {
-            categories: '["FILMS_SERIES_CINEMA"]',
+            categories: '["CINEMA"]',
             latitude: undefined,
             longitude: undefined,
             offerId: 1,
             statusCode: 400,
             errorMessage:
-              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA, code: 400',
+              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=CINEMA, code: 400',
           },
         }
       )
@@ -210,7 +210,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),
         {
@@ -259,7 +259,8 @@ describe('getCategories', () => {
       SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
       SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
       SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
-      SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      SearchGroupNameEnumv2.CINEMA,
+      SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
       SearchGroupNameEnumv2.INSTRUMENTS,
       SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
       SearchGroupNameEnumv2.LIVRES,
