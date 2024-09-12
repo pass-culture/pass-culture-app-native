@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
@@ -19,10 +20,11 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-// TODO(PC-20094): Fix this story
-const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
   <BodyWrapper>
-    <CategoriesButtonsDisplay {...props} />
+    <NavigationContainer>
+      <CategoriesButtonsDisplay {...props} />
+    </NavigationContainer>
   </BodyWrapper>
 )
 Default.args = {

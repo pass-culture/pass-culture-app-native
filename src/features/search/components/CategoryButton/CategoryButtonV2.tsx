@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { TouchableOpacityProps } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -31,6 +31,7 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
 }) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
+  const { colors } = useTheme()
 
   return (
     <TouchableContainer
@@ -44,7 +45,7 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
       textColor={textColor}
       style={style}>
       <LabelContainer>
-        <Label baseColor={textColor}>{label.toUpperCase()}</Label>
+        <Label baseColor={colors.black}>{label.toUpperCase()}</Label>
       </LabelContainer>
     </TouchableContainer>
   )
