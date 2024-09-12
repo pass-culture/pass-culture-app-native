@@ -35,7 +35,7 @@ const defaultSearchParams = {
   beginningDatetime: undefined,
   date: null,
   endingDatetime: undefined,
-  hitsPerPage: 30,
+  hitsPerPage: 50,
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,

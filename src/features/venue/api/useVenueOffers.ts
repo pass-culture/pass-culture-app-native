@@ -47,6 +47,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
           buildPlaylistOfferParams({
             ...searchState,
             venue: venueSearchParams.venue,
+            hitsPerPage: venueSearchParams.hitsPerPage,
           }),
           buildPlaylistOfferParams(venueSearchParams),
         ],
