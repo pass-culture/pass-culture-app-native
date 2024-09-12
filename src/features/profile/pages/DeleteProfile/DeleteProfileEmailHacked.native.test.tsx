@@ -47,6 +47,6 @@ describe('DeleteProfileEmailHacked', () => {
 
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SuspendAccountConfirmationNoToken')
+    expect(navigate).toHaveBeenCalledWith('SuspendAccountConfirmationWithoutAuthentication')
   })
 })
