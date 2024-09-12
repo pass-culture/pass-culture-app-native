@@ -23,7 +23,7 @@ export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState
   const params: SearchState = {
     beginningDatetime: undefined,
     endingDatetime: undefined,
-    hitsPerPage: 30,
+    hitsPerPage: 50,
     locationFilter,
     offerCategories: [],
     offerSubcategories: [],
