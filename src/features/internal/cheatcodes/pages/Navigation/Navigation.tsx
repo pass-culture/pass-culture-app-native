@@ -214,12 +214,6 @@ export function Navigation(): React.JSX.Element {
           <Row half>
             <ButtonPrimary wording="MarketingBlocks" onPress={() => navigate('MarketingBlocks')} />
           </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="DeleteProfileAccountNotDeletble"
-              onPress={() => navigate('DeleteProfileAccountNotDeletable')}
-            />
-          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>

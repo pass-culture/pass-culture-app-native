@@ -56,9 +56,9 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 21,
-          "lineHeight": 33.6,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 22,
+          "lineHeight": 26,
           "textAlign": "center",
         },
       ]
@@ -103,9 +103,9 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -117,9 +117,9 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }

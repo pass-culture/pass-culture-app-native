@@ -26,6 +26,7 @@ export function NavigationAccountSuspension(): React.JSX.Element {
             email: 'jean.dupont@gmail.com',
           }}
         />
+        <LinkToComponent name="DeleteProfileAccountNotDeletable" />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
