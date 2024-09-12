@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/__mocks__/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { SuspendAccountConfirmationNoToken } from './SuspendAccountConfirmationNoToken'
+import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
 
 jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -72,7 +72,7 @@ describe('SuspendAccountConfirmationNoToken', () => {
   })
 
   function renderSuspendAccountConfirmationNoToken() {
-    return render(reactQueryProviderHOC(<SuspendAccountConfirmationNoToken />))
+    return render(reactQueryProviderHOC(<SuspendAccountConfirmationWithoutAuthentication />))
   }
 
   function whenPressingContactFraudTeamButton() {

@@ -20,7 +20,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
-export const SuspendAccountConfirmationNoToken: FC = () => {
+export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 

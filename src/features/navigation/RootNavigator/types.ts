@@ -216,7 +216,7 @@ export type RootStackParamList = {
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
   ConfirmDeleteProfile: undefined
-  SuspendAccountConfirmationNoToken: undefined
+  SuspendAccountConfirmationWithoutAuthentication: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
