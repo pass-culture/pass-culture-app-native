@@ -16,13 +16,14 @@ import {
   getIcon,
   handleCategoriesSearchPress,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { createCategoryTree } from 'features/search/helpers/categoriesHelpers/categoryTree'
 import {
-  createMappingTree,
   MappedGenreTypes,
   MappedNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
+import { useCategories } from 'libs/subcategories/useCategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -54,15 +55,15 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   onClose,
-  facets,
 }: CategoriesModalProps) => {
-  const { data } = useSubcategories()
+  const { data: categoryList } = useCategories()
+  const { data: subcategoriesData } = useSubcategories()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    return createMappingTree(data, facets)
-  }, [data, facets])
+    return createCategoryTree(categoryList)
+  }, [categoryList])
 
   const {
     formState: { isSubmitting },
@@ -80,9 +81,8 @@ export const CategoriesModal = ({
   }, [reset, searchState, tree])
 
   const nativeCategories = useMemo(() => {
-    return (category &&
-      category !== SearchGroupNameEnumv2.NONE &&
-      tree[category].children) as MappedNativeCategories
+    return ((category && category !== SearchGroupNameEnumv2.NONE && tree[category]?.children) ||
+      {}) as MappedNativeCategories
   }, [category, tree])
 
   const genreTypes = useMemo(() => {
@@ -115,8 +115,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey].children) {
+      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },
@@ -160,11 +159,11 @@ export const CategoriesModal = ({
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
-      if (!data) {
+      if (!subcategoriesData) {
         return
       }
 
-      const searchPressData = handleCategoriesSearchPress(form, data)
+      const searchPressData = handleCategoriesSearchPress(form, subcategoriesData)
 
       let additionalSearchState: SearchState = { ...searchState, ...searchPressData?.payload }
       additionalSearchState = {
@@ -175,7 +174,7 @@ export const CategoriesModal = ({
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [data, dispatch, hideModal, searchState]
+    [subcategoriesData, dispatch, hideModal, searchState]
   )
 
   const handleReset = useCallback(() => {
@@ -197,8 +196,8 @@ export const CategoriesModal = ({
   )
 
   const modalTitle = useMemo(() => {
-    return getCategoriesModalTitle(data, currentView, category, nativeCategory)
-  }, [category, currentView, data, nativeCategory])
+    return getCategoriesModalTitle(subcategoriesData, currentView, category, nativeCategory)
+  }, [category, currentView, subcategoriesData, nativeCategory])
 
   const shouldDisplayBackButton = useMemo(
     () =>

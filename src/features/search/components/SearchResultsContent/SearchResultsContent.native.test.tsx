@@ -621,7 +621,7 @@ describe('SearchResultsContent component', () => {
     expect(mockRefetch).not.toHaveBeenCalled()
 
     mockPosition = DEFAULT_POSITION
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     expect(mockRefetch).toHaveBeenCalledTimes(1)
   })
@@ -634,12 +634,12 @@ describe('SearchResultsContent component', () => {
     // previousGeolocPosition is empty in first rendering
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
     mockPosition = null
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     // first rendering + rendering when user stop to share his position
     expect(mockRefetch).toHaveBeenCalledTimes(2)
@@ -657,9 +657,9 @@ describe('SearchResultsContent component', () => {
     renderSearchResultsContent()
 
     mockIsLoading = false
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     await waitFor(() => {
       expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
@@ -678,7 +678,7 @@ describe('SearchResultsContent component', () => {
       isMotorDisabilityCompliant: undefined,
       isVisualDisabilityCompliant: undefined,
     }
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     await waitFor(() => {
       expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
@@ -716,7 +716,7 @@ describe('SearchResultsContent component', () => {
     mockIsLoading = false
     mockSearchState = searchState
 
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     await waitFor(() => {
       expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
@@ -741,9 +741,9 @@ describe('SearchResultsContent component', () => {
     renderSearchResultsContent()
 
     mockIsLoading = false
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     await waitFor(() => {
       expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
@@ -756,7 +756,7 @@ describe('SearchResultsContent component', () => {
 
     mockIsLoading = false
     mockSearchState = searchState
-    screen.rerender(<SearchResultsContent />)
+    screen.rerender(reactQueryProviderHOC(<SearchResultsContent />))
 
     await waitFor(() => {
       expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
@@ -923,5 +923,5 @@ describe('SearchResultsContent component', () => {
 })
 
 const renderSearchResultsContent = () => {
-  render(<SearchResultsContent />)
+  render(reactQueryProviderHOC(<SearchResultsContent />))
 }

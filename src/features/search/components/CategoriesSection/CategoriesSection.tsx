@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
+import { CategoryTree } from 'features/search/helpers/categoriesHelpers/categoryTree'
 import {
   MappedGenreTypes,
   MappedNativeCategories,
@@ -14,7 +15,11 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
-export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
+export type CategoriesMapping =
+  | CategoryTree
+  | MappingTree
+  | MappedNativeCategories
+  | MappedGenreTypes
 
 export interface CategoriesSectionProps<
   T extends CategoriesMapping,
@@ -24,7 +29,7 @@ export interface CategoriesSectionProps<
   allValue: N
   data?: T
   descriptionContext: DescriptionContext
-  getIcon?: T extends MappingTree
+  getIcon?: T extends MappingTree | CategoryTree
     ? (categoryName: SearchGroupNameEnumv2) => FC<AccessibleBicolorIcon> | undefined
     : undefined
   onSelect: (item: N) => void

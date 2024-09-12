@@ -259,7 +259,7 @@ describe('<SearchResults/>', () => {
     })
 
     it('should display offer suggestions', async () => {
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
@@ -267,7 +267,7 @@ describe('<SearchResults/>', () => {
     })
 
     it('should display venue suggestions', async () => {
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
@@ -275,7 +275,7 @@ describe('<SearchResults/>', () => {
     })
 
     it('should handle venue press', async () => {
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
@@ -297,7 +297,7 @@ describe('<SearchResults/>', () => {
         },
       }
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       const scrollView = screen.getByTestId('autocompleteScrollView')
@@ -309,7 +309,7 @@ describe('<SearchResults/>', () => {
 
     it('should display search history when it has items', async () => {
       mockdate.set(TODAY_DATE)
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
@@ -320,7 +320,7 @@ describe('<SearchResults/>', () => {
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
@@ -329,7 +329,7 @@ describe('<SearchResults/>', () => {
     it('should dismiss the keyboard when pressing search history item', async () => {
       mockdate.set(TODAY_DATE)
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
 
       fireEvent.press(screen.getByText('manga'))
@@ -340,7 +340,7 @@ describe('<SearchResults/>', () => {
     describe('should update state and execute the search with the history item', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchResults />)
+        render(reactQueryProviderHOC(<SearchResults />))
         await act(async () => {})
 
         fireEvent.press(screen.getByText('manga'))
@@ -362,7 +362,7 @@ describe('<SearchResults/>', () => {
 
       it('When it has category and native category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchResults />)
+        render(reactQueryProviderHOC(<SearchResults />))
         await act(async () => {})
 
         fireEvent.press(screen.getByText('tolkien'))
@@ -384,7 +384,7 @@ describe('<SearchResults/>', () => {
 
       it('When it has only a category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchResults />)
+        render(reactQueryProviderHOC(<SearchResults />))
         await act(async () => {})
 
         fireEvent.press(screen.getByText('foresti'))
@@ -412,7 +412,7 @@ describe('<SearchResults/>', () => {
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
       await act(async () => {})
 

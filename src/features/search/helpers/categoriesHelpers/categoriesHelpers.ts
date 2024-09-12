@@ -9,11 +9,13 @@ import {
   SearchGroupResponseModelv2,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
-  MappingTree,
-  createMappingTree,
+  CategoryTree,
+  createCategoryTree,
+} from 'features/search/helpers/categoriesHelpers/categoryTree'
+import {
+  MappedNativeCategories,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
@@ -26,7 +28,7 @@ import {
   SearchState,
 } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useCategories } from 'libs/subcategories/useCategories'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
@@ -343,13 +345,13 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 }
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
-  const { data: subcategories } = useSubcategories()
-  const { facets } = useSearchResults()
-
-  const tree = createMappingTree(subcategories, facets)
+  const { data: categoryTree } = useCategories()
+  const tree = createCategoryTree(categoryTree)
 
   const mappedNativeCategories =
-    searchGroup && searchGroup !== SearchGroupNameEnumv2.NONE && tree[searchGroup].children
+    searchGroup &&
+    searchGroup !== SearchGroupNameEnumv2.NONE &&
+    (tree[searchGroup]?.children as MappedNativeCategories)
 
   const nativeCategories = mappedNativeCategories ? typedEntries(mappedNativeCategories) : []
 
@@ -498,7 +500,7 @@ export function getDescription(
   return undefined
 }
 
-export function getDefaultFormView(tree: MappingTree, searchState: SearchState) {
+export function getDefaultFormView(tree: CategoryTree, searchState: SearchState) {
   const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
 
   if (!offerCategories?.[0]) return CategoriesModalView.CATEGORIES
@@ -509,14 +511,15 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
       ? nativeCategories[offerNativeCategories[0] as keyof typeof nativeCategories]
       : undefined
 
-  if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
-  if (offerNativeCategories?.length || nativeCategories)
+  if (offerGenreTypes?.length || (nativeCategory && Object.keys(nativeCategory.children).length))
+    return CategoriesModalView.GENRES
+  if (offerNativeCategories?.length || (nativeCategories && Object.keys(nativeCategories).length))
     return CategoriesModalView.NATIVE_CATEGORIES
   return CategoriesModalView.CATEGORIES
 }
 
 export function getDefaultFormValues(
-  tree: MappingTree | undefined,
+  tree: CategoryTree | undefined,
   searchState: SearchState
 ): CategoriesModalFormProps {
   if (!tree)

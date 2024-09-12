@@ -13,10 +13,11 @@ import {
   isOnlyOnline,
   searchGroupOrNativeCategorySortComparator,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { createCategoryTree } from 'features/search/helpers/categoriesHelpers/categoryTree'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
+  categoriesDataTest,
   searchGroupsDataTest,
   subcategoriesDataTest,
 } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -25,9 +26,7 @@ let mockSearchState: SearchState = {
   ...initialSearchState,
 }
 
-const mockedFacets = undefined
-
-const tree = createMappingTree(subcategoriesDataTest, mockedFacets)
+const categoryTree = createCategoryTree(categoriesDataTest)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -309,7 +308,9 @@ describe('categoriesHelpers', () => {
           offerCategories: [],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
+          CategoriesModalView.CATEGORIES
+        )
       })
 
       it('when category selected is "Cartes jeunes" because it does not native categories', () => {
@@ -318,7 +319,9 @@ describe('categoriesHelpers', () => {
           offerCategories: [SearchGroupNameEnumv2.CARTES_JEUNES],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
+          CategoriesModalView.CATEGORIES
+        )
       })
     })
 
@@ -330,7 +333,7 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
           CategoriesModalView.NATIVE_CATEGORIES
         )
       })
@@ -342,7 +345,7 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
           CategoriesModalView.NATIVE_CATEGORIES
         )
       })
@@ -356,7 +359,9 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
+          CategoriesModalView.GENRES
+        )
       })
 
       it('when a category, a native category, a genre type categories selected', () => {
@@ -369,7 +374,9 @@ describe('categoriesHelpers', () => {
           ],
         }
 
-        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
+        expect(getDefaultFormView(categoryTree, mockSearchState)).toEqual(
+          CategoriesModalView.GENRES
+        )
       })
     })
   })
