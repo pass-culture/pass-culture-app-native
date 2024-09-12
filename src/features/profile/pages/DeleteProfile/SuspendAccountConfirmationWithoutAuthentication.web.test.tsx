@@ -16,7 +16,7 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-describe('SuspendAccountConfirmationNoToken', () => {
+describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

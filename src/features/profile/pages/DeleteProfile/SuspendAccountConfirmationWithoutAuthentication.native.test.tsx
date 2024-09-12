@@ -30,7 +30,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const mockApiSuspendAccount = jest.spyOn(API.api, 'postNativeV1AccountSuspend')
 
-describe('SuspendAccountConfirmationNoToken', () => {
+describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   it('should render correctly', () => {
     renderSuspendAccountConfirmationNoToken()
 
