@@ -1,10 +1,10 @@
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 import PropTypes from 'prop-types'
 import React, { forwardRef, memo } from 'react'
-import { View, NativeModules, ViewPropTypes, StyleSheet } from 'react-native'
+import { View, NativeModules, StyleSheet } from 'react-native'
 import styled from 'styled-components'
 
 const FastImageViewNativeModule = NativeModules.FastImageView
-
 function FastImageBase({ source, style, accessibilityLabel, children, forwardedRef, ...props }) {
   return (
     <View style={[styles.imageContainer, style]} ref={forwardedRef}>

@@ -1,5 +1,7 @@
 ## Web
 
+Deprecated: not on vite yet
+
 ### Analyze production build
 
 Set `BUNDLE_ANALYZER` environment variable to visualize what's bundled in production:
@@ -138,7 +140,7 @@ tslib (Found 2 resolved, 2 installed, 13 depended. Latest 2.3.1.)
   https://github.com/FormidableLabs/inspectpack/#fixing-bundle-duplicates
 ```
 
-You can now try to upgrade the module to optimize what is deduped, 
+You can now try to upgrade the module to optimize what is deduped,
 and open issue on repo so that package maintainer update their dependencies to allow deduping of it.
 
-We strongly advised to read the [Diagnosing duplicates](https://github.com/FormidableLabs/inspectpack#diagnosing-duplicates) part of the module documentation. 
+We strongly advised to read the [Diagnosing duplicates](https://github.com/FormidableLabs/inspectpack#diagnosing-duplicates) part of the module documentation.

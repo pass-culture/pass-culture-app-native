@@ -1,3 +1,4 @@
+vite.config.js:32 - default
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
