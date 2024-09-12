@@ -30,7 +30,12 @@ if [ -f "$SSL_CERT_FILE" ]; then
 	if [ -z "${ANDROID_SERIAL+x}" ]; then
 		echo "You didn't set the ANDROID_SERIAL environment variable"
 		echo "Choosing one for you :"
-		ANDROID_SERIAL="$(choose_an_emulator)"
+		ANDROID_SERIAL="$(choose_an_emulator || true)"
+		if [ -z "${ANDROID_SERIAL}" ]; then
+			echo '`emulator -list-avds` show 0 Android Emulator'
+			echo 'Please create an Android Emulator first, using Android Studio or `avdmanager`'
+			exit 1
+		fi
 		echo "ANDROID_SERIAL=${ANDROID_SERIAL}"
 		echo "If you want to hide this message or want to change the emulator, add the previous line to the .env.local file"
 	fi
