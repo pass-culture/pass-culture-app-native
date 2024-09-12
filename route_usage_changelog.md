@@ -11,7 +11,6 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
-- /native/v1/me/favorites/count
 - /native/v1/oauth/state
 - /native/v1/offer/{offer_id}
 - /native/v1/phone_validation/remaining_attempts
@@ -65,6 +64,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/profile/update_email
 - /native/v1/profile/email_update/validate
 ## Unused routes:
+- /native/v1/me/favorites/count
 - /native/v1/offer/report/reasons
 - /native/v1/offers/reports
 - /native/v1/profile/email_update/status
