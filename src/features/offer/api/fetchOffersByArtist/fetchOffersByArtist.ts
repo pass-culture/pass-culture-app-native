@@ -30,7 +30,8 @@ export const fetchOffersByArtist = async ({
   if (
     !artists ||
     EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||
-    searchGroupName !== SearchGroupNameEnumv2.LIVRES
+    (searchGroupName !== SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE &&
+      searchGroupName !== SearchGroupNameEnumv2.LIVRES)
   )
     return []
 

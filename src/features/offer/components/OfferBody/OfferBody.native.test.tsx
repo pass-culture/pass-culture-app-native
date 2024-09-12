@@ -11,11 +11,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import {
-  mockSubcategory,
-  mockSubcategoryBook,
-  mockSubcategoryCD,
-} from 'features/offer/fixtures/mockSubcategory'
+import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -709,23 +705,6 @@ describe('<OfferBody />', () => {
     })
 
     fireEvent.press(await screen.findByText('Stephen King'))
-
-    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
-  })
-
-  it('should display artist fakedoor if FF enabled and category is CD', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
-      extraData: { performer: 'Newjeans' },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryCD,
-    })
-
-    fireEvent.press(await screen.findByText('Newjeans'))
 
     await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
   })
