@@ -53,7 +53,7 @@ jest.mock('react-native-safe-area-context', () => ({
 
 const defaultParams = {
   date: null,
-  hitsPerPage: 30,
+  hitsPerPage: 50,
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,

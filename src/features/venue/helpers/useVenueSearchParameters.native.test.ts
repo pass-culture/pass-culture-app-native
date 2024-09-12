@@ -30,7 +30,7 @@ describe('useVenueSearchParameters', () => {
     expect(result.current).toEqual({
       beginningDatetime: undefined,
       endingDatetime: undefined,
-      hitsPerPage: 30,
+      hitsPerPage: 50,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
       offerCategories: [],
       offerSubcategories: [],

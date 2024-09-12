@@ -198,18 +198,20 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           />
         ))}
       </Animated.View>
-      <SectionWithDivider visible margin={false} gap={6}>
-        <PassPlaylist
-          testID="offersModuleList"
-          title="Les autres offres"
-          TitleComponent={PlaylistTitleText}
-          data={nonScreeningOffers}
-          itemHeight={LENGTH_M}
-          itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-        />
-      </SectionWithDivider>
+      {nonScreeningOffers ? (
+        <SectionWithDivider visible margin={false} gap={6}>
+          <PassPlaylist
+            testID="offersModuleList"
+            title="Les autres offres"
+            TitleComponent={PlaylistTitleText}
+            data={nonScreeningOffers}
+            itemHeight={LENGTH_M}
+            itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+          />
+        </SectionWithDivider>
+      ) : null}
     </React.Fragment>
   )
 }

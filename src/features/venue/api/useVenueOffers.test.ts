@@ -27,7 +27,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 const venueSearchParamsMock: SearchState = {
   beginningDatetime: undefined,
   endingDatetime: undefined,
-  hitsPerPage: 30,
+  hitsPerPage: 50,
   locationFilter: {
     locationType: LocationMode.EVERYWHERE,
   },
@@ -87,6 +87,7 @@ const EXPECTED_CALL_PARAM = {
         userLocation: { latitude: 48.90374, longitude: 2.48171 },
       },
       offerParams: {
+        hitsPerPage: 50,
         venue: {
           _geoloc: { lat: 48.8536, lng: 2.34199 },
           info: 'PARIS 6',
@@ -106,7 +107,7 @@ const EXPECTED_CALL_PARAM = {
         beginningDatetime: undefined,
         date: null,
         endingDatetime: undefined,
-        hitsPerPage: 30,
+        hitsPerPage: 50,
         isDigital: false,
         locationFilter: { locationType: 'EVERYWHERE' },
         offerCategories: [],
