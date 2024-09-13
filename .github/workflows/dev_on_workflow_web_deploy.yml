@@ -70,10 +70,10 @@ jobs:
           NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
       - name: 'Push assets to bucket'
         run: |
-          gsutil rsync -x "index\.html$" -r build gs://${{ inputs.BUCKET_NAME }}
+          gsutil rsync -x "index\.html$" -r dist gs://${{ inputs.BUCKET_NAME }}
       - name: 'Push index.html to bucket'
         run: |
-          gsutil cp build/index.html gs://${{ inputs.BUCKET_NAME }}
+          gsutil cp dist/index.html gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
     runs-on: ubuntu-latest
     if: ${{ always() }}
