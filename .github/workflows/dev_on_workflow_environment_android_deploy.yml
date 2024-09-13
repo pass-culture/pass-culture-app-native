@@ -65,6 +65,14 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.9
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
       - name: Create a directory for keystores
         run: |
           mkdir --parents android/keystores/
