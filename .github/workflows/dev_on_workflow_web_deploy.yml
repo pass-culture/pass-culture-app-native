@@ -1,4 +1,4 @@
-name: '4 [on_workflow] Deploy web'
+name: "4 [on_workflow] Deploy web"
 
 on:
   workflow_call:
@@ -61,10 +61,18 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 416.0.0'
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.9
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
       - name: 'Push debug log for testing'
         if: ${{ inputs.ENV == 'testing' }}
         run: |
-          export SENTRY_LOG_LEVEL="debug"
+          export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
       - name: 'Build web for input env'
         run: |
           NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}

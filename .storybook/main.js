@@ -1,6 +1,6 @@
 const path = require('path')
+const paths = require('../web/config/paths')
 
-const appSrc = path.resolve('./src/')
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -25,9 +25,9 @@ module.exports = {
           __mocks__: './__mocks__',
 
           'react-native-linear-gradient': 'react-native-web-linear-gradient',
-          'react-native-fast-image': path.join(appSrc, 'libs/react-native-web-fast-image'),
-          'react-native-email-link': path.join(appSrc, 'libs/react-native-email-link'),
-          'react-native-share': path.join(appSrc, 'libs/react-native-share'),
+          'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
+          'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
+          'react-native-share': path.join(paths.appSrc, 'libs/react-native-share'),
         },
         modulesToTranspile: ['@ptomasroos/react-native-multi-slider'],
       },
