@@ -13,7 +13,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -51,7 +51,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
       <TouchableContainer {...touchableProps} {...focusProps}>
         {enableAppV2VenueMapBlock ? (
           <StyledImageBackground source={VENUE_MAP_BACKGROUND_APP_V2}>
-            <CardText>EXPLORE LA CARTE</CardText>
+            <CardText>Explore la carte</CardText>
           </StyledImageBackground>
         ) : (
           <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
@@ -106,7 +106,7 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   borderRadius: theme.borderRadius.radius,
 }))
 
-const CardText = styled(Typo.ButtonText)({
+const CardText = styled(TypoDS.BodySemiBold)({
   position: 'absolute',
   left: getSpacing(4),
   bottom: getSpacing(4),

@@ -247,9 +247,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 27.2,
                       "textAlign": "center",
                     },
                   ]
@@ -446,8 +446,8 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -564,8 +564,8 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -590,7 +590,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -706,8 +706,8 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       {
                         "color": "#eb0055",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }

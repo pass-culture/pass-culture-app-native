@@ -253,12 +253,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
                         "height": "100%",
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -540,7 +540,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -646,7 +646,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -752,7 +752,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -858,7 +858,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -945,7 +945,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }

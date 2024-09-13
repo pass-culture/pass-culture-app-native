@@ -1,7 +1,7 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
-import { AppThemeType } from 'theme'
+import { theme } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -38,7 +38,7 @@ type CustomSearchInputProps = InputProps & {
   inputContainerStyle?: ViewStyle
   children?: React.ReactNode
   isRequiredField?: boolean
-  textStyle?: ValueOf<AppThemeType['typography']>
+  textStyle?: ValueOf<typeof theme.designSystem.typography>
   disableClearButton?: boolean
 }
 

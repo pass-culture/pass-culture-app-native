@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -78,7 +78,7 @@ const LabelContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const Label = styled(Typo.ButtonText).attrs({ numberOfLines: 3 })<{ baseColor?: string }>(
+const Label = styled(TypoDS.BodySemiBoldS).attrs({ numberOfLines: 3 })<{ baseColor?: string }>(
   ({ baseColor }) => ({
     textAlign: 'left',
     color: baseColor,

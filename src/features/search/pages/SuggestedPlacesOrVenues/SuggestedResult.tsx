@@ -6,7 +6,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   label: string
@@ -34,9 +34,9 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
         <Icon />
         <Spacer.Row numberOfSpaces={1} />
         <Text>
-          <Typo.ButtonText>{label}</Typo.ButtonText>
+          <TypoDS.BodySemiBold>{label}</TypoDS.BodySemiBold>
           <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{info}</Typo.Body>
+          <TypoDS.Body>{info}</TypoDS.Body>
         </Text>
       </RefContainer>
     </TouchableOpacity>

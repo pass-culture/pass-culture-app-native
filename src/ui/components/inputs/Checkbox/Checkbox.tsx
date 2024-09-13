@@ -6,7 +6,7 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type IsCheckedProps = {
   isChecked: boolean
@@ -60,7 +60,7 @@ const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
   backgroundColor: isChecked ? theme.colors.greyDark : theme.colors.white,
 }))
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   alignSelf: 'center',
   paddingLeft: getSpacing(4),
   flex: 1,

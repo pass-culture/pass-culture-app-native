@@ -137,8 +137,8 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 16,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -563,8 +563,8 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 16,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -1116,8 +1116,8 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 16,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -1542,8 +1542,8 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 16,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]

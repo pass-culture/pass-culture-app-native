@@ -247,9 +247,9 @@ exports[`VenueModal should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 27.2,
                       "textAlign": "center",
                     },
                   ]
@@ -403,9 +403,9 @@ exports[`VenueModal should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -504,8 +504,8 @@ exports[`VenueModal should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
                       "height": "100%",
                       "paddingBottom": 0,
                       "paddingLeft": 0,

@@ -238,9 +238,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 27.2,
                     "textAlign": "center",
                   },
                 ]
@@ -511,9 +511,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                               "color": "#eb0055",
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -661,9 +661,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -805,9 +805,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -949,9 +949,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1093,9 +1093,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1237,9 +1237,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1381,9 +1381,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1525,9 +1525,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1669,9 +1669,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1813,9 +1813,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -1957,9 +1957,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -2111,9 +2111,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                               "color": "#161617",
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -2261,9 +2261,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
@@ -2405,9 +2405,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             {
                               "color": "#161617",
                               "flexShrink": 1,
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }

@@ -16,7 +16,7 @@ import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type ListCategoryButtonProps = CategoryButtonProps[]
@@ -91,7 +91,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   )
 }
 
-const CategoriesTitle = styled(Typo.Title3).attrs({
+const CategoriesTitle = styled(TypoDS.Title3).attrs({
   children: 'Explore les catégories',
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
@@ -99,8 +99,8 @@ const CategoriesTitle = styled(Typo.Title3).attrs({
   marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
   paddingHorizontal: getSpacing(2),
 }))
-const CategoriesTitleV2 = styled(Typo.Caption).attrs({
-  children: 'PARCOURS LES CATÉGORIES',
+const CategoriesTitleV2 = styled(TypoDS.Title4).attrs({
+  children: 'Parcours les catégories',
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
   marginTop: getSpacing(4),

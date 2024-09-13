@@ -34,7 +34,7 @@ describe('VenueMapModule', () => {
   it('should render venue map block when user is located and feature flag enabled', () => {
     render(<VenueMapModule />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should not render venue map block when feature flag is disabled', () => {
@@ -69,7 +69,7 @@ describe('VenueMapModule', () => {
   it('should log consult venue map from home when pressing venue map block', () => {
     render(<VenueMapModule />)
 
-    fireEvent.press(screen.getByText('EXPLORE LA CARTE'))
+    fireEvent.press(screen.getByText('Explore la carte'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'home' })
   })

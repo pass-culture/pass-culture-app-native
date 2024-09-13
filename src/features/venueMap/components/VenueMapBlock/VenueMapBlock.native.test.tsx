@@ -34,10 +34,10 @@ describe('<VenueMapBlock />', () => {
       expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
     })
 
-    it('should display EXPLORE LA CARTE in text card', () => {
+    it('should display Explore la carte in text card', () => {
       render(<VenueMapBlock from="searchLanding" />)
 
-      expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+      expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
     })
 
     it('should not display Explorer les lieux in text card', () => {
@@ -60,10 +60,10 @@ describe('<VenueMapBlock />', () => {
       expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
     })
 
-    it('should not display EXPLORE LA CARTE in text card', () => {
+    it('should not display Explore la carte in text card', () => {
       render(<VenueMapBlock from="searchLanding" />)
 
-      expect(screen.queryByText('EXPLORE LA CARTE')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Explore la carte')).not.toBeOnTheScreen()
     })
   })
 

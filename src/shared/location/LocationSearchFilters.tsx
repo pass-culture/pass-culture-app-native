@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { Slider } from 'ui/components/inputs/Slider'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 const MIN_RADIUS = 0
 const MAX_RADIUS = 100
@@ -26,8 +26,8 @@ export const LocationSearchFilters = ({
   return (
     <React.Fragment>
       <LabelRadiusContainer nativeID={radiusLabelId}>
-        <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
-        <Typo.ButtonText testID="value_radius">{`${aroundRadius}\u00a0km`}</Typo.ButtonText>
+        <TypoDS.Body>{`Dans un rayon de\u00a0:`}</TypoDS.Body>
+        <TypoDS.BodySemiBold testID="value_radius">{`${aroundRadius}\u00a0km`}</TypoDS.BodySemiBold>
       </LabelRadiusContainer>
       <Spacer.Column numberOfSpaces={2} />
       <Slider
