@@ -6,7 +6,7 @@ import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
 import { usePlace } from 'libs/location/hooks/usePlace'
-import { LocationMode, ILocationContext } from 'libs/location/types'
+import { LocationMode, ILocationContext, Position } from 'libs/location/types'
 import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
@@ -91,8 +91,21 @@ export const LocationWrapper = memo(function LocationWrapper({
     analytics.setEventLocationType()
   }, [hasGeolocPosition, place])
 
-  const userLocation =
-    selectedLocationMode === LocationMode.AROUND_PLACE ? place?.geolocation : geolocPosition
+  let userLocation: Position
+  switch (true) {
+    case selectedLocationMode === LocationMode.AROUND_PLACE:
+      userLocation = place?.geolocation
+      break
+    case selectedLocationMode === LocationMode.AROUND_ME:
+      userLocation = geolocPosition
+      break
+    case selectedLocationMode === LocationMode.EVERYWHERE:
+      userLocation = undefined
+      break
+    default:
+      userLocation = geolocPosition
+      break
+  }
 
   const value = useMemo(
     () => ({
