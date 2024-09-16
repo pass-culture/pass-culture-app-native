@@ -1224,12 +1224,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#8337E9"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#8337E9",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1324,12 +1324,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#0E78B7"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E78B7",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1438,12 +1438,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#0E8474"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E8474",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1538,12 +1538,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#CA3F13"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#CA3F13",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1652,12 +1652,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#C01371"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#C01371",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1752,12 +1752,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#8337E9"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#8337E9",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1866,12 +1866,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#8337E9"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#8337E9",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1966,12 +1966,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#0E78B7"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E78B7",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -2080,12 +2080,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#0E8474"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E8474",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -2180,12 +2180,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#CA3F13"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#CA3F13",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -2294,12 +2294,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#C01371"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#C01371",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -2394,12 +2394,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#8337E9"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#8337E9",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -2508,12 +2508,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 >
                   <Text
-                    baseColor="#8337E9"
+                    baseColor="#161617"
                     numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#8337E9",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
