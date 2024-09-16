@@ -90,7 +90,6 @@ vendor/
 
 # local settings
 .env.development
-.env.local
 
 # Google service
 google-services.json

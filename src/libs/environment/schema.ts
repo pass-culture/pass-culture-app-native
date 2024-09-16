@@ -13,7 +13,7 @@ export const EnvironmentSchema = yup.object({
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: yup.string().required(),
   AMPLITUDE_API_PUBLIC_KEY: yup.string().required(),
   ANDROID_APP_ID: yup.string().required(),
-  API_BASE_URL: yup.string().ensure(), // Set to empty string in __DEV__ (see src/libs/environment/env.web.ts)
+  API_BASE_URL: yup.string().required(),
   APPLE_STORE_URL: yup.string().required(),
   APPS_FLYER_DEV_PUBLIC_KEY: yup.string().required(),
   BOOKING_FEEDBACK_LINK: yup.string().required(),
@@ -64,8 +64,10 @@ export const EnvironmentSchema = yup.object({
   FRAUD_EMAIL_ADDRESS: yup.string().required(),
   URL_PREFIX: yup.string().required(),
   WEBAPP_V2_DOMAIN: yup.string().required(),
-  // Below envs are injected by vite and are defined only on the Webapp
+  // Below envs are injected by webpack and are defined only on the Webapp
   COMMIT_HASH: yup.string().optional(),
+  BRANCH: yup.string().optional(),
+  LAST_COMMIT_DATETIME: yup.string().optional(),
   PUBLIC_URL: yup.string().optional(),
 })
 export type Environment = yup.InferType<typeof EnvironmentSchema>

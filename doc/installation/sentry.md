@@ -10,10 +10,16 @@ The build is configured to upload the source maps automatically, on every new re
 
 ### 🗝 Configure sentry cli
 
-Create a new `.env.local` containing your `SENTRY_AUTH_TOKEN`
+- add a file `~/.sentryclirc`:
 
-```sh
-SENTRY_AUTH_TOKEN=your_super_secret_token
+```
+[defaults]
+url = https://sentry.passculture.team/
+org = sentry
+project = application-native
+
+[auth]
+token=<token>
 ```
 
 > Click [here](https://sentry.passculture.team/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`

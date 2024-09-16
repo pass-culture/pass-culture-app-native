@@ -35,7 +35,6 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 import { ServiceWorkerProvider } from 'web/useServiceWorker'
-import 'reset-css'
 
 globalThisShim()
 
