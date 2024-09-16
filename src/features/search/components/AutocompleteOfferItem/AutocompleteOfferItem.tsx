@@ -29,6 +29,7 @@ type AutocompleteOfferItemProps = {
   sendEvent: SendEventForHits
   addSearchHistory: (item: CreateHistoryItem) => void
   shouldShowCategory?: boolean
+  offerCategories?: SearchGroupNameEnumv2[]
 }
 
 export function AutocompleteOfferItem({
@@ -36,6 +37,7 @@ export function AutocompleteOfferItem({
   sendEvent,
   addSearchHistory,
   shouldShowCategory,
+  offerCategories,
 }: AutocompleteOfferItemProps) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
@@ -44,9 +46,7 @@ export function AutocompleteOfferItem({
     ['offer.nativeCategoryId']: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
-  const t = useNativeCategories()
-
-  console.log({ t })
+  const appNativeCategories = useNativeCategories(offerCategories?.[0])
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const routes = useNavigationState((state) => state?.routes)
@@ -55,20 +55,34 @@ export function AutocompleteOfferItem({
   const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
 
-  console.log({ data })
-
   const isfilmsSeriesCinemaSearchGroup =
     categories.length && categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
 
   const searchGroupLabel = useSearchGroupLabel(categories[0]?.value ?? SearchGroupNameEnumv2.NONE)
 
-  // Comment récupérer la props proprement?
-  // on doit trouver la catégorie actuelle, puis faire la comparaison si ça se trouve,
-  // Si c'est le cas on affiche le résultat, sinon c'est SearchGroupNameV2
-  const mostPopularNativeCategoryId =
-    nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2
-      ? nativeCategories[0]?.value
-      : undefined
+  const shouldFilterCategory = !!offerCategories?.length
+
+  const isAcceptableResultForCurrentCategory = useMemo(() => {
+    return appNativeCategories.some(
+      (appNativeCategory) =>
+        nativeCategories[0] && appNativeCategory[0] === nativeCategories[0].value
+    )
+  }, [appNativeCategories, nativeCategories])
+
+  const mostPopularNativeCategoryId = useMemo(() => {
+    if (!nativeCategories[0]?.value || !nativeCategories[0].value) {
+      return undefined
+    }
+    if (shouldFilterCategory && !isAcceptableResultForCurrentCategory) {
+      return undefined
+    }
+    if (nativeCategories[0].value in NativeCategoryIdEnumv2) {
+      return nativeCategories[0]?.value
+    }
+
+    return undefined
+  }, [isAcceptableResultForCurrentCategory, nativeCategories, shouldFilterCategory])
+
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
     mostPopularNativeCategoryId
