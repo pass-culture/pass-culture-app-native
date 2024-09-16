@@ -5,7 +5,9 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Réglages des cookies'
 - assertVisible: 'Je choisis mes cookies'
-- scroll
+- scrollUntilVisible:
+    element:
+        text: "Politique de gestion des cookies"
 - tapOn: 'Politique de gestion des cookies'
 
 - back
