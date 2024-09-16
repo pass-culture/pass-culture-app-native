@@ -20,7 +20,7 @@ export const IncomingReactionModalContainer = () => {
   const now = new Date()
 
   const bookingsWithoutReaction =
-    bookings?.ended_bookings.filter(({ dateUsed, userReaction }) => {
+    bookings?.ended_bookings?.filter(({ dateUsed, userReaction }) => {
       if (!dateUsed || userReaction !== null) return false
 
       const elapsedTime = now.getTime() - new Date(dateUsed).getTime()
