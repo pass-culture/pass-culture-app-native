@@ -31,7 +31,7 @@ describe('AccessibilityFooter', () => {
 
     fireEvent.click(passCultureButton)
 
-    expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
+    expect(openUrl).toHaveBeenCalledWith('https://passculture.privacy', undefined, true)
   })
 
   it('should go to A11y page when the "Accessibilité : partiellement conforme" link is pressed', () => {

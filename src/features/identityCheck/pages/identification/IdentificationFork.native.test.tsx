@@ -100,7 +100,7 @@ describe('<IdentificationFork />', () => {
 
     fireEvent.press(externalLink)
 
-    expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
+    expect(openUrl).toHaveBeenCalledWith('https://passculture.privacy', undefined, true)
   })
 
   it('should not display reassuring mention when firebase parameters is false', () => {

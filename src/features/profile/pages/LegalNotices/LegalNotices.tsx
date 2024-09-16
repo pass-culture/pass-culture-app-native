@@ -68,7 +68,7 @@ export function LegalNotices() {
       <SectionRow
         title="Charte de protection des données personnelles"
         type="clickable"
-        externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+        externalNav={{ url: env.PRIVACY_POLICY_LINK }}
         icon={ExternalSite}
         iconSize={SECTION_ROW_ICON_SIZE}
       />

@@ -42,7 +42,7 @@ export const AccessibilityFooter = () => {
             <ExternalTouchableLink
               as={ButtonQuaternaryGrey}
               wording="Charte des données personnelles"
-              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
               icon={ExternalSiteFilled}
               justifyContent="flex-start"
               inline

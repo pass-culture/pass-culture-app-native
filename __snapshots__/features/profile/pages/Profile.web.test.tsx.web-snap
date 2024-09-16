@@ -1107,7 +1107,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     aria-label="Charte des données personnelles"
                     class="c4 c5"
                     data-testid="Charte des données personnelles"
-                    href="https://passculture.data-privacy-chart"
+                    href="https://passculture.privacy"
                     tabindex="0"
                     target="_blank"
                   >
@@ -2277,7 +2277,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     aria-label="Charte des données personnelles"
                     class="c4 c5"
                     data-testid="Charte des données personnelles"
-                    href="https://passculture.data-privacy-chart"
+                    href="https://passculture.privacy"
                     tabindex="0"
                     target="_blank"
                   >
