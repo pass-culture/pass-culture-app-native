@@ -35,6 +35,8 @@ cd ./pass-culture-app-native # if needed
 direnv allow
 ```
 
+The last step can take several tens of minutes, especially the first time
+
 If you got an error when executing `direnv allow` run it twice
 
 ### Android
