@@ -20,14 +20,14 @@ type MappedGenreType = {
   position?: number
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
-type MappedNativeCategory = {
+export type MappedNativeCategory = {
   label: string
   nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
   gtls?: GTL[]
 }
-export type MappedNativeCategories = Record<NativeCategoryIdEnumv2 | string, MappedNativeCategory>
+export type MappedNativeCategories = Record<NativeCategoryIdEnumv2, MappedNativeCategory>
 type MappedCategory = {
   label: string
   children?: MappedNativeCategories
@@ -88,7 +88,7 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
       ({ position: positionA }, { position: positionB }) => positionA - positionB
     )
     if (categorieKey) {
-      nativeCategoriesResult[categorieKey] = {
+      nativeCategoriesResult[categorieKey as NativeCategoryIdEnumv2] = {
         label: nativeCategory.label,
         nbResultsFacet: 0,
         genreTypeKey: GenreType.BOOK,

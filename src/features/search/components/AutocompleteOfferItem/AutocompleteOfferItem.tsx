@@ -13,6 +13,7 @@ import {
   getNativeCategoryFromEnum,
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
+  useNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
@@ -43,6 +44,10 @@ export function AutocompleteOfferItem({
     ['offer.nativeCategoryId']: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
+  const t = useNativeCategories()
+
+  console.log({ t })
+
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
@@ -50,26 +55,29 @@ export function AutocompleteOfferItem({
   const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
 
+  console.log({ data })
+
   const isfilmsSeriesCinemaSearchGroup =
     categories.length && categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
 
-  const searchGroupLabel = useSearchGroupLabel(
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    categories.length > 0 ? categories[0]?.value : SearchGroupNameEnumv2.NONE
-  )
+  const searchGroupLabel = useSearchGroupLabel(categories[0]?.value ?? SearchGroupNameEnumv2.NONE)
 
+  // Comment récupérer la props proprement?
+  // on doit trouver la catégorie actuelle, puis faire la comparaison si ça se trouve,
+  // Si c'est le cas on affiche le résultat, sinon c'est SearchGroupNameV2
   const mostPopularNativeCategoryId =
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    nativeCategories[0]?.value in NativeCategoryIdEnumv2 ? nativeCategories[0]?.value : undefined
+    nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2
+      ? nativeCategories[0]?.value
+      : undefined
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
     mostPopularNativeCategoryId
   )?.value
+
   const hasMostPopularHitNativeCategory =
     nativeCategories.length > 0 && !!mostPopularNativeCategoryId
   const hasMostPopularHitCategory =
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
+    categories[0]?.value && categories[0].value in SearchGroupNameEnumv2
   const categoriesFromNativeCategory = useMemo(
     () => getSearchGroupsEnumArrayFromNativeCategoryEnum(data, mostPopularNativeCategoryId),
     [data, mostPopularNativeCategoryId]
@@ -80,19 +88,14 @@ export function AutocompleteOfferItem({
     [categories, data, mostPopularNativeCategoryId]
   )
 
-  const shouldUseSearchGroupInsteadOfNativeCategory =
-    nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
-
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      return categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
-        ? // @ts-expect-error: because of noUncheckedIndexedAccess
-          [categories[0].value]
+      return categories[0]?.value && categories[0].value in SearchGroupNameEnumv2
+        ? [categories[0].value]
         : []
     } else {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      return categoriesFromNativeCategory[0] in SearchGroupNameEnumv2
+      return categoriesFromNativeCategory[0] &&
+        categoriesFromNativeCategory[0] in SearchGroupNameEnumv2
         ? [categoriesFromNativeCategory[0]]
         : []
     }
@@ -114,7 +117,6 @@ export function AutocompleteOfferItem({
     const shouldFilteredOnNativeCategory =
       shouldShowCategory &&
       hasMostPopularHitNativeCategory &&
-      !shouldUseSearchGroupInsteadOfNativeCategory &&
       ((hasSeveralCategoriesFromNativeCategory &&
         isAssociatedMostPopularNativeCategoryToMostPopularCategory) ||
         !hasSeveralCategoriesFromNativeCategory)
@@ -124,19 +126,17 @@ export function AutocompleteOfferItem({
       searchId,
       isAutocomplete: true,
       offerGenreTypes: undefined,
-      offerNativeCategories: shouldFilteredOnNativeCategory
-        ? // @ts-expect-error: because of noUncheckedIndexedAccess
-          [nativeCategories[0].value]
-        : undefined,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
+      offerNativeCategories:
+        shouldFilteredOnNativeCategory && nativeCategories[0]?.value
+          ? [nativeCategories[0].value]
+          : undefined,
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
       gtls: [],
     }
     addSearchHistory({
       query,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined,
+      nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0]?.value : undefined,
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
@@ -167,8 +167,7 @@ export function AutocompleteOfferItem({
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>
-              {(shouldDisplayNativeCategory && !shouldUseSearchGroupInsteadOfNativeCategory) ||
-              isfilmsSeriesCinemaSearchGroup
+              {shouldDisplayNativeCategory || isfilmsSeriesCinemaSearchGroup
                 ? mostPopularNativeCategoryValue
                 : searchGroupLabel}
             </Typo.ButtonTextPrimary>

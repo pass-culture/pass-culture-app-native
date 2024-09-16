@@ -66,13 +66,14 @@ interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
   value: SearchGroupNameEnumv2
 }
 
-interface AlgoliaFacetsAnalytics {
+interface AlgoliaFacetsObject {
   ['offer.nativeCategoryId']: AlgoliaFacetsAnalyticsNativeCategory[]
   ['offer.searchGroupNamev2']: AlgoliaFacetsAnalyticsCategory[]
 }
 
 interface AlgoliaFacets {
-  analytics: AlgoliaFacetsAnalytics
+  analytics: AlgoliaFacetsObject
+  exact_matches: AlgoliaFacetsObject
 }
 
 interface AlgoliaIndexInfos {

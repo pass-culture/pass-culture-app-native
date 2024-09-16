@@ -17,6 +17,8 @@ type AutocompleteOfferProps = UseInfiniteHitsProps & {
 export function AutocompleteOffer({ addSearchHistory, ...props }: AutocompleteOfferProps) {
   const { hits, sendEvent } = useInfiniteHits(props)
 
+  console.log({ hits })
+
   return hits.length > 0 ? (
     <React.Fragment>
       <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
