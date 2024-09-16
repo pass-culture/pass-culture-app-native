@@ -16,7 +16,7 @@ import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchR
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -89,9 +89,9 @@ export const SearchSuggestions = ({
     ]
   )
 
-  const onVenuePress = async (venueId: number) => {
+  const onVenuePress = (venueId: number) => {
     hideSuggestions()
-    await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
+    analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
   }
 
   return (

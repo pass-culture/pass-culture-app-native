@@ -46,8 +46,8 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
   const hasVenueImage = !!venue.banner_url
   const imageUri = venue.banner_url ?? ''
 
-  async function handlePressVenue() {
-    await analytics.logConsultVenue({
+  const handlePressVenue = () => {
+    analytics.logConsultVenue({
       venueId: Number(venue.objectID),
       searchId,
       from: 'searchVenuePlaylist',

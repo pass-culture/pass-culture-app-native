@@ -10,7 +10,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteVenueProps = UseInfiniteHitsProps & {
-  onItemPress: (venueId: number) => Promise<void>
+  onItemPress: (venueId: number) => void
 }
 
 export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenueProps) {
