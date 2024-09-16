@@ -5,6 +5,7 @@ import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/fixtures'
 import { fireEvent, render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
@@ -38,12 +39,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('DeleteProfileConfirmation', () => {
   it('should match snapshot', () => {
     render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should go back when clicking on go back button', () => {
     render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(goBackButton)
@@ -53,6 +56,7 @@ describe('DeleteProfileConfirmation', () => {
 
   it('should open FAQ link when clicking on "Voir la charte des données personnelles" button', () => {
     render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     const faqButton = screen.getByText('Voir la charte des données personnelles')
     fireEvent.press(faqButton)
@@ -62,9 +66,13 @@ describe('DeleteProfileConfirmation', () => {
 
   it('should navigate to home when pressing cancel button', () => {
     render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     fireEvent.press(screen.getByText('Annuler'))
 
     expect(navigate).toHaveBeenCalledWith('DeleteProfileReason', undefined)
   })
+  function renderDeleteProfileConfirmation() {
+    return render(reactQueryProviderHOC(<DeleteProfileConfirmation />))
+  }
 })
