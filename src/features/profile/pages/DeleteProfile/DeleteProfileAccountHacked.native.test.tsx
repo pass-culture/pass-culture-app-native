@@ -47,6 +47,6 @@ describe('DeleteProfileAccountHacked', () => {
 
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile')
+    expect(navigate).toHaveBeenCalledWith('SuspendAccountConfirmationWithoutAuthentication')
   })
 })

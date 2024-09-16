@@ -24,24 +24,20 @@ export function ConfirmDeleteProfile() {
   const { reset } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  function onAccountSuspendSuccess() {
-    reset({
-      index: 0,
-      routes: [{ name: 'DeactivateProfileSuccess' }],
-    })
-  }
-
-  function onAccountSuspendFailure() {
-    showErrorSnackBar({
-      message: 'Une erreur s’est produite pendant le chargement.',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-  }
-
-  const { mutate: notifyAccountSuspend, isLoading } = useAccountSuspend(
-    onAccountSuspendSuccess,
-    onAccountSuspendFailure
-  )
+  const { suspendAccount, isLoading } = useAccountSuspend({
+    onSuccess: () => {
+      reset({
+        index: 0,
+        routes: [{ name: 'DeactivateProfileSuccess' }],
+      })
+    },
+    onError: () => {
+      showErrorSnackBar({
+        message: 'Une erreur s’est produite pendant le chargement.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
 
   return (
     <GenericInfoPageWhite
@@ -80,7 +76,7 @@ export function ConfirmDeleteProfile() {
           <ButtonPrimary
             wording="Supprimer mon compte"
             isLoading={isLoading}
-            onPress={notifyAccountSuspend}
+            onPress={suspendAccount}
           />
           <Spacer.Column numberOfSpaces={4} />
           <ExternalTouchableLink
