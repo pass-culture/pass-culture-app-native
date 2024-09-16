@@ -313,7 +313,6 @@ export const routes: RootRoute[] = [
     component: DeleteProfileConfirmation,
     path: 'profile/suppression/confirmation',
     options: { title: 'Suppression profil confirmation' },
-    secure: true,
   },
   {
     name: 'DeactivateProfileSuccess',
