@@ -26,6 +26,7 @@ import {
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { usePrevious } from 'features/search/helpers/usePrevious'
+import { useSearchAndPlaylistVenues } from 'features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
@@ -34,7 +35,6 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
-import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -85,6 +85,7 @@ export const SearchResultsContent: React.FC = () => {
     facets,
     offerVenues,
   } = useSearchResults()
+  const searchAndPlaylistVenues = useSearchAndPlaylistVenues({ hits, offerVenues })
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -278,14 +279,6 @@ export const SearchResultsContent: React.FC = () => {
     hideVenueMapLocationModal()
   }
 
-  const transformedVenues = useMemo(() => {
-    if (hits.venues && hits.venues.length > 0) {
-      return adaptAlgoliaVenues(hits.venues)
-    } else {
-      return offerVenues
-    }
-  }, [hits.venues, offerVenues])
-
   const venueMapBottomSheetPlaylistType = useMemo(() => {
     return hits.venues && hits.venues.length > 0
       ? PlaylistType.TOP_OFFERS
@@ -301,7 +294,7 @@ export const SearchResultsContent: React.FC = () => {
     setCurrentRegion,
     setLastRegionSearched,
     venuesMap,
-  } = useVenuesMapData(transformedVenues)
+  } = useVenuesMapData(searchAndPlaylistVenues)
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
