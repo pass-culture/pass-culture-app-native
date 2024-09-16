@@ -17,6 +17,10 @@ export const mockHit = {
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        ['offer.searchGroupNamev2']: [],
+        ['offer.nativeCategoryId']: [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -39,11 +43,15 @@ export const mockHit = {
   },
 } as AlgoliaSuggestionHit
 
-export const mockHitSeveralCategoriesWithAssociationToNativeCategory = {
+export const mockHitSeveralCategoriesWithAssociationToNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -66,11 +74,15 @@ export const mockHitSeveralCategoriesWithAssociationToNativeCategory = {
   },
 }
 
-export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory = {
+export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -93,11 +105,15 @@ export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory = {
   },
 }
 
-export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
+export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -120,11 +136,15 @@ export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
   },
 }
 
-export const mockHitWithoutCategoryAndNativeCategory = {
+export const mockHitWithoutCategoryAndNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [],
         ['offer.nativeCategoryId']: [],
@@ -133,11 +153,15 @@ export const mockHitWithoutCategoryAndNativeCategory = {
   },
 }
 
-export const mockHitWithOnlyCategory = {
+export const mockHitWithOnlyCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -153,11 +177,15 @@ export const mockHitWithOnlyCategory = {
   },
 }
 
-export const mockHitUnknownNativeCategory = {
+export const mockHitUnknownNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -180,11 +208,15 @@ export const mockHitUnknownNativeCategory = {
   },
 }
 
-export const mockHitUnknownCategory = {
+export const mockHitUnknownCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -200,11 +232,15 @@ export const mockHitUnknownCategory = {
   },
 }
 
-export const mockHitUnknownNativeCategoryAndCategory = {
+export const mockHitUnknownNativeCategoryAndCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
