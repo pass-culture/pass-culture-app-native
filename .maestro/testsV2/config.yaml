@@ -13,11 +13,12 @@ flows:
   - 'subFolder/venue/*'
   - 'subFolder/analytics/*'
 
-executionOrder:
-    flowsOrder:
-      - SearchAndBookCinemaOffer.yml
-      - SearchAndBookDuoOffer.yml
-      - SearchAndBookOffers.yml
+# TODO: En attente du fix dans la v1.39.0 de Maestro
+# executionOrder:
+#     flowsOrder:
+#       - SearchAndBookCinemaOffer.yml
+#       - SearchAndBookDuoOffer.yml
+#       - SearchAndBookOffers.yml
 
 notifications:
   email:
