@@ -7,6 +7,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
@@ -20,6 +21,8 @@ import {
   useShareAppModaleTrigger,
 } from 'features/subscription/helpers/useShareAppModaleTrigger'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
@@ -60,6 +63,7 @@ export const Home: FunctionComponent = () => {
     showOnboardingSubscriptionModal,
   })
   const { shouldApplyGraphicRedesign, shareAppTrigger } = useRemoteConfigContext()
+  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { data: bookings } = useBookings()
 
   const getShareAppTrigger = () => {
@@ -148,6 +152,7 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
+      {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
     </React.Fragment>
   )
 }

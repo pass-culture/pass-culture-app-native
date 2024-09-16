@@ -3,6 +3,7 @@ import React from 'react'
 import { ReactionTypeEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
@@ -28,6 +29,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -44,6 +46,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -61,6 +64,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -77,6 +81,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -94,6 +99,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -111,6 +117,7 @@ describe('ReactionChoiceModal', () => {
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
@@ -128,6 +135,7 @@ describe('ReactionChoiceModal', () => {
         visible
         closeModal={mockCloseModal}
         onSave={mockHandleSave}
+        from={ReactionFromEnum.ENDED_BOOKING}
       />
     )
 
