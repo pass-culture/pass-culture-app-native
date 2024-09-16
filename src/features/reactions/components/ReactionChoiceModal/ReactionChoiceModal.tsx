@@ -59,16 +59,6 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
     })
   }
 
-  const handleCloseModal = () => {
-    if (from === ReactionFromEnum.HOME) {
-      onSave?.({
-        offerId: offer.id,
-        reactionType: ReactionTypeEnum.NO_REACTION,
-      })
-    }
-    closeModal()
-  }
-
   useEffect(() => {
     if (visible && defaultReaction !== undefined && defaultReaction !== null) {
       setReactionStatus(defaultReaction)
@@ -124,7 +114,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       title="Choix de réaction"
       maxHeight={height - top}
       rightIcon={Close}
-      onRightIconPress={handleCloseModal}
+      onRightIconPress={closeModal}
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         <ButtonPrimary

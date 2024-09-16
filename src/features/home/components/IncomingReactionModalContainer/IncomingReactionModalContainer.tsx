@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { PostReactionRequest } from 'api/gen'
+import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
@@ -37,6 +37,17 @@ export const IncomingReactionModalContainer = () => {
     [addReaction]
   )
 
+  const handleCloseModal = useCallback(() => {
+    if (!firstBooking) return
+
+    addReaction({
+      offerId: firstBooking.stock.offer.id,
+      reactionType: ReactionTypeEnum.NO_REACTION,
+    })
+
+    hideReactionModal()
+  }, [addReaction, firstBooking, hideReactionModal])
+
   if (!firstBooking) return null
 
   const { stock, dateUsed } = firstBooking
@@ -51,7 +62,7 @@ export const IncomingReactionModalContainer = () => {
     <ReactionChoiceModal
       offer={offer}
       dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
-      closeModal={hideReactionModal}
+      closeModal={handleCloseModal}
       visible={reactionModalVisible}
       defaultReaction={null}
       onSave={handleSaveReaction}

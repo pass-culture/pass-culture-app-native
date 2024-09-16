@@ -141,7 +141,65 @@ describe('IncomingReactionModalContainer', () => {
     fireEvent.press(screen.getByText('Valider la réaction'))
 
     await waitFor(() => {
-      expect(mockMutate).toHaveBeenCalledTimes(1)
+      expect(mockMutate).toHaveBeenNthCalledWith(1, {
+        offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+        reactionType: ReactionTypeEnum.LIKE,
+      })
+    })
+  })
+
+  it('should send reaction with NO_REACTION when closing modalfrom offer has subcategory in reactionCategories remote config', async () => {
+    const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+
+    render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
+
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+
+    fireEvent.press(screen.getByTestId('Fermer la modale'))
+
+    await waitFor(() => {
+      expect(mockMutate).toHaveBeenNthCalledWith(1, {
+        offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+        reactionType: ReactionTypeEnum.NO_REACTION,
+      })
     })
   })
 

@@ -147,25 +147,4 @@ describe('ReactionChoiceModal', () => {
       reactionType: ReactionTypeEnum.LIKE,
     })
   })
-
-  it('should save reaction with NO_REACTION when closing modal and modal openning from home', () => {
-    const mockHandleSave = jest.fn()
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        onSave={mockHandleSave}
-        from={ReactionFromEnum.HOME}
-      />
-    )
-
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
-
-    expect(mockHandleSave).toHaveBeenCalledWith({
-      offerId: mockOffer.id,
-      reactionType: ReactionTypeEnum.NO_REACTION,
-    })
-  })
 })
