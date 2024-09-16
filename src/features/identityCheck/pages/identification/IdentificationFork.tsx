@@ -72,7 +72,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
             <Spacer.Column numberOfSpaces={2} />
             <ExternalTouchableLink
               as={ButtonQuaternarySecondary}
-              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
               wording="Voir la charte des données personnelles"
               icon={ExternalSiteFilled}
               justifyContent="flex-start"

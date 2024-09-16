@@ -49,6 +49,6 @@ describe('LegalNotices', () => {
     const row = screen.getByText('Charte de protection des données personnelles')
     fireEvent.press(row)
 
-    expect(openUrl).toHaveBeenCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined, true)
+    expect(openUrl).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK, undefined, true)
   })
 })
