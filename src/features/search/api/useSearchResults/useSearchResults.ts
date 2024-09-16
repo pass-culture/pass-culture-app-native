@@ -7,6 +7,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -107,7 +108,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const venuesUserData = data?.pages?.[0]?.venues?.userData
   const facets = data?.pages?.[0]?.facets.facets as FacetData
 
-  const offerVenues = useMemo(() => {
+  const offerVenues: Venue[] = useMemo(() => {
     const venueMap = new Map()
     hits.duplicatedOffers.forEach((hit) => {
       if (hit.venue) {
