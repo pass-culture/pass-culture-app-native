@@ -40,7 +40,7 @@ if [ -f "$SSL_CERT_FILE" ]; then
 		echo "If you want to hide this message or want to change the emulator, add the previous line to the .env.local file"
 	fi
 
-	start_android_emulator >/dev/null 2>/dev/null &
+	start_android_emulator >/dev/null &
 
 	sleep "$WAIT_BOOT_COMPLETED"
 
