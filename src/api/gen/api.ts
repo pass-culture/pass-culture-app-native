@@ -688,6 +688,17 @@ export interface CallToActionMessage {
   callToActionTitle?: string | null
 }
 /**
+ * @export
+ * @interface CategoriesResponseModel
+ */
+export interface CategoriesResponseModel {
+  /**
+   * @type {Array<CategoryResponseModel>}
+   * @memberof CategoriesResponseModel
+   */
+  categories: Array<CategoryResponseModel>
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -708,6 +719,42 @@ export enum CategoryIdEnum {
   'PRATIQUE_ART' = 'PRATIQUE_ART',
   'SPECTACLE' = 'SPECTACLE',
   'TECHNIQUE' = 'TECHNIQUE',
+}
+/**
+ * @export
+ * @interface CategoryResponseModel
+ */
+export interface CategoryResponseModel {
+  /**
+   * @type {Array<string>}
+   * @memberof CategoryResponseModel
+   */
+  gtls?: Array<string> | null
+  /**
+   * @type {string}
+   * @memberof CategoryResponseModel
+   */
+  id: string
+  /**
+   * @type {string}
+   * @memberof CategoryResponseModel
+   */
+  label: string
+  /**
+   * @type {Array<string>}
+   * @memberof CategoryResponseModel
+   */
+  parents: Array<string>
+  /**
+   * @type {number}
+   * @memberof CategoryResponseModel
+   */
+  position?: number | null
+  /**
+   * @type {string}
+   * @memberof CategoryResponseModel
+   */
+  searchFilter?: string | null
 }
 /**
  * @export
@@ -4375,6 +4422,22 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_categories <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1Categories(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/categories`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
