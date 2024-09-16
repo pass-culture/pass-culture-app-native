@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import * as API from 'api/api'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/fixtures'
-import { fireEvent, render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
@@ -35,15 +38,24 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
+
+const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
+
 describe('DeleteProfileConfirmation', () => {
   it('should match snapshot', () => {
-    render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should go back when clicking on go back button', () => {
-    render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(goBackButton)
@@ -52,7 +64,7 @@ describe('DeleteProfileConfirmation', () => {
   })
 
   it('should open FAQ link when clicking on "Voir la charte des données personnelles" button', () => {
-    render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     const faqButton = screen.getByText('Voir la charte des données personnelles')
     fireEvent.press(faqButton)
@@ -61,10 +73,52 @@ describe('DeleteProfileConfirmation', () => {
   })
 
   it('should navigate to home when pressing cancel button', () => {
-    render(<DeleteProfileConfirmation />)
+    renderDeleteProfileConfirmation()
 
     fireEvent.press(screen.getByText('Annuler'))
 
     expect(navigate).toHaveBeenCalledWith('DeleteProfileReason', undefined)
   })
+
+  it('should navigate to DeleteProfileSuccess when account is anonymized', async () => {
+    renderDeleteProfileConfirmation()
+    givenAnonymizeAccountSucceeds()
+
+    whenAnonymizeAccount()
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
+    })
+  })
+
+  it('should show error snackbar when account anonymization fails', async () => {
+    renderDeleteProfileConfirmation()
+    givenAnonymizeAccountFails()
+
+    whenAnonymizeAccount()
+
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message:
+          'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
+  })
+
+  function renderDeleteProfileConfirmation() {
+    return render(reactQueryProviderHOC(<DeleteProfileConfirmation />))
+  }
+
+  function whenAnonymizeAccount() {
+    fireEvent.press(screen.getByText('Supprimer mon compte'))
+  }
+
+  function givenAnonymizeAccountSucceeds() {
+    postAnonymizeAccountSpy.mockImplementationOnce(jest.fn())
+  }
+
+  function givenAnonymizeAccountFails() {
+    postAnonymizeAccountSpy.mockRejectedValueOnce(new Error('Anonymization failed'))
+  }
 })
