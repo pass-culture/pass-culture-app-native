@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -7,8 +7,6 @@ import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
@@ -31,26 +29,6 @@ export const SearchN1: React.FC = () => {
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
 
-  const nativeCategories = useNativeCategories(offerCategory)
-  const offerCategoryTheme = useMemo(
-    () => ({
-      backgroundColor: CATEGORY_CRITERIA[offerCategory]?.fillColor,
-      borderColor: CATEGORY_CRITERIA[offerCategory]?.borderColor,
-    }),
-    [offerCategory]
-  )
-
-  const subCategoriesContent = useMemo(
-    () =>
-      nativeCategories.map((nativeCategory) => ({
-        label: nativeCategory[1].label,
-        backgroundColor: offerCategoryTheme.backgroundColor,
-        borderColor: offerCategoryTheme.borderColor,
-        nativeCategory: nativeCategory[0],
-      })),
-    [offerCategoryTheme, nativeCategories]
-  )
-
   if (arePlaylistsLoading) {
     return <LoadingState />
   }
@@ -61,7 +39,7 @@ export const SearchN1: React.FC = () => {
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
       <ScrollView>
-        <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
+        <SubcategoryButtonList offerCategory={offerCategory} />
         {isBookCategory && gtlPlaylists.length > 0 ? (
           <React.Fragment>
             {gtlPlaylists.map((playlist) => (

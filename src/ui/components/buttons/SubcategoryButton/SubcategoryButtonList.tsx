@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { FlatList, ScrollView, ScrollViewProps, StyleSheet, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
   SubcategoryButton,
   SubcategoryButtonProps,
@@ -15,15 +18,35 @@ type StyledScrollViewProps = ScrollViewProps & {
 }
 
 type Props = {
-  subcategoryButtonContent: SubcategoryButtonProps[]
+  offerCategory: SearchGroupNameEnumv2
   scrollViewProps?: StyledScrollViewProps
 }
 
-export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonContent }) => {
+export const SubcategoryButtonList: React.FC<Props> = ({ offerCategory }) => {
   const [webViewWidth, setWebViewWidth] = useState<number>(0)
 
   const { isDesktopViewport } = useTheme()
   const numColumns = Math.max(Math.floor(webViewWidth / SUBCATEGORY_BUTTON_WIDTH), 1)
+
+  const nativeCategories = useNativeCategories(offerCategory)
+  const offerCategoryTheme = useMemo(
+    () => ({
+      backgroundColor: CATEGORY_CRITERIA[offerCategory]?.fillColor,
+      borderColor: CATEGORY_CRITERIA[offerCategory]?.borderColor,
+    }),
+    [offerCategory]
+  )
+
+  const subcategoryButtonContent = useMemo(
+    () =>
+      nativeCategories.map((nativeCategory) => ({
+        label: nativeCategory[1].label,
+        backgroundColor: offerCategoryTheme.backgroundColor,
+        borderColor: offerCategoryTheme.borderColor,
+        nativeCategory: nativeCategory[0],
+      })),
+    [offerCategoryTheme, nativeCategories]
+  )
 
   const renderItem = ({ item }: { item: SubcategoryButtonProps; index: number }) => (
     <React.Fragment>
