@@ -102,6 +102,9 @@ export function AutocompleteOfferItem({
     [categories, data, mostPopularNativeCategoryId]
   )
 
+  const shouldUseSearchGroupInsteadOfNativeCategory =
+    nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
+
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
       return categories[0]?.value && categories[0].value in SearchGroupNameEnumv2
@@ -131,6 +134,7 @@ export function AutocompleteOfferItem({
     const shouldFilteredOnNativeCategory =
       shouldShowCategory &&
       hasMostPopularHitNativeCategory &&
+      !shouldUseSearchGroupInsteadOfNativeCategory &&
       ((hasSeveralCategoriesFromNativeCategory &&
         isAssociatedMostPopularNativeCategoryToMostPopularCategory) ||
         !hasSeveralCategoriesFromNativeCategory)
@@ -181,7 +185,8 @@ export function AutocompleteOfferItem({
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>
-              {shouldDisplayNativeCategory || isfilmsSeriesCinemaSearchGroup
+              {(shouldDisplayNativeCategory && !shouldUseSearchGroupInsteadOfNativeCategory) ||
+              isfilmsSeriesCinemaSearchGroup
                 ? mostPopularNativeCategoryValue
                 : searchGroupLabel}
             </Typo.ButtonTextPrimary>

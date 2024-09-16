@@ -262,3 +262,85 @@ export const mockHitUnknownNativeCategoryAndCategory: AlgoliaSuggestionHit = {
     },
   },
 }
+
+export const mockHitIrrelevantResult: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 207894,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [
+          {
+            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+            count: 206512,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 206539,
+          },
+        ],
+      },
+      analytics: {
+        'offer.nativeCategoryId': [
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
+            count: 250,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 3153,
+          },
+        ],
+      },
+    },
+  },
+}
+
+export const mockHitRelevantResults: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2627,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [
+          {
+            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+            count: 2565,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 2565,
+          },
+        ],
+      },
+      analytics: {
+        'offer.nativeCategoryId': [
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+            count: 8,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 6172,
+          },
+        ],
+      },
+    },
+  },
+}

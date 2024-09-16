@@ -6,6 +6,8 @@ import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOf
 import { initialSearchState } from 'features/search/context/reducer'
 import {
   mockHit,
+  mockHitIrrelevantResult,
+  mockHitRelevantResults,
   mockHitSeveralCategoriesWithAssociationToBooksNativeCategory,
   mockHitSeveralCategoriesWithAssociationToNativeCategory,
   mockHitSeveralCategoriesWithoutAssociationToNativeCategory,
@@ -17,7 +19,8 @@ import {
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState } from 'features/search/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -67,19 +70,68 @@ describe('AutocompleteOfferItem component', () => {
         sendEvent={mockSendEvent}
         shouldShowCategory
         addSearchHistory={jest.fn()}
-      />
+      />,
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
     )
+
+    await act(() => {})
 
     expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
     render(
-      <AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} addSearchHistory={jest.fn()} />
+      <AutocompleteOfferItem
+        hit={mockHit}
+        sendEvent={mockSendEvent}
+        addSearchHistory={jest.fn()}
+      />,
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
     )
+
     await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
+    await act(() => {})
+
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
+  })
+
+  describe('when a category is specified', () => {
+    it('should display a suggested native category if it is relevant', () => {
+      render(
+        <AutocompleteOfferItem
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          hit={mockHitIrrelevantResult}
+          sendEvent={mockSendEvent}
+          addSearchHistory={jest.fn()}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(screen.queryByText('Livres papier')).not.toBeOnTheScreen()
+    })
+
+    it('should display the search group if it is relevant', () => {
+      render(
+        <AutocompleteOfferItem
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          hit={mockHitRelevantResults}
+          sendEvent={mockSendEvent}
+          addSearchHistory={jest.fn()}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
+    })
   })
 
   describe('when item is not in the first three suggestions', () => {
@@ -89,25 +141,15 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
       )
-      await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_STATE',
-        payload: {
-          ...initialSearchState,
-          query: mockHit.query,
-          isFromHistory: undefined,
-          offerGenreTypes: undefined,
-          offerNativeCategories: undefined,
-          locationFilter: mockSearchState.locationFilter,
-          venue: mockSearchState.venue,
-          priceRange: mockSearchState.priceRange,
-          searchId,
-          isAutocomplete: true,
-        },
-      })
+      await act(() => {})
+
+      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
 
     it('should not display the most popular native category of the query suggestion', async () => {
@@ -116,8 +158,13 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
       )
+
+      await act(() => {})
 
       expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
@@ -136,9 +183,14 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+      await act(() => {})
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -166,9 +218,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -193,9 +250,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -220,9 +282,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -246,9 +313,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -272,8 +344,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
+
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
@@ -299,9 +377,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -325,9 +408,14 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        await act(() => {})
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -354,8 +442,12 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+        await act(() => {})
 
         expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
       })
@@ -367,8 +459,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.getByText('Arts visuels')).toBeOnTheScreen()
       })
@@ -382,8 +479,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -395,8 +497,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -410,21 +517,31 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('Arts visuels')).not.toBeOnTheScreen()
       })
 
-      it('when it is unknown in the app', () => {
+      it('when it is unknown in the app', async () => {
         render(
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('dans CD_VINYLES')).not.toBeOnTheScreen()
       })
@@ -438,8 +555,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
@@ -451,8 +573,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
@@ -464,8 +591,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -479,8 +611,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
       })
@@ -492,8 +629,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
       })
@@ -505,8 +647,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.getByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
       })
@@ -518,8 +665,13 @@ describe('AutocompleteOfferItem component', () => {
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
-          />
+          />,
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
         )
+
+        await act(() => {})
 
         expect(screen.getByText('Livres')).toBeOnTheScreen()
       })

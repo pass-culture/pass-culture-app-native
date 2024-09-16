@@ -53,8 +53,8 @@ export interface AlgoliaHit {
 }
 
 interface AlgoliaFacetsAnalyticsKey {
-  attribute: string
-  operator: string
+  attribute?: string
+  operator?: string
   count: number
 }
 
