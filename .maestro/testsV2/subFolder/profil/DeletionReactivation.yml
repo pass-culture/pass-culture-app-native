@@ -12,6 +12,11 @@ appId: ${MAESTRO_APP_ID}
     text: 'Supprimer mon compte'
     index: 1
 
+- assertVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+- tapOn:
+    text: "Je n’utilise plus l’application"
+    index: 1
+
 - assertVisible: "Veux-tu vraiment supprimer ton compte\_?"
 - tapOn: 'Supprimer mon compte'
 
