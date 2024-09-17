@@ -6,7 +6,8 @@ import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, render, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
@@ -43,8 +44,12 @@ describe('AutocompleteOffer component', () => {
       mockHits = mockSuggestionHits
     })
 
-    it('should display "Suggestions"', () => {
-      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
+    it('should display "Suggestions"', async () => {
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />, {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await act(() => {})
 
       expect(screen.getByText('Suggestions')).toBeOnTheScreen()
     })
@@ -56,7 +61,9 @@ describe('AutocompleteOffer component', () => {
     })
 
     it('should not display "Suggestions"', () => {
-      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />, {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
 
       expect(screen.queryByText('Suggestions')).not.toBeOnTheScreen()
     })

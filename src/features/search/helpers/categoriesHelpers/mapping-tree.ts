@@ -20,7 +20,7 @@ type MappedGenreType = {
   position?: number
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
-export type MappedNativeCategory = {
+type MappedNativeCategory = {
   label: string
   nbResultsFacet?: number
   genreTypeKey?: GenreType
