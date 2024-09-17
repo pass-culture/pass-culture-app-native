@@ -12,7 +12,6 @@ import {
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
-  MappedNativeCategory,
   MappingTree,
   createMappingTree,
   getBooksGenreTypes,
@@ -349,9 +348,7 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
   return Object.entries(obj) as Entries<T>
 }
 
-export const useNativeCategories = (
-  searchGroup?: SearchGroupNameEnumv2
-): [NativeCategoryEnum, MappedNativeCategory][] => {
+export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
 

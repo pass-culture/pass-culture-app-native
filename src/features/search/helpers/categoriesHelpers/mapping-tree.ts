@@ -27,7 +27,7 @@ export type MappedNativeCategory = {
   children?: MappedGenreTypes
   gtls?: GTL[]
 }
-export type MappedNativeCategories = Record<NativeCategoryIdEnumv2, MappedNativeCategory>
+export type MappedNativeCategories = Record<string, MappedNativeCategory>
 type MappedCategory = {
   label: string
   children?: MappedNativeCategories

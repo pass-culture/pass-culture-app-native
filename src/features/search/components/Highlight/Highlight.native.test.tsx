@@ -28,6 +28,10 @@ describe('Highlight component for a offer suggestion', () => {
     [env.ALGOLIA_OFFERS_INDEX_NAME]: {
       exact_nb_hits: 2,
       facets: {
+        exact_matches: {
+          'offer.nativeCategoryId': [],
+          'offer.searchGroupNamev2': [],
+        },
         analytics: {
           ['offer.searchGroupNamev2']: [
             {

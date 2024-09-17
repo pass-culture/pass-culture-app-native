@@ -11,7 +11,7 @@ import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
+import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Spacer } from 'ui/theme'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
@@ -39,7 +39,7 @@ export const SearchN1: React.FC = () => {
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
       <ScrollView>
-        <SubcategoryButtonList offerCategory={offerCategory} />
+        <SubcategoryButtonListWrapper offerCategory={offerCategory} />
         {isBookCategory && gtlPlaylists.length > 0 ? (
           <React.Fragment>
             {gtlPlaylists.map((playlist) => (
