@@ -283,7 +283,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
         />
         <button
           aria-label="Revenir en arrière"
-          class="c0 c1 sc-feUZmu c1"
+          class="c0 c1 sc-fUnMCh c1"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -355,7 +355,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
         />
         <button
           aria-label="Partager"
-          class="c0 c1 sc-feUZmu c1"
+          class="c0 c1 sc-fUnMCh c1"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -2559,7 +2559,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
         />
         <button
           aria-label="Revenir en arrière"
-          class="c0 c1 sc-feUZmu c1"
+          class="c0 c1 sc-fUnMCh c1"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -2631,7 +2631,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
         />
         <button
           aria-label="Partager"
-          class="c0 c1 sc-feUZmu c1"
+          class="c0 c1 sc-fUnMCh c1"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
