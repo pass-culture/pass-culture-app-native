@@ -70,18 +70,11 @@ export function AutocompleteOfferItem({
   }, [appNativeCategories, nativeCategories])
 
   const mostPopularNativeCategoryId = useMemo(() => {
-    if (!nativeCategories[0]?.value || !nativeCategories[0].value) {
-      return undefined
-    }
-    if (shouldFilterCategory && !isAcceptableResultForCurrentCategory) {
-      return undefined
-    }
-    if (nativeCategories[0].value in NativeCategoryIdEnumv2) {
+    if (nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2) {
       return nativeCategories[0]?.value
     }
-
     return undefined
-  }, [isAcceptableResultForCurrentCategory, nativeCategories, shouldFilterCategory])
+  }, [nativeCategories])
 
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
@@ -103,7 +96,8 @@ export function AutocompleteOfferItem({
   )
 
   const shouldUseSearchGroupInsteadOfNativeCategory =
-    nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
+    nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER ||
+    (shouldFilterCategory && !isAcceptableResultForCurrentCategory)
 
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
