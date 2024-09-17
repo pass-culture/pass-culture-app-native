@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -16,10 +16,18 @@ type Props = IsCheckedProps & {
   label: string
   onPress: (isChecked: boolean) => void
   required?: boolean
-  children?: never
+  children?: ReactNode
+  withBody?: boolean
 }
 
-export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, required, onPress }) => {
+export const Checkbox: FunctionComponent<Props> = ({
+  label,
+  isChecked,
+  required,
+  onPress,
+  children,
+  withBody = true,
+}) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
 
   const onToggle = useCallback(() => {
@@ -35,10 +43,13 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, required,
       onFocus={onFocus}
       onBlur={onBlur}>
       <Box isChecked={isChecked}>{isChecked ? <CheckboxMark /> : null}</Box>
-      <StyledBody>
-        {label}
-        {required ? '*' : null}
-      </StyledBody>
+      {withBody ? (
+        <StyledBody>
+          {label}
+          {required ? '*' : null}
+        </StyledBody>
+      ) : null}
+      {children}
     </CheckboxContainer>
   )
 }

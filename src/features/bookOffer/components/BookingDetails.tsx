@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -8,6 +8,7 @@ import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
+import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
@@ -110,6 +111,8 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     nbLoadedHits,
     isFetchingNextPage,
   } = useSearchVenueOffers(Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers))
+  const [isCguChecked, setIsCguChecked] = useState(false)
+
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
@@ -173,6 +176,8 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
+  const isBookingConfirmationButtonDisabled = !isStockBookable || !isCguChecked
+
   const isFreeOfferToArchive =
     !!offer && FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(offer.subcategoryId)
 
@@ -223,6 +228,8 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           <CancellationDetails />
+          <Spacer.Column numberOfSpaces={6} />
+          <CguWithCheckbox isChecked={isCguChecked} setIsChecked={setIsCguChecked} />
         </React.Fragment>
       )}
 
@@ -241,7 +248,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
       <ButtonContainer>
         <ButtonPrimary
-          disabled={!isStockBookable}
+          disabled={isBookingConfirmationButtonDisabled}
           wording="Confirmer la réservation"
           onPress={onPressBookOffer}
           accessibilityDescribedBy={accessibilityDescribedBy}
