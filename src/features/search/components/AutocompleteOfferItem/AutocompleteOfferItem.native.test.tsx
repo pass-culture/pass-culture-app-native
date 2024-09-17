@@ -101,36 +101,42 @@ describe('AutocompleteOfferItem component', () => {
   })
 
   describe('when a category is specified', () => {
-    it('should display a suggested native category if it is relevant', () => {
+    it('should display a suggested native category if it is relevant', async () => {
       render(
         <AutocompleteOfferItem
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
-          hit={mockHitIrrelevantResult}
-          sendEvent={mockSendEvent}
-          addSearchHistory={jest.fn()}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
-      )
-
-      expect(screen.queryByText('Livres papier')).not.toBeOnTheScreen()
-    })
-
-    it('should display the search group if it is relevant', () => {
-      render(
-        <AutocompleteOfferItem
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
           hit={mockHitRelevantResults}
           sendEvent={mockSendEvent}
+          shouldShowCategory
           addSearchHistory={jest.fn()}
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
 
-      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
+      await act(() => {})
+
+      expect(screen.getByText('E-books')).toBeOnTheScreen()
+    })
+
+    it('should display the search group if it is irrelevant', async () => {
+      render(
+        <AutocompleteOfferItem
+          hit={mockHitIrrelevantResult}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await act(() => {})
+
+      expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
   })
 

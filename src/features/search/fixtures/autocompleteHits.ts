@@ -269,18 +269,8 @@ export const mockHitIrrelevantResult: AlgoliaSuggestionHit = {
     exact_nb_hits: 207894,
     facets: {
       exact_matches: {
-        'offer.nativeCategoryId': [
-          {
-            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
-            count: 206512,
-          },
-        ],
-        'offer.searchGroupNamev2': [
-          {
-            value: SearchGroupNameEnumv2.LIVRES,
-            count: 206539,
-          },
-        ],
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
       },
       analytics: {
         'offer.nativeCategoryId': [
@@ -310,25 +300,15 @@ export const mockHitRelevantResults: AlgoliaSuggestionHit = {
     exact_nb_hits: 2627,
     facets: {
       exact_matches: {
-        'offer.nativeCategoryId': [
-          {
-            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
-            count: 2565,
-          },
-        ],
-        'offer.searchGroupNamev2': [
-          {
-            value: SearchGroupNameEnumv2.LIVRES,
-            count: 2565,
-          },
-        ],
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
       },
       analytics: {
         'offer.nativeCategoryId': [
           {
             attribute: 'offer.nativeCategoryId',
             operator: ':',
-            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+            value: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
             count: 8,
           },
         ],
