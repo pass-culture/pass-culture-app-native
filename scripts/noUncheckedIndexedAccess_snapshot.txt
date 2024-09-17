@@ -78,7 +78,7 @@
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:933
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:231
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
-./src/features/search/api/useSearchResults/useSearchResults.ts:105
+./src/features/search/api/useSearchResults/useSearchResults.ts:106
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:128
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:131
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:138
@@ -91,8 +91,8 @@
 ./src/features/search/components/AutocompleteVenueItem/AutocompleteVenueItem.native.test.tsx:11
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:70
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:77
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:221
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:223
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:222
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:224
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:24
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:31

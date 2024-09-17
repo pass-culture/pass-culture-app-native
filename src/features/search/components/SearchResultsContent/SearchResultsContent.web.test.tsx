@@ -94,6 +94,10 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues', () => ({
+  useSearchAndPlaylistVenues: jest.fn(),
+}))
+
 describe('SearchResultsContent component', () => {
   beforeAll(() => {
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
