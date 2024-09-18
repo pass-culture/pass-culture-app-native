@@ -16,6 +16,7 @@ import {
   mockHitUnknownNativeCategoryAndCategory,
   mockHitWithOnlyCategory,
   mockHitWithoutCategoryAndNativeCategory,
+  mockHitsWithDifferentCounts,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState } from 'features/search/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -234,6 +235,29 @@ describe('AutocompleteOfferItem component', () => {
           offerGenreTypes: undefined,
         },
       })
+    })
+  })
+
+  describe('most popular category', () => {
+    it('should be sorted by the higher count', async () => {
+      render(
+        <AutocompleteOfferItem
+          hit={mockHitsWithDifferentCounts}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await screen.findByText('cinéma')
+
+      await expect(
+        screen.getByText('Abonnements aux médiathèques et bibliothèques')
+      ).toBeOnTheScreen()
     })
   })
 
