@@ -24,7 +24,7 @@ export const createContentful = ({
   const baseUrl = new URL(`/spaces/${spaceId}/environments/${environment}`, domain)
 
   const getEntries = async <T>({ depthLevel, contentType }: GetEntries): Promise<T> => {
-    const url = new URL(`${baseUrl}/entries`)
+    const url = new URL(baseUrl + '/entries')
     url.search = new URLSearchParams({
       access_token: accessToken,
       include: depthLevel.toString(),
