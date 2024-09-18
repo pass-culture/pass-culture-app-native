@@ -1,9 +1,7 @@
 import { ReactNode } from 'react'
 
-const getUpdateMetadata = jest.fn(() =>
-  Promise.resolve({ label: 'label', description: 'decription' })
-)
-const sync = jest.fn()
+const getUpdateMetadata = () => Promise.resolve({ label: 'label', description: 'decription' })
+const sync = () => true
 const InstallMode = {
   IMMEDIATE: 0,
 }
@@ -20,7 +18,7 @@ const SyncStatus = {
 }
 const CheckFrequency = { MANUAL: 'MANUAL' }
 
-const CodePush = jest.fn(() => (app: ReactNode) => app)
+const CodePush = () => (app: ReactNode) => app
 
 export default Object.assign(CodePush, {
   getUpdateMetadata,

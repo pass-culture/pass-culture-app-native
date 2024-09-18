@@ -1,10 +1,14 @@
+import { renderHook } from '@testing-library/react'
+import { vi, expect, it, describe } from 'vitest'
+
 import * as PackageJson from 'libs/packageJson'
-import { renderHook } from 'tests/utils/web'
 
 import { useVersion } from './useVersion'
 
 const appVersion = '1.10.5'
-jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue(appVersion)
+
+vi.spyOn(PackageJson, 'getAppVersion').mockReturnValue(appVersion)
+vi.mock('react-native-code-push')
 
 describe('useVersion', () => {
   it('should return only the version on web', () => {
