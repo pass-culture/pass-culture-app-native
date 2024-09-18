@@ -4,17 +4,18 @@ import { useQuery } from 'react-query'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
-import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
+import { useDependencies } from 'libs/dependencies/DependenciesContext'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
-const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
+const STALE_TIME = 5 * 60 * 1000
+export type GetHomeData = () => Promise<Homepage[]>
 
-const getHomepageNatifContent = async (logType: LogTypeEnum) => {
+const getHomepageNatifContent = (getHomeData: GetHomeData, logType: LogTypeEnum) => async () => {
   try {
-    return await fetchHomepageNatifContent()
+    return await getHomeData()
   } catch (e) {
     const error = e as Error
     throw new ScreenError(error.message, {
@@ -25,11 +26,12 @@ const getHomepageNatifContent = async (logType: LogTypeEnum) => {
 }
 const useGetHomepageList = () => {
   const { logType } = useLogTypeFromRemoteConfig()
+  const { getHomeData } = useDependencies()
   const { data: homepages } = useQuery<Homepage[]>(
     [QueryKeys.HOMEPAGE_MODULES],
-    () => getHomepageNatifContent(logType),
+    getHomepageNatifContent(getHomeData, logType),
     {
-      staleTime: STALE_TIME_CONTENTFUL,
+      staleTime: STALE_TIME,
     }
   )
   return homepages
@@ -42,7 +44,6 @@ const emptyHomepage: Homepage = {
 }
 export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
   const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
-  // this fetches all homepages available in contentful
   const homepages = useGetHomepageList()
 
   const homepage = selectHomepageEntry(homepages ?? []) ?? emptyHomepage

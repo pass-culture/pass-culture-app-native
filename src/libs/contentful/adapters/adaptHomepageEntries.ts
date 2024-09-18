@@ -14,6 +14,8 @@ import {
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
 
+import { ContentfulAdapterFactory } from './ContentfulAdapterFactory'
+
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
 
@@ -65,11 +67,13 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   return
 }
 
-export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {
-  return homepageNatifEntries.map((entry) => ({
-    tags: entry.metadata.tags.map((tag) => tag.sys.id),
-    id: entry.sys.id,
-    modules: adaptHomepageNatifModules(entry.fields.modules),
-    thematicHeader: adaptThematicHeader(entry),
-  }))
-}
+export const createAdaptHomepageEntries =
+  (adapterFactory: ContentfulAdapterFactory) =>
+  (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {
+    return homepageNatifEntries.map((entry) => ({
+      tags: entry.metadata.tags.map((tag) => tag.sys.id),
+      id: entry.sys.id,
+      modules: adaptHomepageNatifModules(adapterFactory)(entry.fields.modules),
+      thematicHeader: adaptThematicHeader(entry),
+    }))
+  }
