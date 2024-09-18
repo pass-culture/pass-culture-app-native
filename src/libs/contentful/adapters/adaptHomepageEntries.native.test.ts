@@ -3,27 +3,15 @@ import {
   formattedBusinessModule,
   formattedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
-import { createAdaptHomepageEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
 import { homepageNatifEntryFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
 import { eventMonitoring } from 'libs/monitoring'
 
 import { algoliaNatifModuleFixture } from '../fixtures/algoliaModules.fixture'
 import { businessNatifModuleFixture } from '../fixtures/businessModule.fixture'
-import { ContentTypes } from '../types'
 
-import { ContentfulAdapterFactory } from './ContentfulAdapterFactory'
-import { adaptBusinessModule } from './modules/adaptBusinessModule'
-import { adaptOffersModule } from './modules/adaptOffersModule'
+import { adaptHomepageEntries } from './adaptHomepageEntries'
 
 describe('adaptHomepageEntries', () => {
-  let contentfulAdapterFactory: ContentfulAdapterFactory
-  let adaptHomepageEntries: ReturnType<typeof createAdaptHomepageEntries>
-
-  beforeEach(() => {
-    contentfulAdapterFactory = new ContentfulAdapterFactory()
-    adaptHomepageEntries = createAdaptHomepageEntries(contentfulAdapterFactory)
-  })
-
   it('should adapt a list of HomepageNatifEntries without modules', () => {
     const adaptedHomepageList = adaptHomepageEntries([
       {
@@ -37,8 +25,6 @@ describe('adaptHomepageEntries', () => {
 
   describe('modules', () => {
     it('should adapt a list of HomepageNatifModules', () => {
-      contentfulAdapterFactory.register(ContentTypes.ALGOLIA, adaptOffersModule)
-      contentfulAdapterFactory.register(ContentTypes.BUSINESS, adaptBusinessModule)
       const rawHomepageNatifModules = [algoliaNatifModuleFixture, businessNatifModuleFixture]
 
       const formattedHomepageModules = [formattedOffersModule, formattedBusinessModule]
@@ -57,7 +43,6 @@ describe('adaptHomepageEntries', () => {
     it('should catch the error and log to Sentry if the provided data is corrupted', () => {
       const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-      contentfulAdapterFactory.register(ContentTypes.BUSINESS, adaptBusinessModule)
       const contentModel = structuredClone(businessNatifModuleFixture)
 
       // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
