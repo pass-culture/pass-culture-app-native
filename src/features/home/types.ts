@@ -87,6 +87,7 @@ export type HomepageModule =
   | VideoModule
   | HighlightOfferModule
   | VideoCarouselModule
+  | VenueMapModule
 
 export type VideoCarouselModule = {
   type: HomepageModuleType.VideoCarouselModule
