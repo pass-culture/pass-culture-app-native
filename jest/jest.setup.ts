@@ -3,7 +3,7 @@ import 'cross-fetch/polyfill'
 
 // @ts-ignore jest can have access to this file but typescript does not know it
 // We can see it
-import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
+// import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
 
 jest.unmock('react-query')
 
@@ -24,6 +24,6 @@ jest.mock('libs/analytics/provider')
 jest.mock('libs/environment/env')
 
 // I have a problem with mockRNDeviceInfo doesn't recognize by TS
-jest.mock('react-native-device-info', () => mockRNDeviceInfo)
+// jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 jest.unmock('react-native-modal')

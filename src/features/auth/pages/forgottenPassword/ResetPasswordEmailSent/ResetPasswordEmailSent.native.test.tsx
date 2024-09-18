@@ -6,6 +6,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
+import mockRNDeviceInfo from '../../../../../libs/__mocks__/react-native-device-info'
+// tester le requireActual dans le jest.mock
+
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -39,6 +42,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 describe('<ResetPasswordEmailSent />', () => {
   beforeEach(() => {

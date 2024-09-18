@@ -1,0 +1,1223 @@
+watchman warning:  Recrawled this watch 91 times, most recently because:
+MustScanSubDirs UserDroppedTo resolve, please review the information on
+https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
+To clear this warning, run:
+`watchman watch-del '/Users/ines/Documents/Pass/projets/pass-culture-app-native' ; watchman watch-project '/Users/ines/Documents/Pass/projets/pass-culture-app-native'`
+
+PASS src/features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues.native.test.ts (164 MB heap size)
+FAIL src/features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/ui/components/touchableLink/ExternalTouchableLink.tsx:3:1)
+      at Object.require (src/features/auth/components/EmailSentGeneric.tsx:8:1)
+      at Object.require (src/features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx:5:1)
+      at Object.require (src/features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.native.test.tsx:9:1)
+
+FAIL src/features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication.native.test.tsx:4:1)
+
+FAIL src/features/favorites/pages/Favorites.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/favorites/fixtures/paginatedFavoritesResponseSnap.ts:3:1)
+      at Object.require (src/features/favorites/pages/Favorites.native.test.tsx:5:1)
+
+FAIL src/features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer.native.test.tsx:4:1)
+
+FAIL src/features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.native.test.tsx:8:1)
+
+FAIL src/features/deeplinks/helpers/getScreenFromDeeplink.test.ts
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.test.ts:1:1)
+
+FAIL src/features/offer/pages/Offer/Offer.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/offer/api/useSimilarOffers.ts:4:1)
+      at Object.require (src/features/offer/pages/Offer/Offer.native.test.tsx:2:1)
+
+FAIL src/features/artist/components/ArtistBody/ArtistBody.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/artist/components/ArtistBody/ArtistBody.native.test.tsx:4:1)
+
+PASS eslint-custom-rules/independent-mocks.test.js (8.037 s, 261 MB heap size)
+FAIL src/features/home/components/modules/video/VideoModal.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/libs/location/LocationWrapper.tsx:4:1)
+      at Object.require (src/libs/location/index.ts:8:1)
+      at Object.require (src/libs/location/hooks/useDistance.ts:1:1)
+      at Object.require (src/features/home/components/AttachedModuleCard/AttachedOfferCard.tsx:5:1)
+      at Object.require (src/features/home/components/modules/video/VideoMonoOfferTile.tsx:6:1)
+      at Object.require (src/features/home/components/modules/video/VideoModal.tsx:8:1)
+
+FAIL src/features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.native.test.tsx:6:1)
+
+FAIL src/features/venue/components/PracticalInformation/PracticalInformation.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/features/venue/components/ContactBlock/ContactBlock.tsx:5:1)
+      at Object.require (src/features/venue/components/PracticalInformation/PracticalInformation.tsx:5:1)
+      at Object.require (src/features/venue/components/PracticalInformation/PracticalInformation.native.test.tsx:3:1)
+
+FAIL src/features/identityCheck/pages/identification/IdentificationFork.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/features/identityCheck/pages/identification/IdentificationFork.tsx:7:1)
+      at Object.require (src/features/identityCheck/pages/identification/IdentificationFork.native.test.tsx:4:1)
+
+FAIL src/libs/campaign/isAppsFlyerTrackingEnabled.native.test.ts
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/cookies/helpers/useCookies.ts:5:1)
+      at Object.require (src/libs/campaign/isAppsFlyerTrackingEnabled.native.test.ts:4:1)
+
+FAIL src/features/home/pages/Home.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/bookings/api/useArchiveBookingMutation.ts:3:1)
+      at Object.require (src/features/bookings/api/index.ts:1:1)
+      at Object.require (src/features/home/helpers/selectHomepageEntry.ts:6:1)
+      at Object.require (src/features/home/api/useHomepageData.ts:4:1)
+      at Object.require (src/features/home/pages/Home.native.test.tsx:5:1)
+
+PASS eslint-custom-rules/no-raw-text.test.js (5.752 s, 321 MB heap size)
+FAIL src/features/profile/pages/ChangeEmail/ChangeEmail.native.test.tsx
+  ● Test suite failed to run
+
+    Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at invariant (node_modules/invariant/invariant.js:40:15)
+      at new NativeEventEmitter (node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js:46:16)
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/asyncHookWrappers.ts:29:34)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:3:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/fixtures/user.ts:3:1)
+      at Object.require (src/features/auth/context/__mocks__/AuthContext.tsx:1:1)
+      at Object.require (src/features/profile/pages/ChangeEmail/ChangeEmail.tsx:6:1)
+      at Object.require (src/features/profile/pages/ChangeEmail/ChangeEmail.native.test.tsx:7:1)
+
+FAIL src/features/auth/pages/signup/SignupForm.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+      1 | import mockdate from 'mockdate'
+      2 | import React from 'react'
+    > 3 | import DeviceInfo from 'react-native-device-info'
+        | ^
+      4 |
+      5 | import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+      6 | import { api } from 'api/api'
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/features/auth/pages/signup/SignupForm.native.test.tsx:3:1)
+
+FAIL src/features/home/components/banners/SignupBanner.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/features/home/components/banners/SignupBanner.tsx:6:1)
+      at Object.require (src/features/home/components/banners/SignupBanner.native.test.tsx:4:1)
+
+FAIL src/features/identityCheck/pages/identification/ubble/SelectIDStatus.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/ui/components/touchableLink/ExternalTouchableLink.tsx:3:1)
+      at Object.require (src/ui/components/SectionRow.tsx:6:1)
+      at Object.require (src/features/identityCheck/components/SecondButtonList.tsx:3:1)
+      at Object.require (src/features/identityCheck/pages/identification/ubble/SelectIDStatus.tsx:6:1)
+
+FAIL src/features/search/components/SearchResultsContent/SearchResultsContent.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/search/components/SearchResultsContent/SearchResultsContent.native.test.tsx:4:1)
+
+FAIL src/features/identityCheck/pages/identification/dms/DMSIntroduction.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/features/identityCheck/pages/identification/dms/DMSIntroduction.tsx:6:1)
+      at Object.require (src/features/identityCheck/pages/identification/dms/DMSIntroduction.native.test.tsx:4:1)
+
+FAIL src/features/artist/pages/Artist.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/artist/pages/Artist.native.test.tsx:4:1)
+
+FAIL src/features/search/components/sections/Price/Price.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/search/enums.ts:1:1)
+      at Object.require (src/features/search/components/sections/Price/Price.tsx:5:1)
+      at Object.require (src/features/search/components/sections/Price/Price.native.test.tsx:3:1)
+
+FAIL src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/fixtures/user.ts:3:1)
+      at Object.require (src/features/auth/context/__mocks__/AuthContext.tsx:1:1)
+      at Object.require (src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx:4:1)
+      at Object.require (src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.native.test.tsx:6:1)
+
+FAIL src/ui/components/touchableLink/ExternalTouchableLink.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/ui/components/touchableLink/ExternalTouchableLink.native.test.tsx:4:1)
+
+FAIL src/features/profile/pages/DeleteProfile/DeactivateProfileSuccess.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/AuthContext.tsx:5:1)
+      at Object.require (src/features/auth/helpers/useLogoutRoutine.ts:5:1)
+      at Object.require (src/features/profile/pages/DeleteProfile/DeactivateProfileSuccess.native.test.tsx:4:1)
+
+FAIL src/features/tutorial/pages/NonEligibleModal.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/features/tutorial/pages/NonEligibleModal.native.test.tsx:4:1)
+
+FAIL src/features/venue/components/VenueCTA/VenueCTA.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/libs/location/LocationWrapper.tsx:4:1)
+      at Object.require (src/libs/location/index.ts:8:1)
+      at Object.require (src/features/search/context/SearchWrapper.tsx:13:1)
+      at Object.require (src/features/venue/helpers/useVenueSearchParameters.ts:2:1)
+      at Object.require (src/features/venue/helpers/useNavigateToSearchWithVenueOffers.ts:4:1)
+      at Object.require (src/features/venue/components/VenueCTA/VenueCTA.tsx:5:1)
+
+
+ReferenceError: You are trying to `import` a file after the Jest environment has been torn down. From src/features/cookies/pages/CookiesConsent.native.test.tsx.
+
+      at Object.get NativeModules [as NativeModules] (node_modules/react-native/index.js:222:12)
+      at new NativeModules (node_modules/@amplitude/analytics-react-native/lib/src/context.ts:37:52)
+      at AmplitudeReactNative.init (node_modules/@amplitude/analytics-react-native/src/react-native-client.ts:72:20)
+
+ReferenceError: You are trying to `import` a file after the Jest environment has been torn down. From src/features/cookies/pages/CookiesConsent.native.test.tsx.
+
+      at Object.get AppState [as AppState] (node_modules/react-native/index.js:106:12)
+      at AmplitudeReactNative.AppState [as init] (node_modules/@amplitude/analytics-react-native/src/react-native-client.ts:77:21)
+FAIL src/features/cookies/pages/CookiesConsent.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+      2 | // eslint-disable-next-line no-restricted-imports
+      3 | import { browserName } from 'react-device-detect'
+    > 4 | import DeviceInfo from 'react-native-device-info'
+        | ^
+      5 |
+      6 | import { TrustedDevice } from 'api/gen'
+      7 | import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/features/trustedDevice/helpers/useDeviceInfo.ts:4:1)
+      at Object.require (src/features/auth/api/useSignIn.ts:17:1)
+      at Object.require (src/features/auth/pages/login/Login.tsx:8:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/withAuthProtection.tsx:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:10:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/ui/components/touchableLink/ExternalTouchableLink.tsx:3:1)
+      at Object.require (src/features/cookies/pages/CookiesDetails.tsx:9:1)
+      at Object.require (src/features/cookies/components/useCookiesModalContent.tsx:6:1)
+      at Object.require (src/features/cookies/pages/CookiesConsent.tsx:4:1)
+      at Object.require (src/features/cookies/pages/CookiesConsent.native.test.tsx:8:1)
+
+FAIL src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.native.test.tsx:4:1)
+
+FAIL src/features/home/components/modules/business/BusinessModule.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/AuthContext.tsx:5:1)
+      at Object.require (src/features/home/components/modules/business/NewBusinessModule.tsx:6:1)
+      at Object.require (src/features/home/components/modules/business/BusinessModule.tsx:3:1)
+      at Object.require (src/features/home/components/modules/business/BusinessModule.native.test.tsx:3:1)
+
+FAIL src/features/offer/components/OfferVenueBlock/OfferVenueBlockDeprecated.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/features/offer/fixtures/offerResponse.ts:3:1)
+      at Object.require (src/features/offer/components/OfferVenueBlock/OfferVenueBlockDeprecated.native.test.tsx:3:1)
+
+FAIL src/features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm.tsx:6:1)
+      at Object.require (src/features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm.native.test.tsx:4:1)
+
+FAIL src/features/auth/pages/login/Login.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+      1 | // eslint-disable-next-line no-restricted-imports
+      2 | import React from 'react'
+    > 3 | import DeviceInfo from 'react-native-device-info'
+        | ^
+      4 |
+      5 | import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+      6 | import { BatchUser } from '__mocks__/libs/react-native-batch'
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/features/auth/pages/login/Login.native.test.tsx:3:1)
+
+FAIL src/shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal.native.test.tsx
+  ● Test suite failed to run
+
+    Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at invariant (node_modules/invariant/invariant.js:40:15)
+      at new NativeEventEmitter (node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js:46:16)
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/asyncHookWrappers.ts:29:34)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:3:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/gen/index.ts:14:1)
+      at Object.require (src/shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal.native.test.tsx:5:1)
+
+FAIL src/features/home/pages/GenericHome.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/features/home/api/helpers/mapOffersDataAndModules.ts:6:1)
+      at Object.require (src/features/home/api/useGetOffersData.ts:4:1)
+      at Object.require (src/features/home/pages/GenericHome.tsx:19:1)
+      at Object.require (src/features/home/pages/GenericHome.native.test.tsx:10:1)
+
+FAIL src/features/trustedDevice/pages/SuspensionChoice.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/features/trustedDevice/pages/SuspensionChoice.native.test.tsx:4:1)
+
+FAIL src/features/venue/components/ContactBlock/ContactBlock.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/features/venue/components/ContactBlock/ContactBlock.native.test.tsx:3:1)
+
+FAIL src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/deeplinks/helpers/getScreenFromDeeplink.ts:1:1)
+      at Object.require (src/features/deeplinks/helpers/index.ts:1:1)
+      at Object.require (src/features/navigation/helpers/openUrl.ts:3:1)
+      at Object.require (src/ui/components/touchableLink/ExternalTouchableLink.tsx:3:1)
+      at Object.require (src/features/internal/marketingAndCommunication/atoms/DeeplinkItem.tsx:6:1)
+      at Object.require (src/features/internal/marketingAndCommunication/components/DeeplinksHistory.tsx:6:1)
+      at Object.require (src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:4:1)
+
+FAIL src/features/offer/components/OfferAbout/OfferAbout.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/libs/firebase/firestore/featureFlags/getAllFeatureFlags.ts:5:1)
+      at Object.require (src/libs/firebase/firestore/featureFlags/useFeatureFlag.ts:3:1)
+      at Object.require (src/shared/accessibility/AccessibilityBlock.tsx:4:1)
+      at Object.require (src/features/offer/components/OfferAccessibility/OfferAccessibility.tsx:4:1)
+      at Object.require (src/features/offer/components/OfferAbout/OfferAbout.tsx:5:1)
+      at Object.require (src/features/offer/components/OfferAbout/OfferAbout.native.test.tsx:4:1)
+
+FAIL src/features/profile/pages/ChangeCity/ChangeCity.native.test.tsx
+  ● Test suite failed to run
+
+    Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at invariant (node_modules/invariant/invariant.js:40:15)
+      at new NativeEventEmitter (node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js:46:16)
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/asyncHookWrappers.ts:29:34)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:3:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/profile/pages/ChangeCity/ChangeCity.native.test.tsx:4:1)
+
+FAIL src/features/home/components/modules/video/VideoMonoOfferTile.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/SettingsContext.tsx:4:1)
+      at Object.require (src/libs/algolia/fetchAlgolia/transformOfferHit.ts:3:1)
+      at Object.require (src/libs/algolia/types.ts:19:1)
+      at Object.require (src/libs/analytics/utils.ts:6:1)
+      at Object.require (src/libs/analytics/index.ts:2:1)
+      at Object.require (src/libs/location/LocationWrapper.tsx:4:1)
+      at Object.require (src/libs/location/index.ts:8:1)
+      at Object.require (src/libs/location/hooks/useDistance.ts:1:1)
+      at Object.require (src/features/home/components/AttachedModuleCard/AttachedOfferCard.tsx:5:1)
+      at Object.require (src/features/home/components/modules/video/VideoMonoOfferTile.tsx:6:1)
+      at Object.require (src/features/home/components/modules/video/VideoMonoOfferTile.native.test.tsx:6:1)
+
+FAIL src/features/navigation/RootNavigator/linking/getStateFromPath.test.ts
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/features/errors/pages/AsyncErrorBoundary.tsx:7:1)
+      at Object.require (src/features/errors/hocs/withAsyncErrorBoundary.ts:4:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreenComponent.tsx:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getScreensConfig.ts:8:1)
+      at Object.require (src/features/navigation/RootNavigator/screens.ts:1:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/index.ts:3:1)
+      at Object.require (src/features/navigation/RootNavigator/linking/getStateFromPath.test.ts:2:1)
+
+FAIL src/features/search/pages/modals/PriceModal/PriceModal.native.test.tsx
+  ● Test suite failed to run
+
+    react-native-device-info: NativeModule.RNDeviceInfo is null. To fix this issue try these steps:
+      • For react-native <= 0.59: Run `react-native link react-native-device-info` in the project root.
+      • Rebuild and re-run the app.
+      • If you are using CocoaPods on iOS, run `pod install` in the `ios` directory and then rebuild and re-run the app. You may also need to re-open Xcode to get the new pods.
+      If none of these fix the issue, please open an issue on the Github repository: https://github.com/react-native-device-info/react-native-device-info
+
+    > 1 | export { getUniqueId as getDeviceId } from 'react-native-device-info'
+        | ^
+      2 |
+
+      at Object.<anonymous> (node_modules/react-native-device-info/lib/commonjs/internal/nativeInterface.ts:20:11)
+      at Object.require (node_modules/react-native-device-info/lib/commonjs/index.ts:6:1)
+      at Object.require (src/libs/react-native-device-info/getDeviceId.ts:1:1)
+      at Object.require (src/libs/monitoring/services.ts:5:1)
+      at Object.require (src/libs/monitoring/errors.ts:5:1)
+      at Object.require (src/libs/monitoring/index.ts:1:1)
+      at Object.require (src/api/apiHelpers.ts:10:1)
+      at Object.require (src/api/gen/api.ts:15:1)
+      at Object.require (src/api/api.ts:4:1)
+      at Object.require (src/features/auth/context/AuthContext.tsx:5:1)
+      at Object.require (src/features/search/pages/modals/PriceModal/PriceModal.native.test.tsx:4:1)
+
