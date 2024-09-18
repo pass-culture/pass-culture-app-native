@@ -4,28 +4,30 @@ import { HomepageModule } from 'features/home/types'
 import { HomepageNatifModule } from 'libs/contentful/types'
 import { eventMonitoring } from 'libs/monitoring'
 
-import { ContentfulAdapterFactory } from './ContentfulAdapterFactory'
+import { contentfulAdapters } from './ContentfulAdapterFactory'
 
-export const adaptHomepageNatifModules =
-  (adapterFactory: ContentfulAdapterFactory) =>
-  (modules: HomepageNatifModule[]): HomepageModule[] =>
-    modules.filter(moduleContainFields).map(adaptModule(adapterFactory)).filter(isNotNull)
+export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] =>
+  modules.filter(moduleContainFields).map(adaptModule).filter(isNotNull)
 
-const adaptModule = (adapterFactory: ContentfulAdapterFactory) => (module: HomepageNatifModule) => {
-  const contentType = module.sys.contentType?.sys.id || ''
+const adaptModule = (module: HomepageNatifModule) => {
+  const contentType = module.sys.contentType?.sys.id
+  if (!contentType) {
+    return null
+  }
+
   try {
-    const adapter = adapterFactory.getAdapter(contentType)
+    const adapter = contentfulAdapters[contentType]
     if (!adapter) {
       return null
     }
     return adapter(module)
   } catch (error) {
-    monitorError(module)(error)
+    monitorError(error, module)
   }
   return null
 }
 
-const monitorError = (module: HomepageNatifModule) => (error: unknown) => {
+const monitorError = (error: unknown, module: HomepageNatifModule) => {
   console.warn(`Error while computing home modules, with module of ID: ${module.sys.id}`, error)
   eventMonitoring.captureException('Error while computing home modules', {
     extra: { moduleId: module.sys.id },
