@@ -26,6 +26,5 @@ export const Typographies: ComponentStory<TypographyComponents> = () => (
     <TypoDS.BodyItalic>BodyItalic</TypoDS.BodyItalic>
     <TypoDS.BodyItalicSemiBold>BodySemiBoldItalic</TypoDS.BodyItalicSemiBold>
     <TypoDS.Button>Button</TypoDS.Button>
-    <TypoDS.Link>Link</TypoDS.Link>
   </ViewGap>
 )
