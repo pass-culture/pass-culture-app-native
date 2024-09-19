@@ -51,6 +51,21 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
 }
 
 const logError = (err: unknown, parameters: Parameters): void => {
+  const { title, statusCode, errorMessage } = getErrorDetails(err)
+
+  eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
+    extra: {
+      playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
+      playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+      statusCode,
+      errorMessage,
+    },
+  })
+}
+
+const getErrorDetails = (
+  err: unknown
+): { title: string | number; statusCode: string | number; errorMessage: string } => {
   let statusCode
   let title
   let errorMessage
@@ -69,12 +84,5 @@ const logError = (err: unknown, parameters: Parameters): void => {
     errorMessage = JSON.stringify(err)
   }
 
-  eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
-    extra: {
-      playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
-      playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
-      statusCode,
-      errorMessage,
-    },
-  })
+  return { title, statusCode, errorMessage }
 }
