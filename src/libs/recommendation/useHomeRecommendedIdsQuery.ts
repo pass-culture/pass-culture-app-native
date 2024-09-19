@@ -59,6 +59,9 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: isLoggedIn && !!userId && !!netInfo.isConnected }
+    {
+      staleTime: 1000 * 60 * 5,
+      enabled: isLoggedIn && !!userId && !!netInfo.isConnected,
+    }
   )
 }
