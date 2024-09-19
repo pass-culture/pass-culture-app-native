@@ -8,6 +8,7 @@ import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
+import { CguDetails } from 'features/bookOffer/components/CguDetails'
 import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
@@ -229,9 +230,16 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           <Spacer.Column numberOfSpaces={6} />
           <CancellationDetails />
           <Spacer.Column numberOfSpaces={6} />
-          <CguWithCheckbox isChecked={isCguChecked} setIsChecked={setIsCguChecked} />
         </React.Fragment>
       )}
+
+      <React.Fragment>
+        <Separator />
+        <Spacer.Column numberOfSpaces={6} />
+        <CguDetails>
+          <CguWithCheckbox isChecked={isCguChecked} setIsChecked={setIsCguChecked} />
+        </CguDetails>
+      </React.Fragment>
 
       <Spacer.Column numberOfSpaces={6} />
 

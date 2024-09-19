@@ -248,7 +248,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -270,7 +270,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -291,7 +291,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -308,7 +308,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -322,7 +322,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -336,7 +336,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -355,7 +355,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -390,7 +390,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -410,7 +410,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -430,7 +430,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         fireEvent.press(
           await screen.findByRole('checkbox', {
-            name: 'conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
@@ -459,7 +459,7 @@ describe('<BookingOfferModalComponent />', () => {
 
           fireEvent.press(
             await screen.findByRole('checkbox', {
-              name: 'conditions générales d’utilisation',
+              name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
             })
           )
 

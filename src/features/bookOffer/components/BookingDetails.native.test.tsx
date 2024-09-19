@@ -249,7 +249,7 @@ describe('<BookingDetails />', () => {
       })
 
       const cguCheckbox = await screen.findByRole('checkbox', {
-        name: 'conditions générales d’utilisation',
+        name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
         checked: false,
       })
       fireEvent.press(cguCheckbox)
@@ -635,7 +635,7 @@ describe('<BookingDetails />', () => {
       })
 
       await screen.findByRole('checkbox', {
-        name: 'conditions générales d’utilisation',
+        name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
         checked: false,
       })
 
@@ -652,7 +652,7 @@ describe('<BookingDetails />', () => {
     })
 
     const cguCheckbox = await screen.findByRole('checkbox', {
-      name: 'conditions générales d’utilisation',
+      name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
       checked: false,
     })
 
