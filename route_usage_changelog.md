@@ -26,6 +26,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/subscription/stepper
 - /native/v1/profile
 - /native/v1/account
+- /native/v1/account/anonymize
 - /native/v1/account/suspend
 - /native/v1/account/suspend_for_suspicious_login
 - /native/v1/account/unsuspend
@@ -64,6 +65,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/profile/update_email
 - /native/v1/profile/email_update/validate
 ## Unused routes:
+- /native/v1/categories
 - /native/v1/me/favorites/count
 - /native/v1/offer/report/reasons
 - /native/v1/offers/reports
