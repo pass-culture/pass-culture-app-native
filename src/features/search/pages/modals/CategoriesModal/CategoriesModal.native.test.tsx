@@ -9,10 +9,10 @@ import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
