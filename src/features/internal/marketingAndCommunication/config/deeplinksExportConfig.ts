@@ -6,6 +6,7 @@ export type ScreensUsedByMarketing = Extract<
   ScreenNames,
   | 'Offer'
   | 'Venue'
+  | 'VenueMap'
   | 'Home'
   | 'SearchResults'
   | 'Profile'
@@ -46,6 +47,7 @@ export const SCREENS_CONFIG: {
       serverValidator: (value: unknown) => api.getNativeV1OfferofferId(Number(value)),
     },
   },
+  VenueMap: {},
   Venue: {
     id: {
       type: 'string',
