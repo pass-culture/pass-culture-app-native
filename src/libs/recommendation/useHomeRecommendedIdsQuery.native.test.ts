@@ -1,3 +1,4 @@
+import { api } from 'api/api'
 import { PlaylistResponse } from 'api/gen'
 import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring'
@@ -41,6 +42,36 @@ describe('useHomeRecommendedIdsQuery', () => {
             statusCode: 400,
             errorMessage:
               'Échec de la requête https://localhost/native/v1/recommendation/playlist?, code: 400',
+          },
+        }
+      )
+    })
+  })
+
+  it('should capture an unknown exception when fetch call fails for unknown reasons', async () => {
+    jest.spyOn(api, 'postNativeV1RecommendationPlaylist').mockRejectedValueOnce('some error')
+
+    renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('Error unknown with recommendation endpoint'),
+        {
+          extra: {
+            playlistRequestBody: '{}',
+            playlistRequestQuery: '{}',
+            statusCode: 'unknown',
+            errorMessage: '"some error"',
           },
         }
       )
