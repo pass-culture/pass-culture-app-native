@@ -66,23 +66,25 @@ const logError = (err: unknown, parameters: Parameters): void => {
 const getErrorDetails = (
   err: unknown
 ): { title: string; statusCode: string; errorMessage: string } => {
-  let statusCode
-  let title
-  let errorMessage
-
   if (err instanceof ApiError) {
-    statusCode = `${err.statusCode}`
-    title = `${err.statusCode}`
-    errorMessage = err.message
-  } else if (err instanceof Error) {
-    statusCode = 'unknown'
-    title = err.message
-    errorMessage = err.message
-  } else {
-    statusCode = 'unknown'
-    title = 'unknown'
-    errorMessage = JSON.stringify(err)
+    return {
+      title: `${err.statusCode}`,
+      statusCode: `${err.statusCode}`,
+      errorMessage: err.message,
+    }
   }
 
-  return { title, statusCode, errorMessage }
+  if (err instanceof Error) {
+    return {
+      title: err.message,
+      statusCode: 'unknown',
+      errorMessage: err.message,
+    }
+  }
+
+  return {
+    title: 'unknown',
+    statusCode: 'unknown',
+    errorMessage: JSON.stringify(err),
+  }
 }
