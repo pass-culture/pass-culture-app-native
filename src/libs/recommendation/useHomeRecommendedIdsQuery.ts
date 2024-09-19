@@ -51,10 +51,41 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
 }
 
 const logError = (err: unknown, parameters: Parameters): void => {
-  const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
-  const errorMessageOrUnknown = err instanceof Error ? err.message : 'unknown'
-  const title = err instanceof ApiError ? err.statusCode : errorMessageOrUnknown
-  const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
+  if (err instanceof ApiError) {
+    const statusCode = err.statusCode
+    const title = err.statusCode
+    const errorMessage = err.message
+
+    eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
+      extra: {
+        playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
+        playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+        statusCode,
+        errorMessage,
+      },
+    })
+    return
+  }
+
+  if (err instanceof Error) {
+    const statusCode = 'unknown'
+    const title = err.message
+    const errorMessage = err.message
+
+    eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
+      extra: {
+        playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
+        playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+        statusCode,
+        errorMessage,
+      },
+    })
+    return
+  }
+
+  const statusCode = 'unknown'
+  const title = 'unknown'
+  const errorMessage = JSON.stringify(err)
 
   eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
     extra: {
