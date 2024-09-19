@@ -78,6 +78,38 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
   })
 
+  it('should capture an exception with the error message when fetch call fails', async () => {
+    jest
+      .spyOn(api, 'postNativeV1RecommendationPlaylist')
+      .mockRejectedValueOnce(new Error('Network request failed'))
+
+    renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('Error Network request failed with recommendation endpoint'),
+        {
+          extra: {
+            playlistRequestBody: '{}',
+            playlistRequestQuery: '{}',
+            statusCode: 'unknown',
+            errorMessage: 'Network request failed',
+          },
+        }
+      )
+    })
+  })
+
   it.each([
     500, // Internal Server Error
     502, // Bad Gateway

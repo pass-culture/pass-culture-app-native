@@ -37,6 +37,8 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return response
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
+        const title =
+          err instanceof ApiError ? err.statusCode : err instanceof Error ? err.message : 'unknown'
         const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
         const shouldApiErrorNotCaptured = Boolean(
           err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
@@ -44,7 +46,7 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
 
         if (!shouldApiErrorNotCaptured) {
           eventMonitoring.captureException(
-            new Error(`Error ${statusCode} with recommendation endpoint`),
+            new Error(`Error ${title} with recommendation endpoint`),
             {
               extra: {
                 playlistRequestBody: stringifyPlaylistRequestBody,
