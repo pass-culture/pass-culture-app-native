@@ -23,7 +23,7 @@ display_version() {
 			if [ "$2" = "" ]; then
 				"$p" --version
 			else
-				"$p" "$2" "$3"
+				"$p" "${@:2}"
 			fi
 			e=$?
 		done
