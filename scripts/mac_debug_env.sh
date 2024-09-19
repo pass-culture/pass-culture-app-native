@@ -1,11 +1,11 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 # Version 20240918-01
 heading_2() {
-	echo "\n## $@\n"
+	echo -e "\n## $@\n"
 }
 
 heading_3() {
-	echo "\n### $1\n"
+	echo -e "\n### $1\n"
 }
 
 var() {
