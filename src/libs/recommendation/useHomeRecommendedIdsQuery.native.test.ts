@@ -39,7 +39,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           extra: {
             playlistRequestBody: '{}',
             playlistRequestQuery: '{}',
-            statusCode: 400,
+            statusCode: '400',
             errorMessage:
               'Échec de la requête https://localhost/native/v1/recommendation/playlist?, code: 400',
           },

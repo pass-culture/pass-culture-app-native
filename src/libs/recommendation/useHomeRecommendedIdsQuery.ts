@@ -65,13 +65,13 @@ const logError = (err: unknown, parameters: Parameters): void => {
 
 const getErrorDetails = (
   err: unknown
-): { title: string; statusCode: string | number; errorMessage: string } => {
+): { title: string; statusCode: string; errorMessage: string } => {
   let statusCode
   let title
   let errorMessage
 
   if (err instanceof ApiError) {
-    statusCode = err.statusCode
+    statusCode = `${err.statusCode}`
     title = `${err.statusCode}`
     errorMessage = err.message
   } else if (err instanceof Error) {
