@@ -20,6 +20,8 @@
 		972CA2E0050DB219476B125B /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 991BBD7386FB9CAB11FACBAE /* libPods-PassCulture.a */; };
 		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
 		A9E70FF6B9AF4FA29848CE0D /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC167AD6C0654FD79B464AFF /* Montserrat-Black.ttf */; };
+		C34C4A962C9AFC8A00A354D3 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C34C4A942C9AF9BF00A354D3 /* Montserrat-SemiBoldItalic.ttf */; };
+		C34C4A972C9AFC9100A354D3 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C34C4A952C9AF9CC00A354D3 /* Montserrat-MediumItalic.ttf */; };
 		CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8881E10DAB84DAA99A29F65 /* Images.xcassets */; };
 		D554C848268F69C300C16018 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C847268F69C300C16018 /* File.swift */; };
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
@@ -51,6 +53,8 @@
 		A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "react-native-config.xcconfig"; sourceTree = "<group>"; };
 		A8881E10DAB84DAA99A29F65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PassCulture/Images.xcassets; sourceTree = "<group>"; };
 		BC167AD6C0654FD79B464AFF /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		C34C4A942C9AF9BF00A354D3 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBoldItalic.ttf"; path = "../../../Downloads/Montserrat (1)/static/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C34C4A952C9AF9CC00A354D3 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-MediumItalic.ttf"; path = "../../../Downloads/Montserrat (1)/static/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		D554C847268F69C300C16018 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -122,8 +126,10 @@
 				1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */,
 				72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */,
 				90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */,
+				C34C4A952C9AF9CC00A354D3 /* Montserrat-MediumItalic.ttf */,
 				F423851ED1194E90940E001F /* Montserrat-Regular.ttf */,
 				CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */,
+				C34C4A942C9AF9BF00A354D3 /* Montserrat-SemiBoldItalic.ttf */,
 				BC167AD6C0654FD79B464AFF /* Montserrat-Black.ttf */,
 			);
 			name = Resources;
@@ -221,6 +227,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34C4A972C9AFC9100A354D3 /* Montserrat-MediumItalic.ttf in Resources */,
+				C34C4A962C9AFC8A00A354D3 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */,
 				DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */,
 				98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */,

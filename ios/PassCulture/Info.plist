@@ -126,6 +126,7 @@
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat-BoldItalic.ttf</string>
+		<string>Montserrat-SemiBoldItalic.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
