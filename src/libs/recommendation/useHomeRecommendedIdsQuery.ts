@@ -18,8 +18,6 @@ type Parameters = {
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const { playlistRequestBody, playlistRequestQuery, userId } = parameters
   const { modelEndpoint, longitude, latitude } = playlistRequestQuery
-  const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
-  const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
 
@@ -54,8 +52,8 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
             new Error(`Error ${title} with recommendation endpoint`),
             {
               extra: {
-                playlistRequestBody: stringifyPlaylistRequestBody,
-                playlistRequestQuery: stringifyPlaylistRequestQuery,
+                playlistRequestBody: JSON.stringify(playlistRequestBody),
+                playlistRequestQuery: JSON.stringify(playlistRequestQuery),
                 statusCode: statusCode,
                 errorMessage,
               },
