@@ -25,14 +25,12 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
     async () => {
       try {
-        const response = await api.postNativeV1RecommendationPlaylist(
+        return await api.postNativeV1RecommendationPlaylist(
           playlistRequestBody,
           modelEndpoint ?? undefined,
           longitude ?? undefined,
           latitude ?? undefined
         )
-
-        return response
       } catch (err) {
         const shouldApiErrorNotCaptured = Boolean(
           err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
