@@ -7,13 +7,13 @@ heading_3() {
 	echo -e "\n### $1\n"
 }
 
-var() {
+display_variable() {
 	eval "val=\$$1"
 	# shellcheck disable=SC2154
 	echo "$1: $val"
 }
 
-ver() {
+display_version() {
 	heading_3 "$1"
 	r=$(which -a "$1")
 	e=$?
@@ -50,58 +50,58 @@ echo "Generating ${output} ..."
 	softwareupdate --history
 
 	heading_2 Variables
-	var PATH
-	var GIT_SSL_CAPATH
-	var GIT_SSL_CERT
-	var GIT_PROXY_SSL_CAINFO
-	var CLOUDSDK_PYTHON
-	var REQUESTS_CA_BUNDLE
-	var CURL_CA_BUNDLE
-	var SSL_CERT_DIR
-	var SSL_CERT_FILE
-	var NODE_EXTRA_CA_CERTS
-	var HTTPLIB2_CA_CERTS
-	var NIX_SSL_CERT_FILE
-	var JAVA_HOME
+	display_variable PATH
+	display_variable GIT_SSL_CAPATH
+	display_variable GIT_SSL_CERT
+	display_variable GIT_PROXY_SSL_CAINFO
+	display_variable CLOUDSDK_PYTHON
+	display_variable REQUESTS_CA_BUNDLE
+	display_variable CURL_CA_BUNDLE
+	display_variable SSL_CERT_DIR
+	display_variable SSL_CERT_FILE
+	display_variable NODE_EXTRA_CA_CERTS
+	display_variable HTTPLIB2_CA_CERTS
+	display_variable NIX_SSL_CERT_FILE
+	display_variable JAVA_HOME
 
 	heading_2 Tools
-	ver brew && brew list
-	ver curl
-	ver git && git config --global http.sslbackend
-	ver python
-	ver python3
+	display_version brew && brew list
+	display_version curl
+	display_version git && git config --global http.sslbackend
+	display_version python
+	display_version python3
 	heading_3 pip_packages
 	python3 -m pip list
 	heading_3 pip_debug
 	python3 -m pip debug
 	heading_3 pip_config
 	python3 -m pip config list
-	ver poetry # not found if pipx
-	ver pipx
+	display_version poetry # not found if pipx
+	display_version pipx
 	heading_3 pipx_poetry
 	~/.local/bin/poetry --version
-	ver gcloud && gcloud config get core/custom_ca_certs_file # if needed: gcloud config set disable_prompts true
-	ver openssl version
-	ver yarn && yarn config get cafile
-	ver npm && npm config get cafile
-	ver java
-	ver docker
-	ver kubectl version --client
-	ver node
-	ver nix
-	ver direnv
-	ver dbt # not found if used in virtualenv
-	ver virtualenv
+	display_version gcloud && gcloud config get core/custom_ca_certs_file # if needed: gcloud config set disable_prompts true
+	display_version openssl version
+	display_version yarn && yarn config get cafile
+	display_version npm && npm config get cafile
+	display_version java
+	display_version docker
+	display_version kubectl version --client
+	display_version node
+	display_version nix
+	display_version direnv
+	display_version dbt # not found if used in virtualenv
+	display_version virtualenv
 	heading_3 react_native
 	[ -e "./node_modules/.bin/react-native" ] && ./node_modules/.bin/react-native info
-	ver emulator -version && emulator -list-avds
-	ver xcrun && xcrun simctl list # --json
-	ver xcodebuild -version || pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version
-	ver code && code --list-extensions
-	ver ruby
-	ver rvm && rvm list
-	ver adb
-	ver devbox version
+	display_version emulator -version && emulator -list-avds
+	display_version xcrun && xcrun simctl list # --json
+	display_version xcodebuild -version || pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version
+	display_version code && code --list-extensions
+	display_version ruby
+	display_version rvm && rvm list
+	display_version adb
+	display_version devbox version
 	heading_3 maestro
 	yes n | maestro --version # Enable analytics ? n
 
