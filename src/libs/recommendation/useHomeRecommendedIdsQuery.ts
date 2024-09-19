@@ -62,7 +62,7 @@ const logError = (err: unknown, parameters: Parameters): void => {
     extra: {
       playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
       playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
-      statusCode: statusCode,
+      statusCode,
       errorMessage,
     },
   })
