@@ -243,14 +243,21 @@ describe('<BookingOfferModalComponent />', () => {
     })
 
     describe('when booking validated', () => {
-      it('should dismiss the modal on success', () => {
+      it('should dismiss the modal on success', async () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(mockDismissModal).toHaveBeenCalledTimes(1)
       })
 
-      it('should log confirmation booking when offer booked from a similar offer', () => {
+      it('should log confirmation booking when offer booked from a similar offer', async () => {
         useRoute.mockReturnValueOnce({
           params: {
             fromOfferId: 1,
@@ -260,6 +267,13 @@ describe('<BookingOfferModalComponent />', () => {
           },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
@@ -272,18 +286,31 @@ describe('<BookingOfferModalComponent />', () => {
         })
       })
 
-      it('should log confirmation booking when offer not booked from a similar offer', () => {
+      it('should log confirmation booking when offer not booked from a similar offer', async () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: 1, offerId: 20 })
       })
 
-      it('should log conversion booking when is from search', () => {
+      it('should log conversion booking when is from search', async () => {
         useRoute.mockReturnValueOnce({
           params: { from: 'searchresults' },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
 
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
@@ -293,13 +320,26 @@ describe('<BookingOfferModalComponent />', () => {
       it('should not log conversion booking when is not from search', async () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
 
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(logOfferConversionSpy).not.toHaveBeenCalled()
       })
 
-      it('should log campaign tracker when booking is complete', () => {
+      it('should log campaign tracker when booking is complete', async () => {
         render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
@@ -310,8 +350,15 @@ describe('<BookingOfferModalComponent />', () => {
         })
       })
 
-      it('should navigate to booking confirmation when booking is complete', () => {
+      it('should navigate to booking confirmation when booking is complete', async () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: 20, bookingId: 1 })
@@ -332,7 +379,7 @@ describe('<BookingOfferModalComponent />', () => {
         })
       })
 
-      it('should dismiss the modal on error', () => {
+      it('should dismiss the modal on error', async () => {
         mockUseMutationError({
           content: {},
           name: 'ApiError',
@@ -340,6 +387,13 @@ describe('<BookingOfferModalComponent />', () => {
           message: 'erreur',
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(mockDismissModal).toHaveBeenCalledTimes(1)
@@ -353,6 +407,12 @@ describe('<BookingOfferModalComponent />', () => {
           message: 'erreur',
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
 
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
@@ -368,6 +428,12 @@ describe('<BookingOfferModalComponent />', () => {
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
 
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
         fireEvent.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingError).not.toHaveBeenCalled()
@@ -382,7 +448,7 @@ describe('<BookingOfferModalComponent />', () => {
         ${'PROVIDER_STOCK_SOLD_OUT'} | ${'Oups, cette offre n’est plus disponible\u00a0!'}
       `(
         'should show the error snackbar with message="$message" for errorCode="code" if booking an offer fails',
-        ({ code, message }: { code: string | undefined; message: string }) => {
+        async ({ code, message }: { code: string | undefined; message: string }) => {
           mockUseMutationError({
             content: { code },
             name: 'ApiError',
@@ -390,6 +456,12 @@ describe('<BookingOfferModalComponent />', () => {
             message: 'erreur',
           })
           render(<BookingOfferModalComponent visible offerId={20} />)
+
+          fireEvent.press(
+            await screen.findByRole('checkbox', {
+              name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            })
+          )
 
           fireEvent.press(screen.getByText('Confirmer la réservation'))
 

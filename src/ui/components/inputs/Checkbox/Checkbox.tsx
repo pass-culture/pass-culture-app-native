@@ -16,7 +16,6 @@ type Props = IsCheckedProps & {
   label: string
   onPress: (isChecked: boolean) => void
   required?: boolean
-  children?: never
 }
 
 export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, required, onPress }) => {

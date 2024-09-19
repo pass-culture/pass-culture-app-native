@@ -242,11 +242,18 @@ describe('<BookingDetails />', () => {
       expect(bookingButton).toBeDisabled()
     })
 
-    it('should run validation booking when pressing "Confirmer la réservation" button', () => {
+    it('should run validation booking when pressing "Confirmer la réservation" button', async () => {
       renderBookingDetails({
         stocks: mockStocks,
         onPressBookOffer: mockOnPressBookOffer,
       })
+
+      const cguCheckbox = await screen.findByRole('checkbox', {
+        name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+        checked: false,
+      })
+      fireEvent.press(cguCheckbox)
+
       const ConfirmButton = screen.getByText('Confirmer la réservation')
       fireEvent.press(ConfirmButton)
 
@@ -618,6 +625,42 @@ describe('<BookingDetails />', () => {
         expect(screen.getByText(headerMessage)).toBeOnTheScreen()
       }
     )
+  })
+
+  describe('CGU', () => {
+    it('should have "Confirmer la réservation" disabled when CGU button has not been checked', async () => {
+      renderBookingDetails({
+        stocks: mockStocks,
+        onPressBookOffer: mockOnPressBookOffer,
+      })
+
+      await screen.findByRole('checkbox', {
+        name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+        checked: false,
+      })
+
+      const bookingButton = screen.getByText('Confirmer la réservation')
+
+      expect(bookingButton).toBeDisabled()
+    })
+  })
+
+  it('should have "Confirmer la réservation" enabled when CGU button has been checked', async () => {
+    renderBookingDetails({
+      stocks: mockStocks,
+      onPressBookOffer: mockOnPressBookOffer,
+    })
+
+    const cguCheckbox = await screen.findByRole('checkbox', {
+      name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+      checked: false,
+    })
+
+    fireEvent.press(cguCheckbox)
+
+    const bookingButton = screen.getByText('Confirmer la réservation')
+
+    expect(bookingButton).toBeEnabled()
   })
 })
 
