@@ -9,6 +9,7 @@ heading_3() {
 
 display_variable() {
 	eval "val=\$$1"
+	# the variable is dynamically assigned with eval, schellcheck don't understand it
 	# shellcheck disable=SC2154
 	echo "$1: $val"
 }
