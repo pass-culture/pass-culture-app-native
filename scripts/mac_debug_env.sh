@@ -1,11 +1,11 @@
 #!/bin/zsh
 # Version 20240918-01
-title() {
-	echo "\n=== $@ ===\n"
+heading_2() {
+	echo "\n## $@\n"
 }
 
-sep() {
-	echo "--- $1 ---"
+heading_3() {
+	echo "\n### $1\n"
 }
 
 var() {
@@ -14,7 +14,7 @@ var() {
 }
 
 ver() {
-	sep $1
+	heading_3 $1
 	r=$(which -a $1)
 	e=$?
 	if [ "$e" -eq 0 ]; then for p in "${r:t}"; do
@@ -28,18 +28,21 @@ ver() {
 timestamp=$(date +"%y%m%d%H%M%S")
 serial=$(ioreg -c IOPlatformExpertDevice -d 2 -a | xmllint --xpath "/plist/dict[key='IORegistryEntryChildren']/array/dict/key[.='IOPlatformSerialNumber']/following-sibling::string[1]/node()" -)
 # echo $(dirname "$0")/$(basename "$0" .sh).txt
-output=${timestamp}_${serial}.txt
+output=${timestamp}_${serial}.md
 echo Generating ${output} ...
 {
-	date
-	title System
+	echo "# $(date)"
+
+	heading_2 System
 	sw_vers
 	hostname
 	whoami
 	uname -a
-	title Recent updates
+
+	heading_2 Recent updates
 	softwareupdate --history
-	title Variables
+
+	heading_2 Variables
 	var PATH
 	var GIT_SSL_CAPATH
 	var GIT_SSL_CERT
@@ -53,21 +56,22 @@ echo Generating ${output} ...
 	var HTTPLIB2_CA_CERTS
 	var NIX_SSL_CERT_FILE
 	var JAVA_HOME
-	title Tools
+
+	heading_2 Tools
 	ver brew && brew list
 	ver curl
 	ver git && git config --global http.sslbackend
 	ver python
 	ver python3
-	sep pip_packages
+	heading_3 pip_packages
 	python3 -m pip list
-	sep pip_debug
+	heading_3 pip_debug
 	python3 -m pip debug
-	sep pip_config
+	heading_3 pip_config
 	python3 -m pip config list
 	ver poetry # not found if pipx
 	ver pipx
-	sep pipx_poetry
+	heading_3 pipx_poetry
 	~/.local/bin/poetry --version
 	ver gcloud && gcloud config get core/custom_ca_certs_file # if needed: gcloud config set disable_prompts true
 	ver openssl version
@@ -81,7 +85,7 @@ echo Generating ${output} ...
 	ver direnv
 	ver dbt # not found if used in virtualenv
 	ver virtualenv
-	sep react_native
+	heading_3 react_native
 	[ -e "./node_modules/.bin/react-native" ] && ./node_modules/.bin/react-native info
 	ver emulator -version && emulator -list-avds
 	ver xcrun && xcrun simctl list # --json
@@ -91,13 +95,14 @@ echo Generating ${output} ...
 	ver rvm && rvm list
 	ver adb
 	ver devbox version
-	sep maestro
+	heading_3 maestro
 	yes n | maestro --version # Enable analytics ? n
-	title Proxy
-	sep system-store
+
+	heading_2 Proxy
+	heading_3 system-store
 	security find-certificate -c "$SECRET_PROXY_KEYWORD" -a -Z | grep "SHA-1"
-	sep keytool
+	heading_3 keytool
 	keytool -cacerts -list -storepass "$SECRET_KEYTOOL_PASSWORD" | grep -A 1 "$SECRET_PROXY_KEYWORD"
-	sep proxy-certs
+	heading_3 proxy-certs
 	(cd /Library/Application\ Support/*/*Agent/data/ && ls -la *.pem)
 } >${output} 2>&1
