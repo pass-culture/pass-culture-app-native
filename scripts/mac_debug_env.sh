@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Version 20240918-01
 heading_2() {
-	echo -e "\n## $@\n"
+	echo -e "\n## $*\n"
 }
 
 heading_3() {
@@ -9,27 +8,35 @@ heading_3() {
 }
 
 var() {
-	eval val=\$$1
+	eval "val=\$$1"
+	# shellcheck disable=SC2154
 	echo "$1: $val"
 }
 
 ver() {
-	heading_3 $1
-	r=$(which -a $1)
+	heading_3 "$1"
+	r=$(which -a "$1")
 	e=$?
-	if [ "$e" -eq 0 ]; then for p in "${r:t}"; do
-		echo -n "$p: "
-		[ "$2" = "" ] && "$p" --version || "$p" $2 $3
-		e=$?
-	done; else echo "$r"; fi
+	if [ "$e" -eq 0 ]; then
+		for p in ${r:t}; do
+			echo -n "$p: "
+			if [ "$2" = "" ]; then
+				"$p" --version
+			else
+				"$p" "$2" "$3"
+			fi
+			e=$?
+		done
+	else
+		echo "$r"
+	fi
 	return "$e"
 }
 
 timestamp=$(date +"%y%m%d%H%M%S")
 serial=$(ioreg -c IOPlatformExpertDevice -d 2 -a | xmllint --xpath "/plist/dict[key='IORegistryEntryChildren']/array/dict/key[.='IOPlatformSerialNumber']/following-sibling::string[1]/node()" -)
-# echo $(dirname "$0")/$(basename "$0" .sh).txt
 output=${timestamp}_${serial}.md
-echo Generating ${output} ...
+echo "Generating ${output} ..."
 {
 	echo "# $(date)"
 
@@ -104,5 +111,5 @@ echo Generating ${output} ...
 	heading_3 keytool
 	keytool -cacerts -list -storepass "$SECRET_KEYTOOL_PASSWORD" | grep -A 1 "$SECRET_PROXY_KEYWORD"
 	heading_3 proxy-certs
-	(cd /Library/Application\ Support/*/*Agent/data/ && ls -la *.pem)
-} >${output} 2>&1
+	(cd /Library/Application\ Support/*/*Agent/data/ && ls -la ./*.pem)
+} >"${output}" 2>&1
