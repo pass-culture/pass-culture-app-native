@@ -46,7 +46,7 @@ export function AutocompleteOfferItem({
     ['offer.nativeCategoryId']: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
-  const appNativeCategories = useNativeCategories(offerCategories?.[0])
+  const searchGroupNativeCategories = useNativeCategories(offerCategories?.[0])
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const routes = useNavigationState((state) => state?.routes)
@@ -60,14 +60,14 @@ export function AutocompleteOfferItem({
 
   const searchGroupLabel = useSearchGroupLabel(categories[0]?.value ?? SearchGroupNameEnumv2.NONE)
 
-  const shouldFilterCategory = !!offerCategories?.length
+  const hasSearchGroup = !!offerCategories?.length
 
   const isAcceptableResultForCurrentCategory = useMemo(() => {
-    return appNativeCategories.some(
-      (appNativeCategory) =>
-        nativeCategories[0] && appNativeCategory[0] === nativeCategories[0].value
+    return searchGroupNativeCategories.some(
+      (searchGroupNativeCategory) =>
+        nativeCategories[0] && searchGroupNativeCategory[0] === nativeCategories[0].value
     )
-  }, [appNativeCategories, nativeCategories])
+  }, [searchGroupNativeCategories, nativeCategories])
 
   const mostPopularNativeCategoryId = useMemo(() => {
     if (nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2) {
@@ -97,10 +97,14 @@ export function AutocompleteOfferItem({
 
   const shouldUseSearchGroupInsteadOfNativeCategory =
     nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER ||
-    (shouldFilterCategory && !isAcceptableResultForCurrentCategory)
+    (hasSearchGroup && !isAcceptableResultForCurrentCategory)
 
   const mostPopularCategory = useMemo(() => {
-    if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
+    if (
+      hasSeveralCategoriesFromNativeCategory ||
+      !hasMostPopularHitNativeCategory ||
+      shouldUseSearchGroupInsteadOfNativeCategory
+    ) {
       return categories[0]?.value && categories[0].value in SearchGroupNameEnumv2
         ? [categories[0].value]
         : []
@@ -115,6 +119,7 @@ export function AutocompleteOfferItem({
     categoriesFromNativeCategory,
     hasMostPopularHitNativeCategory,
     hasSeveralCategoriesFromNativeCategory,
+    shouldUseSearchGroupInsteadOfNativeCategory,
   ])
 
   const onPress = () => {
@@ -125,7 +130,7 @@ export function AutocompleteOfferItem({
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const searchId = uuidv4()
-    const shouldFilteredOnNativeCategory =
+    const shouldFilterOnNativeCategory =
       shouldShowCategory &&
       hasMostPopularHitNativeCategory &&
       !shouldUseSearchGroupInsteadOfNativeCategory &&
@@ -139,16 +144,17 @@ export function AutocompleteOfferItem({
       isAutocomplete: true,
       offerGenreTypes: undefined,
       offerNativeCategories:
-        shouldFilteredOnNativeCategory && nativeCategories[0]?.value
+        shouldFilterOnNativeCategory && nativeCategories[0]?.value
           ? [nativeCategories[0].value]
           : undefined,
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
       gtls: [],
     }
+
     addSearchHistory({
       query,
-      nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0]?.value : undefined,
+      nativeCategory: shouldFilterOnNativeCategory ? nativeCategories[0]?.value : undefined,
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })

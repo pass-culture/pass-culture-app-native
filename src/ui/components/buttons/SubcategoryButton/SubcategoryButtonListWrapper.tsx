@@ -18,8 +18,8 @@ type Props = {
 }
 
 export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory }) => {
-  const nativeCategories = useNativeCategories(offerCategory)
   const { colors } = useTheme()
+  const nativeCategories = useNativeCategories(offerCategory)
   const offerCategoryTheme = useMemo(
     () => ({
       backgroundColor: CATEGORY_CRITERIA[offerCategory]?.fillColor,
@@ -33,14 +33,15 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
       nativeCategories.map((nativeCategory) => ({
         label: nativeCategory[1].label,
         backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
-        borderColor: offerCategoryTheme.borderColor || colors.white,
+        borderColor: offerCategoryTheme.borderColor || colors.black,
         nativeCategory: nativeCategory[0] as NativeCategoryEnum,
       })),
     [
+      colors.black,
+      colors.white,
       nativeCategories,
       offerCategoryTheme.backgroundColor,
       offerCategoryTheme.borderColor,
-      colors.white,
     ]
   )
 

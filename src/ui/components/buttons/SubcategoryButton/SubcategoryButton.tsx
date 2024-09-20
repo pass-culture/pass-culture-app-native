@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -18,15 +18,15 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import type { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
 
 export type SubcategoryButtonProps = {
   label: string
-  backgroundColor?: ColorsEnum
-  borderColor?: ColorsEnum
+  backgroundColor: ColorsEnum
+  borderColor: ColorsEnum
   nativeCategory: NativeCategoryEnum
 }
 
@@ -44,7 +44,6 @@ export const SubcategoryButton = ({
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
   const { dispatch, searchState } = useSearch()
   const windowWidth = useWindowDimensions().width
-  const { colors } = useTheme()
 
   const handleSubcategoryButtonPress = () => {
     if (!subcategories) return
@@ -75,8 +74,8 @@ export const SubcategoryButton = ({
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
       windowWidth={windowWidth}
-      backgroundColor={backgroundColor || colors.white}
-      borderColor={borderColor || colors.black}>
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}>
       <StyledText>{label}</StyledText>
     </StyledTouchable>
   )

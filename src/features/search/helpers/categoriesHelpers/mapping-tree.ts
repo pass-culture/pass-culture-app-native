@@ -88,7 +88,7 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
       ({ position: positionA }, { position: positionB }) => positionA - positionB
     )
     if (categorieKey) {
-      nativeCategoriesResult[categorieKey as NativeCategoryIdEnumv2] = {
+      nativeCategoriesResult[categorieKey] = {
         label: nativeCategory.label,
         nbResultsFacet: 0,
         genreTypeKey: GenreType.BOOK,

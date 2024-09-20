@@ -134,6 +134,32 @@ describe('AutocompleteOfferItem component', () => {
 
       expect(await screen.findByText('Livres')).toBeOnTheScreen()
     })
+
+    it('should redirect to the specified category page', async () => {
+      render(
+        <AutocompleteOfferItem
+          hit={mockHitRelevantResults}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: expect.objectContaining({
+          offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        }),
+      })
+
+      expect(await screen.findByText('E-books')).toBeOnTheScreen()
+    })
   })
 
   describe('when item is not in the first three suggestions', () => {
