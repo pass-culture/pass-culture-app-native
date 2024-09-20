@@ -20,7 +20,7 @@ import {
 import { SearchState } from 'features/search/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -76,7 +76,7 @@ describe('AutocompleteOfferItem component', () => {
       }
     )
 
-    await act(() => {})
+    await screen.findByText('Séances de cinéma')
 
     expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
   })
@@ -95,7 +95,7 @@ describe('AutocompleteOfferItem component', () => {
 
     await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-    await act(() => {})
+    await screen.findByText('cinéma')
 
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
   })
@@ -115,9 +115,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      await act(() => {})
-
-      expect(screen.getByText('E-books')).toBeOnTheScreen()
+      expect(await screen.findByText('E-books')).toBeOnTheScreen()
     })
 
     it('should display the search group if it is irrelevant', async () => {
@@ -134,9 +132,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      await act(() => {})
-
-      expect(screen.getByText('Livres')).toBeOnTheScreen()
+      expect(await screen.findByText('Livres')).toBeOnTheScreen()
     })
   })
 
@@ -153,7 +149,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      await act(() => {})
+      await screen.findByText('cinéma')
 
       expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
@@ -170,7 +166,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      await act(() => {})
+      await screen.findByText('cinéma')
 
       expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
@@ -194,9 +190,9 @@ describe('AutocompleteOfferItem component', () => {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
-      await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+      fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      await act(() => {})
+      await screen.findByText('cinéma')
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -229,9 +225,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -261,9 +257,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -293,9 +289,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -324,9 +320,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -356,9 +352,9 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -388,9 +384,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -419,9 +415,9 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -453,9 +449,8 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        await act(() => {})
 
-        expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
+        expect(await screen.findByText('Séances de cinéma')).toBeOnTheScreen()
       })
 
       it('when it associated to the most popular category', async () => {
@@ -471,9 +466,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
-
-        expect(screen.getByText('Arts visuels')).toBeOnTheScreen()
+        expect(await screen.findByText('Arts visuels')).toBeOnTheScreen()
       })
     })
 
@@ -491,7 +484,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -509,7 +502,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -529,7 +522,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('Arts visuels')).not.toBeOnTheScreen()
       })
@@ -547,7 +540,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('dans CD_VINYLES')).not.toBeOnTheScreen()
       })
@@ -567,7 +560,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
@@ -585,7 +578,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
@@ -603,7 +596,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
+        await screen.findByText('cinéma')
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
@@ -623,9 +616,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
-
-        expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
+        expect(await screen.findByText('Concerts & festivals')).toBeOnTheScreen()
       })
 
       it('has not native category associated to the suggestion', async () => {
@@ -641,9 +632,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
-
-        expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
+        expect(await screen.findByText('Concerts & festivals')).toBeOnTheScreen()
       })
 
       it('native category is unknown in the app', async () => {
@@ -659,9 +648,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
-
-        expect(screen.getByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
+        expect(await screen.findByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
       })
 
       it('native category is Livres Papier', async () => {
@@ -677,9 +664,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        await act(() => {})
-
-        expect(screen.getByText('Livres')).toBeOnTheScreen()
+        expect(await screen.findByText('Livres')).toBeOnTheScreen()
       })
     })
   })
