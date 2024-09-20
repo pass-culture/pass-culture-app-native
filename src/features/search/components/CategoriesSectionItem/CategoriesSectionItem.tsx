@@ -43,8 +43,8 @@ export const CategoriesSectionItem = <N,>({
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
   )
-
-  const shouldHideArrow = !item.children
+  const shouldHideArrow =
+    !item.children || Object.keys(item.children).length === 0 || item.children.length === 0
   const itemKey = k as N
   const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
 
