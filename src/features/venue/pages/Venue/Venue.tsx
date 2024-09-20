@@ -7,12 +7,15 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
   const { gtlPlaylists } = useGTLPlaylists({ venue, queryKey: 'VENUE_GTL_PLAYLISTS' })
   const { data: venueOffers } = useVenueOffers(venue)
+  const videoSectionVisible = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE)
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
@@ -22,5 +25,12 @@ export const Venue: FunctionComponent = () => {
 
   if (!venue) return null
 
-  return <VenueContent venue={venue} gtlPlaylists={gtlPlaylists} venueOffers={venueOffers} />
+  return (
+    <VenueContent
+      venue={venue}
+      gtlPlaylists={gtlPlaylists}
+      venueOffers={venueOffers}
+      videoSectionVisible={videoSectionVisible}
+    />
+  )
 }
