@@ -2710,19 +2710,30 @@ export interface PostFeedbackBody {
 }
 /**
  * @export
- * @interface PostReactionRequest
+ * @interface PostOneReactionRequest
  */
-export interface PostReactionRequest {
+export interface PostOneReactionRequest {
   /**
    * @type {number}
-   * @memberof PostReactionRequest
+   * @memberof PostOneReactionRequest
    */
   offerId: number
   /**
    * @type {ReactionTypeEnum}
-   * @memberof PostReactionRequest
+   * @memberof PostOneReactionRequest
    */
   reactionType: ReactionTypeEnum
+}
+/**
+ * @export
+ * @interface PostReactionRequest
+ */
+export interface PostReactionRequest {
+  /**
+   * @type {Array<PostOneReactionRequest>}
+   * @memberof PostReactionRequest
+   */
+  reactions: Array<PostOneReactionRequest>
 }
 /**
  * @export
