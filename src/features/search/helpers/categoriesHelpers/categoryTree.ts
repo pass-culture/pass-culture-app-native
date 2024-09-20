@@ -1,4 +1,5 @@
 import { CategoryResponseModel, CategoriesResponseModel } from 'api/gen'
+import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 
 type CategoryNode = {
   id: string
@@ -56,7 +57,10 @@ export function createCategoryTree(data?: CategoriesResponseModel) {
 
   const tree: CategoryTree = {}
   const nodes: Record<string, CategoryNode> = {}
-  data.categories.forEach((category) => {
+  const categories = data.categories.filter(
+    (category) => category.id in Object.entries(availableCategories)
+  )
+  categories.forEach((category) => {
     createNode(data, tree, nodes, category)
   })
 

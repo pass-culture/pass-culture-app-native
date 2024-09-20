@@ -62,7 +62,9 @@ export const CategoriesModal = ({
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    return createCategoryTree(categoryList)
+    const tree = createCategoryTree(categoryList)
+    console.log(tree)
+    return tree
   }, [categoryList])
 
   const {
