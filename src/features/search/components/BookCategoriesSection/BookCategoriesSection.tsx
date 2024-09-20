@@ -42,13 +42,11 @@ export function BookCategoriesSection<
     }
   }
 
+  const paperBooks = data && data['LIVRES_PAPIER']
   const categories = data ? Object.entries(data) : []
-  const bookCategoriesWithGenre = categories.filter(
-    ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
-  )
-  const otherBookCategories = categories.filter(
-    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK && item.label !== 'Livres papier'
-  )
+  const otherBookCategories = categories.filter(([_k, item]) => {
+    return item.genreTypeKey !== GenreType.BOOK && item.label !== 'Livres papier'
+  })
 
   return (
     <VerticalUl>
@@ -63,17 +61,19 @@ export function BookCategoriesSection<
       <Spacer.Column numberOfSpaces={3} />
       <Title>{'Livres papier'}</Title>
       <Spacer.Column numberOfSpaces={3} />
-      {bookCategoriesWithGenre.map(([k, item]) => (
-        <CategoriesSectionItem
-          key={k}
-          value={value}
-          k={k}
-          item={item}
-          descriptionContext={descriptionContext}
-          handleSelect={handleSelect}
-          handleGetIcon={handleGetIcon}
-        />
-      ))}
+      {Object.entries(paperBooks.children).map(([k, item]) => {
+        return (
+          <CategoriesSectionItem
+            key={k}
+            value={value}
+            k={k}
+            item={item}
+            descriptionContext={descriptionContext}
+            handleSelect={handleSelect}
+            handleGetIcon={handleGetIcon}
+          />
+        )
+      })}
       <Spacer.Column numberOfSpaces={3} />
       <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
