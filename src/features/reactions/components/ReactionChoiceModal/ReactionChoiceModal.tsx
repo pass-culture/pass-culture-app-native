@@ -2,7 +2,12 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } f
 import { useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingOfferResponse, OfferResponse, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
+import {
+  BookingOfferResponse,
+  OfferResponse,
+  PostOneReactionRequest,
+  ReactionTypeEnum,
+} from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
 import { ReactionFromEnum } from 'features/reactions/enum'
 import { useSubcategory } from 'libs/subcategories'
@@ -24,8 +29,8 @@ type Props = {
   visible: boolean
   defaultReaction?: ReactionTypeEnum | null
   closeModal: () => void
-  onSave?: ({ offerId, reactionType }: PostReactionRequest) => void
   from: ReactionFromEnum
+  onSave?: ({ offerId, reactionType }: PostOneReactionRequest) => void
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({

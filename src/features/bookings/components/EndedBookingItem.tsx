@@ -2,7 +2,7 @@ import React, { ComponentProps, FunctionComponent, useCallback, useMemo, useStat
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
+import { BookingCancellationReasons, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
@@ -50,7 +50,6 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
   const subCategory = subcategoriesMapping[stock.offer.subcategoryId]
-
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -150,7 +149,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     utmMedium: 'ended_booking',
   })
 
-  const handleSaveReaction = async ({ offerId, reactionType }: PostReactionRequest) => {
+  const handleSaveReaction = async ({ offerId, reactionType }: PostOneReactionRequest) => {
     await onSaveReaction?.({ offerId, reactionType })
     setUserReaction(reactionType)
     hideReactionModal()
