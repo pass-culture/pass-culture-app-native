@@ -62,9 +62,11 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
             <ArtistHeader name={name} />
             <Description gap={1}>
               <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
-              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                {bio}
-              </CollapsibleText>
+              {bio ? (
+                <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+                  {bio}
+                </CollapsibleText>
+              ) : null}
             </Description>
           </ViewGap>
           <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={name} />
