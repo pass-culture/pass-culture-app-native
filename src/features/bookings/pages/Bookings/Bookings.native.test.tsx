@@ -2,7 +2,7 @@ import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -49,6 +49,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockMutate = jest.fn()
+jest.mock('features/reactions/api/useReactionMutation', () => ({
+  useReactionMutation: () => ({ mutate: mockMutate }),
+}))
+
 describe('Bookings', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -66,8 +71,8 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    //Due to multiple renders useBookings is called twice
-    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
+    //Due to multiple renders useBookings is called three times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(3)
   })
 
   it('should display the right number of ongoing bookings', async () => {
@@ -82,8 +87,9 @@ describe('Bookings', () => {
       data: emptyBookingsSnap,
       isFetching: false,
     } as unknown as QueryObserverResult<BookingsResponse, unknown>
-    // Due to multiple renders we need to mock useBookings twice
+    // Due to multiple renders we need to mock useBookings three times
     useBookingsSpy
+      .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
     renderBookings()
@@ -112,6 +118,9 @@ describe('Bookings', () => {
 
   describe('when feature flag is activated', () => {
     beforeEach(() => {
+      // Due to multiple renders we need to mock useBookings three times
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      useFeatureFlagSpy.mockReturnValueOnce(true)
       useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
@@ -134,6 +143,28 @@ describe('Bookings', () => {
       fireEvent.press(await screen.findByText('Terminées'))
 
       expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
+    })
+
+    it('should call updateReactions when switching from COMPLETED tab', async () => {
+      renderBookings()
+
+      fireEvent.press(await screen.findByText('Terminées'))
+
+      fireEvent.press(await screen.findByText('En cours'))
+
+      expect(mockMutate).toHaveBeenCalledTimes(1)
+    })
+
+    it('should update reactions for ended bookings without user reaction', async () => {
+      renderBookings()
+
+      fireEvent.press(await screen.findByText('Terminées'))
+
+      fireEvent.press(await screen.findByText('En cours'))
+
+      expect(mockMutate).toHaveBeenCalledWith({
+        reactions: [{ offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION }],
+      })
     })
   })
 })
