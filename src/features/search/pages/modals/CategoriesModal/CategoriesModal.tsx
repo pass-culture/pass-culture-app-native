@@ -10,6 +10,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
+import { excludedCategoriesByName } from 'features/search/helpers/availableCategories/availableCategories'
 import {
   getCategoriesModalTitle,
   getDefaultFormValues,
@@ -62,9 +63,11 @@ export const CategoriesModal = ({
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    const tree = createCategoryTree(categoryList)
-    console.log(tree)
-    return tree
+    const filteredCategories =
+      categoryList?.categories.filter(
+        (category) => !excludedCategoriesByName.includes(category.id)
+      ) || []
+    return createCategoryTree(filteredCategories)
   }, [categoryList])
 
   const {

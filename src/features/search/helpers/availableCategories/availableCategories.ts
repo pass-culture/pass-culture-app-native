@@ -9,3 +9,11 @@ export const availableCategories = omit(
   SearchGroupNameEnumv2.NONE,
   SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
 )
+
+export const excludedCategoriesByName = [
+  'DEPRECIEE',
+  'FILMS_SERIES_CINEMA',
+  'JEUX_PHYSIQUES',
+  'NO_NATIVE_CATEGORY',
+  'NONE',
+]

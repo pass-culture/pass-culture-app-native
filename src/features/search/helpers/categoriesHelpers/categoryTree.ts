@@ -1,5 +1,4 @@
-import { CategoryResponseModel, CategoriesResponseModel } from 'api/gen'
-import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
+import { CategoryResponseModel } from 'api/gen'
 
 type CategoryNode = {
   id: string
@@ -23,7 +22,7 @@ function initNodeFromResponseModel(category: CategoryResponseModel) {
 }
 
 function createNode(
-  data: CategoriesResponseModel,
+  categories: CategoryResponseModel[],
   tree: CategoryTree,
   nodes: Record<string, CategoryNode>,
   currentCategory: CategoryResponseModel
@@ -37,9 +36,9 @@ function createNode(
   if (currentCategory.parents.length > 0) {
     currentCategory.parents.forEach((parentId) => {
       if (!nodes[parentId]) {
-        const parentCategory = data.categories.find((category) => category.id === parentId)
+        const parentCategory = categories.find((category) => category.id === parentId)
         if (parentCategory) {
-          createNode(data, tree, nodes, parentCategory)
+          createNode(categories, tree, nodes, parentCategory)
         }
       }
       const parentNode = nodes[parentId]
@@ -52,16 +51,11 @@ function createNode(
   }
 }
 
-export function createCategoryTree(data?: CategoriesResponseModel) {
-  if (!data) return {} as CategoryTree
-
+export function createCategoryTree(categories: CategoryResponseModel[]) {
   const tree: CategoryTree = {}
   const nodes: Record<string, CategoryNode> = {}
-  const categories = data.categories.filter(
-    (category) => category.id in Object.entries(availableCategories)
-  )
   categories.forEach((category) => {
-    createNode(data, tree, nodes, category)
+    createNode(categories, tree, nodes, category)
   })
 
   return tree
