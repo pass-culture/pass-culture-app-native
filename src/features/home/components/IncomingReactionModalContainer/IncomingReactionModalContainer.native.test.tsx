@@ -142,8 +142,12 @@ describe('IncomingReactionModalContainer', () => {
 
     await waitFor(() => {
       expect(mockMutate).toHaveBeenNthCalledWith(1, {
-        offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
-        reactionType: ReactionTypeEnum.LIKE,
+        reactions: [
+          {
+            offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+            reactionType: ReactionTypeEnum.LIKE,
+          },
+        ],
       })
     })
   })
@@ -197,8 +201,12 @@ describe('IncomingReactionModalContainer', () => {
 
     await waitFor(() => {
       expect(mockMutate).toHaveBeenNthCalledWith(1, {
-        offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
-        reactionType: ReactionTypeEnum.NO_REACTION,
+        reactions: [
+          {
+            offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+            reactionType: ReactionTypeEnum.NO_REACTION,
+          },
+        ],
       })
     })
   })

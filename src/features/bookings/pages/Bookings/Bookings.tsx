@@ -31,12 +31,12 @@ export function Bookings() {
         .filter((ended_booking) => ended_booking.userReaction === null)
         .map((booking) => booking.stock.offer.id) ?? []
 
-    const bookingsTest = bookingsToUpdate.map((bookingId) => ({
+    const mutationPayload = bookingsToUpdate.map((bookingId) => ({
       offerId: bookingId,
       reactionType: ReactionTypeEnum.NO_REACTION,
     }))
-    if (bookingsTest.length > 0) {
-      addReaction({ reactions: bookingsTest })
+    if (mutationPayload.length > 0) {
+      addReaction({ reactions: mutationPayload })
     }
   }, [addReaction, bookings?.ended_bookings])
 

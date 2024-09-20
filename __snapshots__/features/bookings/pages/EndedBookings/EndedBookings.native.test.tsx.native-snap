@@ -253,6 +253,7 @@ exports[`EndedBookings should render correctly 1`] = `
           },
           "token": "352UW5",
           "totalAmount": 1900,
+          "userReaction": null,
         },
         {
           "confirmationDate": "2021-02-15T23:01:37.925926",
@@ -297,6 +298,7 @@ exports[`EndedBookings should render correctly 1`] = `
           },
           "token": "352UW5",
           "totalAmount": 1900,
+          "userReaction": null,
         },
       ]
     }
@@ -787,6 +789,7 @@ exports[`EndedBookings should render correctly 1`] = `
               },
               "token": "352UW5",
               "totalAmount": 1900,
+              "userReaction": null,
             }
           }
           style={

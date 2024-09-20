@@ -3,7 +3,6 @@ import type { ReadonlyDeep } from 'type-fest'
 import {
   BookingCancellationReasons,
   BookingsResponse,
-  ReactionTypeEnum,
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
@@ -108,7 +107,7 @@ export const bookingsSnap = toMutable({
       totalAmount: 1900,
       token: '352UW5',
       quantity: 10,
-      userReaction: ReactionTypeEnum.LIKE,
+      userReaction: null,
       stock: {
         id: 150230,
         price: 400,

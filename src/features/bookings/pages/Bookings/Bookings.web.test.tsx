@@ -52,7 +52,7 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toHaveBeenCalledTimes(1)
+      expect(useBookings).toHaveBeenCalledTimes(2)
     })
   })
 

@@ -163,7 +163,10 @@ describe('Bookings', () => {
       fireEvent.press(await screen.findByText('En cours'))
 
       expect(mockMutate).toHaveBeenCalledWith({
-        reactions: [{ offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION }],
+        reactions: [
+          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
+          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
+        ],
       })
     })
   })
