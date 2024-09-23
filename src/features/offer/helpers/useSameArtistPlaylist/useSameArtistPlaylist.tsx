@@ -42,15 +42,6 @@ export const useSameArtistPlaylist = ({ artists, searchGroupName }: UseSameArtis
     })
 
     const sortedHits = transformedHitsWithDistance.sort((a, b) => {
-      const parseDistance = (distance: string) => {
-        if (distance.includes('km')) {
-          // Convert kilometers to meters
-          return parseFloat(distance) * 1000
-        }
-
-        return parseFloat(distance)
-      }
-
       return parseDistance(a.distance || '0') - parseDistance(b.distance || '0')
     })
 
@@ -58,4 +49,13 @@ export const useSameArtistPlaylist = ({ artists, searchGroupName }: UseSameArtis
   }, [data, userLocation, transformHits])
 
   return { sameArtistPlaylist }
+}
+
+const parseDistance = (distance: string) => {
+  if (distance.includes('km')) {
+    // Convert kilometers to meters
+    return parseFloat(distance) * 1000
+  }
+
+  return parseFloat(distance)
 }
