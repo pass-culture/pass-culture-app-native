@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { Fragment, useCallback, useEffect, useRef } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
@@ -12,12 +12,16 @@ import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
+import { VENUE_VIDEO_FAKEDOOR_DATA } from 'features/venue/constants'
 import { isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { SurveyModal } from 'ui/components/modals/SurveyModal'
+import { useModal } from 'ui/components/modals/useModal'
+import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -71,39 +75,50 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
+  const { visible, hideModal, showModal } = useModal()
 
   const shouldDisplayCTA =
     (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
   return (
-    <Container>
-      <VenueWebMetaHeader venue={venue} />
-      {/* On web VenueHeader is called before Body for accessibility navigate order */}
-      {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
-      <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
-        <ContentContainer
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          bounces={false}
-          ref={scrollViewRef}>
-          {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
-          <VenueTopComponent venue={venue} />
-          <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-          {videoSectionVisible ? (
-            <VideoSection venueType={venue.venueTypeCode} onPress={() => false} />
-          ) : null}
-          <VenueBody
-            venue={venue}
-            playlists={gtlPlaylists}
-            venueOffers={venueOffers}
-            shouldDisplayCTA={shouldDisplayCTA}
-          />
-        </ContentContainer>
-      </AnchorProvider>
-      {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
-      {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
-      {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
-    </Container>
+    <Fragment>
+      <SurveyModal
+        Icon={BicolorCircledClock}
+        hideModal={hideModal}
+        visible={visible}
+        title={VENUE_VIDEO_FAKEDOOR_DATA.title}
+        surveyDescription={VENUE_VIDEO_FAKEDOOR_DATA.description}
+        surveyUrl={VENUE_VIDEO_FAKEDOOR_DATA.surveyURL}
+      />
+      <Container>
+        <VenueWebMetaHeader venue={venue} />
+        {/* On web VenueHeader is called before Body for accessibility navigate order */}
+        {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
+        <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+          <ContentContainer
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            bounces={false}
+            ref={scrollViewRef}>
+            {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
+            <VenueTopComponent venue={venue} />
+            <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+            {videoSectionVisible ? (
+              <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
+            ) : null}
+            <VenueBody
+              venue={venue}
+              playlists={gtlPlaylists}
+              venueOffers={venueOffers}
+              shouldDisplayCTA={shouldDisplayCTA}
+            />
+          </ContentContainer>
+        </AnchorProvider>
+        {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
+        {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
+        {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
+      </Container>
+    </Fragment>
   )
 }
 
