@@ -200,7 +200,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           ))}
         </Animated.View>
       </Container>
-      {nonScreeningOffers ? (
+      {nonScreeningOffers.length ? (
         <SectionWithDivider visible margin={false} gap={6}>
           <PassPlaylist
             testID="offersModuleList"
