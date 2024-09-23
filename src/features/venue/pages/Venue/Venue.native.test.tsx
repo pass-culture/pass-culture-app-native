@@ -10,12 +10,17 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
 
 jest.useFakeTimers()
 
@@ -95,6 +100,7 @@ jest.mock('@batch.com/react-native-plugin', () =>
 
 describe('<Venue />', () => {
   beforeEach(() => {
+    activateFeatureFlags()
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
   })
 
@@ -112,6 +118,13 @@ describe('<Venue />', () => {
     fireEvent.press(await screen.findByText('Infos pratiques'))
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should display video section with FF on', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    renderVenue(venueId)
+
+    expect(await screen.findByText('Vidéo de ce lieu')).toBeOnTheScreen()
   })
 
   describe('analytics', () => {

@@ -11,6 +11,7 @@ import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
+import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
@@ -23,6 +24,7 @@ type Props = {
   venue: VenueResponse
   gtlPlaylists?: GtlPlaylistData[]
   venueOffers?: VenueOffers
+  videoSectionVisible?: boolean
 }
 
 const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
@@ -32,6 +34,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   venue,
   gtlPlaylists,
   venueOffers,
+  videoSectionVisible,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -86,6 +89,9 @@ export const VenueContent: React.FunctionComponent<Props> = ({
           {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
           <VenueTopComponent venue={venue} />
           <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+          {videoSectionVisible ? (
+            <VideoSection venueType={venue.venueTypeCode} onPress={() => false} />
+          ) : null}
           <VenueBody
             venue={venue}
             playlists={gtlPlaylists}
