@@ -10,7 +10,7 @@ import { InfoTab } from './InfoTab'
 
 type TabLayoutProps<TabKeyType extends string> = {
   tabPanels: Record<TabKeyType, React.JSX.Element | null>
-  onTabChange?: Partial<Record<TabKeyType, () => void>>
+  onTabChange?: Partial<Record<TabKeyType, () => void>> | ((tab: TabKeyType) => void)
   tabs: { key: TabKeyType; Icon?: React.FC<AccessibleIcon> }[]
   defaultTab: TabKeyType
 }
@@ -30,7 +30,11 @@ export const TabLayout = <TabKeyType extends string>({
 
   const onTabPress = (tab: TabKeyType) => {
     setSelectedTab(tab)
-    onTabChange?.[tab]?.()
+    if (typeof onTabChange === 'object') {
+      onTabChange?.[tab]?.()
+    } else if (typeof onTabChange === 'function') {
+      onTabChange(tab)
+    }
   }
 
   useTabArrowNavigation<TabKeyType>({

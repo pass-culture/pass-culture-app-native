@@ -1,8 +1,6 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -62,13 +60,6 @@ describe('EndedBookings', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should always execute the query (in cache or in network)', () => {
-    const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
-    renderEndedBookings(bookingsSnap)
-
-    expect(useBookings).toHaveBeenCalledTimes(1)
-  })
-
   it('should display the right number of ended bookings', () => {
     renderEndedBookings(bookingsSnap)
 
@@ -107,11 +98,9 @@ const renderEndedBookings = (
   bookings: BookingsResponse,
   Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
 ) => {
-  jest
-    .spyOn(bookingsAPI, 'useBookings')
-    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
-
   return render(
-    <Wrapper>{reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} />)}</Wrapper>
+    <Wrapper>
+      {reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} bookings={bookings} />)}
+    </Wrapper>
   )
 }

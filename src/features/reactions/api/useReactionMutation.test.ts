@@ -21,7 +21,7 @@ describe('useReactionMutation', () => {
 
     const { result } = renderUseReactionMutation()
 
-    result.current.mutate({ offerId: 12, reactionType: ReactionTypeEnum.LIKE })
+    result.current.mutate({ reactions: [{ offerId: 12, reactionType: ReactionTypeEnum.LIKE }] })
 
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy())
   })
@@ -31,7 +31,7 @@ describe('useReactionMutation', () => {
 
     const { result } = renderUseReactionMutation()
 
-    result.current.mutate({ offerId: 12, reactionType: ReactionTypeEnum.LIKE })
+    result.current.mutate({ reactions: [{ offerId: 12, reactionType: ReactionTypeEnum.LIKE }] })
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()

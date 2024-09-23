@@ -50,7 +50,7 @@ describe('<EndedBookings />', () => {
     await measurePerformance(
       reactQueryProviderHOC(
         <AuthWrapper>
-          <EndedBookings enableBookingImprove={false} />
+          <EndedBookings enableBookingImprove={false} bookings={bookingsSnap} />
         </AuthWrapper>
       ),
       {

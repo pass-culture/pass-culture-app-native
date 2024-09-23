@@ -2,8 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PostReactionRequest } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
+import { BookingsResponse, PostOneReactionRequest, PostReactionRequest } from 'api/gen'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { Booking } from 'features/bookings/types'
@@ -25,10 +24,10 @@ const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
 type Props = {
   enableBookingImprove: boolean
+  bookings: BookingsResponse | undefined
 }
 
-export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }) => {
-  const { data: bookings } = useBookings()
+export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove, bookings }) => {
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
   const { mutate: addReaction } = useReactionMutation()
@@ -40,8 +39,11 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
   })
 
   const handleSaveReaction = useCallback(
-    ({ offerId, reactionType }: PostReactionRequest) => {
-      addReaction({ offerId, reactionType })
+    ({ offerId, reactionType }: PostOneReactionRequest) => {
+      const reactionRequest: PostReactionRequest = {
+        reactions: [{ offerId, reactionType }],
+      }
+      addReaction(reactionRequest)
       return Promise.resolve(true)
     },
     [addReaction]

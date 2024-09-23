@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
+import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
@@ -30,8 +30,11 @@ export const IncomingReactionModalContainer = () => {
   const firstBooking = bookingsWithoutReaction[0]
 
   const handleSaveReaction = useCallback(
-    ({ offerId, reactionType }: PostReactionRequest) => {
-      addReaction({ offerId, reactionType })
+    ({ offerId, reactionType }: PostOneReactionRequest) => {
+      const reactionRequest: PostReactionRequest = {
+        reactions: [{ offerId, reactionType }],
+      }
+      addReaction(reactionRequest)
       return Promise.resolve(true)
     },
     [addReaction]
@@ -41,8 +44,12 @@ export const IncomingReactionModalContainer = () => {
     if (!firstBooking) return
 
     addReaction({
-      offerId: firstBooking.stock.offer.id,
-      reactionType: ReactionTypeEnum.NO_REACTION,
+      reactions: [
+        {
+          offerId: firstBooking.stock.offer.id,
+          reactionType: ReactionTypeEnum.NO_REACTION,
+        },
+      ],
     })
 
     hideReactionModal()
