@@ -565,7 +565,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#27DCA8",
               "#0E8474",
             ],
-            "label": "Cinéma, films et séries",
+            "label": "Cinéma",
             "onPress": [Function],
             "position": 2,
             "textColor": "#0E78B7",
@@ -595,7 +595,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#EC3478",
               "#C01371",
             ],
-            "label": "Livres",
+            "label": "Films, documentaires et séries",
             "onPress": [Function],
             "position": 3,
             "textColor": "#0E8474",
@@ -625,7 +625,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#20C5E9",
               "#0E78B7",
             ],
-            "label": "CD, vinyles, musique en ligne",
+            "label": "Livres",
             "onPress": [Function],
             "position": 4,
             "textColor": "#CA3F13",
@@ -655,7 +655,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "Arts & loisirs créatifs",
+            "label": "CD, vinyles, musique en ligne",
             "onPress": [Function],
             "position": 5,
             "textColor": "#C01371",
@@ -685,7 +685,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#F8733D",
               "#CA3F13",
             ],
-            "label": "Spectacles",
+            "label": "Arts & loisirs créatifs",
             "onPress": [Function],
             "position": 6,
             "textColor": "#8337E9",
@@ -715,7 +715,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#27DCA8",
               "#0E8474",
             ],
-            "label": "Musées & visites culturelles",
+            "label": "Spectacles",
             "onPress": [Function],
             "position": 7,
             "textColor": "#8337E9",
@@ -745,7 +745,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#FA9F16",
               "#B85901",
             ],
-            "label": "Jeux & jeux vidéos",
+            "label": "Musées & visites culturelles",
             "onPress": [Function],
             "position": 8,
             "textColor": "#0E78B7",
@@ -775,7 +775,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#20C5E9",
               "#0E78B7",
             ],
-            "label": "Instruments de musique",
+            "label": "Jeux & jeux vidéos",
             "onPress": [Function],
             "position": 9,
             "textColor": "#0E8474",
@@ -805,7 +805,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#EC3478",
               "#C01371",
             ],
-            "label": "Médias & presse",
+            "label": "Instruments de musique",
             "onPress": [Function],
             "position": 10,
             "textColor": "#CA3F13",
@@ -835,10 +835,40 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "Cartes jeunes",
+            "label": "Médias & presse",
             "onPress": [Function],
             "position": 11,
             "textColor": "#C01371",
+          },
+          {
+            "Icon": {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#B85901",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
+            "gradients": [
+              "#FA9F16",
+              "#B85901",
+            ],
+            "label": "Cartes jeunes",
+            "onPress": [Function],
+            "position": 12,
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -873,16 +903,16 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "target": [Function],
               "withComponent": [Function],
             },
-            "baseColor": "#B85901",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "baseColor": "#0E8474",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
-              "#FA9F16",
-              "#B85901",
+              "#27DCA8",
+              "#0E8474",
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
-            "position": 12,
+            "position": 13,
             "textColor": "#8337E9",
           },
           {
@@ -904,16 +934,16 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
+            "borderColor": "#F8733D",
+            "fillColor": "#FFDECC",
             "gradients": [
               "#27DCA8",
               "#0E8474",
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-            "position": 13,
-            "textColor": "#8337E9",
+            "position": 14,
+            "textColor": "#0E78B7",
           },
         ]
       }
@@ -1257,7 +1287,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               }
             >
               <View
-                accessibilityLabel="Catégorie Cinéma, films et séries"
+                accessibilityLabel="Catégorie Cinéma"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1307,7 +1337,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                     },
                   ]
                 }
-                testID="Catégorie Cinéma, films et séries"
+                testID="Catégorie Cinéma"
               >
                 <View
                   style={
@@ -1338,7 +1368,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       ]
                     }
                   >
-                    CINÉMA, FILMS ET SÉRIES
+                    CINÉMA
                   </Text>
                 </View>
               </View>
@@ -1357,6 +1387,106 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               }
             }
           >
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Films, documentaires et séries"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFD7E9",
+                        "borderColor": "#EC3478",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Films, documentaires et séries"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "flex-start",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    baseColor="#161617"
+                    numberOfLines={3}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    FILMS, DOCUMENTAIRES ET SÉRIES
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
               style={
                 [
@@ -1405,8 +1535,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#FFD7E9",
-                        "borderColor": "#EC3478",
+                        "backgroundColor": "#D6F8FF",
+                        "borderColor": "#20C5E9",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1457,6 +1587,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -1505,8 +1649,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#D6F8FF",
-                        "borderColor": "#20C5E9",
+                        "backgroundColor": "#EAE3FF",
+                        "borderColor": "#AD87FF",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1557,20 +1701,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -1619,8 +1749,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#EAE3FF",
-                        "borderColor": "#AD87FF",
+                        "backgroundColor": "#DBFFEA",
+                        "borderColor": "#0E8474",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1671,6 +1801,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -1719,8 +1863,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#DBFFEA",
-                        "borderColor": "#0E8474",
+                        "backgroundColor": "#FFF5D8",
+                        "borderColor": "#FBDBAC",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1771,20 +1915,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -1833,8 +1963,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#FFF5D8",
-                        "borderColor": "#FBDBAC",
+                        "backgroundColor": "#FFDECC",
+                        "borderColor": "#F8733D",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1885,6 +2015,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -1933,8 +2077,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#FFDECC",
-                        "borderColor": "#F8733D",
+                        "backgroundColor": "#FFD7E9",
+                        "borderColor": "#EC3478",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -1985,20 +2129,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -2047,8 +2177,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#FFD7E9",
-                        "borderColor": "#EC3478",
+                        "backgroundColor": "#D6F8FF",
+                        "borderColor": "#20C5E9",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -2099,6 +2229,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -2147,8 +2291,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#D6F8FF",
-                        "borderColor": "#20C5E9",
+                        "backgroundColor": "#EAE3FF",
+                        "borderColor": "#AD87FF",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -2199,20 +2343,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -2261,8 +2391,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#EAE3FF",
-                        "borderColor": "#AD87FF",
+                        "backgroundColor": "#DBFFEA",
+                        "borderColor": "#0E8474",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -2313,6 +2443,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -2361,8 +2505,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#DBFFEA",
-                        "borderColor": "#0E8474",
+                        "backgroundColor": "#FFF5D8",
+                        "borderColor": "#FBDBAC",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -2413,20 +2557,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -2475,8 +2605,8 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                         "userSelect": "auto",
                       },
                       {
-                        "backgroundColor": "#FFF5D8",
-                        "borderColor": "#FBDBAC",
+                        "backgroundColor": "#FFDECC",
+                        "borderColor": "#F8733D",
                         "borderRadius": 8,
                         "borderWidth": 1.6,
                         "display": "flex",
@@ -3071,7 +3201,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#27DCA8",
               "#0E8474",
             ],
-            "label": "Cinéma, films et séries",
+            "label": "Cinéma",
             "onPress": [Function],
             "position": 2,
             "textColor": "#0E78B7",
@@ -3101,7 +3231,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#EC3478",
               "#C01371",
             ],
-            "label": "Livres",
+            "label": "Films, documentaires et séries",
             "onPress": [Function],
             "position": 3,
             "textColor": "#0E8474",
@@ -3131,7 +3261,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#20C5E9",
               "#0E78B7",
             ],
-            "label": "CD, vinyles, musique en ligne",
+            "label": "Livres",
             "onPress": [Function],
             "position": 4,
             "textColor": "#CA3F13",
@@ -3161,7 +3291,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "Arts & loisirs créatifs",
+            "label": "CD, vinyles, musique en ligne",
             "onPress": [Function],
             "position": 5,
             "textColor": "#C01371",
@@ -3191,7 +3321,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#F8733D",
               "#CA3F13",
             ],
-            "label": "Spectacles",
+            "label": "Arts & loisirs créatifs",
             "onPress": [Function],
             "position": 6,
             "textColor": "#8337E9",
@@ -3221,7 +3351,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#27DCA8",
               "#0E8474",
             ],
-            "label": "Musées & visites culturelles",
+            "label": "Spectacles",
             "onPress": [Function],
             "position": 7,
             "textColor": "#8337E9",
@@ -3251,7 +3381,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#FA9F16",
               "#B85901",
             ],
-            "label": "Jeux & jeux vidéos",
+            "label": "Musées & visites culturelles",
             "onPress": [Function],
             "position": 8,
             "textColor": "#0E78B7",
@@ -3281,7 +3411,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#20C5E9",
               "#0E78B7",
             ],
-            "label": "Instruments de musique",
+            "label": "Jeux & jeux vidéos",
             "onPress": [Function],
             "position": 9,
             "textColor": "#0E8474",
@@ -3311,7 +3441,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#EC3478",
               "#C01371",
             ],
-            "label": "Médias & presse",
+            "label": "Instruments de musique",
             "onPress": [Function],
             "position": 10,
             "textColor": "#CA3F13",
@@ -3341,10 +3471,40 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "Cartes jeunes",
+            "label": "Médias & presse",
             "onPress": [Function],
             "position": 11,
             "textColor": "#C01371",
+          },
+          {
+            "Icon": {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#B85901",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
+            "gradients": [
+              "#FA9F16",
+              "#B85901",
+            ],
+            "label": "Cartes jeunes",
+            "onPress": [Function],
+            "position": 12,
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -3379,16 +3539,16 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "target": [Function],
               "withComponent": [Function],
             },
-            "baseColor": "#B85901",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "baseColor": "#0E8474",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
-              "#FA9F16",
-              "#B85901",
+              "#27DCA8",
+              "#0E8474",
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
-            "position": 12,
+            "position": 13,
             "textColor": "#8337E9",
           },
           {
@@ -3410,16 +3570,16 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
+            "borderColor": "#F8733D",
+            "fillColor": "#FFDECC",
             "gradients": [
               "#27DCA8",
               "#0E8474",
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-            "position": 13,
-            "textColor": "#8337E9",
+            "position": 14,
+            "textColor": "#0E78B7",
           },
         ]
       }
@@ -3678,7 +3838,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Cinéma, films et séries"
+                accessibilityLabel="Catégorie Cinéma"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3723,7 +3883,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Cinéma, films et séries"
+                testID="Catégorie Cinéma"
               >
                 <View
                   style={
@@ -3817,7 +3977,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Cinéma, films et séries
+                    Cinéma
                   </Text>
                 </View>
               </View>
@@ -3850,7 +4010,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Livres"
+                accessibilityLabel="Catégorie Films, documentaires et séries"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3895,7 +4055,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Livres"
+                testID="Catégorie Films, documentaires et séries"
               >
                 <View
                   style={
@@ -3989,7 +4149,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Livres
+                    Films, documentaires et séries
                   </Text>
                 </View>
               </View>
@@ -4008,7 +4168,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
+                accessibilityLabel="Catégorie Livres"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4053,7 +4213,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie CD, vinyles, musique en ligne"
+                testID="Catégorie Livres"
               >
                 <View
                   style={
@@ -4147,7 +4307,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    CD, vinyles, musique en ligne
+                    Livres
                   </Text>
                 </View>
               </View>
@@ -4180,7 +4340,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Arts & loisirs créatifs"
+                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4225,7 +4385,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Arts & loisirs créatifs"
+                testID="Catégorie CD, vinyles, musique en ligne"
               >
                 <View
                   style={
@@ -4319,7 +4479,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Arts & loisirs créatifs
+                    CD, vinyles, musique en ligne
                   </Text>
                 </View>
               </View>
@@ -4338,7 +4498,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Spectacles"
+                accessibilityLabel="Catégorie Arts & loisirs créatifs"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4383,7 +4543,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Spectacles"
+                testID="Catégorie Arts & loisirs créatifs"
               >
                 <View
                   style={
@@ -4477,7 +4637,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Spectacles
+                    Arts & loisirs créatifs
                   </Text>
                 </View>
               </View>
@@ -4510,7 +4670,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Musées & visites culturelles"
+                accessibilityLabel="Catégorie Spectacles"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4555,7 +4715,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Musées & visites culturelles"
+                testID="Catégorie Spectacles"
               >
                 <View
                   style={
@@ -4649,7 +4809,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Musées & visites culturelles
+                    Spectacles
                   </Text>
                 </View>
               </View>
@@ -4668,7 +4828,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Jeux & jeux vidéos"
+                accessibilityLabel="Catégorie Musées & visites culturelles"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4713,7 +4873,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Jeux & jeux vidéos"
+                testID="Catégorie Musées & visites culturelles"
               >
                 <View
                   style={
@@ -4807,7 +4967,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Jeux & jeux vidéos
+                    Musées & visites culturelles
                   </Text>
                 </View>
               </View>
@@ -4840,7 +5000,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Instruments de musique"
+                accessibilityLabel="Catégorie Jeux & jeux vidéos"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4885,7 +5045,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Instruments de musique"
+                testID="Catégorie Jeux & jeux vidéos"
               >
                 <View
                   style={
@@ -4979,7 +5139,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Instruments de musique
+                    Jeux & jeux vidéos
                   </Text>
                 </View>
               </View>
@@ -4998,7 +5158,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Médias & presse"
+                accessibilityLabel="Catégorie Instruments de musique"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5043,7 +5203,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Médias & presse"
+                testID="Catégorie Instruments de musique"
               >
                 <View
                   style={
@@ -5137,7 +5297,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Médias & presse
+                    Instruments de musique
                   </Text>
                 </View>
               </View>
@@ -5170,7 +5330,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Cartes jeunes"
+                accessibilityLabel="Catégorie Médias & presse"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5215,7 +5375,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Cartes jeunes"
+                testID="Catégorie Médias & presse"
               >
                 <View
                   style={
@@ -5309,7 +5469,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Cartes jeunes
+                    Médias & presse
                   </Text>
                 </View>
               </View>
@@ -5328,7 +5488,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Conférences & rencontres"
+                accessibilityLabel="Catégorie Cartes jeunes"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5373,7 +5533,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie Conférences & rencontres"
+                testID="Catégorie Cartes jeunes"
               >
                 <View
                   style={
@@ -5467,7 +5627,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    Conférences & rencontres
+                    Cartes jeunes
                   </Text>
                 </View>
               </View>
@@ -5486,6 +5646,164 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             }
           >
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Conférences & rencontres"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Conférences & rencontres"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4280802472,
+                        4279141492,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#0E8474"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#0E8474",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Conférences & rencontres
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
               style={
                 [
