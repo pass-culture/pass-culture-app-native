@@ -6,23 +6,28 @@ import {
   fetchOffersByArtist,
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { Position } from 'libs/location'
 
 jest.mock('algoliasearch')
 
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 describe('fetchOffersByArtist', () => {
   it('should execute the query if artist is provided, searchGroupName is a book, and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      userLocation: mockUserLocation,
     })
 
     expect(search).toHaveBeenCalledWith('', {
       page: 0,
       filters: 'offer.artist:"Eiichiro Oda"',
       hitsPerPage: 100,
+      aroundLatLng: '2, 2',
+      aroundRadius: 'all',
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [],
     })
@@ -32,6 +37,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      userLocation: mockUserLocation,
     })
 
     expect(search).not.toHaveBeenCalled()
@@ -41,6 +47,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIF',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      userLocation: mockUserLocation,
     })
 
     expect(search).not.toHaveBeenCalled()
@@ -50,6 +57,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIFS',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      userLocation: mockUserLocation,
     })
 
     expect(search).not.toHaveBeenCalled()

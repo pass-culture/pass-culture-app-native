@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
-  FetchOfferByArtist,
   HitOfferWithArtistAndEan,
   fetchOffersByArtist,
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
@@ -12,7 +12,12 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useSameArtistPlaylist = ({ artists, searchGroupName }: FetchOfferByArtist) => {
+type UseSameArtistPlaylistProps = {
+  searchGroupName: SearchGroupNameEnumv2
+  artists?: string | null
+}
+
+export const useSameArtistPlaylist = ({ artists, searchGroupName }: UseSameArtistPlaylistProps) => {
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
@@ -20,7 +25,7 @@ export const useSameArtistPlaylist = ({ artists, searchGroupName }: FetchOfferBy
   const { data } = useQuery(
     [QueryKeys.SAME_ARTIST_PLAYLIST, artists],
     () => {
-      return fetchOffersByArtist({ artists, searchGroupName })
+      return fetchOffersByArtist({ artists, searchGroupName, userLocation })
     },
     { enabled: !!netInfo.isConnected, initialData: [] }
   )
@@ -36,9 +41,18 @@ export const useSameArtistPlaylist = ({ artists, searchGroupName }: FetchOfferBy
       return { ...transformedHit, distance }
     })
 
-    const sortedHits = transformedHitsWithDistance.sort(
-      (a, b) => parseFloat(a.distance || '0') - parseFloat(b.distance || '0')
-    )
+    const sortedHits = transformedHitsWithDistance.sort((a, b) => {
+      const parseDistance = (distance: string) => {
+        if (distance.includes('km')) {
+          // Convert kilometers to meters
+          return parseFloat(distance) * 1000
+        }
+
+        return parseFloat(distance)
+      }
+
+      return parseDistance(a.distance || '0') - parseDistance(b.distance || '0')
+    })
 
     return sortedHits.map(({ distance: _distance, ...rest }) => rest) as HitOfferWithArtistAndEan[]
   }, [data, userLocation, transformHits])
