@@ -44,6 +44,7 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: 'Eiichiro Oda',
         searchGroupName: SearchGroupNameEnumv2.LIVRES,
+        userLocation: mockUserLocation,
       })
     })
   })
