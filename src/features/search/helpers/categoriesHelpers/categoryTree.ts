@@ -1,12 +1,12 @@
 import { CategoryResponseModel } from 'api/gen'
 
-type CategoryNode = {
+export type CategoryNode = {
   id: string
   gtls?: Array<string>
   label: string
   position?: number
   searchFilter?: string
-  children: Record<string, CategoryNode>
+  children: CategoryTree
 }
 export type CategoryTree = Record<string, CategoryNode>
 
@@ -34,6 +34,10 @@ function createNode(
   if (!currentNode) return
 
   if (currentCategory.parents.length > 0) {
+    // Cheat for books
+    if (currentCategory.parents.includes('LIVRES_PAPIER')) {
+      currentCategory.parents = [...currentCategory.parents, 'LIVRES']
+    }
     currentCategory.parents.forEach((parentId) => {
       if (!nodes[parentId]) {
         const parentCategory = categories.find((category) => category.id === parentId)

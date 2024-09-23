@@ -17,11 +17,11 @@ import {
   getIcon,
   handleCategoriesSearchPress,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { createCategoryTree } from 'features/search/helpers/categoriesHelpers/categoryTree'
 import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+  CategoryTree,
+  createCategoryTree,
+} from 'features/search/helpers/categoriesHelpers/categoryTree'
+import { MappedGenreTypes } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { useCategories } from 'libs/subcategories/useCategories'
@@ -87,7 +87,7 @@ export const CategoriesModal = ({
 
   const nativeCategories = useMemo(() => {
     return ((category && category !== SearchGroupNameEnumv2.NONE && tree[category]?.children) ||
-      {}) as MappedNativeCategories
+      {}) as CategoryTree
   }, [category, tree])
 
   const genreTypes = useMemo(() => {
@@ -115,12 +115,13 @@ export const CategoriesModal = ({
       if (!nativeCategories) return
 
       setValue('nativeCategory', nativeCategoryKey)
-
       if (nativeCategoryKey !== nativeCategory) {
         setValue('genreType', null)
       }
-
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
+      if (
+        nativeCategoryKey &&
+        Object.keys(nativeCategories[nativeCategoryKey]?.children || {}).length > 0
+      ) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },

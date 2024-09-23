@@ -10,12 +10,10 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
-import {
-  CategoryTree,
-  createCategoryTree,
-} from 'features/search/helpers/categoriesHelpers/categoryTree'
+import { CategoryTree } from 'features/search/helpers/categoriesHelpers/categoryTree'
 import {
   MappedNativeCategories,
+  createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
@@ -28,7 +26,7 @@ import {
   SearchState,
 } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
-import { useCategories } from 'libs/subcategories/useCategories'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
@@ -345,13 +343,15 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 }
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
-  const { data: categoryTree } = useCategories()
-  const tree = createCategoryTree(categoryTree)
+  // const { data: categoryTree } = useCategories()
+  // const tree = createCategoryTree(categoryTree)
+  const { data: subcategories } = useSubcategories()
+  const tree = createMappingTree(subcategories)
 
   const mappedNativeCategories =
     searchGroup &&
     searchGroup !== SearchGroupNameEnumv2.NONE &&
-    (tree[searchGroup]?.children as MappedNativeCategories)
+    (tree[searchGroup].children as MappedNativeCategories)
 
   const nativeCategories = mappedNativeCategories ? typedEntries(mappedNativeCategories) : []
 
