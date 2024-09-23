@@ -135,6 +135,7 @@ export type SubscriptionRootStackParamList = {
   // Stepper
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
+  SetPhoneNumberWithoutValidation: undefined
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
   PhoneValidationTooManyAttempts: undefined

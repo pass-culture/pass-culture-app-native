@@ -21,6 +21,7 @@ import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
+import { SetPhoneNumberWithoutValidation } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumberWithoutValidation'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
@@ -75,6 +76,13 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   // Phone Validation
+  {
+    name: 'SetPhoneNumberWithoutValidation',
+    component: SetPhoneNumberWithoutValidation,
+    path: 'creation-compte/telephone-sans-validation',
+    options: { title: 'Ton numéro de téléphone' },
+    secure: true,
+  },
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
