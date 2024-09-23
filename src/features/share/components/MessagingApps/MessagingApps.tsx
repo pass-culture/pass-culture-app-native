@@ -10,7 +10,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -36,7 +36,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
 
   return (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>{'Passe le bon plan\u00a0!'}</TypoDS.Title3>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 export const OfferTitle: FunctionComponent<Props> = ({ offerName }) => {
   const { isDesktopViewport } = useTheme()
-  const TitleComponent = isDesktopViewport ? Typo.Title1 : Typo.Title3
+  const TitleComponent = isDesktopViewport ? TypoDS.Title1 : TypoDS.Title3
 
   return (
     <TitleComponent

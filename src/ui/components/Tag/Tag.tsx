@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
+import { getSpacing, getSpacingString, Spacer, TypoDS } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
@@ -39,7 +39,7 @@ const Wrapper = styled(View)(({ theme }) => ({
   alignSelf: 'baseline',
 }))
 
-const LabelText = styled(Typo.Caption)(({ theme }) => ({
+const LabelText = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
   color: theme.colors.black,
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
 }))

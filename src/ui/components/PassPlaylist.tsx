@@ -1,10 +1,12 @@
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { SeeMoreWithEye } from './SeeMoreWithEye'
@@ -80,16 +82,17 @@ export const PassPlaylist = ({
     ) : null
   }
   return (
-    <Container {...props}>
-      <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
-      {renderTitleSeeMore()}
-      {subtitle ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledSubtitle>{subtitle}</StyledSubtitle>
-        </React.Fragment>
-      ) : null}
-      <Spacer.Column numberOfSpaces={4} />
+    <Container gap={4} {...props}>
+      <View>
+        <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
+        {renderTitleSeeMore()}
+        {subtitle ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={1} />
+            <StyledSubtitle>{subtitle}</StyledSubtitle>
+          </React.Fragment>
+        ) : null}
+      </View>
       <Playlist
         testID="offersModuleList"
         data={data}
@@ -107,14 +110,15 @@ export const PassPlaylist = ({
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const DefaultTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(Typo.CaptionNeutralInfo).attrs({
+const StyledSubtitle = styled(TypoDS.BodySemiBoldXs).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  color: theme.colors.greyDark,
 }))

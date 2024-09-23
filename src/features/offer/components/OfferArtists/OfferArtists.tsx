@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -13,10 +13,10 @@ interface Props {
 }
 export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistLink }) => {
   const artistLinkEnabled = !!onPressArtistLink
-
+  const prefix = 'de'
   return (
     <ArtistInfoContainer>
-      <Typo.ButtonTextNeutralInfo>de</Typo.ButtonTextNeutralInfo>
+      <StyledPrefix>{prefix}</StyledPrefix>
       <Spacer.Row numberOfSpaces={2} />
       {artistLinkEnabled ? (
         <ButtonTertiaryBlack
@@ -48,3 +48,7 @@ const ArtistInfoContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
+
+const StyledPrefix = styled(TypoDS.BodySemiBold)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

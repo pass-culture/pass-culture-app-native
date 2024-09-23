@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Activable<T> = {
   active: T
@@ -34,7 +34,7 @@ export const ToggleButton = ({
       onPress={onPress}>
       {active ? <Icon.active /> : <Icon.inactive />}
       <Spacer.Row numberOfSpaces={2} />
-      <Typo.Caption>{active ? label.active : label.inactive}</Typo.Caption>
+      <TypoDS.BodySemiBoldXs>{active ? label.active : label.inactive}</TypoDS.BodySemiBoldXs>
     </TouchableComponent>
   )
 }

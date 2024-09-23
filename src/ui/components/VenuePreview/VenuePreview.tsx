@@ -7,7 +7,7 @@ import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   venueName: string
@@ -70,7 +70,7 @@ const VenueTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const VenueName = styled(Typo.ButtonText).attrs({ numberOfLines: 1 })({
+const VenueName = styled(TypoDS.BodySemiBold).attrs({ numberOfLines: 1 })({
   flexShrink: 1,
 })
 
@@ -80,7 +80,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   flexShrink: 0,
 })
 
-const Address = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
+const Address = styled(TypoDS.BodySemiBoldXs).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

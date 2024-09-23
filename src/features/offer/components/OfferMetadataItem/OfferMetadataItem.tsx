@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export type OfferMetadataItemProps = {
   label: string
@@ -11,8 +11,8 @@ export type OfferMetadataItemProps = {
 export function OfferMetadataItem({ label, value }: Readonly<OfferMetadataItemProps>) {
   return (
     <Text>
-      <Typo.ButtonText>{label}&nbsp;: </Typo.ButtonText>
-      <Typo.Body>{value}</Typo.Body>
+      <TypoDS.BodySemiBold>{label}&nbsp;: </TypoDS.BodySemiBold>
+      <TypoDS.Body>{value}</TypoDS.Body>
     </Text>
   )
 }

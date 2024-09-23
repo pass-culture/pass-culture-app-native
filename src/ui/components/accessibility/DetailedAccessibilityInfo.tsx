@@ -13,7 +13,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   url: string
@@ -32,7 +32,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
             <StyledAccordionItem
               accessibilityLabel={`${detail.category}: ${detail.isAccessible ? 'Accessible' : 'Non accessible'}`}
               title={detail.category}
-              titleComponent={Typo.Caption}
+              titleComponent={TypoDS.BodySemiBoldXs}
               onOpen={() => analytics.logHasOpenedAccessibilityAccordion(detail.category)}
               leftComponent={
                 <AccessibilityFrame Icon={detail.icon} isAccessible={!!detail.isAccessible} />
@@ -42,16 +42,16 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
                   <View
                     key={descriptionTitle}
                     accessibilityLabel={`${descriptionTitle}: ${descriptionInfo}`}>
-                    <Typo.Caption accessibilityHidden>{descriptionTitle}</Typo.Caption>
+                    <TypoDS.BodyXs accessibilityHidden>{descriptionTitle}</TypoDS.BodyXs>
                     <Spacer.Column numberOfSpaces={2} />
                     {Array.isArray(descriptionInfo) ? (
                       descriptionInfo.map((info) => (
-                        <Typo.Body key={info} accessibilityHidden>
+                        <TypoDS.Body key={info} accessibilityHidden>
                           {info}
-                        </Typo.Body>
+                        </TypoDS.Body>
                       ))
                     ) : (
-                      <Typo.Body accessibilityHidden>{descriptionInfo}</Typo.Body>
+                      <TypoDS.Body accessibilityHidden>{descriptionInfo}</TypoDS.Body>
                     )}
                   </View>
                 ))}

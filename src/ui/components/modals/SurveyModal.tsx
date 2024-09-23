@@ -6,7 +6,7 @@ import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
@@ -31,7 +31,7 @@ export const SurveyModal = ({
       <Spacer.Column numberOfSpaces={4} />
       {surveyDescription ? (
         <Container>
-          <Typo.Body>{surveyDescription}</Typo.Body>
+          <TypoDS.Body>{surveyDescription}</TypoDS.Body>
         </Container>
       ) : null}
 
