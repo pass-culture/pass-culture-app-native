@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useMemo } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import type { OfferPreviewResponse } from 'api/gen'
@@ -18,7 +18,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
@@ -88,7 +88,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   )
   return (
     <React.Fragment>
-      <ContainerWithMargin>
+      <View>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
@@ -100,10 +100,10 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
             withRightArrow
           />
         ) : null}
-      </ContainerWithMargin>
+      </View>
       <Spacer.Column numberOfSpaces={4} />
       {nextScreeningDate ? (
-        <ContainerWithMargin>
+        <View>
           <NextScreeningButton
             date={nextScreeningDate}
             onPress={() => {
@@ -112,7 +112,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
               scrollToMiddleElement(nextDateIndex)
             }}
           />
-        </ContainerWithMargin>
+        </View>
       ) : (
         <EventCardList
           data={eventCardData}
@@ -138,9 +138,4 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
-  marginHorizontal: getSpacing(6),
 }))
-
-const ContainerWithMargin = styled.View({
-  marginHorizontal: getSpacing(6),
-})
