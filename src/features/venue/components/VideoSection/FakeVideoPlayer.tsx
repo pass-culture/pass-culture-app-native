@@ -22,7 +22,7 @@ export const FakeVideoPlayer: FunctionComponent<FakeVideoPlayerProps> = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} delayPressIn={70} accessibilityLabel="Faux lecteur vidéo">
       <Container height={height} width={width}>
         <PlayIconWrapper shouldRasterizeIOS>
           <PlayIcon />

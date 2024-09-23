@@ -10,6 +10,7 @@ import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -60,6 +61,14 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+
+const mockShowModal = jest.fn()
+jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
+  visible: false,
+  showModal: mockShowModal,
+  hideModal: jest.fn(),
+  toggleModal: jest.fn(),
+})
 
 describe('<VenueContent />', () => {
   it('should search the offers associated when pressing "Rechercher une offre"', async () => {
@@ -126,5 +135,19 @@ describe('<VenueContent />', () => {
     render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} />))
 
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
+  })
+
+  it('should display fake video player', async () => {
+    render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} videoSectionVisible />))
+
+    expect(await screen.findByLabelText('Faux lecteur vidéo')).toBeOnTheScreen()
+  })
+
+  it('should open survey modal when fake video player is pressed', async () => {
+    render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} videoSectionVisible />))
+
+    fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
+
+    expect(mockShowModal).toHaveBeenCalledWith()
   })
 })
