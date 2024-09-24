@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaPois, AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
 import { Typo } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches
@@ -31,6 +31,7 @@ export function HighlightHistoryItemPart({ children, isHighlighted }: HighlightP
 
 type WithSuggestionHitProps = {
   suggestionHit: AlgoliaSuggestionHit
+  poiHit?: never
   venueHit?: never
   historyItem?: never
   attribute: string
@@ -38,6 +39,15 @@ type WithSuggestionHitProps = {
 
 type WithVenueHitProps = {
   venueHit: AlgoliaVenue
+  poiHit?: never
+  suggestionHit?: never
+  historyItem?: never
+  attribute: string
+}
+
+type WithPoiHitProps = {
+  poiHit?: AlgoliaPois
+  venueHit?: never
   suggestionHit?: never
   historyItem?: never
   attribute: string
@@ -45,14 +55,25 @@ type WithVenueHitProps = {
 
 type WithHistoryItemProps = {
   historyItem: Highlighted<HistoryItem>
+  poiHit?: never
   suggestionHit?: never
   venueHit?: never
   attribute?: never
 }
 
-type HighlightProps = WithSuggestionHitProps | WithVenueHitProps | WithHistoryItemProps
+type HighlightProps =
+  | WithSuggestionHitProps
+  | WithVenueHitProps
+  | WithPoiHitProps
+  | WithHistoryItemProps
 
-export function Highlight({ suggestionHit, venueHit, historyItem, attribute }: HighlightProps) {
+export function Highlight({
+  suggestionHit,
+  venueHit,
+  poiHit,
+  historyItem,
+  attribute,
+}: HighlightProps) {
   let attributeValue = ''
 
   if (suggestionHit) {
@@ -61,6 +82,9 @@ export function Highlight({ suggestionHit, venueHit, historyItem, attribute }: H
   }
   if (venueHit) {
     attributeValue = venueHit._highlightResult?.name?.value?.toString() ?? ''
+  }
+  if (poiHit) {
+    attributeValue = poiHit._highlightResult?.name?.value?.toString() ?? ''
   }
   if (historyItem) {
     attributeValue = historyItem._highlightResult?.query?.value?.toString() ?? ''

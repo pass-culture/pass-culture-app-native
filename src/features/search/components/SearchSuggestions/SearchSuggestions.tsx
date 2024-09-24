@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
+import { AutocompletePois } from 'features/search/components/AutocompletePois/AutocompletePois'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -115,8 +116,8 @@ export const SearchSuggestions = ({
           aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />
-        <AutocompleteVenue title="Lieux culturels" onItemPress={onVenuePress} />
-        <AutocompleteVenue title="Points d’intérets" withPois onItemPress={onVenuePress} />
+        <AutocompleteVenue onItemPress={onVenuePress} />
+        <AutocompletePois onItemPress={onVenuePress} />
       </Index>
       <Spacer.Column numberOfSpaces={3} />
     </StyledScrollView>

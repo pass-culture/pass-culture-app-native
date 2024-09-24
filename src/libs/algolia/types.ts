@@ -198,6 +198,10 @@ interface AlgoliaVenueHighlightResult {
   name: HighlightResult
 }
 
+interface AlgoliaPoisHighlightResult {
+  name: HighlightResult
+}
+
 export interface AlgoliaVenue {
   objectID: string
   city: string
@@ -220,6 +224,18 @@ export interface AlgoliaVenue {
   banner_url: string | null
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
+}
+
+export interface AlgoliaPois {
+  objectID: string
+  city: string
+  postalCode: string | null
+  name: string
+  description: string
+  email: string | null
+  phone_number: string | null
+  _geoloc: Geoloc
+  _highlightResult?: AlgoliaPoisHighlightResult
 }
 
 type FacetKeys =
