@@ -21,7 +21,7 @@ export const Achievements = () => {
   useEffect(() => {
     loadAchievements()
     loadUserAchievements()
-  }, [])
+  }, [loadAchievements, loadUserAchievements])
 
   return (
     <SecondaryPageWithBlurHeader title="Achievements">
