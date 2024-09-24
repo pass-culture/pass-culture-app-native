@@ -1,5 +1,4 @@
-import React, { FunctionComponent } from 'react'
-import { Alert } from 'react-native'
+import React, { FC } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -8,11 +7,14 @@ import { ScanIllustration } from 'ui/svg/icons/ScanIllustration'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-export const ScanButton: FunctionComponent = () => {
+type Props = {
+  onPress: () => void
+}
+export const ScanButton: FC<Props> = ({ onPress }) => {
   const theme = useTheme()
 
   return (
-    <StyledTouchable onPress={() => Alert.alert('Ouverture appareil photo\u00a0!')}>
+    <StyledTouchable onPress={onPress}>
       <StyledLinearGradient />
       <CardText>SCANNE LE RÉEL</CardText>
       <IllustrationContainer>
