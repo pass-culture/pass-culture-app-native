@@ -3,46 +3,14 @@ import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Info } from 'ui/svg/icons/Info'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
-type Achivement = {
-  id: string
-  icon: FC<AccessibleIcon>
-}
-
-const achivements: Achivement[] = [
-  {
-    id: '1',
-    icon: Info,
-  },
-  {
-    id: '2',
-    icon: Info,
-  },
-  {
-    id: '3',
-    icon: Info,
-  },
-  {
-    id: '4',
-    icon: Info,
-  },
-  {
-    id: '5',
-    icon: Info,
-  },
-]
-
-type UserAchivement = {
-  id: string
-}
-
-const userAchivements: UserAchivement[] = [{ id: '1' }, { id: '3' }]
+import { achivements } from './achivements.store'
+import { userAchivements } from './user-achivements.store'
 
 const badges = achivements.map(({ id, icon }) => {
-  const isCompleted = userAchivements.some((userAchivement) => userAchivement.id === id)
+  const isCompleted = userAchivements.some((u) => u.id === id)
   return {
     id,
     icon,
@@ -51,6 +19,7 @@ const badges = achivements.map(({ id, icon }) => {
 })
 
 export const Achivements = () => {
+  const {} = useBadges()
   return (
     <SecondaryPageWithBlurHeader title="Achivements">
       <BadgesContainer>
