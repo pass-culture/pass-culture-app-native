@@ -52,6 +52,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { Poi } from 'features/poi/pages/Poi/Poi'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -520,6 +521,15 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['Venue'],
     },
     options: { title: 'Lieu' },
+  },
+  {
+    name: 'Poi',
+    component: Poi,
+    pathConfig: {
+      path: 'point-interet/:id',
+      parse: screenParamsParser['Venue'],
+    },
+    options: { title: 'Points d’intéret' },
   },
   {
     name: 'VenueMap',

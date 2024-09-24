@@ -289,6 +289,11 @@ export type RootStackParamList = {
     from?: Referrals
     searchId?: string
   }
+  Poi: {
+    id: number
+    from?: Referrals
+    searchId?: string
+  }
   Artist: {
     fromOfferId: number
   }
