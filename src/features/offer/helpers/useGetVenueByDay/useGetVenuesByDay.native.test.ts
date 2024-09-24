@@ -191,7 +191,6 @@ describe('useGetVenueByDay', () => {
 
     it('should return the initial number of cinema after using getNext', async () => {
       const todaysOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
-
       const tomorrowOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TOMORROW)
 
       mockedGetStocksByOfferIds.mockResolvedValueOnce({
