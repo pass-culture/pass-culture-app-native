@@ -137,6 +137,48 @@ export enum AccountState {
   'DELETED' = 'DELETED',
 }
 /**
+ * @export
+ * @interface Achievement
+ */
+export interface Achievement {
+  /**
+   * @type {string}
+   * @memberof Achievement
+   */
+  category: string
+  /**
+   * @type {string}
+   * @memberof Achievement
+   */
+  description: string
+  /**
+   * @type {string}
+   * @memberof Achievement
+   */
+  icon: string
+  /**
+   * @type {string}
+   * @memberof Achievement
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof Achievement
+   */
+  slug: string
+}
+/**
+ * @export
+ * @interface AchievementsResponse
+ */
+export interface AchievementsResponse {
+  /**
+   * @type {Array<UserAchievement>}
+   * @memberof AchievementsResponse
+   */
+  achievements: Array<UserAchievement>
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -3719,6 +3761,22 @@ export interface UpdateEmailTokenExpiration {
 }
 /**
  * @export
+ * @interface UserAchievement
+ */
+export interface UserAchievement {
+  /**
+   * @type {Achievement}
+   * @memberof UserAchievement
+   */
+  achievement: Achievement
+  /**
+   * @type {string}
+   * @memberof UserAchievement
+   */
+  completionDate: string
+}
+/**
+ * @export
  * @interface UserProfileEmailUpdate
  */
 export interface UserProfileEmailUpdate {
@@ -4317,6 +4375,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_achievements <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1AccountAchievements(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/account/achievements`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
@@ -6126,6 +6202,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_achievements <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1AccountAchievements(options?: any): Promise<AchievementsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountAchievements(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary account_suspension_token_validation <GET>
      * @param {string} token 
      * @param {*} [options] Override http request option.
@@ -7284,6 +7371,17 @@ export class DefaultApi extends BaseAPI {
   public async deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
+  }
+  /**
+    * 
+    * @summary get_achievements <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1AccountAchievements(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1AccountAchievements(options)
   }
   /**
     * 
