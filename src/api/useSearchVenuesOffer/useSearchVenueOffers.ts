@@ -24,10 +24,12 @@ type UseSearchVenueOffersOptions = {
   allocineId?: number
   ean?: string
   offerId: number
-  query: string
+  query?: string
   geolocation: Position
   queryOptions?: Omit<InfiniteQueryObserverOptions<Response>, 'getNextPageParam'>
   venueId?: number
+  hitsPerPage?: number
+  aroundMeRadius?: number
 }
 
 type OfferVenueType = VenueListItem & {
@@ -50,24 +52,24 @@ export function getVenueList(hits: Offer[], userLocation: Position) {
 
   hits.forEach((hit) => {
     const venueAlreadyListedIndex = offerVenues.findIndex((venue) => venue.venueId === hit.venue.id)
-    const venueAlreadyListedPrice = offerVenues[venueAlreadyListedIndex]?.price ?? 0
+    const venueAlreadyListed = offerVenues[venueAlreadyListedIndex]
+    const venueAlreadyListedPrice = venueAlreadyListed?.price ?? 0
+    const offerPrice = hit.offer.prices?.[0]
+
     if (
-      venueAlreadyListedIndex >= 0 &&
+      offerPrice !== undefined &&
+      venueAlreadyListed &&
       hit.offer.prices?.length &&
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      venueAlreadyListedPrice > hit.offer.prices[0]
+      venueAlreadyListedPrice > offerPrice
     ) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      offerVenues[venueAlreadyListedIndex].offerId = Number(hit.objectID)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      offerVenues[venueAlreadyListedIndex].price = hit.offer.prices[0]
+      venueAlreadyListed.offerId = Number(hit.objectID)
+      venueAlreadyListed.price = offerPrice
       return
     }
 
     offerVenues.push({
       offerId: Number(hit.objectID),
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      price: hit.offer.prices?.length ? hit.offer.prices[0] : 0,
+      price: offerPrice ?? 0,
       venueId: hit.venue.id,
       title: hit.venue.publicName ? hit.venue.publicName : hit.venue.name ?? '',
       address: formatFullAddressStartsWithPostalCode(
@@ -101,9 +103,11 @@ export const useSearchVenueOffers = ({
   ean,
   offerId,
   venueId,
-  query,
+  query = '',
   geolocation,
   queryOptions,
+  hitsPerPage = 10,
+  aroundMeRadius = AROUND_RADIUS,
 }: UseSearchVenueOffersOptions) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -121,12 +125,12 @@ export const useSearchVenueOffers = ({
           eanList: ean ? [ean] : undefined,
           query,
           page,
-          hitsPerPage: 10,
+          hitsPerPage,
         },
         buildLocationParameterParams: {
           userLocation: geolocation,
           selectedLocationMode: LocationMode.AROUND_ME,
-          aroundMeRadius: AROUND_RADIUS,
+          aroundMeRadius,
           aroundPlaceRadius: 'all',
         },
         isUserUnderage,
