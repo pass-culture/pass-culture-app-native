@@ -19,7 +19,7 @@ export const AchievementDetails: FC = () => {
   const StyledIcon = Icon
     ? styled(Icon).attrs(({ theme }) => ({
         size: theme.illustrations.sizes.fullPage,
-        color: achievement.completed ? 'red' : theme.colors.black,
+        color: achievement.completed ? theme.colors.primary : theme.colors.greyDark,
       }))``
     : null
 

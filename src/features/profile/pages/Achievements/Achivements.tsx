@@ -26,6 +26,7 @@ export const Achievements = () => {
   return (
     <SecondaryPageWithBlurHeader title="Achievements">
       <AchievementsContainer>
+        <TypoDS.Title2>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
           const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
 
@@ -33,7 +34,7 @@ export const Achievements = () => {
             <AchievementsGroupe key={badge.category}>
               <AchievementsGroupeHeader>
                 <AchievementsGroupeTitle>
-                  <TypoDS.Title3>{badge.category}</TypoDS.Title3>
+                  <TypoDS.Title4>{badge.category}</TypoDS.Title4>
                   <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
                 </AchievementsGroupeTitle>
                 <ProgressBarContainer>
@@ -97,8 +98,8 @@ type BadgeProps = {
 
 const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: 50,
-    color: isCompleted ? 'red' : theme.colors.black,
+    size: 48,
+    color: isCompleted ? theme.colors.primary : theme.colors.greyDark,
   }))({ width: '100%' })
 
   return (
@@ -118,6 +119,6 @@ const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ isCompleted, the
   padding: getSpacing(4),
   border: '1px solid',
   borderRadius: 8,
-  backgroundColor: isCompleted ? 'none' : theme.colors.greyDark,
+  backgroundColor: isCompleted ? 'none' : theme.colors.greyMedium,
   alignItems: 'center',
 }))
