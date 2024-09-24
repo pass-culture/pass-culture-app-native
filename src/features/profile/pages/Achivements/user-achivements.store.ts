@@ -1,6 +1,21 @@
-type UserAchivement = {
+import { createStore } from 'libs/store/createStore'
+
+export type UserAchievement = {
   id: string
   completedAt: Date
 }
 
-export const userAchivements: UserAchivement[] = [{ id: '1', completedAt: new Date('2024-09-24') }]
+type State = {
+  completedAchievements: UserAchievement[]
+}
+
+const actions = () => ({})
+type AchievementsActions = ReturnType<typeof actions>
+
+export const userAchievementsStore = createStore<State, AchievementsActions>(
+  'user-achievements',
+  {
+    completedAchievements: [],
+  },
+  actions
+)

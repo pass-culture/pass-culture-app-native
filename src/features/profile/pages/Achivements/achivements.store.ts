@@ -1,20 +1,34 @@
-import { FC } from 'react'
+import { createStore } from 'libs/store/createStore'
 
-import { Info } from 'ui/svg/icons/Info'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-
-type Achivement = {
+export type Achievement = {
   id: string
   name: string
   description: string
-  icon: FC<AccessibleIcon>
+  category: string
+  icon: string
 }
 
-export const achivements: Achivement[] = [
+const achievements: Achievement[] = [
   {
-    id: '1',
+    id: 'FIRST_ADD_FAVORITE',
     name: 'First favorite',
     description: 'Add your first favorite',
-    icon: Info,
+    category: 'Favorites',
+    icon: 'Info',
   },
 ]
+
+type State = {
+  achievements: Achievement[]
+}
+
+const actions = () => ({})
+type AchievementsActions = ReturnType<typeof actions>
+
+export const achievementsStore = createStore<State, AchievementsActions>(
+  'achievements',
+  {
+    achievements,
+  },
+  actions
+)

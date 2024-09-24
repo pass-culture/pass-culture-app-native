@@ -1,30 +1,35 @@
 import React, { FC } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAchievements } from 'features/profile/pages/Achivements/useAchievements'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Info } from 'ui/svg/icons/Info'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
-import { achivements } from './achivements.store'
-import { userAchivements } from './user-achivements.store'
-
-const badges = achivements.map(({ id, icon }) => {
-  const isCompleted = userAchivements.some((u) => u.id === id)
-  return {
-    id,
-    icon,
-    isCompleted,
-  }
-})
+const iconMapper: Record<string, FC<AccessibleIcon>> = {
+  Info: Info,
+}
 
 export const Achivements = () => {
-  const {} = useBadges()
+  const { badges } = useAchievements()
   return (
     <SecondaryPageWithBlurHeader title="Achivements">
       <BadgesContainer>
         {badges.map((badge) => (
-          <Badge key={badge.id} {...badge} />
+          <View key={badge.category}>
+            <TypoDS.Title3>{badge.category}</TypoDS.Title3>
+            {badge.achievements.map((achievement) => (
+              <Badge
+                key={achievement.id}
+                id={achievement.id}
+                icon={iconMapper[achievement.icon]!}
+                isCompleted={achievement.isCompleted}
+              />
+            ))}
+          </View>
         ))}
       </BadgesContainer>
     </SecondaryPageWithBlurHeader>
