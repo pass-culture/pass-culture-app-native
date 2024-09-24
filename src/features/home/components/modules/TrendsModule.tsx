@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Platform, TouchableHighlight, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingsResponse, SubcategoryIdEnum } from 'api/gen'
@@ -92,6 +92,12 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
 
+  const [showDuo, ToggleDuo] = useState(false)
+
+  const displayDuo = React.useCallback(() => {
+    return false
+  }, [])
+
   useEffect(() => {
     if (hasGraphicRedesign) {
       analytics.logModuleDisplayedOnHomepage({
@@ -141,17 +147,26 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   return (
     <React.Fragment>
-      <ViewNoBene>
-        <Typo.Title3>Réservations DUO à venir</Typo.Title3>
-        <Spacer.Column numberOfSpaces={4} />
-      </ViewNoBene>
-      <OnGoingBookingItem booking={bookingFixture} />
-      <Spacer.Column numberOfSpaces={4} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={4} />
+      {showDuo ? (
+        <React.Fragment>
+          <ViewNoBene>
+            <Typo.Title3>Réservations DUO à venir</Typo.Title3>
+            <Spacer.Column numberOfSpaces={4} />
+          </ViewNoBene>
+          <OnGoingBookingItem booking={bookingFixture} />
+          <Spacer.Column numberOfSpaces={4} />
+          <Separator.Horizontal />
+          <Spacer.Column numberOfSpaces={4} />
+        </React.Fragment>
+      ) : null}
 
       <ViewNoBene>
-        <Typo.Title4>Le pass, c’est pour tout le monde&nbsp;!</Typo.Title4>
+        <TouchableHighlight
+          onPress={() => {
+            ToggleDuo((state) => !state)
+          }}>
+          <Typo.Title4>Le pass, c’est pour tout le monde&nbsp;!</Typo.Title4>
+        </TouchableHighlight>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.CaptionNeutralInfo>
           Découvre les propositions culturelles de ta région
