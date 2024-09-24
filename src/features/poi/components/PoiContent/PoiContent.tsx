@@ -1,21 +1,19 @@
-import { BatchUser } from '@batch.com/react-native-plugin'
 import React, { Fragment, useCallback, useEffect, useRef } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen/api'
+import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
-import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
-import { BatchEvent } from 'libs/react-native-batch'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -30,11 +28,12 @@ type Props = {
 }
 
 const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
+const isWeb = Platform.OS === 'web'
 
 export const PoiContent: React.FunctionComponent<Props> = ({
-  poi,
-  poiOffers,
+  poi: venue,
   gtlPlaylists,
+  poiOffers: venueOffers,
   videoSectionVisible,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
@@ -72,18 +71,17 @@ export const PoiContent: React.FunctionComponent<Props> = ({
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
-  // const { visible, _hideModal, showModal } = useModal()
-  const { showModal } = useModal()
+  const { visible, hideModal, showModal } = useModal()
 
   const shouldDisplayCTA =
-    (poiOffers && poiOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
+    (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
   return (
     <Fragment>
       <Container>
-        <VenueWebMetaHeader venue={poi} />
+        <VenueWebMetaHeader venue={venue} />
         {/* On web VenueHeader is called before Body for accessibility navigate order */}
-        <VenueHeader headerTransition={headerTransition} venue={poi} />
+        <VenueHeader headerTransition={headerTransition} venue={venue} />
         <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
           <ContentContainer
             onScroll={handleScroll}
@@ -91,21 +89,21 @@ export const PoiContent: React.FunctionComponent<Props> = ({
             bounces={false}
             ref={scrollViewRef}>
             {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
-            <VenueTopComponent venue={poi} />
+            <VenueTopComponent venue={venue} />
             <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
             {videoSectionVisible ? (
-              <VideoSection venueType={poi.venueTypeCode} onPress={showModal} />
+              <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
             ) : null}
             <VenueBody
-              venue={poi}
+              venue={venue}
               playlists={gtlPlaylists}
-              venueOffers={poiOffers}
+              venueOffers={venueOffers}
               shouldDisplayCTA={shouldDisplayCTA}
             />
           </ContentContainer>
         </AnchorProvider>
         {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
-        {shouldDisplayCTA ? <VenueCTA venue={poi} /> : null}
+        {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
       </Container>
     </Fragment>
   )

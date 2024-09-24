@@ -8,6 +8,7 @@ export enum BatchEvent {
   hasSeenOffer = 'has_seen_offer',
   hasSeenOfferForSurvey = 'has_seen_offer_for_survey',
   hasSeenVenueForSurvey = 'has_seen_venue_for_survey',
+  hasSeenPoiForSurvey = 'has_seen_poi_for_survey',
   hasValidatedAccount = 'has_validated_account',
   hasValidatedSubscription = 'has_validated_subscription',
   screenViewComeBackLater = 'screen_view_come_back_later',

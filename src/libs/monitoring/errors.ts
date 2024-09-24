@@ -108,6 +108,18 @@ export class VenueNotFoundError extends ScreenError {
   }
 }
 
+export class PoiNotFoundError extends ScreenError {
+  constructor(
+    poiId: number | undefined,
+    { Screen, callback, logType = LogTypeEnum.INFO }: ScreenErrorInfo
+  ) {
+    const message = poiId
+      ? `Point of interest ${poiId} could not be retrieved`
+      : 'poiId is undefined'
+    super(message, { Screen, callback, logType })
+  }
+}
+
 export class FetchError extends Error {
   constructor(message: string) {
     super(message)
