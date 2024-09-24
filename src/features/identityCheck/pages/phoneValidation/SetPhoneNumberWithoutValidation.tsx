@@ -39,9 +39,6 @@ type FormValues = yup.InferType<typeof schema>
 const findCountry = (countryId: string) => COUNTRIES.find((country) => country.id === countryId)
 
 export const SetPhoneNumberWithoutValidation = () => {
-  useEffect(() => {
-    analytics.logScreenViewSetPhoneNumber()
-  }, [])
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const { control, handleSubmit } = useForm<FormValues>({
     resolver: yupResolver(schema),
@@ -75,6 +72,10 @@ export const SetPhoneNumberWithoutValidation = () => {
   }
 
   const submit = handleSubmit(onSubmit)
+
+  useEffect(() => {
+    analytics.logScreenViewSetPhoneNumber()
+  }, [])
 
   return (
     <PageWithHeader
