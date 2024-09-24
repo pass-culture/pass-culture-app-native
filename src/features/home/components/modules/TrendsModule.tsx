@@ -14,7 +14,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Trends = {
   index: number
@@ -92,6 +92,13 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   return (
     <React.Fragment>
+      <ViewNoBene>
+        <Typo.Title4>Le pass, c’est pour tout le monde&nbsp;!</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.CaptionNeutralInfo>
+          Découvre les propositions culturelles de ta région
+        </Typo.CaptionNeutralInfo>
+      </ViewNoBene>
       <Container isSmallScreen={isSmallScreen}>
         {items.map((props) => (
           <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
@@ -114,3 +121,9 @@ const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen, them
     paddingBottom: theme.home.spaceBetweenModules,
   }
 })
+
+const ViewNoBene = styled.View(({ theme }) => ({
+  marginHorizontal: 'auto',
+  marginVertical: getSpacing(4),
+  maxWidth: theme.contentPage.maxWidth,
+}))
