@@ -20,19 +20,31 @@ const achivements: Achivement[] = [
     id: '2',
     icon: Info,
   },
+  {
+    id: '3',
+    icon: Info,
+  },
+  {
+    id: '4',
+    icon: Info,
+  },
+  {
+    id: '5',
+    icon: Info,
+  },
 ]
 
 type UserAchivement = {
   id: string
 }
 
-const userAchivements: UserAchivement[] = [{ id: '1' }]
+const userAchivements: UserAchivement[] = [{ id: '1' }, { id: '3' }]
 
-const badges = achivements.map((achivement) => {
-  const isCompleted = userAchivements.some((userAchivement) => userAchivement.id === achivement.id)
+const badges = achivements.map(({ id, icon }) => {
+  const isCompleted = userAchivements.some((userAchivement) => userAchivement.id === id)
   return {
-    id: achivement.id,
-    icon: achivement.icon,
+    id,
+    icon,
     isCompleted,
   }
 })
