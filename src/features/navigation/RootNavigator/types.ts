@@ -273,6 +273,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SuspendedAccountUponUserRequest: undefined
+  Scan: undefined
   TabNavigator: {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
