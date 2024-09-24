@@ -2,19 +2,13 @@ import React, { FC } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Info } from 'ui/svg/icons/Info'
-import { Profile } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
-
-const iconMapper: Record<string, FC<AccessibleIcon>> = {
-  Info: Info,
-  Profile: Profile,
-}
 
 export const Achievements = () => {
   const { badges } = useAchievements()
@@ -34,7 +28,11 @@ export const Achievements = () => {
                   <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
                 </AchievementsGroupeTitle>
                 <ProgressBarContainer>
-                  <ProgressBar progress={badge.progress} colors={[uniqueColors.brand]} />
+                  <ProgressBar
+                    progress={badge.progress}
+                    colors={[uniqueColors.brand]}
+                    height={2.5}
+                  />
                 </ProgressBarContainer>
               </AchievementsGroupeHeader>
               <BadgesContainer>
@@ -42,7 +40,7 @@ export const Achievements = () => {
                   <Badge
                     key={achievement.id}
                     id={achievement.id}
-                    icon={iconMapper[achievement.icon]!}
+                    icon={achievementIconMapper[achievement.icon]!}
                     isCompleted={achievement.isCompleted}
                   />
                 ))}
@@ -97,8 +95,8 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
   return (
     <InternalTouchableLink
       navigateTo={{
-        screen: 'BadgeDetails',
-        params: { badgeId: id },
+        screen: 'AchievementDetails',
+        params: { id },
       }}>
       <BadgeContainer isCompleted={isCompleted}>
         <StyledIcon />
@@ -107,10 +105,10 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
   )
 }
 
-const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ isCompleted }) => ({
+const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme }) => ({
   padding: getSpacing(4),
   border: '1px solid',
   borderRadius: 8,
-  backgroundColor: isCompleted ? 'none' : 'grey',
+  backgroundColor: isCompleted ? 'none' : theme.colors.greyDark,
   alignItems: 'center',
 }))

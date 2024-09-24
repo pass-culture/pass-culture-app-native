@@ -304,8 +304,8 @@ export type RootStackParamList = {
   ThematicHeaders: undefined
   MarketingBlocks: undefined
   MovieCalendar: undefined
-  Achivements: undefined
-  BadgeDetails: { id: string }
+  Achievements: undefined
+  AchievementDetails: { id: string }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &

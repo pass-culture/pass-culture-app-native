@@ -12,7 +12,7 @@ interface ProgressBarProps {
   height?: number
 }
 
-const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, height = 40 }) => {
+const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, height = 1.5 }) => {
   const LinearColors = colors.length === 1 ? [colors[0], colors[0]] : colors
 
   const LinearGradientBar = styled(LinearGradient).attrs({
@@ -26,8 +26,8 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, he
   })
 
   return (
-    <Container height={height}>
-      <ProgressBarContainer>
+    <Container>
+      <ProgressBarContainer height={height}>
         <LinearGradientBar testID="progress-bar" />
       </ProgressBarContainer>
     </Container>
@@ -43,12 +43,12 @@ const Container = styled.View<{ height: number }>(({ height }) => ({
   maxHeight: 40,
 }))
 
-const ProgressBarContainer = styled.View(({ theme }) => ({
+const ProgressBarContainer = styled.View<{ height?: number }>(({ theme, height }) => ({
   flexDirection: 'row',
   flex: 1,
   border: 1,
   borderColor: theme.colors.greyMedium,
   borderRadius: getSpacing(12),
-  height: getSpacing(1.5),
+  height: getSpacing(height ?? 1.5),
   zIndex: theme.zIndex.progressbar,
 }))

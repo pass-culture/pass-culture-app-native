@@ -1,0 +1,18 @@
+import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
+import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+
+export const useAchievementDetails = (id: string) => {
+  const { achievements } = achievementsStore()
+  const { completedAchievements } = userAchievementsStore()
+
+  const achievement = achievements.find((achievement) => achievement.id === id)!
+  const completedAchievement = completedAchievements.find((u) => u.id === id)
+
+  return {
+    name: achievement.name,
+    description: achievement.description,
+    icon: achievement.icon,
+    completedAt: completedAchievement?.completedAt.toLocaleDateString(),
+    completed: !!completedAchievement,
+  }
+}

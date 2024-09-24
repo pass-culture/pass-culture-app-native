@@ -166,9 +166,9 @@ const OnlineProfile: React.FC = () => {
                   ) : null}
                   <Li>
                     <Row
-                      title="Achivements"
+                      title="Achievements"
                       type="navigable"
-                      navigateTo={{ screen: 'Achivements' }}
+                      navigateTo={{ screen: 'Achievements' }}
                       icon={BicolorProfile}
                     />
                   </Li>
