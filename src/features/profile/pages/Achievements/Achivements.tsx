@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
 import { useLoadAchievement } from 'features/profile/api/Achievements/useLoadAchievement'
+import { useLoadUserAchievement } from 'features/profile/api/Achievements/useLoadUserAchievement'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -15,10 +16,12 @@ export const Achievements = () => {
   const { badges } = useAchievements()
   const { uniqueColors } = useTheme()
   const { loadAchievements } = useLoadAchievement()
+  const { loadUserAchievements } = useLoadUserAchievement()
 
   useEffect(() => {
     loadAchievements()
-  }, [loadAchievements])
+    loadUserAchievements()
+  }, [])
 
   return (
     <SecondaryPageWithBlurHeader title="Achievements">

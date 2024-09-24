@@ -1,24 +1,10 @@
 import React from 'react'
 
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
-import {
-  Achievement,
-  achievementsStore,
-} from 'features/profile/api/Achievements/achievements.store'
+import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
+import { createFakeAchievementGateway } from 'features/profile/api/Achievements/FakeAchievementGateway'
 import { useLoadAchievement } from 'features/profile/api/Achievements/useLoadAchievement'
 import { renderHook, waitFor } from 'tests/utils'
-
-const createFakeAchievementGateway = () => {
-  let achievements: Achievement[] = []
-  return {
-    getAll: async () => {
-      return achievements
-    },
-    givenAchievements: async (_achievement: Achievement[]) => {
-      achievements = _achievement
-    },
-  }
-}
 
 describe('useLoadAchievement', () => {
   it('should load achievements', async () => {

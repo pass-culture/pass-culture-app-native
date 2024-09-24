@@ -9,13 +9,16 @@ type State = {
   completedAchievements: UserAchievement[]
 }
 
-const actions = () => ({})
+const actions = (set: (payload: State) => void) => ({
+  setCompletedAchievements: (completedAchievements: UserAchievement[]) =>
+    set({ completedAchievements }),
+})
 type AchievementsActions = ReturnType<typeof actions>
 
 export const userAchievementsStore = createStore<State, AchievementsActions>(
   'user-achievements',
   {
-    completedAchievements: [{ id: 'FIRST_ADD_FAVORITE', completedAt: new Date() }],
+    completedAchievements: [],
   },
   actions
 )

@@ -1,5 +1,6 @@
 import { AchievementGateway } from 'features/profile/api/Achievements/AchievementGateway'
 import { Achievement } from 'features/profile/api/Achievements/achievements.store'
+import { UserAchievement } from 'features/profile/api/Achievements/user-achievements.store'
 
 const achievements: Achievement[] = [
   {
@@ -46,11 +47,19 @@ const achievements: Achievement[] = [
   },
 ]
 
+const userAchievements: UserAchievement[] = [{ id: 'FIRST_ADD_FAVORITE', completedAt: new Date() }]
+
 export const createInMemoryAchievementGateway = (delay = 0): AchievementGateway => {
   return {
     async getAll() {
       await new Promise((resolve) => setTimeout(resolve, delay))
       return achievements
     },
+    async getCompletedAchievements() {
+      await new Promise((resolve) => setTimeout(resolve, delay))
+      return userAchievements
+    },
   }
 }
+
+export type InMemoryAchievementGateway = ReturnType<typeof createInMemoryAchievementGateway>
