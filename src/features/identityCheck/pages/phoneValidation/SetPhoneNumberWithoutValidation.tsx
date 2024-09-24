@@ -43,7 +43,7 @@ export const SetPhoneNumberWithoutValidation = () => {
   const { control, handleSubmit } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
-      phoneNumber: phoneValidation?.phoneNumber ?? '',
+      phoneNumber: phoneValidation?.phoneNumber,
       countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
     },
   })
