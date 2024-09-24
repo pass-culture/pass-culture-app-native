@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
+import { useLoadAchievement } from 'features/profile/api/Achievements/useLoadAchievement'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -13,6 +14,11 @@ import { getSpacing, TypoDS } from 'ui/theme'
 export const Achievements = () => {
   const { badges } = useAchievements()
   const { uniqueColors } = useTheme()
+  const { loadAchievements } = useLoadAchievement()
+
+  useEffect(() => {
+    loadAchievements()
+  }, [loadAchievements])
 
   return (
     <SecondaryPageWithBlurHeader title="Achievements">

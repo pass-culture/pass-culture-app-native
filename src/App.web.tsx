@@ -16,6 +16,8 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
+import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
+import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -50,48 +52,50 @@ export function App() {
 
   return (
     <RemoteConfigProvider>
-      <ServiceWorkerProvider fileName={`${String(env.PUBLIC_URL)}/service-worker.js`}>
-        <ReactQueryClientProvider>
-          <ThemeProvider theme={theme}>
-            <SupportedBrowsersGate>
-              <SafeAreaProvider>
-                <SettingsWrapper>
-                  <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                    <AuthWrapper>
-                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                        <LocationWrapper>
-                          <AccessibilityFiltersWrapper>
-                            <FavoritesWrapper>
-                              <SearchAnalyticsWrapper>
-                                <SearchWrapper>
-                                  <SnackBarProvider>
-                                    <CulturalSurveyContextProvider>
-                                      <SubscriptionContextProvider>
-                                        <AppWebHead />
-                                        <OnboardingWrapper>
-                                          <ScreenErrorProvider>
-                                            <Suspense fallback={<LoadingPage />}>
-                                              <AppNavigationContainer />
-                                            </Suspense>
-                                          </ScreenErrorProvider>
-                                        </OnboardingWrapper>
-                                      </SubscriptionContextProvider>
-                                    </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
-                                </SearchWrapper>
-                              </SearchAnalyticsWrapper>
-                            </FavoritesWrapper>
-                          </AccessibilityFiltersWrapper>
-                        </LocationWrapper>
-                      </ErrorBoundary>
-                    </AuthWrapper>
-                  </GoogleOAuthProvider>
-                </SettingsWrapper>
-              </SafeAreaProvider>
-            </SupportedBrowsersGate>
-          </ThemeProvider>
-        </ReactQueryClientProvider>
-      </ServiceWorkerProvider>
+      <AchievementProvider achievementGateway={createInMemoryAchievementGateway()}>
+        <ServiceWorkerProvider fileName={`${String(env.PUBLIC_URL)}/service-worker.js`}>
+          <ReactQueryClientProvider>
+            <ThemeProvider theme={theme}>
+              <SupportedBrowsersGate>
+                <SafeAreaProvider>
+                  <SettingsWrapper>
+                    <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                      <AuthWrapper>
+                        <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                          <LocationWrapper>
+                            <AccessibilityFiltersWrapper>
+                              <FavoritesWrapper>
+                                <SearchAnalyticsWrapper>
+                                  <SearchWrapper>
+                                    <SnackBarProvider>
+                                      <CulturalSurveyContextProvider>
+                                        <SubscriptionContextProvider>
+                                          <AppWebHead />
+                                          <OnboardingWrapper>
+                                            <ScreenErrorProvider>
+                                              <Suspense fallback={<LoadingPage />}>
+                                                <AppNavigationContainer />
+                                              </Suspense>
+                                            </ScreenErrorProvider>
+                                          </OnboardingWrapper>
+                                        </SubscriptionContextProvider>
+                                      </CulturalSurveyContextProvider>
+                                    </SnackBarProvider>
+                                  </SearchWrapper>
+                                </SearchAnalyticsWrapper>
+                              </FavoritesWrapper>
+                            </AccessibilityFiltersWrapper>
+                          </LocationWrapper>
+                        </ErrorBoundary>
+                      </AuthWrapper>
+                    </GoogleOAuthProvider>
+                  </SettingsWrapper>
+                </SafeAreaProvider>
+              </SupportedBrowsersGate>
+            </ThemeProvider>
+          </ReactQueryClientProvider>
+        </ServiceWorkerProvider>
+      </AchievementProvider>
     </RemoteConfigProvider>
   )
 }
