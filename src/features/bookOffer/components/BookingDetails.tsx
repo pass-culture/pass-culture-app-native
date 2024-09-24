@@ -35,6 +35,8 @@ import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
+import { TextInput } from 'ui/components/inputs/TextInput'
 
 export interface BookingDetailsProps {
   stocks: OfferStockResponse[]
@@ -74,7 +76,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
-      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
@@ -223,6 +225,24 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         }
       />
       <Spacer.Column numberOfSpaces={6} />
+
+      {bookingState.quantity === 2 ? (
+        <React.Fragment>
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+          <TextInput
+            autoCapitalize="none"
+            autoComplete="email"
+            keyboardType="email-address"
+            label="Adresse e-mail de ton accompagnant.e"
+            onChangeText={() => undefined}
+            placeholder="tabelletante@email.com"
+            textContentType="emailAddress"
+            maxLength={120}
+          />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      ) : null}
 
       {isFreeOfferToArchive ? null : (
         <React.Fragment>

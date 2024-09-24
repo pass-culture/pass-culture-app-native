@@ -10,6 +10,8 @@ import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { Error } from 'ui/svg/icons/Error'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
@@ -33,10 +35,14 @@ export const DuoChoiceSelector: React.FC = () => {
   }
 
   return (
-    <DuoChoiceContainer testID="DuoChoiceSelector">
-      <DuoChoice {...getChoiceInfosForQuantity(1)} testID="DuoChoice1" />
-      {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
-    </DuoChoiceContainer>
+    <React.Fragment>
+      <DuoChoiceContainer testID="DuoChoiceSelector">
+        <DuoChoice {...getChoiceInfosForQuantity(1)} testID="DuoChoice1" />
+        {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
+      </DuoChoiceContainer>
+
+      {bookingState.quantity === 2 ? <InfoBanner message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente." icon={Error}></InfoBanner> : null}
+    </React.Fragment>
   )
 }
 
