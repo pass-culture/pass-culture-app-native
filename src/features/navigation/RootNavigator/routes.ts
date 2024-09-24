@@ -53,6 +53,7 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { Achivements } from 'features/profile/pages/Achivements/Achivements'
+import { BadgeDetails } from 'features/profile/pages/Achivements/BadgeDetails'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -609,5 +610,10 @@ export const routes: RootRoute[] = [
     name: 'Achivements',
     component: Achivements,
     path: 'profile/achievements',
+  },
+  {
+    name: 'BadgeDetails',
+    component: BadgeDetails,
+    path: 'profile/achievements/:badgeId',
   },
 ]

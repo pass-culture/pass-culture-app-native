@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -68,19 +69,27 @@ const BadgesContainer = styled.View({
 })
 
 type BadgeProps = {
+  id: string
   icon: FC<AccessibleIcon>
   isCompleted?: boolean
 }
 
-const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon }) => {
+const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: 50,
     color: isCompleted ? 'red' : theme.colors.black,
   }))({ width: '100%' })
+
   return (
-    <BadgeContainer isCompleted={isCompleted}>
-      <StyledIcon />
-    </BadgeContainer>
+    <InternalTouchableLink
+      navigateTo={{
+        screen: 'BadgeDetails',
+        params: { badgeId: id },
+      }}>
+      <BadgeContainer isCompleted={isCompleted}>
+        <StyledIcon />
+      </BadgeContainer>
+    </InternalTouchableLink>
   )
 }
 

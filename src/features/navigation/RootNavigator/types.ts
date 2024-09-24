@@ -305,6 +305,7 @@ export type RootStackParamList = {
   MarketingBlocks: undefined
   MovieCalendar: undefined
   Achivements: undefined
+  BadgeDetails: { id: string }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &
