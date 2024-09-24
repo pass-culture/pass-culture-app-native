@@ -24,7 +24,7 @@ import { SubscriptionContextProvider } from 'features/identityCheck/context/Subs
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
-import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/InMemoryAchievementGateway'
+import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'

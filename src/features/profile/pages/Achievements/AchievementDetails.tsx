@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useAchievementDetails } from 'features/profile/api/Achievements/useAchievementDetails'
+import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { TypoDS } from 'ui/theme'
 

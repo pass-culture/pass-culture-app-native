@@ -1,6 +1,6 @@
-import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
-import { useAchievementDetails } from 'features/profile/api/Achievements/useAchievementDetails'
-import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
+import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
+import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import { renderHook } from 'tests/utils'
 
 describe('useAchievementDetails', () => {

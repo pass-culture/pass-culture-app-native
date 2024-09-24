@@ -1,6 +1,6 @@
 import { api } from 'api/api'
-import { AchievementGateway } from 'features/profile/api/Achievements/AchievementGateway'
-import { InMemoryAchievementGateway } from 'features/profile/api/Achievements/InMemoryAchievementGateway'
+import { AchievementGateway } from 'features/profile/api/Achievements/application/AchievementGateway'
+import { InMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 
 export const createAPIAchievementGateway = (
   inMemoryAchievementGateway: InMemoryAchievementGateway

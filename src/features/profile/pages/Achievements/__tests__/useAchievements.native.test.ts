@@ -1,6 +1,6 @@
-import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
-import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
-import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
+import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
+import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
 import { renderHook } from 'tests/utils'
 
 const FIRST_ADD_FAVORITE = {

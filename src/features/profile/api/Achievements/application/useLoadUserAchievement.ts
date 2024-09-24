@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useAchievementDependencies } from 'features/profile/api/Achievements/AchievementContext'
-import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
 
 export const useLoadUserAchievement = () => {
   const { achievementGateway } = useAchievementDependencies()

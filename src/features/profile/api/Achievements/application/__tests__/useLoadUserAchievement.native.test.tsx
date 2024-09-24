@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
-import { createFakeAchievementGateway } from 'features/profile/api/Achievements/FakeAchievementGateway'
-import { useLoadUserAchievement } from 'features/profile/api/Achievements/useLoadUserAchievement'
-import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
+import { createFakeAchievementGateway } from 'features/profile/api/Achievements/infra/FakeAchievementGateway'
+import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
 import { renderHook, waitFor } from 'tests/utils'
 
 describe('useLoadUserAchievement', () => {

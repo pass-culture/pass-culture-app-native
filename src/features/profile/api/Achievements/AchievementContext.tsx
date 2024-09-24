@@ -1,6 +1,6 @@
 import React, { createContext, FC, PropsWithChildren, useMemo } from 'react'
 
-import { AchievementGateway } from 'features/profile/api/Achievements/AchievementGateway'
+import { AchievementGateway } from 'features/profile/api/Achievements/application/AchievementGateway'
 
 type AchievementContext = {
   achievementGateway: AchievementGateway

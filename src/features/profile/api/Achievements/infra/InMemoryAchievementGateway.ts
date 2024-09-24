@@ -1,6 +1,6 @@
-import { AchievementGateway } from 'features/profile/api/Achievements/AchievementGateway'
-import { Achievement } from 'features/profile/api/Achievements/achievements.store'
-import { UserAchievement } from 'features/profile/api/Achievements/user-achievements.store'
+import { AchievementGateway } from 'features/profile/api/Achievements/application/AchievementGateway'
+import { Achievement } from 'features/profile/api/Achievements/stores/achievements.store'
+import { UserAchievement } from 'features/profile/api/Achievements/stores/user-achievements.store'
 
 const achievements: Achievement[] = [
   {

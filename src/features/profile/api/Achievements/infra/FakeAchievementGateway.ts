@@ -1,5 +1,5 @@
-import { Achievement } from 'features/profile/api/Achievements/achievements.store'
-import { UserAchievement } from 'features/profile/api/Achievements/user-achievements.store'
+import { Achievement } from 'features/profile/api/Achievements/stores/achievements.store'
+import { UserAchievement } from 'features/profile/api/Achievements/stores/user-achievements.store'
 
 export const createFakeAchievementGateway = () => {
   let achievements: Achievement[] = []

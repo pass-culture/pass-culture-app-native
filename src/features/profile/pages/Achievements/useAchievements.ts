@@ -1,5 +1,5 @@
-import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
-import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
+import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
+import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
 
 type Badges = {
   category: string

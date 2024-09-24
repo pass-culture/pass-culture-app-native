@@ -1,6 +1,6 @@
 import { UserAchievement } from 'api/gen'
-import { createAPIAchievementGateway } from 'features/profile/api/Achievements/APIAchievementGateway'
-import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/InMemoryAchievementGateway'
+import { createAPIAchievementGateway } from 'features/profile/api/Achievements/infra/APIAchievementGateway'
+import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { mockServer } from 'tests/mswServer'
 
 jest.mock('libs/jwt/jwt')
