@@ -5,6 +5,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { App } from './App'
+import './i18n'
 
 const container = document.getElementById('root')
 // Argument of type 'HTMLElement | null' is not assignable to parameter of type 'Element | DocumentFragment'.

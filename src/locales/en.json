@@ -1,0 +1,6 @@
+{
+  "welcome": "Welcome!",
+  "hello": "Hello {{name}}",
+  "slogan": "Culture at your fingertips",
+  "homeCredit": "You have {{credit}} on your pass"
+}
