@@ -304,6 +304,7 @@ export type RootStackParamList = {
   ThematicHeaders: undefined
   MarketingBlocks: undefined
   MovieCalendar: undefined
+  Achivements: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &
