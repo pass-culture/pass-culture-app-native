@@ -818,6 +818,12 @@ PODS:
   - SentryPrivate (8.9.3)
   - SocketRocket (0.6.1)
   - SSZipArchive (2.2.3)
+  - VisionCamera (4.3.1):
+    - VisionCamera/Core (= 4.3.1)
+    - VisionCamera/React (= 4.3.1)
+  - VisionCamera/Core (4.3.1)
+  - VisionCamera/React (4.3.1):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -933,6 +939,7 @@ DEPENDENCIES:
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - VisionCamera (from `../node_modules/react-native-vision-camera`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1153,6 +1160,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-share"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  VisionCamera:
+    :path: "../node_modules/react-native-vision-camera"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1289,9 +1298,10 @@ SPEC CHECKSUMS:
   SentryPrivate: 9a76def09fb08f9501997b8df946e8097947b94f
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
+  VisionCamera: 58d2120e6e23c155b25f4702b7912dc2b1e5e8c2
   Yoga: 87e59f6d458e5061d2421086c5de994b3f7cd151
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 9d0124bca7419828378c706ae490dd8289f5b825
+PODFILE CHECKSUM: 9f31a749cd9f02e0df502477777e341d8604c142
 
 COCOAPODS: 1.12.1
