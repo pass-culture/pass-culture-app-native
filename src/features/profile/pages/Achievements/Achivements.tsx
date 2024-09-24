@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAchievements } from 'features/profile/pages/Achivements/useAchievements'
+import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
@@ -13,33 +12,44 @@ const iconMapper: Record<string, FC<AccessibleIcon>> = {
   Info: Info,
 }
 
-export const Achivements = () => {
+export const Achievements = () => {
   const { badges } = useAchievements()
+
   return (
-    <SecondaryPageWithBlurHeader title="Achivements">
-      <BadgesContainer>
+    <SecondaryPageWithBlurHeader title="Achievements">
+      <AchievementsContainer>
         {badges.map((badge) => (
-          <View key={badge.category}>
+          <AchievementsGroupe key={badge.category}>
             <TypoDS.Title3>{badge.category}</TypoDS.Title3>
-            {badge.achievements.map((achievement) => (
-              <Badge
-                key={achievement.id}
-                id={achievement.id}
-                icon={iconMapper[achievement.icon]!}
-                isCompleted={achievement.isCompleted}
-              />
-            ))}
-          </View>
+            <BadgesContainer>
+              {badge.achievements.map((achievement) => (
+                <Badge
+                  key={achievement.id}
+                  id={achievement.id}
+                  icon={iconMapper[achievement.icon]!}
+                  isCompleted={achievement.isCompleted}
+                />
+              ))}
+            </BadgesContainer>
+          </AchievementsGroupe>
         ))}
-      </BadgesContainer>
+      </AchievementsContainer>
     </SecondaryPageWithBlurHeader>
   )
 }
 
+const AchievementsContainer = styled.View({
+  gap: getSpacing(4),
+})
+
+const AchievementsGroupe = styled.View({
+  gap: getSpacing(4),
+})
+
 const BadgesContainer = styled.View({
   flexDirection: 'row',
-  gap: getSpacing(4),
   flexWrap: 'wrap',
+  gap: getSpacing(4),
 })
 
 type BadgeProps = {

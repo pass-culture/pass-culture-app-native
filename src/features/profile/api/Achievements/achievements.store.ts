@@ -16,6 +16,20 @@ const achievements: Achievement[] = [
     category: 'Favorites',
     icon: 'Info',
   },
+  {
+    id: 'SECOND_ADD_FAVORITE',
+    name: 'Second favorite',
+    description: 'Add your second favorite',
+    category: 'Favorites',
+    icon: 'Info',
+  },
+  {
+    id: 'FIRST_WATCH_MOVIE',
+    name: 'First movie',
+    description: 'Watch your first movie',
+    category: 'Cinema',
+    icon: 'Info',
+  },
 ]
 
 type State = {

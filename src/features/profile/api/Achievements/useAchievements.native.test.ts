@@ -1,6 +1,6 @@
-import { achievementsStore } from 'features/profile/pages/Achivements/achivements.store'
-import { useAchievements } from 'features/profile/pages/Achivements/useAchievements'
-import { userAchievementsStore } from 'features/profile/pages/Achivements/user-achivements.store'
+import { achievementsStore } from 'features/profile/api/Achievements/achievements.store'
+import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
+import { userAchievementsStore } from 'features/profile/api/Achievements/user-achievements.store'
 import { renderHook } from 'tests/utils'
 
 const FIRST_ADD_FAVORITE = {
@@ -80,6 +80,9 @@ describe('useAchievements', () => {
   it('achievement is NOT completed when user has not already completed it', () => {
     achievementsStore.setState({
       achievements: [FIRST_ADD_FAVORITE, SECOND_ADD_FAVORITE],
+    })
+    userAchievementsStore.setState({
+      completedAchievements: [],
     })
 
     const render = renderHook(useAchievements)

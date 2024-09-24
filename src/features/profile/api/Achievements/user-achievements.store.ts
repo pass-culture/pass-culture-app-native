@@ -15,7 +15,7 @@ type AchievementsActions = ReturnType<typeof actions>
 export const userAchievementsStore = createStore<State, AchievementsActions>(
   'user-achievements',
   {
-    completedAchievements: [],
+    completedAchievements: [{ id: 'FIRST_ADD_FAVORITE', completedAt: new Date() }],
   },
   actions
 )

@@ -52,8 +52,8 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
-import { Achivements } from 'features/profile/pages/Achivements/Achivements'
-import { BadgeDetails } from 'features/profile/pages/Achivements/BadgeDetails'
+import { Achievements } from 'features/profile/pages/Achievements/Achivements'
+import { BadgeDetails } from 'features/profile/pages/Achievements/BadgeDetails'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -608,7 +608,7 @@ export const routes: RootRoute[] = [
   },
   {
     name: 'Achivements',
-    component: Achivements,
+    component: Achievements,
     path: 'profile/achievements',
   },
   {
