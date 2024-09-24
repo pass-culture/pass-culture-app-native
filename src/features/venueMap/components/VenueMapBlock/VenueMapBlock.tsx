@@ -1,9 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { ScanButton } from 'features/scan/ScanButton'
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
 import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
@@ -26,7 +25,6 @@ type Props = {
 
 export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...props }) => {
   const focusProps = useHandleFocus()
-  const { navigate } = useNavigation<UseNavigationType>()
   const enableAppV2VenueMapBlock = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK
   )
@@ -64,7 +62,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
         )}
       </TouchableContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <ScanButton onPress={() => navigate('Scan')} />
+      <ScanButton />
     </Container>
   )
 }

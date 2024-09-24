@@ -1,62 +1,25 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
-import { Alert } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import {
-  Camera,
-  useCameraPermission,
-  useCameraDevice,
-  useCodeScanner,
-} from 'react-native-vision-camera'
 import styled, { useTheme } from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScanIllustration } from 'ui/svg/icons/ScanIllustration'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ScanButton: FunctionComponent = () => {
-  const isScanned = useRef<boolean>(false)
-  const codeScanner = useCodeScanner({
-    codeTypes: ['qr', 'ean-13'],
-    onCodeScanned: (codes) => {
-      if (!isScanned.current) {
-        isScanned.current = true
-        Alert.alert(`Scanned ${codes.length} codes!`, `${codes[0]?.value}`, [
-          {
-            text: 'Fermer',
-            onPress: () => {
-              isScanned.current = false
-            },
-          },
-        ])
-      }
-    },
-  })
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const theme = useTheme()
-  const device = useCameraDevice('back')
-  const { hasPermission, requestPermission } = useCameraPermission()
-  const [showCamera, setShowCamera] = useState(false)
 
   const onPress = () => {
-    if (!hasPermission) requestPermission()
-    else setShowCamera(true)
+    navigate('Scan')
   }
-  console.log('showCamera :', showCamera)
-  console.log('device: ', device)
 
   return (
     <React.Fragment>
-      {device && showCamera ? (
-        <Camera
-          style={{ height: 400, width: '100%' }}
-          device={device}
-          isActive={showCamera}
-          codeScanner={codeScanner}
-        />
-      ) : (
-        <React.Fragment />
-      )}
       <StyledTouchable onPress={onPress}>
         <StyledLinearGradient />
         <CardText>SCANNE LE RÉEL</CardText>
