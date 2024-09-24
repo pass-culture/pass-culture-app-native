@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAchievements } from 'features/profile/api/Achievements/useAchievements'
+import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
@@ -16,6 +18,7 @@ const iconMapper: Record<string, FC<AccessibleIcon>> = {
 
 export const Achievements = () => {
   const { badges } = useAchievements()
+  const { uniqueColors } = useTheme()
 
   return (
     <SecondaryPageWithBlurHeader title="Achievements">
@@ -25,10 +28,15 @@ export const Achievements = () => {
 
           return (
             <AchievementsGroupe key={badge.category}>
-              <AchievementsGroupeTitle>
-                <TypoDS.Title3>{badge.category}</TypoDS.Title3>
-                <TypoDS.Body>{remainingAchievementsText}</TypoDS.Body>
-              </AchievementsGroupeTitle>
+              <AchievementsGroupeHeader>
+                <AchievementsGroupeTitle>
+                  <TypoDS.Title3>{badge.category}</TypoDS.Title3>
+                  <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
+                </AchievementsGroupeTitle>
+                <ProgressBarContainer>
+                  <ProgressBar progress={badge.progress} colors={[uniqueColors.brand]} />
+                </ProgressBarContainer>
+              </AchievementsGroupeHeader>
               <BadgesContainer>
                 {badge.achievements.map((achievement) => (
                   <Badge
@@ -55,7 +63,18 @@ const AchievementsGroupe = styled.View({
   gap: getSpacing(4),
 })
 
+const AchievementsGroupeHeader = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+})
+
 const AchievementsGroupeTitle = styled.View({})
+
+const ProgressBarContainer = styled.View({
+  flex: 1,
+  maxWidth: 100,
+})
 
 const BadgesContainer = styled.View({
   flexDirection: 'row',
