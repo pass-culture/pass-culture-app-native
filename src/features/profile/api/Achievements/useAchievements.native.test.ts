@@ -46,7 +46,7 @@ describe('useAchievements', () => {
     const { badges } = render.result.current
 
     expect(badges).toEqual([
-      {
+      expect.objectContaining({
         category: 'Favorites',
         achievements: [
           expect.objectContaining({
@@ -62,8 +62,8 @@ describe('useAchievements', () => {
             icon: 'Info',
           }),
         ],
-      },
-      {
+      }),
+      expect.objectContaining({
         category: 'Cinema',
         achievements: [
           expect.objectContaining({
@@ -73,7 +73,7 @@ describe('useAchievements', () => {
             icon: 'Info',
           }),
         ],
-      },
+      }),
     ])
   })
 
@@ -89,7 +89,7 @@ describe('useAchievements', () => {
     const { badges } = render.result.current
 
     expect(badges).toEqual([
-      {
+      expect.objectContaining({
         category: 'Favorites',
         achievements: [
           expect.objectContaining({
@@ -101,7 +101,7 @@ describe('useAchievements', () => {
             isCompleted: false,
           }),
         ],
-      },
+      }),
     ])
   })
 
@@ -127,7 +127,7 @@ describe('useAchievements', () => {
     const { badges } = render.result.current
 
     expect(badges).toEqual([
-      {
+      expect.objectContaining({
         category: 'Favorites',
         achievements: [
           expect.objectContaining({
@@ -139,7 +139,68 @@ describe('useAchievements', () => {
             isCompleted: true,
           }),
         ],
-      },
+      }),
     ])
+  })
+
+  describe('Category Achievements completion', () => {
+    describe('Remaining achievements to complete', () => {
+      it('should return 2 when there are 2 achievements and no one is completed', () => {
+        achievementsStore.setState({
+          achievements: [FIRST_ADD_FAVORITE, SECOND_ADD_FAVORITE],
+        })
+        userAchievementsStore.setState({
+          completedAchievements: [],
+        })
+
+        const render = renderHook(useAchievements)
+        const { badges } = render.result.current
+
+        expect(badges).toEqual([
+          expect.objectContaining({
+            category: 'Favorites',
+            remainingAchievements: 2,
+          }),
+        ])
+      })
+
+      it('should return 1 when only 1 achievement is remaining', () => {
+        achievementsStore.setState({
+          achievements: [FIRST_ADD_FAVORITE, SECOND_ADD_FAVORITE],
+        })
+        userAchievementsStore.setState({
+          completedAchievements: [{ id: FIRST_ADD_FAVORITE.id, completedAt: new Date() }],
+        })
+
+        const render = renderHook(useAchievements)
+        const { badges } = render.result.current
+
+        expect(badges).toEqual([
+          expect.objectContaining({
+            category: 'Favorites',
+            remainingAchievements: 1,
+          }),
+        ])
+      })
+    })
+
+    it('should return 0 when all achievement is completed', () => {
+      achievementsStore.setState({
+        achievements: [FIRST_ADD_FAVORITE],
+      })
+      userAchievementsStore.setState({
+        completedAchievements: [{ id: FIRST_ADD_FAVORITE.id, completedAt: new Date() }],
+      })
+
+      const render = renderHook(useAchievements)
+      const { badges } = render.result.current
+
+      expect(badges).toEqual([
+        expect.objectContaining({
+          category: 'Favorites',
+          remainingAchievements: 0,
+        }),
+      ])
+    })
   })
 })

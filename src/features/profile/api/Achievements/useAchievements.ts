@@ -3,6 +3,7 @@ import { userAchievementsStore } from 'features/profile/api/Achievements/user-ac
 
 type Badges = {
   category: string
+  remainingAchievements: number
   achievements: {
     id: string
     name: string
@@ -19,6 +20,7 @@ export const useAchievements = () => {
   const badges: Badges = achievements.reduce((acc, achievement) => {
     const exist = acc.find((badge) => badge.category === achievement.category)
     const isCompleted = completedAchievements.some((u) => u.id === achievement.id)
+
     if (exist) {
       exist.achievements.push({
         id: achievement.id,
@@ -27,11 +29,15 @@ export const useAchievements = () => {
         icon: achievement.icon,
         isCompleted,
       })
+      if (!isCompleted) {
+        exist.remainingAchievements++
+      }
       return acc
     }
 
     acc.push({
       category: achievement.category,
+      remainingAchievements: isCompleted ? 0 : 1,
       achievements: [
         {
           id: achievement.id,

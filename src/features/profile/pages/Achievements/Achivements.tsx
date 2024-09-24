@@ -5,11 +5,13 @@ import { useAchievements } from 'features/profile/api/Achievements/useAchievemen
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
+import { Profile } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 const iconMapper: Record<string, FC<AccessibleIcon>> = {
   Info: Info,
+  Profile: Profile,
 }
 
 export const Achievements = () => {
@@ -18,21 +20,28 @@ export const Achievements = () => {
   return (
     <SecondaryPageWithBlurHeader title="Achievements">
       <AchievementsContainer>
-        {badges.map((badge) => (
-          <AchievementsGroupe key={badge.category}>
-            <TypoDS.Title3>{badge.category}</TypoDS.Title3>
-            <BadgesContainer>
-              {badge.achievements.map((achievement) => (
-                <Badge
-                  key={achievement.id}
-                  id={achievement.id}
-                  icon={iconMapper[achievement.icon]!}
-                  isCompleted={achievement.isCompleted}
-                />
-              ))}
-            </BadgesContainer>
-          </AchievementsGroupe>
-        ))}
+        {badges.map((badge) => {
+          const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
+
+          return (
+            <AchievementsGroupe key={badge.category}>
+              <AchievementsGroupeTitle>
+                <TypoDS.Title3>{badge.category}</TypoDS.Title3>
+                <TypoDS.Body>{remainingAchievementsText}</TypoDS.Body>
+              </AchievementsGroupeTitle>
+              <BadgesContainer>
+                {badge.achievements.map((achievement) => (
+                  <Badge
+                    key={achievement.id}
+                    id={achievement.id}
+                    icon={iconMapper[achievement.icon]!}
+                    isCompleted={achievement.isCompleted}
+                  />
+                ))}
+              </BadgesContainer>
+            </AchievementsGroupe>
+          )
+        })}
       </AchievementsContainer>
     </SecondaryPageWithBlurHeader>
   )
@@ -45,6 +54,8 @@ const AchievementsContainer = styled.View({
 const AchievementsGroupe = styled.View({
   gap: getSpacing(4),
 })
+
+const AchievementsGroupeTitle = styled.View({})
 
 const BadgesContainer = styled.View({
   flexDirection: 'row',
