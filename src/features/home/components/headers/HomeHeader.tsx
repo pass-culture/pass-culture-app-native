@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -11,26 +12,28 @@ import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { LanguageSelector } from './LanguageSelector'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport } = useTheme()
+  const { t } = useTranslation()
 
   const Header = useMemo(() => {
     const welcomeTitle =
-      user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
+      user?.firstName && isLoggedIn ? t('hello', { name: user.firstName }) : t('welcome')
 
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
         !isLoggedIn || !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
-      if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
+      if (shouldSeeDefaultSubtitle) return t('slogan')
 
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
         const credit = formatToFrenchDecimal(availableCredit.amount)
-        return `Tu as ${credit} sur ton pass`
+        return t('homeCredit', { credit: credit })
       }
       return 'Ton crédit est expiré'
     }
@@ -51,13 +54,17 @@ export const HomeHeader: FunctionComponent = function () {
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>
           </HeaderContainer>
+          <LanguageSelector />
         </React.Fragment>
       )
     }
     return (
-      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
-      </PageHeader>
+      <React.Fragment>
+        <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
+          {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
+        </PageHeader>
+        <LanguageSelector />
+      </React.Fragment>
     )
   }, [user, isLoggedIn, isDesktopViewport, availableCredit])
 

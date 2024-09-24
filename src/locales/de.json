@@ -2,5 +2,7 @@
   "welcome": "Willkommen\u00a0!",
   "hello": "Hallo {{name}}",
   "slogan": "Die ganze Kultur in Reichweite",
-  "homeCredit": "Du hast {{credit}} in deinem Pass"
+  "homeCredit": "Du hast {{credit}} in deinem Pass",
+  "close": "Schließen",
+  "language": "Sprache"
 }

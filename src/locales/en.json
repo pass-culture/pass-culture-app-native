@@ -2,5 +2,7 @@
   "welcome": "Welcome!",
   "hello": "Hello {{name}}",
   "slogan": "Culture at your fingertips",
-  "homeCredit": "You have {{credit}} on your pass"
+  "homeCredit": "You have {{credit}} on your pass",
+  "close": "Close",
+  "language": "Language"
 }
