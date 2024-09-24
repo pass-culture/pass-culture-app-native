@@ -115,7 +115,8 @@ export const SearchSuggestions = ({
           aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />
-        <AutocompleteVenue onItemPress={onVenuePress} />
+        <AutocompleteVenue title="Lieux culturels" onItemPress={onVenuePress} />
+        <AutocompleteVenue title="Points d’intérets" withPois onItemPress={onVenuePress} />
       </Index>
       <Spacer.Column numberOfSpaces={3} />
     </StyledScrollView>
