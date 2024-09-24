@@ -226,24 +226,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       />
       <Spacer.Column numberOfSpaces={6} />
 
-      {bookingState.quantity === 2 ? (
-        <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-          <TextInput
-            autoCapitalize="none"
-            autoComplete="email"
-            keyboardType="email-address"
-            label="Adresse e-mail de ton accompagnant.e"
-            onChangeText={() => undefined}
-            placeholder="tabelletante@email.com"
-            textContentType="emailAddress"
-            maxLength={120}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      ) : null}
-
       {isFreeOfferToArchive ? null : (
         <React.Fragment>
           <Separator />

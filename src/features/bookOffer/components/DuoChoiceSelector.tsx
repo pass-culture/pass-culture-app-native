@@ -9,9 +9,10 @@ import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/use
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
+import { TextInput } from 'ui/components/inputs/TextInput'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
@@ -41,7 +42,22 @@ export const DuoChoiceSelector: React.FC = () => {
         {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
       </DuoChoiceContainer>
 
-      {bookingState.quantity === 2 ? <InfoBanner message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente." icon={Error}></InfoBanner> : null}
+      {bookingState.quantity === 2 ?
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <InfoBanner message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente." icon={Error}></InfoBanner>
+          <Spacer.Column numberOfSpaces={6} />
+          <TextInput
+            autoCapitalize="none"
+            autoComplete="email"
+            keyboardType="email-address"
+            label="Adresse e-mail de ton accompagnant.e"
+            onChangeText={() => undefined}
+            placeholder="tabelletante@email.com"
+            textContentType="emailAddress"
+            maxLength={120}
+          />
+        </React.Fragment> : null}
     </React.Fragment>
   )
 }
