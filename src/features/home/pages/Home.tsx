@@ -1,14 +1,16 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
 import React, { FC, FunctionComponent, useEffect } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
+import { OnGoingBookingItem } from 'features/bookings/components/OnGoingBookingItem'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
+import { bookingFixture } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -30,35 +32,28 @@ import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
-import { useModal } from 'ui/components/modals/useModal'
-import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Spacer } from 'ui/components/spacer/Spacer'
-import { Typo } from 'ui/theme/typography'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing } from 'ui/theme/spacing'
-import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
 import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { useTheme } from 'styled-components/native'
+import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { AppModal } from 'ui/components/modals/AppModal'
+import { useModal } from 'ui/components/modals/useModal'
+import { Spacer } from 'ui/components/spacer/Spacer'
+import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Close } from 'ui/svg/icons/Close'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
-import { AppModal } from 'ui/components/modals/AppModal'
-import { OnGoingBookingItem } from 'features/bookings/components/OnGoingBookingItem'
-import { Separator } from 'ui/components/Separator'
-import { Close } from 'ui/svg/icons/Close'
-import { bookingFixture } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
+import { getSpacing } from 'ui/theme/spacing'
+import { Typo } from 'ui/theme/typography'
 
 const Header = () => (
   <ListHeaderContainer>
     <HomeHeader />
   </ListHeaderContainer>
 )
-const NAME_FRIEND = 'Ricky'
 
 export const Home: FunctionComponent = () => {
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
@@ -157,7 +152,7 @@ export const Home: FunctionComponent = () => {
     editor.save()
   }, [shouldApplyGraphicRedesign, bookings, user?.firstDepositActivationDate])
 
-  const { isDesktopViewport, colors } = useTheme()
+  const { colors } = useTheme()
 
   return (
     <React.Fragment>
@@ -180,10 +175,9 @@ export const Home: FunctionComponent = () => {
         title="Invitation à une offre DUO"
         rightIconAccessibilityLabel="Fermer la modale"
         rightIcon={Close}
-        onRightIconPress={() => undefined}
-      >
+        onRightIconPress={() => undefined}>
         <Typo.Title3>
-          {NAME_FRIEND} t’a invité à l’accompagner sur l’offre ci-dessous
+          {params?.duoName} t’a invité à l’accompagner sur l’offre ci-dessous
         </Typo.Title3>
         <Spacer.Column numberOfSpaces={6} />
         <Container>
@@ -192,7 +186,7 @@ export const Home: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={6} />
         <InfoBanner
           icon={Profile}
-          message="Crée un compte pour accéder à ton billet et bien plus encore !"
+          message="Crée un compte pour accéder à ton billet et bien plus encore&nbsp;!"
         />
         <Spacer.Column numberOfSpaces={6} />
         <InternalTouchableLink
@@ -206,21 +200,21 @@ export const Home: FunctionComponent = () => {
           <InternalTouchableLink
             as={Button}
             navigateTo={{ screen: 'Login' }}
-            wording='Se connecter'
+            wording="Se connecter"
             buttonColor={colors.secondary}
             icon={Connect}
             onBeforeNavigate={() => undefined}
           />
         </AuthenticationContainer>
-      </AppModal >
+      </AppModal>
 
       {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
-    </React.Fragment >
+    </React.Fragment>
   )
 }
 
 const Container = styled.View({
-  marginLeft: getSpacing(-6)
+  marginLeft: getSpacing(-6),
 })
 
 const ListHeaderContainer = styled.View(({ theme }) => ({
