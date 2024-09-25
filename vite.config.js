@@ -118,6 +118,7 @@ export default ({ mode }) => {
           find: 'react-native-email-link',
           replacement: '/src/libs/react-native-email-link',
         },
+        { find: 'react-native-vision-camera', replacement: '/src/libs/react-native-vision-camera' },
         { find: 'react-native-linear-gradient', replacement: 'react-native-web-linear-gradient' },
         {
           find: 'react-native-fast-image',
