@@ -8,23 +8,21 @@ import {
   useCameraPermission,
   useCodeScanner,
 } from 'react-native-vision-camera'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useScanSearch } from 'features/scan/hooks/useScanSearch'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { Spinner } from 'ui/components/Spinner'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { useTheme } from 'styled-components/native'
-import { ScanIllustration } from 'ui/svg/icons/ScanIllustration'
-import { Camera as CameraIcon } from 'ui/svg/icons/Camera'
+import { Spinner } from 'ui/components/Spinner'
 import { Tooltip } from 'ui/components/Tooltip'
+import { Touchable } from 'ui/components/touchable/Touchable'
+import { Camera as CameraIcon } from 'ui/svg/icons/Camera'
+import { ScanIllustration } from 'ui/svg/icons/ScanIllustration'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const ScanView: FC = () => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
@@ -36,7 +34,7 @@ export const ScanView: FC = () => {
   const isScanned = useRef<boolean>(false)
   const { hasPermission, requestPermission } = useCameraPermission()
   const [takenPhoto, setTakenPhoto] = useState<PhotoFile | undefined>(undefined)
-  const { search, showErrorBanner } = useScanSearch()
+  const { search, showErrorBanner, searchByImage } = useScanSearch()
 
   const { top, bottom } = useCustomSafeInsets()
 
@@ -66,10 +64,8 @@ export const ScanView: FC = () => {
   const onPress = async () => {
     if (!camera.current) return
     const photo = await camera.current.takePhoto()
-    // show image taken and loading
     setTakenPhoto(photo)
-    // send to API
-    // navigate to search
+    searchByImage(photo.path)
   }
 
   const handleBarcodeButtonClick = () => {
@@ -84,8 +80,8 @@ export const ScanView: FC = () => {
 
   const tooltipText =
     selectedButton === 'barcode'
-      ? "Scanne le code-barre d'un livre pour le trouver simplement dans l'application !"
-      : "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application !"
+      ? "Scanne le code-barre d'un livre pour le trouver simplement dans l'application!"
+      : "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application!"
 
   // Déterminez la valeur de pointerAlign en fonction du bouton sélectionné
   const pointerAlign = selectedButton === 'barcode' ? 'left' : 'right'
@@ -113,14 +109,14 @@ export const ScanView: FC = () => {
         <RoundedButton iconName="back" onPress={goBack} accessibilityLabel="Revenir en arrière" />
       </GoBackButtonContainer>
 
-      {showErrorBanner && (
+      {showErrorBanner ? (
         <ErrorBannerContainer bottom={bottom}>
           <Spacer.Column numberOfSpaces={5} />
           <ErrorBanner message="Code-barre non reconnu" />
         </ErrorBannerContainer>
-      )}
+      ) : null}
 
-      {isTooltipVisible && (
+      {isTooltipVisible ? (
         <StyledTooltip
           bottom={bottom}
           label={tooltipText}
@@ -129,7 +125,7 @@ export const ScanView: FC = () => {
           isVisible={isTooltipVisible}
           onCloseIconPress={() => setTooltipVisible(false)}
         />
-      )}
+      ) : null}
 
       <BottomContainer bottom={bottom}>
         <StyledTouchable
@@ -149,7 +145,13 @@ export const ScanView: FC = () => {
         </StyledTouchable>
       </BottomContainer>
 
-      <ButtonPrimary wording='take photo' onPress={onPress} />
+      {selectedButton === 'photo' ? (
+        <ButtonPhotoContainer bottom={bottom}>
+          <ButtonPhoto onPress={onPress}>
+            <InnerCircle />
+          </ButtonPhoto>
+        </ButtonPhotoContainer>
+      ) : null}
     </Container>
   )
 }
@@ -257,4 +259,31 @@ const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
   flex: 1,
   paddingTop: headerHeight,
   justifyContent: 'center',
+}))
+
+const ButtonPhoto = styled.TouchableOpacity`
+  width: 80px;
+  height: 80px;
+  border-radius: 40px; /* Makes it circular */
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-width: 5px;
+  border-color: #d9d9d9; /* Light gray border like iPhone button */
+`
+
+const InnerCircle = styled.View`
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: #fff;
+  border-width: 1px;
+  border-color: #f0f0f0; /* Slightly lighter inner circle border */
+`
+const ButtonPhotoContainer = styled.View<{ bottom: number }>(({ bottom, theme }) => ({
+  position: 'absolute',
+  width: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  bottom: bottom + getSpacing(25),
 }))
