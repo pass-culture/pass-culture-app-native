@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Platform, TouchableHighlight, useWindowDimensions } from 'react-native'
+import React, { useEffect } from 'react'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingsResponse, SubcategoryIdEnum } from 'api/gen'
-import { OnGoingBookingItem } from 'features/bookings/components/OnGoingBookingItem'
+import { NonBeneficiaryStuffComponent } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
 import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
@@ -16,60 +15,13 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Trends = {
   index: number
   moduleId: string
   homeEntryId: string
   items: TrendBlock[]
-}
-
-const bookingFixture: BookingsResponse['ongoing_bookings'][0] = {
-  id: 123,
-  cancellationDate: null,
-  cancellationReason: null,
-  confirmationDate: '2021-03-15T23:01:37.925926',
-  dateCreated: '2021-02-15T23:01:37.925926',
-  dateUsed: null,
-  expirationDate: null,
-  totalAmount: 1900,
-  token: '352UW4',
-  quantity: 2,
-  qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
-  stock: {
-    id: 150230,
-    beginningDatetime: '2021-03-15T20:00:00',
-    price: 400,
-    priceCategoryLabel: 'Cat 4',
-    features: ['VOSTFR', '3D', 'IMAX'],
-    offer: {
-      id: 147874,
-      bookingContact: null,
-      name: 'Avez-vous déjà vu\u00a0?',
-      extraData: {
-        ean: '123456789',
-      },
-      isPermanent: false,
-      isDigital: true,
-      subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
-      venue: {
-        id: 2185,
-        city: 'Drancy',
-        name: 'Maison de la Brique',
-        coordinates: {
-          latitude: 48.91683,
-          longitude: 2.43884,
-        },
-        address: '1 boulevard de la brique',
-        postalCode: '93700',
-        timezone: 'Europe/Paris',
-      },
-      withdrawalDetails: null,
-    },
-  },
-  externalBookings: [],
 }
 
 const isWeb = Platform.OS === 'web'
@@ -91,12 +43,6 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
-
-  const [showDuo, ToggleDuo] = useState(false)
-
-  const displayDuo = React.useCallback(() => {
-    return false
-  }, [])
 
   useEffect(() => {
     if (hasGraphicRedesign) {
@@ -147,33 +93,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   return (
     <React.Fragment>
-      {showDuo ? (
-        <React.Fragment>
-          <ViewNoBene>
-            <Typo.Title3>Réservations DUO à venir</Typo.Title3>
-            <Spacer.Column numberOfSpaces={4} />
-          </ViewNoBene>
-          <OnGoingBookingItem booking={bookingFixture} />
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator.Horizontal />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
-      ) : null}
-
-      <ViewNoBene>
-        <TouchableHighlight
-          onPress={() => {
-            ToggleDuo((state) => !state)
-          }}>
-          <Typo.Title4>Le pass, c’est pour tout le monde&nbsp;!</Typo.Title4>
-        </TouchableHighlight>
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.CaptionNeutralInfo>
-          Découvre les propositions culturelles de ta région
-        </Typo.CaptionNeutralInfo>
-        <Spacer.Column numberOfSpaces={4} />
-      </ViewNoBene>
-
+      <NonBeneficiaryStuffComponent />
       <Container isSmallScreen={isSmallScreen}>
         {items.map((props) => (
           <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
@@ -196,8 +116,3 @@ const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen, them
     paddingBottom: theme.home.spaceBetweenModules,
   }
 })
-
-const ViewNoBene = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(6),
-  maxWidth: theme.contentPage.maxWidth,
-}))
