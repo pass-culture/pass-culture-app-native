@@ -1,6 +1,9 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { Image, View } from 'react-native'
 import {
   Camera,
+  PhotoFile,
   useCameraDevice,
   useCameraPermission,
   useCodeScanner,
@@ -12,7 +15,9 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { useScanSearch } from 'features/scan/hooks/useScanSearch'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { Spinner } from 'ui/components/Spinner'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -22,11 +27,13 @@ export const ScanView: FC = () => {
 
   const isScanned = useRef<boolean>(false)
   const { hasPermission, requestPermission } = useCameraPermission()
+  const [takenPhoto, setTakenPhoto] = useState<PhotoFile | undefined>(undefined)
   const { search, showErrorBanner } = useScanSearch()
 
   const { top, bottom } = useCustomSafeInsets()
 
   const device = useCameraDevice('back')
+  const camera = useRef<Camera>(null)
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
     onCodeScanned: async (codes) => {
@@ -48,10 +55,27 @@ export const ScanView: FC = () => {
     }
   }, [hasPermission, requestPermission])
 
+  const onPress = async () => {
+    if (!camera.current) return
+    const photo = await camera.current.takePhoto()
+    // show image taken and loading
+    setTakenPhoto(photo)
+    // send to API
+    // navigate to search
+  }
   return (
     <Container>
       {hasPermission && device ? (
-        <StyledCamera device={device} isActive codeScanner={codeScanner} />
+        takenPhoto?.path ? (
+          <React.Fragment>
+            <StyledImage source={{ uri: `file://${takenPhoto.path}` }} />
+            <SpinnerView headerHeight={0}>
+              <Spinner testID="spinner" size={getSpacing(15)} />
+            </SpinnerView>
+          </React.Fragment>
+        ) : (
+          <StyledCamera device={device} isActive codeScanner={codeScanner} ref={camera} photo />
+        )
       ) : (
         <BlankScreen />
       )}
@@ -63,6 +87,7 @@ export const ScanView: FC = () => {
       </ButtonContainer>
 
       <BannerContainer bottom={bottom}>
+        <ButtonPrimary wording="Take Photo" onPress={onPress} />
         {showErrorBanner ? (
           <ErrorBanner message="Code-barre non reconnu" />
         ) : (
@@ -104,6 +129,14 @@ const StyledCamera = styled(Camera)`
   bottom: 0;
 `
 
+const StyledImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 const BlankScreen = styled.View`
   background-color: black;
   position: absolute;
@@ -121,4 +154,12 @@ const Shadow = styled.View<{ top: number; bottom: number }>(({ theme, top, botto
   borderColor: 'rgba(0, 0, 0, 0.5)',
   width: '100%',
   height: '100%',
+}))
+
+const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
+  headerHeight: number
+}>(({ headerHeight }) => ({
+  flex: 1,
+  paddingTop: headerHeight,
+  justifyContent: 'center',
 }))
