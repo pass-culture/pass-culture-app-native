@@ -24,6 +24,7 @@ import { SubscriptionContextProvider } from 'features/identityCheck/context/Subs
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
+import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
 import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
@@ -84,54 +85,57 @@ const App: FunctionComponent = function () {
 
   return (
     <RemoteConfigProvider>
-      <AchievementProvider achievementGateway={createInMemoryAchievementGateway()}>
-        <ReactQueryClientProvider>
-          <ThemeProvider theme={theme}>
-            <SafeAreaProvider>
-              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                <AnalyticsInitializer>
-                  {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-                  <NetInfoWrapper>
-                    <SettingsWrapper>
-                      <AuthWrapper>
-                        <LocationWrapper>
-                          <AccessibilityFiltersWrapper>
-                            <FavoritesWrapper>
-                              <SearchAnalyticsWrapper>
-                                <SearchWrapper>
-                                  <SnackBarProvider>
-                                    <CulturalSurveyContextProvider>
-                                      <SubscriptionContextProvider>
-                                        <SplashScreenProvider>
-                                          <PushNotificationsWrapper>
-                                            <ShareAppWrapper>
-                                              <OnboardingWrapper>
-                                                <OfflineModeContainer>
-                                                  <ScreenErrorProvider>
-                                                    <AppNavigationContainer />
-                                                  </ScreenErrorProvider>
-                                                </OfflineModeContainer>
-                                              </OnboardingWrapper>
-                                            </ShareAppWrapper>
-                                          </PushNotificationsWrapper>
-                                        </SplashScreenProvider>
-                                      </SubscriptionContextProvider>
-                                    </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
-                                </SearchWrapper>
-                              </SearchAnalyticsWrapper>
-                            </FavoritesWrapper>
-                          </AccessibilityFiltersWrapper>
-                        </LocationWrapper>
-                      </AuthWrapper>
-                    </SettingsWrapper>
-                  </NetInfoWrapper>
-                </AnalyticsInitializer>
-              </ErrorBoundary>
-            </SafeAreaProvider>
-          </ThemeProvider>
-        </ReactQueryClientProvider>
-      </AchievementProvider>
+      <ReactQueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <SafeAreaProvider>
+            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              <AnalyticsInitializer>
+                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
+                <NetInfoWrapper>
+                  <SettingsWrapper>
+                    <AuthWrapper>
+                      <LocationWrapper>
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <SplashScreenProvider>
+                                        <PushNotificationsWrapper>
+                                          <AchievementModalProvider>
+                                            <AchievementProvider
+                                              achievementGateway={createInMemoryAchievementGateway()}>
+                                              <ShareAppWrapper>
+                                                <OnboardingWrapper>
+                                                  <OfflineModeContainer>
+                                                    <ScreenErrorProvider>
+                                                      <AppNavigationContainer />
+                                                    </ScreenErrorProvider>
+                                                  </OfflineModeContainer>
+                                                </OnboardingWrapper>
+                                              </ShareAppWrapper>
+                                            </AchievementProvider>
+                                          </AchievementModalProvider>
+                                        </PushNotificationsWrapper>
+                                      </SplashScreenProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </LocationWrapper>
+                    </AuthWrapper>
+                  </SettingsWrapper>
+                </NetInfoWrapper>
+              </AnalyticsInitializer>
+            </ErrorBoundary>
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </ReactQueryClientProvider>
     </RemoteConfigProvider>
   )
 }

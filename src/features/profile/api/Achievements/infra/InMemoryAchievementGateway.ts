@@ -59,6 +59,9 @@ export const createInMemoryAchievementGateway = (delay = 0): AchievementGateway 
       await new Promise((resolve) => setTimeout(resolve, delay))
       return userAchievements
     },
+    onAchievementCompleted() {
+      // noop
+    },
   }
 }
 

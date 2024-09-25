@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react'
+import { Image } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -11,6 +12,8 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
+
+import Explorer from './assets/explorer_2.png'
 
 export const Achievements = () => {
   const { badges } = useAchievements()
@@ -109,7 +112,7 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
         params: { id },
       }}>
       <BadgeContainer isCompleted={isCompleted}>
-        <StyledIcon />
+        <StyledImage source={Explorer} resizeMode="contain"  />
       </BadgeContainer>
     </InternalTouchableLink>
   )
@@ -121,4 +124,9 @@ const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ isCompleted, the
   borderRadius: 8,
   backgroundColor: isCompleted ? 'none' : theme.colors.greyMedium,
   alignItems: 'center',
+}))
+
+const StyledImage = styled(Image)(({ theme }) => ({
+  height: 20,
+  width: 20,
 }))

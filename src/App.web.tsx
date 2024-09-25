@@ -17,6 +17,8 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
+import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
+import { createAPIAchievementGateway } from 'features/profile/api/Achievements/infra/APIAchievementGateway'
 import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
@@ -41,6 +43,9 @@ import 'reset-css'
 
 globalThisShim()
 
+const InMemoryAchievementGateway = createInMemoryAchievementGateway()
+const apiAchievementGateway = createAPIAchievementGateway(InMemoryAchievementGateway)
+
 export function App() {
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
@@ -52,50 +57,53 @@ export function App() {
 
   return (
     <RemoteConfigProvider>
-      <AchievementProvider achievementGateway={createInMemoryAchievementGateway()}>
-        <ServiceWorkerProvider fileName={`${String(env.PUBLIC_URL)}/service-worker.js`}>
-          <ReactQueryClientProvider>
-            <ThemeProvider theme={theme}>
-              <SupportedBrowsersGate>
-                <SafeAreaProvider>
-                  <SettingsWrapper>
-                    <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                      <AuthWrapper>
-                        <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                          <LocationWrapper>
-                            <AccessibilityFiltersWrapper>
-                              <FavoritesWrapper>
-                                <SearchAnalyticsWrapper>
-                                  <SearchWrapper>
-                                    <SnackBarProvider>
-                                      <CulturalSurveyContextProvider>
-                                        <SubscriptionContextProvider>
-                                          <AppWebHead />
-                                          <OnboardingWrapper>
-                                            <ScreenErrorProvider>
-                                              <Suspense fallback={<LoadingPage />}>
-                                                <AppNavigationContainer />
-                                              </Suspense>
-                                            </ScreenErrorProvider>
-                                          </OnboardingWrapper>
-                                        </SubscriptionContextProvider>
-                                      </CulturalSurveyContextProvider>
-                                    </SnackBarProvider>
-                                  </SearchWrapper>
-                                </SearchAnalyticsWrapper>
-                              </FavoritesWrapper>
-                            </AccessibilityFiltersWrapper>
-                          </LocationWrapper>
-                        </ErrorBoundary>
-                      </AuthWrapper>
-                    </GoogleOAuthProvider>
-                  </SettingsWrapper>
-                </SafeAreaProvider>
-              </SupportedBrowsersGate>
-            </ThemeProvider>
-          </ReactQueryClientProvider>
-        </ServiceWorkerProvider>
-      </AchievementProvider>
+      <ServiceWorkerProvider fileName={`${String(env.PUBLIC_URL)}/service-worker.js`}>
+        <ReactQueryClientProvider>
+          <ThemeProvider theme={theme}>
+            <SupportedBrowsersGate>
+              <SafeAreaProvider>
+                <SettingsWrapper>
+                  <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                    <AuthWrapper>
+                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                        <LocationWrapper>
+                          <AccessibilityFiltersWrapper>
+                            <FavoritesWrapper>
+                              <SearchAnalyticsWrapper>
+                                <SearchWrapper>
+                                  <SnackBarProvider>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
+                                        <AchievementModalProvider>
+                                          <AchievementProvider
+                                            achievementGateway={apiAchievementGateway}>
+                                            <AppWebHead />
+                                            <OnboardingWrapper>
+                                              <ScreenErrorProvider>
+                                                <Suspense fallback={<LoadingPage />}>
+                                                  <AppNavigationContainer />
+                                                </Suspense>
+                                              </ScreenErrorProvider>
+                                            </OnboardingWrapper>
+                                          </AchievementProvider>
+                                        </AchievementModalProvider>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchWrapper>
+                              </SearchAnalyticsWrapper>
+                            </FavoritesWrapper>
+                          </AccessibilityFiltersWrapper>
+                        </LocationWrapper>
+                      </ErrorBoundary>
+                    </AuthWrapper>
+                  </GoogleOAuthProvider>
+                </SettingsWrapper>
+              </SafeAreaProvider>
+            </SupportedBrowsersGate>
+          </ThemeProvider>
+        </ReactQueryClientProvider>
+      </ServiceWorkerProvider>
     </RemoteConfigProvider>
   )
 }

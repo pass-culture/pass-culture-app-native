@@ -4,12 +4,20 @@ import { UserAchievement } from 'features/profile/api/Achievements/stores/user-a
 export const createFakeAchievementGateway = () => {
   let achievements: Achievement[] = []
   let completedAchievements: UserAchievement[] = []
+  let onAchievementCompletedCallback: ((achievementId: string) => void) | undefined
+
   return {
     getAll: async () => {
       return achievements
     },
     getCompletedAchievements: async () => {
       return completedAchievements
+    },
+    onAchievementCompleted: (callback: (achievementId: string) => void) => {
+      onAchievementCompletedCallback = callback
+    },
+    simulateCompletedAchievement: async (achievementId: string) => {
+      onAchievementCompletedCallback?.(achievementId)
     },
     givenCompletedAchievements: async (_completedAchievements: UserAchievement[]) => {
       completedAchievements = _completedAchievements
