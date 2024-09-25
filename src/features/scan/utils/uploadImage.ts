@@ -3,11 +3,13 @@ import { Platform } from 'react-native'
 export const uploadImage = async <Response>(api: string, path: string) => {
   const fileUri = Platform.OS === 'android' ? `file://${path}` : path
 
-  const response = await fetch(fileUri)
-  const blob = await response.blob()
-
   const formData = new FormData()
-  formData.append('file', blob, 'jpg')
+  formData.append('image', {
+    // @ts-ignore
+    uri: fileUri,
+    type: 'image/jpeg', // ou 'image/png' selon le type de votre image
+    name: 'qqch_a_declarer.jpg', // le nom du fichier tel qu'il apparaîtra sur le serveur
+  })
 
   try {
     const uploadResponse = await fetch(api, {
@@ -16,6 +18,16 @@ export const uploadImage = async <Response>(api: string, path: string) => {
         'Content-Type': 'multipart/form-data',
       },
       body: formData,
+    })
+
+    console.log({
+      yo: {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        body: formData,
+      },
     })
 
     const result = await uploadResponse.json()
