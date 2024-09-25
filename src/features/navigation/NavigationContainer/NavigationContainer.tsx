@@ -12,6 +12,7 @@ import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
 import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
+import { createAPIAchievementGateway } from 'features/profile/api/Achievements/infra/APIAchievementGateway'
 import { createFakeAchievementGateway } from 'features/profile/api/Achievements/infra/FakeAchievementGateway'
 import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -23,18 +24,18 @@ import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
 
 const fakeAchievementGateway = createFakeAchievementGateway()
-
-const InMemoryAchievementGateway = createInMemoryAchievementGateway()
 fakeAchievementGateway.givenAchievements([
   {
     id: 'FIRST_ADD_FAVORITE',
-    name: 'Premier ajout en favori',
-    description: 'Félicitations, vous avez ajouté votre premier favori',
-    category: 'Favoris',
+    name: 'Premier favori',
+    description: 'Ajouter un premier favori',
+    category: 'FAVORITE',
     icon: 'Info',
   },
 ])
-//const apiAchievementGateway = createAPIAchievementGateway(InMemoryAchievementGateway)
+
+const InMemoryAchievementGateway = createInMemoryAchievementGateway()
+const apiAchievementGateway = createAPIAchievementGateway(InMemoryAchievementGateway)
 
 const getNavThemeConfig = (theme: DefaultTheme) =>
   ({
@@ -100,7 +101,7 @@ export const AppNavigationContainer = () => {
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
       <AchievementModalProvider>
-        <AchievementProvider achievementGateway={fakeAchievementGateway}>
+        <AchievementProvider achievementGateway={apiAchievementGateway}>
           <RootNavigator />
         </AchievementProvider>
       </AchievementModalProvider>

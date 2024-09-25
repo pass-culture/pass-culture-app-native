@@ -16,16 +16,6 @@ export const AchievementDetails: FC = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'AchievementDetails'>>()
-  const confettiRef = useRef<LottieView>(null)
-
-  function triggerConfetti() {
-    confettiRef.current?.play(0)
-  }
-
-  useEffect(() => {
-    triggerConfetti()
-  }, [id])
-
   const { loadUserAchievements } = useLoadUserAchievement()
 
   const achievement = useAchievementDetails(id)
@@ -94,8 +84,8 @@ const StyledBody = styled(TypoDS.BodySemiBoldS)(({ theme }) => ({
 
 const StyledIcon = styled(Image)({
   position: 'absolute',
-  height: getSpacing(50),
-  width: getSpacing(50),
+  height: getSpacing(40),
+  width: getSpacing(40),
 })
 
 const StyledDescrption = styled(TypoDS.Body)({
