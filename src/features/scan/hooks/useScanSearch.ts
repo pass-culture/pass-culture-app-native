@@ -95,7 +95,7 @@ export const useScanSearch = () => {
     [searchByISBN]
   )
 
-  return { search, isLoading: isSearchByISBNLoading, showErrorBanner, searchByImage }
+  return { search, isLoading: isSearchByISBNLoading || isLoading, showErrorBanner, searchByImage }
 }
 
 const r: Response = {
@@ -116,13 +116,13 @@ type Response = {
   url: string
 }
 
-const uri = {
-  photo: {
-    height: 3000,
-    isMirrored: false,
-    isRawPhoto: false,
-    orientation: 'portrait',
-    path: '/data/user/0/app.passculture.testing/cache/mrousavy-9085200568011197963.jpg',
-    width: 4000,
-  },
-}
+// const uri = {
+//   photo: {
+//     height: 3000,
+//     isMirrored: false,
+//     isRawPhoto: false,
+//     orientation: 'portrait',
+//     path: '/data/user/0/app.passculture.testing/cache/mrousavy-9085200568011197963.jpg',
+//     width: 4000,
+//   },
+// }
