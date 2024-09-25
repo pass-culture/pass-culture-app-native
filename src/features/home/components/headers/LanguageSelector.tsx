@@ -3,22 +3,18 @@ import { useTranslation } from 'react-i18next'
 import { FlatList, Modal } from 'react-native'
 import styled from 'styled-components/native'
 
-const flags = {
-  en: '🇺🇸',
-  fr: '🇫🇷',
-  de: '🇩🇪',
-}
 const languages = [
-  { code: 'en', label: 'English' },
-  { code: 'fr', label: 'Français' },
-  { code: 'de', label: 'Deutsch' },
+  { code: 'en', label: 'English', flag: '🇺🇸' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  // { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
 ]
 
 export const LanguageSelector = () => {
   const { t, i18n } = useTranslation()
   const [modalVisible, setModalVisible] = useState(false)
   const currentLanguage = i18n.language
-  const currentFlag = flags[currentLanguage] || '🌐'
+  const currentFlag = languages.find((l) => l.code === currentLanguage)?.flag || '🌐'
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
     setModalVisible(false)
@@ -39,7 +35,7 @@ export const LanguageSelector = () => {
               keyExtractor={(item) => item.code}
               renderItem={({ item }) => (
                 <LanguageOption onPress={() => changeLanguage(item.code)}>
-                  <Flag>{flags[item.code]}</Flag>
+                  <Flag>{item.flag}</Flag>
                   <LanguageLabel>{item.label}</LanguageLabel>
                 </LanguageOption>
               )}
@@ -58,11 +54,12 @@ const Container = styled.View`
   align-items: flex-start;
   justify-content: center;
   margin-left: 24px;
+  margin-top: 10px;
 `
 const CurrentLanguage = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  padding: 10px;
+  padding: 5px 10px;
   border-width: 1px;
   border-radius: 5px;
   border-color: #ccc;

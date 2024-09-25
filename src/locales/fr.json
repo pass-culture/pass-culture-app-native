@@ -4,5 +4,12 @@
   "slogan": "Toute la culture à portée de main",
   "homeCredit": "Tu as {{credit}} sur ton pass",
   "close": "Fermer",
-  "language": "Langue"
+  "language": "Langue",
+  "Accueil": "Accueil",
+  "Recherche": "Recherche",
+  "Réservations": "Réservations",
+  "Favoris": "Favoris",
+  "Profil": "Profil",
+  "Me localiser": "Me localiser",
+  "locationTooltip": "Configure ta position et découvre les offres dans la zone géographique de ton choix."
 }

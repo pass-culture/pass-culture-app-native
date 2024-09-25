@@ -8,7 +8,7 @@ export const getLocationTitle = (place: SuggestedPlace | null, locationMode: Loc
     case LocationMode.EVERYWHERE:
       return 'Me localiser'
     case LocationMode.AROUND_ME:
-      return 'Ma position'
+      return 'Me localiser'
 
     default:
       return 'Me localiser'

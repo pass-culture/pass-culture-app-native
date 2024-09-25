@@ -1,0 +1,15 @@
+{
+  "welcome": "Benvenuto\u00a0!",
+  "hello": "Ciao {{name}}",
+  "slogan": "Tutta la cultura a portata di mano",
+  "homeCredit": "Hai {{credit}} nel tuo pass",
+  "close": "Chiudi",
+  "language": "Lingua",
+  "Accueil": "Home",
+  "Recherche": "Ricerca",
+  "Réservations": "Prenotazioni",
+  "Favoris": "Preferiti",
+  "Profil": "Profilo",
+  "Me localiser": "Localizzarmi",
+  "locationTooltip": "Configurate la vostra posizione e scoprite le offerte nell'area geografica di vostra scelta."
+}

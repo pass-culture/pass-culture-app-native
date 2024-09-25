@@ -4,11 +4,13 @@ import { initReactI18next } from 'react-i18next'
 import de from './locales/de.json'
 import en from './locales/en.json'
 import fr from './locales/fr.json'
+import it from './locales/it.json'
 
 const resources = {
   fr: { translation: fr },
   en: { translation: en },
   de: { translation: de },
+  it: { translation: it },
 }
 
 i18n
@@ -16,7 +18,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'fr',
-    supportedLngs: ['de', 'en', 'fr'],
+    supportedLngs: ['it', 'en', 'fr', 'de'],
     interpolation: {
       escapeValue: false, // react already safes from xss
     },

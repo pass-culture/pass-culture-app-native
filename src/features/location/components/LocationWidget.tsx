@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -30,6 +31,7 @@ type Props = {
 }
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
+  const { t } = useTranslation()
   const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
   )
@@ -46,7 +48,7 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, selectedLocationMode)
+  const locationTitle = t(getLocationTitle(place, selectedLocationMode))
 
   const {
     visible: locationModalVisible,
@@ -71,7 +73,7 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
     <React.Fragment>
       {enableTooltip ? (
         <StyledTooltip
-          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+          label={t('locationTooltip')}
           isVisible={isTooltipVisible}
           onHide={hideTooltip}
           widgetWidth={widgetWidth}

@@ -15,6 +15,7 @@ type FetchOffersByEanArgs = {
 }
 
 export const fetchOffersByEan = async ({
+  // example
   eanList,
   userLocation,
   isUserUnderage,

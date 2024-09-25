@@ -4,5 +4,12 @@
   "slogan": "Culture at your fingertips",
   "homeCredit": "You have {{credit}} on your pass",
   "close": "Close",
-  "language": "Language"
+  "language": "Language",
+  "Accueil": "Home",
+  "Recherche": "Search",
+  "Réservations": "Reservations",
+  "Favoris": "Favorites",
+  "Profil": "Profile",
+  "Me localiser": "Locate me",
+  "locationTooltip": "Configure your position and discover the offers in the geographical area of your choice."
 }
