@@ -1,11 +1,13 @@
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
+import { BookingsTab } from 'features/bookings/enum'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -13,14 +15,10 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-enum Tab {
-  CURRENT = 'En cours',
-  COMPLETED = 'Terminées',
-}
-
 export function Bookings() {
+  const { params } = useRoute<UseRouteType<'Bookings'>>()
   const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
-  const [activeTab, setActiveTab] = useState<Tab>(Tab.CURRENT)
+  const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
@@ -43,7 +41,7 @@ export function Bookings() {
   useFocusEffect(
     useCallback(() => {
       return () => {
-        if (previousTab === Tab.COMPLETED) {
+        if (previousTab === BookingsTab.COMPLETED) {
           updateReactions()
         }
         setPreviousTab(activeTab)
@@ -52,8 +50,8 @@ export function Bookings() {
   )
 
   const tabPanels = {
-    [Tab.CURRENT]: <OnGoingBookingsList enableBookingImprove={enableBookingImprove} />,
-    [Tab.COMPLETED]: (
+    [BookingsTab.CURRENT]: <OnGoingBookingsList enableBookingImprove={enableBookingImprove} />,
+    [BookingsTab.COMPLETED]: (
       <EndedBookings enableBookingImprove={enableBookingImprove} bookings={bookings} />
     ),
   }
@@ -65,8 +63,8 @@ export function Bookings() {
           <PageHeader title="Mes réservations" />
           <TabLayout
             tabPanels={tabPanels}
-            defaultTab={Tab.CURRENT}
-            tabs={[{ key: Tab.CURRENT }, { key: Tab.COMPLETED }]}
+            defaultTab={params?.activeTab ?? BookingsTab.CURRENT}
+            tabs={[{ key: BookingsTab.CURRENT }, { key: BookingsTab.COMPLETED }]}
             onTabChange={(key) => {
               setActiveTab(key)
             }}

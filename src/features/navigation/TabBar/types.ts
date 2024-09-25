@@ -1,9 +1,10 @@
 import { TabNavigationState } from '@react-navigation/native'
 
+import { BookingsTab } from 'features/bookings/enum'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import {
-  SearchStackScreenNames,
   SearchStackParamList,
+  SearchStackScreenNames,
 } from 'features/navigation/SearchStackNavigator/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
@@ -16,7 +17,7 @@ export type TabParamList = {
     screen: SearchStackScreenNames
     params: SearchStackParamList[SearchStackScreenNames]
   }
-  Bookings: undefined
+  Bookings: { activeTab?: BookingsTab } | undefined
   Favorites: undefined
   Profile: undefined
 }
