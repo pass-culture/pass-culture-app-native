@@ -45,7 +45,7 @@ export const DuoChoiceSelector: React.FC = () => {
       {bookingState.quantity === 2 ?
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <InfoBanner message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente." icon={Error}></InfoBanner>
+          <InfoBanner message="Invite un proche pour t'accompagner à cet évènement !" icon={Error}></InfoBanner>
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
             autoCapitalize="none"
