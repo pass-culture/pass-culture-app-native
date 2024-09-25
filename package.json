@@ -7,7 +7,7 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.308.0",
+  "version": "1.308.0-poc-scan",
   "build": 10308000,
   "private": true,
   "engines": {
