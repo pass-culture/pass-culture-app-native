@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import LottieView from 'libs/lottie'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -51,24 +50,28 @@ export const AchievementSuccessModal: FunctionComponent<Props> = ({ visible, hid
         loop={false}
         resizeMode="cover"
       />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
         <StyledImage source={ColoredBackground} resizeMode="contain" />
         <StyledIcon source={achievementIconMapper[achievement.icon]!} resizeMode="contain" />
       </IconsWrapper>
-      <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>{achievement?.name}</TypoDS.Body>
-      <Spacer.Column numberOfSpaces={20} />
+      <Spacer.Column numberOfSpaces={2} />
+      <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
+      <Spacer.Column numberOfSpaces={2} />
+      <TypoDS.Body>{achievement?.description}</TypoDS.Body>
+      <Spacer.Column numberOfSpaces={10} />
 
       <InternalTouchableLink
         navigateTo={{ screen: 'Achievements' }}
         onBeforeNavigate={() => {
           hideModal()
         }}>
-        <ButtonPrimary wording="Accéder à mes succès" />
+        <ButtonWrapper>
+          <StyledButtonText>Accéder à mes succès</StyledButtonText>
+        </ButtonWrapper>
       </InternalTouchableLink>
 
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={2} />
       <ButtonQuaternaryBlack
         wording="Fermer"
         accessibilityLabel="Fermer la modale"
@@ -104,3 +107,14 @@ const StyledLottieView = styled(LottieView)({
   zIndex: 1000,
   pointerEvents: 'none',
 })
+
+const ButtonWrapper = styled.View(({ theme }) => ({
+  paddingVertical: getSpacing(2),
+  paddingHorizontal: getSpacing(4),
+  backgroundColor: theme.colors.primary,
+  borderRadius: theme.borderRadius.button,
+}))
+
+const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
+  color: theme.colors.white,
+}))
