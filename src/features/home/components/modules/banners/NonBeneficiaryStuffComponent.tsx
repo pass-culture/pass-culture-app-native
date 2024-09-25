@@ -63,7 +63,7 @@ user.743@passculture.gen
 r@cs$rL4Q9Xu@pc
 */
 
-export const bookingFixture: BookingsResponse['ongoing_bookings'][0] = {
+const bookingFixture: BookingsResponse['ongoing_bookings'][0] = {
   id: 123,
   cancellationDate: null,
   cancellationReason: null,
