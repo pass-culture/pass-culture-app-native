@@ -1,12 +1,12 @@
 {
   "welcome": "Bienvenue\u00a0!",
-    "hello": "Bonjour {{name}}",
-      "slogan": "Toute la culture à portée de main",
-      "homeCredit": "Tu as {{credit}} sur ton pass",
-      "close": "Fermer",
-      "language": "Langue",
-      "Accueil": "Accueil",
-    "Recherche": "Recherche",
+  "hello": "Bonjour {{name}}",
+  "slogan": "Toute la culture à portée de main",
+  "homeCredit": "Tu as {{credit}} sur ton pass",
+  "close": "Fermer",
+  "language": "Langue",
+  "Accueil": "Accueil",
+  "Recherche": "Recherche",
   "Réservations": "Réservations",
   "Favoris": "Favoris",
   "Profil": "Profil",
@@ -32,7 +32,7 @@
   "Confidentialité": "Confidentialité",
   "Déconnexion": "Déconnexion",
   "Paramètres du compte": "Paramètres du compte",
-  "Paramètres de l’application": "Paramètres de l’application"
+  "Paramètres de l’application": "Paramètres de l’application",
   "about": "À propos",
   "description": "Description",
   "book": "Réserver l'offre"
