@@ -9,6 +9,7 @@ import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndW
 import { CreateHistoryItem } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
+import { ScanRoundedButton } from 'features/scan/ScanRoundedButton'
 
 type Props = {
   searchInputID: string
@@ -50,7 +51,7 @@ export const SearchHeader = memo(function SearchHeader({
           />
         </RowContainer>
         <Spacer.Column numberOfSpaces={4} />
-        <View>
+        <RowContainer>
           <SearchBox
             searchInputID={searchInputID}
             addSearchHistory={addSearchHistory}
@@ -58,7 +59,8 @@ export const SearchHeader = memo(function SearchHeader({
             offerCategories={offerCategories}
             placeholder={placeholder}
           />
-        </View>
+          <ScanRoundedButton />
+        </RowContainer>
       </HeaderContainer>
     </React.Fragment>
   )

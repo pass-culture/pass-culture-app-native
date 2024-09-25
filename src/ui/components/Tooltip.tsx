@@ -17,6 +17,7 @@ type Props = {
   label: string
   isVisible?: boolean
   pointerDirection?: 'top' | 'bottom'
+  pointerAlign?: 'left' | 'right' // Ajout de la prop pour définir l'alignement de la flèche
   onHide?: () => void
   onCloseIconPress?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
@@ -26,6 +27,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   label,
   isVisible,
   pointerDirection = 'top',
+  pointerAlign = 'left', // Valeur par défaut à 'left'
   onHide,
   onCloseIconPress,
   style,
@@ -56,7 +58,7 @@ export const Tooltip: FunctionComponent<Props> = ({
       ref={containerRef}
       accessibilityRole={AccessibilityRole.TOOLTIP}
       pointerDirection={pointerDirection}>
-      <StyledPointer pointerDirection={pointerDirection} />
+      <StyledPointer pointerDirection={pointerDirection} pointerAlign={pointerAlign} />
       <Background>
         <StyledText>{label}</StyledText>
         <StyledClearContainer
@@ -81,12 +83,15 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
   )
 }
 
-const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(({ pointerDirection }) => ({
-  position: 'relative',
-  alignSelf: 'flex-end',
-  right: getSpacing(3.5),
-  transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
-}))
+// Mise à jour du StyledPointer pour prendre en compte pointerAlign
+const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection' | 'pointerAlign'>>(
+  ({ pointerDirection, pointerAlign }) => ({
+    position: 'relative',
+    alignSelf: pointerAlign === 'right' ? 'flex-end' : 'flex-start', // Gestion de l'alignement
+    [pointerAlign === 'right' ? 'right' : 'left']: getSpacing(3.5), // Applique left ou right
+    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined, // Rotation si nécessaire
+  })
+)
 
 const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>(
   ({ pointerDirection }) => ({
