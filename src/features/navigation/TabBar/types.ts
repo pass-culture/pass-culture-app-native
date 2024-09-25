@@ -11,7 +11,7 @@ import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
-  Home: { latitude?: number; longitude?: number; videoModuleId?: string } | undefined
+  Home: { latitude?: number; longitude?: number; duoModal?: string; videoModuleId?: string } | undefined
   SearchStackNavigator?: {
     screen: SearchStackScreenNames
     params: SearchStackParamList[SearchStackScreenNames]
