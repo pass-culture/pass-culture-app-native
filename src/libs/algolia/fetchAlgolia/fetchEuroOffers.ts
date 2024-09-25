@@ -41,8 +41,8 @@ export const fetchEuroOffers = async () => {
     },
   ]
 
-  const [offersResponse] = (await multipleQueries2(queries)) as [SearchResponse<Offer>]
-  return offersResponse
+  const [offersResponse] = await multipleQueries2(queries)
+  return offersResponse.hits
 }
 
 export const fetchEuroOffers2 = async () => {
