@@ -99,13 +99,15 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
           ) : null}
         </AttributesView>
       </ContentContainer>
-      <ShareContainer>
-        <RoundedButton
-          iconName="share"
-          onPress={pressShareOffer}
-          accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
-        />
-      </ShareContainer>
+      {bookingProperties.isDuo ? null : (
+        <ShareContainer>
+          <RoundedButton
+            iconName="share"
+            onPress={pressShareOffer}
+            accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
+          />
+        </ShareContainer>
+      )}
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
