@@ -5,19 +5,17 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { PoiHeader } from 'features/poi/components/PoiHeader/PoiHeader'
+import { PoiWebMetaHeader } from 'features/poi/components/PoiWebMetaHeader'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
-import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
-import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
-import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -30,12 +28,7 @@ type Props = {
 const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
 const isWeb = Platform.OS === 'web'
 
-export const PoiContent: React.FunctionComponent<Props> = ({
-  poi: venue,
-  gtlPlaylists,
-  poiOffers: venueOffers,
-  videoSectionVisible,
-}) => {
+export const PoiContent: React.FunctionComponent<Props> = ({ poi, gtlPlaylists, poiOffers }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
@@ -71,17 +64,16 @@ export const PoiContent: React.FunctionComponent<Props> = ({
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
-  const { visible, hideModal, showModal } = useModal()
 
   const shouldDisplayCTA =
-    (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
+    (poiOffers && poiOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
   return (
     <Fragment>
       <Container>
-        <VenueWebMetaHeader venue={venue} />
+        <PoiWebMetaHeader poi={poi} />
         {/* On web VenueHeader is called before Body for accessibility navigate order */}
-        <VenueHeader headerTransition={headerTransition} venue={venue} />
+        <PoiHeader headerTransition={headerTransition} venue={poi} />
         <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
           <ContentContainer
             onScroll={handleScroll}
@@ -89,21 +81,18 @@ export const PoiContent: React.FunctionComponent<Props> = ({
             bounces={false}
             ref={scrollViewRef}>
             {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
-            <VenueTopComponent venue={venue} />
+            <VenueTopComponent venue={poi} />
             <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-            {videoSectionVisible ? (
-              <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
-            ) : null}
             <VenueBody
-              venue={venue}
+              venue={poi}
               playlists={gtlPlaylists}
-              venueOffers={venueOffers}
+              venueOffers={poiOffers}
               shouldDisplayCTA={shouldDisplayCTA}
             />
           </ContentContainer>
         </AnchorProvider>
         {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
-        {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
+        {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={poi} />}
       </Container>
     </Fragment>
   )
