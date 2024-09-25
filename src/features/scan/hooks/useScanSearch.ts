@@ -12,7 +12,8 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 
 // const API_URL = 'https://hackathon-image-search-815655901630.europe-west1.run.app/predict'
-const API_URL = 'http://10.2.9.130:8000/predict'
+const API_URL = 'http://10.2.9.130:8000/predict' // local
+
 export const useScanSearch = () => {
   const { searchState, dispatch, resetSearch } = useSearch()
   const [showErrorBanner, setShowErrorBanner] = useState<boolean>(false)

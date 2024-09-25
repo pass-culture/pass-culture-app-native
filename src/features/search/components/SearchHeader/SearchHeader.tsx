@@ -59,7 +59,7 @@ export const SearchHeader = memo(function SearchHeader({
             offerCategories={offerCategories}
             placeholder={placeholder}
           />
-          <ScanRoundedButton />
+          {/* <ScanRoundedButton /> */}
         </RowContainer>
       </HeaderContainer>
     </React.Fragment>
