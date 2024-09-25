@@ -8,6 +8,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { useTranslation } from 'react-i18next'
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -25,19 +26,22 @@ export const NavItem: React.FC<NavItemInterface> = ({
   isSelected,
   badgeValue,
   onBeforeNavigate,
-}) => (
-  <StyledTouchableLink
-    isSelected={isSelected}
-    navigateTo={navigateTo}
-    activeOpacity={1}
-    on
-    testID={`${tabName} tab`}
-    onBeforeNavigate={onBeforeNavigate}
-    accessibilityCurrent={isSelected ? 'page' : undefined}>
-    <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
-    <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
-  </StyledTouchableLink>
-)
+}) => {
+  const {t} = useTranslation();
+  return (
+    <StyledTouchableLink
+      isSelected={isSelected}
+      navigateTo={navigateTo}
+      activeOpacity={1}
+      on
+      testID={`${tabName} tab`}
+      onBeforeNavigate={onBeforeNavigate}
+      accessibilityCurrent={isSelected ? 'page' : undefined}>
+      <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
+      <Title isSelected={isSelected}>{t(menu[tabName].displayName)}</Title>
+    </StyledTouchableLink>
+  )
+}
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected ? undefined : theme.colors.greyDark,

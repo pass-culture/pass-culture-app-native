@@ -17,6 +17,7 @@ export const TabBarInnerComponentV2: React.FC<TabInnerComponentProps> = ({
   badgeValue,
 }) => {
   const { t } = useTranslation()
+  console.log('menu[tabName]', menu[tabName])
   return (
     <React.Fragment>
       {isSelected ? <Gradient /> : null}

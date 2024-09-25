@@ -32,8 +32,6 @@ import { BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-import { fetchEuroOffers, fetchEuroOffers2 } from 'libs/algolia/fetchAlgolia/fetchEuroOffers'
-import { Text } from 'react-native'
 import { EuropeanPlaylist } from './EuropeanPlaylist'
 
 const Header = () => (

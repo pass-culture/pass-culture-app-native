@@ -8,6 +8,7 @@ import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackg
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Typo } from 'ui/theme'
+import { useTranslation } from 'react-i18next'
 
 const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 
@@ -17,9 +18,9 @@ type Props = {
 
 export const SignupBanner: FunctionComponent<Props> = ({ hasGraphicRedesign }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-
-  const title = 'Débloque ton crédit'
-  const subtitle = 'Crée ton compte si tu as entre 15 et 18 ans\u00a0!'
+  const { t } = useTranslation();
+  const title = t('Débloque ton crédit')
+  const subtitle = t('Crée ton compte si tu as entre 15 et 18 ans\u00a0!')
 
   const onSystemBannerPress = () => {
     onBeforeNavigate()
