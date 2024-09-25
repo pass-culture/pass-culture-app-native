@@ -7,8 +7,8 @@ export const uploadImage = async <Response>(api: string, path: string) => {
   formData.append('image', {
     // @ts-ignore
     uri: fileUri,
-    type: 'image/jpeg', // ou 'image/png' selon le type de votre image
-    name: 'qqch_a_declarer.jpg', // le nom du fichier tel qu'il apparaîtra sur le serveur
+    type: 'image/jpeg',
+    name: 'qqch_a_declarer.jpg',
   })
 
   try {

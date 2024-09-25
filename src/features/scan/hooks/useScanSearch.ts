@@ -63,21 +63,26 @@ export const useScanSearch = () => {
       const objectID = offer?.objectID
       const offerId = Number(objectID)
 
-      navigate('Offer', {
-        id: offerId,
-        from: 'searchresults',
-        searchId: searchState.searchId,
-      })
+      navigateToOffer(offerId)
       resetSearch()
     },
     [fetchNextPage, navigate, refetch, resetSearch, searchState.searchId, setSearch]
   )
+
+  const navigateToOffer = useCallback((id: number) => {
+    navigate('Offer', {
+      id,
+      from: 'searchresults',
+      searchId: searchState.searchId,
+    })
+  }, [])
 
   const searchByImage = useCallback(async (path: string) => {
     setIsLoading(true)
     const response = await uploadImage(API_URL, path)
     setIsLoading(false)
     console.log({ response })
+    navigateToOffer(response.offer_id)
   }, [])
 
   const search = useCallback(
@@ -92,16 +97,6 @@ export const useScanSearch = () => {
 
   return { search, isLoading: isSearchByISBNLoading, showErrorBanner, searchByImage }
 }
-
-// requête
-
-// curl -X 'POST' \
-//   'http://127.0.0.1:8000/predict' \
-//   -H 'accept: application/json' \
-//   -H 'Content-Type: multipart/form-data' \
-//   -F 'image=@bluelock1.jpg;type=image/jpeg'
-
-// réponse
 
 const r: Response = {
   item_id: 'offer-89941585',
