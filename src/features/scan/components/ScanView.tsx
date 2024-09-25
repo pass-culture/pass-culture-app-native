@@ -6,16 +6,16 @@ import {
   useCodeScanner,
 } from 'react-native-vision-camera'
 import styled from 'styled-components/native'
-import { useScanSearch } from 'features/scan/hooks/useScanSearch'
 
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { getSpacing } from 'ui/theme'
+import { useGoBack } from 'features/navigation/useGoBack'
+import { useScanSearch } from 'features/scan/hooks/useScanSearch'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { Info } from 'ui/svg/icons/Info'
+import { getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const ScanView: FC = () => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
@@ -67,7 +67,7 @@ export const ScanView: FC = () => {
           <ErrorBanner message="Code-barre non reconnu" />
         ) : (
           <InfoBanner
-            message="Scanne le code-barre d'un livre pour le trouver simplement dans l'application !"
+            message="Scanne le code-barre d’un livre pour le trouver simplement dans l’application&nbsp;!"
             icon={Info}
           />
         )}

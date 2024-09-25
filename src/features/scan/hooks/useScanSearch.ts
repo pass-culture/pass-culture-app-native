@@ -5,14 +5,17 @@ import { v4 } from 'uuid'
 // import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 // import { checkIsISBN } from 'features/scan/utils/isISBN'
+import { uploadImage } from 'features/scan/utils/uploadImage'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { useSearch } from 'features/search/context/SearchWrapper'
 // import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { SearchState } from 'features/search/types'
 
+const API_URL = 'http://localhost:8000/'
 export const useScanSearch = () => {
   const { searchState, dispatch, resetSearch } = useSearch()
   const [showErrorBanner, setShowErrorBanner] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   // const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
   const {
@@ -46,12 +49,10 @@ export const useScanSearch = () => {
   const searchByISBN = useCallback(
     async (isbn: string) => {
       setSearch(isbn)
-      console.log('before')
 
       await refetch()
       const { data } = await fetchNextPage()
       const firstPage = data?.pages[0]
-      console.log({ firstPage })
       if (!firstPage || !firstPage.offers.hits.length) {
         setShowErrorBanner(true)
         setTimeout(() => setShowErrorBanner(false), 1000)
@@ -68,8 +69,15 @@ export const useScanSearch = () => {
       })
       resetSearch()
     },
-    [refetch, setSearch]
+    [fetchNextPage, navigate, refetch, resetSearch, searchState.searchId, setSearch]
   )
+
+  const searchByImage = useCallback(async (path: string) => {
+    setIsLoading(true)
+    const response = uploadImage(API_URL, path)
+    setIsLoading(false)
+    console.log({ response })
+  }, [])
 
   const search = useCallback(
     async (query: string) => {
@@ -81,5 +89,44 @@ export const useScanSearch = () => {
     [searchByISBN]
   )
 
-  return { search, isLoading: isSearchByISBNLoading, showErrorBanner }
+  return { search, isLoading: isSearchByISBNLoading, showErrorBanner, searchByImage }
+}
+
+// requête
+
+// curl -X 'POST' \
+//   'http://127.0.0.1:8000/predict' \
+//   -H 'accept: application/json' \
+//   -H 'Content-Type: multipart/form-data' \
+//   -F 'image=@bluelock1.jpg;type=image/jpeg'
+
+// réponse
+
+const r: Response = {
+  item_id: 'offer-89941585',
+  offer_id: '89941585',
+  offer_name: 'Blue Lock tome 1',
+  vector_norm: 0.9999998907920478,
+  _distance: 0.2853059768676758,
+  url: 'https://passculture.app/offre/89941585',
+}
+
+type Response = {
+  item_id: string
+  offer_id: string
+  offer_name: string
+  vector_norm: number
+  _distance: number
+  url: string
+}
+
+const uri = {
+  photo: {
+    height: 3000,
+    isMirrored: false,
+    isRawPhoto: false,
+    orientation: 'portrait',
+    path: '/data/user/0/app.passculture.testing/cache/mrousavy-9085200568011197963.jpg',
+    width: 4000,
+  },
 }
