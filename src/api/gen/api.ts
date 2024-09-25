@@ -1253,6 +1253,87 @@ export interface EmailValidationRemainingResendsResponse {
   remainingResends: number
 }
 /**
+ * @export
+ * @interface EuropeanOfferResponse
+ */
+export interface EuropeanOfferResponse {
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  city?: string | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  country?: string | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  currency?: string | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  date: string
+  /**
+   * @type {LangField}
+   * @memberof EuropeanOfferResponse
+   */
+  description?: LangField | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  externalUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof EuropeanOfferResponse
+   */
+  id: number
+  /**
+   * @type {LangField}
+   * @memberof EuropeanOfferResponse
+   */
+  imageAlt?: LangField | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  imageUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof EuropeanOfferResponse
+   */
+  latitude: number
+  /**
+   * @type {number}
+   * @memberof EuropeanOfferResponse
+   */
+  longitude: number
+  /**
+   * @type {number}
+   * @memberof EuropeanOfferResponse
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  street?: string | null
+  /**
+   * @type {LangField}
+   * @memberof EuropeanOfferResponse
+   */
+  title?: LangField | null
+  /**
+   * @type {string}
+   * @memberof EuropeanOfferResponse
+   */
+  zipcode?: string | null
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1697,6 +1778,27 @@ export interface IdentificationSessionResponse {
 export enum IdentityCheckMethod {
   'educonnect' = 'educonnect',
   'ubble' = 'ubble',
+}
+/**
+ * @export
+ * @interface LangField
+ */
+export interface LangField {
+  /**
+   * @type {string}
+   * @memberof LangField
+   */
+  en?: string | null
+  /**
+   * @type {string}
+   * @memberof LangField
+   */
+  fr?: string | null
+  /**
+   * @type {string}
+   * @memberof LangField
+   */
+  it?: string | null
 }
 /**
  * An enumeration.
@@ -4538,6 +4640,34 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_european_offer <GET>
+     * @deprecated
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1EuropeanOfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV1EuropeanOfferofferId.'
+        )
+      }
+      let pathname = `/native/v1/european_offer/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6076,6 +6206,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_european_offer <GET>
+     * @deprecated
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1EuropeanOfferofferId(offer_id: number, options?: any): Promise<EuropeanOfferResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1EuropeanOfferofferId(offer_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6968,6 +7111,19 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1EmailValidationRemainingResendsemail(email, options)
+  }
+  /**
+    * 
+    * @summary get_european_offer <GET>
+    * @deprecated
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1EuropeanOfferofferId(offer_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1EuropeanOfferofferId(offer_id, options)
   }
   /**
     * 
