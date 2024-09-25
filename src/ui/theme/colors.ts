@@ -1,3 +1,4 @@
+import { primary, secondary } from '../../../app.json'
 export enum ColorsEnum {
   ACCENT = '#0066ff',
   ATTENTION = '#ffea00',
@@ -12,10 +13,10 @@ export enum ColorsEnum {
   GREY_MEDIUM = '#CBCDD2',
   GREY_LIGHT = '#F1F1F4',
   BROWN_LIGHT = '#8c7a74',
-  PRIMARY = '#eb0055',
+  PRIMARY = primary,
   PRIMARY_DISABLED = '#ff99be',
   PRIMARY_DARK = '#c10046',
-  SECONDARY = '#320096',
+  SECONDARY = secondary,
   SECONDARY_LIGHT_100 = '#f3ecff',
   SECONDARY_LIGHT_200 = '#6123DF',
   SECONDARY_DARK = '#25026C',
