@@ -49,9 +49,9 @@ import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { OnGoingBookingItem } from 'features/bookings/components/OnGoingBookingItem'
-import { bookingFixture } from 'features/home/components/modules/TrendsModule'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
+import { bookingFixture } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
 
 const Header = () => (
   <ListHeaderContainer>
