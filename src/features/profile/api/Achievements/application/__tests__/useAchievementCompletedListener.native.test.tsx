@@ -9,10 +9,7 @@ describe('useAchievementCompletedListener', () => {
 
     achievementCompletedListener(fakeAchievementGateway, fakeAchievementNotifier)
 
-    fakeAchievementGateway.simulateCompletedAchievement({
-      id: 'FIRST_ACHIEVEMENT',
-      completedAt: new Date('2024-09-25'),
-    })
+    fakeAchievementGateway.simulateCompletedAchievement('FIRST_ACHIEVEMENT')
 
     expect(fakeAchievementNotifier.getLastNotifyWith()).toEqual('FIRST_ACHIEVEMENT')
   })

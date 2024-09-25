@@ -76,7 +76,7 @@ export function App() {
                                       <SubscriptionContextProvider>
                                         <AchievementModalProvider>
                                           <AchievementProvider
-                                            achievementGateway={apiAchievementGateway}>
+                                            achievementGateway={InMemoryAchievementGateway}>
                                             <AppWebHead />
                                             <OnboardingWrapper>
                                               <ScreenErrorProvider>

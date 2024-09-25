@@ -2,6 +2,7 @@ import React from 'react'
 
 import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
 import { useLoadAchievement } from 'features/profile/api/Achievements/application/useLoadAchievement'
+import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
 import { createFakeAchievementGateway } from 'features/profile/api/Achievements/infra/FakeAchievementGateway'
 import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
 import { renderHook, waitFor } from 'tests/utils'
@@ -22,9 +23,11 @@ describe('useLoadAchievement', () => {
 
     const render = renderHook(useLoadAchievement, {
       wrapper: ({ children }) => (
-        <AchievementProvider achievementGateway={fakeAchievementGateway}>
-          {children}
-        </AchievementProvider>
+        <AchievementModalProvider>
+          <AchievementProvider achievementGateway={fakeAchievementGateway}>
+            {children}
+          </AchievementProvider>
+        </AchievementModalProvider>
       ),
     })
     const { loadAchievements } = render.result.current

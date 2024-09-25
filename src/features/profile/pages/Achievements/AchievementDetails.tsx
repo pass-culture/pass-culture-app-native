@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FC, useEffect } from 'react'
+import { Image } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -8,7 +9,9 @@ import { useLoadAchievement } from 'features/profile/api/Achievements/applicatio
 import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS, Spacer } from 'ui/theme'
+
+import ColoredBackground from './assets/Fond_de_couleur.png'
 
 export const AchievementDetails: FC = () => {
   const {
@@ -29,27 +32,65 @@ export const AchievementDetails: FC = () => {
   }
 
   const Icon = achievementIconMapper[achievement.icon]
-  const StyledIcon = Icon
-    ? styled(Icon).attrs(({ theme }) => ({
-        size: theme.illustrations.sizes.fullPage,
-        color: achievement.completed ? theme.colors.primary : theme.colors.greyDark,
-      }))``
-    : null
 
   return (
-    <SecondaryPageWithBlurHeader title="AchievementDetails">
+    <SecondaryPageWithBlurHeader title={achievement.name}>
       <Container>
-        {StyledIcon ? <StyledIcon /> : null}
-        <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
-        <TypoDS.Body>{achievement.description}</TypoDS.Body>
-        {achievement.completed ? (
-          <TypoDS.BodyS>Fait le {achievement.completedAt}</TypoDS.BodyS>
+        {Icon ? (
+          <IconsWrapper>
+            <StyledImage source={ColoredBackground} resizeMode="contain" />
+            <StyledIcon source={Icon} resizeMode="contain" />
+          </IconsWrapper>
         ) : null}
+        <Spacer.Column numberOfSpaces={6} />
+        <BodyWrapper isCompleted={achievement.completed}>
+          {achievement.completed ? (
+            <StyledBody>Fait le {achievement.completedAt}</StyledBody>
+          ) : (
+            <TypoDS.BodySemiBoldS>Non débloqué</TypoDS.BodySemiBoldS>
+          )}
+        </BodyWrapper>
+        <Spacer.Column numberOfSpaces={4} />
+        <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledDescrption>{achievement.description}</StyledDescrption>
       </Container>
     </SecondaryPageWithBlurHeader>
   )
 }
 
+const StyledImage = styled(Image)({
+  height: getSpacing(60),
+  width: getSpacing(60),
+})
+
 const Container = styled.View({
   alignItems: 'center',
+  justifyContent: 'center',
+  height: '100%',
+})
+const IconsWrapper = styled.View({
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
+const BodyWrapper = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme }) => ({
+  backgroundColor: isCompleted ? theme.colors.primary : theme.colors.greyLight,
+  paddingHorizontal: getSpacing(2),
+  paddingVertical: getSpacing(1),
+  borderRadius: getSpacing(1),
+}))
+
+const StyledBody = styled(TypoDS.BodySemiBoldS)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledIcon = styled(Image)({
+  position: 'absolute',
+  height: getSpacing(50),
+  width: getSpacing(50),
+})
+
+const StyledDescrption = styled(TypoDS.Body)({
+  textAlign: 'center',
 })

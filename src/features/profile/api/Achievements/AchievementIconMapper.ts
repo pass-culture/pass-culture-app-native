@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { ImageURISource } from 'react-native'
 
-import { Info } from 'ui/svg/icons/Info'
-import { Profile } from 'ui/svg/icons/Profile'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import Explorer2 from '../../pages/Achievements/assets/explorer_2.png'
+import Heart from '../../pages/Achievements/assets/heart.png'
 
-export const achievementIconMapper: Record<string, FC<AccessibleIcon>> = {
-  Info: Info,
-  Profile: Profile,
+export const achievementIconMapper: Record<string, ImageURISource> = {
+  Info: Explorer2,
+  Profile: Explorer2,
+  Heart: Heart,
 }

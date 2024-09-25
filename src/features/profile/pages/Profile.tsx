@@ -43,6 +43,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { Trophie } from 'ui/svg/icons/Trophie'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -164,14 +165,16 @@ const OnlineProfile: React.FC = () => {
                       />
                     </Li>
                   ) : null}
-                  <Li>
-                    <Row
-                      title="Achievements"
-                      type="navigable"
-                      navigateTo={{ screen: 'Achievements' }}
-                      icon={BicolorProfile}
-                    />
-                  </Li>
+                  {isLoggedIn ? (
+                    <Li>
+                      <Row
+                        title="Mes Succès"
+                        type="navigable"
+                        navigateTo={{ screen: 'Achievements' }}
+                        icon={Trophie}
+                      />
+                    </Li>
+                  ) : null}
                   <Li>
                     <Row
                       type="navigable"

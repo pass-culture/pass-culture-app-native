@@ -1,6 +1,6 @@
 import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
-import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
+import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { renderHook } from 'tests/utils'
 
 const FIRST_ADD_FAVORITE = {
@@ -303,6 +303,84 @@ describe('useAchievements', () => {
             progress: 0.75,
           }),
         ])
+      })
+
+      describe('text', () => {
+        it('should return 0% when no achievements are completed', () => {
+          achievementsStore.setState({
+            achievements: [FIRST_ADD_FAVORITE],
+          })
+          userAchievementsStore.setState({
+            completedAchievements: [],
+          })
+
+          const render = renderHook(useAchievements)
+          const { badges } = render.result.current
+
+          expect(badges).toEqual([
+            expect.objectContaining({
+              category: 'Favorites',
+              progressText: '0%',
+            }),
+          ])
+        })
+
+        it('should return 100% when all achievements are completed', () => {
+          achievementsStore.setState({
+            achievements: [FIRST_ADD_FAVORITE],
+          })
+          userAchievementsStore.setState({
+            completedAchievements: [{ id: FIRST_ADD_FAVORITE.id, completedAt: new Date() }],
+          })
+
+          const render = renderHook(useAchievements)
+          const { badges } = render.result.current
+
+          expect(badges).toEqual([
+            expect.objectContaining({
+              category: 'Favorites',
+              progressText: '100%',
+            }),
+          ])
+        })
+
+        it('should return 50% when 1 achievement of 2 are completed', () => {
+          achievementsStore.setState({
+            achievements: [FIRST_ADD_FAVORITE, SECOND_ADD_FAVORITE],
+          })
+          userAchievementsStore.setState({
+            completedAchievements: [{ id: FIRST_ADD_FAVORITE.id, completedAt: new Date() }],
+          })
+
+          const render = renderHook(useAchievements)
+          const { badges } = render.result.current
+
+          expect(badges).toEqual([
+            expect.objectContaining({
+              category: 'Favorites',
+              progressText: '50%',
+            }),
+          ])
+        })
+
+        it('should return 33% when 1 achievement of 3 are completed', () => {
+          achievementsStore.setState({
+            achievements: [FIRST_ADD_FAVORITE, SECOND_ADD_FAVORITE, THIRD_ADD_FAVORITE],
+          })
+          userAchievementsStore.setState({
+            completedAchievements: [{ id: FIRST_ADD_FAVORITE.id, completedAt: new Date() }],
+          })
+
+          const render = renderHook(useAchievements)
+          const { badges } = render.result.current
+
+          expect(badges).toEqual([
+            expect.objectContaining({
+              category: 'Favorites',
+              progressText: '33%',
+            }),
+          ])
+        })
       })
     })
   })

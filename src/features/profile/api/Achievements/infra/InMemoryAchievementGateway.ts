@@ -5,10 +5,10 @@ import { UserAchievement } from 'features/profile/api/Achievements/stores/user-a
 const achievements: Achievement[] = [
   {
     id: 'FIRST_ADD_FAVORITE',
-    name: 'First favorite',
-    description: 'Add your first favorite',
+    name: 'Ajout d’un favori',
+    description: 'Tu as mis une offre en favoris pour la première fois\u00a0!',
     category: 'Favorites',
-    icon: 'Profile',
+    icon: 'Heart',
   },
   {
     id: 'SECOND_ADD_FAVORITE',

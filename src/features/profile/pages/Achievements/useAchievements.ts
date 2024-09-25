@@ -5,6 +5,7 @@ type Badges = {
   category: string
   remainingAchievements: number
   progress: number
+  progressText: string
   achievements: {
     id: string
     name: string
@@ -33,16 +34,20 @@ export const useAchievements = () => {
       if (!isCompleted) {
         category.remainingAchievements++
       }
+
       const actualAchievements = category.achievements.length - category.remainingAchievements
 
       category.progress = actualAchievements / category.achievements.length
+      category.progressText = `${(category.progress * 100).toFixed(0)}%`
       return acc
     }
 
     acc.push({
       category: achievement.category,
       progress: isCompleted ? 1 : 0,
+      progressText: isCompleted ? '100%' : '0%',
       remainingAchievements: isCompleted ? 0 : 1,
+
       achievements: [
         {
           id: achievement.id,

@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import { Image } from 'react-native'
+import { Image, ImageURISource } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -10,10 +10,7 @@ import { useAchievements } from 'features/profile/pages/Achievements/useAchievem
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
-
-import Explorer from './assets/explorer_2.png'
 
 export const Achievements = () => {
   const { badges } = useAchievements()
@@ -27,12 +24,11 @@ export const Achievements = () => {
   }, [loadAchievements, loadUserAchievements])
 
   return (
-    <SecondaryPageWithBlurHeader title="Achievements">
+    <SecondaryPageWithBlurHeader title="Mes Succès">
       <AchievementsContainer>
         <TypoDS.Title2>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
           const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
-
           return (
             <AchievementsGroupe key={badge.category}>
               <AchievementsGroupeHeader>
@@ -40,13 +36,17 @@ export const Achievements = () => {
                   <TypoDS.Title4>{badge.category}</TypoDS.Title4>
                   <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
                 </AchievementsGroupeTitle>
-                <ProgressBarContainer>
-                  <ProgressBar
-                    progress={badge.progress}
-                    colors={[uniqueColors.brand]}
-                    height={2.5}
-                  />
-                </ProgressBarContainer>
+
+                <CompletionContainer>
+                  <ProgressBarContainer>
+                    <ProgressBar
+                      progress={badge.progress}
+                      colors={[uniqueColors.brand]}
+                      height={2.5}
+                    />
+                  </ProgressBarContainer>
+                  <TypoDS.BodyS>{badge.progressText}</TypoDS.BodyS>
+                </CompletionContainer>
               </AchievementsGroupeHeader>
               <BadgesContainer>
                 {badge.achievements.map((achievement) => (
@@ -82,9 +82,17 @@ const AchievementsGroupeHeader = styled.View({
 
 const AchievementsGroupeTitle = styled.View({})
 
+const CompletionContainer = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  gap: getSpacing(2),
+})
+
 const ProgressBarContainer = styled.View({
   flex: 1,
-  maxWidth: 100,
+  maxWidth: 80,
 })
 
 const BadgesContainer = styled.View({
@@ -95,16 +103,11 @@ const BadgesContainer = styled.View({
 
 type BadgeProps = {
   id: string
-  icon: FC<AccessibleIcon>
+  icon: ImageURISource
   isCompleted?: boolean
 }
 
-const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: 48,
-    color: isCompleted ? theme.colors.primary : theme.colors.greyDark,
-  }))({ width: '100%' })
-
+const Badge: FC<BadgeProps> = ({ isCompleted = false, icon, id }) => {
   return (
     <InternalTouchableLink
       navigateTo={{
@@ -112,7 +115,8 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon: Icon, id }) => {
         params: { id },
       }}>
       <BadgeContainer isCompleted={isCompleted}>
-        <StyledImage source={Explorer} resizeMode="contain"  />
+        <StyledImage source={icon} resizeMode="contain" />
+        {!isCompleted ? <NotCompletedFilter /> : null}
       </BadgeContainer>
     </InternalTouchableLink>
   )
@@ -122,11 +126,20 @@ const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ isCompleted, the
   padding: getSpacing(4),
   border: '1px solid',
   borderRadius: 8,
-  backgroundColor: isCompleted ? 'none' : theme.colors.greyMedium,
   alignItems: 'center',
 }))
 
 const StyledImage = styled(Image)(({ theme }) => ({
-  height: 20,
-  width: 20,
+  height: getSpacing(15),
+  width: getSpacing(15),
 }))
+
+const NotCompletedFilter = styled.View({
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  backgroundColor: 'rgba(0,0,0,0.5)',
+  borderRadius: 8,
+})
