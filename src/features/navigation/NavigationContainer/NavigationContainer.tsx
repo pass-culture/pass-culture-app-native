@@ -10,6 +10,10 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
+import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
+import { createFakeAchievementGateway } from 'features/profile/api/Achievements/infra/FakeAchievementGateway'
+import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -17,6 +21,20 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
+
+const fakeAchievementGateway = createFakeAchievementGateway()
+
+const InMemoryAchievementGateway = createInMemoryAchievementGateway()
+fakeAchievementGateway.givenAchievements([
+  {
+    id: 'FIRST_ADD_FAVORITE',
+    name: 'Premier ajout en favori',
+    description: 'Félicitations, vous avez ajouté votre premier favori',
+    category: 'Favoris',
+    icon: 'Info',
+  },
+])
+//const apiAchievementGateway = createAPIAchievementGateway(InMemoryAchievementGateway)
 
 const getNavThemeConfig = (theme: DefaultTheme) =>
   ({
@@ -62,9 +80,16 @@ export const AppNavigationContainer = () => {
     }
   }, [isNavReady, hideSplashScreen])
 
+  useEffect(() => {
+    setTimeout(() => {
+      fakeAchievementGateway.simulateCompletedAchievement('FIRST_ADD_FAVORITE')
+    }, 7000)
+  }, [])
+
   if (!isNavReady) {
     return <LoadingPage />
   }
+
   return (
     <NavigationContainer
       linking={linking}
@@ -74,7 +99,11 @@ export const AppNavigationContainer = () => {
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
-      <RootNavigator />
+      <AchievementModalProvider>
+        <AchievementProvider achievementGateway={fakeAchievementGateway}>
+          <RootNavigator />
+        </AchievementProvider>
+      </AchievementModalProvider>
     </NavigationContainer>
   )
 }

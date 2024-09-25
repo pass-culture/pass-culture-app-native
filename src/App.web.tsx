@@ -16,10 +16,6 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
-import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
-import { createAPIAchievementGateway } from 'features/profile/api/Achievements/infra/APIAchievementGateway'
-import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -42,9 +38,6 @@ import { ServiceWorkerProvider } from 'web/useServiceWorker'
 import 'reset-css'
 
 globalThisShim()
-
-const InMemoryAchievementGateway = createInMemoryAchievementGateway()
-const apiAchievementGateway = createAPIAchievementGateway(InMemoryAchievementGateway)
 
 export function App() {
   useEffect(() => {
@@ -74,19 +67,14 @@ export function App() {
                                   <SnackBarProvider>
                                     <CulturalSurveyContextProvider>
                                       <SubscriptionContextProvider>
-                                        <AchievementModalProvider>
-                                          <AchievementProvider
-                                            achievementGateway={InMemoryAchievementGateway}>
-                                            <AppWebHead />
-                                            <OnboardingWrapper>
-                                              <ScreenErrorProvider>
-                                                <Suspense fallback={<LoadingPage />}>
-                                                  <AppNavigationContainer />
-                                                </Suspense>
-                                              </ScreenErrorProvider>
-                                            </OnboardingWrapper>
-                                          </AchievementProvider>
-                                        </AchievementModalProvider>
+                                        <AppWebHead />
+                                        <OnboardingWrapper>
+                                          <ScreenErrorProvider>
+                                            <Suspense fallback={<LoadingPage />}>
+                                              <AppNavigationContainer />
+                                            </Suspense>
+                                          </ScreenErrorProvider>
+                                        </OnboardingWrapper>
                                       </SubscriptionContextProvider>
                                     </CulturalSurveyContextProvider>
                                   </SnackBarProvider>

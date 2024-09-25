@@ -23,9 +23,6 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
-import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
-import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
-import { createInMemoryAchievementGateway } from 'features/profile/api/Achievements/infra/InMemoryAchievementGateway'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
@@ -104,20 +101,15 @@ const App: FunctionComponent = function () {
                                     <SubscriptionContextProvider>
                                       <SplashScreenProvider>
                                         <PushNotificationsWrapper>
-                                          <AchievementModalProvider>
-                                            <AchievementProvider
-                                              achievementGateway={createInMemoryAchievementGateway()}>
-                                              <ShareAppWrapper>
-                                                <OnboardingWrapper>
-                                                  <OfflineModeContainer>
-                                                    <ScreenErrorProvider>
-                                                      <AppNavigationContainer />
-                                                    </ScreenErrorProvider>
-                                                  </OfflineModeContainer>
-                                                </OnboardingWrapper>
-                                              </ShareAppWrapper>
-                                            </AchievementProvider>
-                                          </AchievementModalProvider>
+                                          <ShareAppWrapper>
+                                            <OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
+                                            </OnboardingWrapper>
+                                          </ShareAppWrapper>
                                         </PushNotificationsWrapper>
                                       </SplashScreenProvider>
                                     </SubscriptionContextProvider>

@@ -1,4 +1,12 @@
-import React, { FC, PropsWithChildren, useCallback, useContext, useMemo, useRef } from 'react'
+import React, {
+  FC,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
@@ -8,13 +16,14 @@ import { useModal } from 'ui/components/modals/useModal'
 import confetti from './confetti.json'
 
 interface AchievementContextValue {
-  showAchievementModal: () => void
+  showAchievementModal: (id: string) => void
 }
 
 const AchievementModalContext = React.createContext<AchievementContextValue | undefined>(undefined)
 
 export const AchievementModalProvider: FC<PropsWithChildren> = ({ children }) => {
   const { showModal, ...achievementModalProps } = useModal(false)
+  const [id, setId] = useState<string | null>(null)
 
   const confettiRef = useRef<LottieView>(null)
 
@@ -22,17 +31,25 @@ export const AchievementModalProvider: FC<PropsWithChildren> = ({ children }) =>
     confettiRef.current?.play(0)
   }
 
-  const showAchievementModal = useCallback(() => {
-    triggerConfetti()
-    showModal()
-  }, [showModal])
+  const showAchievementModal = useCallback(
+    (id: string) => {
+      triggerConfetti()
+      showModal()
+      setId(id)
+    },
+    [showModal]
+  )
 
   const value = useMemo(() => ({ showAchievementModal }), [showAchievementModal])
 
   return (
     <AchievementModalContext.Provider value={value}>
       {children}
-      <AchievementSuccessModal {...achievementModalProps} id="" />
+      {id ? (
+        <React.Fragment>
+          <AchievementSuccessModal {...achievementModalProps} id={id} />
+        </React.Fragment>
+      ) : null}
       <StyledLottieView
         ref={confettiRef}
         source={confetti}
