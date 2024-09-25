@@ -15,7 +15,7 @@
   "playlist": "Découvre la culture locale 🇵🇹",
   "musee": "Musée",
   "Débloque ton crédit": "Débloque ton crédit",
-  "Crée ton compte si tu as entre 15 et 18 ans\u00a0!": "Crée ton compte si tu as entre 15 et 18 ans\u00a0!",
+  "Crée ton compte si tu as entre 15 et 18 ans\u00a0!": "Crée ton compte si tu as entre 15 et 18 ans !",
   "Mon profil": "Mon profil",
   "Informations personnelles": "Informations personnelles",
   "Notifications": "Notifications",
@@ -35,5 +35,11 @@
   "Paramètres de l’application": "Paramètres de l’application",
   "about": "À propos",
   "description": "Description",
-  "book": "Réserver l'offre"
+  "book": "Réserver l'offre",
+  "Identifie-toi pour bénéficier de ton crédit pass Culture": "Identifie-toi pour bénéficier de ton crédit pass Culture",
+  "Tu as entre 15 et 18 ans&nbsp;?": "Tu as entre 15 et 18 ans ?",
+  "Déjà un compte\u00a0?": "Déjà un compte ?",
+  "Pas de compte\u00a0?": "Pas de compte ?",
+  "Créer un compte": "Créer un compte",
+  "Se connecter": "Se connecter"
 }

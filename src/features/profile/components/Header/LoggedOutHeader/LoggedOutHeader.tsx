@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useTranslation } from 'react-i18next'
 
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
@@ -16,15 +17,16 @@ const onBeforeNavigate = () => {
 
 export function LoggedOutHeader() {
   const { isDesktopViewport, colors } = useTheme()
+  const { t } = useTranslation()
 
   return (
-    <HeaderWithGreyContainer title="Mon profil" subtitle="Tu as entre 15 et 18 ans&nbsp;?">
-      <Typo.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</Typo.Body>
+    <HeaderWithGreyContainer title={t("Mon profil")} subtitle={t("Tu as entre 15 et 18 ans&nbsp;?")}>
+      <Typo.Body>{t("Identifie-toi pour bénéficier de ton crédit pass Culture")}</Typo.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
-          wording="Créer un compte"
+          wording={t("Créer un compte")}
           navigateTo={{
             screen: 'SignupForm',
             params: { from: StepperOrigin.PROFILE },

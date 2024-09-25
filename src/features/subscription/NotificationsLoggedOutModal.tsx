@@ -9,6 +9,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserNotification } from 'ui/svg/icons/BicolorUserNotification'
 import { Spacer, Typo } from 'ui/theme'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   visible: boolean
@@ -21,6 +22,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
   dismissModal,
   from,
 }) => {
+  const { t } = useTranslation()
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -35,7 +37,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
       <ButtonContainer>
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
-          wording="Créer un compte"
+          wording={t("Créer un compte")}
           navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.THEMATIC_HOME } }}
           onBeforeNavigate={() => {
             analytics.logSignUpClicked({ from })

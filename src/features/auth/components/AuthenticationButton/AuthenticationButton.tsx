@@ -12,6 +12,7 @@ import { Profile } from 'ui/svg/icons/Profile'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { useTranslation } from 'react-i18next'
 
 type LoginProps = {
   type: 'login'
@@ -35,14 +36,15 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   params = {},
   onAdditionalPress: onPress,
 }) => {
+  const {t} = useTranslation()
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
     params: RootStackParamList['SignupForm'] | RootStackParamList['Login']
   } = { screen: isLogin ? 'Login' : 'SignupForm', params }
 
-  const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
-  const wording = isLogin ? 'Se connecter' : 'Créer un compte'
+  const text = isLogin ? t('Déjà un compte\u00a0?') : t('Pas de compte\u00a0?')
+  const wording = isLogin ? t('Se connecter') : t('Créer un compte')
   const icon = isLogin ? Connect : Profile
 
   return (

@@ -10,6 +10,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   visible: boolean
@@ -41,6 +42,8 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
     hideModal()
   }, [hideModal, offerId])
 
+  const { t } = useTranslation()
+
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -56,7 +59,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       <StyledButtonContainer>
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
-          wording="Créer un compte"
+          wording={t("Créer un compte")}
           navigateTo={{
             screen: 'SignupForm',
             params: { offerId, from },
