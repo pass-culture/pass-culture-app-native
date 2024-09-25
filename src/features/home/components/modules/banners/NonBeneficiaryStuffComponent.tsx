@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Pressable } from 'react-native'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { BookingsResponse, SubcategoryIdEnum } from 'api/gen'
@@ -12,24 +11,23 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const useNonBeneficiaryStuff = () => {
   const { isLoggedIn, user } = useAuthContext()
-  const allowedToShow = isLoggedIn && !user?.isBeneficiary
-  const [toggleDuo, setToggleDuo] = useState(true)
+  // const { params } = useRoute<UseRouteType<'Home'>>()
+  const isDuoInvitation = true
+  const isNotBeneficiary = isLoggedIn && !user?.isBeneficiary
 
-  function onToggleDuo(): void {
-    setToggleDuo((state) => !state)
-  }
+  const allowedToShow = isNotBeneficiary || isDuoInvitation
 
-  return [toggleDuo, onToggleDuo, allowedToShow] as const
+  return [isDuoInvitation, allowedToShow] as const
 }
 
 export const NonBeneficiaryStuffComponent = () => {
-  const [toggleDuo, onToggleDuo, allowedToShow] = useNonBeneficiaryStuff()
+  const [isDuoInvitation, allowedToShow] = useNonBeneficiaryStuff()
 
   if (!allowedToShow) return null
 
   return (
     <DefaultContainer>
-      {toggleDuo ? (
+      {isDuoInvitation ? (
         <React.Fragment>
           <Typo.Title3>Réservations DUO à venir</Typo.Title3>
           <Spacer.Column numberOfSpaces={4} />
@@ -40,12 +38,10 @@ export const NonBeneficiaryStuffComponent = () => {
         </React.Fragment>
       ) : null}
 
-      <Pressable onPress={onToggleDuo}>
-        <InfoBanner
-          message="Le pass, c’est pour tout le monde&nbsp;! Découvre les propositions culturelles de ta région"
-          icon={BicolorInfo}
-        />
-      </Pressable>
+      <InfoBanner
+        message="Le pass, c’est pour tout le monde&nbsp;! Découvre les propositions culturelles de ta région"
+        icon={BicolorInfo}
+      />
       <Spacer.Column numberOfSpaces={6} />
     </DefaultContainer>
   )
