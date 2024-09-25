@@ -5,8 +5,12 @@ export const useAchievementDetails = (id: string) => {
   const { achievements } = achievementsStore()
   const { completedAchievements } = userAchievementsStore()
 
-  const achievement = achievements.find((achievement) => achievement.id === id)!
+  const achievement = achievements.find((achievement) => achievement.id === id)
   const completedAchievement = completedAchievements.find((u) => u.id === id)
+
+  if (!achievement) {
+    return
+  }
 
   return {
     name: achievement.name,
