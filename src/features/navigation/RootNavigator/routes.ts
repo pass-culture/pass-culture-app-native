@@ -51,6 +51,7 @@ import { screenParamsParser, screenParamsStringifier } from 'features/navigation
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import { Euro } from 'features/offer/pages/Offer/Euro'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
@@ -102,6 +103,14 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['Offer'],
     },
     options: { title: 'Offre' },
+  },
+  {
+    name: 'Euro',
+    component: Euro,
+    pathConfig: {
+      path: 'euro/:id',
+    },
+    options: { title: 'Offre européenne' },
   },
   {
     name: 'OfferPreview',

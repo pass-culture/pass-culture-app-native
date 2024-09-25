@@ -252,6 +252,7 @@ export type RootStackParamList = {
     apiRecoParams?: string
     playlistType?: PlaylistType
   }
+  Euro: undefined
   OfferDescription: { id: number }
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
