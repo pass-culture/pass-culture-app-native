@@ -29,7 +29,8 @@ export const ScanView: FC = () => {
   const theme = useTheme()
 
   const [selectedButton, setSelectedButton] = useState<'barcode' | 'photo'>('barcode')
-  const [isTooltipVisible, setTooltipVisible] = useState(true)
+  const [isBarcodeTooltipVisible, setBarcodeTooltipVisible] = useState(true)
+  const [isPhotoTooltipVisible, setPhotoTooltipVisible] = useState(true)
 
   const isScanned = useRef<boolean>(false)
   const { hasPermission, requestPermission } = useCameraPermission()
@@ -70,18 +71,13 @@ export const ScanView: FC = () => {
 
   const handleBarcodeButtonClick = () => {
     setSelectedButton('barcode')
-    setTooltipVisible(true)
+    // setBarcodeTooltipVisible(true)
   }
 
   const handlePhotoButtonClick = () => {
     setSelectedButton('photo')
-    setTooltipVisible(true)
+    // setPhotoTooltipVisible(true)
   }
-
-  const tooltipText =
-    selectedButton === 'barcode'
-      ? "Scanne le code-barre d'un livre pour le trouver simplement dans l'application!"
-      : "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application!"
 
   // Déterminez la valeur de pointerAlign en fonction du bouton sélectionné
   const pointerAlign = selectedButton === 'barcode' ? 'left' : 'right'
@@ -116,14 +112,26 @@ export const ScanView: FC = () => {
         </ErrorBannerContainer>
       ) : null}
 
-      {isTooltipVisible ? (
+      {selectedButton === 'barcode' && isBarcodeTooltipVisible ? (
         <StyledTooltip
           bottom={bottom}
-          label={tooltipText}
+          label={"Scanne le code-barre d'un livre pour le trouver simplement dans l'application!"}
           pointerDirection="bottom"
           pointerAlign={pointerAlign}
-          isVisible={isTooltipVisible}
-          onCloseIconPress={() => setTooltipVisible(false)}
+          isVisible={isBarcodeTooltipVisible}
+          onCloseIconPress={() => setBarcodeTooltipVisible(false)}
+        />
+      ) : null}
+      {selectedButton === 'photo' && isPhotoTooltipVisible ? (
+        <StyledTooltip
+          bottom={bottom}
+          label={
+            "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application!"
+          }
+          pointerDirection="bottom"
+          pointerAlign={pointerAlign}
+          isVisible={isPhotoTooltipVisible}
+          onCloseIconPress={() => setPhotoTooltipVisible(false)}
         />
       ) : null}
 
@@ -242,7 +250,7 @@ const BlankScreen = styled.View`
   bottom: 0;
 `
 
-const Shadow = styled.View<{ top: number; bottom: number }>(({ theme, top, bottom }) => ({
+const Shadow = styled.View<{ top: number; bottom: number }>(({ top, bottom }) => ({
   top: 0,
   position: 'absolute',
   borderTopWidth: top + getSpacing(15),
@@ -280,10 +288,10 @@ const InnerCircle = styled.View`
   border-width: 1px;
   border-color: #f0f0f0; /* Slightly lighter inner circle border */
 `
-const ButtonPhotoContainer = styled.View<{ bottom: number }>(({ bottom, theme }) => ({
+const ButtonPhotoContainer = styled.View<{ bottom: number }>(({ bottom }) => ({
   position: 'absolute',
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  bottom: bottom + getSpacing(25),
+  bottom: bottom + getSpacing(27),
 }))
