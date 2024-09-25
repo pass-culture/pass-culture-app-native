@@ -16,6 +16,16 @@ export const AchievementDetails: FC = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'AchievementDetails'>>()
+  const confettiRef = useRef<LottieView>(null)
+
+  function triggerConfetti() {
+    confettiRef.current?.play(0)
+  }
+
+  useEffect(() => {
+    triggerConfetti()
+  }, [id])
+
   const { loadUserAchievements } = useLoadUserAchievement()
 
   const achievement = useAchievementDetails(id)

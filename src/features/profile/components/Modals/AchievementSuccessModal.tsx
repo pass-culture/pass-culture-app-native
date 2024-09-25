@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { Image } from 'react-native'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
+import LottieView from 'libs/lottie'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -12,6 +13,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
 
+import confetti from '../../api/Achievements/context/confetti.json'
 import ColoredBackground from '../../pages/Achievements/assets/Fond_de_couleur.png'
 
 interface Props {
@@ -21,6 +23,16 @@ interface Props {
 }
 
 export const AchievementSuccessModal: FunctionComponent<Props> = ({ visible, hideModal, id }) => {
+  const confettiRef = useRef<LottieView>(null)
+
+  function triggerConfetti() {
+    confettiRef.current?.play(0)
+  }
+
+  useEffect(() => {
+    triggerConfetti()
+  }, [id])
+
   const achievement = useAchievementDetails(id)
 
   if (!achievement) {
@@ -32,6 +44,13 @@ export const AchievementSuccessModal: FunctionComponent<Props> = ({ visible, hid
       title="Félicitations&nbsp;!"
       onCloseIconPress={hideModal}
       visible={visible}>
+      <StyledLottieView
+        ref={confettiRef}
+        source={confetti}
+        autoPlay={false}
+        loop={false}
+        resizeMode="cover"
+      />
       <Spacer.Column numberOfSpaces={4} />
       <IconsWrapper>
         <StyledImage source={ColoredBackground} resizeMode="contain" />
@@ -74,4 +93,14 @@ const StyledIcon = styled(Image)({
   position: 'absolute',
   height: getSpacing(50),
   width: getSpacing(50),
+})
+
+const StyledLottieView = styled(LottieView)({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 1000,
+  pointerEvents: 'none',
 })

@@ -83,7 +83,7 @@ export const AppNavigationContainer = () => {
   useEffect(() => {
     setTimeout(() => {
       fakeAchievementGateway.simulateCompletedAchievement('FIRST_ADD_FAVORITE')
-    }, 7000)
+    }, 2000)
   }, [])
 
   if (!isNavReady) {
