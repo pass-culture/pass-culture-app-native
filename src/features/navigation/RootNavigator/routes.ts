@@ -605,5 +605,5 @@ export const routes: RootRoute[] = [
     },
     options: { title: 'Page d’accueil thématique' },
   },
-  { name: 'Scan', component: ScanView },
+  { name: 'Scan', component: ScanView, pathConfig: { path: 'scan' } },
 ]

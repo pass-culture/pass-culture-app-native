@@ -30,6 +30,7 @@ export const ScanButton: FunctionComponent = () => {
     </React.Fragment>
   )
 }
+
 const StyledLinearGradient = styled(LinearGradient).attrs({
   useAngle: true,
   angle: 69,

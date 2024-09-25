@@ -17,6 +17,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Platform } from 'react-native'
 
 type Props = {
   from: Referrals
@@ -62,7 +63,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
         )}
       </TouchableContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <ScanButton />
+      {['android', 'ios'].includes(Platform.OS) ? <ScanButton /> : null}
     </Container>
   )
 }
