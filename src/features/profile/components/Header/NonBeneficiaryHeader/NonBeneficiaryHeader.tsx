@@ -21,6 +21,7 @@ import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
+import { useTranslation } from 'react-i18next'
 
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
@@ -31,9 +32,10 @@ function NonBeneficiaryHeaderComponent({
   eligibilityEndDatetime,
   eligibilityStartDatetime,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+  const { t } = useTranslation()
   return (
     <React.Fragment>
-      <PageHeader title="Mon profil" />
+      <PageHeader title={t("Mon profil")} />
       <NonBeneficiaryBanner
         eligibilityEndDatetime={eligibilityEndDatetime}
         eligibilityStartDatetime={eligibilityStartDatetime}

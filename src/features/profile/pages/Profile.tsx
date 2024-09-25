@@ -46,12 +46,14 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { useTranslation } from 'react-i18next'
 
 const isWeb = Platform.OS === 'web'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
+  const { t } = useTranslation();
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
   const signOut = useLogoutRoutine()
@@ -152,12 +154,12 @@ const OnlineProfile: React.FC = () => {
             <ProfileHeader user={user} />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
-              <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
+              <Section title={t(isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application')}>
                 <VerticalUl>
                   {isLoggedIn ? (
                     <Li>
                       <Row
-                        title="Informations personnelles"
+                        title={t("Informations personnelles")}
                         type="navigable"
                         navigateTo={{ screen: 'PersonalData' }}
                         icon={BicolorProfile}
@@ -167,7 +169,7 @@ const OnlineProfile: React.FC = () => {
                   <Li>
                     <Row
                       type="navigable"
-                      title="Notifications"
+                      title={t("Notifications")}
                       icon={Bell}
                       navigateTo={{ screen: 'NotificationsSettings' }}
                     />
@@ -178,7 +180,7 @@ const OnlineProfile: React.FC = () => {
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}
-                      title="Activer ma géolocalisation"
+                      title={t("Activer ma géolocalisation")}
                       active={isGeolocSwitchActive}
                       accessibilityDescribedBy={locationActivationErrorId}
                       toggle={() => {
@@ -197,12 +199,12 @@ const OnlineProfile: React.FC = () => {
                   </Li>
                 </VerticalUl>
               </Section>
-              <Section title="Aides">
+              <Section title={t("Aides")}>
                 <VerticalUl>
                   {shouldDisplayTutorial ? (
                     <Li>
                       <Row
-                        title="Comment ça marche&nbsp;?"
+                        title={t("Comment ça marche&nbsp;?")}
                         type="navigable"
                         navigateTo={tutorialNavigateTo}
                         onPress={() =>
@@ -214,7 +216,7 @@ const OnlineProfile: React.FC = () => {
                   ) : null}
                   <Li>
                     <Row
-                      title="Centre d’aide"
+                      title={t("Centre d’aide")}
                       type="clickable"
                       externalNav={{ url: env.FAQ_LINK }}
                       icon={ExternalSite}
@@ -222,11 +224,11 @@ const OnlineProfile: React.FC = () => {
                   </Li>
                 </VerticalUl>
               </Section>
-              <Section title="Autres">
+              <Section title={t("Autres")}>
                 <VerticalUl>
                   <Li>
                     <Row
-                      title="Accessibilité"
+                      title={t("Accessibilité")}
                       type="navigable"
                       navigateTo={{ screen: 'Accessibility' }}
                       icon={HandicapMental}
@@ -235,7 +237,7 @@ const OnlineProfile: React.FC = () => {
                   {displayInAppFeedback ? (
                     <Li>
                       <Row
-                        title="Faire une suggestion"
+                        title={t("Faire une suggestion")}
                         type="navigable"
                         navigateTo={{ screen: 'FeedbackInApp' }}
                         icon={Bulb}
@@ -244,7 +246,7 @@ const OnlineProfile: React.FC = () => {
                   ) : null}
                   <Li>
                     <Row
-                      title="Informations légales"
+                      title={t("Informations légales")}
                       type="navigable"
                       navigateTo={{ screen: 'LegalNotices' }}
                       icon={LegalNotices}
@@ -252,7 +254,7 @@ const OnlineProfile: React.FC = () => {
                   </Li>
                   <Li>
                     <Row
-                      title="Confidentialité"
+                      title={t("Confidentialité")}
                       type="navigable"
                       navigateTo={{ screen: 'ConsentSettings' }}
                       icon={Confidentiality}
@@ -261,7 +263,7 @@ const OnlineProfile: React.FC = () => {
                 </VerticalUl>
               </Section>
               {isWeb ? null : (
-                <Section title="Partager le pass Culture">
+                <Section title={t("Partager le pass Culture")}>
                   <Spacer.Column numberOfSpaces={4} />
                   <BannerWithBackground
                     backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
@@ -275,14 +277,14 @@ const OnlineProfile: React.FC = () => {
                   <Spacer.Column numberOfSpaces={4} />
                 </Section>
               )}
-              <Section title="Suivre le pass Culture">
+              <Section title={t("Suivre le pass Culture")}>
                 <SocialNetwork />
               </Section>
               {isLoggedIn ? (
                 <Section>
                   <Spacer.Column numberOfSpaces={4} />
                   <SectionRow
-                    title="Déconnexion"
+                    title={t("Déconnexion")}
                     onPress={signOut}
                     type="clickable"
                     icon={SignOut}
