@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useLoadAchievement } from 'features/profile/api/Achievements/application/useLoadAchievement'
 import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -17,15 +16,13 @@ export const AchievementDetails: FC = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'AchievementDetails'>>()
-  const { loadAchievements } = useLoadAchievement()
   const { loadUserAchievements } = useLoadUserAchievement()
 
   const achievement = useAchievementDetails(id)
 
   useEffect(() => {
-    loadAchievements()
     loadUserAchievements()
-  }, [loadAchievements, loadUserAchievements])
+  }, [loadUserAchievements])
 
   if (!achievement) {
     return null

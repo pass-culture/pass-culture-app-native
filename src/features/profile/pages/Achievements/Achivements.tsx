@@ -4,7 +4,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useLoadAchievement } from 'features/profile/api/Achievements/application/useLoadAchievement'
 import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -15,13 +14,12 @@ import { getSpacing, TypoDS } from 'ui/theme'
 export const Achievements = () => {
   const { badges } = useAchievements()
   const { uniqueColors } = useTheme()
-  const { loadAchievements } = useLoadAchievement()
+
   const { loadUserAchievements } = useLoadUserAchievement()
 
   useEffect(() => {
-    loadAchievements()
     loadUserAchievements()
-  }, [loadAchievements, loadUserAchievements])
+  }, [loadUserAchievements])
 
   return (
     <SecondaryPageWithBlurHeader title="Mes Succès">

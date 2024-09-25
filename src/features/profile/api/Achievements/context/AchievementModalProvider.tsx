@@ -45,11 +45,7 @@ export const AchievementModalProvider: FC<PropsWithChildren> = ({ children }) =>
   return (
     <AchievementModalContext.Provider value={value}>
       {children}
-      {id ? (
-        <React.Fragment>
-          <AchievementSuccessModal {...achievementModalProps} id={id} />
-        </React.Fragment>
-      ) : null}
+      {id ? <AchievementSuccessModal {...achievementModalProps} id={id} /> : null}
       <StyledLottieView
         ref={confettiRef}
         source={confetti}
