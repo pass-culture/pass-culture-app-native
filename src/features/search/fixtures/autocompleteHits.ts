@@ -324,3 +324,40 @@ export const mockHitRelevantResults: AlgoliaSuggestionHit = {
     },
   },
 }
+
+export const mockHitsWithDifferentCounts: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2627,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
+      analytics: {
+        'offer.nativeCategoryId': [
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+            count: 8,
+          },
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
+            count: 13,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 6172,
+          },
+        ],
+      },
+    },
+  },
+}
