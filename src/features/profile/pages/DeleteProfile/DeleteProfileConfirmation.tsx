@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useAnonymizeAccount } from 'features/profile/api/useAnonymizeAccount'
@@ -20,9 +21,11 @@ import { Spacer, Typo } from 'ui/theme'
 
 export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
   const { anonymizeAccount } = useAnonymizeAccount({
-    onSuccess: () => {
+    onSuccess: async () => {
+      await signOut()
       navigate('DeleteProfileSuccess')
     },
     onError: () => {
