@@ -1,4 +1,4 @@
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { env } from 'libs/environment'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -81,7 +81,7 @@ export const mockVenueHits = toMutable([
     postalCode: '56270',
     name: 'cinéma le Paradis',
     offerer_name: 'COMMUNE DE QUIBERON',
-    venue_type: 'MOVIE',
+    venue_type: VenueTypeCodeKey.MOVIE,
     description: '',
     audio_disability: false,
     mental_disability: false,

@@ -28,6 +28,10 @@ describe('Highlight component for a offer suggestion', () => {
     [env.ALGOLIA_OFFERS_INDEX_NAME]: {
       exact_nb_hits: 2,
       facets: {
+        exact_matches: {
+          'offer.nativeCategoryId': [],
+          'offer.searchGroupNamev2': [],
+        },
         analytics: {
           ['offer.searchGroupNamev2']: [
             {
@@ -67,14 +71,12 @@ describe('Highlight component for a venue suggestion', () => {
   const hit = mockVenueHits[0]
 
   it('should use highlight part for display', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight venueHit={hit} attribute="name" />)
 
     expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
   })
 
   it('should not use highlight history item part for display', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight venueHit={hit} attribute="name" />)
 
     expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()

@@ -12,7 +12,6 @@ import {
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
-  MappedNativeCategories,
   MappingTree,
   createMappingTree,
   getBooksGenreTypes,
@@ -341,6 +340,14 @@ export function getNativeCategories(
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
 }
 
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]]
+}[keyof T][]
+
+function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
+  return Object.entries(obj) as Entries<T>
+}
+
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
@@ -348,11 +355,9 @@ export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const tree = createMappingTree(subcategories, facets)
 
   const mappedNativeCategories =
-    searchGroup &&
-    searchGroup !== SearchGroupNameEnumv2.NONE &&
-    (tree[searchGroup].children as MappedNativeCategories)
+    searchGroup && searchGroup !== SearchGroupNameEnumv2.NONE && tree[searchGroup].children
 
-  const nativeCategories = mappedNativeCategories ? Object.entries(mappedNativeCategories) : []
+  const nativeCategories = mappedNativeCategories ? typedEntries(mappedNativeCategories) : []
 
   if (searchGroup === SearchGroupNameEnumv2.LIVRES) {
     const bookNativeCategories = nativeCategories.filter(
@@ -505,9 +510,10 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
   if (!offerCategories?.[0]) return CategoriesModalView.CATEGORIES
   const category = tree[offerCategories[0]]
   const nativeCategories = category?.children
-  const nativeCategory = offerNativeCategories?.[0]
-    ? nativeCategories?.[offerNativeCategories[0]]
-    : undefined
+  const nativeCategory =
+    offerNativeCategories?.[0] && nativeCategories
+      ? nativeCategories[offerNativeCategories[0] as keyof typeof nativeCategories]
+      : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
   if (offerNativeCategories?.length || nativeCategories)

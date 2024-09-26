@@ -8,7 +8,6 @@ describe('AutocompleteVenueItem component', () => {
   it('should call onPress on press', async () => {
     const pressHandler = jest.fn()
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<AutocompleteVenueItem hit={mockVenueHits[0]} onPress={pressHandler} />)
 
     await fireEvent.press(screen.getByTestId('autocompleteVenueItem_9898'))
