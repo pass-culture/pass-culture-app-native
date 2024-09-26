@@ -32,10 +32,12 @@
     ]
   },
   "scripts": {
-    "android": "react-native run-android --variant=developmentDebug --appId=app.passculture.testing",
-    "android:prod": "react-native run-android --variant=productionDebug --appId=app.passculture.webapp",
-    "android:staging": "react-native run-android --variant=stagingDebug --appId=app.passculture.staging",
-    "android:testing": "react-native run-android --variant=apptestingDebug --appId=app.passculture.testing",
+    "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
+    "android": "react-native run-android",
+    "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
+    "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
+    "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
+    "android:development": "yarn android --variant=developmentDebug --appId=app.passculture.testing",
     "appcenter:install": "./scripts/appcenter-download-release.sh",
     "build": "vite build",
     "build:development": "yarn build --mode=development",

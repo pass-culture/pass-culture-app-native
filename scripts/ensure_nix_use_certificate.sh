@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-CERTIFICATE_PATH="$(ls '/Library/Application Support'/*/*/data/*cacert.pem)"
+SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || true)"
 NIX_CONF="/etc/nix/nix.conf"
 
 is_nix_using_certificate() {
@@ -16,7 +16,7 @@ is_nix_configuration_generated() {
 
 add_certificate() {
 	sudo mkdir -p "$(dirname $NIX_CONF)"
-	echo "ssl-cert-file = $CERTIFICATE_PATH" | sudo tee -a "$NIX_CONF" >/dev/null
+	echo "ssl-cert-file = $SSL_CERT_FILE" | sudo tee -a "$NIX_CONF" >/dev/null
 }
 
 restart_nix() {
@@ -34,13 +34,13 @@ ensure_nix_use_certificate() {
 		exit 1
 	fi
 
-	echo 'Adding certificate for Nix in your system configuration require the root password'
+	echo 'Adding certificate for Nix in your system configuration requires the root password'
 
 	add_certificate
 
 	restart_nix
 }
 
-if [ -f "$CERTIFICATE_PATH" ]; then
+if [ -f "$SSL_CERT_FILE" ]; then
 	ensure_nix_use_certificate
 fi
