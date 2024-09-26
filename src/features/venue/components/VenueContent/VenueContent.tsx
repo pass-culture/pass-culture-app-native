@@ -1,6 +1,7 @@
 import React, { Fragment, useCallback, useEffect, useRef } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import Animated, { FadeOut, Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -29,6 +30,7 @@ type Props = {
   gtlPlaylists?: GtlPlaylistData[]
   venueOffers?: VenueOffers
   videoSectionVisible?: boolean
+  onCloseVideoFakeDoor?: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
@@ -39,6 +41,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   gtlPlaylists,
   venueOffers,
   videoSectionVisible,
+  onCloseVideoFakeDoor,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -77,6 +80,11 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const isLargeScreen = isDesktopViewport || isTabletViewport
   const { visible, hideModal, showModal } = useModal()
 
+  const closeModal = () => {
+    onCloseVideoFakeDoor?.()
+    hideModal()
+  }
+
   const shouldDisplayCTA =
     (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
@@ -84,7 +92,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     <Fragment>
       <SurveyModal
         Icon={BicolorCircledClock}
-        hideModal={hideModal}
+        hideModal={closeModal}
         visible={visible}
         title={VENUE_VIDEO_FAKEDOOR_DATA.title}
         surveyDescription={VENUE_VIDEO_FAKEDOOR_DATA.description}
@@ -104,14 +112,18 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             <VenueTopComponent venue={venue} />
             <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
             {videoSectionVisible ? (
-              <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
+              <Animated.View exiting={FadeOut.duration(200)}>
+                <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
+              </Animated.View>
             ) : null}
-            <VenueBody
-              venue={venue}
-              playlists={gtlPlaylists}
-              venueOffers={venueOffers}
-              shouldDisplayCTA={shouldDisplayCTA}
-            />
+            <Animated.View layout={Layout.duration(200)}>
+              <VenueBody
+                venue={venue}
+                playlists={gtlPlaylists}
+                venueOffers={venueOffers}
+                shouldDisplayCTA={shouldDisplayCTA}
+              />
+            </Animated.View>
           </ContentContainer>
         </AnchorProvider>
         {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}

@@ -33,6 +33,7 @@ export type StorageKey =
   | 'times_cultural_survey_has_been_requested'
   | 'times_user_subscribed_to_a_theme'
   | 'times_music_live_booking_survey_has_been_displayed'
+  | '@passculture.venue.video_seen'
 
 export const storage = {
   clear,
