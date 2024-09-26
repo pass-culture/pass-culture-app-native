@@ -2,6 +2,7 @@ import React from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import styled from 'styled-components/native'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { CreateHistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
@@ -12,22 +13,29 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteOfferProps = UseInfiniteHitsProps & {
   addSearchHistory: (item: CreateHistoryItem) => void
+  offerCategories?: SearchGroupNameEnumv2[]
+  shouldShowCategory?: boolean
 }
 
-export function AutocompleteOffer({ addSearchHistory, ...props }: AutocompleteOfferProps) {
+export function AutocompleteOffer({
+  addSearchHistory,
+  offerCategories,
+  ...props
+}: AutocompleteOfferProps) {
   const { hits, sendEvent } = useInfiniteHits(props)
 
   return hits.length > 0 ? (
     <React.Fragment>
       <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
       <StyledVerticalUl>
-        {hits.map((item, index) => (
+        {hits.map((item) => (
           <Li key={item.objectID}>
             <AutocompleteOfferItem
               hit={item as unknown as AlgoliaSuggestionHit}
               sendEvent={sendEvent}
               addSearchHistory={addSearchHistory}
-              shouldShowCategory={index < 3}
+              shouldShowCategory
+              offerCategories={offerCategories || []}
             />
           </Li>
         ))}

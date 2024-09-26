@@ -107,7 +107,7 @@ export const SearchSuggestions = ({
         removeItem={removeFromHistory}
         onPress={onPressHistoryItem}
       />
-      <AutocompleteOffer addSearchHistory={addToHistory} />
+      <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
       <Index indexName={currentVenuesIndex}>
         <Configure
           hitsPerPage={5}

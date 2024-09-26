@@ -17,6 +17,10 @@ export const mockHit = {
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        ['offer.searchGroupNamev2']: [],
+        ['offer.nativeCategoryId']: [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -39,11 +43,15 @@ export const mockHit = {
   },
 } as AlgoliaSuggestionHit
 
-export const mockHitSeveralCategoriesWithAssociationToNativeCategory = {
+export const mockHitSeveralCategoriesWithAssociationToNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -66,11 +74,15 @@ export const mockHitSeveralCategoriesWithAssociationToNativeCategory = {
   },
 }
 
-export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory = {
+export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -93,11 +105,15 @@ export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory = {
   },
 }
 
-export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
+export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -120,11 +136,15 @@ export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
   },
 }
 
-export const mockHitWithoutCategoryAndNativeCategory = {
+export const mockHitWithoutCategoryAndNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [],
         ['offer.nativeCategoryId']: [],
@@ -133,11 +153,15 @@ export const mockHitWithoutCategoryAndNativeCategory = {
   },
 }
 
-export const mockHitWithOnlyCategory = {
+export const mockHitWithOnlyCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -153,11 +177,15 @@ export const mockHitWithOnlyCategory = {
   },
 }
 
-export const mockHitUnknownNativeCategory = {
+export const mockHitUnknownNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -180,11 +208,15 @@ export const mockHitUnknownNativeCategory = {
   },
 }
 
-export const mockHitUnknownCategory = {
+export const mockHitUnknownCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -200,11 +232,15 @@ export const mockHitUnknownCategory = {
   },
 }
 
-export const mockHitUnknownNativeCategoryAndCategory = {
+export const mockHitUnknownNativeCategoryAndCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {
     exact_nb_hits: 2,
     facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
       analytics: {
         ['offer.searchGroupNamev2']: [
           {
@@ -220,6 +256,68 @@ export const mockHitUnknownNativeCategoryAndCategory = {
             operator: '',
             value: 'CD_VINYLES' as NativeCategoryIdEnumv2,
             count: 10,
+          },
+        ],
+      },
+    },
+  },
+}
+
+export const mockHitIrrelevantResult: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 207894,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
+      analytics: {
+        'offer.nativeCategoryId': [
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
+            count: 250,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 3153,
+          },
+        ],
+      },
+    },
+  },
+}
+
+export const mockHitRelevantResults: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2627,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
+      analytics: {
+        'offer.nativeCategoryId': [
+          {
+            attribute: 'offer.nativeCategoryId',
+            operator: ':',
+            value: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+            count: 8,
+          },
+        ],
+        'offer.searchGroupNamev2': [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 6172,
           },
         ],
       },
