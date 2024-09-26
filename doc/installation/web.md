@@ -6,4 +6,6 @@ To run the **pass Culture** web application on your browser, simply run:
 
 You can choose between multiple environments (development, testing, staging, integration & production). See `package.json` to see the available scripts.
 
+The web app doesn't work locally with some adblocker (uBlock Origin)
+
 For more information about the web app setup, [read more here](../development/general-info-web.md).
