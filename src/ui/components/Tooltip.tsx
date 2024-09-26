@@ -17,7 +17,7 @@ type Props = {
   label: string
   isVisible?: boolean
   pointerDirection?: 'top' | 'bottom'
-  pointerAlign?: 'left' | 'right' // Ajout de la prop pour définir l'alignement de la flèche
+  pointerAlign?: 'left' | 'right'
   onHide?: () => void
   onCloseIconPress?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
@@ -27,7 +27,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   label,
   isVisible,
   pointerDirection = 'top',
-  pointerAlign = 'left', // Valeur par défaut à 'left'
+  pointerAlign = 'left',
   onHide,
   onCloseIconPress,
   style,
@@ -83,13 +83,12 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
   )
 }
 
-// Mise à jour du StyledPointer pour prendre en compte pointerAlign
 const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection' | 'pointerAlign'>>(
   ({ pointerDirection, pointerAlign }) => ({
     position: 'relative',
-    alignSelf: pointerAlign === 'right' ? 'flex-end' : 'flex-start', // Gestion de l'alignement
-    [pointerAlign === 'right' ? 'right' : 'left']: getSpacing(3.5), // Applique left ou right
-    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined, // Rotation si nécessaire
+    alignSelf: pointerAlign === 'right' ? 'flex-end' : 'flex-start',
+    [pointerAlign === 'right' ? 'right' : 'left']: getSpacing(3.5),
+    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
   })
 )
 

@@ -78,7 +78,7 @@
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:933
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:231
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
-./src/features/search/api/useSearchResults/useSearchResults.ts:106
+./src/features/search/api/useSearchResults/useSearchResults.ts:110
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:128
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:131
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:138

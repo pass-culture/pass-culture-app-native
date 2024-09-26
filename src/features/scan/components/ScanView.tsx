@@ -86,7 +86,14 @@ export const ScanView: FC = () => {
         takenPhoto?.path ? (
           <StyledImage source={{ uri: `file://${takenPhoto.path}` }} />
         ) : (
-          <StyledCamera device={device} isActive codeScanner={codeScanner} format={format} ref={camera} photo />
+          <StyledCamera
+            device={device}
+            isActive
+            codeScanner={codeScanner}
+            format={format}
+            ref={camera}
+            photo
+          />
         )
       ) : (
         <BlankScreen />
@@ -98,35 +105,33 @@ export const ScanView: FC = () => {
         <RoundedButton iconName="back" onPress={goBack} accessibilityLabel="Revenir en arrière" />
       </GoBackButtonContainer>
 
-      {showErrorBanner && (
+      {showErrorBanner ? (
         <ErrorBannerContainer bottom={bottom}>
           <ErrorBanner message="Code-barre non reconnu" />
         </ErrorBannerContainer>
-      )}
+      ) : null}
 
-      {selectedButton === 'barcode' && isBarcodeTooltipVisible && (
+      {selectedButton === 'barcode' && isBarcodeTooltipVisible ? (
         <StyledTooltip
           bottom={bottom}
-          label="Scanne le code-barre d'un livre pour le trouver simplement dans l'application"
+          label="Scanne le code-barre d’un livre pour le trouver simplement dans l’application"
           pointerDirection="bottom"
           pointerAlign={pointerAlign}
           isVisible={isBarcodeTooltipVisible}
           onCloseIconPress={() => setBarcodeTooltipVisible(false)}
         />
-      )}
+      ) : null}
 
-
-      {selectedButton === 'photo' && isPhotoTooltipVisible && (
+      {selectedButton === 'photo' && isPhotoTooltipVisible ? (
         <StyledTooltip
           bottom={bottom}
-          label=
-          "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application"
+          label="Prend une photo d’un article, d’une affiche ou d’un lieu culturel pour le trouver simplement dans l’application"
           pointerDirection="bottom"
           pointerAlign={pointerAlign}
           isVisible={isPhotoTooltipVisible}
           onCloseIconPress={() => setPhotoTooltipVisible(false)}
         />
-      )}
+      ) : null}
 
       <BottomContainer bottom={bottom}>
         <StyledTouchable
@@ -146,13 +151,13 @@ export const ScanView: FC = () => {
         </StyledTouchable>
       </BottomContainer>
 
-      {selectedButton === 'photo' && (
+      {selectedButton === 'photo' ? (
         <ButtonPhotoContainer bottom={bottom}>
           <ButtonPhoto onPress={onPress}>
             <InnerCircle />
           </ButtonPhoto>
         </ButtonPhotoContainer>
-      )}
+      ) : null}
     </Container>
   )
 }
@@ -225,7 +230,6 @@ const StyledCamera = styled(Camera)({
   right: '0',
   bottom: '0',
 })
-
 
 const StyledImage = styled(Image)({
   position: 'absolute',
