@@ -32,7 +32,10 @@ export type SearchOfferHits = {
   duplicatedOffers: Offer[]
 }
 
-export const useSearchInfiniteQuery = (searchState: SearchState) => {
+export const useSearchInfiniteQuery = (
+  searchState: SearchState,
+  options?: { enabled?: boolean }
+) => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
@@ -81,6 +84,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       getNextPageParam: ({ offers: { nbPages, page } }) => {
         return page + 1 < nbPages ? page + 1 : undefined
       },
+      ...options,
     }
   )
 

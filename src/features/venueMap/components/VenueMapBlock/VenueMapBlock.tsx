@@ -3,6 +3,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { ScanButton } from 'features/scan/ScanButton'
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
 import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
@@ -16,6 +17,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Platform } from 'react-native'
 
 type Props = {
   from: Referrals
@@ -60,6 +62,8 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
           </StyledImageBackground>
         )}
       </TouchableContainer>
+      <Spacer.Column numberOfSpaces={4} />
+      {['android', 'ios'].includes(Platform.OS) ? <ScanButton /> : null}
     </Container>
   )
 }
@@ -79,6 +83,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: bo
 )
 
 const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  flex: 1,
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   borderColor: theme.colors.greyMedium,
@@ -91,8 +96,8 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
     borderRadius: theme.borderRadius.radius,
   },
 }))({
-  width: '100%',
-  height: getSpacing(25),
+  flex: 1,
+  height: getSpacing(20),
 })
 
 const StyledLinearGradient = styled(LinearGradient).attrs({

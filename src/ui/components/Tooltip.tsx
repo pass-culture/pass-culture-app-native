@@ -17,6 +17,7 @@ type Props = {
   label: string
   isVisible?: boolean
   pointerDirection?: 'top' | 'bottom'
+  pointerAlign?: 'left' | 'right'
   onHide?: () => void
   onCloseIconPress?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
@@ -26,6 +27,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   label,
   isVisible,
   pointerDirection = 'top',
+  pointerAlign = 'left',
   onHide,
   onCloseIconPress,
   style,
@@ -56,7 +58,7 @@ export const Tooltip: FunctionComponent<Props> = ({
       ref={containerRef}
       accessibilityRole={AccessibilityRole.TOOLTIP}
       pointerDirection={pointerDirection}>
-      <StyledPointer pointerDirection={pointerDirection} />
+      <StyledPointer pointerDirection={pointerDirection} pointerAlign={pointerAlign} />
       <Background>
         <StyledText>{label}</StyledText>
         <StyledClearContainer
@@ -81,12 +83,14 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
   )
 }
 
-const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(({ pointerDirection }) => ({
-  position: 'relative',
-  alignSelf: 'flex-end',
-  right: getSpacing(3.5),
-  transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
-}))
+const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection' | 'pointerAlign'>>(
+  ({ pointerDirection, pointerAlign }) => ({
+    position: 'relative',
+    alignSelf: pointerAlign === 'right' ? 'flex-end' : 'flex-start',
+    [pointerAlign === 'right' ? 'right' : 'left']: getSpacing(3.5),
+    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
+  })
+)
 
 const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>(
   ({ pointerDirection }) => ({
