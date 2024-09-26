@@ -13,7 +13,12 @@ import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type SizeProp = keyof AppThemeType['tiles']['sizes']
-type StyleProps = { size: SizeProp; borderRadius?: number; withStroke?: boolean }
+type StyleProps = {
+  size: SizeProp
+  borderRadius?: number
+  withStroke?: boolean
+  withShadow?: boolean
+}
 
 type Props = {
   imageUrl?: string
@@ -22,6 +27,7 @@ type Props = {
   borderRadius?: number
   withStroke?: boolean
   withContainerStroke?: boolean
+  withShadow?: boolean
 }
 
 export const OfferImage: React.FC<Props> = ({
@@ -31,11 +37,16 @@ export const OfferImage: React.FC<Props> = ({
   borderRadius,
   withStroke,
   withContainerStroke,
+  withShadow = true,
 }) => {
   const Icon = mapCategoryToIcon(categoryId || null)
 
   return (
-    <Container size={size} borderRadius={borderRadius} withStroke={withContainerStroke}>
+    <Container
+      size={size}
+      borderRadius={borderRadius}
+      withStroke={withContainerStroke}
+      withShadow={withShadow}>
       {imageUrl ? (
         <StyledFastImage
           url={imageUrl}
@@ -71,22 +82,24 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
 }))``
 
-const Container = styled.View<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
-  borderRadius: borderRadius || theme.tiles.borderRadius,
-  ...theme.tiles.sizes[size],
-  ...(Platform.OS === 'web'
-    ? {}
-    : getShadow({
-        shadowOffset: { width: 0, height: getSpacing(1) },
-        shadowRadius: getSpacing(1),
-        shadowColor: theme.colors.greyDark,
-        shadowOpacity: 0.2,
-      })),
-  backgroundColor: theme.colors.white,
-  ...(withStroke
-    ? {
-        borderWidth: 1,
-        borderColor: theme.colors.greySemiDark,
-      }
-    : {}),
-}))
+const Container = styled.View<StyleProps>(
+  ({ theme, size, borderRadius, withStroke, withShadow }) => ({
+    borderRadius: borderRadius || theme.tiles.borderRadius,
+    ...theme.tiles.sizes[size],
+    ...(!withShadow || Platform.OS === 'web'
+      ? {}
+      : getShadow({
+          shadowOffset: { width: 0, height: getSpacing(1) },
+          shadowRadius: getSpacing(1),
+          shadowColor: theme.colors.greyDark,
+          shadowOpacity: 0.2,
+        })),
+    backgroundColor: theme.colors.white,
+    ...(withStroke
+      ? {
+          borderWidth: 1,
+          borderColor: theme.colors.greySemiDark,
+        }
+      : {}),
+  })
+)
