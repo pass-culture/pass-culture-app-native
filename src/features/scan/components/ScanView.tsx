@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { Image, View } from 'react-native'
+import { Image } from 'react-native'
 import {
   Camera,
   PhotoFile,
@@ -31,10 +30,10 @@ export const ScanView: FC = () => {
   const [selectedButton, setSelectedButton] = useState<'barcode' | 'photo'>('barcode')
   const [isBarcodeTooltipVisible, setBarcodeTooltipVisible] = useState(true)
   const [isPhotoTooltipVisible, setPhotoTooltipVisible] = useState(true)
+  const [takenPhoto, setTakenPhoto] = useState<PhotoFile | undefined>(undefined)
 
   const isScanned = useRef<boolean>(false)
   const { hasPermission, requestPermission } = useCameraPermission()
-  const [takenPhoto, setTakenPhoto] = useState<PhotoFile | undefined>(undefined)
   const { search, showErrorBanner, searchByImage, isLoading } = useScanSearch()
 
   const { top, bottom } = useCustomSafeInsets()
@@ -42,6 +41,7 @@ export const ScanView: FC = () => {
   const device = useCameraDevice('back')
   const format = useCameraFormat(device, [{ photoResolution: 'max' }, { videoResolution: 'max' }])
   const camera = useRef<Camera>(null)
+
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
     onCodeScanned: async (codes) => {
@@ -72,24 +72,19 @@ export const ScanView: FC = () => {
 
   const handleBarcodeButtonClick = () => {
     setSelectedButton('barcode')
-    // setBarcodeTooltipVisible(true)
   }
 
   const handlePhotoButtonClick = () => {
     setSelectedButton('photo')
-    // setPhotoTooltipVisible(true)
   }
 
-  // Déterminez la valeur de pointerAlign en fonction du bouton sélectionné
   const pointerAlign = selectedButton === 'barcode' ? 'left' : 'right'
 
   return (
     <Container>
       {hasPermission && device && !isLoading ? (
         takenPhoto?.path ? (
-          <React.Fragment>
-            <StyledImage source={{ uri: `file://${takenPhoto.path}` }} />
-          </React.Fragment>
+          <StyledImage source={{ uri: `file://${takenPhoto.path}` }} />
         ) : (
           <StyledCamera device={device} isActive codeScanner={codeScanner} format={format} ref={camera} photo />
         )
@@ -97,41 +92,41 @@ export const ScanView: FC = () => {
         <BlankScreen />
       )}
 
-      <Shadow top={top} bottom={bottom} />
+      <HeaderShadow top={top} bottom={bottom} />
 
       <GoBackButtonContainer top={top}>
         <RoundedButton iconName="back" onPress={goBack} accessibilityLabel="Revenir en arrière" />
       </GoBackButtonContainer>
 
-      {showErrorBanner ? (
+      {showErrorBanner && (
         <ErrorBannerContainer bottom={bottom}>
-          <Spacer.Column numberOfSpaces={5} />
           <ErrorBanner message="Code-barre non reconnu" />
         </ErrorBannerContainer>
-      ) : null}
+      )}
 
-      {selectedButton === 'barcode' && isBarcodeTooltipVisible ? (
+      {selectedButton === 'barcode' && isBarcodeTooltipVisible && (
         <StyledTooltip
           bottom={bottom}
-          label={"Scanne le code-barre d'un livre pour le trouver simplement dans l'application!"}
+          label="Scanne le code-barre d'un livre pour le trouver simplement dans l'application"
           pointerDirection="bottom"
           pointerAlign={pointerAlign}
           isVisible={isBarcodeTooltipVisible}
           onCloseIconPress={() => setBarcodeTooltipVisible(false)}
         />
-      ) : null}
-      {selectedButton === 'photo' && isPhotoTooltipVisible ? (
+      )}
+
+
+      {selectedButton === 'photo' && isPhotoTooltipVisible && (
         <StyledTooltip
           bottom={bottom}
-          label={
-            "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application!"
-          }
+          label=
+          "Prend une photo d'un article, d'une affiche ou d'un lieu culturel pour le trouver simplement dans l'application"
           pointerDirection="bottom"
           pointerAlign={pointerAlign}
           isVisible={isPhotoTooltipVisible}
           onCloseIconPress={() => setPhotoTooltipVisible(false)}
         />
-      ) : null}
+      )}
 
       <BottomContainer bottom={bottom}>
         <StyledTouchable
@@ -151,13 +146,13 @@ export const ScanView: FC = () => {
         </StyledTouchable>
       </BottomContainer>
 
-      {selectedButton === 'photo' ? (
+      {selectedButton === 'photo' && (
         <ButtonPhotoContainer bottom={bottom}>
           <ButtonPhoto onPress={onPress}>
             <InnerCircle />
           </ButtonPhoto>
         </ButtonPhotoContainer>
-      ) : null}
+      )}
     </Container>
   )
 }
@@ -223,32 +218,33 @@ const GoBackButtonContainer = styled.View<{ top: number }>(({ theme, top }) => (
   left: theme.contentPage.marginHorizontal,
 }))
 
-const StyledCamera = styled(Camera)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`
+const StyledCamera = styled(Camera)({
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
+})
 
-const StyledImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`
 
-const BlankScreen = styled.View`
-  background-color: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`
+const StyledImage = styled(Image)({
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
+})
 
-const Shadow = styled.View<{ top: number; bottom: number }>(({ top, bottom }) => ({
+const BlankScreen = styled.View({
+  backgroundColor: 'black',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
+})
+
+const HeaderShadow = styled.View<{ top: number; bottom: number }>(({ top, bottom }) => ({
   top: 0,
   position: 'absolute',
   borderTopWidth: top + getSpacing(15),
@@ -259,33 +255,26 @@ const Shadow = styled.View<{ top: number; bottom: number }>(({ top, bottom }) =>
   bottom,
 }))
 
-const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
-  headerHeight: number
-}>(({ headerHeight }) => ({
-  flex: 1,
-  paddingTop: headerHeight,
+const ButtonPhoto = styled.TouchableOpacity({
+  width: '80px',
+  height: '80px',
+  borderRadius: '40px',
+  backgroundColor: '#fff',
   justifyContent: 'center',
-}))
+  alignItems: 'center',
+  borderWidth: '5px',
+  borderColor: '#d9d9d9',
+})
 
-const ButtonPhoto = styled.TouchableOpacity`
-  width: 80px;
-  height: 80px;
-  border-radius: 40px; /* Makes it circular */
-  background-color: #fff;
-  justify-content: center;
-  align-items: center;
-  border-width: 5px;
-  border-color: #d9d9d9; /* Light gray border like iPhone button */
-`
+const InnerCircle = styled.View({
+  width: '60px',
+  height: '60px',
+  borderRadius: '30px',
+  backgroundColor: '#fff',
+  borderWidth: '1px',
+  borderColor: '#f0f0f0',
+})
 
-const InnerCircle = styled.View`
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  background-color: #fff;
-  border-width: 1px;
-  border-color: #f0f0f0; /* Slightly lighter inner circle border */
-`
 const ButtonPhotoContainer = styled.View<{ bottom: number }>(({ bottom }) => ({
   position: 'absolute',
   width: '100%',
@@ -293,3 +282,11 @@ const ButtonPhotoContainer = styled.View<{ bottom: number }>(({ bottom }) => ({
   alignItems: 'center',
   bottom: bottom + getSpacing(27),
 }))
+
+// const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
+//   headerHeight: number
+// }>(({ headerHeight }) => ({
+//   flex: 1,
+//   paddingTop: headerHeight,
+//   justifyContent: 'center',
+// }))
