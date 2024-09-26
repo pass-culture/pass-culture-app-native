@@ -27,9 +27,9 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
           <Spacer.Column numberOfSpaces={6} />
           {offerImagesWithUrl.length > 4 ? <ImagesContainerGradient /> : null}
           <ImagesContainer gap={2} testID="imagesContainer">
-            {offerImages.map((offerImage, index) => (
+            {offerImages.map((offerImage) => (
               <OfferImage
-                key={index}
+                key={offerImage.imageUrl}
                 imageUrl={offerImage.imageUrl}
                 categoryId={offerImage.categoryId}
                 withContainerStroke={offerImage.imageUrl === ''}
