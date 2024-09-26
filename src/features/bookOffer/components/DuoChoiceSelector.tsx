@@ -9,7 +9,10 @@ import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/use
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { Error } from 'ui/svg/icons/Error'
+import { TextInput } from 'ui/components/inputs/TextInput'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
@@ -33,10 +36,29 @@ export const DuoChoiceSelector: React.FC = () => {
   }
 
   return (
-    <DuoChoiceContainer testID="DuoChoiceSelector">
-      <DuoChoice {...getChoiceInfosForQuantity(1)} testID="DuoChoice1" />
-      {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
-    </DuoChoiceContainer>
+    <React.Fragment>
+      <DuoChoiceContainer testID="DuoChoiceSelector">
+        <DuoChoice {...getChoiceInfosForQuantity(1)} testID="DuoChoice1" />
+        {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
+      </DuoChoiceContainer>
+
+      {bookingState.quantity === 2 ?
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <InfoBanner message="Invite un proche pour t'accompagner à cet évènement !" icon={Error}></InfoBanner>
+          <Spacer.Column numberOfSpaces={6} />
+          <TextInput
+            autoCapitalize="none"
+            autoComplete="email"
+            keyboardType="email-address"
+            label="Adresse e-mail de ton accompagnant.e"
+            onChangeText={() => undefined}
+            placeholder="tabelletante@email.com"
+            textContentType="emailAddress"
+            maxLength={120}
+          />
+        </React.Fragment> : null}
+    </React.Fragment>
   )
 }
 
