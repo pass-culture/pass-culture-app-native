@@ -152,7 +152,7 @@ describe('IncomingReactionModalContainer', () => {
     })
   })
 
-  it('should send reaction with NO_REACTION when closing modalfrom offer has subcategory in reactionCategories remote config', async () => {
+  it('should send reaction with NO_REACTION when closing modal from offer has subcategory in reactionCategories remote config', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
     mockUseBookings.mockReturnValueOnce({
       data: {

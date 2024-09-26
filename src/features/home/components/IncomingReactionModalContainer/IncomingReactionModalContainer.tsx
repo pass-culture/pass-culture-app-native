@@ -2,13 +2,14 @@ import React, { useCallback } from 'react'
 
 import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
-import { TWENTY_FOUR_HOURS } from 'features/home/constants'
+import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
-import { ReactionFromEnum } from 'features/reactions/enum'
+import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
+import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const IncomingReactionModalContainer = () => {
@@ -17,17 +18,25 @@ export const IncomingReactionModalContainer = () => {
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
   const subcategoriesMapping = useSubcategoriesMapping()
-  const now = new Date()
+  const mapping = useCategoryIdMapping()
 
   const bookingsWithoutReaction =
-    bookings?.ended_bookings?.filter(({ dateUsed, userReaction }) => {
-      if (!dateUsed || userReaction !== null) return false
+    bookings?.ended_bookings?.filter((booking) =>
+      filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
+    ) ?? []
 
-      const elapsedTime = now.getTime() - new Date(dateUsed).getTime()
-      return elapsedTime > TWENTY_FOUR_HOURS
-    }) ?? []
+  const offerImages: OfferImageBasicProps[] = bookingsWithoutReaction.map((current) => {
+    return {
+      imageUrl: current.stock.offer.image?.url ?? '',
+      categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
+    }
+  })
 
   const firstBooking = bookingsWithoutReaction[0]
+  const reactionChoiceModalBodyType =
+    bookingsWithoutReaction.length === 1
+      ? ReactionChoiceModalBodyEnum.VALIDATION
+      : ReactionChoiceModalBodyEnum.REDIRECTION
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: PostOneReactionRequest) => {
@@ -40,40 +49,38 @@ export const IncomingReactionModalContainer = () => {
     [addReaction]
   )
 
-  const handleCloseModal = useCallback(() => {
-    if (!firstBooking) return
+  const handleCloseModalWithUpdate = () => {
+    if (bookingsWithoutReaction.length === 0) return
+
+    const reactions = bookingsWithoutReaction.map((booking) => ({
+      offerId: booking.stock.offer.id,
+      reactionType: ReactionTypeEnum.NO_REACTION,
+    }))
 
     addReaction({
-      reactions: [
-        {
-          offerId: firstBooking.stock.offer.id,
-          reactionType: ReactionTypeEnum.NO_REACTION,
-        },
-      ],
+      reactions,
     })
 
     hideReactionModal()
-  }, [addReaction, firstBooking, hideReactionModal])
+  }
 
   if (!firstBooking) return null
 
   const { stock, dateUsed } = firstBooking
   const { offer } = stock
-  const subcategory = subcategoriesMapping[offer.subcategoryId]
-
-  const isEligibleCategory = reactionCategories.categories.includes(subcategory.nativeCategoryId)
-
-  if (!isEligibleCategory) return null
 
   return (
     <ReactionChoiceModal
       offer={offer}
       dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
-      closeModal={handleCloseModal}
+      closeModalWithUpdate={handleCloseModalWithUpdate}
+      closeModal={hideReactionModal}
       visible={reactionModalVisible}
       defaultReaction={null}
       onSave={handleSaveReaction}
       from={ReactionFromEnum.HOME}
+      bodyType={reactionChoiceModalBodyType}
+      offerImages={offerImages}
     />
   )
 }
