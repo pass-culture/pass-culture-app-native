@@ -1,6 +1,7 @@
 # also update on Sentry https://sentry.passculture.team/settings/sentry/projects/application-native/ownership/
 
-src/features/accessibility                           @pass-culture/jeunes-conversion
+src/features/accessibility/                          @pass-culture/jeunes-conversion
+src/features/artist/                                 @pass-culture/jeunes-decouverte
 src/features/auth/                                   @pass-culture/jeunes-activation
 src/features/birthdayNotifications/                  @pass-culture/jeunes-conversion
 src/features/bookings/                               @pass-culture/jeunes-conversion
@@ -13,15 +14,15 @@ src/features/gtlPlaylist/                            @pass-culture/jeunes-conver
 src/features/home/                                   @pass-culture/jeunes-decouverte
 src/features/identityCheck/                          @pass-culture/jeunes-activation
 src/features/internal/marketingAndCommunication/     @pass-culture/jeunes-decouverte
-src/features/location                                @pass-culture/jeunes-conversion
+src/features/location/                               @pass-culture/jeunes-conversion
 src/features/notifications/                          @pass-culture/jeunes-activation
 src/features/offer/                                  @pass-culture/jeunes-decouverte
 src/features/profile/                                @pass-culture/jeunes-activation
 src/features/reactions/                              @pass-culture/jeunes-decouverte
 src/features/search/                                 @pass-culture/jeunes-conversion
 src/features/share/                                  @pass-culture/jeunes-activation
-src/features/subscription                            @pass-culture/jeunes-activation
+src/features/subscription/                           @pass-culture/jeunes-activation
 src/features/trustedDevice/                          @pass-culture/jeunes-activation
 src/features/tutorial/                               @pass-culture/jeunes-activation
 src/features/venue/                                  @pass-culture/jeunes-decouverte
-src/features/venueMap                                @pass-culture/jeunes-decouverte
+src/features/venueMap/                               @pass-culture/jeunes-decouverte
