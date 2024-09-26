@@ -24,4 +24,24 @@ describe('ReactionChoiceModalBodyWithRedirection', () => {
 
     expect(screen.queryByTestId('imagesContainer')).not.toBeOnTheScreen()
   })
+
+  it('should display thumbs image when there are not offer booked with an image', () => {
+    render(
+      <ReactionChoiceModalBodyWithRedirection
+        offerImages={[{ imageUrl: '', categoryId: CategoryIdEnum.CINEMA }]}
+      />
+    )
+
+    expect(screen.getByTestId('thumbsImage')).toBeOnTheScreen()
+  })
+
+  it('should not display thumbs image when there is at least one offer booked with an image', () => {
+    render(
+      <ReactionChoiceModalBodyWithRedirection
+        offerImages={[{ imageUrl: 'url', categoryId: CategoryIdEnum.CINEMA }]}
+      />
+    )
+
+    expect(screen.queryByTestId('thumbsImage')).not.toBeOnTheScreen()
+  })
 })
