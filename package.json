@@ -50,6 +50,7 @@
     "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client.sh",
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
+    "preios": "./scripts/check_xcode_version.sh",
     "ios": "react-native run-ios",
     "ios:prod": "yarn ios --scheme PassCulture-Production",
     "ios:staging": "yarn ios --scheme PassCulture-Staging",
