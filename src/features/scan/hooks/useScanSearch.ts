@@ -12,7 +12,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 
 // const API_URL = 'https://hackathon-image-search-815655901630.europe-west1.run.app/predict'
-const API_URL = 'http://10.2.9.130:8000/predict' // local
+const API_URL = 'http://10.2.9.130:8000/predict'
 
 export const useScanSearch = () => {
   const { searchState, dispatch, resetSearch } = useSearch()
@@ -99,23 +99,23 @@ export const useScanSearch = () => {
   return { search, isLoading: isSearchByISBNLoading || isLoading, showErrorBanner, searchByImage }
 }
 
-const r: Response = {
-  item_id: 'offer-89941585',
-  offer_id: '89941585',
-  offer_name: 'Blue Lock tome 1',
-  vector_norm: 0.9999998907920478,
-  _distance: 0.2853059768676758,
-  url: 'https://passculture.app/offre/89941585',
-}
+// const r: Response = {
+//   item_id: 'offer-89941585',
+//   offer_id: '89941585',
+//   offer_name: 'Blue Lock tome 1',
+//   vector_norm: 0.9999998907920478,
+//   _distance: 0.2853059768676758,
+//   url: 'https://passculture.app/offre/89941585',
+// }
 
-type Response = {
-  item_id: string
-  offer_id: string
-  offer_name: string
-  vector_norm: number
-  _distance: number
-  url: string
-}
+// type Response = {
+//   item_id: string
+//   offer_id: string
+//   offer_name: string
+//   vector_norm: number
+//   _distance: number
+//   url: string
+// }
 
 // const uri = {
 //   photo: {

@@ -20,18 +20,7 @@ export const uploadImage = async <Response>(api: string, path: string) => {
       body: formData,
     })
 
-    console.log({
-      yo: {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        body: formData,
-      },
-    })
-
     const result = await uploadResponse.json()
-    console.log("Réponse de l'API", result)
     return result
   } catch (error) {
     console.error("Erreur lors de l'upload", error)

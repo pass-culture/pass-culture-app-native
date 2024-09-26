@@ -6,6 +6,7 @@ import {
   PhotoFile,
   useCameraDevice,
   useCameraPermission,
+  useCameraFormat,
   useCodeScanner,
 } from 'react-native-vision-camera'
 import styled, { useTheme } from 'styled-components/native'
@@ -16,7 +17,6 @@ import { useScanSearch } from 'features/scan/hooks/useScanSearch'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { Spinner } from 'ui/components/Spinner'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Camera as CameraIcon } from 'ui/svg/icons/Camera'
@@ -35,11 +35,12 @@ export const ScanView: FC = () => {
   const isScanned = useRef<boolean>(false)
   const { hasPermission, requestPermission } = useCameraPermission()
   const [takenPhoto, setTakenPhoto] = useState<PhotoFile | undefined>(undefined)
-  const { search, showErrorBanner, searchByImage } = useScanSearch()
+  const { search, showErrorBanner, searchByImage, isLoading } = useScanSearch()
 
   const { top, bottom } = useCustomSafeInsets()
 
   const device = useCameraDevice('back')
+  const format = useCameraFormat(device, [{ photoResolution: 'max' }, { videoResolution: 'max' }])
   const camera = useRef<Camera>(null)
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
@@ -84,16 +85,13 @@ export const ScanView: FC = () => {
 
   return (
     <Container>
-      {hasPermission && device ? (
+      {hasPermission && device && !isLoading ? (
         takenPhoto?.path ? (
           <React.Fragment>
             <StyledImage source={{ uri: `file://${takenPhoto.path}` }} />
-            <SpinnerView headerHeight={0}>
-              <Spinner testID="spinner" size={getSpacing(15)} />
-            </SpinnerView>
           </React.Fragment>
         ) : (
-          <StyledCamera device={device} isActive codeScanner={codeScanner} ref={camera} photo />
+          <StyledCamera device={device} isActive codeScanner={codeScanner} format={format} ref={camera} photo />
         )
       ) : (
         <BlankScreen />

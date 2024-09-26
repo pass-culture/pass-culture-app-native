@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { memo } from 'react'
-import { View } from 'react-native'
+// import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -9,7 +9,7 @@ import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndW
 import { CreateHistoryItem } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
-import { ScanRoundedButton } from 'features/scan/ScanRoundedButton'
+// import { ScanRoundedButton } from 'features/scan/ScanRoundedButton'
 
 type Props = {
   searchInputID: string
