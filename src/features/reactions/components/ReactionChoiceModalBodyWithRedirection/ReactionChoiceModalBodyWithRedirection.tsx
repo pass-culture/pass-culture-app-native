@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import FastImage, { Source } from 'react-native-fast-image'
+import { Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import thumbs from 'features/reactions/images/thumbs.png'
 import { OfferImageBasicProps } from 'features/reactions/types'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { Typo, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-// eslint-disable-next-line no-restricted-imports
 
 type Props = {
   offerImages: OfferImageBasicProps[]
@@ -19,40 +19,39 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
   offerImages,
 }) => {
   const offerImagesWithUrl = offerImages.filter((offerImage) => offerImage.imageUrl !== '')
-  const thumbsImage: Source = { uri: 'src/features/reactions/images/thumbs.png' }
 
   return (
-    <Container gap={6}>
+    <React.Fragment>
       {offerImagesWithUrl.length > 0 ? (
         <GradientContainer>
-          <ImagesContainerGradient />
+          <Spacer.Column numberOfSpaces={6} />
+          {offerImagesWithUrl.length > 4 ? <ImagesContainerGradient /> : null}
           <ImagesContainer gap={2} testID="imagesContainer">
             {offerImages.map((offerImage, index) => (
               <OfferImage
                 key={index}
                 imageUrl={offerImage.imageUrl}
                 categoryId={offerImage.categoryId}
-                withContainerStroke
+                withContainerStroke={offerImage.imageUrl === ''}
+                withShadow={false}
               />
             ))}
           </ImagesContainer>
         </GradientContainer>
       ) : (
         <ThumbsImageContainer testID="thumbsImage">
-          <ThumbsImage source={thumbsImage} resizeMode="cover" />
+          <ThumbsImage source={thumbs} resizeMode="cover" />
         </ThumbsImageContainer>
       )}
-      <Typo.Title3 {...getHeadingAttrs(2)}>
+
+      <Spacer.Column numberOfSpaces={6} />
+      <StyledTitle3 {...getHeadingAttrs(2)}>
         Qu’as-tu pensé de tes dernières réservations&nbsp;?
-      </Typo.Title3>
-    </Container>
+      </StyledTitle3>
+      <Spacer.Column numberOfSpaces={6} />
+    </React.Fragment>
   )
 }
-
-const Container = styled(ViewGap)({
-  textAlign: 'center',
-  paddingVertical: getSpacing(6),
-})
 
 const GradientContainer = styled.View({
   width: '100%',
@@ -90,6 +89,12 @@ const ThumbsImageContainer = styled.View({
   alignItems: 'center',
 })
 
-const ThumbsImage = styled(FastImage)({
+const ThumbsImage = styled(Image)({
   width: 210,
+  height: '100%',
+  marginTop: getSpacing(4),
+})
+
+const StyledTitle3 = styled(Typo.Title3)({
+  textAlign: 'center',
 })
