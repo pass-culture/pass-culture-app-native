@@ -2,8 +2,10 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
+import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -37,6 +39,19 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
+  isLoggedIn: true,
+  user: nonBeneficiaryUser,
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+  setIsLoggedIn: jest.fn(),
+}) as jest.Mock
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+}))
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -88,6 +103,17 @@ describe('DeleteProfileConfirmation', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
+    })
+  })
+
+  it('should delete the refreshToken, clean user profile and remove user ID from batch when account is anonymized', async () => {
+    renderDeleteProfileConfirmation()
+    givenAnonymizeAccountSucceeds()
+
+    whenAnonymizeAccount()
+
+    await waitFor(() => {
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 
