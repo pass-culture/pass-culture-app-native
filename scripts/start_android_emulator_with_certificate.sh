@@ -7,6 +7,7 @@ WAIT_BOOT_COMPLETED="${WAIT_BOOT_COMPLETED:-15}"
 
 choose_an_emulator() {
 	emulator -list-avds |
+		grep -v 'INFO' |
 		head -n 1
 }
 
