@@ -17,7 +17,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia/types'
+import { AlgoliaFacetsAnalyticsNativeCategory, AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -71,7 +71,13 @@ export function AutocompleteOfferItem({
 
   const mostPopularNativeCategoryId = useMemo(() => {
     if (nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2) {
-      return nativeCategories[0]?.value
+      const categoryWithMaxCount = nativeCategories.reduce<AlgoliaFacetsAnalyticsNativeCategory>(
+        (previous, current) => {
+          return current.count > (previous?.count || 0) ? current : previous
+        },
+        nativeCategories[0]
+      )
+      return categoryWithMaxCount.value
     }
     return undefined
   }, [nativeCategories])
