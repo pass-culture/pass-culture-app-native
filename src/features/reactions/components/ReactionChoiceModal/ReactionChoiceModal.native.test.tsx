@@ -1,12 +1,15 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { ReactionTypeEnum } from 'api/gen'
+import { BookingsTab } from 'features/bookings/enum'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
-import { ReactionFromEnum } from 'features/reactions/enum'
+import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
+const mockCloseModalWithUpdate = jest.fn()
 
 jest.mock('libs/subcategories/useSubcategory')
 
@@ -22,129 +25,276 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('ReactionChoiceModal', () => {
-  it('should activate J’aime button when pressing it and it is deactivated', () => {
+  it('should display body with validation when body type is validation', () => {
     render(
       <ReactionChoiceModal
         offer={mockOffer}
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
+        from={ReactionFromEnum.HOME}
+        bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
       />
     )
 
-    fireEvent.press(screen.getByText('J’aime'))
-
-    expect(screen.queryByTestId('thumbUp')).not.toBeOnTheScreen()
-    expect(screen.getByTestId('thumbUpFilled')).toBeOnTheScreen()
+    expect(screen.getByText('Partage-nous ton avis !')).toBeOnTheScreen()
   })
 
-  it('should deactivate J’aime button when pressing it and it is activated', () => {
+  it('should not display body with redirection when body type is validation', () => {
     render(
       <ReactionChoiceModal
         offer={mockOffer}
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
+        from={ReactionFromEnum.HOME}
+        bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
       />
     )
 
-    fireEvent.press(screen.getByText('J’aime'))
-    fireEvent.press(screen.getByText('J’aime'))
-
-    expect(screen.getByTestId('thumbUp')).toBeOnTheScreen()
-    expect(screen.queryByTestId('thumbUpFilled')).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText('Qu’as-tu pensé de tes dernières réservations ?')
+    ).not.toBeOnTheScreen()
   })
 
-  it('should activate Je n’aime pas button when pressing it and it is deactivated', () => {
+  it('should display body with redirection when body type is redirection', () => {
     render(
       <ReactionChoiceModal
         offer={mockOffer}
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
+        from={ReactionFromEnum.HOME}
+        bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
       />
     )
 
-    fireEvent.press(screen.getByText('Je n’aime pas'))
-
-    expect(screen.queryByTestId('thumbDown')).not.toBeOnTheScreen()
-    expect(screen.getByTestId('thumbDownFilled')).toBeOnTheScreen()
+    expect(screen.getByText('Qu’as-tu pensé de tes dernières réservations ?')).toBeOnTheScreen()
   })
 
-  it('should deactivate Je n’aime pas button when pressing it and it is activated', () => {
+  it('should not display body with validation when body type is redirection', () => {
     render(
       <ReactionChoiceModal
         offer={mockOffer}
         dateUsed="2023-05-30"
         visible
         closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
+        from={ReactionFromEnum.HOME}
+        bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
       />
     )
 
-    fireEvent.press(screen.getByText('Je n’aime pas'))
-    fireEvent.press(screen.getByText('Je n’aime pas'))
-
-    expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
-    expect(screen.queryByTestId('thumbDownFilled')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Partage-nous ton avis !')).not.toBeOnTheScreen()
   })
 
-  it('should reset the buttons when closing modal', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
-      />
-    )
+  describe('With reaction validation', () => {
+    it('should activate J’aime button when pressing it and it is deactivated', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
 
-    fireEvent.press(screen.getByText('J’aime'))
+      fireEvent.press(screen.getByText('J’aime'))
 
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
+      expect(screen.queryByTestId('thumbUp')).not.toBeOnTheScreen()
+      expect(screen.getByTestId('thumbUpFilled')).toBeOnTheScreen()
+    })
 
-    expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
+    it('should deactivate J’aime button when pressing it and it is activated', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('J’aime'))
+      fireEvent.press(screen.getByText('J’aime'))
+
+      expect(screen.getByTestId('thumbUp')).toBeOnTheScreen()
+      expect(screen.queryByTestId('thumbUpFilled')).not.toBeOnTheScreen()
+    })
+
+    it('should activate Je n’aime pas button when pressing it and it is deactivated', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('Je n’aime pas'))
+
+      expect(screen.queryByTestId('thumbDown')).not.toBeOnTheScreen()
+      expect(screen.getByTestId('thumbDownFilled')).toBeOnTheScreen()
+    })
+
+    it('should deactivate Je n’aime pas button when pressing it and it is activated', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('Je n’aime pas'))
+      fireEvent.press(screen.getByText('Je n’aime pas'))
+
+      expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
+      expect(screen.queryByTestId('thumbDownFilled')).not.toBeOnTheScreen()
+    })
+
+    it('should reset the buttons when closing modal', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('J’aime'))
+
+      fireEvent.press(screen.getByTestId('Fermer la modale'))
+
+      expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
+    })
+
+    it('should close the modal when pressing close icon', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByTestId('Fermer la modale'))
+
+      expect(mockCloseModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should save reaction when click on reaction button', () => {
+      const mockHandleSave = jest.fn()
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          onSave={mockHandleSave}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('J’aime'))
+      fireEvent.press(screen.getByTestId('Valider la réaction'))
+
+      expect(mockHandleSave).toHaveBeenCalledWith({
+        offerId: mockOffer.id,
+        reactionType: ReactionTypeEnum.LIKE,
+      })
+    })
   })
 
-  it('should close the modal when pressing close icon', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.ENDED_BOOKING}
-      />
-    )
+  describe('With redirection', () => {
+    it('should close the modal with update when pressing close icon', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          closeModalWithUpdate={mockCloseModalWithUpdate}
+          from={ReactionFromEnum.HOME}
+          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
+        />
+      )
 
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
+      fireEvent.press(screen.getByTestId('Fermer la modale'))
 
-    expect(mockCloseModal).toHaveBeenCalledTimes(1)
-  })
+      expect(mockCloseModalWithUpdate).toHaveBeenCalledTimes(1)
+    })
 
-  it('should save reaction when click on reaction button', () => {
-    const mockHandleSave = jest.fn()
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        onSave={mockHandleSave}
-        from={ReactionFromEnum.ENDED_BOOKING}
-      />
-    )
+    it('should close the modal with update when pressing "Plus tard" button', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          closeModalWithUpdate={mockCloseModalWithUpdate}
+          from={ReactionFromEnum.HOME}
+          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
+        />
+      )
 
-    fireEvent.press(screen.getByText('J’aime'))
-    fireEvent.press(screen.getByTestId('Valider la réaction'))
+      fireEvent.press(screen.getByText('Plus tard'))
 
-    expect(mockHandleSave).toHaveBeenCalledWith({
-      offerId: mockOffer.id,
-      reactionType: ReactionTypeEnum.LIKE,
+      expect(mockCloseModalWithUpdate).toHaveBeenCalledTimes(1)
+    })
+
+    it('should redirect to ended bookings when pressing "Donner mon avis" button', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          closeModalWithUpdate={mockCloseModalWithUpdate}
+          from={ReactionFromEnum.HOME}
+          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('Donner mon avis'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Bookings', {
+        activeTab: BookingsTab.COMPLETED,
+      })
+    })
+
+    it('should close the modal when pressing "Donner mon avis" button', () => {
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          closeModalWithUpdate={mockCloseModalWithUpdate}
+          from={ReactionFromEnum.HOME}
+          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('Donner mon avis'))
+
+      expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
   })
 })
