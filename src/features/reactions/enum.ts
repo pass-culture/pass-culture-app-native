@@ -5,6 +5,5 @@ export enum ReactionFromEnum {
 
 export enum ReactionChoiceModalBodyEnum {
   VALIDATION = 'validation',
-  BOOKINGS_WITH_IMAGE = 'bookings_with_image',
-  BOOKINGS_WITHOUT_IMAGE = 'bookings_without_image',
+  REDIRECTION = 'redirection',
 }
