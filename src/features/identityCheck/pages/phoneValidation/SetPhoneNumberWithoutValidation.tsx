@@ -14,6 +14,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,6 +25,8 @@ import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
+
+import { formatPhoneNumberWithPrefix } from './helpers/formatPhoneNumber'
 
 const phoneRegex = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 const schema = yup.object({
@@ -40,7 +43,7 @@ const findCountry = (countryId: string) => COUNTRIES.find((country) => country.i
 
 export const SetPhoneNumberWithoutValidation = () => {
   const { dispatch, phoneValidation } = useSubscriptionContext()
-  const { control, handleSubmit } = useForm<FormValues>({
+  const { control, handleSubmit, getValues, setError } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
       phoneNumber: phoneValidation?.phoneNumber,
@@ -50,25 +53,40 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
+  const { mutate: updateProfile } = useUpdateProfileMutation(
+    () => {
+      const { phoneNumber, countryId } = getValues()
+      const country = findCountry(countryId)
+      if (!country) {
+        return
+      }
+      dispatch({
+        type: 'SET_PHONE_NUMBER',
+        payload: {
+          phoneNumber,
+          country: {
+            countryCode: country.id,
+            callingCode: country.callingCode,
+          },
+        },
+      })
+      saveStep(IdentityCheckStep.PHONE_VALIDATION)
+      invalidateStepperInfoQuery()
+      navigateForwardToStepper()
+    },
+    (e) => {
+      const error = e as Error
+      setError('phoneNumber', { message: error.message })
+    }
+  )
 
-  const onSubmit = ({ phoneNumber, countryId }: FormValues) => {
+  const onSubmit = async ({ phoneNumber, countryId }: FormValues) => {
     const country = findCountry(countryId)
     if (!country) {
       return
     }
-    dispatch({
-      type: 'SET_PHONE_NUMBER',
-      payload: {
-        phoneNumber,
-        country: {
-          countryCode: country.id,
-          callingCode: country.callingCode,
-        },
-      },
-    })
-    saveStep(IdentityCheckStep.PHONE_VALIDATION)
-    invalidateStepperInfoQuery()
-    navigateForwardToStepper()
+    const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
+    updateProfile({ phoneNumber: phoneNumberWithPrefix })
   }
 
   const submit = handleSubmit(onSubmit)
