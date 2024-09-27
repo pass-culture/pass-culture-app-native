@@ -86,34 +86,36 @@ describe('SetPhoneNumberWithoutValidation', () => {
       })
     })
 
-    test('Show error message when update phone number is failed', async () => {
-      updatePhoneNumberWillFail()
-      renderSetPhoneNumberWithoutValidation()
+    describe('When failure', () => {
+      test('Show error message when update phone number is failed', async () => {
+        updatePhoneNumberWillFail()
+        renderSetPhoneNumberWithoutValidation()
 
-      submitWithPhoneNumber('0612345678')
+        submitWithPhoneNumber('0612345678')
 
-      await waitFor(() => {
-        expect(screen.getByText('Une erreur est survenue')).toBeTruthy()
+        await waitFor(() => {
+          expect(screen.getByText('Une erreur est survenue')).toBeTruthy()
+        })
       })
-    })
 
-    test('Show error message when phone number is invalid', async () => {
-      renderSetPhoneNumberWithoutValidation()
+      test('Show error message when phone number is invalid', async () => {
+        renderSetPhoneNumberWithoutValidation()
 
-      submitWithPhoneNumber('00e')
+        submitWithPhoneNumber('00e')
 
-      await waitFor(() => {
-        expect(screen.getByText('Le numéro de téléphone est invalide')).toBeTruthy()
+        await waitFor(() => {
+          expect(screen.getByText('Le numéro de téléphone est invalide')).toBeTruthy()
+        })
       })
-    })
 
-    test('Show error message when phone number is empty', async () => {
-      renderSetPhoneNumberWithoutValidation()
+      test('Show error message when phone number is empty', async () => {
+        renderSetPhoneNumberWithoutValidation()
 
-      submitWithPhoneNumber('')
+        submitWithPhoneNumber('')
 
-      await waitFor(() => {
-        expect(screen.getByText('Le numéro de téléphone est requis')).toBeTruthy()
+        await waitFor(() => {
+          expect(screen.getByText('Le numéro de téléphone est requis')).toBeTruthy()
+        })
       })
     })
   })
