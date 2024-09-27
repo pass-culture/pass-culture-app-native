@@ -1,6 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
+import * as SettingsContext from 'features/auth/context/SettingsContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -22,6 +23,8 @@ const mockRemainingAttempts = {
 jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
   useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
 }))
+
+const mockUseSettingContext = jest.spyOn(SettingsContext, 'useSettingsContext')
 
 const mockUseGetStepperInfo = (
   useGetStepperInfo as jest.Mock<
@@ -54,6 +57,14 @@ useFeatureFlagSpy.mockReturnValue(false)
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 describe('useStepperInfo', () => {
+  beforeEach(() => {
+    mockUseSettingContext.mockReturnValue({
+      data: {
+        enablePhoneValidation: true,
+      },
+    } as SettingsContext.ISettingsContext)
+  })
+
   it('should return title and subtitle', () => {
     const { title, subtitle } = useStepperInfo()
 
@@ -77,6 +88,28 @@ describe('useStepperInfo', () => {
     const { stepsDetails } = useStepperInfo()
 
     expect(stepsDetails).toHaveLength(4)
+  })
+
+  it('should have PhoneValidation firstScreen to SetPhoneNumberWitoutValidation when feature flag is disabled', () => {
+    mockUseGetStepperInfo.mockReturnValueOnce({
+      data: {
+        subscriptionStepsToDisplay:
+          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      },
+    })
+
+    mockUseSettingContext.mockReturnValueOnce({
+      data: {
+        enablePhoneValidation: false,
+      },
+    } as SettingsContext.ISettingsContext)
+
+    const { stepsDetails } = useStepperInfo()
+    const phoneValidationStep = stepsDetails.find(
+      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
+    )
+
+    expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
   })
 
   it('should return PhoneValidationTooManySMSSent if no remaining attempts left', () => {

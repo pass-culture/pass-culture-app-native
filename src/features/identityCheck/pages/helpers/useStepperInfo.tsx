@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubscriptionStepCompletionState } from 'api/gen'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
@@ -29,6 +30,7 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { data } = useGetStepperInfo()
+  const { data: settings } = useSettingsContext()
 
   if (!data) {
     return {
@@ -44,6 +46,13 @@ export const useStepperInfo = (): StepperInfo => {
     subscriptionMessage,
     allowedIdentityCheckMethods,
   } = data
+
+  const getPhoneValidationFirstScreen = () => {
+    if (settings?.enablePhoneValidation) {
+      return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
+    }
+    return 'SetPhoneNumberWithoutValidation'
+  }
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
@@ -88,7 +97,7 @@ export const useStepperInfo = (): StepperInfo => {
           <IconRetryStep Icon={BicolorSmartphone} testID="phone-validation-retry-step" />
         ),
       },
-      firstScreen: remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber',
+      firstScreen: getPhoneValidationFirstScreen(),
     },
   }
 
