@@ -3767,6 +3767,11 @@ export interface UserProfilePatchRequest {
    * @type {string}
    * @memberof UserProfilePatchRequest
    */
+  phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
   postalCode?: string | null
   /**
    * @type {NotificationSubscriptions}
