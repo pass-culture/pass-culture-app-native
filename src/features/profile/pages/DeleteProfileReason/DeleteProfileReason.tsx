@@ -52,11 +52,6 @@ const reasonButtons: ReasonButton[] = [
     analyticsReason: 'dataDeletion',
   },
   {
-    wording: 'Ma boite mail a été piratée',
-    navigateTo: { screen: 'DeleteProfileEmailHacked' },
-    analyticsReason: 'hackedMailBox',
-  },
-  {
     wording: 'Je pense que quelqu’un d’autre a accès à mon compte',
     navigateTo: { screen: 'DeleteProfileAccountHacked' },
     analyticsReason: 'hackedAccount',
