@@ -49,17 +49,19 @@ export const IncomingReactionModalContainer = () => {
     [addReaction]
   )
 
-  const handleCloseModalWithUpdate = () => {
+  const handleCloseModalWithUpdate = (triggerUpdate?: boolean) => {
     if (bookingsWithoutReaction.length === 0) return
 
-    const reactions = bookingsWithoutReaction.map((booking) => ({
-      offerId: booking.stock.offer.id,
-      reactionType: ReactionTypeEnum.NO_REACTION,
-    }))
+    if (triggerUpdate) {
+      const reactions = bookingsWithoutReaction.map((booking) => ({
+        offerId: booking.stock.offer.id,
+        reactionType: ReactionTypeEnum.NO_REACTION,
+      }))
 
-    addReaction({
-      reactions,
-    })
+      addReaction({
+        reactions,
+      })
+    }
 
     hideReactionModal()
   }
@@ -73,8 +75,7 @@ export const IncomingReactionModalContainer = () => {
     <ReactionChoiceModal
       offer={offer}
       dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
-      closeModalWithUpdate={handleCloseModalWithUpdate}
-      closeModal={hideReactionModal}
+      closeModal={handleCloseModalWithUpdate}
       visible={reactionModalVisible}
       defaultReaction={null}
       onSave={handleSaveReaction}

@@ -9,7 +9,6 @@ import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reaction
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
-const mockCloseModalWithUpdate = jest.fn()
 
 jest.mock('libs/subcategories/useSubcategory')
 
@@ -223,14 +222,13 @@ describe('ReactionChoiceModal', () => {
   })
 
   describe('With redirection', () => {
-    it('should close the modal with update when pressing close icon', () => {
+    it('should close the modal when pressing close icon', () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
           dateUsed="2023-05-30"
           visible
           closeModal={mockCloseModal}
-          closeModalWithUpdate={mockCloseModalWithUpdate}
           from={ReactionFromEnum.HOME}
           bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
         />
@@ -238,17 +236,16 @@ describe('ReactionChoiceModal', () => {
 
       fireEvent.press(screen.getByTestId('Fermer la modale'))
 
-      expect(mockCloseModalWithUpdate).toHaveBeenCalledTimes(1)
+      expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should close the modal with update when pressing "Plus tard" button', () => {
+    it('should close the modal when pressing "Plus tard" button', () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
           dateUsed="2023-05-30"
           visible
           closeModal={mockCloseModal}
-          closeModalWithUpdate={mockCloseModalWithUpdate}
           from={ReactionFromEnum.HOME}
           bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
         />
@@ -256,7 +253,7 @@ describe('ReactionChoiceModal', () => {
 
       fireEvent.press(screen.getByText('Plus tard'))
 
-      expect(mockCloseModalWithUpdate).toHaveBeenCalledTimes(1)
+      expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
 
     it('should redirect to ended bookings when pressing "Donner mon avis" button', () => {
@@ -266,7 +263,6 @@ describe('ReactionChoiceModal', () => {
           dateUsed="2023-05-30"
           visible
           closeModal={mockCloseModal}
-          closeModalWithUpdate={mockCloseModalWithUpdate}
           from={ReactionFromEnum.HOME}
           bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
         />
@@ -286,7 +282,6 @@ describe('ReactionChoiceModal', () => {
           dateUsed="2023-05-30"
           visible
           closeModal={mockCloseModal}
-          closeModalWithUpdate={mockCloseModalWithUpdate}
           from={ReactionFromEnum.HOME}
           bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
         />

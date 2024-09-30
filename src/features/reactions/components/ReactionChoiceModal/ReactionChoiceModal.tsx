@@ -29,12 +29,11 @@ type Props = {
   dateUsed: string
   visible: boolean
   defaultReaction?: ReactionTypeEnum | null
-  closeModal: () => void
+  closeModal: (triggerUpdate?: boolean) => void
   from: ReactionFromEnum
   onSave?: ({ offerId, reactionType }: PostOneReactionRequest) => void
   bodyType: ReactionChoiceModalBodyEnum
   offerImages?: OfferImageBasicProps[]
-  closeModalWithUpdate?: () => void
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
@@ -47,7 +46,6 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   from,
   bodyType,
   offerImages,
-  closeModalWithUpdate,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -99,7 +97,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       title="Choix de réaction"
       maxHeight={height - top}
       rightIcon={Close}
-      onRightIconPress={closeModalWithUpdate ?? closeModal}
+      onRightIconPress={() => closeModal(true)}
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
@@ -119,7 +117,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
             <ButtonTertiaryBlack
               wording="Plus tard"
               icon={ClockFilled}
-              onPress={closeModalWithUpdate}
+              onPress={() => closeModal(true)}
             />
           </ButtonsContainer>
         )
