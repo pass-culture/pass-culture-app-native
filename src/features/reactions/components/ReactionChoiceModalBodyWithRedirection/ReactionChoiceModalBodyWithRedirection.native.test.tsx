@@ -44,4 +44,35 @@ describe('ReactionChoiceModalBodyWithRedirection', () => {
 
     expect(screen.queryByTestId('thumbsImage')).not.toBeOnTheScreen()
   })
+
+  it('should display offer images gradient when there are more than 4 images', () => {
+    render(
+      <ReactionChoiceModalBodyWithRedirection
+        offerImages={[
+          { imageUrl: 'url1', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url2', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url3', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url4', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url5', categoryId: CategoryIdEnum.CINEMA },
+        ]}
+      />
+    )
+
+    expect(screen.getByTestId('offerImagesGradient')).toBeOnTheScreen()
+  })
+
+  it('should display offer images gradient when there are 4 of less images', () => {
+    render(
+      <ReactionChoiceModalBodyWithRedirection
+        offerImages={[
+          { imageUrl: 'url1', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url2', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url3', categoryId: CategoryIdEnum.CINEMA },
+          { imageUrl: 'url4', categoryId: CategoryIdEnum.CINEMA },
+        ]}
+      />
+    )
+
+    expect(screen.queryByTestId('offerImagesGradient')).not.toBeOnTheScreen()
+  })
 })

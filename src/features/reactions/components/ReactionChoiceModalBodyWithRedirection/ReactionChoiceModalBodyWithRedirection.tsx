@@ -25,7 +25,9 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
       {offerImagesWithUrl.length > 0 ? (
         <GradientContainer>
           <Spacer.Column numberOfSpaces={6} />
-          {offerImagesWithUrl.length > 4 ? <ImagesContainerGradient /> : null}
+          {offerImagesWithUrl.length > 4 ? (
+            <ImagesContainerGradient testID="offerImagesGradient" />
+          ) : null}
           <ImagesContainer gap={2} testID="imagesContainer">
             {offerImages.map((offerImage) => (
               <OfferImage
