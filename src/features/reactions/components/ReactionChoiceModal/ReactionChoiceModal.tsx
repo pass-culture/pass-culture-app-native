@@ -137,5 +137,6 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
 }
 
 const ButtonsContainer = styled(ViewGap)({
+  alignItems: 'center',
   marginTop: getSpacing(2),
 })
