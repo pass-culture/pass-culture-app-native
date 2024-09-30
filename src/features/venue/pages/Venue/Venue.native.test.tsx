@@ -1,4 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import mockdate from 'mockdate'
 import React from 'react'
 
@@ -15,6 +16,8 @@ import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+
+const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -125,6 +128,24 @@ describe('<Venue />', () => {
     renderVenue(venueId)
 
     expect(await screen.findByText('Vidéo de ce lieu')).toBeOnTheScreen()
+  })
+
+  it('should not display video player if video has already been seen', async () => {
+    getItemSpy.mockResolvedValueOnce('true')
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    renderVenue(venueId)
+
+    await waitFor(() => expect(screen.queryByText('Vidéo de ce lieu')).not.toBeOnTheScreen())
+  })
+
+  it('should hide video block once survey modal is closed', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    renderVenue(venueId)
+
+    fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
+    fireEvent.press(await screen.findByLabelText('Fermer la modale'))
+
+    await waitFor(() => expect(screen.queryByText('Vidéo de ce lieu')).not.toBeOnTheScreen())
   })
 
   describe('analytics', () => {
