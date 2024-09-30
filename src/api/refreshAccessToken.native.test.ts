@@ -1,4 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+// eslint-disable-next-line no-restricted-imports
+import * as netInfo from '@react-native-community/netinfo'
 
 import { api } from 'api/api'
 import * as jwt from 'libs/jwt/jwt'
@@ -9,6 +11,7 @@ import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessT
 
 jest.mock('libs/keychain/keychain')
 jest.mock('libs/jwt/jwt')
+jest.mock('@react-native-community/netinfo')
 
 const respondWith = async (
   body: unknown,
@@ -33,11 +36,33 @@ jest.spyOn(jwt, 'computeTokenRemainingLifetimeInMs').mockReturnValue(tokenRemain
 const mockFetch = jest.spyOn(global, 'fetch')
 const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
 const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
-
+const mockNetInfo = jest.spyOn(netInfo, 'fetch')
 jest.useFakeTimers()
 
 describe('refreshAccessToken', () => {
   afterEach(removeRefreshedAccessToken)
+
+  beforeEach(() => {
+    mockNetInfo.mockReturnValueOnce(
+      Promise.resolve({
+        isConnected: true,
+        isInternetReachable: true,
+        type: netInfo.NetInfoStateType.wifi,
+        details: {
+          ssid: null,
+          bssid: null,
+          strength: null,
+          ipAddress: null,
+          subnet: null,
+          frequency: null,
+          isConnectionExpensive: false,
+          linkSpeed: null,
+          rxLinkSpeed: null,
+          txLinkSpeed: null,
+        },
+      })
+    )
+  })
 
   it('should remove access token when there is no refresh token', async () => {
     mockGetRefreshToken.mockResolvedValueOnce(null)
