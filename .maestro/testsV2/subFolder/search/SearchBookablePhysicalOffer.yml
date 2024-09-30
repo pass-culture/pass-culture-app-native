@@ -14,7 +14,7 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'Catégories'
 
-- tapOn: 'Thriller'
+- tapOn: 'Romance'
 - tapOn: 'Rechercher'
 
 - swipe: # Permet d'éviter les offres gratuite en haut de liste
