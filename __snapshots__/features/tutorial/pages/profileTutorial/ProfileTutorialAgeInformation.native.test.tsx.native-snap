@@ -2524,8 +2524,8 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,

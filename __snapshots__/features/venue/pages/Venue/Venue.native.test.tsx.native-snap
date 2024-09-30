@@ -777,41 +777,35 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             />
             <View
+              gap={4}
               style={
                 [
                   {
+                    "gap": 16,
                     "paddingBottom": 24,
                   },
                 ]
               }
             >
-              <Text
-                numberOfLines={2}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 20,
-                      "lineHeight": 24,
-                      "marginHorizontal": 24,
-                    },
-                  ]
-                }
-                testID="playlistTitle"
-              >
-                Toutes les offres
-              </Text>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
+              <View>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                        "marginHorizontal": 24,
+                      },
+                    ]
+                  }
+                  testID="playlistTitle"
+                >
+                  Toutes les offres
+                </Text>
+              </View>
               <View
                 onLayout={[Function]}
                 style={
@@ -2488,41 +2482,35 @@ exports[`<Venue /> should match snapshot 1`] = `
                 triggerOnce={false}
               />
               <View
+                gap={4}
                 style={
                   [
                     {
+                      "gap": 16,
                       "paddingBottom": 24,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
-                        "marginHorizontal": 24,
-                      },
-                    ]
-                  }
-                  testID="playlistTitle"
-                >
-                  Test
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
+                <View>
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                          "marginHorizontal": 24,
+                        },
+                      ]
+                    }
+                    testID="playlistTitle"
+                  >
+                    Test
+                  </Text>
+                </View>
                 <View
                   onLayout={[Function]}
                   style={
@@ -3644,7 +3632,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -3793,8 +3781,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
                   },
                 ]
               }
@@ -3935,7 +3923,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -4054,7 +4042,7 @@ Instagram
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -4173,7 +4161,7 @@ WhatsApp
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -4308,7 +4296,7 @@ iMessage
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -6389,7 +6377,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                             "paddingHorizontal": 1,
                             "textAlign": "center",
                           },
@@ -6509,7 +6497,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                             "paddingHorizontal": 1,
                             "textAlign": "center",
                           },
@@ -6629,7 +6617,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                             "paddingHorizontal": 1,
                             "textAlign": "center",
                           },
@@ -6749,7 +6737,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                             "paddingHorizontal": 1,
                             "textAlign": "center",
                           },
@@ -7387,7 +7375,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -7536,8 +7524,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
                   },
                 ]
               }
@@ -7678,7 +7666,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -7797,7 +7785,7 @@ Instagram
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -7916,7 +7904,7 @@ WhatsApp
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]
@@ -8051,7 +8039,7 @@ iMessage
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                               "textAlign": "center",
                             },
                           ]

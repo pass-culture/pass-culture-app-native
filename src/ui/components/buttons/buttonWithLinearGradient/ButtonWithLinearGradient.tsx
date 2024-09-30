@@ -5,7 +5,7 @@ import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
@@ -58,7 +58,7 @@ const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(({
   }
 })
 
-const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+const Title = styled(TypoDS.Button)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
     ? theme.buttons.disabled.linearGradient.textColor
     : theme.buttons.linearGradient.textColor,

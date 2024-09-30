@@ -267,7 +267,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
                       dir="ltr"
                     >
                       Créer un compte
@@ -1437,7 +1437,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
                       dir="ltr"
                     >
                       Créer un compte

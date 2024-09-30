@@ -3,7 +3,7 @@ import React from 'react'
 import { OfferAccessibilityResponse } from 'api/gen'
 import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 type Props = {
   accessibility: OfferAccessibilityResponse
@@ -12,7 +12,7 @@ type Props = {
 export function OfferAccessibility({ accessibility }: Readonly<Props>) {
   return (
     <ViewGap gap={4}>
-      <Typo.ButtonText>Accessibilité de l’offre</Typo.ButtonText>
+      <TypoDS.BodySemiBold>Accessibilité de l’offre</TypoDS.BodySemiBold>
       <AccessibilityBlock basicAccessibility={accessibility} />
     </ViewGap>
   )

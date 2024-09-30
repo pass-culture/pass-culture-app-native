@@ -6,7 +6,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { ArrowUp } from 'ui/svg/icons/ArrowUp'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { useIsTextEllipsis } from './useIsTextEllipsis'
 
@@ -32,12 +32,12 @@ export function CollapsibleText({ children, numberOfLines }: Readonly<Props>) {
 
   return (
     <React.Fragment>
-      <Typo.Body
+      <TypoDS.Body
         numberOfLines={expanded ? undefined : numberOfLines}
         onLayout={onLayout}
         onTextLayout={onTextLayout}>
         {highlightLinks(children)}
-      </Typo.Body>
+      </TypoDS.Body>
       {shouldDisplayButton ? (
         <ButtonContainer>
           <SeeMoreButton

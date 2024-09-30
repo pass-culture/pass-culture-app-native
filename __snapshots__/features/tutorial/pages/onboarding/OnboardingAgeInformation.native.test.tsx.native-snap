@@ -1491,8 +1491,8 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "paddingBottom": 8,
                 "paddingLeft": 8,
                 "paddingRight": 8,
@@ -3124,8 +3124,8 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "paddingBottom": 8,
                 "paddingLeft": 8,
                 "paddingRight": 8,
@@ -4744,8 +4744,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "paddingBottom": 8,
                 "paddingLeft": 8,
                 "paddingRight": 8,
@@ -6205,8 +6205,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "paddingBottom": 8,
                 "paddingLeft": 8,
                 "paddingRight": 8,

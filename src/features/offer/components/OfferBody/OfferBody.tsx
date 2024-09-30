@@ -148,19 +148,21 @@ export const OfferBody: FunctionComponent<Props> = ({
 
           {prices ? <OfferPrice prices={prices} /> : null}
 
-          {isReactionFeatureActive ? (
-            <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
-          ) : null}
+          <ViewGap gap={4}>
+            {isReactionFeatureActive ? (
+              <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
+            ) : null}
 
-          {shouldDisplayReactionButton ? (
-            <ToggleButton
-              active={false}
-              onPress={onReactButtonPress}
-              label={{ active: 'Réagir', inactive: 'Réagir' }}
-              accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
-              Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
-            />
-          ) : null}
+            {shouldDisplayReactionButton ? (
+              <ToggleButton
+                active={false}
+                onPress={onReactButtonPress}
+                label={{ active: 'Réagir', inactive: 'Réagir' }}
+                accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
+                Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
+              />
+            ) : null}
+          </ViewGap>
 
           <GroupWithSeparator
             showTopComponent={offer.venue.isPermanent}

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { ViewGap } from './ViewGap/ViewGap'
 
@@ -26,19 +26,23 @@ export const NewOfferCaption: FC<Props> = ({
   const priceText = isDuo && isBeneficiary ? `${price} - Duo` : price
   return (
     <ViewGap gap={1}>
-      <Typo.CaptionNeutralInfo>{categoryLabel}</Typo.CaptionNeutralInfo>
+      <CategoryLabel>{categoryLabel}</CategoryLabel>
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
-        <Typo.Caption testID="priceIsDuo">{priceText}</Typo.Caption>
+        <TypoDS.BodySemiBoldXs testID="priceIsDuo">{priceText}</TypoDS.BodySemiBoldXs>
       </View>
     </ViewGap>
   )
 }
 
-const OfferText = styled(Typo.Caption).attrs({
+const CategoryLabel = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const OfferText = styled(TypoDS.BodySemiBoldXs).attrs({
   numberOfLines: 2,
 })({})
-const DateText = styled(Typo.Caption).attrs({
+const DateText = styled(TypoDS.BodySemiBoldXs).attrs({
   numberOfLines: 1,
 })({})

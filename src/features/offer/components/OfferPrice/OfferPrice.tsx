@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
 
 export function OfferPrice({ prices }: Readonly<Props>) {
   return (
-    <Typo.Title3 {...getHeadingAttrs(2)}>
+    <TypoDS.Title3 {...getHeadingAttrs(2)}>
       {getDisplayPrice(prices, { fractionDigits: 2 })}
-    </Typo.Title3>
+    </TypoDS.Title3>
   )
 }

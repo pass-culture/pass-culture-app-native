@@ -457,7 +457,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
               >
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
                   Librairie
@@ -467,7 +467,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
               >
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
                   À 900+ km
@@ -677,20 +677,21 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 class="css-view-175oi2r r-height-1472mwg"
               />
               <div
-                class="css-view-175oi2r r-paddingBottom-qn3fzs"
+                class="css-view-175oi2r r-gap-f4gmv6 r-paddingBottom-qn3fzs"
               >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                  data-testid="playlistTitle"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Toutes les offres
-                </h2>
                 <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
+                  class="css-view-175oi2r"
+                >
+                  <h2
+                    aria-level="2"
+                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                    data-testid="playlistTitle"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    Toutes les offres
+                  </h2>
+                </div>
                 <div
                   class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
                 >
@@ -806,20 +807,21 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                   data-testid="intersectionObserver"
                 />
                 <div
-                  class="css-view-175oi2r r-paddingBottom-qn3fzs"
+                  class="css-view-175oi2r r-gap-f4gmv6 r-paddingBottom-qn3fzs"
                 >
-                  <h2
-                    aria-level="2"
-                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                    data-testid="playlistTitle"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    Test
-                  </h2>
                   <div
-                    class="css-view-175oi2r r-height-10ptun7"
-                  />
+                    class="css-view-175oi2r"
+                  >
+                    <h2
+                      aria-level="2"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw r-marginHorizontal-1hy1u7s"
+                      data-testid="playlistTitle"
+                      dir="ltr"
+                      role="heading"
+                    >
+                      Test
+                    </h2>
+                  </div>
                   <div
                     class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
                   >
@@ -1947,7 +1949,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                   class="css-view-175oi2r r-width-1jg9483"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                 >
                   Suivre le thème
@@ -1968,14 +1970,14 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
             <div
               class="css-view-175oi2r r-gap-f4gmv6"
             >
-              <h2
-                aria-level="2"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              <h3
+                aria-level="3"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 dir="ltr"
                 role="heading"
               >
                 Passe le bon plan !
-              </h2>
+              </h3>
               <div
                 class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
@@ -2013,7 +2015,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -2052,7 +2054,7 @@ WhatsApp
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -2091,7 +2093,7 @@ Telegram
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -2134,7 +2136,7 @@ X
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Plus
@@ -2733,7 +2735,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
               >
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
                   Librairie
@@ -2743,7 +2745,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
               >
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
                   À 900+ km
@@ -3201,7 +3203,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         class="css-view-175oi2r r-height-10ptun7"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
                         dir="ltr"
                       >
                         Handicap visuel
@@ -3259,7 +3261,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         class="css-view-175oi2r r-height-10ptun7"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
                         dir="ltr"
                       >
                         Handicap psychique ou cognitif
@@ -3317,7 +3319,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         class="css-view-175oi2r r-height-10ptun7"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
                         dir="ltr"
                       >
                         Handicap moteur
@@ -3375,7 +3377,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         class="css-view-175oi2r r-height-10ptun7"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
                         dir="ltr"
                       >
                         Handicap auditif
@@ -4631,7 +4633,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                   class="css-view-175oi2r r-width-1jg9483"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                 >
                   Suivre le thème
@@ -4652,14 +4654,14 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
             <div
               class="css-view-175oi2r r-gap-f4gmv6"
             >
-              <h2
-                aria-level="2"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              <h3
+                aria-level="3"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 dir="ltr"
                 role="heading"
               >
                 Passe le bon plan !
-              </h2>
+              </h3>
               <div
                 class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
@@ -4697,7 +4699,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4736,7 +4738,7 @@ WhatsApp
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4775,7 +4777,7 @@ Telegram
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4818,7 +4820,7 @@ X
                           class="css-view-175oi2r r-height-3da1kt"
                         />
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-textAlign-q4m81j"
                           dir="ltr"
                         >
                           Plus

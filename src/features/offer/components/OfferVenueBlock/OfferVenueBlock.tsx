@@ -15,7 +15,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(14)
@@ -59,7 +59,7 @@ export function OfferVenueBlock({
 
   return (
     <Container>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={4} />
 
       {distance ? (

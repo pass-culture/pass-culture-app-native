@@ -5,7 +5,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getShadow, getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
 const EVENT_CARD_HEIGHT = getSpacing(17)
@@ -45,7 +45,6 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
         {title}
       </Title>
 
-      <Spacer.Column numberOfSpaces={1} />
       <SubtitleContainer>
         <SubtitleLeft
           accessibilityLabel={subtitleLeft}
@@ -91,7 +90,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
   })
 )
 
-const Title = styled(Typo.ButtonText)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const Title = styled(TypoDS.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'left',
 }))
@@ -105,16 +104,17 @@ const SubtitleContainer = styled.View({
   textOverflow: 'ellipsis',
 })
 
-const SubtitleLeft = styled(Typo.Caption)<{ disabled: boolean; hasSubtitleRight: boolean }>(
-  ({ theme, disabled, hasSubtitleRight }) => ({
-    color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
-    lineHeight: `${getSpacing(5)}px`,
-    textAlign: 'left',
-    flex: hasSubtitleRight ? 'auto' : 1,
-  })
-)
+const SubtitleLeft = styled(TypoDS.BodySemiBoldXs)<{
+  disabled: boolean
+  hasSubtitleRight: boolean
+}>(({ theme, disabled, hasSubtitleRight }) => ({
+  color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+  lineHeight: `${getSpacing(5)}px`,
+  textAlign: 'left',
+  flex: hasSubtitleRight ? 'auto' : 1,
+}))
 
-const SubtitleRight = styled(Typo.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const SubtitleRight = styled(TypoDS.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greySemiDark : theme.colors.black,
   textAlign: 'right',
   flexShrink: 0,
