@@ -103,8 +103,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -115,17 +115,15 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "lineHeight": 22.4,
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
         >
-           que quelqu’un d’autre a accès à ton compte
+           que quelqu’un d’autre a accès à ton compte.
         </Text>
-        .
       </Text>
       <Text
         style={
@@ -133,8 +131,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -145,17 +143,16 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "lineHeight": 22.4,
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
         >
           sécurité
         </Text>
-        , nous te conseillons de modifier ton mot de passe ou suspendre ton compte temporairement.
+        , nous te conseillons de suspendre ton compte temporairement.
       </Text>
     </View>
     <View
@@ -170,7 +167,7 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Modifier mon mot de passe"
+        accessibilityLabel="Suspendre mon compte"
         accessibilityState={
           {
             "busy": undefined,
@@ -224,96 +221,6 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             },
           ]
         }
-        testID="Modifier mon mot de passe"
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Modifier mon mot de passe
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Suspendre mon compte"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "borderColor": "#eb0055",
-                "borderStyle": "solid",
-                "borderWidth": 2,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
         testID="Suspendre mon compte"
       >
         <View
@@ -332,7 +239,7 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -381,16 +288,18 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "borderRadius": 24,
+                "borderRadius": 0,
+                "borderWidth": 0,
                 "flexDirection": "row",
                 "justifyContent": "center",
+                "marginTop": 0,
                 "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
+                "minHeight": 20,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
               },
               {
                 "backgroundColor": "transparent",
@@ -463,6 +372,21 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
           </Text>
         </View>
       </View>
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 14,
+              "lineHeight": 22.4,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte
+      </Text>
     </View>
   </View>
   <View
