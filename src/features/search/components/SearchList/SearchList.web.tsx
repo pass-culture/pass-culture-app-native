@@ -25,7 +25,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
 
-const BASE_HEADER_HEIGHT = 92
+const BASE_HEADER_HEIGHT = 112
 const USER_DATA_MESSAGE_HEIGHT = 72
 const GEOLOCATION_BUTTON_HEIGHT = 102
 const VENUES_PLAYLIST_HEIGHT = 265

@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export type ValuesType = [number] | [number, number]
 
@@ -232,7 +232,7 @@ const MinMaxContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
+const MinMaxValue = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

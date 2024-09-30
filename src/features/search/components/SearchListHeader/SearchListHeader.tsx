@@ -32,7 +32,7 @@ import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Error } from 'ui/svg/icons/Error'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, TypoDS } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
@@ -207,7 +207,7 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
   ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
 }))
 
-const Title = styled(Typo.Title3)({
+const Title = styled(TypoDS.Title3)({
   marginHorizontal: getSpacing(6),
 })
 

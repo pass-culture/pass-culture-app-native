@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 interface Props {
   item: Highlighted<HistoryItem>
@@ -30,14 +30,16 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
         </ClockIconContainer>
         <StyledText numberOfLines={1}>
           {queryHistory === '' ? (
-            <ItalicText testID="withoutUsingHighlight">{item.query}</ItalicText>
+            <TypoDS.BodyItalic testID="withoutUsingHighlight">{item.query}</TypoDS.BodyItalic>
           ) : (
             <Highlight historyItem={item} />
           )}
           {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>
-              <ItalicText> dans </ItalicText>
-              <BoldItalicText>{item.nativeCategoryLabel ?? item.categoryLabel}</BoldItalicText>
+              <TypoDS.BodyItalic> dans </TypoDS.BodyItalic>
+              <TypoDS.BodyItalicSemiBold>
+                {item.nativeCategoryLabel ?? item.categoryLabel}
+              </TypoDS.BodyItalicSemiBold>
             </React.Fragment>
           ) : null}
         </StyledText>
@@ -59,13 +61,6 @@ const StyledText = styled(Text)({
   marginLeft: getSpacing(2),
   flex: 1,
 })
-
-const ItalicText = styled(Typo.Body)(({ theme }) => ({
-  ...theme.typography.placeholder,
-  color: theme.colors.black,
-}))
-
-const BoldItalicText = styled(Typo.Body)(({ theme }) => theme.typography.bodyBoldItalic)
 
 const ClockIconContainer = styled.View({ flexShrink: 0 })
 

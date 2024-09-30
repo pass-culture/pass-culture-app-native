@@ -238,9 +238,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 27.2,
                     "textAlign": "center",
                   },
                 ]
@@ -485,25 +485,15 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
                 >
                   Uniquement les offres gratuites
                 </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 numberOfSpaces={2}
@@ -694,25 +684,15 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
                 >
                   Limiter la recherche à mon crédit
                 </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 numberOfSpaces={2}
@@ -905,9 +885,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -971,12 +951,12 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
                         "height": "100%",
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -1032,9 +1012,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1048,7 +1028,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1112,12 +1092,12 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
                         "height": "100%",
                         "paddingBottom": 0,
                         "paddingLeft": 0,

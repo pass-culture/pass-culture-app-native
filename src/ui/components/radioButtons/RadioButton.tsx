@@ -10,7 +10,8 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 interface RadioButtonProps {
   label: string
@@ -97,9 +98,7 @@ export function RadioButton(props: RadioButtonProps) {
             </Label>
           )}
 
-          {props.description ? (
-            <Typo.CaptionNeutralInfo>{props.description}</Typo.CaptionNeutralInfo>
-          ) : null}
+          {props.description ? <Description>{props.description}</Description> : null}
         </LabelWrapper>
       </LabelContainer>
       <IconContainer>
@@ -131,16 +130,22 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
 }))
 
-const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+const Label = styled(TypoDS.BodySemiBold)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
   flexGrow: 1,
   flexShrink: 1,
 }))
 
-const ComplementLabel = styled(Typo.Caption)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.greyDark,
-  marginLeft: getSpacing(2),
-  flexShrink: 0,
+const ComplementLabel = styled(TypoDS.BodySemiBoldXs)<{ isSelected: boolean }>(
+  ({ isSelected, theme }) => ({
+    color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+    marginLeft: getSpacing(2),
+    flexShrink: 0,
+  })
+)
+
+const Description = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({

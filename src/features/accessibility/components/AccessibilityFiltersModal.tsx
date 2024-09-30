@@ -16,7 +16,7 @@ import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { Typo, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -105,29 +105,25 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <AccessibilityFiltersContainer>
-        <Typo.ButtonText>
+        <TypoDS.BodySemiBold>
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
-        </Typo.ButtonText>
-        <Spacer.Column numberOfSpaces={8} />
+        </TypoDS.BodySemiBold>
         <StyledCheckBox>
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
             label={capitalizeFirstLetter(HandicapEnum.VISUAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
           />
-          <Spacer.Column numberOfSpaces={6} />
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
             label={capitalizeFirstLetter(HandicapEnum.MENTAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
           />
-          <Spacer.Column numberOfSpaces={6} />
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
             label={capitalizeFirstLetter(HandicapEnum.MOTOR)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
           />
-          <Spacer.Column numberOfSpaces={6} />
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
             label={capitalizeFirstLetter(HandicapEnum.AUDIO)}
@@ -139,10 +135,13 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   )
 }
 
-const AccessibilityFiltersContainer = styled.View({})
+const AccessibilityFiltersContainer = styled.View({
+  gap: getSpacing(8),
+})
 
 const StyledCheckBox = styled(Ul)({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
+  gap: getSpacing(6),
 })

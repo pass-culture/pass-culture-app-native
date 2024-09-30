@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Check } from 'ui/svg/icons/Check'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -66,6 +66,6 @@ const StyledIcon = styled(Check).attrs(({ theme }) => ({
   color: theme.colors.black,
 }))``
 
-const Label = styled(Typo.Caption)(({ theme }) => ({
+const Label = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
   color: theme.colors.black,
 }))

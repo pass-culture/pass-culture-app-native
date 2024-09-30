@@ -13,7 +13,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
@@ -66,7 +66,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         <SubtitleContainer>
           <SearchIcon />
           <Spacer.Row numberOfSpaces={2} />
-          <Typo.ButtonText>Trouver un lieu culturel </Typo.ButtonText>
+          <TypoDS.BodySemiBold>Trouver un lieu culturel </TypoDS.BodySemiBold>
         </SubtitleContainer>
         <Spacer.Column numberOfSpaces={4} />
         <SearchInput

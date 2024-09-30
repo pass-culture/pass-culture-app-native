@@ -230,9 +230,9 @@ exports[`<AppModal /> on big screen 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -524,9 +524,9 @@ exports[`<AppModal /> on small screen 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -772,9 +772,9 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -1066,9 +1066,9 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -1360,9 +1360,9 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -1724,9 +1724,9 @@ exports[`<AppModal /> with left icon render 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -2018,9 +2018,9 @@ exports[`<AppModal /> with minimal props 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -2312,9 +2312,9 @@ exports[`<AppModal /> with right icon render 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]
@@ -2666,9 +2666,9 @@ exports[`<AppModal /> without children 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]

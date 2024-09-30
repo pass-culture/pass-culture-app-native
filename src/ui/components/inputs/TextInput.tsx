@@ -10,7 +10,7 @@ import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidt
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -46,7 +46,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
         <React.Fragment>
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
-              <Typo.Body>{customProps.label}</Typo.Body>
+              <TypoDS.Body>{customProps.label}</TypoDS.Body>
               <RightLabel
                 isRequiredField={customProps.isRequiredField}
                 rightLabel={customProps.rightLabel}
@@ -101,10 +101,14 @@ type RightLabelProps = {
 }
 const RightLabel = ({ isRequiredField, rightLabel }: RightLabelProps) => {
   if (isRequiredField) return <RequiredLabel />
-  if (rightLabel) return <Typo.CaptionNeutralInfo>{rightLabel}</Typo.CaptionNeutralInfo>
+  if (rightLabel) return <Subtitle>{rightLabel}</Subtitle>
   return null
 }
 
 const IconTouchableOpacity = styledButton(Touchable)({
   maxWidth: getSpacing(15),
 })
+
+const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -41,12 +41,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           accessibilityDescribedBy={labelDescriptionID}>
           {label}
         </StyledInputLabel>
-        <Spacer.Column numberOfSpaces={1} />
-        {subtitle ? (
-          <Typo.CaptionNeutralInfo nativeID={labelDescriptionID}>
-            {subtitle}
-          </Typo.CaptionNeutralInfo>
-        ) : null}
+        {subtitle ? <Subtitle nativeID={labelDescriptionID}>{subtitle}</Subtitle> : null}
       </React.Fragment>
     ),
 
@@ -96,5 +91,9 @@ const SwitchWrapper = styled.View({
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.typography.buttonText,
+  ...theme.designSystem.typography.bodySemiBold,
+}))
+
+const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

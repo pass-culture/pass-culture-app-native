@@ -44,7 +44,7 @@ describe('CategoriesButtonsDisplay', () => {
   it('should display venue map block when geoloc position is activated and location mode is set to "around me"', async () => {
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should display venue map block when geoloc position is activated and location mode is set to "around place"', () => {
@@ -57,7 +57,7 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should display venue map block when geoloc position is deactivated and location mode is set to "around place"', () => {
@@ -70,14 +70,14 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should not display venue map block when feature flag is deactivated', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.queryByText('EXPLORE LA CARTE')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Explore la carte')).not.toBeOnTheScreen()
   })
 
   it("should not display venue map block when we don't have geoloc position", () => {
@@ -90,7 +90,7 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.queryByText('EXPLORE LA CARTE')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Explore la carte')).not.toBeOnTheScreen()
   })
 
   it('should display venue map block when the location is to everywhere position', () => {
@@ -103,7 +103,7 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should display venue map block when the location is to everywhere position and feature flag wipVenueMap is activated', () => {
@@ -116,13 +116,13 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
+    expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should log consult venue map from search landing when pressing venue map block', () => {
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    fireEvent.press(screen.getByText('EXPLORE LA CARTE'))
+    fireEvent.press(screen.getByText('Explore la carte'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })
   })
@@ -143,7 +143,7 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    fireEvent.press(screen.getByText('EXPLORE LA CARTE'))
+    fireEvent.press(screen.getByText('Explore la carte'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })

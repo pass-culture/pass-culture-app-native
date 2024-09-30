@@ -15,7 +15,8 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
 interface Props extends Partial<HorizontalTileProps> {
@@ -123,6 +124,6 @@ const Container = styled(InternalTouchableLink)({
   gap: getSpacing(4),
 })
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

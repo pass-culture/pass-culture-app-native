@@ -238,9 +238,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 27.2,
                     "textAlign": "center",
                   },
                 ]
@@ -407,25 +407,15 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
                 >
                   Uniquement les offres duo
                 </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   nativeID="testUuidV4"
                   style={
@@ -434,7 +424,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }

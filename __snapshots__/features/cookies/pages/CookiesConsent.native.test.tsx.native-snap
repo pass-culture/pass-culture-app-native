@@ -244,9 +244,9 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 27.2,
                       "textAlign": "center",
                     },
                   ]

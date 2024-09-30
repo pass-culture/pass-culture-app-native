@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { sanitizeTitle } from 'shared/offer/helpers/sanitizeTitle'
-import { Typo } from 'ui/theme/typography'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 export const OfferName = ({ title }: { title: string }) => {
   const uiTitle = sanitizeTitle(title)
@@ -13,4 +13,4 @@ export const OfferName = ({ title }: { title: string }) => {
     </Name>
   )
 }
-const Name = styled(Typo.ButtonText)``
+const Name = styled(TypoDS.BodySemiBold)``

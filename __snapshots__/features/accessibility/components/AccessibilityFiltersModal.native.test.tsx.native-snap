@@ -299,9 +299,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 27.2,
                       "textAlign": "center",
                     },
                   ]
@@ -432,7 +432,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             <View
               style={
                 [
-                  {},
+                  {
+                    "gap": 32,
+                  },
                 ]
               }
             >
@@ -441,9 +443,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -451,22 +453,13 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
               </Text>
               <View
-                numberOfSpaces={8}
-                style={
-                  [
-                    {
-                      "height": 32,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityRole="list"
                 style={
                   [
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "gap": 24,
                       "paddingLeft": 0,
                       "width": "100%",
                     },
@@ -549,9 +542,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "paddingLeft": 16,
                         },
                       ]
@@ -560,16 +553,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     Handicap visuel
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Handicap psychique ou cognitif"
                   accessibilityRole="checkbox"
@@ -646,9 +629,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "paddingLeft": 16,
                         },
                       ]
@@ -657,16 +640,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     Handicap psychique ou cognitif
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Handicap moteur"
                   accessibilityRole="checkbox"
@@ -743,9 +716,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "paddingLeft": 16,
                         },
                       ]
@@ -754,16 +727,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     Handicap moteur
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Handicap auditif"
                   accessibilityRole="checkbox"
@@ -840,9 +803,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "paddingLeft": 16,
                         },
                       ]

@@ -49,7 +49,9 @@ export const LocationSearchInput = ({
         onPressRightIcon={onResetPlace}
         placeholder={LOCATION_PLACEHOLDER}
         value={placeQuery}
-        textStyle={selectedPlace ? theme.typography.buttonText : theme.typography.body}
+        textStyle={
+          selectedPlace ? theme.designSystem.typography.button : theme.designSystem.typography.body
+        }
       />
       {shouldShowSuggestedPlaces ? (
         <React.Fragment>

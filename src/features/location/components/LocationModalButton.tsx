@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -45,10 +45,10 @@ const TopContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledButtonText = styled(Typo.ButtonText)<{ color?: ColorsEnum }>(({ color }) => ({
+const StyledButtonText = styled(TypoDS.Button)<{ color?: ColorsEnum }>(({ color }) => ({
   color: color,
 }))
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

@@ -3,14 +3,14 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AppThemeType } from 'theme'
+import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
-type Typography = ValueOf<AppThemeType['typography']>
+type TypographyDS = ValueOf<typeof theme.designSystem.typography>
 
-type Props = RNTextInputProps & { textStyle?: Typography }
+type Props = RNTextInputProps & { textStyle?: TypographyDS }
 
 export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInput(
   { nativeAutoFocus, autoFocus, testID, defaultValue, ...props },
@@ -78,11 +78,11 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.typography.placeholder.color,
-}))<{ isEmpty: boolean; textStyle?: Typography; multiline: boolean }>(
+}))<{ isEmpty: boolean; textStyle?: TypographyDS; multiline: boolean }>(
   ({ theme, isEmpty, textStyle, editable, multiline }) => {
-    let inputStyle: Typography = theme.typography.body
+    let inputStyle: TypographyDS = theme.designSystem.typography.body
     if (isEmpty) {
-      inputStyle = theme.typography.placeholder
+      inputStyle = theme.designSystem.typography.bodyItalic
     } else if (textStyle) {
       inputStyle = textStyle
     }

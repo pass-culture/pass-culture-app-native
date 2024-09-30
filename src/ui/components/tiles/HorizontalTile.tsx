@@ -5,7 +5,8 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 export type HorizontalTileProps = PropsWithChildren<{
   title?: string
@@ -52,7 +53,7 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
           )}
         </Row>
         {children}
-        {price ? <Typo.Caption>{price}</Typo.Caption> : null}
+        {price ? <TypoDS.BodySemiBoldS>{price}</TypoDS.BodySemiBoldS> : null}
       </Column>
     </React.Fragment>
   )
@@ -61,7 +62,6 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
 const Column = styled.View({
   flexDirection: 'column',
   flex: 1,
-  gap: getSpacing(1),
 })
 
 const Row = styled.View({
@@ -69,7 +69,7 @@ const Row = styled.View({
   alignItems: 'center',
 })
 
-const Distance = styled(Typo.Body)(({ theme }) => ({
+const Distance = styled(TypoDS.BodySemiBoldS)(({ theme }) => ({
   textAlign: 'right',
   color: theme.colors.greyDark,
 }))

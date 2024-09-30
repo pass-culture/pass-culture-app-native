@@ -421,12 +421,12 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                     style={
                       [
                         {
-                          "color": "#696A6F",
+                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Italic",
-                          "fontSize": 15,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
                           "height": "100%",
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -1058,16 +1058,16 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       {
                         "bottom": 16,
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
                         "left": 16,
-                        "lineHeight": 20,
+                        "lineHeight": 25.6,
                         "position": "absolute",
                       },
                     ]
                   }
                 >
-                  EXPLORE LA CARTE
+                  Explore la carte
                 </Text>
               </View>
             </View>
@@ -1087,9 +1087,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "marginBottom": 8,
                   "marginTop": 16,
                   "paddingHorizontal": 8,
@@ -1097,7 +1097,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               ]
             }
           >
-            PARCOURS LES CATÉGORIES
+            Parcours les catégories
           </Text>
           <Modal
             accessibilityLabelledBy="testUuidV4"
@@ -1230,9 +1230,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1330,9 +1330,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1444,9 +1444,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1544,9 +1544,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1658,9 +1658,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1758,9 +1758,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1872,9 +1872,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -1972,9 +1972,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2086,9 +2086,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2186,9 +2186,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2300,9 +2300,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2400,9 +2400,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2514,9 +2514,9 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                           "textAlign": "left",
                         },
                       ]
@@ -2939,12 +2939,12 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
                         "height": "100%",
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -3451,8 +3451,8 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": 24,
+                  "fontSize": 19,
+                  "lineHeight": 30.4,
                   "marginBottom": 8,
                   "marginTop": 16,
                   "paddingHorizontal": 8,

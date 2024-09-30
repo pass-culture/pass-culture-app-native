@@ -1,10 +1,9 @@
 import { getHighlightedParts, getPropertyByPath } from 'instantsearch.js/es/lib/utils'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches
 
@@ -15,17 +14,17 @@ type HighlightPartProps = {
 
 export function HighlightPart({ children, isHighlighted }: HighlightPartProps) {
   return isHighlighted ? (
-    <Typo.Body testID="highlightedText">{children}</Typo.Body>
+    <TypoDS.Body testID="highlightedText">{children}</TypoDS.Body>
   ) : (
-    <Typo.ButtonText testID="nonHighlightedText">{children}</Typo.ButtonText>
+    <TypoDS.BodySemiBold testID="nonHighlightedText">{children}</TypoDS.BodySemiBold>
   )
 }
 
 export function HighlightHistoryItemPart({ children, isHighlighted }: HighlightPartProps) {
   return isHighlighted ? (
-    <ItalicText testID="highlightedHistoryItemText">{children}</ItalicText>
+    <TypoDS.BodyItalic testID="highlightedHistoryItemText">{children}</TypoDS.BodyItalic>
   ) : (
-    <BoldItalicText testID="nonHighlightedHistoryItemText">{children}</BoldItalicText>
+    <TypoDS.BodyItalic testID="nonHighlightedHistoryItemText">{children}</TypoDS.BodyItalic>
   )
 }
 
@@ -90,10 +89,3 @@ export function Highlight({ suggestionHit, venueHit, historyItem, attribute }: H
     </React.Fragment>
   )
 }
-
-const ItalicText = styled(Typo.Body)(({ theme }) => ({
-  ...theme.typography.placeholder,
-  color: theme.colors.black,
-}))
-
-const BoldItalicText = styled(Typo.Body)(({ theme }) => theme.typography.bodyBoldItalic)
