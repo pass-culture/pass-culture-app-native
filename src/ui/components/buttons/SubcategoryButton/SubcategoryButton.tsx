@@ -98,6 +98,7 @@ const StyledTouchable = styledButton(Touchable)<{
     : { width: SUBCATEGORY_BUTTON_WIDTH }),
   borderColor,
   borderWidth: 1.6,
+  borderStyle: 'solid',
   borderRadius: theme.borderRadius.radius,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
