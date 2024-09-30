@@ -14,7 +14,7 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { VENUE_VIDEO_FAKEDOOR_DATA } from 'features/venue/constants'
-import { isCloseToBottom } from 'libs/analytics'
+import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -85,6 +85,11 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     hideModal()
   }
 
+  const handlePressVideo = () => {
+    showModal()
+    analytics.logConsultVenueVideoFakeDoor({ venueType: venue.venueTypeCode })
+  }
+
   const shouldDisplayCTA =
     (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
@@ -113,7 +118,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
             {videoSectionVisible ? (
               <Animated.View exiting={FadeOut.duration(200)}>
-                <VideoSection venueType={venue.venueTypeCode} onPress={showModal} />
+                <VideoSection venueType={venue.venueTypeCode} onPress={handlePressVideo} />
               </Animated.View>
             ) : null}
             <Animated.View layout={Layout.duration(200)}>
