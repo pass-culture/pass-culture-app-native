@@ -324,6 +324,7 @@ exports[`Bookings should render correctly 1`] = `
                   },
                 ]
               }
+              withShadow={true}
             >
               <BVLinearGradient
                 borderRadius={4}
@@ -626,6 +627,7 @@ exports[`Bookings should render correctly 1`] = `
                   },
                 ]
               }
+              withShadow={true}
             >
               <BVLinearGradient
                 borderRadius={4}

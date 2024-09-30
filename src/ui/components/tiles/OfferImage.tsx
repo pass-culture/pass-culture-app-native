@@ -13,7 +13,12 @@ import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type SizeProp = keyof AppThemeType['tiles']['sizes']
-type StyleProps = { size: SizeProp; borderRadius?: number; withSroke?: boolean }
+type StyleProps = {
+  size: SizeProp
+  borderRadius?: number
+  withStroke?: boolean
+  withShadow?: boolean
+}
 
 type Props = {
   imageUrl?: string
@@ -21,6 +26,8 @@ type Props = {
   size?: SizeProp
   borderRadius?: number
   withStroke?: boolean
+  withContainerStroke?: boolean
+  withShadow?: boolean
 }
 
 export const OfferImage: React.FC<Props> = ({
@@ -29,18 +36,24 @@ export const OfferImage: React.FC<Props> = ({
   size = 'small',
   borderRadius,
   withStroke,
+  withContainerStroke,
+  withShadow = true,
 }) => {
   const Icon = mapCategoryToIcon(categoryId || null)
 
   return (
-    <Container size={size} borderRadius={borderRadius}>
+    <Container
+      size={size}
+      borderRadius={borderRadius}
+      withStroke={withContainerStroke}
+      withShadow={withShadow}>
       {imageUrl ? (
         <StyledFastImage
           url={imageUrl}
           resizeMode={FastImage.resizeMode?.cover}
           size={size}
           borderRadius={borderRadius}
-          withSroke={withStroke}
+          withStroke={withStroke}
         />
       ) : (
         <StyledImagePlaceholder Icon={Icon} />
@@ -51,11 +64,11 @@ export const OfferImage: React.FC<Props> = ({
 
 const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
   ...theme.tiles.sizes[size],
-}))<StyleProps>(({ theme, size, borderRadius, withSroke }) => ({
+}))<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
   backgroundColor: theme.colors.greyLight,
   ...theme.tiles.sizes[size],
   borderRadius: borderRadius || theme.tiles.borderRadius,
-  ...(withSroke
+  ...(withStroke
     ? {
         borderWidth: 1,
         borderColor: theme.colors.greyDark,
@@ -69,16 +82,24 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
 }))``
 
-const Container = styled.View<StyleProps>(({ theme, size, borderRadius }) => ({
-  borderRadius: borderRadius || theme.tiles.borderRadius,
-  ...theme.tiles.sizes[size],
-  ...(Platform.OS === 'web'
-    ? {}
-    : getShadow({
-        shadowOffset: { width: 0, height: getSpacing(1) },
-        shadowRadius: getSpacing(1),
-        shadowColor: theme.colors.greyDark,
-        shadowOpacity: 0.2,
-      })),
-  backgroundColor: theme.colors.white,
-}))
+const Container = styled.View<StyleProps>(
+  ({ theme, size, borderRadius, withStroke, withShadow }) => ({
+    borderRadius: borderRadius || theme.tiles.borderRadius,
+    ...theme.tiles.sizes[size],
+    ...(!withShadow || Platform.OS === 'web'
+      ? {}
+      : getShadow({
+          shadowOffset: { width: 0, height: getSpacing(1) },
+          shadowRadius: getSpacing(1),
+          shadowColor: theme.colors.greyDark,
+          shadowOpacity: 0.2,
+        })),
+    backgroundColor: theme.colors.white,
+    ...(withStroke
+      ? {
+          borderWidth: 1,
+          borderColor: theme.colors.greySemiDark,
+        }
+      : {}),
+  })
+)

@@ -446,6 +446,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   },
                 ]
               }
+              withShadow={true}
             >
               <BVLinearGradient
                 borderRadius={4}
@@ -889,6 +890,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   },
                 ]
               }
+              withShadow={true}
             >
               <BVLinearGradient
                 borderRadius={4}

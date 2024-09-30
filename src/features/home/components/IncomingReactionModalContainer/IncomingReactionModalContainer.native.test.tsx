@@ -152,7 +152,7 @@ describe('IncomingReactionModalContainer', () => {
     })
   })
 
-  it('should send reaction with NO_REACTION when closing modalfrom offer has subcategory in reactionCategories remote config', async () => {
+  it('should send reaction with NO_REACTION when closing modal from offer has subcategory in reactionCategories remote config', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
     mockUseBookings.mockReturnValueOnce({
       data: {
@@ -209,6 +209,80 @@ describe('IncomingReactionModalContainer', () => {
         ],
       })
     })
+  })
+
+  it('should not send reaction with NO_REACTION when closing modal from offers have subcategory in reactionCategories remote config and pressing "Donner mon avis" button', async () => {
+    const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+
+    render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
+
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+
+    fireEvent.press(screen.getByTestId('Donner mon avis'))
+
+    expect(mockMutate).not.toHaveBeenCalled()
   })
 
   it('should not render the modal if there is a booking without reaction after 24 hours and subcategory is not in reactionCategories remote config', async () => {
