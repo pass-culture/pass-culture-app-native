@@ -15,46 +15,52 @@ export const useIsCookiesListUpToDate = () => {
   const [consentChoiceDatetime, setConsentChoiceDatetime] = useState<string>()
 
   useEffect(() => {
-    getCookiesChoice().then((consent) => {
+    const fetchData = async () => {
+      const [consent, lastUpdate] = await Promise.all([getCookiesChoice(), getCookiesLastUpdate()])
+
       if (consent) {
         setConsentBuildVersion(consent.buildVersion)
         setConsentChoiceDatetime(consent.choiceDatetime)
       }
-    })
+      if (lastUpdate) {
+        setCookiesLastUpdate(lastUpdate)
+      }
+    }
 
-    getCookiesLastUpdate().then((lastUpdate) => {
-      if (lastUpdate) setCookiesLastUpdate(lastUpdate)
-    })
+    fetchData()
   }, [])
 
-  // If no data from Firestore, consider that the cookie list is up to date
-  if (cookiesLastUpdate === undefined) {
+  const isUpToDate = () => {
+    // If no data from Firestore, consider that the cookie list is up to date
+    if (cookiesLastUpdate === undefined) return true
+
+    const { lastUpdated, lastUpdateBuildVersion } = cookiesLastUpdate
+    if (!consentBuildVersion || !consentChoiceDatetime) {
+      return false
+    }
+
+    // If app is updated with new cookies
+    if (getAppBuildVersion() >= lastUpdateBuildVersion) {
+      // And cookies consent indicates an older version, then the list is outdated
+      if (consentBuildVersion < lastUpdateBuildVersion) {
+        return false
+      }
+      // If update date is in the future, consider  that the cookie list is up to date
+      if (lastUpdated > new Date()) {
+        return true
+      }
+      // If cookies consent indicates same version, then compare date update with consent choice date
+      if (consentBuildVersion === lastUpdateBuildVersion) {
+        const choiceTime = new Date(consentChoiceDatetime)
+        return choiceTime >= lastUpdated
+      }
+    }
+
     return true
   }
 
-  const { lastUpdated, lastUpdateBuildVersion } = cookiesLastUpdate
-
-  // If no build version or consent choice date in localStorage, consider that the cookie list is outdated
-  if (!consentBuildVersion || !consentChoiceDatetime) {
-    return false
+  return {
+    isCookiesListUpToDate: isUpToDate(),
+    cookiesLastUpdate,
   }
-
-  // If app is updated with new cookies
-  if (getAppBuildVersion() >= lastUpdateBuildVersion) {
-    // And cookies consent indicates an older version, then the list is outdated
-    if (consentBuildVersion < lastUpdateBuildVersion) {
-      return false
-    }
-    // If update date is in the future, consider  that the cookie list is up to date
-    if (lastUpdated > new Date()) {
-      return true
-    }
-    // If cookies consent indicates same version, then compare date update with consent choice date
-    if (consentBuildVersion === lastUpdateBuildVersion) {
-      const choiceTime = new Date(consentChoiceDatetime)
-      return choiceTime >= lastUpdated
-    }
-  }
-
-  return true
 }

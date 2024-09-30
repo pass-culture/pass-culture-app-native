@@ -13,7 +13,7 @@ export function PrivacyPolicy() {
     hideModal: hideCookiesConsentModal,
     showModal: showCookiesConsentModal,
   } = useModal(false)
-  const isCookiesListUpToDate = useIsCookiesListUpToDate()
+  const { isCookiesListUpToDate } = useIsCookiesListUpToDate()
 
   useEffect(() => {
     switch (hasUserMadeCookieChoiceV2.state) {
