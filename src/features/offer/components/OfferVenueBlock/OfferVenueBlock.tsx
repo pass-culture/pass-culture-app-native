@@ -1,24 +1,20 @@
-import React, { ComponentProps, Fragment, FunctionComponent, useMemo } from 'react'
+import React, { Fragment } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
-import { Tag } from 'ui/components/Tag/Tag'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = {
   distance?: string
@@ -38,22 +34,12 @@ export function OfferVenueBlock({
   offer,
 }: Readonly<Props>) {
   const { venue } = offer
-  const { venueName, address, onCopyAddressPress } = useVenueBlock({ venue })
+  const { onCopyAddressPress } = useVenueBlock({ venue })
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     venue.address,
     venue.postalCode,
     venue.city
   )
-  const hasVenuePage = !!onSeeVenuePress
-  const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =
-    useMemo(
-      () =>
-        styled(hasVenuePage ? InternalTouchableLink : View)({
-          flexDirection: 'row',
-          maxWidth: 500,
-        }),
-      [hasVenuePage]
-    )
 
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
@@ -62,36 +48,20 @@ export function OfferVenueBlock({
       <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={4} />
 
-      {distance ? (
-        <React.Fragment>
-          <Tag label={`à ${distance}`} />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
-      ) : null}
+      <React.Fragment>
+        <VenueBlock distance={distance} offer={offer} onSeeVenuePress={onSeeVenuePress} />
 
-      <TouchableContainer
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        onBeforeNavigate={onSeeVenuePress}>
-        <VenuePreview
-          address={address}
-          bannerUrl={venue.bannerUrl}
-          withRightArrow={hasVenuePage}
-          imageHeight={VENUE_THUMBNAIL_SIZE}
-          imageWidth={VENUE_THUMBNAIL_SIZE}
-          venueName={venueName}
-        />
-      </TouchableContainer>
-
-      {onChangeVenuePress ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <ButtonSecondaryBlack
-            icon={EditPen}
-            wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
-            onPress={onChangeVenuePress}
-          />
-        </React.Fragment>
-      ) : null}
+        {onChangeVenuePress ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <ButtonSecondaryBlack
+              icon={EditPen}
+              wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
+              onPress={onChangeVenuePress}
+            />
+          </React.Fragment>
+        ) : null}
+      </React.Fragment>
 
       {isCinema ? null : (
         <Fragment>

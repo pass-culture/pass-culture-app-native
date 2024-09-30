@@ -8,11 +8,14 @@ import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
+import { OfferNewXPCineBlock } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineBlock'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -58,6 +61,8 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
+
+  const enableNewXPCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -149,17 +154,28 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const renderOfferVenueBlock = () => {
     return (
       <ViewGap gap={8}>
-        <OfferVenueBlock
-          title={venueSectionTitle}
-          offer={offer}
-          distance={distanceToLocation}
-          onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
-          onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
-          onSeeItineraryPress={
-            shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
-          }
-        />
-        {isOfferAMovieScreening ? (
+        {isOfferAMovieScreening && enableNewXPCineFromOffer ? (
+          <OfferNewXPCineBlock
+            title={venueSectionTitle}
+            offer={offer}
+            subcategory={subcategory}
+            distance={distanceToLocation}
+            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+          />
+        ) : (
+          <OfferVenueBlock
+            title={venueSectionTitle}
+            offer={offer}
+            distance={distanceToLocation}
+            onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
+            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+            onSeeItineraryPress={
+              shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
+            }
+          />
+        )}
+
+        {isOfferAMovieScreening && !enableNewXPCineFromOffer ? (
           <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
         ) : null}
       </ViewGap>

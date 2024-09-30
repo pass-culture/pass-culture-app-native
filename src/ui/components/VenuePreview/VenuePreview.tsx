@@ -7,12 +7,12 @@ import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+
+const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = PropsWithChildren<{
   venueName: string
-  imageHeight: number
-  imageWidth: number
   address: string
   withRightArrow?: boolean
   bannerUrl?: string | null
@@ -22,21 +22,23 @@ export const VenuePreview: FunctionComponent<Props> = ({
   address,
   bannerUrl,
   withRightArrow,
-  imageHeight,
-  imageWidth,
   venueName,
   children,
 }) => (
   <StyledView>
     {bannerUrl ? (
       <VenueThumbnail
-        height={imageHeight}
-        width={imageWidth}
+        height={VENUE_THUMBNAIL_SIZE}
+        width={VENUE_THUMBNAIL_SIZE}
         url={bannerUrl}
         testID="VenuePreviewImage"
       />
     ) : (
-      <ImagePlaceholder height={imageHeight} width={imageWidth} testID="VenuePreviewPlaceholder" />
+      <ImagePlaceholder
+        height={VENUE_THUMBNAIL_SIZE}
+        width={VENUE_THUMBNAIL_SIZE}
+        testID="VenuePreviewPlaceholder"
+      />
     )}
     <Spacer.Row numberOfSpaces={2} />
     <VenueRightContainer gap={1}>
@@ -63,6 +65,7 @@ const StyledView = styled.View({
 const VenueRightContainer = styled(ViewGap)({
   flexShrink: 1,
   justifyContent: 'center',
+  maxHeight: VENUE_THUMBNAIL_SIZE,
 })
 
 const VenueTitleContainer = styled.View({
