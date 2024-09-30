@@ -76,7 +76,7 @@ export const buildFacetFilters = ({
     facetFilters.push(subcategoriesPredicate)
   }
 
-  if (offerNativeCategories?.length && !hasGtls) {
+  if (offerNativeCategories?.length) {
     const nativeCategoriesPredicate = buildOfferNativeCategoriesPredicate(offerNativeCategories)
     facetFilters.push(nativeCategoriesPredicate)
   }
