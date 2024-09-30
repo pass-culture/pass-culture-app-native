@@ -66,7 +66,7 @@ export function OfferNewXPCineBlock({
     : undefined
 
   return (
-    <Container>
+    <Container testID="offer-new-xp-cine-block">
       <CineBlockContainer>
         <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       </CineBlockContainer>

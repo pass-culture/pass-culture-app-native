@@ -7,7 +7,9 @@ import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenu
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+
+const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = {
   distance?: string
@@ -47,6 +49,8 @@ export function VenueBlock({ distance, onSeeVenuePress, offer }: Readonly<Props>
           bannerUrl={venue.bannerUrl}
           withRightArrow={hasVenuePage}
           venueName={venueName}
+          imageWidth={VENUE_THUMBNAIL_SIZE}
+          imageHeight={VENUE_THUMBNAIL_SIZE}
         />
       </TouchableContainer>
     </React.Fragment>
