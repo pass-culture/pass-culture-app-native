@@ -58,7 +58,11 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         flatListRef={flatListRef}
       />
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData === undefined ? null : <EventCardList data={eventCardData} />}
+      {eventCardData === undefined ? null : (
+        <EventCardListContainer>
+          <EventCardList data={eventCardData} />
+        </EventCardListContainer>
+      )}
       {CTAOfferModal}
     </MovieCalendarContainer>
   )
@@ -66,4 +70,8 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
 
 const MovieCalendarContainer = styled(View)(({ theme }) => ({
   marginRight: theme.isDesktopViewport ? -getSpacing(16) : 0, // cancels padding of the parent container
+}))
+
+const EventCardListContainer = styled(View)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))

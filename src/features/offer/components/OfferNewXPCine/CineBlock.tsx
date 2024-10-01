@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -22,22 +22,17 @@ export const CineBlock: FunctionComponent<Props> = ({
   CTAOfferModal,
   eventCardData,
 }) => {
-  const theme = useTheme()
-
   return (
-    <View>
+    <CineBlockContainer>
       <Spacer.Column numberOfSpaces={6} />
       <VenueBlock distance={distance} offer={offer} onSeeVenuePress={onSeeVenuePress} />
       <Spacer.Column numberOfSpaces={4} />
       {eventCardData === undefined ? null : <EventCardList data={eventCardData} />}
       {CTAOfferModal}
-      <Spacer.Column numberOfSpaces={theme.isDesktopViewport ? 6 : 4} />
-      <Divider />
-    </View>
+    </CineBlockContainer>
   )
 }
 
-const Divider = styled.View(({ theme }) => ({
-  height: 1,
-  backgroundColor: theme.colors.greyMedium,
+const CineBlockContainer = styled(View)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))

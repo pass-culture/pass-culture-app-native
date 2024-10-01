@@ -1,6 +1,6 @@
 import { differenceInCalendarDays } from 'date-fns'
 import React, { useCallback } from 'react'
-import { FlatList, LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native'
+import { FlatList, LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -20,14 +20,9 @@ type Props = {
   onFlatListLayout?: (event: LayoutChangeEvent) => void
   itemWidth?: number
   onItemLayout?: (event: LayoutChangeEvent) => void
-  flatListPadding?: StyleProp<ViewStyle>
 }
 
 export const MOVIE_CALENDAR_PADDING = getSpacing(6)
-
-const defaultFlatListContainer: StyleProp<ViewStyle> = {
-  paddingHorizontal: MOVIE_CALENDAR_PADDING,
-}
 
 export const MovieCalendar: React.FC<Props> = ({
   dates,
@@ -38,7 +33,6 @@ export const MovieCalendar: React.FC<Props> = ({
   onFlatListLayout,
   itemWidth,
   onItemLayout,
-  flatListPadding,
 }) => {
   const { isDesktopViewport } = useTheme()
   const {
@@ -72,8 +66,6 @@ export const MovieCalendar: React.FC<Props> = ({
     },
     [onTabChange, scrollToMiddleElement]
   )
-
-  const contentContainerStyle = flatListPadding || defaultFlatListContainer
 
   return (
     <View onLayout={onContainerLayout}>
@@ -120,6 +112,10 @@ export const MovieCalendar: React.FC<Props> = ({
       ) : null}
     </View>
   )
+}
+
+const contentContainerStyle = {
+  paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
 const FadeComponent = styled(LinearGradient)`
