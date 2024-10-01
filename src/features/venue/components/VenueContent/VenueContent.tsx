@@ -90,6 +90,15 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     analytics.logConsultVenueVideoFakeDoor({ venueType: venue.venueTypeCode })
   }
 
+  const buildSurveyURL = () => {
+    const urlOrigin = VENUE_VIDEO_FAKEDOOR_DATA.surveyURL
+
+    if (venue.venueTypeCode) {
+      return `${urlOrigin}?VenueType=${venue.venueTypeCode}`
+    }
+    return urlOrigin
+  }
+
   const shouldDisplayCTA =
     (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
@@ -101,7 +110,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
         visible={visible}
         title={VENUE_VIDEO_FAKEDOOR_DATA.title}
         surveyDescription={VENUE_VIDEO_FAKEDOOR_DATA.description}
-        surveyUrl={VENUE_VIDEO_FAKEDOOR_DATA.surveyURL}
+        surveyUrl={buildSurveyURL()}
       />
       <Container>
         <VenueWebMetaHeader venue={venue} />
