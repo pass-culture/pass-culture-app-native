@@ -27,7 +27,7 @@ export const CineBlock: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <VenueBlock distance={distance} offer={offer} onSeeVenuePress={onSeeVenuePress} />
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData === undefined ? null : <EventCardList data={eventCardData} />}
+      {eventCardData ? <EventCardList data={eventCardData} /> : null}
       {CTAOfferModal}
     </CineBlockContainer>
   )
