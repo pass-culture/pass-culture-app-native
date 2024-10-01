@@ -104,6 +104,7 @@ jest.mock('@batch.com/react-native-plugin', () =>
 describe('<Venue />', () => {
   beforeEach(() => {
     activateFeatureFlags()
+    getItemSpy.mockReset()
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
   })
 
@@ -177,6 +178,17 @@ describe('<Venue />', () => {
       await screen.findByText('Infos pratiques')
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
+    })
+
+    it('should log ConsultVenueVideoFakeDoor when fake video is pressed', async () => {
+      activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+      renderVenue(venueId)
+
+      fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
+
+      expect(analytics.logConsultVenueVideoFakeDoor).toHaveBeenCalledWith({
+        venueType: 'BOOKSTORE',
+      })
     })
   })
 })

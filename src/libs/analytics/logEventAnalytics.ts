@@ -275,6 +275,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
   logConsultVenueOffers: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
+  logConsultVenueVideoFakeDoor: ({ venueType }: { venueType?: string | null }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_VIDEO_FAKE_DOOR }, { venueType }),
   logConsultVideo: (params: {
     from: Referrals
     moduleId: string
