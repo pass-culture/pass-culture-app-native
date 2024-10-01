@@ -1,0 +1,19 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible:
+    text: "Mes favoris"
+    index: 1
+- assertVisible: "3 favoris"
+
+- tapOn:
+    text: "Supprimer"
+    index: 0
+- assertVisible: "2 favoris"
+- tapOn:
+    text: "Supprimer"
+    index: 0
+- assertVisible: "1 favori"
+- tapOn:
+    text: "Supprimer"
+    index: 0
+- assertVisible: "Retrouve toutes tes offres en un clin d’oeil"

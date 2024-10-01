@@ -2,12 +2,20 @@ appId: ${MAESTRO_APP_ID}
 ---
 - tapOn: 'Se connecter'
 
+- runFlow:
+    when:
+      visible: 'Inscription'
+    commands:
+      - pressKey: back
+
 - tapOn: 'tonadresse@email.com'
 - inputText: ${MAESTRO_VALID_EMAIL}
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
+
+- waitForAnimationToEnd
 
 - runFlow: # Si apparition du QPI
     when:
