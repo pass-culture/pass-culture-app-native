@@ -21,8 +21,8 @@ appId: ${MAESTRO_APP_ID}
     start: 47%, 52%
     end: 47%, 62%
 - swipe: # years
-    start: 74%,57%
-    end: 74%,51%
+    start: 74%, 57%
+    end: 74%, 51%
 - tapOn: 'Continuer vers l’étape CGU & Données'
 
 - assertVisible: 'CGU & Données'
