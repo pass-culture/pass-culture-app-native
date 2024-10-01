@@ -34,9 +34,11 @@ export const buildOfferGtlsPredicate = (gtls: GTL[]) =>
 export const buildOfferNativeCategoriesPredicate = (
   nativeCategories: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
 ) =>
-  nativeCategories.map(
-    (nativeCategory) => `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`
-  )
+  nativeCategories.map((nativeCategory) => {
+    return nativeCategory in BooksNativeCategoriesEnum
+      ? `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${NativeCategoryIdEnumv2.LIVRES_PAPIER}`
+      : `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`
+  })
 
 const offerGenreTypesPredicate = {
   [GenreType.MOVIE]: FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES,

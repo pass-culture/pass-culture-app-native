@@ -4,6 +4,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { BooksNativeCategoriesEnum } from 'features/search/types'
 import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,
@@ -58,6 +59,14 @@ describe('buildOfferNativeCategoriesPredicate', () => {
       'offer.nativeCategoryId:ARTS_VISUELS',
       'offer.nativeCategoryId:DVD_BLU_RAY',
     ])
+  })
+
+  it('should return an LIVRES_PAPIERS offer native categories predicate formatted for Algolia API with BookEnum', () => {
+    const offerSubcategoriesPredicate = buildOfferNativeCategoriesPredicate([
+      BooksNativeCategoriesEnum.MANGAS,
+    ])
+
+    expect(offerSubcategoriesPredicate).toEqual(['offer.nativeCategoryId:LIVRES_PAPIER'])
   })
 })
 
