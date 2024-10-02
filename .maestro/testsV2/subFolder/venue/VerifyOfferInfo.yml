@@ -20,14 +20,15 @@ appId: ${MAESTRO_APP_ID}
       visible: "Changer le lieu de retrait"
     commands:
       - tapOn: 
-            id: "Changer le lieu de retrait"
+          text: "Changer le lieu de retrait"
+          retryTapIfNoChange: true
+      - assertVisible: Lieu de retrait
+      - assertVisible: Sélectionner un lieu
+      - assertVisible:
+          id: offerVenuesList
+      - tapOn:
+          id: Ne pas sélectionner un autre lieu
 
-- assertVisible: Lieu de retrait
-- assertVisible: Sélectionner un lieu
-- assertVisible:
-    id: offerVenuesList
-- tapOn:
-    id: Ne pas sélectionner un autre lieu
 
 - assertVisible: "Copier l’adresse"
 - assertVisible: "Voir l’itinéraire"
