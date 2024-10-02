@@ -10,12 +10,13 @@ import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
   setFeedbackInAppSchema,
 } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValue = {
@@ -52,19 +53,7 @@ export const FeedbackInApp = () => {
             Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos
             équipes.
           </TypoDS.Body>
-          <Spacer.Column numberOfSpaces={5} />
-          <TypoDS.Body>
-            Si tu as une question ou besoin d’aide nous t’invitons à
-            <Spacer.Row numberOfSpaces={1} />
-            <ExternalTouchableLink
-              as={StyledButtonInsideText}
-              wording="contacter le support"
-              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-              icon={EmailFilled}
-              externalNav={contactSupport.forGenericQuestion}
-            />
-          </TypoDS.Body>
-          <Spacer.Column numberOfSpaces={10} />
+          <Spacer.Column numberOfSpaces={6} />
           <Controller
             control={control}
             name="feedback"
@@ -81,14 +70,26 @@ export const FeedbackInApp = () => {
               />
             )}
           />
-          <ButtonContainer>
-            <ButtonPrimary
-              type="submit"
-              wording="Envoyer ma suggestion"
-              onPress={handleSubmit(onSubmit)}
-              disabled={!isValid}
-            />
-          </ButtonContainer>
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary
+            type="submit"
+            wording="Envoyer ma suggestion"
+            onPress={handleSubmit(onSubmit)}
+            disabled={!isValid}
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledSeparatorWithText label="ou" />
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledBody>Si tu as besoin d’aide, notre support est toujours accessible.</StyledBody>
+          <Spacer.Column numberOfSpaces={4} />
+          <ExternalTouchableLink
+            as={ButtonTertiaryBlack}
+            wording="contacter le support"
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            icon={EmailFilled}
+            externalNav={contactSupport.forGenericQuestion}
+          />
+          <Spacer.Column numberOfSpaces={5} />
           <Spacer.BottomScreen />
         </React.Fragment>
       }
@@ -96,8 +97,10 @@ export const FeedbackInApp = () => {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
-}))``
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
 
-const ButtonContainer = styled.View({ paddingVertical: getSpacing(5) })
+const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
+  backgroundColor: theme.colors.greyMedium,
+}))``
