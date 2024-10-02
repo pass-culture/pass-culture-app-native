@@ -3525,7 +3525,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     >
                       <defs>
                         <clippath
-                          id="__lottie_element_173"
+                          id="__lottie_element_344"
                         >
                           <rect
                             height="24"
@@ -3538,46 +3538,46 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAXSURBVHgB7cAxAQAAAEAw/VMr4TTYGgICTAABbZBM+QAAAABJRU5ErkJggg=="
                         />
                         <clippath
-                          id="__lottie_element_175"
+                          id="__lottie_element_346"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_178"
+                          id="__lottie_element_349"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_181"
+                          id="__lottie_element_352"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_184"
+                          id="__lottie_element_355"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_187"
+                          id="__lottie_element_358"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_189"
+                          id="__lottie_element_360"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_190)"
+                            clip-path="url(#__lottie_element_361)"
                             id="precomp_bURm2UdzUDFoP0C5NvAdV7"
                             opacity="1"
                             style="display: block;"
@@ -3603,67 +3603,67 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_190"
+                          id="__lottie_element_361"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_195"
+                          id="__lottie_element_366"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_200"
+                          id="__lottie_element_371"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_203"
+                          id="__lottie_element_374"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_206"
+                          id="__lottie_element_377"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_209"
+                          id="__lottie_element_380"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_212"
+                          id="__lottie_element_383"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_215"
+                          id="__lottie_element_386"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_217"
+                          id="__lottie_element_388"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_218)"
+                            clip-path="url(#__lottie_element_389)"
                             id="precomp_X4bvTVklFAMRlIWvNcVRV17"
                             opacity="1"
                             style="display: block;"
@@ -3689,67 +3689,67 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_218"
+                          id="__lottie_element_389"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_223"
+                          id="__lottie_element_394"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_228"
+                          id="__lottie_element_399"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_231"
+                          id="__lottie_element_402"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_234"
+                          id="__lottie_element_405"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_237"
+                          id="__lottie_element_408"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_240"
+                          id="__lottie_element_411"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_243"
+                          id="__lottie_element_414"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_245"
+                          id="__lottie_element_416"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_246)"
+                            clip-path="url(#__lottie_element_417)"
                             id="precomp_qNxVKM2BnRYPZq0QTq5lq44"
                             opacity="1"
                             style="display: block;"
@@ -3775,46 +3775,46 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_246"
+                          id="__lottie_element_417"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_251"
+                          id="__lottie_element_422"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_254"
+                          id="__lottie_element_425"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_257"
+                          id="__lottie_element_428"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_260"
+                          id="__lottie_element_431"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_262"
+                          id="__lottie_element_433"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_263)"
+                            clip-path="url(#__lottie_element_434)"
                             id="precomp_2FD0aY4Wap6_16c4X25C531"
                             opacity="1"
                             style="display: block;"
@@ -3840,60 +3840,60 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_263"
+                          id="__lottie_element_434"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_268"
+                          id="__lottie_element_439"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_273"
+                          id="__lottie_element_444"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_276"
+                          id="__lottie_element_447"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_279"
+                          id="__lottie_element_450"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_282"
+                          id="__lottie_element_453"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_285"
+                          id="__lottie_element_456"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_287"
+                          id="__lottie_element_458"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_288)"
+                            clip-path="url(#__lottie_element_459)"
                             id="precomp_V8uCKkWl6B87ieUyT5Glm40"
                             opacity="1"
                             style="display: block;"
@@ -3919,81 +3919,81 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_288"
+                          id="__lottie_element_459"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_293"
+                          id="__lottie_element_464"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_298"
+                          id="__lottie_element_469"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_301"
+                          id="__lottie_element_472"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_304"
+                          id="__lottie_element_475"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_307"
+                          id="__lottie_element_478"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_310"
+                          id="__lottie_element_481"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_313"
+                          id="__lottie_element_484"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_316"
+                          id="__lottie_element_487"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_319"
+                          id="__lottie_element_490"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <mask
-                          id="__lottie_element_321"
+                          id="__lottie_element_492"
                           mask-type="alpha"
                         >
                           <g
-                            clip-path="url(#__lottie_element_322)"
+                            clip-path="url(#__lottie_element_493)"
                             id="precomp_7VSoDwejlD4WzsXe0RAJv54"
                             opacity="1"
                             style="display: block;"
@@ -4019,42 +4019,42 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                           </g>
                         </mask>
                         <clippath
-                          id="__lottie_element_322"
+                          id="__lottie_element_493"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_327"
+                          id="__lottie_element_498"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_332"
+                          id="__lottie_element_503"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_335"
+                          id="__lottie_element_506"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_338"
+                          id="__lottie_element_509"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
                           />
                         </clippath>
                         <clippath
-                          id="__lottie_element_341"
+                          id="__lottie_element_512"
                         >
                           <path
                             d="M0,0 L100000,0 L100000,100000 L0,100000z"
@@ -4062,63 +4062,63 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         </clippath>
                       </defs>
                       <g
-                        clip-path="url(#__lottie_element_173)"
+                        clip-path="url(#__lottie_element_344)"
                       >
                         <g
-                          clip-path="url(#__lottie_element_175)"
+                          clip-path="url(#__lottie_element_346)"
                           id="precomp_QxDadb4EPTwceq61tNUhn0"
                           opacity="1"
                           style="display: block;"
                           transform="matrix(1,0,0,1,-49988,-49988)"
                         >
                           <g
-                            clip-path="url(#__lottie_element_341)"
+                            clip-path="url(#__lottie_element_512)"
                             id="precomp_2ZwnwJsQEbKJAlG7IMEck59"
                             opacity="1"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,0)"
                           />
                           <g
-                            clip-path="url(#__lottie_element_338)"
+                            clip-path="url(#__lottie_element_509)"
                             id="precomp_M_iwK1avgLj4INS_5vFOX58"
                             opacity="1"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,0)"
                           />
                           <g
-                            clip-path="url(#__lottie_element_313)"
+                            clip-path="url(#__lottie_element_484)"
                             id="precomp_h6IcoUvErfhK8VFdYm6sb49"
                             opacity="1"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,0)"
                           >
                             <g
-                              clip-path="url(#__lottie_element_335)"
+                              clip-path="url(#__lottie_element_506)"
                               id="precomp_cezyVLTQmTqRu2dlu9ZKT57"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(1,0,0,1,0,0)"
                             />
                             <g
-                              clip-path="url(#__lottie_element_332)"
+                              clip-path="url(#__lottie_element_503)"
                               id="precomp_CxuKZG_W3KSsGx_EG5mQV56"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(1,0,0,1,0,0)"
                             />
                             <g
-                              clip-path="url(#__lottie_element_319)"
+                              clip-path="url(#__lottie_element_490)"
                               id="precomp_zyZXft5C6coyyTz0axV8k51"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(1,0,0,1,0,0)"
                             >
                               <g
-                                mask="url(#__lottie_element_321)"
+                                mask="url(#__lottie_element_492)"
                                 style="display: block;"
                               >
                                 <g
-                                  clip-path="url(#__lottie_element_327)"
+                                  clip-path="url(#__lottie_element_498)"
                                   id="precomp_zyZXft5C6coyyTz0axV8k52"
                                   opacity="1"
                                   transform="matrix(1,0,0,1,0,0)"
@@ -4150,7 +4150,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                               </g>
                             </g>
                             <g
-                              clip-path="url(#__lottie_element_316)"
+                              clip-path="url(#__lottie_element_487)"
                               id="precomp_QTyDR2VVwFDLLMdc8YMuH50"
                               opacity="1"
                               style="display: block;"
@@ -4158,91 +4158,91 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             />
                           </g>
                           <g
-                            clip-path="url(#__lottie_element_234)"
+                            clip-path="url(#__lottie_element_405)"
                             id="precomp_umJ13rpz0F9bidU1gWCKr21"
                             opacity="1"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,0)"
                           >
                             <g
-                              clip-path="url(#__lottie_element_310)"
+                              clip-path="url(#__lottie_element_481)"
                               id="precomp_mBIIHg444QihukCUPD2e348"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(1,0,0,1,0,0)"
                             />
                             <g
-                              clip-path="url(#__lottie_element_307)"
+                              clip-path="url(#__lottie_element_478)"
                               id="precomp_EXJqxhkgqeYZhLG4XnX8x47"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(1,0,0,1,0,0)"
                             />
                             <g
-                              clip-path="url(#__lottie_element_237)"
+                              clip-path="url(#__lottie_element_408)"
                               id="precomp_n20R0PQfGH0aCOAUo0Oe-22"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(0,0,0,0,50000,50000)"
                             >
                               <g
-                                clip-path="url(#__lottie_element_304)"
+                                clip-path="url(#__lottie_element_475)"
                                 id="precomp_jy357z_TP3f3QFW_93SVU46"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               />
                               <g
-                                clip-path="url(#__lottie_element_243)"
+                                clip-path="url(#__lottie_element_414)"
                                 id="precomp_Rf-oYLgdfZGkc78jkbrd124"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               >
                                 <g
-                                  mask="url(#__lottie_element_245)"
+                                  mask="url(#__lottie_element_416)"
                                   style="display: block;"
                                 >
                                   <g
-                                    clip-path="url(#__lottie_element_251)"
+                                    clip-path="url(#__lottie_element_422)"
                                     id="precomp_Rf-oYLgdfZGkc78jkbrd125"
                                     opacity="1"
                                     transform="matrix(1,0,0,1,0,0)"
                                   >
                                     <g
-                                      clip-path="url(#__lottie_element_279)"
+                                      clip-path="url(#__lottie_element_450)"
                                       id="precomp_N5DTqQcGY3VFVi2lhqckz35"
                                       opacity="1"
                                       style="display: block;"
                                       transform="matrix(1,0,0,1,-0.1484375,0.0390625)"
                                     >
                                       <g
-                                        clip-path="url(#__lottie_element_301)"
+                                        clip-path="url(#__lottie_element_472)"
                                         id="precomp_BLZcH0U7IiAZTM0MRwKMX43"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       />
                                       <g
-                                        clip-path="url(#__lottie_element_298)"
+                                        clip-path="url(#__lottie_element_469)"
                                         id="precomp_QsxRUUn4jNOoH-YbmmyWU42"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       />
                                       <g
-                                        clip-path="url(#__lottie_element_285)"
+                                        clip-path="url(#__lottie_element_456)"
                                         id="precomp_rvJ8Grm-ItkFgERDOjj3H37"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       >
                                         <g
-                                          mask="url(#__lottie_element_287)"
+                                          mask="url(#__lottie_element_458)"
                                           style="display: block;"
                                         >
                                           <g
-                                            clip-path="url(#__lottie_element_293)"
+                                            clip-path="url(#__lottie_element_464)"
                                             id="precomp_rvJ8Grm-ItkFgERDOjj3H38"
                                             opacity="1"
                                             transform="matrix(1,0,0,1,0,0)"
@@ -4274,7 +4274,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                         </g>
                                       </g>
                                       <g
-                                        clip-path="url(#__lottie_element_282)"
+                                        clip-path="url(#__lottie_element_453)"
                                         id="precomp_3HfbrmEIdRwo58oJyiRyP36"
                                         opacity="1"
                                         style="display: block;"
@@ -4282,39 +4282,39 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                       />
                                     </g>
                                     <g
-                                      clip-path="url(#__lottie_element_254)"
+                                      clip-path="url(#__lottie_element_425)"
                                       id="precomp_5cqfrn902kXfn5MbPlC6T26"
                                       opacity="0"
                                       style="display: block;"
                                       transform="matrix(1,0,0,1,1.390625,-5.58984375)"
                                     >
                                       <g
-                                        clip-path="url(#__lottie_element_276)"
+                                        clip-path="url(#__lottie_element_447)"
                                         id="precomp_jpUX3SEcJE6H-FjiRJJwj34"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       />
                                       <g
-                                        clip-path="url(#__lottie_element_273)"
+                                        clip-path="url(#__lottie_element_444)"
                                         id="precomp_LtrmXhOULKwhCIBJ1BYT_33"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       />
                                       <g
-                                        clip-path="url(#__lottie_element_260)"
+                                        clip-path="url(#__lottie_element_431)"
                                         id="precomp_O4H5gTDlyqkNcm-aSeHSx28"
                                         opacity="1"
                                         style="display: block;"
                                         transform="matrix(1,0,0,1,0,0)"
                                       >
                                         <g
-                                          mask="url(#__lottie_element_262)"
+                                          mask="url(#__lottie_element_433)"
                                           style="display: block;"
                                         >
                                           <g
-                                            clip-path="url(#__lottie_element_268)"
+                                            clip-path="url(#__lottie_element_439)"
                                             id="precomp_O4H5gTDlyqkNcm-aSeHSx29"
                                             opacity="1"
                                             transform="matrix(1,0,0,1,0,0)"
@@ -4336,7 +4336,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                         </g>
                                       </g>
                                       <g
-                                        clip-path="url(#__lottie_element_257)"
+                                        clip-path="url(#__lottie_element_428)"
                                         id="precomp_XCGKyZWqI6UizxDH1lSCQ27"
                                         opacity="1"
                                         style="display: block;"
@@ -4347,7 +4347,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                 </g>
                               </g>
                               <g
-                                clip-path="url(#__lottie_element_240)"
+                                clip-path="url(#__lottie_element_411)"
                                 id="precomp_VJAdW_0UAHUeGVYKr71qG23"
                                 opacity="1"
                                 style="display: block;"
@@ -4356,46 +4356,46 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             </g>
                           </g>
                           <g
-                            clip-path="url(#__lottie_element_206)"
+                            clip-path="url(#__lottie_element_377)"
                             id="precomp_AQ_fleLYKuPXfSvoLKKby11"
                             opacity="0"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,-0.421875)"
                           >
                             <g
-                              clip-path="url(#__lottie_element_209)"
+                              clip-path="url(#__lottie_element_380)"
                               id="precomp_AgiLXwjGxH74S3SX98Ws_12"
                               opacity="0"
                               style="display: block;"
                               transform="matrix(0,0,0,0,50000,50000)"
                             >
                               <g
-                                clip-path="url(#__lottie_element_231)"
+                                clip-path="url(#__lottie_element_402)"
                                 id="precomp_n5arKzHUlxM5z-odOtkv120"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               />
                               <g
-                                clip-path="url(#__lottie_element_228)"
+                                clip-path="url(#__lottie_element_399)"
                                 id="precomp_dSZ3weEFIgjSUNzTI3YOG19"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               />
                               <g
-                                clip-path="url(#__lottie_element_215)"
+                                clip-path="url(#__lottie_element_386)"
                                 id="precomp_b8zeFcrmENo8duOTW6cUu14"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               >
                                 <g
-                                  mask="url(#__lottie_element_217)"
+                                  mask="url(#__lottie_element_388)"
                                   style="display: block;"
                                 >
                                   <g
-                                    clip-path="url(#__lottie_element_223)"
+                                    clip-path="url(#__lottie_element_394)"
                                     id="precomp_b8zeFcrmENo8duOTW6cUu15"
                                     opacity="1"
                                     transform="matrix(1,0,0,1,0,0)"
@@ -4427,7 +4427,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                 </g>
                               </g>
                               <g
-                                clip-path="url(#__lottie_element_212)"
+                                clip-path="url(#__lottie_element_383)"
                                 id="precomp_ELC0nN7GLDOdfx5Z7dm9T13"
                                 opacity="1"
                                 style="display: block;"
@@ -4436,46 +4436,46 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             </g>
                           </g>
                           <g
-                            clip-path="url(#__lottie_element_178)"
+                            clip-path="url(#__lottie_element_349)"
                             id="precomp_v0Xjyi1lyszQXswz04sbD1"
                             opacity="0"
                             style="display: block;"
                             transform="matrix(1,0,0,1,0,0.578125)"
                           >
                             <g
-                              clip-path="url(#__lottie_element_181)"
+                              clip-path="url(#__lottie_element_352)"
                               id="precomp_bqlYF9vizNHsQetq_VJoP2"
                               opacity="1"
                               style="display: block;"
                               transform="matrix(-0.1736481785774231,0.9848077297210693,-0.9848077297210693,-0.1736481785774231,107922.796875,9442.44140625)"
                             >
                               <g
-                                clip-path="url(#__lottie_element_203)"
+                                clip-path="url(#__lottie_element_374)"
                                 id="precomp_zUNC4jZIfzQ4ORlak-ji310"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               />
                               <g
-                                clip-path="url(#__lottie_element_200)"
+                                clip-path="url(#__lottie_element_371)"
                                 id="precomp_V0v6FDKep22G688hi67UH9"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               />
                               <g
-                                clip-path="url(#__lottie_element_187)"
+                                clip-path="url(#__lottie_element_358)"
                                 id="precomp_i28j-iUuaYMNoCcAlSVx04"
                                 opacity="1"
                                 style="display: block;"
                                 transform="matrix(1,0,0,1,0,0)"
                               >
                                 <g
-                                  mask="url(#__lottie_element_189)"
+                                  mask="url(#__lottie_element_360)"
                                   style="display: block;"
                                 >
                                   <g
-                                    clip-path="url(#__lottie_element_195)"
+                                    clip-path="url(#__lottie_element_366)"
                                     id="precomp_i28j-iUuaYMNoCcAlSVx05"
                                     opacity="1"
                                     transform="matrix(1,0,0,1,0,0)"
@@ -4507,7 +4507,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                                 </g>
                               </g>
                               <g
-                                clip-path="url(#__lottie_element_184)"
+                                clip-path="url(#__lottie_element_355)"
                                 id="precomp_SvuzSQOPp05uT4esvveKm3"
                                 opacity="1"
                                 style="display: block;"

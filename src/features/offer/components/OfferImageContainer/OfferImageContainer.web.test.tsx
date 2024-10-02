@@ -27,9 +27,7 @@ describe('<OfferImageContainer />', () => {
     expect(screen.getByTestId('offerImageWithoutCarousel')).toBeInTheDocument()
   })
 
-  // TODO(PC-30559) : test flaky sur la CI
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display carousel with several images', () => {
+  it('should display carousel with several images', () => {
     render(
       <OfferImageContainer
         imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}

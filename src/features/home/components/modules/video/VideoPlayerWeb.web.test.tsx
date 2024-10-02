@@ -17,8 +17,7 @@ jest.mock('features/navigation/TabBar/routes')
 
 describe('VideoPlayer', () => {
   describe('analytics', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should logHasSeenAllVideo when all video were seen', async () => {
+    it('should logHasSeenAllVideo when all video were seen', async () => {
       MockedYouTubePlayer.setPlayerStateData(YouTube.PlayerState.ENDED)
 
       renderVideoPlayer()
