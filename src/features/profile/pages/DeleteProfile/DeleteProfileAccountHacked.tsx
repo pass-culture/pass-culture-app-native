@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -17,8 +16,6 @@ export const DeleteProfileAccountHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
-
-  const navigateToChangePassword = () => navigate('ChangePassword')
 
   const navigateToSuspendAccount = () => {
     navigate('SuspendAccountConfirmationWithoutAuthentication')
@@ -33,36 +30,39 @@ export const DeleteProfileAccountHacked: FC = () => {
       title="Sécurise ton compte">
       <ViewGap gap={8}>
         <ViewGap gap={6}>
-          <TypoDS.BodyS>
+          <TypoDS.Body>
             Tu as indiqué
-            <StyledBoldText> que quelqu’un d’autre a accès à ton compte</StyledBoldText>.
-          </TypoDS.BodyS>
-          <TypoDS.BodyS>
-            Pour des raisons de <StyledBoldText>sécurité</StyledBoldText>, nous te conseillons de
-            modifier ton mot de passe ou suspendre ton compte temporairement.
-          </TypoDS.BodyS>
+            <TypoDS.BodySemiBold> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodySemiBold>
+          </TypoDS.Body>
+          <TypoDS.Body>
+            Pour des raisons de <TypoDS.BodySemiBold>sécurité</TypoDS.BodySemiBold>, nous te
+            conseillons de suspendre ton compte temporairement.
+          </TypoDS.Body>
         </ViewGap>
-
         <ContentBottom>
-          <ButtonPrimary wording="Modifier mon mot de passe" onPress={navigateToChangePassword} />
-          <ButtonSecondary wording="Suspendre mon compte" onPress={navigateToSuspendAccount} />
+          <ButtonPrimary wording="Suspendre mon compte" onPress={navigateToSuspendAccount} />
           <ButtonTertiaryBlack
             wording="Ne pas sécuriser mon compte"
             onPress={navigateToProfile}
             icon={Clear}
+            inline
           />
+          <StyledBody>
+            Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte
+          </StyledBody>
         </ContentBottom>
       </ViewGap>
     </GenericInfoPageWhite>
   )
 }
 
-const StyledBoldText = styled(TypoDS.BodyS)({
-  fontWeight: 'bold',
-})
-
 const ContentBottom = styled(ViewGap).attrs({
   gap: 6,
 })({
   alignItems: 'center',
 })
+
+const StyledBody = styled(TypoDS.BodyS)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))

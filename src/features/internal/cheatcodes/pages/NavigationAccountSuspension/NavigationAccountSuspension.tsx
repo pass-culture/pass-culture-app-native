@@ -11,22 +11,24 @@ export function NavigationAccountSuspension(): React.JSX.Element {
     <ScrollView>
       <CheatcodesHeader title="Account Management ⚙️" />
       <StyledContainer>
-        <LinkToComponent name="FraudulentSuspendedAccount" />
-        <LinkToComponent name="SuspendedAccountUponUserRequest" />
-        <LinkToComponent name="AccountReactivationSuccess" />
-        <LinkToComponent name="DeleteProfileReason" />
-        <LinkToComponent name="ConfirmDeleteProfile" />
-        <LinkToComponent name="DeactivateProfileSuccess" />
-        <LinkToComponent name="DeleteProfileSuccess" />
-        <LinkToComponent name="DeleteProfileConfirmation" />
-        <LinkToComponent name="ResetPasswordExpiredLink" />
+        <LinkToComponent name="FraudulentSuspendedAccount" half={false} />
+        <LinkToComponent name="SuspendedAccountUponUserRequest" half={false} />
+        <LinkToComponent name="AccountReactivationSuccess" half={false} />
+        <LinkToComponent name="DeleteProfileReason" half={false} />
+        <LinkToComponent name="ConfirmDeleteProfile" half={false} />
+        <LinkToComponent name="DeactivateProfileSuccess" half={false} />
+        <LinkToComponent name="DeleteProfileSuccess" half={false} />
+        <LinkToComponent name="DeleteProfileConfirmation" half={false} />
+        <LinkToComponent name="ResetPasswordExpiredLink" half={false} />
         <LinkToComponent
           name="ResetPasswordEmailSent"
           navigationParams={{
             email: 'jean.dupont@gmail.com',
           }}
+          half={false}
         />
-        <LinkToComponent name="DeleteProfileAccountNotDeletable" />
+        <LinkToComponent name="DeleteProfileAccountNotDeletable" half={false} />
+        <LinkToComponent name="DeleteProfileAccountHacked" half={false} />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

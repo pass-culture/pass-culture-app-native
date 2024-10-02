@@ -32,15 +32,6 @@ describe('DeleteProfileAccountHacked', () => {
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
   })
 
-  it('should navigate to change password on press Modifier mon mot de passe', async () => {
-    render(<DeleteProfileAccountHacked />)
-    const button = screen.getByText('Modifier mon mot de passe')
-
-    fireEvent.press(button)
-
-    expect(navigate).toHaveBeenCalledWith('ChangePassword')
-  })
-
   it('should navigate to confirm delete profile on press Susprendre mon compte', async () => {
     render(<DeleteProfileAccountHacked />)
     const button = screen.getByText('Suspendre mon compte')
