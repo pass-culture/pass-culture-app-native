@@ -82,14 +82,12 @@
 ./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:222
 ./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:224
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
-./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:24
-./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:31
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:43
 ./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:118
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:20
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:31
-./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
+./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:25
 ./src/libs/hooks/useShowReview.native.test.tsx:116
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53

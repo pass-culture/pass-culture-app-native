@@ -3496,8 +3496,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               <BVLinearGradient
                 colors={
                   [
-                    4293670008,
-                    4290777969,
+                    4280337897,
+                    4279138487,
                   ]
                 }
                 endPoint={
@@ -7267,8 +7267,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               <BVLinearGradient
                 colors={
                   [
-                    4293670008,
-                    4290777969,
+                    4280337897,
+                    4279138487,
                   ]
                 }
                 endPoint={

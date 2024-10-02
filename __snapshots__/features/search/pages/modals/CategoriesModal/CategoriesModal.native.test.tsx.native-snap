@@ -812,7 +812,151 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           ]
                         }
                       >
-                        Cinéma, films et séries
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Affiner la recherche"
+                    height={20}
+                    width={20}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <View
+                accessibilityRole="none"
+                style={
+                  [
+                    {
+                      "display": "flex",
+                    },
+                  ]
+                }
+              >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="FilterRow"
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Films, documentaires et séries
                       </Text>
                     </View>
                   </View>

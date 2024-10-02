@@ -147,7 +147,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'FILMS_SERIES_EN_LIGNE',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   ABO_PRATIQUE_ART: {
     appLabel: 'Abonnement pratique artistique',
@@ -228,7 +228,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'FILMS_SERIES_EN_LIGNE',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   BON_ACHAT_INSTRUMENT: {
     appLabel: 'Bon d’achat instrument',
@@ -255,7 +255,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'CARTES_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   CARTE_CINE_MULTISEANCES: {
     appLabel: 'Carte cinéma multi-séances',
@@ -264,7 +264,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'CARTES_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   CARTE_JEUNES: {
     appLabel: 'Carte jeunes',
@@ -291,7 +291,7 @@ export const subcategoriesMappingSnap = {
     isEvent: true,
     nativeCategoryId: 'SEANCES_DE_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   CINE_VENTE_DISTANCE: {
     appLabel: 'Cinéma',
@@ -300,7 +300,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'SEANCES_DE_CINEMA',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   CONCERT: {
     appLabel: 'Concert',
@@ -354,7 +354,7 @@ export const subcategoriesMappingSnap = {
     isEvent: true,
     nativeCategoryId: 'EVENEMENTS_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   EVENEMENT_JEU: {
     appLabel: 'Évènements - jeux',
@@ -399,7 +399,7 @@ export const subcategoriesMappingSnap = {
     isEvent: true,
     nativeCategoryId: 'EVENEMENTS_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   FESTIVAL_LIVRE: {
     appLabel: 'Festival et salon du livre',
@@ -615,7 +615,7 @@ export const subcategoriesMappingSnap = {
     isEvent: true,
     nativeCategoryId: 'SEANCES_DE_CINEMA',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'CINEMA',
   },
   SEANCE_ESSAI_PRATIQUE_ART: {
     appLabel: 'Séance d’essai',
@@ -660,7 +660,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'DVD_BLU_RAY',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   SUPPORT_PHYSIQUE_MUSIQUE_CD: {
     appLabel: 'CD',
@@ -732,7 +732,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'FILMS_SERIES_EN_LIGNE',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'FILMS_SERIES_CINEMA',
+    searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
 }
 
@@ -743,7 +743,8 @@ export const useSearchGroupLabelMappingSnap = {
   CONCERTS_FESTIVALS: 'Concerts & festivals',
   RENCONTRES_CONFERENCES: 'Conférences & rencontres',
   EVENEMENTS_EN_LIGNE: 'Évènements en ligne',
-  FILMS_SERIES_CINEMA: 'Cinéma, films et séries',
+  CINEMA: 'Cinéma',
+  FILMS_DOCUMENTAIRES_SERIES: 'Films, documentaires et séries',
   INSTRUMENTS: 'Instruments de musique',
   JEUX_JEUX_VIDEOS: 'Jeux & jeux vidéos',
   LIVRES: 'Livres',

@@ -22,7 +22,7 @@ const apiRecoParams: RecommendationApiParams = {
 }
 
 const offer = offerResponseSnap
-const offerSearchGroup = SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
+const offerSearchGroup = SearchGroupNameEnumv2.CINEMA
 const searchGroupList = searchGroupsDataTest
 
 const extraData: OfferExtraData = {
@@ -130,14 +130,14 @@ describe('useOfferPlaylist', () => {
       expect(useSimilarOffersSpy).toHaveBeenCalledWith(
         // allows you to check that the call was made at least once with these parameters
         expect.objectContaining({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           offerId: offer.id,
           position: { longitude: 90.477, latitude: 90.477 },
         })
       )
       expect(useSimilarOffersSpy).toHaveBeenCalledWith(
         expect.objectContaining({
-          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryExcluded: SearchGroupNameEnumv2.CINEMA,
           offerId: offer.id,
           position: { longitude: 90.477, latitude: 90.477 },
         })
@@ -155,7 +155,7 @@ describe('useOfferPlaylist', () => {
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: 'Eiichiro Oda',
-        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        searchGroupName: SearchGroupNameEnumv2.CINEMA,
       })
     })
 
@@ -171,7 +171,7 @@ describe('useOfferPlaylist', () => {
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: undefined,
         ean: undefined,
-        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        searchGroupName: SearchGroupNameEnumv2.CINEMA,
       })
     })
   })

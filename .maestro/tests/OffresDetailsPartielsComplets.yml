@@ -27,9 +27,9 @@ appId: ${MAESTRO_APP_ID}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: "Ma position"
-    file: "reusableFlows/features/location/resetLoc.yml"
-- tapOn: "Rechercher des offres"
+      visible: 'Ma position'
+    file: 'reusableFlows/features/location/resetLoc.yml'
+- tapOn: 'Rechercher des offres'
 - runFlow:
     when:
       visible: ${MAESTRO_PHYSICAL_OFFER}

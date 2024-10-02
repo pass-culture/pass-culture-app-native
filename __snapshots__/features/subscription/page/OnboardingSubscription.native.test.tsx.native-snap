@@ -521,8 +521,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 <BVLinearGradient
                   colors={
                     [
-                      4293670008,
-                      4290777969,
+                      4280337897,
+                      4279138487,
                     ]
                   }
                   endPoint={
@@ -893,8 +893,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 <BVLinearGradient
                   colors={
                     [
-                      4294472509,
-                      4291444499,
+                      4280802472,
+                      4279141492,
                     ]
                   }
                   endPoint={
@@ -1079,8 +1079,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 <BVLinearGradient
                   colors={
                     [
-                      4289562623,
-                      4286789609,
+                      4294472509,
+                      4291444499,
                     ]
                   }
                   endPoint={
@@ -1265,8 +1265,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 <BVLinearGradient
                   colors={
                     [
-                      4280802472,
-                      4279141492,
+                      4294614806,
+                      4290271489,
                     ]
                   }
                   endPoint={

@@ -19,7 +19,7 @@ const venue = mockedSuggestedVenue
 
 const mockSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.CINEMA],
   venue,
   priceRange: [0, 20],
 }

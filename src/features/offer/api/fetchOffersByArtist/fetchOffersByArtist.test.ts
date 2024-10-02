@@ -36,7 +36,7 @@ describe('fetchOffersByArtist', () => {
   it('should not execute the query if artist is provided, searchGroupName is not a book and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       userLocation: mockUserLocation,
     })
 
@@ -46,7 +46,7 @@ describe('fetchOffersByArtist', () => {
   it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIF"', async () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIF',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       userLocation: mockUserLocation,
     })
 
@@ -56,7 +56,7 @@ describe('fetchOffersByArtist', () => {
   it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIFS"', async () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIFS',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       userLocation: mockUserLocation,
     })
 

@@ -56,7 +56,9 @@ export function AutocompleteOfferItem({
   const { data } = useSubcategories()
 
   const isfilmsSeriesCinemaSearchGroup =
-    categories.length && categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
+    categories.length &&
+    (categories?.[0]?.value === SearchGroupNameEnumv2.CINEMA ||
+      categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES)
 
   const searchGroupLabel = useSearchGroupLabel(categories[0]?.value ?? SearchGroupNameEnumv2.NONE)
 

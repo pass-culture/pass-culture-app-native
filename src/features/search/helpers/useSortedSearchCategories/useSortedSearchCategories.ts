@@ -1,7 +1,6 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ListCategoryButtonProps } from 'features/search/components/CategoriesButtonsDisplay/CategoriesButtonsDisplay'
 import { CategoryButtonProps } from 'features/search/components/CategoryButton/CategoryButton'
-import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 
@@ -19,7 +18,7 @@ export const useSortedSearchCategories = (
   onPressCategory: OnPressCategory
 ): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const categories = useAvailableCategories(availableCategories)
+  const categories = useAvailableCategories()
 
   return categories
     .map<MappingOutput>((category) => ({
