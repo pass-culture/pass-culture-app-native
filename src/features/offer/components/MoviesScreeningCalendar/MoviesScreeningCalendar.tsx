@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import { isSameDay, startOfDay } from 'date-fns'
 import React, { FunctionComponent, useMemo, useRef, useState, useCallback, useEffect } from 'react'
-import { FlatList, Animated, Easing } from 'react-native'
+import { FlatList, Animated, Easing, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -172,33 +172,35 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         />
       </Anchor>
       <Spacer.Column numberOfSpaces={4} />
-      <Animated.View
-        onLayout={({ nativeEvent }) => {
-          setWidth(nativeEvent.layout.width)
-        }}
-        style={{
-          opacity: fadeAnim,
-          transform: [
-            { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
-          ],
-        }}>
-        {moviesOffers.map((movie, index) => (
-          <MovieOfferTile
-            key={movie.offer.id}
-            movieOffer={movie}
-            venueOffers={venueOffers}
-            date={selectedDate}
-            isLast={getIsLast(index)}
-            setSelectedDate={setSelectedDate}
-            nextScreeningDate={movie.nextDate}
-            nextDateIndex={movie.nextDate ? getNextDateIndex(movie.nextDate) : 0}
-            flatListRef={flatListRef}
-            flatListWidth={flatListWidth}
-            itemWidth={itemWidth}
-          />
-        ))}
-      </Animated.View>
-      {nonScreeningOffers ? (
+      <Container>
+        <Animated.View
+          onLayout={({ nativeEvent }) => {
+            setWidth(nativeEvent.layout.width)
+          }}
+          style={{
+            opacity: fadeAnim,
+            transform: [
+              { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
+            ],
+          }}>
+          {moviesOffers.map((movie, index) => (
+            <MovieOfferTile
+              key={movie.offer.id}
+              movieOffer={movie}
+              venueOffers={venueOffers}
+              date={selectedDate}
+              isLast={getIsLast(index)}
+              setSelectedDate={setSelectedDate}
+              nextScreeningDate={movie.nextDate}
+              nextDateIndex={movie.nextDate ? getNextDateIndex(movie.nextDate) : 0}
+              flatListRef={flatListRef}
+              flatListWidth={flatListWidth}
+              itemWidth={itemWidth}
+            />
+          ))}
+        </Animated.View>
+      </Container>
+      {nonScreeningOffers.length ? (
         <SectionWithDivider visible margin={false} gap={6}>
           <PassPlaylist
             testID="offersModuleList"
@@ -215,5 +217,9 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     </React.Fragment>
   )
 }
+
+const Container = styled(View)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``

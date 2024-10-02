@@ -8,8 +8,8 @@ import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
+import { OfferNewXPCineBlock } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineBlock'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
-import { OfferVenueBlockDeprecated } from 'features/offer/components/OfferVenueBlock/OfferVenueBlockDeprecated'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
@@ -59,10 +59,10 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const { selectedLocationMode, place, userLocation } = useLocation()
   const { isDesktopViewport } = useTheme()
 
-  const hasNewOfferVenueBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK)
-
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
+
+  const enableNewXPCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -76,7 +76,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer, hasNewOfferVenueBlock)
+  const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
 
   const {
     hasNextPage,
@@ -154,7 +154,15 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const renderOfferVenueBlock = () => {
     return (
       <ViewGap gap={8}>
-        {hasNewOfferVenueBlock ? (
+        {isOfferAMovieScreening && enableNewXPCineFromOffer ? (
+          <OfferNewXPCineBlock
+            title={venueSectionTitle}
+            offer={offer}
+            subcategory={subcategory}
+            distance={distanceToLocation}
+            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+          />
+        ) : (
           <OfferVenueBlock
             title={venueSectionTitle}
             offer={offer}
@@ -165,19 +173,9 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
               shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
             }
           />
-        ) : (
-          <OfferVenueBlockDeprecated
-            title={venueSectionTitle}
-            venue={offer.venue}
-            distance={distanceToLocation}
-            onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
-            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
-            onSeeItineraryPress={
-              shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
-            }
-          />
         )}
-        {isOfferAMovieScreening ? (
+
+        {isOfferAMovieScreening && !enableNewXPCineFromOffer ? (
           <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
         ) : null}
       </ViewGap>

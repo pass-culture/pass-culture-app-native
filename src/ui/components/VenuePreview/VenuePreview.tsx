@@ -11,21 +11,21 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   venueName: string
-  imageHeight: number
-  imageWidth: number
   address: string
   withRightArrow?: boolean
   bannerUrl?: string | null
+  imageHeight: number
+  imageWidth: number
 }>
 
 export const VenuePreview: FunctionComponent<Props> = ({
   address,
   bannerUrl,
   withRightArrow,
-  imageHeight,
-  imageWidth,
   venueName,
   children,
+  imageHeight,
+  imageWidth,
 }) => (
   <StyledView>
     {bannerUrl ? (
@@ -39,7 +39,7 @@ export const VenuePreview: FunctionComponent<Props> = ({
       <ImagePlaceholder height={imageHeight} width={imageWidth} testID="VenuePreviewPlaceholder" />
     )}
     <Spacer.Row numberOfSpaces={2} />
-    <VenueRightContainer gap={1}>
+    <VenueRightContainer gap={1} imageHeight={imageHeight}>
       {children}
       <VenueTitleContainer>
         <VenueName>{venueName}</VenueName>
@@ -60,10 +60,11 @@ const StyledView = styled.View({
   flexDirection: 'row',
 })
 
-const VenueRightContainer = styled(ViewGap)({
+const VenueRightContainer = styled(ViewGap)<{ imageHeight: number }>(({ imageHeight }) => ({
   flexShrink: 1,
   justifyContent: 'center',
-})
+  maxHeight: imageHeight,
+}))
 
 const VenueTitleContainer = styled.View({
   flexDirection: 'row',

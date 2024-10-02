@@ -11,9 +11,5 @@ const isBookMultiVenueCompatibleOffer = (offer: OfferResponseV2): boolean =>
 const isMovieMultiVenueCompatibleOffer = (offer: OfferResponseV2): boolean =>
   Boolean(SubcategoryIdEnum.SEANCE_CINE === offer.subcategoryId && offer.extraData?.allocineId)
 
-export const isMultiVenueCompatibleOffer = (
-  offer: OfferResponseV2,
-  hasNewOfferVenueBlock = false
-) =>
-  isBookMultiVenueCompatibleOffer(offer) ||
-  (isMovieMultiVenueCompatibleOffer(offer) && hasNewOfferVenueBlock)
+export const isMultiVenueCompatibleOffer = (offer: OfferResponseV2) =>
+  isBookMultiVenueCompatibleOffer(offer) || isMovieMultiVenueCompatibleOffer(offer)

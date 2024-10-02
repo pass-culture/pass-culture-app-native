@@ -68,10 +68,7 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   useSearchVenueOffers: () => mockUseSearchVenueOffers(),
 }))
 
-jest
-  .spyOn(useFeatureFlag, 'useFeatureFlag')
-  // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
-  .mockReturnValue(true)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
@@ -117,6 +114,7 @@ describe('<OfferPlace />', () => {
     mockDistance = null
     mockdate.set(new Date('2021-01-01'))
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
+    useFeatureFlagSpy.mockReturnValue(false) // this value corresponds to TARGET_XP_CINE_FROM_OFFER feature flag
   })
 
   it('should display change venue button when offer subcategory is "Livres audio", offer has an EAN and that there are other venues offering the same offer', () => {
@@ -130,6 +128,20 @@ describe('<OfferPlace />', () => {
     })
 
     expect(screen.getByText('Changer le lieu de retrait')).toBeOnTheScreen()
+  })
+
+  it('should display new xp cine block when offer subcategory is "Seance cine" and FF is on', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true) // this value corresponds to TARGET_XP_CINE_FROM_OFFER feature flag
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        extraData: { allocineId: 2765410054 },
+      },
+    })
+
+    expect(screen.getByTestId('offer-new-xp-cine-block')).toBeOnTheScreen()
   })
 
   it('should display change venue button when offer subcategory is "Seance cine", offer has an allocineId and that there are other venues offering the same offer', () => {

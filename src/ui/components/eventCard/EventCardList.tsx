@@ -27,7 +27,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
           const { width } = event.nativeEvent.layout
           setWebViewWidth(width)
         }}>
-        <StyledFlatList
+        <FlatList
           listAs="ul"
           itemAs="li"
           key={numColumns}
@@ -46,23 +46,30 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
     )
   }
 
+  const isLastColumn = (index: number) => {
+    if (index === data.length - 1 || index === data.length - 2) return true
+    return false
+  }
+
   return (
-    <Container horizontal showsHorizontalScrollIndicator={false}>
-      <Spacer.Row numberOfSpaces={3} />
+    <ScrollViewContainer horizontal showsHorizontalScrollIndicator={false}>
       {data.map((event, index) => {
         if (index % 2 === 1) return null
         const topEventCardData = data[index]
         const bottomEventCardData = data[index + 1]
         return (
           <React.Fragment key={JSON.stringify([topEventCardData, bottomEventCardData])}>
-            <Spacer.Row numberOfSpaces={3} />
             <View>
-              {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-              <EventCard {...topEventCardData} {...analyticsParams} />
+              <EventCardContainer isLast={isLastColumn(index)}>
+                {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
+                <EventCard {...topEventCardData} {...analyticsParams} />
+              </EventCardContainer>
               {bottomEventCardData ? (
                 <React.Fragment>
                   <Spacer.Column numberOfSpaces={3} />
-                  <EventCard {...bottomEventCardData} {...analyticsParams} />
+                  <EventCardContainer isLast={isLastColumn(index)}>
+                    <EventCard {...bottomEventCardData} {...analyticsParams} />
+                  </EventCardContainer>
                 </React.Fragment>
               ) : null}
             </View>
@@ -70,16 +77,15 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
         )
       })}
       <Spacer.Row numberOfSpaces={6} />
-    </Container>
+    </ScrollViewContainer>
   )
 }
 
-const Container = styled.ScrollView({
+const EventCardContainer = styled(View)(({ isLast }: { isLast: boolean }) => ({
+  marginRight: isLast ? 0 : getSpacing(3),
+}))
+
+const ScrollViewContainer = styled.ScrollView({
   paddingVertical: getSpacing(2),
 })
-
 const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
-
-const StyledFlatList = styled(FlatList as typeof FlatList<EventCardProps>)(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))

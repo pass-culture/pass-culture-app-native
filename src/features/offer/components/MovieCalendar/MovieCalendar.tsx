@@ -83,7 +83,7 @@ export const MovieCalendar: React.FC<Props> = ({
           ref={flatListRef}
           data={dates}
           horizontal
-          contentContainerStyle={flatListContainer}
+          contentContainerStyle={contentContainerStyle}
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
           onContentSizeChange={onContentSizeChange}
@@ -114,7 +114,7 @@ export const MovieCalendar: React.FC<Props> = ({
   )
 }
 
-const flatListContainer = {
+const contentContainerStyle = {
   paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
