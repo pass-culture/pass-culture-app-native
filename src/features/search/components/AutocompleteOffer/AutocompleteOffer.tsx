@@ -1,3 +1,4 @@
+import type { BaseHit, Hit } from 'instantsearch.js'
 import React from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import styled from 'styled-components/native'
@@ -5,7 +6,7 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { CreateHistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia/types'
+import type { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
@@ -17,12 +18,17 @@ type AutocompleteOfferProps = UseInfiniteHitsProps & {
   shouldShowCategory?: boolean
 }
 
+const isAlgoliaSuggestionHitArray = (hits: Hit<BaseHit>[]): hits is AlgoliaSuggestionHit[] => {
+  return hits.every((hit) => 'query' in hit)
+}
+
 export function AutocompleteOffer({
   addSearchHistory,
   offerCategories,
   ...props
 }: AutocompleteOfferProps) {
   const { hits, sendEvent } = useInfiniteHits(props)
+  if (!isAlgoliaSuggestionHitArray(hits)) return null
 
   return hits.length > 0 ? (
     <React.Fragment>
@@ -31,7 +37,7 @@ export function AutocompleteOffer({
         {hits.map((item) => (
           <Li key={item.objectID}>
             <AutocompleteOfferItem
-              hit={item as unknown as AlgoliaSuggestionHit}
+              hit={item}
               sendEvent={sendEvent}
               addSearchHistory={addSearchHistory}
               shouldShowCategory

@@ -181,6 +181,48 @@ export function AutocompleteOfferItem({
   const testID = `autocompleteOfferItem_${hit.objectID}`
 
   return (
+    <CwFunction
+      testID={testID}
+      onPress={onPress}
+      hit={hit}
+      shouldDisplaySuggestion={shouldDisplaySuggestion}
+      shouldDisplayNativeCategory={shouldDisplayNativeCategory}
+      shouldUseSearchGroupInsteadOfNativeCategory={shouldUseSearchGroupInsteadOfNativeCategory}
+      isfilmsSeriesCinemaSearchGroup={isfilmsSeriesCinemaSearchGroup}
+      mostPopularNativeCategoryValue={mostPopularNativeCategoryValue}
+      searchGroupLabel={searchGroupLabel}
+    />
+  )
+}
+
+const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
+
+const AutocompleteItemTouchable = styled.TouchableOpacity({
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingBottom: getSpacing(4),
+})
+
+const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.colors.greyDark,
+}))``
+
+const StyledText = styled(Text)({
+  marginLeft: getSpacing(2),
+})
+function CwFunction({
+  testID,
+  onPress,
+  hit,
+  shouldDisplaySuggestion,
+  shouldDisplayNativeCategory,
+  shouldUseSearchGroupInsteadOfNativeCategory,
+  isfilmsSeriesCinemaSearchGroup,
+  mostPopularNativeCategoryValue,
+  searchGroupLabel,
+}) {
+  return (
     <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <MagnifyingGlassIconContainer>
         <MagnifyingGlassFilledIcon />
@@ -202,20 +244,3 @@ export function AutocompleteOfferItem({
     </AutocompleteItemTouchable>
   )
 }
-
-const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
-
-const AutocompleteItemTouchable = styled.TouchableOpacity({
-  flexDirection: 'row',
-  alignItems: 'center',
-  paddingBottom: getSpacing(4),
-})
-
-const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greyDark,
-}))``
-
-const StyledText = styled(Text)({
-  marginLeft: getSpacing(2),
-})

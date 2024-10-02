@@ -43,6 +43,47 @@ export const mockHit = {
   },
 } as AlgoliaSuggestionHit
 
+export const mockHitEmpty: AlgoliaSuggestionHit = {
+  objectID: '1',
+  query: 'cinéma',
+  _highlightResult: {
+    query: {
+      value: '<mark>cinéma</mark>',
+      matchLevel: 'full',
+      fullyHighlighted: true,
+      matchedWords: ['cinéma'],
+    },
+  },
+  __position: 123,
+  toto: {
+    exact_nb_hits: 2,
+    facets: {
+      exact_matches: {
+        ['offer.searchGroupNamev2']: [],
+        ['offer.nativeCategoryId']: [],
+      },
+      analytics: {
+        ['offer.searchGroupNamev2']: [
+          {
+            attribute: '',
+            operator: '',
+            value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            count: 10,
+          },
+        ],
+        ['offer.nativeCategoryId']: [
+          {
+            attribute: '',
+            operator: '',
+            value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+            count: 10,
+          },
+        ],
+      },
+    },
+  },
+} as unknown as AlgoliaSuggestionHit
+
 export const mockHitSeveralCategoriesWithAssociationToNativeCategory: AlgoliaSuggestionHit = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {

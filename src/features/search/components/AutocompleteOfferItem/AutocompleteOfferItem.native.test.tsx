@@ -6,6 +6,7 @@ import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOf
 import { initialSearchState } from 'features/search/context/reducer'
 import {
   mockHit,
+  mockHitEmpty,
   mockHitIrrelevantResult,
   mockHitRelevantResults,
   mockHitSeveralCategoriesWithAssociationToBooksNativeCategory,
@@ -717,5 +718,21 @@ describe('AutocompleteOfferItem component', () => {
         expect(await screen.findByText('Livres')).toBeOnTheScreen()
       })
     })
+  })
+
+  it('should return stuff when hit.indexInfos is undefined', async () => {
+    render(
+      <AutocompleteOfferItem
+        hit={mockHitEmpty}
+        sendEvent={mockSendEvent}
+        shouldShowCategory
+        addSearchHistory={jest.fn()}
+      />,
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    expect(await screen.findByText('cinéma')).toBeOnTheScreen()
   })
 })
