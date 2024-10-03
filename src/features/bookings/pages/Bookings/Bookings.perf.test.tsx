@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
-import { AuthWrapper } from 'features/auth/context/AuthContext'
+import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
