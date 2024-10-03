@@ -1793,7 +1793,7 @@ export enum NativeCategoryIdEnumv2 {
   'LUDOTHEQUE' = 'LUDOTHEQUE',
   'MATERIELS_CREATIFS' = 'MATERIELS_CREATIFS',
   'MUSIQUE_EN_LIGNE' = 'MUSIQUE_EN_LIGNE',
-  'NO_NATIVE_CATEGORY' = 'NO_NATIVE_CATEGORY',
+  'NATIVE_CATEGORY_NONE' = 'NATIVE_CATEGORY_NONE',
   'PARTITIONS_DE_MUSIQUE' = 'PARTITIONS_DE_MUSIQUE',
   'PODCAST' = 'PODCAST',
   'PRATIQUES_ET_ATELIERS_ARTISTIQUES' = 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
@@ -1825,6 +1825,11 @@ export interface NativeCategoryResponseModelv2 {
    * @memberof NativeCategoryResponseModelv2
    */
   name: NativeCategoryIdEnumv2
+  /**
+   * @type {Array<SearchGroupNameEnumv2>}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  parents: Array<SearchGroupNameEnumv2>
   /**
    * @type {string}
    * @memberof NativeCategoryResponseModelv2

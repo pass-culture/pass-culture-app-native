@@ -327,15 +327,9 @@ export function getNativeCategories(
   if (!categoryEnum) return []
   if (categoryEnum === SearchGroupNameEnumv2.NONE) return []
 
-  const nativeCategories = data.subcategories
-    .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
-    .map((subcategory) =>
-      data.nativeCategories.find(
-        (nativeCategory) => nativeCategory.name === subcategory.nativeCategoryId
-      )
-    )
-    // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
-    .filter(Boolean) as NativeCategoryResponseModelv2[]
+  const nativeCategories = data.nativeCategories.filter((nativeCategory) =>
+    nativeCategory.parents.includes(categoryEnum)
+  )
 
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
 }
