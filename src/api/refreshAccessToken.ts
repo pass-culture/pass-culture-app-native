@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-restricted-imports
+import { fetch as fetchNetInfo } from '@react-native-community/netinfo'
+
 import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -7,6 +10,7 @@ import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
 import {
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
+  LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN,
   REFRESH_TOKEN_IS_EXPIRED_ERROR,
   Result,
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
@@ -77,6 +81,8 @@ export const refreshAccessTokenWithRetriesOnError = async (
     if (error instanceof ApiError && error.statusCode === 401) {
       return { error: REFRESH_TOKEN_IS_EXPIRED_ERROR }
     }
+    const { isInternetReachable } = await fetchNetInfo()
+    if (!isInternetReachable) return { error: LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN }
 
     eventMonitoring.captureException(error)
     return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }

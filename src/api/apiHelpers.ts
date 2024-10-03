@@ -18,6 +18,7 @@ import { DefaultApi } from './gen'
 import { refreshAccessToken } from './refreshAccessToken'
 import {
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
+  LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN,
   REFRESH_TOKEN_IS_EXPIRED_ERROR,
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
@@ -90,6 +91,7 @@ export const safeFetch = async (
       switch (error) {
         case REFRESH_TOKEN_IS_EXPIRED_ERROR:
         case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
+        case LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN:
           return createNeedsAuthenticationResponse(url)
         case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
           throw new Error(UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN)
