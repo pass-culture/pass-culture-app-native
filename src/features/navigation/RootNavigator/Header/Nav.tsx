@@ -71,7 +71,6 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
                   screen: tabNavConfig[0],
                   params: tabNavConfig[1],
                   fromRef: true,
-                  withPush: true,
                 }}
               />
             </StyledLi>
