@@ -81,11 +81,8 @@ export const refreshAccessTokenWithRetriesOnError = async (
     if (error instanceof ApiError && error.statusCode === 401) {
       return { error: REFRESH_TOKEN_IS_EXPIRED_ERROR }
     }
-    let isConnected
-    await fetchNetInfo().then((state) => {
-      isConnected = state.isConnected
-    })
-    if (!isConnected) return { error: LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN }
+    const { isInternetReachable } = await fetchNetInfo()
+    if (!isInternetReachable) return { error: LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN }
 
     eventMonitoring.captureException(error)
     return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }

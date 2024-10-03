@@ -11,7 +11,6 @@ import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessT
 
 jest.mock('libs/keychain/keychain')
 jest.mock('libs/jwt/jwt')
-jest.mock('@react-native-community/netinfo')
 
 const respondWith = async (
   body: unknown,
@@ -41,28 +40,6 @@ jest.useFakeTimers()
 
 describe('refreshAccessToken', () => {
   afterEach(removeRefreshedAccessToken)
-
-  beforeEach(() => {
-    mockNetInfo.mockReturnValueOnce(
-      Promise.resolve({
-        isConnected: true,
-        isInternetReachable: true,
-        type: netInfo.NetInfoStateType.wifi,
-        details: {
-          ssid: null,
-          bssid: null,
-          strength: null,
-          ipAddress: null,
-          subnet: null,
-          frequency: null,
-          isConnectionExpensive: false,
-          linkSpeed: null,
-          rxLinkSpeed: null,
-          txLinkSpeed: null,
-        },
-      })
-    )
-  })
 
   it('should remove access token when there is no refresh token', async () => {
     mockGetRefreshToken.mockResolvedValueOnce(null)
@@ -111,7 +88,46 @@ describe('refreshAccessToken', () => {
     expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
   })
 
+  it('should return LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN when connectivity is limited', async () => {
+    const notConnected: netInfo.NetInfoState = {
+      isConnected: false,
+      isInternetReachable: false,
+      type: netInfo.NetInfoStateType.none,
+      details: null,
+    }
+    mockNetInfo.mockReturnValueOnce(Promise.resolve(notConnected))
+
+    const password = 'refreshToken'
+    mockGetRefreshToken.mockResolvedValueOnce(password)
+    mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+
+    const result = await refreshAccessToken(api, 0)
+
+    expect(result).toStrictEqual({
+      error: 'Aucune connexion internet',
+    })
+  })
+
   it('should return UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN when there is an unexpected behavior', async () => {
+    const connected: netInfo.NetInfoState = {
+      isConnected: true,
+      isInternetReachable: true,
+      type: netInfo.NetInfoStateType.other,
+      details: {
+        ssid: null,
+        bssid: null,
+        strength: null,
+        ipAddress: null,
+        subnet: null,
+        frequency: null,
+        isConnectionExpensive: false,
+        linkSpeed: null,
+        rxLinkSpeed: null,
+        txLinkSpeed: null,
+      },
+    }
+    mockNetInfo.mockReturnValueOnce(Promise.resolve(connected))
+
     const password = 'refreshToken'
     mockGetRefreshToken.mockResolvedValueOnce(password)
     mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
