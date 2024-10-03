@@ -72,7 +72,7 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
 const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
   ({ theme, disabled }) => ({
     width: EVENT_CARD_WIDTH,
-    maxHeight: EVENT_CARD_HEIGHT,
+    height: EVENT_CARD_HEIGHT,
     boxSizing: 'border-box',
     padding: getSpacing(3),
     justifyContent: 'flex-start',
