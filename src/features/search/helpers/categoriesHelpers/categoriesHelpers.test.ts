@@ -113,21 +113,25 @@ describe('categoriesHelpers', () => {
     expect(nativeSubcategories).toEqual([
       {
         genreType: null,
+        parents: ['ARTS_LOISIRS_CREATIFS'],
         name: 'ARTS_VISUELS',
         value: 'Arts visuels',
       },
       {
         genreType: null,
+        parents: ['ARTS_LOISIRS_CREATIFS'],
         name: 'MATERIELS_CREATIFS',
         value: 'Matériels créatifs',
       },
       {
         genreType: null,
+        parents: ['ARTS_LOISIRS_CREATIFS', 'EVENEMENTS_EN_LIGNE'],
         name: 'PRATIQUE_ARTISTIQUE_EN_LIGNE',
         value: 'Pratique artistique en ligne',
       },
       {
         genreType: null,
+        parents: ['ARTS_LOISIRS_CREATIFS'],
         name: 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
         value: 'Pratiques & ateliers artistiques',
       },
@@ -232,7 +236,12 @@ describe('categoriesHelpers', () => {
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
 
-      expect(value).toEqual({ genreType: null, name: 'ARTS_VISUELS', value: 'Arts visuels' })
+      expect(value).toEqual({
+        genreType: null,
+        parents: ['ARTS_LOISIRS_CREATIFS'],
+        name: 'ARTS_VISUELS',
+        value: 'Arts visuels',
+      })
     })
   })
 
