@@ -10,6 +10,7 @@ import {
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -50,6 +51,13 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const mockUseIsCookiesListUpToDate = jest
+  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
+  .mockReturnValue({
+    isCookiesListUpToDate: true,
+    cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
+  })
+
 jest.useFakeTimers()
 
 describe('IncomingReactionModalContainer', () => {
@@ -80,7 +88,75 @@ describe('IncomingReactionModalContainer', () => {
     expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
   })
 
-  it('should render the modal if there is a booking without reaction after 24 hours and subcategory is in reactionCategories remote config', async () => {
+  it('should not render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies consent not up-to-date', async () => {
+    const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
+    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+      isCookiesListUpToDate: false,
+      cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
+    })
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+
+    render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
+
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+
+    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
+  })
+
+  it('should not render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies last update not received', async () => {
+    const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
+    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+      isCookiesListUpToDate: true,
+      cookiesLastUpdate: undefined,
+    })
+    mockUseBookings.mockReturnValueOnce({
+      data: {
+        ended_bookings: [
+          {
+            ...bookingsSnap.ended_bookings[0],
+            userReaction: null,
+            dateUsed,
+            stock: {
+              ...bookingsSnap.ended_bookings[0].stock,
+              offer: {
+                ...bookingsSnap.ended_bookings[0].stock.offer,
+                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+              },
+            },
+          },
+        ],
+      },
+    })
+
+    render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
+
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+
+    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
+  })
+
+  it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies consent up-to-date', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
     mockUseBookings.mockReturnValueOnce({
       data: {

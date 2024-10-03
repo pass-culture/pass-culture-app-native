@@ -49,7 +49,10 @@ describe('isCookiesListUpToDate', () => {
     const { result } = renderHook(useIsCookiesListUpToDate)
 
     await waitFor(() => {
-      expect(result.current).toEqual(false)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: defaultMockFirestore,
+        isCookiesListUpToDate: false,
+      })
     })
   })
 
@@ -61,7 +64,10 @@ describe('isCookiesListUpToDate', () => {
     const { result } = renderHook(useIsCookiesListUpToDate)
 
     await waitFor(() => {
-      expect(result.current).toEqual(false)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: defaultMockFirestore,
+        isCookiesListUpToDate: false,
+      })
     })
   })
 
@@ -76,7 +82,10 @@ describe('isCookiesListUpToDate', () => {
       const { result } = renderHook(useIsCookiesListUpToDate)
 
       await waitFor(() => {
-        expect(result.current).toEqual(false)
+        expect(result.current).toEqual({
+          cookiesLastUpdate: defaultMockFirestore,
+          isCookiesListUpToDate: false,
+        })
       })
     }
   )
@@ -87,7 +96,10 @@ describe('isCookiesListUpToDate', () => {
     const { result } = renderHook(useIsCookiesListUpToDate)
 
     await waitFor(() => {
-      expect(result.current).toEqual(true)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: undefined,
+        isCookiesListUpToDate: true,
+      })
     })
   })
 
@@ -99,7 +111,10 @@ describe('isCookiesListUpToDate', () => {
 
     const { result } = renderHook(useIsCookiesListUpToDate)
     await waitFor(() => {
-      expect(result.current).toEqual(true)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: defaultMockFirestore,
+        isCookiesListUpToDate: true,
+      })
     })
   })
 
@@ -116,7 +131,13 @@ describe('isCookiesListUpToDate', () => {
 
     const { result } = renderHook(useIsCookiesListUpToDate)
     await waitFor(() => {
-      expect(result.current).toEqual(true)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: {
+          ...defaultMockFirestore,
+          lastUpdateBuildVersion: buildVersion + 1,
+        },
+        isCookiesListUpToDate: true,
+      })
     })
   })
 
@@ -130,7 +151,10 @@ describe('isCookiesListUpToDate', () => {
 
     const { result } = renderHook(useIsCookiesListUpToDate)
     await waitFor(() => {
-      expect(result.current).toEqual(true)
+      expect(result.current).toEqual({
+        cookiesLastUpdate: { ...defaultMockFirestore, lastUpdated: TOMORROW },
+        isCookiesListUpToDate: true,
+      })
     })
   })
 })

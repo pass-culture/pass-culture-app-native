@@ -26,7 +26,7 @@ const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(default
 
 const mockUseIsCookiesListUpToDate = jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
-  .mockReturnValue(true)
+  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined })
 
 jest.mock('features/navigation/navigationRef')
 
@@ -75,7 +75,10 @@ describe('<PrivacyPolicy />', () => {
   })
 
   it('should not show cookies modal when fetching cookies is defined but user has made cookie choice', async () => {
-    mockUseIsCookiesListUpToDate.mockReturnValueOnce(true)
+    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+      isCookiesListUpToDate: true,
+      cookiesLastUpdate: undefined,
+    })
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,
       cookiesConsent: {
@@ -91,7 +94,10 @@ describe('<PrivacyPolicy />', () => {
   })
 
   it('should show cookies modal when fetching cookies is defined and user has made cookie choice', async () => {
-    mockUseIsCookiesListUpToDate.mockReturnValueOnce(false)
+    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+      isCookiesListUpToDate: false,
+      cookiesLastUpdate: undefined,
+    })
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,
       cookiesConsent: {

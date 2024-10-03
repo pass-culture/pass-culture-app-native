@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 
 import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
+import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -14,6 +15,8 @@ import { useModal } from 'ui/components/modals/useModal'
 
 export const IncomingReactionModalContainer = () => {
   const { reactionCategories } = useRemoteConfigContext()
+  const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
+  const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
@@ -66,7 +69,7 @@ export const IncomingReactionModalContainer = () => {
     hideReactionModal()
   }
 
-  if (!firstBooking) return null
+  if (!firstBooking || !isCookieConsentChecked) return null
 
   const { stock, dateUsed } = firstBooking
   const { offer } = stock

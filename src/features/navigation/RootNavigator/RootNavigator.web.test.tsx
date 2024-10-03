@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { FavoritesCountResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -16,7 +17,9 @@ import { RootNavigator } from './RootNavigator'
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
-jest.mock('features/cookies/helpers/useIsCookiesListUpToDate')
+jest
+  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
+  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined })
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.unmock('@react-navigation/native')
 jest.mock('features/auth/context/AuthContext')
