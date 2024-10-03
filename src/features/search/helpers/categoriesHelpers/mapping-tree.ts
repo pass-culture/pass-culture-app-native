@@ -2,7 +2,6 @@ import {
   BookType,
   GenreType,
   GTL,
-  NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
@@ -159,10 +158,7 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
       if (searchGroup.name === SearchGroupNameEnumv2.LIVRES) {
         mappedNativeCategoriesBooks = mapBookCategories(data)
       }
-      const nativeCategories = getNativeCategories(data, searchGroup.name).filter(
-        (nativeCategory) => nativeCategory.name !== NativeCategoryIdEnumv2.CARTES_JEUNES
-      )
-
+      const nativeCategories = getNativeCategories(data, searchGroup.name)
       mappedNativeCategories = nativeCategories.length
         ? nativeCategories.reduce<MappedNativeCategories>(
             (nativeCategoriesResult, nativeCategory) => {
