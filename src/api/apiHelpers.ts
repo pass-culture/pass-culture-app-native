@@ -186,8 +186,8 @@ export function isAPIExceptionCapturedAsInfo(statusCode: number) {
   return Boolean(statusCode === 401)
 }
 
-export function isAPIExceptionNotCaptured(statusCode: number) {
-  const notCapturedStatusCodes = [500, 502, 503, 504]
+const notCapturedStatusCodes = [500, 502, 503, 504]
 
+export function isAPIExceptionNotCaptured(statusCode: number) {
   return notCapturedStatusCodes.includes(statusCode)
 }

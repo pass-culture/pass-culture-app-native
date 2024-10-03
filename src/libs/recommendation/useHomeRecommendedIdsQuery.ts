@@ -18,8 +18,6 @@ type Parameters = {
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const { playlistRequestBody, playlistRequestQuery, userId } = parameters
   const { modelEndpoint, longitude, latitude } = playlistRequestQuery
-  const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
-  const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
 
@@ -27,38 +25,66 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
     async () => {
       try {
-        const response = await api.postNativeV1RecommendationPlaylist(
+        return await api.postNativeV1RecommendationPlaylist(
           playlistRequestBody,
           modelEndpoint ?? undefined,
           longitude ?? undefined,
           latitude ?? undefined
         )
-
-        return response
       } catch (err) {
-        const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
-        const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
         const shouldApiErrorNotCaptured = Boolean(
           err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
         )
 
         if (!shouldApiErrorNotCaptured) {
-          eventMonitoring.captureException(
-            new Error(`Error ${statusCode} with recommendation endpoint`),
-            {
-              extra: {
-                playlistRequestBody: stringifyPlaylistRequestBody,
-                playlistRequestQuery: stringifyPlaylistRequestQuery,
-                statusCode: statusCode,
-                errorMessage,
-              },
-            }
-          )
+          logError(err, parameters)
         }
 
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: isLoggedIn && !!userId && !!netInfo.isConnected }
+    {
+      staleTime: 1000 * 60 * 5,
+      enabled: isLoggedIn && !!userId && !!netInfo.isConnected,
+    }
   )
+}
+
+const logError = (err: unknown, parameters: Parameters): void => {
+  const { title, statusCode, errorMessage } = getErrorDetails(err)
+
+  eventMonitoring.captureException(new Error(`Error ${title} with recommendation endpoint`), {
+    extra: {
+      playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
+      playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+      statusCode,
+      errorMessage,
+    },
+  })
+}
+
+const getErrorDetails = (
+  err: unknown
+): { title: string; statusCode: string; errorMessage: string } => {
+  if (err instanceof ApiError) {
+    return {
+      title: `${err.statusCode}`,
+      statusCode: `${err.statusCode}`,
+      errorMessage: err.message,
+    }
+  }
+
+  if (err instanceof Error) {
+    return {
+      title: err.message,
+      statusCode: 'unknown',
+      errorMessage: err.message,
+    }
+  }
+
+  return {
+    title: 'unknown',
+    statusCode: 'unknown',
+    errorMessage: JSON.stringify(err),
+  }
 }
