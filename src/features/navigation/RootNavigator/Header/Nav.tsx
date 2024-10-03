@@ -45,7 +45,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
         {tabRoutes.map((route, index) => {
           let tabNavConfig = getTabNavConfig(route.name)
 
-          if (route.isSelected && route.name === 'SearchStackNavigator') {
+          if (route.name === 'SearchStackNavigator') {
             tabNavConfig = getSearchStackConfig('SearchLanding', {
               ...initialSearchState,
               locationFilter,
