@@ -1954,7 +1954,131 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                 ]
               }
             >
-              Aucune
+              Le lecteur Youtube, utilisé pour diffuser les contenus vidéo.
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte.
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              La carte des lieux culturels, utilisée dans la recherche.
             </Text>
           </View>
         </View>

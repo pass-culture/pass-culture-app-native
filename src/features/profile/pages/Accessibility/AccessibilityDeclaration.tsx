@@ -146,7 +146,9 @@ export function AccessibilityDeclaration() {
       <Typo.ButtonText>Dérogations pour charge disproportionnée</Typo.ButtonText>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
-        <BulletListItem text="Aucune" />
+        <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
+        <BulletListItem text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte." />
+        <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>Contenus non soumis à l’obligation d’accessibilité</Typo.ButtonText>
