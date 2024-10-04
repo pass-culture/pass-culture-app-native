@@ -59,6 +59,7 @@ const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
 const TitleAndWidgetContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+  width: '100%',
 })
 
 const TitleContainer = styled.View({
