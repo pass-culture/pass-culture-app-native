@@ -10,6 +10,8 @@ import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/t
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Spacer } from 'ui/theme'
@@ -20,9 +22,14 @@ const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue
 
 export const SearchN1: React.FC = () => {
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
+  const isReplicaAlgoliaIndexActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
+  )
   const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
-    searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+    searchIndex: isReplicaAlgoliaIndexActive
+      ? env.ALGOLIA_OFFERS_INDEX_NAME_B
+      : env.ALGOLIA_OFFERS_INDEX_NAME,
   })
 
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
