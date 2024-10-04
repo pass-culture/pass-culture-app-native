@@ -1,0 +1,39 @@
+---
+title: Diagramme des méthodes d'inscriptions
+---
+stateDiagram-v2
+  direction LR
+  state Still <<fork>>
+  state s4 <<choice>>
+  state s11 <<choice>>
+  state s16 <<choice>>
+  [*] --> Still
+  Still --> s1
+  Still --> s2
+  s4 --> s5:oui
+  s4 --> s6:non
+  s7 --> s4
+  s1 --> s7
+  s5 --> s8
+  s8 --> [*]
+  s11 --> s12:oui
+  s11 --> s13:non
+  s6 --> s11
+  s12 --> s14
+  s14 --> s16
+  s16 --> s8:OK
+  s16 --> s13:KO
+  s2 --> s6
+  s1:Jeunes de 15 à 17 ans
+  s2:Jeunes de 18 ans
+  s5:Educonnect
+  s6:Jeune français
+  s7:Jeunes scolarisé MEN
+  s8:Bénéficiaire
+  s12:Ubble
+  s13:DMS
+  s14:Vérification
+  %% style s5 fill:#BBDEFB
+  %% style s8 fill:#00C853
+  %% style s12 fill:#FFCDD2
+  %% style s13 fill:#FFD600
