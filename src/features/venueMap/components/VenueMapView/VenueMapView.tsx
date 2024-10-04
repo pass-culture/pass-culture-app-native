@@ -22,7 +22,7 @@ import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesSt
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
+import MapView, { MapViewProps, Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -38,6 +38,7 @@ interface Props {
   currentRegion: Region
   setCurrentRegion: (region: Region) => void
   setLastRegionSearched: (region: Region) => void
+  hidePointsOfInterest?: boolean
   playlistType: PlaylistType
 }
 
@@ -55,6 +56,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
   setCurrentRegion,
   setLastRegionSearched,
   playlistType,
+  hidePointsOfInterest = false,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { tabBarHeight } = useCustomSafeInsets()
@@ -203,6 +205,27 @@ export const VenueMapView: FunctionComponent<Props> = ({
     })
   }, [tabBarHeight, from])
 
+  const pointsOfInterestProps = useMemo(
+    () =>
+      ({
+        showsPointsOfInterest: !hidePointsOfInterest,
+        customMapStyle: hidePointsOfInterest
+          ? [
+              {
+                featureType: 'poi',
+                elementType: 'labels',
+                stylers: [
+                  {
+                    visibility: 'off',
+                  },
+                ],
+              },
+            ]
+          : undefined,
+      }) satisfies Pick<MapViewProps, 'showsPointsOfInterest' | 'customMapStyle'>,
+    [hidePointsOfInterest]
+  )
+
   return (
     <React.Fragment>
       <VenueMapBottomSheet
@@ -231,7 +254,8 @@ export const VenueMapView: FunctionComponent<Props> = ({
         radius={50}
         animationEnabled={false}
         height={height}
-        testID="venue-map-view">
+        testID="venue-map-view"
+        {...pointsOfInterestProps}>
         {filteredVenues.map((venue) => (
           <Marker
             key={venue.venueId}
