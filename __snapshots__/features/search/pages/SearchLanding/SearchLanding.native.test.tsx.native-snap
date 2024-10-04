@@ -78,6 +78,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               {
                 "flexDirection": "row",
                 "justifyContent": "space-between",
+                "width": "100%",
               },
             ]
           }
@@ -2726,6 +2727,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             {
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
