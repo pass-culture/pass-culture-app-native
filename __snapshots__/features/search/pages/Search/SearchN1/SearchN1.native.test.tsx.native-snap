@@ -1885,6 +1885,16 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
         </View>
       </RCTScrollView>
       <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
         style={
           [
             {
