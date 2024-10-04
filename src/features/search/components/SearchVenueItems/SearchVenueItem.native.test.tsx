@@ -26,6 +26,7 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   mental_disability: null,
   motor_disability: null,
   visual_disability: null,
+  isPermanent: true,
   email: null,
   phone_number: null,
   website: null,
