@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
-import { AuthWrapper } from 'features/auth/context/AuthContext'
+import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { Profile } from 'features/profile/pages/Profile'
 import { beneficiaryUser } from 'fixtures/user'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'

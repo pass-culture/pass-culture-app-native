@@ -1,10 +1,8 @@
 import { SigninResponse } from 'api/gen'
 import { scheduleAccessTokenRemoval } from 'api/refreshAccessToken'
-import {
-  useAuthContext,
-  useConnectServicesRequiringUserId,
-} from 'features/auth/context/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useResetContexts } from 'features/auth/context/useResetContexts'
+import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { saveRefreshToken } from 'libs/keychain/keychain'

@@ -8,7 +8,7 @@ import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { AuthWrapper } from 'features/auth/context/AuthContext'
+import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'

@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
-import { AuthWrapper } from 'features/auth/context/AuthContext'
+import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { Favorites } from 'features/favorites/pages/Favorites'

@@ -21,7 +21,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-import { AuthWrapper, useAuthContext } from './AuthContext'
+import { useAuthContext } from './AuthContext'
+import { AuthWrapper } from './AuthWrapper'
 
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
