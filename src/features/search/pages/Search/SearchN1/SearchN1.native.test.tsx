@@ -7,6 +7,7 @@ import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
+import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -20,9 +21,11 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest
-  .spyOn(useGTLPlaylists, 'useGTLPlaylists')
-  .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
+const mockUseGtlPlaylist = jest.spyOn(useGTLPlaylists, 'useGTLPlaylists')
+mockUseGtlPlaylist.mockReturnValue({
+  isLoading: false,
+  gtlPlaylists: gtlPlaylistAlgoliaSnapshot,
+})
 
 jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   searchState: mockSearchState,
@@ -154,6 +157,17 @@ describe('<SearchN1/>', () => {
         await screen.findByText('Romans et littérature')
 
         expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
+      })
+
+      it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
+        jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValueOnce(true)
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Romans et littérature')
+
+        expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
+          queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
+          searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+        })
       })
     })
   })

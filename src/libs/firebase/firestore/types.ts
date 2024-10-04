@@ -17,6 +17,7 @@ export enum RemoteStoreDocuments {
 
 export enum RemoteStoreFeatureFlags {
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
+  ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
