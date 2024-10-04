@@ -219,6 +219,7 @@ export interface AlgoliaVenue {
   instagram: string | null
   snapchat: string | null
   banner_url: string | null
+  isPermanent: boolean | null
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }

@@ -9,6 +9,7 @@ export interface Venue {
   banner_url?: string | null
   venue_type?: VenueTypeCode | null
   postalCode?: string | null
+  isPermanent?: boolean | null
 }
 
 export enum Tab {
