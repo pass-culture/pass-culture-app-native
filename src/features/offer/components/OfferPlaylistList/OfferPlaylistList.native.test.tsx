@@ -8,14 +8,10 @@ import {
 } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { PlaylistType } from 'features/offer/enums'
 import {
-  mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -26,22 +22,15 @@ jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
-const useFeatureFlagSpy = jest
+jest
   .spyOn(useFeatureFlag, 'useFeatureFlag')
-  // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
+  // this value corresponds to WIP_NEW_OFFER_TILE feature flag
   .mockReturnValue(false)
-
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
 
 const offerPlaylistListProps: OfferPlaylistListProps = {
   offer: mockOffer,
-}
-
-const defaultRemoteConfig: CustomRemoteConfig = {
-  ...DEFAULT_REMOTE_CONFIG,
-  sameAuthorPlaylist: 'sameAuthorPlaylist',
 }
 
 jest.mock('@shopify/flash-list', () => {
@@ -132,94 +121,12 @@ describe('<OfferPlaylistList />', () => {
       })
     })
   })
-
-  describe('Same artist playlist with "wipSameArtistPlaylist" feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy
-        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-        .mockReturnValue(true)
-    })
-
-    it('should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsFirst', () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...defaultRemoteConfig,
-        sameAuthorPlaylist: 'withPlaylistAsFirst',
-      })
-      renderOfferPlaylistList({
-        ...offerPlaylistListProps,
-        sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-      })
-
-      expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
-    })
-
-    it('should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsLast', () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...defaultRemoteConfig,
-        sameAuthorPlaylist: 'withPlaylistAsLast',
-      })
-      renderOfferPlaylistList({
-        ...offerPlaylistListProps,
-        sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-      })
-
-      expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
-    })
-
-    it('should not display same artist list when offer has not it', () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...defaultRemoteConfig,
-        sameAuthorPlaylist: 'withPlaylistAsFirst',
-      })
-      renderOfferPlaylistList(offerPlaylistListProps)
-
-      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
-    })
-
-    it('should not display same artist playlist when same author playlist remote config value is withoutPlaylit', () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...defaultRemoteConfig,
-        sameAuthorPlaylist: 'withoutPlaylit',
-      })
-
-      renderOfferPlaylistList({
-        ...offerPlaylistListProps,
-        sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-      })
-
-      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
-    })
-  })
-
-  describe('Same artist playlist with "wipSameArtistPlaylist" feature flag deactivated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy
-        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-        .mockReturnValueOnce(false)
-    })
-
-    it('should not display same artist list when offer has some', () => {
-      renderOfferPlaylistList({
-        ...offerPlaylistListProps,
-        sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-      })
-
-      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
-    })
-
-    it('should not display same artist list when offer has not it', () => {
-      renderOfferPlaylistList(offerPlaylistListProps)
-
-      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
-    })
-  })
 })
 
 const renderOfferPlaylistList = ({
   offer = mockOffer,
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
-  sameArtistPlaylist,
 }: OfferPlaylistListProps) =>
   render(
     reactQueryProviderHOC(
@@ -227,7 +134,6 @@ const renderOfferPlaylistList = ({
         offer={offer}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-        sameArtistPlaylist={sameArtistPlaylist}
       />
     )
   )

@@ -35,7 +35,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   BodyWrapper = React.Fragment,
 }) => {
   const {
-    sameArtistPlaylist,
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
@@ -112,7 +111,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           apiRecoParamsSameCategory={apiRecoParamsSameCategory}
           otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
           apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-          sameArtistPlaylist={sameArtistPlaylist}
         />
       </ScrollViewContainer>
       {footer}

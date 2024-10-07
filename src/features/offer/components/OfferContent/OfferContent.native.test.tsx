@@ -196,58 +196,6 @@ describe('<OfferContent />', () => {
   })
 
   describe('Playlist list section', () => {
-    describe('Same artist playlist', () => {
-      const extraData = {
-        author: 'Eiichiro Oda',
-        ean: '9782723492607',
-      }
-
-      it('should display same artist playlist', async () => {
-        renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
-      })
-
-      it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        renderOfferContent({})
-
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-          nbResults: 30,
-        })
-      })
-
-      it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        renderOfferContent({})
-
-        mockInView(true)
-        mockInView(false)
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-        renderOfferContent({})
-
-        mockInView(false)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
-      })
-    })
-
     describe('Same category similar offers', () => {
       it('should display same category similar offers', async () => {
         useSimilarOffersSpy.mockReturnValueOnce({

@@ -6,9 +6,7 @@ import {
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
 } from 'api/gen'
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
-import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { Position, useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
@@ -19,7 +17,6 @@ type Props = {
 }
 
 type UseOfferPlaylistType = {
-  sameArtistPlaylist: HitOfferWithArtistAndEan[]
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
@@ -32,12 +29,6 @@ export const useOfferPlaylist = ({
   searchGroupList,
 }: Props): UseOfferPlaylistType => {
   const { userLocation } = useLocation()
-
-  const artists = offer.extraData?.author
-  const { sameArtistPlaylist } = useSameArtistPlaylist({
-    artists,
-    searchGroupName: offerSearchGroup,
-  })
 
   const { latitude, longitude } = userLocation ?? {}
   const roundedPosition: Position = useMemo(
@@ -68,7 +59,6 @@ export const useOfferPlaylist = ({
   })
 
   return {
-    sameArtistPlaylist,
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,

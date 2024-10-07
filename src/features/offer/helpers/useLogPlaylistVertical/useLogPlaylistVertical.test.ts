@@ -19,7 +19,6 @@ describe('useLogPlaylist', () => {
     const { result } = renderHook(() =>
       useLogPlaylist({
         offerId: 1,
-        nbSameArtistPlaylist: 3,
         nbSameCategorySimilarOffers: 5,
         nbOtherCategoriesSimilarOffers: 0,
         apiRecoParamsSameCategory: apiRecoParams,
@@ -42,7 +41,6 @@ describe('useLogPlaylist', () => {
     const { result } = renderHook(() =>
       useLogPlaylist({
         offerId: 1,
-        nbSameArtistPlaylist: 3,
         nbSameCategorySimilarOffers: 5,
         nbOtherCategoriesSimilarOffers: 0,
         apiRecoParamsSameCategory: apiRecoParams,
@@ -63,7 +61,6 @@ describe('useLogPlaylist', () => {
     const { result } = renderHook(() =>
       useLogPlaylist({
         offerId: 1,
-        nbSameArtistPlaylist: 3,
         nbSameCategorySimilarOffers: 0,
         nbOtherCategoriesSimilarOffers: 5,
         apiRecoParamsOtherCategories: apiRecoParams,
@@ -86,7 +83,6 @@ describe('useLogPlaylist', () => {
     const { result } = renderHook(() =>
       useLogPlaylist({
         offerId: 1,
-        nbSameArtistPlaylist: 3,
         nbSameCategorySimilarOffers: 0,
         nbOtherCategoriesSimilarOffers: 5,
         apiRecoParamsOtherCategories: apiRecoParams,
@@ -103,53 +99,11 @@ describe('useLogPlaylist', () => {
     expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
   })
 
-  it('should logSameArtistPlaylistVerticalScroll correctly', () => {
-    const { result } = renderHook(() =>
-      useLogPlaylist({
-        offerId: 1,
-        nbSameArtistPlaylist: 3,
-        nbOtherCategoriesSimilarOffers: 0,
-        nbSameCategorySimilarOffers: 0,
-        fromOfferId: 2,
-      })
-    )
-
-    result.current.logSameArtistPlaylistVerticalScroll()
-
-    expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-      fromOfferId: 2,
-      offerId: 1,
-      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-      nbResults: 3,
-    })
-  })
-
-  it('should log only once logSameArtistPlaylistVerticalScroll', () => {
-    const { result } = renderHook(() =>
-      useLogPlaylist({
-        offerId: 1,
-        nbSameArtistPlaylist: 3,
-        nbOtherCategoriesSimilarOffers: 0,
-        nbSameCategorySimilarOffers: 0,
-        fromOfferId: 2,
-      })
-    )
-
-    result.current.logSameArtistPlaylistVerticalScroll()
-
-    expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-
-    result.current.logSameArtistPlaylistVerticalScroll()
-
-    expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-  })
-
   it('should logPlaylistHorizontalScroll correctly', () => {
     const { result, rerender } = renderHook(
       ({ fromOfferId }) =>
         useLogPlaylist({
           offerId: 1,
-          nbSameArtistPlaylist: 3,
           nbOtherCategoriesSimilarOffers: 0,
           nbSameCategorySimilarOffers: 0,
           fromOfferId,

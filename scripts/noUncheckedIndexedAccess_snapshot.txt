@@ -68,8 +68,8 @@
 ./src/features/navigation/helpers/useCurrentRoute.ts:4
 ./src/features/navigation/helpers/usePreviousRoute.ts:4
 ./src/features/navigation/sanitizeNavigationState.ts:5
-./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:123
-./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:89
+./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:112
+./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:78
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:74
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:76
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:81

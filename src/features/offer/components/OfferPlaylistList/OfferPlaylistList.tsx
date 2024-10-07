@@ -3,7 +3,6 @@ import React from 'react'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/OfferPlaylist'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
@@ -13,7 +12,6 @@ import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
@@ -25,7 +23,6 @@ export type OfferPlaylistListProps = {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
-  sameArtistPlaylist?: HitOfferWithArtistAndEan[]
 }
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
@@ -38,32 +35,22 @@ export function OfferPlaylistList({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
-  sameArtistPlaylist,
 }: Readonly<OfferPlaylistListProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { sameAuthorPlaylist: sameAuthorPlaylistConfig } = useRemoteConfigContext()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
-  const {
-    logSameCategoryPlaylistVerticalScroll,
-    logOtherCategoriesPlaylistVerticalScroll,
-    logSameArtistPlaylistVerticalScroll,
-  } = useLogPlaylist({
-    offerId: offer.id,
-    nbSameArtistPlaylist: sameArtistPlaylist?.length ?? 0,
-    apiRecoParamsSameCategory,
-    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
-    apiRecoParamsOtherCategories,
-    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
-    fromOfferId,
-  })
-
-  const handleChangeSameArtistPlaylistDisplay = useLogScrollHandler(
-    logSameArtistPlaylistVerticalScroll
-  )
+  const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
+    useLogPlaylist({
+      offerId: offer.id,
+      apiRecoParamsSameCategory,
+      nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
+      apiRecoParamsOtherCategories,
+      nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
+      fromOfferId,
+    })
 
   const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
     logOtherCategoriesPlaylistVerticalScroll
@@ -72,10 +59,6 @@ export function OfferPlaylistList({
   const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
     logSameCategoryPlaylistVerticalScroll
   )
-
-  const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
-  const shouldDisplaySameArtistPlaylist =
-    !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
 
   const trackingOnHorizontalScroll = (
     playlistType: PlaylistType,
@@ -102,29 +85,13 @@ export function OfferPlaylistList({
     handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,
   }
 
-  const sameArtistOffersPlaylist: SimilarOfferPlaylist = {
-    type: PlaylistType.SAME_ARTIST_PLAYLIST,
-    title: 'Du même auteur',
-    offers: sameArtistPlaylist,
-    handleChangePlaylistDisplay: handleChangeSameArtistPlaylistDisplay,
-  }
-
-  const similarOffersPlaylist: SimilarOfferPlaylist[] = []
-  if (sameAuthorPlaylistConfig === 'withPlaylistAsFirst' && shouldDisplaySameArtistPlaylist) {
-    similarOffersPlaylist.push(sameArtistOffersPlaylist)
-  }
-  similarOffersPlaylist.push(
+  const similarOffersPlaylist: SimilarOfferPlaylist[] = [
     sameCategorySimilarOffersPlaylist,
-    otherCategoriesSimilarOffersPlaylist
-  )
-  if (sameAuthorPlaylistConfig === 'withPlaylistAsLast' && shouldDisplaySameArtistPlaylist) {
-    similarOffersPlaylist.push(sameArtistOffersPlaylist)
-  }
+    otherCategoriesSimilarOffersPlaylist,
+  ]
 
   const shouldDisplayPlaylist =
-    isArrayNotEmpty(sameCategorySimilarOffers) ||
-    isArrayNotEmpty(otherCategoriesSimilarOffers) ||
-    isArrayNotEmpty(sameArtistPlaylist)
+    isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
 
   return (
     <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
