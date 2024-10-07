@@ -8,12 +8,15 @@ import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMap
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
 import { useInitialVenues } from 'features/venueMap/store/initialVenuesStore'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMap: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
   const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
+  const venueMapHiddenPOI = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
 
   const initialVenues = useInitialVenues()
   const {
@@ -42,7 +45,7 @@ export const VenueMap: FunctionComponent = () => {
           setCurrentRegion={setCurrentRegion}
           setLastRegionSearched={setLastRegionSearched}
           playlistType={PlaylistType.TOP_OFFERS}
-          hidePointsOfInterest
+          hidePointsOfInterest={venueMapHiddenPOI}
         />
       </MapContainer>
     </VenueMapBase>

@@ -98,6 +98,7 @@ export const SearchResultsContent: React.FC = () => {
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+  const venueMapHiddenPOI = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
   const { height } = useWindowDimensions()
   const { top, tabBarHeight } = useCustomSafeInsets()
   const venueMapHeight = height - top - tabBarHeight - HEADER_SEARCH_VENUE_MAP
@@ -347,6 +348,7 @@ export const SearchResultsContent: React.FC = () => {
           setCurrentRegion={setCurrentRegion}
           setLastRegionSearched={setLastRegionSearched}
           playlistType={venueMapBottomSheetPlaylistType}
+          hidePointsOfInterest={venueMapHiddenPOI}
         />
       ),
   }

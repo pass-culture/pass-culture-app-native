@@ -53,6 +53,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
+  WIP_VENUE_MAP_HIDDEN_POI = 'wipVenueMapHiddenPOI',
   WIP_ENABLE_DYNAMIC_OPENING_HOURS = 'wipEnableDynamicOpeningHours',
   WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
