@@ -1,0 +1,7 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible:
+    text: "Mes favoris"
+    index: 0
+- assertVisible: "Découvrir le catalogue"
+- tapOn: "Découvrir le catalogue"

@@ -8,10 +8,15 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Réserver l’offre'
 
 - assertVisible: 'Détails de la réservation'
+- tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
+- scrollUntilVisible:
+    element: 'Confirmer la réservation'
 - tapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
-- tapOn: 'Voir ma réservation'
+- tapOn: 
+    text: 'Voir ma réservation'
+    retryTapIfNoChange: true
 
 - scrollUntilVisible:
     element: 'Annuler ma réservation'

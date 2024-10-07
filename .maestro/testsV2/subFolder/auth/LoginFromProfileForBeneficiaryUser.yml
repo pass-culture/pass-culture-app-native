@@ -11,6 +11,7 @@ appId: ${MAESTRO_APP_ID}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
 
+- waitForAnimationToEnd
 
 - runFlow: # Si apparition de la modale de suivi des thèmes
     when:

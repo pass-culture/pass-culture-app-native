@@ -6,7 +6,15 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "En cours"
 - assertVisible: "Terminées"
 
-# TODO: (PC-31019) - Cas avec réservation en cours
+- runFlow:
+    when:
+      visible: "À retirer.*"
+    commands:
+      - tapOn: "À retirer.*"
+      - scroll
+      - scroll
+      - tapOn: 'Annuler ma réservation'
+      - tapOn: 'Annuler ma réservation'
 
 # Cas sans réservation en cours
 - runFlow:

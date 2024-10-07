@@ -1,0 +1,29 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible:
+    id: "Trier"
+- tapOn:
+    id: "Trier"
+
+- assertVisible: "Trier par"
+- assertVisible: "Trier par Ajouté récemment"
+- assertVisible: "Trier par Prix croissant"
+- assertVisible: "Trier par Proximité géographique"
+
+- tapOn: "Trier par Prix croissant"
+- tapOn: "Valider"
+
+- assertVisible: "3 favoris"
+- tapOn:
+    id: "Trier"
+
+- tapOn: "Trier par Proximité géographique"
+- tapOn: "Valider"
+
+- assertVisible: "3 favoris"
+- tapOn:
+    id: "Trier"
+
+- tapOn: "Trier par Ajouté récemment"
+- tapOn: "Valider"
+- assertVisible: "3 favoris"

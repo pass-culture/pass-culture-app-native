@@ -1,0 +1,29 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn:
+    id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-back"
+
+- swipe:
+    from:
+      text: 'Les offres'
+    direction: UP
+- tapOn:
+    text: "CD"
+    index: 1
+
+- tapOn:
+    id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-back"
+
+- scroll
+- tapOn:
+    text: "CD"
+    index: 1
+
+- tapOn:
+    id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-back"
