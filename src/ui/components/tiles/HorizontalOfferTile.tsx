@@ -89,6 +89,7 @@ export const HorizontalOfferTile = ({
       navigateTo={{
         screen: 'Offer',
         params: { id: offerId, from: analyticsParams.from, searchId: analyticsParams.searchId },
+        withPush: analyticsParams.from === 'artist',
       }}
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}
