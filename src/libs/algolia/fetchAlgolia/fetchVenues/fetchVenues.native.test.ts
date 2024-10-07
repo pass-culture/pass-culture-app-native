@@ -37,6 +37,7 @@ describe('fetchVenues', () => {
     phone_number: '+33102030405',
     snapchat: null,
     twitter: null,
+    isPermanent: true,
     venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
     visual_disability: false,
     website: 'https://my.website.com',
@@ -82,6 +83,7 @@ describe('fetchVenues', () => {
   venueId: 4150,
   _geoloc: { lat: 48.87004, lng: 2.3785 },
   banner_url: null,
+  isPermanent: true,
   postalCode: '86280',
   venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
 }}
@@ -92,6 +94,7 @@ describe('fetchVenues', () => {
   _geoloc: { lat: 48.87004, lng: 2.3785 },
   banner_url: null,
   postalCode: '86280',
+  isPermanent: true,
   venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
 }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {

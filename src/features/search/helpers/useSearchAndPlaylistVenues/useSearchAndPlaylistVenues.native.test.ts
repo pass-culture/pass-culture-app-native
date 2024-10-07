@@ -33,6 +33,7 @@ const mockHitsWithVenues: SearchOfferHits = {
       instagram: null,
       snapchat: null,
       banner_url: null,
+      isPermanent: true,
       _geoloc: { lat: null, lng: null },
     },
     {
@@ -55,6 +56,7 @@ const mockHitsWithVenues: SearchOfferHits = {
       instagram: null,
       snapchat: null,
       banner_url: null,
+      isPermanent: true,
       _geoloc: { lat: null, lng: null },
     },
   ],

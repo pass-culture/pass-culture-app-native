@@ -10,6 +10,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     description: 'Focus campaign accept save both each.',
     email: 'contact@venue.com',
     facebook: null,
+    isPermanent: true,
 
     instagram: 'http://instagram.com/@venue',
 
@@ -41,6 +42,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     mental_disability: false,
     motor_disability: false,
     name: 'La librairie quantique',
+    isPermanent: true,
     objectID: '4192',
     offerer_name: 'Syndicat des librairies physiques',
     phone_number: '+33102030405',

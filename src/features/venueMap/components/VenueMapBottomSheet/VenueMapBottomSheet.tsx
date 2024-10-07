@@ -94,7 +94,8 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             navigateTo={{ screen: 'Venue', params: { id: venue.venueId, from: 'venueMap' } }}
             noBorder
             testID="venueMapPreview"
-            withRightArrow
+            enableNavigate={venue.isPermanent}
+            withRightArrow={venue.isPermanent}
             style={{ paddingHorizontal: getSpacing(4) }}
           />
         )

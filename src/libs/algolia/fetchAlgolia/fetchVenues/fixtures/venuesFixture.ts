@@ -12,6 +12,7 @@ export const venuesFixture = toMutable([
     _geoloc: { lat: 48.871728, lng: 2.308157 },
     banner_url: null,
     postalCode: '75000',
+    isPermanent: true,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
   },
   {
@@ -22,6 +23,7 @@ export const venuesFixture = toMutable([
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',
     postalCode: '',
+    isPermanent: true,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
   },
 ] as const satisfies ReadonlyDeep<GeolocatedVenue[]>)
