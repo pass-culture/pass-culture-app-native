@@ -42,6 +42,7 @@ export const VenueMap: FunctionComponent = () => {
           setCurrentRegion={setCurrentRegion}
           setLastRegionSearched={setLastRegionSearched}
           playlistType={PlaylistType.TOP_OFFERS}
+          hidePointsOfInterest
         />
       </MapContainer>
     </VenueMapBase>
