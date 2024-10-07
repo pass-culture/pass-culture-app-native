@@ -10,12 +10,10 @@ import { Typo } from 'ui/theme'
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
-
+    const defaultColor = color ?? theme.buttons.secondary.iconColor
     if (icon) {
       Icon = styled(icon).attrs({
-        color: disabled
-          ? theme.buttons.disabled.secondary.iconColor
-          : color ?? theme.buttons.secondary.iconColor,
+        color: disabled ? theme.buttons.disabled.secondary.iconColor : defaultColor,
         size: theme.buttons.secondary.iconSize,
       })``
     }
