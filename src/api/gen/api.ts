@@ -746,10 +746,10 @@ export interface CategoryResponseModel {
    */
   parents: Array<string>
   /**
-   * @type {number}
+   * @type {{ [key: string]: number; }}
    * @memberof CategoryResponseModel
    */
-  position?: number | null
+  position?: { [key: string]: number; } | null
   /**
    * @type {string}
    * @memberof CategoryResponseModel
@@ -1784,7 +1784,6 @@ export enum NativeCategoryIdEnumv2 {
   'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
   'FESTIVALS' = 'FESTIVALS',
   'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
-  'FILMS_SERIES_EN_LIGNE' = 'FILMS_SERIES_EN_LIGNE',
   'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
   'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
   'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
