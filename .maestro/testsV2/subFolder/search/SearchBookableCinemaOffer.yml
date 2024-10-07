@@ -7,9 +7,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Catégories'
 
 - assertVisible: 'Cinéma'
-- tapOn: 'Séances de cinéma'
 
-- assertVisible: 'Séances de cinéma'
 - tapOn: 'Rechercher'
 
 - tapOn:
