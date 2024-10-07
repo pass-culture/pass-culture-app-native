@@ -2,7 +2,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -20,9 +20,13 @@ jest
   .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockImplementation().mockReturnValue({
-  sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-})
+jest
+  .spyOn(useArtistResults, 'useArtistResults')
+  .mockImplementation()
+  .mockReturnValue({
+    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+  })
 
 let mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({

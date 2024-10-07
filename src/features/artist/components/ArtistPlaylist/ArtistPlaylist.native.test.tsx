@@ -3,17 +3,18 @@ import React from 'react'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-const useSameArtistPlaylistSpy = jest
-  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
+const useArtistResultsSpy = jest
+  .spyOn(useArtistResults, 'useArtistResults')
   .mockImplementation()
   .mockReturnValue({
-    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
@@ -49,8 +50,9 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    useSameArtistPlaylistSpy.mockReturnValueOnce({
-      sameArtistPlaylist: [],
+    useArtistResultsSpy.mockReturnValueOnce({
+      artistPlaylist: [],
+      artistTopOffers: [],
     })
     render(
       reactQueryProviderHOC(

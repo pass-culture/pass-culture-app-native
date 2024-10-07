@@ -35,7 +35,7 @@ export enum QueryKeys {
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
   SIMILAR_OFFERS = 'similarOffers',
-  SAME_ARTIST_PLAYLIST = 'sameArtistPlaylist',
+  ARTIST_PLAYLIST = 'artistPlaylist',
   SUBCATEGORIES = 'subcategories',
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',

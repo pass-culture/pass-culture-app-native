@@ -5,7 +5,7 @@ import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
@@ -30,16 +30,16 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
 
   const artists = getOfferArtists(subcategory.categoryId, offer)
-  const { sameArtistPlaylist } = useSameArtistPlaylist({
+  const { artistPlaylist } = useArtistResults({
     artists,
     searchGroupName: subcategory.searchGroupName,
   })
 
-  return sameArtistPlaylist.length > 0 ? (
+  return artistPlaylist.length > 0 ? (
     <PassPlaylist
       playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
       title="Toutes ses offres disponibles"
-      data={sameArtistPlaylist}
+      data={artistPlaylist}
       renderItem={OfferPlaylistItem({
         offer,
         categoryMapping,

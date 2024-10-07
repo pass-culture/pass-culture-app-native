@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -17,7 +17,10 @@ jest.mock('libs/react-query/usePersistQuery', () => ({
 
 const fetchOffersByArtistSpy = jest
   .spyOn(fetchOffersByArtist, 'fetchOffersByArtist')
-  .mockResolvedValue(mockedAlgoliaOffersWithSameArtistResponse)
+  .mockResolvedValue({
+    playlistHits: mockedAlgoliaOffersWithSameArtistResponse,
+    topOffersHits: mockedAlgoliaOffersWithSameArtistResponse.splice(0, 4),
+  })
 
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -26,12 +29,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-describe('useSameArtistPlaylist', () => {
+describe('useArtistResults', () => {
   it('should fetch same artist playlist when user has Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     renderHook(
       () =>
-        useSameArtistPlaylist({
+        useArtistResults({
           artists: 'Eiichiro Oda',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
         }),
@@ -49,11 +52,11 @@ describe('useSameArtistPlaylist', () => {
     })
   })
 
-  it('should not fetch same artist playlist when user has not Internet connection', async () => {
+  it('should not fetch artist playlist and top offers when user has not Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderHook(
       () =>
-        useSameArtistPlaylist({
+        useArtistResults({
           artists: 'Eiichiro Oda',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
         }),
@@ -67,12 +70,12 @@ describe('useSameArtistPlaylist', () => {
     })
   })
 
-  it('should return an empty array if no data is returned', async () => {
-    fetchOffersByArtistSpy.mockResolvedValueOnce([])
+  it('should return an empty array for artist playlist when no data returned', async () => {
+    fetchOffersByArtistSpy.mockResolvedValueOnce({ playlistHits: [], topOffersHits: [] })
 
     const { result } = renderHook(
       () =>
-        useSameArtistPlaylist({
+        useArtistResults({
           artists: 'Eiichiro Oda',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
         }),
@@ -82,7 +85,26 @@ describe('useSameArtistPlaylist', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.sameArtistPlaylist).toEqual([])
+      expect(result.current.artistPlaylist).toEqual([])
+    })
+  })
+
+  it('should return an empty array for artist top offers when no data returned', async () => {
+    fetchOffersByArtistSpy.mockResolvedValueOnce({ playlistHits: [], topOffersHits: [] })
+
+    const { result } = renderHook(
+      () =>
+        useArtistResults({
+          artists: 'Eiichiro Oda',
+          searchGroupName: SearchGroupNameEnumv2.LIVRES,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(result.current.artistTopOffers).toEqual([])
     })
   })
 })

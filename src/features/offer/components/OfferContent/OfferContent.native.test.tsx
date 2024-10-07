@@ -12,7 +12,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -68,8 +68,9 @@ const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockReturnValue({
-  sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+jest.spyOn(useArtistResults, 'useArtistResults').mockReturnValue({
+  artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+  artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })
 
 /**
