@@ -9,6 +9,7 @@ import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
@@ -534,14 +535,16 @@ function renderCategories({
   ...props
 }: Partial<CategoriesModalProps> = {}) {
   return render(
-    <CategoriesModal
-      accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
-      isVisible
-      hideModal={mockHideModal}
-      filterBehaviour={filterBehaviour}
-      onClose={onClose}
-      facets={algoliaFacets.facets as FacetData}
-      {...props}
-    />
+    reactQueryProviderHOC(
+      <CategoriesModal
+        accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
+        isVisible
+        hideModal={mockHideModal}
+        filterBehaviour={filterBehaviour}
+        onClose={onClose}
+        facets={algoliaFacets.facets as FacetData}
+        {...props}
+      />
+    )
   )
 }

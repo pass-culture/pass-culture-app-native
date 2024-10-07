@@ -1,23 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
-import {
-  CategoriesMapping,
-  CategoriesSectionProps,
-} from 'features/search/components/CategoriesSection/CategoriesSection'
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { CategoriesSectionProps } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
-import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer, Typo } from 'ui/theme'
+import { CategoryNode } from 'features/search/helpers/categoriesHelpers/categoryTree'
 
-export function BookCategoriesSection<
-  T extends CategoriesMapping,
-  N = T extends MappingTree ? keyof MappingTree : keyof T | null,
->({
+export function BookCategoriesSection<CategoryTree, N = keyof CategoryTree | null>({
   allLabel,
   allValue,
   data,
@@ -26,7 +20,7 @@ export function BookCategoriesSection<
   onSelect,
   onSubmit,
   value,
-}: CategoriesSectionProps<T, N>) {
+}: CategoriesSectionProps<CategoryTree, N>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)
@@ -42,13 +36,16 @@ export function BookCategoriesSection<
     }
   }
 
-  const categories = data ? Object.entries(data) : []
-  const bookCategoriesWithGenre = categories.filter(
-    ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
-  )
-  const otherBookCategories = categories.filter(
-    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK && item.label !== 'Livres papier'
-  )
+  const paperBooks =
+    data &&
+    Object.entries<CategoryNode>(data)
+      .filter(([_k, item]) => item?.gtls)
+      .map((category) => category[1])
+  const otherBookCategories =
+    data &&
+    Object.entries<CategoryNode>(data)
+      .filter(([key, item]) => key !== 'LIVRES_PAPIER' && !item.gtls)
+      .map((category) => category[1])
 
   return (
     <VerticalUl>
@@ -63,33 +60,41 @@ export function BookCategoriesSection<
       <Spacer.Column numberOfSpaces={3} />
       <Title>{'Livres papier'}</Title>
       <Spacer.Column numberOfSpaces={3} />
-      {bookCategoriesWithGenre.map(([k, item]) => (
-        <CategoriesSectionItem
-          key={k}
-          value={value}
-          k={k}
-          item={item}
-          descriptionContext={descriptionContext}
-          handleSelect={handleSelect}
-          handleGetIcon={handleGetIcon}
-        />
-      ))}
+      {paperBooks
+        ? paperBooks.map((item) => {
+            return (
+              <CategoriesSectionItem
+                key={item.id}
+                value={value}
+                k={item.id}
+                item={item}
+                descriptionContext={descriptionContext}
+                handleSelect={handleSelect}
+                handleGetIcon={handleGetIcon}
+              />
+            )
+          })
+        : null}
       <Spacer.Column numberOfSpaces={3} />
       <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <Title>{'Autres'}</Title>
       <Spacer.Column numberOfSpaces={3} />
-      {otherBookCategories.map(([k, item]) => (
-        <CategoriesSectionItem
-          key={k}
-          value={value}
-          k={k}
-          item={item}
-          descriptionContext={descriptionContext}
-          handleSelect={handleSelect}
-          handleGetIcon={handleGetIcon}
-        />
-      ))}
+      {otherBookCategories
+        ? otherBookCategories.map((item) => {
+            return (
+              <CategoriesSectionItem
+                key={item.id}
+                value={value}
+                k={item.id}
+                item={item}
+                descriptionContext={descriptionContext}
+                handleSelect={handleSelect}
+                handleGetIcon={handleGetIcon}
+              />
+            )
+          })
+        : null}
     </VerticalUl>
   )
 }
