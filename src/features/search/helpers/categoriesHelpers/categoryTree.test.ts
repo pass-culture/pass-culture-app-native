@@ -5,7 +5,7 @@ const mockedCategoriesResponse = CATEGORY_TREE_PLACE_HOLDER
 
 describe('CategoryTree', () => {
   it('test handles nodes with multiple parents', () => {
-    const result = createCategoryTree(mockedCategoriesResponse)
+    const result = createCategoryTree(mockedCategoriesResponse.categories)
     const child = {
       PRATIQUE_ARTISTIQUE_EN_LIGNE: {
         children: {},
@@ -22,7 +22,7 @@ describe('CategoryTree', () => {
   })
 
   it('test handles tree with multiple levels', () => {
-    const result = createCategoryTree(mockedCategoriesResponse)
+    const result = createCategoryTree(mockedCategoriesResponse.categories)
 
     expect(result['LIVRES']).toEqual({
       id: 'LIVRES',

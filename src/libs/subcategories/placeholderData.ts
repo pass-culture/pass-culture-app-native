@@ -3548,7 +3548,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PRATIQUE_ART,
@@ -3638,7 +3638,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
     },
     {
       id: SubcategoryIdEnumv2.BON_ACHAT_INSTRUMENT,
@@ -4198,7 +4198,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VIDEOS_ET_DOCUMENTAIRES,
     },
   ],
   searchGroups: [

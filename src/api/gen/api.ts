@@ -749,7 +749,7 @@ export interface CategoryResponseModel {
    * @type {{ [key: string]: number; }}
    * @memberof CategoryResponseModel
    */
-  position?: { [key: string]: number; } | null
+  position?: number | null
   /**
    * @type {string}
    * @memberof CategoryResponseModel

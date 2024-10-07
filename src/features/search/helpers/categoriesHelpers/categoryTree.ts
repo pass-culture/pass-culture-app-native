@@ -4,7 +4,7 @@ export type CategoryNode = {
   id: string
   gtls?: Array<string>
   label: string
-  position?: number
+  position?: number | null
   searchFilter?: string
   children: CategoryTree
 }

@@ -31,6 +31,14 @@ export function CategoriesSection<CategoryTree, N = keyof CategoryTree | null>({
   onSubmit,
   value,
 }: CategoriesSectionProps<CategoryTree, N>) {
+  const sortSectionItems = (a: [string, CategoryNode], b: [string, CategoryNode]) => {
+    if (!a[1]) return -1
+    if (!b[1]) return 1
+
+    const positionA = a[1].position ?? 1000
+    const positionB = b[1].position ?? 1000
+    return positionA - positionB
+  }
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)
@@ -57,17 +65,19 @@ export function CategoriesSection<CategoryTree, N = keyof CategoryTree | null>({
         />
       </ListItem>
       {data
-        ? Object.entries<CategoryNode>(data).map(([k, item]) => (
-            <CategoriesSectionItem
-              key={k}
-              value={value}
-              k={k}
-              item={item}
-              descriptionContext={descriptionContext}
-              handleSelect={handleSelect}
-              handleGetIcon={handleGetIcon}
-            />
-          ))
+        ? Object.entries<CategoryNode>(data)
+            .sort(sortSectionItems)
+            .map(([k, item]) => (
+              <CategoriesSectionItem
+                key={k}
+                value={value}
+                k={k}
+                item={item}
+                descriptionContext={descriptionContext}
+                handleSelect={handleSelect}
+                handleGetIcon={handleGetIcon}
+              />
+            ))
         : null}
     </VerticalUl>
   )

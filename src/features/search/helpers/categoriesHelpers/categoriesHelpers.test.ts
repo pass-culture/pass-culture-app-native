@@ -26,7 +26,7 @@ let mockSearchState: SearchState = {
   ...initialSearchState,
 }
 
-const categoryTree = createCategoryTree(categoriesDataTest)
+const categoryTree = createCategoryTree(categoriesDataTest.categories)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
