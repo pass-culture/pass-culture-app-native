@@ -9,6 +9,8 @@ import { useSelectedDateScreening } from 'features/offer/components/MovieScreeni
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { CineBlock } from 'features/offer/components/OfferNewXPCine/CineBlock'
 import { Subcategory } from 'libs/subcategories/types'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -18,6 +20,7 @@ type Props = {
   offer: OfferResponseV2
   subcategory: Subcategory
   onSeeVenuePress?: VoidFunction
+  onPress?: VoidFunction
 }
 
 export function OfferNewXPCineBlock({
@@ -26,6 +29,7 @@ export function OfferNewXPCineBlock({
   onSeeVenuePress,
   offer,
   subcategory,
+  onPress,
 }: Readonly<Props>) {
   const theme = useTheme()
   const { stocks, isExternalBookingsDisabled } = offer
@@ -86,6 +90,18 @@ export function OfferNewXPCineBlock({
         />
         <Spacer.Column numberOfSpaces={theme.isDesktopViewport ? 6 : 4} />
         <Divider />
+        <SeeMoreContainer>
+          <Spacer.Column numberOfSpaces={6} />
+          <Text>Aucune séance ne te correspond&nbsp;?</Text>
+          <Spacer.Column numberOfSpaces={4} />
+          <ButtonSecondary
+            mediumWidth
+            icon={PlainMore}
+            wording="Afficher plus de cinémas"
+            onPress={onPress}
+            color={theme.colors.black}
+          />
+        </SeeMoreContainer>
       </View>
     </Container>
   )
@@ -106,4 +122,13 @@ const TitleContainer = styled(View)(({ theme }) => ({
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
+  marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
+}))
+
+const SeeMoreContainer = styled.View({
+  alignItems: 'center',
+})
+
+const Text = styled(TypoDS.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

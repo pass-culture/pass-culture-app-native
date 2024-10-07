@@ -8,14 +8,14 @@ import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
 
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
-  ({ icon, disabled, textSize, theme, ...rest }) => {
+  ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
 
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
           ? theme.buttons.disabled.secondary.iconColor
-          : theme.buttons.secondary.iconColor,
+          : color ?? theme.buttons.secondary.iconColor,
         size: theme.buttons.secondary.iconSize,
       })``
     }
@@ -24,7 +24,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       maxWidth: '100%',
       color: disabled
         ? theme.buttons.disabled.secondary.textColor
-        : theme.buttons.secondary.textColor,
+        : color ?? theme.buttons.secondary.textColor,
       fontSize: textSize,
     })
 
@@ -34,12 +34,12 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       title: Title,
       loadingIndicator: LoadingIndicator,
       backgroundColor: theme.buttons.secondary.backgroundColor,
-      hoverUnderlineColor: theme.buttons.secondary.textColor,
+      hoverUnderlineColor: color ?? theme.buttons.secondary.textColor,
     }
   }
-)(({ theme, isLoading, disabled }) => {
+)(({ theme, isLoading, disabled, color }) => {
   const borderWidth = theme.buttons.secondary.borderWidth
-  let borderColor: string = theme.buttons.secondary.borderColor
+  let borderColor: string = color ?? theme.buttons.secondary.borderColor
 
   if (isLoading) {
     borderColor = theme.buttons.loading.secondary.borderColor
