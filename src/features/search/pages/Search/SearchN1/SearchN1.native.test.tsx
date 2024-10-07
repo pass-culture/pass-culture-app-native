@@ -6,9 +6,12 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
+import { mockVenueHits } from 'features/search/fixtures/algolia'
+import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -69,6 +72,31 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({
+    selectedLocationMode: mockSelectedLocationMode,
+    onModalHideRef: jest.fn(),
+  })),
+}))
+
+const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+let mockHits = {}
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    hits: mockHits,
+    nbHits: 0,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
+  }),
+}))
+
 describe('<SearchN1/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
@@ -77,6 +105,8 @@ describe('<SearchN1/>', () => {
   describe('book offerCategory', () => {
     beforeEach(() => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockHits = {}
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
     })
 
     it('should render <SearchN1 />', async () => {
@@ -168,6 +198,25 @@ describe('<SearchN1/>', () => {
           queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
         })
+      })
+    })
+
+    describe('venue playlists', () => {
+      it('should render venue playlists when user is not geolocated', async () => {
+        mockHits = { venues: mockVenueHits }
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Romans et littérature')
+
+        expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
+      })
+
+      it('should render venue playlists when user is geolocated', async () => {
+        mockSelectedLocationMode = LocationMode.AROUND_ME
+        mockHits = { venues: mockAlgoliaVenues }
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Romans et littérature')
+
+        expect(await screen.findByText('Les librairies proches de toi')).toBeOnTheScreen()
       })
     })
   })
