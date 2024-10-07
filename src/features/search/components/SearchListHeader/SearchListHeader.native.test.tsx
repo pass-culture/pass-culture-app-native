@@ -1,3 +1,4 @@
+import { Route } from '@react-navigation/native'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -23,9 +24,9 @@ import { SearchListHeader } from './SearchListHeader'
 
 const searchId = uuidv4()
 
-const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
+const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
 
-const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
+const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({

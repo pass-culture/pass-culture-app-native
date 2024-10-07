@@ -1,3 +1,4 @@
+import { Route } from '@react-navigation/native'
 import React from 'react'
 
 import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
@@ -12,7 +13,7 @@ import { render } from 'tests/utils'
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
 
-const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
+const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
