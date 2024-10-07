@@ -69,6 +69,7 @@ export interface BaseButtonProps {
   textSize?: number
   type?: 'button' | 'submit' | 'reset'
   wording: string
+  color?: ColorsEnum
 }
 
 export interface AppButtonProps extends BaseButtonProps {

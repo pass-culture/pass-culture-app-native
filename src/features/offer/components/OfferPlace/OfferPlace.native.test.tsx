@@ -130,7 +130,7 @@ describe('<OfferPlace />', () => {
     expect(screen.getByText('Changer le lieu de retrait')).toBeOnTheScreen()
   })
 
-  it('should display new xp cine block when offer subcategory is "Seance cine" and FF is on', () => {
+  it('should display new xp cine block when offer subcategory is "Seance cine" and FF is on', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // this value corresponds to TARGET_XP_CINE_FROM_OFFER feature flag
     renderOfferPlace({
       ...offerPlaceProps,
@@ -140,6 +140,8 @@ describe('<OfferPlace />', () => {
         extraData: { allocineId: 2765410054 },
       },
     })
+
+    await screen.findByLabelText('Afficher plus de cinémas')
 
     expect(screen.getByTestId('offer-new-xp-cine-block')).toBeOnTheScreen()
   })
