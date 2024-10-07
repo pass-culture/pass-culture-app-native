@@ -50,6 +50,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             {
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
