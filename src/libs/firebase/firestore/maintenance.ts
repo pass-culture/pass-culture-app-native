@@ -1,6 +1,9 @@
-import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
+import {
+  FIRESTORE_ROOT_COLLECTION,
+  RemoteStoreDocuments,
+  RemoteStoreMaintenance,
+} from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 
 export enum MAINTENANCE {
@@ -29,14 +32,14 @@ type Unsubscribe = () => void
 
 export const maintenanceStatusListener = (onMaintenanceChange: OnMaintenanceChange): Unsubscribe =>
   firestoreRemoteStore
-    .collection(RemoteStoreCollections.MAINTENANCE)
-    .doc(env.ENV)
+    .collection(FIRESTORE_ROOT_COLLECTION)
+    .doc(RemoteStoreDocuments.MAINTENANCE)
     .onSnapshot(
       (docSnapshot) => {
         const data = docSnapshot.data()
 
-        const maintenanceIsOn = data?.[RemoteStoreDocuments.MAINTENANCE_IS_ON]
-        const rawMessage = data?.[RemoteStoreDocuments.MAINTENANCE_MESSAGE]
+        const maintenanceIsOn = data?.[RemoteStoreMaintenance.MAINTENANCE_IS_ON]
+        const rawMessage = data?.[RemoteStoreMaintenance.MAINTENANCE_MESSAGE]
 
         if (typeof maintenanceIsOn !== 'boolean') return
 

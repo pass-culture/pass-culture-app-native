@@ -1,5 +1,9 @@
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  FIRESTORE_ROOT_COLLECTION,
+  RemoteStoreDocuments,
+  RemoteStoreFeatureFlags,
+} from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import firestore from 'libs/firebase/shims/firestore'
@@ -24,8 +28,8 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 describe('useFeatureFlag', () => {
   beforeAll(() =>
-    collection(featureFlag)
-      .doc('testing')
+    collection(FIRESTORE_ROOT_COLLECTION)
+      .doc(RemoteStoreDocuments.FEATURE_FLAGS)
       // @ts-expect-error is a mock
       .get.mockResolvedValue({
         get: mockGet,

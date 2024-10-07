@@ -1,6 +1,9 @@
-import { env } from 'libs/environment/env'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
+import {
+  RemoteStoreDocuments,
+  RemoteStoreCookies,
+  FIRESTORE_ROOT_COLLECTION,
+} from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 
 export const getCookiesLastUpdate = async (): Promise<
@@ -12,15 +15,15 @@ export const getCookiesLastUpdate = async (): Promise<
   | undefined
 > => {
   return firestoreRemoteStore
-    .collection(RemoteStoreCollections.COOKIES_LAST_UPDATE)
-    .doc(env.ENV)
+    .collection(FIRESTORE_ROOT_COLLECTION)
+    .doc(RemoteStoreDocuments.COOKIES_LAST_UPDATE)
     .get()
     .then((docSnapshot) => {
       const lastUpdated = new Date(
-        docSnapshot.get<string>(RemoteStoreDocuments.COOKIES_LAST_UPDATE_DATE)
+        docSnapshot.get<string>(RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE)
       )
       const lastUpdateBuildVersion = docSnapshot.get<number>(
-        RemoteStoreDocuments.COOKIES_LAST_UPDATE_BUILD_VERSION
+        RemoteStoreCookies.COOKIES_LAST_UPDATE_BUILD_VERSION
       )
 
       // If build version or date are undefined or invalid, return undefined
