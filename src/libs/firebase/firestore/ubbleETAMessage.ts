@@ -1,8 +1,11 @@
 import { useQuery } from 'react-query'
 
-import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
+import {
+  FIRESTORE_ROOT_COLLECTION,
+  RemoteStoreDocuments,
+  RemoteStoreUbble,
+} from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 // To avoid firing requests firestore on every request
@@ -11,15 +14,15 @@ const defaultUbbleETAMessage = 'Environ 3 heures'
 
 export const getUbbleETAMessage = () =>
   firestoreRemoteStore
-    .collection(RemoteStoreCollections.UBBLE)
-    .doc(env.ENV)
+    .collection(FIRESTORE_ROOT_COLLECTION)
+    .doc(RemoteStoreDocuments.UBBLE)
     .get()
     .then((collection) => collection.data())
     .then((data) =>
       data &&
-      typeof data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE] === 'string' &&
-      !!data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE]
-        ? data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE]
+      typeof data[RemoteStoreUbble.UBBLE_ETA_MESSAGE] === 'string' &&
+      !!data[RemoteStoreUbble.UBBLE_ETA_MESSAGE]
+        ? data[RemoteStoreUbble.UBBLE_ETA_MESSAGE]
         : defaultUbbleETAMessage
     )
 

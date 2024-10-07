@@ -10,9 +10,9 @@ describe('[method] ubbleETAMessage', () => {
   it('should call the right path: ubble > testing', () => {
     getUbbleETAMessage()
 
-    expect(firestore().collection).toHaveBeenCalledWith('ubble')
-    expect(firestore().collection('ubble').doc).toHaveBeenCalledWith('testing')
-    expect(firestore().collection('ubble').doc('testing').get).toHaveBeenCalledTimes(1)
+    expect(firestore().collection).toHaveBeenCalledWith('root')
+    expect(firestore().collection('root').doc).toHaveBeenCalledWith('ubble')
+    expect(firestore().collection('root').doc('ubble').get).toHaveBeenCalledTimes(1)
   })
 
   it('should retrieve the ubbleETAMessage', async () => {
