@@ -8,10 +8,11 @@ import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
-export const SuspensionScreen = () => {
+export const AccountStatusScreenHandler = () => {
   const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatus()
   const suspensionStatus = accountSuspensionStatus?.status
   const currentRoute = useCurrentRoute()
@@ -25,6 +26,7 @@ export const SuspensionScreen = () => {
           AccountState.SUSPENDED_UPON_USER_REQUEST,
           AccountState.SUSPENDED,
           AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER,
+          AccountState.WAITING_FOR_ANONYMIZATION,
         ].includes(suspensionStatus)
       ) {
         navigateToHome()
@@ -36,7 +38,7 @@ export const SuspensionScreen = () => {
     return () => {
       if (
         currentRoute?.name &&
-        !['AccountReactivationSuccess', 'SuspensionScreen'].includes(currentRoute?.name)
+        !['AccountReactivationSuccess', 'AccountStatusScreenHandler'].includes(currentRoute?.name)
       ) {
         signOut()
       }
@@ -45,10 +47,15 @@ export const SuspensionScreen = () => {
 
   if (isLoading) {
     return <LoadingPage />
-  } else if (suspensionStatus === AccountState.SUSPENDED_UPON_USER_REQUEST) {
+  }
+  if (suspensionStatus === AccountState.SUSPENDED_UPON_USER_REQUEST) {
     return <SuspendedAccountUponUserRequest />
-  } else if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
+  }
+  if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
     return <SuspiciousLoginSuspendedAccount />
+  }
+  if (suspensionStatus === AccountState.WAITING_FOR_ANONYMIZATION) {
+    return <DeleteProfileSuccess />
   } else {
     return <FraudulentSuspendedAccount />
   }

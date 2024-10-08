@@ -363,7 +363,7 @@ describe('[api] helpers', () => {
 
       const result = await handleGeneratedApiResponse(response)
 
-      expect(navigateFromRef).toHaveBeenCalledWith('SuspensionScreen')
+      expect(navigateFromRef).toHaveBeenCalledWith('AccountStatusScreenHandler')
       expect(result).toEqual({})
     })
 

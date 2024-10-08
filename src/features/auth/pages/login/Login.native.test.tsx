@@ -336,54 +336,54 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
+  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for inactive account', async () => {
     simulateSignin200(AccountState.INACTIVE)
     renderLogin()
 
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
 
-  it('should redirect to SuspensionScreen WHEN signin is successful for suspended account', async () => {
+  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account', async () => {
     simulateSignin200(AccountState.SUSPENDED)
     renderLogin()
 
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
 
-  it('should redirect to SuspensionScreen WHEN signin is successful for suspended account upon user request', async () => {
+  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account upon user request', async () => {
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
 
-  it('should redirect to SuspensionScreen WHEN signin is successful for suspended account suspicious login report by user', async () => {
+  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account suspicious login report by user', async () => {
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
 
-  it('should redirect to DeleteProfileSuccess WHEN signin is successful for waiting for anonymization account', async () => {
+  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for waiting for anonymization account', async () => {
     simulateSignin200(AccountState.WAITING_FOR_ANONYMIZATION)
     renderLogin()
 
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'DeleteProfileSuccess')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
 
   it('should show appropriate message if account is deleted', async () => {

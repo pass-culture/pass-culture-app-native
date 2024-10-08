@@ -257,7 +257,7 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   SuspendAccountConfirmation: { token: string }
-  SuspensionScreen: undefined
+  AccountStatusScreenHandler: undefined
   ReinitializePassword: {
     email: string
     token: string
