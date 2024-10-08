@@ -250,6 +250,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               }
             />
             <View
+              gap={8}
               style={
                 [
                   {
@@ -259,6 +260,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               }
             >
               <View
+                gap={4}
                 style={
                   [
                     {
@@ -357,6 +359,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                 }
               >
                 <View
+                  gap={2}
                   style={
                     [
                       {

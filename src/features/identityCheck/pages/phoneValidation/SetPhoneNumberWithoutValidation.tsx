@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
@@ -22,8 +21,9 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
@@ -101,20 +101,20 @@ export const SetPhoneNumberWithoutValidation = () => {
     <PageWithHeader
       title="Numéro de téléphone"
       scrollChildren={
-        <Container>
-          <HeaderContainer>
+        <ViewGap gap={8}>
+          <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
             <InfoBanner
               icon={Info}
               message="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations."
             />
-          </HeaderContainer>
+          </ViewGap>
           <Form.MaxWidth>
             <Controller
               name="phoneNumber"
               control={control}
               render={({ field, fieldState }) => (
-                <InputContainer>
+                <ViewGap gap={2}>
                   <TextInput
                     autoComplete="off" // disable autofill on android
                     autoCapitalize="none"
@@ -150,25 +150,13 @@ export const SetPhoneNumberWithoutValidation = () => {
                     numberOfSpacesTop={0}
                     relatedInputId={phoneNumberInputErrorId}
                   />
-                </InputContainer>
+                </ViewGap>
               )}
             />
           </Form.MaxWidth>
-        </Container>
+        </ViewGap>
       }
       fixedBottomChildren={<ButtonPrimary type="submit" wording="Continuer" onPress={submit} />}
     />
   )
 }
-
-const HeaderContainer = styled.View({
-  gap: getSpacing(4),
-})
-
-const Container = styled.View({
-  gap: getSpacing(8),
-})
-
-const InputContainer = styled.View({
-  gap: getSpacing(2),
-})
