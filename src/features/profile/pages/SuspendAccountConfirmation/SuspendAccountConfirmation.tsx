@@ -76,7 +76,7 @@ export function SuspendAccountConfirmation({
     <GenericInfoPageWhite
       icon={StyledBicolorUserError}
       titleComponent={Typo.Title3}
-      title="Souhaites-tu suspendre ton compte pass Culture&nbsp;?"
+      title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       separateIconFromTitle={false}>
       <StyledBody>
         Tu as indiqué <BoldText>ne pas être à l’origine</BoldText> de la demande de changement
