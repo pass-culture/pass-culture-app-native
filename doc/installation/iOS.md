@@ -40,7 +40,7 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 
 1. Create an [Apple Developer passCulture account](https://developer.apple.com/)
 
-2. You need to use [the 14.2 Xcode version](https://developer.apple.com/download/all/?q=xcode%2014.2) on old Mac OS X, and [the 15 XCode version](https://developer.apple.com/download/all/?q=xcode%2015) on Mac OS X Sonoma or later, with an Apple Developer account (follow the 1st step).
+2. You need to [install](https://xcodereleases.com) the [version specified in `XCODE_SUPPORTED_VERSION`](../../scripts/check_xcode_version.sh)
 
 3. Install a simulator if not already in Xcode
 
