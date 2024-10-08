@@ -573,6 +573,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         }
                       />
                       <TextInput
+                        accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
                         autoComplete="off"
                         editable={true}

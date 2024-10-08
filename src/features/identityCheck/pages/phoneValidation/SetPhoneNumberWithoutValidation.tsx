@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
 import {
@@ -43,6 +44,7 @@ type FormValues = yup.InferType<typeof schema>
 const findCountry = (countryId: string) => COUNTRIES.find((country) => country.id === countryId)
 
 export const SetPhoneNumberWithoutValidation = () => {
+  const phoneNumberInputErrorId = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const { control, handleSubmit, getValues, setError } = useForm<FormValues>({
     resolver: yupResolver(schema),
@@ -123,6 +125,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}
                     textContentType="none" // disable autofill on iOS
+                    accessibilityDescribedBy={phoneNumberInputErrorId}
                     leftComponent={
                       <Controller
                         name="countryId"
@@ -145,6 +148,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     visible={!!fieldState.error}
                     messageId={fieldState.error?.message}
                     numberOfSpacesTop={0}
+                    relatedInputId={phoneNumberInputErrorId}
                   />
                 </InputContainer>
               )}
