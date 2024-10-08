@@ -130,11 +130,13 @@ export interface AccountRequest {
  */
 export enum AccountState {
   'ACTIVE' = 'ACTIVE',
+  'ANONYMIZED' = 'ANONYMIZED',
   'INACTIVE' = 'INACTIVE',
   'SUSPENDED' = 'SUSPENDED',
   'SUSPENDED_UPON_USER_REQUEST' = 'SUSPENDED_UPON_USER_REQUEST',
   'SUSPICIOUS_LOGIN_REPORTED_BY_USER' = 'SUSPICIOUS_LOGIN_REPORTED_BY_USER',
   'DELETED' = 'DELETED',
+  'WAITING_FOR_ANONYMIZATION' = 'WAITING_FOR_ANONYMIZATION',
 }
 /**
  * An enumeration.
@@ -401,7 +403,6 @@ export interface BookingOfferExtraData {
  * @export
  * @interface BookingOfferResponse
  */
-
 export interface BookingOfferResponse {
   /**
    * @type {string}
