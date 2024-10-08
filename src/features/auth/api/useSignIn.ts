@@ -129,7 +129,10 @@ const useHandleSigninSuccess = (
           case AccountState.SUSPENDED_UPON_USER_REQUEST:
           case AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER:
             return navigate('SuspensionScreen')
+          case AccountState.WAITING_FOR_ANONYMIZATION:
+            return navigate('DeleteProfileSuccess')
           case AccountState.DELETED:
+          case AccountState.ANONYMIZED:
             return setErrorMessage?.('Ton compte à été supprimé')
           case AccountState.ACTIVE:
             navigateForActiveState()
