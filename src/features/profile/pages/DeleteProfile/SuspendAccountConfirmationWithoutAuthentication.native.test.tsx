@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as API from 'api/api'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
 
+jest.mock('libs/jwt/jwt')
 jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
@@ -28,62 +29,69 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
 }))
 
-const mockApiSuspendAccount = jest.spyOn(API.api, 'postNativeV1AccountSuspend')
+const confirmationSuccessResponse = {
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
+}
 
 describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   it('should render correctly', () => {
-    renderSuspendAccountConfirmationNoToken()
+    renderSuspendAccountConfirmationWithoutAuthentication()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should send analytics event when clicking on "Contacter le support" button', () => {
-    renderSuspendAccountConfirmationNoToken()
+    renderSuspendAccountConfirmationWithoutAuthentication()
 
-    whenPressingContactFraudTeamButton()
+    const contactSupportButton = screen.getByText('Contacter le service fraude')
+    fireEvent.press(contactSupportButton)
 
     expect(analytics.logContactFraudTeam).toHaveBeenCalledWith({
       from: 'suspendaccountconfirmation',
     })
   })
 
-  it('should show error snackbar when an error occur during account suspension', async () => {
-    renderSuspendAccountConfirmationNoToken()
-    givenAccountSuspendWillFail()
+  it('should navigate to SuspiciousLoginSuspendedAccount when account is suspended', async () => {
+    simulateAccountSuspendForHackSuspicionSuccess()
+    renderSuspendAccountConfirmationWithoutAuthentication()
 
-    whenPressingSuspendAccountButton()
+    const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
+    fireEvent.press(suspendAccountButton)
 
     await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
+    })
+  })
+
+  it('should show error snackbar when an error occur during account suspension', async () => {
+    simulateAccountSuspendForHackSuspicionError()
+    renderSuspendAccountConfirmationWithoutAuthentication()
+
+    const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
+    fireEvent.press(suspendAccountButton)
+
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
         message:
           'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
       })
     })
   })
 
-  it('should navigate to SuspiciousLoginSuspendedAccount when account is suspended', async () => {
-    renderSuspendAccountConfirmationNoToken()
-
-    whenPressingSuspendAccountButton()
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SuspiciousLoginSuspendedAccount')
-    })
-  })
-
-  function renderSuspendAccountConfirmationNoToken() {
+  function renderSuspendAccountConfirmationWithoutAuthentication() {
     return render(reactQueryProviderHOC(<SuspendAccountConfirmationWithoutAuthentication />))
   }
 
-  function whenPressingContactFraudTeamButton() {
-    fireEvent.press(screen.getByText('Contacter le service fraude'))
+  function simulateAccountSuspendForHackSuspicionSuccess() {
+    mockServer.postApi('/v1/account/suspend_for_hack_suspicion', {
+      responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
+    })
   }
 
-  function givenAccountSuspendWillFail() {
-    mockApiSuspendAccount.mockRejectedValueOnce(new Error('An error occurred'))
-  }
-
-  function whenPressingSuspendAccountButton() {
-    fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+  function simulateAccountSuspendForHackSuspicionError() {
+    mockServer.postApi('/v1/account/suspend_for_hack_suspicion', {
+      responseOptions: { statusCode: 400, data: confirmationSuccessResponse },
+    })
   }
 })
