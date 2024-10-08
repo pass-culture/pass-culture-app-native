@@ -600,6 +600,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                           ]
                         }
                         testID="Entrée pour le numéro de téléphone"
+                        textAlignVertical="center"
                         textContentType="none"
                         value=""
                       />

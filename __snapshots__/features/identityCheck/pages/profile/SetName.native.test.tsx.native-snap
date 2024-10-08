@@ -500,6 +500,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                       ]
                     }
                     testID="Entrée pour le prénom"
+                    textAlignVertical="center"
                     textContentType="username"
                     value=""
                   />
@@ -638,6 +639,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                       ]
                     }
                     testID="Entrée pour le nom"
+                    textAlignVertical="center"
                     textContentType="username"
                     value=""
                   />

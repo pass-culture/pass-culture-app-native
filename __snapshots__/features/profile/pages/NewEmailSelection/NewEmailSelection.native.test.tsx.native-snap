@@ -334,6 +334,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                 ]
               }
               testID="Entrée pour l’email"
+              textAlignVertical="center"
               textContentType="emailAddress"
               value=""
             />

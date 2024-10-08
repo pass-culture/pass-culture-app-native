@@ -1839,6 +1839,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2109,6 +2110,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2228,6 +2230,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2347,6 +2350,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2466,6 +2470,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2586,6 +2591,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>
@@ -2856,6 +2862,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       testID="Champ de texte"
+                      textAlignVertical="center"
                     />
                   </View>
                 </View>

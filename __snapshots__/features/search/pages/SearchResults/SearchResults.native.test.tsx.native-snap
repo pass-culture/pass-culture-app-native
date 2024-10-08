@@ -270,6 +270,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     ]
                   }
                   testID="searchInput"
+                  textAlignVertical="center"
                   value=""
                 />
               </View>

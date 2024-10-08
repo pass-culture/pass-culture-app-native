@@ -346,6 +346,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                     ]
                   }
                   testID="searchInput"
+                  textAlignVertical="center"
                   value=""
                 />
                 <View
