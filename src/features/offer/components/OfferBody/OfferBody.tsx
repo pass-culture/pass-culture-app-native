@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useBookings } from 'features/bookings/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -33,6 +34,7 @@ import { ReactionChoiceValidation } from 'features/reactions/components/Reaction
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { SurveyModal } from 'ui/components/modals/SurveyModal'
@@ -64,6 +66,29 @@ export const OfferBody: FunctionComponent<Props> = ({
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const { reactionCategories } = useRemoteConfigContext()
+  const { data: bookings } = useBookings()
+
+  const endedBookingWithoutCancellation = bookings?.ended_bookings?.find(
+    (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
+  )
+
+  const userBooking = useMemo(
+    () =>
+      bookings?.ended_bookings?.find(
+        (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
+      ),
+    [bookings, offer.id]
+  )
+
+  const shouldDisplayReactionButtons =
+    isLoggedIn &&
+    user?.isBeneficiary &&
+    reactionCategories.categories.includes(subcategory.nativeCategoryId) &&
+    !!endedBookingWithoutCancellation
+
+  const canDisplayReactionSection =
+    isReactionFeatureActive && (offer.reactionsCount.likes > 0 || shouldDisplayReactionButtons)
 
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
@@ -135,10 +160,19 @@ export const OfferBody: FunctionComponent<Props> = ({
 
           {prices ? <OfferPrice prices={prices} /> : null}
 
-          {isReactionFeatureActive ? (
+          {canDisplayReactionSection ? (
             <ViewGap gap={4}>
-              <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
-              <ReactionChoiceValidation handleOnPressReactionButton={() => ''} />
+              <OfferReactions
+                user={user}
+                isLoggedIn={isLoggedIn}
+                offer={offer}
+                userCanReact={shouldDisplayReactionButtons}
+                userBooking={userBooking}
+              />
+
+              {shouldDisplayReactionButtons ? (
+                <ReactionChoiceValidation handleOnPressReactionButton={() => ''} />
+              ) : null}
             </ViewGap>
           ) : null}
 

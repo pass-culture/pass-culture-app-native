@@ -10,6 +10,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -18,6 +19,8 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -93,7 +96,37 @@ const useArtistResultsSpy = jest
     artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+
+const mockBookings = {
+  ...bookingsSnap,
+  ended_bookings: [
+    {
+      ...bookingsSnap.ended_bookings[1],
+      stock: {
+        ...bookingsSnap.ended_bookings[1].stock,
+        offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+      },
+    },
+  ],
+}
+const mockUseBookings = jest.fn(() => ({
+  data: mockBookings,
+}))
+jest.mock('features/bookings/api/useBookings', () => ({
+  useBookings: jest.fn(() => mockUseBookings()),
+}))
+
 describe('<OfferBody />', () => {
+  beforeAll(() => {
+    useRemoteConfigContextSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      reactionCategories: {
+        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
+      },
+    })
+  })
+
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     activateFeatureFlags([
@@ -191,7 +224,7 @@ describe('<OfferBody />', () => {
   })
 
   describe('Reaction section', () => {
-    it("should display 'J'aime' or 'Je n'aime pas' button when feature flag is enabled", async () => {
+    it("should display 'J'aime' or 'Je n'aime pas' button when feature flag is enabled and user booked the offer", async () => {
       renderOfferBody({})
 
       expect(await screen.findByText('J’aime')).toBeOnTheScreen()
