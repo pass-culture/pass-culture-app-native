@@ -22,7 +22,8 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
 
@@ -100,7 +101,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       scrollChildren={
         <Container>
           <HeaderContainer>
-            <TypoDS.Title3>Saisis ton numéro de téléphone</TypoDS.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
             <InfoBanner
               icon={Info}
               message="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations."

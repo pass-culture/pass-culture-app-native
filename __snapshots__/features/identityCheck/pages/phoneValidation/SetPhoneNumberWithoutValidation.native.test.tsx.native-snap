@@ -273,8 +273,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 19,
-                        "lineHeight": 30.4,
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
