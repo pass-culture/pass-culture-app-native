@@ -1,0 +1,39 @@
+appId: app.passculture.webapp
+---
+- stopApp
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'true'}
+    label: 'Vérification du lien vers la page offre (Lien normal - app installée)'
+    commands:
+      - openLink:
+          link: https://passculture.app/accueil?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+          autoVerify: true
+      - assertVisible:
+          text: 'Respect de ta vie privée'
+          index: 2
+          optional: true
+      - tapOn:
+          text: 'Tout accepter'
+          optional: true
+      - assertVisible: "Bienvenue\_!"
+      - stopApp
+
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'false'}
+    label: 'Vérification du lien vers la page offre (Lien normal - app non-installée)'
+    commands:
+      - stopApp: com.android.chrome
+      - openLink:
+          link: https://passculture.app/accueil?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+          autoVerify: true
+      - assertVisible:
+          text: 'Respect de ta vie privée'
+          index: 2
+          optional: true
+      - tapOn:
+          text: 'Tout accepter'
+          optional: true
+      - assertVisible: "Bienvenue\_!"
+      - stopApp: com.android.chrome
