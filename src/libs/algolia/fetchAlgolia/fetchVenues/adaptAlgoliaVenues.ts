@@ -10,5 +10,5 @@ export const adaptAlgoliaVenues = (venues: AlgoliaVenue[]): Venue[] =>
     banner_url: venue.banner_url,
     venue_type: venue.venue_type,
     postalCode: venue.postalCode,
-    isPermanent: venue.isPermanent,
+    isPermanent: venue.isPermanent === undefined ? true : venue.isPermanent,
   }))
