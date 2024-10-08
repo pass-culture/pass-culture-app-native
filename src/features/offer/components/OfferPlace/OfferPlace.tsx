@@ -157,8 +157,6 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           <OfferNewXPCineBlock
             title={venueSectionTitle}
             offer={offer}
-            subcategory={subcategory}
-            distance={distanceToLocation}
             onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
           />
         ) : (

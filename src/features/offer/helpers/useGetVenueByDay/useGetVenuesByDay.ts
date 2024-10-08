@@ -48,14 +48,17 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
     [date, offersWithStocks?.offers]
   )
 
-  const exposedOffers = useMemo(() => filteredOffers.slice(0, count), [count, filteredOffers])
+  const exposedOffers = useMemo(
+    () => (count === filteredOffers.length ? filteredOffers : filteredOffers.slice(0, count)),
+    [count, filteredOffers]
+  )
 
   const getNext = useCallback(
     () =>
       setCount((count) => {
         const newCount = count + nextCount
         if (filteredOffers.length && newCount >= filteredOffers.length) {
-          return filteredOffers.length - 1
+          return filteredOffers.length
         }
         return newCount
       }),

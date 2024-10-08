@@ -141,8 +141,6 @@ describe('<OfferPlace />', () => {
       },
     })
 
-    await screen.findByLabelText('Afficher plus de cinémas')
-
     expect(screen.getByTestId('offer-new-xp-cine-block')).toBeOnTheScreen()
   })
 
