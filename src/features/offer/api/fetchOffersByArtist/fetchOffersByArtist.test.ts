@@ -10,19 +10,20 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Position } from 'libs/location'
 
-const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries').mockResolvedValue([
-  {
-    hits: [],
-  } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
-  {
-    hits: [],
-  } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
-])
+const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
 
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 describe('fetchOffersByArtist', () => {
   it('should execute the multiple queries if artist is provided, searchGroupName is a book, and artist is not "collectif"', async () => {
+    mockMultipleQueries.mockResolvedValueOnce([
+      {
+        hits: [],
+      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+      {
+        hits: [],
+      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+    ])
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.LIVRES,
@@ -57,6 +58,18 @@ describe('fetchOffersByArtist', () => {
         },
       },
     ])
+  })
+
+  it('should return empty hits if multiple queries throw an error', async () => {
+    mockMultipleQueries.mockRejectedValueOnce(new Error('Algolia error'))
+
+    const result = await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      userLocation: mockUserLocation,
+    })
+
+    expect(result).toEqual({ playlistHits: [], topOffersHits: [] })
   })
 
   it('should not execute the query if artist is provided, searchGroupName is not a book and artist is not "collectif"', async () => {
@@ -105,5 +118,21 @@ describe('buildAlgoliaFilter', () => {
     })
 
     expect(filter).toEqual('offer.artist:"Eiichiro Oda"')
+  })
+
+  it('should return an empty string when artist is null', () => {
+    const filter = buildAlgoliaFilter({
+      artists: null,
+    })
+
+    expect(filter).toEqual('')
+  })
+
+  it('should return an empty string when artist is undefined', () => {
+    const filter = buildAlgoliaFilter({
+      artists: undefined,
+    })
+
+    expect(filter).toEqual('')
   })
 })
