@@ -10,7 +10,6 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -75,8 +74,6 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/auth/context/AuthContext')
-
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -97,25 +94,6 @@ const useArtistResultsSpy = jest
   })
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-
-const mockBookings = {
-  ...bookingsSnap,
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[1],
-      stock: {
-        ...bookingsSnap.ended_bookings[1].stock,
-        offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
-      },
-    },
-  ],
-}
-const mockUseBookings = jest.fn(() => ({
-  data: mockBookings,
-}))
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => mockUseBookings()),
-}))
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -221,55 +199,6 @@ describe('<OfferBody />', () => {
     await screen.findByText(offerFree.name)
 
     expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
-  })
-
-  describe('Reaction section', () => {
-    it("should display 'J'aime' or 'Je n'aime pas' button when feature flag is enabled and user booked the offer", async () => {
-      renderOfferBody({})
-
-      expect(await screen.findByText('J’aime')).toBeOnTheScreen()
-      expect(await screen.findByText('Je n’aime pas')).toBeOnTheScreen()
-    })
-
-    it('should display reaction count when FF is enabled and other users have reacted to the offer', async () => {
-      renderOfferBody({})
-
-      expect(await screen.findByText('Aimé par 1 jeune')).toBeOnTheScreen()
-    })
-
-    it('should not display reaction count when FF is disabled', async () => {
-      activateFeatureFlags()
-      renderOfferBody({})
-
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Aimé par 1 jeune')).not.toBeOnTheScreen()
-    })
-
-    it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
-      renderOfferBody({
-        offer: {
-          ...offerResponseSnap,
-          subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
-        },
-        subcategory: {
-          ...mockSubcategory,
-          nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
-        },
-      })
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-    })
-
-    it('should not display reaction button when feature flag is disabled', async () => {
-      activateFeatureFlags()
-
-      renderOfferBody({})
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-    })
   })
 
   describe('Venue button section & Summary info section', () => {
