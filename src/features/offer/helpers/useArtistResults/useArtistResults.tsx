@@ -38,7 +38,7 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
 
   const getSortedHits = useCallback(
     (hits: Hit<HitOfferWithArtistAndEan>[]) => {
-      if (!hits) return []
+      if (hits.length === 0) return []
 
       const transformedHitsWithDistance = hits.map((hit) => {
         const transformedHit = transformHits(hit)
@@ -47,12 +47,10 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
           userLocation
         )
 
-        return { ...transformedHit, distance }
+        return { ...transformedHit, distance: parseDistance(distance || '0') }
       })
 
-      const sortedHits = transformedHitsWithDistance.sort((a, b) => {
-        return parseDistance(a.distance || '0') - parseDistance(b.distance || '0')
-      })
+      const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
 
       return sortedHits.map(
         ({ distance: _distance, ...rest }) => rest
