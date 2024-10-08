@@ -6,7 +6,7 @@ import { SettingsResponse } from 'api/gen'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-interface ISettingsContext {
+export interface ISettingsContext {
   data: UseQueryResult<SettingsResponse>['data']
   isLoading: UseQueryResult<SettingsResponse>['isLoading']
 }

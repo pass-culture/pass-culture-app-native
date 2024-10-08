@@ -49,6 +49,7 @@ export function NavigationIdentityCheck(): React.JSX.Element {
         />
 
         <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
+        <LinkToComponent name="SetPhoneNumberWithoutValidation" />
         <LinkToComponent
           title="PhoneValidation tips Modal"
           onPress={() => setPhoneValidationTipsModalVisible(true)}
