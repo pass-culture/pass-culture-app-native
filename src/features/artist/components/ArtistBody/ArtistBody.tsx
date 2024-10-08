@@ -77,7 +77,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
               </Description>
             ) : null}
           </ViewGap>
-          <ArtistTopOffers items={artistTopOffers} />
+          <ArtistTopOffers artistName={name} items={artistTopOffers} />
           <ArtistPlaylist offer={offer} artistName={name} items={artistPlaylist} />
         </ViewGap>
       </ContentContainer>
