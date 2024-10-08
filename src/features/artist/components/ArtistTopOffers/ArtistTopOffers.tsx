@@ -15,16 +15,16 @@ type Props = {
 
 const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
-export const ArtistTopOffers: FunctionComponent<Props> = ({ items }) => {
-  const renderItem = ({ item }: { item: HitOfferWithArtistAndEan }) => (
-    <HorizontalOfferTile
-      offer={item}
-      analyticsParams={{
-        from: 'artist',
-      }}
-    />
-  )
+const renderItem = ({ item }: { item: HitOfferWithArtistAndEan }) => (
+  <HorizontalOfferTile
+    offer={item}
+    analyticsParams={{
+      from: 'artist',
+    }}
+  />
+)
 
+export const ArtistTopOffers: FunctionComponent<Props> = ({ items }) => {
   return items.length > 0 ? (
     <FlatList
       data={items}
