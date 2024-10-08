@@ -42,7 +42,9 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
             </React.Fragment>
           ) : (
             <Row>
-              <OfferName title={title} />
+              <OfferNameContainer>
+                <OfferName title={title} />
+              </OfferNameContainer>
               {withRightArrow ? (
                 <React.Fragment>
                   <Spacer.Row numberOfSpaces={1} />
@@ -67,6 +69,7 @@ const Column = styled.View({
 const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  width: '100%',
 })
 
 const Distance = styled(TypoDS.BodySemiBoldS)(({ theme }) => ({
@@ -78,4 +81,8 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))({
   flexShrink: 0,
+})
+
+const OfferNameContainer = styled.View({
+  flexShrink: 1,
 })
