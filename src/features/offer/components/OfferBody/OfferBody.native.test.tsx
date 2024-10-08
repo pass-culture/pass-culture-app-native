@@ -191,28 +191,11 @@ describe('<OfferBody />', () => {
   })
 
   describe('Reaction section', () => {
-    it('should display reaction button when feature flag is enabled and native category included in reactionFakeDoorCategories remote config', async () => {
+    it("should display 'J'aime' or 'Je n'aime pas' button when feature flag is enabled", async () => {
       renderOfferBody({})
 
-      expect(await screen.findByText('Réagir')).toBeOnTheScreen()
-    })
-
-    it('should open survey modal when pressing "Réagir" button', async () => {
-      renderOfferBody({})
-
-      fireEvent.press(await screen.findByText('Réagir'))
-
-      expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
-    })
-
-    it('should log reaction fake door consultation when pressing "Réagir" button', async () => {
-      renderOfferBody({})
-
-      fireEvent.press(await screen.findByText('Réagir'))
-
-      expect(analytics.logConsultReactionFakeDoor).toHaveBeenNthCalledWith(1, {
-        from: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      })
+      expect(await screen.findByText('J’aime')).toBeOnTheScreen()
+      expect(await screen.findByText('Je n’aime pas')).toBeOnTheScreen()
     })
 
     it('should display reaction count when FF is enabled and other users have reacted to the offer', async () => {

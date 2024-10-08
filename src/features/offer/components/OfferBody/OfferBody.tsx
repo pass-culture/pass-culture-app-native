@@ -29,13 +29,12 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { ToggleButton } from 'ui/components/buttons/ToggleButton'
 import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -43,7 +42,6 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -57,7 +55,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
-  const { reactionFakeDoorCategories } = useRemoteConfigContext()
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -68,12 +65,8 @@ export const OfferBody: FunctionComponent<Props> = ({
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
-  const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
-  const shouldDisplayReactionButton =
-    enableReactionFakeDoor &&
-    reactionFakeDoorCategories.categories.includes(subcategory.nativeCategoryId)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -109,12 +102,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
-  const onReactButtonPress = () => {
-    setSurveyModalState(DEFAULT_SURVEY_MODAL_DATA)
-    analytics.logConsultReactionFakeDoor({ from: subcategory.nativeCategoryId })
-    showModal()
-  }
-
   const handleArtistLinkPress = () => {
     if (shouldDisplayFakeDoorArtist) {
       setSurveyModalState(ARTIST_SURVEY_MODAL_DATA)
@@ -148,21 +135,12 @@ export const OfferBody: FunctionComponent<Props> = ({
 
           {prices ? <OfferPrice prices={prices} /> : null}
 
-          <ViewGap gap={4}>
-            {isReactionFeatureActive ? (
+          {isReactionFeatureActive ? (
+            <ViewGap gap={4}>
               <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
-            ) : null}
-
-            {shouldDisplayReactionButton ? (
-              <ToggleButton
-                active={false}
-                onPress={onReactButtonPress}
-                label={{ active: 'Réagir', inactive: 'Réagir' }}
-                accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
-                Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
-              />
-            ) : null}
-          </ViewGap>
+              <ReactionChoiceValidation handleOnPressReactionButton={() => ''} />
+            </ViewGap>
+          ) : null}
 
           <GroupWithSeparator
             showTopComponent={offer.venue.isPermanent}
@@ -255,7 +233,3 @@ const GroupWithSeparator = ({
     </GroupWithoutGap>
   ) : null
 }
-
-const StyledThumbUp = styled(ThumbUp).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
