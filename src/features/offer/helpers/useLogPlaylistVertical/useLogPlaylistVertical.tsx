@@ -7,7 +7,6 @@ import { useFunctionOnce } from 'libs/hooks'
 
 type Props = {
   offerId: number
-  nbSameArtistPlaylist: number
   nbSameCategorySimilarOffers: number
   nbOtherCategoriesSimilarOffers: number
   apiRecoParamsSameCategory?: RecommendationApiParams
@@ -19,11 +18,9 @@ type UseLogPlaylistType = {
   logPlaylistHorizontalScroll: VoidFunction
   logSameCategoryPlaylistVerticalScroll: VoidFunction
   logOtherCategoriesPlaylistVerticalScroll: VoidFunction
-  logSameArtistPlaylistVerticalScroll: VoidFunction
 }
 
 export const useLogPlaylist = ({
-  nbSameArtistPlaylist,
   apiRecoParamsSameCategory,
   nbSameCategorySimilarOffers,
   apiRecoParamsOtherCategories,
@@ -55,19 +52,9 @@ export const useLogPlaylist = ({
     })
   })
 
-  const logSameArtistPlaylistVerticalScroll = useFunctionOnce(() => {
-    analytics.logPlaylistVerticalScroll({
-      fromOfferId,
-      offerId,
-      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-      nbResults: nbSameArtistPlaylist,
-    })
-  })
-
   return {
     logPlaylistHorizontalScroll,
     logSameCategoryPlaylistVerticalScroll,
     logOtherCategoriesPlaylistVerticalScroll,
-    logSameArtistPlaylistVerticalScroll,
   }
 }

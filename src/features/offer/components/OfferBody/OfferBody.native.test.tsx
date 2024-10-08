@@ -13,7 +13,7 @@ import {
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -85,11 +85,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
-const useSameArtistPlaylistSpy = jest
-  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
+const useArtistResultsSpy = jest
+  .spyOn(useArtistResults, 'useArtistResults')
   .mockImplementation()
   .mockReturnValue({
-    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
 describe('<OfferBody />', () => {
@@ -603,8 +604,9 @@ describe('<OfferBody />', () => {
       extraData: { author: 'J.K Rowling' },
     }
 
-    useSameArtistPlaylistSpy.mockReturnValueOnce({
-      sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
+    useArtistResultsSpy.mockReturnValueOnce({
+      artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
+      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
     })
 
     renderOfferBody({

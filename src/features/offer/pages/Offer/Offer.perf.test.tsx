@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -32,9 +32,13 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockImplementation().mockReturnValue({
-  sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-})
+jest
+  .spyOn(useArtistResults, 'useArtistResults')
+  .mockImplementation()
+  .mockReturnValue({
+    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+  })
 
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')

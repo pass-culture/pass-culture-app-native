@@ -8,10 +8,13 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
+import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { Artist } from 'features/artist/pages/Artist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -34,6 +37,11 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
   const { appBarHeight } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
+  const artists = getOfferArtists(subcategory.categoryId, offer)
+  const { artistPlaylist, artistTopOffers } = useArtistResults({
+    artists,
+    searchGroupName: subcategory.searchGroupName,
+  })
 
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -69,7 +77,8 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
               </Description>
             ) : null}
           </ViewGap>
-          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={name} />
+          <ArtistTopOffers items={artistTopOffers} />
+          <ArtistPlaylist offer={offer} artistName={name} items={artistPlaylist} />
         </ViewGap>
       </ContentContainer>
 

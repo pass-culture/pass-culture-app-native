@@ -27,8 +27,8 @@ import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOffer
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
+import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
-import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -79,7 +79,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
-  const { sameArtistPlaylist: artistOffers } = useSameArtistPlaylist({
+  const { artistPlaylist: artistOffers } = useArtistResults({
     artists,
     searchGroupName: subcategory.searchGroupName,
   })

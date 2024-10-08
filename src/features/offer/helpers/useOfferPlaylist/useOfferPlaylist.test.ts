@@ -1,12 +1,8 @@
-import { OfferExtraData, RecommendationApiParams, SearchGroupNameEnumv2 } from 'api/gen'
+import { RecommendationApiParams, SearchGroupNameEnumv2 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
-import {
-  mockedAlgoliaOffersWithSameArtistResponse,
-  moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/fixtures/algoliaFixtures'
+import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { renderHook } from 'tests/utils'
@@ -25,22 +21,10 @@ const offer = offerResponseSnap
 const offerSearchGroup = SearchGroupNameEnumv2.CINEMA
 const searchGroupList = searchGroupsDataTest
 
-const extraData: OfferExtraData = {
-  author: 'Eiichiro Oda',
-  ean: '9782723492607',
-}
-
 const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
   .mockImplementation()
   .mockReturnValue({ similarOffers: moreHitsForSimilarOffersPlaylist, apiRecoParams })
-
-const useSameArtistPlaylistSpy = jest
-  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
-  .mockImplementation()
-  .mockReturnValue({
-    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-  })
 
 const mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -58,18 +42,6 @@ jest.mock('@batch.com/react-native-plugin', () =>
 
 describe('useOfferPlaylist', () => {
   describe('When offer is defined', () => {
-    it('should return same artist playlist', () => {
-      const { result } = renderHook(() =>
-        useOfferPlaylist({
-          offer,
-          offerSearchGroup,
-          searchGroupList,
-        })
-      )
-
-      expect(result.current?.sameArtistPlaylist).toEqual(mockedAlgoliaOffersWithSameArtistResponse)
-    })
-
     it('should return same category similar offers playlist', () => {
       const { result } = renderHook(() =>
         useOfferPlaylist({
@@ -142,37 +114,6 @@ describe('useOfferPlaylist', () => {
           position: { longitude: 90.477, latitude: 90.477 },
         })
       )
-    })
-
-    it('should handle provided artist', async () => {
-      renderHook(() =>
-        useOfferPlaylist({
-          offer: { ...offer, extraData },
-          offerSearchGroup,
-          searchGroupList,
-        })
-      )
-
-      expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
-        artists: 'Eiichiro Oda',
-        searchGroupName: SearchGroupNameEnumv2.CINEMA,
-      })
-    })
-
-    it('should handle missing artist and EAN', async () => {
-      renderHook(() =>
-        useOfferPlaylist({
-          offer,
-          offerSearchGroup,
-          searchGroupList,
-        })
-      )
-
-      expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
-        artists: undefined,
-        ean: undefined,
-        searchGroupName: SearchGroupNameEnumv2.CINEMA,
-      })
     })
   })
 })

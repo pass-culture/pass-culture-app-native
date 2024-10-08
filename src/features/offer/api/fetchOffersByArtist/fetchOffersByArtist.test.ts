@@ -1,36 +1,75 @@
-import algoliasearch from 'algoliasearch'
+import { SearchResponse } from '@algolia/client-search'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
+  HitOfferWithArtistAndEan,
   buildAlgoliaFilter,
   fetchOffersByArtist,
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Position } from 'libs/location'
 
-jest.mock('algoliasearch')
+const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
 
-const mockInitIndex = algoliasearch('', '').initIndex
-const search = mockInitIndex('').search as jest.Mock
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 describe('fetchOffersByArtist', () => {
-  it('should execute the query if artist is provided, searchGroupName is a book, and artist is not "collectif"', async () => {
+  it('should execute the multiple queries if artist is provided, searchGroupName is a book, and artist is not "collectif"', async () => {
+    mockMultipleQueries.mockResolvedValueOnce([
+      {
+        hits: [],
+      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+      {
+        hits: [],
+      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+    ])
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       searchGroupName: SearchGroupNameEnumv2.LIVRES,
       userLocation: mockUserLocation,
     })
 
-    expect(search).toHaveBeenCalledWith('', {
-      page: 0,
-      filters: 'offer.artist:"Eiichiro Oda"',
-      hitsPerPage: 100,
-      aroundLatLng: '2, 2',
-      aroundRadius: 'all',
-      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
-      attributesToHighlight: [],
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+      {
+        indexName: 'algoliaOffersIndexNameB',
+        query: '',
+        params: {
+          page: 0,
+          filters: 'offer.artist:"Eiichiro Oda"',
+          hitsPerPage: 100,
+          aroundLatLng: '2, 2',
+          aroundRadius: 'all',
+          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+          attributesToHighlight: [],
+        },
+      },
+      {
+        indexName: 'algoliaTopOffersIndexName',
+        query: '',
+        params: {
+          page: 0,
+          filters: 'offer.artist:"Eiichiro Oda"',
+          hitsPerPage: 4,
+          aroundLatLng: '2, 2',
+          aroundRadius: 'all',
+          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+          attributesToHighlight: [],
+        },
+      },
+    ])
+  })
+
+  it('should return empty hits if multiple queries throw an error', async () => {
+    mockMultipleQueries.mockRejectedValueOnce(new Error('Algolia error'))
+
+    const result = await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      userLocation: mockUserLocation,
     })
+
+    expect(result).toEqual({ playlistHits: [], topOffersHits: [] })
   })
 
   it('should not execute the query if artist is provided, searchGroupName is not a book and artist is not "collectif"', async () => {
@@ -40,7 +79,7 @@ describe('fetchOffersByArtist', () => {
       userLocation: mockUserLocation,
     })
 
-    expect(search).not.toHaveBeenCalled()
+    expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 
   it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIF"', async () => {
@@ -50,7 +89,7 @@ describe('fetchOffersByArtist', () => {
       userLocation: mockUserLocation,
     })
 
-    expect(search).not.toHaveBeenCalled()
+    expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 
   it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIFS"', async () => {
@@ -60,7 +99,7 @@ describe('fetchOffersByArtist', () => {
       userLocation: mockUserLocation,
     })
 
-    expect(search).not.toHaveBeenCalled()
+    expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 })
 
@@ -79,5 +118,21 @@ describe('buildAlgoliaFilter', () => {
     })
 
     expect(filter).toEqual('offer.artist:"Eiichiro Oda"')
+  })
+
+  it('should return an empty string when artist is null', () => {
+    const filter = buildAlgoliaFilter({
+      artists: null,
+    })
+
+    expect(filter).toEqual('')
+  })
+
+  it('should return an empty string when artist is undefined', () => {
+    const filter = buildAlgoliaFilter({
+      artists: undefined,
+    })
+
+    expect(filter).toEqual('')
   })
 })

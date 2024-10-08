@@ -1,8 +1,10 @@
+import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
+
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { env } from 'libs/environment'
 import { Position } from 'libs/location'
 import { HitOffer, Offer } from 'shared/offer/types'
@@ -27,8 +29,41 @@ export const fetchOffersByArtist = async ({
   artists,
   searchGroupName,
   userLocation,
-}: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
-  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME_B)
+}: FetchOfferByArtist) => {
+  const queries: MultipleQueriesQuery[] = [
+    // Playlist
+    {
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      query: '',
+      params: {
+        page: 0,
+        filters: buildAlgoliaFilter({ artists }),
+        hitsPerPage: 100,
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+        attributesToHighlight: [], // We disable highlighting because we don't need it
+        aroundRadius: 'all',
+        ...(userLocation
+          ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
+          : {}),
+      },
+    },
+    // Offers top 4
+    {
+      indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
+      query: '',
+      params: {
+        page: 0,
+        filters: buildAlgoliaFilter({ artists }),
+        hitsPerPage: 4,
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+        attributesToHighlight: [], // We disable highlighting because we don't need it
+        aroundRadius: 'all',
+        ...(userLocation
+          ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
+          : {}),
+      },
+    },
+  ]
 
   if (
     !artists ||
@@ -36,25 +71,17 @@ export const fetchOffersByArtist = async ({
     (searchGroupName !== SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE &&
       searchGroupName !== SearchGroupNameEnumv2.LIVRES)
   )
-    return []
+    return { playlistHits: [], topOffersHits: [] }
 
   try {
-    const response = await index.search<HitOfferWithArtistAndEan>('', {
-      page: 0,
-      filters: buildAlgoliaFilter({ artists }),
-      hitsPerPage: 100,
-      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
-      attributesToHighlight: [], // We disable highlighting because we don't need it
-      aroundRadius: 'all',
-      aroundLatLng: userLocation
-        ? `${userLocation.latitude}, ${userLocation.longitude}`
-        : undefined,
-    })
+    const [playlistResponse, topOffersResponse] = (await multipleQueries<HitOfferWithArtistAndEan>(
+      queries
+    )) as [SearchResponse<HitOfferWithArtistAndEan>, SearchResponse<HitOfferWithArtistAndEan>]
 
-    return response.hits
+    return { playlistHits: playlistResponse.hits, topOffersHits: topOffersResponse.hits }
   } catch (error) {
     captureAlgoliaError(error)
-    return []
+    return { playlistHits: [], topOffersHits: [] }
   }
 }
 
