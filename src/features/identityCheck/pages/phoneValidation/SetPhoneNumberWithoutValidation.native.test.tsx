@@ -98,16 +98,6 @@ describe('SetPhoneNumberWithoutValidation', () => {
         })
       })
 
-      test('Show error message when phone number is invalid', async () => {
-        renderSetPhoneNumberWithoutValidation()
-
-        submitWithPhoneNumber('00e')
-
-        await waitFor(() => {
-          expect(screen.getByText('Le numéro de téléphone est invalide')).toBeTruthy()
-        })
-      })
-
       test('Show error message when phone number is empty', async () => {
         renderSetPhoneNumberWithoutValidation()
 

@@ -30,12 +30,8 @@ import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
 
 import { formatPhoneNumberWithPrefix } from './helpers/formatPhoneNumber'
 
-const phoneRegex = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 const schema = yup.object({
-  phoneNumber: yup
-    .string()
-    .required('Le numéro de téléphone est requis')
-    .matches(phoneRegex, 'Le numéro de téléphone est invalide'),
+  phoneNumber: yup.string().required('Le numéro de téléphone est requis'),
   countryId: yup.string().required(),
 })
 
