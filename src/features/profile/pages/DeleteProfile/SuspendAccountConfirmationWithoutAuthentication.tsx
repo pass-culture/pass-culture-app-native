@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { useAccountSuspend } from 'features/auth/api/useAccountSuspend'
+import { useAccountSuspendForHackSuspicion } from 'features/auth/api/useAccountSuspendForHackSuspicion'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -28,7 +28,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
     analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
   }
 
-  const { suspendAccount, isLoading } = useAccountSuspend({
+  const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicion({
     onSuccess: () => {
       navigate('SuspiciousLoginSuspendedAccount')
     },
@@ -74,7 +74,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
       <ButtonContainer>
         <ButtonPrimary
           wording="Oui, suspendre mon compte"
-          onPress={suspendAccount}
+          onPress={accountSuspendForHackSuspicion}
           isLoading={isLoading}
         />
         <Spacer.Column numberOfSpaces={2} />

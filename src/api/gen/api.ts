@@ -370,6 +370,8 @@ export enum BookingCancellationReasons {
   'BENEFICIARY' = 'BENEFICIARY',
   'EXPIRED' = 'EXPIRED',
   'FRAUD' = 'FRAUD',
+  'FRAUD_SUSPICION' = 'FRAUD_SUSPICION',
+  'FRAUD_INAPPROPRIATE' = 'FRAUD_INAPPROPRIATE',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
   'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
 }
@@ -5020,8 +5022,10 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      const needsSerialization =
+        <any>'AccountRequest' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -5052,6 +5056,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async postNativeV1AccountSuspend(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/account/suspend`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary suspend_account_for_hack_suspicion <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1AccountSuspendForHackSuspicion(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/account/suspend_for_hack_suspicion`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5271,8 +5293,10 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"CulturalSurveyAnswersRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      const needsSerialization =
+        <any>'CulturalSurveyAnswersRequest' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -5280,7 +5304,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary post_feedback <POST>
-     * @param {PostFeedbackBody} [body] 
+     * @param {PostFeedbackBody} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -5293,8 +5317,10 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"PostFeedbackBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      const needsSerialization =
+        <any>'PostFeedbackBody' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -6118,517 +6144,831 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 /**
  * DefaultApi - functional programming interface
  */
-export const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
+export const DefaultApiFp = function (api: DefaultApi, configuration?: Configuration) {
   return {
     /**
-     * 
+     *
      * @summary delete_favorite <DELETE>
-     * @param {number} favorite_id 
+     * @param {number} favorite_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async deleteNativeV1MeFavoritesfavoriteId(
+      favorite_id: number,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary account_suspension_token_validation <GET>
-     * @param {string} token 
+     * @param {string} token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async getNativeV1AccountSuspendTokenValidationtoken(
+      token: string,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV1AccountSuspendTokenValidationtoken(token, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_account_suspension_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionDate(options?: any): Promise<UserSuspensionDateResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionDate(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionDate(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_account_suspension_status <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionStatus(options?: any): Promise<UserSuspensionStatusResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionStatus(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionStatus(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_banner <GET>
-     * @param {boolean} [isGeolocated] 
+     * @param {boolean} [isGeolocated]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1Banner(isGeolocated?: boolean, options?: any): Promise<BannerResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Banner(isGeolocated, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Banner(
+        isGeolocated,
+        options
+      )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1Bookings(options?: any): Promise<BookingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Bookings(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1Bookings(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_categories <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1Categories(options?: any): Promise<CategoriesResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Categories(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1Categories(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_cultural_survey_questions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1CulturalSurveyQuestions(options?: any): Promise<CulturalSurveyQuestionsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1CulturalSurveyQuestions(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async getNativeV1CulturalSurveyQuestions(
+      options?: any
+    ): Promise<CulturalSurveyQuestionsResponse> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1CulturalSurveyQuestions(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary email_validation_remaining_resends <GET>
-     * @param {string} email 
+     * @param {string} email
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any): Promise<EmailValidationRemainingResendsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1EmailValidationRemainingResendsemail(email, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async getNativeV1EmailValidationRemainingResendsemail(
+      email: string,
+      options?: any
+    ): Promise<EmailValidationRemainingResendsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV1EmailValidationRemainingResendsemail(email, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1Me(options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Me(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1Me(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_favorites <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1MeFavorites(options?: any): Promise<PaginatedFavoritesResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavorites(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavorites(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_favorites_count <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1MeFavoritesCount(options?: any): Promise<FavoritesCountResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavoritesCount(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavoritesCount(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary google_oauth_state <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1OauthState(options?: any): Promise<OauthStateResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary report_offer_reasons <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1OfferReportReasons(options?: any): Promise<OfferReportReasons> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferReportReasons(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1OfferReportReasons(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_offer <GET>
      * @deprecated
-     * @param {number} offer_id 
+     * @param {number} offer_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV1OfferofferId(offer_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary user_reported_offers <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1OffersReports(options?: any): Promise<UserReportedOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OffersReports(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1OffersReports(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary phone_validation_remaining_attempts <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1PhoneValidationRemainingAttempts(options?: any): Promise<PhoneValidationRemainingAttemptsRequest> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1PhoneValidationRemainingAttempts(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async getNativeV1PhoneValidationRemainingAttempts(
+      options?: any
+    ): Promise<PhoneValidationRemainingAttemptsRequest> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(
+          configuration
+        ).getNativeV1PhoneValidationRemainingAttempts(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_email_update_status <GET>
      * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatus> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileEmailUpdateStatus(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileEmailUpdateStatus(
+          options
+        )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_email_update_token_expiration_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1ProfileTokenExpiration(options?: any): Promise<UpdateEmailTokenExpiration> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileTokenExpiration(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileTokenExpiration(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_available_reactions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1ReactionAvailable(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ReactionAvailable(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1ReactionAvailable(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary similar_offers <GET>
-     * @param {number} offer_id 
-     * @param {number} [longitude] 
-     * @param {number} [latitude] 
-     * @param {Array<string>} [categories] 
-     * @param {Array<string>} [subcategories] 
+     * @param {number} offer_id
+     * @param {number} [longitude]
+     * @param {number} [latitude]
+     * @param {Array<string>} [categories]
+     * @param {Array<string>} [subcategories]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, options?: any): Promise<SimilarOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async getNativeV1RecommendationSimilarOffersofferId(
+      offer_id: number,
+      longitude?: number,
+      latitude?: number,
+      categories?: Array<string>,
+      subcategories?: Array<string>,
+      options?: any
+    ): Promise<SimilarOffersResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV1RecommendationSimilarOffersofferId(
+        offer_id,
+        longitude,
+        latitude,
+        categories,
+        subcategories,
+        options
+      )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1Settings(options?: any): Promise<SettingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Settings(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1Settings(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_subcategories_v2 <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubcategoriesV2(options?: any): Promise<SubcategoriesResponseModelv2> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubcategoriesV2(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1SubcategoriesV2(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_activity_types <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(
+          options
+        )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary next_subscription_step <GET>
      * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionNextStep(options?: any): Promise<NextSubscriptionStepResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionNextStep(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionNextStep(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionProfile(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_subscription_stepper_deprecated <GET>
      * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionStepper(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionStepper(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_venue <GET>
-     * @param {number} venue_id 
+     * @param {number} venue_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueId(venue_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV1VenuevenueId(venue_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_offer_v2 <GET>
-     * @param {number} offer_id 
+     * @param {number} offer_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV2OfferofferId(offer_id: number, options?: any): Promise<OfferResponseV2> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).getNativeV2OfferofferId(offer_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_email_update_status <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(
+          options
+        )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary get_subscription_stepper <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV2SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV2> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2SubscriptionStepper(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV2SubscriptionStepper(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary patch_user_profile <PATCH>
-     * @param {UserProfilePatchRequest} [body] 
+     * @param {UserProfilePatchRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async patchNativeV1Profile(body?: UserProfilePatchRequest, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchNativeV1Profile(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async patchNativeV1Profile(
+      body?: UserProfilePatchRequest,
+      options?: any
+    ): Promise<UserProfileResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).patchNativeV1Profile(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary create_account <POST>
-     * @param {AccountRequest} [body] 
+     * @param {AccountRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1Account(body?: AccountRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Account(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1Account(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary anonymize_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1AccountAnonymize(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountAnonymize(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).postNativeV1AccountAnonymize(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary suspend_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1AccountSuspend(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspend(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspend(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
-     * @summary suspend_account_for_suspicious_login <POST>
-     * @param {SuspendAccountForSuspiciousLoginRequest} [body] 
+     *
+     * @summary suspend_account_for_hack_suspicion <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1AccountSuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1AccountSuspendForHackSuspicion(options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspendForHackSuspicion(
+          options
+        )
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
+     * @summary suspend_account_for_suspicious_login <POST>
+     * @param {SuspendAccountForSuspiciousLoginRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1AccountSuspendForSuspiciousLogin(
+      body?: SuspendAccountForSuspiciousLoginRequest,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary unsuspend_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1AccountUnsuspend(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountUnsuspend(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).postNativeV1AccountUnsuspend(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary book_offer <POST>
-     * @param {BookOfferRequest} [body] 
+     * @param {BookOfferRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1Bookings(body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Bookings(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1Bookings(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary cancel_booking <POST>
-     * @param {number} booking_id 
+     * @param {number} booking_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1BookingsbookingIdCancel(booking_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1BookingsbookingIdCancel(booking_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1BookingsbookingIdCancel(
+      booking_id: number,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1BookingsbookingIdCancel(booking_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary flag_booking_as_used <POST>
-     * @param {number} booking_id 
-     * @param {BookingDisplayStatusRequest} [body] 
+     * @param {number} booking_id
+     * @param {BookingDisplayStatusRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1BookingsbookingIdToggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1BookingsbookingIdToggleDisplay(booking_id, body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1BookingsbookingIdToggleDisplay(
+      booking_id: number,
+      body?: BookingDisplayStatusRequest,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1BookingsbookingIdToggleDisplay(booking_id, body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary change_password <POST>
-     * @param {ChangePasswordRequest} [body] 
+     * @param {ChangePasswordRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1ChangePassword(body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ChangePassword(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1ChangePassword(
+      body?: ChangePasswordRequest,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1ChangePassword(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary cookies_consent <POST>
-     * @param {CookieConsentRequest} [body] 
+     * @param {CookieConsentRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1CookiesConsent(body?: CookieConsentRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1CookiesConsent(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1CookiesConsent(
+      body?: CookieConsentRequest,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1CookiesConsent(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary post_cultural_survey_answers <POST>
-     * @param {CulturalSurveyAnswersRequest} [body] 
+     * @param {CulturalSurveyAnswersRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1CulturalSurveyAnswers(body?: CulturalSurveyAnswersRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1CulturalSurveyAnswers(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+    async postNativeV1CulturalSurveyAnswers(
+      body?: CulturalSurveyAnswersRequest,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1CulturalSurveyAnswers(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
      * @summary post_feedback <POST>
-     * @param {PostFeedbackBody} [body] 
+     * @param {PostFeedbackBody} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1Feedback(body?: PostFeedbackBody, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Feedback(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1Feedback(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7282,512 +7622,566 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
  */
 export class DefaultApi extends BaseAPI {
   /**
-    * 
-    * @summary delete_favorite <DELETE>
-    * @param {number} favorite_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary delete_favorite <DELETE>
+   * @param {number} favorite_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
+    return DefaultApiFp(this, configuration).deleteNativeV1MeFavoritesfavoriteId(
+      favorite_id,
+      options
+    )
   }
   /**
-    * 
-    * @summary account_suspension_token_validation <GET>
-    * @param {string} token 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary account_suspension_token_validation <GET>
+   * @param {string} token
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
+    return DefaultApiFp(this, configuration).getNativeV1AccountSuspendTokenValidationtoken(
+      token,
+      options
+    )
   }
   /**
-    * 
-    * @summary get_account_suspension_date <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_account_suspension_date <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1AccountSuspensionDate(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionDate(options)
   }
   /**
-    * 
-    * @summary get_account_suspension_status <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_account_suspension_status <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1AccountSuspensionStatus(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionStatus(options)
   }
   /**
-    * 
-    * @summary get_banner <GET>
-    * @param {boolean} [isGeolocated] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_banner <GET>
+   * @param {boolean} [isGeolocated]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1Banner(isGeolocated?: boolean, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Banner(isGeolocated, options)
   }
   /**
-    * 
-    * @summary get_bookings <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_bookings <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1Bookings(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Bookings(options)
   }
   /**
-    * 
-    * @summary get_categories <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_categories <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1Categories(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Categories(options)
   }
   /**
-    * 
-    * @summary get_cultural_survey_questions <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_cultural_survey_questions <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1CulturalSurveyQuestions(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1CulturalSurveyQuestions(options)
   }
   /**
-    * 
-    * @summary email_validation_remaining_resends <GET>
-    * @param {string} email 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary email_validation_remaining_resends <GET>
+   * @param {string} email
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1EmailValidationRemainingResendsemail(email, options)
+    return DefaultApiFp(this, configuration).getNativeV1EmailValidationRemainingResendsemail(
+      email,
+      options
+    )
   }
   /**
-    * 
-    * @summary get_user_profile <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_user_profile <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1Me(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Me(options)
   }
   /**
-    * 
-    * @summary get_favorites <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_favorites <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1MeFavorites(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavorites(options)
   }
   /**
-    * 
-    * @summary get_favorites_count <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_favorites_count <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1MeFavoritesCount(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavoritesCount(options)
   }
   /**
-    * 
-    * @summary google_oauth_state <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary google_oauth_state <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1OauthState(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OauthState(options)
   }
   /**
-    * 
-    * @summary report_offer_reasons <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary report_offer_reasons <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1OfferReportReasons(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferReportReasons(options)
   }
   /**
-    * 
-    * @summary get_offer <GET>
-    * @deprecated
-    * @param {number} offer_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_offer <GET>
+   * @deprecated
+   * @param {number} offer_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1OfferofferId(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferofferId(offer_id, options)
   }
   /**
-    * 
-    * @summary user_reported_offers <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary user_reported_offers <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1OffersReports(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OffersReports(options)
   }
   /**
-    * 
-    * @summary phone_validation_remaining_attempts <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary phone_validation_remaining_attempts <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1PhoneValidationRemainingAttempts(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1PhoneValidationRemainingAttempts(options)
   }
   /**
-    * 
-    * @summary get_email_update_status <GET>
-    * @deprecated
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_email_update_status <GET>
+   * @deprecated
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1ProfileEmailUpdateStatus(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ProfileEmailUpdateStatus(options)
   }
   /**
-    * 
-    * @summary get_email_update_token_expiration_date <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_email_update_token_expiration_date <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1ProfileTokenExpiration(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ProfileTokenExpiration(options)
   }
   /**
-    * 
-    * @summary get_available_reactions <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_available_reactions <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1ReactionAvailable(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ReactionAvailable(options)
   }
   /**
-    * 
-    * @summary similar_offers <GET>
-    * @param {number} offer_id 
-    * @param {number} [longitude] 
-    * @param {number} [latitude] 
-    * @param {Array<string>} [categories] 
-    * @param {Array<string>} [subcategories] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, options?: any) {
+   *
+   * @summary similar_offers <GET>
+   * @param {number} offer_id
+   * @param {number} [longitude]
+   * @param {number} [latitude]
+   * @param {Array<string>} [categories]
+   * @param {Array<string>} [subcategories]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async getNativeV1RecommendationSimilarOffersofferId(
+    offer_id: number,
+    longitude?: number,
+    latitude?: number,
+    categories?: Array<string>,
+    subcategories?: Array<string>,
+    options?: any
+  ) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, options)
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(
+      offer_id,
+      longitude,
+      latitude,
+      categories,
+      subcategories,
+      options
+    )
   }
   /**
-    * 
-    * @summary get_settings <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_settings <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1Settings(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Settings(options)
   }
   /**
-    * 
-    * @summary get_subcategories_v2 <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_subcategories_v2 <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1SubcategoriesV2(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubcategoriesV2(options)
   }
   /**
-    * 
-    * @summary get_activity_types <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_activity_types <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1SubscriptionActivityTypes(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionActivityTypes(options)
   }
   /**
-    * 
-    * @summary next_subscription_step <GET>
-    * @deprecated
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary next_subscription_step <GET>
+   * @deprecated
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1SubscriptionNextStep(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionNextStep(options)
   }
   /**
-    * 
-    * @summary get_profile <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_profile <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1SubscriptionProfile(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfile(options)
   }
   /**
-    * 
-    * @summary get_subscription_stepper_deprecated <GET>
-    * @deprecated
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_subscription_stepper_deprecated <GET>
+   * @deprecated
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1SubscriptionStepper(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionStepper(options)
   }
   /**
-    * 
-    * @summary get_venue <GET>
-    * @param {number} venue_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_venue <GET>
+   * @param {number} venue_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
   }
   /**
-    * 
-    * @summary get_offer_v2 <GET>
-    * @param {number} offer_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_offer_v2 <GET>
+   * @param {number} offer_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV2OfferofferId(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2OfferofferId(offer_id, options)
   }
   /**
-    * 
-    * @summary get_email_update_status <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_email_update_status <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV2ProfileEmailUpdateStatus(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2ProfileEmailUpdateStatus(options)
   }
   /**
-    * 
-    * @summary get_subscription_stepper <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary get_subscription_stepper <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async getNativeV2SubscriptionStepper(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2SubscriptionStepper(options)
   }
   /**
-    * 
-    * @summary patch_user_profile <PATCH>
-    * @param {UserProfilePatchRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary patch_user_profile <PATCH>
+   * @param {UserProfilePatchRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async patchNativeV1Profile(body?: UserProfilePatchRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).patchNativeV1Profile(body, options)
   }
   /**
-    * 
-    * @summary create_account <POST>
-    * @param {AccountRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary create_account <POST>
+   * @param {AccountRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1Account(body?: AccountRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Account(body, options)
   }
   /**
-    * 
-    * @summary anonymize_account <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary anonymize_account <POST>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1AccountAnonymize(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountAnonymize(options)
   }
   /**
-    * 
-    * @summary suspend_account <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary suspend_account <POST>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1AccountSuspend(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountSuspend(options)
   }
   /**
-    * 
-    * @summary suspend_account_for_suspicious_login <POST>
-    * @param {SuspendAccountForSuspiciousLoginRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1AccountSuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options?: any) {
+   *
+   * @summary suspend_account_for_hack_suspicion <POST>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1AccountSuspendForHackSuspicion(options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
+    return DefaultApiFp(this, configuration).postNativeV1AccountSuspendForHackSuspicion(options)
   }
   /**
-    * 
-    * @summary unsuspend_account <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary suspend_account_for_suspicious_login <POST>
+   * @param {SuspendAccountForSuspiciousLoginRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1AccountSuspendForSuspiciousLogin(
+    body?: SuspendAccountForSuspiciousLoginRequest,
+    options?: any
+  ) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1AccountSuspendForSuspiciousLogin(
+      body,
+      options
+    )
+  }
+  /**
+   *
+   * @summary unsuspend_account <POST>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1AccountUnsuspend(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountUnsuspend(options)
   }
   /**
-    * 
-    * @summary book_offer <POST>
-    * @param {BookOfferRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary book_offer <POST>
+   * @param {BookOfferRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1Bookings(body?: BookOfferRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Bookings(body, options)
   }
   /**
-    * 
-    * @summary cancel_booking <POST>
-    * @param {number} booking_id 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary cancel_booking <POST>
+   * @param {number} booking_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1BookingsbookingIdCancel(booking_id: number, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdCancel(booking_id, options)
+    return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdCancel(
+      booking_id,
+      options
+    )
   }
   /**
-    * 
-    * @summary flag_booking_as_used <POST>
-    * @param {number} booking_id 
-    * @param {BookingDisplayStatusRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1BookingsbookingIdToggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
+   *
+   * @summary flag_booking_as_used <POST>
+   * @param {number} booking_id
+   * @param {BookingDisplayStatusRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1BookingsbookingIdToggleDisplay(
+    booking_id: number,
+    body?: BookingDisplayStatusRequest,
+    options?: any
+  ) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdToggleDisplay(booking_id, body, options)
+    return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdToggleDisplay(
+      booking_id,
+      body,
+      options
+    )
   }
   /**
-    * 
-    * @summary change_password <POST>
-    * @param {ChangePasswordRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary change_password <POST>
+   * @param {ChangePasswordRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1ChangePassword(body?: ChangePasswordRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ChangePassword(body, options)
   }
   /**
-    * 
-    * @summary cookies_consent <POST>
-    * @param {CookieConsentRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary cookies_consent <POST>
+   * @param {CookieConsentRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1CookiesConsent(body?: CookieConsentRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1CookiesConsent(body, options)
   }
   /**
-    * 
-    * @summary post_cultural_survey_answers <POST>
-    * @param {CulturalSurveyAnswersRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1CulturalSurveyAnswers(body?: CulturalSurveyAnswersRequest, options?: any) {
+   *
+   * @summary post_cultural_survey_answers <POST>
+   * @param {CulturalSurveyAnswersRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1CulturalSurveyAnswers(
+    body?: CulturalSurveyAnswersRequest,
+    options?: any
+  ) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1CulturalSurveyAnswers(body, options)
   }
   /**
-    * 
-    * @summary post_feedback <POST>
-    * @param {PostFeedbackBody} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
+   *
+   * @summary post_feedback <POST>
+   * @param {PostFeedbackBody} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
   public async postNativeV1Feedback(body?: PostFeedbackBody, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Feedback(body, options)
