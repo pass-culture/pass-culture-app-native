@@ -4,16 +4,23 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+// Function to validate if a value is a HeadingLevel valid to correct typing
+const isHeadingLevel = (level: unknown): level is HeadingLevel => {
+  return typeof level === 'number' && [1, 2, 3, 4, 5, 6].includes(level)
+}
+
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
-  headingLevel?: HeadingLevel
+  defaultLevel?: HeadingLevel
 ) => {
-  const getAttributes =
-    headingLevel === undefined ? () => ({}) : () => getHeadingAttrs(headingLevel)
-
-  return styled(RNText).attrs(getAttributes)(
-    ({ theme }) => theme.designSystem.typography[typographyStyle]
-  )
+  return styled(RNText).attrs<{ accessibilityLevel?: HeadingLevel }>(({ accessibilityLevel }) => {
+    if (isHeadingLevel(accessibilityLevel)) {
+      return getHeadingAttrs(accessibilityLevel)
+    } else if (isHeadingLevel(defaultLevel)) {
+      return getHeadingAttrs(defaultLevel)
+    }
+    return {}
+  })(({ theme }) => theme.designSystem.typography[typographyStyle])
 }
 
 const Title1 = createStyledText('title1', 1)
