@@ -56,12 +56,7 @@ export function getVenueList(hits: Offer[], userLocation: Position) {
     const venueAlreadyListedPrice = venueAlreadyListed?.price ?? 0
     const offerPrice = hit.offer.prices?.[0]
 
-    if (
-      offerPrice !== undefined &&
-      venueAlreadyListed &&
-      hit.offer.prices?.length &&
-      venueAlreadyListedPrice > offerPrice
-    ) {
+    if (offerPrice !== undefined && venueAlreadyListed && venueAlreadyListedPrice > offerPrice) {
       venueAlreadyListed.offerId = Number(hit.objectID)
       venueAlreadyListed.price = offerPrice
       return

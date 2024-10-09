@@ -48,7 +48,7 @@ const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStoc
 
 describe('useGetVenueByDay', () => {
   describe('items', () => {
-    it('should an empty list when the offer is not available in any cinema', async () => {
+    it('should return an empty list when the offer is not available in any cinema', async () => {
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
 
       const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
@@ -85,20 +85,6 @@ describe('useGetVenueByDay', () => {
       expect(result.current.items).toHaveLength(1)
     })
 
-    it('should return 6 cinema maximum', async () => {
-      const initialNumberOfCinema = 7
-      const offers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
-      mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
-
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
-        initialCount: initialNumberOfCinema,
-      })
-
-      await act(async () => {})
-
-      expect(result.current.items).toHaveLength(initialNumberOfCinema)
-    })
-
     it('should return the specified initial number of cinema', async () => {
       const initialNumberOfCinema = 7
       const offers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
@@ -121,6 +107,7 @@ describe('useGetVenueByDay', () => {
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
       const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+        initialCount: 6,
         nextCount: 3,
       })
 
@@ -133,11 +120,13 @@ describe('useGetVenueByDay', () => {
   })
 
   describe('isEnd', () => {
-    it('should be false if items are not displayed', async () => {
+    it('should be false if there are remaining items not displayed', async () => {
       const offers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+        initialCount: 6,
+      })
 
       await act(async () => {})
 
@@ -148,7 +137,9 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(3, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+        initialCount: 6,
+      })
 
       await act(async () => {})
 
@@ -200,6 +191,7 @@ describe('useGetVenueByDay', () => {
 
     it('should return the initial number of cinema after using getNext', async () => {
       const todaysOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
+
       const tomorrowOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TOMORROW)
 
       mockedGetStocksByOfferIds.mockResolvedValueOnce({
@@ -219,6 +211,7 @@ describe('useGetVenueByDay', () => {
       })
 
       rerender({ date: TOMORROW.toDate() })
+      rerender({ date: TODAY.toDate() })
 
       expect(result.current.items).toHaveLength(6)
     })

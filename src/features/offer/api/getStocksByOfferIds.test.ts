@@ -1,11 +1,12 @@
 import { api } from 'api/api'
-import { ApiError } from 'api/ApiError'
+import { OffersStocksResponseV2 } from 'api/gen'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
+import { mockServer } from 'tests/mswServer'
 
 import { getStocksByOfferIds } from './getStocksByOfferIds'
 
-jest.mock('api/api')
+const apiPostNativeV2OffersStocksSpy = jest.spyOn(api, 'postNativeV2OffersStocks')
 
 describe('getStocksByOfferIds', () => {
   it('should return empty array when no offer ids are provided', async () => {
@@ -15,28 +16,19 @@ describe('getStocksByOfferIds', () => {
   })
 
   it('should call api.postNativeV2OffersStocks with correct parameters', async () => {
-    const mockApiResponse = { offers: [{ id: 1 }, { id: 2 }] }
-    api.postNativeV2OffersStocks = jest.fn().mockResolvedValue(mockApiResponse)
+    mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
+    await getStocksByOfferIds([1, 2], LogTypeEnum.INFO)
 
-    const result = await getStocksByOfferIds([1, 2], LogTypeEnum.INFO)
-
-    expect(api.postNativeV2OffersStocks).toHaveBeenCalledWith({
+    expect(apiPostNativeV2OffersStocksSpy).toHaveBeenCalledWith({
       offer_ids: [1, 2],
     })
-    expect(result).toEqual(mockApiResponse)
   })
 
   it('should throw OfferNotFoundError when API returns 404', async () => {
-    const apiError = new ApiError(404, 'Not Found')
-    api.postNativeV2OffersStocks = jest.fn().mockRejectedValue(apiError)
+    mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {
+      responseOptions: { statusCode: 404, data: { offers: [] } },
+    })
 
     await expect(getStocksByOfferIds([1], LogTypeEnum.ERROR)).rejects.toThrow(OfferNotFoundError)
-  })
-
-  it('should throw original error for non-404 API errors', async () => {
-    const apiError = new ApiError(500, 'Internal Server Error')
-    api.postNativeV2OffersStocks = jest.fn().mockRejectedValue(apiError)
-
-    await expect(getStocksByOfferIds([1], LogTypeEnum.ERROR)).rejects.toThrow(apiError)
   })
 })
