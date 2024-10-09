@@ -78,13 +78,13 @@ describe('DeleteProfileConfirmation', () => {
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should open FAQ link when clicking on "Voir la charte des données personnelles" button', () => {
+  it('should open FAQ link when clicking on "Consultez notre FAQ" button', () => {
     renderDeleteProfileConfirmation()
 
-    const faqButton = screen.getByText('Voir la charte des données personnelles')
+    const faqButton = screen.getByText('Consultez notre FAQ')
     fireEvent.press(faqButton)
 
-    expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
+    expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_RIGHT_TO_ERASURE, undefined, true)
   })
 
   it('should navigate to home when pressing cancel button', () => {
