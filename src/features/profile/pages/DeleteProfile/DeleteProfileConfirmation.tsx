@@ -46,16 +46,17 @@ export const DeleteProfileConfirmation = () => {
       title="Ta demande de suppression de compte"
       titleComponent={Typo.Title2}>
       <Typo.Body>
-        Si tu confirmes ta demande, l’accès à ton compte sera supprimé et nous anonymiserons tes
-        données personnelles.
+        Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données
+        personnelles seront supprimées (anonymisées).
       </Typo.Body>
+      <Typo.Body>Tes réservations en cours seront également annulées et supprimées.</Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
       <InfoBanner message="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.">
         <Spacer.Column numberOfSpaces={2} />
         <ExternalTouchableLink
           as={ButtonQuaternarySecondary}
-          externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
-          wording="Voir la charte des données personnelles"
+          externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
+          wording="Consultez notre FAQ"
           icon={ExternalSiteFilled}
           justifyContent="flex-start"
           inline

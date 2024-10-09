@@ -149,7 +149,21 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         ]
       }
     >
-      Si tu confirmes ta demande, l’accès à ton compte sera supprimé et nous anonymiserons tes données personnelles.
+      Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Tes réservations en cours seront également annulées et supprimées.
     </Text>
     <View
       numberOfSpaces={6}
@@ -216,7 +230,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
           }
         />
         <View
-          accessibilityLabel="Voir la charte des données personnelles"
+          accessibilityLabel="Consultez notre FAQ"
           accessibilityState={
             {
               "busy": undefined,
@@ -273,7 +287,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               },
             ]
           }
-          testID="Voir la charte des données personnelles"
+          testID="Consultez notre FAQ"
         >
           <View
             style={
@@ -331,7 +345,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                 ]
               }
             >
-              Voir la charte des données personnelles
+              Consultez notre FAQ
             </Text>
           </View>
         </View>
