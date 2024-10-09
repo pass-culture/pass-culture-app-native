@@ -18,7 +18,7 @@ export const useSync = (shouldUpdate = true) => {
   const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
-  const { setPlace, setSelectedLocationMode, hasGeolocPosition } = useLocation()
+  const { setPlace, setSelectedLocationMode, hasGeolocPosition, setSelectedPlace } = useLocation()
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
 
   useEffect(() => {
@@ -56,6 +56,7 @@ export const useSync = (shouldUpdate = true) => {
         }
         case LocationMode.AROUND_PLACE: {
           setPlace(params.locationFilter.place)
+          setSelectedPlace(params.locationFilter.place)
           setSelectedLocationMode(LocationMode.AROUND_PLACE)
           break
         }
