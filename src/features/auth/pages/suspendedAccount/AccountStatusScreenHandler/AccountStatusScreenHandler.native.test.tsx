@@ -5,7 +5,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { render, screen } from 'tests/utils'
 
-import { SuspensionScreen } from './SuspensionScreen'
+import { AccountStatusScreenHandler } from './AccountStatusScreenHandler'
 
 const mockSuspensionStatus = { status: AccountState.SUSPENDED_UPON_USER_REQUEST }
 jest.mock('features/auth/api/useAccountSuspensionStatus', () => ({
@@ -43,38 +43,38 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
-describe('<SuspensionScreen />', () => {
+describe('<AccountStatusScreenHandler />', () => {
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     expect(screen.getByText('Ton compte est désactivé')).toBeOnTheScreen()
   })
 
   it('should display SuspiciousLoginSuspendedAccount component if account is suspended for suspicious login reported by user', () => {
     mockSuspensionStatus.status = AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should display FraudulentSuspendedAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should redirect to home if account is not suspended', () => {
     mockSuspensionStatus.status = AccountState.ACTIVE
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should call sign out function on component unmount', () => {
     mockUseCurrentRoute('TabNavigator')
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     screen.unmount()
 
@@ -83,7 +83,7 @@ describe('<SuspensionScreen />', () => {
 
   it('should not call sign out function if user is redirect to reactivation success screen', () => {
     mockUseCurrentRoute('AccountReactivationSuccess')
-    render(<SuspensionScreen />)
+    render(<AccountStatusScreenHandler />)
 
     screen.unmount()
 

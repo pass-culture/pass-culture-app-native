@@ -142,7 +142,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
       navigateFromRef('BannedCountryError')
       return {}
     }
-    navigateFromRef('SuspensionScreen')
+    navigateFromRef('AccountStatusScreenHandler')
     return {}
   }
 

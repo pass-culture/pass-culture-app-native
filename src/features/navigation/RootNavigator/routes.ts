@@ -12,9 +12,9 @@ import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/Signup
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
+import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
-import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
@@ -236,8 +236,8 @@ export const routes: RootRoute[] = [
     path: 'cheat-navigation-account-suspension',
   },
   {
-    name: 'SuspensionScreen',
-    component: SuspensionScreen,
+    name: 'AccountStatusScreenHandler',
+    component: AccountStatusScreenHandler,
     path: 'compte-desactive',
     options: { title: 'Compte désactivé' },
   },
