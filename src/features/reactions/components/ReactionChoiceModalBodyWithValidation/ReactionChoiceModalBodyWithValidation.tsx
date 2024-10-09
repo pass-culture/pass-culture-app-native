@@ -1,12 +1,9 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
-import { useTheme } from 'styled-components'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingOfferResponse, OfferResponse, ReactionTypeEnum } from 'api/gen'
-import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
+import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useSubcategory } from 'libs/subcategories'
-import { IconNames } from 'ui/components/icons/iconFactory'
-import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ValidationMark } from 'ui/components/ValidationMark'
@@ -26,39 +23,8 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
   reactionStatus,
   handleOnPressReactionButton,
 }) => {
-  const iconFactory = useIconFactory()
   const { categoryId } = useSubcategory(offer.subcategoryId)
-  const theme = useTheme()
 
-  const getStyledIcon = useCallback(
-    (name: IconNames, props?: object) =>
-      styled(iconFactory.getIcon(name)).attrs(({ theme }) => ({
-        size: theme.icons.sizes.small,
-        ...props,
-      }))``,
-    [iconFactory]
-  )
-
-  const ThumbUpIcon = useMemo(
-    () => ({
-      default: getStyledIcon('like', { testID: 'thumbUp' }),
-      pressed: getStyledIcon('like-filled', {
-        testID: 'thumbUpFilled',
-        color: theme.colors.primary,
-      }),
-    }),
-    [getStyledIcon, theme.colors.primary]
-  )
-
-  const ThumbDownIcon = useMemo(
-    () => ({
-      default: getStyledIcon('dislike', { testID: 'thumbDown' }),
-      pressed: getStyledIcon('dislike-filled', {
-        testID: 'thumbDownFilled',
-      }),
-    }),
-    [getStyledIcon]
-  )
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
@@ -77,22 +43,10 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
           </HorizontalTileContainer>
           <Separator.Horizontal />
         </ViewGap>
-        <ButtonsContainer gap={4}>
-          <ReactionToggleButton
-            active={reactionStatus === ReactionTypeEnum.LIKE}
-            label="J’aime"
-            Icon={ThumbUpIcon.default}
-            FilledIcon={ThumbUpIcon.pressed}
-            onPress={() => handleOnPressReactionButton(ReactionTypeEnum.LIKE)}
-          />
-          <ReactionToggleButton
-            active={reactionStatus === ReactionTypeEnum.DISLIKE}
-            label="Je n’aime pas"
-            Icon={ThumbDownIcon.default}
-            FilledIcon={ThumbDownIcon.pressed}
-            onPress={() => handleOnPressReactionButton(ReactionTypeEnum.DISLIKE)}
-          />
-        </ButtonsContainer>
+        <StyledReactionChoiceValidation
+          reactionStatus={reactionStatus}
+          handleOnPressReactionButton={handleOnPressReactionButton}
+        />
       </ViewGap>
     </React.Fragment>
   )
@@ -116,7 +70,6 @@ const DateUsedText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const ButtonsContainer = styled(ViewGap)({
-  flexDirection: 'row',
+const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)({
   marginBottom: getSpacing(12),
 })

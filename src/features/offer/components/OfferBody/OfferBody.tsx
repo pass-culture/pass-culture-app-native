@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -12,7 +11,7 @@ import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCT
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
-import { OfferReactions } from 'features/offer/components/OfferReactions/OfferReactions'
+import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
@@ -32,10 +31,8 @@ import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryI
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { ToggleButton } from 'ui/components/buttons/ToggleButton'
 import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -43,7 +40,6 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -57,23 +53,16 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
-  const { reactionFakeDoorCategories } = useRemoteConfigContext()
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { isLoggedIn, user } = useAuthContext()
   const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
-  const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
-  const shouldDisplayReactionButton =
-    enableReactionFakeDoor &&
-    reactionFakeDoorCategories.categories.includes(subcategory.nativeCategoryId)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -109,12 +98,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
-  const onReactButtonPress = () => {
-    setSurveyModalState(DEFAULT_SURVEY_MODAL_DATA)
-    analytics.logConsultReactionFakeDoor({ from: subcategory.nativeCategoryId })
-    showModal()
-  }
-
   const handleArtistLinkPress = () => {
     if (shouldDisplayFakeDoorArtist) {
       setSurveyModalState(ARTIST_SURVEY_MODAL_DATA)
@@ -148,21 +131,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
           {prices ? <OfferPrice prices={prices} /> : null}
 
-          <ViewGap gap={4}>
-            {isReactionFeatureActive ? (
-              <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
-            ) : null}
-
-            {shouldDisplayReactionButton ? (
-              <ToggleButton
-                active={false}
-                onPress={onReactButtonPress}
-                label={{ active: 'Réagir', inactive: 'Réagir' }}
-                accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
-                Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
-              />
-            ) : null}
-          </ViewGap>
+          <OfferReactionSection offer={offer} subcategory={subcategory} />
 
           <GroupWithSeparator
             showTopComponent={offer.venue.isPermanent}
@@ -255,7 +224,3 @@ const GroupWithSeparator = ({
     </GroupWithoutGap>
   ) : null
 }
-
-const StyledThumbUp = styled(ThumbUp).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2, UserProfileResponse } from 'api/gen'
+import { BookingReponse, OfferResponseV2, ReactionTypeEnum, UserProfileResponse } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
@@ -11,9 +11,17 @@ type Props = {
   isLoggedIn: boolean
   offer: OfferResponseV2
   user?: UserProfileResponse
+  userCanReact?: boolean
+  userBooking?: BookingReponse
 }
 
-export const OfferReactions: FunctionComponent<Props> = ({ isLoggedIn, user, offer }) => {
+export const OfferReactions: FunctionComponent<Props> = ({
+  isLoggedIn,
+  user,
+  offer,
+  userCanReact,
+  userBooking,
+}) => {
   const { data: bookings } = useBookings()
   const { reactionsCount } = offer
   const hasLikes = reactionsCount?.likes > 0
@@ -38,8 +46,10 @@ export const OfferReactions: FunctionComponent<Props> = ({ isLoggedIn, user, off
           </TypoDS.BodySemiBoldXs>
         </StyledView>
       )
-    } else {
+    } else if (userCanReact && userBooking?.userReaction !== ReactionTypeEnum.DISLIKE) {
       return <TypoDS.BodySemiBoldXs>Sois le premier à réagir&nbsp;:</TypoDS.BodySemiBoldXs>
+    } else {
+      return null
     }
   }
 

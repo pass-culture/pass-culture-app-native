@@ -18,6 +18,8 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -72,8 +74,6 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/auth/context/AuthContext')
-
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -93,7 +93,18 @@ const useArtistResultsSpy = jest
     artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+
 describe('<OfferBody />', () => {
+  beforeAll(() => {
+    useRemoteConfigContextSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      reactionCategories: {
+        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
+      },
+    })
+  })
+
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     activateFeatureFlags([
@@ -188,72 +199,6 @@ describe('<OfferBody />', () => {
     await screen.findByText(offerFree.name)
 
     expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
-  })
-
-  describe('Reaction section', () => {
-    it('should display reaction button when feature flag is enabled and native category included in reactionFakeDoorCategories remote config', async () => {
-      renderOfferBody({})
-
-      expect(await screen.findByText('Réagir')).toBeOnTheScreen()
-    })
-
-    it('should open survey modal when pressing "Réagir" button', async () => {
-      renderOfferBody({})
-
-      fireEvent.press(await screen.findByText('Réagir'))
-
-      expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
-    })
-
-    it('should log reaction fake door consultation when pressing "Réagir" button', async () => {
-      renderOfferBody({})
-
-      fireEvent.press(await screen.findByText('Réagir'))
-
-      expect(analytics.logConsultReactionFakeDoor).toHaveBeenNthCalledWith(1, {
-        from: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      })
-    })
-
-    it('should display reaction count when FF is enabled and other users have reacted to the offer', async () => {
-      renderOfferBody({})
-
-      expect(await screen.findByText('Aimé par 1 jeune')).toBeOnTheScreen()
-    })
-
-    it('should not display reaction count when FF is disabled', async () => {
-      activateFeatureFlags()
-      renderOfferBody({})
-
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Aimé par 1 jeune')).not.toBeOnTheScreen()
-    })
-
-    it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
-      renderOfferBody({
-        offer: {
-          ...offerResponseSnap,
-          subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
-        },
-        subcategory: {
-          ...mockSubcategory,
-          nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
-        },
-      })
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-    })
-
-    it('should not display reaction button when feature flag is disabled', async () => {
-      activateFeatureFlags()
-
-      renderOfferBody({})
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-    })
   })
 
   describe('Venue button section & Summary info section', () => {
