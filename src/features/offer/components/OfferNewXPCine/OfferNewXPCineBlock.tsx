@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { CineBlock } from 'features/offer/components/OfferNewXPCine/CineBlock'
+import { CineBlockSkeleton } from 'features/offer/components/OfferNewXPCine/CineBlockSkeleton'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -38,10 +39,6 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
     }
   }, [flatListRef])
 
-  if (isLoading) {
-    return null
-  }
-
   return (
     <Container testID="offer-new-xp-cine-block">
       <TitleContainer>
@@ -60,6 +57,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
       </MovieCalendarContainer>
 
       <View>
+        {isLoading ? <CineBlockSkeleton /> : null}
         <Animated.FlatList
           data={items}
           style={animatedStyle}
@@ -98,8 +96,14 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
 
 const useAnimatedHeight = () => {
   const [contentHeight, setContentHeight] = useState(0)
+  const isFirstRender = useRef(true)
 
   const animatedStyle = useAnimatedStyle(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return { height: contentHeight }
+    }
+
     return {
       height: withTiming(contentHeight, {
         duration: ANIMATION_DURATION,
@@ -133,9 +137,9 @@ const Divider = styled.View(({ theme }) => ({
   marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
 }))
 
-const SeeMoreContainer = styled.View({
-  alignItems: 'center',
-})
+const SeeMoreContainer = styled.View(({ theme }) => ({
+  alignItems: theme.isMobileViewport ? 'center' : undefined,
+}))
 
 const Text = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,

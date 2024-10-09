@@ -21,7 +21,7 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
 
-  const { data, isLoading } = useSearchVenueOffers({
+  const { data } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
     geolocation: userLocation ?? {
@@ -33,7 +33,7 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   })
 
   const offerIds = extractOfferIdsFromHits(data?.pages[0]?.hits)
-  const { data: offersWithStocks } = useOffersStocks({ offerIds })
+  const { data: offersWithStocks, isLoading } = useOffersStocks({ offerIds })
 
   useEffect(() => {
     setCount(initialCount)

@@ -8,7 +8,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
-const EVENT_CARD_HEIGHT = getSpacing(19)
+export const EVENT_CARD_HEIGHT = getSpacing(19)
 export const EVENT_CARD_WIDTH = getSpacing(30)
 
 export type EventCardProps = {
