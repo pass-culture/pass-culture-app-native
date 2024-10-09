@@ -35,6 +35,7 @@ export enum QueryKeys {
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
   SIMILAR_OFFERS = 'similarOffers',
+  ALGOLIA_SIMILAR_OFFERS = 'algoliaSimilarOffers',
   ARTIST_PLAYLIST = 'artistPlaylist',
   SUBCATEGORIES = 'subcategories',
   USER_PROFILE = 'userProfile',
