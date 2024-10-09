@@ -10,21 +10,29 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
+  artistName: string
   items: HitOfferWithArtistAndEan[]
 }
 
 const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
-const renderItem = ({ item }: { item: HitOfferWithArtistAndEan }) => (
+const renderItem = ({
+  item,
+  artistName,
+}: {
+  item: HitOfferWithArtistAndEan
+  artistName: string
+}) => (
   <HorizontalOfferTile
     offer={item}
     analyticsParams={{
       from: 'artist',
+      artistName,
     }}
   />
 )
 
-export const ArtistTopOffers: FunctionComponent<Props> = ({ items }) => {
+export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
   return items.length > 0 ? (
     <FlatList
       data={items}
@@ -38,7 +46,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ items }) => {
       ItemSeparatorComponent={StyledSeparator}
       contentContainerStyle={contentContainerStyle}
       scrollEnabled={false}
-      renderItem={renderItem}
+      renderItem={({ item }) => renderItem({ item, artistName })}
     />
   ) : null
 }

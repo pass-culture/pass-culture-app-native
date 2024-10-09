@@ -26,4 +26,5 @@ export type OfferAnalyticsParams = {
   homeEntryId?: string
   apiRecoParams?: string
   playlistType?: PlaylistType
+  artistName?: string
 }
