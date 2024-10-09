@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { EVENT_CARD_HEIGHT, EVENT_CARD_WIDTH } from 'ui/components/eventCard/EventCard'
@@ -10,14 +10,21 @@ export const OfferEventCardListSkeleton: React.FC = () => {
   return (
     <Container>
       <ScrollViewContainer horizontal showsHorizontalScrollIndicator={false}>
-        {[...Array(2)].map((_, index) => (
-          <React.Fragment key={`event-card-skeleton-${index}`}>
-            <View>
-              <SkeletonTile width={EVENT_CARD_WIDTH} height={EVENT_CARD_HEIGHT} borderRadius={8} />
-            </View>
-            {index < 2 ? <Spacer.Row numberOfSpaces={4} /> : null}
-          </React.Fragment>
-        ))}
+        <FlatList
+          data={[...Array(2)]}
+          renderItem={({ index }) => (
+            <React.Fragment key={`event-card-skeleton-${index}`}>
+              <View>
+                <SkeletonTile
+                  width={EVENT_CARD_WIDTH}
+                  height={EVENT_CARD_HEIGHT}
+                  borderRadius={8}
+                />
+              </View>
+              {index < 2 ? <Spacer.Row numberOfSpaces={4} /> : null}
+            </React.Fragment>
+          )}
+        />
       </ScrollViewContainer>
     </Container>
   )
