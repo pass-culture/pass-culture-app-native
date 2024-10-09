@@ -1,7 +1,3 @@
-./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:57
-./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:60
-./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:62
-./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:69
 ./src/features/accessibility/components/AccessibilityFiltersModal.tsx:69
 ./src/features/auth/pages/signup/SignupForm.tsx:101
 ./src/features/auth/pages/signup/SignupForm.tsx:179

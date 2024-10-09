@@ -109,6 +109,13 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
+    buildOfferResponse: () => {
+      return movieOffers.reduce<OfferResponseV2[]>(
+        (previous, current) => [...previous, current.offer],
+        []
+      )
+    },
+
     build: () => {
       return movieOffers
     },

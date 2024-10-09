@@ -96,7 +96,6 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
-    query: '',
     ean: offer.extraData?.ean ?? undefined,
     allocineId: offer.extraData?.allocineId ?? undefined,
     queryOptions: { enabled: shouldFetchSearchVenueOffers },

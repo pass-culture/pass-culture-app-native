@@ -1,5 +1,4 @@
 import { useRoute } from '@react-navigation/native'
-import { isSameDay, startOfDay } from 'date-fns'
 import React, { FunctionComponent, useMemo, useRef, useState, useCallback, useEffect } from 'react'
 import { FlatList, Animated, Easing, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -15,13 +14,13 @@ import {
 } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
-import { getDates } from 'shared/date/getDates'
 import { Offer } from 'shared/offer/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -38,37 +37,24 @@ type Props = {
 const keyExtractor = (item: Offer) => item.objectID
 
 const useMoviesScreeningsList = (offerIds: number[]) => {
-  const dates = getDates(new Date(), 15)
-  const [selectedInternalDate, setSelectedInternalDate] = useState<Date>(dates[0])
+  const { selectedDate, setSelectedDate, dates } = useNextDays(15)
   const { data: offersWithStocks } = useOffersStocks({ offerIds })
-
-  const setSelectedDate = useCallback(
-    (date: Date) => {
-      if (!isSameDay(selectedInternalDate, date)) {
-        setSelectedInternalDate(startOfDay(date))
-      }
-    },
-    [selectedInternalDate]
-  )
 
   const moviesOffers: MovieOffer[] = useMemo(() => {
     const filteredOffersWithStocks = filterOffersStocksByDate(
       offersWithStocks?.offers || [],
-      selectedInternalDate
+      selectedDate
     )
-    const nextScreeningOffers = getNextMoviesByDate(
-      offersWithStocks?.offers || [],
-      selectedInternalDate
-    )
+    const nextScreeningOffers = getNextMoviesByDate(offersWithStocks?.offers || [], selectedDate)
 
     return [...filteredOffersWithStocks, ...nextScreeningOffers]
-  }, [offersWithStocks?.offers, selectedInternalDate]).filter(
+  }, [offersWithStocks?.offers, selectedDate]).filter(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
 
   return {
     dates,
-    selectedDate: selectedInternalDate,
+    selectedDate,
     setSelectedDate,
     moviesOffers,
   }
