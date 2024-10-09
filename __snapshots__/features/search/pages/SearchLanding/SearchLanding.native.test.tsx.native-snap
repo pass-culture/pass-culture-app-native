@@ -438,6 +438,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       ]
                     }
                     testID="searchInput"
+                    textAlignVertical="center"
                     value=""
                   />
                 </View>
@@ -3087,6 +3088,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     ]
                   }
                   testID="searchInput"
+                  textAlignVertical="center"
                   value=""
                 />
               </View>

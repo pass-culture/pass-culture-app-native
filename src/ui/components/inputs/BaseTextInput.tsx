@@ -61,6 +61,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
       defaultValue={defaultValue}
+      textAlignVertical={props.multiline ? 'top' : 'center'} // Only for Android
       multiline={!!props.multiline}
       ref={(ref) => {
         if (ref) {

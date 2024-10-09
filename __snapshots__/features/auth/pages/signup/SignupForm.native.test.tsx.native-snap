@@ -2158,6 +2158,7 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
                 ]
               }
               testID="Entrée pour l’email"
+              textAlignVertical="center"
               textContentType="emailAddress"
               value=""
             />
@@ -3017,6 +3018,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                 ]
               }
               testID="Mot de passe"
+              textAlignVertical="center"
               textContentType="password"
               value=""
             />

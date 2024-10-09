@@ -609,6 +609,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                           ]
                         }
                         testID="Entrée pour le numéro de téléphone"
+                        textAlignVertical="center"
                         textContentType="none"
                       />
                     </View>

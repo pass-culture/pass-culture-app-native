@@ -431,6 +431,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     ]
                   }
                   testID="Champ de texte"
+                  textAlignVertical="top"
                   value=""
                 />
               </View>
