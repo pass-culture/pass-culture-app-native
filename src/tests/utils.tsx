@@ -104,31 +104,3 @@ export const bottomScrollEvent = {
     contentSize: { height: 1600 },
   },
 }
-
-/**
- * Spies on and mocks a method from an object if not already mocked.
- * Use `* as` syntax when importing the module to ensure proper referencing.
- *
- * @example
- * ```typescript
- * import * as myModule from './myModule';
- *
- * const mockedFunction = mockFunction(myModule, 'myFunction');
- * mockedFunction.mockReturnValue('mocked value')
- * ```
- */
-
-export const mockFunction = <
-  T extends Record<string, (...args: never[]) => unknown>,
-  K extends keyof T,
->(
-  obj: T,
-  method: K
-): jest.Mock<ReturnType<T[K]>, Parameters<T[K]>> => {
-  if (jest.isMockFunction(obj[method])) {
-    return obj[method] as jest.Mock<ReturnType<T[K]>, Parameters<T[K]>>
-  }
-
-  jest.spyOn(obj, method as never)
-  return obj[method] as unknown as jest.Mock<ReturnType<T[K]>, Parameters<T[K]>>
-}
