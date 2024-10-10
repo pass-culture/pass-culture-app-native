@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
@@ -56,6 +57,7 @@ export const useSimilarOffers = ({
   searchGroupList,
 }: Props) => {
   const netInfo = useNetInfoContext()
+  const isFocused = useIsFocused()
 
   const categories: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
@@ -99,7 +101,8 @@ export const useSimilarOffers = ({
       }
     },
     {
-      enabled: !!categories && !!netInfo.isConnected,
+      staleTime: 1000 * 60 * 5,
+      enabled: !!categories && !!netInfo.isConnected && !!netInfo.isInternetReachable && isFocused,
     }
   )
 
