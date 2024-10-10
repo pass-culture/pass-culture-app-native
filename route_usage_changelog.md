@@ -28,6 +28,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/account
 - /native/v1/account/anonymize
 - /native/v1/account/suspend
+- /native/v1/account/suspend_for_hack_suspicion
 - /native/v1/account/suspend_for_suspicious_login
 - /native/v1/account/unsuspend
 - /native/v1/bookings
