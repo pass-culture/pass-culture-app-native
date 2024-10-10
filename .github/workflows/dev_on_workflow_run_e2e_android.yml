@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   maestro-cloud:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       app: android/app/build/outputs/apk/debug
     steps:
