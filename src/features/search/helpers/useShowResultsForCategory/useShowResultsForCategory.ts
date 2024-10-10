@@ -19,13 +19,20 @@ export const useShowResultsForCategory = (): OnPressCategory => {
   const { disabilities } = useAccessibilityFiltersContext()
   const enableWipPageSearchN1Books = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
   const enableWipPageSearchN1Cinema = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_N1_CINEMA)
-
+  const enableWipPageSearchN1FilmsDocumentairesEtSeries = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES
+  )
   const SEARCH_N1_CATEGORIES: (keyof typeof SearchGroupNameEnumv2 | undefined)[] = useMemo(
     () => [
       enableWipPageSearchN1Books ? 'LIVRES' : undefined,
       enableWipPageSearchN1Cinema ? 'CINEMA' : undefined,
+      enableWipPageSearchN1FilmsDocumentairesEtSeries ? 'FILMS_DOCUMENTAIRES_SERIES' : undefined,
     ],
-    [enableWipPageSearchN1Books, enableWipPageSearchN1Cinema]
+    [
+      enableWipPageSearchN1Books,
+      enableWipPageSearchN1Cinema,
+      enableWipPageSearchN1FilmsDocumentairesEtSeries,
+    ]
   )
 
   return useCallback(
