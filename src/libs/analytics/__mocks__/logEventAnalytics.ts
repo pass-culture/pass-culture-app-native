@@ -194,6 +194,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logUpdateStatus: jest.fn(),
   logUserSetLocation: jest.fn(),
   logUserSetVenue: jest.fn(),
+  logValidateReaction: jest.fn(),
   logVenueContact: jest.fn(),
   logVenueMapSeenDuration: jest.fn(),
   logVenueMapSessionDuration: jest.fn(),
