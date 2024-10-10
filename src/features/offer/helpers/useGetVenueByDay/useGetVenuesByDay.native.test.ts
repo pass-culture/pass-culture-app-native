@@ -215,6 +215,28 @@ describe('useGetVenueByDay', () => {
       expect(result.current.items).toHaveLength(6)
     })
   })
+
+  describe('isLoading', () => {
+    it('should be true when fetching data', async () => {
+      mockedGetStocksByOfferIds.mockReturnValueOnce(new Promise(jest.fn())) // Never resolving promise to simulate loading
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.isLoading).toBe(true)
+    })
+
+    it('should be false when data is loaded', async () => {
+      mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.isLoading).toBe(false)
+    })
+  })
 })
 
 const renderUseGetVenueByDay = (...params: Parameters<typeof useGetVenuesByDay>) =>

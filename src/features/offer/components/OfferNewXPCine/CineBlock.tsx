@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { OfferEventCardList } from 'features/offer/components/OfferEventCardList'
+import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { Spacer } from 'ui/theme'
 

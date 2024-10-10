@@ -9,7 +9,7 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 export const VenueBlockSkeleton: React.FC = () => {
   return (
-    <Container>
+    <Container testID="venue-block-skeleton-container">
       <SkeletonTile width={VENUE_THUMBNAIL_SIZE} height={VENUE_THUMBNAIL_SIZE} borderRadius={4} />
       <Spacer.Row numberOfSpaces={4} />
       <View>
@@ -22,7 +22,7 @@ export const VenueBlockSkeleton: React.FC = () => {
   )
 }
 
-const Container = styled(View)({
+const Container = styled.View({
   flexDirection: 'row',
   maxWidth: 500,
 })

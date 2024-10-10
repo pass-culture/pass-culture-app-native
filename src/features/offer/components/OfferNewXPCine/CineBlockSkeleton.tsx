@@ -3,13 +3,14 @@ import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { OfferEventCardListSkeleton } from 'features/offer/components/OfferEventCardListSkeleton'
+import { OfferEventCardListSkeleton } from 'features/offer/components/OfferEventCardList/OfferEventCardListSkeleton'
 import { VenueBlockSkeleton } from 'features/offer/components/OfferVenueBlock/VenueBlockSkeleton'
 import { Spacer } from 'ui/theme'
 
 export const CineBlockSkeleton: FunctionComponent = () => {
   return (
     <FlatList
+      testID="cine-block-skeleton"
       data={Array.from({ length: 3 })}
       renderItem={() => (
         <CineBlockContainer>

@@ -8,7 +8,7 @@ import { Spacer } from 'ui/theme'
 
 export const OfferEventCardListSkeleton: React.FC = () => {
   return (
-    <Container>
+    <Container testID="offer-event-card-list-skeleton-container">
       <ScrollViewContainer horizontal showsHorizontalScrollIndicator={false}>
         <FlatList
           data={[...Array(2)]}
