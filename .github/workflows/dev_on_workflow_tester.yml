@@ -21,7 +21,7 @@ env:
 jobs:
   yarn_test_web:
     name: 'Run Web unit tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         shard: [1, 2, 3]
@@ -57,7 +57,7 @@ jobs:
 
   yarn_test_native:
     name: 'Run native unit tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7]
@@ -101,7 +101,7 @@ jobs:
           restore-keys:
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
   report-coverage:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: yarn_test_native
     steps:
       - uses: actions/checkout@v4
@@ -142,7 +142,7 @@ jobs:
         with:
           projectBaseDir: .
   yarn_test_proxy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -180,7 +180,7 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native

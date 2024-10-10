@@ -13,7 +13,7 @@ on:
 jobs:
   check-proxy-version:
     name: Check proxy version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       proxy_version: ${{ steps.proxy-version.outputs.proxy_version }}
       is_greater_or_equal_version: ${{ steps.proxy-rollback-protection.outputs.is_greater_or_equal_version }}
