@@ -26,7 +26,10 @@ buildscript {
         classpath("com.google.gms:google-services:4.3.4") // google service for batch notifications
         classpath("com.google.gms:google-services:4.3.14") // google service for google-signin
         classpath("com.google.firebase:perf-plugin:1.4.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
 }
+
+apply plugin: "com.facebook.react.rootproject"
 
 

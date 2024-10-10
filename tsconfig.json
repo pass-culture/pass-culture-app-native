@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es2022","dom", "dom.iterable", "esnext"],
+    "lib": ["es2022", "dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -39,5 +39,5 @@
     "coverage/**",
     "./server/**"
   ],
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json"
 }
