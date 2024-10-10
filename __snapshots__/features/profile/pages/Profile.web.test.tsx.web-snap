@@ -218,7 +218,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h1
                   aria-level="1"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-9h9n7a r-fontSize-yy2aun r-lineHeight-2agvir"
+                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
                   dir="ltr"
                   role="heading"
                 >
@@ -1388,7 +1388,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h1
                   aria-level="1"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-9h9n7a r-fontSize-yy2aun r-lineHeight-2agvir"
+                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
                   dir="ltr"
                   role="heading"
                 >

@@ -7,7 +7,7 @@ import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constan
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
@@ -94,7 +94,7 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Title = styled(Typo.Title1)(({ theme }) => ({
+const Title = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

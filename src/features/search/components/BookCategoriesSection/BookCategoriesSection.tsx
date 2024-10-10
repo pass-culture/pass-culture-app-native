@@ -12,7 +12,7 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export function BookCategoriesSection<
   T extends CategoriesMapping,
@@ -94,7 +94,7 @@ export function BookCategoriesSection<
   )
 }
 
-const Title = styled(Typo.Title1)({})
+const Title = styled(TypoDS.Title1)({})
 
 const ListItem = styled(Li)({
   display: 'flex',

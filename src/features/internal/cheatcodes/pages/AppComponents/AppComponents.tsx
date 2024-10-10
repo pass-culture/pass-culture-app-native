@@ -71,7 +71,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Info } from 'ui/svg/icons/Info'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
-import { getSpacing, LENGTH_S, Spacer, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_S, Spacer, Typo, TypoDS } from 'ui/theme'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
@@ -111,7 +111,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Typos */}
       <Accordion title="Typos">
-        <Typo.Title1>Title 1</Typo.Title1>
+        <TypoDS.Title1>Title 1</TypoDS.Title1>
         <Typo.Title2>Title 2</Typo.Title2>
         <Typo.Title3>Title 3</Typo.Title3>
         <Typo.Title4>Title 4</Typo.Title4>

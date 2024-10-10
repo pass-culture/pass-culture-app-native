@@ -1935,23 +1935,33 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
           }
         >
           <View>
-            <Text
-              numberOfLines={2}
+            <View
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
-                    "marginHorizontal": 24,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              testID="playlistTitle"
             >
-              GTL playlist
-            </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                      "marginHorizontal": 24,
+                    },
+                  ]
+                }
+                testID="playlistTitle"
+              >
+                GTL playlist
+              </Text>
+            </View>
           </View>
           <View
             onLayout={[Function]}

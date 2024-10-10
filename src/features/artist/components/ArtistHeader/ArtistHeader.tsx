@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
 type ArtistHeaderProps = {
@@ -19,7 +19,7 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
       <Avatar borderWidth={6} size={AVATAR_LARGE}>
         {avatarImage ?? <DefaultAvatar />}
       </Avatar>
-      <Typo.Title1>{name}</Typo.Title1>
+      <TypoDS.Title1>{name}</TypoDS.Title1>
     </ArtistHeaderWrapper>
   )
 }

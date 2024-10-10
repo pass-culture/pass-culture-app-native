@@ -20,7 +20,7 @@ import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
@@ -134,7 +134,7 @@ export const Stepper = () => {
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
+const StyledTitle1 = styled(TypoDS.Title1).attrs(() => getHeadingAttrs(1))``
 
 const Container = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {

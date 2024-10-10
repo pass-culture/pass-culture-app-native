@@ -8,7 +8,7 @@ import { SubscribeButtonWithModals } from 'features/home/components/SubscribeBut
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 export const MOBILE_HEADER_HEIGHT = 45
@@ -71,7 +71,7 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
               <Spacer.Column numberOfSpaces={1} />
             </React.Fragment>
           ) : null}
-          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+          <TypoDS.Title1 numberOfLines={2}>{title}</TypoDS.Title1>
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
@@ -142,7 +142,7 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Title = styled(Typo.Title1)(({ theme }) => ({
+const Title = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

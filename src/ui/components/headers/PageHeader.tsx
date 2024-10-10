@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
@@ -16,7 +16,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
       <Spacer.TopScreen />
       <HeaderContainer>
         <TitleContainer>
-          <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
+          <TypoDS.Title1 numberOfLines={numberOfLines}>{title}</TypoDS.Title1>
           <Spacer.Column numberOfSpaces={1} />
           {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         </TitleContainer>
