@@ -42,13 +42,16 @@ const findCountry = (countryId: string) => COUNTRIES.find((country) => country.i
 export const SetPhoneNumberWithoutValidation = () => {
   const phoneNumberInputErrorId = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
-  const { control, handleSubmit, getValues, setError } = useForm<FormValues>({
+  const { control, handleSubmit, getValues, setError, formState } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
       phoneNumber: phoneValidation?.phoneNumber,
       countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
     },
+    mode: 'onChange',
   })
+
+  const disableSubmit = !formState.isValid
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
@@ -152,7 +155,14 @@ export const SetPhoneNumberWithoutValidation = () => {
           </Form.MaxWidth>
         </ViewGap>
       }
-      fixedBottomChildren={<ButtonPrimary type="submit" wording="Continuer" onPress={submit} />}
+      fixedBottomChildren={
+        <ButtonPrimary
+          disabled={disableSubmit}
+          type="submit"
+          wording="Continuer"
+          onPress={submit}
+        />
+      }
     />
   )
 }

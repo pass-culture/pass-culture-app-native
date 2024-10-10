@@ -6,7 +6,7 @@ import { UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState } from 'features/identityCheck/context/reducer'
 import * as SubscriptionContextProvider from 'features/identityCheck/context/SubscriptionContextProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
 
@@ -33,20 +33,23 @@ describe('SetPhoneNumberWithoutValidation', () => {
   })
 
   describe('when user already given his phone number', () => {
-    test('Use the phone number already given', () => {
+    test('Use the phone number already given', async () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '33', countryCode: 'FR' })
       renderSetPhoneNumberWithoutValidation()
-
-      expect(getPhoneNumberInputValue()).toBe('0612345678')
+      await act(() => {
+        expect(getPhoneNumberInputValue()).toBe('0612345678')
+      })
     })
 
-    test('Use the country already given', () => {
+    test('Use the country already given', async () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '596', countryCode: 'MQ' })
       renderSetPhoneNumberWithoutValidation()
 
       const countrySelected = screen.getByText('+596')
 
-      expect(countrySelected).toBeOnTheScreen()
+      await act(() => {
+        expect(countrySelected).toBeOnTheScreen()
+      })
     })
   })
 
@@ -59,7 +62,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
       test('Redirect to steppers when update phone number is succeed', async () => {
         renderSetPhoneNumberWithoutValidation()
 
-        submitWithPhoneNumber('0612345678')
+        await submitWithPhoneNumber('0612345678')
 
         await waitFor(() => {
           expect(dispatch).toHaveBeenCalledWith({
@@ -72,7 +75,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
       test('Store phone number', async () => {
         renderSetPhoneNumberWithoutValidation()
 
-        submitWithPhoneNumber('0612345678')
+        await submitWithPhoneNumber('0612345678')
 
         await waitFor(() => {
           expect(mockDispatch).toHaveBeenCalledWith({
@@ -91,23 +94,23 @@ describe('SetPhoneNumberWithoutValidation', () => {
         updatePhoneNumberWillFail()
         renderSetPhoneNumberWithoutValidation()
 
-        submitWithPhoneNumber('0612345678')
+        await submitWithPhoneNumber('0612345678')
 
         await waitFor(() => {
           expect(screen.getByText('Une erreur est survenue')).toBeTruthy()
         })
       })
-
-      test('Show error message when phone number is empty', async () => {
-        renderSetPhoneNumberWithoutValidation()
-
-        submitWithPhoneNumber('')
-
-        await waitFor(() => {
-          expect(screen.getByText('Le numéro de téléphone est requis')).toBeTruthy()
-        })
-      })
     })
+  })
+
+  test('User can NOT send form when form is invalid', async () => {
+    renderSetPhoneNumberWithoutValidation()
+
+    await fillPhoneNumberInput('')
+
+    const button = screen.getByText('Continuer')
+
+    expect(button).toBeDisabled()
   })
 
   function renderSetPhoneNumberWithoutValidation() {
@@ -122,12 +125,21 @@ describe('SetPhoneNumberWithoutValidation', () => {
     patchProfile.mockRejectedValueOnce(new Error('Une erreur est survenue'))
   }
 
-  function submitWithPhoneNumber(phoneNumber: string) {
+  async function fillPhoneNumberInput(phoneNumber: string) {
     const input = screen.getByTestId('Entrée pour le numéro de téléphone')
-    fireEvent.changeText(input, phoneNumber)
 
-    const button = screen.getByText('Continuer')
-    fireEvent.press(button)
+    await act(() => {
+      fireEvent.changeText(input, phoneNumber)
+    })
+  }
+
+  async function submitWithPhoneNumber(phoneNumber: string) {
+    await fillPhoneNumberInput(phoneNumber)
+
+    await act(() => {
+      const button = screen.getByText('Continuer')
+      fireEvent.press(button)
+    })
   }
 
   function getPhoneNumberInputValue() {
