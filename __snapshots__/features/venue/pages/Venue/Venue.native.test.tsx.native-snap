@@ -158,11 +158,11 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           />
           <View
-            gap={2}
+            gap={1}
             style={
               [
                 {
-                  "gap": 8,
+                  "gap": 4,
                 },
               ]
             }
@@ -175,8 +175,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
                   },
                 ]
               }
@@ -193,16 +193,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 ]
               }
             >
-              <View
-                gap={1}
-                style={
-                  [
-                    {
-                      "gap": 4,
-                    },
-                  ]
-                }
-              >
+              <View>
                 <Text
                   style={
                     [
@@ -210,7 +201,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -222,9 +213,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -638,9 +629,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                       [
                         {
                           "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "textAlign": "center",
                         },
                       ]
@@ -735,9 +726,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                       [
                         {
                           "color": "#696A6F",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "textAlign": "center",
                         },
                       ]
@@ -3560,9 +3551,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3576,7 +3567,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -5102,11 +5093,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             }
           />
           <View
-            gap={2}
+            gap={1}
             style={
               [
                 {
-                  "gap": 8,
+                  "gap": 4,
                 },
               ]
             }
@@ -5119,8 +5110,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
                   },
                 ]
               }
@@ -5137,16 +5128,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 ]
               }
             >
-              <View
-                gap={1}
-                style={
-                  [
-                    {
-                      "gap": 4,
-                    },
-                  ]
-                }
-              >
+              <View>
                 <Text
                   style={
                     [
@@ -5154,7 +5136,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -5166,9 +5148,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -5582,9 +5564,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "color": "#696A6F",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "textAlign": "center",
                         },
                       ]
@@ -5679,9 +5661,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "textAlign": "center",
                         },
                       ]
@@ -5773,7 +5755,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -5795,9 +5777,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -5842,7 +5824,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -5864,9 +5846,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -5911,7 +5893,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -6291,7 +6273,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -6842,7 +6824,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -6879,7 +6861,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -6890,9 +6871,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -6905,9 +6886,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -6922,7 +6903,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -6933,9 +6913,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -6948,9 +6928,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -6965,7 +6945,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -6976,9 +6955,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -6991,9 +6970,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7008,7 +6987,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -7019,9 +6997,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7034,9 +7012,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7051,7 +7029,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -7062,9 +7039,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7077,9 +7054,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7094,7 +7071,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -7105,9 +7081,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7120,9 +7096,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7137,7 +7113,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       [
                         {
                           "display": "flex",
-                          "gap": 4,
                         },
                       ]
                     }
@@ -7148,9 +7123,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7163,9 +7138,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -7331,9 +7306,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -7347,7 +7322,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
