@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
@@ -70,5 +70,5 @@ Square.args = {
   rounded: false,
   borderWidth: 6,
   backgroundColor: theme.colors.coralLight,
-  children: <Typo.Title1>M.M</Typo.Title1>,
+  children: <TypoDS.Title1>M.M</TypoDS.Title1>,
 }

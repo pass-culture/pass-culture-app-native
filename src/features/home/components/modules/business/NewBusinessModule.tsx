@@ -16,7 +16,7 @@ import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
@@ -239,7 +239,7 @@ const Row = styled.View({
   marginBottom: getSpacing(6),
 })
 
-const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
+const StyledTitle1 = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

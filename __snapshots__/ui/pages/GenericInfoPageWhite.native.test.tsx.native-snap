@@ -69,9 +69,9 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 26,
-          "lineHeight": 34,
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 28,
+          "lineHeight": 44.8,
           "textAlign": "center",
         },
       ]

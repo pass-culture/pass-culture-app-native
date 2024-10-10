@@ -10,7 +10,7 @@ import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
@@ -78,7 +78,7 @@ const Subtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const TitleLabel = styled(Typo.Title1)({
+const TitleLabel = styled(TypoDS.Title1)({
   maxWidth: '70%',
 })
 

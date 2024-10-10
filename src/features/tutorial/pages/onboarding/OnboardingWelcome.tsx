@@ -11,7 +11,7 @@ import { storage } from 'libs/storage'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
 
@@ -86,7 +86,7 @@ const ImageBackground = styled.ImageBackground({
   bottom: 0,
 })
 
-const StyledTitle1 = styled(Typo.Title1)({
+const StyledTitle1 = styled(TypoDS.Title1)({
   textAlign: 'center',
 })
 

@@ -39,7 +39,7 @@ const Component = () => {
 
   return (
     <View>
-      <Typo.Title1>{bears} bears</Typo.Title1>
+      <TypoDS.Title1>{bears} bears</TypoDS.Title1>
       <Button onClick={addBear}>+</Button>
       <Button onClick={removeBear}>-</Button>
       <Button onClick={() => setBears(0)}>Reset</Button>
@@ -69,7 +69,7 @@ const useCountBears = createStore<State, ReturnType<typeof setActions>>(
   'count-bears-store',
   defaultState,
   setActions,
-  { persist: true },
+  { persist: true }
 )
 
 export const useBears = () => useCountBears((state) => state.bears)

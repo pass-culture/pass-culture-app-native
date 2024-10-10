@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetThematicHeaderHeight } from 'features/home/components/headers/ThematicHomeHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
@@ -21,7 +21,7 @@ export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHea
       {headerTitle ? (
         <React.Fragment>
           <HeaderPlaceholder headerHeight={headerHeight} />
-          <Typo.Title1 numberOfLines={2}>{headerTitle}</Typo.Title1>
+          <TypoDS.Title1 numberOfLines={2}>{headerTitle}</TypoDS.Title1>
           {headerSubtitle ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />

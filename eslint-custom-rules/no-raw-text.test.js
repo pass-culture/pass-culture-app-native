@@ -10,7 +10,7 @@ const tests = {
     // <Text>string</Text>
     { code: '<Text>toto</Text>' },
     // <Typo.***>string</Typo.***>
-    { code: '<Typo.Title1>toto</Typo.Title1>' },
+    { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
     { code: '<Typo.Title2>toto</Typo.Title2>' },
     { code: '<Typo.Title3>toto</Typo.Title3>' },
     { code: '<Typo.Title4>toto</Typo.Title4>' },
