@@ -17,10 +17,9 @@ on:
       GCP_PROD_SERVICE_ACCOUNT:
       GCP_PROD_WORKLOAD_IDENTITY_PROVIDER:
 
-
 jobs:
   web_proxy_deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
@@ -74,7 +73,7 @@ jobs:
             | grep -v $(gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --hide-no-traffic --format="table[no-heading](id)") \
             | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ always() }}
     needs: web_proxy_deploy
     steps:
