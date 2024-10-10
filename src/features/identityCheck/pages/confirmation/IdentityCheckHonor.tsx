@@ -1,14 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
+import { ScrollView } from 'react-native'
 import { useQueryClient } from 'react-query'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { usePostHonorStatement } from 'features/identityCheck/api/usePostHonorStatement'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
-import { Declaration } from 'features/identityCheck/components/Declaration'
-import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -16,15 +14,17 @@ import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckHonor = () => {
+  const headerHeight = useGetHeaderHeight()
   useEffect(() => {
     analytics.logScreenViewIdentityCheckHonor()
   }, [])
-  const theme = useTheme()
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -69,35 +69,49 @@ export const IdentityCheckHonor = () => {
   useEnterKeyAction(() => postHonorStatement())
 
   return (
-    <PageWithHeader
-      title="Confirmation"
-      scrollChildren={
-        <Container>
-          <CenteredTitle title="Les informations que tu as renseignées sont-elles correctes&nbsp;?" />
-          {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
-          <Declaration
-            text="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
-            description="Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées."
-          />
-          {theme.isMobileViewport ? (
-            <Spacer.Flex flex={2} />
-          ) : (
-            <Spacer.Column numberOfSpaces={10} />
-          )}
-          <ButtonContainer>
-            <ButtonPrimary
-              type="submit"
-              onPress={postHonorStatement}
-              wording="Valider et continuer"
-              isLoading={isSubmitButtonEnabled}
-            />
-          </ButtonContainer>
-          <Spacer.BottomScreen />
-        </Container>
-      }
-    />
+    <StyledScrollView>
+      <HeaderHeightSpacer headerHeight={headerHeight} />
+      <TypoDS.Title2 {...getHeadingAttrs(1)}>
+        Les informations que tu as renseignées sont-elles correctes&nbsp;?
+      </TypoDS.Title2>
+      <Spacer.Column numberOfSpaces={10} />
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>
+        &quot;Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.&quot;
+      </TypoDS.Title4>
+      <Spacer.Column numberOfSpaces={4} />
+      <StyledBody>
+        Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni.
+        En cas de fraude, des poursuites judiciaires pourraient être engagées.
+      </StyledBody>
+      <Spacer.Column numberOfSpaces={15} />
+      <ButtonPrimary
+        type="submit"
+        onPress={postHonorStatement}
+        wording="Valider et continuer"
+        isLoading={isSubmitButtonEnabled}
+      />
+      <Spacer.Column numberOfSpaces={5} />
+      <Spacer.BottomScreen />
+    </StyledScrollView>
   )
 }
 
-const Container = styled.View({ flexGrow: 1 })
-const ButtonContainer = styled.View({ paddingVertical: getSpacing(5) })
+const StyledScrollView = styled(ScrollView).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginVertical,
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+  },
+}))``
+
+const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
+  headerHeight: number
+}>(({ headerHeight }) => ({
+  paddingTop: headerHeight,
+}))
+
+const StyledBody = styled(TypoDS.BodyS)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
