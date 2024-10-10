@@ -10,10 +10,9 @@ export const useDistance = (offerPosition: {
   if (!userLocation) return undefined
   if (
     selectedLocationMode === LocationMode.AROUND_PLACE &&
-    (selectedPlace?.type == 'municipality' ||
-      selectedPlace?.type == 'locality' ||
-      !selectedPlace?.type)
-  )
+    (selectedPlace?.type == 'municipality' || selectedPlace?.type == 'locality')
+  ) {
     return undefined
+  }
   return formatDistance(offerPosition, userLocation)
 }
