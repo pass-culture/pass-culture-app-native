@@ -4,6 +4,7 @@ import { Social } from 'react-native-share'
 import {
   IdentityCheckMethod,
   NativeCategoryIdEnumv2,
+  ReactionTypeEnum,
   RecommendationApiParams,
   VenueContactModel,
 } from 'api/gen'
@@ -716,6 +717,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logUserSetVenue: ({ venueLabel }: { venueLabel: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),
+  logValidateReaction: (params: {
+    offerId: number
+    reactionType: ReactionTypeEnum
+    userId?: number
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenueMapSeenDuration: (duration: number) =>

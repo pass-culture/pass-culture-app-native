@@ -168,6 +168,7 @@ export enum AnalyticsEvent {
   USE_FILTER = 'UseFilter',
   USER_SET_LOCATION = 'UserSetLocation',
   USER_SET_VENUE = 'UserSetVenue',
+  VALIDATE_REACTION = 'ValidateReaction',
   VENUE_CONTACT = 'VenueContact',
   VENUE_MAP_SEEN_DURATION = 'VenueMapSeenDuration',
   VENUE_MAP_SESSION_DURATION = 'VenueMapSessionDuration',
