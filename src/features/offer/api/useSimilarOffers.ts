@@ -23,6 +23,7 @@ type WithExcludeCategoryProps = {
 
 type Props = (WithIncludeCategoryProps | WithExcludeCategoryProps) & {
   offerId: number
+  shouldFetch: boolean
   position?: Position
   searchGroupList?: SearchGroupResponseModelv2[]
 }
@@ -50,6 +51,7 @@ export const getCategories = (
 
 export const useSimilarOffers = ({
   offerId,
+  shouldFetch,
   position,
   categoryIncluded,
   categoryExcluded,
@@ -63,7 +65,7 @@ export const useSimilarOffers = ({
   )
 
   const { data: apiRecoResponse } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS, offerId, position, categories],
+    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, categories],
     async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
@@ -99,7 +101,9 @@ export const useSimilarOffers = ({
       }
     },
     {
-      enabled: !!categories && !!netInfo.isConnected,
+      staleTime: 1000 * 60 * 5,
+      enabled:
+        !!categories && !!netInfo.isConnected && !!netInfo.isInternetReachable && shouldFetch,
     }
   )
 
