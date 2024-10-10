@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { TouchableOpacityProps } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -23,7 +23,6 @@ type CategoryButtonV2Props = {
 
 export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
   label,
-  textColor,
   fillColor,
   borderColor,
   style,
@@ -31,7 +30,6 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
 }) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
-  const { colors } = useTheme()
 
   return (
     <TouchableContainer
@@ -42,10 +40,9 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
       accessibilityLabel={`Catégorie ${label}`}
       baseColor={fillColor}
       borderColor={borderColor}
-      textColor={textColor}
       style={style}>
       <LabelContainer>
-        <Label baseColor={colors.black}>{label.toUpperCase()}</Label>
+        <Label>{label.toUpperCase()}</Label>
       </LabelContainer>
     </TouchableContainer>
   )
@@ -57,13 +54,12 @@ const TouchableContainer = styled(TouchableOpacity)<{
   isHover: boolean
   baseColor: ColorsEnum
   borderColor: ColorsEnum
-  textColor: ColorsEnum
-}>(({ theme, isFocus, isHover, baseColor, borderColor, textColor }) => ({
+}>(({ theme, isFocus, isHover, baseColor, borderColor }) => ({
   height: getSpacing(24.25),
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
-  ...getHoverStyle(textColor, isHover),
+  ...getHoverStyle(theme.colors.black, isHover),
   backgroundColor: baseColor,
   borderColor,
   borderWidth: '1.6px',
@@ -78,9 +74,7 @@ const LabelContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const Label = styled(TypoDS.BodySemiBoldS).attrs({ numberOfLines: 3 })<{ baseColor?: string }>(
-  ({ baseColor }) => ({
-    textAlign: 'left',
-    color: baseColor,
-  })
-)
+const Label = styled(TypoDS.BodySemiBoldS).attrs({ numberOfLines: 3 })(({ theme }) => ({
+  textAlign: 'left',
+  color: theme.colors.black,
+}))

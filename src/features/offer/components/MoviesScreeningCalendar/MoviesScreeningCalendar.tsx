@@ -27,7 +27,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useLayout } from 'ui/hooks/useLayout'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -186,7 +186,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           ))}
         </Animated.View>
       </Container>
-      {nonScreeningOffers.length ? (
+      {nonScreeningOffers.length > 0 ? (
         <SectionWithDivider visible margin={false} gap={6}>
           <PassPlaylist
             testID="offersModuleList"
@@ -208,4 +208,4 @@ const Container = styled(View)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const PlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``

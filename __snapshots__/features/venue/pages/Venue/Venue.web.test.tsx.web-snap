@@ -2643,12 +2643,12 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
               class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-175oi2r r-gap-1cmwbt1"
+              class="css-view-175oi2r r-gap-9aw3ui"
             >
               <h1
                 aria-label="Nom du lieu : Le Petit Rintintin 1"
                 aria-level="1"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 dir="ltr"
                 role="heading"
               >
@@ -2658,16 +2658,16 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 class="css-view-175oi2r r-gap-1ssbvtb"
               >
                 <div
-                  class="css-view-175oi2r r-gap-9aw3ui"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Adresse
                   </div>
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     1 boulevard Poissonnière, 75000 Paris
@@ -2795,7 +2795,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                       dir="ltr"
                     >
                       Offres disponibles
@@ -2820,7 +2820,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                      class="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                       dir="ltr"
                     >
                       Infos pratiques
@@ -2851,7 +2851,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Modalités de retrait
@@ -2860,7 +2860,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     How to withdraw, https://test.com
@@ -2875,7 +2875,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Description
@@ -2884,7 +2884,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
@@ -2899,7 +2899,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Contact
@@ -3029,7 +3029,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Accessibilité
@@ -3285,7 +3285,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Horaires d’ouverture
@@ -3299,19 +3299,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                   >
                     <li
                       aria-label="Lundi 09:00 - 19:00"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Lundi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         09:00 - 19:00
@@ -3319,19 +3319,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Mardi 09:00 - 12:00  puis  14:00 - 19:00"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Mardi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         09:00 - 12:00 / 14:00 - 19:00
@@ -3339,19 +3339,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Mercredi 09:00 - 12:00  puis  14:00 - 19:00"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Mercredi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         09:00 - 12:00 / 14:00 - 19:00
@@ -3359,19 +3359,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Jeudi 09:00 - 12:00  puis  14:00 - 19:00"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Jeudi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         09:00 - 12:00 / 14:00 - 19:00
@@ -3379,19 +3379,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Vendredi 09:00 - 19:00"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Vendredi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         09:00 - 19:00
@@ -3399,19 +3399,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Samedi Fermé"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Samedi
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Fermé
@@ -3419,19 +3419,19 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                     </li>
                     <li
                       aria-label="Dimanche Fermé"
-                      class="css-view-175oi2r r-display-6koalj r-gap-9aw3ui"
+                      class="css-view-175oi2r r-display-6koalj"
                       role="listitem"
                     >
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Dimanche
                       </div>
                       <div
                         aria-hidden="true"
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Fermé
@@ -3489,13 +3489,13 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 class="css-view-175oi2r r-flexShrink-1wbh5a2"
               >
                 <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                   dir="ltr"
                 >
                   Fan de lecture ?
                 </div>
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                 >
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !

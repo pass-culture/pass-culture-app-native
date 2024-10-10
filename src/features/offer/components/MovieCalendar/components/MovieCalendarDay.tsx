@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 import { useMovieCalendarDay } from '../hooks/useMovieCalendarDay'
 
@@ -55,7 +55,7 @@ const CalendarCell = styled(TouchableOpacity)({
   flexWrap: 'wrap',
 })
 
-const DefaultCalendarText = styled(Typo.ButtonText)(({ theme }) => ({
+const DefaultCalendarText = styled(TypoDS.BodySemiBold)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
   width: getSpacing(theme.isDesktopViewport ? 22 : 10),

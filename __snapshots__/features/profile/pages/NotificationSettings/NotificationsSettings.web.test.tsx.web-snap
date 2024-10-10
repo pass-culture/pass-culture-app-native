@@ -226,7 +226,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
               dir="ltr"
             >
               Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.

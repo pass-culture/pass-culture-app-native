@@ -6,7 +6,7 @@ import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBloc
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
 import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -17,12 +17,12 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
     {
       title: 'Modalités de retrait',
-      body: <Typo.Body>{venue.withdrawalDetails}</Typo.Body>,
+      body: <TypoDS.Body>{venue.withdrawalDetails}</TypoDS.Body>,
       isDisplayed: !!venue.withdrawalDetails,
     },
     {
       title: 'Description',
-      body: <Typo.Body>{venue.description}</Typo.Body>,
+      body: <TypoDS.Body>{venue.description}</TypoDS.Body>,
       isDisplayed: !!venue.description,
     },
     {
@@ -82,7 +82,7 @@ const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }
 }) => (
   <Fragment>
     <Spacer.Column numberOfSpaces={4} />
-    <Typo.Caption>{title}</Typo.Caption>
+    <TypoDS.BodySemiBoldXs>{title}</TypoDS.BodySemiBoldXs>
     <Spacer.Column numberOfSpaces={4} />
     {children}
     <Spacer.Column numberOfSpaces={4} />
