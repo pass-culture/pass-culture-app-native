@@ -20,7 +20,7 @@ on:
 
 jobs:
   web_deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment:
       name: ${{ inputs.ENV }}
     steps:
@@ -75,7 +75,7 @@ jobs:
         run: |
           gsutil cp dist/index.html gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ always() }}
     needs: web_deploy
     steps:

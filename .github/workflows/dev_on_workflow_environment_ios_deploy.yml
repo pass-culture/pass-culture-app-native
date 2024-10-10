@@ -94,7 +94,7 @@ jobs:
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" ${{ inputs.ENV }}'
 
   slack_notify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ always() }}
     needs: sentry_and_deploy
     steps:
