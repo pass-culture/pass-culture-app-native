@@ -1,0 +1,21 @@
+appId: app.passculture.webapp
+---
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'true'}
+    commands:
+      - stopApp
+      - openLink:
+          link: ${URL}
+          autoVerify: true
+      - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'false'}
+    commands:
+      - stopApp: com.android.chrome
+      - openLink:
+          link: ${URL}
+          autoVerify: true
+      - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml

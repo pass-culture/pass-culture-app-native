@@ -2,39 +2,9 @@ appId: app.passculture.webapp
 ---
 - stopApp
 - runFlow:
-    when:
-      true: ${MAESTRO_APP_INSTALLED == 'true'}
-    label: 'Vérification du lien vers la page offre (app installée)'
-    commands:
-      - openLink:
-          link: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
-          autoVerify: true
-      - assertVisible:
-          text: 'Respect de ta vie privée'
-          index: 2
-          optional: true
-      - tapOn:
-          text: 'Tout accepter'
-          optional: true
-      - assertVisible:
-          id: 'offer-body-mobile'
-      - assertVisible:
-          id: 'offerBodyImage'
+    file: DeepLinksGeneric.yml
+    env:
+        URL: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+    label: 'Vérification du lien vers la page offre'
 
-- runFlow:
-    when:
-      true: ${MAESTRO_APP_INSTALLED == 'false'}
-    label: 'Vérification du lien vers la page offre (app non-installée)'
-    commands:
-      - stopApp: com.android.chrome
-      - openLink:
-          link: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
-          autoVerify: true
-      - assertVisible:
-          text: 'Respect de ta vie privée'
-          index: 2
-          optional: true
-      - tapOn:
-          text: 'Tout accepter'
-          optional: true
-      - assertVisible: '.*100547783.*'
+- assertVisible: "Réserver.*"
