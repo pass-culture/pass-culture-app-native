@@ -4,7 +4,7 @@ import { OfferResponseV2 } from 'api/gen'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
-import { useOfferSubcategory } from 'features/offer/helpers/useOfferSubcategory/useOfferSubcategory'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 
 type Props = {
@@ -14,7 +14,9 @@ type Props = {
 
 export const OfferEventCardList: FC<Props> = ({ offer, selectedDate = new Date() }) => {
   const { stocks, isExternalBookingsDisabled, venue } = offer
-  const subcategory = useOfferSubcategory(offer)
+
+  const subcategoriesMapping = useSubcategoriesMapping()
+  const subcategory = subcategoriesMapping[offer.subcategoryId]
 
   const { selectedScreeningStock } = useMovieScreeningCalendar(stocks, selectedDate)
 

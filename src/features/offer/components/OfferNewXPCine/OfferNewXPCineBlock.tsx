@@ -29,7 +29,12 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
   const distance = useDistance({ lat, lng })
   const flatListRef = useRef<FlatList | null>(null)
   const { selectedDate, setSelectedDate, dates } = useNextDays(15)
-  const { getNext, isEnd, items, isLoading } = useGetVenuesByDay(selectedDate, offer)
+  const {
+    getNext,
+    isEnd: hasReachedVenueListEnd,
+    items,
+    isLoading,
+  } = useGetVenuesByDay(selectedDate, offer)
 
   const { animatedStyle, onContentSizeChange } = useAnimatedHeight()
 
@@ -75,7 +80,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
             </React.Fragment>
           )}
         />
-        {isEnd ? null : (
+        {hasReachedVenueListEnd ? null : (
           <SeeMoreContainer>
             <Spacer.Column numberOfSpaces={6} />
             <Text>Aucune séance ne te correspond&nbsp;?</Text>

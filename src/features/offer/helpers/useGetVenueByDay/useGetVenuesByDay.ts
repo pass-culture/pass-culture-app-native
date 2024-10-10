@@ -8,16 +8,20 @@ import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCal
 import { useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
-const DEFAULT_DISTANCE_KM = 10
+const DEFAULT_RADIUS_KM = 50
 
 type Options = Partial<{
-  distanceKm: number
+  radiusKm: number
   initialCount: number
   nextCount: number
 }>
 
 export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: Options) => {
-  const { distanceKm = DEFAULT_DISTANCE_KM, initialCount = 6, nextCount = 3 } = options || {}
+  const {
+    radiusKm: distanceKm = DEFAULT_RADIUS_KM,
+    initialCount = 6,
+    nextCount = 3,
+  } = options || {}
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
 
@@ -40,15 +44,11 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   }, [date, initialCount])
 
   const filteredOffers = useMemo(
-    () =>
-      moviesOfferBuilder(offersWithStocks?.offers)
-        .withMoviesOnDay(date)
-        .sortedByLast30DaysBooking()
-        .buildOfferResponse(),
+    () => moviesOfferBuilder(offersWithStocks?.offers).withMoviesOnDay(date).buildOfferResponse(),
     [date, offersWithStocks?.offers]
   )
 
-  const exposedOffers = useMemo(
+  const displayOffers = useMemo(
     () => (count === filteredOffers.length ? filteredOffers : filteredOffers.slice(0, count)),
     [count, filteredOffers]
   )
@@ -66,11 +66,11 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   )
 
   const isEnd = useMemo(() => {
-    return exposedOffers.length === filteredOffers.length
-  }, [exposedOffers.length, filteredOffers.length])
+    return displayOffers.length === filteredOffers.length
+  }, [displayOffers.length, filteredOffers.length])
 
   return {
-    items: exposedOffers,
+    items: displayOffers,
     isLoading,
     getNext,
     isEnd,
