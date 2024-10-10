@@ -42,6 +42,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             position,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           }),
@@ -59,6 +60,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             position,
             categoryExcluded: SearchGroupNameEnumv2.CINEMA,
           }),
@@ -76,6 +78,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: { latitude: 10, longitude: 15 },
           }),
@@ -109,6 +112,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),
@@ -136,6 +140,23 @@ describe('useSimilarOffers', () => {
         )
       })
     })
+
+    it('should not call similar offers API when offer id provided, user share his position and shouldFetch is false', () => {
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            shouldFetch: false,
+            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+            position: { latitude: 10, longitude: 15 },
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
+    })
   })
 
   describe('When error API response', () => {
@@ -147,6 +168,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),
@@ -169,6 +191,7 @@ describe('useSimilarOffers', () => {
       () =>
         useSimilarOffers({
           offerId: mockOfferId,
+          shouldFetch: true,
           categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           position: null,
         }),
@@ -210,6 +233,7 @@ describe('useSimilarOffers', () => {
         () =>
           useSimilarOffers({
             offerId: mockOfferId,
+            shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
             position: null,
           }),

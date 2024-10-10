@@ -17,7 +17,7 @@ export const useAlgoliaSimilarOffers = (
   const transformHits = useTransformOfferHits()
 
   const { data: hits } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS, JSON.stringify(ids)],
+    [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
     () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )

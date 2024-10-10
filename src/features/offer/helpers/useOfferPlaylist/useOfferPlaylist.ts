@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import { useMemo } from 'react'
 
 import {
@@ -29,6 +30,7 @@ export const useOfferPlaylist = ({
   searchGroupList,
 }: Props): UseOfferPlaylistType => {
   const { userLocation } = useLocation()
+  const isFocused = useIsFocused()
 
   const { latitude, longitude } = userLocation ?? {}
   const roundedPosition: Position = useMemo(
@@ -44,6 +46,7 @@ export const useOfferPlaylist = ({
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
       offerId: offer.id,
+      shouldFetch: isFocused,
       position,
       categoryIncluded: offerSearchGroup,
     })
@@ -53,6 +56,7 @@ export const useOfferPlaylist = ({
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
     offerId: offer.id,
+    shouldFetch: isFocused,
     position,
     categoryExcluded: offerSearchGroup,
     searchGroupList,
