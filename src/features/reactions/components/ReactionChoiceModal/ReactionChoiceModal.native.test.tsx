@@ -6,11 +6,13 @@ import { BookingsTab } from 'features/bookings/enum'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
 
 jest.mock('libs/subcategories/useSubcategory')
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
@@ -217,6 +219,30 @@ describe('ReactionChoiceModal', () => {
       expect(mockHandleSave).toHaveBeenCalledWith({
         offerId: mockOffer.id,
         reactionType: ReactionTypeEnum.LIKE,
+      })
+    })
+
+    it('should trigger ValidationReaction log when click on reaction button', () => {
+      const mockHandleSave = jest.fn()
+      render(
+        <ReactionChoiceModal
+          offer={mockOffer}
+          dateUsed="2023-05-30"
+          visible
+          closeModal={mockCloseModal}
+          onSave={mockHandleSave}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
+        />
+      )
+
+      fireEvent.press(screen.getByText('J’aime'))
+      fireEvent.press(screen.getByTestId('Valider la réaction'))
+
+      expect(analytics.logValidateReaction).toHaveBeenCalledWith({
+        offerId: mockOffer.id,
+        reactionType: ReactionTypeEnum.LIKE,
+        userId: 1234,
       })
     })
   })

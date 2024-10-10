@@ -9,12 +9,14 @@ import {
   PostOneReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingsTab } from 'features/bookings/enum'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/components/ReactionChoiceModalBodyWithRedirection/ReactionChoiceModalBodyWithRedirection'
 import { ReactionChoiceModalBodyWithValidation } from 'features/reactions/components/ReactionChoiceModalBodyWithValidation/ReactionChoiceModalBodyWithValidation'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -50,6 +52,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { user: profile } = useAuthContext()
 
   const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
     ReactionTypeEnum.NO_REACTION
@@ -70,6 +73,18 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   const onPressRedirection = () => {
     closeModal()
     navigate('Bookings', { activeTab: BookingsTab.COMPLETED })
+  }
+
+  const handleOnSave = () => {
+    onSave?.({
+      offerId: offer.id,
+      reactionType: reactionStatus,
+    })
+    analytics.logValidateReaction({
+      offerId: offer.id,
+      reactionType: reactionStatus,
+      userId: profile?.id,
+    })
   }
 
   useEffect(() => {
@@ -103,12 +118,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
         bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
           <ButtonPrimary
             wording={buttonWording}
-            onPress={() => {
-              onSave?.({
-                offerId: offer.id,
-                reactionType: reactionStatus,
-              })
-            }}
+            onPress={handleOnSave}
             disabled={isButtonDisabled}
           />
         ) : (
