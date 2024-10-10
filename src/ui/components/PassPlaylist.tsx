@@ -84,8 +84,10 @@ export const PassPlaylist = ({
   return (
     <Container gap={4} {...props}>
       <View>
-        <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
-        {renderTitleSeeMore()}
+        <StyledView>
+          <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
+          {renderTitleSeeMore()}
+        </StyledView>
         {subtitle ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
@@ -122,3 +124,7 @@ const StyledSubtitle = styled(TypoDS.BodySemiBoldXs).attrs({
   marginHorizontal: theme.contentPage.marginHorizontal,
   color: theme.colors.greyDark,
 }))
+
+const StyledView = styled.View({
+  flexDirection: 'row',
+})
