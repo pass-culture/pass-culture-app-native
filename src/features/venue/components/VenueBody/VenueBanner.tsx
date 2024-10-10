@@ -9,7 +9,7 @@ import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgrou
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const GOOGLE_LOGO_HEIGHT = 15
 const GOOGLE_LOGO_WIDTH = 47
@@ -30,7 +30,7 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
   return (
     <HeaderContainer hasGoogleCredit={hasGoogleCredit}>
       {bannerUrl ? (
-        <ViewGap gap={2}>
+        <ViewGap gap={1}>
           <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
@@ -89,7 +89,7 @@ const GoogleLogo = styled.Image({
   zIndex: 2,
 })
 
-const CopyrightText = styled(Typo.Hint)(({ theme }) => ({
+const CopyrightText = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
   textAlign: 'right',
   marginRight: theme.isMobileViewport ? getSpacing(4) : 0,

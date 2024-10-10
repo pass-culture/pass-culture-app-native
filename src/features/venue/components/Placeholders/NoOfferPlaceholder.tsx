@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const NoOfferPlaceholder = () => (
   <Container>
@@ -23,6 +23,6 @@ const NoOfferIllustration = styled(NoOffer).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``
 
-const Text = styled(Typo.Title4)({
+const Text = styled(TypoDS.Title4)({
   textAlign: 'center',
 })

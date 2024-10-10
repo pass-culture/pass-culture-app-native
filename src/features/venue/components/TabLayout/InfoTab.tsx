@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
 
@@ -61,7 +61,7 @@ const TabTitleContainer = styled(ViewGap)({
   flexDirection: 'row',
 })
 
-const TabTitle = styled(Typo.ButtonText)<{ isSelected: boolean; isHover: boolean }>(
+const TabTitle = styled(TypoDS.BodySemiBold)<{ isSelected: boolean; isHover: boolean }>(
   ({ isSelected, isHover, theme }) => ({
     textAlign: 'center',
     color: isSelected || isHover ? theme.colors.primary : theme.colors.greyDark,

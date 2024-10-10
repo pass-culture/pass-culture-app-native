@@ -13,7 +13,7 @@ import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffe
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface VenueOffersProps {
@@ -67,6 +67,6 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
   return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
 }
 
-const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
+const MoviesTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))({
   marginLeft: getSpacing(6),
 })

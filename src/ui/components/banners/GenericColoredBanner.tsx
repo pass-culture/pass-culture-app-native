@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type ColorMessageProps = {
   textColor?: string
@@ -56,6 +56,6 @@ const TextContainer = styled.View({
   flex: 1,
 })
 
-const Caption = styled(Typo.Caption)<ColorMessageProps>(({ theme, textColor }) => ({
+const Caption = styled(TypoDS.BodySemiBoldXs)<ColorMessageProps>(({ theme, textColor }) => ({
   color: textColor || theme.colors.black,
 }))

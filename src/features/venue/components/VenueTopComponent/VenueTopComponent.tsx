@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -16,7 +17,7 @@ import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipbo
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -51,7 +52,7 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
       <MarginContainer>
         <InformationTags tags={venueTags} />
         <Spacer.Column numberOfSpaces={4} />
-        <ViewGap gap={2}>
+        <ViewGap gap={1}>
           <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
             {venueName}
           </VenueTitle>
@@ -63,10 +64,10 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
             />
           ) : null}
           <ViewGap gap={3}>
-            <ViewGap gap={1}>
-              <Typo.Caption>Adresse</Typo.Caption>
-              <Typo.Body>{venueFullAddress}</Typo.Body>
-            </ViewGap>
+            <View>
+              <TypoDS.BodySemiBoldXs>Adresse</TypoDS.BodySemiBoldXs>
+              <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
+            </View>
             <Separator.Horizontal />
             <CopyToClipboardButton
               wording="Copier l’adresse"
@@ -97,7 +98,7 @@ const TopContainer = styled.View(({ theme }) => {
   }
 })
 
-const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
+const VenueTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(1))``
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
