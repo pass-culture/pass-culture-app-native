@@ -1,4 +1,3 @@
-import { useIsFocused } from '@react-navigation/native'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
@@ -24,6 +23,7 @@ type WithExcludeCategoryProps = {
 
 type Props = (WithIncludeCategoryProps | WithExcludeCategoryProps) & {
   offerId: number
+  shouldFetch: boolean
   position?: Position
   searchGroupList?: SearchGroupResponseModelv2[]
 }
@@ -51,13 +51,13 @@ export const getCategories = (
 
 export const useSimilarOffers = ({
   offerId,
+  shouldFetch,
   position,
   categoryIncluded,
   categoryExcluded,
   searchGroupList,
 }: Props) => {
   const netInfo = useNetInfoContext()
-  const isFocused = useIsFocused()
 
   const categories: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
@@ -65,7 +65,7 @@ export const useSimilarOffers = ({
   )
 
   const { data: apiRecoResponse } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS, offerId, position, categories],
+    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, categories],
     async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
@@ -102,7 +102,8 @@ export const useSimilarOffers = ({
     },
     {
       staleTime: 1000 * 60 * 5,
-      enabled: !!categories && !!netInfo.isConnected && !!netInfo.isInternetReachable && isFocused,
+      enabled:
+        !!categories && !!netInfo.isConnected && !!netInfo.isInternetReachable && shouldFetch,
     }
   )
 
