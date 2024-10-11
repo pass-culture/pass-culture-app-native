@@ -26,7 +26,6 @@ type Props = {
 }
 
 export function OfferVenueBlock({
-  distance,
   onChangeVenuePress,
   onSeeVenuePress,
   onSeeItineraryPress,
@@ -49,7 +48,7 @@ export function OfferVenueBlock({
       <Spacer.Column numberOfSpaces={4} />
 
       <React.Fragment>
-        <VenueBlock distance={distance} offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
 
         {onChangeVenuePress ? (
           <React.Fragment>

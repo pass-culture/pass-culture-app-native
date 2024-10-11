@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
@@ -12,14 +13,16 @@ import { getSpacing, Spacer } from 'ui/theme'
 const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = {
-  distance?: string
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
 }
 
-export function VenueBlock({ distance, onSeeVenuePress, offer }: Readonly<Props>) {
+export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
   const { venue } = offer
+  const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const { venueName, address } = useVenueBlock({ venue })
+
+  const distance = useDistance({ lat, lng })
 
   const hasVenuePage = !!onSeeVenuePress
   const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =

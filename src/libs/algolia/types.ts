@@ -136,6 +136,7 @@ export type SearchQueryParameters = {
   timeRange: Range<number> | null
   venue?: Venue
   gtls?: GTL[]
+  distinct?: boolean
 }
 
 export const transformHit = transformOfferHit

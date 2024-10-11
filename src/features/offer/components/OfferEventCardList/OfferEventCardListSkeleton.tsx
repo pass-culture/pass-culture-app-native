@@ -20,6 +20,7 @@ export const OfferEventCardListSkeleton: React.FC = () => {
                   height={EVENT_CARD_HEIGHT}
                   borderRadius={8}
                 />
+                <Spacer.Column numberOfSpaces={4} />
               </View>
               {index < 2 ? <Spacer.Row numberOfSpaces={4} /> : null}
             </React.Fragment>
