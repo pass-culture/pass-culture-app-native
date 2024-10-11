@@ -17,11 +17,7 @@ type Options = Partial<{
 }>
 
 export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: Options) => {
-  const {
-    radiusKm: distanceKm = DEFAULT_RADIUS_KM,
-    initialCount = 6,
-    nextCount = 3,
-  } = options || {}
+  const { radiusKm = DEFAULT_RADIUS_KM, initialCount = 6, nextCount = 3 } = options || {}
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
 
@@ -33,7 +29,7 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
     hitsPerPage: 10_000,
-    aroundMeRadius: distanceKm * 1000,
+    aroundMeRadius: radiusKm * 1000,
   })
 
   const offerIds = extractOfferIdsFromHits(data?.pages[0]?.hits)
