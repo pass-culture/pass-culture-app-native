@@ -280,8 +280,8 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
       await screen.findByText('Ma réservation')
 
-      expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
-      expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
+      expect(screen.getByText('Contact de l’organisateur')).toBeOnTheScreen()
+      expect(screen.getByText('bookingContactTest@email.com')).toBeOnTheScreen()
     })
 
     it('should not display booking email contact when there is no booking contact email', async () => {
@@ -290,16 +290,15 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
       await screen.findByText('Ma réservation')
 
-      expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
+      expect(screen.queryByText("Contact de l'organisateur")).not.toBeOnTheScreen()
     })
 
-    it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
+    it("should open mail app when clicking on Venue's mail address", async () => {
       const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
       await screen.findByText('Ma réservation')
-      fireEvent.press(screen.getByText('Envoyer un e-mail'))
+      fireEvent.press(screen.getByText('bookingContactTest@email.com'))
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         `mailto:bookingContactTest@email.com`,

@@ -453,17 +453,17 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             [
               {
-                "paddingHorizontal": 20,
+                "paddingHorizontal": 24,
               },
             ]
           }
         >
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -484,11 +484,11 @@ exports[`BookingDetails should render correctly 1`] = `
             Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
           </Text>
           <View
-            numberOfSpaces={8}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 32,
+                  "height": 24,
                 },
               ]
             }
@@ -975,7 +975,7 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             [
               {
-                "paddingHorizontal": 20,
+                "paddingHorizontal": 24,
               },
             ]
           }
