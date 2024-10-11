@@ -288,14 +288,13 @@ export function searchGroupOrNativeCategorySortComparator<
  */
 export function isNativeCategoryOfCategory(
   data?: SubcategoriesResponseModelv2,
-  category?: SearchGroupNameEnumv2,
+  searchGroup?: SearchGroupNameEnumv2,
   nativeCategory?: NativeCategoryIdEnumv2
 ) {
   if (!data) return false
-
   return data.subcategories.some(
     (subcategory) =>
-      subcategory.searchGroupName === category && subcategory.nativeCategoryId === nativeCategory
+      subcategory.searchGroupName === searchGroup && subcategory.nativeCategoryId === nativeCategory
   )
 }
 
@@ -304,16 +303,20 @@ export function isNativeCategoryOfCategory(
  */
 export function getSearchGroupsEnumArrayFromNativeCategoryEnum(
   data?: SubcategoriesResponseModelv2,
-  nativeCategoryId?: NativeCategoryIdEnumv2
+  nativeCategoryId?: NativeCategoryIdEnumv2,
+  availableCategoriesList?: SearchGroupNameEnumv2[]
 ) {
   if (!data) return []
   if (!nativeCategoryId) return []
+  if (!availableCategoriesList) return []
 
-  const categories = data.subcategories
-    .filter((subcategory) => subcategory.nativeCategoryId === nativeCategoryId)
-    .map((subcategory) => subcategory.searchGroupName)
+  const searchGroup = data.nativeCategories
+    .find((nativeCategory) => nativeCategory.name === nativeCategoryId)
+    ?.parents.filter((nativeCategoryParent) =>
+      availableCategoriesList.includes(nativeCategoryParent)
+    )
 
-  return [...new Set(categories)]
+  return [...new Set(searchGroup)]
 }
 
 /**

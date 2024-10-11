@@ -62,7 +62,7 @@ export interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnaly
   value: NativeCategoryIdEnumv2
 }
 
-interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
+export interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
   value: SearchGroupNameEnumv2
 }
 

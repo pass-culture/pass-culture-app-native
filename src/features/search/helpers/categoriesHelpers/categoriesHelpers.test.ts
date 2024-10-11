@@ -37,6 +37,22 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+const mockAvailableCategoriesList: SearchGroupNameEnumv2[] = [
+  SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+  SearchGroupNameEnumv2.CINEMA,
+  SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+  SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+  SearchGroupNameEnumv2.SPECTACLES,
+  SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+  SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+  SearchGroupNameEnumv2.INSTRUMENTS,
+  SearchGroupNameEnumv2.MEDIA_PRESSE,
+  SearchGroupNameEnumv2.CARTES_JEUNES,
+  SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+  SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+]
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
@@ -263,13 +279,11 @@ describe('categoriesHelpers', () => {
     it('should return an array of categories id', () => {
       const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(
         subcategoriesDataTest,
-        NativeCategoryIdEnumv2.ARTS_VISUELS
+        NativeCategoryIdEnumv2.ARTS_VISUELS,
+        mockAvailableCategoriesList
       )
 
-      expect(value).toEqual([
-        SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
-        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-      ])
+      expect(value).toEqual([SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS])
     })
   })
 
