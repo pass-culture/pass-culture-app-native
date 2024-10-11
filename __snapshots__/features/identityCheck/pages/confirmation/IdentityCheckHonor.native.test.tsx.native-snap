@@ -1,27 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IdentityCheckHonor/> should render correctly 1`] = `
-[
-  <View
-    accessibilityRole="header"
-    style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignSelf": "center",
+      "maxWidth": 500,
+      "paddingHorizontal": 24,
+      "paddingVertical": 24,
+      "width": "100%",
     }
-  >
+  }
+  style={
+    [
+      {},
+    ]
+  }
+>
+  <View>
     <View
-      customHeight={16}
-      enable={true}
+      headerHeight={65}
+      style={
+        [
+          {
+            "paddingTop": 65,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+          },
+        ]
+      }
+    >
+      Les informations que tu as renseignées sont-elles correctes ?
+    </Text>
+    <View
+      numberOfSpaces={10}
+      style={
+        [
+          {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 16,
+            "lineHeight": 27.2,
+          },
+        ]
+      }
+    >
+      "Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
+    </Text>
+    <View
+      numberOfSpaces={4}
       style={
         [
           {
@@ -30,16 +76,86 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
         ]
       }
     />
-    <View
+    <Text
       style={
         [
           {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 14,
+            "lineHeight": 22.4,
           },
         ]
       }
+    >
+      Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
+    </Text>
+    <View
+      numberOfSpaces={15}
+      style={
+        [
+          {
+            "height": 60,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Valider et continuer"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      testID="Valider et continuer"
     >
       <View
         style={
@@ -47,503 +163,50 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
             },
           ]
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
+          adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
             [
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "textAlign": "center",
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "maxWidth": "100%",
               },
             ]
           }
         >
-          Confirmation
+          Valider et continuer
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="close-button-container"
-        />
       </View>
     </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  >
     <View
-      onLayout={[Function]}
-      style={
-        [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
-          {
-            "paddingBottom": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <RCTScrollView
-          bottomChildrenViewHeight={0}
-          contentContainerStyle={
-            {
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "paddingBottom": 0,
-              "paddingHorizontal": 20,
-            }
-          }
-          keyboardShouldPersistTaps="handled"
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
-        >
-          <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "flexGrow": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Les informations que tu as renseignées sont-elles correctes ?
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "maxWidth": 500,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "paddingVertical": 16,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.
-                </Text>
-                <View
-                  reversed={true}
-                  style={
-                    [
-                      {
-                        "paddingVertical": 16,
-                        "transform": [
-                          {
-                            "rotate": "180deg",
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
-                </Text>
-              </View>
-              <View
-                flex={2}
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 2,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "paddingVertical": 20,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Valider et continuer"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "paddingBottom": 2,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        },
-                        {},
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Valider et continuer"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      Valider et continuer
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                customHeight={8}
-                enable={true}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </RCTScrollView>
-      </View>
-    </View>
-  </View>,
-  <View
-    height={65}
-    style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
+      numberOfSpaces={5}
       style={
         [
           {
-            "backgroundColor": "transparent",
+            "height": 20,
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
         ]
       }
     />
-  </View>,
-]
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+</RCTScrollView>
 `;

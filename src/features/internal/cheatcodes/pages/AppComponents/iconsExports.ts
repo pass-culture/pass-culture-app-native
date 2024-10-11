@@ -96,7 +96,6 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Play } from 'ui/svg/icons/Play'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Question } from 'ui/svg/icons/Question'
-import { Quote } from 'ui/svg/icons/Quote'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Show } from 'ui/svg/icons/Show'
@@ -224,7 +223,6 @@ export const SecondaryAndBiggerIcons = {
   OfferEvent,
   OrderPrice,
   Offers,
-  Quote,
   ScrollToTop,
   Share,
   SignOut,
