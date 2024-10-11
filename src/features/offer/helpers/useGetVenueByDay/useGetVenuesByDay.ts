@@ -8,20 +8,20 @@ import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCal
 import { useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
-const DEFAULT_DISTANCE_KM = 10
+const DEFAULT_RADIUS_KM = 50
 
 type Options = Partial<{
-  distanceKm: number
+  radiusKm: number
   initialCount: number
   nextCount: number
 }>
 
 export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: Options) => {
-  const { distanceKm = DEFAULT_DISTANCE_KM, initialCount = 6, nextCount = 3 } = options || {}
+  const { radiusKm = DEFAULT_RADIUS_KM, initialCount = 6, nextCount = 3 } = options || {}
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
 
-  const { data, isLoading } = useSearchVenueOffers({
+  const { data } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
     geolocation: userLocation ?? {
@@ -29,33 +29,32 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
     hitsPerPage: 10_000,
-    aroundMeRadius: distanceKm * 1000,
+    aroundMeRadius: radiusKm * 1000,
   })
 
   const offerIds = extractOfferIdsFromHits(data?.pages[0]?.hits)
-  const { data: offersWithStocks } = useOffersStocks({ offerIds })
+  const { data: offersWithStocks, isLoading } = useOffersStocks({ offerIds })
 
   useEffect(() => {
     setCount(initialCount)
   }, [date, initialCount])
 
   const filteredOffers = useMemo(
-    () =>
-      moviesOfferBuilder(offersWithStocks?.offers)
-        .withMoviesOnDay(date)
-        .sortedByLast30DaysBooking()
-        .buildOfferResponse(),
+    () => moviesOfferBuilder(offersWithStocks?.offers).withMoviesOnDay(date).buildOfferResponse(),
     [date, offersWithStocks?.offers]
   )
 
-  const exposedOffers = useMemo(() => filteredOffers.slice(0, count), [count, filteredOffers])
+  const displayOffers = useMemo(
+    () => (count === filteredOffers.length ? filteredOffers : filteredOffers.slice(0, count)),
+    [count, filteredOffers]
+  )
 
   const getNext = useCallback(
     () =>
       setCount((count) => {
         const newCount = count + nextCount
         if (filteredOffers.length && newCount >= filteredOffers.length) {
-          return filteredOffers.length - 1
+          return filteredOffers.length
         }
         return newCount
       }),
@@ -63,11 +62,11 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   )
 
   const isEnd = useMemo(() => {
-    return exposedOffers.length === filteredOffers.length
-  }, [exposedOffers.length, filteredOffers.length])
+    return displayOffers.length === filteredOffers.length
+  }, [displayOffers.length, filteredOffers.length])
 
   return {
-    items: exposedOffers,
+    items: displayOffers,
     isLoading,
     getNext,
     isEnd,

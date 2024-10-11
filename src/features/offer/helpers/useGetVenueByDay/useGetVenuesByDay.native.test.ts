@@ -191,7 +191,6 @@ describe('useGetVenueByDay', () => {
 
     it('should return the initial number of cinema after using getNext', async () => {
       const todaysOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
-
       const tomorrowOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TOMORROW)
 
       mockedGetStocksByOfferIds.mockResolvedValueOnce({
@@ -214,6 +213,28 @@ describe('useGetVenueByDay', () => {
       rerender({ date: TODAY.toDate() })
 
       expect(result.current.items).toHaveLength(6)
+    })
+  })
+
+  describe('isLoading', () => {
+    it('should be true when fetching data', async () => {
+      mockedGetStocksByOfferIds.mockReturnValueOnce(new Promise(jest.fn())) // Never resolving promise to simulate loading
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.isLoading).toBe(true)
+    })
+
+    it('should be false when data is loaded', async () => {
+      mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.isLoading).toBe(false)
     })
   })
 })
