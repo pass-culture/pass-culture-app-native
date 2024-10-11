@@ -198,9 +198,34 @@ export function BookingDetails() {
         <TicketSwiper booking={booking} />
         <View>
           <InfoContainer>
-            <Spacer.Column numberOfSpaces={4} />
+            <Spacer.Column numberOfSpaces={6} />
             <OfferRules>{offerRules}</OfferRules>
-            <Spacer.Column numberOfSpaces={offerRules === '' ? 2 : 8} />
+            <Spacer.Column numberOfSpaces={offerRules === '' ? 2 : 6} />
+
+            {bookingContactEmail ? (
+              <React.Fragment>
+                <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
+                <Spacer.Column numberOfSpaces={2.5} />
+                <Typo.CaptionNeutralInfo>
+                  Si tu n’as pas reçu tes billets contacte l’organisateur
+                </Typo.CaptionNeutralInfo>
+                <Spacer.Column numberOfSpaces={2.5} />
+                <SendEmailContainer>
+                  <ExternalTouchableLink
+                    as={ButtonTertiaryBlack}
+                    inline
+                    wording={bookingContactEmail}
+                    accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
+                    externalNav={{ url: `mailto:${bookingContactEmail}` }}
+                    icon={EmailFilled}
+                  />
+                </SendEmailContainer>
+
+                <Spacer.Column numberOfSpaces={6} />
+                <Separator.Horizontal />
+                <Spacer.Column numberOfSpaces={6} />
+              </React.Fragment>
+            ) : null}
             <BookingPropertiesSection booking={booking} />
             {shouldDisplayItineraryButton ? (
               <React.Fragment>
@@ -228,28 +253,6 @@ export function BookingDetails() {
                   <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
                   <Spacer.Column numberOfSpaces={4} />
                   <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
-                </InfoContainer>
-              </SectionWithDivider>
-            </React.Fragment>
-          ) : null}
-
-          {bookingContactEmail ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <SectionWithDivider visible={!!bookingContactEmail} gap={6}>
-                <InfoContainer>
-                  <Typo.Title4 {...getHeadingAttrs(2)}>Contact organisateur</Typo.Title4>
-                  <Spacer.Column numberOfSpaces={4} />
-                  <SendEmailContainer>
-                    <ExternalTouchableLink
-                      as={ButtonTertiaryBlack}
-                      inline
-                      wording="Envoyer un e-mail"
-                      accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
-                      externalNav={{ url: `mailto:${bookingContactEmail}` }}
-                      icon={EmailFilled}
-                    />
-                  </SendEmailContainer>
                 </InfoContainer>
               </SectionWithDivider>
             </React.Fragment>
@@ -301,7 +304,7 @@ const OfferRules = styled(Typo.CaptionNeutralInfo)({
 })
 
 const InfoContainer = styled.View({
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
 })
 
 const SendEmailContainer = styled.View({

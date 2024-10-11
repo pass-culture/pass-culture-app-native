@@ -12,7 +12,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 
 export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
-  const { email, phoneNumber, website } = venue?.contact || {}
+  const { email, phoneNumber, website } = venue.contact || {}
   const { showErrorSnackBar } = useSnackBarContext()
 
   const onOpenUrlError = () => {
@@ -22,7 +22,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   }
 
   if (
-    !venue?.contact ||
+    !venue.contact ||
     (!venue.contact.email && !venue.contact.phoneNumber && !venue.contact.website)
   )
     return null
