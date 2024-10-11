@@ -53,7 +53,7 @@ export const SearchCategoriesIllustrations = {
 
 export type Gradient = Array<ColorsEnum>
 
-export type CategoryCriteria = {
+type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
     icon: React.FC<AccessibleBicolorIcon>
     illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>

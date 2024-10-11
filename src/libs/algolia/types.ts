@@ -58,11 +58,11 @@ interface AlgoliaFacetsAnalyticsKey {
   count: number
 }
 
-export interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
+interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
   value: NativeCategoryIdEnumv2
 }
 
-export interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
+interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
   value: SearchGroupNameEnumv2
 }
 
