@@ -1,5 +1,8 @@
+import * as ReactQueryAPI from 'react-query'
+
 import { ReactionTypeEnum } from 'api/gen'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
+import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -15,13 +18,19 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 jest.mock('libs/jwt/jwt')
 
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+const invalidateQueriesMock = jest.fn()
+useQueryClientSpy.mockReturnValue({
+  invalidateQueries: invalidateQueriesMock,
+} as unknown as ReactQueryAPI.QueryClient)
+
 describe('useReactionMutation', () => {
   it('should call reaction mutation function', async () => {
     mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
 
     const { result } = renderUseReactionMutation()
 
-    result.current.mutate({ reactions: [{ offerId: 12, reactionType: ReactionTypeEnum.LIKE }] })
+    result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
 
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy())
   })
@@ -31,7 +40,7 @@ describe('useReactionMutation', () => {
 
     const { result } = renderUseReactionMutation()
 
-    result.current.mutate({ reactions: [{ offerId: 12, reactionType: ReactionTypeEnum.LIKE }] })
+    result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
@@ -41,9 +50,32 @@ describe('useReactionMutation', () => {
       })
     })
   })
+
+  it('should invalidate Offer query when offer id specified in parameter', async () => {
+    mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
+
+    const { result } = renderUseReactionMutation(1)
+
+    result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
+
+    await waitFor(() => expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.OFFER, 1]))
+  })
+
+  it('should not invalidate Offer query when offer id not specified in parameter', async () => {
+    mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
+
+    const { result } = renderUseReactionMutation()
+
+    result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
+
+    await waitFor(() => {
+      expect(result.current.isSuccess).toBeTruthy()
+      expect(invalidateQueriesMock).not.toHaveBeenCalledWith([QueryKeys.OFFER, 1])
+    })
+  })
 })
 
-const renderUseReactionMutation = () =>
-  renderHook(() => useReactionMutation(), {
+const renderUseReactionMutation = (offerId?: number) =>
+  renderHook(() => useReactionMutation(offerId), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
