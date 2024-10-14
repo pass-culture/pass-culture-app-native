@@ -26,6 +26,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           playlistRequestBody: {},
           playlistRequestQuery: {},
           userId: 1,
+          shouldFetch: true,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -57,6 +58,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           playlistRequestBody: {},
           playlistRequestQuery: {},
           userId: 1,
+          shouldFetch: true,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -89,6 +91,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           playlistRequestBody: {},
           playlistRequestQuery: {},
           userId: 1,
+          shouldFetch: true,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -128,6 +131,7 @@ describe('useHomeRecommendedIdsQuery', () => {
             playlistRequestBody: {},
             playlistRequestQuery: {},
             userId: 1,
+            shouldFetch: true,
           }),
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -156,6 +160,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           playlistRequestBody: {},
           playlistRequestQuery: {},
           userId: 1,
+          shouldFetch: true,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -175,7 +180,6 @@ describe('useHomeRecommendedIdsQuery', () => {
   it('should not make request if user is disconnected (and undefined in context)', async () => {
     mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
       responseOptions: {
-        statusCode: 200,
         data: {
           params: {},
           playlistRecommendedOffers: ['102280', '102272', '102249', '102310'],
@@ -190,6 +194,34 @@ describe('useHomeRecommendedIdsQuery', () => {
           playlistRequestBody: {},
           playlistRequestQuery: {},
           userId: 1,
+          shouldFetch: true,
+        }),
+      {
+        wrapper: (props) => reactQueryProviderHOC(props.children),
+      }
+    )
+    await waitFor(() => {
+      expect(result.current.isFetching).toEqual(false)
+    })
+  })
+
+  it('should not make request when should Fetch is false', async () => {
+    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
+      responseOptions: {
+        statusCode: 200,
+        data: {
+          params: {},
+          playlistRecommendedOffers: ['102280', '102272', '102249', '102310'],
+        },
+      },
+    })
+    const { result } = renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+          shouldFetch: false,
         }),
       {
         wrapper: (props) => reactQueryProviderHOC(props.children),

@@ -1,3 +1,5 @@
+import { useIsFocused } from '@react-navigation/native'
+
 import { PlaylistRequestBody, RecommendationApiParams, SubcategoryIdEnumv2 } from 'api/gen'
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
@@ -53,6 +55,7 @@ export const useHomeRecommendedOffers = (
   userId?: number
 ): { offers?: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
+  const isFocused = useIsFocused()
   const requestParameters = getRecommendationParameters(
     recommendationParameters,
     subcategoryLabelMapping
@@ -64,6 +67,7 @@ export const useHomeRecommendedOffers = (
       longitude: position?.longitude,
       modelEndpoint: recommendationParameters?.modelEndpoint,
     },
+    shouldFetch: isFocused,
     userId,
   })
 
