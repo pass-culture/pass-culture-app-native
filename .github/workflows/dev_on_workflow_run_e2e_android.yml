@@ -18,6 +18,14 @@ jobs:
     outputs:
       app: android/app/build/outputs/apk/debug
     steps:
+      - name: Is deployment targeting ehp or production
+        id: cloudenv
+        run: |
+          if [ "${{ inputs.ENV }}" != "prod" ]; then
+            echo "export cloud_env=ehp" >> $GITHUB_ENV;
+          else
+            echo "export cloud_env=prod" >> $GITHUB_ENV;
+          fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -56,7 +64,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
           secrets: |-
-            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/passculture-app-native-android-google-service-json
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-android-google-service-${{ ENV }}
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
