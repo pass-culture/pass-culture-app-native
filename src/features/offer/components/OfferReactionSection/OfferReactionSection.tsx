@@ -31,10 +31,6 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
     if (isSuccess) queryClient.invalidateQueries([QueryKeys.OFFER, offer.id])
   }, [isSuccess, offer.id, queryClient])
 
-  const endedBookingWithoutCancellation = bookings?.ended_bookings?.find(
-    (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
-  )
-
   const userBooking = useMemo(
     () =>
       bookings?.ended_bookings?.find(
@@ -47,20 +43,15 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
     isLoggedIn &&
     user?.isBeneficiary &&
     reactionCategories.categories.includes(subcategory.nativeCategoryId) &&
-    !!endedBookingWithoutCancellation
+    !!userBooking
 
   const canDisplayReactionSection =
     isReactionFeatureActive && (offer.reactionsCount.likes > 0 || shouldDisplayReactionButtons)
 
   const handleSaveReaction = useCallback(
     (reactionType: ReactionTypeEnum) => {
-      let currentReactionType = reactionType
-      if (
-        reactionType === ReactionTypeEnum.LIKE &&
-        endedBookingWithoutCancellation?.userReaction === ReactionTypeEnum.LIKE
-      ) {
-        currentReactionType = ReactionTypeEnum.NO_REACTION
-      }
+      const currentReactionType =
+        reactionType === userBooking?.userReaction ? ReactionTypeEnum.NO_REACTION : reactionType
 
       const reactionRequest: PostReactionRequest = {
         reactions: [{ offerId: offer.id, reactionType: currentReactionType }],
@@ -69,7 +60,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
       addReaction(reactionRequest)
       return Promise.resolve(true)
     },
-    [addReaction, endedBookingWithoutCancellation?.userReaction, offer.id]
+    [addReaction, offer.id, userBooking?.userReaction]
   )
 
   if (!canDisplayReactionSection) return null
@@ -87,7 +78,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
       {shouldDisplayReactionButtons ? (
         <ReactionChoiceValidation
           handleOnPressReactionButton={handleSaveReaction}
-          reactionStatus={endedBookingWithoutCancellation.userReaction}
+          reactionStatus={userBooking?.userReaction}
         />
       ) : null}
     </ViewGap>

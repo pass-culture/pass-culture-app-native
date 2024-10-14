@@ -48,6 +48,19 @@ const mockBookingsWithLike = {
     },
   ],
 }
+const mockBookingsWithDislike = {
+  ...bookingsSnap,
+  ended_bookings: [
+    {
+      ...bookingsSnap.ended_bookings[1],
+      stock: {
+        ...bookingsSnap.ended_bookings[1].stock,
+        offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+      },
+      userReaction: ReactionTypeEnum.DISLIKE,
+    },
+  ],
+}
 
 jest.mock('features/bookings/api')
 const mockUseBookings = useBookings as jest.Mock
@@ -129,6 +142,46 @@ describe('<OfferReactionSection />', () => {
       renderOfferReactionSection({})
 
       fireEvent.press(await screen.findByText('J’aime'))
+
+      await waitFor(() => {
+        expect(mockMutate).toHaveBeenNthCalledWith(1, {
+          reactions: [
+            {
+              offerId: offerResponseSnap.id,
+              reactionType: ReactionTypeEnum.NO_REACTION,
+            },
+          ],
+        })
+      })
+    })
+
+    it('should send dislike reaction when pressing Je n’aime pas button and user not already send a reaction', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('Je n’aime pas'))
+
+      await waitFor(() => {
+        expect(mockMutate).toHaveBeenNthCalledWith(1, {
+          reactions: [
+            {
+              offerId: offerResponseSnap.id,
+              reactionType: ReactionTypeEnum.DISLIKE,
+            },
+          ],
+        })
+      })
+    })
+
+    it('should send no reaction when pressing Je n’aime oas button and user already disliked the offer', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithDislike })
+        .mockReturnValueOnce({ data: mockBookingsWithDislike })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('Je n’aime pas'))
 
       await waitFor(() => {
         expect(mockMutate).toHaveBeenNthCalledWith(1, {
