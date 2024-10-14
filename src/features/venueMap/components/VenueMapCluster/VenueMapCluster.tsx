@@ -1,9 +1,9 @@
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 
-import { getClusterImage } from 'features/venueMap/components/VenueMapCluster/getClusterImage'
+import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
+import { getClusterImage } from 'features/venueMap/helpers/venueMapCluster/getClusterImage'
 import { Marker } from 'libs/maps/maps'
-
 /**
  * These properties are not originally defined by us, but are inferred from the usage
  * of react-native-map-clustering that tends to type "cluster" as 'any'.
@@ -19,18 +19,18 @@ export type Properties = {
   point_count_abbreviated: number
 }
 
-type VenueMapClusterProps = {
+export type VenueMapClusterProps = {
   geometry: {
     coordinates: Coordinates
     type: string
   }
   properties: Properties
+  color?: ClusterImageColorName
   onPress: VoidFunction
 }
 
-export const VenueMapCluster = ({ geometry, properties, onPress }: VenueMapClusterProps) => {
+export const VenueMapCluster = ({ geometry, properties, onPress, color }: VenueMapClusterProps) => {
   const points = properties.point_count
-
   return (
     <Marker
       key={properties.cluster_id}
@@ -38,7 +38,7 @@ export const VenueMapCluster = ({ geometry, properties, onPress }: VenueMapClust
         longitude: geometry.coordinates[0],
         latitude: geometry.coordinates[1],
       }}
-      image={{ uri: getClusterImage(points) }}
+      image={{ uri: getClusterImage(points, color) }}
       style={{ zIndex: points + 1 }}
       onPress={onPress}
       testID="venue-map-cluster"

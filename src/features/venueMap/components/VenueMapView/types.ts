@@ -5,3 +5,5 @@ export type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   venueId: number
   isPermanent?: boolean
 }
+
+export type ClusterImageColorName = 'pink' | 'orange' | 'blue'
