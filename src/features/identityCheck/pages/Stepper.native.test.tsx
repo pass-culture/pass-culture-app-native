@@ -17,6 +17,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
 

@@ -90,75 +90,102 @@ describe('useStepperInfo', () => {
     expect(stepsDetails).toHaveLength(4)
   })
 
-  it('should have PhoneValidation firstScreen to SetPhoneNumberWitoutValidation when feature flag is disabled', () => {
-    mockUseGetStepperInfo.mockReturnValueOnce({
-      data: {
-        subscriptionStepsToDisplay:
-          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-      },
+  describe('identification step', () => {
+    it('should default return "SelectIDOrigin"', () => {
+      const { stepsDetails } = useStepperInfo()
+      const identityStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.IDENTIFICATION
+      )
+      const identificationScreensFlow = identityStep?.firstScreen
+
+      expect(identificationScreensFlow).toEqual('SelectIDOrigin')
     })
-
-    mockUseSettingContext.mockReturnValueOnce({
-      data: {
-        enablePhoneValidation: false,
-      },
-    } as SettingsContext.ISettingsContext)
-
-    const { stepsDetails } = useStepperInfo()
-    const phoneValidationStep = stepsDetails.find(
-      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-    )
-
-    expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
   })
 
-  it('should return PhoneValidationTooManySMSSent if no remaining attempts left', () => {
-    mockUseGetStepperInfo.mockReturnValueOnce({
-      data: {
-        subscriptionStepsToDisplay:
-          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-      },
-    })
-    mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-      remainingAttempts: 0,
-      counterResetDatetime: 'time',
-      isLastAttempt: false,
+  describe('phone validation step', () => {
+    it('should have firstScreen to "SetPhoneNumberWitoutValidation" when backend feature flag is disabled', () => {
+      mockUseGetStepperInfo.mockReturnValueOnce({
+        data: {
+          subscriptionStepsToDisplay:
+            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+        },
+      })
+
+      mockUseSettingContext.mockReturnValueOnce({
+        data: {
+          enablePhoneValidation: false,
+        },
+      } as SettingsContext.ISettingsContext)
+
+      const { stepsDetails } = useStepperInfo()
+      const phoneValidationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
+      )
+
+      expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
     })
 
-    const { stepsDetails } = useStepperInfo()
-    const phoneValidationStep = stepsDetails.find(
-      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-    )
+    it('should return "PhoneValidationTooManySMSSent" if no remaining attempts left', () => {
+      mockUseGetStepperInfo.mockReturnValueOnce({
+        data: {
+          subscriptionStepsToDisplay:
+            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+        },
+      })
+      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+        remainingAttempts: 0,
+        counterResetDatetime: 'time',
+        isLastAttempt: false,
+      })
 
-    expect(phoneValidationStep?.firstScreen).toEqual('PhoneValidationTooManySMSSent')
+      const { stepsDetails } = useStepperInfo()
+      const phoneValidationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
+      )
+
+      expect(phoneValidationStep?.firstScreen).toEqual('PhoneValidationTooManySMSSent')
+    })
+
+    it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
+      mockUseGetStepperInfo.mockReturnValueOnce({
+        data: {
+          subscriptionStepsToDisplay:
+            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+        },
+      })
+      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+        remainingAttempts: 1,
+        counterResetDatetime: 'time',
+        isLastAttempt: false,
+      })
+      const { stepsDetails } = useStepperInfo()
+
+      const phoneValidationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
+      )
+
+      expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
+    })
   })
 
-  it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
-    mockUseGetStepperInfo.mockReturnValueOnce({
-      data: {
-        subscriptionStepsToDisplay:
-          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-      },
+  describe('confirmation step', () => {
+    it('should have firstScreen to "IdentityCheckHonor" when feature flag FF enableCulturalSurveyMandatory disabled', () => {
+      const { stepsDetails } = useStepperInfo()
+      const confirmationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.CONFIRMATION
+      )
+
+      expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
     })
-    mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-      remainingAttempts: 1,
-      counterResetDatetime: 'time',
-      isLastAttempt: false,
+
+    it('should have firstScreen to "CulturalSurveyIntro" when feature flag FF enableCulturalSurveyMandatory enabled', () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      const { stepsDetails } = useStepperInfo()
+      const confirmationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.CONFIRMATION
+      )
+
+      expect(confirmationStep?.firstScreen).toEqual('CulturalSurveyIntro')
     })
-    const { stepsDetails } = useStepperInfo()
-
-    const phoneValidationStep = stepsDetails.find(
-      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-    )
-
-    expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
-  })
-
-  it("should return 'SelectIDOrigin' identity screen", () => {
-    const { stepsDetails } = useStepperInfo()
-    const identityStep = stepsDetails.find((step) => step.name === IdentityCheckStep.IDENTIFICATION)
-    const identificationScreensFlow = identityStep?.firstScreen
-
-    expect(identificationScreensFlow).toEqual('SelectIDOrigin')
   })
 })
