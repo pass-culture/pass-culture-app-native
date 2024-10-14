@@ -1,23 +1,23 @@
 {
-  "images": [
+  "images" : [
     {
-      "filename": "map_pin_art_material@1x.png",
-      "idiom": "universal",
-      "scale": "1x"
+      "filename" : "map_pin_artMaterial@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
-      "filename": "map_pin_art_material@2x.png",
-      "idiom": "universal",
-      "scale": "2x"
+      "filename" : "map_pin_artMaterial@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
-      "filename": "map_pin_art_material@3x.png",
-      "idiom": "universal",
-      "scale": "3x"
+      "filename" : "map_pin_artMaterial@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
-  "info": {
-    "author": "xcode",
-    "version": 1
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
   }
 }

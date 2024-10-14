@@ -1,23 +1,23 @@
 {
-  "images": [
+  "images" : [
     {
-      "filename": "map_pin_cultural_store@1x.png",
-      "idiom": "universal",
-      "scale": "1x"
+      "filename" : "map_pin_culturalStore@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
-      "filename": "map_pin_cultural_store@2x.png",
-      "idiom": "universal",
-      "scale": "2x"
+      "filename" : "map_pin_culturalStore@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
-      "filename": "map_pin_cultural_store@3x.png",
-      "idiom": "universal",
-      "scale": "3x"
+      "filename" : "map_pin_culturalStore@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
-  "info": {
-    "author": "xcode",
-    "version": 1
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
   }
 }
