@@ -12,11 +12,12 @@ import { QueryKeys } from 'libs/queryKeys'
 type Parameters = {
   playlistRequestBody: PlaylistRequestBody
   playlistRequestQuery: PlaylistRequestQuery
+  shouldFetch: boolean
   userId?: number
 }
 
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
-  const { playlistRequestBody, playlistRequestQuery, userId } = parameters
+  const { playlistRequestBody, playlistRequestQuery, userId, shouldFetch } = parameters
   const { modelEndpoint, longitude, latitude } = playlistRequestQuery
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
@@ -45,7 +46,12 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
     },
     {
       staleTime: 1000 * 60 * 5,
-      enabled: isLoggedIn && !!userId && !!netInfo.isConnected,
+      enabled:
+        isLoggedIn &&
+        !!userId &&
+        !!netInfo.isConnected &&
+        !!netInfo.isInternetReachable &&
+        shouldFetch,
     }
   )
 }
