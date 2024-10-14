@@ -5,7 +5,7 @@
 app_engine_apis: true
 
 # Set the service name matching the one instantiated in terraform
-service: web-proxy
+service: web-proxy-staging
 
 runtime: nodejs20
 

@@ -38,7 +38,7 @@ const computeCanonicalUrl = (url: URL): URL => {
 }
 
 const addCanonicalLinkToHTML = (html: string, url: URL): string => {
-  return html.replace('<head>', `<head><link rel="canonical" href="${url}" />`)
+  return html.replace('<head>', `<head><link rel="canonical" href="${url.toString()}" />`)
 }
 
 const addNoIndexToHTML = (html: string): string =>
@@ -100,7 +100,7 @@ export async function metasResponseInterceptor(
   }
 
   try {
-    return await replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
+    return await replaceHtmlMetas(html, endpoint || '', entityKey as EntityKeys, Number(id))
   } catch (error) {
     // when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
