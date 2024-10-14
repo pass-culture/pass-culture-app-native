@@ -58,7 +58,7 @@ interface AlgoliaFacetsAnalyticsKey {
   count: number
 }
 
-export interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
+interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
   value: NativeCategoryIdEnumv2
 }
 

@@ -316,7 +316,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithAssociationToNativeCategory.query,
-            offerCategories: [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
+            offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
             offerNativeCategories: [NativeCategoryIdEnumv2.ARTS_VISUELS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
