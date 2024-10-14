@@ -45,6 +45,7 @@
     "build:production": "yarn build --mode=production",
     "build:staging": "yarn build --mode=staging",
     "build:testing": "yarn build --mode=testing",
+    "build:perf": "yarn build --mode=perf",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook --static-dir ./public",
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded",
     "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix",
