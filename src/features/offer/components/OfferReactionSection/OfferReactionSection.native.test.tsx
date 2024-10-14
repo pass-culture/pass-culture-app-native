@@ -1,6 +1,8 @@
 import React, { ComponentProps } from 'react'
+import * as ReactQueryAPI from 'react-query'
 
-import { NativeCategoryIdEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, ReactionTypeEnum } from 'api/gen'
+import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -9,8 +11,9 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { QueryKeys } from 'libs/queryKeys'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
@@ -20,7 +23,7 @@ const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
-const mockBookings = {
+const mockBookingsWithoutReaction = {
   ...bookingsSnap,
   ended_bookings: [
     {
@@ -32,15 +35,37 @@ const mockBookings = {
     },
   ],
 }
-const mockUseBookings = jest.fn(() => ({
-  data: mockBookings,
-}))
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => mockUseBookings()),
-}))
+const mockBookingsWithLike = {
+  ...bookingsSnap,
+  ended_bookings: [
+    {
+      ...bookingsSnap.ended_bookings[1],
+      stock: {
+        ...bookingsSnap.ended_bookings[1].stock,
+        offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+      },
+      userReaction: ReactionTypeEnum.LIKE,
+    },
+  ],
+}
+
+jest.mock('features/bookings/api')
+const mockUseBookings = useBookings as jest.Mock
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('features/auth/context/AuthContext')
+
+const mockMutate = jest.fn()
+let mockIsSuccess = true
+jest.mock('features/reactions/api/useReactionMutation', () => ({
+  useReactionMutation: () => ({ mutate: mockMutate, isSuccess: mockIsSuccess }),
+}))
+
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+const invalidateQueriesMock = jest.fn()
+useQueryClientSpy.mockReturnValue({
+  invalidateQueries: invalidateQueriesMock,
+} as unknown as ReactQueryAPI.QueryClient)
 
 describe('<OfferReactionSection />', () => {
   beforeAll(() => {
@@ -55,9 +80,13 @@ describe('<OfferReactionSection />', () => {
   describe('When FF is enabled', () => {
     beforeEach(() => {
       activateFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+      mockIsSuccess = true
     })
 
     it("should display 'J'aime' or 'Je n'aime pas' button when user booked the offer", async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
       renderOfferReactionSection({})
 
       expect(await screen.findByText('J’aime')).toBeOnTheScreen()
@@ -65,9 +94,80 @@ describe('<OfferReactionSection />', () => {
     })
 
     it('should display reaction count when other users have reacted to the offer', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
       renderOfferReactionSection({})
 
       expect(await screen.findByText('Aimé par 1 jeune')).toBeOnTheScreen()
+    })
+
+    it('should send like reaction when pressing J’aime button and user not already send a reaction', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('J’aime'))
+
+      await waitFor(() => {
+        expect(mockMutate).toHaveBeenNthCalledWith(1, {
+          reactions: [
+            {
+              offerId: offerResponseSnap.id,
+              reactionType: ReactionTypeEnum.LIKE,
+            },
+          ],
+        })
+      })
+    })
+
+    it('should send no reaction when pressing J’aime button and user already liked the offer', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithLike })
+        .mockReturnValueOnce({ data: mockBookingsWithLike })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('J’aime'))
+
+      await waitFor(() => {
+        expect(mockMutate).toHaveBeenNthCalledWith(1, {
+          reactions: [
+            {
+              offerId: offerResponseSnap.id,
+              reactionType: ReactionTypeEnum.NO_REACTION,
+            },
+          ],
+        })
+      })
+    })
+
+    it('should invalidate Offer query when reaction successfull send', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      await waitFor(() =>
+        expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.OFFER, offerResponseSnap.id])
+      )
+    })
+
+    it('should not invalidate Offer query when offer id not specified in parameter', async () => {
+      mockIsSuccess = false
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('J’aime'))
+
+      await waitFor(() => {
+        expect(invalidateQueriesMock).not.toHaveBeenCalledWith([
+          QueryKeys.OFFER,
+          offerResponseSnap.id,
+        ])
+      })
     })
   })
 
@@ -77,6 +177,9 @@ describe('<OfferReactionSection />', () => {
     })
 
     it("should not display 'J'aime' or 'Je n'aime pas' button when user booked the offer", () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
       renderOfferReactionSection({})
 
       expect(screen.queryByText('J’aime')).not.toBeOnTheScreen()
@@ -84,6 +187,9 @@ describe('<OfferReactionSection />', () => {
     })
 
     it('should not display reaction count when other users have reacted to the offer', () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
       renderOfferReactionSection({})
 
       expect(screen.queryByText('Aimé par 1 jeune')).not.toBeOnTheScreen()
