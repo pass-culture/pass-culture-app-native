@@ -28,6 +28,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { LocationMode } from 'libs/location/types'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -114,8 +115,16 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeCreationOnce()
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
+  const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
-  const { userLocation } = useLocation()
+  const {
+    userLocation,
+    hasGeolocPosition,
+    selectedLocationMode,
+    setSelectedLocationMode,
+    setPlace,
+    onResetPlace,
+  } = useLocation()
   const isLocated = !!userLocation
   const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
 
@@ -137,6 +146,23 @@ export const ThematicHome: FunctionComponent = () => {
       })
     }
   }, [id, params.from, params.moduleId, params.moduleListId])
+
+  useEffect(() => {
+    switch (true) {
+      case selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition:
+        setSelectedLocationMode(LocationMode.AROUND_ME)
+        break
+      case hasGeolocPosition && isFromDeeplink:
+        setSelectedLocationMode(LocationMode.AROUND_ME)
+        setPlace(null)
+        onResetPlace()
+        break
+      default:
+        setSelectedLocationMode(LocationMode.EVERYWHERE)
+        break
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasGeolocPosition, isFromDeeplink])
 
   const shouldDisplaySubscribeButton = Platform.OS !== 'ios' && !enableAppV2Header
 

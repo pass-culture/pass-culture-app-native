@@ -35,6 +35,8 @@ const defaultUseLocation: Partial<ILocationContext> = {
     longitude: 2,
   },
   permissionState: GeolocPermissionState.GRANTED,
+  setPlace: jest.fn(),
+  setSelectedLocationMode: jest.fn(),
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -235,6 +237,7 @@ describe('ThematicHome', () => {
 
     it('should show geolocation banner when user is not geolocated or located', async () => {
       mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
         userLocation: undefined,
       })
       renderThematicHome()
@@ -261,6 +264,7 @@ describe('ThematicHome', () => {
 
     it('should show system banner when user is not geolocated or located', async () => {
       mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
         userLocation: undefined,
       })
       renderThematicHome()
