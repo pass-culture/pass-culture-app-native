@@ -13,11 +13,16 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
   const { goBack } = useGoBack(...homeNavConfig)
 
   const navigateSendAnalyticsAndShowShareAppModal = async () => {
-    reset({
-      index: 0,
-      routes: [{ name: navigateToHomeConfig.screen }],
-    })
+    reset({ index: 0, routes: [{ name: navigateToHomeConfig.screen }] })
     analytics.logHasSkippedCulturalSurvey()
+  }
+
+  const navigateToHomeAndShowShareAppModal = async () => {
+    reset({ index: 0, routes: [{ name: navigateToHomeConfig.screen }] })
+  }
+
+  const navigateToIdentityCheckHonor = async () => {
+    reset({ index: 0, routes: [{ name: 'IdentityCheckHonor' }] })
   }
 
   if (enableCulturalSurveyMandatory) {
@@ -35,6 +40,13 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
           onPress: goBack,
         },
       },
+      thanks: {
+        subtitle: 'Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.',
+        button: {
+          wording: 'Continuer',
+          onPress: navigateToIdentityCheckHonor,
+        },
+      },
     }
   } else {
     return {
@@ -49,6 +61,13 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
           icon: ClockFilled,
           text: 'Plus tard',
           onPress: navigateSendAnalyticsAndShowShareAppModal,
+        },
+      },
+      thanks: {
+        subtitle: 'Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.',
+        button: {
+          wording: 'Découvrir le catalogue',
+          onPress: navigateToHomeAndShowShareAppModal,
         },
       },
     }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CulturalSurveyThanksPage page should render the page with correct layout 1`] = `
+exports[`CulturalSurveyThanksPage page When FF is disabled should render the page with correct layout and content 1`] = `
 <View
   style={
     [
@@ -219,6 +219,244 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
           }
         >
           Découvrir le catalogue
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    flex={0.1}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 0.1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`CulturalSurveyThanksPage page When FF is enabled should render the page with correct layout and content 1`] = `
+<View
+  style={
+    [
+      {
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": 500,
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    flex={2}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    hasHeight={true}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "height": "30%",
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View>
+      undefined-Lottie-Mock
+    </View>
+  </View>
+  <View
+    flex={0.5}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 28,
+          "lineHeight": 44.8,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Un grand merci
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 18,
+          "lineHeight": 22,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    pour tes réponses !
+  </Text>
+  <View
+    flex={0.5}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
+  </Text>
+  <View
+    flex={2}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "paddingBottom": 40,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Continuer"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      testID="Continuer"
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Continuer
         </Text>
       </View>
     </View>
