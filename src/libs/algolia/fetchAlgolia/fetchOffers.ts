@@ -51,7 +51,7 @@ export const fetchOffers = async ({
       clickAnalytics: true,
       // To use exactly the query and not limit the duplicate offers
       distinct: parameters.distinct,
-      ...(isFromOffer ? { typoTolerance: false } : {}),
+      ...(isFromOffer ? { typoTolerance: false, distinct: false } : {}),
     })
 
     if (storeQueryID) storeQueryID(response.queryID)
