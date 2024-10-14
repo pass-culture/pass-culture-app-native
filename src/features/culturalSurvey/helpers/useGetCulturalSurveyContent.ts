@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 
-export const useGetCulturalSurveyContent = (enableQPIInIdentityCheck: boolean) => {
+export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boolean) => {
   const { reset } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
 
@@ -20,7 +20,7 @@ export const useGetCulturalSurveyContent = (enableQPIInIdentityCheck: boolean) =
     analytics.logHasSkippedCulturalSurvey()
   }
 
-  if (enableQPIInIdentityCheck) {
+  if (enableCulturalSurveyMandatory) {
     return {
       intro: {
         title: 'Tu y es presque\u00a0!',

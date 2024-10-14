@@ -16,8 +16,8 @@ export enum RemoteStoreDocuments {
 }
 
 export enum RemoteStoreFeatureFlags {
+  ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
-  ENABLE_QPI_IN_IDENTITY_CHECK = 'enableQpiInIdentityCheck',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
