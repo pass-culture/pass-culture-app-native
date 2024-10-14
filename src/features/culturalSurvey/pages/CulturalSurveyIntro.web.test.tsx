@@ -48,7 +48,7 @@ describe('CulturalSurveyIntro page', () => {
 
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_QPI_IN_IDENTITY_CHECK])
+      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     })
 
     it('should not have basic accessibility issues', async () => {

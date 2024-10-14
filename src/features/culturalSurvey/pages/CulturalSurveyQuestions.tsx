@@ -201,8 +201,12 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
             navigateToNextQuestion()
           }}
           disabled={!currentAnswers.length}
-          wording="Continuer"
-          accessibilityLabel="Continuer vers l’étape suivante"
+          wording={isCurrentQuestionLastQuestion ? 'Valider' : 'Continuer'}
+          accessibilityLabel={
+            isCurrentQuestionLastQuestion
+              ? 'Valider le formulaire'
+              : 'Continuer vers l’étape suivante'
+          }
         />
         <Spacer.BottomScreen />
       </FixedBottomChildrenView>

@@ -26,8 +26,8 @@ const FAQTouchableLinkProps = {
 }
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
-  const enableQPIInIdentityCheck = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_QPI_IN_IDENTITY_CHECK
+  const enableCulturalSurveyMandatory = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
   )
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
 
@@ -45,7 +45,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
     incrementTotalCulturalSurveyDisplay()
   }, [])
 
-  const { intro } = useGetCulturalSurveyContent(enableQPIInIdentityCheck)
+  const { intro } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
     <GenericInfoPageWhite
