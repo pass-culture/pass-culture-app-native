@@ -1,4 +1,5 @@
 import React, { ComponentProps } from 'react'
+import * as ReactQueryAPI from 'react-query'
 
 import { NativeCategoryIdEnumv2, ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
@@ -10,6 +11,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { QueryKeys } from 'libs/queryKeys'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -54,9 +56,16 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('features/auth/context/AuthContext')
 
 const mockMutate = jest.fn()
+let mockIsSuccess = true
 jest.mock('features/reactions/api/useReactionMutation', () => ({
-  useReactionMutation: () => ({ mutate: mockMutate }),
+  useReactionMutation: () => ({ mutate: mockMutate, isSuccess: mockIsSuccess }),
 }))
+
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+const invalidateQueriesMock = jest.fn()
+useQueryClientSpy.mockReturnValue({
+  invalidateQueries: invalidateQueriesMock,
+} as unknown as ReactQueryAPI.QueryClient)
 
 describe('<OfferReactionSection />', () => {
   beforeAll(() => {
@@ -71,6 +80,7 @@ describe('<OfferReactionSection />', () => {
   describe('When FF is enabled', () => {
     beforeEach(() => {
       activateFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+      mockIsSuccess = true
     })
 
     it("should display 'J'aime' or 'Je n'aime pas' button when user booked the offer", async () => {
@@ -129,6 +139,34 @@ describe('<OfferReactionSection />', () => {
             },
           ],
         })
+      })
+    })
+
+    it('should invalidate Offer query when reaction successfull send', async () => {
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      await waitFor(() =>
+        expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.OFFER, offerResponseSnap.id])
+      )
+    })
+
+    it('should not invalidate Offer query when offer id not specified in parameter', async () => {
+      mockIsSuccess = false
+      mockUseBookings
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+        .mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+      renderOfferReactionSection({})
+
+      fireEvent.press(await screen.findByText('J’aime'))
+
+      await waitFor(() => {
+        expect(invalidateQueriesMock).not.toHaveBeenCalledWith([
+          QueryKeys.OFFER,
+          offerResponseSnap.id,
+        ])
       })
     })
   })

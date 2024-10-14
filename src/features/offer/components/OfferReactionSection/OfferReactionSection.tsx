@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo } from 'react'
+import { useQueryClient } from 'react-query'
 
 import { OfferResponseV2, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -9,6 +10,7 @@ import { ReactionChoiceValidation } from 'features/reactions/components/Reaction
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -22,7 +24,12 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
   const { reactionCategories } = useRemoteConfigContext()
   const { isLoggedIn, user } = useAuthContext()
   const { data: bookings } = useBookings()
-  const { mutate: addReaction } = useReactionMutation(offer.id)
+  const { mutate: addReaction, isSuccess } = useReactionMutation()
+  const queryClient = useQueryClient()
+
+  useEffect(() => {
+    if (isSuccess) queryClient.invalidateQueries([QueryKeys.OFFER, offer.id])
+  }, [isSuccess, offer.id, queryClient])
 
   const endedBookingWithoutCancellation = bookings?.ended_bookings?.find(
     (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
