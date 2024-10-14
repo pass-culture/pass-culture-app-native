@@ -95,12 +95,12 @@ export async function metasResponseInterceptor(
 
   const [endpoint, entityKey, id] = match || []
 
-  if (!id) {
+  if (!endpoint || !id) {
     return html
   }
 
   try {
-    return await replaceHtmlMetas(html, endpoint || '', entityKey as EntityKeys, Number(id))
+    return await replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
   } catch (error) {
     // when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
