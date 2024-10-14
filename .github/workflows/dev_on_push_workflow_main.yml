@@ -223,6 +223,16 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-proxy-perf:
+    needs: [check-server-folder-changes, yarn-tester]
+    if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
+    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+    with:
+      ENV: perf
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
     needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
