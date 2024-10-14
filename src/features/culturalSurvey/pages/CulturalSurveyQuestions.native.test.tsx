@@ -76,7 +76,7 @@ describe('CulturalSurveyQuestions page', () => {
   it('should navigate to next page when pressing Continuer', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByTestId('Continuer vers l’étape suivante')
+    const NextQuestionButton = screen.getByLabelText('Continuer vers l’étape suivante')
     fireEvent.press(NextQuestionButton)
 
     expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
@@ -91,7 +91,7 @@ describe('CulturalSurveyQuestions page', () => {
     }
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByTestId('Continuer vers l’étape suivante')
+    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
     fireEvent.press(NextQuestionButton)
 
     expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
@@ -108,7 +108,7 @@ describe('CulturalSurveyQuestions page', () => {
 
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByTestId('Continuer vers l’étape suivante')
+    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
     fireEvent.press(NextQuestionButton)
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
