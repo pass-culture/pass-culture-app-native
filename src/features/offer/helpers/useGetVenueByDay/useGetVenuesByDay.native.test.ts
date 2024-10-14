@@ -182,9 +182,8 @@ describe('useGetVenueByDay', () => {
 
       await act(async () => {
         result.current.getNext()
+        rerender({ date: TOMORROW.toDate() })
       })
-
-      rerender({ date: TOMORROW.toDate() })
 
       expect(result.current.items).toHaveLength(5)
     })
@@ -208,9 +207,13 @@ describe('useGetVenueByDay', () => {
       await act(async () => {
         result.current.getNext()
       })
+      await act(async () => {
+        rerender({ date: TOMORROW.toDate() })
+      })
 
-      rerender({ date: TOMORROW.toDate() })
-      rerender({ date: TODAY.toDate() })
+      await act(async () => {
+        rerender({ date: TODAY.toDate() })
+      })
 
       expect(result.current.items).toHaveLength(6)
     })

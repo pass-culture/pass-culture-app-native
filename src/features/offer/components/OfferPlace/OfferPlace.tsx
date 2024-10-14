@@ -18,7 +18,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
@@ -58,9 +57,6 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, userLocation } = useLocation()
   const { isDesktopViewport } = useTheme()
-
-  const { latitude: lat, longitude: lng } = offer.venue.coordinates
-  const distanceToLocation = useDistance({ lat, lng })
 
   const enableNewXPCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
 
@@ -163,7 +159,6 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           <OfferVenueBlock
             title={venueSectionTitle}
             offer={offer}
-            distance={distanceToLocation}
             onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
             onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
             onSeeItineraryPress={

@@ -17,7 +17,6 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  distance?: string
   title: string
   offer: OfferResponseV2
   onChangeVenuePress?: VoidFunction

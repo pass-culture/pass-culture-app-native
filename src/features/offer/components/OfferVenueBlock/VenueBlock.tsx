@@ -19,11 +19,10 @@ type Props = {
 
 export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
   const { venue } = offer
-  const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const { venueName, address } = useVenueBlock({ venue })
 
+  const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distance = useDistance({ lat, lng })
-
   const hasVenuePage = !!onSeeVenuePress
   const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =
     useMemo(
