@@ -6,7 +6,8 @@ import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesL
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
-import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
+import { ReactionRedirectionModal } from 'features/reactions/components/ReactionRedirectionModal/ReactionRedirectionModal'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -19,7 +20,9 @@ export const IncomingReactionModalContainer = () => {
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
-  const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
+  const { visible: reactionChoiceModalVisible, hideModal: hideReactionChoiceModal } = useModal(true)
+  const { visible: reactionRedirectionVisible, hideModal: hideRedirectionReactionModal } =
+    useModal(true)
   const subcategoriesMapping = useSubcategoriesMapping()
   const mapping = useCategoryIdMapping()
 
@@ -36,10 +39,6 @@ export const IncomingReactionModalContainer = () => {
   })
 
   const firstBooking = bookingsWithoutReaction[0]
-  const reactionChoiceModalBodyType =
-    bookingsWithoutReaction.length === 1
-      ? ReactionChoiceModalBodyEnum.VALIDATION
-      : ReactionChoiceModalBodyEnum.REDIRECTION
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: PostOneReactionRequest) => {
@@ -66,7 +65,10 @@ export const IncomingReactionModalContainer = () => {
       })
     }
 
-    hideReactionModal()
+    if (bookingsWithoutReaction.length > 1) {
+      hideRedirectionReactionModal()
+    }
+    hideReactionChoiceModal()
   }
 
   if (!firstBooking || !isCookieConsentChecked) return null
@@ -75,16 +77,24 @@ export const IncomingReactionModalContainer = () => {
   const { offer } = stock
 
   return (
-    <ReactionChoiceModal
-      offer={offer}
-      dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
-      closeModal={handleCloseModalWithUpdate}
-      visible={reactionModalVisible}
-      defaultReaction={null}
-      onSave={handleSaveReaction}
-      from={ReactionFromEnum.HOME}
-      bodyType={reactionChoiceModalBodyType}
-      offerImages={offerImages}
-    />
+    <React.Fragment>
+      {bookingsWithoutReaction.length > 1 ? (
+        <ReactionRedirectionModal
+          visible={reactionRedirectionVisible}
+          closeModal={handleCloseModalWithUpdate}
+          offerImages={offerImages}
+        />
+      ) : (
+        <ReactionChoiceModal
+          offer={offer}
+          dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
+          closeModal={handleCloseModalWithUpdate}
+          visible={reactionChoiceModalVisible}
+          defaultReaction={null}
+          onSave={handleSaveReaction}
+          from={ReactionFromEnum.HOME}
+        />
+      )}
+    </React.Fragment>
   )
 }

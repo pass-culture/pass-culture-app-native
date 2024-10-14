@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
@@ -10,20 +9,18 @@ import {
   ReactionTypeEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { BookingsTab } from 'features/bookings/enum'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/components/ReactionChoiceModalBodyWithRedirection/ReactionChoiceModalBodyWithRedirection'
-import { ReactionChoiceModalBodyWithValidation } from 'features/reactions/components/ReactionChoiceModalBodyWithValidation/ReactionChoiceModalBodyWithValidation'
-import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
-import { OfferImageBasicProps } from 'features/reactions/types'
+import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics'
+import { useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Separator } from 'ui/components/Separator'
+import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
+import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -34,8 +31,6 @@ type Props = {
   closeModal: (triggerUpdate?: boolean) => void
   from: ReactionFromEnum
   onSave?: ({ offerId, reactionType }: PostOneReactionRequest) => void
-  bodyType: ReactionChoiceModalBodyEnum
-  offerImages?: OfferImageBasicProps[]
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
@@ -46,13 +41,11 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   closeModal,
   onSave,
   from,
-  bodyType,
-  offerImages,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { user: profile } = useAuthContext()
+  const { categoryId } = useSubcategory(offer.subcategoryId)
 
   const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
     ReactionTypeEnum.NO_REACTION
@@ -68,11 +61,6 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
         setIsButtonDisabled(true)
       return reactionType === previousValue ? ReactionTypeEnum.NO_REACTION : reactionType
     })
-  }
-
-  const onPressRedirection = () => {
-    closeModal()
-    navigate('Bookings', { activeTab: BookingsTab.COMPLETED })
   }
 
   const handleOnSave = () => {
@@ -115,38 +103,56 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       onRightIconPress={() => closeModal(true)}
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
-        bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
-          <ButtonPrimary
-            wording={buttonWording}
-            onPress={handleOnSave}
-            disabled={isButtonDisabled}
-          />
-        ) : (
-          <ButtonsContainer gap={4}>
-            <ButtonPrimary wording="Donner mon avis" onPress={onPressRedirection} />
-            <ButtonTertiaryBlack
-              wording="Plus tard"
-              icon={ClockFilled}
-              onPress={() => closeModal(true)}
-            />
-          </ButtonsContainer>
-        )
+        <ButtonPrimary wording={buttonWording} onPress={handleOnSave} disabled={isButtonDisabled} />
       }>
-      {bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
-        <ReactionChoiceModalBodyWithValidation
-          offer={offer}
-          dateUsed={dateUsed}
-          reactionStatus={reactionStatus}
-          handleOnPressReactionButton={onPressReactionButton}
-        />
-      ) : (
-        <ReactionChoiceModalBodyWithRedirection offerImages={offerImages ?? []} />
-      )}
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={6} />
+        <ViewGap gap={6}>
+          <Typo.Title3>Partage-nous ton avis&nbsp;!</Typo.Title3>
+          <ViewGap gap={4}>
+            <Separator.Horizontal />
+            <HorizontalTileContainer gap={4}>
+              <HorizontalTile
+                title={offer.name}
+                categoryId={categoryId}
+                imageUrl={offer.image?.url}>
+                <SubtitleContainer gap={1}>
+                  <ValidationMark isValid />
+                  <UsedText>Utilisé</UsedText>
+                  <DateUsedText>{dateUsed}</DateUsedText>
+                </SubtitleContainer>
+              </HorizontalTile>
+            </HorizontalTileContainer>
+            <Separator.Horizontal />
+          </ViewGap>
+          <StyledReactionChoiceValidation
+            reactionStatus={reactionStatus}
+            handleOnPressReactionButton={onPressReactionButton}
+          />
+        </ViewGap>
+      </React.Fragment>
     </AppModal>
   )
 }
 
-const ButtonsContainer = styled(ViewGap)({
+const HorizontalTileContainer = styled(ViewGap)({
+  flexDirection: 'row',
   alignItems: 'center',
-  marginTop: getSpacing(2),
+})
+
+const SubtitleContainer = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const UsedText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greenValid,
+}))
+
+const DateUsedText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)({
+  marginBottom: getSpacing(12),
 })
