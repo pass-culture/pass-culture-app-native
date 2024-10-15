@@ -4,9 +4,11 @@ import { FlatList, Platform, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
+import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -30,7 +32,7 @@ type ReasonButton = {
   analyticsReason: string
 }
 
-const reasonButtons: ReasonButton[] = [
+const reasonButtons = (canDelete: boolean): ReasonButton[] => [
   {
     wording: 'J’aimerais créer un compte avec une adresse e-mail différente',
     navigateTo: { screen: 'ChangeEmail', params: { showModal: true } },
@@ -38,17 +40,17 @@ const reasonButtons: ReasonButton[] = [
   },
   {
     wording: 'Je n’utilise plus l’application',
-    navigateTo: { screen: 'ConfirmDeleteProfile' },
+    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
     analyticsReason: 'noLongerUsed',
   },
   {
     wording: 'Je n’ai plus de crédit ou très peu de crédit restant',
-    navigateTo: { screen: 'ConfirmDeleteProfile' },
+    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
     analyticsReason: 'noMoreCredit',
   },
   {
     wording: 'Je souhaite supprimer mes données personnelles',
-    navigateTo: { screen: 'ConfirmDeleteProfile' },
+    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
     analyticsReason: 'dataDeletion',
   },
   {
@@ -66,7 +68,11 @@ const reasonButtons: ReasonButton[] = [
 export function DeleteProfileReason() {
   const headerHeight = useGetHeaderHeight()
   const gradientRef = useRef<AnimatedViewRefType>(null)
-  const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasonButtons)
+  const { user } = useAuthContext()
+  const userHas21YearsOld = getAge(user!.birthDate!) >= 21
+  const canDeleteProfile = !user!.isBeneficiary || userHas21YearsOld
+  const reasons = reasonButtons(canDeleteProfile)
+  const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
 
   return (
     <React.Fragment>
@@ -93,7 +99,7 @@ export function DeleteProfileReason() {
         }
         ListFooterComponent={Spacer.BottomScreen}
         contentContainerStyle={flatListStyles}
-        data={reasonButtons}
+        data={reasons}
         renderItem={({ item }) => {
           const { wording, navigateTo, analyticsReason } = item
           return (

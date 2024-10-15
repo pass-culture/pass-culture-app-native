@@ -12,6 +12,8 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('features/auth/context/AuthContext')
+
 describe('<DeleteProfileReason/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
