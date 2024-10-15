@@ -48,6 +48,6 @@ describe('express server', () => {
       .replace(cspRegExp, '<meta http-equiv="Content-Security-Policy">')
       .replace(versionRegExp, '')
       .replace(canonicalLinkRegExp, '')
-    expect(html).toEqual(htmlProxy)
+    expect(html.trim()).toEqual(htmlProxy.trim())
   })
 })

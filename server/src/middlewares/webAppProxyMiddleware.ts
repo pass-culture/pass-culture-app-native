@@ -38,7 +38,7 @@ const computeCanonicalUrl = (url: URL): URL => {
 }
 
 const addCanonicalLinkToHTML = (html: string, url: URL): string => {
-  return html.replace('<head>', `<head><link rel="canonical" href="${url}" />`)
+  return html.replace('<head>', `<head><link rel="canonical" href="${url.toString()}" />`)
 }
 
 const addNoIndexToHTML = (html: string): string =>
@@ -95,7 +95,7 @@ export async function metasResponseInterceptor(
 
   const [endpoint, entityKey, id] = match || []
 
-  if (!id) {
+  if (!endpoint || !id) {
     return html
   }
 
