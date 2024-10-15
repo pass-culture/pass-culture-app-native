@@ -181,7 +181,7 @@ export type SubscriptionRootStackParamList = {
   // Errors
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
-}
+} & CulturalSurveyRootStackParamList
 
 /**
  * WARNING !

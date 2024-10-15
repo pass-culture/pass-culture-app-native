@@ -8,6 +8,8 @@ import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -28,6 +30,9 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
+  const enableCulturalSurveyMandatory = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
+  )
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { data } = useGetStepperInfo()
   const { data: settings } = useSettingsContext()
@@ -52,6 +57,13 @@ export const useStepperInfo = (): StepperInfo => {
       return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
     }
     return 'SetPhoneNumberWithoutValidation'
+  }
+
+  const getConfirmationFirstScreen = () => {
+    if (enableCulturalSurveyMandatory) {
+      return 'CulturalSurveyIntro'
+    }
+    return 'IdentityCheckHonor'
   }
 
   const stepsConfig: StepsDictionary = {
@@ -83,7 +95,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
-      firstScreen: 'IdentityCheckHonor',
+      firstScreen: getConfirmationFirstScreen(),
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {
       name: IdentityCheckStep.PHONE_VALIDATION,

@@ -12,6 +12,7 @@ import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
