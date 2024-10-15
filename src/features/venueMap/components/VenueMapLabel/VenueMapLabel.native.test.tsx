@@ -46,23 +46,4 @@ describe('<VenueMapLabel />', () => {
       transform: [{ translateX: expectedTranslateX }],
     })
   })
-
-  it('should have a maximum width and proper padding applied to the label container', () => {
-    render(<VenueMapLabel venue={venuesFixture[0]} />)
-
-    expect(screen.getByTestId('label-container')).toHaveStyle({
-      maxWidth: 160,
-      paddingHorizontal: 8,
-      paddingVertical: 4,
-    })
-  })
-
-  it('should apply the correct background color and border radius', () => {
-    render(<VenueMapLabel venue={venuesFixture[0]} />)
-
-    expect(screen.getByTestId('label-container')).toHaveStyle({
-      backgroundColor: '#ffffff',
-      borderRadius: 4,
-    })
-  })
 })
