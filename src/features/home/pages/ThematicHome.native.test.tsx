@@ -15,6 +15,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeolocPermissionState, ILocationContext } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,6 +38,7 @@ const defaultUseLocation: Partial<ILocationContext> = {
   permissionState: GeolocPermissionState.GRANTED,
   setPlace: jest.fn(),
   setSelectedLocationMode: jest.fn(),
+  onResetPlace: jest.fn(),
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -281,6 +283,30 @@ describe('ThematicHome', () => {
       await screen.findByText('Suivre')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('localization', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+      useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId', from: 'deeplink' } })
+    })
+
+    it('should reset localization when coming from aa deeplink', async () => {
+      mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
+        userLocation: undefined,
+        geolocPosition: defaultUseLocation.userLocation,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        hasGeolocPosition: true,
+      })
+      renderThematicHome()
+
+      await screen.findByText('Suivre')
+
+      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+        LocationMode.AROUND_ME
+      )
     })
   })
 })
