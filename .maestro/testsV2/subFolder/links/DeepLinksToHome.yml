@@ -1,9 +1,10 @@
 appId: app.passculture.webapp
 ---
-- runFlow:
-    file: DeepLinksGeneric.yml
-    env:
-        URL: https://passculture.app/accueil?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+- runFlow: ./../Close.yml
+- runFlow: DeepLinksGeneric.yml
 
+- openLink:
+    link: https://passculture.app/accueil?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+    autoVerify: true
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
 - assertVisible: "Bienvenue\_!"
-

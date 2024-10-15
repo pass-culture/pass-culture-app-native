@@ -1,10 +1,8 @@
 appId: app.passculture.webapp
 ---
-- stopApp
-- runFlow:
-    file: DeepLinksGeneric.yml
-    env:
-        URL: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
-    label: 'Vérification du lien vers la page offre'
-
-- assertVisible: "Réserver.*"
+- runFlow: ./../Close.yml
+- openLink:
+    link: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+    autoVerify: true
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+- assertVisible: 'Réserver.*'

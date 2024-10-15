@@ -1,9 +1,10 @@
 appId: app.passculture.webapp
 ---
-- runFlow:
-    file: DeepLinksGeneric.yml
-    env:
-        URL: https://passculture.app/accueil-thematique?from=deeplink&homeId=2oJB7P984lwH2sFjjMCcp8&videoModuleId=62e8Zwo7Mo8PNwz6RAUuqN&utm_campaign=test&utm_source=test&utm_medium=test
-    label: 'Vérification du lien vers une vidéo'
+- runFlow: ././../Close.yml
+- runFlow: DeepLinksGeneric.yml
 
-- assertVisible: "Les tutos de Yugo"
+- openLink:
+    link: https://passculture.app/accueil-thematique?from=deeplink&homeId=2oJB7P984lwH2sFjjMCcp8&videoModuleId=62e8Zwo7Mo8PNwz6RAUuqN&utm_campaign=test&utm_source=test&utm_medium=test
+    autoVerify: true
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+- assertVisible: 'Les tutos de Yugo'

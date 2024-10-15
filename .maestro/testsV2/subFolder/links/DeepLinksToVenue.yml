@@ -1,9 +1,10 @@
 appId: app.passculture.webapp
 ---
-- runFlow:
-    file: DeepLinksGeneric.yml
-    env:
-        URL: https://passculture.app/lieu/29732?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
-    label: 'Vérification du lien vers une recherche spécifique'
+- runFlow: ./../Close.yml
+- runFlow: DeepLinksGeneric.yml
 
-- assertVisible: ".*OLYMPIA"
+- openLink:
+    link: https://passculture.app/lieu/29732?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+    autoVerify: true
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+- assertVisible: '.*OLYMPIA'
