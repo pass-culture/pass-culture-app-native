@@ -2,25 +2,28 @@ import React, { useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { PastilleType } from 'features/venue/types'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
 
 type InfoTabProps<TabKeyType extends string> = {
   tab: TabKeyType
   selectedTab: TabKeyType
-  Icon?: React.FC<AccessibleIcon>
   onPress: () => void
+  Icon?: React.FC<AccessibleIcon>
+  pastille?: PastilleType
 }
 
 export const InfoTab = <TabKeyType extends string>({
   tab,
   selectedTab,
-  Icon,
   onPress,
+  Icon,
+  pastille,
 }: InfoTabProps<TabKeyType>) => {
   const isSelected = selectedTab === tab
   const { isHover, ...webHoverProps } = useHandleHover()
@@ -42,6 +45,11 @@ export const InfoTab = <TabKeyType extends string>({
         <TabTitle isHover={isHover} isSelected={isSelected}>
           {tab}
         </TabTitle>
+        {pastille ? (
+          <PastilleContainer accessibilityLabel={pastille.accessibilityLabel} testID="pastille">
+            <Counter>{pastille.label}</Counter>
+          </PastilleContainer>
+        ) : null}
       </TabTitleContainer>
       <Spacer.Column numberOfSpaces={2} />
       <BarOfSelectedTab isSelected={isSelected} />
@@ -74,4 +82,14 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   width: '100%',
   backgroundColor: isSelected ? theme.colors.primary : 'transparent',
   borderRadius: getSpacing(1),
+}))
+
+const PastilleContainer = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
+  borderRadius: getSpacing(3.25),
+  paddingHorizontal: getSpacing(1),
+}))
+
+const Counter = styled(Typo.Hint)(({ theme }) => ({
+  color: theme.colors.white,
 }))

@@ -76,4 +76,31 @@ describe('TabLayout', () => {
 
     expect(screen.getByText('Infos pratiques content')).toBeOnTheScreen()
   })
+
+  it('should display a pastille on tab when specified', () => {
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[
+          { key: Tab.OFFERS, pastille: { label: '1', accessibilityLabel: '1 offre' } },
+          { key: Tab.INFOS },
+        ]}
+        defaultTab={Tab.OFFERS}
+      />
+    )
+
+    expect(screen.getByText('1')).toBeOnTheScreen()
+  })
+
+  it('should not display a pastille on tab when not specified', () => {
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+        defaultTab={Tab.OFFERS}
+      />
+    )
+
+    expect(screen.queryByTestId('pastille')).toBeNull()
+  })
 })
