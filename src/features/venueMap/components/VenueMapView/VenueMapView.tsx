@@ -4,15 +4,20 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useS
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
+import Supercluster from 'supercluster'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
-import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
+import {
+  VenueMapCluster,
+  VenueMapClusterProps,
+} from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
+import { getClusterColorByDominantVenueType } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantVenueType'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
@@ -23,6 +28,7 @@ import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import MapView, { MapViewProps, Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -77,6 +83,8 @@ export const VenueMapView: FunctionComponent<Props> = ({
 
   const bottomSheetRef = useRef<BottomSheet>(null)
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
+
+  const superClusterRef = useRef<Supercluster>()
 
   const filteredVenues = venueTypeCode
     ? venues.filter((venue) => venue.venue_type === venueTypeCode)
@@ -226,6 +234,28 @@ export const VenueMapView: FunctionComponent<Props> = ({
     [hidePointsOfInterest]
   )
 
+  const ColoredCluster = useCallback(
+    (clusterProps: VenueMapClusterProps) => {
+      const clusterVenueTypes =
+        superClusterRef.current
+          ?.getLeaves(clusterProps.properties.cluster_id, Infinity)
+          .map(
+            (leaf) =>
+              filteredVenues.find(
+                (venue) => venue.venueId.toString() === leaf.properties.identifier
+              )?.venue_type
+          )
+          .filter((venueType): venueType is VenueTypeCode => !!venueType) ?? []
+      return (
+        <VenueMapCluster
+          {...clusterProps}
+          color={getClusterColorByDominantVenueType(clusterVenueTypes)}
+        />
+      )
+    },
+    [filteredVenues]
+  )
+
   return (
     <React.Fragment>
       <VenueMapBottomSheet
@@ -248,7 +278,8 @@ export const VenueMapView: FunctionComponent<Props> = ({
         onMapReady={handleMapReady}
         moveOnMarkerPress={false}
         onRegionChangeComplete={handleRegionChangeComplete}
-        renderCluster={VenueMapCluster}
+        superClusterRef={superClusterRef}
+        renderCluster={ColoredCluster}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         radius={50}
