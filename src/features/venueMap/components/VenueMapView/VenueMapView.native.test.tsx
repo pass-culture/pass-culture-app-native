@@ -19,6 +19,10 @@ jest.mock('features/venueMap/store/initialVenuesStore', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
+
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
 
@@ -166,9 +170,9 @@ describe('<VenueMapView />', () => {
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
   })
 
-  it('should not display preview is FF disabled', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(false)
+  it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+
     render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
@@ -185,11 +189,8 @@ describe('<VenueMapView />', () => {
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
   })
 
-  it('should not display offers in bottom-sheet if FF disabled', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockImplementation((flagId: RemoteStoreFeatureFlags) =>
-      flagId === RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET ? false : true
-    )
+  it('should not display offers in bottom-sheet if wipOffersInBottomSheet FF disabled', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
@@ -248,6 +249,23 @@ describe('<VenueMapView />', () => {
     })
 
     expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object))
+  })
+
+  it('should display venue label when wipVenueMapPinV2 FF is activated', () => {
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
+    ])
+    render(getVenueMapViewComponent({}))
+
+    expect(screen.getByText('Cinéma de la fin')).toBeOnTheScreen()
+  })
+
+  it('should not display venue label wipVenueMapPinV2 when FF is disabled', () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+    render(getVenueMapViewComponent({}))
+
+    expect(screen.queryByText('Cinéma de la fin')).not.toBeOnTheScreen()
   })
 })
 
