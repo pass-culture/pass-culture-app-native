@@ -15,6 +15,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeolocPermissionState, ILocationContext } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -35,6 +36,9 @@ const defaultUseLocation: Partial<ILocationContext> = {
     longitude: 2,
   },
   permissionState: GeolocPermissionState.GRANTED,
+  setPlace: jest.fn(),
+  setSelectedLocationMode: jest.fn(),
+  onResetPlace: jest.fn(),
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -235,6 +239,7 @@ describe('ThematicHome', () => {
 
     it('should show geolocation banner when user is not geolocated or located', async () => {
       mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
         userLocation: undefined,
       })
       renderThematicHome()
@@ -261,6 +266,7 @@ describe('ThematicHome', () => {
 
     it('should show system banner when user is not geolocated or located', async () => {
       mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
         userLocation: undefined,
       })
       renderThematicHome()
@@ -277,6 +283,67 @@ describe('ThematicHome', () => {
       await screen.findByText('Suivre')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('localization', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it('should keep localization(AROUND_PLACE) when user has no Geoloc and is not coming deeplink', async () => {
+      mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
+        userLocation: undefined,
+        geolocPosition: defaultUseLocation.userLocation,
+        selectedLocationMode: LocationMode.AROUND_ME,
+        hasGeolocPosition: true,
+      })
+      renderThematicHome()
+
+      await screen.findByText('Suivre')
+
+      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+        LocationMode.AROUND_ME
+      )
+    })
+
+    beforeAll(() => {
+      useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId', from: 'deeplink' } })
+    })
+
+    it('should use user geoloc when coming from a deeplink', async () => {
+      mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
+        userLocation: undefined,
+        geolocPosition: defaultUseLocation.userLocation,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        hasGeolocPosition: true,
+      })
+      renderThematicHome()
+
+      await screen.findByText('Suivre')
+
+      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+        LocationMode.AROUND_ME
+      )
+    })
+
+    it('should not use user localization(AROUND_PLACE) when come deeplink', async () => {
+      mockUseLocation.mockReturnValueOnce({
+        ...defaultUseLocation,
+        userLocation: undefined,
+        geolocPosition: undefined,
+        selectedLocationMode: LocationMode.AROUND_PLACE,
+        hasGeolocPosition: false,
+      })
+      renderThematicHome()
+
+      await screen.findByText('Suivre')
+
+      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+        LocationMode.EVERYWHERE
+      )
     })
   })
 })
