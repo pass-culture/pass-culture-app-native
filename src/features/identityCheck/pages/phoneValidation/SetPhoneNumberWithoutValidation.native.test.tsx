@@ -21,7 +21,7 @@ const patchProfile = jest.spyOn(API.api, 'patchNativeV1Profile')
 const mockDispatch = jest.fn()
 const mockUseSubscriptionContext = jest.spyOn(SubscriptionContextProvider, 'useSubscriptionContext')
 
-describe.skip('SetPhoneNumberWithoutValidation', () => {
+describe('SetPhoneNumberWithoutValidation', () => {
   beforeEach(() => {
     setStoreInitialState()
   })
@@ -35,18 +35,26 @@ describe.skip('SetPhoneNumberWithoutValidation', () => {
   describe('when user already given his phone number', () => {
     test('Use the phone number already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '33', countryCode: 'FR' })
-      renderSetPhoneNumberWithoutValidation()
 
-      expect(getPhoneNumberInputValue()).toBe('0612345678')
+      const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
+
+      expect(screen.getByTestId('Entrée pour le numéro de téléphone').props.value).toBe(
+        '0612345678'
+      )
+
+      unmount() // to avoid act warning https://github.com/orgs/react-hook-form/discussions/3108#discussioncomment-8514714
     })
 
     test('Use the country already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '596', countryCode: 'MQ' })
-      renderSetPhoneNumberWithoutValidation()
+
+      const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
 
       const countrySelected = screen.getByText('+596')
 
       expect(countrySelected).toBeOnTheScreen()
+
+      unmount()
     })
   })
 
@@ -57,7 +65,7 @@ describe.skip('SetPhoneNumberWithoutValidation', () => {
       })
 
       test('Redirect to steppers when update phone number is succeed', async () => {
-        renderSetPhoneNumberWithoutValidation()
+        const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
 
         await submitWithPhoneNumber('0612345678')
 
@@ -67,6 +75,8 @@ describe.skip('SetPhoneNumberWithoutValidation', () => {
             type: 'RESET',
           })
         })
+
+        unmount()
       })
 
       test('Store phone number', async () => {
@@ -136,10 +146,6 @@ describe.skip('SetPhoneNumberWithoutValidation', () => {
       const button = screen.getByText('Continuer')
       fireEvent.press(button)
     })
-  }
-
-  function getPhoneNumberInputValue() {
-    return screen.getByTestId('Entrée pour le numéro de téléphone').props.value
   }
 
   function givenStoredPhoneNumber(
