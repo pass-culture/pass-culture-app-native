@@ -80,32 +80,32 @@ describe('SetPhoneNumberWithoutValidation', () => {
       })
 
       test('Store phone number', async () => {
-        renderSetPhoneNumberWithoutValidation()
+        const { unmount } = renderSetPhoneNumberWithoutValidation()
 
         await submitWithPhoneNumber('0612345678')
 
-        await waitFor(() => {
-          expect(mockDispatch).toHaveBeenCalledWith({
-            payload: {
-              country: { callingCode: '33', countryCode: 'FR' },
-              phoneNumber: '0612345678',
-            },
-            type: 'SET_PHONE_NUMBER',
-          })
+        expect(mockDispatch).toHaveBeenCalledWith({
+          payload: {
+            country: { callingCode: '33', countryCode: 'FR' },
+            phoneNumber: '0612345678',
+          },
+          type: 'SET_PHONE_NUMBER',
         })
+
+        unmount()
       })
     })
 
     describe('When failure', () => {
       test('Show error message when update phone number is failed', async () => {
         updatePhoneNumberWillFail()
-        renderSetPhoneNumberWithoutValidation()
+        const { unmount } = renderSetPhoneNumberWithoutValidation()
 
         await submitWithPhoneNumber('0612345678')
 
-        await waitFor(() => {
-          expect(screen.getByText('Une erreur est survenue')).toBeTruthy()
-        })
+        expect(await screen.findByText('Une erreur est survenue')).toBeTruthy()
+
+        unmount()
       })
     })
   })
