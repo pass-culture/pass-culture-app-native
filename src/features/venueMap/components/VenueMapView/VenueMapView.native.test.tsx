@@ -249,6 +249,22 @@ describe('<VenueMapView />', () => {
 
     expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object))
   })
+
+  it('should display venue label when FF is activated', () => {
+    render(getVenueMapViewComponent({}))
+
+    expect(screen.getByText('Cinéma de la fin')).toBeOnTheScreen()
+  })
+
+  it('should display venue label when FF is disabled', () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockImplementation((flagId: RemoteStoreFeatureFlags) =>
+      flagId === RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2 ? false : true
+    )
+    render(getVenueMapViewComponent({}))
+
+    expect(screen.queryByText('Cinéma de la fin')).not.toBeOnTheScreen()
+  })
 })
 
 const mockCurrentRegion = {
