@@ -14,6 +14,7 @@ import {
   VenueMapCluster,
   VenueMapClusterProps,
 } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
+import { VenueMapLabel } from 'features/venueMap/components/VenueMapLabel/VenueMapLabel'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
@@ -70,6 +71,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
 
   const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const shouldDisplayPinV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2)
   const bottomSheetOffersEnabled = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
   )
@@ -301,7 +303,9 @@ export const VenueMapView: FunctionComponent<Props> = ({
             identifier={venue.venueId.toString()}
             testID={`marker-${venue.venueId}`}
             zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
-          />
+            title={venue.label}>
+            {shouldDisplayPinV2 ? <VenueMapLabel venue={venue} /> : null}
+          </Marker>
         ))}
       </StyledMapView>
       {hasSearchButton ? (
