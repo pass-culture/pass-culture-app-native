@@ -5,10 +5,10 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { calculateAge } from 'features/profile/helpers/calculateAge'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
+import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -69,7 +69,7 @@ export function DeleteProfileReason() {
   const headerHeight = useGetHeaderHeight()
   const gradientRef = useRef<AnimatedViewRefType>(null)
   const { user } = useAuthContext()
-  const userHas21YearsOld = calculateAge(user!) >= 21
+  const userHas21YearsOld = getAge(user!.birthDate!) >= 21
   const canDeleteProfile = !user!.isBeneficiary || userHas21YearsOld
   const reasons = reasonButtons(canDeleteProfile)
   const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
