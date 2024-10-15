@@ -36,7 +36,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
     test('Use the phone number already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '33', countryCode: 'FR' })
 
-      const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
 
       expect(screen.getByTestId('Entrée pour le numéro de téléphone').props.value).toBe(
         '0612345678'
@@ -48,7 +48,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
     test('Use the country already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '596', countryCode: 'MQ' })
 
-      const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
 
       const countrySelected = screen.getByText('+596')
 
@@ -65,7 +65,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
       })
 
       test('Redirect to steppers when update phone number is succeed', async () => {
-        const { unmount } = render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
+        const { unmount } = renderSetPhoneNumberWithoutValidation()
 
         await submitWithPhoneNumber('0612345678')
 
