@@ -1,6 +1,6 @@
 import { useNavigationState } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React, { useMemo } from 'react'
+import React, { useMemo, FunctionComponent, ReactNode } from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -38,8 +38,8 @@ export function AutocompleteOfferItem({
   sendEvent,
   addSearchHistory,
   shouldShowCategory,
-  offerCategories,
-}: AutocompleteOfferItemProps) {
+  offerCategories = [],
+}: Readonly<AutocompleteOfferItemProps>) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const {
@@ -47,11 +47,11 @@ export function AutocompleteOfferItem({
     ['offer.nativeCategoryId']: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
-  const mappedNativeCategories = useNativeCategories(offerCategories?.[0])
+  const mappedNativeCategories = useNativeCategories(offerCategories[0])
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
+  const routes = useNavigationState((state) => state.routes)
+  const currentRoute = routes?.at(-1)?.name
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
@@ -72,7 +72,7 @@ export function AutocompleteOfferItem({
 
   const orderedNativeCategories = nativeCategories.sort((a, b) => b.count - a.count)
 
-  const isQueryFromSearchN1 = !!offerCategories?.length
+  const isQueryFromSearchN1 = !!offerCategories.length
 
   const isNativeCategoryRelatedToSearchGroup = useMemo(() => {
     return mappedNativeCategories.some(
@@ -178,7 +178,6 @@ export function AutocompleteOfferItem({
       isFromHistory: undefined,
       gtls: [],
     }
-
     addSearchHistory({
       query,
       nativeCategory: shouldFilterOnNativeCategory ? orderedNativeCategories[0]?.value : undefined,
@@ -201,22 +200,37 @@ export function AutocompleteOfferItem({
   const testID = `autocompleteOfferItem_${hit.objectID}`
 
   return (
-    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
-      <MagnifyingGlassIconContainer>
-        <MagnifyingGlassFilledIcon />
-      </MagnifyingGlassIconContainer>
-      <StyledText numberOfLines={1} ellipsizeMode="tail">
-        <Highlight suggestionHit={hit} attribute="query" />
-        {shouldDisplaySuggestion ? (
-          <React.Fragment>
-            <Typo.Body> dans </Typo.Body>
-            <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
-          </React.Fragment>
-        ) : null}
-      </StyledText>
-    </AutocompleteItemTouchable>
+    <SuggestionContainer hit={hit} onPress={onPress} testID={testID}>
+      {shouldDisplaySuggestion && categoryToDisplay ? (
+        <Suggestion categoryToDisplay={categoryToDisplay} />
+      ) : undefined}
+    </SuggestionContainer>
   )
 }
+
+const SuggestionContainer: FunctionComponent<{
+  hit: AlgoliaSuggestionHit
+  onPress: () => void
+  testID: string
+  children: ReactNode
+}> = ({ hit, onPress, testID, children }) => (
+  <AutocompleteItemTouchable testID={testID} onPress={onPress}>
+    <MagnifyingGlassIconContainer>
+      <MagnifyingGlassFilledIcon />
+    </MagnifyingGlassIconContainer>
+    <StyledText numberOfLines={1} ellipsizeMode="tail">
+      <Highlight suggestionHit={hit} attribute="query" />
+      {children}
+    </StyledText>
+  </AutocompleteItemTouchable>
+)
+
+const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ categoryToDisplay }) => (
+  <React.Fragment>
+    <Typo.Body> dans </Typo.Body>
+    <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
+  </React.Fragment>
+)
 
 const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
 
