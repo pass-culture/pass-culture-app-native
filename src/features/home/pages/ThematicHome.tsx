@@ -148,20 +148,19 @@ export const ThematicHome: FunctionComponent = () => {
   }, [id, params.from, params.moduleId, params.moduleListId])
 
   useEffect(() => {
-    switch (true) {
-      case selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition:
-        setSelectedLocationMode(LocationMode.AROUND_ME)
-        break
-      case hasGeolocPosition && isFromDeeplink:
-        setSelectedLocationMode(LocationMode.AROUND_ME)
+    if (selectedLocationMode === LocationMode.AROUND_PLACE) {
+      if (isFromDeeplink) {
+        setSelectedLocationMode(LocationMode.EVERYWHERE)
+      } else setSelectedLocationMode(LocationMode.AROUND_PLACE)
+    } else if (hasGeolocPosition) {
+      setSelectedLocationMode(LocationMode.AROUND_ME)
+      if (isFromDeeplink) {
         setPlace(null)
         onResetPlace()
-        break
-      default:
-        setSelectedLocationMode(LocationMode.EVERYWHERE)
-        break
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      }
+    } else {
+      setSelectedLocationMode(LocationMode.EVERYWHERE)
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
 
   const shouldDisplaySubscribeButton = Platform.OS !== 'ios' && !enableAppV2Header
