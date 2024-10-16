@@ -3,13 +3,15 @@ import React from 'react'
 import { analytics } from 'libs/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils/web'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
-const wrapper = (props: { children: unknown }) => (
-  <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
-)
+const wrapper = (props: { children: unknown }) =>
+  reactQueryProviderHOC(
+    <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
+  )
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
