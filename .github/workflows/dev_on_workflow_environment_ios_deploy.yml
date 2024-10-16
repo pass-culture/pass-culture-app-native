@@ -94,43 +94,12 @@ jobs:
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" ${{ inputs.ENV }}'
 
   slack_notify:
-    runs-on: ubuntu-22.04
-    if: ${{ always() }}
     needs: sentry_and_deploy
-    steps:
-      - name: Connect to Secret Manager
-        uses: 'google-github-actions/auth@v2'
-        with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Get secrets for Slack
-        id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
-        with:
-          secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
-      - name: Post to a Slack channel
-        id: slack
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # channel #alertes-deploiement-native
-          channel-id: 'C0309RP8K42'
-          payload: |
-            {
-              "attachments": [
-                  {
-                      "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[steps.sentry_and_deploy.outputs.status == 'failure'] }}",
-                      "author_name": "${{github.actor}}",
-                      "author_link": "https://github.com/${{github.actor}}",
-                      "author_icon": "https://github.com/${{github.actor}}.png",
-                      "title": "PCAPPNATIVE Deployment",
-                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[steps.sentry_and_deploy.outputs.status == 'failure'] }}"
-                  }
-              ],
-              "unfurl_links": false,
-              "unfurl_media": false
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+    uses: ./.github/workflows/dev_on_workflow_slack_notify.yml
+    with:
+      ENV: passculture-infra-prod-github-runner-cache
+      status: steps.sentry_and_deploy.outputs.status
+      message: 'Le déploiement iOS sur `${{ inputs.ENV }}`'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
