@@ -1,5 +1,5 @@
-import React, { FC, useCallback, useMemo } from 'react'
-import { FlatList, View } from 'react-native'
+import React, { FC, useMemo } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import type { OfferPreviewResponse } from 'api/gen'
@@ -9,13 +9,12 @@ import {
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
-import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Spacer } from 'ui/theme'
@@ -23,34 +22,22 @@ import { Spacer } from 'ui/theme'
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
   venueOffers: VenueOffers
-  date: Date
   isLast: boolean
   nextScreeningDate?: Date
-  setSelectedDate: (date: Date) => void
-  nextDateIndex: number
-  flatListRef: React.MutableRefObject<FlatList | null>
-  flatListWidth: number
-  itemWidth: number
 }
 
 export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   venueOffers,
-  date,
   movieOffer: { offer },
   isLast,
   nextScreeningDate,
-  setSelectedDate,
-  nextDateIndex,
-  flatListRef,
-  flatListWidth,
-  itemWidth,
 }) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
-  const scrollToAnchor = useScrollToAnchor()
+  const { goToDate, selectedDate } = useMovieCalendar()
 
   const selectedScreeningStock = useMemo(
-    () => movieScreenings[getDateString(String(date))],
-    [movieScreenings, date]
+    () => movieScreenings[getDateString(String(selectedDate))],
+    [movieScreenings, selectedDate]
   )
 
   const subcategoriesMapping = useSubcategoriesMapping()
@@ -58,18 +45,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
     offer.isExternalBookingsDisabled
-  )
-
-  const scrollToMiddleElement = useCallback(
-    (currentIndex: number) => {
-      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
-
-      flatListRef.current?.scrollToOffset({
-        animated: true,
-        offset,
-      })
-    },
-    [flatListRef, flatListWidth, itemWidth]
   )
 
   const {
@@ -106,11 +81,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         <View>
           <NextScreeningButton
             date={nextScreeningDate}
-            onPress={() => {
-              scrollToAnchor('venue-calendar')
-              setSelectedDate(nextScreeningDate)
-              scrollToMiddleElement(nextDateIndex)
-            }}
+            onPress={() => goToDate(nextScreeningDate)}
           />
         </View>
       ) : (

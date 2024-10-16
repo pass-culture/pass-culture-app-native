@@ -7,7 +7,6 @@ import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
@@ -39,7 +38,6 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
     parameters: {
       ...initialSearchState,
       allocineId: offer.extraData?.allocineId ?? undefined,
-      date: { selectedDate: date.toISOString(), option: DATE_FILTER_OPTIONS.USER_PICK },
       distinct: false,
     },
     buildLocationParameterParams: {
@@ -58,32 +56,45 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
     setCount(initialCount)
   }, [date, initialCount])
 
-  const filteredOffers = useMemo(
+  const dayOffers = useMemo(
     () =>
       moviesOfferBuilder(offersWithStocks?.offers)
+        .withoutMoviesAfter15Days()
         .withMoviesOnDay(date)
-        .sortedByDistance(location)
-        .buildOfferResponse(),
-    [date, location, offersWithStocks?.offers]
+        .build(),
+    [date, offersWithStocks?.offers]
   )
 
-  const displayOffers = filteredOffers.slice(0, count)
+  const nextOffers = useMemo(() => {
+    return moviesOfferBuilder(offersWithStocks?.offers)
+      .withoutMoviesAfter15Days()
+      .withoutMoviesOnDay(date)
+      .withNextScreeningFromDate(date)
+      .build()
+  }, [date, offersWithStocks?.offers])
+
+  const movieOffers = useMemo(() => [...dayOffers, ...nextOffers], [dayOffers, nextOffers])
+
+  const displayedOffers = useMemo(
+    () => (count === movieOffers.length ? movieOffers : movieOffers.slice(0, count)),
+    [count, movieOffers]
+  )
 
   const increaseCount = useCallback(
     () =>
       setCount((count) => {
         const newCount = count + nextCount
-        return Math.max(newCount, filteredOffers.length)
+        return Math.max(newCount, displayedOffers.length)
       }),
-    [filteredOffers.length, nextCount]
+    [displayedOffers.length, nextCount]
   )
 
   const isEnd = useMemo(() => {
-    return displayOffers.length === filteredOffers.length
-  }, [displayOffers.length, filteredOffers.length])
+    return displayedOffers.length === dayOffers.length + nextOffers.length
+  }, [displayedOffers.length, dayOffers.length, nextOffers.length])
 
   return {
-    items: displayOffers,
+    items: displayedOffers,
     isLoading,
     increaseCount,
     isEnd,

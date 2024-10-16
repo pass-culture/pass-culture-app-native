@@ -4,6 +4,7 @@ import { offerResponseBuilder } from 'features/offer/components/MoviesScreeningC
 import * as useGetVenuesByDayModule from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
 import { render, screen } from 'tests/utils'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 import { OfferNewXPCineBlock } from './OfferNewXPCineBlock'
 
@@ -18,6 +19,11 @@ jest.mock('libs/location/LocationWrapper', () => ({
     userLocation: mockUserLocation,
     selectedLocationMode: mockLocationMode,
   }),
+}))
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
@@ -43,16 +49,20 @@ describe('OfferNewXPCineBlock', () => {
   it('should display skeleton when data is loading', () => {
     spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: true })
 
-    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />)
+    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />, {
+      wrapper: AnchorProvider,
+    })
 
     expect(screen.getByTestId('cine-block-skeleton')).toBeOnTheScreen()
   })
 
-  it('should not display skeleton when data is loaded', () => {
+  it('should not display skeleton when data is loaded', async () => {
     spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: false })
 
-    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />)
+    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />, {
+      wrapper: AnchorProvider,
+    })
 
-    expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
+    await expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
   })
 })
