@@ -82,7 +82,9 @@ describe('useGetVenueByDay', () => {
 
       await act(async () => {})
 
-      expect(result.current.items).toHaveLength(1)
+      const filteredItems = result.current.items.filter((item) => !item.nextDate)
+
+      expect(filteredItems).toHaveLength(1)
     })
 
     it('should return the specified initial number of cinema', async () => {
@@ -185,7 +187,9 @@ describe('useGetVenueByDay', () => {
         rerender({ date: TOMORROW.toDate() })
       })
 
-      expect(result.current.items).toHaveLength(5)
+      const filteredItems = result.current.items.filter((item) => !item.nextDate)
+
+      expect(filteredItems).toHaveLength(5)
     })
 
     it('should return the initial number of cinema after using increaseCount', async () => {

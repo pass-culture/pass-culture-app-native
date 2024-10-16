@@ -15,14 +15,17 @@ type AnchorProviderProps = {
   scrollViewRef: RefObject<ScrollView>
   handleCheckScrollY(): number
   children: React.ReactNode
+  offset?: number
 }
 
 export const AnchorProvider = ({
   scrollViewRef,
   handleCheckScrollY,
+  offset = 0,
   children,
 }: AnchorProviderProps) => {
   const { top } = useSafeAreaInsets()
+
   const anchors = useRef<Partial<Record<AnchorName, RefObject<View>>>>({})
 
   const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View>) => {
@@ -44,14 +47,14 @@ export const AnchorProvider = ({
           ) => {
             const currentPageScroll = handleCheckScrollY()
             scrollViewRef.current?.scrollTo({
-              y: pageY + currentPageScroll - height - top,
+              y: pageY + currentPageScroll - height - top - offset,
               animated: true,
             })
           }
         )
       }
     },
-    [handleCheckScrollY, scrollViewRef, top]
+    [handleCheckScrollY, offset, scrollViewRef, top]
   )
 
   const value = useMemo(

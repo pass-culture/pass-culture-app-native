@@ -116,7 +116,10 @@ export const VenueContent: React.FunctionComponent<Props> = ({
         <VenueWebMetaHeader venue={venue} />
         {/* On web VenueHeader is called before Body for accessibility navigate order */}
         {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
-        <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <AnchorProvider
+          scrollViewRef={scrollViewRef}
+          handleCheckScrollY={handleCheckScrollY}
+          offset={isLargeScreen ? headerHeight : 0}>
           <ContentContainer
             onScroll={handleScroll}
             scrollEventThrottle={16}
