@@ -102,7 +102,6 @@ jobs:
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
       - name: Post to a Slack channel
         id: slack
-        if: ${{ steps.sentry_and_deploy.outputs.status == 'failure' || inputs.ENV == 'staging' }}
         uses: slackapi/slack-github-action@v1.24.0
         with:
           # channel #alertes-deploiement-native
