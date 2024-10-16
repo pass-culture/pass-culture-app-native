@@ -76,7 +76,8 @@ export const IdentityCheckHonor = () => {
       </TypoDS.Title2>
       <Spacer.Column numberOfSpaces={10} />
       <TypoDS.Title4 {...getHeadingAttrs(2)}>
-        &quot;Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.&quot;
+        &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon inscription
+        sont correctes.&quot;
       </TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>

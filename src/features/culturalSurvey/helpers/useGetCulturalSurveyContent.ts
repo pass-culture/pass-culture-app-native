@@ -41,7 +41,8 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
         },
       },
       thanks: {
-        subtitle: 'Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.',
+        subtitle:
+          'Elles nous permettent de suivre l’évolution de tes pratiques culturelles sur l’application.',
         button: {
           wording: 'Continuer',
           onPress: navigateToIdentityCheckHonor,

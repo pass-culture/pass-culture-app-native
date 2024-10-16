@@ -87,7 +87,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
         <InternalTouchableLink
           key={2}
           as={ButtonPrimary}
-          wording="Débuter le questionnaire"
+          wording="Commencer le questionnaire"
           onBeforeNavigate={analytics.logHasStartedCulturalSurvey}
           navigateTo={{
             screen: 'CulturalSurveyQuestions',

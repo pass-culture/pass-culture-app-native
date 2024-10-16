@@ -255,7 +255,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
   />
   <View>
     <View
-      accessibilityLabel="Débuter le questionnaire"
+      accessibilityLabel="Commencer le questionnaire"
       accessibilityState={
         {
           "busy": undefined,
@@ -309,7 +309,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
           },
         ]
       }
-      testID="Débuter le questionnaire"
+      testID="Commencer le questionnaire"
     >
       <View
         style={
@@ -336,7 +336,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
             ]
           }
         >
-          Débuter le questionnaire
+          Commencer le questionnaire
         </Text>
       </View>
     </View>
@@ -628,7 +628,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
   />
   <View>
     <View
-      accessibilityLabel="Débuter le questionnaire"
+      accessibilityLabel="Commencer le questionnaire"
       accessibilityState={
         {
           "busy": undefined,
@@ -682,7 +682,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
           },
         ]
       }
-      testID="Débuter le questionnaire"
+      testID="Commencer le questionnaire"
     >
       <View
         style={
@@ -709,7 +709,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
             ]
           }
         >
-          Débuter le questionnaire
+          Commencer le questionnaire
         </Text>
       </View>
     </View>
