@@ -1,6 +1,5 @@
 appId: app.passculture.webapp
 ---
-- runFlow: ./../Close.yml
 - runFlow: DeepLinksGeneric.yml
 
 - openLink:
