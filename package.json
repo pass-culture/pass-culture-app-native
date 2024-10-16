@@ -106,7 +106,7 @@
     }
   },
   "dependencies": {
-    "@algolia/client-search": "^4.23.3",
+    "@algolia/client-search": "^4.24.0",
     "@amplitude/analytics-react-native": "^1.0.1",
     "@babel/runtime": "^7.24.4",
     "@bam.tech/react-native-config": "^1.4.5",
@@ -140,7 +140,7 @@
     "@shopify/flash-list": "^1.6.4",
     "@typeform/embed-react": "^1.20.0",
     "@zootools/email-spell-checker": "^1.11.0",
-    "algoliasearch": "^4.23.3",
+    "algoliasearch": "^4.24.0",
     "amplitude-js": "^8.16.1",
     "chromatic": "^6.19.8",
     "color-alpha": "^1.1.3",
