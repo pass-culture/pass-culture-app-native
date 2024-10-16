@@ -1,6 +1,6 @@
 appId: app.passculture.webapp
 ---
-- runFlow: DeepLinksGeneric.yml
+- runFlow: ./../Close.yml
 - openLink:
     link: https://passculture.app/offre/100547783?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
     autoVerify: true

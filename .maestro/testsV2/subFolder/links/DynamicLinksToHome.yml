@@ -10,6 +10,7 @@ appId: app.passculture.webapp
       true: ${MAESTRO_APP_INSTALLED == 'true'}
     label: 'Vérification du lien vers la page offre (FDL - app installée)'
     commands:
+      - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
       - assertVisible: "Bienvenue\_!"
 
 - runFlow:
