@@ -1,4 +1,4 @@
-name: "3 [on_pr] Run Reassure performance tests"
+name: '3 [on_pr] Run Reassure performance tests'
 
 on:
   pull_request:
