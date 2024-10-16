@@ -62,7 +62,7 @@ describe('CulturalSurveyIntro page', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should navigate to first page when pressing "Commencer le questionnaire" button ', async () => {
+    it('should navigate to first page when pressing "Commencer le questionnaire" button', async () => {
       render(<CulturalSurveyIntro />)
 
       const StartButton = screen.getByText('Commencer le questionnaire')
