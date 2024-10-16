@@ -1,17 +1,15 @@
 import { Hit } from '@algolia/client-search'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useQuery } from 'react-query'
 
 import { OfferResponseV2 } from 'api/gen'
+import { useFetchOffers } from 'features/offer/api/useFetchOffers'
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
 const DEFAULT_RADIUS_KM = 50
@@ -22,18 +20,20 @@ type Options = Partial<{
   nextCount: number
 }>
 
-const useFetchOffers = (...params: Parameters<typeof fetchOffers>) => {
-  return useQuery({
-    queryKey: [QueryKeys.SEARCH_RESULTS, params],
-    queryFn: () => fetchOffers(...params),
-  })
-}
-
 export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: Options) => {
   const { radiusKm = DEFAULT_RADIUS_KM, initialCount = 6, nextCount = 3 } = options || {}
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
   const isUserUnderage = useIsUserUnderage()
+
+  const location = useMemo(
+    () =>
+      userLocation ?? {
+        latitude: offer.venue.coordinates.latitude ?? 0,
+        longitude: offer.venue.coordinates.longitude ?? 0,
+      },
+    [offer.venue.coordinates.latitude, offer.venue.coordinates.longitude, userLocation]
+  )
 
   const { data } = useFetchOffers({
     parameters: {
@@ -43,12 +43,9 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
       distinct: false,
     },
     buildLocationParameterParams: {
-      userLocation: userLocation ?? {
-        latitude: offer.venue.coordinates.latitude ?? 0,
-        longitude: offer.venue.coordinates.longitude ?? 0,
-      },
+      userLocation: location,
       selectedLocationMode: LocationMode.AROUND_ME,
-      aroundMeRadius: radiusKm * 1000,
+      aroundMeRadius: radiusKm,
       aroundPlaceRadius: 'all',
     },
     isUserUnderage,
@@ -62,23 +59,21 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   }, [date, initialCount])
 
   const filteredOffers = useMemo(
-    () => moviesOfferBuilder(offersWithStocks?.offers).withMoviesOnDay(date).buildOfferResponse(),
-    [date, offersWithStocks?.offers]
+    () =>
+      moviesOfferBuilder(offersWithStocks?.offers)
+        .withMoviesOnDay(date)
+        .sortedByDistance(location)
+        .buildOfferResponse(),
+    [date, location, offersWithStocks?.offers]
   )
 
-  const displayOffers = useMemo(
-    () => (count === filteredOffers.length ? filteredOffers : filteredOffers.slice(0, count)),
-    [count, filteredOffers]
-  )
+  const displayOffers = filteredOffers.slice(0, count)
 
-  const getNext = useCallback(
+  const increaseCount = useCallback(
     () =>
       setCount((count) => {
         const newCount = count + nextCount
-        if (filteredOffers.length && newCount >= filteredOffers.length) {
-          return filteredOffers.length
-        }
-        return newCount
+        return Math.max(newCount, filteredOffers.length)
       }),
     [filteredOffers.length, nextCount]
   )
@@ -90,7 +85,7 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   return {
     items: displayOffers,
     isLoading,
-    getNext,
+    increaseCount,
     isEnd,
   }
 }

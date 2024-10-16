@@ -27,7 +27,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
   const flatListRef = useRef<FlatList | null>(null)
   const { selectedDate, setSelectedDate, dates } = useNextDays(15)
   const {
-    getNext,
+    increaseCount,
     isEnd: hasReachedVenueListEnd,
     items,
     isLoading,
@@ -85,7 +85,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
               mediumWidth
               icon={PlainMore}
               wording="Afficher plus de cinémas"
-              onPress={getNext}
+              onPress={increaseCount}
               color={theme.colors.black}
             />
           </SeeMoreContainer>
