@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Check no dead code is introduced"
+name: '4 [on_workflow] Check no dead code is introduced'
 
 on:
   workflow_call:

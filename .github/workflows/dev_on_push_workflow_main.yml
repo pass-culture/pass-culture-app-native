@@ -1,11 +1,11 @@
-name: "2 [pull/pr] Initiate workflow"
+name: '2 [pull/pr] Initiate workflow'
 
 on:
   push:
     branches:
       - master
     tags:
-      - "**"
+      - '**'
   pull_request:
 
 permissions:
@@ -266,7 +266,12 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-integration:
-    needs: [check-server-folder-changes-production, deploy-web-integration, check-proxy-version-production]
+    needs:
+      [
+        check-server-folder-changes-production,
+        deploy-web-integration,
+        check-proxy-version-production,
+      ]
     if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-production.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
@@ -287,7 +292,12 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-production:
-    needs: [check-server-folder-changes-production, deploy-web-production, check-proxy-version-production]
+    needs:
+      [
+        check-server-folder-changes-production,
+        deploy-web-production,
+        check-proxy-version-production,
+      ]
     if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-production.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
