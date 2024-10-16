@@ -41,6 +41,6 @@ ensure_nix_use_certificate() {
 	restart_nix
 }
 
-if [ -f "$SSL_CERT_FILE" ]; then
+if ./is_proxy_enabled.sh; then
 	ensure_nix_use_certificate
 fi
