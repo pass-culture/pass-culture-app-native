@@ -49,6 +49,7 @@ export const fetchOffers = async ({
       /* Is needed to get a queryID, in order to send analytics events
          https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
       clickAnalytics: true,
+      distinct: parameters.distinct,
       // To use exactly the query and not limit the duplicate offers
       ...(isFromOffer ? { typoTolerance: false, distinct: false } : {}),
     })

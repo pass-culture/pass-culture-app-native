@@ -141,6 +141,8 @@ describe('<OfferPlace />', () => {
       },
     })
 
+    await screen.findByText('Trouve ta séance')
+
     expect(screen.getByTestId('offer-new-xp-cine-block')).toBeOnTheScreen()
   })
 

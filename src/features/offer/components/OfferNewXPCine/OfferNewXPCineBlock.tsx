@@ -9,7 +9,6 @@ import { CineBlock } from 'features/offer/components/OfferNewXPCine/CineBlock'
 import { CineBlockSkeleton } from 'features/offer/components/OfferNewXPCine/CineBlockSkeleton'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -24,17 +23,15 @@ type Props = {
 }
 
 export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
-  const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const theme = useTheme()
-  const distance = useDistance({ lat, lng })
   const flatListRef = useRef<FlatList | null>(null)
   const { selectedDate, setSelectedDate, dates } = useNextDays(15)
   const {
-    getNext,
+    increaseCount,
     isEnd: hasReachedVenueListEnd,
     items,
     isLoading,
-  } = useGetVenuesByDay(selectedDate, offer)
+  } = useGetVenuesByDay(selectedDate, offer, { initialCount: 6, nextCount: 3, radiusKm: 50 })
 
   const { animatedStyle, onContentSizeChange } = useAnimatedHeight()
 
@@ -71,7 +68,6 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
             <React.Fragment>
               <CineBlock
                 offer={item}
-                distance={distance}
                 onSeeVenuePress={onSeeVenuePress}
                 selectedDate={selectedDate}
               />
@@ -89,7 +85,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
               mediumWidth
               icon={PlainMore}
               wording="Afficher plus de cinémas"
-              onPress={getNext}
+              onPress={increaseCount}
               color={theme.colors.black}
             />
           </SeeMoreContainer>

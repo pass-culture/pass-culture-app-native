@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useDistanceModule from 'libs/location/hooks/useDistance'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
@@ -35,11 +36,16 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+const distanceSpy = jest.spyOn(useDistanceModule, 'useDistance')
+
 describe('<OfferVenueBlock />', () => {
-  it('should display title', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)
+  it('should display title and distance', () => {
+    distanceSpy.mockReturnValueOnce('1,1 km')
+
+    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
     expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
+    expect(screen.getByText('à 1,1 km')).toBeOnTheScreen()
   })
 
   it('should render venue name', () => {
@@ -55,7 +61,9 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should render distance', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)
+    distanceSpy.mockReturnValueOnce('1,1 km')
+
+    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
     expect(screen.getByText('à 1,1 km')).toBeOnTheScreen()
   })

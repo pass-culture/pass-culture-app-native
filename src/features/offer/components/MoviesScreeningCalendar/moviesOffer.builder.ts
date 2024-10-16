@@ -2,6 +2,8 @@ import { addDays, differenceInMilliseconds, isAfter, isBefore, isSameDay } from 
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { GeoCoordinates } from 'libs/location'
+import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
 export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
   let movieOffers: MovieOffer[] = offersWithStocks.map((offer) => ({
@@ -69,6 +71,33 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
         }
 
         return bValue - aValue
+      })
+
+      return builderObject
+    },
+
+    sortedByDistance: (location: GeoCoordinates) => {
+      movieOffers = movieOffers.sort((a, b) => {
+        const aDistance = computeDistanceInMeters(
+          a.offer.venue.coordinates.latitude ?? 0,
+          a.offer.venue.coordinates.longitude ?? 0,
+          location?.latitude,
+          location?.longitude
+        )
+        const bDistance = computeDistanceInMeters(
+          b.offer.venue.coordinates.latitude ?? 0,
+          b.offer.venue.coordinates.longitude ?? 0,
+          location?.latitude,
+          location?.longitude
+        )
+
+        if (aDistance === bDistance) {
+          const aEarliestDate = getEarliestDate(a.offer.stocks)
+          const bEarliestDate = getEarliestDate(b.offer.stocks)
+          return aEarliestDate - bEarliestDate
+        }
+
+        return aDistance - bDistance
       })
 
       return builderObject

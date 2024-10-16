@@ -112,7 +112,7 @@ describe('useGetVenueByDay', () => {
       })
 
       await act(async () => {
-        result.current.getNext()
+        result.current.increaseCount()
       })
 
       expect(result.current.items).toHaveLength(9)
@@ -146,7 +146,7 @@ describe('useGetVenueByDay', () => {
       expect(result.current.isEnd).toBeTruthy()
     })
 
-    it('should be true if items are displayed after a getNext', async () => {
+    it('should be true if items are displayed after a increaseCount', async () => {
       const offers = generateOfferNumber(8, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
@@ -156,7 +156,7 @@ describe('useGetVenueByDay', () => {
       })
 
       await act(async () => {
-        result.current.getNext()
+        result.current.increaseCount()
       })
 
       expect(result.current.isEnd).toBeTruthy()
@@ -181,15 +181,14 @@ describe('useGetVenueByDay', () => {
       const { result, rerender } = await renderUseGetVenueByDay(TODAY_DATE, offer, options)
 
       await act(async () => {
-        result.current.getNext()
+        result.current.increaseCount()
+        rerender({ date: TOMORROW.toDate() })
       })
-
-      rerender({ date: TOMORROW.toDate() })
 
       expect(result.current.items).toHaveLength(5)
     })
 
-    it('should return the initial number of cinema after using getNext', async () => {
+    it('should return the initial number of cinema after using increaseCount', async () => {
       const todaysOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
       const tomorrowOffers = generateOfferNumber(10, OFFER_WITH_STOCKS_TOMORROW)
 
@@ -206,11 +205,15 @@ describe('useGetVenueByDay', () => {
       const { result, rerender } = await renderUseGetVenueByDay(TODAY_DATE, offer, options)
 
       await act(async () => {
-        result.current.getNext()
+        result.current.increaseCount()
+      })
+      await act(async () => {
+        rerender({ date: TOMORROW.toDate() })
       })
 
-      rerender({ date: TOMORROW.toDate() })
-      rerender({ date: TODAY.toDate() })
+      await act(async () => {
+        rerender({ date: TODAY.toDate() })
+      })
 
       expect(result.current.items).toHaveLength(6)
     })

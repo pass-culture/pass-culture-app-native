@@ -17,7 +17,6 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  distance?: string
   title: string
   offer: OfferResponseV2
   onChangeVenuePress?: VoidFunction
@@ -26,7 +25,6 @@ type Props = {
 }
 
 export function OfferVenueBlock({
-  distance,
   onChangeVenuePress,
   onSeeVenuePress,
   onSeeItineraryPress,
@@ -49,7 +47,7 @@ export function OfferVenueBlock({
       <Spacer.Column numberOfSpaces={4} />
 
       <React.Fragment>
-        <VenueBlock distance={distance} offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
 
         {onChangeVenuePress ? (
           <React.Fragment>

@@ -28,10 +28,10 @@ jest.mock('@batch.com/react-native-plugin', () =>
 
 const mockOffer = offerResponseBuilder().build()
 
-const useGetVenueByDayReturn = {
+const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGetVenuesByDay']> = {
   items: [],
   isLoading: true,
-  getNext: jest.fn(),
+  increaseCount: jest.fn(),
   isEnd: false,
 }
 
