@@ -62,10 +62,10 @@ describe('CulturalSurveyIntro page', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should navigate to first page when pressing Débuter le questionnaire', async () => {
+    it('should navigate to first page when pressing "Commencer le questionnaire" button ', async () => {
       render(<CulturalSurveyIntro />)
 
-      const StartButton = screen.getByText('Débuter le questionnaire')
+      const StartButton = screen.getByText('Commencer le questionnaire')
       fireEvent.press(StartButton)
 
       await waitFor(() => {
@@ -75,10 +75,10 @@ describe('CulturalSurveyIntro page', () => {
       })
     })
 
-    it('should log hasStartedCulturalSurvey event when pressing Débuter le questionnaire', () => {
+    it('should log hasStartedCulturalSurvey event when pressing "Commencer le questionnaire" button', () => {
       render(<CulturalSurveyIntro />)
 
-      const StartButton = screen.getByText('Débuter le questionnaire')
+      const StartButton = screen.getByText('Commencer le questionnaire')
       fireEvent.press(StartButton)
 
       expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalledTimes(1)
@@ -98,7 +98,7 @@ describe('CulturalSurveyIntro page', () => {
       })
     })
 
-    it('should log hasSkippedCulturalSurvey event when pressing Plus tard', async () => {
+    it('should log hasSkippedCulturalSurvey event when pressing "Plus tard" button', async () => {
       render(<CulturalSurveyIntro />)
 
       const LaterButton = screen.getByText('Plus tard')
@@ -109,7 +109,7 @@ describe('CulturalSurveyIntro page', () => {
       expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalledTimes(1)
     })
 
-    it('should navigate to FAQWebview when pressing En savoir plus', () => {
+    it('should navigate to FAQWebview when pressing "En savoir plus" button', () => {
       render(<CulturalSurveyIntro />)
 
       const FAQButton = screen.getByText('En savoir plus')
