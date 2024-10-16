@@ -1,0 +1,15 @@
+appId: app.passculture.webapp
+---
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'true'}
+    commands:
+      - stopApp
+
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'false'}
+    commands:
+      - stopApp: com.android.chrome
+      - stopApp: com.android.vending

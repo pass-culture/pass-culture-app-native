@@ -1,0 +1,21 @@
+appId: app.passculture.webapp
+---
+- runFlow: ./../Close.yml
+- openLink:
+    link: https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Flieu%2F29732%3Ffrom%3Ddeeplink%26utm_campaign%3Dtest%26utm_source%3Dtest%26utm_medium%3Dtest&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1
+    autoVerify: true
+
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'true'}
+    label: 'Vérification du lien vers la page offre (FDL - app installée)'
+    commands:
+      - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+      - assertVisible: "L'OLYMPIA"
+- runFlow:
+    when:
+      true: ${MAESTRO_APP_INSTALLED == 'false'}
+    label: 'Vérification du lien vers la page offre (FDL - app non-installée)'
+    commands:
+      - assertVisible: 'pass Culture App'
+      - assertVisible: 'Installer'

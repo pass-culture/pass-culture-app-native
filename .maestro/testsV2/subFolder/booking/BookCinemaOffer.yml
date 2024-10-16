@@ -7,7 +7,7 @@ appId: ${MAESTRO_APP_ID}
     direction: UP
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
-    text: 'Séances de cinéma'
+    text: "Films à l'affiche"
     index: 1
 
 - waitForAnimationToEnd
@@ -29,7 +29,7 @@ appId: ${MAESTRO_APP_ID}
       - pressKey: back
       - scroll
       - tapOn:
-          text: 'Séances de cinéma'
+          text: "Films à l'affiche"
           index: 1
       - swipe:
           from:

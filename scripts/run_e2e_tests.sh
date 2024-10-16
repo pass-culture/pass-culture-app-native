@@ -78,6 +78,15 @@ elif [ "$platform" = "web" ]; then
   echo "Running Web tests on $env environment with app id: $app_id"
 fi
 
+if adb shell pm list packages | grep "app.passculture.webapp"; then
+  echo "Prod app is installed."
+  app_installed="true"
+  
+else
+  echo "Prod app isn't installed."
+  app_installed="false"
+fi
+
 start_mock_analytics_server() {
   pushd .maestro/mock_analytics_server
   yarn install
@@ -113,6 +122,7 @@ maestro "$target" \
   --env MAESTRO_PASSWORD="$password" \
   --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
+  --env MAESTRO_APP_INSTALLED="$app_installed" \
   $TAGS \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
