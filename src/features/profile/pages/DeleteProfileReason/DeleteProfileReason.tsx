@@ -40,17 +40,23 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
   },
   {
     wording: 'Je n’utilise plus l’application',
-    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
+    navigateTo: {
+      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+    },
     analyticsReason: 'noLongerUsed',
   },
   {
     wording: 'Je n’ai plus de crédit ou très peu de crédit restant',
-    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
+    navigateTo: {
+      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+    },
     analyticsReason: 'noMoreCredit',
   },
   {
     wording: 'Je souhaite supprimer mes données personnelles',
-    navigateTo: { screen: canDelete ? 'ConfirmDeleteProfile' : 'DeleteProfileAccountNotDeletable' },
+    navigateTo: {
+      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+    },
     analyticsReason: 'dataDeletion',
   },
   {
