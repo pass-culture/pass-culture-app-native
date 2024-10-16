@@ -207,21 +207,21 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         {
           "analyticsReason": "noLongerUsed",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileConfirmation",
           },
           "wording": "Je n’utilise plus l’application",
         },
         {
           "analyticsReason": "noMoreCredit",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileConfirmation",
           },
           "wording": "Je n’ai plus de crédit ou très peu de crédit restant",
         },
         {
           "analyticsReason": "dataDeletion",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileConfirmation",
           },
           "wording": "Je souhaite supprimer mes données personnelles",
         },

@@ -88,16 +88,19 @@ describe('<DeleteProfileReason />', () => {
     ${'Je n’utilise plus l’application'}
     ${'Je n’ai plus de crédit ou très peu de crédit restant'}
     ${'Je souhaite supprimer mes données personnelles'}
-  `('should redirect to ConfirmDeleteProfile page when clicking on $reason', async ({ reason }) => {
-    mockAuthContextWithUser(nonBeneficiaryUser)
-    render(<DeleteProfileReason />)
+  `(
+    'should redirect to DeleteProfileConfirmation page when clicking on $reason',
+    async ({ reason }) => {
+      mockAuthContextWithUser(nonBeneficiaryUser)
+      render(<DeleteProfileReason />)
 
-    fireEvent.press(screen.getByText(reason))
+      fireEvent.press(screen.getByText(reason))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
-    })
-  })
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('DeleteProfileConfirmation', undefined)
+      })
+    }
+  )
 
   describe('User is beneficiary', () => {
     it.each`
@@ -122,11 +125,11 @@ describe('<DeleteProfileReason />', () => {
     describe('User is more than 21 year old', () => {
       it.each`
         birthDate       | expectedRedirect
-        ${'2002-02-02'} | ${'ConfirmDeleteProfile'}
+        ${'2002-02-02'} | ${'DeleteProfileConfirmation'}
         ${'2002-03-02'} | ${'DeleteProfileAccountNotDeletable'}
         ${'2002-02-05'} | ${'DeleteProfileAccountNotDeletable'}
         ${'2002-05-05'} | ${'DeleteProfileAccountNotDeletable'}
-        ${'1999-01-01'} | ${'ConfirmDeleteProfile'}
+        ${'1999-01-01'} | ${'DeleteProfileConfirmation'}
       `(
         'should redirect to $expectedRedirect when user is born on $birthDate',
         async ({ birthDate, expectedRedirect }) => {
