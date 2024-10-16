@@ -24,7 +24,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -56,7 +56,6 @@ describe('<SSOButton />', () => {
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
@@ -82,7 +81,6 @@ describe('<SSOButton />', () => {
   })
 
   it('should call onSignInFailure when signin fails', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       responseOptions: { statusCode: 500 },
     })
@@ -97,7 +95,6 @@ describe('<SSOButton />', () => {
   })
 
   it('should log analytics when logging in with sso from signup', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -113,7 +110,6 @@ describe('<SSOButton />', () => {
   })
 
   it('should log analytics when logging in with sso from login', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -137,7 +133,6 @@ describe('<SSOButton />', () => {
     })
 
     it('should not log to Sentry on SSO login error', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
       renderSSOButton()
@@ -160,7 +155,6 @@ describe('<SSOButton />', () => {
     })
 
     it('should log to Sentry on SSO login error', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
       renderSSOButton()
