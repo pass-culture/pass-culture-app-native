@@ -2,7 +2,13 @@ import React from 'react'
 import { QueryObserverResult, UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  BookingsResponse,
+  CategoryIdEnum,
+  NativeCategoryIdEnumv2,
+  SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -33,6 +39,30 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+jest.mock('libs/subcategories/useSubcategory')
+
+const mockUseSubcategoriesMapping = jest.fn()
+const mockUseCategoryIdMapping = jest.fn()
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+  useCategoryIdMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+mockUseSubcategoriesMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CINEMA,
+    nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  },
+  [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CONFERENCE,
+    nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
+  },
+})
+mockUseCategoryIdMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: CategoryIdEnum.FILM,
+  [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: CategoryIdEnum.MUSEE,
+})
 
 describe('Bookings', () => {
   describe('Accessibility', () => {
@@ -52,7 +82,7 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toHaveBeenCalledTimes(2)
+      expect(useBookings).toHaveBeenCalledTimes(3)
     })
   })
 
