@@ -5,7 +5,7 @@ import { config as dotEnvConfig } from 'dotenv'
 
 import { parseBooleanVariables } from './parseBooleanVariables'
 
-const envVariable = process.env.ENV || 'this should never happen'
+const envVariable = process.env.ENV ?? 'this should never happen'
 
 const pathDevSource = join(__dirname, '../../..', `.env.${envVariable}`)
 const pathBuildSource = join(__dirname, '../../../..', '.env')
