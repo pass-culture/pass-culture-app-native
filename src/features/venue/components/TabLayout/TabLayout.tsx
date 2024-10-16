@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
+import { TabType } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
@@ -11,7 +11,7 @@ import { InfoTab } from './InfoTab'
 type TabLayoutProps<TabKeyType extends string> = {
   tabPanels: Record<TabKeyType, React.JSX.Element | null>
   onTabChange?: Partial<Record<TabKeyType, () => void>> | ((tab: TabKeyType) => void)
-  tabs: { key: TabKeyType; Icon?: React.FC<AccessibleIcon> }[]
+  tabs: TabType<TabKeyType>[]
   defaultTab: TabKeyType
 }
 
@@ -56,6 +56,7 @@ export const TabLayout = <TabKeyType extends string>({
             selectedTab={selectedTab}
             onPress={() => onTabPress(tab.key)}
             Icon={tab.Icon}
+            pastille={tab.pastille}
           />
         ))}
         <Spacer.Row numberOfSpaces={6} />

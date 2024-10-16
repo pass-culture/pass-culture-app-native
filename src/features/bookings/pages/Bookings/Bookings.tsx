@@ -6,26 +6,38 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
+import { useBookingsAwaitingReaction } from 'features/bookings/helpers/useBookingsAwaitingReaction'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export function Bookings() {
   const { params } = useRoute<UseRouteType<'Bookings'>>()
   const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
+  const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
 
+  const { ended_bookings: endedBookings = [] } = bookings ?? {}
+
+  const bookingsAwaitingReaction = useBookingsAwaitingReaction()
+
+  const { fullCountLabel, accessibilityLabel } = createLabels(
+    bookingsAwaitingReaction,
+    'réservations'
+  )
+
   const updateReactions = useCallback(() => {
     const bookingsToUpdate =
-      bookings?.ended_bookings
+      endedBookings
         .filter((ended_booking) => ended_booking.userReaction === null)
         .map((booking) => booking.stock.offer.id) ?? []
 
@@ -36,7 +48,7 @@ export function Bookings() {
     if (mutationPayload.length > 0) {
       addReaction({ reactions: mutationPayload })
     }
-  }, [addReaction, bookings?.ended_bookings])
+  }, [addReaction, endedBookings])
 
   useFocusEffect(
     useCallback(() => {
@@ -56,6 +68,8 @@ export function Bookings() {
     ),
   }
 
+  const shouldDisplayPastille = enableReactionFeature && bookingsAwaitingReaction > 0
+
   return (
     <React.Fragment>
       {enableBookingImprove ? (
@@ -64,7 +78,15 @@ export function Bookings() {
           <TabLayout
             tabPanels={tabPanels}
             defaultTab={params?.activeTab ?? BookingsTab.CURRENT}
-            tabs={[{ key: BookingsTab.CURRENT }, { key: BookingsTab.COMPLETED }]}
+            tabs={[
+              { key: BookingsTab.CURRENT },
+              {
+                key: BookingsTab.COMPLETED,
+                pastille: shouldDisplayPastille
+                  ? { label: fullCountLabel, accessibilityLabel: accessibilityLabel }
+                  : undefined,
+              },
+            ]}
             onTabChange={(key) => {
               setActiveTab(key)
             }}

@@ -1,5 +1,6 @@
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface Venue {
   label: string
@@ -40,3 +41,14 @@ export type OpeningHour = {
 }
 
 export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
+
+export type PastilleType = {
+  label: string
+  accessibilityLabel: string
+}
+
+export type TabType<TabKeyType extends string> = {
+  key: TabKeyType
+  Icon?: React.FC<AccessibleIcon>
+  pastille?: PastilleType
+}

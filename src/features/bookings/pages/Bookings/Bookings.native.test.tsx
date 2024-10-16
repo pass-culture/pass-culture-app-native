@@ -2,10 +2,18 @@ import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  BookingsResponse,
+  NativeCategoryIdEnumv2,
+  ReactionTypeEnum,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,6 +24,7 @@ import { Bookings } from './Bookings'
 jest.mock('libs/network/NetInfoWrapper')
 
 const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 useBookingsSpy.mockReturnValue({
   data: bookingsSnap,
@@ -30,7 +39,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
@@ -55,8 +64,18 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
 }))
 
 describe('Bookings', () => {
+  beforeAll(() => {
+    useRemoteConfigContextSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      reactionCategories: {
+        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
+      },
+    })
+  })
+
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    activateFeatureFlags()
   })
 
   it('should render correctly', async () => {
@@ -71,8 +90,8 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    //Due to multiple renders useBookings is called three times
-    expect(useBookingsSpy).toHaveBeenCalledTimes(3)
+    //Due to multiple renders useBookings is called nine times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(9)
   })
 
   it('should display the right number of ongoing bookings', async () => {
@@ -87,8 +106,14 @@ describe('Bookings', () => {
       data: emptyBookingsSnap,
       isFetching: false,
     } as unknown as QueryObserverResult<BookingsResponse, unknown>
-    // Due to multiple renders we need to mock useBookings three times
+    // Due to multiple renders we need to mock useBookings six times
     useBookingsSpy
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
@@ -118,10 +143,7 @@ describe('Bookings', () => {
 
   describe('when feature flag is activated', () => {
     beforeEach(() => {
-      // Due to multiple renders we need to mock useBookings three times
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      activateFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
     })
 
     it('should display the 2 tabs "Terminées" and "En cours"', async () => {
@@ -169,9 +191,62 @@ describe('Bookings', () => {
         ],
       })
     })
+
+    it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {
+      activateFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
+        RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+      ])
+      renderBookings()
+
+      await act(async () => {})
+
+      expect(screen.getByTestId('pastille')).toBeOnTheScreen()
+    })
+
+    it('should not display a pastille when there are bookings without user reaction if wipReactionFeature FF deactivated', async () => {
+      renderBookings()
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('pastille')).toBeNull()
+    })
+
+    it('should not display a pastille when there are not bookings without user reaction if wipReactionFeature FF activated', async () => {
+      activateFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
+        RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+      ])
+      const useBookingsResultMock = {
+        data: {
+          ended_bookings: [
+            { ...bookingsSnap.ended_bookings[1], userReaction: ReactionTypeEnum.LIKE },
+          ],
+          ongoing_bookings: bookingsSnap.ongoing_bookings,
+        },
+        isFetching: false,
+      } as unknown as QueryObserverResult<BookingsResponse, unknown>
+      // Due to multiple renders we need to mock useBookings six times
+      useBookingsSpy
+        .mockReturnValueOnce(useBookingsResultMock)
+        .mockReturnValueOnce(useBookingsResultMock)
+        .mockReturnValueOnce(useBookingsResultMock)
+        .mockReturnValueOnce(useBookingsResultMock)
+        .mockReturnValueOnce(useBookingsResultMock)
+        .mockReturnValueOnce(useBookingsResultMock)
+      renderBookings()
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('pastille')).toBeNull()
+    })
   })
 })
 
 const renderBookings = () => {
   return render(reactQueryProviderHOC(<Bookings />))
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
