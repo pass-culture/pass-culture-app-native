@@ -302,8 +302,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
             }}
             identifier={venue.venueId.toString()}
             testID={`marker-${venue.venueId}`}
-            zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
-            title={venue.label}>
+            zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}>
             {shouldDisplayPinV2 ? <VenueMapLabel venue={venue} /> : null}
           </Marker>
         ))}
