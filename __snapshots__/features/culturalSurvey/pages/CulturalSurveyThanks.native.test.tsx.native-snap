@@ -351,7 +351,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
       ]
     }
   >
-    Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
+    Elles nous permettent de suivre l’évolution de tes pratiques culturelles sur l’application.
   </Text>
   <View
     flex={2}
