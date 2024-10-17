@@ -17,7 +17,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
@@ -45,7 +45,7 @@ export function ConfirmDeleteProfile() {
       goBackParams={getTabNavConfig('Profile')}
       separateIconFromTitle={false}
       icon={BicolorError}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Veux-tu vraiment supprimer ton compte&nbsp;?">
       <Content>
         <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>

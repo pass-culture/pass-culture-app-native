@@ -19,7 +19,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
@@ -93,7 +93,7 @@ const ProgressBarContainer = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+const Amount = styled(TypoDS.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
   color: theme.uniqueColors.brand,
 }))

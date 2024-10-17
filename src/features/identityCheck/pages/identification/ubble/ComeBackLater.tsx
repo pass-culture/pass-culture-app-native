@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
@@ -20,7 +20,7 @@ export const ComeBackLater: FunctionComponent = () => {
   return (
     <GenericInfoPageWhite
       icon={BicolorIdCardInvalid}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Reviens plus tard"
       separateIconFromTitle={false}
       headerGoBack

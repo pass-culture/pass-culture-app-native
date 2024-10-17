@@ -10,7 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
@@ -21,7 +21,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorIdCardError}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Ta pièce d’identité expirée ou perdue"
       separateIconFromTitle={false}
       headerGoBack
