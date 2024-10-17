@@ -53,11 +53,23 @@ export const SearchN1: React.FC = () => {
     [selectedLocationMode]
   )
 
-  const venuePlaylistTitle = isLocated ? 'Les librairies proches de toi' : 'Les lieux culturels'
-
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
+
+  const getVenuePlaylistTitle = () => {
+    if (isLocated) {
+      switch (offerCategory) {
+        case SearchGroupNameEnumv2.LIVRES:
+          return 'Les librairies près de toi'
+        case SearchGroupNameEnumv2.CINEMA:
+          return 'Les cinémas près de toi'
+        default:
+          return 'Les lieux culturels'
+      }
+    }
+    return 'Les lieux culturels'
+  }
 
   if (arePlaylistsLoading) {
     return <LoadingState />
@@ -70,9 +82,9 @@ export const SearchN1: React.FC = () => {
       title={titles[offerCategory]}>
       <ScrollView>
         <SubcategoryButtonListWrapper offerCategory={offerCategory} />
-        {isBookCategory && shouldDisplayVenuesPlaylist ? (
+        {shouldDisplayVenuesPlaylist ? (
           <VenuePlaylist
-            venuePlaylistTitle={venuePlaylistTitle}
+            venuePlaylistTitle={getVenuePlaylistTitle()}
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}

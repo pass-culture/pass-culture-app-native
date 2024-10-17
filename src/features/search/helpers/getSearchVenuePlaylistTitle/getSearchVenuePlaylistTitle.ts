@@ -8,6 +8,5 @@ export const getSearchVenuePlaylistTitle = (
       : `${venuePlaylistTitleFromUserData} accessibles`
   }
   if (venuePlaylistTitleFromUserData) return venuePlaylistTitleFromUserData
-  if (accessibilityFiltered) return 'Les lieux culturels accessibles'
-  else return 'Les lieux culturels'
+  return accessibilityFiltered ? 'Les lieux culturels accessibles' : 'Les lieux culturels'
 }
