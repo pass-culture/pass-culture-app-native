@@ -22,7 +22,7 @@ brew install direnv
 
 If you want more information or if you have a problem you can consult [DirEnv installation](https://direnv.net/)
 
-Then please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
+You will need to add [hook into your user configuration (example: `~/.zshrc`)](https://direnv.net/docs/hook.html)
 
 Start a new terminal to load the new configuration
 
