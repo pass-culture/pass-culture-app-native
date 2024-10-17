@@ -69,7 +69,7 @@ const TabTitleContainer = styled(ViewGap)({
   flexDirection: 'row',
 })
 
-const TabTitle = styled(TypoDS.BodySemiBold)<{ isSelected: boolean; isHover: boolean }>(
+const TabTitle = styled(TypoDS.BodyAccent)<{ isSelected: boolean; isHover: boolean }>(
   ({ isSelected, isHover, theme }) => ({
     textAlign: 'center',
     color: isSelected || isHover ? theme.colors.primary : theme.colors.greyDark,

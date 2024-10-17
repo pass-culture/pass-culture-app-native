@@ -40,7 +40,7 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
   )
 }
 
-const ArtistsText = styled(TypoDS.BodySemiBold)(({ theme }) => ({
+const ArtistsText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.buttons.tertiaryBlack.textColor,
 }))
 
@@ -49,6 +49,6 @@ const ArtistInfoContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledPrefix = styled(TypoDS.BodySemiBold)(({ theme }) => ({
+const StyledPrefix = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

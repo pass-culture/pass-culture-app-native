@@ -46,7 +46,7 @@ const IconContainer = styled.View({
   padding: getSpacing(1),
 })
 
-const Caption = styled(TypoDS.BodySemiBoldXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
+const Caption = styled(TypoDS.BodyAccentXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'center',
 }))

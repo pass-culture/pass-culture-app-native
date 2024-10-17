@@ -39,7 +39,7 @@ const Wrapper = styled(View)(({ theme }) => ({
   alignSelf: 'baseline',
 }))
 
-const LabelText = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const LabelText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
 }))

@@ -42,6 +42,6 @@ const TextContainer = styled.View({
   gap: getSpacing(1),
 })
 
-const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

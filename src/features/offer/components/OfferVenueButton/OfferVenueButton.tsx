@@ -18,7 +18,7 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
 
   return (
     <HeroButtonList
-      Title={<TypoDS.BodySemiBold>{venueName}</TypoDS.BodySemiBold>}
+      Title={<TypoDS.BodyAccent>{venueName}</TypoDS.BodyAccent>}
       Subtitle={
         venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
       }
@@ -30,6 +30,6 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
   )
 }
 
-const SubtitleText = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const SubtitleText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

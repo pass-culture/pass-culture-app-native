@@ -32,7 +32,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
             <StyledAccordionItem
               accessibilityLabel={`${detail.category}: ${detail.isAccessible ? 'Accessible' : 'Non accessible'}`}
               title={detail.category}
-              titleComponent={TypoDS.BodySemiBoldXs}
+              titleComponent={TypoDS.BodyAccentXs}
               onOpen={() => analytics.logHasOpenedAccessibilityAccordion(detail.category)}
               leftComponent={
                 <AccessibilityFrame Icon={detail.icon} isAccessible={!!detail.isAccessible} />

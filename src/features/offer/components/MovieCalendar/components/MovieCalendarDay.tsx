@@ -55,7 +55,7 @@ const CalendarCell = styled(TouchableOpacity)({
   flexWrap: 'wrap',
 })
 
-const DefaultCalendarText = styled(TypoDS.BodySemiBold)(({ theme }) => ({
+const DefaultCalendarText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
   width: getSpacing(theme.isDesktopViewport ? 22 : 10),

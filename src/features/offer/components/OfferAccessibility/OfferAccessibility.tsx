@@ -12,7 +12,7 @@ type Props = {
 export function OfferAccessibility({ accessibility }: Readonly<Props>) {
   return (
     <ViewGap gap={4}>
-      <TypoDS.BodySemiBold>Accessibilité de l’offre</TypoDS.BodySemiBold>
+      <TypoDS.BodyAccent>Accessibilité de l’offre</TypoDS.BodyAccent>
       <AccessibilityBlock basicAccessibility={accessibility} />
     </ViewGap>
   )

@@ -74,7 +74,7 @@ const StyledClock = styled(ClockFilled).attrs<{ state: OpeningHoursStatusState }
   })
 )<{ state: OpeningHoursStatusState }>``
 
-const StyledText = styled(TypoDS.BodySemiBoldXs)<{ state: OpeningHoursStatusState }>(
+const StyledText = styled(TypoDS.BodyAccentXs)<{ state: OpeningHoursStatusState }>(
   ({ state, theme }) => ({
     color: getColorFromState(theme)(state),
   })

@@ -30,11 +30,11 @@ const Title4 = createStyledText('title4', 4)
 const Body = createStyledText('body')
 const BodyS = createStyledText('bodyS')
 const BodyXs = createStyledText('bodyXs')
-const BodySemiBold = createStyledText('bodySemiBold')
-const BodySemiBoldS = createStyledText('bodySemiBoldS')
-const BodySemiBoldXs = createStyledText('bodySemiBoldXs')
+const BodyAccent = createStyledText('bodyAccent')
+const BodyAccentS = createStyledText('bodyAccentS')
+const BodyAccentXs = createStyledText('bodyAccentXs')
 const BodyItalic = createStyledText('bodyItalic')
-const BodyItalicSemiBold = createStyledText('bodyItalicSemiBold')
+const BodyItalicAccent = createStyledText('bodyItalicAccent')
 const Button = createStyledText('button')
 
 export const TypoDS = {
@@ -45,10 +45,10 @@ export const TypoDS = {
   Body,
   BodyS,
   BodyXs,
-  BodySemiBold,
-  BodySemiBoldS,
-  BodySemiBoldXs,
+  BodyAccent,
+  BodyAccentS,
+  BodyAccentXs,
   BodyItalic,
-  BodyItalicSemiBold,
+  BodyItalicAccent,
   Button,
 }

@@ -82,7 +82,7 @@ const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }
 }) => (
   <Fragment>
     <Spacer.Column numberOfSpaces={4} />
-    <TypoDS.BodySemiBoldXs>{title}</TypoDS.BodySemiBoldXs>
+    <TypoDS.BodyAccentXs>{title}</TypoDS.BodyAccentXs>
     <Spacer.Column numberOfSpaces={4} />
     {children}
     <Spacer.Column numberOfSpaces={4} />

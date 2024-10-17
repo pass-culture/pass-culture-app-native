@@ -104,7 +104,7 @@ const SubtitleContainer = styled.View({
   textOverflow: 'ellipsis',
 })
 
-const SubtitleLeft = styled(TypoDS.BodySemiBoldXs)<{
+const SubtitleLeft = styled(TypoDS.BodyAccentXs)<{
   disabled: boolean
   hasSubtitleRight: boolean
 }>(({ theme, disabled, hasSubtitleRight }) => ({

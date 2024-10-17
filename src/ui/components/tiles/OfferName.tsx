@@ -13,4 +13,4 @@ export const OfferName = ({ title }: { title: string }) => {
     </Name>
   )
 }
-const Name = styled(TypoDS.BodySemiBold)``
+const Name = styled(TypoDS.BodyAccent)``

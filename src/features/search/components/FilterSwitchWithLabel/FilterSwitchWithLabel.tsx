@@ -91,9 +91,9 @@ const SwitchWrapper = styled.View({
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.designSystem.typography.bodySemiBold,
+  ...theme.designSystem.typography.bodyAccent,
 }))
 
-const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

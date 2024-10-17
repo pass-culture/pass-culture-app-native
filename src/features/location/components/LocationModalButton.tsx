@@ -49,6 +49,6 @@ const StyledButtonText = styled(TypoDS.Button)<{ color?: ColorsEnum }>(({ color 
   color: color,
 }))
 
-const StyledCaption = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

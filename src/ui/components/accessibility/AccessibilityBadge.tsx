@@ -35,4 +35,4 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const StyledCaption = styled(TypoDS.BodySemiBoldXs)({ textAlign: 'center', paddingHorizontal: 1 })
+const StyledCaption = styled(TypoDS.BodyAccentXs)({ textAlign: 'center', paddingHorizontal: 1 })

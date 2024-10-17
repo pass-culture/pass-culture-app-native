@@ -65,7 +65,7 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
           ) : null}
           <ViewGap gap={3}>
             <View>
-              <TypoDS.BodySemiBoldXs>Adresse</TypoDS.BodySemiBoldXs>
+              <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
               <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
             </View>
             <Separator.Horizontal />

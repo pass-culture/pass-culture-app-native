@@ -67,11 +67,11 @@ const TitleAndComplement = styled.View({
   flexDirection: 'row',
 })
 
-const Title = styled(TypoDS.BodySemiBold)({
+const Title = styled(TypoDS.BodyAccent)({
   flexShrink: 1,
 })
 
-const Description = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Description = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   flexShrink: 1,
   color: theme.colors.greyDark,
 }))
@@ -91,6 +91,6 @@ const ComplementContainer = styled.View({
   marginLeft: getSpacing(1),
 })
 
-const ComplementLabel = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const ComplementLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

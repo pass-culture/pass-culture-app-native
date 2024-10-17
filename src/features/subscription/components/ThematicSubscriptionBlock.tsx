@@ -24,7 +24,7 @@ export const ThematicSubscriptionBlock = ({
     <Container>
       <SubscriptionThematicIllustration thematic={thematic} size="medium" />
       <ContentContainer>
-        <TypoDS.BodySemiBold>{title}</TypoDS.BodySemiBold>
+        <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
         <Subtitle>{subtitle}</Subtitle>
         <Spacer.Column numberOfSpaces={2} />
         <SubscribeButton
@@ -48,6 +48,6 @@ const ContentContainer = styled.View({
   flexShrink: 1,
 })
 
-const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

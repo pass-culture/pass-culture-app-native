@@ -34,7 +34,7 @@ export const ToggleButton = ({
       onPress={onPress}>
       {active ? <Icon.active /> : <Icon.inactive />}
       <Spacer.Row numberOfSpaces={2} />
-      <TypoDS.BodySemiBoldXs>{active ? label.active : label.inactive}</TypoDS.BodySemiBoldXs>
+      <TypoDS.BodyAccentXs>{active ? label.active : label.inactive}</TypoDS.BodyAccentXs>
     </TouchableComponent>
   )
 }

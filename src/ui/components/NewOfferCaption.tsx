@@ -30,19 +30,19 @@ export const NewOfferCaption: FC<Props> = ({
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
-        <TypoDS.BodySemiBoldXs testID="priceIsDuo">{priceText}</TypoDS.BodySemiBoldXs>
+        <TypoDS.BodyAccentXs testID="priceIsDuo">{priceText}</TypoDS.BodyAccentXs>
       </View>
     </ViewGap>
   )
 }
 
-const CategoryLabel = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const CategoryLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const OfferText = styled(TypoDS.BodySemiBoldXs).attrs({
+const OfferText = styled(TypoDS.BodyAccentXs).attrs({
   numberOfLines: 2,
 })({})
-const DateText = styled(TypoDS.BodySemiBoldXs).attrs({
+const DateText = styled(TypoDS.BodyAccentXs).attrs({
   numberOfLines: 1,
 })({})

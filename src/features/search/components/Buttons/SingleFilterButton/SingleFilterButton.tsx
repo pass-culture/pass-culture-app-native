@@ -66,6 +66,6 @@ const StyledIcon = styled(Check).attrs(({ theme }) => ({
   color: theme.colors.black,
 }))``
 
-const Label = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Label = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
 }))

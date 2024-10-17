@@ -109,6 +109,6 @@ const IconTouchableOpacity = styledButton(Touchable)({
   maxWidth: getSpacing(15),
 })
 
-const Subtitle = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

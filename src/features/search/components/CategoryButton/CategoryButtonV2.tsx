@@ -74,7 +74,7 @@ const LabelContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const Label = styled(TypoDS.BodySemiBoldS).attrs({ numberOfLines: 3 })(({ theme }) => ({
+const Label = styled(TypoDS.BodyAccentS).attrs({ numberOfLines: 3 })(({ theme }) => ({
   textAlign: 'left',
   color: theme.colors.black,
 }))

@@ -55,7 +55,7 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
           )}
         </Row>
         {children}
-        {price ? <TypoDS.BodySemiBoldS>{price}</TypoDS.BodySemiBoldS> : null}
+        {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
       </Column>
     </React.Fragment>
   )
@@ -72,7 +72,7 @@ const Row = styled.View({
   width: '100%',
 })
 
-const Distance = styled(TypoDS.BodySemiBoldS)(({ theme }) => ({
+const Distance = styled(TypoDS.BodyAccentS)(({ theme }) => ({
   textAlign: 'right',
   color: theme.colors.greyDark,
 }))

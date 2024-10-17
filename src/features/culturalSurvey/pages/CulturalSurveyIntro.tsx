@@ -55,7 +55,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       subtitle={intro.subtitle}>
       {intro.customSubtitle ? (
         <React.Fragment>
-          <StyledBodySemiBold>{intro.customSubtitle}</StyledBodySemiBold>
+          <StyledBodyAccent>{intro.customSubtitle}</StyledBodyAccent>
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}
@@ -116,6 +116,6 @@ const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 
-const StyledBodySemiBold = styled(TypoDS.BodySemiBold)({
+const StyledBodyAccent = styled(TypoDS.BodyAccent)({
   textAlign: 'center',
 })

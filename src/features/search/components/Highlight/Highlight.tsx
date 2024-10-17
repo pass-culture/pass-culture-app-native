@@ -16,7 +16,7 @@ export function HighlightPart({ children, isHighlighted }: HighlightPartProps) {
   return isHighlighted ? (
     <TypoDS.Body testID="highlightedText">{children}</TypoDS.Body>
   ) : (
-    <TypoDS.BodySemiBold testID="nonHighlightedText">{children}</TypoDS.BodySemiBold>
+    <TypoDS.BodyAccent testID="nonHighlightedText">{children}</TypoDS.BodyAccent>
   )
 }
 
