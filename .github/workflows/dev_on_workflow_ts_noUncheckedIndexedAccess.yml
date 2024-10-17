@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Check no ts-expect-error noUncheckedIndexedAccess in introduced"
+name: '4 [on_workflow] Check no ts-expect-error noUncheckedIndexedAccess in introduced'
 
 on:
   workflow_call:

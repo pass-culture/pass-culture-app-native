@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Check folder changes"
+name: '4 [on_workflow] Check folder changes'
 
 on:
   workflow_call:

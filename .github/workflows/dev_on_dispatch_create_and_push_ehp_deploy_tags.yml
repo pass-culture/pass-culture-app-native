@@ -1,4 +1,4 @@
-name: "1 [on_dispatch][Jira] Create/Push ehp deploy tags"
+name: '1 [on_dispatch][Jira] Create/Push ehp deploy tags'
 
 on:
   workflow_dispatch:
@@ -21,19 +21,19 @@ jobs:
     name: 'Create and push staging tag'
     runs-on: ubuntu-22.04
     steps:
-      - name: "Checkout commit hash"
+      - name: 'Checkout commit hash'
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.commitHash }}
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
-      - name: "get package version"
+      - name: 'get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: "Author"
+      - name: 'Author'
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
           git config --global user.name "$GIT_CONFIG_NAME"
-      - name: "Create and push tag from package version"
+      - name: 'Create and push tag from package version'
         id: create_tag
         run: |
           STAGING_VERSION=${{ steps.package-version.outputs.current-version }}
@@ -48,11 +48,11 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
-      - name: "Author"
+      - name: 'Author'
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
           git config --global user.name "$GIT_CONFIG_NAME"
-      - name: "Bump package version"
+      - name: 'Bump package version'
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
           skip-commit: 'true'
           skip-tag: 'true'
           skip-push: 'true'
-      - name: "Bump server package version"
+      - name: 'Bump server package version'
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,10 +73,10 @@ jobs:
           skip-commit: 'true'
           skip-tag: 'true'
           skip-push: 'true'
-      - name: "Get package version"
+      - name: 'Get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: "Bump build number"
+      - name: 'Bump build number'
         id: build-number
         run: |
           # We have to increment the build number because it is used as the versionCode
@@ -104,20 +104,20 @@ jobs:
           PATCH=${SEMVER[2]}
           BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
           echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
-      - name: "Update build number in package.json"
+      - name: 'Update build number in package.json'
         uses: sergeysova/jq-action@v2
         with:
           cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
-      - name: "Get routes used by app version"
+      - name: 'Get routes used by app version'
         run: |
           ./scripts/get_used_routes.sh "v${TESTING_VERSION}"
-      - name: "Commit changes"
+      - name: 'Commit changes'
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           git add package.json server/package.json route_usage_changelog.md
           git commit --message "v${TESTING_VERSION}"
           git push origin master
-      - name: "Create and push testing tag"
+      - name: 'Create and push testing tag'
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           TAG_NAME=testing/v${TESTING_VERSION}
