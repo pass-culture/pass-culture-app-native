@@ -27,7 +27,7 @@ add_certificate_to_this_session() {
 	adb unroot
 }
 
-if [ -f "$SSL_CERT_FILE" ]; then
+if ./is_proxy_enabled.sh; then
 	if [ -z "${ANDROID_SERIAL+x}" ]; then
 		echo "You didn't set the ANDROID_SERIAL environment variable"
 		echo "Choosing one for you :"
