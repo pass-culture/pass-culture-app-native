@@ -32,6 +32,7 @@ jobs:
           node-version-file: 'server/.nvmrc'
           cache: 'yarn'
           cache-dependency-path: 'server'
+      - run: yarn -v
       - id: gcloud-auth
         name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
