@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Verify code lint and typescript"
+name: '4 [on_workflow] Verify code lint and typescript'
 
 on:
   workflow_call:

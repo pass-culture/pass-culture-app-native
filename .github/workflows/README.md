@@ -35,6 +35,7 @@ Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le pr
 | dev_on_workflow_environment_ios_deploy.yml | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_install.yml                | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_linter_ts.yml              | Helper   | Automatically |                                                                                                                          |
+| dev_on_workflow_slack_notify.yml           | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_tester.yml                 | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_web_deploy.yml             | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_web_proxy_deploy.yml       | Helper   | Automatically |                                                                                                                          |

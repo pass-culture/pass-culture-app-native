@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Build, test and deploy storybook with Chromatic"
+name: '4 [on_workflow] Build, test and deploy storybook with Chromatic'
 
 on:
   workflow_call:
