@@ -1,11 +1,6 @@
 import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
-export type ShareAppTrigger =
-  | 'default'
-  | 'first_session_after_reservation'
-  | 'two_weeks_after_credit'
-
 export type CustomRemoteConfig = {
   test_param: string
   homeEntryIdFreeOffers: string
@@ -26,7 +21,6 @@ export type CustomRemoteConfig = {
   shouldLogInfo: boolean
   displayInAppFeedback: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
-  shareAppTrigger: ShareAppTrigger
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
