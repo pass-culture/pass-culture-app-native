@@ -13,13 +13,7 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
-import { firstSessionAfterBookingTrigger } from 'features/subscription/helpers/shareAppTriggers/firstSessionAfterBookingTrigger'
-import { twoWeeksAfterCreditTrigger } from 'features/subscription/helpers/shareAppTriggers/twoWeeksAfterCreditTrigger'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
-import {
-  defaultTrigger,
-  useShareAppModaleTrigger,
-} from 'features/subscription/helpers/useShareAppModaleTrigger'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -62,28 +56,8 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { shouldApplyGraphicRedesign, shareAppTrigger } = useRemoteConfigContext()
+  const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookings()
-
-  const getShareAppTrigger = () => {
-    if (shareAppTrigger === 'two_weeks_after_credit') {
-      return twoWeeksAfterCreditTrigger({
-        currentDate: new Date(),
-        firstCreditDate: user?.firstDepositActivationDate
-          ? new Date(user.firstDepositActivationDate)
-          : undefined,
-      })
-    }
-    if (shareAppTrigger === 'first_session_after_reservation') {
-      return firstSessionAfterBookingTrigger({
-        currentDate: new Date(),
-        ongoingBookings: bookings?.ongoing_bookings ?? [],
-      })
-    }
-    return defaultTrigger
-  }
-  useShareAppModaleTrigger(getShareAppTrigger())
 
   useEffect(() => {
     if (id) {
@@ -117,6 +91,8 @@ export const Home: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
+
+  const { data: bookings } = useBookings()
 
   useEffect(() => {
     const editor = BatchUser.editor()
