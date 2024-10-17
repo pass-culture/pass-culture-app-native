@@ -2,7 +2,9 @@ import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
 import { AlgoliaContentModel } from 'libs/contentful/types'
 
-export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
+import { ContentfulAdapter } from '../ContentfulAdapterFactory'
+
+export const adaptOffersModule: ContentfulAdapter<AlgoliaContentModel, OffersModule> = (module) => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields === undefined) return null
   if (module.fields.displayParameters.fields === undefined) return null

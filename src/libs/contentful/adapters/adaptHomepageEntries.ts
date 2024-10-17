@@ -5,7 +5,6 @@ import {
   Homepage,
   ThematicHeaderType,
 } from 'features/home/types'
-import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
   HomepageNatifEntry,
@@ -13,6 +12,8 @@ import {
   isThematicCategoryInfo,
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
+
+import { adaptHomepageNatifModules } from './adaptHomepageModules'
 
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
