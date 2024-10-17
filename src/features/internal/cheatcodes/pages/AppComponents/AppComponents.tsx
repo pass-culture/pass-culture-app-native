@@ -112,7 +112,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* Typos */}
       <Accordion title="Typos">
         <TypoDS.Title1>Title 1</TypoDS.Title1>
-        <Typo.Title2>Title 2</Typo.Title2>
+        <TypoDS.Title2>Title 2</TypoDS.Title2>
         <Typo.Title3>Title 3</Typo.Title3>
         <Typo.Title4>Title 4</Typo.Title4>
         <Typo.Body>This is a body</Typo.Body>

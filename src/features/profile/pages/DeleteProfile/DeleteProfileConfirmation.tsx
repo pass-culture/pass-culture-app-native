@@ -17,7 +17,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -44,7 +44,7 @@ export const DeleteProfileConfirmation = () => {
       icon={BicolorProfileDeletion}
       separateIconFromTitle={false}
       title="Ta demande de suppression de compte"
-      titleComponent={Typo.Title2}>
+      titleComponent={TypoDS.Title2}>
       <Typo.Body>
         Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données
         personnelles seront supprimées (anonymisées).

@@ -18,7 +18,7 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
   useEffect(() => {
@@ -60,7 +60,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
   return (
     <GenericInfoPageWhite
       icon={LogoDMS}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
       separateIconFromTitle={false}
       headerGoBack

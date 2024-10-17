@@ -5,7 +5,7 @@ import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStat
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -101,12 +101,12 @@ const spacingMatrix = {
   bottom: 10,
 }
 
-const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))<{ noBackground?: boolean }>(
-  ({ theme, noBackground }) => ({
-    color: noBackground ? undefined : theme.colors.white,
-    textAlign: 'center',
-  })
-)
+const StyledTitle = styled(TypoDS.Title2).attrs(() => getHeadingAttrs(1))<{
+  noBackground?: boolean
+}>(({ theme, noBackground }) => ({
+  color: noBackground ? undefined : theme.colors.white,
+  textAlign: 'center',
+}))
 
 const Content = styled.View({
   flexDirection: 'column',

@@ -17,7 +17,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
@@ -104,7 +104,7 @@ const ProgressBarContainer = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+const Amount = styled(TypoDS.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
   color: theme.uniqueColors.brand,
 }))

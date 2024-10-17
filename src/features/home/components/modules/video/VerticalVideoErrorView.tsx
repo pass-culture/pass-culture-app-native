@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 const ERROR_TITLE = 'Oups\u00a0!'
 const ERROR_MESSAGE = 'Une erreur s’est produite pendant le chargement de la vidéo'
@@ -52,7 +52,7 @@ const ErrorMessageContainer = styled.View({
   paddingHorizontal: getSpacing(6),
 })
 
-const StyledErrorTitle = styled(Typo.Title2)(({ theme }) => ({
+const StyledErrorTitle = styled(TypoDS.Title2)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

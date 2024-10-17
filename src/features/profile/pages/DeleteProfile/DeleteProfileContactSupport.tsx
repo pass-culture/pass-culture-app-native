@@ -12,7 +12,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
@@ -31,7 +31,7 @@ export const DeleteProfileContactSupport: FC = () => {
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorEmailSent}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Contacte le support">
       <ViewGap gap={8}>
         <ViewGap gap={6}>

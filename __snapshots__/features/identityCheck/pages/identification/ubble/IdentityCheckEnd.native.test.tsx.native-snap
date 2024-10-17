@@ -112,9 +112,9 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
         [
           {
             "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 22,
-            "lineHeight": 26,
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
             "textAlign": "center",
           },
         ]

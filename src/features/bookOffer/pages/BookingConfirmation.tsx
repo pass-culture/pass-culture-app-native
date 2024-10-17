@@ -20,7 +20,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
@@ -80,7 +80,7 @@ export function BookingConfirmation() {
     <React.Fragment>
       <GenericInfoPageWhite
         title="Réservation confirmée&nbsp;!"
-        titleComponent={Typo.Title2}
+        titleComponent={TypoDS.Title2}
         icon={BicolorTicketBooked}
         separateIconFromTitle={false}
         mobileBottomFlex={0.1}>

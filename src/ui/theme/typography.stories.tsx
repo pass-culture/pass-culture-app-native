@@ -2,6 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 import { Typo } from './typography'
 
@@ -16,7 +17,7 @@ export const Typographies: ComponentStory<TypographyComponents> = () => (
     <Spacer.Column numberOfSpaces={2} />
     <Typo.Title1>Title1</Typo.Title1>
     <Spacer.Column numberOfSpaces={2} />
-    <Typo.Title2>Title2</Typo.Title2>
+    <TypoDS.Title2>Title2</TypoDS.Title2>
     <Spacer.Column numberOfSpaces={2} />
     <Typo.Title3>Title3</Typo.Title3>
     <Spacer.Column numberOfSpaces={2} />

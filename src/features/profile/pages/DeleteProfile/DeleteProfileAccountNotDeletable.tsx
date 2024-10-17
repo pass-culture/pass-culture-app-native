@@ -15,7 +15,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const DeleteProfileAccountNotDeletable: FC = () => {
@@ -32,7 +32,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
       separateIconFromTitle={false}
       icon={BicolorError}
       iconSize={illustrations.sizes.medium}
-      titleComponent={Typo.Title2}
+      titleComponent={TypoDS.Title2}
       title="Nous ne pouvons pas encore supprimer ton compte">
       <Content>
         <ViewGap gap={6}>

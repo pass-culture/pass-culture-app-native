@@ -11,7 +11,7 @@ const tests = {
     { code: '<Text>toto</Text>' },
     // <Typo.***>string</Typo.***>
     { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
-    { code: '<Typo.Title2>toto</Typo.Title2>' },
+    { code: '<TypoDS.Title2>toto</TypoDS.Title2>' },
     { code: '<Typo.Title3>toto</Typo.Title3>' },
     { code: '<Typo.Title4>toto</Typo.Title4>' },
     { code: '<Typo.ButtonText>toto</Typo.ButtonText>' },
