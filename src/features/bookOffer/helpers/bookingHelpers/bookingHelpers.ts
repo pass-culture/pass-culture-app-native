@@ -3,6 +3,7 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { Currency } from 'libs/parsers/useGetCurrentCurrency'
 
 export function getButtonState(bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState
@@ -44,11 +45,14 @@ export function getHourWording(
   price: number,
   isBookable: boolean,
   enoughCredit: boolean,
+  currency: Currency,
+  euroToXPFRate: number,
   hasSeveralPrices?: boolean
 ) {
   if (!enoughCredit) return 'crédit insuffisant'
-  if (hasSeveralPrices && isBookable) return `dès ${formatToFrenchDecimal(price).replace(' ', '')}`
-  if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
+  if (hasSeveralPrices && isBookable)
+    return `dès ${formatToFrenchDecimal(price, currency, euroToXPFRate).replace(' ', '')}`
+  if (isBookable) return formatToFrenchDecimal(price, currency, euroToXPFRate).replace(' ', '')
   return 'épuisé'
 }
 

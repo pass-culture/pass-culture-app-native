@@ -19,8 +19,13 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
 
 export const RecreditBirthdayNotification = () => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
 
@@ -28,8 +33,8 @@ export const RecreditBirthdayNotification = () => {
 
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
-  const creditedAmount = formatToFrenchDecimal(user?.recreditAmountToShow ?? 3000)
-  const remainingCredit = formatToFrenchDecimal(credit?.amount ?? 3000)
+  const creditedAmount = formatToFrenchDecimal(user?.recreditAmountToShow ?? 3000, currency, euroToXPFRate)
+  const remainingCredit = formatToFrenchDecimal(credit?.amount ?? 3000, currency, euroToXPFRate)
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =

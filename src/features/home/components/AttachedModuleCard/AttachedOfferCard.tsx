@@ -8,6 +8,8 @@ import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type Props = {
   offer: Offer
@@ -15,6 +17,9 @@ type Props = {
 }
 
 export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { offer: attachedOffer } = offer
   const mapping = useCategoryIdMapping()
   const categoryId = mapping[attachedOffer.subcategoryId]
@@ -24,7 +29,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) =
 
   const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const date = formatDates(timestampsInMillis)
-  const price = getDisplayPrice(attachedOffer.prices)
+  const price = getDisplayPrice(attachedOffer.prices, currency, euroToXPFRate)
   const distance = useDistance(offer._geoloc)
   const distanceLabel = distance ? `à ${distance}` : undefined
 

@@ -11,8 +11,9 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { useGetMaxPrice } from 'features/search/helpers/useMaxPrice/useGetMaxPrice'
+import { useCurrencyToDisplay } from 'features/search/pages/modals/PriceModal/useCurrencyToDisplay'
 import { SearchState } from 'features/search/types'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -26,6 +27,8 @@ import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type PriceModalFormData = {
   minPrice: string
@@ -55,17 +58,20 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+  const MAX_PRICE = useGetMaxPrice()
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
-    ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
+    ? formatToFrenchDecimal(availableCredit.amount, currency, euroToXPFRate)
     : '0'
-  const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
+  const bannerTitle = `Il te reste ${formatAvailableCredit} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial
   const formatInitialCredit = initialCredit
-    ? Number(formatToFrenchDecimal(initialCredit).slice(0, -2))
+    ? Number(formatToFrenchDecimal(initialCredit, currency, euroToXPFRate).slice(0, -2))
     : MAX_PRICE
 
   const searchPriceSchema = makeSearchPriceSchema(String(formatInitialCredit))
@@ -301,7 +307,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 autoCapitalize="none"
                 isError={error && value.length > 0}
                 keyboardType="numeric"
-                label="Prix minimum (en&nbsp;€)"
+                label={`Prix minimum (en\u00a0${currency})`}
                 value={value}
                 onChangeText={onChange}
                 onBlur={onBlur}
@@ -331,7 +337,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 autoCapitalize="none"
                 isError={error && value.length > 0}
                 keyboardType="numeric"
-                label="Prix maximum (en&nbsp;€)"
+                label={`Prix maximum (en\u00a0${currency})`}
                 value={value}
                 onChangeText={(value) => {
                   onChange(value)
@@ -341,7 +347,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 textContentType="none" // disable autofill on iOS
                 accessibilityDescribedBy={maxPriceInputId}
                 testID="Entrée pour le prix maximum"
-                rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
+                rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0${currency}`}
                 placeholder={`${formatInitialCredit}`}
                 disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
               />

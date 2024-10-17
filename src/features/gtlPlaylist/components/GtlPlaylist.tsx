@@ -20,6 +20,8 @@ import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionOb
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 interface GtlPlaylistProps {
   venue?: VenueResponse
@@ -29,6 +31,9 @@ interface GtlPlaylistProps {
 }
 
 export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<GtlPlaylistProps>) {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
@@ -71,7 +76,7 @@ export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<
           date={formatDates(timestampsInMillis)}
           isDuo={hit.offer.isDuo}
           thumbUrl={hit.offer.thumbUrl}
-          price={getDisplayPrice(hit.offer.prices)}
+          price={getDisplayPrice(hit.offer.prices, currency, euroToXPFRate)}
           venueId={venue?.id}
           width={width}
           height={height}

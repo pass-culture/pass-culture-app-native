@@ -21,8 +21,13 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 export function BookingConfirmation() {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
   const { data: offer } = useOffer({ offerId: params.offerId })
   const { share: shareOffer, shareContent } = getShareOffer({
@@ -73,7 +78,7 @@ export function BookingConfirmation() {
   useShowReview()
 
   const amountLeftText = `Il te reste encore ${formatToFrenchDecimal(
-    amountLeft
+    amountLeft, currency, euroToXPFRate
   )} à dépenser sur le pass Culture.`
 
   return (

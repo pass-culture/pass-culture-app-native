@@ -33,7 +33,7 @@ export function BeneficiaryAccountCreated() {
   const { actions } = useCreditStore()
   const { shareAppTrigger } = useRemoteConfigContext()
 
-  const subtitle = `${maxPrice}\u00a0€ viennent d’être crédités sur ton compte pass Culture`
+  const subtitle = `${formatPriceInEuroToDisplayPrice(maxPrice)} viennent d’être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.'
     : 'Tu as deux ans pour profiter de ton budget.'
