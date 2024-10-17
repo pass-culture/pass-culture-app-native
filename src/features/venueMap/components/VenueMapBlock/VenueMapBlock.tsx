@@ -106,7 +106,7 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   borderRadius: theme.borderRadius.radius,
 }))
 
-const CardText = styled(TypoDS.BodySemiBold)({
+const CardText = styled(TypoDS.BodyAccent)({
   position: 'absolute',
   left: getSpacing(4),
   bottom: getSpacing(4),

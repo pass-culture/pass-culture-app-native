@@ -118,7 +118,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
 
 const DefaultTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(TypoDS.BodySemiBoldXs).attrs({
+const StyledSubtitle = styled(TypoDS.BodyAccentXs).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

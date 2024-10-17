@@ -232,7 +232,7 @@ const MinMaxContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const MinMaxValue = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const MinMaxValue = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

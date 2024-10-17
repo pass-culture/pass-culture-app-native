@@ -37,9 +37,9 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
           {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>
               <TypoDS.BodyItalic> dans </TypoDS.BodyItalic>
-              <TypoDS.BodyItalicSemiBold>
+              <TypoDS.BodyItalicAccent>
                 {item.nativeCategoryLabel ?? item.categoryLabel}
-              </TypoDS.BodyItalicSemiBold>
+              </TypoDS.BodyItalicAccent>
             </React.Fragment>
           ) : null}
         </StyledText>

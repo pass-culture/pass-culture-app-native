@@ -11,7 +11,7 @@ export type OfferMetadataItemProps = {
 export function OfferMetadataItem({ label, value }: Readonly<OfferMetadataItemProps>) {
   return (
     <Text>
-      <TypoDS.BodySemiBold>{label}&nbsp;: </TypoDS.BodySemiBold>
+      <TypoDS.BodyAccent>{label}&nbsp;: </TypoDS.BodyAccent>
       <TypoDS.Body>{value}</TypoDS.Body>
     </Text>
   )

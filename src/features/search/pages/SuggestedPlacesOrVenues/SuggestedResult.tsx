@@ -34,7 +34,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
         <Icon />
         <Spacer.Row numberOfSpaces={1} />
         <Text>
-          <TypoDS.BodySemiBold>{label}</TypoDS.BodySemiBold>
+          <TypoDS.BodyAccent>{label}</TypoDS.BodyAccent>
           <Spacer.Row numberOfSpaces={1} />
           <TypoDS.Body>{info}</TypoDS.Body>
         </Text>

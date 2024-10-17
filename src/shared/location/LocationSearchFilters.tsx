@@ -27,7 +27,7 @@ export const LocationSearchFilters = ({
     <React.Fragment>
       <LabelRadiusContainer nativeID={radiusLabelId}>
         <TypoDS.Body>{`Dans un rayon de\u00a0:`}</TypoDS.Body>
-        <TypoDS.BodySemiBold testID="value_radius">{`${aroundRadius}\u00a0km`}</TypoDS.BodySemiBold>
+        <TypoDS.BodyAccent testID="value_radius">{`${aroundRadius}\u00a0km`}</TypoDS.BodyAccent>
       </LabelRadiusContainer>
       <Spacer.Column numberOfSpaces={2} />
       <Slider

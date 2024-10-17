@@ -32,11 +32,11 @@ export const DeleteProfileAccountHacked: FC = () => {
         <ViewGap gap={6}>
           <TypoDS.Body>
             Tu as indiqué
-            <TypoDS.BodySemiBold> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodySemiBold>
+            <TypoDS.BodyAccent> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodyAccent>
           </TypoDS.Body>
           <TypoDS.Body>
-            Pour des raisons de <TypoDS.BodySemiBold>sécurité</TypoDS.BodySemiBold>, nous te
-            conseillons de suspendre ton compte temporairement.
+            Pour des raisons de <TypoDS.BodyAccent>sécurité</TypoDS.BodyAccent>, nous te conseillons
+            de suspendre ton compte temporairement.
           </TypoDS.Body>
         </ViewGap>
         <ContentBottom>

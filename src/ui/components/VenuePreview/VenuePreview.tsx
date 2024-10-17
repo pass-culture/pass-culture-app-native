@@ -71,7 +71,7 @@ const VenueTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const VenueName = styled(TypoDS.BodySemiBold).attrs({ numberOfLines: 1 })({
+const VenueName = styled(TypoDS.BodyAccent).attrs({ numberOfLines: 1 })({
   flexShrink: 1,
 })
 
@@ -81,7 +81,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   flexShrink: 0,
 })
 
-const Address = styled(TypoDS.BodySemiBoldXs).attrs({ numberOfLines: 2 })(({ theme }) => ({
+const Address = styled(TypoDS.BodyAccentXs).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -66,7 +66,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         <SubtitleContainer>
           <SearchIcon />
           <Spacer.Row numberOfSpaces={2} />
-          <TypoDS.BodySemiBold>Trouver un lieu culturel </TypoDS.BodySemiBold>
+          <TypoDS.BodyAccent>Trouver un lieu culturel </TypoDS.BodyAccent>
         </SubtitleContainer>
         <Spacer.Column numberOfSpaces={4} />
         <SearchInput

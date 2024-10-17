@@ -89,7 +89,7 @@ const GoogleLogo = styled.Image({
   zIndex: 2,
 })
 
-const CopyrightText = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
   textAlign: 'right',
   marginRight: theme.isMobileViewport ? getSpacing(4) : 0,

@@ -105,9 +105,9 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <AccessibilityFiltersContainer>
-        <TypoDS.BodySemiBold>
+        <TypoDS.BodyAccent>
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
-        </TypoDS.BodySemiBold>
+        </TypoDS.BodyAccent>
         <StyledCheckBox>
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}

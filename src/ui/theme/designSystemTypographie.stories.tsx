@@ -20,11 +20,11 @@ export const Typographies: ComponentStory<TypographyComponents> = () => (
     <TypoDS.Body>Body</TypoDS.Body>
     <TypoDS.BodyS>BodyS</TypoDS.BodyS>
     <TypoDS.BodyXs>BodyXs</TypoDS.BodyXs>
-    <TypoDS.BodySemiBold>BodySemiBold</TypoDS.BodySemiBold>
-    <TypoDS.BodySemiBoldS>BodySemiBoldS</TypoDS.BodySemiBoldS>
-    <TypoDS.BodySemiBoldXs>BodySemiBoldXs</TypoDS.BodySemiBoldXs>
+    <TypoDS.BodyAccent>BodyAccent</TypoDS.BodyAccent>
+    <TypoDS.BodyAccentS>BodyAccentS</TypoDS.BodyAccentS>
+    <TypoDS.BodyAccentXs>BodyAccentXs</TypoDS.BodyAccentXs>
     <TypoDS.BodyItalic>BodyItalic</TypoDS.BodyItalic>
-    <TypoDS.BodyItalicSemiBold>BodySemiBoldItalic</TypoDS.BodyItalicSemiBold>
+    <TypoDS.BodyItalicAccent>BodyAccentItalic</TypoDS.BodyItalicAccent>
     <TypoDS.Button>Button</TypoDS.Button>
   </ViewGap>
 )

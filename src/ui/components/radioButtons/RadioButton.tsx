@@ -130,13 +130,13 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
 }))
 
-const Label = styled(TypoDS.BodySemiBold)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+const Label = styled(TypoDS.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
   flexGrow: 1,
   flexShrink: 1,
 }))
 
-const ComplementLabel = styled(TypoDS.BodySemiBoldXs)<{ isSelected: boolean }>(
+const ComplementLabel = styled(TypoDS.BodyAccentXs)<{ isSelected: boolean }>(
   ({ isSelected, theme }) => ({
     color: isSelected ? theme.colors.primary : theme.colors.greyDark,
     marginLeft: getSpacing(2),
@@ -144,7 +144,7 @@ const ComplementLabel = styled(TypoDS.BodySemiBoldXs)<{ isSelected: boolean }>(
   })
 )
 
-const Description = styled(TypoDS.BodySemiBoldXs)(({ theme }) => ({
+const Description = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

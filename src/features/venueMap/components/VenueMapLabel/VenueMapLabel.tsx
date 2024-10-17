@@ -27,7 +27,7 @@ export const VenueMapLabel: FunctionComponent<Props> = ({ venue }) => {
   )
 }
 
-const Label = styled(TypoDS.BodySemiBoldXs)({
+const Label = styled(TypoDS.BodyAccentXs)({
   textAlign: 'center',
 })
 

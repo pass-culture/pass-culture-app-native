@@ -56,6 +56,6 @@ const TextContainer = styled.View({
   flex: 1,
 })
 
-const Caption = styled(TypoDS.BodySemiBoldXs)<ColorMessageProps>(({ theme, textColor }) => ({
+const Caption = styled(TypoDS.BodyAccentXs)<ColorMessageProps>(({ theme, textColor }) => ({
   color: textColor || theme.colors.black,
 }))

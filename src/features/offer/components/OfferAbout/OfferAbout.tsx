@@ -34,7 +34,7 @@ export const OfferAbout: FunctionComponent<Props> = ({
         <ViewGap gap={8}>
           {offer.description ? (
             <View>
-              <TypoDS.BodySemiBold>Description&nbsp;:</TypoDS.BodySemiBold>
+              <TypoDS.BodyAccent>Description&nbsp;:</TypoDS.BodyAccent>
               <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
                 {offer.description}
               </CollapsibleText>

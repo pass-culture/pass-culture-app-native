@@ -41,13 +41,13 @@ export const OfferReactions: FunctionComponent<Props> = ({
       return (
         <StyledView gap={1}>
           <StyledThumbUp isLiked={userHasLiked} testID="thumbUp" />
-          <TypoDS.BodySemiBoldXs>
+          <TypoDS.BodyAccentXs>
             Aimé par {reactionsCount?.likes} {youngWording}
-          </TypoDS.BodySemiBoldXs>
+          </TypoDS.BodyAccentXs>
         </StyledView>
       )
     } else if (userCanReact && userBooking?.userReaction !== ReactionTypeEnum.DISLIKE) {
-      return <TypoDS.BodySemiBoldXs>Sois le premier à réagir&nbsp;:</TypoDS.BodySemiBoldXs>
+      return <TypoDS.BodyAccentXs>Sois le premier à réagir&nbsp;:</TypoDS.BodyAccentXs>
     } else {
       return null
     }
@@ -58,9 +58,9 @@ export const OfferReactions: FunctionComponent<Props> = ({
       return (
         <StyledView gap={1}>
           <StyledThumbUp isLiked={false} testID="thumbUp" />
-          <TypoDS.BodySemiBoldXs>
+          <TypoDS.BodyAccentXs>
             Aimé par {reactionsCount?.likes} {youngWording}
-          </TypoDS.BodySemiBoldXs>
+          </TypoDS.BodyAccentXs>
         </StyledView>
       )
     }
