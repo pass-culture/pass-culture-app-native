@@ -315,7 +315,7 @@
     "flipper-plugin-react-query-native-devtools": "^3.0.0",
     "fs-extra": "^9.1.0",
     "geckodriver": "^3.2.0",
-    "google-auth-library": "^8.7.0",
+    "google-auth-library": "^9.14.1",
     "googleapis": "^110.0.0",
     "jest": "29.6.3",
     "jest-axe": "^9.0.0",
