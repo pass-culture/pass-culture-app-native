@@ -10,6 +10,21 @@ The build is configured to upload the source maps automatically, on every new re
 
 ### 🗝 Configure sentry cli
 
+For iOS/Android:
+
+- add a file `~/.sentryclirc`:
+
+```
+[defaults]
+url = https://sentry.passculture.team/
+org = sentry
+project = application-native
+
+[auth]
+token=<token>
+```
+
+For Web:
 Create a new `.env.local` containing your `SENTRY_AUTH_TOKEN`
 
 ```sh
