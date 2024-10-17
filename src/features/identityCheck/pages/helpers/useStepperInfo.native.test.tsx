@@ -11,7 +11,9 @@ import {
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { beneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 
 const mockIdentityCheckState = mockState
 const mockRemainingAttempts = {
@@ -19,6 +21,8 @@ const mockRemainingAttempts = {
   counterResetDatetime: 'time',
   isLastAttempt: false,
 }
+
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
   useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
@@ -169,7 +173,7 @@ describe('useStepperInfo', () => {
   })
 
   describe('confirmation step', () => {
-    it('should have firstScreen to "IdentityCheckHonor" when feature flag FF enableCulturalSurveyMandatory disabled', () => {
+    it('should have firstScreen to "IdentityCheckHonor" when feature flag FF enableCulturalSurveyMandatory is disabled', () => {
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.CONFIRMATION
@@ -178,7 +182,18 @@ describe('useStepperInfo', () => {
       expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
     })
 
-    it('should have firstScreen to "CulturalSurveyIntro" when feature flag FF enableCulturalSurveyMandatory enabled', () => {
+    it('should have firstScreen to "IdentityCheckHonor" when feature flag FF enableCulturalSurveyMandatory is enabled but user doesn’t needsToFillCulturalSurvey', () => {
+      mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false })
+      const { stepsDetails } = useStepperInfo()
+      const confirmationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.CONFIRMATION
+      )
+
+      expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
+    })
+
+    it('should have firstScreen to "CulturalSurveyIntro" when feature flag FF enableCulturalSurveyMandatory is enabled and user needsToFillCulturalSurvey', () => {
+      mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: true })
       useFeatureFlagSpy.mockReturnValueOnce(true)
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find(
