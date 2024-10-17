@@ -10,7 +10,7 @@ import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 export function EduConnectValidation() {
   const { identification } = useSubscriptionContext()
@@ -36,15 +36,15 @@ export function EduConnectValidation() {
           <BodyContainer>
             <StyledBody>Ton prénom</StyledBody>
             <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
+            <TypoDS.Title3 testID="validation-first-name">{identification.firstName}</TypoDS.Title3>
             <Spacer.Column numberOfSpaces={5} />
             <StyledBody>Ton nom de famille</StyledBody>
             <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-name">{identification.lastName}</Typo.Title3>
+            <TypoDS.Title3 testID="validation-name">{identification.lastName}</TypoDS.Title3>
             <Spacer.Column numberOfSpaces={5} />
             <StyledBody>Ta date de naissance</StyledBody>
             <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-birth-date">{birthDate}</Typo.Title3>
+            <TypoDS.Title3 testID="validation-birth-date">{birthDate}</TypoDS.Title3>
           </BodyContainer>
         </React.Fragment>
       }

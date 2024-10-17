@@ -14,7 +14,7 @@ import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -65,7 +65,7 @@ export const ChangeEmailSetPassword = () => {
   return (
     <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
       <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-        <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
+        <TypoDS.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
         <Typo.Body>
           Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.

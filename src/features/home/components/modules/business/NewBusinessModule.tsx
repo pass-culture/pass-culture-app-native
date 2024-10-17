@@ -243,7 +243,7 @@ const StyledTitle1 = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+const StyledTitle3 = styled(TypoDS.Title3)(({ theme }) => ({
   color: theme.colors.white,
 }))
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({

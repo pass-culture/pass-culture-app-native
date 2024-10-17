@@ -13,7 +13,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -45,7 +45,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
   return (
     <Container {...props}>
       {enableAppV2VenueMapBlock ? null : (
-        <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
+        <TypoDS.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</TypoDS.Title3>
       )}
       <Spacer.Column numberOfSpaces={enableAppV2VenueMapBlock ? 2 : 4} />
       <TouchableContainer {...touchableProps} {...focusProps}>

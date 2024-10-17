@@ -210,7 +210,7 @@ exports[`<ChangeCity/> should render correctly 1`] = `
             />
             <h1
               aria-level="1"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
               dir="ltr"
               role="heading"
             >

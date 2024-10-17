@@ -12,7 +12,7 @@ const tests = {
     // <Typo.***>string</Typo.***>
     { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
     { code: '<TypoDS.Title2>toto</TypoDS.Title2>' },
-    { code: '<Typo.Title3>toto</Typo.Title3>' },
+    { code: '<TypoDS.Title3>toto</TypoDS.Title3>' },
     { code: '<Typo.Title4>toto</Typo.Title4>' },
     { code: '<Typo.ButtonText>toto</Typo.ButtonText>' },
     { code: '<Typo.ButtonTextNeutralInfo>toto</Typo.ButtonTextNeutralInfo>' },

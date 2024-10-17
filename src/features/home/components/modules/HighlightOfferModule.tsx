@@ -20,7 +20,7 @@ import { theme } from 'theme'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
@@ -187,7 +187,7 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledTitle = styled(Typo.Title3).attrs({
+const StyledTitle = styled(TypoDS.Title3).attrs({
   numberOfLines: 2,
 })``
 

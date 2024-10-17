@@ -45,9 +45,9 @@ export const FeedbackInApp = () => {
       title="Faire une suggestion"
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getHeadingAttrs(1)}>
+          <TypoDS.Title3 {...getHeadingAttrs(1)}>
             Comment pourrions-nous améliorer l’application&nbsp;?
-          </Typo.Title3>
+          </TypoDS.Title3>
           <Spacer.Column numberOfSpaces={5} />
           <TypoDS.Body>
             Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos

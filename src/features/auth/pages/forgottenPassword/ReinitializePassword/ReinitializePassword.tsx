@@ -19,7 +19,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ReinitializePasswordFormData = {
@@ -119,7 +119,7 @@ export const ReinitializePassword = () => {
     <SecondaryPageWithBlurHeader
       title="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <Form.MaxWidth>
         <PasswordInputController

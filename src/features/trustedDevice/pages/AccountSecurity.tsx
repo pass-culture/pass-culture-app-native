@@ -16,7 +16,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
@@ -33,7 +33,7 @@ export const AccountSecurity = () => {
   return (
     <GenericInfoPageWhite
       title="Sécurise ton compte"
-      titleComponent={Typo.Title3}
+      titleComponent={TypoDS.Title3}
       icon={BicolorUserBlocked}
       separateIconFromTitle={false}>
       <Typo.Body>

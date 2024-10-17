@@ -14,7 +14,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 type SuspendAccountConfirmationProps = NativeStackScreenProps<
@@ -75,7 +75,7 @@ export function SuspendAccountConfirmation({
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorUserError}
-      titleComponent={Typo.Title3}
+      titleComponent={TypoDS.Title3}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       separateIconFromTitle={false}>
       <StyledBody>

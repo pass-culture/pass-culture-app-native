@@ -34,7 +34,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type LoginFormData = {
@@ -205,7 +205,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       ) : null}
       <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
-        <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
+        <TypoDS.Title3 {...getHeadingAttrs(2)}>Connecte-toi</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <Form.MaxWidth>
           <InputError

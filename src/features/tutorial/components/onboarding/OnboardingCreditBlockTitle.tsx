@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 interface Props {
@@ -24,7 +24,7 @@ export const OnboardingCreditBlockTitle = ({
   return <TitleText>{deposit}</TitleText>
 }
 
-const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
+const Title = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)``
 
 const TitleSecondary = styled(Title)(({ theme }) => ({
   color: theme.colors.secondary,

@@ -15,7 +15,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Typo, Spacer } from 'ui/theme'
+import { Typo, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 function getHourChoiceForMultiplePrices(
@@ -170,9 +170,9 @@ export const BookHourChoice = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
+      <TypoDS.Title3 {...getHeadingAttrs(3)} testID="HourStep">
         Horaire
-      </Typo.Title3>
+      </TypoDS.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
       {bookingState.step === Step.HOUR ? (

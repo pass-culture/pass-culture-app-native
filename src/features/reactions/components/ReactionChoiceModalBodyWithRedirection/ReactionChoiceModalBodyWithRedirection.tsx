@@ -8,7 +8,7 @@ import thumbs from 'features/reactions/images/thumbs.png'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -97,6 +97,6 @@ const ThumbsImage = styled(Image)({
   marginTop: getSpacing(4),
 })
 
-const StyledTitle3 = styled(Typo.Title3)({
+const StyledTitle3 = styled(TypoDS.Title3)({
   textAlign: 'center',
 })

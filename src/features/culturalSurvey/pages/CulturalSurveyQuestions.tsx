@@ -35,7 +35,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type CulturalSurveyQuestionsProps = StackScreenProps<
   CulturalSurveyRootStackParamList,
@@ -200,7 +200,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         bottomChildrenViewHeight={bottomChildrenViewHeight}
         onScroll={onScroll}
         testID="cultural-survey-questions-scrollview">
-        <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
+        <TypoDS.Title3>{culturalSurveyQuestion?.title}</TypoDS.Title3>
         <CaptionContainer>
           <Typo.CaptionNeutralInfo>{pageSubtitle}</Typo.CaptionNeutralInfo>
         </CaptionContainer>

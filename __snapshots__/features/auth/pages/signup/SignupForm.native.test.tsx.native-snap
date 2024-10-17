@@ -350,8 +350,8 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 19,
+                "lineHeight": 30.4,
               },
             ]
           }
@@ -1352,8 +1352,8 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 19,
+                "lineHeight": 30.4,
               },
             ]
           }
@@ -2028,8 +2028,8 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 19,
+                "lineHeight": 30.4,
               },
             ]
           }
@@ -2888,8 +2888,8 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
+                "fontSize": 19,
+                "lineHeight": 30.4,
               },
             ]
           }

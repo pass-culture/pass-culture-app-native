@@ -16,7 +16,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 const FAQTouchableLinkProps = {
   as: ButtonTertiaryBlack,
@@ -50,7 +50,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorPhonePending}
-      titleComponent={Typo.Title3}
+      titleComponent={TypoDS.Title3}
       title={intro.title}
       subtitle={intro.subtitle}>
       {intro.customSubtitle ? (

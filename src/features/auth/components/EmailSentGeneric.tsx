@@ -9,7 +9,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -37,7 +37,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
         <BicolorEmailSent />
       </IllustrationContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
       <Typo.Body>{email}</Typo.Body>

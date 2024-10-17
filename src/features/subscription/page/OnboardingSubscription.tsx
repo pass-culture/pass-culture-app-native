@@ -25,7 +25,7 @@ import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -190,7 +190,7 @@ export const OnboardingSubscription = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
+const StyledTitle3 = styled(TypoDS.Title3).attrs(getHeadingAttrs(1))``
 
 const StyledView = styled.View.attrs({})(({ theme }) => ({
   backgroundColor: theme.colors.white,
