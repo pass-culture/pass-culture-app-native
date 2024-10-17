@@ -30,7 +30,7 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
       intro: {
         title: 'Tu y es presque\u00a0!',
         subtitle: undefined,
-        customSubtitle: `Quelques questions et ton crédit est à toi.`,
+        customSubtitle: `Quelques questions et ton\u00a0crédit\u00a0est\u00a0à\u00a0toi.`,
         bodyText:
           'Parle nous de tes activités culturelles préférées. Tes réponses vont nous aider à mieux te connaître.',
         showFAQLink: false,

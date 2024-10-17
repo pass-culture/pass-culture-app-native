@@ -587,7 +587,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
       ]
     }
   >
-    Quelques questions et ton crédit est à toi.
+    Quelques questions et ton crédit est à toi.
   </Text>
   <View
     numberOfSpaces={6}

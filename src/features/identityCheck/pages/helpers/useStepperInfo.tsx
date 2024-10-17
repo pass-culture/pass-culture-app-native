@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubscriptionStepCompletionState } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
@@ -33,6 +34,8 @@ export const useStepperInfo = (): StepperInfo => {
   const enableCulturalSurveyMandatory = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
   )
+
+  const { user } = useAuthContext()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { data } = useGetStepperInfo()
   const { data: settings } = useSettingsContext()
@@ -60,7 +63,7 @@ export const useStepperInfo = (): StepperInfo => {
   }
 
   const getConfirmationFirstScreen = () => {
-    if (enableCulturalSurveyMandatory) {
+    if (enableCulturalSurveyMandatory && !!user?.needsToFillCulturalSurvey) {
       return 'CulturalSurveyIntro'
     }
     return 'IdentityCheckHonor'
