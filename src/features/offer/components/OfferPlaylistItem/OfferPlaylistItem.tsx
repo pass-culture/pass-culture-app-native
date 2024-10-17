@@ -9,6 +9,8 @@ import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Offer } from 'shared/offer/types'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
 
 type OfferPlaylistItemProps = {
   offer: OfferResponseV2
@@ -36,6 +38,9 @@ export const OfferPlaylistItem = ({
   apiRecoParams,
   analyticsFrom = 'offer',
 }: OfferPlaylistItemProps) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
 
@@ -50,7 +55,7 @@ export const OfferPlaylistItem = ({
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
         width={width}
         height={height}
         analyticsFrom={analyticsFrom}

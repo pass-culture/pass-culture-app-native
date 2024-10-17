@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/api'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
-import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
+import { useGetFavoriteDisplayPrice } from 'features/favorites/helpers/useGetFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -46,7 +46,7 @@ export const Favorite: React.FC<Props> = (props) => {
     lat: offer.coordinates?.latitude,
     lng: offer.coordinates?.longitude,
   })
-  const displayPrice = getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })
+  const displayPrice = useGetFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })
   const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
@@ -118,9 +118,9 @@ export const Favorite: React.FC<Props> = (props) => {
     opacity: animatedOpacity,
     height: height
       ? animatedCollapse.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, height],
-        })
+        inputRange: [0, 1],
+        outputRange: [0, height],
+      })
       : undefined,
   }
 

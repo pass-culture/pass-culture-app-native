@@ -8,6 +8,8 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
 
 type Props = {
   domainsCredit: DomainsCredit
@@ -16,11 +18,14 @@ type Props = {
 }
 
 const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const digitalCeiling = domainsCredit.digital
-    ? formatToFrenchDecimal(domainsCredit.digital.initial)
+    ? formatToFrenchDecimal(domainsCredit.digital.initial, currency, euroToXPFRate)
     : ''
   const physicalCeiling = domainsCredit.physical
-    ? formatToFrenchDecimal(domainsCredit.physical.initial)
+    ? formatToFrenchDecimal(domainsCredit.physical.initial, currency, euroToXPFRate)
     : ''
 
   return physicalCeiling ? (

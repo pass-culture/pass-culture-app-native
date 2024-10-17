@@ -1,4 +1,4 @@
-import { getFavoriteDisplayPrice } from './getFavoriteDisplayPrice'
+import { useGetFavoriteDisplayPrice } from './useGetFavoriteDisplayPrice'
 
 describe('getFavoriteDisplayPrice', () => {
   it.each`
@@ -13,7 +13,7 @@ describe('getFavoriteDisplayPrice', () => {
     'getFavoriteDisplayPrice({ price: $price, startPrice: $startPrice }) \t= $expected',
     ({ price, startPrice, expected }) => {
       expect(
-        getFavoriteDisplayPrice({
+        useGetFavoriteDisplayPrice({
           price,
           startPrice,
         })

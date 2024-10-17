@@ -35,6 +35,8 @@ import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 export interface BookingDetailsProps {
   stocks: OfferStockResponse[]
@@ -59,6 +61,9 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
 ]
 
 export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { bookingState, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
@@ -74,7 +79,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
-      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
@@ -171,7 +176,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   if (!selectedStock || typeof quantity !== 'number') return null
 
   const priceInCents = quantity * selectedStock.price
-  const formattedPriceWithEuro = formatToFrenchDecimal(priceInCents)
+  const formattedPriceWithEuro = formatToFrenchDecimal(priceInCents, currency, euroToXPFRate)
 
   const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
 

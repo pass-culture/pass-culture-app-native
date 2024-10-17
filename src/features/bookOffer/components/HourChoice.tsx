@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { getSpacing } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 interface Props {
   hour: string
@@ -30,9 +32,11 @@ export function HourChoice({
   features,
   index,
 }: Props) {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const priceWording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)
+  const priceWording = getHourWording(price, isBookable, enoughCredit, currency, euroToXPFRate, hasSeveralPrices)
 
   const accessibilityLabel = `${hour} ${priceWording}`
 

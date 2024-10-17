@@ -11,6 +11,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
@@ -28,6 +30,9 @@ export const VenueMapOfferPlaylist = ({
   onPressMore,
   playlistType,
 }: VenueMapOfferPlaylistProps) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -42,7 +47,7 @@ export const VenueMapOfferPlaylist = ({
         offerLocation={item._geoloc}
         analyticsFrom="venueMap"
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}
         variant="new"

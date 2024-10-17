@@ -24,6 +24,8 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Currency, useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -76,9 +78,9 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
-export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
+export const getDayDescription = (price: number, currency: Currency, euroToXPFRate: number, hasSeveralPrices?: boolean) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += formatToFrenchDecimal(price).replace(' ', '')
+  dayDescription += formatToFrenchDecimal(price, currency, euroToXPFRate).replace(' ', '')
 
   return dayDescription
 }
@@ -96,6 +98,9 @@ export const Calendar: React.FC<Props> = ({
   offerId,
   hasSeveralPrices,
 }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
@@ -126,7 +131,7 @@ export const Calendar: React.FC<Props> = ({
       <Container onPress={onPress} disabled={!onPress}>
         <DayComponent status={status} selected={selected} date={date} />
         {typeof price === 'number' ? (
-          <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
+          <Caption status={status}>{getDayDescription(price, currency, euroToXPFRate, hasSeveralPrices)}</Caption>
         ) : (
           <Spacer.Column numberOfSpaces={getSpacing(1)} />
         )}

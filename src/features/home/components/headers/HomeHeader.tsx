@@ -11,8 +11,13 @@ import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 export const HomeHeader: FunctionComponent = function () {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport } = useTheme()
@@ -29,7 +34,7 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
-        const credit = formatToFrenchDecimal(availableCredit.amount)
+        const credit = formatToFrenchDecimal(availableCredit.amount, currency, euroToXPFRate)
         return `Tu as ${credit} sur ton pass`
       }
       return 'Ton crédit est expiré'

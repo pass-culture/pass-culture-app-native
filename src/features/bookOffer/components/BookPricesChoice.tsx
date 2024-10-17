@@ -16,6 +16,8 @@ import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type Props = {
   stocks: OfferStockResponse[]
@@ -23,6 +25,9 @@ type Props = {
 }
 
 export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { bookingState, dispatch } = useBookingContext()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const titleID = uuidv4()
@@ -54,7 +59,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 checked={stock.id === bookingState.stockId}
                 disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                rightText={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                rightText={formatToFrenchDecimal(stock.price, currency, euroToXPFRate).replace(' ', '')}
               />
               <Spacer.Column numberOfSpaces={2} />
             </Li>

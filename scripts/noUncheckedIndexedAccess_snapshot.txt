@@ -104,8 +104,8 @@
 ./src/libs/parsers/formatDates.ts:87
 ./src/libs/parsers/formatDates.ts:89
 ./src/libs/parsers/formatDates.ts:94
-./src/libs/parsers/getDisplayPrice.ts:31
-./src/libs/parsers/getDisplayPrice.ts:35
+./src/libs/parsers/getDisplayPrice.ts:48
+./src/libs/parsers/getDisplayPrice.ts:52
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2

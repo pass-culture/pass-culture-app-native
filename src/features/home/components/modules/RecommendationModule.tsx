@@ -17,6 +17,8 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type RecommendationModuleProps = {
   moduleId: string
@@ -29,6 +31,9 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
@@ -79,7 +84,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices)}
+          price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
           isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}

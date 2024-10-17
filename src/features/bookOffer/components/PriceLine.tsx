@@ -3,6 +3,8 @@ import React from 'react'
 import { OfferStockResponse } from 'api/gen'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { Typo } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 interface PriceLineProps {
   /**
@@ -45,7 +47,10 @@ export function PriceLine({
   shouldDisabledStyles = false,
   attributes,
 }: PriceLineProps) {
-  const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
+  const totalPrice = formatToFrenchDecimal(quantity * unitPrice, currency, euroToXPFRate)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
@@ -58,7 +63,7 @@ export function PriceLine({
 
       {quantity > 1 ? (
         <SecondaryText testID={getTestID('price-detail')}>
-          ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
+          ({formatToFrenchDecimal(unitPrice, currency, euroToXPFRate)} x {quantity} places)
         </SecondaryText>
       ) : null}
 

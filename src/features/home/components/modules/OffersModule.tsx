@@ -18,6 +18,8 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 export type OffersModuleProps = {
   offersModuleParameters: OffersModuleType['offersModuleParameters']
@@ -31,6 +33,9 @@ export type OffersModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -71,8 +76,8 @@ export const OffersModule = (props: OffersModuleProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore
     ? () => {
-        analytics.logClickSeeMore({ moduleName, moduleId })
-      }
+      analytics.logClickSeeMore({ moduleName, moduleId })
+    }
     : undefined
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
@@ -89,7 +94,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices)}
+          price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
           isBeneficiary={user?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}

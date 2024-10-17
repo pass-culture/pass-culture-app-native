@@ -22,6 +22,8 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 interface Props {
   visible: boolean
@@ -36,7 +38,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 }) => {
   const netInfo = useNetInfoContext()
   const { user } = useAuthContext()
-  const refundRule = getRefundRule(booking, user)
+  const refundRule = useGetRefundRule(booking, user)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -117,10 +119,13 @@ const Refund = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-function getRefundRule(booking: Booking, user?: UserProfileResponse) {
+function useGetRefundRule(booking: Booking, user?: UserProfileResponse) {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
-    const price = formatToFrenchDecimal(booking.totalAmount)
+    const price = formatToFrenchDecimal(booking.totalAmount, currency, euroToXPFRate)
     if (isUserExBeneficiary(user)) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }

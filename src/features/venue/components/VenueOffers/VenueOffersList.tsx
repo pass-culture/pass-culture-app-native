@@ -21,10 +21,15 @@ import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers, playlists }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -64,7 +69,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
         venueId={venue?.id}
         width={width}
         height={height}

@@ -19,6 +19,8 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getShadow, getSpacing, Typo } from 'ui/theme'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
 
 type Props = {
   offer: Offer
@@ -37,6 +39,9 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   homeEntryId,
   style,
 }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
@@ -52,7 +57,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
 
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
+  const displayPrice = getDisplayPrice(offer?.offer?.prices, currency, euroToXPFRate)
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
