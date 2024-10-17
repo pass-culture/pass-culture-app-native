@@ -201,8 +201,8 @@ describe('<SearchN1/>', () => {
       })
     })
 
-    describe('venue playlists', () => {
-      it('should render venue playlists when user is not geolocated', async () => {
+    describe('venue playlist', () => {
+      it('should render venue playlists with géneric title on every Search N1  when user is not geolocated', async () => {
         mockHits = { venues: mockVenueHits }
         render(reactQueryProviderHOC(<SearchN1 />))
         await screen.findByText('Romans et littérature')
@@ -210,13 +210,40 @@ describe('<SearchN1/>', () => {
         expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
       })
 
-      it('should render venue playlists when user is geolocated', async () => {
+      it('should render venue playlists with located title for books when user is geolocated and is on searchN1 books', async () => {
         mockSelectedLocationMode = LocationMode.AROUND_ME
         mockHits = { venues: mockAlgoliaVenues }
         render(reactQueryProviderHOC(<SearchN1 />))
         await screen.findByText('Romans et littérature')
 
-        expect(await screen.findByText('Les librairies proches de toi')).toBeOnTheScreen()
+        expect(await screen.findByText('Les librairies près de toi')).toBeOnTheScreen()
+      })
+    })
+  })
+
+  describe('cinema offerCategory', () => {
+    beforeEach(() => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
+      mockHits = {}
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
+    })
+
+    describe('venue playlist', () => {
+      it('should render venue playlists with located title for cinéma when user is geolocated and is on searchN1 cinéma', async () => {
+        mockSelectedLocationMode = LocationMode.AROUND_ME
+        mockHits = { venues: mockAlgoliaVenues }
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Cartes cinéma')
+
+        expect(await screen.findByText('Les cinémas près de toi')).toBeOnTheScreen()
+      })
+
+      it('should render venue playlists with géneric title on every Search N1  when user is not geolocated', async () => {
+        mockHits = { venues: mockVenueHits }
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Cartes cinéma')
+
+        expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
       })
     })
   })
