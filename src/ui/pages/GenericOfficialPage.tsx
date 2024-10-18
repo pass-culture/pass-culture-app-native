@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -103,7 +103,7 @@ const Container = styled.View({
   overflowY: 'auto',
 })
 
-const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
+const StyledTitle = styled(TypoDS.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.black,
 }))
 

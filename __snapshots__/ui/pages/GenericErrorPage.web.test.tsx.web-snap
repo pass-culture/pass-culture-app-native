@@ -43,7 +43,7 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
       />
       <h1
         aria-level="1"
-        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-evnaw r-lineHeight-eaezby r-textAlign-q4m81j"
+        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
         dir="ltr"
         role="heading"
       >

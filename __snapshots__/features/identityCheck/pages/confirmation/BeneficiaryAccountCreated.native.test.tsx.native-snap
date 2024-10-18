@@ -211,9 +211,9 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           [
             {
               "color": "#870087",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 22,
-              "lineHeight": 26,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
               "textAlign": "center",
             },
           ]
@@ -589,9 +589,9 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           [
             {
               "color": "#870087",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 22,
-              "lineHeight": 26,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
               "textAlign": "center",
             },
           ]
