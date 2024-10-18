@@ -18,3 +18,4 @@ jobs:
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
           regexp: '^(\((PC-[0-9]+|BSR)\) )?(build|lint|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'
+  run: echo '${{ steps.ckeck.outputs.status }}'
