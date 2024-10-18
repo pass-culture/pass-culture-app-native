@@ -10,7 +10,7 @@ import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
+import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +26,7 @@ export function BeneficiaryAccountCreated() {
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
   const { actions } = useCreditStore()

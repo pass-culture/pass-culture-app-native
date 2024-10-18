@@ -2,6 +2,8 @@ import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -9,10 +11,17 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
 describe('useInitialScreen()', () => {
+  beforeEach(() => {
+    activateFeatureFlags()
+  })
+
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')
     await storage.clear('has_seen_eligible_card')
@@ -37,8 +46,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('TabNavigator')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
   })
 
   it('should return CulturalSurveyIntro when user should see cultural survey', async () => {
@@ -60,8 +68,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('CulturalSurveyIntro')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('CulturalSurveyIntro')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
   })
 
   it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
@@ -83,8 +90,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('EighteenBirthday')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('EighteenBirthday')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
   })
 
   it('should return RecreditBirthdayNotification when user hasn’t seen eligible card and has credit to show', async () => {
@@ -106,8 +112,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('RecreditBirthdayNotification')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('RecreditBirthdayNotification')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
   })
 
   it('should return TabNavigator when user is not logged in and has seen tutorial', async () => {
@@ -121,8 +126,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('TabNavigator')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
   })
 
   it('should return OnboardingWelcome when user is not logged in and hasn’t seen tutorial yet', async () => {
@@ -136,8 +140,7 @@ describe('useInitialScreen()', () => {
       expect(result.current).toEqual('OnboardingWelcome')
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('OnboardingWelcome')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'OnboardingWelcome')
   })
 })
 
@@ -147,4 +150,8 @@ async function renderUseInitialScreen() {
   )
   const { result } = renderHook(useInitialScreen, { wrapper })
   return result
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
