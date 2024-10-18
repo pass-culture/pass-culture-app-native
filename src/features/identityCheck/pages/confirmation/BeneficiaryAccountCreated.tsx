@@ -8,7 +8,6 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
@@ -31,7 +30,6 @@ export function BeneficiaryAccountCreated() {
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
   const { actions } = useCreditStore()
-  const { shareAppTrigger } = useRemoteConfigContext()
 
   const subtitle = `${maxPrice}\u00a0€ viennent d’être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
@@ -40,11 +38,9 @@ export function BeneficiaryAccountCreated() {
 
   const onBeforeNavigate = useCallback(() => {
     BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
-    const isDefaultShareAppTrigger = shareAppTrigger === 'default'
-    const hasToShowShareAppModale = isDefaultShareAppTrigger && !user?.needsToFillCulturalSurvey
-    if (hasToShowShareAppModale) showShareAppModal(ShareAppModalType.BENEFICIARY)
+    if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
     actions.setActivationDate(new Date())
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey, shareAppTrigger, actions])
+  }, [showShareAppModal, user?.needsToFillCulturalSurvey, actions])
 
   useEnterKeyAction(navigateToHome)
 

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config'
 
-import { CustomRemoteConfig, ShareAppTrigger } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 
 import { getConfigValue } from './getConfigValue'
 
@@ -37,7 +37,4 @@ export const getRemoteConfigFromConfigValues = (
   subscriptionHomeEntryIds: JSON.parse(
     getConfigValue(parameters.subscriptionHomeEntryIds).asString()
   ),
-  shareAppTrigger:
-    (getConfigValue(parameters.shareAppTrigger)?.asString() as ShareAppTrigger | undefined) ??
-    'default',
 })

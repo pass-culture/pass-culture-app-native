@@ -33,5 +33,4 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
     [SubscriptionTheme.VISITES]: '',
     [SubscriptionTheme.ACTIVITES]: '',
   },
-  shareAppTrigger: 'default',
 }
