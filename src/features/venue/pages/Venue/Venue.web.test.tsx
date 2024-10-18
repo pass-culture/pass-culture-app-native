@@ -112,7 +112,7 @@ describe('<Venue />', () => {
     })
 
     // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should render correctly', async () => {
+    it('should render correctly', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await screen.findAllByText('Gratuit')
