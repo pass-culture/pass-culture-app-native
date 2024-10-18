@@ -295,7 +295,6 @@ describe('<SetEmail />', () => {
 
       useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
       useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
-      useFeatureFlagSpy.mockReturnValueOnce(true) // third call in CulturalSurvey
 
       renderSetEmail()
 
@@ -324,7 +323,6 @@ describe('<SetEmail />', () => {
 
       useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
       useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
-      useFeatureFlagSpy.mockReturnValueOnce(true) // third call in CulturalSurvey
 
       renderSetEmail()
 

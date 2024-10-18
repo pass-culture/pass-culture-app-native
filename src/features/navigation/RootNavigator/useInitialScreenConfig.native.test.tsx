@@ -2,8 +2,6 @@ import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -11,17 +9,10 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
 describe('useInitialScreen()', () => {
-  beforeEach(() => {
-    activateFeatureFlags()
-  })
-
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')
     await storage.clear('has_seen_eligible_card')
@@ -156,8 +147,4 @@ async function renderUseInitialScreen() {
   )
   const { result } = renderHook(useInitialScreen, { wrapper })
   return result
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

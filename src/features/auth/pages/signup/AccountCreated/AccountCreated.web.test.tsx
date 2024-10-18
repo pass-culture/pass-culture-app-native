@@ -1,14 +1,11 @@
 import React from 'react'
 
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccountCreated } from './AccountCreated'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
