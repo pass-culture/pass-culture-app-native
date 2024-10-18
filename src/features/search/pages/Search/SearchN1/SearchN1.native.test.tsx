@@ -6,7 +6,6 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import { env } from 'libs/environment'
@@ -71,13 +70,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
 let mockSelectedLocationMode = LocationMode.EVERYWHERE
+const mockUseLocation = jest.fn(() => ({
+  selectedLocationMode: mockSelectedLocationMode,
+  onModalHideRef: jest.fn(),
+}))
 jest.mock('libs/location', () => ({
-  useLocation: jest.fn(() => ({
-    selectedLocationMode: mockSelectedLocationMode,
-    onModalHideRef: jest.fn(),
-  })),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
@@ -200,62 +199,48 @@ describe('<SearchN1/>', () => {
         })
       })
     })
-
-    describe('venue playlist', () => {
-      it('should render venue playlists with géneric title on every Search N1  when user is not geolocated', async () => {
-        mockHits = { venues: mockVenueHits }
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
-
-        expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
-      })
-
-      it('should render venue playlists with located title for books when user is geolocated and is on searchN1 books', async () => {
-        mockSelectedLocationMode = LocationMode.AROUND_ME
-        mockHits = { venues: mockAlgoliaVenues }
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
-
-        expect(await screen.findByText('Les librairies près de toi')).toBeOnTheScreen()
-      })
-    })
   })
 
-  describe('cinema offerCategory', () => {
-    beforeEach(() => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
-      mockHits = {}
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
-    })
-
-    describe('venue playlist', () => {
-      it('should render venue playlists with located title for cinéma when user is geolocated and is on searchN1 cinéma', async () => {
-        mockSelectedLocationMode = LocationMode.AROUND_ME
+  describe('venue playlist', () => {
+    it.each`
+      categorie   | offerCategoriesParams                                  | selectedLocationMode       | textToFind                 | expectedTitle
+      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
+      ${'livres'} | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }} | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
+      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
+    `(
+      'should render venue playlists with title : $expectedTitle for Search N1 $categorie when user has locationMode: $selectedLocationMode',
+      async ({
+        offerCategoriesParams,
+        selectedLocationMode,
+        textToFind,
+        expectedTitle,
+      }: {
+        offerCategoriesParams: { offerCategories: SearchGroupNameEnumv2[] }
+        selectedLocationMode: LocationMode
+        textToFind: string
+        expectedTitle: string
+      }) => {
+        MockOfferCategoriesParams(offerCategoriesParams)
         mockHits = { venues: mockAlgoliaVenues }
+        mockUseLocation.mockReturnValueOnce({ selectedLocationMode, onModalHideRef: jest.fn() })
+
         render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Cartes cinéma')
 
-        expect(await screen.findByText('Les cinémas près de toi')).toBeOnTheScreen()
-      })
+        await screen.findByText(textToFind)
 
-      it('should render venue playlists with géneric title on every Search N1  when user is not geolocated', async () => {
-        mockHits = { venues: mockVenueHits }
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Cartes cinéma')
-
-        expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
-      })
-    })
+        expect(await screen.findByText(expectedTitle)).toBeOnTheScreen()
+      }
+    )
   })
+})
 
-  describe('gtl playlists', () => {
-    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<SearchN1 />))
-      await screen.findByText('Festivals')
+describe('gtl playlists', () => {
+  it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+    render(reactQueryProviderHOC(<SearchN1 />))
+    await screen.findByText('Festivals')
 
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
-    })
+    expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
 })
 
