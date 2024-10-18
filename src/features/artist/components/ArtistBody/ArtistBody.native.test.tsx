@@ -7,6 +7,8 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -51,12 +53,21 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
+
 const mockArtist = {
   name: 'Céline Dion',
   bio: 'chanteuse',
 }
 
 describe('<ArtistBody />', () => {
+  beforeEach(() => {
+    spyUseArtistResults.mockReturnValue({
+      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+      artistPlaylist: [],
+    })
+  })
+
   it('should display only the main artist when there are several artists on header title', () => {
     render(
       reactQueryProviderHOC(
@@ -77,6 +88,34 @@ describe('<ArtistBody />', () => {
     fireEvent.press(backButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display correct artist avatar', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
+
+    await screen.findByLabelText('artist avatar')
+
+    expect(screen.getByLabelText('artist avatar').props.source).toMatchObject({
+      uri: mockedAlgoliaOffersWithSameArtistResponse[0].offer.thumbUrl,
+    })
+  })
+
+  it('should display default artist avatar if there are no top offers', async () => {
+    spyUseArtistResults.mockReturnValueOnce({
+      artistTopOffers: [],
+      artistPlaylist: [],
+    })
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
+      )
+    )
+
+    expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
   })
 
   it('should display artist description', () => {
