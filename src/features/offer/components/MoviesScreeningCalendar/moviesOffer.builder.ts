@@ -1,4 +1,11 @@
-import { addDays, differenceInMilliseconds, isAfter, isBefore, isSameDay } from 'date-fns'
+import {
+  addDays,
+  differenceInMilliseconds,
+  isAfter,
+  isBefore,
+  isSameDay,
+  startOfDay,
+} from 'date-fns'
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
@@ -154,7 +161,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
 }
 
 const isDateNotWithinNext15Days = (referenceDate: Date, targetDate: Date) => {
-  const datePlus15Days = addDays(referenceDate, 15)
+  const datePlus15Days = addDays(startOfDay(referenceDate), 15)
 
   return isAfter(targetDate, datePlus15Days)
 }

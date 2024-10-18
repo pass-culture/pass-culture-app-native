@@ -1,3 +1,4 @@
+import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
 
 import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferIds'
@@ -14,14 +15,17 @@ import { act, renderHook } from 'tests/utils'
 const TODAY = dateBuilder().withDay(2).withHours(6)
 const TODAY_LATER = dateBuilder().withDay(2).withHours(10)
 const TODAY_DATE = TODAY.toDate()
+const AFTER_15_DAYS = addDays(TODAY.toDate(), 16)
 const TOMORROW = dateBuilder().withDay(3)
 
-const TODAY_STOCK = stockBuilder().withBeginningDatetime(TODAY_LATER.toString())
-const TOMORROW_STOCK = stockBuilder().withBeginningDatetime(TOMORROW.toString())
+const TODAY_STOCK = stockBuilder().withBeginningDatetime(TODAY_LATER.toString()).build()
+const TOMORROW_STOCK = stockBuilder().withBeginningDatetime(TOMORROW.toString()).build()
+const STOCK_AFTER_15_DAYS = stockBuilder().withBeginningDatetime(AFTER_15_DAYS.toString()).build()
 
-const OFFER_WITH_STOCKS_TODAY = offerResponseBuilder().withStocks([TODAY_STOCK.build()]).build()
-const OFFER_WITH_STOCKS_TOMORROW = offerResponseBuilder()
-  .withStocks([TOMORROW_STOCK.build()])
+const OFFER_WITH_STOCKS_TODAY = offerResponseBuilder().withStocks([TODAY_STOCK]).build()
+const OFFER_WITH_STOCKS_TOMORROW = offerResponseBuilder().withStocks([TOMORROW_STOCK]).build()
+const OFFER_WITH_STOCKS_AFTER_15_DAYS = offerResponseBuilder()
+  .withStocks([STOCK_AFTER_15_DAYS])
   .build()
 
 mockdate.set(TODAY_DATE)
@@ -70,11 +74,11 @@ describe('useGetVenueByDay', () => {
       expect(result.current.items).toHaveLength(initialNumberOfCinema)
     })
 
-    it('should only return cinemas having stocks today', async () => {
+    it('should only return cinemas having stocks within 15 days', async () => {
       const offers = [
         OFFER_WITH_STOCKS_TODAY,
-        OFFER_WITH_STOCKS_TOMORROW,
-        OFFER_WITH_STOCKS_TOMORROW,
+        OFFER_WITH_STOCKS_AFTER_15_DAYS,
+        OFFER_WITH_STOCKS_AFTER_15_DAYS,
       ]
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
@@ -165,11 +169,10 @@ describe('useGetVenueByDay', () => {
 
   describe('change date', () => {
     it('should return the list of cinema for a specified date', async () => {
-      const todaysOffers = generateOfferNumber(3, OFFER_WITH_STOCKS_TODAY)
-      const tomorrowOffers = generateOfferNumber(5, OFFER_WITH_STOCKS_TOMORROW)
+      const tomorrowOffers = generateOfferNumber(2, OFFER_WITH_STOCKS_TOMORROW)
 
       mockedGetStocksByOfferIds.mockResolvedValueOnce({
-        offers: [...todaysOffers, ...tomorrowOffers],
+        offers: tomorrowOffers,
       })
 
       const offer = offerResponseBuilder().build()
@@ -180,12 +183,13 @@ describe('useGetVenueByDay', () => {
 
       const { result, rerender } = await renderUseGetVenueByDay(TODAY_DATE, offer, options)
 
+      expect(result.current.items).toHaveLength(0)
+
       await act(async () => {
-        result.current.increaseCount()
-        rerender({ date: TOMORROW.toDate() })
+        rerender({ date: dateBuilder().withDay(4).toDate() })
       })
 
-      expect(result.current.items).toHaveLength(5)
+      expect(result.current.items).toHaveLength(2)
     })
 
     it('should return the initial number of cinema after using increaseCount', async () => {

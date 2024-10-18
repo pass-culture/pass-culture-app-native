@@ -10,6 +10,8 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 type Props = { onPress: () => void; date: Date }
 
+export const NEXT_SCREENING_WORDING = 'Prochaine séance\u00a0:'
+
 export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
 
@@ -17,7 +19,7 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
     <TouchableOpacity onPress={onPress}>
       <Container>
         <InfoBanner
-          message={<StyledMessage>{'Prochaine séance\u00a0:'}</StyledMessage>}
+          message={<StyledMessage>{NEXT_SCREENING_WORDING}</StyledMessage>}
           backgroundColor={theme.colors.greyLight}>
           <ButtonQuaternarySecondary
             numberOfLines={1}

@@ -1,5 +1,18 @@
-import React, { FunctionComponent, ReactElement, useCallback, useEffect, useMemo } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native'
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react'
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  StyleProp,
+  ViewStyle,
+  ScrollView,
+} from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -15,6 +28,7 @@ import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 type OfferContentBaseProps = OfferContentProps & {
   BodyWrapper: FunctionComponent
@@ -40,6 +54,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     otherCategoriesSimilarOffers,
     apiRecoParamsOtherCategories,
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollYRef = useRef<number>(0)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
@@ -82,37 +98,52 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     listener: scrollEventListener,
   })
 
+  const handleCheckScrollY = () => {
+    return scrollYRef.current
+  }
+
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      onScroll(event)
+      scrollYRef.current = event.nativeEvent.contentOffset.y
+    },
+    [onScroll]
+  )
+
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
       <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      <ScrollViewContainer
-        testID="offerv2-container"
-        scrollEventThrottle={16}
-        scrollIndicatorInsets={scrollIndicatorInsets}
-        bounces={false}
-        contentContainerStyle={contentContainerStyle}
-        onScroll={onScroll}>
-        <BodyWrapper>
-          <OfferImageContainer
-            imageUrls={offerImages}
-            categoryId={subcategory.categoryId}
-            onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
-          />
-          <OfferBody
+      <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <ScrollViewContainer
+          testID="offerv2-container"
+          scrollEventThrottle={16}
+          scrollIndicatorInsets={scrollIndicatorInsets}
+          bounces={false}
+          ref={scrollViewRef}
+          contentContainerStyle={contentContainerStyle}
+          onScroll={handleScroll}>
+          <BodyWrapper>
+            <OfferImageContainer
+              imageUrls={offerImages}
+              categoryId={subcategory.categoryId}
+              onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
+            />
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
+          </BodyWrapper>
+          <OfferPlaylistList
             offer={offer}
-            subcategory={subcategory}
-            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            sameCategorySimilarOffers={sameCategorySimilarOffers}
+            apiRecoParamsSameCategory={apiRecoParamsSameCategory}
+            otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+            apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           />
-        </BodyWrapper>
-        <OfferPlaylistList
-          offer={offer}
-          sameCategorySimilarOffers={sameCategorySimilarOffers}
-          apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-          otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-          apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-        />
-      </ScrollViewContainer>
+        </ScrollViewContainer>
+      </AnchorProvider>
       {footer}
     </Container>
   )

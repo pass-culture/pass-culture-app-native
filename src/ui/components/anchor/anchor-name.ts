@@ -1,1 +1,1 @@
-export type AnchorName = 'venue-calendar'
+export type AnchorName = 'movie-calendar'

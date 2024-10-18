@@ -1,4 +1,5 @@
 import React, { FC, useMemo } from 'react'
+import { View } from 'react-native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
@@ -37,9 +38,9 @@ export const OfferEventCardList: FC<Props> = ({ offer, selectedDate = new Date()
   )
 
   return (
-    <React.Fragment>
+    <View testID="offer-event-card-list">
       {eventCardData ? <EventCardList data={eventCardData} /> : null}
       {CTAOfferModal}
-    </React.Fragment>
+    </View>
   )
 }

@@ -12,6 +12,7 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/address/useFormatFullAddress')
@@ -629,4 +630,5 @@ const renderOfferPlace = ({
 }: RenderOfferPlaceType) =>
   render(reactQueryProviderHOC(<OfferPlace offer={offer} subcategory={subcategory} />), {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
+    wrapper: AnchorProvider,
   })

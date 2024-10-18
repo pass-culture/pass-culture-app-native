@@ -20,6 +20,22 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.mock('ui/components/anchor/AnchorContext', () => ({
+  useScrollToAnchor: jest.fn,
+  useRegisterAnchor: jest.fn,
+}))
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 jest.mock('@batch.com/react-native-plugin', () =>
@@ -35,9 +51,7 @@ const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGe
   isEnd: false,
 }
 
-const spyUseGetVenuesByDay = jest
-  .spyOn(useGetVenuesByDayModule, 'useGetVenuesByDay')
-  .mockReturnValue(useGetVenueByDayReturn)
+const spyUseGetVenuesByDay = jest.spyOn(useGetVenuesByDayModule, 'useGetVenuesByDay')
 
 describe('OfferNewXPCineBlock', () => {
   it('should display skeleton when data is loading', () => {
@@ -48,7 +62,7 @@ describe('OfferNewXPCineBlock', () => {
     expect(screen.getByTestId('cine-block-skeleton')).toBeOnTheScreen()
   })
 
-  it('should not display skeleton when data is loaded', () => {
+  it('should not display skeleton when data is loaded', async () => {
     spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: false })
 
     render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />)
