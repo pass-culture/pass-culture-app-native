@@ -119,11 +119,13 @@ export const Stepper = () => {
         {stepList}
         <Spacer.Flex flex={1} />
 
-        <ButtonTertiaryBlack
-          icon={Invalidate}
-          wording="Abandonner"
-          onPress={showQuitIdentityCheckModal}
-        />
+        <QuitButtonContainer>
+          <ButtonTertiaryBlack
+            icon={Invalidate}
+            wording="Abandonner"
+            onPress={showQuitIdentityCheckModal}
+          />
+        </QuitButtonContainer>
       </Container>
       <QuitIdentityCheckModal
         visible={visible}
@@ -149,6 +151,11 @@ const Container = styled.ScrollView.attrs(({ theme }) => ({
 
 const StepButtonContainer = styled.View({
   alignItems: 'center',
+})
+
+const QuitButtonContainer = styled.View({
+  justifyContent: 'center',
+  minHeight: getSpacing(15),
 })
 
 const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
