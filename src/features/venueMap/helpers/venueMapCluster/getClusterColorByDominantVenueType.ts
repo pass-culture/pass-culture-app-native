@@ -26,12 +26,6 @@ const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageCo
   }
 }
 
-const clusterColorPriorityMap: Record<ClusterImageColorName, number> = {
-  [CLUSTER_IMAGE_COLOR_NAME.PINK]: 1,
-  [CLUSTER_IMAGE_COLOR_NAME.BLUE]: 2,
-  [CLUSTER_IMAGE_COLOR_NAME.ORANGE]: 3,
-}
-
 export const getClusterColorByDominantVenueType = (types: VenueTypeCode[]) => {
   const occurenceMap = types.reduce<Record<ClusterImageColorName, number> | Record<string, never>>(
     (previous, current) => {
@@ -45,26 +39,15 @@ export const getClusterColorByDominantVenueType = (types: VenueTypeCode[]) => {
     },
     {}
   )
+  const colorsInCluster = Object.keys(occurenceMap)
+    .filter((color): color is ClusterImageColorName => !!color)
+    .sort((a, b) => a.localeCompare(b))
 
-  const sortedColors = Object.entries(occurenceMap)
-    .filter(
-      (entry): entry is [ClusterImageColorName, number] =>
-        entry.at(0) !== undefined && entry.at(1) !== undefined
-    )
-    .sort((a, b) => {
-      const [previousColorName, previousColorCount] = a
-      const [nextColorName, nextColorCount] = b
+  if (colorsInCluster.length === 0) {
+    return undefined
+  } else if (colorsInCluster.length === 1) {
+    return colorsInCluster[0]
+  }
 
-      if (previousColorCount !== nextColorCount) {
-        return nextColorCount - previousColorCount
-      }
-      if (clusterColorPriorityMap[previousColorName] && clusterColorPriorityMap[nextColorName]) {
-        return clusterColorPriorityMap[nextColorName] > clusterColorPriorityMap[previousColorName]
-          ? -1
-          : 1
-      }
-      return 0
-    })
-
-  return sortedColors[0]?.[0] as ClusterImageColorName
+  return colorsInCluster.join('_') as ClusterImageColorName
 }

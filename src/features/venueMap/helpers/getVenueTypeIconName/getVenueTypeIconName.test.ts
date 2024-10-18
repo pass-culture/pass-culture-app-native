@@ -5,13 +5,13 @@ describe('getVenueTypeIconName', () => {
   it('should display selected venue type map pin icon', () => {
     const result = getVenueTypeIconName(true, VenueTypeCodeKey.BOOKSTORE)
 
-    expect(result).toEqual('map_pin_library_selected')
+    expect(result).toEqual('map_pin_bookstore_selected')
   })
 
   it('should display venue type map pin icon', () => {
     const result = getVenueTypeIconName(false, VenueTypeCodeKey.BOOKSTORE)
 
-    expect(result).toEqual('map_pin_library')
+    expect(result).toEqual('map_pin_bookstore')
   })
 
   it('should display selected default map pin when venue type code is null', () => {

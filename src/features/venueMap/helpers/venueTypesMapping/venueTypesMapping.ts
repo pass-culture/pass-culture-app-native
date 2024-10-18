@@ -53,7 +53,7 @@ export const venueTypesIconNameMapping = {
   [VenueTypeCodeKey.DISTRIBUTION_STORE]: 'cultural_store',
   [VenueTypeCodeKey.GAMES]: 'game',
   [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'instrument_store',
-  [VenueTypeCodeKey.BOOKSTORE]: 'library',
+  [VenueTypeCodeKey.BOOKSTORE]: 'bookstore',
   [VenueTypeCodeKey.LIBRARY]: 'library',
   [VenueTypeCodeKey.MUSEUM]: 'museum',
   [VenueTypeCodeKey.CONCERT_HALL]: 'music_live',
