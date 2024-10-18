@@ -47,7 +47,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
               as={StyledButtonInsideText}
               wording="consultant cette page"
               icon={ExternalSiteFilled}
-              externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
+              externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
             />
             .
           </TypoDS.BodyS>
