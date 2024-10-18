@@ -1881,11 +1881,6 @@ export interface NextSubscriptionStepResponse {
    */
   nextSubscriptionStep?: SubscriptionStep | null
   /**
-   * @type {boolean}
-   * @memberof NextSubscriptionStepResponse
-   */
-  stepperIncludesPhoneValidation: boolean
-  /**
    * @type {SubscriptionMessage}
    * @memberof NextSubscriptionStepResponse
    */
