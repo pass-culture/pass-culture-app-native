@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -15,6 +15,8 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -48,6 +50,20 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
 
   const { name, bio } = artist
 
+  const avatarImage = useMemo(() => {
+    const topOfferThumb = artistTopOffers[0]?.offer.thumbUrl ?? ''
+    if (!topOfferThumb) {
+      return undefined
+    }
+    return (
+      <StyledImage
+        url={topOfferThumb}
+        accessibilityRole={AccessibilityRole.IMAGE}
+        accessibilityLabel="artist avatar"
+      />
+    )
+  }, [artistTopOffers])
+
   return (
     <Container>
       <ArtistWebMetaHeader artist={name} />
@@ -67,7 +83,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} />
+            <ArtistHeader name={name} avatarImage={avatarImage} />
             {bio ? (
               <Description gap={1}>
                 <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
@@ -108,3 +124,8 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
 const Description = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
+
+const StyledImage = styled(FastImage)({
+  width: '100%',
+  height: '100%',
+})
