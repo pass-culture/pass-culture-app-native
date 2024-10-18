@@ -207,7 +207,7 @@ export function BookingDetails() {
                 <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
                 <Spacer.Column numberOfSpaces={2.5} />
                 <Typo.CaptionNeutralInfo>
-                  Si tu n’as pas reçu tes billets contacte l’organisateur
+                  Si tu n’as pas reçu tes billets, contacte l’organisateur
                 </Typo.CaptionNeutralInfo>
                 <Spacer.Column numberOfSpaces={2.5} />
                 <SendEmailContainer>
