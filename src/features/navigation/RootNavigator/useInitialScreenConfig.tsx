@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
-import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
+import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
 import { homeNavConfig } from '../TabBar/helpers'
 
@@ -14,7 +14,7 @@ import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn, user } = useAuthContext()
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 

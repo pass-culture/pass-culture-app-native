@@ -22,10 +22,12 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
@@ -36,6 +38,10 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/monitoring')
@@ -68,7 +74,6 @@ const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.useFakeTimers()
 
@@ -93,6 +98,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<Login/>', () => {
   beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -110,10 +116,6 @@ describe('<Login/>', () => {
   })
 
   it('should render correctly when feature flag is enabled', async () => {
-    // We use this hook twice but due to multiple rerender we have to mock the return value this way
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
-
     renderLogin()
 
     await screen.findByText('Connecte-toi')
@@ -145,9 +147,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO button is clicked with device info', async () => {
-    // We use this hook twice but due to multiple rerender we have to mock the return value this way
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
@@ -256,6 +255,25 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to NATIVE Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    activateFeatureFlags() // disabled ENABLE_CULTURAL_SURVEY_MANDATORY feature flag
+
+    mockMeApiCall({
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: false,
+    } as UserProfileResponse)
+    renderLogin()
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
+  })
+
+  it('should redirect to home WHEN signin is successful and ENABLE_CULTURAL_SURVEY_MANDATORY enabled', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
@@ -265,8 +283,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
@@ -482,8 +499,7 @@ describe('<Login/>', () => {
 
     await screen.findByText('Connecte-toi')
 
-    expect(analytics.logStepperDisplayed).toHaveBeenCalledTimes(1)
-    expect(analytics.logStepperDisplayed).toHaveBeenCalledWith(StepperOrigin.PROFILE, 'Login')
+    expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(1, StepperOrigin.PROFILE, 'Login')
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
@@ -598,6 +614,7 @@ describe('<Login/>', () => {
 
     it('should redirect to CulturalSurveyIntro instead of Offer when user needs to fill it', async () => {
       mockMeApiCall({
+        ...beneficiaryUser,
         needsToFillCulturalSurvey: true,
         showEligibleCard: false,
       } as UserProfileResponse)
@@ -885,4 +902,8 @@ function simulateSigninNetworkFailure() {
 
 function simulateAddToFavorites() {
   mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

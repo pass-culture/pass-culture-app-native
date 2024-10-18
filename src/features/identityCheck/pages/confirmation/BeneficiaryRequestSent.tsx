@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
+import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -12,7 +12,7 @@ import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { user } = useAuthContext()
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   const body = 'Tu recevras un e-mail lorsque ta demande sera validée.'

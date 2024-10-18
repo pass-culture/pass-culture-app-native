@@ -18,7 +18,7 @@ import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { storage } from 'libs/storage'
-import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
+import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
 export const useSignIn = ({
   params,
@@ -73,7 +73,7 @@ const useHandleSigninSuccess = (
   setErrorMessage?: (message: string) => void
 ) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
