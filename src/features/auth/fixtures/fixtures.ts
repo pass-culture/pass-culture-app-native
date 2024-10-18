@@ -15,7 +15,6 @@ export const defaultSettings: SettingsResponse = {
   displayDmsRedirection: true,
   enableFrontImageResizing: true,
   enableNativeCulturalSurvey: false,
-  enableNativeIdCheckVerboseDebugging: false,
   enablePhoneValidation: true,
   idCheckAddressAutocompletion: true,
   isRecaptchaEnabled: true,

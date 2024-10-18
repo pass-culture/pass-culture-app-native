@@ -1881,11 +1881,6 @@ export interface NextSubscriptionStepResponse {
    */
   nextSubscriptionStep?: SubscriptionStep | null
   /**
-   * @type {boolean}
-   * @memberof NextSubscriptionStepResponse
-   */
-  stepperIncludesPhoneValidation: boolean
-  /**
    * @type {SubscriptionMessage}
    * @memberof NextSubscriptionStepResponse
    */
@@ -3081,11 +3076,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   enableNativeCulturalSurvey: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enableNativeIdCheckVerboseDebugging: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
@@ -5561,6 +5551,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     ): Promise<FetchArgs> {
       let pathname = `/native/v1/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'

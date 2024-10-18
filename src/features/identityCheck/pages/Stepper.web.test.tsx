@@ -16,7 +16,6 @@ mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 const subscriptionStep: NextSubscriptionStepResponse = {
   allowedIdentityCheckMethods: [],
   hasIdentityCheckPending: false,
-  stepperIncludesPhoneValidation: true,
 }
 jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
