@@ -6,7 +6,6 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import { env } from 'libs/environment'
@@ -71,13 +70,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
 let mockSelectedLocationMode = LocationMode.EVERYWHERE
+const mockUseLocation = jest.fn(() => ({
+  selectedLocationMode: mockSelectedLocationMode,
+  onModalHideRef: jest.fn(),
+}))
 jest.mock('libs/location', () => ({
-  useLocation: jest.fn(() => ({
-    selectedLocationMode: mockSelectedLocationMode,
-    onModalHideRef: jest.fn(),
-  })),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
@@ -200,35 +199,48 @@ describe('<SearchN1/>', () => {
         })
       })
     })
-
-    describe('venue playlists', () => {
-      it('should render venue playlists when user is not geolocated', async () => {
-        mockHits = { venues: mockVenueHits }
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
-
-        expect(await screen.findByText('Les lieux culturels')).toBeOnTheScreen()
-      })
-
-      it('should render venue playlists when user is geolocated', async () => {
-        mockSelectedLocationMode = LocationMode.AROUND_ME
-        mockHits = { venues: mockAlgoliaVenues }
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
-
-        expect(await screen.findByText('Les librairies proches de toi')).toBeOnTheScreen()
-      })
-    })
   })
 
-  describe('gtl playlists', () => {
-    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<SearchN1 />))
-      await screen.findByText('Festivals')
+  describe('venue playlist', () => {
+    it.each`
+      categorie   | offerCategoriesParams                                  | selectedLocationMode       | textToFind                 | expectedTitle
+      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
+      ${'livres'} | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }} | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
+      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
+    `(
+      'should render venue playlists with title : $expectedTitle for Search N1 $categorie when user has locationMode: $selectedLocationMode',
+      async ({
+        offerCategoriesParams,
+        selectedLocationMode,
+        textToFind,
+        expectedTitle,
+      }: {
+        offerCategoriesParams: { offerCategories: SearchGroupNameEnumv2[] }
+        selectedLocationMode: LocationMode
+        textToFind: string
+        expectedTitle: string
+      }) => {
+        MockOfferCategoriesParams(offerCategoriesParams)
+        mockHits = { venues: mockAlgoliaVenues }
+        mockUseLocation.mockReturnValueOnce({ selectedLocationMode, onModalHideRef: jest.fn() })
 
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
-    })
+        render(reactQueryProviderHOC(<SearchN1 />))
+
+        await screen.findByText(textToFind)
+
+        expect(await screen.findByText(expectedTitle)).toBeOnTheScreen()
+      }
+    )
+  })
+})
+
+describe('gtl playlists', () => {
+  it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+    render(reactQueryProviderHOC(<SearchN1 />))
+    await screen.findByText('Festivals')
+
+    expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
 })
 
