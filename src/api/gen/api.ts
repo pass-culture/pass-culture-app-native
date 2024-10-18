@@ -3080,11 +3080,6 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  enableNativeIdCheckVerboseDebugging: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   enablePhoneValidation: boolean
   /**
    * @type {boolean}
