@@ -1,0 +1,52 @@
+name: "0 [on_dispatch] Deploy perf stack"
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
+jobs:
+  yarn-install:
+  uses: ./.github/workflows/dev_on_workflow_install.yml
+  with:
+    CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  secrets:
+    GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+    GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  yarn-linter:
+    needs: yarn-install
+    uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  yarn-tester:
+    needs: yarn-linter
+    uses: ./.github/workflows/dev_on_workflow_tester.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-perf:
+    needs: [yarn-tester]
+    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+    with:
+      ENV: perf
+      BUCKET_NAME: passculture-metier-ehp-perf-decliweb
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-proxy-perf:
+    needs: [yarn-tester]
+    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+    with:
+      ENV: perf
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
