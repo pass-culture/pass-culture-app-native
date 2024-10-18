@@ -18,6 +18,8 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type Props = {
   offer: Offer
@@ -32,6 +34,9 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   analyticsParams,
   homeEntryId,
 }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
@@ -44,7 +49,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const mapping = useCategoryIdMapping()
   const { user } = useAuthContext()
 
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
+  const displayPrice = getDisplayPrice(offer?.offer?.prices, currency, euroToXPFRate)
 
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)

@@ -9,11 +9,15 @@ import {
 } from 'features/offer/components/MovieScreeningCalendar/types'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
+import { Currency, useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 const mapScreeningsToEventCardProps = (
   screening: OfferStockResponse,
   offerVenueId: number,
   setBookingData: Dispatch<SetStateAction<MovieScreeningBookingData | undefined>>,
+  currency: Currency,
+  euroToXPFRate: number,
   onPressOfferCTA?: () => void,
   movieScreeningUserData?: MovieScreeningUserData,
   isExternalBookingsDisabled = false
@@ -34,7 +38,7 @@ const mapScreeningsToEventCardProps = (
     isUserLoggedIn,
   } = movieScreeningUserData ?? {}
 
-  const price = formatToFrenchDecimal(screening.price).replace(' ', '')
+  const price = formatToFrenchDecimal(screening.price, currency, euroToXPFRate).replace(' ', '')
   const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
   const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 
@@ -104,6 +108,9 @@ export const useSelectedDateScreening = (
   selectedScreeningStock: OfferStockResponse[] | undefined,
   isExternalBookingsDisabled = false
 ) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
   const selectedDateScreenings = useCallback(
     (
@@ -121,6 +128,8 @@ export const useSelectedDateScreening = (
             screening,
             offerVenueId,
             setBookingData,
+            currency,
+            euroToXPFRate,
             onPressOfferCTA,
             movieScreeningUserData,
             isExternalBookingsDisabled

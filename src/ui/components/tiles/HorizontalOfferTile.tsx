@@ -19,6 +19,8 @@ import { getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 interface Props extends Partial<HorizontalTileProps> {
   offer: Offer
   subtitles?: string[]
@@ -35,6 +37,9 @@ export const HorizontalOfferTile = ({
   subtitles,
   ...horizontalTileProps
 }: Props) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, dates, prices, thumbUrl, name } = offerDetails
   const prePopulateOffer = usePrePopulateOffer()
@@ -47,7 +52,7 @@ export const HorizontalOfferTile = ({
   const offerId = Number(objectID)
 
   const formattedDate = formatDates(timestampsInMillis)
-  const formattedPrice = getDisplayPrice(prices)
+  const formattedPrice = getDisplayPrice(prices, currency, euroToXPFRate)
   const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {

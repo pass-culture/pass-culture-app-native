@@ -10,19 +10,24 @@ import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
+import { Currency, useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 export const DuoChoiceSelector: React.FC = () => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { bookingState, dispatch } = useBookingContext()
   const { isDuo } = useBookingOffer() ?? {}
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
 
-  const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
+  const getChoiceInfosForQuantity = (quantity: 1 | 2, currency: Currency, euroToXPFRate: number) => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false
     return {
       price:
         enoughCredit && stock
-          ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
+          ? formatToFrenchDecimal(quantity * stock.price, currency, euroToXPFRate).replace(' ', '')
           : 'crédit insuffisant',
       title: quantity === 1 ? 'Solo' : 'Duo',
       selected: bookingState.quantity === quantity,
@@ -34,8 +39,8 @@ export const DuoChoiceSelector: React.FC = () => {
 
   return (
     <DuoChoiceContainer testID="DuoChoiceSelector">
-      <DuoChoice {...getChoiceInfosForQuantity(1)} testID="DuoChoice1" />
-      {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID="DuoChoice2" /> : null}
+      <DuoChoice {...getChoiceInfosForQuantity(1, currency, euroToXPFRate)} testID="DuoChoice1" />
+      {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2, currency, euroToXPFRate)} testID="DuoChoice2" /> : null}
     </DuoChoiceContainer>
   )
 }

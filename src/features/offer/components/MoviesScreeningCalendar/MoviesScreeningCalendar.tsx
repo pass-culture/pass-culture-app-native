@@ -29,6 +29,8 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useLayout } from 'ui/hooks/useLayout'
 import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 type Props = {
   venueOffers: VenueOffers
@@ -61,6 +63,9 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
 }
 
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
@@ -133,7 +138,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToXPFRate)}
         venueId={item.venue?.id}
         width={width}
         height={height}

@@ -24,6 +24,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
+import { useGetCurrentCurrency } from 'libs/parsers/useGetCurrentCurrency'
+import { useGetEuroToXPFRate } from 'libs/parsers/useGetEuroToXPFRate'
 
 const OFFER_IMAGE_HEIGHT = getSpacing(45)
 const BOTTOM_SPACER = getSpacing(6)
@@ -40,6 +42,9 @@ type HighlightOfferModuleProps = HighlightOfferModuleType & {
 }
 
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
+  const currency = useGetCurrentCurrency()
+  const euroToXPFRate = useGetEuroToXPFRate()
+
   const { id, offerId, offerEan, offerTag, isGeolocated, aroundRadius, index, homeEntryId } = props
   const highlightOffer = useHighlightOffer({
     id,
@@ -81,7 +86,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
-  const formattedPrice = getDisplayPrice(offer?.prices)
+  const formattedPrice = getDisplayPrice(offer?.prices, currency, euroToXPFRate)
   const venueName = publicName?.length ? publicName : name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]
