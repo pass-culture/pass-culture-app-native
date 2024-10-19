@@ -1,8 +1,13 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
-import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
+import {
+  ModuleData,
+  OffersModule as OffersModuleType,
+  RecommendedOffersModule,
+} from 'features/home/types'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics'
@@ -11,6 +16,7 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useLocation } from 'libs/location'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -26,17 +32,34 @@ export type OffersModuleProps = {
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
+  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
-  const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
+  const {
+    displayParameters,
+    offersModuleParameters,
+    index,
+    moduleId,
+    homeEntryId,
+    data,
+    recommendationParameters,
+  } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
+  const { userLocation } = useLocation()
+
+  const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
+    userLocation,
+    moduleId,
+    recommendationParameters,
+    user?.id
+  )
 
   const { playlistItems, nbPlaylistResults } = data ?? {
     playlistItems: [],
@@ -59,7 +82,11 @@ export const OffersModule = (props: OffersModuleProps) => {
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen({ moduleName, numberOfTiles: playlistItems.length })
+    analytics.logAllTilesSeen({
+      moduleName,
+      numberOfTiles: playlistItems.length,
+      apiRecoParams: props.recommendationParameters ? recommendationApiParams : undefined,
+    })
   )
 
   const showSeeMore =
@@ -122,13 +149,22 @@ export const OffersModule = (props: OffersModuleProps) => {
     },
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
+  const hybridPlaylistItems = useMemo(
+    () => [...playlistItems, ...recommandationOffers],
+    [recommandationOffers, playlistItems]
+  )
+
+  const offersToDisplay = useMemo(() => {
+    return props.recommendationParameters ? hybridPlaylistItems : playlistItems
+  }, [hybridPlaylistItems, playlistItems, props.recommendationParameters])
 
   const shouldModuleBeDisplayed =
-    playlistItems.length > 0 && playlistItems.length >= displayParameters.minOffers
+    offersToDisplay.length > 0 && offersToDisplay.length >= displayParameters.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       analytics.logModuleDisplayedOnHomepage({
+        call_id: props.recommendationParameters ? recommendationApiParams?.call_id : undefined,
         moduleId,
         moduleType: ContentTypes.ALGOLIA,
         index,
@@ -146,7 +182,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       testID="offersModuleList"
       title={displayParameters.title}
       subtitle={displayParameters.subtitle}
-      data={playlistItems}
+      data={offersToDisplay}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       onPressSeeMore={onPressSeeMore}

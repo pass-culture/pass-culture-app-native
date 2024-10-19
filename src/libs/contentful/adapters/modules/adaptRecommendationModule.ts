@@ -25,7 +25,7 @@ const mapMusicTypes = (recoMusicTypes: RecommendationParametersFields['musicType
 const mapShowTypes = (recoShowTypes: RecommendationParametersFields['showTypes']) =>
   recoShowTypes?.fields?.showTypes
 
-const buildRecommendationParams = (
+export const buildRecommendationParams = (
   recommendationParams?: RecommendationParameters
 ): RecommendedOffersModule['recommendationParameters'] | undefined => {
   if (recommendationParams?.fields === undefined) return undefined

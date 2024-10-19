@@ -115,6 +115,7 @@ export type OffersModule = {
   offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
   data?: ModuleData
+  recommendationParameters?: RecommendedOffersParameters
 }
 
 type DisplayParameters = {
