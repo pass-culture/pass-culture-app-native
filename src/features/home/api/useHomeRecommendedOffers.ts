@@ -53,7 +53,7 @@ export const useHomeRecommendedOffers = (
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters'],
   userId?: number
-): { offers?: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
+): { offers: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const isFocused = useIsFocused()
   const requestParameters = getRecommendationParameters(
@@ -72,7 +72,8 @@ export const useHomeRecommendedOffers = (
   })
 
   return {
-    offers: useAlgoliaRecommendedOffers(data?.playlistRecommendedOffers ?? [], moduleId, true),
+    offers:
+      useAlgoliaRecommendedOffers(data?.playlistRecommendedOffers ?? [], moduleId, true) || [],
     recommendationApiParams: data?.params,
   }
 }
