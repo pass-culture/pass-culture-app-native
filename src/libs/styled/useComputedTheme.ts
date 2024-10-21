@@ -25,7 +25,7 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
   const offerMaxCaptionHeight = enableNewOfferTile
-    ? getSpacing(24)
+    ? getSpacing(26)
     : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
