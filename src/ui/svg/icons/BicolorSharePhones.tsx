@@ -27,6 +27,7 @@ const BicolorSharePhonesSVG: React.FunctionComponent<AccessibleIcon> = ({
       width={size}
       height={height}
       viewBox="0 0 139 128"
+      fill="none"
       accessibilityLabel={accessibilityLabel}
       testID={testID}
       style={style}>

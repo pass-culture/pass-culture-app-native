@@ -28,6 +28,7 @@ const BicolorShareChatSVG: React.FunctionComponent<AccessibleIcon> = ({
       viewBox="0 0 170 122"
       accessibilityLabel={accessibilityLabel}
       testID={testID}
+      fill="none"
       style={style}>
       <Path
         d="M149.715 58.2363C155.545 58.7363 161.405 58.3263 163.505 65.2363C164.025 66.9563 164.125 99.4863 163.815 101.256C161.555 114.066 146.895 108.006 145.865 109.316L145.715 122.226L130.545 109.676M85.2349 97.7963C84.087 111.81 96.4799 110.427 111.983 109.676"
