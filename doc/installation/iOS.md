@@ -54,8 +54,9 @@ In order to launch the app in the Simulator or on your external Apple device, yo
    bundle exec fastlane ios download_certificates --env testing
    ```
 
-   4. When required (multiple times), use the git ssh URL of the private certificates repository (available on 1password in the "Tech" vault): `pass-culture-app-native-certificates`.
-   5. Get the `match repo passphrase` on 1password in the "Tech" vault.
+   4. When required (multiple times), use the git ssh URL of the [private certificates repository](https://github.com/pass-culture/pass-culture-app-native-certificates)
+   5. Get the `match repo passphrase` on Keeper in the "Tech" vault.
+   6. It might ask your session password twice to continue.
 
 ### 🚀 Run the app with yarn
 

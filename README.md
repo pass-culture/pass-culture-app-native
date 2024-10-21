@@ -127,7 +127,7 @@ Then copy `testing.keystore` into `development.keystore` and `testing.keystore.p
 <details>
   <summary>Test login credentials</summary>
 
-See in [1password][1] for all testing accounts.
+See in [Keeper][1] for all testing accounts.
 
 </details>
 
@@ -144,7 +144,7 @@ For the **staging** app, use these links for [iOS][4] and [Android][5].
 
 See doc about deployment process [here](./doc/ci-cd/deployment.md) for the mobile application.
 
-[1]: https://start.1password.com/signin
+[1]: https://keepersecurity.eu/vault/#
 [2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
 [3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
 [4]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios

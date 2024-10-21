@@ -12,7 +12,7 @@ The build is configured to upload the source maps automatically, on every new re
 
 For iOS/Android:
 
-- add a file `~/.sentryclirc`:
+- add a file at the root of your machine `~/.sentryclirc`:
 
 ```
 [defaults]
@@ -25,7 +25,7 @@ token=<token>
 ```
 
 For Web:
-Create a new `.env.local` containing your `SENTRY_AUTH_TOKEN`
+Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_TOKEN`
 
 ```sh
 SENTRY_AUTH_TOKEN=your_super_secret_token
