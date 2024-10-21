@@ -21,7 +21,9 @@ const mockDispatch = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+useFeatureFlagSpy.mockReturnValue(false)
 
 const mockUseGtlPlaylist = jest.spyOn(useGTLPlaylists, 'useGTLPlaylists')
 mockUseGtlPlaylist.mockReturnValue({
@@ -202,10 +204,14 @@ describe('<SearchN1/>', () => {
   })
 
   describe('venue playlist', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
     it.each`
       categorie                           | offerCategoriesParams                                                      | selectedLocationMode       | textToFind                 | expectedTitle
       ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
-      ${'livres'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }}                     | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
+      ${'livres'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }}                     | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies et bibliothèques près de toi'}
       ${'films, documentaires et séries'} | ${{ offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES] }} | ${LocationMode.AROUND_ME}  | ${'DVD, Blu-Ray'}          | ${'Les lieux culturels près de toi'}
       ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
     `(

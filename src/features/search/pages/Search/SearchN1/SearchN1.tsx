@@ -61,7 +61,7 @@ export const SearchN1: React.FC = () => {
     if (isLocated) {
       switch (offerCategory) {
         case SearchGroupNameEnumv2.LIVRES:
-          return 'Les librairies près de toi'
+          return 'Les librairies et bibliothèques près de toi'
         case SearchGroupNameEnumv2.CINEMA:
           return 'Les cinémas près de toi'
         case SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES:
