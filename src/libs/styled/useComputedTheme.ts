@@ -9,7 +9,7 @@ import { getSpacing } from 'ui/theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
-  const enableNewOfferTile = true
+  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
