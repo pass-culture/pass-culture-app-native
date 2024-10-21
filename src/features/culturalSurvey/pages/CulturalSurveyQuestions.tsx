@@ -155,6 +155,19 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         answers: [],
       },
     })
+
+    if (currentQuestion === CulturalSurveyQuestionEnum.SORTIES) {
+      const INITIAL_CULTURAL_SURVEY_QUESTIONS = [
+        CulturalSurveyQuestionEnum.SORTIES,
+        CulturalSurveyQuestionEnum.ACTIVITES,
+        CulturalSurveyQuestionEnum.PROJECTIONS,
+      ]
+
+      dispatch({
+        type: 'SET_QUESTIONS',
+        payload: INITIAL_CULTURAL_SURVEY_QUESTIONS,
+      })
+    }
   }
 
   function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
