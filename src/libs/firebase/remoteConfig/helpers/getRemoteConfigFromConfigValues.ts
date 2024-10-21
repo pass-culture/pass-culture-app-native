@@ -37,4 +37,7 @@ export const getRemoteConfigFromConfigValues = (
   subscriptionHomeEntryIds: JSON.parse(
     getConfigValue(parameters.subscriptionHomeEntryIds).asString()
   ),
+  shareAppModalVersion: getConfigValue(
+    parameters.shareAppModalVersion
+  ).asString() as CustomRemoteConfig['shareAppModalVersion'],
 })

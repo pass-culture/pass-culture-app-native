@@ -21,6 +21,7 @@ export type CustomRemoteConfig = {
   shouldLogInfo: boolean
   displayInAppFeedback: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
+  shareAppModalVersion: 'default' | 'A' | 'B'
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
