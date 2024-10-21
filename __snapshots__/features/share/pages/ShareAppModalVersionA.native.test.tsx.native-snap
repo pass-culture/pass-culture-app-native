@@ -321,6 +321,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
                 }
               >
                 <View
+                  fill="none"
                   height={100.47058823529412}
                   width={140}
                 >
