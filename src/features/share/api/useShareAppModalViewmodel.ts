@@ -12,7 +12,7 @@ export type ShareAppModalSelectorViewmodelParams = {
   showModal: () => void
 }
 
-export const useShareAppModalSelectorViewmodel = ({
+export const useShareAppModalViewmodel = ({
   hideModal,
   type,
   showModal,

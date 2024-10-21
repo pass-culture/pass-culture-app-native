@@ -8,7 +8,7 @@ import { renderHook } from 'tests/utils'
 
 import {
   ShareAppModalSelectorViewmodelParams,
-  useShareAppModalSelectorViewmodel,
+  useShareAppModalViewmodel,
 } from './useShareAppModalViewmodel'
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
@@ -25,7 +25,7 @@ const useShareAppModalSelectorViewmodelTest = ({
 }: Partial<ShareAppModalSelectorViewmodelParams> = {}) => {
   const hook = renderHook(() =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useShareAppModalSelectorViewmodel({
+    useShareAppModalViewmodel({
       type,
       hideModal,
       showModal,
