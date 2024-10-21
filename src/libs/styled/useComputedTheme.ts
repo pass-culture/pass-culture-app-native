@@ -9,7 +9,7 @@ import { getSpacing } from 'ui/theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
-  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
+  const enableNewOfferTile = true
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -25,7 +25,7 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
   const offerMaxCaptionHeight = enableNewOfferTile
-    ? getSpacing(24)
+    ? getSpacing(26)
     : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
