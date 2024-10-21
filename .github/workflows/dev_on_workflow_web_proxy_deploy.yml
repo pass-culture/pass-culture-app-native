@@ -75,7 +75,7 @@ jobs:
             | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
     runs-on: ubuntu-22.04
-    if: ${{ always() }}
+    if: ${{ contains(needs.web_proxy_deploy.result, 'success') && contains(needs.web_proxy_deploy.result, 'failure')}}
     needs: web_proxy_deploy
     steps:
       - name: Connect to Secret Manager
@@ -100,13 +100,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#A30002","#36a64f"]')[steps.web_proxy_deploy.outputs.status == 'success'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.web_proxy_deploy.result == 'failure'] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement Web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["échoué :boom:","réussi :rocket:"]')[steps.web_proxy_deploy.outputs.status == 'success'] }}"
+                      "text": "Le déploiement Web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.web_proxy_deploy.result == 'failure'] }}"
                   }
               ],
               "unfurl_links": false,
