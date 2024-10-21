@@ -5,8 +5,6 @@ import { ContentTypes, HomepageNatifEntry } from 'libs/contentful/types'
 
 import { Contentful } from './contentful'
 
-export type ContentfulGetHomeData = ReturnType<typeof createContentfulGetHomeData>
-
 export const createContentfulGetHomeData =
   (contentful: Contentful): GetHomeData =>
   async (): Promise<Homepage[]> => {
