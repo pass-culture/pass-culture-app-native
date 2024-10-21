@@ -14,7 +14,9 @@ import {
   mockHitUnknownCategory,
   mockHitUnknownNativeCategory,
   mockHitUnknownNativeCategoryAndCategory,
+  mockHitWithNativeCategory,
   mockHitWithOnlyCategory,
+  mockHitWithUnavailableCategory,
   mockHitWithoutCategoryAndNativeCategory,
   mockHitsWithDifferentCounts,
 } from 'features/search/fixtures/autocompleteHits'
@@ -716,6 +718,41 @@ describe('AutocompleteOfferItem component', () => {
 
         expect(await screen.findByText('Livres')).toBeOnTheScreen()
       })
+    })
+
+    it('should not display category suggestion when not native category suggested and searchGroup is unavailable', async () => {
+      render(
+        <AutocompleteOfferItem
+          hit={mockHitWithUnavailableCategory}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await screen.findByText('cinéma')
+
+      expect(screen.queryByText('dans')).not.toBeOnTheScreen()
+    })
+
+    it('should display native category suggestion on search landing', async () => {
+      render(
+        <AutocompleteOfferItem
+          hit={mockHitWithNativeCategory}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+          offerCategories={[]}
+        />,
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(await screen.findByText('Séances de cinéma')).toBeOnTheScreen()
     })
   })
 })

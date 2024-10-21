@@ -361,3 +361,58 @@ export const mockHitsWithDifferentCounts: AlgoliaSuggestionHit = {
     },
   },
 }
+
+export const mockHitWithUnavailableCategory: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
+      analytics: {
+        ['offer.searchGroupNamev2']: [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            count: 6172,
+          },
+        ],
+        ['offer.nativeCategoryId']: [],
+      },
+    },
+  },
+}
+
+export const mockHitWithNativeCategory: AlgoliaSuggestionHit = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2,
+    facets: {
+      exact_matches: {
+        'offer.nativeCategoryId': [],
+        'offer.searchGroupNamev2': [],
+      },
+      analytics: {
+        ['offer.searchGroupNamev2']: [
+          {
+            attribute: 'offer.searchGroupNamev2',
+            operator: ':',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 6172,
+          },
+        ],
+        ['offer.nativeCategoryId']: [
+          {
+            attribute: '',
+            operator: '',
+            value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+            count: 10,
+          },
+        ],
+      },
+    },
+  },
+}
