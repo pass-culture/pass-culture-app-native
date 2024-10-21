@@ -203,10 +203,11 @@ describe('<SearchN1/>', () => {
 
   describe('venue playlist', () => {
     it.each`
-      categorie   | offerCategoriesParams                                  | selectedLocationMode       | textToFind                 | expectedTitle
-      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
-      ${'livres'} | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }} | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
-      ${'cinéma'} | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }} | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
+      categorie                           | offerCategoriesParams                                                      | selectedLocationMode       | textToFind                 | expectedTitle
+      ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
+      ${'livres'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }}                     | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
+      ${'films, documentaires et séries'} | ${{ offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES] }} | ${LocationMode.AROUND_ME}  | ${'DVD, Blu-Ray'}          | ${'Les lieux culturels près de toi'}
+      ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
     `(
       'should render venue playlists with title : $expectedTitle for Search N1 $categorie when user has locationMode: $selectedLocationMode',
       async ({
