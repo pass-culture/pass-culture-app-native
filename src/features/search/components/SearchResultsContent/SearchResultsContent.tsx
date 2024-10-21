@@ -238,7 +238,7 @@ export const SearchResultsContent: React.FC = () => {
         offer={hit}
         analyticsParams={{
           query: searchState.query,
-          index: index,
+          index,
           searchId: searchState.searchId,
           from: 'searchresults',
         }}
