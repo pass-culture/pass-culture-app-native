@@ -127,7 +127,7 @@ export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory: Algolia
           {
             attribute: '',
             operator: '',
-            value: NativeCategoryIdEnumv2.ARTS_VISUELS,
+            value: NativeCategoryIdEnumv2.RENCONTRES_EN_LIGNE,
             count: 10,
           },
         ],
