@@ -115,7 +115,7 @@ export function AutocompleteOfferItem({
 
   const shouldDisplayNativeCategory =
     hasMostPopularHitNativeCategory &&
-    isAssociatedMostPopularNativeCategoryToMostPopularCategory &&
+    ((isQueryFromSearchN1 && isNativeCategoryRelatedToSearchGroup) || !isQueryFromSearchN1) &&
     !hasSeveralCategoriesFromNativeCategory
 
   const isLivresPapierNativeCategory =
@@ -190,18 +190,19 @@ export function AutocompleteOfferItem({
     hideSuggestions()
   }
 
-  const shouldDisplaySuggestion =
+  const shouldDisplayCategorySuggestion =
     shouldShowCategory && (hasMostPopularHitNativeCategory || hasMostPopularHitCategory)
 
-  const categoryToDisplay = shouldUseSearchGroupInsteadOfNativeCategory
-    ? searchGroupLabel
-    : mostPopularNativeCategoryValue
+  const categoryToDisplay =
+    shouldUseSearchGroupInsteadOfNativeCategory && searchGroupLabel !== 'None'
+      ? searchGroupLabel
+      : mostPopularNativeCategoryValue
 
   const testID = `autocompleteOfferItem_${hit.objectID}`
 
   return (
     <SuggestionContainer hit={hit} onPress={onPress} testID={testID}>
-      {shouldDisplaySuggestion && categoryToDisplay ? (
+      {shouldDisplayCategorySuggestion && categoryToDisplay ? (
         <Suggestion categoryToDisplay={categoryToDisplay} />
       ) : undefined}
     </SuggestionContainer>
