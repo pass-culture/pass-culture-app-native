@@ -1,4 +1,4 @@
-name: '4 [on_workflow] Deploy web proxy'
+name: "4 [on_workflow] Deploy web proxy"
 
 on:
   workflow_call:
@@ -21,7 +21,6 @@ jobs:
   web_proxy_deploy:
     runs-on: ubuntu-22.04
     steps:
-      - run: corepack enable
       - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v2'
@@ -31,7 +30,7 @@ jobs:
         with:
           node-version-file: 'server/.nvmrc'
       - id: gcloud-auth
-        name: 'OpenID Connect Authentication'
+        name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v2'
         with:
           cleanup_credentials: false
