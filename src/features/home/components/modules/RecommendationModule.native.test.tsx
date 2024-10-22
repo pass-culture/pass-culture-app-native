@@ -23,11 +23,13 @@ const defaultRecommendationApiParams: RecommendationApiParams = {
   reco_origin: 'unknown',
 }
 
+const mockUseHomeRecommendedOffers = jest.fn().mockReturnValue({
+  offers: mockedAlgoliaResponse.hits,
+  recommendationApiParams: defaultRecommendationApiParams,
+})
+
 jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
-  useHomeRecommendedOffers: jest.fn(() => ({
-    offers: mockedAlgoliaResponse.hits,
-    recommendationApiParams: defaultRecommendationApiParams,
-  })),
+  useHomeRecommendedOffers: () => mockUseHomeRecommendedOffers(),
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -83,6 +85,19 @@ describe('RecommendationModule', () => {
     })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+  })
+
+  it('should not display RecommendationModule if no offer', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockUseHomeRecommendedOffers.mockReturnValueOnce({
+      offers: [],
+      recommendationApiParams: defaultRecommendationApiParams,
+    })
+    renderRecommendationModule()
+
+    await waitFor(() => {
+      expect(screen.toJSON()).toBeNull()
+    })
   })
 })
 

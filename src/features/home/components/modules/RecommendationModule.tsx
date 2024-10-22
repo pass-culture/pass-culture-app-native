@@ -58,7 +58,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         moduleType: ContentTypes.RECOMMENDATION,
         index,
         homeEntryId,
-        offers: offers.length ? offers.map((offer) => offer.objectID) : undefined,
+        offers: offers.map((offer) => offer.objectID),
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
