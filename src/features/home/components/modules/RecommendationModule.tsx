@@ -42,7 +42,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     recommendationParameters,
     profile?.id
   )
-  const nbOffers = offers?.length ?? 0
+  const nbOffers = offers.length
   const shouldModuleBeDisplayed = nbOffers > displayParameters.minOffers
 
   const moduleName = displayParameters.title
@@ -58,7 +58,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         moduleType: ContentTypes.RECOMMENDATION,
         index,
         homeEntryId,
-        offers: offers?.length ? offers.map((offer) => offer.objectID) : undefined,
+        offers: offers.map((offer) => offer.objectID),
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,7 +106,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       testID="recommendationModuleList"
       title={displayParameters.title}
       subtitle={displayParameters.subtitle}
-      data={offers ?? []}
+      data={offers}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       renderItem={renderItem}

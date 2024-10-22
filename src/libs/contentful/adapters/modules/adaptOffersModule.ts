@@ -1,5 +1,6 @@
 import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
+import { buildRecommendationParams } from 'libs/contentful/adapters/modules/adaptRecommendationModule'
 import { AlgoliaContentModel } from 'libs/contentful/types'
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
@@ -8,7 +9,8 @@ export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | n
   if (module.fields.displayParameters.fields === undefined) return null
 
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
-
+  const { recommendationParameters } = module.fields
+  const cleanRecommendationParameters = buildRecommendationParams(recommendationParameters)
   const offersList = buildOffersParams(module.fields.algoliaParameters, additionalAlgoliaParameters)
 
   if (offersList.length === 0) return null
@@ -19,5 +21,6 @@ export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | n
     title: module.fields.title,
     displayParameters: module.fields.displayParameters.fields,
     offersModuleParameters: offersList,
+    recommendationParameters: cleanRecommendationParameters,
   }
 }

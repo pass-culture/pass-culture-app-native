@@ -227,6 +227,7 @@ export interface AlgoliaFields {
   displayParameters: DisplayParameters
   cover?: Cover
   additionalAlgoliaParameters?: AlgoliaParameters[]
+  recommendationParameters?: RecommendationParameters
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesPlaylist/fields

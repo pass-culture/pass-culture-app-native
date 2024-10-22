@@ -181,6 +181,7 @@ export const formattedOffersModule: OffersModule = {
       bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     },
   ],
+  recommendationParameters: undefined,
 }
 
 export const formattedCategoryListModule: CategoryListModule = {
