@@ -1,7 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import Supercluster from 'supercluster'
@@ -14,10 +14,9 @@ import {
   VenueMapCluster,
   VenueMapClusterProps,
 } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
-import { VenueMapLabel } from 'features/venueMap/components/VenueMapLabel/VenueMapLabel'
+import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
-import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { getClusterColorByDominantVenueType } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantVenueType'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -28,11 +27,13 @@ import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesSt
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import MapView, { MapViewProps, Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
+import MapView, { MapViewProps, Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
+
+import { Marker } from './Marker/Marker'
 
 interface Props {
   height: number
@@ -48,8 +49,6 @@ interface Props {
   hidePointsOfInterest?: boolean
   playlistType: PlaylistType
 }
-
-const PIN_MAX_Z_INDEX = 10_000
 
 export const VenueMapView: FunctionComponent<Props> = ({
   height,
@@ -82,6 +81,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
   const hasSearchButton = from === 'venueMap' ? showSearchButton : false
   const [mapReady, setMapReady] = useState(false)
+  const [labelVisible, setLabelVisible] = useState(false)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
@@ -113,6 +113,16 @@ export const VenueMapView: FunctionComponent<Props> = ({
   }, [from, bottom, hasOffers, tabBarHeight])
 
   const centerOnLocation = useCenterOnLocation({ currentRegion, mapViewRef, mapHeight: height })
+
+  const handleChangeRegion = () => {
+    mapViewRef.current?.getCamera().then((camera) => {
+      setLabelVisible(
+        Platform.OS === 'ios'
+          ? Number(camera.altitude) <= MARKER_LABEL_VISIBILITY_LIMIT.altitude
+          : Number(camera.zoom) >= MARKER_LABEL_VISIBILITY_LIMIT.zoom
+      )
+    })
+  }
 
   const handleRegionChangeComplete = (region: Region) => {
     setCurrentRegion(region)
@@ -279,6 +289,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
         pitchEnabled={false}
         onMapReady={handleMapReady}
         moveOnMarkerPress={false}
+        onRegionChange={handleChangeRegion}
         onRegionChangeComplete={handleRegionChangeComplete}
         superClusterRef={superClusterRef}
         renderCluster={ColoredCluster}
@@ -292,19 +303,16 @@ export const VenueMapView: FunctionComponent<Props> = ({
         {filteredVenues.map((venue) => (
           <Marker
             key={venue.venueId}
+            venue={venue}
+            showLabel={shouldDisplayPinV2 && labelVisible}
+            identifier={venue.venueId.toString()}
+            isSelected={venue.venueId === selectedVenue?.venueId}
             coordinate={{
               latitude: venue._geoloc.lat ?? 0,
               longitude: venue._geoloc.lng ?? 0,
             }}
             onPress={handleMarkerPress}
-            image={{
-              uri: getVenueTypeIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
-            }}
-            identifier={venue.venueId.toString()}
-            testID={`marker-${venue.venueId}`}
-            zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}>
-            {shouldDisplayPinV2 ? <VenueMapLabel venue={venue} /> : null}
-          </Marker>
+          />
         ))}
       </StyledMapView>
       {hasSearchButton ? (
