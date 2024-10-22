@@ -1,0 +1,11 @@
+appId: ${MAESTRO_APP_ID}
+---
+
+- runFlow:
+    when:
+      visible: "Nous ne pouvons pas encore supprimer ton compte"
+    commands:
+      - tapOn: "Nous ne pouvons pas encore supprimer ton compte"
+      - assertVisible: "Retourner sur mon profil"
+      - assertVisible: "Désactiver mes notifications"
+      - tapOn: "Revenir en arrière"

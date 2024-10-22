@@ -18,7 +18,4 @@ tags:
 - runFlow: subFolder/profil/SocialNetwork.yml
 
 - runFlow: subFolder/profil/DeletionReactivation.yml
-- runFlow: subFolder/GoToProfileFromTabBar.yml
-- runFlow: subFolder/auth/LoginAndReactivation.yml
-- runFlow: subFolder/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LogoutFromProfile.yml
