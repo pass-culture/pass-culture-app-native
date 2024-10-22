@@ -64,6 +64,8 @@ export const SearchN1: React.FC = () => {
           return 'Les librairies près de toi'
         case SearchGroupNameEnumv2.CINEMA:
           return 'Les cinémas près de toi'
+        case SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES:
+          return 'Les lieux culturels près de toi'
         default:
           return 'Les lieux culturels'
       }
