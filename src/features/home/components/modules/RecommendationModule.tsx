@@ -42,7 +42,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     recommendationParameters,
     profile?.id
   )
-  const nbOffers = offers.length ?? 0
+  const nbOffers = offers.length
   const shouldModuleBeDisplayed = nbOffers > displayParameters.minOffers
 
   const moduleName = displayParameters.title
