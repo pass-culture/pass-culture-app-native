@@ -115,7 +115,7 @@ export function AutocompleteOfferItem({
 
   const shouldDisplayNativeCategory =
     hasMostPopularHitNativeCategory &&
-    isAssociatedMostPopularNativeCategoryToMostPopularCategory &&
+    ((isQueryFromSearchN1 && isNativeCategoryRelatedToSearchGroup) || !isQueryFromSearchN1) &&
     !hasSeveralCategoriesFromNativeCategory
 
   const isLivresPapierNativeCategory =
@@ -191,12 +191,13 @@ export function AutocompleteOfferItem({
     hideSuggestions()
   }
 
-  const shouldDisplaySuggestion =
+  const shouldDisplayCategorySuggestion =
     shouldShowCategory && (hasMostPopularHitNativeCategory || hasMostPopularHitCategory)
 
-  const categoryToDisplay = shouldUseSearchGroupInsteadOfNativeCategory
-    ? searchGroupLabel
-    : mostPopularNativeCategoryValue
+  const categoryToDisplay =
+    shouldUseSearchGroupInsteadOfNativeCategory && searchGroupLabel !== 'None'
+      ? searchGroupLabel
+      : mostPopularNativeCategoryValue
 
   const testID = `autocompleteOfferItem_${hit.objectID}`
 
@@ -207,7 +208,7 @@ export function AutocompleteOfferItem({
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Highlight suggestionHit={hit} attribute="query" />
-        {shouldDisplaySuggestion ? (
+        {shouldDisplayCategorySuggestion && categoryToDisplay ? (
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
