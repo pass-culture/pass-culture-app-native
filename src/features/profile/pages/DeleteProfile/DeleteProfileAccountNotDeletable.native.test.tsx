@@ -52,7 +52,7 @@ describe('DeleteProfileAccountNotDeletable', () => {
   it('should open FAQ link when clicking on "consultant cette page" button', () => {
     render(<DeleteProfileAccountNotDeletable />)
 
-    const faqButton = screen.getByText('consultant cette page')
+    const faqButton = screen.getByText('consultant cette page.')
     fireEvent.press(faqButton)
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_RIGHT_TO_ERASURE, undefined, true)
