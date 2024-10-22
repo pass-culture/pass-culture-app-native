@@ -1,8 +1,10 @@
 import React from 'react'
+import { QueryObserverResult } from 'react-query'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { beneficiaryUser } from 'fixtures/user'
@@ -35,6 +37,12 @@ jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+useBookingsSpy.mockReturnValue({
+  data: bookingsSnap,
+  isFetching: false,
+} as unknown as QueryObserverResult<BookingsResponse, unknown>)
+
 jest.useFakeTimers()
 
 describe('<EndedBookings />', () => {
@@ -50,7 +58,7 @@ describe('<EndedBookings />', () => {
     await measurePerformance(
       reactQueryProviderHOC(
         <AuthWrapper>
-          <EndedBookings enableBookingImprove={false} bookings={bookingsSnap} />
+          <EndedBookings />
         </AuthWrapper>
       ),
       {

@@ -2,13 +2,16 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingsResponse, PostOneReactionRequest, PostReactionRequest } from 'api/gen'
+import { PostOneReactionRequest, PostReactionRequest } from 'api/gen'
+import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { Booking } from 'features/bookings/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -22,12 +25,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
-type Props = {
-  enableBookingImprove: boolean
-  bookings: BookingsResponse | undefined
-}
-
-export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove, bookings }) => {
+export const EndedBookings: FunctionComponent = () => {
+  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
+  const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
   const { mutate: addReaction } = useReactionMutation()

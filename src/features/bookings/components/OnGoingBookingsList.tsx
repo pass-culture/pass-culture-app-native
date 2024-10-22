@@ -7,6 +7,8 @@ import { EndedBookingsSection } from 'features/bookings/components/EndedBookings
 import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -29,11 +31,8 @@ const emptyBookings: Booking[] = []
 
 const ANIMATION_DURATION = 700
 
-type Props = {
-  enableBookingImprove: boolean
-}
-
-export const OnGoingBookingsList: FunctionComponent<Props> = ({ enableBookingImprove }) => {
+export const OnGoingBookingsList: FunctionComponent = () => {
+  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const netInfo = useNetInfoContext()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()

@@ -1,6 +1,8 @@
 import React, { Fragment, FunctionComponent } from 'react'
+import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
+import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -53,21 +55,27 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+useBookingsSpy.mockReturnValue({
+  data: bookingsSnap,
+  isFetching: false,
+} as unknown as QueryObserverResult<BookingsResponse, unknown>)
+
 describe('EndedBookings', () => {
   it('should render correctly', () => {
-    renderEndedBookings(bookingsSnap)
+    renderEndedBookings()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the right number of ended bookings', () => {
-    renderEndedBookings(bookingsSnap)
+    renderEndedBookings()
 
     expect(screen.getByText('2 réservations terminées')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {
-    renderEndedBookings(bookingsSnap)
+    renderEndedBookings()
 
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
@@ -80,7 +88,7 @@ describe('EndedBookings', () => {
     })
 
     it('should send reaction from cinema offer', async () => {
-      renderEndedBookings(bookingsSnap, RemoteConfigProvider)
+      renderEndedBookings(RemoteConfigProvider)
 
       fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
 
@@ -94,13 +102,6 @@ describe('EndedBookings', () => {
   })
 })
 
-const renderEndedBookings = (
-  bookings: BookingsResponse,
-  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
-) => {
-  return render(
-    <Wrapper>
-      {reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} bookings={bookings} />)}
-    </Wrapper>
-  )
+const renderEndedBookings = (Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment) => {
+  return render(<Wrapper>{reactQueryProviderHOC(<EndedBookings />)}</Wrapper>)
 }

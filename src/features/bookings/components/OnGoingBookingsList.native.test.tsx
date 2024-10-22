@@ -185,5 +185,5 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 })
 
 function renderOnGoingBookingsList() {
-  render(<OnGoingBookingsList enableBookingImprove={false} />)
+  render(<OnGoingBookingsList />)
 }

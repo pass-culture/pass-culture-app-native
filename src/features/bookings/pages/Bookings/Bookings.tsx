@@ -62,10 +62,8 @@ export function Bookings() {
   )
 
   const tabPanels = {
-    [BookingsTab.CURRENT]: <OnGoingBookingsList enableBookingImprove={enableBookingImprove} />,
-    [BookingsTab.COMPLETED]: (
-      <EndedBookings enableBookingImprove={enableBookingImprove} bookings={bookings} />
-    ),
+    [BookingsTab.CURRENT]: <OnGoingBookingsList />,
+    [BookingsTab.COMPLETED]: <EndedBookings />,
   }
 
   const shouldDisplayPastille = enableReactionFeature && bookingsAwaitingReaction > 0
@@ -95,7 +93,7 @@ export function Bookings() {
       ) : (
         <Container>
           <PageHeader title="Mes réservations" />
-          <OnGoingBookingsList enableBookingImprove={enableBookingImprove} />
+          <OnGoingBookingsList />
         </Container>
       )}
     </React.Fragment>
