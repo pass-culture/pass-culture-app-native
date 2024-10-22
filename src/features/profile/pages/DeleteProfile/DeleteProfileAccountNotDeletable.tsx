@@ -45,11 +45,10 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             anonymiser tes données. Tu peux en savoir plus en{SPACE}
             <ExternalTouchableLink
               as={StyledButtonInsideText}
-              wording="consultant cette page"
+              wording="consultant cette page."
               icon={ExternalSiteFilled}
               externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
             />
-            .
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             Pour ne plus recevoir de communications du pass Culture, tu peux désactiver tes

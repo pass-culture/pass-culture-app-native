@@ -128,7 +128,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
          
         <View>
           <View
-            accessibilityLabel="consultant cette page"
+            accessibilityLabel="consultant cette page."
             accessibilityRole="link"
             accessibilityState={
               {
@@ -171,7 +171,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 },
               ]
             }
-            testID="consultant cette page"
+            testID="consultant cette page."
           >
             <View
               paddingForIcon={0}
@@ -218,12 +218,11 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 }
                 typography="ButtonText"
               >
-                consultant cette page
+                consultant cette page.
               </Text>
             </View>
           </View>
         </View>
-        .
       </Text>
       <Text
         style={
