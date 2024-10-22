@@ -120,12 +120,28 @@ describe('CulturalSurveyQuestions page', () => {
     const GoBackButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(GoBackButton)
 
-    expect(dispatch).toHaveBeenCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_ANSWERS',
       payload: {
         questionId: navigationProps.route.params.question,
         answers: [],
       },
+    })
+  })
+
+  it('should dispatch default questions on go back when current question is "sorties"', () => {
+    render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const GoBackButton = screen.getByTestId('Revenir en arrière')
+    fireEvent.press(GoBackButton)
+
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'SET_QUESTIONS',
+      payload: [
+        CulturalSurveyQuestionEnum.SORTIES,
+        CulturalSurveyQuestionEnum.ACTIVITES,
+        CulturalSurveyQuestionEnum.PROJECTIONS,
+      ],
     })
   })
 
