@@ -1,12 +1,14 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import { QueryObserverResult } from 'react-query'
 
-import { BookingsResponse } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
+import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { beneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -22,6 +24,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
 
 const mockMutate = jest.fn()
 jest.mock('features/reactions/api/useReactionMutation', () => ({
@@ -55,27 +60,44 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
-useBookingsSpy.mockReturnValue({
-  data: bookingsSnap,
-  isFetching: false,
-} as unknown as QueryObserverResult<BookingsResponse, unknown>)
+jest.mock('libs/network/NetInfoWrapper')
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
+jest.mock('libs/jwt/jwt')
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 describe('EndedBookings', () => {
-  it('should render correctly', () => {
+  beforeEach(() => {
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+  })
+
+  it('should render correctly', async () => {
     renderEndedBookings()
+
+    await screen.findAllByText('Avez-vous déjà vu\u00a0?')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display the right number of ended bookings', () => {
+  it('should display the right number of ended bookings', async () => {
     renderEndedBookings()
 
-    expect(screen.getByText('2 réservations terminées')).toBeOnTheScreen()
+    expect(await screen.findByText('2 réservations terminées')).toBeOnTheScreen()
   })
 
-  it('should goBack when we press on the back button', () => {
+  it('should goBack when we press on the back button', async () => {
     renderEndedBookings()
+
+    await screen.findAllByText('Avez-vous déjà vu\u00a0?')
 
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
@@ -84,7 +106,10 @@ describe('EndedBookings', () => {
 
   describe('with feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      activateFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
+        RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+      ])
     })
 
     it('should send reaction from cinema offer', async () => {
