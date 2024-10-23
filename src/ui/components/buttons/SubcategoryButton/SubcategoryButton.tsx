@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import { useWindowDimensions, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import { Platform, useWindowDimensions } from 'react-native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -112,7 +111,7 @@ const StyledTouchable = styledButton(Touchable)<{
   padding: getSpacing(2),
 }))
 
-const StyledText = styled(Typo.Caption).attrs({
+const StyledText = styledButton(Typo.Caption).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),

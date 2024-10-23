@@ -12,7 +12,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { data } = useSubcategories()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToSearchN1 } = useNavigateToSearch('SearchN1')
@@ -50,6 +50,10 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         isFromHistory: undefined,
       }
       if (SEARCH_N1_CATEGORIES.includes(pressedCategory)) {
+        dispatch({
+          type: 'SET_STATE',
+          payload: newSearchState,
+        })
         navigateToSearchN1(newSearchState, disabilities)
       } else {
         navigateToSearchResults(newSearchState, disabilities)
@@ -62,6 +66,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
       navigateToSearchN1,
       navigateToSearchResults,
       searchState,
+      dispatch,
     ]
   )
 }

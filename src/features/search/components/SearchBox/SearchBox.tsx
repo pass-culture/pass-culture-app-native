@@ -170,7 +170,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     setQuery('')
     dispatch({
       type: 'SET_STATE',
-      payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
+      payload: {
+        ...initialSearchState,
+        locationFilter: searchState.locationFilter,
+        offerCategories: offerCategories ?? searchState.offerCategories,
+      },
     })
     goBack()
   }, [
@@ -181,6 +185,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     searchState.locationFilter,
     searchState.query,
     setQuery,
+    searchState.offerCategories,
+    offerCategories,
   ])
 
   const onSubmitQuery = useCallback(
