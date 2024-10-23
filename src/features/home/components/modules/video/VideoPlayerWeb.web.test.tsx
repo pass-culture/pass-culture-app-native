@@ -7,7 +7,7 @@ import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils/web'
+import { render, screen, waitFor } from 'tests/utils/web'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const hideModalMock = jest.fn()
@@ -17,18 +17,17 @@ jest.mock('features/navigation/TabBar/routes')
 
 describe('VideoPlayer', () => {
   describe('analytics', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should logHasSeenAllVideo when all video were seen', async () => {
+    it('should logHasSeenAllVideo when all video were seen', async () => {
       MockedYouTubePlayer.setPlayerStateData(YouTube.PlayerState.ENDED)
 
       renderVideoPlayer()
 
-      await waitFor(() => {
-        expect(analytics.logHasSeenAllVideo).toHaveBeenCalledWith({
-          moduleId: 'abcd',
-          videoDuration: 267,
-          seenDuration: 135,
-        })
+      await screen.findByText('Revoir')
+
+      expect(analytics.logHasSeenAllVideo).toHaveBeenCalledWith({
+        moduleId: 'abcd',
+        videoDuration: 267,
+        seenDuration: 135,
       })
     })
 
