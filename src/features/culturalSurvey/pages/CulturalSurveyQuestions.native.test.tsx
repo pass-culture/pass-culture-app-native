@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
 
-import { push, navigate } from '__mocks__/@react-navigation/native'
+import { push, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/__mocks__/useCulturalSurveyQuestions'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
@@ -11,14 +11,31 @@ import {
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { render, screen, fireEvent, middleScrollEvent, bottomScrollEvent } from 'tests/utils'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  render,
+  screen,
+  fireEvent,
+  middleScrollEvent,
+  bottomScrollEvent,
+  waitFor,
+} from 'tests/utils'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/isAppUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
+
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
 
 const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
 
@@ -64,8 +81,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
+
 describe('CulturalSurveyQuestions page', () => {
-  const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
+  beforeEach(() => {
+    activateFeatureFlags()
+  })
 
   it('should render the page with correct layout', () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
@@ -84,7 +105,7 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 
-  it('should flush answers and navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
+  it('should refetch user infos if on lastQuestion and API call is successful', async () => {
     mockUseGetNextQuestionReturnValue = {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
@@ -94,8 +115,61 @@ describe('CulturalSurveyQuestions page', () => {
     const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
     fireEvent.press(NextQuestionButton)
 
-    expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
-    expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    await waitFor(() => {
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should flush answers if on lastQuestion and API call is successful', async () => {
+    mockUseGetNextQuestionReturnValue = {
+      isCurrentQuestionLastQuestion: true,
+      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
+    }
+    render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
+    fireEvent.press(NextQuestionButton)
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
+    })
+  })
+
+  it('should navigate to Home if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is disabled', async () => {
+    mockUseGetNextQuestionReturnValue = {
+      isCurrentQuestionLastQuestion: true,
+      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
+    }
+    render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
+    fireEvent.press(NextQuestionButton)
+
+    await waitFor(() => {
+      expect(reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [{ name: navigateToHomeConfig.screen }, { name: 'CulturalSurveyThanks' }],
+      })
+    })
+  })
+
+  it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is enabled', async () => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    mockUseGetNextQuestionReturnValue = {
+      isCurrentQuestionLastQuestion: true,
+      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
+    }
+    render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
+    fireEvent.press(NextQuestionButton)
+
+    await waitFor(() => {
+      expect(reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [{ name: 'Stepper' }, { name: 'CulturalSurveyThanks' }],
+      })
+    })
   })
 
   it('should navigate to home if on lastQuestion and API call is unsuccessful', () => {
@@ -190,3 +264,7 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

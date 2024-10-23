@@ -30,7 +30,7 @@
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:551
 ./src/features/bookings/pages/BookingDetails/BookingDetails.tsx:97
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
-./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:166
+./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:240
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:13
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:15
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:17
