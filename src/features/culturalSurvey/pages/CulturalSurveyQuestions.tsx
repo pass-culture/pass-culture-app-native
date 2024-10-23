@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { CulturalSurveyAnswer, CulturalSurveyAnswerEnum, CulturalSurveyQuestionEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
 import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
@@ -18,7 +19,7 @@ import {
 } from 'features/culturalSurvey/helpers/questionsToDisplay'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCulturalSurveyProgress'
 import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import {
   CulturalSurveyRootStackParamList,
   UseNavigationType,
@@ -26,6 +27,8 @@ import {
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -40,12 +43,16 @@ type CulturalSurveyQuestionsProps = StackScreenProps<
 >
 
 export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps) {
+  const enableCulturalSurveyMandatory = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
+  )
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
-  const { push, navigate } = useNavigation<UseNavigationType>()
+  const { push, reset } = useNavigation<UseNavigationType>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
   const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(route.params.question)
   const culturalSurveyProgress = useCulturalSurveyProgress(route.params.question)
   const { showErrorSnackBar } = useSnackBarContext()
+  const { refetchUser } = useAuthContext()
 
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
@@ -66,11 +73,16 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
     }
   }, [currentQuestion, answers])
 
-  const onSuccess = () => {
-    dispatch({
-      type: 'FLUSH_ANSWERS',
+  const onSuccess = async () => {
+    await refetchUser()
+    dispatch({ type: 'FLUSH_ANSWERS' })
+    reset({
+      index: 1,
+      routes: [
+        { name: enableCulturalSurveyMandatory ? 'Stepper' : navigateToHomeConfig.screen },
+        { name: 'CulturalSurveyThanks' },
+      ],
     })
-    navigate('CulturalSurveyThanks')
   }
 
   const onError = (error: unknown) => {
