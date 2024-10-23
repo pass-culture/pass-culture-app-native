@@ -222,6 +222,7 @@ export const theme = {
     brand: UniqueColors.BRAND,
     brandDark: UniqueColors.BRAND_DARK,
     greenDisabled: UniqueColors.GREEN_DISABLED,
+    specificGrey: UniqueColors.SPECIFIC_GREY,
   },
   breakpoints: {
     xxs: Breakpoints.XXS,

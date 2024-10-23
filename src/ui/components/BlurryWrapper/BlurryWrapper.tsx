@@ -1,4 +1,5 @@
 import { BlurView } from '@react-native-community/blur'
+import colorAlpha from 'color-alpha'
 import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -32,6 +33,6 @@ const StyledBlurry = styled(BlurView)<{
   flex: 1,
 })
 
-const TransparentBackground = styled.View({
-  backgroundColor: 'rgba(255, 255, 255, 0.5)',
-})
+const TransparentBackground = styled.View(({ theme }) => ({
+  backgroundColor: colorAlpha(theme.colors.white, 0.5),
+}))

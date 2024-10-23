@@ -21,7 +21,6 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 const FIXED_SIZE = getSpacing(81.75)
 const MAIN_MARGIN = getSpacing(6)
-const SPECIFIC_GREY = '#2C2C2E'
 const FULL_HEIGHT = { height: '100%' }
 const FULL_WIDTH = { width: '100%' }
 
@@ -176,13 +175,13 @@ const FlexRow = styled.View(({ theme }) => ({
 
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   angle: 0,
-  colors: [SPECIFIC_GREY, theme.colors.transparent],
+  colors: [theme.uniqueColors.specificGrey, theme.colors.transparent],
   useAngle: true,
 }))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
 const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs(({ theme }) => ({
   angle: 90,
-  colors: [SPECIFIC_GREY, theme.colors.transparent],
+  colors: [theme.uniqueColors.specificGrey, theme.colors.transparent],
   useAngle: true,
 }))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
@@ -201,14 +200,14 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   marginBottom: theme.home.spaceBetweenModules,
 }))
 
-const ColumnLargeScreen = styled.View({
-  backgroundColor: SPECIFIC_GREY,
+const ColumnLargeScreen = styled.View(({ theme }) => ({
+  backgroundColor: theme.uniqueColors.specificGrey,
   width: '50%',
   flexDirection: 'column',
   ...FULL_HEIGHT,
   justifyContent: 'flex-end',
   paddingHorizontal: getSpacing(4),
-})
+}))
 
 const Column = styled.View({
   ...FULL_WIDTH,

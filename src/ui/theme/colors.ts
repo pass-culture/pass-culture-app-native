@@ -51,5 +51,6 @@ export enum UniqueColors {
   BACKGROUND_SURFACE = '#212121',
   FOREGROUND_COLOR = '#EEEEEE',
   TAB_BAR = '#fffffff8',
+  SPECIFIC_GREY = '#2C2C2E',
 }
 export const ACTIVE_OPACITY = 0.7
