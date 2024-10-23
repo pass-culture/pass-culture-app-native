@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 import { VenueModal } from './VenueModal'
 
@@ -25,9 +25,11 @@ describe('<VenueModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-      const results = await checkAccessibilityFor(container)
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

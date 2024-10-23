@@ -410,7 +410,7 @@ exports[`VenueModal should render correctly 1`] = `
                   ]
                 }
               >
-                Trouver un lieu culturel 
+                Trouver un lieu culturel
               </Text>
             </View>
             <View
