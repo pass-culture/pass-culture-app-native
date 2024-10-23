@@ -23,7 +23,7 @@ import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -210,6 +210,8 @@ jest.mock('@gorhom/bottom-sheet', () => {
 })
 
 describe('SearchResultsContent component', () => {
+  const user = userEvent.setup()
+
   beforeAll(() => {
     mockHits = []
     mockNbHits = 0
@@ -260,6 +262,7 @@ describe('SearchResultsContent component', () => {
         page: 2,
       },
     })
+
     await act(async () => {
       flashList.props.onEndReached()
     })
@@ -279,7 +282,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultsContent()
       const categoryButton = await screen.findByText('Catégories')
 
-      fireEvent.press(categoryButton)
+      await user.press(categoryButton)
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
@@ -317,9 +320,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultsContent()
       const priceButton = screen.getByTestId('Prix')
 
-      await act(async () => {
-        fireEvent.press(priceButton)
-      })
+      await user.press(priceButton)
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
@@ -359,9 +360,7 @@ describe('SearchResultsContent component', () => {
         renderSearchResultsContent()
         const duoButton = screen.getByTestId('Duo')
 
-        await act(async () => {
-          fireEvent.press(duoButton)
-        })
+        await user.press(duoButton)
 
         const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
@@ -466,10 +465,8 @@ describe('SearchResultsContent component', () => {
     it('should open the venue modal when pressing the venue filter button', async () => {
       renderSearchResultsContent()
 
-      await act(async () => {
-        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
-        fireEvent.press(venueButton)
-      })
+      const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
+      await user.press(venueButton)
 
       expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
         'Trouver un lieu culturel'
@@ -479,12 +476,10 @@ describe('SearchResultsContent component', () => {
     it('should call set search state on press "Rechercher" in venue modal', async () => {
       renderSearchResultsContent()
 
-      await act(async () => {
-        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
-        fireEvent.press(venueButton)
-      })
+      const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
+      await user.press(venueButton)
 
-      fireEvent.press(screen.getByText('Rechercher'))
+      await user.press(screen.getByText('Rechercher'))
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -543,9 +538,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultsContent()
       const datesHoursButton = screen.getByTestId('Dates & heures')
 
-      await act(async () => {
-        fireEvent.press(datesHoursButton)
-      })
+      await user.press(datesHoursButton)
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
@@ -591,7 +584,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultsContent()
       const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
 
-      fireEvent.press(accessibilityFilterButton)
+      await user.press(accessibilityFilterButton)
       const accessibilityFiltersModal = await screen.findByText(
         'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
       )
@@ -606,9 +599,7 @@ describe('SearchResultsContent component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     renderSearchResultsContent()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Géolocalise-toi'))
-    })
+    await user.press(screen.getByText('Géolocalise-toi'))
 
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
@@ -769,9 +760,7 @@ describe('SearchResultsContent component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     renderSearchResultsContent()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Géolocalise-toi'))
-    })
+    await user.press(screen.getByText('Géolocalise-toi'))
 
     expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
   })
@@ -831,10 +820,10 @@ describe('SearchResultsContent component', () => {
       }
 
       renderSearchResultsContent()
-      let filterButton
-      await act(async () => {
-        filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
-      })
+
+      const filterButton = await screen.findByLabelText(
+        'Voir tous les filtres\u00a0: 2 filtres actifs'
+      )
 
       expect(filterButton).toBeOnTheScreen()
       expect(filterButton).toHaveTextContent('2')
@@ -862,7 +851,8 @@ describe('SearchResultsContent component', () => {
     it('should log consult venue map when pressing map tab', async () => {
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
+      await screen.findByTestId('venue-map-view')
 
       expect(analytics.logConsultVenueMap).toHaveBeenCalledWith({
         from: 'search',
@@ -873,7 +863,8 @@ describe('SearchResultsContent component', () => {
     it('should reset selected venue in store when pressing map tab', async () => {
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
+      await screen.findByTestId('venue-map-view')
 
       expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
     })
@@ -890,7 +881,7 @@ describe('SearchResultsContent component', () => {
       mockSelectedLocationMode = LocationMode.EVERYWHERE
       renderSearchResultsContent()
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
 
       expect(await screen.findByText('Localisation')).toBeOnTheScreen()
     })
@@ -898,7 +889,8 @@ describe('SearchResultsContent component', () => {
     it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
+      await screen.findByTestId('venue-map-view')
 
       expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
     })
@@ -906,7 +898,8 @@ describe('SearchResultsContent component', () => {
     it('should display venue map when pressing map tab if user location selected is not everywhere', async () => {
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
+      await screen.findByTestId('venue-map-view')
 
       expect(screen.getByTestId('venue-map-view')).toBeOnTheScreen()
     })
@@ -915,7 +908,7 @@ describe('SearchResultsContent component', () => {
       mockSelectedLocationMode = LocationMode.EVERYWHERE
       renderSearchResultsContent()
 
-      fireEvent.press(await screen.findByText('Carte'))
+      await user.press(await screen.findByText('Carte'))
 
       expect(screen.queryByTestId('venue-map-view')).not.toBeOnTheScreen()
     })

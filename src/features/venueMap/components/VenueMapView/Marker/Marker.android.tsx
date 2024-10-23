@@ -13,15 +13,10 @@ const PIN_MAX_Z_INDEX = 10_000
 
 interface MarkerProps extends MapMarkerProps {
   venue: GeolocatedVenue
-  isSelected?: boolean
-  showLabel?: boolean
+  isSelected: boolean
+  showLabel: boolean
 }
-export const Marker = ({
-  venue,
-  isSelected = false,
-  showLabel = false,
-  ...otherProps
-}: MarkerProps) => {
+export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerProps) => {
   const markerRef = useRef<MapMarker>(null)
   return (
     <CustomMarker

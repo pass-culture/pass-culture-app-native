@@ -14,7 +14,6 @@ import {
   VenueMapCluster,
   VenueMapClusterProps,
 } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
-import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { getClusterColorByDominantVenueType } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantVenueType'
@@ -33,6 +32,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
+import { MARKER_LABEL_VISIBILITY_LIMIT } from './constant'
 import { Marker } from './Marker/Marker'
 
 interface Props {
@@ -114,8 +114,12 @@ export const VenueMapView: FunctionComponent<Props> = ({
 
   const centerOnLocation = useCenterOnLocation({ currentRegion, mapViewRef, mapHeight: height })
 
-  const handleChangeRegion = () => {
-    mapViewRef.current?.getCamera().then((camera) => {
+  const checkLabelVisibility = () => {
+    if (!mapViewRef.current) {
+      return
+    }
+
+    mapViewRef.current.getCamera().then((camera) => {
       setLabelVisible(
         Platform.OS === 'ios'
           ? Number(camera.altitude) <= MARKER_LABEL_VISIBILITY_LIMIT.altitude
@@ -178,7 +182,10 @@ export const VenueMapView: FunctionComponent<Props> = ({
     }
   }
 
-  const handleMapReady = () => setMapReady(true)
+  const handleMapReady = () => {
+    setMapReady(true)
+    checkLabelVisibility()
+  }
 
   const onNavigateToVenuePress = (venueId: number) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
@@ -289,7 +296,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
         pitchEnabled={false}
         onMapReady={handleMapReady}
         moveOnMarkerPress={false}
-        onRegionChange={handleChangeRegion}
+        onRegionChange={checkLabelVisibility}
         onRegionChangeComplete={handleRegionChangeComplete}
         superClusterRef={superClusterRef}
         renderCluster={ColoredCluster}
