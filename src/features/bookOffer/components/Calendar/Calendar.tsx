@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import React from 'react'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { Theme } from 'react-native-calendars/src/types'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { useSelectDay, DayComponent } from 'features/bookOffer/components/Calendar/DayComponent'
@@ -39,22 +39,23 @@ const renderArrow = (direction: string) => {
   return null
 }
 
-const calendarHeaderStyle = {
-  textSectionTitleColor: '#696A6F',
-  'stylesheet.calendar.header': {
-    header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: 6,
-      alignItems: 'center',
+const calendarHeaderStyle = (theme: DefaultTheme) =>
+  ({
+    textSectionTitleColor: theme.colors.greyDark,
+    'stylesheet.calendar.header': {
+      header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 6,
+        alignItems: 'center',
+      },
+      week: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 7,
+      },
     },
-    week: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginTop: 7,
-    },
-  },
-} as Theme
+  }) as Theme
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -99,6 +100,7 @@ export const Calendar: React.FC<Props> = ({
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
+  const theme = useTheme()
 
   const DayComponentWrapper: React.ComponentProps<typeof RNCalendar>['dayComponent'] = ({
     date,
@@ -142,7 +144,7 @@ export const Calendar: React.FC<Props> = ({
       renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
       hideExtraDays
       renderArrow={renderArrow}
-      theme={calendarHeaderStyle}
+      theme={calendarHeaderStyle(theme)}
       markedDates={markedDates}
       dayComponent={DayComponentWrapper}
     />

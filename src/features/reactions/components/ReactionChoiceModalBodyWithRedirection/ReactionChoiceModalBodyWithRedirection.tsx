@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image } from 'react-native'
@@ -65,19 +66,19 @@ const ImagesContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const ImagesContainerGradient = styled(LinearGradient).attrs({
+const ImagesContainerGradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    '#FFF',
-    'rgba(255, 255, 255, 0.75)',
-    'rgba(255, 255, 255, 0.00)',
-    'rgba(255, 255, 255, 0.00)',
-    'rgba(255, 255, 255, 0.75)',
-    '#FFF',
+    theme.colors.white,
+    colorAlpha(theme.colors.white, 0.75),
+    colorAlpha(theme.colors.white, 0.0),
+    colorAlpha(theme.colors.white, 0.0),
+    colorAlpha(theme.colors.white, 0.75),
+    theme.colors.white,
   ],
-  locations: [0, 0.12, 0.25, 0.75, 0.87, 1], // Positions des transitions
+  locations: [0, 0.12, 0.25, 0.75, 0.87, 1],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-})({
+}))({
   width: '100%',
   height: '100%',
   position: 'absolute',
