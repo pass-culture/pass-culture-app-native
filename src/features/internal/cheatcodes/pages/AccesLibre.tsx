@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -50,7 +50,7 @@ export const AccesLibre = () => {
                     <detail.icon
                       color={detail.isAccessible ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
                     />
-                    <Typo.Title3>{detail.category}</Typo.Title3>
+                    <TypoDS.Title3>{detail.category}</TypoDS.Title3>
                   </StyledView>
                   {Object.entries(detail.description).map(([key, value]) => (
                     <View key={key}>

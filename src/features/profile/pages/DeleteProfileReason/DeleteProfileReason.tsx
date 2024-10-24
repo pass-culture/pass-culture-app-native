@@ -18,7 +18,7 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -93,9 +93,9 @@ export function DeleteProfileReason() {
             <HeaderHeightSpacer headerHeight={headerHeight} />
             <StyledIcon />
             <TitlesContainer>
-              <Typo.Title3 {...getHeadingAttrs(1)}>
+              <TypoDS.Title3 {...getHeadingAttrs(1)}>
                 Pourquoi souhaites-tu supprimer ton compte&nbsp;?
-              </Typo.Title3>
+              </TypoDS.Title3>
               <Typo.Body>
                 Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
                 l’application.

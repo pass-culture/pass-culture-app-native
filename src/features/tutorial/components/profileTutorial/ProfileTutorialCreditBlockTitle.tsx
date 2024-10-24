@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo, TypoDS, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 interface Props {
@@ -37,7 +37,7 @@ export const ProfileTutorialCreditBlockTitle = ({
   return <StyledButtonText>{deposit}</StyledButtonText>
 }
 
-const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const TitleSecondary = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
   marginBottom: getSpacing(2),
 }))

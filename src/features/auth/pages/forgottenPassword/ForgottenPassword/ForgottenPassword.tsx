@@ -19,7 +19,7 @@ import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -61,7 +61,7 @@ export const ForgottenPassword = () => {
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>
         Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de

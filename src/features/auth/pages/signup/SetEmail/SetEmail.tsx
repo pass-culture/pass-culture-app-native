@@ -19,8 +19,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer } from 'ui/theme'
-import { Typo } from 'ui/theme/typography'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -87,7 +86,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <EmailInputController
         control={control}

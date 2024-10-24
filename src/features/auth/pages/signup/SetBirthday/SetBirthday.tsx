@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BirthdayForm = {
@@ -78,7 +78,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>{pageTitle}</TypoDS.Title3>
       {isSSOSubscriptionFromLogin ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />

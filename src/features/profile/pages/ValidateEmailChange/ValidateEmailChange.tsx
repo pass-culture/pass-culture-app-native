@@ -17,7 +17,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
 
@@ -81,7 +81,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   return (
     <GenericInfoPageWhite
       icon={BicolorPhonePending}
-      titleComponent={Typo.Title3}
+      titleComponent={TypoDS.Title3}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
       subtitle={emailUpdateStatus?.newEmail || undefined}
       subtitleComponent={ValidateEmailChangeSubtitleComponent}

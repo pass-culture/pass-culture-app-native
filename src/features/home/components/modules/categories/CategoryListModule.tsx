@@ -11,7 +11,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type CategoryListProps = {
   id: string
@@ -123,7 +123,7 @@ export const CategoryListModule = ({
   return (
     <React.Fragment>
       <HeaderContainer>
-        <Typo.Title3 numberOfLines={2}>{title}</Typo.Title3>
+        <TypoDS.Title3 numberOfLines={2}>{title}</TypoDS.Title3>
         <Spacer.Column
           numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
         />

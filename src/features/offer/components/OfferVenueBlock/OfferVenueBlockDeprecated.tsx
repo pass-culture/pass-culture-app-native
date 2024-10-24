@@ -14,7 +14,7 @@ import { Tag } from 'ui/components/Tag/Tag'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Show } from 'ui/svg/icons/Show'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -43,7 +43,7 @@ export function OfferVenueBlockDeprecated({
 
   return (
     <Container>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
       <StyledSeparator />

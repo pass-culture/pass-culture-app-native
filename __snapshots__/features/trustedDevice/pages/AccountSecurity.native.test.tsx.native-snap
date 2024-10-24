@@ -56,8 +56,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
+          "fontSize": 19,
+          "lineHeight": 30.4,
           "textAlign": "center",
         },
       ]
@@ -679,8 +679,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
+          "fontSize": 19,
+          "lineHeight": 30.4,
           "textAlign": "center",
         },
       ]
@@ -1202,8 +1202,8 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
+          "fontSize": 19,
+          "lineHeight": 30.4,
           "textAlign": "center",
         },
       ]

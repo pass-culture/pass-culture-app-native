@@ -14,7 +14,7 @@ import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -39,9 +39,9 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
 
   return (
     <React.Fragment>
-      <Typo.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
+      <TypoDS.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
         Prix
-      </Typo.Title3>
+      </TypoDS.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
       <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>

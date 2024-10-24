@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
 
@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof ContentHeader> = (props) => {
     <Container>
       <ScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <View style={{ height: headerHeight }} />
-        <Typo.Title3>{props.headerTitle}</Typo.Title3>
+        <TypoDS.Title3>{props.headerTitle}</TypoDS.Title3>
         <Content />
         <Spacer.Column numberOfSpaces={10} />
         <Content />

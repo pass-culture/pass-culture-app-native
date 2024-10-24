@@ -11,7 +11,7 @@ import {
 import { FakeVideoPlayer } from 'features/venue/components/VideoSection/FakeVideoPlayer'
 import { getFakeVideoBackground } from 'features/venue/helpers/getFakeVideoBackground'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type VideoSectionProps = {
@@ -44,6 +44,6 @@ export const VideoSection = ({ venueType, onPress }: VideoSectionProps) => {
   )
 }
 
-const Title = styled(Typo.Title3).attrs({ ...getHeadingAttrs(2), children: 'Vidéo de ce lieu' })({
+const Title = styled(TypoDS.Title3).attrs({ ...getHeadingAttrs(2), children: 'Vidéo de ce lieu' })({
   marginLeft: getSpacing(6),
 })

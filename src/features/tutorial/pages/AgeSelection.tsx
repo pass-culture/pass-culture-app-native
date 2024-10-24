@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
@@ -100,7 +100,7 @@ const BicolorAll = styled(All).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const Title3Text = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const Title3Text = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 

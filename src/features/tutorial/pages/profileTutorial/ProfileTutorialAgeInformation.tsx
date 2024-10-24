@@ -24,7 +24,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'ProfileTutorialAgeInformation'>
@@ -55,9 +55,9 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={7} />
-        <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+        <TypoDS.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
           {headerTitle}
-        </Typo.Title3>
+        </TypoDS.Title3>
         <Spacer.Column numberOfSpaces={6} />
         <Timeline age={age} activationAge={activationAge} />
         <Spacer.Column numberOfSpaces={4} />

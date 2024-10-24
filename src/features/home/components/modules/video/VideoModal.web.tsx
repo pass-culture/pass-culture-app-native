@@ -18,7 +18,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
   offers: Offer[]
@@ -86,7 +86,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </StyledTagBackground>
         </StyledTagContainer>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Title3>{props.title}</Typo.Title3>
+        <TypoDS.Title3>{props.title}</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
           props.videoPublicationDate

@@ -13,7 +13,7 @@ import { CitySearchInput } from 'features/profile/components/CitySearchInput/Cit
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ChangeCity = () => {
@@ -63,7 +63,7 @@ export const ChangeCity = () => {
       title="Modifier ma ville de résidence"
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getHeadingAttrs(1)}>Renseigne ta ville de résidence</Typo.Title3>
+          <TypoDS.Title3 {...getHeadingAttrs(1)}>Renseigne ta ville de résidence</TypoDS.Title3>
           <Spacer.Column numberOfSpaces={5} />
 
           <Controller

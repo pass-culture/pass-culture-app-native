@@ -12,7 +12,7 @@ import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWord
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type BookingDetailsTicketContentProps = {
@@ -101,7 +101,7 @@ const Container = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
+const Title = styled(TypoDS.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
   paddingHorizontal: getSpacing(2),

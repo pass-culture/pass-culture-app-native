@@ -7,7 +7,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -33,9 +33,9 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
+      <TypoDS.Title3 {...getHeadingAttrs(3)} testID="DateStep">
         Date
-      </Typo.Title3>
+      </TypoDS.Title3>
 
       {bookingState.step === Step.DATE ? (
         <Calendar

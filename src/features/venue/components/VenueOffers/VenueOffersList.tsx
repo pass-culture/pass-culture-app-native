@@ -19,7 +19,7 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -107,4 +107,4 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
   )
 }
 
-const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const PlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``

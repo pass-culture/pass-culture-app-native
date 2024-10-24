@@ -15,7 +15,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 const TILE_HEIGHT = 244
 
@@ -166,7 +166,7 @@ const BlackBackground = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
 }))
 
-const Title = styled(Typo.Title3)(({ theme }) => ({
+const Title = styled(TypoDS.Title3)(({ theme }) => ({
   color: theme.colors.white,
   flexShrink: 1,
 }))

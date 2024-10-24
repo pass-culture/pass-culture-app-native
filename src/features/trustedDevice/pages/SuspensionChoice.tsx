@@ -21,7 +21,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
@@ -58,7 +58,7 @@ export const SuspensionChoice = () => {
   return (
     <GenericInfoPageWhite
       headerGoBack
-      titleComponent={Typo.Title3}
+      titleComponent={TypoDS.Title3}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       separateIconFromTitle={false}
       icon={BicolorUserError}>

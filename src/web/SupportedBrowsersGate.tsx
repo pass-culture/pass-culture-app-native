@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type SupportedBrowsers = Array<{
   browser: string
@@ -125,7 +125,7 @@ const Container = styled.View({
   padding: getSpacing(6),
 })
 
-const Title = styled(Typo.Title3)({
+const Title = styled(TypoDS.Title3)({
   textAlign: 'center',
 })
 

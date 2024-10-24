@@ -8,7 +8,7 @@ import { Separator } from 'ui/components/Separator'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse | BookingOfferResponse
@@ -29,7 +29,7 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       <ViewGap gap={6}>
-        <Typo.Title3>Partage-nous ton avis&nbsp;!</Typo.Title3>
+        <TypoDS.Title3>Partage-nous ton avis&nbsp;!</TypoDS.Title3>
         <ViewGap gap={4}>
           <Separator.Horizontal />
           <HorizontalTileContainer gap={4}>

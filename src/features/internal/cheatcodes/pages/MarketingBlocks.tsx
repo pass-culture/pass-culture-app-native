@@ -6,7 +6,7 @@ import { MarketingBlockExclusivity } from 'features/home/components/modules/mark
 import { MarketingBlockHighlight } from 'features/home/components/modules/marketing/MarketingBlockHighlight'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const MarketingBlocks = () => {
   return (
@@ -14,7 +14,7 @@ export const MarketingBlocks = () => {
       <CheatcodesHeader title="Marketing blocks" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
-        <Typo.Title3>MarketingBlockExclusivity</Typo.Title3>
+        <TypoDS.Title3>MarketingBlockExclusivity</TypoDS.Title3>
       </Container>
       <Spacer.Column numberOfSpaces={6} />
       <MarketingBlockExclusivity
@@ -24,7 +24,7 @@ export const MarketingBlocks = () => {
       />
       <Spacer.Column numberOfSpaces={12} />
       <Container>
-        <Typo.Title3>MarketingBlockHighlight</Typo.Title3>
+        <TypoDS.Title3>MarketingBlockHighlight</TypoDS.Title3>
       </Container>
       <Spacer.Column numberOfSpaces={6} />
       <MarketingBlockHighlight

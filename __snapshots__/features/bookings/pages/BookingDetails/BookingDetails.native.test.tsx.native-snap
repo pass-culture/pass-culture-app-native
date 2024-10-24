@@ -251,8 +251,8 @@ exports[`BookingDetails should render correctly 1`] = `
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 20,
-                            "lineHeight": 24,
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
                             "maxWidth": "100%",
                             "paddingHorizontal": 8,
                             "textAlign": "center",

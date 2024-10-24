@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const JustifiedLeftTitle = ({ title, titleID }: { title: string; titleID?: string }) => (
@@ -16,4 +16,4 @@ const TitleContainer = styled.View({
   marginBottom: getSpacing(8),
 })
 
-const Title = styled(Typo.Title3).attrs(() => getHeadingAttrs(2))({})
+const Title = styled(TypoDS.Title3).attrs(() => getHeadingAttrs(2))({})

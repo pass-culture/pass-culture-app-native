@@ -24,8 +24,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
+          "fontSize": 19,
+          "lineHeight": 30.4,
         },
       ]
     }
@@ -662,8 +662,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
+          "fontSize": 19,
+          "lineHeight": 30.4,
         },
       ]
     }

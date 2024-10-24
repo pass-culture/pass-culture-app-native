@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
@@ -29,14 +29,14 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
 export const Small = Template.bind({})
 Small.args = {
   size: AVATAR_SMALL,
-  children: <Typo.Title3>M</Typo.Title3>,
+  children: <TypoDS.Title3>M</TypoDS.Title3>,
 }
 
 export const Medium = Template.bind({})
 Medium.args = {
   size: AVATAR_MEDIUM,
   backgroundColor: theme.colors.attentionLight,
-  children: <Typo.Title3>M</Typo.Title3>,
+  children: <TypoDS.Title3>M</TypoDS.Title3>,
 }
 
 export const Large = Template.bind({})
