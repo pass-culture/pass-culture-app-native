@@ -27,6 +27,7 @@ const OFFER_WITH_STOCKS_TOMORROW = offerResponseBuilder().withStocks([TOMORROW_S
 const OFFER_WITH_STOCKS_AFTER_15_DAYS = offerResponseBuilder()
   .withStocks([STOCK_AFTER_15_DAYS])
   .build()
+const OFFER_WITHOUT_STOCKS = offerResponseBuilder().withStocks([]).build()
 
 mockdate.set(TODAY_DATE)
 
@@ -74,19 +75,20 @@ describe('useGetVenueByDay', () => {
       expect(result.current.items).toHaveLength(initialNumberOfCinema)
     })
 
-    it('should only return cinemas having stocks within 15 days', async () => {
+    it('should only return cinemas having stocks', async () => {
       const offers = [
         OFFER_WITH_STOCKS_TODAY,
         OFFER_WITH_STOCKS_AFTER_15_DAYS,
         OFFER_WITH_STOCKS_AFTER_15_DAYS,
+        OFFER_WITHOUT_STOCKS,
       ]
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
 
       await act(async () => {})
 
-      expect(result.current.items).toHaveLength(1)
+      expect(result.current.items).toHaveLength(3)
     })
 
     it('should return the specified initial number of cinema', async () => {
@@ -242,6 +244,30 @@ describe('useGetVenueByDay', () => {
       await act(async () => {})
 
       expect(result.current.isLoading).toBe(false)
+    })
+  })
+
+  describe('hasStocksOnlyAfter15Days', () => {
+    it('should be true when there is only stocks after 15 days', async () => {
+      const offers = [OFFER_WITHOUT_STOCKS, OFFER_WITH_STOCKS_AFTER_15_DAYS]
+      mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.hasStocksOnlyAfter15Days).toBe(true)
+    })
+
+    it('should be false when there is stocks within 15 days', async () => {
+      const offers = [OFFER_WITH_STOCKS_TODAY, OFFER_WITHOUT_STOCKS]
+      mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
+
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+
+      await act(async () => {})
+
+      expect(result.current.hasStocksOnlyAfter15Days).toBe(false)
     })
   })
 })

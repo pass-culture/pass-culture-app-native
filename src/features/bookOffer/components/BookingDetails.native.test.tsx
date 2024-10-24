@@ -254,7 +254,7 @@ describe('<BookingDetails />', () => {
       })
       fireEvent.press(cguCheckbox)
 
-      const ConfirmButton = screen.getByText('Confirmer la réservation')
+      const ConfirmButton = await screen.findByText('Confirmer la réservation')
       fireEvent.press(ConfirmButton)
 
       expect(mockOnPressBookOffer).toHaveBeenCalledTimes(1)
