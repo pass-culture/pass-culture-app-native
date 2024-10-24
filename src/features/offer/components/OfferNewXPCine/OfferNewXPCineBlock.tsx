@@ -24,7 +24,7 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
         <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       </TitleContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <MovieCalendarProvider nbOfDays={15} containerStyle={getCalendarStyle(theme)}>
+      <MovieCalendarProvider offer={offer} nbOfDays={15} containerStyle={getCalendarStyle(theme)}>
         <OfferNewXPCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>

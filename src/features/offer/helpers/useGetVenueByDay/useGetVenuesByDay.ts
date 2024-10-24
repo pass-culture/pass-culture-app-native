@@ -19,7 +19,7 @@ type Options = Partial<{
   nextCount: number
 }>
 
-export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: Options) => {
+export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?: Options) => {
   const { radiusKm = DEFAULT_RADIUS_KM, initialCount = 6, nextCount = 3 } = options || {}
   const [count, setCount] = useState<number>(initialCount)
   const { userLocation } = useLocation()
@@ -28,16 +28,16 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   const location = useMemo(
     () =>
       userLocation ?? {
-        latitude: offer.venue.coordinates.latitude ?? 0,
-        longitude: offer.venue.coordinates.longitude ?? 0,
+        latitude: offer?.venue.coordinates.latitude ?? 0,
+        longitude: offer?.venue.coordinates.longitude ?? 0,
       },
-    [offer.venue.coordinates.latitude, offer.venue.coordinates.longitude, userLocation]
+    [offer?.venue.coordinates.latitude, offer?.venue.coordinates.longitude, userLocation]
   )
 
   const { data } = useFetchOffers({
     parameters: {
       ...initialSearchState,
-      allocineId: offer.extraData?.allocineId ?? undefined,
+      allocineId: offer?.extraData?.allocineId ?? undefined,
       distinct: false,
     },
     buildLocationParameterParams: {
@@ -75,7 +75,19 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
       .build()
   }, [date, location, offersWithStocks?.offers])
 
-  const movieOffers = useMemo(() => [...dayOffers, ...nextOffers], [dayOffers, nextOffers])
+  const after15DaysOffers = useMemo(
+    () =>
+      moviesOfferBuilder(offersWithStocks?.offers)
+        .withMoviesAfter15Days()
+        .sortedByDistance(location)
+        .build(),
+    [location, offersWithStocks?.offers]
+  )
+
+  const movieOffers = useMemo(
+    () => [...dayOffers, ...nextOffers, ...after15DaysOffers],
+    [dayOffers, nextOffers, after15DaysOffers]
+  )
 
   const displayedOffers = useMemo(
     () => (count === movieOffers.length ? movieOffers : movieOffers.slice(0, count)),
@@ -92,14 +104,22 @@ export const useGetVenuesByDay = (date: Date, offer: OfferResponseV2, options?: 
   )
 
   const isEnd = useMemo(() => {
-    return displayedOffers.length === dayOffers.length + nextOffers.length
-  }, [displayedOffers.length, dayOffers.length, nextOffers.length])
+    return (
+      displayedOffers.length === dayOffers.length + nextOffers.length + after15DaysOffers.length
+    )
+  }, [displayedOffers.length, dayOffers.length, nextOffers.length, after15DaysOffers.length])
+
+  const hasStocksOnlyAfter15Days = useMemo(
+    () => !dayOffers.length && !nextOffers.length && after15DaysOffers.length > 0,
+    [after15DaysOffers.length, dayOffers.length, nextOffers.length]
+  )
 
   return {
     items: displayedOffers,
     isLoading,
     increaseCount,
     isEnd,
+    hasStocksOnlyAfter15Days,
   }
 }
 
