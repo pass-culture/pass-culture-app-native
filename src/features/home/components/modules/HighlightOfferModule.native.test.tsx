@@ -13,7 +13,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 const offerFixture = offersFixture[0]
 const duoOfferFixture = offersFixture[2]
@@ -38,6 +38,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
@@ -58,9 +61,7 @@ describe('HighlightOfferModule', () => {
     mockUseHighlightOffer.mockReturnValueOnce(offerFixture)
 
     renderHighlightModule()
-    await act(async () => {
-      fireEvent.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
-    })
+    await user.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerFixture.objectID })
   })
@@ -94,9 +95,7 @@ describe('HighlightOfferModule', () => {
 
     renderHighlightModule()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
-    })
+    await user.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -114,11 +113,7 @@ describe('HighlightOfferModule', () => {
 
     renderHighlightModule()
 
-    await act(async () => {
-      fireEvent.press(screen.getByRole('checkbox', { name: 'Mettre en favoris' }))
-    })
-
-    await act(async () => {})
+    await user.press(screen.getByRole('checkbox', { name: 'Mettre en favoris' }))
 
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
