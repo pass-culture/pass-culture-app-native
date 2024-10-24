@@ -1,19 +1,12 @@
 import React from 'react'
 
-import { ShareAppModalType } from 'features/share/types'
 import { render } from 'tests/utils/web'
 
 import { ShareAppModal } from './ShareAppModal'
 
 describe('ShareAppModal', () => {
-  it.each([
-    ShareAppModalType.NOT_ELIGIBLE,
-    ShareAppModalType.BENEFICIARY,
-    ShareAppModalType.ON_BOOKING_SUCCESS,
-  ])('should render null in web', (modalType) => {
-    const { container } = render(
-      <ShareAppModal visible hideModal={jest.fn()} modalType={modalType} />
-    )
+  it('should render null in web', () => {
+    const { container } = render(<ShareAppModal visible close={jest.fn()} share={jest.fn()} />)
 
     expect(container).toBeEmptyDOMElement()
   })

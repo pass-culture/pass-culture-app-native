@@ -1,9 +1,10 @@
-import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
+import React, { memo, useContext, useMemo, useState } from 'react'
 
-import { ShareAppModal } from 'features/share/pages/ShareAppModal'
 import { ShareAppModalType } from 'features/share/types'
-import { analytics } from 'libs/analytics'
 import { useModal } from 'ui/components/modals/useModal'
+
+import { useShareAppModalViewmodel } from '../api/useShareAppModalViewmodel'
+import { ShareAppModalSelector } from '../components/ShareAppModalSelector'
 
 interface ShareAppContextValue {
   showShareAppModal: (modalType: ShareAppModalType) => void
@@ -18,29 +19,27 @@ export const ShareAppWrapper = memo(function ShareAppWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const { showModal, ...shareAppModalProps } = useModal(false)
+  const { showModal, visible, hideModal } = useModal(false)
   const [modalType, setModalType] = useState(ShareAppModalType.NOT_ELIGIBLE)
 
-  const showShareAppModal = useCallback(
-    (modalType: ShareAppModalType) => {
-      analytics.logShowShareAppModal({ type: modalType })
-      setModalType(modalType)
-      showModal()
-    },
-    [showModal]
-  )
+  const { close, share, show, version } = useShareAppModalViewmodel({
+    hideModal,
+    showModal,
+    setType: setModalType,
+    type: modalType,
+  })
 
   const value = useMemo(
     () => ({
-      showShareAppModal,
+      showShareAppModal: show,
     }),
-    [showShareAppModal]
+    [show]
   )
 
   return (
     <ShareAppContext.Provider value={value}>
       {children}
-      <ShareAppModal modalType={modalType} {...shareAppModalProps} />
+      <ShareAppModalSelector visible={visible} close={close} share={share} version={version} />
     </ShareAppContext.Provider>
   )
 })
