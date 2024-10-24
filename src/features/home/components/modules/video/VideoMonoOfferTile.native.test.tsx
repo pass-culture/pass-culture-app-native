@@ -12,7 +12,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -30,6 +30,10 @@ const hideModalMock = jest.fn()
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('VideoMonoOfferTile', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -38,8 +42,7 @@ describe('VideoMonoOfferTile', () => {
   it('should redirect to an offer when pressing it', async () => {
     renderOfferVideoModule()
 
-    fireEvent.press(screen.getByText('La nuit des temps'))
-    await act(async () => {})
+    await user.press(screen.getByText('La nuit des temps'))
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: 102_280 })
   })
@@ -56,8 +59,7 @@ describe('VideoMonoOfferTile', () => {
   it('should log ConsultOffer on when pressing it', async () => {
     renderOfferVideoModule()
 
-    fireEvent.press(screen.getByText('La nuit des temps'))
-    await act(async () => {})
+    await user.press(screen.getByText('La nuit des temps'))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: +mockOffer.objectID,
@@ -78,14 +80,13 @@ describe('VideoMonoOfferTile', () => {
   })
 })
 
-function renderOfferVideoModule(offer?: Offer, homeEntryId = 'test') {
+function renderOfferVideoModule(offer?: Offer) {
   render(
     <VideoMonoOfferTile
       offer={offer ?? mockOffer}
       color=""
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
-      homeEntryId={homeEntryId}
     />,
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

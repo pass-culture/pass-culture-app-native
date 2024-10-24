@@ -9,7 +9,6 @@ import { BlackCaption } from 'features/home/components/BlackCaption'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -20,7 +19,7 @@ import { theme } from 'theme'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
@@ -56,10 +55,6 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
   const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
-  const hasGraphicRedesign = useHasGraphicRedesign({
-    isFeatureFlagActive: isNewExclusivityModule,
-    homeId: props.homeEntryId ?? '',
-  })
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
@@ -93,7 +88,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         <StyledTitle>{props.highlightTitle}</StyledTitle>
       </StyledTitleContainer>
       <Spacer.Column numberOfSpaces={5} />
-      {hasGraphicRedesign ? (
+      {isNewExclusivityModule ? (
         <MarketingBlockExclusivity
           offer={highlightOffer}
           homeEntryId={homeEntryId}

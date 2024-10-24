@@ -6,8 +6,6 @@ import { ThematicHighlightModule } from 'features/home/components/modules/Themat
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
@@ -15,7 +13,6 @@ const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
 mockDate.set(CURRENT_DATE)
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const baseThematicHighlightModule = {
   ...formattedThematicHighlightModule,
@@ -103,62 +100,11 @@ describe('ThematicHighlightModule', () => {
     })
   })
 
-  describe('When shouldApplyGraphicRedesign remote config is true', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldApplyGraphicRedesign: true,
-      })
-    })
+  it('should not display new version when feature flag is active', async () => {
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
 
-    it('should display new version when feature flag is active and home id not in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
-
-      expect(screen.getByTestId('new-highlight-module-container')).toBeOnTheScreen()
-    })
-
-    it('should display new version when feature flag is active and home id in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      const formattedThematicHighlightModuleWithRedesign = {
-        ...formattedThematicHighlightModule,
-        homeEntryId: 'a7y5X9eAxgL4RLMSCD3Wn',
-      }
-      render(
-        <ThematicHighlightModule index={0} {...formattedThematicHighlightModuleWithRedesign} />
-      )
-
-      expect(screen.getByTestId('new-highlight-module-container')).toBeOnTheScreen()
-    })
-  })
-
-  describe('When shouldApplyGraphicRedesign remote config is false', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldApplyGraphicRedesign: false,
-      })
-    })
-
-    it('should not display new version when feature flag is active and home id not in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
-
-      expect(screen.getByTestId('new-highlight-module-container')).toBeOnTheScreen()
-    })
-
-    it('should display new version when feature flag is active and home id in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      const formattedThematicHighlightModuleWithRedesign = {
-        ...formattedThematicHighlightModule,
-        homeEntryId: 'a7y5X9eAxgL4RLMSCD3Wn',
-      }
-      render(
-        <ThematicHighlightModule index={0} {...formattedThematicHighlightModuleWithRedesign} />
-      )
-
-      expect(screen.queryByTestId('new-highlight-module-container')).not.toBeOnTheScreen()
-    })
+    expect(screen.getByTestId('new-highlight-module-container')).toBeOnTheScreen()
   })
 
   it('should not display new version when feature flag is not active', async () => {

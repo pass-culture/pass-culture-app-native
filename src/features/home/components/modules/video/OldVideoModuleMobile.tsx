@@ -83,7 +83,6 @@ export const OldVideoModuleMobile: FunctionComponent<VideoModuleProps> = (props)
             offers={props.offers}
             hideModal={props.hideVideoModal}
             analyticsParams={props.analyticsParams}
-            homeEntryId={props.homeEntryId}
           />
         </React.Fragment>
       ) : null}

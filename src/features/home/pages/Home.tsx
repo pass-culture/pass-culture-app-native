@@ -17,7 +17,6 @@ import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/us
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -56,7 +55,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
+
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   useEffect(() => {
@@ -96,9 +95,7 @@ export const Home: FunctionComponent = () => {
 
   useEffect(() => {
     const editor = BatchUser.editor()
-    editor
-      .setAttribute('has_seen_graphique_redesign', shouldApplyGraphicRedesign)
-      .setAttribute('app_version', getAppVersion())
+    editor.setAttribute('app_version', getAppVersion())
 
     const allBookings = [...(bookings?.ongoing_bookings || []), ...(bookings?.ended_bookings || [])]
     const lastBooking = maxBy(allBookings, (booking) => booking?.dateCreated)
@@ -110,7 +107,7 @@ export const Home: FunctionComponent = () => {
     }
 
     editor.save()
-  }, [shouldApplyGraphicRedesign, bookings, user?.firstDepositActivationDate])
+  }, [bookings, user?.firstDepositActivationDate])
 
   return (
     <React.Fragment>
@@ -118,9 +115,7 @@ export const Home: FunctionComponent = () => {
         modules={modules}
         homeId={id}
         Header={<Header />}
-        HomeBanner={
-          <HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} homeId={id} />
-        }
+        HomeBanner={<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}
       />

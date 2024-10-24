@@ -45,7 +45,7 @@
 ./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
-./src/features/home/components/modules/video/VideoModuleMobile.tsx:71
+./src/features/home/components/modules/video/VideoModuleMobile.tsx:70
 ./src/features/identityCheck/api/useProfileInfo.ts:21
 ./src/features/identityCheck/pages/helpers/parseUrlParams.ts:8
 ./src/features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep.ts:41

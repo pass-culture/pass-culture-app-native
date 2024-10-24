@@ -4,8 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const trackingProps = {
@@ -17,7 +15,6 @@ const trackingProps = {
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
@@ -25,26 +22,17 @@ jest.mock('react-native-safe-area-context', () => ({
 }))
 
 describe('TrendsModule', () => {
-  describe('When shouldApplyGraphicRedesign remote config is true', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldApplyGraphicRedesign: true,
-      })
-    })
+  it('should redirect to thematic home when content type is venue map block', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    render(<TrendsModule {...trackingProps} {...formattedTrendsModule} />)
 
-    it('should redirect to thematic home when content type is venue map block', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-      render(<TrendsModule {...trackingProps} {...formattedTrendsModule} />)
+    fireEvent.click(screen.getByText('Accès carte des lieux'))
 
-      fireEvent.click(screen.getByText('Accès carte des lieux'))
-
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-          homeId: '7qcfqY5zFesLVO5fMb4cqm',
-          moduleId: '6dn0unOv4tRBNfOebVHOOy',
-          from: 'trend_block',
-        })
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+        homeId: '7qcfqY5zFesLVO5fMb4cqm',
+        moduleId: '6dn0unOv4tRBNfOebVHOOy',
+        from: 'trend_block',
       })
     })
   })

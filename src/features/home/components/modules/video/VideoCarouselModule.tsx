@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
@@ -18,7 +18,6 @@ import { VerticalVideoPlayer } from 'features/home/components/modules/video/Vert
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
@@ -46,10 +45,6 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const carouselDotId = uuidv4()
 
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
-  const hasGraphicRedesign = useHasGraphicRedesign({
-    isFeatureFlagActive: enableVideoCarousel,
-    homeId: props.homeEntryId,
-  })
 
   const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
@@ -57,7 +52,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
-  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems && hasGraphicRedesign
+  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems && enableVideoCarousel
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
