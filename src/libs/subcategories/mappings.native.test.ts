@@ -4,6 +4,7 @@ import {
   useCategoryHomeLabelMappingSnap,
   useGenreTypeMappingFixture,
   useSearchGroupLabelMappingSnap,
+  useSubcategoryOfferLabelMappingSnap,
 } from 'libs/subcategories/fixtures/mappings'
 import {
   useCategoryHomeLabelMapping,
@@ -11,6 +12,7 @@ import {
   useGenreTypeMapping,
   useSearchGroupLabelMapping,
   useSubcategoriesMapping,
+  useSubcategoryOfferLabelMapping,
 } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
@@ -29,6 +31,14 @@ describe('useSubcategoriesMapping', () => {
     const { result } = renderHook(useSubcategoriesMapping)
 
     expect(result.current).toEqual(subcategoriesMappingSnap)
+  })
+})
+
+describe('useSubcategoryOfferLabelMapping', () => {
+  it('should match sub category label mapping', () => {
+    const { result } = renderHook(useSubcategoryOfferLabelMapping)
+
+    expect(result.current).toEqual(useSubcategoryOfferLabelMappingSnap)
   })
 })
 

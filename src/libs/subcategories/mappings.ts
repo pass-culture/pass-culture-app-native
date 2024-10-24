@@ -8,6 +8,7 @@ import {
   SearchGroupLabelMapping,
   SubcategoriesMapping,
   SubcategoryLabelMapping,
+  SubcategoryOfferLabelMapping,
 } from 'libs/subcategories/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -46,6 +47,19 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
     const mapping = {} as SubcategoryLabelMapping
     subcategories.forEach((curr) => {
       mapping[curr.appLabel] = curr.id
+    })
+    return mapping
+  }, [subcategories])
+}
+
+export const useSubcategoryOfferLabelMapping = (): SubcategoryOfferLabelMapping => {
+  const { data } = useSubcategories()
+  const { subcategories = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as SubcategoryOfferLabelMapping
+    subcategories.forEach((curr) => {
+      mapping[curr.id] = curr.appLabel
     })
     return mapping
   }, [subcategories])

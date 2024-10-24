@@ -53,4 +53,19 @@ describe('ArtistPlaylist', () => {
     expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     expect(screen.queryByText('Manga Série "One piece" - Tome 5')).not.toBeOnTheScreen()
   })
+
+  it('should display artist offers playlist with subcategories', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          offer={mockOffer}
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
+    expect(screen.getByText('Manga Série "One piece" - Tome 5')).toBeOnTheScreen()
+  })
 })
