@@ -233,13 +233,13 @@ describe('<VenueOffers />', () => {
       mockFeatureFlag.mockReturnValue(true)
     })
 
-    it('should display movie screening calendar if at least one offer is a movie screening', () => {
+    it('should display movie screening calendar if at least one offer is a movie screening', async () => {
       renderVenueOffers({
         venue: venueDataTest,
         venueOffers: venueMoviesOffersMock,
       })
 
-      expect(screen.getByText('Les films à l’affiche')).toBeOnTheScreen()
+      expect(await screen.findByText('Les films à l’affiche')).toBeOnTheScreen()
     })
   })
 })

@@ -13,8 +13,10 @@ import { FlatList } from 'react-native-gesture-handler'
 import { Easing } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
+import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
+import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -74,7 +76,8 @@ export const MovieCalendarProvider: React.FC<{
   nbOfDays: number
   children: React.ReactNode
   containerStyle?: ViewStyle
-}> = ({ nbOfDays, containerStyle, children }) => {
+  offer?: OfferResponseV2
+}> = ({ nbOfDays, containerStyle, offer, children }) => {
   const { dates, selectedDate, setSelectedDate } = useNextDays(nbOfDays)
   const flatListRef = useRef<FlatList | null>(null)
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
@@ -117,22 +120,27 @@ export const MovieCalendarProvider: React.FC<{
 
   const value = useMemo(() => ({ selectedDate, goToDate }), [selectedDate, goToDate])
 
+  const { hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offer)
+
   return (
     <MovieCalendarContext.Provider value={value}>
-      <View style={containerStyle}>
-        <Anchor name="movie-calendar">
-          <MovieCalendar
-            dates={dates}
-            selectedDate={selectedDate}
-            onTabChange={setSelectedDate}
-            flatListRef={flatListRef}
-            flatListWidth={flatListWidth}
-            onFlatListLayout={onFlatListLayout}
-            itemWidth={itemWidth}
-            onItemLayout={onItemLayout}
-          />
-        </Anchor>
-      </View>
+      {hasStocksOnlyAfter15Days ? null : (
+        <View style={containerStyle}>
+          <Anchor name="movie-calendar">
+            <MovieCalendar
+              dates={dates}
+              selectedDate={selectedDate}
+              onTabChange={setSelectedDate}
+              flatListRef={flatListRef}
+              flatListWidth={flatListWidth}
+              onFlatListLayout={onFlatListLayout}
+              itemWidth={itemWidth}
+              onItemLayout={onItemLayout}
+            />
+          </Anchor>
+        </View>
+      )}
+
       <AnimatedCalendarView selectedDate={selectedDate}>{children}</AnimatedCalendarView>
     </MovieCalendarContext.Provider>
   )

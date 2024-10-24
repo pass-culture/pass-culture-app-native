@@ -1,11 +1,11 @@
 import React from 'react'
 
+import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { offerResponseBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import { OfferNewXPCineContent } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineContent'
 import * as useGetVenuesByDayModule from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
 import { render, screen } from 'tests/utils'
-
-import { OfferNewXPCineBlock } from './OfferNewXPCineBlock'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
 jest.mock('libs/firebase/analytics/analytics')
@@ -49,15 +49,29 @@ const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGe
   isLoading: true,
   increaseCount: jest.fn(),
   isEnd: false,
+  hasStocksOnlyAfter15Days: false,
 }
 
 const spyUseGetVenuesByDay = jest.spyOn(useGetVenuesByDayModule, 'useGetVenuesByDay')
 
-describe('OfferNewXPCineBlock', () => {
-  it('should display skeleton when data is loading', () => {
-    spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: true })
+const mockSelectedDate = new Date('2023-05-01')
+const mockGoToDate = jest.fn()
 
-    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />)
+describe('OfferNewXPCineContent', () => {
+  beforeEach(() => {
+    jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
+      selectedDate: mockSelectedDate,
+      goToDate: mockGoToDate,
+    })
+  })
+
+  it('should display skeleton when data is loading', () => {
+    spyUseGetVenuesByDay.mockReturnValueOnce({
+      ...useGetVenueByDayReturn,
+      isLoading: true,
+    })
+
+    render(<OfferNewXPCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
 
     expect(screen.getByTestId('cine-block-skeleton')).toBeOnTheScreen()
   })
@@ -65,7 +79,7 @@ describe('OfferNewXPCineBlock', () => {
   it('should not display skeleton when data is loaded', async () => {
     spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: false })
 
-    render(<OfferNewXPCineBlock title="Test Title" offer={mockOffer} />)
+    render(<OfferNewXPCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
 
     expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
   })

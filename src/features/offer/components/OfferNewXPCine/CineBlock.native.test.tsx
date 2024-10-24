@@ -1,11 +1,13 @@
 import React from 'react'
 
+import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import {
   offerResponseBuilder,
   venueBuilder,
 } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -14,6 +16,8 @@ import { CineBlock, CineBlockProps } from './CineBlock'
 jest.mock('features/offer/components/MoviesScreeningCalendar/MovieCalendarContext', () => ({
   useMovieCalendar: jest.fn(),
 }))
+
+jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/firebase/analytics/analytics')
@@ -26,6 +30,13 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+const mockUseSubcategoriesMapping = jest.fn()
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+
+const mockUseOfferCTAButton = useOfferCTAButton as jest.MockedFunction<typeof useOfferCTAButton>
+
 const mockOfferTitle = 'CINEMA DE LA RUE'
 const mockOfferVenue = venueBuilder().withName(mockOfferTitle).build()
 const mockOffer = offerResponseBuilder().withVenue(mockOfferVenue).build()
@@ -33,11 +44,41 @@ const mockOffer = offerResponseBuilder().withVenue(mockOfferVenue).build()
 const mockSelectedDate = new Date('2023-05-01')
 const mockGoToDate = jest.fn()
 
+const mockOnPressOfferCTA = jest.fn()
+
 describe('CineBlock', () => {
   beforeEach(() => {
     jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
+    })
+
+    mockUseSubcategoriesMapping.mockReturnValue({
+      [SubcategoryIdEnum.SEANCE_CINE]: {
+        isEvent: false,
+        categoryId: CategoryIdEnum.CINEMA,
+        nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+      },
+    })
+
+    mockUseOfferCTAButton.mockReturnValue({
+      ctaWordingAndAction: {
+        onPress: jest.fn(),
+        bottomBannerText: 'CTA',
+        externalNav: {
+          url: '',
+        },
+        isDisabled: false,
+        wording: 'CTA',
+        navigateTo: {
+          screen: 'Offer',
+        },
+      },
+      showOfferModal: jest.fn(),
+      openModalOnNavigation: false,
+      onPress: mockOnPressOfferCTA,
+      CTAOfferModal: null,
+      movieScreeningUserData: {},
     })
   })
 
@@ -70,7 +111,7 @@ describe('CineBlock', () => {
     expect(mockOnSeeVenuePress).toHaveBeenCalledTimes(1)
   })
 
-  it('should call goToDate when NextScreeningButton is pressed', async () => {
+  it('should call goToDate when NextScreeningButton is pressed and there is no screenings within the next 15 days', async () => {
     const nextDate = new Date('2023-05-02')
     renderCineBlock({ nextDate })
     const nextScreeningButton = await screen.findByText(NEXT_SCREENING_WORDING)
@@ -78,6 +119,20 @@ describe('CineBlock', () => {
     fireEvent.press(nextScreeningButton)
 
     expect(mockGoToDate).toHaveBeenCalledWith(nextDate)
+  })
+
+  it('should call onPressOfferCTA when NextScreeningButton is pressed and next screening is after 15 days', async () => {
+    const currentDate = new Date()
+
+    const nextDate = new Date(currentDate.setDate(currentDate.getDate() + 20))
+
+    renderCineBlock({ nextDate })
+
+    const nextScreeningButton = await screen.findByText(NEXT_SCREENING_WORDING)
+
+    fireEvent.press(nextScreeningButton)
+
+    expect(mockOnPressOfferCTA).toHaveBeenCalledWith()
   })
 })
 

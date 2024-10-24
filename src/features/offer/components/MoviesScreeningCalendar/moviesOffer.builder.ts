@@ -110,6 +110,29 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
+    withMoviesAfter15Days: () => {
+      movieOffers = movieOffers
+        .map(({ offer }) => {
+          const filteredStocks = offer.stocks.filter((stock) => {
+            if (!stock.beginningDatetime) {
+              return false
+            }
+
+            return isDateNotWithinNext15Days(new Date(), new Date(stock.beginningDatetime))
+          })
+          return {
+            nextDate: new Date(filteredStocks[0]?.beginningDatetime as string),
+            offer: {
+              ...offer,
+              stocks: filteredStocks,
+            },
+          }
+        })
+        .filter(({ offer }) => offer.stocks.length > 0)
+
+      return builderObject
+    },
+
     withoutMoviesAfter15Days: () => {
       movieOffers = movieOffers.filter(({ offer }) =>
         offer.stocks.some((stock) => {
@@ -160,7 +183,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
   return builderObject
 }
 
-const isDateNotWithinNext15Days = (referenceDate: Date, targetDate: Date) => {
+export const isDateNotWithinNext15Days = (referenceDate: Date, targetDate: Date) => {
   const datePlus15Days = addDays(startOfDay(referenceDate), 15)
 
   return isAfter(targetDate, datePlus15Days)
