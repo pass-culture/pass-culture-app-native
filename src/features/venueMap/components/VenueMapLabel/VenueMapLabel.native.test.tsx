@@ -24,7 +24,9 @@ describe('<VenueMapLabel />', () => {
       },
     })
 
-    expect(screen.getByTestId('label-container')).toHaveStyle({ transform: [{ translateX: -28 }] })
+    expect(screen.getByTestId('label-container')).toHaveStyle({
+      transform: expect.arrayContaining([{ translateX: -28 }, { translateY: 54 }]),
+    })
   })
 
   it('should correctly center the label based on its width', () => {
@@ -43,7 +45,7 @@ describe('<VenueMapLabel />', () => {
     const expectedTranslateX = 22 - 80 / 2
 
     expect(screen.getByTestId('label-container')).toHaveStyle({
-      transform: [{ translateX: expectedTranslateX }],
+      transform: expect.arrayContaining([{ translateX: expectedTranslateX }, { translateY: 54 }]),
     })
   })
 })
