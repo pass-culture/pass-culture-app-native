@@ -17,6 +17,25 @@ use `MyComponent.native.test.tsx` either if
 
 - the logic is shared between web and native
 - there is a file `MyComponent.native.tsx.`
+  -> in that case, you should use userEvent instead of fireEvent in case of pressing
+
+Example with userEvent :
+
+```tsx
+jest.useFakeTimers()
+it('should navigate to ended bookings page on press ended bookings CTA', async () => {
+  renderBookings()
+
+  const cta = await screen.findByText('Réservations terminées')
+
+  const user = userEvent.setup()
+  await user.press(cta)
+
+  expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
+})
+```
+
+If you don't use `jest.useFakeTimers()` you have this error : `It is recommended to use userEvent with fake timers\nSome events involve duration so your tests may take a long time to run.\nFor instance calling userEvent.longPress with real timers will take 500 ms.`
 
 use `MyComponent.web.test.tsx` either if
 
