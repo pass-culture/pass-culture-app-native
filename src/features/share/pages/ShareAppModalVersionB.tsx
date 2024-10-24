@@ -22,7 +22,7 @@ export const ShareAppModalVersionB: FC<Props> = ({ visible, close, share }) => {
   return (
     <AppModal
       visible={visible}
-      title="La culture, ça ce partage&nbsp;!"
+      title="La culture, ça se partage&nbsp;!"
       onModalHide={close}
       onRightIconPress={close}
       rightIcon={Close}
