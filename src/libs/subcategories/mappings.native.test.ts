@@ -1,3 +1,4 @@
+import { useSubcategories as mockUseSubcategories } from 'libs/subcategories/__mocks__/useSubcategories'
 import {
   categoryIdMappingSnap,
   subcategoriesMappingSnap,
@@ -16,13 +17,37 @@ import {
 } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: mockUseSubcategories,
+}))
 
 describe('useCategoryIdMapping', () => {
   it('should match category id mapping', () => {
     const { result } = renderHook(useCategoryIdMapping)
 
     expect(result.current).toEqual(categoryIdMappingSnap)
+  })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useCategoryIdMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no subcategories', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { subcategories: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useCategoryIdMapping)
+
+    expect(result.current).toEqual({})
   })
 })
 
@@ -32,6 +57,28 @@ describe('useSubcategoriesMapping', () => {
 
     expect(result.current).toEqual(subcategoriesMappingSnap)
   })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSubcategoriesMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no subcategories', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { subcategories: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSubcategoriesMapping)
+
+    expect(result.current).toEqual({})
+  })
 })
 
 describe('useSubcategoryOfferLabelMapping', () => {
@@ -39,6 +86,28 @@ describe('useSubcategoryOfferLabelMapping', () => {
     const { result } = renderHook(useSubcategoryOfferLabelMapping)
 
     expect(result.current).toEqual(useSubcategoryOfferLabelMappingSnap)
+  })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSubcategoryOfferLabelMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no subcategories', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { subcategories: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSubcategoryOfferLabelMapping)
+
+    expect(result.current).toEqual({})
   })
 })
 
@@ -48,6 +117,28 @@ describe('useSearchGroupLabelMapping', () => {
 
     expect(result.current).toEqual(useSearchGroupLabelMappingSnap)
   })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSearchGroupLabelMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no searchGroups', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { searchGroups: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useSearchGroupLabelMapping)
+
+    expect(result.current).toEqual({})
+  })
 })
 
 describe('useCategoryHomeLabelMapping', () => {
@@ -56,6 +147,28 @@ describe('useCategoryHomeLabelMapping', () => {
 
     expect(result.current).toEqual(useCategoryHomeLabelMappingSnap)
   })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useCategoryHomeLabelMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no subcategories', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { subcategories: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useCategoryHomeLabelMapping)
+
+    expect(result.current).toEqual({})
+  })
 })
 
 describe('useGenreTypeMapping', () => {
@@ -63,5 +176,27 @@ describe('useGenreTypeMapping', () => {
     const { result } = renderHook(useGenreTypeMapping)
 
     expect(result.current).toEqual(useGenreTypeMappingFixture)
+  })
+
+  it('should return empty object if no data', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useGenreTypeMapping)
+
+    expect(result.current).toEqual({})
+  })
+
+  it('should return empty object if no genreTypes', () => {
+    mockUseSubcategories.mockReturnValueOnce({
+      data: { genreTypes: undefined },
+      isLoading: false,
+    })
+
+    const { result } = renderHook(useGenreTypeMapping)
+
+    expect(result.current).toEqual({})
   })
 })
