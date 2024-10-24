@@ -32,7 +32,9 @@ export const ShareAppModalVersionA: FC<Props> = ({ visible, close, share }) => {
           <Icon />
         </ImageContainer>
         <StyledBody>
-          <TypoDS.Button>35 % des jeunes en France n’ont pas encore le pass Culture.</TypoDS.Button>
+          <TypoDS.Button>
+            35 % des jeunes en France n’ont pas encore le pass&nbsp;Culture.
+          </TypoDS.Button>
           {LINE_BREAK}
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
