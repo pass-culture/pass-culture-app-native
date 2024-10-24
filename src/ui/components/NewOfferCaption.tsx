@@ -36,7 +36,9 @@ export const NewOfferCaption: FC<Props> = ({
   )
 }
 
-const CategoryLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CategoryLabel = styled(TypoDS.BodyAccentXs).attrs({
+  numberOfLines: 1,
+})(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
