@@ -685,15 +685,19 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                   <div
                     class="css-view-175oi2r"
                   >
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                      data-testid="playlistTitle"
-                      dir="ltr"
-                      role="heading"
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
                     >
-                      Toutes les offres
-                    </h2>
+                      <h2
+                        aria-level="2"
+                        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw r-marginHorizontal-1hy1u7s"
+                        data-testid="playlistTitle"
+                        dir="ltr"
+                        role="heading"
+                      >
+                        Toutes les offres
+                      </h2>
+                    </div>
                   </div>
                   <div
                     class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
