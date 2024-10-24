@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -43,7 +41,7 @@ type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'> & {
   homeId: string
 }
 
-const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color, homeId }) => {
+const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color }) => {
   return (
     <ImageBackground
       source={color ? gradientImagesMapping[color] : null}
@@ -60,11 +58,6 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, col
           ) : null}
         </Background>
       </TextContainer>
-      {Platform.OS === 'ios' ? null : (
-        <SubscribeButtonContainer>
-          <SubscribeButtonWithModals homeId={homeId} />
-        </SubscribeButtonContainer>
-      )}
     </ImageBackground>
   )
 }
@@ -98,12 +91,6 @@ const TextContainer = styled.View({
   bottom: 0,
   left: 0,
   right: 0,
-})
-
-const SubscribeButtonContainer = styled.View({
-  position: 'absolute',
-  bottom: getSpacing(4),
-  right: getSpacing(6),
 })
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({

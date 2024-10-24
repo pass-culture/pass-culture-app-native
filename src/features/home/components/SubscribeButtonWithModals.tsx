@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 
 import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -93,7 +94,7 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
   if (!thematic || user?.status?.statusType === YoungStatusType.non_eligible) return null
 
   return (
-    <React.Fragment>
+    <View>
       <SubscribeButtonWithTooltip
         active={isSubscribeButtonActive}
         onPress={onSubscribeButtonPress}
@@ -122,6 +123,6 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
         dismissModal={hideLoggedOutModal}
         from="ThematicHome"
       />
-    </React.Fragment>
+    </View>
   )
 }

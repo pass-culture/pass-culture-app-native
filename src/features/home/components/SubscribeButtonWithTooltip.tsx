@@ -55,7 +55,7 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
       <SubscribeButton label={{ active: 'Déjà suivi', inactive: 'Suivre' }} {...props} />
       <StyledTooltip
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
-        pointerDirection="bottom"
+        pointerDirection="top"
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
         onCloseIconPress={onCloseIconPress}
@@ -66,8 +66,8 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
 
 const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   position: 'absolute',
-  top: -WIDGET_HEIGHT - getSpacing(0.5),
-  right: -getSpacing(1),
+  bottom: -WIDGET_HEIGHT,
+  right: 0,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))

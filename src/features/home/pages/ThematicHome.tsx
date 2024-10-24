@@ -18,14 +18,11 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
-import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
@@ -126,7 +123,6 @@ export const ThematicHome: FunctionComponent = () => {
     onResetPlace,
   } = useLocation()
   const isLocated = !!userLocation
-  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition({
@@ -164,8 +160,6 @@ export const ThematicHome: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
 
-  const shouldDisplaySubscribeButton = Platform.OS !== 'ios' && !enableAppV2Header
-
   return (
     <Container>
       <GenericHome
@@ -173,25 +167,22 @@ export const ThematicHome: FunctionComponent = () => {
         homeId={id}
         thematicHeader={thematicHeader}
         Header={
-          <React.Fragment>
-            <ThematicHeaderWithGeolocBanner
-              thematicHeader={thematicHeader}
-              isLocated={isLocated}
-              homeId={id}
-            />
-            {shouldDisplaySubscribeButton ? (
-              <SubscribeButtonContainer>
-                <SubscribeButtonWithModals homeId={params.homeId} />
-              </SubscribeButtonContainer>
-            ) : null}
-          </React.Fragment>
+          <ThematicHeaderWithGeolocBanner
+            thematicHeader={thematicHeader}
+            isLocated={isLocated}
+            homeId={id}
+          />
         }
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={params.videoModuleId}
       />
       {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
-      <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />
+      <ThematicHomeHeader
+        thematicHeader={thematicHeader}
+        headerTransition={headerTransition}
+        homeId={params.homeId}
+      />
       {/* Animated header is called only for iOS */}
       {Platform.OS === 'ios' ? (
         <React.Fragment>
@@ -212,11 +203,6 @@ export const ThematicHome: FunctionComponent = () => {
                 imageAnimatedHeight={imageAnimatedHeight}
                 homeId={id}
               />
-              {enableAppV2Header ? null : (
-                <SubscribeButtonContainer>
-                  <SubscribeButtonWithModals homeId={params.homeId} />
-                </SubscribeButtonContainer>
-              )}
             </AnimatedHeader>
           ) : null}
         </React.Fragment>
@@ -248,9 +234,3 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginBottom: theme.home.spaceBetweenModules,
 }))
-
-const SubscribeButtonContainer = styled.View({
-  position: 'absolute',
-  right: getSpacing(4),
-  top: getSpacing(40),
-})

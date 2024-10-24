@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -54,7 +53,6 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   imageAnimatedHeight,
   color,
   gradientTranslation,
-  homeId,
 }) => {
   return (
     <Container testID="animated-thematic-header-v2">
@@ -75,9 +73,8 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
-        style={{ transform: [{ translateY: gradientTranslation }] }}>
-        <SubscribeButtonWithModals homeId={homeId} />
-      </AnimatedBackgroundSubscribeButton>
+        style={{ transform: [{ translateY: gradientTranslation }] }}
+      />
     </Container>
   )
 }
