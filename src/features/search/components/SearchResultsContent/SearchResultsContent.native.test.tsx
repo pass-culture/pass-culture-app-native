@@ -841,11 +841,22 @@ describe('SearchResultsContent component', () => {
       mockSelectedLocationMode = LocationMode.AROUND_ME
     })
 
-    it('should display tabs', async () => {
+    it('should display tabs when FF map active', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
       renderSearchResultsContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
       expect(await screen.findByText('Liste')).toBeOnTheScreen()
+    })
+
+    it('should not display tabs when FF map deactivated', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      renderSearchResultsContent()
+
+      await screen.findByText('Prix')
+
+      expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
     })
 
     it('should log consult venue map when pressing map tab', async () => {
