@@ -1,26 +1,42 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn:
-    text: 'Informations personnelles'
-    index: 1
+- tapOn: 'Informations personnelles'
 
 - assertVisible: 'Prénom et nom'
 - assertVisible: 'Adresse e-mail'
 - assertVisible: 'Numéro de téléphone'
 - assertVisible: 'Mot de passe'
-- tapOn:
-    text: 'Supprimer mon compte'
-    index: 1
-
-- assertVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
-- tapOn:
-    text: "Je n’utilise plus l’application"
-    index: 1
-
-- assertVisible: "Veux-tu vraiment supprimer ton compte\_?"
 - tapOn: 'Supprimer mon compte'
 
-- assertVisible: 'Ton compte a été désactivé'
-- assertVisible: "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver\
-    \ ton compte en te connectant."
-- tapOn: 'Retourner à l’accueil'
+- assertVisible: "Pourquoi souhaites-tu supprimer ton compte\_?"
+
+- tapOn: "J’aimerais créer un compte avec une adresse e-mail différente"
+
+- assertVisible: "Modifie ton adresse e-mail sur ce compte"
+- tapOn: "J’ai compris"
+- assertVisible: "Modifier mon e-mail"
+- assertVisible: "Valider la demande de modification de mon e-mail"
+- tapOn: "Revenir en arrière"
+
+- tapOn: "Je n’utilise plus l’application"
+- runFlow: ./DeletionNotAllowed.yml
+
+- tapOn: "Je n’ai plus de crédit ou très peu de crédit restant"
+- runFlow: ./DeletionNotAllowed.yml
+
+- tapOn: "Je souhaite supprimer mes données personnelles"
+- runFlow: ./DeletionNotAllowed.yml
+
+- scrollUntilVisible:
+    element: "Autre"
+
+- tapOn: "Je pense que quelqu’un d’autre a accès à mon compte"
+- assertVisible: "Sécurise ton compte"
+- assertVisible: "Suspendre mon compte"
+- assertVisible: "Ne pas sécuriser mon compte"
+- tapOn: "Revenir en arrière"
+
+- tapOn: "Autre"
+- assertVisible: "Contacte le support"
+- assertVisible: "Contacter le support"
+- tapOn: "Retourner au profil"

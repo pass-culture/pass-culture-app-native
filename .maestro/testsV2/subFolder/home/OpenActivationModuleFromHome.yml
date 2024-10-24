@@ -1,22 +1,20 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Bienvenue\_!"
-- runFlow: # Si affichage de la Home legacy
+- runFlow: # Si affichage de la Home sans player
     when:
-      visible:
-        id: 'module-background'
+      visible: "Playlist hybride"
     commands:
       - assertVisible: 'Débloque ton crédit'
-      - tapOn:
-          id: 'module-background'
-- runFlow: # Si affichage de la Home avec player vidéo
+      - tapOn: "Débloque ton crédit"
+- runFlow: # Si affichage de la Home avec player
     when:
       visible:
         id: 'intersectionObserver'
     commands:
       - scroll
       - assertVisible: 'Débloque ton crédit'
-      - tapOn:
-          id: 'systemBanner'
+      - tapOn: "Débloque ton crédit"
 
+- assertVisible: "Inscription"
 - assertVisible: 'Crée-toi un compte'
