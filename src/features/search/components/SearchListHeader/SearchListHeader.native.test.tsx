@@ -1,4 +1,3 @@
-import { Route } from '@react-navigation/native'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -6,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
-import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -24,9 +22,7 @@ import { SearchListHeader } from './SearchListHeader'
 
 const searchId = uuidv4()
 
-const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
-
-const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
+const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
@@ -73,7 +69,7 @@ const kourou: SuggestedPlace = {
 
 const mockSearchState: SearchState = initialSearchState
 const mockUseSearch = jest.fn(() => ({
-  searchState: { ...initialSearchState, searchId },
+  searchState: initialSearchState,
 }))
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
@@ -106,7 +102,6 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
-    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
   })
 
   describe('When feature flags deactivated', () => {

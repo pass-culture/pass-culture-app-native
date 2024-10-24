@@ -1,7 +1,5 @@
-import { Route } from '@react-navigation/native'
 import React from 'react'
 
-import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
@@ -12,8 +10,6 @@ import { render } from 'tests/utils'
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
-
-const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
@@ -43,8 +39,6 @@ jest.mock('@shopify/flash-list', () => {
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 describe('<SearchList />', () => {
-  beforeEach(() => mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' }))
-
   const renderItem = jest.fn()
 
   const props: SearchListProps = {

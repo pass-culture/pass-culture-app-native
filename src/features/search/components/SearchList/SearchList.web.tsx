@@ -4,7 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import {
   footerPlaceholder,
@@ -19,7 +18,7 @@ import {
 } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
-import { SearchListProps, SearchView } from 'features/search/types'
+import { SearchListProps } from 'features/search/types'
 import { useLocation } from 'libs/location'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -110,9 +109,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const listRef = useRef<VariableSizeList<RowData>>(null)
     const { hasGeolocPosition } = useLocation()
     const { searchState } = useSearch()
-    const previousRoute = usePreviousRoute()
-    const hasVenuesPlaylist =
-      !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.N1
+    const hasVenuesPlaylist = !searchState.venue && !!hits.venues.length
 
     /**
      * This method will compute maximum height to set list height programatically.
