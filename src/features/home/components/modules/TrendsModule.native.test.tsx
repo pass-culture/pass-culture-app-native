@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 const trackingProps = {
@@ -52,6 +52,10 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('TrendsModule', () => {
   it('should not log analytics on render when FF is disabled', () => {
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
@@ -79,25 +83,21 @@ describe('TrendsModule', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Accès carte des lieux'))
+    await user.press(screen.getByText('Accès carte des lieux'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('VenueMap', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('VenueMap', undefined)
   })
 
   it('should reset selected venue in store when pressing venue map block content type and user location is not everywhere', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Accès carte des lieux'))
+    await user.press(screen.getByText('Accès carte des lieux'))
 
-    await waitFor(() => {
-      expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
-    })
+    expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
   })
 
-  it('should open venue map location modal when pressing venue map block content type and user location is everywhere', () => {
+  it('should open venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useModalAPISpy.mockReturnValueOnce({
       visible: false,
@@ -113,7 +113,7 @@ describe('TrendsModule', () => {
     })
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Accès carte des lieux'))
+    await user.press(screen.getByText('Accès carte des lieux'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -122,22 +122,20 @@ describe('TrendsModule', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Tendance 1'))
+    await user.press(screen.getByText('Tendance 1'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        homeId: '7qcfqY5zFesLVO5fMb4cqm',
-        moduleId: '16ZgVwnOXvVc0N8ko9Kius',
-        from: 'trend_block',
-      })
+    expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+      homeId: '7qcfqY5zFesLVO5fMb4cqm',
+      moduleId: '16ZgVwnOXvVc0N8ko9Kius',
+      from: 'trend_block',
     })
   })
 
-  it('should log analytics when pressing venue map block content type', () => {
+  it('should log analytics when pressing venue map block content type', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Accès carte des lieux'))
+    await user.press(screen.getByText('Accès carte des lieux'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'trend_block' })
   })
@@ -146,7 +144,7 @@ describe('TrendsModule', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Tendance 1'))
+    await user.press(screen.getByText('Tendance 1'))
 
     expect(analytics.logTrendsBlockClicked).toHaveBeenCalledWith({
       moduleListID: 'g6VpeYbOosfALeqR55Ah6',
@@ -160,7 +158,7 @@ describe('TrendsModule', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    fireEvent.press(screen.getByText('Accès carte des lieux'))
+    await user.press(screen.getByText('Accès carte des lieux'))
 
     expect(analytics.logTrendsBlockClicked).toHaveBeenCalledWith({
       moduleListID: 'g6VpeYbOosfALeqR55Ah6',

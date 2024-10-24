@@ -10,7 +10,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -34,6 +34,10 @@ jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('VideoMultiOfferTile', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -42,8 +46,7 @@ describe('VideoMultiOfferTile', () => {
   it('should redirect to an offer when pressing it', async () => {
     renderMultiOfferTile()
 
-    fireEvent.press(screen.getByText('La nuit des temps'))
-    await act(async () => {})
+    await user.press(screen.getByText('La nuit des temps'))
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: 102_280 })
   })
@@ -51,8 +54,7 @@ describe('VideoMultiOfferTile', () => {
   it('should log ConsultOffer on when pressing it', async () => {
     renderMultiOfferTile()
 
-    fireEvent.press(screen.getByText('La nuit des temps'))
-    await act(async () => {})
+    await user.press(screen.getByText('La nuit des temps'))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: +mockOffer.objectID,
