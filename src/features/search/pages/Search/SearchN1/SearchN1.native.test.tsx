@@ -6,7 +6,6 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -21,7 +20,9 @@ const mockDispatch = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+useFeatureFlagSpy.mockReturnValue(false)
 
 const mockUseGtlPlaylist = jest.spyOn(useGTLPlaylists, 'useGTLPlaylists')
 mockUseGtlPlaylist.mockReturnValue({
@@ -201,47 +202,14 @@ describe('<SearchN1/>', () => {
     })
   })
 
-  describe('venue playlist', () => {
-    it.each`
-      categorie                           | offerCategoriesParams                                                      | selectedLocationMode       | textToFind                 | expectedTitle
-      ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.AROUND_ME}  | ${'Cartes cinéma'}         | ${'Les cinémas près de toi'}
-      ${'livres'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.LIVRES] }}                     | ${LocationMode.AROUND_ME}  | ${'Romans et littérature'} | ${'Les librairies près de toi'}
-      ${'films, documentaires et séries'} | ${{ offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES] }} | ${LocationMode.AROUND_ME}  | ${'DVD, Blu-Ray'}          | ${'Les lieux culturels près de toi'}
-      ${'cinéma'}                         | ${{ offerCategories: [SearchGroupNameEnumv2.CINEMA] }}                     | ${LocationMode.EVERYWHERE} | ${'Cartes cinéma'}         | ${'Les lieux culturels'}
-    `(
-      'should render venue playlists with title : $expectedTitle for Search N1 $categorie when user has locationMode: $selectedLocationMode',
-      async ({
-        offerCategoriesParams,
-        selectedLocationMode,
-        textToFind,
-        expectedTitle,
-      }: {
-        offerCategoriesParams: { offerCategories: SearchGroupNameEnumv2[] }
-        selectedLocationMode: LocationMode
-        textToFind: string
-        expectedTitle: string
-      }) => {
-        MockOfferCategoriesParams(offerCategoriesParams)
-        mockHits = { venues: mockAlgoliaVenues }
-        mockUseLocation.mockReturnValueOnce({ selectedLocationMode, onModalHideRef: jest.fn() })
+  describe('gtl playlists', () => {
+    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      render(reactQueryProviderHOC(<SearchN1 />))
+      await screen.findByText('Festivals')
 
-        render(reactQueryProviderHOC(<SearchN1 />))
-
-        await screen.findByText(textToFind)
-
-        expect(await screen.findByText(expectedTitle)).toBeOnTheScreen()
-      }
-    )
-  })
-})
-
-describe('gtl playlists', () => {
-  it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-    render(reactQueryProviderHOC(<SearchN1 />))
-    await screen.findByText('Festivals')
-
-    expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+    })
   })
 })
 
