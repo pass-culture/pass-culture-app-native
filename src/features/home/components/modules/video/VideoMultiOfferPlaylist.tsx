@@ -15,25 +15,18 @@ type Props = {
   offers: Offer[]
   hideModal: () => void
   analyticsParams: OfferAnalyticsParams
-  homeEntryId: string
 }
 
 export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
   offers,
   hideModal,
   analyticsParams,
-  homeEntryId,
 }) => {
   const keyExtractor = (item: Offer) => item.objectID
 
   const renderItem: CustomListRenderItem<Offer> = ({ item }) => {
     return (
-      <VideoMultiOfferTile
-        offer={item}
-        hideModal={hideModal}
-        analyticsParams={analyticsParams}
-        homeEntryId={homeEntryId}
-      />
+      <VideoMultiOfferTile offer={item} hideModal={hideModal} analyticsParams={analyticsParams} />
     )
   }
 

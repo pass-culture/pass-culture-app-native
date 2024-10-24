@@ -21,7 +21,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
     categories: [],
   },
   sameAuthorPlaylist: '',
-  shouldApplyGraphicRedesign: false,
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
   displayInAppFeedback: false,

@@ -28,7 +28,6 @@ export const getRemoteConfigFromConfigValues = (
   ),
   reactionCategories: JSON.parse(getConfigValue(parameters.reactionCategories).asString()),
   sameAuthorPlaylist: getConfigValue(parameters.sameAuthorPlaylist).asString(),
-  shouldApplyGraphicRedesign: getConfigValue(parameters.shouldApplyGraphicRedesign).asBoolean(),
   shouldDisplayReassuranceMention: getConfigValue(
     parameters.shouldDisplayReassuranceMention
   ).asBoolean(),
