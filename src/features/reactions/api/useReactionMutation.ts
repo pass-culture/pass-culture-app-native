@@ -2,7 +2,8 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingsResponse, OfferResponseV2, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { addReactionsToBookings } from 'features/reactions/helpers/addReactionsToBookings'
+import { addReactionsToBookings } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
+import { updateLikesCounter } from 'features/reactions/helpers/updateLikesCounter/updateLikesCounter'
 import { QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -27,13 +28,13 @@ export const useReactionMutation = () => {
           (oldData) => {
             if (!oldData) return
 
-            const currentLikes = oldData.reactionsCount?.likes || 0
+            const currentLikes = oldData.reactionsCount.likes
             const isLike = reactionRequest.reactions[0]?.reactionType === ReactionTypeEnum.LIKE
 
             return {
               ...oldData,
               reactionsCount: {
-                likes: currentLikes + (isLike ? 1 : -1),
+                likes: updateLikesCounter(currentLikes, isLike),
               },
             }
           }
