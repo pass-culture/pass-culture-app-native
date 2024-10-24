@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "map_pin_cluster_blue_4.png",
+      "filename" : "map_pin_cluster_pink_4@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mapPin-61.png",
+      "filename" : "map_pin_cluster_pink_4@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mapPin-62.png",
+      "filename" : "map_pin_cluster_pink_4@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
