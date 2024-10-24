@@ -17,7 +17,8 @@ stateDiagram-v2
 
             has_to_complete_subscription --> has_subscription_pending
 
-            has_subscription_pending --> beneficiary : 🤑
+            has_subscription_pending --> beneficiary_15_17 : < 18
+            has_subscription_pending --> beneficiary_18 : > 18
         }
 
         state beneficiary {
@@ -34,10 +35,18 @@ stateDiagram-v2
                 [*] --> without_booking_18
                 without_booking_18 --> with_some_bookings_18
             }
+
+            beneficiary_15_17 --> ex_beneficiary_15_17 : birthday 18 🎂
+            beneficiary_18 --> ex_beneficiary : 24 month later ⌛
+
         }
 
-        beneficiary --> eligible : birthday 18 🎂
-        beneficiary --> ex_beneficiary : 24 month later ⌛
+        state ex_beneficiary {
+            ex_beneficiary_18: to_old
+            ex_beneficiary_15_17 : like_eligible
+            ex_beneficiary_15_17 --> eligible : from 17 to 18
+        }
+
 
         [*] --> non_eligible
         state non_eligible {
@@ -47,4 +56,5 @@ stateDiagram-v2
         }
 
         non_eligible --> eligible
+
     }
