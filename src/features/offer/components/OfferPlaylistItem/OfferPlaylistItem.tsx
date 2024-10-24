@@ -7,13 +7,17 @@ import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
+import {
+  CategoryHomeLabelMapping,
+  CategoryIdMapping,
+  SubcategoryOfferLabelMapping,
+} from 'libs/subcategories/types'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistItemProps = {
   offer: OfferResponseV2
   categoryMapping: CategoryIdMapping
-  labelMapping: CategoryHomeLabelMapping
+  labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   variant: OfferTileProps['variant']
   artistName?: string
   apiRecoParams?: RecommendationApiParams
