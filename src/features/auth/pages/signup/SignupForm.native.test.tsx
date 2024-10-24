@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -62,6 +63,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     resetSearch: jest.fn(),
   }),
 }))
+
+jest.useFakeTimers()
 
 mockdate.set(CURRENT_DATE)
 
@@ -505,7 +508,7 @@ describe('Signup Form', () => {
 
       await act(async () => {})
 
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await pressSSOButton()
 
       expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
         authorizationCode: 'mockServerAuthCode',
@@ -530,7 +533,7 @@ describe('Signup Form', () => {
 
       await act(async () => {})
 
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await pressSSOButton()
 
       expect(screen.getByText('Renseigne ton âge')).toBeOnTheScreen()
     })
@@ -542,7 +545,6 @@ describe('Signup Form', () => {
           data: signInFailureData,
         },
       })
-
       renderSignupForm()
 
       await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
@@ -563,7 +565,8 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       await act(async () => {})
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      await pressSSOButton()
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
@@ -621,9 +624,13 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       await act(async () => {})
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await pressSSOButton()
+
+      let datePicker: ReactTestInstance
+      await waitFor(async () => {
+        datePicker = await screen.findByTestId('date-picker-spinner-native')
+      })
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
@@ -784,7 +791,10 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      const datePicker = await screen.findByTestId('date-picker-spinner-native')
+      let datePicker: ReactTestInstance
+      await waitFor(async () => {
+        datePicker = await screen.findByTestId('date-picker-spinner-native')
+      })
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
@@ -917,3 +927,11 @@ describe('Signup Form', () => {
 const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
 
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))
+
+const pressSSOButton = async () => {
+  let SSOButton: ReactTestInstance
+  await waitFor(async () => {
+    SSOButton = await screen.findByTestId('S’inscrire avec Google')
+  })
+  await act(async () => fireEvent.press(SSOButton))
+}
