@@ -8,10 +8,7 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import { analytics } from 'libs/analytics'
-import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -28,7 +25,6 @@ const mockUseHighlightOffer = useHighlightOffer as jest.Mock
 jest.mock('features/auth/context/AuthContext')
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
@@ -194,73 +190,16 @@ describe('HighlightOfferModule', () => {
     })
   })
 
-  describe('When shouldApplyGraphicRedesign remote config is false', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldApplyGraphicRedesign: false,
-      })
+  it('should render new design when feature flag is enabled', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
     })
+    mockFeatureFlag.mockReturnValueOnce(true)
 
-    it('should render new design when feature flag is enabled and home id not in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseHighlightOffer.mockReturnValueOnce({
-        ...offerFixture,
-      })
-      mockFeatureFlag.mockReturnValueOnce(true)
+    renderHighlightModule()
 
-      renderHighlightModule()
-
-      await act(async () => {
-        expect(screen.queryByTestId('highlight-offer-image')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should render old design when feature flag is enabled and home id in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseHighlightOffer.mockReturnValueOnce({
-        ...offerFixture,
-      })
-      mockFeatureFlag.mockReturnValueOnce(true)
-
-      renderHighlightModule(REDESIGN_AB_TESTING_HOME_MODULES[0])
-
-      await act(async () => {
-        expect(screen.getByTestId('highlight-offer-image')).toBeOnTheScreen()
-      })
-    })
-  })
-
-  describe('When shouldApplyGraphicRedesign remote config is true', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldApplyGraphicRedesign: true,
-      })
-    })
-
-    it('should render new design when feature flag is enabled and home id not in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseHighlightOffer.mockReturnValueOnce({
-        ...offerFixture,
-      })
-      mockFeatureFlag.mockReturnValueOnce(true)
-
-      renderHighlightModule()
-
-      await act(async () => {
-        expect(screen.queryByTestId('highlight-offer-image')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should render new design when feature flag is enabled and home id in REDESIGN_AB_TESTING_HOME_MODULES', async () => {
-      mockUseHighlightOffer.mockReturnValueOnce({
-        ...offerFixture,
-      })
-      mockFeatureFlag.mockReturnValueOnce(true)
-
-      renderHighlightModule(REDESIGN_AB_TESTING_HOME_MODULES[0])
-
-      await act(async () => {
-        expect(screen.queryByTestId('highlight-offer-image')).not.toBeOnTheScreen()
-      })
+    await act(async () => {
+      expect(screen.queryByTestId('highlight-offer-image')).not.toBeOnTheScreen()
     })
   })
 

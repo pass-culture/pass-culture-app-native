@@ -41,7 +41,6 @@ exports[`Home page should render correctly 1`] = `
             <Styled(View)>
               <HomeBanner
                 hasGeolocPosition={true}
-                homeId="fakeEntryId"
                 isLoggedIn={false}
               />
             </Styled(View)>

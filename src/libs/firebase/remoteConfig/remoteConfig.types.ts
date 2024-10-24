@@ -16,7 +16,6 @@ export type CustomRemoteConfig = {
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   reactionCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
-  shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean
   displayInAppFeedback: boolean

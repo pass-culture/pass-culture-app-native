@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -17,28 +16,22 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
   hideModal: () => void
   analyticsParams: OfferAnalyticsParams
-  homeEntryId: string
 }
 
 export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   offer,
   hideModal,
   analyticsParams,
-  homeEntryId,
 }) => {
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
-  const hasGraphicRedesign = useHasGraphicRedesign({
-    isFeatureFlagActive: enableMultiVideoModule,
-    homeId: homeEntryId,
-  })
   const labelMapping = useCategoryHomeLabelMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
@@ -75,7 +68,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
           })
         }}
         testId="multi-offer-tile">
-        {hasGraphicRedesign ? (
+        {enableMultiVideoModule ? (
           <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={offer.offer.thumbUrl}

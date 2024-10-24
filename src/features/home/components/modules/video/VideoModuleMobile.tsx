@@ -58,7 +58,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 offers={props.offers}
                 hideModal={props.hideVideoModal}
                 analyticsParams={props.analyticsParams}
-                homeEntryId={props.homeEntryId}
               />
             </VideoOfferContainer>
           ) : (

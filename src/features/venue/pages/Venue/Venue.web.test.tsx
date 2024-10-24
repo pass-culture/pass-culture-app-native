@@ -77,9 +77,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.setTimeout(15_000)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldApplyGraphicRedesign: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/RootNavigator/routes')
 jest.mock('features/navigation/TabBar/routes')
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')

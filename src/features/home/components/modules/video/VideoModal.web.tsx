@@ -114,7 +114,6 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
               color={props.color}
               hideModal={props.hideModal}
               analyticsParams={analyticsParams}
-              homeEntryId={props.homeEntryId}
             />
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>

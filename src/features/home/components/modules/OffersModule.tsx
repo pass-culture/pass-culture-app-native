@@ -131,10 +131,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [user?.isBeneficiary, labelMapping, mapping]
   )
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(
-    displayParameters.layout,
-    homeEntryId
-  )
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {

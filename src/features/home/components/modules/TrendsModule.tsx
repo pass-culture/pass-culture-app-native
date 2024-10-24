@@ -9,7 +9,6 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
@@ -27,10 +26,7 @@ const isWeb = Platform.OS === 'web'
 
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
   const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
-  const hasGraphicRedesign = useHasGraphicRedesign({
-    isFeatureFlagActive: enableTrendsModule,
-    homeId: homeEntryId,
-  })
+
   const { width } = useWindowDimensions()
   const { selectedLocationMode } = useShouldDisplayVenueMap()
   const {
@@ -44,7 +40,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
 
   useEffect(() => {
-    if (hasGraphicRedesign) {
+    if (enableTrendsModule) {
       analytics.logModuleDisplayedOnHomepage({
         moduleId,
         moduleType: ContentTypes.TRENDS,
@@ -53,7 +49,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasGraphicRedesign])
+  }, [enableTrendsModule])
 
   const handleLogTrendsBlockClicked = (props: TrendBlock) =>
     analytics.logTrendsBlockClicked({
@@ -88,7 +84,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     }
   }
 
-  if (!hasGraphicRedesign) return null
+  if (!enableTrendsModule) return null
 
   return (
     <React.Fragment>
