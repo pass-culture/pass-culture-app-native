@@ -1,8 +1,6 @@
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
 
-import { BookingsResponse } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
+import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,16 +8,13 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EndedBookings } from './EndedBookings'
 
-jest.mock('libs/subcategories/useCategoryId')
-
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-jest.mock('features/navigation/RootNavigator/routes')
-
-jest.mock('react-native/Libraries/Alert/Alert', () => ({
-  alert: jest.fn(),
+const mockBookings = { ...bookingsSnap }
+jest.mock('features/bookings/api/useBookings', () => ({
+  useBookings: jest.fn(() => ({ data: mockBookings })),
 }))
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -27,11 +22,28 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+const mockUseSubcategoriesMapping = jest.fn()
+mockUseSubcategoriesMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CINEMA,
+    nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  },
+  [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CONFERENCE,
+    nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
+  },
+})
+
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
-      const { container } = renderEndedBookings(bookingsSnap)
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(reactQueryProviderHOC(<EndedBookings />))
 
       const results = await checkAccessibilityFor(container)
 
@@ -39,11 +51,3 @@ describe('EndedBookings', () => {
     })
   })
 })
-
-const renderEndedBookings = (bookings: BookingsResponse) => {
-  jest
-    .spyOn(bookingsAPI, 'useBookings')
-    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
-
-  return render(reactQueryProviderHOC(<EndedBookings />))
-}

@@ -23,8 +23,7 @@ jest.mock('@batch.com/react-native-plugin', () =>
 
 describe('<AccessibilityActionPlan/>', () => {
   describe('Accessibility', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = render(<AccessibilityActionPlan />)
 
       const results = await checkAccessibilityFor(container)
