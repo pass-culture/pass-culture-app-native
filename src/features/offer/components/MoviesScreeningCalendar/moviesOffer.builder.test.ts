@@ -128,9 +128,11 @@ describe('moviesOfferBuilder', () => {
   describe('withoutMoviesAfter15Days', () => {
     it('should filter out movies after 15 days', () => {
       const offer1 = offerResponseBuilder()
+        .withId(1)
         .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 10).toString()).build()])
         .build()
       const offer2 = offerResponseBuilder()
+        .withId(2)
         .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 20).toString()).build()])
         .build()
 
@@ -140,6 +142,26 @@ describe('moviesOfferBuilder', () => {
 
       expect(result).toHaveLength(1)
       expect(result[0]?.id).toBe(offer1.id)
+    })
+  })
+
+  describe('withMoviesAfter15Days', () => {
+    it('should only return movies after 15 days', () => {
+      const offer1 = offerResponseBuilder()
+        .withId(1)
+        .withStocks([stockBuilder().withBeginningDatetime(now.toString()).build()])
+        .build()
+      const offer2 = offerResponseBuilder()
+        .withId(2)
+        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 20).toString()).build()])
+        .build()
+
+      const result = moviesOfferBuilder([offer1, offer2])
+        .withMoviesAfter15Days()
+        .buildOfferResponse()
+
+      expect(result).toHaveLength(1)
+      expect(result[0]?.id).toBe(offer2.id)
     })
   })
 

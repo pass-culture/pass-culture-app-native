@@ -4,9 +4,12 @@ import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { isDateNotWithinNext15Days } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Spacer } from 'ui/theme'
 
 export type CineBlockProps = {
@@ -14,6 +17,7 @@ export type CineBlockProps = {
   onSeeVenuePress?: VoidFunction
   nextDate?: Date
 }
+
 export const CineBlock: FunctionComponent<CineBlockProps> = ({
   offer,
   onSeeVenuePress,
@@ -21,16 +25,31 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
 
+  const subcategoriesMapping = useSubcategoriesMapping()
+
+  const { onPress: onPressOfferCTA, CTAOfferModal } = useOfferCTAButton(
+    offer,
+    subcategoriesMapping[offer.subcategoryId]
+  )
+
   return (
     <CineBlockContainer>
       <Spacer.Column numberOfSpaces={6} />
       <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
       <Spacer.Column numberOfSpaces={4} />
       {nextDate ? (
-        <NextScreeningButton date={nextDate} onPress={() => goToDate(nextDate)} />
+        <NextScreeningButton
+          date={nextDate}
+          onPress={
+            isDateNotWithinNext15Days(new Date(), nextDate)
+              ? () => onPressOfferCTA()
+              : () => goToDate(nextDate)
+          }
+        />
       ) : (
         <OfferEventCardList offer={offer} selectedDate={selectedDate} />
       )}
+      {CTAOfferModal}
     </CineBlockContainer>
   )
 }
