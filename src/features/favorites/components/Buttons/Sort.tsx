@@ -1,19 +1,15 @@
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Sort: FunctionComponent = () => {
-  const theme = useTheme()
   return (
     <Container navigateTo={{ screen: 'FavoritesSorts' }} accessibilityLabel="Trier">
-      <StyledLinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={[theme.colors.primary, theme.colors.secondary]}>
+      <StyledLinearGradient>
         <SortIcon />
         <Spacer.Row numberOfSpaces={1} />
         <StyledButtonText>Trier</StyledButtonText>
@@ -33,7 +29,11 @@ const Container = styled(InternalTouchableLink).attrs(({ theme }) => ({
   overflow: 'hidden',
 })
 
-const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 0 },
+  colors: [theme.colors.primary, theme.colors.secondary],
+}))(({ theme }) => ({
   backgroundColor: theme.colors.primary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',

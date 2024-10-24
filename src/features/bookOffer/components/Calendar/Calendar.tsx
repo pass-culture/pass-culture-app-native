@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import React from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { Theme } from 'react-native-calendars/src/types'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
@@ -39,23 +40,29 @@ const renderArrow = (direction: string) => {
   return null
 }
 
-const calendarHeaderStyle = (theme: DefaultTheme) =>
-  ({
-    textSectionTitleColor: theme.colors.greyDark,
-    'stylesheet.calendar.header': {
-      header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 6,
-        alignItems: 'center',
-      },
-      week: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 7,
-      },
+type CustomTheme = Theme & {
+  'stylesheet.calendar.header': {
+    header: StyleProp<ViewStyle>
+    week: StyleProp<ViewStyle>
+  }
+}
+
+const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
+  textSectionTitleColor: theme.colors.greyDark,
+  'stylesheet.calendar.header': {
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 6,
+      alignItems: 'center',
     },
-  }) as Theme
+    week: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginTop: 7,
+    },
+  },
+})
 
 interface Props {
   stocks: OfferStockResponse[]
