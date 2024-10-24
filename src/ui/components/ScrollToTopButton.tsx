@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -15,6 +15,7 @@ export const ScrollToTopButton = ({
   transition: Animated.AnimatedInterpolation<string | number>
   onPress: () => void
 }) => {
+  const theme = useTheme()
   const [disabled, setDisabled] = useState(true)
   transition.addListener((opacity: { value: number }) => {
     setDisabled(opacity.value === 0)
@@ -25,7 +26,7 @@ export const ScrollToTopButton = ({
         <StyledLinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={['#bf275f', '#5a0d80']}>
+          colors={[theme.colors.primary, theme.colors.secondary]}>
           <ScrollToTopIcon />
         </StyledLinearGradient>
       </Container>

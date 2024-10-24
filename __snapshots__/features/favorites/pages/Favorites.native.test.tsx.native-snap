@@ -134,8 +134,8 @@ exports[`<Favorites/> should render correctly 1`] = `
       <BVLinearGradient
         colors={
           [
-            4290717535,
-            4284091776,
+            4293591125,
+            4281467030,
           ]
         }
         endPoint={

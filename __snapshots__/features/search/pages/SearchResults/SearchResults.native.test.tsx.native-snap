@@ -396,6 +396,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   [
                     {
                       "alignItems": "center",
+                      "borderColor": "#161617",
                       "borderRadius": 16,
                       "borderWidth": 1,
                       "height": 32,

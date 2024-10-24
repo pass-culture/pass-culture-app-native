@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import { Animated, Easing, Platform } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
@@ -18,18 +19,18 @@ const strokeBorderInterpolation = () => ({
 
 const iconBorderInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [theme.colors.greyLight, 'rgba(255, 255, 255, 0)'],
+  outputRange: [theme.colors.greyLight, colorAlpha(theme.colors.greyLight, 0)],
   easing: Easing.bezier(0, 1, 0, 1),
 })
 
-const headerBackgroundInterpolation = () => ({
+const headerBackgroundInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.8)'],
+  outputRange: [colorAlpha(theme.colors.white, 0), colorAlpha(theme.colors.white, 0.8)],
 })
 
-const headerBackgroundAndroidInterpolation = () => ({
+const headerBackgroundAndroidInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
+  outputRange: [colorAlpha(theme.colors.white, 0), theme.colors.white],
 })
 
 export const getAnimationState = (
@@ -45,8 +46,8 @@ export const getAnimationState = (
     // There is an issue with the blur on Android: we chose to render a white background for the header
     backgroundColor:
       Platform.OS === 'android'
-        ? headerTransition.interpolate(headerBackgroundAndroidInterpolation())
-        : headerTransition.interpolate(headerBackgroundInterpolation()),
+        ? headerTransition.interpolate(headerBackgroundAndroidInterpolation(theme))
+        : headerTransition.interpolate(headerBackgroundInterpolation(theme)),
     borderBottomWidth: headerTransition.interpolate(strokeBorderInterpolation()),
     backdropFilter: headerTransition.interpolate(blurHeaderWebInterpolation()),
     // This is necessary to make the blur work on Safari (usually added by styled-components)

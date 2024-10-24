@@ -42,14 +42,15 @@ const StyledTouchableLink = styled(InternalTouchableLink)({
   height: getSpacing(8),
 })
 
-const RoundContainer = styled.View({
+const RoundContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   width: getSpacing(8),
   height: getSpacing(8),
   borderRadius: getSpacing(4),
   borderWidth: 1,
-})
+  borderColor: theme.colors.black,
+}))
 
 const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
