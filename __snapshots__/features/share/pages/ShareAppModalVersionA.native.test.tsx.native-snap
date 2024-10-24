@@ -199,7 +199,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            La culture, ça ce partage !
+            La culture, ça se partage !
           </Text>
         </View>
         <View
@@ -355,7 +355,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
                     ]
                   }
                 >
-                  35 % des jeunes en France n’ont pas encore le pass Culture.
+                  35 % des jeunes en France n’ont pas encore le pass Culture.
                 </Text>
                 
 
