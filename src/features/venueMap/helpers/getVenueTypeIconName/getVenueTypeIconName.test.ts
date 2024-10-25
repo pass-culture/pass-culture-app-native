@@ -17,20 +17,20 @@ describe('getVenueTypeIconName', () => {
   it('should display selected default map pin when venue type code is null', () => {
     const result = getVenueTypeIconName(true, null)
 
-    expect(result).toEqual('map_pin_selected')
+    expect(result).toEqual('map_pin_center_selected')
   })
 
   it('should display default map pin when venue type code is null', () => {
     const result = getVenueTypeIconName(false, null)
 
-    expect(result).toEqual('map_pin')
+    expect(result).toEqual('map_pin_center')
   })
 
   it('should display default map pin when venue type code is not known', () => {
     // @ts-expect-error to test an unknown venue type
     const result = getVenueTypeIconName(false, 'NEW_VENUE_TYPE')
 
-    expect(result).toEqual('map_pin')
+    expect(result).toEqual('map_pin_center')
   })
 
   it('should display center icon for other venue type code', () => {
