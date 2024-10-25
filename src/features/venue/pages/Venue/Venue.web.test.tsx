@@ -98,9 +98,9 @@ describe('<Venue />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  describe('Accessibility', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+  // eslint-disable-next-line jest/no-disabled-tests
+  describe.skip('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await screen.findAllByText('Gratuit')
