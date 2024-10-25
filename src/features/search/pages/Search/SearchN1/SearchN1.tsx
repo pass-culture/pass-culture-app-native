@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -20,6 +21,8 @@ import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Spacer } from 'ui/theme'
+
+const isWeb = Platform.OS === 'web'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
@@ -43,7 +46,7 @@ export const SearchN1: React.FC = () => {
     hits: { venues },
   } = useSearchResults()
 
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -55,6 +58,18 @@ export const SearchN1: React.FC = () => {
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
+
+  useEffect(() => {
+    if (isWeb && params?.offerCategories) {
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerCategories: params.offerCategories,
+        },
+      })
+    }
+  }, [dispatch, params?.offerCategories, searchState])
 
   const getVenuePlaylistTitle = () => {
     if (isLocated) {
