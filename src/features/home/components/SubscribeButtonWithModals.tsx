@@ -12,6 +12,7 @@ import { NotificationsLoggedOutModal } from 'features/subscription/Notifications
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
+import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -19,9 +20,10 @@ import { SubscribeButtonWithTooltip } from './SubscribeButtonWithTooltip'
 
 interface Props {
   homeId: string
+  size?: ToggleButtonSize
 }
 
-export const SubscribeButtonWithModals = ({ homeId }: Props) => {
+export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
   const { showSuccessSnackBar } = useSnackBarContext()
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(homeId)
@@ -98,6 +100,7 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
       <SubscribeButtonWithTooltip
         active={isSubscribeButtonActive}
         onPress={onSubscribeButtonPress}
+        size={size}
       />
 
       <NotificationsSettingsModal

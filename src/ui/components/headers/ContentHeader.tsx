@@ -11,6 +11,7 @@ import { Spacer, Typo } from 'ui/theme'
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
   headerTransition: Animated.AnimatedInterpolation<string | number>
+  customHeaderTitleTransition?: Animated.AnimatedInterpolation<string | number>
   onBackPress: () => void
   titleTestID?: string
   RightElement?: React.ReactNode
@@ -22,6 +23,7 @@ export const ContentHeader = ({
   headerTransition,
   onBackPress,
   titleTestID,
+  customHeaderTitleTransition,
   RightElement,
   LeftElement,
 }: AnimatedBlurHeaderFullProps) => {
@@ -63,7 +65,7 @@ export const ContentHeader = ({
         <Spacer.Flex />
         <Title
           testID={titleTestID}
-          style={{ opacity: headerTransition }}
+          style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
           accessibilityHidden={ariaHiddenTitle}>
           <Body>{headerTitle}</Body>
         </Title>
