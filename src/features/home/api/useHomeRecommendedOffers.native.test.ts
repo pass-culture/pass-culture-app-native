@@ -1,13 +1,15 @@
 import mockdate from 'mockdate'
 import { UseQueryResult } from 'react-query'
 
-import { PlaylistResponse } from 'api/gen'
+import { PlaylistResponse, SubcategoryIdEnumv2 } from 'api/gen'
 import * as algoliaRecommendedOffersAPI from 'features/home/api/useAlgoliaRecommendedOffers'
 import {
   getRecommendationParameters,
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
+import { useSubcategoryIdsFromSearchGroup } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
@@ -56,14 +58,14 @@ describe('getRecommendationParameters', () => {
   } = renderHook(useSubcategoryLabelMapping)
 
   it('should return empty parameters when no parameters are provided', () => {
-    const result = getRecommendationParameters(undefined, subcategoryLabelMapping)
+    const result = getRecommendationParameters(undefined, [], [])
 
     expect(result).toEqual({})
   })
 
   it('should return parameters with mapped categories when parameters are provided', () => {
     const parameters: RecommendedOffersModule['recommendationParameters'] = {
-      categories: ['Arts & loisirs créatifs', 'Cartes jeunes'],
+      categories: ['Cinéma'],
       isEvent: true,
       isDuo: true,
       priceMax: 10,
@@ -75,19 +77,34 @@ describe('getRecommendationParameters', () => {
       musicTypes: ['Pop'],
       showTypes: ['Danse'],
     }
+
+    const categories = (parameters?.categories ?? []).map(getCategoriesFacetFilters)
+    const subcategories = (parameters?.subcategories ?? [])
+      .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
+      .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
+    const subcategoryIds = useSubcategoryIdsFromSearchGroup(categories)
     const recommendationParameters = getRecommendationParameters(
       parameters,
-      subcategoryLabelMapping
+      subcategories,
+      subcategoryIds
     )
 
     expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'CARTES_JEUNES'],
       endDate: '2022-05-08T00:00+00:00',
       startDate: '2022-09-08T00:00+00:00',
       priceMax: 10,
       isEvent: true,
       isDuo: true,
-      subcategories: ['ACHAT_INSTRUMENT'],
+      subcategories: [
+        'ACHAT_INSTRUMENT',
+        'CARTE_CINE_ILLIMITE',
+        'CARTE_CINE_MULTISEANCES',
+        'CINE_PLEIN_AIR',
+        'CINE_VENTE_DISTANCE',
+        'EVENEMENT_CINE',
+        'FESTIVAL_CINE',
+        'SEANCE_CINE',
+      ],
       offerTypeList: [
         { key: 'BOOK', value: 'Carrière/Concours' },
         { key: 'BOOK', value: 'Scolaire & Parascolaire' },
@@ -102,18 +119,32 @@ describe('getRecommendationParameters', () => {
 
   it('should return parameters with isRecoShuffled when provided', () => {
     const parameters: RecommendedOffersParameters = {
+      categories: ['Cinéma'],
       isRecoShuffled: true,
     }
+    const categories = (parameters?.categories ?? []).map(getCategoriesFacetFilters)
+    const subcategories = (parameters?.subcategories ?? [])
+      .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
+      .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
+    const subcategoryIds = useSubcategoryIdsFromSearchGroup(categories)
     const recommendationParameters = getRecommendationParameters(
       parameters,
-      subcategoryLabelMapping
+      subcategories,
+      subcategoryIds
     )
 
     expect(recommendationParameters).toEqual({
-      categories: [],
-      subcategories: [],
       isRecoShuffled: true,
       offerTypeList: [],
+      subcategories: [
+        'CARTE_CINE_ILLIMITE',
+        'CARTE_CINE_MULTISEANCES',
+        'CINE_PLEIN_AIR',
+        'CINE_VENTE_DISTANCE',
+        'EVENEMENT_CINE',
+        'FESTIVAL_CINE',
+        'SEANCE_CINE',
+      ],
     })
   })
 })

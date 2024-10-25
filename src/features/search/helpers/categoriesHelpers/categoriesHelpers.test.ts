@@ -1,4 +1,9 @@
-import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  GenreType,
+  NativeCategoryIdEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { CategoriesModalView } from 'features/search/enums'
 import {
@@ -12,6 +17,7 @@ import {
   isNativeCategoryOfCategory,
   isOnlyOnline,
   searchGroupOrNativeCategorySortComparator,
+  useSubcategoryIdsFromSearchGroup,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
@@ -20,6 +26,9 @@ import {
   searchGroupsDataTest,
   subcategoriesDataTest,
 } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { renderHook } from 'tests/utils'
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
@@ -37,6 +46,14 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+
+let mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
+
 const mockAvailableCategoriesList: SearchGroupNameEnumv2[] = [
   SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
   SearchGroupNameEnumv2.CINEMA,
@@ -518,6 +535,65 @@ describe('categoriesHelpers', () => {
           },
         ],
       })
+    })
+  })
+
+  describe('useSubcategoryIdsFromSearchGroup', () => {
+    it('should return subcategory ids of a given searchGroup', () => {
+      const searchGroups = [SearchGroupNameEnumv2.LIVRES]
+
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      expect(result.current).toEqual([
+        'ABO_BIBLIOTHEQUE',
+        'ABO_LIVRE_NUMERIQUE',
+        'ABO_MEDIATHEQUE',
+        'FESTIVAL_LIVRE',
+        'LIVRE_AUDIO_PHYSIQUE',
+        'LIVRE_NUMERIQUE',
+        'LIVRE_PAPIER',
+        'TELECHARGEMENT_LIVRE_AUDIO',
+      ])
+    })
+
+    it('should return `FILMS_SERIES_CINEMA` subcategoryIds when `CINEMA` searchGroup is provided', () => {
+      const searchGroups = [SearchGroupNameEnumv2.CINEMA]
+
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      expect(result.current).toEqual([
+        'CARTE_CINE_ILLIMITE',
+        'CARTE_CINE_MULTISEANCES',
+        'CINE_PLEIN_AIR',
+        'CINE_VENTE_DISTANCE',
+        'EVENEMENT_CINE',
+        'FESTIVAL_CINE',
+        'SEANCE_CINE',
+      ])
+    })
+
+    it('should return empty array when no searchgroup is provided', () => {
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup([]), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      expect(result.current).toEqual([])
+    })
+
+    it('should return empty array when useSubcategories returns no data', () => {
+      const searchGroups = [SearchGroupNameEnumv2.CINEMA]
+
+      mockData = undefined
+
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      expect(result.current).toEqual([])
     })
   })
 })
