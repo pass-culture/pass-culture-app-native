@@ -17,7 +17,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as SubcategoriesMapping
+    const mapping = <SubcategoriesMapping>{}
     subcategories.forEach((curr) => {
       const { id, ...subcategory } = curr
       mapping[id] = subcategory
@@ -31,7 +31,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as CategoryIdMapping
+    const mapping = <CategoryIdMapping>{}
     subcategories.forEach((curr) => {
       mapping[curr.id] = curr.categoryId
     })
@@ -44,7 +44,7 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as SubcategoryLabelMapping
+    const mapping = <SubcategoryLabelMapping>{}
     subcategories.forEach((curr) => {
       mapping[curr.appLabel] = curr.id
     })
@@ -57,7 +57,7 @@ export const useSubcategoryOfferLabelMapping = (): SubcategoryOfferLabelMapping 
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as SubcategoryOfferLabelMapping
+    const mapping = <SubcategoryOfferLabelMapping>{}
     subcategories.forEach((curr) => {
       mapping[curr.id] = curr.appLabel
     })
@@ -70,7 +70,7 @@ const useHomeLabelMapping = (): HomeLabelMapping => {
   const { homepageLabels = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as HomeLabelMapping
+    const mapping = <HomeLabelMapping>{}
     homepageLabels.forEach((curr) => {
       mapping[curr.name] = curr.value || null
     })
@@ -84,7 +84,7 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as CategoryHomeLabelMapping
+    const mapping = <CategoryHomeLabelMapping>{}
     subcategories.forEach((curr) => {
       mapping[curr.id] = homeLabelMapping[curr.homepageLabelName]
     })
@@ -97,7 +97,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
   const { searchGroups = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as SearchGroupLabelMapping
+    const mapping = <SearchGroupLabelMapping>{}
     searchGroups.forEach((curr) => {
       mapping[curr.name] = curr.value || 'Toutes les catégories'
     })
@@ -110,7 +110,7 @@ export const useGenreTypeMapping = (): GenreTypeMapping => {
   const { genreTypes = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as GenreTypeMapping
+    const mapping = <GenreTypeMapping>{}
     genreTypes.forEach((genreType) => (mapping[genreType.name] = genreType.values))
     return mapping
   }, [genreTypes])
