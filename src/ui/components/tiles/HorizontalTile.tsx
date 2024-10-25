@@ -1,11 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react'
+import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { Tag } from 'ui/components/Tag/Tag'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 export type HorizontalTileProps = PropsWithChildren<{
@@ -27,19 +29,12 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
   children,
 }) => {
   return (
-    <React.Fragment>
+    <Container>
       <OfferImage imageUrl={imageUrl} categoryId={categoryId} />
-      <Column>
-        <Row>
+      <Row flex={1} gap={getSpacing(4)} alignItems="space-between">
+        <Column flex={1}>
           {distanceToOffer ? (
-            <React.Fragment>
-              <Spacer.Flex flex={0.7}>
-                <OfferName title={title} />
-              </Spacer.Flex>
-              <Spacer.Flex flex={0.3}>
-                <Distance>{distanceToOffer}</Distance>
-              </Spacer.Flex>
-            </React.Fragment>
+            <OfferName title={title} />
           ) : (
             <Row>
               <OfferNameContainer>
@@ -53,28 +48,37 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
               ) : null}
             </Row>
           )}
-        </Row>
-        {children}
-        {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
-      </Column>
-    </React.Fragment>
+          {children}
+          {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
+        </Column>
+        {distanceToOffer ? <DistanceTag label={`à ${distanceToOffer}`} /> : null}
+      </Row>
+    </Container>
   )
 }
 
-const Column = styled.View({
-  flexDirection: 'column',
-  flex: 1,
-})
+const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({
+  flexDirection,
+  flex,
+  alignItems,
+  justifyContent,
+  gap,
+}))
 
-const Row = styled.View({
+const Column = Flex
+
+const Row = styled(Flex).attrs({
   flexDirection: 'row',
-  alignItems: 'center',
-  width: '100%',
-})
+})``
 
-const Distance = styled(TypoDS.BodyAccentS)(({ theme }) => ({
-  textAlign: 'right',
-  color: theme.colors.greyDark,
+const Container = styled(Row).attrs({
+  alignItems: 'center',
+  flex: 1,
+  gap: getSpacing(4),
+})``
+
+const DistanceTag = styled(Tag)(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
