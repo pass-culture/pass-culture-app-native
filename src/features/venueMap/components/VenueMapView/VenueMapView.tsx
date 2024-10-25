@@ -199,9 +199,11 @@ export const VenueMapView: FunctionComponent<Props> = ({
           selectedVenue?._geoloc.lng,
           calculatePreviewHeight(snapPoints[toIndex])
         )
+      } else if (toIndex === -1 && selectedVenue) {
+        removeSelectedVenue()
       }
     },
-    [centerOnLocation, calculatePreviewHeight, selectedVenue, snapPoints]
+    [centerOnLocation, calculatePreviewHeight, selectedVenue, snapPoints, removeSelectedVenue]
   )
 
   useEffect(() => {
