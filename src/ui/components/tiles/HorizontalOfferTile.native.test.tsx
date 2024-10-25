@@ -112,7 +112,7 @@ describe('HorizontalOfferTile component', () => {
       )
     )
     await waitFor(() => {
-      expect(screen.getByText('10 km')).toBeOnTheScreen()
+      expect(screen.getByText('à 10 km')).toBeOnTheScreen()
     })
   })
 
@@ -127,7 +127,7 @@ describe('HorizontalOfferTile component', () => {
       expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
     })
 
-    expect(screen.queryByText('10 km')).not.toBeOnTheScreen()
+    expect(screen.queryByText('à 10 km')).not.toBeOnTheScreen()
   })
 
   describe('When pressing an offer without object id', () => {
