@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Venue /> Accessibility should render correctly 1`] = `
+exports[`<Venue /> should render correctly 1`] = `
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -2149,7 +2149,7 @@ d’options
 </div>
 `;
 
-exports[`<Venue /> Accessibility should render correctly with practical information 1`] = `
+exports[`<Venue /> should render correctly with practical information 1`] = `
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
