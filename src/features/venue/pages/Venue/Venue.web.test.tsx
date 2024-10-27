@@ -96,8 +96,7 @@ describe('<Venue />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('Accessibility', () => {
+  describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
