@@ -4,7 +4,6 @@ import { PaginatedFavoritesResponse } from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -20,8 +19,6 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
-jest.mock('features/auth/context/AuthContext')
-
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -32,12 +29,8 @@ jest.mock('react-native-safe-area-context', () => ({
 
 describe('<Favorites/>', () => {
   describe('Accessibility', () => {
-    beforeEach(() => {
-      mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-    })
-
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when user is logged in', async () => {
+    it('should not have basic accessibility issues when user is logged in', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
       mockServer.getApi<PaginatedFavoritesResponse>(
         '/v1/me/favorites',
         paginatedFavoritesResponseSnap
@@ -50,25 +43,6 @@ describe('<Favorites/>', () => {
 
         expect(results).toHaveNoViolations()
       })
-    })
-
-    it('should not have basic accessibility issues when user is not logged in', async () => {
-      mockAuthContextWithoutUser()
-
-      const { container } = renderFavorites()
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should not have basic accessibility issues when user is logged in but offline', async () => {
-      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = renderFavorites()
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
     })
   })
 })
