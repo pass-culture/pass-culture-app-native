@@ -20,6 +20,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native-safe-area-context', () => ({
