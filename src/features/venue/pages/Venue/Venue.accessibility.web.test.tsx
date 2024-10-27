@@ -14,7 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
@@ -77,7 +77,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.setTimeout(15_000)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldApplyGraphicRedesign: false }),
+}))
 jest.mock('features/navigation/RootNavigator/routes')
 jest.mock('features/navigation/TabBar/routes')
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
@@ -96,21 +98,17 @@ describe('<Venue />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should render correctly', async () => {
-    const { container } = render(reactQueryProviderHOC(<Venue />))
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(reactQueryProviderHOC(<Venue />))
 
-    await screen.findAllByText('Gratuit')
+      await screen.findAllByText('Gratuit')
 
-    expect(container).toMatchSnapshot()
-  })
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-  it('should render correctly with practical information', async () => {
-    const { container } = render(reactQueryProviderHOC(<Venue />))
-
-    await screen.findAllByText('Gratuit')
-
-    fireEvent.click(screen.getByText('Infos pratiques'))
-
-    expect(container).toMatchSnapshot()
+        expect(results).toHaveNoViolations()
+      })
+    })
   })
 })

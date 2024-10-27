@@ -98,20 +98,8 @@ describe('<SearchLanding />', () => {
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 
-    it('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues when online', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-
-      const { container } = render(reactQueryProviderHOC(<SearchLanding />))
-
-      await screen.findByText('Rechercher')
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should not have basic accessibility issues when offline', async () => {
-      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
       const { container } = render(reactQueryProviderHOC(<SearchLanding />))
 
