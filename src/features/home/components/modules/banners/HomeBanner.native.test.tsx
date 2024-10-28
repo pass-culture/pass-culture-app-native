@@ -186,18 +186,13 @@ describe('<HomeBanner/>', () => {
 function renderHomeBanner({
   hasGeolocPosition = true,
   isLoggedIn = true,
-  homeId = 'test',
 }: {
   hasGeolocPosition?: boolean
   isLoggedIn?: boolean
-  homeId?: string
 }) {
-  return render(
-    <HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} homeId={homeId} />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
-  )
+  return render(<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
 }
 const mockBannerFromBackend = (banner: BannerResponse) => {
   mockServer.getApi<BannerResponse>('/v1/banner', {

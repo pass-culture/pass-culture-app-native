@@ -7,7 +7,6 @@ import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -20,7 +19,6 @@ import { getSpacing } from 'ui/theme'
 type HomeBannerProps = {
   hasGeolocPosition: boolean
   isLoggedIn: boolean
-  homeId: string
 }
 
 const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
@@ -55,14 +53,10 @@ const bannersToRender = [
   BannerName.transition_17_18_banner,
 ]
 
-export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBannerProps) => {
+export const HomeBanner = ({ hasGeolocPosition, isLoggedIn }: HomeBannerProps) => {
   const { data } = useHomeBanner(hasGeolocPosition)
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
-  const hasGraphicRedesign = useHasGraphicRedesign({
-    isFeatureFlagActive: enableSystemBanner,
-    homeId,
-  })
 
   const homeBanner = data?.banner
   const shouldRenderSystemBanner = homeBanner ? bannersToRender.includes(homeBanner.name) : false
@@ -89,7 +83,7 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
     if (!isLoggedIn)
       return (
         <BannerContainer>
-          <SignupBanner hasGraphicRedesign={hasGraphicRedesign} />
+          <SignupBanner hasGraphicRedesign={enableSystemBanner} />
         </BannerContainer>
       )
 
@@ -102,7 +96,7 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
     }
 
     return null
-  }, [isLoggedIn, homeBanner, shouldRenderSystemBanner, renderBanner, hasGraphicRedesign])
+  }, [isLoggedIn, homeBanner, shouldRenderSystemBanner, renderBanner, enableSystemBanner])
 
   const renderSystemBanner = useCallback(
     (Icon: ComponentType, title: string, subtitle: string) => (
@@ -124,7 +118,7 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
     if (!isLoggedIn)
       return (
         <BannerContainer>
-          <SignupBanner hasGraphicRedesign={hasGraphicRedesign} />
+          <SignupBanner hasGraphicRedesign={enableSystemBanner} />
         </BannerContainer>
       )
 
@@ -141,9 +135,9 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
     }
 
     return null
-  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, homeBanner, hasGraphicRedesign])
+  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, homeBanner, enableSystemBanner])
 
-  return hasGraphicRedesign ? SystemBanner : Banner
+  return enableSystemBanner ? SystemBanner : Banner
 }
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
