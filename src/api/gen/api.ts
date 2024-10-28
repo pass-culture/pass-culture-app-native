@@ -4314,6 +4314,7 @@ export interface VisualDisabilityModel {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
+  'in_app' = 'in_app',
   'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }

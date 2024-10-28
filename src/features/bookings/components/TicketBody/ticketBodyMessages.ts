@@ -11,6 +11,7 @@ export const getStartMessage = (withdrawalType: WithdrawalTypeEnum): string | nu
     case WithdrawalTypeEnum.by_email:
       return 'Tu vas recevoir ton billet par e-mail '
     case WithdrawalTypeEnum.no_ticket:
+    case WithdrawalTypeEnum.in_app:
       return null
   }
 }
