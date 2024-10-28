@@ -58,7 +58,7 @@ describe('getRecommendationParameters', () => {
   } = renderHook(useSubcategoryLabelMapping)
 
   it('should return empty parameters when no parameters are provided', () => {
-    const result = getRecommendationParameters(undefined, [], [])
+    const result = getRecommendationParameters(undefined, [])
 
     expect(result).toEqual({})
   })
@@ -83,11 +83,10 @@ describe('getRecommendationParameters', () => {
       .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
       .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
     const subcategoryIds = useSubcategoryIdsFromSearchGroups(categories)
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategories,
-      subcategoryIds
-    )
+    const recommendationParameters = getRecommendationParameters(parameters, [
+      ...subcategories,
+      ...subcategoryIds,
+    ])
 
     expect(recommendationParameters).toEqual({
       endDate: '2022-05-08T00:00+00:00',
@@ -127,11 +126,10 @@ describe('getRecommendationParameters', () => {
       .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
       .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
     const subcategoryIds = useSubcategoryIdsFromSearchGroups(categories)
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategories,
-      subcategoryIds
-    )
+    const recommendationParameters = getRecommendationParameters(parameters, [
+      ...subcategories,
+      ...subcategoryIds,
+    ])
 
     expect(recommendationParameters).toEqual({
       isRecoShuffled: true,
