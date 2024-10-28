@@ -102,3 +102,28 @@ jest.mock('uuid', () => {
   }
 })
 ```
+
+### Exceeded timeout of 15000 ms for a test
+
+If you get failing accessibility tests in the CI with the following message:
+
+```
+thrown: "Exceeded timeout of 15000 ms for a test.
+Add a timeout value to this test to increase the timeout, if this is a long-running test.
+```
+
+A quick fix is to isolate the test in it's own file.
+
+For example, previously inside `Favorites.web.test.tsx` there were 3 different accessibility tests. We separated the tests into 3 different files:
+
+```
+- Favorites.accessibility.offline.web.test.tsx
+- Favorites.accessibility.loggedIn.web.test.tsx
+- Favorites.accessibility.loggedOut.web.test.tsx
+```
+
+Then we no longer ran into the "Exceeded timeout" error in the CI.
+
+Accessibility tests are heavy tests and sometimes, in the CI were performances and not the highest, they take extra time to finish, sometimes running into the maximum timeout.
+
+By putting each accessibility test in its own file, each test will have its own timeout counter, thus is less likely to trigger the timeout.
