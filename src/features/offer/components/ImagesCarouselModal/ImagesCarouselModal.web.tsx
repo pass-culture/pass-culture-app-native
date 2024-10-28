@@ -20,21 +20,25 @@ const MODAL_HEADER_HEIGHT = getSpacing(7)
 
 type CarouselSize = { width: number; height: number }
 
-type OfferPreviewModalProps = {
-  offerImages: string[]
+type ImagesCarouselModalProps = {
+  imagesURL: string[]
   isVisible?: boolean
   hideModal: () => void
   onClose?: () => void
   defaultIndex?: number
 }
 
-export const OfferPreviewModal = ({
-  offerImages,
+const renderCarouselItem = ({ item: image, index }: { item: string; index: number }) => (
+  <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
+)
+
+export const ImagesCarouselModal = ({
+  imagesURL,
   hideModal,
   defaultIndex = 0,
   onClose,
   isVisible = false,
-}: OfferPreviewModalProps) => {
+}: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
@@ -42,8 +46,8 @@ export const OfferPreviewModal = ({
   const { isDesktopViewport } = useTheme()
 
   const getTitleLabel = useCallback(
-    (progressValue: number) => `${Math.round(progressValue) + 1}/${offerImages.length}`,
-    [offerImages]
+    (progressValue: number) => `${Math.round(progressValue) + 1}/${imagesURL.length}`,
+    [imagesURL]
   )
 
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
@@ -59,7 +63,7 @@ export const OfferPreviewModal = ({
     const newIndex = calculateCarouselIndex({
       currentIndex: progressValue.value,
       direction,
-      maxIndex: offerImages.length - 1,
+      maxIndex: imagesURL.length - 1,
     })
     progressValue.value = newIndex
     carouselRef.current?.scrollTo({ index: newIndex, animated: true })
@@ -73,49 +77,46 @@ export const OfferPreviewModal = ({
     [getTitleLabel, progressValue]
   )
 
-  const displayCarousel = () => (
-    <React.Fragment>
-      <RoundedButton
-        iconName="previous"
-        onPress={() => handlePressButton(-1)}
-        accessibilityLabel="Image précédente"
-      />
-      {carouselSize ? (
-        <Carousel
-          ref={carouselRef}
-          testID="offerImageContainerCarousel"
-          vertical={false}
-          width={carouselSize.width}
-          height={carouselSize.height}
-          loop={false}
-          defaultIndex={defaultIndex}
-          enabled={false}
-          scrollAnimationDuration={500}
-          onProgressChange={handleProgressChange}
-          data={offerImages}
-          renderItem={({ item: image, index }) => (
-            <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
-          )}
-        />
-      ) : null}
-      <RoundedButton
-        iconName="next"
-        onPress={() => handlePressButton(1)}
-        accessibilityLabel="Image suivante"
-      />
-    </React.Fragment>
-  )
-
-  const displayModalBody = () => {
-    if (offerImages.length === 0) {
+  const displayModalBody = useCallback(() => {
+    if (imagesURL.length === 0) {
       return null
     }
 
-    if (offerImages.length > 1) {
-      return displayCarousel()
+    if (imagesURL.length > 1) {
+      return (
+        <React.Fragment>
+          <RoundedButton
+            iconName="previous"
+            onPress={() => handlePressButton(-1)}
+            accessibilityLabel="Image précédente"
+          />
+          {carouselSize ? (
+            <Carousel
+              ref={carouselRef}
+              testID="imagesCarouselContainer"
+              vertical={false}
+              width={carouselSize.width}
+              height={carouselSize.height}
+              loop={false}
+              defaultIndex={defaultIndex}
+              enabled={false}
+              scrollAnimationDuration={500}
+              onProgressChange={handleProgressChange}
+              data={imagesURL}
+              renderItem={renderCarouselItem}
+            />
+          ) : null}
+          <RoundedButton
+            iconName="next"
+            onPress={() => handlePressButton(1)}
+            accessibilityLabel="Image suivante"
+          />
+        </React.Fragment>
+      )
     }
-    return <CarouselImage source={{ uri: String(offerImages[0]) }} accessibilityLabel="Image 1" />
-  }
+
+    return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
+  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange])
 
   const desktopConstraints = useMemo(
     () => ({
@@ -127,7 +128,7 @@ export const OfferPreviewModal = ({
 
   return (
     <AppModal
-      title={offerImages.length > 1 ? title : ''}
+      title={imagesURL.length > 1 ? title : ''}
       visible={isVisible}
       isFullscreen
       rightIcon={Close}

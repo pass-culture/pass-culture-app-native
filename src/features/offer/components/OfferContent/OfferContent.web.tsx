@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OfferImageResponse } from 'api/gen'
+import { ImagesCarouselModal } from 'features/offer/components/ImagesCarouselModal/ImagesCarouselModal'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferPreviewModal } from 'features/offer/components/OfferPreviewModal/OfferPreviewModal'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
 import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
@@ -54,10 +54,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 
   return (
     <React.Fragment>
-      <OfferPreviewModal
+      <ImagesCarouselModal
         hideModal={hideModal}
         isVisible={visible}
-        offerImages={offerImages}
+        imagesURL={offerImages}
         defaultIndex={carouselDefaultIndex}
       />
       <StyledOfferContentBase
