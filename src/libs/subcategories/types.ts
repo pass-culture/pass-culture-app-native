@@ -8,7 +8,7 @@ import {
   SubcategoryResponseModelv2,
 } from 'api/gen'
 
-export type Subcategory = Omit<SubcategoryResponseModelv2, 'id'>
+export type Subcategory = SubcategoryResponseModelv2
 export type SubcategoriesMapping = Record<SubcategoryIdEnumv2, Subcategory>
 export type CategoryIdMapping = Record<SubcategoryIdEnumv2, CategoryIdEnum>
 export type HomeLabelMapping = Record<HomepageLabelNameEnumv2, string | null>

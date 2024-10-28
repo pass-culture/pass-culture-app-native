@@ -19,8 +19,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
   return useMemo(() => {
     const mapping = <SubcategoriesMapping>{}
     subcategories.forEach((curr) => {
-      const { id, ...subcategory } = curr
-      mapping[id] = subcategory
+      mapping[curr.id] = curr
     })
     return mapping
   }, [subcategories])

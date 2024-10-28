@@ -78,6 +78,7 @@ export const categoryIdMappingSnap = {
 
 export const subcategoriesMappingSnap = {
   ABO_BIBLIOTHEQUE: {
+    id: 'ABO_BIBLIOTHEQUE',
     appLabel: 'Abonnement (bibliothèques, médiathèques...)',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -87,6 +88,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   ABO_CONCERT: {
+    id: 'ABO_CONCERT',
     appLabel: 'Abonnement concert',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'CONCERT',
@@ -96,6 +98,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CONCERTS_FESTIVALS',
   },
   ABO_JEU_VIDEO: {
+    id: 'ABO_JEU_VIDEO',
     appLabel: 'Abonnement jeux vidéos',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -105,6 +108,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   ABO_LIVRE_NUMERIQUE: {
+    id: 'ABO_LIVRE_NUMERIQUE',
     appLabel: 'Abonnement livres numériques',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -114,6 +118,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   ABO_LUDOTHEQUE: {
+    id: 'ABO_LUDOTHEQUE',
     appLabel: 'Abonnement ludothèque',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -123,6 +128,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   ABO_MEDIATHEQUE: {
+    id: 'ABO_MEDIATHEQUE',
     appLabel: 'Abonnement médiathèque',
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',
@@ -132,6 +138,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   ABO_PLATEFORME_MUSIQUE: {
+    id: 'ABO_PLATEFORME_MUSIQUE',
     appLabel: 'Abonnement plateforme musicale',
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
@@ -141,6 +148,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },
   ABO_PLATEFORME_VIDEO: {
+    id: 'ABO_PLATEFORME_VIDEO',
     appLabel: 'Abonnement plateforme streaming',
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',
@@ -150,6 +158,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   ABO_PRATIQUE_ART: {
+    id: 'ABO_PRATIQUE_ART',
     appLabel: 'Abonnement pratique artistique',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'BEAUX_ARTS',
@@ -159,6 +168,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   ABO_PRESSE_EN_LIGNE: {
+    id: 'ABO_PRESSE_EN_LIGNE',
     appLabel: 'Abonnement presse en ligne',
     categoryId: 'MEDIA',
     homepageLabelName: 'MEDIAS',
@@ -168,6 +178,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MEDIA_PRESSE',
   },
   ABO_SPECTACLE: {
+    id: 'ABO_SPECTACLE',
     appLabel: 'Abonnement spectacle',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -177,6 +188,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'SPECTACLES',
   },
   ACHAT_INSTRUMENT: {
+    id: 'ACHAT_INSTRUMENT',
     appLabel: 'Achat instrument',
     categoryId: 'INSTRUMENT',
     homepageLabelName: 'INSTRUMENT',
@@ -186,6 +198,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   ACTIVATION_EVENT: {
+    id: 'ACTIVATION_EVENT',
     appLabel: 'Catégorie technique d’évènement d’activation',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
@@ -195,6 +208,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   ACTIVATION_THING: {
+    id: 'ACTIVATION_THING',
     appLabel: 'Catégorie technique de thing d’activation',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
@@ -204,6 +218,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   APP_CULTURELLE: {
+    id: 'APP_CULTURELLE',
     appLabel: 'Application culturelle',
     categoryId: 'MEDIA',
     homepageLabelName: 'MEDIAS',
@@ -213,6 +228,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MEDIA_PRESSE',
   },
   ATELIER_PRATIQUE_ART: {
+    id: 'ATELIER_PRATIQUE_ART',
     appLabel: 'Atelier, stage de pratique artistique',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'BEAUX_ARTS',
@@ -222,6 +238,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   AUTRE_SUPPORT_NUMERIQUE: {
+    id: 'AUTRE_SUPPORT_NUMERIQUE',
     appLabel: 'Autre support numérique',
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',
@@ -231,6 +248,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   BON_ACHAT_INSTRUMENT: {
+    id: 'BON_ACHAT_INSTRUMENT',
     appLabel: 'Bon d’achat instrument',
     categoryId: 'INSTRUMENT',
     homepageLabelName: 'INSTRUMENT',
@@ -240,6 +258,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   CAPTATION_MUSIQUE: {
+    id: 'CAPTATION_MUSIQUE',
     appLabel: 'Captation musicale',
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
@@ -249,6 +268,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },
   CARTE_CINE_ILLIMITE: {
+    id: 'CARTE_CINE_ILLIMITE',
     appLabel: 'Carte cinéma illimité',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -258,6 +278,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   CARTE_CINE_MULTISEANCES: {
+    id: 'CARTE_CINE_MULTISEANCES',
     appLabel: 'Carte cinéma multi-séances',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -267,6 +288,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   CARTE_JEUNES: {
+    id: 'CARTE_JEUNES',
     appLabel: 'Carte jeunes',
     categoryId: 'CARTE_JEUNES',
     homepageLabelName: 'CARTE_JEUNES',
@@ -276,6 +298,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CARTES_JEUNES',
   },
   CARTE_MUSEE: {
+    id: 'CARTE_MUSEE',
     appLabel: 'Abonnement musée, carte ou pass',
     categoryId: 'MUSEE',
     homepageLabelName: 'MUSEE',
@@ -285,6 +308,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   CINE_PLEIN_AIR: {
+    id: 'CINE_PLEIN_AIR',
     appLabel: 'Cinéma plein air',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -294,6 +318,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   CINE_VENTE_DISTANCE: {
+    id: 'CINE_VENTE_DISTANCE',
     appLabel: 'Cinéma',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -303,6 +328,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   CONCERT: {
+    id: 'CONCERT',
     appLabel: 'Concert',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'CONCERT',
@@ -312,6 +338,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CONCERTS_FESTIVALS',
   },
   CONCOURS: {
+    id: 'CONCOURS',
     appLabel: 'Concours - jeux',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -321,6 +348,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   CONFERENCE: {
+    id: 'CONFERENCE',
     appLabel: 'Conférence',
     categoryId: 'CONFERENCE',
     homepageLabelName: 'RENCONTRES',
@@ -330,6 +358,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'RENCONTRES_CONFERENCES',
   },
   DECOUVERTE_METIERS: {
+    id: 'DECOUVERTE_METIERS',
     appLabel: 'Découverte des métiers',
     categoryId: 'CONFERENCE',
     homepageLabelName: 'RENCONTRES',
@@ -339,6 +368,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'RENCONTRES_CONFERENCES',
   },
   ESCAPE_GAME: {
+    id: 'ESCAPE_GAME',
     appLabel: 'Escape game',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -348,6 +378,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   EVENEMENT_CINE: {
+    id: 'EVENEMENT_CINE',
     appLabel: 'Évènement cinéma',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -357,6 +388,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   EVENEMENT_JEU: {
+    id: 'EVENEMENT_JEU',
     appLabel: 'Évènements - jeux',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -366,6 +398,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   EVENEMENT_MUSIQUE: {
+    id: 'EVENEMENT_MUSIQUE',
     appLabel: 'Autre type d’évènement musical',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'CONCERT',
@@ -375,6 +408,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CONCERTS_FESTIVALS',
   },
   EVENEMENT_PATRIMOINE: {
+    id: 'EVENEMENT_PATRIMOINE',
     appLabel: 'Évènement et atelier patrimoine',
     categoryId: 'MUSEE',
     homepageLabelName: 'VISITES',
@@ -384,6 +418,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   FESTIVAL_ART_VISUEL: {
+    id: 'FESTIVAL_ART_VISUEL',
     appLabel: 'Festival d’arts visuels / arts numériques',
     categoryId: 'MUSEE',
     homepageLabelName: 'FESTIVAL',
@@ -393,6 +428,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   FESTIVAL_CINE: {
+    id: 'FESTIVAL_CINE',
     appLabel: 'Festival de cinéma',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -402,6 +438,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   FESTIVAL_LIVRE: {
+    id: 'FESTIVAL_LIVRE',
     appLabel: 'Festival et salon du livre',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -411,6 +448,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   FESTIVAL_MUSIQUE: {
+    id: 'FESTIVAL_MUSIQUE',
     appLabel: 'Festival de musique',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'FESTIVAL',
@@ -420,6 +458,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CONCERTS_FESTIVALS',
   },
   FESTIVAL_SPECTACLE: {
+    id: 'FESTIVAL_SPECTACLE',
     appLabel: 'Festival',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -429,6 +468,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'SPECTACLES',
   },
   JEU_EN_LIGNE: {
+    id: 'JEU_EN_LIGNE',
     appLabel: 'Jeux en ligne',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -438,6 +478,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   JEU_SUPPORT_PHYSIQUE: {
+    id: 'JEU_SUPPORT_PHYSIQUE',
     appLabel: 'Catégorie technique Jeu support physique',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
@@ -447,6 +488,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   LIVESTREAM_EVENEMENT: {
+    id: 'LIVESTREAM_EVENEMENT',
     appLabel: 'Live stream d’évènement',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -456,6 +498,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'EVENEMENTS_EN_LIGNE',
   },
   LIVESTREAM_MUSIQUE: {
+    id: 'LIVESTREAM_MUSIQUE',
     appLabel: 'Livestream musical',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'MUSIQUE',
@@ -465,6 +508,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'EVENEMENTS_EN_LIGNE',
   },
   LIVESTREAM_PRATIQUE_ARTISTIQUE: {
+    id: 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
     appLabel: 'Pratique artistique - livestream',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'COURS',
@@ -474,6 +518,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'EVENEMENTS_EN_LIGNE',
   },
   LIVRE_AUDIO_PHYSIQUE: {
+    id: 'LIVRE_AUDIO_PHYSIQUE',
     appLabel: 'Livre audio sur support physique',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -483,6 +528,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   LIVRE_NUMERIQUE: {
+    id: 'LIVRE_NUMERIQUE',
     appLabel: 'Livre numérique, e-book',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -492,6 +538,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   LIVRE_PAPIER: {
+    id: 'LIVRE_PAPIER',
     appLabel: 'Livre',
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
@@ -501,6 +548,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   LOCATION_INSTRUMENT: {
+    id: 'LOCATION_INSTRUMENT',
     appLabel: 'Location instrument',
     categoryId: 'INSTRUMENT',
     homepageLabelName: 'INSTRUMENT',
@@ -510,6 +558,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   MATERIEL_ART_CREATIF: {
+    id: 'MATERIEL_ART_CREATIF',
     appLabel: 'Matériel arts créatifs',
     categoryId: 'BEAUX_ARTS',
     homepageLabelName: 'BEAUX_ARTS',
@@ -519,6 +568,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   MUSEE_VENTE_DISTANCE: {
+    id: 'MUSEE_VENTE_DISTANCE',
     appLabel: 'Musée vente à distance',
     categoryId: 'MUSEE',
     homepageLabelName: 'MUSEE',
@@ -528,6 +578,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   OEUVRE_ART: {
+    id: 'OEUVRE_ART',
     appLabel: 'Catégorie technique d’oeuvre d’art',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
@@ -537,6 +588,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   PARTITION: {
+    id: 'PARTITION',
     appLabel: 'Partition',
     categoryId: 'INSTRUMENT',
     homepageLabelName: 'INSTRUMENT',
@@ -546,6 +598,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   PLATEFORME_PRATIQUE_ARTISTIQUE: {
+    id: 'PLATEFORME_PRATIQUE_ARTISTIQUE',
     appLabel: 'Plateforme de pratique artistique',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'PLATEFORME',
@@ -555,6 +608,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   PODCAST: {
+    id: 'PODCAST',
     appLabel: 'Podcast',
     categoryId: 'MEDIA',
     homepageLabelName: 'MEDIAS',
@@ -564,6 +618,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MEDIA_PRESSE',
   },
   PRATIQUE_ART_VENTE_DISTANCE: {
+    id: 'PRATIQUE_ART_VENTE_DISTANCE',
     appLabel: 'Pratique artistique - vente à distance',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'BEAUX_ARTS',
@@ -573,6 +628,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   RENCONTRE: {
+    id: 'RENCONTRE',
     appLabel: 'Rencontre',
     categoryId: 'CONFERENCE',
     homepageLabelName: 'RENCONTRES',
@@ -582,6 +638,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'RENCONTRES_CONFERENCES',
   },
   RENCONTRE_EN_LIGNE: {
+    id: 'RENCONTRE_EN_LIGNE',
     appLabel: 'Rencontre en ligne',
     categoryId: 'CONFERENCE',
     homepageLabelName: 'RENCONTRES',
@@ -591,6 +648,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'RENCONTRES_CONFERENCES',
   },
   RENCONTRE_JEU: {
+    id: 'RENCONTRE_JEU',
     appLabel: 'Rencontres - jeux',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
@@ -600,6 +658,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   SALON: {
+    id: 'SALON',
     appLabel: 'Salon, Convention',
     categoryId: 'CONFERENCE',
     homepageLabelName: 'RENCONTRES',
@@ -609,6 +668,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'RENCONTRES_CONFERENCES',
   },
   SEANCE_CINE: {
+    id: 'SEANCE_CINE',
     appLabel: 'Séance de cinéma',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
@@ -618,6 +678,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CINEMA',
   },
   SEANCE_ESSAI_PRATIQUE_ART: {
+    id: 'SEANCE_ESSAI_PRATIQUE_ART',
     appLabel: 'Séance d’essai',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'BEAUX_ARTS',
@@ -627,6 +688,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'ARTS_LOISIRS_CREATIFS',
   },
   SPECTACLE_ENREGISTRE: {
+    id: 'SPECTACLE_ENREGISTRE',
     appLabel: 'Spectacle enregistré',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -636,6 +698,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'SPECTACLES',
   },
   SPECTACLE_REPRESENTATION: {
+    id: 'SPECTACLE_REPRESENTATION',
     appLabel: 'Spectacle, représentation',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -645,6 +708,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'SPECTACLES',
   },
   SPECTACLE_VENTE_DISTANCE: {
+    id: 'SPECTACLE_VENTE_DISTANCE',
     appLabel: 'Spectacle vivant - vente à distance',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
@@ -654,6 +718,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'SPECTACLES',
   },
   SUPPORT_PHYSIQUE_FILM: {
+    id: 'SUPPORT_PHYSIQUE_FILM',
     appLabel: 'Support physique (DVD, Blu-ray...)',
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',
@@ -663,6 +728,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_DOCUMENTAIRES_SERIES',
   },
   SUPPORT_PHYSIQUE_MUSIQUE_CD: {
+    id: 'SUPPORT_PHYSIQUE_MUSIQUE_CD',
     appLabel: 'CD',
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
@@ -672,6 +738,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },
   SUPPORT_PHYSIQUE_MUSIQUE_VINYLE: {
+    id: 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
     appLabel: 'Vinyles et autres supports',
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
@@ -681,6 +748,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },
   TELECHARGEMENT_LIVRE_AUDIO: {
+    id: 'TELECHARGEMENT_LIVRE_AUDIO',
     appLabel: 'Livre audio à télécharger',
     categoryId: 'LIVRE',
     homepageLabelName: 'PLATEFORME',
@@ -690,6 +758,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'LIVRES',
   },
   TELECHARGEMENT_MUSIQUE: {
+    id: 'TELECHARGEMENT_MUSIQUE',
     appLabel: 'Téléchargement de musique',
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
@@ -699,6 +768,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },
   VISITE: {
+    id: 'VISITE',
     appLabel: 'Visite',
     categoryId: 'MUSEE',
     homepageLabelName: 'VISITES',
@@ -708,6 +778,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   VISITE_GUIDEE: {
+    id: 'VISITE_GUIDEE',
     appLabel: 'Visite guidée',
     categoryId: 'MUSEE',
     homepageLabelName: 'VISITES',
@@ -717,6 +788,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   VISITE_VIRTUELLE: {
+    id: 'VISITE_VIRTUELLE',
     appLabel: 'Visite virtuelle',
     categoryId: 'MUSEE',
     homepageLabelName: 'VISITES',
@@ -726,6 +798,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   VOD: {
+    id: 'VOD',
     appLabel: 'Vidéo à la demande',
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',

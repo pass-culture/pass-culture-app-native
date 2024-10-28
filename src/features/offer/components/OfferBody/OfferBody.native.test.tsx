@@ -9,6 +9,7 @@ import {
   OnlineOfflinePlatformChoicesEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
+  SubcategoryIdEnumv2,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
@@ -141,6 +142,7 @@ describe('<OfferBody />', () => {
         extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
       }
       const subcategory: Subcategory = {
+        id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
         categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
         appLabel: 'Vinyles et autres supports',
         searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,

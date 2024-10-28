@@ -18,9 +18,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking({
-    offerNativeCategory: subcategory.nativeCategoryId,
-  })
+  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
 
   const handlePress = (defaultIndex = 0) => {
     navigate('OfferPreview', { id: offer.id, defaultIndex })

@@ -1,15 +1,11 @@
 import { useCallback } from 'react'
 
-import { NativeCategoryIdEnumv2 } from 'api/gen'
+import { SubcategoryIdEnumv2 } from 'api/gen'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchUser, BatchEvent } from 'libs/react-native-batch'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
 const trackEventHasSeenOfferForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenOfferForSurvey)
-
-type Props = {
-  offerNativeCategory: NativeCategoryIdEnumv2
-}
 
 type UseOfferBatchTrackingType = {
   trackEventHasSeenOfferOnce: VoidFunction
@@ -17,21 +13,27 @@ type UseOfferBatchTrackingType = {
   shouldTriggerBatchSurveyEvent: boolean
 }
 
-const batchEventForNativeCategory: { [key in NativeCategoryIdEnumv2]?: BatchEvent } = {
-  [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA]: BatchEvent.hasSeenCinemaOfferForSurvey,
-  [NativeCategoryIdEnumv2.VISITES_CULTURELLES]: BatchEvent.hasSeenCulturalVisitForSurvey,
-  [NativeCategoryIdEnumv2.LIVRES_PAPIER]: BatchEvent.hasSeenBookOfferForSurvey,
-  [NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS]: BatchEvent.hasSeenConcertForSurvey,
+const batchEventForSubcategory: { [key in SubcategoryIdEnumv2]?: BatchEvent } = {
+  [SubcategoryIdEnumv2.SEANCE_CINE]: BatchEvent.hasSeenCinemaOfferForSurvey,
+  [SubcategoryIdEnumv2.CINE_PLEIN_AIR]: BatchEvent.hasSeenCinemaOfferForSurvey,
+  [SubcategoryIdEnumv2.CINE_VENTE_DISTANCE]: BatchEvent.hasSeenCinemaOfferForSurvey,
+  [SubcategoryIdEnumv2.VISITE]: BatchEvent.hasSeenCulturalVisitForSurvey,
+  [SubcategoryIdEnumv2.VISITE_GUIDEE]: BatchEvent.hasSeenCulturalVisitForSurvey,
+  [SubcategoryIdEnumv2.MUSEE_VENTE_DISTANCE]: BatchEvent.hasSeenCulturalVisitForSurvey,
+  [SubcategoryIdEnumv2.LIVRE_PAPIER]: BatchEvent.hasSeenBookOfferForSurvey,
+  [SubcategoryIdEnumv2.CONCERT]: BatchEvent.hasSeenConcertForSurvey,
+  [SubcategoryIdEnumv2.EVENEMENT_MUSIQUE]: BatchEvent.hasSeenConcertForSurvey,
+  [SubcategoryIdEnumv2.ABO_CONCERT]: BatchEvent.hasSeenConcertForSurvey,
 }
 
-export const useOfferBatchTracking = ({
-  offerNativeCategory,
-}: Props): UseOfferBatchTrackingType => {
+export const useOfferBatchTracking = (
+  offerSubcategoryId: SubcategoryIdEnumv2
+): UseOfferBatchTrackingType => {
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
 
   const trackBatchEventForNativeCategoryOnce = useFunctionOnce(() => {
-    const batchEvent = batchEventForNativeCategory[offerNativeCategory]
+    const batchEvent = batchEventForSubcategory[offerSubcategoryId]
     if (batchEvent) {
       BatchUser.trackEvent(batchEvent)
     }
@@ -42,8 +44,7 @@ export const useOfferBatchTracking = ({
     trackBatchEventForNativeCategoryOnce()
   }, [trackEventHasSeenOfferForSurveyOnce, trackBatchEventForNativeCategoryOnce])
 
-  const shouldTriggerBatchSurveyEvent =
-    offerNativeCategory && offerNativeCategory in batchEventForNativeCategory
+  const shouldTriggerBatchSurveyEvent = offerSubcategoryId in batchEventForSubcategory
 
   return {
     trackEventHasSeenOfferOnce,

@@ -28,9 +28,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     [offer.images]
   )
 
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking({
-    offerNativeCategory: subcategory.nativeCategoryId,
-  })
+  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
 
   const handlePress = (defaultIndex = 0) => {
     setCarouselDefaultIndex(defaultIndex)
