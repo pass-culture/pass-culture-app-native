@@ -1,9 +1,9 @@
-import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
+import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
 
-describe('getOfferImageUrls', () => {
+describe('getImagesUrls', () => {
   it('should return an empty array when images object is empty', () => {
     const images = {}
-    const result = getOfferImageUrls(images)
+    const result = getImagesUrls(images)
 
     expect(result).toEqual([])
   })
@@ -14,7 +14,7 @@ describe('getOfferImageUrls', () => {
       image2: { url: 'url2' },
       image3: { url: 'url3' },
     }
-    const result = getOfferImageUrls(images)
+    const result = getImagesUrls(images)
 
     expect(result).toEqual(['url1', 'url2', 'url3'])
   })

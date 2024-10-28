@@ -2,12 +2,13 @@ import React, { FunctionComponent, useMemo, useState } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { OfferImageResponse } from 'api/gen'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferPreviewModal } from 'features/offer/components/OfferPreviewModal/OfferPreviewModal'
-import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
+import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -23,7 +24,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
   const offerImages = useMemo(
-    () => (offer.images ? getOfferImageUrls(offer.images) : []),
+    () => (offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
     [offer.images]
   )
 
