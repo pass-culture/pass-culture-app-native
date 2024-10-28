@@ -107,6 +107,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       <StyledBottomSheet
         ref={ref}
         index={-1}
+        enablePanDownToClose
         {...bottomSheetProps}
         handleComponent={HandleComponent}>
         <StyledBottomSheetView>
