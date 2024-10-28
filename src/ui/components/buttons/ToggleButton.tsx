@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
@@ -37,6 +38,7 @@ export const ToggleButton = ({
 
   return (
     <TouchableComponent
+      accessibilityRole={AccessibilityRole.BUTTON}
       size={size}
       accessibilityLabel={active ? accessibilityLabel.active : accessibilityLabel.inactive}
       onPress={onPress}>

@@ -600,6 +600,7 @@ exports[`ThematicHome should render correctly 1`] = `
         <View>
           <View
             accessibilityLabel="Suivre le thème"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
