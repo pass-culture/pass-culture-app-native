@@ -380,17 +380,17 @@ export const useSubcategoryIdsFromSearchGroups = (
 
   if (!data || !searchGroups.length) return []
 
-  const cleanSearchGroups =
-    searchGroups.includes(SearchGroupNameEnumv2.CINEMA) ||
-    searchGroups.includes(SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES)
-      ? Array.from(new Set([...searchGroups, SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]))
-      : [...searchGroups]
+  const { nativeCategories, subcategories } = data
 
-  const { subcategories } = data
+  const filteredNativeCategories = nativeCategories
+    .filter((nativeCategory) =>
+      nativeCategory.parents.some((parent) => searchGroups.includes(parent))
+    )
+    .map((filteredNativeCategory) => filteredNativeCategory.name)
 
   return subcategories
-    .filter((subcategory) => cleanSearchGroups.includes(subcategory.searchGroupName))
-    .map((subcategory) => subcategory.id)
+    .filter((subcategory) => filteredNativeCategories.includes(subcategory.nativeCategoryId))
+    .map((filteredSubcategory) => filteredSubcategory.id)
 }
 
 function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {

@@ -15,8 +15,7 @@ import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
-  subcategories: SubcategoryIdEnumv2[],
-  subcategoryIds: SubcategoryIdEnumv2[]
+  subcategories: SubcategoryIdEnumv2[]
 ): PlaylistRequestBody {
   if (!parameters) return {}
   const eventDuringNextXDays = parameters.eventDuringNextXDays
@@ -40,7 +39,7 @@ export function getRecommendationParameters(
     priceMin: parameters?.priceMin,
     priceMax: parameters?.priceMax,
     startDate: beginningDatetime,
-    subcategories: Array.from(new Set([...subcategories, ...subcategoryIds])),
+    subcategories,
     isDuo: parameters.isDuo,
     isRecoShuffled: parameters.isRecoShuffled,
     offerTypeList: offertTypeValue,
@@ -67,11 +66,11 @@ export const useHomeRecommendedOffers = (
   const subcategoriesRelatedToSearchGroups =
     useSubcategoryIdsFromSearchGroups(categoriesFromContentful)
 
-  const requestParameters = getRecommendationParameters(
-    recommendationParameters,
-    subcategoriesFromContentful,
-    subcategoriesRelatedToSearchGroups
+  const subcategories = Array.from(
+    new Set([...subcategoriesFromContentful, ...subcategoriesRelatedToSearchGroups])
   )
+
+  const requestParameters = getRecommendationParameters(recommendationParameters, subcategories)
 
   const { data } = useHomeRecommendedIdsQuery({
     playlistRequestBody: requestParameters,

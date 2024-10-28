@@ -539,7 +539,7 @@ describe('categoriesHelpers', () => {
   })
 
   describe('useSubcategoryIdsFromSearchGroup', () => {
-    it('should return subcategory ids of a given searchGroup', () => {
+    it('should return subcategories of one given searchGroup', () => {
       const searchGroups = [SearchGroupNameEnumv2.LIVRES]
 
       const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
@@ -558,22 +558,32 @@ describe('categoriesHelpers', () => {
       ])
     })
 
-    it('should return `FILMS_SERIES_CINEMA` subcategoryIds when `CINEMA` searchGroup is provided', () => {
-      const searchGroups = [SearchGroupNameEnumv2.CINEMA]
+    it('should return subcategories of several given searchGroups', () => {
+      const searchGroups = [SearchGroupNameEnumv2.CINEMA, SearchGroupNameEnumv2.LIVRES]
 
       const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      expect(result.current).toEqual([
-        'CARTE_CINE_ILLIMITE',
-        'CARTE_CINE_MULTISEANCES',
-        'CINE_PLEIN_AIR',
-        'CINE_VENTE_DISTANCE',
-        'EVENEMENT_CINE',
-        'FESTIVAL_CINE',
-        'SEANCE_CINE',
-      ])
+      expect(result.current).toEqual(
+        expect.arrayContaining([
+          'CARTE_CINE_ILLIMITE',
+          'CARTE_CINE_MULTISEANCES',
+          'CINE_PLEIN_AIR',
+          'CINE_VENTE_DISTANCE',
+          'EVENEMENT_CINE',
+          'FESTIVAL_CINE',
+          'SEANCE_CINE',
+          'ABO_BIBLIOTHEQUE',
+          'ABO_LIVRE_NUMERIQUE',
+          'ABO_MEDIATHEQUE',
+          'FESTIVAL_LIVRE',
+          'LIVRE_AUDIO_PHYSIQUE',
+          'LIVRE_NUMERIQUE',
+          'LIVRE_PAPIER',
+          'TELECHARGEMENT_LIVRE_AUDIO',
+        ])
+      )
     })
 
     it('should return empty array when no searchgroup is provided', () => {
@@ -585,7 +595,7 @@ describe('categoriesHelpers', () => {
     })
 
     it('should return empty array when useSubcategories returns no data', () => {
-      const searchGroups = [SearchGroupNameEnumv2.CINEMA]
+      const searchGroups = [SearchGroupNameEnumv2.CINEMA, SearchGroupNameEnumv2.LIVRES]
 
       mockData = undefined
 
