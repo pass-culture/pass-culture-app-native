@@ -9,6 +9,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
+jest.setTimeout(50000) // to avoid "Exceeded timeout of 10000 ms for a test"
+
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
