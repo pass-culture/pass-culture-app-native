@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
@@ -78,6 +78,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('EndedBookingItem', () => {
+  jest.useFakeTimers()
+
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
@@ -135,8 +137,7 @@ describe('EndedBookingItem', () => {
     expect(screen.getByText('Réservation archivée')).toBeOnTheScreen()
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should navigate to offer page when offer is not digital without expiration date', async () => {
+  it('should navigate to offer page when offer is not digital without expiration date', async () => {
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       stock: {
@@ -147,17 +148,34 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation annulée')
-    fireEvent.press(item)
+    userEvent.press(item)
 
-    await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('Offer', {
-        id: 147874,
-        from: 'endedbookings',
-      })
-      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        offerId: 147874,
-        from: 'endedbookings',
-      })
+    await screen.findByText('Avez-vous déjà vu ?')
+
+    expect(mockNavigate).toHaveBeenCalledWith('Offer', {
+      id: 147874,
+      from: 'endedbookings',
+    })
+  })
+
+  it('should call analytics logConsultOffer when offer is not digital without expiration date', async () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      stock: {
+        ...bookingsSnap.ended_bookings[0].stock,
+
+        offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+      },
+    })
+
+    const item = screen.getByText('Réservation annulée')
+    userEvent.press(item)
+
+    await screen.findByText('Avez-vous déjà vu ?')
+
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+      offerId: 147874,
+      from: 'endedbookings',
     })
   })
 

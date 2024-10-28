@@ -104,15 +104,13 @@ describe('SearchResultsContent component', () => {
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
 
-  describe('when feature flag map in search activated', () => {
-    it('should not render tabs on web', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+  it('should not render tabs on web when feature flag map in search activated', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      await screen.findByTestId('searchResultsList')
+    await screen.findByTestId('searchResultsList')
 
-      expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
-    })
+    expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
   })
 })
