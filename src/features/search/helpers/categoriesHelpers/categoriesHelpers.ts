@@ -8,6 +8,7 @@ import {
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
   SubcategoriesResponseModelv2,
+  SubcategoryIdEnumv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
@@ -370,6 +371,26 @@ export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   }
 
   return nativeCategories
+}
+
+export const useSubcategoryIdsFromSearchGroups = (
+  searchGroups: SearchGroupNameEnumv2[]
+): SubcategoryIdEnumv2[] => {
+  const { data } = useSubcategories()
+
+  if (!data || !searchGroups.length) return []
+
+  const { nativeCategories, subcategories } = data
+
+  const filteredNativeCategories = nativeCategories
+    .filter((nativeCategory) =>
+      nativeCategory.parents.some((parent) => searchGroups.includes(parent))
+    )
+    .map((filteredNativeCategory) => filteredNativeCategory.name)
+
+  return subcategories
+    .filter((subcategory) => filteredNativeCategories.includes(subcategory.nativeCategoryId))
+    .map((filteredSubcategory) => filteredSubcategory.id)
 }
 
 function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {

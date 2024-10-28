@@ -151,9 +151,13 @@ export const OffersModule = (props: OffersModuleProps) => {
     [recommandationOffers, playlistItems]
   )
 
+  const hasRecommendationParameters = props.recommendationParameters
+    ? Object.values(props.recommendationParameters).some((value) => value !== undefined)
+    : false
+
   const offersToDisplay = useMemo(() => {
-    return props.recommendationParameters ? hybridPlaylistItems : playlistItems
-  }, [hybridPlaylistItems, playlistItems, props.recommendationParameters])
+    return hasRecommendationParameters ? hybridPlaylistItems : playlistItems
+  }, [hybridPlaylistItems, playlistItems, hasRecommendationParameters])
 
   const shouldModuleBeDisplayed =
     offersToDisplay.length > 0 && offersToDisplay.length >= displayParameters.minOffers
