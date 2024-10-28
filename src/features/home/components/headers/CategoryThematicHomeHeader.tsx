@@ -37,9 +37,7 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   )
 }
 
-type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'> & {
-  homeId: string
-}
+type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
 const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color }) => {
   return (
@@ -62,20 +60,15 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, col
   )
 }
 
-type AppV2CategoryThematicHeaderProps = CategoryThematicHeaderProps & {
-  homeId: string
-}
-
-export const CategoryThematicHomeHeader: FunctionComponent<AppV2CategoryThematicHeaderProps> = ({
+export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
   color,
-  homeId,
 }) => {
   const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
   return enableAppV2Header ? (
-    <AppV2Header title={title} subtitle={subtitle} color={color} homeId={homeId} />
+    <AppV2Header title={title} subtitle={subtitle} color={color} />
   ) : (
     <AppV1Header title={title} subtitle={subtitle} imageUrl={imageUrl} color={color} />
   )

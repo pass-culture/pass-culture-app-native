@@ -32,10 +32,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
 
-const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader; homeId: string }> = ({
-  thematicHeader,
-  homeId,
-}) => {
+const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
@@ -70,7 +67,6 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader; homeId: st
         subtitle={thematicHeader?.subtitle}
         imageUrl={thematicHeader?.imageUrl}
         color={thematicHeader?.color}
-        homeId={homeId}
       />
     )
   }
@@ -87,11 +83,10 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader; homeId: st
 
 const ThematicHeaderWithGeolocBanner: FunctionComponent<{
   isLocated: boolean
-  homeId: string
   thematicHeader?: ThematicHeader
-}> = ({ thematicHeader, isLocated, homeId }) => (
+}> = ({ thematicHeader, isLocated }) => (
   <React.Fragment>
-    <SubHeader thematicHeader={thematicHeader} homeId={homeId} />
+    <SubHeader thematicHeader={thematicHeader} />
     {isLocated ? null : (
       <GeolocationBannerContainer>
         <GeolocationBanner
@@ -167,11 +162,7 @@ export const ThematicHome: FunctionComponent = () => {
         homeId={id}
         thematicHeader={thematicHeader}
         Header={
-          <ThematicHeaderWithGeolocBanner
-            thematicHeader={thematicHeader}
-            isLocated={isLocated}
-            homeId={id}
-          />
+          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
         }
         shouldDisplayScrollToTop
         onScroll={onScroll}
@@ -201,7 +192,6 @@ export const ThematicHome: FunctionComponent = () => {
                 {...thematicHeader}
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
-                homeId={id}
               />
             </AnimatedHeader>
           ) : null}

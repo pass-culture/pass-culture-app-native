@@ -46,7 +46,6 @@ exports[`ThematicHome should render correctly 1`] = `
             testID="listHeader"
           >
             <ThematicHeaderWithGeolocBanner
-              homeId="fakeEntryId"
               isLocated={true}
               thematicHeader={
                 {

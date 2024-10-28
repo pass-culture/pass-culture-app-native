@@ -30,7 +30,6 @@ export const CategoryThematicHomeHeaderCheatcode: FunctionComponent = () => {
         subtitle={thematicHomeHeader.subtitle}
         title={thematicHomeHeader.title}
         color={thematicHomeHeader.color}
-        homeId="fakeEntryId"
       />
     </Container>
   )

@@ -55,7 +55,6 @@ describe('AnimatedCategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
@@ -70,7 +69,6 @@ describe('AnimatedCategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
@@ -88,7 +86,6 @@ const renderAnimatedCategoryThematicHomeHeader = () => {
         subtitle="Un sous-titre"
         title="Un titre"
         color={Color.Aquamarine}
-        homeId="6DCThxvbPFKAo04SVRZtwY"
       />
     )
   )
