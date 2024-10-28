@@ -127,3 +127,10 @@ Then we no longer ran into the "Exceeded timeout" error in the CI.
 Accessibility tests are heavy tests and sometimes, in the CI were performances and not the highest, they take extra time to finish, sometimes running into the maximum timeout.
 
 By putting each accessibility test in its own file, each test will have its own timeout counter, thus is less likely to trigger the timeout.
+
+I was able to reproduce CI flakiness locally by:
+
+- Starting all the native unit tests in a terminal: `yarn test:unit -u`
+- In another terminal, run several suites of tests: `yarn test:unit:web Venue -u`
+- Out of my 5 runs that I attempted for the `Venue` tests, at least 1 test would fail that wouldn't fail otherwise (if all the native unit tests hadn't been running in another terminal).
+- But I believe that this reproduction scenario is not ideal because: you can force the tests to fail, but then when separating the accessibility tests in isolated files which fixes CI flakiness, the tests still fail locally under these conditions.
