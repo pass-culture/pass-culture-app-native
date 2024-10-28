@@ -474,7 +474,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   <Modal
                     accessibilityLabelledBy="testUuidV4"
                     accessibilityModal={true}
-                    accessibilityRole="none"
                     animationType="none"
                     deviceHeight={1334}
                     deviceWidth={750}

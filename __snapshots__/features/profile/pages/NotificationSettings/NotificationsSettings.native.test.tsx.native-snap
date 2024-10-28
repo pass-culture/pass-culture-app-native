@@ -2307,7 +2307,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         <Modal
           accessibilityLabelledBy="testUuidV4"
           accessibilityModal={true}
-          accessibilityRole="none"
           animationType="none"
           deviceHeight={1334}
           deviceWidth={750}
@@ -4675,7 +4674,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <Modal
           accessibilityLabelledBy="testUuidV4"
           accessibilityModal={true}
-          accessibilityRole="none"
           animationType="none"
           deviceHeight={1334}
           deviceWidth={750}

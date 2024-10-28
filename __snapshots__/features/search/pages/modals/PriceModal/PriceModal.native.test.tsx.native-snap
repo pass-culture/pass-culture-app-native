@@ -4,7 +4,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -81,7 +80,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}

@@ -249,7 +249,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             <Modal
               accessibilityLabelledBy="testUuidV4"
               accessibilityModal={true}
-              accessibilityRole="none"
               animationType="none"
               deviceHeight={1334}
               deviceWidth={750}
@@ -1134,7 +1133,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -2885,7 +2883,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -3615,7 +3612,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}

@@ -537,7 +537,6 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       <Modal
                         accessibilityLabelledBy="testUuidV4"
                         accessibilityModal={true}
-                        accessibilityRole="none"
                         animationType="none"
                         deviceHeight={1334}
                         deviceWidth={750}
