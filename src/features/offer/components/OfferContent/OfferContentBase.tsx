@@ -9,24 +9,25 @@ import React, {
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
+  ScrollView,
   StyleProp,
   ViewStyle,
-  ScrollView,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
+import { OfferImageResponse } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
-import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
+import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -67,7 +68,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     })
 
   const offerImages = useMemo(
-    () => (offer.images ? getOfferImageUrls(offer.images) : []),
+    () => (offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
     [offer.images]
   )
 
