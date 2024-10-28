@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -44,9 +43,7 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   )
 }
 
-type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'> & {
-  homeId: string
-}
+type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
 const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   title,
@@ -54,7 +51,6 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   imageAnimatedHeight,
   color,
   gradientTranslation,
-  homeId,
 }) => {
   return (
     <Container testID="animated-thematic-header-v2">
@@ -75,20 +71,20 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
-        style={{ transform: [{ translateY: gradientTranslation }] }}>
-        <SubscribeButtonWithModals homeId={homeId} />
-      </AnimatedBackgroundSubscribeButton>
+        style={{ transform: [{ translateY: gradientTranslation }] }}
+      />
     </Container>
   )
 }
 
-type AppV2CategoryThematicHeaderProps = CategoryThematicHeaderProps & {
-  homeId: string
-}
-
-export const AnimatedCategoryThematicHomeHeader: FunctionComponent<
-  AppV2CategoryThematicHeaderProps
-> = ({ title, subtitle, imageUrl, imageAnimatedHeight, gradientTranslation, color, homeId }) => {
+export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
+  title,
+  subtitle,
+  imageUrl,
+  imageAnimatedHeight,
+  gradientTranslation,
+  color,
+}) => {
   const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
   return enableAppV2Header ? (
     <AppV2Header
@@ -97,7 +93,6 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<
       imageAnimatedHeight={imageAnimatedHeight}
       gradientTranslation={gradientTranslation}
       color={color}
-      homeId={homeId}
     />
   ) : (
     <AppV1Header

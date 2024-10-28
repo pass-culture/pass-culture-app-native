@@ -28,7 +28,6 @@ describe('CategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
@@ -43,7 +42,6 @@ describe('CategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
@@ -64,7 +62,6 @@ describe('CategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
@@ -79,7 +76,6 @@ describe('CategoryThematicHomeHeader', () => {
           subtitle="Un sous-titre"
           title="Un titre"
           color={Color.Aquamarine}
-          homeId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 

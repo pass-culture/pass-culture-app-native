@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
 import { storage } from 'libs/storage'
+import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { Tooltip } from 'ui/components/Tooltip'
 import { getSpacing } from 'ui/theme'
 
@@ -12,7 +13,11 @@ const DISPLAY_START_OFFSET_IN_MS = 1000
 const DISPLAY_DURATION_IN_MS = 8000
 const MAX_TOOLTIP_DISPLAYS = 3
 
-export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: () => void }) => {
+export const SubscribeButtonWithTooltip = (props: {
+  active: boolean
+  onPress: () => void
+  size?: ToggleButtonSize
+}) => {
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
 
   const displayTooltipIfNeeded = useCallback(async () => {
@@ -55,7 +60,7 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
       <SubscribeButton label={{ active: 'Déjà suivi', inactive: 'Suivre' }} {...props} />
       <StyledTooltip
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
-        pointerDirection="bottom"
+        pointerDirection="top"
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
         onCloseIconPress={onCloseIconPress}
@@ -66,8 +71,8 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
 
 const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   position: 'absolute',
-  top: -WIDGET_HEIGHT - getSpacing(0.5),
-  right: -getSpacing(1),
+  bottom: -WIDGET_HEIGHT,
+  right: 0,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))

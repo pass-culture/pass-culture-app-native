@@ -3606,6 +3606,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               />
               <View
                 accessibilityLabel="Suivre le thème"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3642,10 +3643,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "height": "auto",
+                    "justifyContent": "center",
                     "opacity": 1,
                     "paddingHorizontal": 12,
                     "paddingVertical": 4,
                     "userSelect": "auto",
+                    "width": "auto",
                   }
                 }
                 testID="Suivre le thème"
@@ -7361,6 +7365,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               />
               <View
                 accessibilityLabel="Suivre le thème"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -7397,10 +7402,13 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "height": "auto",
+                    "justifyContent": "center",
                     "opacity": 1,
                     "paddingHorizontal": 12,
                     "paddingVertical": 4,
                     "userSelect": "auto",
+                    "width": "auto",
                   }
                 }
                 testID="Suivre le thème"

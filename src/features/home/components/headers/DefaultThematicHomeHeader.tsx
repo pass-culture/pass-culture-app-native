@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useGetThematicHeaderHeight } from 'features/home/components/headers/ThematicHomeHeader'
+import { useGetThematicHeaderHeight } from 'features/home/api/helpers/useGetThematicHeaderHeight'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 interface DefaultThematicHomeHeaderProps {

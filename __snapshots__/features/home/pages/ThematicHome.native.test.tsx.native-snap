@@ -45,21 +45,18 @@ exports[`ThematicHome should render correctly 1`] = `
           <View
             testID="listHeader"
           >
-            <React.Fragment>
-              <ThematicHeaderWithGeolocBanner
-                homeId="fakeEntryId"
-                isLocated={true}
-                thematicHeader={
-                  {
-                    "color": "Lilac",
-                    "imageUrl": "url.com/image",
-                    "subtitle": "HeaderSubtitle",
-                    "title": "HeaderTitle",
-                    "type": "Category",
-                  }
+            <ThematicHeaderWithGeolocBanner
+              isLocated={true}
+              thematicHeader={
+                {
+                  "color": "Lilac",
+                  "imageUrl": "url.com/image",
+                  "subtitle": "HeaderSubtitle",
+                  "title": "HeaderTitle",
+                  "type": "Category",
                 }
-              />
-            </React.Fragment>
+              }
+            />
             <Styled(View)
               numberOfSpaces={6}
             />
@@ -592,11 +589,224 @@ exports[`ThematicHome should render correctly 1`] = `
         }
       />
       <View
-        numberOfSpaces={16}
+        collapsable={false}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <View>
+          <View
+            accessibilityLabel="Suivre le thème"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "height": "auto",
+                "justifyContent": "center",
+                "opacity": 1,
+                "paddingHorizontal": 12,
+                "paddingVertical": 4,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Suivre le thème"
+          >
+            <View>
+              undefined-Lottie-Mock
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  },
+                ]
+              }
+            >
+              Suivre
+            </Text>
+          </View>
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
         style={
           [
             {
-              "width": 64,
+              "width": 24,
             },
           ]
         }
@@ -780,216 +990,6 @@ exports[`ThematicHome should render correctly 1`] = `
           </Text>
         </View>
       </View>
-    </View>
-    <View
-      style={
-        [
-          {
-            "position": "absolute",
-            "right": 16,
-            "top": 160,
-          },
-        ]
-      }
-    >
-      <View
-        accessibilityLabel="Suivre le thème"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 24,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "opacity": 1,
-            "paddingHorizontal": 12,
-            "paddingVertical": 4,
-            "userSelect": "auto",
-          }
-        }
-        testID="Suivre le thème"
-      >
-        <View>
-          undefined-Lottie-Mock
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          Suivre
-        </Text>
-      </View>
-      <Modal
-        accessibilityLabelledBy="testUuidV4"
-        accessibilityModal={true}
-        accessibilityRole="none"
-        animationType="none"
-        deviceHeight={1334}
-        deviceWidth={750}
-        hardwareAccelerated={false}
-        hideModalContentWhileAnimating={false}
-        onBackdropPress={[Function]}
-        onModalHide={[Function]}
-        onModalWillHide={[Function]}
-        onModalWillShow={[Function]}
-        onRequestClose={[Function]}
-        panResponderThreshold={4}
-        scrollHorizontal={false}
-        scrollOffset={0}
-        scrollOffsetMax={0}
-        scrollTo={null}
-        statusBarTranslucent={true}
-        supportedOrientations={
-          [
-            "portrait",
-            "landscape",
-          ]
-        }
-        swipeThreshold={100}
-        testID="modal"
-        transparent={true}
-        visible={false}
-      />
-      <Modal
-        accessibilityLabelledBy="testUuidV4"
-        accessibilityModal={true}
-        accessibilityRole="none"
-        animationType="none"
-        deviceHeight={1334}
-        deviceWidth={750}
-        hardwareAccelerated={false}
-        hideModalContentWhileAnimating={false}
-        onBackdropPress={[Function]}
-        onModalHide={[Function]}
-        onModalWillHide={[Function]}
-        onModalWillShow={[Function]}
-        onRequestClose={[Function]}
-        panResponderThreshold={4}
-        scrollHorizontal={false}
-        scrollOffset={0}
-        scrollOffsetMax={0}
-        scrollTo={null}
-        statusBarTranslucent={true}
-        supportedOrientations={
-          [
-            "portrait",
-            "landscape",
-          ]
-        }
-        swipeThreshold={100}
-        testID="modal"
-        transparent={true}
-        visible={false}
-      />
-      <Modal
-        accessibilityLabelledBy="testUuidV4"
-        accessibilityModal={true}
-        accessibilityRole="none"
-        animationType="none"
-        deviceHeight={1334}
-        deviceWidth={750}
-        hardwareAccelerated={false}
-        hideModalContentWhileAnimating={false}
-        onBackdropPress={[Function]}
-        onModalHide={[Function]}
-        onModalWillHide={[Function]}
-        onModalWillShow={[Function]}
-        onRequestClose={[Function]}
-        panResponderThreshold={4}
-        scrollHorizontal={false}
-        scrollOffset={0}
-        scrollOffsetMax={0}
-        scrollTo={null}
-        statusBarTranslucent={true}
-        supportedOrientations={
-          [
-            "portrait",
-            "landscape",
-          ]
-        }
-        swipeThreshold={100}
-        testID="modal"
-        transparent={true}
-        visible={false}
-      />
-      <Modal
-        accessibilityLabelledBy="testUuidV4"
-        accessibilityModal={true}
-        accessibilityRole="none"
-        animationType="none"
-        deviceHeight={1334}
-        deviceWidth={750}
-        hardwareAccelerated={false}
-        hideModalContentWhileAnimating={false}
-        onBackdropPress={[Function]}
-        onModalHide={[Function]}
-        onModalWillHide={[Function]}
-        onModalWillShow={[Function]}
-        onRequestClose={[Function]}
-        panResponderThreshold={4}
-        scrollHorizontal={false}
-        scrollOffset={0}
-        scrollOffsetMax={0}
-        scrollTo={null}
-        statusBarTranslucent={true}
-        supportedOrientations={
-          [
-            "portrait",
-            "landscape",
-          ]
-        }
-        swipeThreshold={100}
-        testID="modal"
-        transparent={true}
-        visible={false}
-      />
     </View>
   </View>
 </View>

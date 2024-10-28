@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 
 import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -11,6 +12,7 @@ import { NotificationsLoggedOutModal } from 'features/subscription/Notifications
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
+import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -18,9 +20,10 @@ import { SubscribeButtonWithTooltip } from './SubscribeButtonWithTooltip'
 
 interface Props {
   homeId: string
+  size?: ToggleButtonSize
 }
 
-export const SubscribeButtonWithModals = ({ homeId }: Props) => {
+export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
   const { showSuccessSnackBar } = useSnackBarContext()
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(homeId)
@@ -93,10 +96,11 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
   if (!thematic || user?.status?.statusType === YoungStatusType.non_eligible) return null
 
   return (
-    <React.Fragment>
+    <View>
       <SubscribeButtonWithTooltip
         active={isSubscribeButtonActive}
         onPress={onSubscribeButtonPress}
+        size={size}
       />
 
       <NotificationsSettingsModal
@@ -122,6 +126,6 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
         dismissModal={hideLoggedOutModal}
         from="ThematicHome"
       />
-    </React.Fragment>
+    </View>
   )
 }

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import NotificationAnimation from 'ui/animations/notif_basic_medium.json'
-import { ToggleButton } from 'ui/components/buttons/ToggleButton'
+import { ToggleButtonSize, ToggleButton } from 'ui/components/buttons/ToggleButton'
 
 type Activable<T> = {
   active: T
@@ -15,9 +15,10 @@ type Props = {
   active: boolean
   onPress: () => void
   label: Activable<string>
+  size?: ToggleButtonSize
 }
 
-export const SubscribeButton = ({ active, onPress, label }: Props) => {
+export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
   const shouldAnimateIcon = useRef(false)
   const animationProgress = useRef(new Animated.Value(0))
 
@@ -53,6 +54,7 @@ export const SubscribeButton = ({ active, onPress, label }: Props) => {
       label={label}
       accessibilityLabel={{ active: 'Thème déjà suivi', inactive: 'Suivre le thème' }}
       Icon={{ active: AnimatedBellIcon, inactive: AnimatedBellIcon }}
+      size={size}
     />
   )
 }
