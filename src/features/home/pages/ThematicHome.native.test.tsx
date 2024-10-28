@@ -287,64 +287,48 @@ describe('ThematicHome', () => {
   })
 
   describe('localization', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
+    it.each`
+      hasGeolocPosition | from                | selectedLocationMode         | expectedLocationMode
+      ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
+      ${true}           | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.AROUND_ME}
+      ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_ME}
+      ${true}           | ${'category_block'} | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
+      ${false}          | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
+      ${false}          | ${'category_block'} | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
+      ${false}          | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
+      ${false}          | ${'category_block'} | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
+      ${true}           | ${'category_block'} | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
+    `(
+      'should have localization mode $expectedLocationMode when user comes from $from, geolocPosition is $hasGeolocPosition and has $selectedLocationMode',
+      async ({
+        hasGeolocPosition,
+        from,
+        selectedLocationMode,
+        expectedLocationMode,
+      }: {
+        hasGeolocPosition: boolean
+        from: string
+        selectedLocationMode: LocationMode
+        expectedLocationMode: LocationMode
+      }) => {
+        useFeatureFlagSpy.mockReturnValueOnce(true)
 
-    it('should keep localization(AROUND_PLACE) when user has no Geoloc and is not coming deeplink', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-        geolocPosition: defaultUseLocation.userLocation,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        hasGeolocPosition: true,
-      })
-      renderThematicHome()
+        useRoute.mockReturnValueOnce({ params: { entryId: 'fakeEntryId', from } })
 
-      await screen.findByText('Suivre')
+        mockUseLocation.mockReturnValueOnce({
+          ...defaultUseLocation,
+          selectedLocationMode,
+          hasGeolocPosition,
+        })
+        renderThematicHome()
 
-      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
-        LocationMode.AROUND_ME
-      )
-    })
+        await screen.findByText('Suivre')
 
-    beforeAll(() => {
-      useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId', from: 'deeplink' } })
-    })
-
-    it('should use user geoloc when coming from a deeplink', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-        geolocPosition: defaultUseLocation.userLocation,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        hasGeolocPosition: true,
-      })
-      renderThematicHome()
-
-      await screen.findByText('Suivre')
-
-      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
-        LocationMode.AROUND_ME
-      )
-    })
-
-    it('should not use user localization(AROUND_PLACE) when come deeplink', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-        geolocPosition: undefined,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        hasGeolocPosition: false,
-      })
-      renderThematicHome()
-
-      await screen.findByText('Suivre')
-
-      expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
-        LocationMode.EVERYWHERE
-      )
-    })
+        expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+          expectedLocationMode
+        )
+      }
+    )
   })
 })
 
