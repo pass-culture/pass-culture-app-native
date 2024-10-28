@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { OfferExtraData } from 'api/gen'
+import { OfferExtraDataResponse } from 'api/gen'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 
@@ -68,7 +68,7 @@ WithCustomDataOnThreeLines.args = {
   tagsLines: 3,
 }
 
-const offerExtraData: OfferExtraData = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
+const offerExtraData: OfferExtraDataResponse = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
 export const WithOfferExample = Template.bind({})
 WithOfferExample.args = {
   tags: getOfferTags('Vinyle', offerExtraData),

@@ -89,7 +89,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PRATIQUE_ART,
@@ -179,7 +179,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VIDEOS_ET_DOCUMENTAIRES,
     },
     {
       id: SubcategoryIdEnumv2.BON_ACHAT_INSTRUMENT,
@@ -229,7 +229,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CARTE_JEUNES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_JEUNES,
+      nativeCategoryId: NativeCategoryIdEnumv2.NATIVE_CATEGORY_NONE,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_MUSEE,
@@ -739,7 +739,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VIDEOS_ET_DOCUMENTAIRES,
     },
   ],
   searchGroups: [
@@ -905,15 +905,6 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: '\u00c9v\u00e8nements autour du livre',
       genreType: null,
       parents: [SearchGroupNameEnumv2.LIVRES],
-    },
-    {
-      name: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
-      value: 'Films, s\u00e9ries en ligne',
-      genreType: null,
-      parents: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
-      ],
     },
     {
       name: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,
