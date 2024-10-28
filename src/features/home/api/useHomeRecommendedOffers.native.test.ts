@@ -8,7 +8,7 @@ import {
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
-import { useSubcategoryIdsFromSearchGroup } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -82,7 +82,7 @@ describe('getRecommendationParameters', () => {
     const subcategories = (parameters?.subcategories ?? [])
       .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
       .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
-    const subcategoryIds = useSubcategoryIdsFromSearchGroup(categories)
+    const subcategoryIds = useSubcategoryIdsFromSearchGroups(categories)
     const recommendationParameters = getRecommendationParameters(
       parameters,
       subcategories,
@@ -126,7 +126,7 @@ describe('getRecommendationParameters', () => {
     const subcategories = (parameters?.subcategories ?? [])
       .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
       .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
-    const subcategoryIds = useSubcategoryIdsFromSearchGroup(categories)
+    const subcategoryIds = useSubcategoryIdsFromSearchGroups(categories)
     const recommendationParameters = getRecommendationParameters(
       parameters,
       subcategories,

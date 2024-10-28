@@ -4,7 +4,7 @@ import { PlaylistRequestBody, RecommendationApiParams, SubcategoryIdEnumv2 } fro
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { RecommendedOffersModule } from 'features/home/types'
-import { useSubcategoryIdsFromSearchGroup } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/location'
 import { useHomeRecommendedIdsQuery } from 'libs/recommendation/useHomeRecommendedIdsQuery'
@@ -56,16 +56,21 @@ export const useHomeRecommendedOffers = (
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const isFocused = useIsFocused()
 
-  const categories = (recommendationParameters?.categories ?? []).map(getCategoriesFacetFilters)
-  const subcategories = (recommendationParameters?.subcategories ?? [])
+  const categoriesFromContentful = (recommendationParameters?.categories ?? []).map(
+    getCategoriesFacetFilters
+  )
+
+  const subcategoriesFromContentful = (recommendationParameters?.subcategories ?? [])
     .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
     .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
-  const subcategoryIds = useSubcategoryIdsFromSearchGroup(categories)
+
+  const subcategoriesRelatedToSearchGroups =
+    useSubcategoryIdsFromSearchGroups(categoriesFromContentful)
 
   const requestParameters = getRecommendationParameters(
     recommendationParameters,
-    subcategories,
-    subcategoryIds
+    subcategoriesFromContentful,
+    subcategoriesRelatedToSearchGroups
   )
 
   const { data } = useHomeRecommendedIdsQuery({

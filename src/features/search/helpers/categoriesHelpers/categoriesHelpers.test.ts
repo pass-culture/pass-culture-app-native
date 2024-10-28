@@ -17,7 +17,7 @@ import {
   isNativeCategoryOfCategory,
   isOnlyOnline,
   searchGroupOrNativeCategorySortComparator,
-  useSubcategoryIdsFromSearchGroup,
+  useSubcategoryIdsFromSearchGroups,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
@@ -542,7 +542,7 @@ describe('categoriesHelpers', () => {
     it('should return subcategory ids of a given searchGroup', () => {
       const searchGroups = [SearchGroupNameEnumv2.LIVRES]
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -561,7 +561,7 @@ describe('categoriesHelpers', () => {
     it('should return `FILMS_SERIES_CINEMA` subcategoryIds when `CINEMA` searchGroup is provided', () => {
       const searchGroups = [SearchGroupNameEnumv2.CINEMA]
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -577,7 +577,7 @@ describe('categoriesHelpers', () => {
     })
 
     it('should return empty array when no searchgroup is provided', () => {
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup([]), {
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups([]), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -589,7 +589,7 @@ describe('categoriesHelpers', () => {
 
       mockData = undefined
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroup(searchGroups), {
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 

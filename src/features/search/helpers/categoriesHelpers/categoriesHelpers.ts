@@ -373,17 +373,21 @@ export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   return nativeCategories
 }
 
-export const useSubcategoryIdsFromSearchGroup = (
+export const useSubcategoryIdsFromSearchGroups = (
   searchGroups: SearchGroupNameEnumv2[]
 ): SubcategoryIdEnumv2[] => {
   const { data } = useSubcategories()
+
   if (!data || !searchGroups.length) return []
 
-  const cleanSearchGroups = searchGroups.includes(SearchGroupNameEnumv2.CINEMA)
-    ? Array.from(new Set([...searchGroups, SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]))
-    : [...searchGroups]
+  const cleanSearchGroups =
+    searchGroups.includes(SearchGroupNameEnumv2.CINEMA) ||
+    searchGroups.includes(SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES)
+      ? Array.from(new Set([...searchGroups, SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]))
+      : [...searchGroups]
 
   const { subcategories } = data
+
   return subcategories
     .filter((subcategory) => cleanSearchGroups.includes(subcategory.searchGroupName))
     .map((subcategory) => subcategory.id)
