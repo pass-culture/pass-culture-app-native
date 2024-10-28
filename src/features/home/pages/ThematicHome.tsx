@@ -149,13 +149,16 @@ export const ThematicHome: FunctionComponent = () => {
 
   useEffect(() => {
     switch (true) {
-      case selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition:
-        setSelectedLocationMode(LocationMode.AROUND_ME)
-        break
-      case hasGeolocPosition && isFromDeeplink:
+      case isFromDeeplink && hasGeolocPosition:
         setSelectedLocationMode(LocationMode.AROUND_ME)
         setPlace(null)
         onResetPlace()
+        break
+      case selectedLocationMode === LocationMode.AROUND_PLACE:
+        setSelectedLocationMode(LocationMode.AROUND_PLACE)
+        break
+      case selectedLocationMode === LocationMode.AROUND_ME:
+        setSelectedLocationMode(LocationMode.AROUND_ME)
         break
       default:
         setSelectedLocationMode(LocationMode.EVERYWHERE)
