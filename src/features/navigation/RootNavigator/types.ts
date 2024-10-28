@@ -291,6 +291,7 @@ export type RootStackParamList = {
     from?: Referrals
     searchId?: string
   }
+  VenuePreviewCarousel: { id: number; defaultIndex?: number }
   Artist: {
     fromOfferId: number
   }

@@ -14,6 +14,7 @@ type ScreensRequiringParsing = Extract<
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
+  | 'VenuePreviewCarousel'
   | 'SearchFilter'
   | 'SuspensionChoice'
   | 'LocationFilter'
@@ -130,6 +131,10 @@ export const screenParamsParser: ParamsParsers = {
     id: (value) => (value ? Number(value) : 0),
     from: identityFn,
     searchId: identityFn,
+  },
+  VenuePreviewCarousel: {
+    id: Number,
+    defaultIndex: Number,
   },
   SearchResults: searchParamsParser,
   SearchLanding: searchParamsParser,
