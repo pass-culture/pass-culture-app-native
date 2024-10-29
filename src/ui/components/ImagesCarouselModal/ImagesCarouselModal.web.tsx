@@ -59,15 +59,18 @@ export const ImagesCarouselModal = ({
     onClose?.()
   }
 
-  const handlePressButton = (direction: 1 | -1) => {
-    const newIndex = calculateCarouselIndex({
-      currentIndex: progressValue.value,
-      direction,
-      maxIndex: imagesURL.length - 1,
-    })
-    progressValue.value = newIndex
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
-  }
+  const handlePressButton = useCallback(
+    (direction: 1 | -1) => {
+      const newIndex = calculateCarouselIndex({
+        currentIndex: progressValue.value,
+        direction,
+        maxIndex: imagesURL.length - 1,
+      })
+      progressValue.value = newIndex
+      carouselRef.current?.scrollTo({ index: newIndex, animated: true })
+    },
+    [imagesURL, progressValue]
+  )
 
   const handleProgressChange = useCallback(
     (_: unknown, absoluteProgress: number) => {
