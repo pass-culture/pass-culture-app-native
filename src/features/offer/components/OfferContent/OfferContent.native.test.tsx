@@ -3,10 +3,10 @@ import { InViewProps } from 'react-native-intersection-observer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import {
-  NativeCategoryIdEnumv2,
   OfferResponseV2,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
+  SubcategoryIdEnumv2,
 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
@@ -453,14 +453,14 @@ describe('<OfferContent />', () => {
     })
 
     it.each([
-      NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
-      NativeCategoryIdEnumv2.CONCOURS,
-      NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
-      NativeCategoryIdEnumv2.CARTES_JEUNES,
+      SubcategoryIdEnumv2.ABO_BIBLIOTHEQUE,
+      SubcategoryIdEnumv2.CONCOURS,
+      SubcategoryIdEnumv2.MATERIEL_ART_CREATIF,
+      SubcategoryIdEnumv2.CARTE_JEUNES,
     ])(
       'should not trigger has_seen_offer_for_survey event for uneligible offer type %s',
-      async (nativeCategoryId) => {
-        renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
+      async (subcategoryId) => {
+        renderOfferContent({ subcategory: { ...mockSubcategory, id: subcategoryId } })
 
         await act(async () => {
           jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -473,15 +473,15 @@ describe('<OfferContent />', () => {
     )
 
     it.each`
-      nativeCategoryId                              | expectedBatchEvent
-      ${NativeCategoryIdEnumv2.SEANCES_DE_CINEMA}   | ${BatchEvent.hasSeenCinemaOfferForSurvey}
-      ${NativeCategoryIdEnumv2.VISITES_CULTURELLES} | ${BatchEvent.hasSeenCulturalVisitForSurvey}
-      ${NativeCategoryIdEnumv2.LIVRES_PAPIER}       | ${BatchEvent.hasSeenBookOfferForSurvey}
-      ${NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS} | ${BatchEvent.hasSeenConcertForSurvey}
+      subcategoryId                       | expectedBatchEvent
+      ${SubcategoryIdEnumv2.SEANCE_CINE}  | ${BatchEvent.hasSeenCinemaOfferForSurvey}
+      ${SubcategoryIdEnumv2.VISITE}       | ${BatchEvent.hasSeenCulturalVisitForSurvey}
+      ${SubcategoryIdEnumv2.LIVRE_PAPIER} | ${BatchEvent.hasSeenBookOfferForSurvey}
+      ${SubcategoryIdEnumv2.CONCERT}      | ${BatchEvent.hasSeenConcertForSurvey}
     `(
-      'should trigger $expectedBatchEvent batch event for offer type $nativeCategoryId',
-      async ({ nativeCategoryId, expectedBatchEvent }) => {
-        renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
+      'should trigger $expectedBatchEvent batch event for offer type $subcategoryId',
+      async ({ subcategoryId, expectedBatchEvent }) => {
+        renderOfferContent({ subcategory: { ...mockSubcategory, id: subcategoryId } })
 
         await act(async () => {
           jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)

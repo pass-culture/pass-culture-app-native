@@ -63,9 +63,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   })
 
   const { shouldTriggerBatchSurveyEvent, trackBatchEvent, trackEventHasSeenOfferOnce } =
-    useOfferBatchTracking({
-      offerNativeCategory: subcategory.nativeCategoryId,
-    })
+    useOfferBatchTracking(subcategory.id)
 
   const offerImages = useMemo(
     () => (offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),

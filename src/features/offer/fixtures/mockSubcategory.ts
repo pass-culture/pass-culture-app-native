@@ -4,10 +4,12 @@ import {
   NativeCategoryIdEnumv2,
   OnlineOfflinePlatformChoicesEnumv2,
   SearchGroupNameEnumv2,
+  SubcategoryIdEnumv2,
 } from 'api/gen'
 import { Subcategory } from 'libs/subcategories/types'
 
 export const mockSubcategory: Subcategory = {
+  id: SubcategoryIdEnumv2.CINE_PLEIN_AIR,
   categoryId: CategoryIdEnum.CINEMA,
   appLabel: 'Cinéma plein air',
   searchGroupName: SearchGroupNameEnumv2.CINEMA,
@@ -17,6 +19,7 @@ export const mockSubcategory: Subcategory = {
   nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
 }
 export const mockSubcategoryNotEvent: Subcategory = {
+  id: SubcategoryIdEnumv2.SEANCE_ESSAI_PRATIQUE_ART,
   categoryId: CategoryIdEnum.BEAUX_ARTS,
   appLabel: 'Beaux Arts',
   searchGroupName: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
@@ -26,6 +29,7 @@ export const mockSubcategoryNotEvent: Subcategory = {
   nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
 }
 export const mockSubcategoryBook: Subcategory = {
+  id: SubcategoryIdEnumv2.LIVRE_PAPIER,
   categoryId: CategoryIdEnum.LIVRE,
   appLabel: 'Livre',
   searchGroupName: SearchGroupNameEnumv2.LIVRES,
@@ -35,6 +39,7 @@ export const mockSubcategoryBook: Subcategory = {
   nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_PAPIER,
 }
 export const mockSubcategoryCD: Subcategory = {
+  id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_CD,
   categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
   appLabel: 'CD',
   searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
