@@ -20,6 +20,14 @@ jobs:
     name: 'Install runtime environment and dependencies iOS deploy'
     runs-on: macos-14
     steps:
+      - name: Is deployment targeting ehp or production
+        id: cloudenv
+        run: |
+          if [ "${{ inputs.ENV }}" != "prod" ]; then
+            echo "export cloud_env=ehp" >> $GITHUB_ENV;
+          else
+            echo "export cloud_env=prod" >> $GITHUB_ENV;
+          fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -62,7 +70,7 @@ jobs:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
-            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/passculture-app-native-ios-google-services-plist-${{ inputs.ENV }}
+            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-ios-google-service-${{ inputs.ENV }}
             MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
             MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
