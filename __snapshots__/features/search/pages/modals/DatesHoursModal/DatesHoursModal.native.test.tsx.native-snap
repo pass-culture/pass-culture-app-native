@@ -4,7 +4,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -81,7 +80,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -787,7 +785,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
               <Modal
                 accessibilityLabelledBy="testUuidV4"
                 accessibilityModal={true}
-                accessibilityRole="none"
                 animationType="none"
                 deviceHeight={1334}
                 deviceWidth={750}

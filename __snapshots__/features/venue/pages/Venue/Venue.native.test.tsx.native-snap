@@ -3687,7 +3687,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -3718,7 +3717,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -3749,7 +3747,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -7446,7 +7443,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -7477,7 +7473,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}
@@ -7508,7 +7503,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           <Modal
             accessibilityLabelledBy="testUuidV4"
             accessibilityModal={true}
-            accessibilityRole="none"
             animationType="none"
             deviceHeight={1334}
             deviceWidth={750}

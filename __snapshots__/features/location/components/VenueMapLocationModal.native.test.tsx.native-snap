@@ -65,7 +65,6 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     animationType="none"
     deviceHeight={1334}
     deviceWidth={750}
@@ -142,7 +141,6 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
     <View
       accessibilityLabelledBy="testUuidV4"
       accessibilityModal={true}
-      accessibilityRole="none"
       deviceHeight={1334}
       deviceWidth={750}
       hideModalContentWhileAnimating={false}

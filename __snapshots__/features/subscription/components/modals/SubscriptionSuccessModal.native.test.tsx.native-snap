@@ -4,7 +4,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -81,7 +80,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -668,7 +666,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -745,7 +742,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -1332,7 +1328,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -1409,7 +1404,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -1996,7 +1990,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -2073,7 +2066,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -2660,7 +2652,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -2737,7 +2728,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -3324,7 +3314,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -3401,7 +3390,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}

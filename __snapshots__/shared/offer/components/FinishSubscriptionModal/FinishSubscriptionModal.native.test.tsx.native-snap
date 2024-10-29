@@ -4,7 +4,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -81,7 +80,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -529,7 +527,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -606,7 +603,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -1078,7 +1074,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -1155,7 +1150,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}
@@ -1603,7 +1597,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
-  accessibilityRole="none"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -1680,7 +1673,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
-    accessibilityRole="none"
     deviceHeight={1334}
     deviceWidth={750}
     hideModalContentWhileAnimating={false}

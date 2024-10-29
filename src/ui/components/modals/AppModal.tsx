@@ -12,7 +12,6 @@ import { CSSObject } from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -216,6 +215,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   return (
     <StyledModal
+      accessibilityModal
       animationOutTiming={animationOutTiming}
       style={modalStyles}
       supportedOrientations={['portrait', 'landscape']}
@@ -227,8 +227,6 @@ export const AppModal: FunctionComponent<Props> = ({
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
       accessibilityLabelledBy={titleId}
-      accessibilityRole={AccessibilityRole.DIALOG}
-      accessibilityModal
       onModalHide={onModalHide}
       onSwipeComplete={onSwipe}
       swipeDirection={swipeDirection}
