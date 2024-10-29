@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
+- runFlow: ../../subFolder/cloud/commands/SetLocalizationToEverywhere.yml
 - swipe:
     from:
       text: 'Les offres'
@@ -37,7 +38,7 @@ appId: ${MAESTRO_APP_ID}
       - pressKey: back
       - scroll
       - tapOn:
-          text: 'Séances de cinéma'
+          text: "Films à l'affiche"
           index: 1
       - swipe:
           from:
@@ -57,7 +58,7 @@ appId: ${MAESTRO_APP_ID}
       - pressKey: back
       - scroll
       - tapOn:
-          text: 'Séances de cinéma'
+          text: "Films à l'affiche"
           index: 1
       - swipe:
           from:
@@ -78,11 +79,19 @@ appId: ${MAESTRO_APP_ID}
           id: 'movie-calendar-day'
           index: 2
 
+- runFlow:
+    when:
+      visible: "Prochaine séance\_:"
+    commands:
+    tapOn:
+      enabled: true
+      below:
+        text: "Prochaine séance\_:"
+
 - tapOn:
-    label: 'Sélection de la 1ère date disponible'
     enabled: true
-    above:
-      text: .*€
+    below:
+      id: VenuePreviewImage
 
 - runFlow: #Si différentes gamme de prix pour l'offre
     when:

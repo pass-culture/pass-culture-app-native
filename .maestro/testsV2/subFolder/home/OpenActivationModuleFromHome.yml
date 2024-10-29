@@ -12,8 +12,6 @@ appId: ${MAESTRO_APP_ID}
       visible:
         id: 'intersectionObserver'
     commands:
-      - scroll
-      - assertVisible: 'Débloque ton crédit'
       - tapOn: "Débloque ton crédit"
 
 - assertVisible: "Inscription"

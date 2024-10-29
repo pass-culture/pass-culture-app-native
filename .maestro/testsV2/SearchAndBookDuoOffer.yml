@@ -3,7 +3,18 @@ tags:
   - local
   - cloud
 ---
-- runFlow: subFolder/LaunchApp.yml
+- runFlow:
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
+    commands:
+      - runFlow: subFolder/LaunchApp.yml
+
+- runFlow:
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    commands:
+      - runFlow: subFolder/LaunchAppWithPermissions.yml
+
 - runFlow: subFolder/cookies/AcceptCookies.yml
 
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
