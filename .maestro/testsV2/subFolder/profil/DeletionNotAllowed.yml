@@ -1,0 +1,7 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Nous ne pouvons pas encore supprimer ton compte"
+- tapOn: "Nous ne pouvons pas encore supprimer ton compte"
+- assertVisible: "Retourner sur mon profil"
+- assertVisible: "Désactiver mes notifications"
+- tapOn: "Revenir en arrière"
