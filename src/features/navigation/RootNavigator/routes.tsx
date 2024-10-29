@@ -1,3 +1,5 @@
+import React, { lazy, Suspense } from 'react'
+
 import { Artist } from 'features/artist/pages/Artist'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -71,7 +73,6 @@ import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/Delet
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
-import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
@@ -85,8 +86,15 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
+import { TypoDS } from 'ui/theme'
 
 import { RootRoute } from './types'
+
+const LegalNotices = lazy(() =>
+  import('features/profile/pages/LegalNotices/LegalNotices').then((module) => ({
+    default: module.LegalNotices,
+  }))
+)
 
 export const routes: RootRoute[] = [
   ...accessibilityRoutes,
@@ -225,7 +233,11 @@ export const routes: RootRoute[] = [
   },
   {
     name: 'LegalNotices',
-    component: LegalNotices,
+    component: () => (
+      <Suspense fallback={<TypoDS.Title1>CHARGEMENT...</TypoDS.Title1>}>
+        <LegalNotices />
+      </Suspense>
+    ),
     path: 'notices-legales',
     options: { title: 'Informations légales' },
   },
