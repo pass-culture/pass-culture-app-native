@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
@@ -25,6 +27,7 @@ type Props = {
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { bannerUrl, publicName, name, address, postalCode, city, bannerMeta } = venue
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
@@ -46,9 +49,18 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
   )
 
   const isDynamicOpeningHoursDisplayed = isDynamicOpeningHoursEnabled && venue.openingHours
+
+  const handleImagePress = () => {
+    navigate('VenuePreviewCarousel', { id: venue.id })
+  }
+
   return (
     <TopContainer>
-      <VenueBanner bannerUrl={bannerUrl} bannerMeta={bannerMeta} />
+      <VenueBanner
+        bannerUrl={bannerUrl}
+        bannerMeta={bannerMeta}
+        handleImagePress={handleImagePress}
+      />
       <MarginContainer>
         <InformationTags tags={venueTags} />
         <Spacer.Column numberOfSpaces={4} />

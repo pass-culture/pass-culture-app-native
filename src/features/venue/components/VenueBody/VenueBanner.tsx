@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { View } from 'react-native'
+import { Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -7,6 +7,7 @@ import { BannerMetaModel } from 'api/gen'
 import { GOOGLE_LOGO } from 'features/venue/components/VenueBody/GoogleLogo'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -17,9 +18,10 @@ const GOOGLE_LOGO_WIDTH = 47
 type Props = {
   bannerUrl?: string | null
   bannerMeta?: BannerMetaModel | null
+  handleImagePress?: VoidFunction
 }
 
-export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
+export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bannerMeta }) => {
   const backgroundStyle = useVenueBackgroundStyle()
   const { is_from_google: isFromGoogle, image_credit: imageCredit } = bannerMeta ?? {
     is_from_google: null,
@@ -31,7 +33,9 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
     <HeaderContainer hasGoogleCredit={hasGoogleCredit}>
       {bannerUrl ? (
         <ViewGap gap={1}>
-          <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
+          <GoogleWatermarkWrapper
+            withGoogleWatermark={!!isFromGoogle}
+            handleImagePress={handleImagePress}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
           {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
@@ -53,18 +57,26 @@ const HeaderContainer = styled.View<{ hasGoogleCredit: boolean }>(({ hasGoogleCr
 
 const GoogleWatermarkWrapper = ({
   withGoogleWatermark,
+  handleImagePress,
   children,
 }: PropsWithChildren<{
   withGoogleWatermark: boolean
+  handleImagePress?: VoidFunction
 }>) =>
   withGoogleWatermark ? (
-    <View>
+    <TouchableOpacity
+      onPress={Platform.OS === 'web' ? undefined : handleImagePress}
+      testID="venueImageWithGoogleWatermark ">
       {children}
       <StyledLinearGradient />
       <GoogleLogo source={GOOGLE_LOGO} testID="googleWatermark" />
-    </View>
+    </TouchableOpacity>
   ) : (
-    <React.Fragment>{children}</React.Fragment>
+    <TouchableOpacity
+      onPress={Platform.OS === 'web' ? undefined : handleImagePress}
+      testID="venueImage">
+      {children}
+    </TouchableOpacity>
   )
 
 const StyledLinearGradient = styled(LinearGradient).attrs({

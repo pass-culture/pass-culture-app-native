@@ -2,6 +2,7 @@ import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
@@ -9,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, useLocation } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -28,6 +29,10 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<VenueTopComponent />', () => {
   it('should display full venue address', async () => {
@@ -73,7 +78,7 @@ describe('<VenueTopComponent />', () => {
   it('should copy the whole address when pressing the copy button', async () => {
     render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Copier l’adresse'))
+    await user.press(screen.getByText('Copier l’adresse'))
 
     expect(Clipboard.setString).toHaveBeenCalledWith(
       'Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris'
@@ -86,13 +91,11 @@ describe('<VenueTopComponent />', () => {
       .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
     render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Copier l’adresse'))
+    await user.press(screen.getByText('Copier l’adresse'))
 
-    await waitFor(() => {
-      expect(analytics.logCopyAddress).toHaveBeenCalledWith({
-        venueId: venueDataTest.id,
-        from: 'venue',
-      })
+    expect(analytics.logCopyAddress).toHaveBeenCalledWith({
+      venueId: venueDataTest.id,
+      from: 'venue',
     })
   })
 
@@ -126,11 +129,31 @@ describe('<VenueTopComponent />', () => {
   it('should log analytics when pressing Voir l’itinéraire', async () => {
     render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+    await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
       venueId: venueDataTest.id,
       from: 'venue',
+    })
+  })
+
+  it('should navigate to venue preview carousel', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueTopComponent
+          venue={{
+            ...venueDataTest,
+            bannerUrl: 'https://image.com',
+            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+          }}
+        />
+      )
+    )
+
+    await user.press(screen.getByTestId('venueImage'))
+
+    expect(navigate).toHaveBeenCalledWith('VenuePreviewCarousel', {
+      id: venueDataTest.id,
     })
   })
 })

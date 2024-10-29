@@ -82,6 +82,7 @@ import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
+import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
@@ -526,6 +527,17 @@ export const routes: RootRoute[] = [
     component: VenueMap,
     path: 'carte-des-lieux',
     options: { title: 'Carte des lieux' },
+  },
+
+  {
+    name: 'VenuePreviewCarousel',
+    component: VenuePreviewCarousel,
+    pathConfig: {
+      path: 'lieu/:id/apercu',
+      deeplinkPaths: ['venue/:id/apercu', 'lieu/apercu', 'venue/apercu'],
+      parse: screenParamsParser['VenuePreviewCarousel'],
+    },
+    options: { title: 'Aperçu du lieu' },
   },
   {
     name: 'AccesLibre',
