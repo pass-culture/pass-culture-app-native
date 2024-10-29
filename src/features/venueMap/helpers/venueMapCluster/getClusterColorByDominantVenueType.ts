@@ -17,9 +17,9 @@ const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageCo
       return CLUSTER_IMAGE_COLOR_NAME.ORANGE
     case VenueTypeCodeKey.BOOKSTORE:
     case VenueTypeCodeKey.CREATIVE_ARTS_STORE:
-    case VenueTypeCodeKey.CULTURAL_CENTRE:
     case VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE:
     case VenueTypeCodeKey.RECORD_STORE:
+    case VenueTypeCodeKey.DISTRIBUTION_STORE:
       return CLUSTER_IMAGE_COLOR_NAME.PINK
     default:
       return CLUSTER_IMAGE_COLOR_NAME.BLUE
