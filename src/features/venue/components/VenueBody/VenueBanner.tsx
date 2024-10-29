@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react'
-import { Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -64,17 +63,13 @@ const GoogleWatermarkWrapper = ({
   handleImagePress?: VoidFunction
 }>) =>
   withGoogleWatermark ? (
-    <TouchableOpacity
-      onPress={Platform.OS === 'web' ? undefined : handleImagePress}
-      testID="venueImageWithGoogleWatermark ">
+    <TouchableOpacity onPress={handleImagePress} testID="venueImageWithGoogleWatermark ">
       {children}
       <StyledLinearGradient />
       <GoogleLogo source={GOOGLE_LOGO} testID="googleWatermark" />
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity
-      onPress={Platform.OS === 'web' ? undefined : handleImagePress}
-      testID="venueImage">
+    <TouchableOpacity onPress={handleImagePress} testID="venueImage">
       {children}
     </TouchableOpacity>
   )
