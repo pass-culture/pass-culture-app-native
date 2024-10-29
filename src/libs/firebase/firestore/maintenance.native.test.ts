@@ -1,3 +1,4 @@
+import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import firestore, { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 
 import { maintenanceStatusListener } from './maintenance'
@@ -11,8 +12,8 @@ describe('[method] maintenanceStatus', () => {
 
   beforeEach(() => {
     firestore()
-      .collection('maintenance')
-      .doc('testing')
+      .collection(FIRESTORE_ROOT_COLLECTION)
+      .doc(RemoteStoreDocuments.MAINTENANCE)
       // @ts-expect-error is a mock
       .onSnapshot.mockImplementationOnce((localOnNext) => {
         onNext = localOnNext
@@ -22,9 +23,9 @@ describe('[method] maintenanceStatus', () => {
   it('should set up listener to the maintenance feature flag', () => {
     maintenanceStatusListener(mockedCallBack)
 
-    expect(firestore().collection).toHaveBeenCalledWith('maintenance')
-    expect(firestore().collection('maintenance').doc).toHaveBeenCalledWith('testing')
-    expect(firestore().collection('maintenance').doc('testing').onSnapshot).toHaveBeenCalledWith(
+    expect(firestore().collection).toHaveBeenCalledWith('root')
+    expect(firestore().collection('root').doc).toHaveBeenCalledWith('maintenance')
+    expect(firestore().collection('root').doc('maintenance').onSnapshot).toHaveBeenCalledWith(
       expect.any(Function),
       expect.any(Function)
     )

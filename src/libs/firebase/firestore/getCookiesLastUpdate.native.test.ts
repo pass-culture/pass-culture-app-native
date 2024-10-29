@@ -1,3 +1,4 @@
+import { FIRESTORE_ROOT_COLLECTION, RemoteStoreCookies } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
 
@@ -16,7 +17,9 @@ const validFirebaseData = {
 const mockGet = jest.fn()
 const mockCaptureMonitoringError = captureMonitoringError as jest.Mock
 
-const mockFirestoreDocumentGet = collection('cookiesLastUpdate').doc('testing').get as jest.Mock
+const mockFirestoreDocumentGet = collection(FIRESTORE_ROOT_COLLECTION).doc(
+  RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE
+).get as jest.Mock
 
 describe('[method] getCookiesLastUpdate', () => {
   beforeAll(() =>
@@ -28,7 +31,7 @@ describe('[method] getCookiesLastUpdate', () => {
   it('should call the right path: cookiesLastUpdate', async () => {
     await getCookiesLastUpdate()
 
-    expect(collection).toHaveBeenCalledWith('cookiesLastUpdate')
+    expect(collection('root').doc).toHaveBeenCalledWith('cookiesLastUpdate')
   })
 
   it('should convert data: lastUpdated -> Date', async () => {

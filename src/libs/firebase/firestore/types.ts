@@ -1,4 +1,6 @@
-export enum RemoteStoreCollections {
+export const FIRESTORE_ROOT_COLLECTION = 'root'
+
+export enum RemoteStoreDocuments {
   APPLICATION_VERSIONS = 'applicationVersions',
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
   FEATURE_FLAGS = 'featureFlags',
@@ -6,12 +8,21 @@ export enum RemoteStoreCollections {
   UBBLE = 'ubble',
 }
 
-export enum RemoteStoreDocuments {
-  COOKIES_LAST_UPDATE_BUILD_VERSION = 'buildVersion',
-  COOKIES_LAST_UPDATE_DATE = 'lastUpdated',
+export enum RemoteStoreMaintenance {
   MAINTENANCE_IS_ON = 'maintenanceIsOn',
   MAINTENANCE_MESSAGE = 'message',
+}
+
+export enum RemoteStoreCookies {
+  COOKIES_LAST_UPDATE_BUILD_VERSION = 'buildVersion',
+  COOKIES_LAST_UPDATE_DATE = 'lastUpdated',
+}
+
+export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
+}
+
+export enum RemoteStoreUbble {
   UBBLE_ETA_MESSAGE = 'etaMessage',
 }
 
