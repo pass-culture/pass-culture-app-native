@@ -148,7 +148,7 @@ export const ThematicHome: FunctionComponent = () => {
       case selectedLocationMode === LocationMode.AROUND_PLACE:
         setSelectedLocationMode(LocationMode.AROUND_PLACE)
         break
-      case selectedLocationMode === LocationMode.AROUND_ME:
+      case selectedLocationMode === LocationMode.AROUND_ME || hasGeolocPosition:
         setSelectedLocationMode(LocationMode.AROUND_ME)
         break
       default:
