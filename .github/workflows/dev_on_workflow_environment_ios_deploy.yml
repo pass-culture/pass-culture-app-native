@@ -24,9 +24,9 @@ jobs:
         id: cloudenv
         run: |
           if [ "${{ inputs.ENV }}" != "prod" ]; then
-            echo "export cloud_env=ehp" >> $GITHUB_ENV;
+            echo "cloud_env=ehp" >> $GITHUB_OUTPUT
           else
-            echo "export cloud_env=prod" >> $GITHUB_ENV;
+            echo "cloud_env=prod" >> $GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

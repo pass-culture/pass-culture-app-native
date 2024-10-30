@@ -24,9 +24,9 @@ jobs:
         id: cloudenv
         run: |
           if [ "${{ inputs.ENV }}" != "prod" ]; then
-            echo "export cloud_env=ehp" >> $GITHUB_ENV;
+            echo "cloud_env=ehp" >> $GITHUB_OUTPUT
           else
-            echo "export cloud_env=prod" >> $GITHUB_ENV;
+            echo "cloud_env=prod" >> $GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -67,7 +67,7 @@ jobs:
         with:
           secrets: |-
             ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
-            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-android-google-service-${{ ENV }}
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-android-google-service-${{ inputs.ENV }}
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
