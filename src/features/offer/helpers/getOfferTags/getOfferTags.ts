@@ -1,7 +1,7 @@
-import { OfferExtraData } from 'api/gen'
+import { OfferExtraDataResponse } from 'api/gen'
 import { isString } from 'shared/typeguards/isString'
 
-export function getOfferTags(subcategoryLabel: string, extraData?: OfferExtraData) {
+export function getOfferTags(subcategoryLabel: string, extraData?: OfferExtraDataResponse) {
   const cinemaGenres = extraData?.genres?.map((genre) => genre) ?? []
 
   return [

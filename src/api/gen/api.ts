@@ -376,6 +376,13 @@ export enum BookingCancellationReasons {
   'FRAUD_INAPPROPRIATE' = 'FRAUD_INAPPROPRIATE',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
   'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
+  'BACKOFFICE' = 'BACKOFFICE',
+  'BACKOFFICE_EVENT_CANCELLED' = 'BACKOFFICE_EVENT_CANCELLED',
+  'BACKOFFICE_OVERBOOKING' = 'BACKOFFICE_OVERBOOKING',
+  'BACKOFFICE_BENEFICIARY_REQUEST' = 'BACKOFFICE_BENEFICIARY_REQUEST',
+  'BACKOFFICE_OFFER_MODIFIED' = 'BACKOFFICE_OFFER_MODIFIED',
+  'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
+  'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
 }
 /**
  * @export
@@ -404,6 +411,11 @@ export interface BookingOfferExtraData {
  * @interface BookingOfferResponse
  */
 export interface BookingOfferResponse {
+  /**
+   * @type {BookingOfferResponseAddress}
+   * @memberof BookingOfferResponse
+   */
+  address?: BookingOfferResponseAddress | null
   /**
    * @type {string}
    * @memberof BookingOfferResponse
@@ -469,6 +481,42 @@ export interface BookingOfferResponse {
    * @memberof BookingOfferResponse
    */
   withdrawalType?: WithdrawalTypeEnum | null
+}
+/**
+ * @export
+ * @interface BookingOfferResponseAddress
+ */
+export interface BookingOfferResponseAddress {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof BookingOfferResponseAddress
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  timezone: string
 }
 /**
  * @export
@@ -1767,6 +1815,7 @@ export interface MusicType {
  * @enum {string}
  */
 export enum NativeCategoryIdEnumv2 {
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
   'ABONNEMENTS_MUSEE' = 'ABONNEMENTS_MUSEE',
   'ABONNEMENTS_SPECTACLE' = 'ABONNEMENTS_SPECTACLE',
   'ACHAT_LOCATION_INSTRUMENT' = 'ACHAT_LOCATION_INSTRUMENT',
@@ -1774,7 +1823,6 @@ export enum NativeCategoryIdEnumv2 {
   'AUTRES_MEDIAS' = 'AUTRES_MEDIAS',
   'BIBLIOTHEQUE_MEDIATHEQUE' = 'BIBLIOTHEQUE_MEDIATHEQUE',
   'CARTES_CINEMA' = 'CARTES_CINEMA',
-  'CARTES_JEUNES' = 'CARTES_JEUNES',
   'CD' = 'CD',
   'CONCERTS_EN_LIGNE' = 'CONCERTS_EN_LIGNE',
   'CONCERTS_EVENEMENTS' = 'CONCERTS_EVENEMENTS',
@@ -1787,7 +1835,6 @@ export enum NativeCategoryIdEnumv2 {
   'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
   'FESTIVALS' = 'FESTIVALS',
   'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
-  'FILMS_SERIES_EN_LIGNE' = 'FILMS_SERIES_EN_LIGNE',
   'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
   'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
   'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
@@ -1809,6 +1856,7 @@ export enum NativeCategoryIdEnumv2 {
   'SEANCES_DE_CINEMA' = 'SEANCES_DE_CINEMA',
   'SPECTACLES_ENREGISTRES' = 'SPECTACLES_ENREGISTRES',
   'SPECTACLES_REPRESENTATIONS' = 'SPECTACLES_REPRESENTATIONS',
+  'VIDEOS_ET_DOCUMENTAIRES' = 'VIDEOS_ET_DOCUMENTAIRES',
   'VINYLES' = 'VINYLES',
   'VISITES_CULTURELLES' = 'VISITES_CULTURELLES',
   'VISITES_CULTURELLES_EN_LIGNE' = 'VISITES_CULTURELLES_EN_LIGNE',
@@ -1946,92 +1994,92 @@ export interface OfferAccessibilityResponse {
 }
 /**
  * @export
- * @interface OfferExtraData
+ * @interface OfferExtraDataResponse
  */
-export interface OfferExtraData {
+export interface OfferExtraDataResponse {
   /**
    * @type {number}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   allocineId?: number | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   author?: string | null
   /**
    * @type {Array<string>}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   cast?: Array<string> | null
   /**
    * @type {number}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   durationMinutes?: number | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   ean?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   editeur?: string | null
   /**
    * @type {Array<string>}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   genres?: Array<string> | null
   /**
    * @type {GtlLabels}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   gtlLabels?: GtlLabels | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   musicSubType?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   musicType?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   performer?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   releaseDate?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   showSubType?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   showType?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   speaker?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   stageDirector?: string | null
   /**
    * @type {string}
-   * @memberof OfferExtraData
+   * @memberof OfferExtraDataResponse
    */
   visa?: string | null
 }
@@ -2073,10 +2121,10 @@ export interface OfferPreviewResponse {
    */
   durationMinutes?: number | null
   /**
-   * @type {OfferExtraData}
+   * @type {OfferExtraDataResponse}
    * @memberof OfferPreviewResponse
    */
-  extraData?: OfferExtraData | null
+  extraData?: OfferExtraDataResponse | null
   /**
    * @type {number}
    * @memberof OfferPreviewResponse
@@ -2125,10 +2173,10 @@ export interface OfferReportRequest {
    */
   customReason?: string | null
   /**
-   * @type {string}
+   * @type {Reason}
    * @memberof OfferReportRequest
    */
-  reason: string
+  reason: Reason
 }
 /**
  * @export
@@ -2156,10 +2204,10 @@ export interface OfferResponse {
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * @type {OfferExtraData}
+   * @type {OfferExtraDataResponse}
    * @memberof OfferResponse
    */
-  extraData?: OfferExtraData | null
+  extraData?: OfferExtraDataResponse | null
   /**
    * @type {number}
    * @memberof OfferResponse
@@ -2277,10 +2325,10 @@ export interface OfferResponseV2 {
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * @type {OfferExtraData}
+   * @type {OfferExtraDataResponse}
    * @memberof OfferResponseV2
    */
-  extraData?: OfferExtraData | null
+  extraData?: OfferExtraDataResponse | null
   /**
    * @type {number}
    * @memberof OfferResponseV2
@@ -4198,6 +4246,11 @@ export interface VenueResponse {
    * @type {string}
    * @memberof VenueResponse
    */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
   timezone: string
   /**
    * @type {VenueTypeCodeKey}
@@ -4261,6 +4314,7 @@ export interface VisualDisabilityModel {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
+  'in_app' = 'in_app',
   'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }

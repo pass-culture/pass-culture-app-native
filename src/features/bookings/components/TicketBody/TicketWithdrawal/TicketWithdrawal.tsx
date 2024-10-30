@@ -10,7 +10,7 @@ import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/Bicolo
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  withdrawalType: WithdrawalTypeEnum.by_email | WithdrawalTypeEnum.on_site
+  withdrawalType: Exclude<WithdrawalTypeEnum, WithdrawalTypeEnum.no_ticket>
   withdrawalDelay: number
 }
 

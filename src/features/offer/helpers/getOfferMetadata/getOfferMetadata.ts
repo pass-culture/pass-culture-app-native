@@ -1,4 +1,4 @@
-import { OfferExtraData } from 'api/gen'
+import { OfferExtraDataResponse } from 'api/gen'
 import { OfferMetadataItemProps } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
 
 const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
@@ -21,7 +21,7 @@ function filterEmptyItems(item: OfferMetadataItemProps): boolean {
   return item.value !== ''
 }
 
-export function getOfferMetadata(extraData?: OfferExtraData): OfferMetadataItemProps[] {
+export function getOfferMetadata(extraData?: OfferExtraDataResponse): OfferMetadataItemProps[] {
   const castValue = extraData?.cast?.join(', ')
 
   return [
