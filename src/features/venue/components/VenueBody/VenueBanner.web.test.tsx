@@ -11,7 +11,7 @@ jest.mock('react-native-safe-area-context', () => ({
 const mockHandleImagePress = jest.fn()
 
 describe('<VenueBanner />', () => {
-  it('should not handle venue image press when pressing image not from Google', () => {
+  it('should call press handler when pressing image not from google', () => {
     render(
       <VenueBanner
         bannerUrl="https://image.com"
@@ -22,10 +22,10 @@ describe('<VenueBanner />', () => {
 
     fireEvent.click(screen.getByTestId('venueImage'))
 
-    expect(mockHandleImagePress).not.toHaveBeenCalled()
+    expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })
 
-  it('should not handle venue image press when pressing image from Google', () => {
+  it('should call press handler when pressing image from google', () => {
     render(
       <VenueBanner
         bannerUrl="https://image.com"
@@ -36,6 +36,17 @@ describe('<VenueBanner />', () => {
 
     fireEvent.click(screen.getByTestId('venueImageWithGoogleWatermark'))
 
-    expect(mockHandleImagePress).not.toHaveBeenCalled()
+    expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display default venue background', async () => {
+    render(
+      <VenueBanner
+        bannerMeta={{ is_from_google: true, image_credit: 'François Boulo' }}
+        handleImagePress={mockHandleImagePress}
+      />
+    )
+
+    expect(await screen.findByTestId('defaultVenueBackground')).toBeInTheDocument()
   })
 })

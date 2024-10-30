@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ImagesCarouselModal } from 'features/offer/components/ImagesCarouselModal/ImagesCarouselModal'
 import { render } from 'tests/utils'
+import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCarouselModal'
 
 describe('ImagesCarouselModal', () => {
   it('should return null on native side', () => {

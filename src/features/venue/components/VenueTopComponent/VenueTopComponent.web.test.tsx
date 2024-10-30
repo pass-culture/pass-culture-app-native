@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -28,7 +27,7 @@ jest.mock('@batch.com/react-native-plugin', () =>
 )
 
 describe('<VenueTopComponent />', () => {
-  it('should navigate to venue preview carousel', async () => {
+  it('should display preview in modal', async () => {
     render(
       reactQueryProviderHOC(
         <VenueTopComponent
@@ -38,11 +37,32 @@ describe('<VenueTopComponent />', () => {
             bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
           }}
         />
-      )
+      ),
+      { theme: { isDesktopViewport: true } }
     )
 
     fireEvent.click(screen.getByTestId('venueImage'))
 
-    expect(navigate).not.toHaveBeenCalled()
+    expect(await screen.findByTestId('fullscreenModalView')).toBeInTheDocument()
+    expect(screen.getByLabelText('Image 1')).toBeInTheDocument()
+  })
+
+  it('should not display preview in modal if breakpoint is not desktop', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueTopComponent
+          venue={{
+            ...venueDataTest,
+            bannerUrl: 'https://image.com',
+            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+          }}
+        />
+      ),
+      { theme: { isDesktopViewport: false } }
+    )
+
+    fireEvent.click(screen.getByTestId('venueImage'))
+
+    expect(screen.queryByTestId('fullscreenModalView')).not.toBeInTheDocument()
   })
 })
