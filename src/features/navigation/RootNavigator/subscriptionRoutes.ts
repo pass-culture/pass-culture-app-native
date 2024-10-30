@@ -39,26 +39,29 @@ import {
 
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
-  // Debug routes
   {
+    // debug route: in navigation component
     name: 'NavigationSignUp',
     component: NavigationSignUp,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-sign-up',
   },
   {
+    // debug route: in navigation component
     name: 'NavigationErrors',
     component: NavigationErrors,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-errors',
   },
   {
+    // debug route: in navigation component
     name: 'NavigationIdentityCheck',
     component: NavigationIdentityCheck,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-identity-check',
   },
   {
+    // debug route: in navigation component
     name: 'NewIdentificationFlow',
     component: NewIdentificationFlow,
     hoc: withAsyncErrorBoundary,
