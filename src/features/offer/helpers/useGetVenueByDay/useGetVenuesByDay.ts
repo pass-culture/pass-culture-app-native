@@ -7,6 +7,7 @@ import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
@@ -34,12 +35,20 @@ export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?:
     [offer?.venue.coordinates.latitude, offer?.venue.coordinates.longitude, userLocation]
   )
 
+  let searchQueryParameters: SearchQueryParameters = {
+    ...initialSearchState,
+    distinct: false,
+  }
+
+  const allocineId = offer?.extraData?.allocineId ?? undefined
+  if (allocineId) {
+    searchQueryParameters = { ...searchQueryParameters, allocineId }
+  } else if (offer?.id) {
+    searchQueryParameters = { ...searchQueryParameters, objectIds: [offer.id.toString()] }
+  }
+
   const { data } = useFetchOffers({
-    parameters: {
-      ...initialSearchState,
-      allocineId: offer?.extraData?.allocineId ?? undefined,
-      distinct: false,
-    },
+    parameters: searchQueryParameters,
     buildLocationParameterParams: {
       userLocation: location,
       selectedLocationMode: LocationMode.AROUND_ME,

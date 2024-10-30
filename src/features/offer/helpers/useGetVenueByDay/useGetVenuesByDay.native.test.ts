@@ -8,6 +8,7 @@ import {
   stockBuilder,
 } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -28,6 +29,7 @@ const OFFER_WITH_STOCKS_AFTER_15_DAYS = offerResponseBuilder()
   .withStocks([STOCK_AFTER_15_DAYS])
   .build()
 const OFFER_WITHOUT_STOCKS = offerResponseBuilder().withStocks([]).build()
+const OFFER_WITHOUT_ALLOCINE_ID = offerResponseBuilder().withExtraData({}).build()
 
 mockdate.set(TODAY_DATE)
 
@@ -50,9 +52,38 @@ jest.mock('@batch.com/react-native-plugin', () =>
 )
 
 const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
 
 describe('useGetVenueByDay', () => {
   describe('items', () => {
+    it('should call fetchOffers with allocineId when provided', async () => {
+      renderUseGetVenueByDay(TODAY_DATE, OFFER_WITH_STOCKS_TODAY)
+
+      const allocineId = OFFER_WITH_STOCKS_TODAY.extraData?.allocineId
+
+      await act(() => {})
+
+      expect(fetchOffersSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          parameters: expect.objectContaining({ allocineId }),
+        })
+      )
+    })
+
+    it('should call fetchOffers with offerId when no allocineId is provided', async () => {
+      renderUseGetVenueByDay(TODAY_DATE, OFFER_WITHOUT_ALLOCINE_ID)
+
+      const offerId = OFFER_WITHOUT_ALLOCINE_ID.id.toString()
+
+      await act(() => {})
+
+      expect(fetchOffersSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          parameters: expect.objectContaining({ objectIds: [offerId] }),
+        })
+      )
+    })
+
     it('should return an empty list when the offer is not available in any cinema', async () => {
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
 
@@ -60,7 +91,7 @@ describe('useGetVenueByDay', () => {
 
       await act(() => {})
 
-      await expect(result.current.items).toStrictEqual([])
+      expect(result.current.items).toStrictEqual([])
     })
 
     it('should return all the results of the indicated venue and cinema today', async () => {
