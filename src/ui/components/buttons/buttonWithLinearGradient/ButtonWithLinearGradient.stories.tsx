@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
@@ -12,58 +13,41 @@ const meta: ComponentMeta<typeof ButtonWithLinearGradient> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ButtonWithLinearGradient> = (props) => (
-  <ButtonWithLinearGradient {...props} />
+const variantConfig = [
+  {
+    label: 'ButtonWithLinearGradient default',
+    props: { onPress: () => 'doNothing', wording: 'Confirmer' },
+  },
+  {
+    label: 'ButtonWithLinearGradient disabled',
+    props: {
+      onPress: () => 'doNothing',
+      wording: 'Confirmer',
+      isDisabled: true,
+    },
+  },
+  {
+    label: 'ButtonWithLinearGradient with fit content width',
+    props: { onPress: () => 'doNothing', wording: 'Confirmer', fitContentWidth: true },
+  },
+  {
+    label: 'ButtonWithLinearGradient with icon',
+    props: { onPress: () => 'doNothing', wording: 'Consulter mes e-mails', icon: Email },
+  },
+  {
+    label: 'ButtonWithLinearGradient with icon after wording',
+    props: {
+      onPress: () => 'doNothing',
+      wording: 'C’est parti\u00a0!',
+      icon: PlainArrowNext,
+      iconAfterWording: true,
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={ButtonWithLinearGradient} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  wording: 'Confirmer',
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonWithLinearGradient wording="Confirmer" />',
-    },
-  },
-}
-
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  wording: 'Consulter mes e-mails',
-  icon: Email,
-}
-WithIcon.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonWithLinearGradient wording="Consulter mes e-mails" icon={Email} />',
-    },
-  },
-}
-
-export const WithIconAfterWording = Template.bind({})
-WithIconAfterWording.args = {
-  wording: 'C’est parti\u00a0!',
-  icon: PlainArrowNext,
-  iconAfterWording: true,
-}
-WithIconAfterWording.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonWithLinearGradient wording="C’est parti\u00a0!" icon={PlainArrowNext} />',
-    },
-  },
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  wording: 'Confirmer',
-  isDisabled: true,
-}
-Disabled.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonWithLinearGradient wording="Confirmer" isDisabled />',
-    },
-  },
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ButtonWithLinearGradient'
