@@ -83,10 +83,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: "Prochaine séance\_:"
     commands:
-    tapOn:
-      enabled: true
-      below:
-        text: "Prochaine séance\_:"
+      - tapOn:
+          enabled: true
+          below:
+            text: "Prochaine séance\_:"
 
 - tapOn:
     enabled: true
