@@ -53,3 +53,4 @@ const Template: ComponentStory<typeof VariantsTemplate> = () => (
 )
 
 export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ToggleButton'
