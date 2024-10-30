@@ -39,8 +39,15 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { TypoDS } from 'ui/theme'
 
-const IdentityCheckModule = lazy(() =>
-  import('./subscriptionRoutesModule').then((module) => ({
+const IdentityCheckModule = lazy(async () => {
+  const module = await import('./subscriptionRoutesModule')
+  // await new Promise<void>((resolve) => {
+  //   setTimeout(() => {
+  //     resolve()
+  //   }, 4000)
+  // })
+  await new Promise((resolve) => setTimeout(resolve, 4000))
+  return {
     default: module.BeneficiaryAccountCreated,
     stepper: module.Stepper,
     beneficiaryRequestSent: module.BeneficiaryRequestSent,
@@ -74,8 +81,8 @@ const IdentityCheckModule = lazy(() =>
     navigationSignUp: module.NavigationSignUp,
     navigationIdentityCheck: module.NavigationIdentityCheck,
     newIdentificationFlow: module.NewIdentificationFlow,
-  }))
-)
+  }
+})
 
 const LoadingComponent = () => <TypoDS.Title1>Chargement...</TypoDS.Title1>
 

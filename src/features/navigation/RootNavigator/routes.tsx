@@ -90,11 +90,13 @@ import { TypoDS } from 'ui/theme'
 
 import { RootRoute } from './types'
 
-const LegalNotices = lazy(() =>
-  import('features/profile/pages/LegalNotices/LegalNotices').then((module) => ({
+const LegalNotices = lazy(async () => {
+  const module = await import('features/profile/pages/LegalNotices/LegalNotices')
+  await new Promise((resolve) => setTimeout(resolve, 4_000))
+  return {
     default: module.LegalNotices,
-  }))
-)
+  }
+})
 
 export const routes: RootRoute[] = [
   ...accessibilityRoutes,
