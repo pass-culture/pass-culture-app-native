@@ -1,0 +1,44 @@
+import { fetchCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
+import { useCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
+import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/SearchN1/category/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import { LocationMode, Position } from 'libs/location/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, renderHook } from 'tests/utils'
+
+jest.mock('libs/network/NetInfoWrapper')
+
+const mockLocationMode = LocationMode.AROUND_ME
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockUserLocation,
+    selectedLocationMode: mockLocationMode,
+  }),
+}))
+
+jest.mock('features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers')
+const mockFetchCinemaOffers = fetchCinemaOffers as jest.Mock
+mockFetchCinemaOffers.mockResolvedValue(cinemaPlaylistAlgoliaSnapshot)
+
+jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@batch.com/react-native-plugin', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+describe('useCinemaOffers', () => {
+  it('should fetch cinema offers', async () => {
+    renderHook(() => useCinemaOffers(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await act(() => {})
+
+    expect(mockFetchCinemaOffers).toHaveBeenCalledWith({ userLocation: mockUserLocation }),
+      expect.any(Object),
+      false,
+      undefined
+  })
+})

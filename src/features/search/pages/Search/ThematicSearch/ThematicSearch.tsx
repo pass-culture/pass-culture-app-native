@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useEffect, useMemo } from 'react'
 import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -13,6 +13,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
+import { Cinema } from 'features/search/pages/Search/SearchN1/category/Cinema/Cinema'
 import { ThematicSearchBar } from 'features/search/pages/Search/ThematicSearch/ThematicSearchBar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
@@ -48,7 +49,17 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
-
+  useEffect(() => {
+    if (params?.offerCategories) {
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerCategories: params.offerCategories,
+        },
+      })
+    }
+  }, [dispatch, params?.offerCategories, searchState])
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
   const isLocated = useMemo(
@@ -59,6 +70,7 @@ export const ThematicSearch: React.FC = () => {
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
+  const isCinemaCategory = offerCategory === SearchGroupNameEnumv2.CINEMA
 
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
@@ -116,6 +128,7 @@ export const ThematicSearch: React.FC = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         ) : null}
+        {isCinemaCategory ? <Cinema /> : null}
         <Spacer.Column numberOfSpaces={6} />
       </ScrollView>
     </ThematicSearchBar>

@@ -211,6 +211,24 @@ describe('<ThematicSearch/>', () => {
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
+
+  describe('cinema playlists', () => {
+    it('should render cinema playlists when offerCategory is `CINEMA`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
+      render(reactQueryProviderHOC(<SearchN1 />))
+      await screen.findByText('Cinéma')
+
+      expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
+    })
+
+    it('should not render cinema playlists when offerCategory is not `CINEMA`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      render(reactQueryProviderHOC(<SearchN1 />))
+      await screen.findByText('Festivals')
+
+      expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 function MockOfferCategoriesParams(offerCategoriesParams: {
