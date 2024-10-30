@@ -1,5 +1,3 @@
-import React, { lazy, Suspense } from 'react'
-
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
@@ -29,6 +27,7 @@ import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
+import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
 import { NavigationSignUp } from 'features/internal/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
@@ -37,54 +36,6 @@ import {
   GenericRoute,
   SubscriptionRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
-import { TypoDS } from 'ui/theme'
-
-const IdentityCheckModule = lazy(async () => {
-  const module = await import('./subscriptionRoutesModule')
-  // await new Promise<void>((resolve) => {
-  //   setTimeout(() => {
-  //     resolve()
-  //   }, 4000)
-  // })
-  await new Promise((resolve) => setTimeout(resolve, 4000))
-  return {
-    default: module.BeneficiaryAccountCreated,
-    stepper: module.Stepper,
-    beneficiaryRequestSent: module.BeneficiaryRequestSent,
-    identityCheckHonor: module.IdentityCheckHonor,
-    dmsIntroduction: module.DMSIntroduction,
-    identityCheckDMS: module.IdentityCheckDMS,
-    eduConnectForm: module.EduConnectForm,
-    eduConnectValidation: module.EduConnectValidation,
-    withEduConnectErrorBoundary: module.withEduConnectErrorBoundary,
-    eduConnectErrors: module.EduConnectErrors,
-    identificationFork: module.IdentificationFork,
-    identityCheckUnavailable: module.IdentityCheckUnavailable,
-    comeBackLater: module.ComeBackLater,
-    expiredOrLostID: module.ExpiredOrLostID,
-    identityCheckEnd: module.IdentityCheckEnd,
-    identityCheckPending: module.IdentityCheckPending,
-    selectIDOrigin: module.SelectIDOrigin,
-    selectIDStatus: module.SelectIDStatus,
-    selectPhoneStatus: module.SelectPhoneStatus,
-    ubbleWebview: module.UbbleWebview,
-    phoneValidationTooManyAttempts: module.PhoneValidationTooManyAttempts,
-    phoneValidationTooManySMSSent: module.PhoneValidationTooManySMSSent,
-    setPhoneNumber: module.SetPhoneNumber,
-    setPhoneNumberWithoutValidation: module.SetPhoneNumberWithoutValidation,
-    setPhoneValidationCode: module.SetPhoneValidationCode,
-    setAddress: module.SetAddress,
-    setCity: module.SetCity,
-    setName: module.SetName,
-    setStatus: module.SetStatus,
-    navigationErrors: module.NavigationErrors,
-    navigationSignUp: module.NavigationSignUp,
-    navigationIdentityCheck: module.NavigationIdentityCheck,
-    newIdentificationFlow: module.NewIdentificationFlow,
-  }
-})
-
-const LoadingComponent = () => <TypoDS.Title1>Chargement...</TypoDS.Title1>
 
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
@@ -116,11 +67,7 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
   // Stepper
   {
     name: 'Stepper',
-    component: () => (
-      <Suspense fallback={<LoadingComponent />}>
-        <IdentityCheckModule.stepper />
-      </Suspense>
-    ),
+    component: Stepper,
     path: 'verification-identite',
     options: { title: 'Vérification d’identité' },
     secure: true,

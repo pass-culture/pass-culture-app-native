@@ -1,4 +1,5 @@
 import { LinkingOptions } from '@react-navigation/native'
+import React, { lazy, Suspense } from 'react'
 
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -8,8 +9,8 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/routes'
-import { SearchStackNavigator } from 'features/navigation/SearchStackNavigator/SearchStackNavigator'
 import { Profile } from 'features/profile/pages/Profile'
+import { TypoDS } from 'ui/theme'
 
 import { TabStack } from './Stack'
 import { TabParamList, TabRoute, TabRouteName } from './types'
@@ -17,6 +18,14 @@ import { TabParamList, TabRoute, TabRouteName } from './types'
 export const initialRouteName = 'Home'
 
 const Home = withAsyncErrorBoundary(HomeComponent)
+
+const SearchStackNavigator = lazy(async () => {
+  const module = await import('features/navigation/SearchStackNavigator/SearchStackNavigator')
+  await new Promise((resolve) => setTimeout(resolve, 4_000))
+  return {
+    default: module.SearchStackNavigator,
+  }
+})
 
 const routes: TabRoute[] = [
   {
@@ -27,7 +36,11 @@ const routes: TabRoute[] = [
   },
   {
     name: 'SearchStackNavigator',
-    component: SearchStackNavigator,
+    component: () => (
+      <Suspense fallback={<TypoDS.Title1>CHARGEMENT...</TypoDS.Title1>}>
+        <SearchStackNavigator initialRouteName="SearchLanding" />
+      </Suspense>
+    ),
     pathConfig: searchNavigatorPathConfig,
   },
   {

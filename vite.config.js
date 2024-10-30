@@ -142,7 +142,7 @@ export default ({ mode }) => {
       },
     },
     build: {
-      sourcemap: true,
+      sourcemap: false,
       commonjsOptions: {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:
