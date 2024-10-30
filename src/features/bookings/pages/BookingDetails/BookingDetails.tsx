@@ -154,7 +154,9 @@ export function BookingDetails() {
     showCancelModal()
     analytics.logCancelBooking(offer.id)
   }
-
+  const onEmailPress = () => {
+    analytics.logClickEmailOrganizer()
+  }
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
       prePopulateOffer({
@@ -218,6 +220,7 @@ export function BookingDetails() {
                     accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
                     externalNav={{ url: `mailto:${bookingContactEmail}` }}
                     icon={EmailFilled}
+                    onBeforeNavigate={onEmailPress}
                   />
                 </SendEmailContainer>
 

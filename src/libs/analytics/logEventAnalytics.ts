@@ -182,6 +182,8 @@ export const logEventAnalytics = {
     apiRecoParams?: RecommendationApiParams
     playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
+  logClickEmailOrganizer: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickSeeMore: (params: {
