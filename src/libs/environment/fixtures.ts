@@ -65,6 +65,7 @@ export const env: Environment = {
   SENTRY_DSN: 'SENTRY_DSN',
   SENTRY_PROFILES_SAMPLE_RATE: '1.0',
   SENTRY_TRACES_SAMPLE_RATE: '1.0',
+  SENTRY_SAMPLE_RATE: '1.0',
   SITE_PUBLIC_KEY: 'SITE_PUBLIC_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   FRAUD_EMAIL_ADDRESS: 'service.fraude@test.passculture.app',

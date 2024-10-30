@@ -29,6 +29,7 @@ export async function getSentryConfig() {
     release,
     dist,
     tracesSampleRate: env.SENTRY_TRACES_SAMPLE_RATE as unknown as number,
+    sampleRate: env.SENTRY_SAMPLE_RATE as unknown as number,
     attachScreenshot: true,
     integrations: [new ReactNativeTracing({ routingInstrumentation })],
     _experiments: {
