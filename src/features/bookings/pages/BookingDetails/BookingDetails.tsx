@@ -3,6 +3,7 @@ import React from 'react'
 import { Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BookingReponse } from 'api/gen'
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -89,13 +90,12 @@ export function BookingDetails() {
   // Allows to display a message in case of refresh specifying the cancellation
   // of the reservation being consulted if it is made via Flask Admin
   // and booking is not archived
-  const cancellationConsultedBooking = endedBookings.filter(
+  const cancellationConsultedBooking: BookingReponse[] = endedBookings.filter(
     (item) => item.id === params.id && !isEligibleBookingsForArchive(item)
   )
 
-  if (cancellationConsultedBooking.length > 0) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
+  if (cancellationConsultedBooking.length > 0 && cancellationConsultedBooking[0]) {
+    const nameCanceledBooking: string = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
