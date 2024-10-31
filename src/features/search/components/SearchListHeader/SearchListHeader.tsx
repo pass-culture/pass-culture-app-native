@@ -52,7 +52,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     Object.values(disabilities).filter((disability) => disability).length > 0
   const venuePlaylistTitle = getSearchVenuePlaylistTitle(
     shouldDisplayAccessibilityContent,
-    venuesUserData?.[0]?.venue_playlist_title
+    venuesUserData?.[0]?.venue_playlist_title,
+    isLocated
   )
 
   const previousRoute = usePreviousRoute()
