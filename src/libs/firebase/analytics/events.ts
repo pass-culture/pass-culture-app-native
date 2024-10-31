@@ -26,6 +26,7 @@ export enum AnalyticsEvent {
   CHOOSE_EDUCONNECT_METHOD = 'ChooseEduConnectMethod',
   CHOOSE_UBBLE_METHOD = 'ChooseUbbleMethod',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
+  CLICK_EMAIL_ORGANIZER = 'ClickEmailOrganizer',
   CLICK_FORCE_UPDATE = 'ClickForceUpdate',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',

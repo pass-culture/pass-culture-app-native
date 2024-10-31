@@ -293,12 +293,17 @@ describe('BookingDetails', () => {
       expect(screen.queryByText("Contact de l'organisateur")).not.toBeOnTheScreen()
     })
 
-    it("should open mail app when clicking on Venue's mail address", async () => {
+    it("should open mail app and log ClickEmailOrganizer when clicking on Venue's mail address", async () => {
       const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
       await screen.findByText('Ma réservation')
+
       fireEvent.press(screen.getByText('bookingContactTest@email.com'))
+
+      expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
+
+      await act(() => {})
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         `mailto:bookingContactTest@email.com`,
