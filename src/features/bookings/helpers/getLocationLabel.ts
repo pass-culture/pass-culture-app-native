@@ -8,9 +8,9 @@ export function getLocationLabel(
   if (properties.isPermanent || properties.isDigital) {
     return ''
   }
-  const { venue } = stock.offer
+  const { venue, address } = stock.offer
 
   // Do not use ?? as Sonar suggests because if venue.publicName is an empty string we will display an empty string
-  const displayNameVenue = venue.publicName || venue.name
-  return [displayNameVenue, venue.city].filter(Boolean).join(', ')
+  const displayNameVenue = address?.label || venue.publicName || venue.name
+  return [displayNameVenue, address?.city || venue.city].filter(Boolean).join(', ')
 }
