@@ -32,17 +32,18 @@ module.exports = {
   rules: {
     'react/no-unused-prop-types': 'off', // has false positives
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
-    'local-rules/independent-mocks': ['error'],
+    'local-rules/independent-mocks': 'error',
     'local-rules/no-empty-arrow-function': 'off',
-    'local-rules/no-hardcoded-id-in-svg': ['error'],
-    'local-rules/no-raw-text': ['error'],
-    'local-rules/use-ternary-operator-in-jsx': ['error'],
-    'local-rules/nbsp-in-text': ['error'],
-    'local-rules/apostrophe-in-text': ['error'],
-    'local-rules/no-truthy-check-after-queryAll-matchers': ['error'],
-    'local-rules/todo-format': ['error'],
-    'local-rules/use-the-right-test-utils': ['error'],
-    'local-rules/no-use-of-algolia-multiple-queries': ['error'],
+    'local-rules/no-hardcoded-id-in-svg': 'error',
+    'local-rules/no-raw-text': 'error',
+    'local-rules/use-ternary-operator-in-jsx': 'error',
+    'local-rules/nbsp-in-text': 'error',
+    'local-rules/apostrophe-in-text': 'error',
+    'local-rules/no-truthy-check-after-queryAll-matchers': 'error',
+    'local-rules/todo-format': 'error',
+    'local-rules/use-the-right-test-utils': 'error',
+    'local-rules/no-use-of-algolia-multiple-queries': 'error',
+    'local-rules/no-currency-symbols': 'off', // TODO(LucasBeneston): enable when all currency symbols will be dynamic
     'no-negated-condition': 'warn',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/ban-ts-comment': [
@@ -359,8 +360,13 @@ module.exports = {
     },
   ],
 
-  // Test overrides
   overrides: [
+    // Stories overrides
+    {
+      files: ['**/*.stories.tsx'],
+      rules: { 'local-rules/no-currency-symbols': 'off' },
+    },
+    // Tests overrides
     {
       files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
       env: { jest: true },
@@ -368,6 +374,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
+        'local-rules/no-currency-symbols': 'off',
         'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
