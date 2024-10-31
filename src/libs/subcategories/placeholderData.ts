@@ -259,7 +259,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.CONCERT,
