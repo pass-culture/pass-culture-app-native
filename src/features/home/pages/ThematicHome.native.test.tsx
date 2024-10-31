@@ -293,6 +293,7 @@ describe('ThematicHome', () => {
       ${true}           | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.AROUND_ME}
       ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_ME}
       ${true}           | ${'category_block'} | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
+      ${true}           | ${'category_block'} | ${LocationMode.EVERYWHERE}   | ${LocationMode.AROUND_ME}
       ${false}          | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
       ${false}          | ${'category_block'} | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
       ${false}          | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
