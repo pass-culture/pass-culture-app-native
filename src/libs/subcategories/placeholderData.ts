@@ -84,7 +84,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
       categoryId: CategoryIdEnum.FILM,
-      appLabel: 'Abonnement plateforme streaming',
+      appLabel: 'Abonnements streaming',
       searchGroupName: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
@@ -755,7 +755,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     { name: SearchGroupNameEnumv2.CINEMA, value: 'Cinéma' },
     {
       name: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
-      value: 'Films, documentaires et séries',
+      value: 'Films, séries et documentaiers',
     },
     { name: SearchGroupNameEnumv2.INSTRUMENTS, value: 'Instruments de musique' },
     { name: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS, value: 'Jeux & jeux vidéos' },
