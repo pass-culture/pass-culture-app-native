@@ -137,6 +137,7 @@ export type SearchQueryParameters = {
   venue?: Venue
   gtls?: GTL[]
   distinct?: boolean
+  objectIds?: string[]
 }
 
 export const transformHit = transformOfferHit
