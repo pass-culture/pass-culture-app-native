@@ -23,7 +23,7 @@ jobs:
       - name: Is deployment targeting ehp or production
         id: cloudenv
         run: |
-          if [ "${{ inputs.ENV }}" != "prod" ]; then
+          if [ "${{ inputs.ENV }}" != "production" ]; then
             echo "cloud_env=ehp" >> $GITHUB_OUTPUT
           else
             echo "cloud_env=prod" >> $GITHUB_OUTPUT
