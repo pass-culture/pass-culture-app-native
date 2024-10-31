@@ -32,6 +32,17 @@ export const bookingsSnap = toMutable({
           id: 147874,
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
           extraData: null,
           isPermanent: false,
           isDigital: true,
@@ -73,6 +84,17 @@ export const bookingsSnap = toMutable({
           id: 147874,
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
           extraData: null,
           isPermanent: false,
           isDigital: true,
@@ -118,6 +140,17 @@ export const bookingsSnap = toMutable({
           id: 147874,
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
           extraData: {
             ean: '123456789',
           },
@@ -163,6 +196,17 @@ export const bookingsSnap = toMutable({
           id: 147874,
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
           extraData: {
             ean: '123456789',
           },

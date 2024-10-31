@@ -120,6 +120,10 @@ describe('getLocationLabel', () => {
         ...initialBooking.stock,
         offer: {
           ...initialBooking.stock.offer,
+          address: {
+            ...initialBooking.stock.offer.address,
+            city: '',
+          },
           venue: {
             ...initialBooking.stock.offer.venue,
             city: undefined,
@@ -145,6 +149,10 @@ describe('getLocationLabel', () => {
         ...initialBooking.stock,
         offer: {
           ...initialBooking.stock.offer,
+          address: {
+            ...initialBooking.stock.offer.address,
+            city: '',
+          },
           venue: {
             ...initialBooking.stock.offer.venue,
             city: '',
