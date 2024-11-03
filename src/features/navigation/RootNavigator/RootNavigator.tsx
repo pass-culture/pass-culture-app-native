@@ -12,6 +12,7 @@ import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { useLoadAchievement } from 'features/profile/api/Achievements/application/useLoadAchievement'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -44,6 +45,7 @@ export const RootNavigator: React.ComponentType = () => {
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { isSplashScreenHidden } = useSplashScreenContext()
+  const { loadAchievements } = useLoadAchievement()
 
   const initialScreen = useInitialScreen()
 
@@ -52,6 +54,10 @@ export const RootNavigator: React.ComponentType = () => {
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
   ) : null
+
+  useEffect(() => {
+    loadAchievements()
+  }, [loadAchievements])
 
   useEffect(() => {
     const incrementLoggedInSessionCount = async () => {
