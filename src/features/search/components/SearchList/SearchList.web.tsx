@@ -112,7 +112,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const { searchState } = useSearch()
     const previousRoute = usePreviousRoute()
     const hasVenuesPlaylist =
-      !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.N1
+      !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.Thematic
 
     /**
      * This method will compute maximum height to set list height programatically.

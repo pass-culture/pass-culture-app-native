@@ -64,7 +64,7 @@ const navigationParams = {
 }
 
 describe('useShowResultsForCategory', () => {
-  describe('Category does not have SearchN1', () => {
+  describe('Category does not have ThematicSearch', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValue(false)
       mockSearchState = {
@@ -111,7 +111,7 @@ describe('useShowResultsForCategory', () => {
     })
   })
 
-  describe('Category has a SearchN1', () => {
+  describe('Category has a ThematicSearch', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       mockSearchState = {
@@ -128,7 +128,7 @@ describe('useShowResultsForCategory', () => {
       }
     })
 
-    it('should navigate to SearchN1', () => {
+    it('should navigate to ThematicSearch', () => {
       const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
       resultCallback.current(SearchGroupNameEnumv2.LIVRES)
@@ -141,7 +141,7 @@ describe('useShowResultsForCategory', () => {
             ...navigationParams.params.params,
             offerCategories: [SearchGroupNameEnumv2.LIVRES],
           },
-          screen: 'SearchN1',
+          screen: 'ThematicSearch',
         },
       })
     })

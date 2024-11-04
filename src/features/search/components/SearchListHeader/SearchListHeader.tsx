@@ -63,7 +63,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     : 'Les offres'
 
   const shouldDisplayVenuesPlaylist =
-    !venue && !!venues?.length && previousRoute?.name !== SearchView.N1
+    !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
 
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()

@@ -25,7 +25,7 @@ interface GtlPlaylistProps {
   venue?: VenueResponse
   playlist: GtlPlaylistData
   analyticsFrom: Referrals
-  route: Extract<ScreenNames, 'Venue' | 'SearchN1'>
+  route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>
 }
 
 export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<GtlPlaylistProps>) {

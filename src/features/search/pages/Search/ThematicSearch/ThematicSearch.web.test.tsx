@@ -5,7 +5,7 @@ import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
+import { ThematicSearch } from 'features/search/pages/Search/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -57,7 +57,7 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-describe('<SearchN1/>', () => {
+describe('<ThematicSearch/>', () => {
   beforeEach(() => {
     mockServer.universalGet(
       `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
@@ -74,7 +74,7 @@ describe('<SearchN1/>', () => {
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
-    render(reactQueryProviderHOC(<SearchN1 />))
+    render(reactQueryProviderHOC(<ThematicSearch />))
 
     await screen.findByText('Romans et littérature')
 
@@ -92,6 +92,6 @@ function MockOfferCategoriesParams(offerCategoriesParams: {
 }) {
   useRoute.mockImplementation(() => ({
     params: offerCategoriesParams,
-    name: 'SearchN1',
+    name: 'ThematicSearch',
   }))
 }

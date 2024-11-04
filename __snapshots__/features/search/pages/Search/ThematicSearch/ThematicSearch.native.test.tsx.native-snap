@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
+exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1`] = `
 [
   <View
     customHeight={16}

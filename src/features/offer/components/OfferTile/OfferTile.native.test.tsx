@@ -174,24 +174,24 @@ describe('OfferTile component', () => {
       })
     })
 
-    it('should log ConsultOffer from searchN1 gtl playlist', async () => {
-      const propsFromSearchN1GtlPlaylist = {
+    it('should log ConsultOffer from ThematicSearch gtl playlist', async () => {
+      const propsFromThematicSearchGtlPlaylist = {
         ...props,
-        analyticsFrom: 'searchn1' as Referrals,
+        analyticsFrom: 'thematicsearch' as Referrals,
         categoryLabel: HomepageLabelNameEnumv2.LIVRES,
         categoryId: CategoryIdEnum.LIVRE,
         searchId,
       }
 
-      render(reactQueryProviderHOC(<OfferTile {...propsFromSearchN1GtlPlaylist} />))
+      render(reactQueryProviderHOC(<OfferTile {...propsFromThematicSearchGtlPlaylist} />))
 
       fireEvent.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        from: 'searchn1',
+        from: 'thematicsearch',
         offerId: OFFER_ID,
-        searchId: propsFromSearchN1GtlPlaylist.searchId,
-        moduleName: propsFromSearchN1GtlPlaylist.moduleName,
+        searchId: propsFromThematicSearchGtlPlaylist.searchId,
+        moduleName: propsFromThematicSearchGtlPlaylist.moduleName,
         fromOfferId: undefined,
         homeEntryId: undefined,
         index: undefined,

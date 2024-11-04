@@ -44,7 +44,7 @@ type Props = {
   title: string
   placeholder?: string
 }
-export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
+export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   children,
   offerCategories,
   title,

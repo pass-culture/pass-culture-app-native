@@ -1,16 +1,18 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
-import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
+import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
+import { ThematicSearchBar } from 'features/search/pages/Search/ThematicSearch/ThematicSearchBar'
+import { VenuePlaylist } from 'features/search/pages/Search/VenuePlaylist'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -25,7 +27,7 @@ const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue
   return { ...previousValue, [currentValue.name]: currentValue.value }
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
-export const SearchN1: React.FC = () => {
+export const ThematicSearch: React.FC = () => {
   const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
@@ -36,14 +38,15 @@ export const SearchN1: React.FC = () => {
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
       : env.ALGOLIA_OFFERS_INDEX_NAME,
   })
-
+  const { disabilities } = useAccessibilityFiltersContext()
   const { selectedLocationMode } = useLocation()
 
   const {
     hits: { venues },
+    venuesUserData,
   } = useSearchResults()
 
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -52,44 +55,25 @@ export const SearchN1: React.FC = () => {
     [selectedLocationMode]
   )
 
-  useEffect(() => {
-    if (params?.offerCategories) {
-      dispatch({
-        type: 'SET_STATE',
-        payload: {
-          ...searchState,
-          offerCategories: params.offerCategories,
-        },
-      })
-    }
-  }, [dispatch, params?.offerCategories, searchState])
-
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
 
-  const getVenuePlaylistTitle = () => {
-    if (isLocated) {
-      switch (offerCategory) {
-        case SearchGroupNameEnumv2.LIVRES:
-          return 'Les librairies près de toi'
-        case SearchGroupNameEnumv2.CINEMA:
-          return 'Les cinémas près de toi'
-        case SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES:
-          return 'Les lieux culturels près de toi'
-        default:
-          return 'Les lieux culturels'
-      }
-    }
-    return 'Les lieux culturels'
-  }
+  const shouldDisplayAccessibilityContent =
+    Object.values(disabilities).filter((disability) => disability).length > 0
+
+  const venuePlaylistTitle = getSearchVenuePlaylistTitle(
+    shouldDisplayAccessibilityContent,
+    venuesUserData?.[0]?.venue_playlist_title,
+    isLocated
+  )
 
   if (arePlaylistsLoading) {
     return <LoadingState />
   }
 
   return (
-    <SearchN1Bar
+    <ThematicSearchBar
       offerCategories={offerCategories}
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
@@ -97,7 +81,7 @@ export const SearchN1: React.FC = () => {
         <SubcategoryButtonListWrapper offerCategory={offerCategory} />
         {shouldDisplayVenuesPlaylist ? (
           <VenuePlaylist
-            venuePlaylistTitle={getVenuePlaylistTitle()}
+            venuePlaylistTitle={venuePlaylistTitle}
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}
@@ -110,8 +94,8 @@ export const SearchN1: React.FC = () => {
               <GtlPlaylist
                 key={playlist.entryId}
                 playlist={playlist}
-                analyticsFrom="searchn1"
-                route="SearchN1"
+                analyticsFrom="thematicsearch"
+                route="ThematicSearch"
               />
             ))}
             <Spacer.Column numberOfSpaces={6} />
@@ -119,6 +103,6 @@ export const SearchN1: React.FC = () => {
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
       </ScrollView>
-    </SearchN1Bar>
+    </ThematicSearchBar>
   )
 }
