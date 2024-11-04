@@ -1,5 +1,4 @@
-import { Achievement } from 'features/profile/api/Achievements/stores/achievements.store'
-import { UserAchievement } from 'features/profile/api/Achievements/stores/user-achievements.store'
+import { Achievement, UserAchievement } from 'features/profile/pages/Achievements/AchievementData'
 
 export type AchievementGateway = {
   getAll(): Promise<Achievement[]>

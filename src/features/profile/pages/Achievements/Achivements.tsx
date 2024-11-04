@@ -6,14 +6,13 @@ import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
-import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
+import { badges } from 'features/profile/pages/Achievements/AchievementData'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 export const Achievements = () => {
-  const { badges } = useAchievements()
   const { uniqueColors } = useTheme()
 
   const { loadUserAchievements } = useLoadUserAchievement()

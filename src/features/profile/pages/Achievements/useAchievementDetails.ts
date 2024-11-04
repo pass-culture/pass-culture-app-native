@@ -1,10 +1,9 @@
-import { achievementsStore } from 'features/profile/api/Achievements/stores/achievements.store'
-import { userAchievementsStore } from 'features/profile/api/Achievements/stores/user-achievements.store'
+import {
+  achievements,
+  completedAchievements,
+} from 'features/profile/pages/Achievements/AchievementData'
 
 export const useAchievementDetails = (id: string) => {
-  const { achievements } = achievementsStore()
-  const { completedAchievements } = userAchievementsStore()
-
   const achievement = achievements.find((achievement) => achievement.id === id)
   const completedAchievement = completedAchievements.find((u) => u.id === id)
 
