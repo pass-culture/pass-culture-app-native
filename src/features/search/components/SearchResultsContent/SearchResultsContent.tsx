@@ -510,6 +510,7 @@ export const SearchResultsContent: React.FC = () => {
         visible={venueMapLocationModalVisible}
         dismissModal={dismissVenueMapLocationModal}
         setTempLocationMode={setTempLocationMode}
+        openedFrom="search"
         shouldOpenMapInTab
       />
     </React.Fragment>

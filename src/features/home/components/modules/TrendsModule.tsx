@@ -67,8 +67,11 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
         onBeforeNavigate: () => {
           removeSelectedVenue()
           handleLogTrendsBlockClicked(props)
-          analytics.logConsultVenueMap({ from: 'trend_block' })
-          if (!shouldOpenMapDirectly) showVenueMapLocationModal()
+          if (shouldOpenMapDirectly) {
+            analytics.logConsultVenueMap({ from: 'trend_block' })
+            return
+          }
+          showVenueMapLocationModal()
         },
       }
     }
@@ -96,6 +99,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={hideVenueMapLocationModal}
+        openedFrom="trend_block"
       />
     </React.Fragment>
   )

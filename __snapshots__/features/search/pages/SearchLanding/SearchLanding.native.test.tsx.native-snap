@@ -499,6 +499,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
           <Styled(Styled(Text)) />
           <VenueMapLocationModal
             dismissModal={[Function]}
+            openedFrom="searchLanding"
             visible={false}
           />
         </React.Fragment>
@@ -3121,6 +3122,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           <Styled(Styled(Text)) />
           <VenueMapLocationModal
             dismissModal={[Function]}
+            openedFrom="searchLanding"
             visible={false}
           />
         </React.Fragment>
