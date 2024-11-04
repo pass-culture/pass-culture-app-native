@@ -364,6 +364,7 @@
     "workbox-streams": "^6.1.5"
   },
   "resolutions": {
+    "@sentry/cli": "^2.33.1",
     "@sentry/hub": "7.8.*",
     "@sentry/utils": "7.62.0",
     "ansi-regex": "^5.0.1",
