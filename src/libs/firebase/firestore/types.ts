@@ -3,6 +3,7 @@ export const FIRESTORE_ROOT_COLLECTION = 'root'
 export enum RemoteStoreDocuments {
   APPLICATION_VERSIONS = 'applicationVersions',
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
+  EXCHANGE_RATES = 'exchangeRates',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
   UBBLE = 'ubble',
@@ -22,6 +23,10 @@ export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
 }
 
+export enum RemoteStoreExchangeRates {
+  EURO_TO_CFP_RATE = 'euroToCFPRate',
+}
+
 export enum RemoteStoreUbble {
   UBBLE_ETA_MESSAGE = 'etaMessage',
 }
@@ -29,6 +34,7 @@ export enum RemoteStoreUbble {
 export enum RemoteStoreFeatureFlags {
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
+  ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',

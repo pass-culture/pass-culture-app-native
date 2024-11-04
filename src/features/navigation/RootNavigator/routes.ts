@@ -36,6 +36,7 @@ import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/Na
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
 import { NavigationSubscription } from 'features/internal/cheatcodes/pages/NavigationSubscription/NavigationSubscription'
+import { NewCaledonia } from 'features/internal/cheatcodes/pages/NewCaledonia'
 import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
@@ -551,6 +552,11 @@ export const routes: RootRoute[] = [
     name: 'AccesLibre',
     component: AccesLibre,
     path: 'acces-libre',
+  },
+  {
+    name: 'NewCaledonia',
+    component: NewCaledonia,
+    path: 'nouvelle-caledonie',
   },
   {
     name: 'Artist',

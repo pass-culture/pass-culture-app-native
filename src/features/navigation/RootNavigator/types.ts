@@ -302,6 +302,7 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   // cheatcodes
   AccesLibre: undefined
+  NewCaledonia: undefined
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
