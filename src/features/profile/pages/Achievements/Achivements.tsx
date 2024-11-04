@@ -115,7 +115,7 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon, id }) => {
       }}>
       <BadgeContainer isCompleted={isCompleted}>
         <StyledImage source={icon} resizeMode="contain" />
-        {!isCompleted ? <NotCompletedFilter /> : null}
+        {isCompleted ? null : <NotCompletedFilter />}
       </BadgeContainer>
     </InternalTouchableLink>
   )

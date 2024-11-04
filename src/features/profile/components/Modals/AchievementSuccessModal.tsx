@@ -14,7 +14,6 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 import confetti from '../../api/Achievements/context/confetti.json'
-import ColoredBackground from '../../pages/Achievements/assets/Fond_de_couleur.png'
 
 interface Props {
   visible: boolean
@@ -53,7 +52,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       />
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
-        <StyledImage source={ColoredBackground} resizeMode="contain" />
         <StyledIcon source={achievementIconMapper[achievement.icon]!} resizeMode="contain" />
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={2} />
@@ -86,11 +84,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
 const IconsWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-})
-
-const StyledImage = styled(Image)({
-  height: getSpacing(60),
-  width: getSpacing(60),
 })
 
 const StyledIcon = styled(Image)({

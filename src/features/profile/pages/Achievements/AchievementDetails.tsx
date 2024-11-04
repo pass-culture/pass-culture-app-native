@@ -11,8 +11,6 @@ import { useAchievementDetails } from 'features/profile/pages/Achievements/useAc
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, TypoDS, Spacer } from 'ui/theme'
 
-import ColoredBackground from './assets/Fond_de_couleur.png'
-
 export const AchievementDetails: FC = () => {
   const {
     params: { id },
@@ -36,7 +34,6 @@ export const AchievementDetails: FC = () => {
       <Container>
         {Icon ? (
           <IconsWrapper>
-            <StyledImage source={ColoredBackground} resizeMode="contain" />
             <StyledIcon source={Icon} resizeMode="contain" />
           </IconsWrapper>
         ) : null}
@@ -56,11 +53,6 @@ export const AchievementDetails: FC = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const StyledImage = styled(Image)({
-  height: getSpacing(60),
-  width: getSpacing(60),
-})
 
 const Container = styled.View({
   alignItems: 'center',
