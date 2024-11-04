@@ -1,14 +1,16 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
-import React, { FunctionComponent, useEffect } from 'react'
-import styled from 'styled-components/native'
+import React, { FC, FunctionComponent, useEffect } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
+import { OnGoingBookingItem } from 'features/bookings/components/OnGoingBookingItem'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
+import { bookingFixture } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -23,8 +25,22 @@ import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
+import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
+import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { Spacer } from 'ui/components/spacer/Spacer'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Close } from 'ui/svg/icons/Close'
+import { Connect } from 'ui/svg/icons/Connect'
+import { Profile } from 'ui/svg/icons/Profile'
+import { getSpacing } from 'ui/theme/spacing'
+import { Typo } from 'ui/theme/typography'
 
 const Header = () => (
   <ListHeaderContainer>
@@ -109,6 +125,8 @@ export const Home: FunctionComponent = () => {
     editor.save()
   }, [bookings, user?.firstDepositActivationDate])
 
+  const { colors } = useTheme()
+
   return (
     <React.Fragment>
       <GenericHome
@@ -123,13 +141,93 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
+      <AppModal
+        visible={params?.duoModal !== undefined}
+        title="Invitation à une offre DUO"
+        rightIconAccessibilityLabel="Fermer la modale"
+        rightIcon={Close}
+        onRightIconPress={() => undefined}>
+        <Typo.Title3>
+          {params?.duoName} t’a invité à l’accompagner sur l’offre ci-dessous
+        </Typo.Title3>
+        <Spacer.Column numberOfSpaces={6} />
+        <Container>
+          <OnGoingBookingItem booking={bookingFixture} />
+        </Container>
+        <Spacer.Column numberOfSpaces={6} />
+        <InfoBanner
+          icon={Profile}
+          message="Crée un compte pour accéder à ton billet et bien plus encore&nbsp;!"
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <InternalTouchableLink
+          as={ButtonPrimary}
+          wording="Créer un compte"
+          navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <AuthenticationContainer>
+          <StyledBody>{'Déjà un compte\u00a0?'}</StyledBody>
+          <InternalTouchableLink
+            as={Button}
+            navigateTo={{ screen: 'Login' }}
+            wording="Se connecter"
+            buttonColor={colors.secondary}
+            icon={Connect}
+            onBeforeNavigate={() => undefined}
+          />
+        </AuthenticationContainer>
+      </AppModal>
+
       {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
     </React.Fragment>
   )
 }
+
+const Container = styled.View({
+  marginLeft: getSpacing(-6),
+})
 
 const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,
   zIndex: theme.zIndex.header,
 }))
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const AuthenticationContainer = styled.View({
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  gap: getSpacing(1),
+})
+
+const Button: FC<ButtonInsideTexteProps> = ({
+  onPress,
+  onLongPress,
+  wording,
+  icon,
+  buttonColor,
+  typography,
+  accessibilityLabel,
+  accessibilityRole,
+}) => {
+  return (
+    <TouchableOpacity
+      onPress={onPress as AppButtonEventNative}
+      onLongPress={onLongPress as AppButtonEventNative}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={accessibilityLabel || wording}>
+      <ButtonInsideTextInner
+        wording={wording}
+        icon={icon}
+        color={buttonColor}
+        typography={typography}
+        disablePadding
+      />
+    </TouchableOpacity>
+  )
+}

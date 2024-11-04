@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { NonBeneficiaryStuffComponent } from 'features/home/components/modules/banners/NonBeneficiaryStuffComponent'
 import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
@@ -88,6 +89,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   return (
     <React.Fragment>
+      <NonBeneficiaryStuffComponent />
       <Container isSmallScreen={isSmallScreen}>
         {items.map((props) => (
           <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
