@@ -57,4 +57,54 @@ describe('fetchCinemaOffers', () => {
       },
     ])
   })
+
+  it('should execute `multipleQueries` to fetch cinema offers even when no UserLocation', async () => {
+    const userLocation = undefined
+    await fetchCinemaOffers({ userLocation })
+
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+      {
+        indexName: 'algoliaTopOffersIndexName',
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          filters: 'offer.subcategoryId:"SEANCE_CINE"',
+          distinct: true,
+          hitsPerPage: 20,
+        },
+        query: '',
+      },
+      {
+        indexName: 'algoliaTopOffersIndexName',
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+          filters: 'offer.subcategoryId:"SEANCE_CINE"',
+          distinct: true,
+          hitsPerPage: 30,
+        },
+        query: '',
+      },
+      {
+        indexName: 'algoliaTopOffersIndexName',
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          filters:
+            'offer.nativeCategoryId:"CARTES_CINEMA" AND (offer.subcategoryId:"CARTE_CINE_MULTISEANCES" OR offer.subcategoryId:"CINE_VENTE_DISTANCE")',
+          distinct: true,
+          hitsPerPage: 30,
+        },
+        query: '',
+      },
+    ])
+  })
+
+  it('should return empty array if there is an error with multiplqueries', async () => {
+    mockMultipleQueries.mockRejectedValueOnce(new Error('Async error'))
+    const userLocation = { latitude: 1, longitude: 2 }
+    const result = await fetchCinemaOffers({ userLocation })
+
+    expect(result).toStrictEqual([])
+  })
 })
