@@ -10,7 +10,6 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -76,9 +75,7 @@ export const AppNavigationContainer = () => {
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
-      <AchievementModalProvider>
-        <RootNavigator />
-      </AchievementModalProvider>
+      <RootNavigator />
     </NavigationContainer>
   )
 }
