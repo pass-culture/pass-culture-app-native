@@ -10,7 +10,7 @@ import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Trophie } from 'ui/svg/icons/Trophie'
+import { Trophy } from 'ui/svg/icons/Trophy'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 interface Props {
@@ -34,7 +34,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       visible={visible}>
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
-        {icon ? <StyledIcon source={icon} resizeMode="contain" /> : <StyledTophie />}
+        {icon ? <StyledIcon source={icon} resizeMode="contain" /> : <StyledTrophy />}
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={2} />
       <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
@@ -74,7 +74,7 @@ const StyledIcon = styled(Image)({
   width: getSpacing(50),
 })
 
-const StyledTophie = styled(Trophie).attrs(({ theme }) => ({
+const StyledTrophy = styled(Trophy).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
 

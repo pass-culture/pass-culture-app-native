@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const TrophieSVG: React.FunctionComponent<AccessibleIcon> = ({
+const TrophySVG: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
@@ -27,7 +27,7 @@ const TrophieSVG: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Trophie = styled(TrophieSVG).attrs(({ color, size, theme }) => ({
+export const Trophy = styled(TrophySVG).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.smaller,
+  size: size ?? theme.illustrations.sizes.medium,
 }))``
