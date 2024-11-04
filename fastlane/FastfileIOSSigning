@@ -52,8 +52,8 @@ platform :ios do
   private_lane :update_provisioning_profile do |options|
     development_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_development_profile-name"
     release_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_#{ENV['MATCH_TYPE']}_profile-name"
-    sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT='#{ENV[development_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
-    sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE='#{ENV[release_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
+    sh "sed -i -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT='#{ENV[development_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
+    sh "sed -i -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE='#{ENV[release_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
   end
 
   lane :setup_push do
