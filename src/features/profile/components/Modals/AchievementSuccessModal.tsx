@@ -1,19 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image } from 'react-native'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
-import LottieView from 'libs/lottie'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
-
-import confetti from '../../api/Achievements/context/confetti.json'
 
 interface Props {
   visible: boolean
@@ -22,16 +19,6 @@ interface Props {
 }
 
 export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
-  const confettiRef = useRef<LottieView>(null)
-
-  function triggerConfetti() {
-    confettiRef.current?.play(0)
-  }
-
-  useEffect(() => {
-    triggerConfetti()
-  }, [id])
-
   const achievement = useAchievementDetails(id)
 
   if (!achievement) {
@@ -43,13 +30,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       title="Félicitations&nbsp;!"
       onCloseIconPress={hideModal}
       visible={visible}>
-      <StyledLottieView
-        ref={confettiRef}
-        source={confetti}
-        autoPlay={false}
-        loop={false}
-        resizeMode="cover"
-      />
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
         <StyledIcon source={achievementIconMapper[achievement.icon]!} resizeMode="contain" />
@@ -90,16 +70,6 @@ const StyledIcon = styled(Image)({
   position: 'absolute',
   height: getSpacing(50),
   width: getSpacing(50),
-})
-
-const StyledLottieView = styled(LottieView)({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 1000,
-  pointerEvents: 'none',
 })
 
 const ButtonWrapper = styled.View(({ theme }) => ({
