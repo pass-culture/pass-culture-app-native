@@ -2,5 +2,6 @@ vite.config.js:32 - default
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
+src/features/profile/components/Modals/AchievementSuccessModal.tsx:22 - AchievementSuccessModal
 src/features/venueMap/components/VenueMapView/constant.ts:16 - satisfies
 src/features/venueMap/components/VenueMapView/constant.ts:16 - Record

@@ -1,4 +1,4 @@
-export type Achievement = {
+type Achievement = {
   id: string
   name: string
   description: string
@@ -6,7 +6,7 @@ export type Achievement = {
   icon: string
 }
 
-export type UserAchievement = {
+type UserAchievement = {
   id: string
   completedAt: Date
 }
