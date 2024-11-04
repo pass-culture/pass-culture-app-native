@@ -156,19 +156,18 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               }
             >
               <View
-                height={40}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
-                      "height": 40,
                       "maxHeight": 40,
                     },
                   ]
                 }
               >
                 <View
+                  height={1.5}
                   style={
                     [
                       {
