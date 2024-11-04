@@ -9,9 +9,9 @@ import { GeolocationBanner } from 'features/home/components/banners/GeolocationB
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
+import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
-import { VenuePlaylist } from 'features/search/pages/Search/VenuePlaylist'
 import { SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
@@ -20,7 +20,7 @@ import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number

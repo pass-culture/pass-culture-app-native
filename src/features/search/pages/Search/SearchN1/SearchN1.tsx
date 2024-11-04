@@ -9,10 +9,10 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
-import { VenuePlaylist } from 'features/search/pages/Search/VenuePlaylist'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -85,6 +85,7 @@ export const SearchN1: React.FC = () => {
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}
+            offerCategory={offerCategory}
           />
         ) : null}
         <Spacer.Column numberOfSpaces={6} />

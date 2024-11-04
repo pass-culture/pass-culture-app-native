@@ -1,22 +1,23 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
+import { useVenueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
@@ -31,6 +32,7 @@ type Props = {
   venues: AlgoliaVenue[]
   isLocated?: boolean
   currentView?: keyof SearchStackParamList
+  offerCategory?: SearchGroupNameEnumv2
 }
 
 const renderVenueItem = (
@@ -46,17 +48,21 @@ const renderVenueItem = (
   searchId?: string
 ) => <SearchVenueItem venue={item} height={height} width={width} searchId={searchId} />
 
+const isWeb = Platform.OS === 'web'
+
 export const VenuePlaylist: React.FC<Props> = ({
   venuePlaylistTitle,
   venues,
   isLocated = false,
   currentView = 'SearchResults',
+  offerCategory,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { setInitialVenues } = useInitialVenuesActions()
+  const { setVenueTypeCode } = useVenueTypeCodeActions()
   const {
     searchState: { searchId },
   } = useSearch()
+  const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
 
   const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
@@ -72,13 +78,23 @@ export const VenuePlaylist: React.FC<Props> = ({
 
   const logAllTilesSeenOnce = useFunctionOnce(() => analytics.logAllTilesSeen({ searchId }))
 
-  const { shouldDisplayVenueMap } = useShouldDisplayVenueMap()
-  const shouldDisplayVenueMapInSearch = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
-  )
+  const {
+    showModal: showVenueMapLocationModal,
+    visible: venueMapLocationModalVisible,
+    hideModal: hideVenueMapLocationModal,
+  } = useModal()
+
+  const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
 
   const handleSeeMapPress = () => {
-    setInitialVenues(venues?.length ? adaptAlgoliaVenues(venues) : [])
+    if (offerCategory === SearchGroupNameEnumv2.LIVRES) {
+      setVenueTypeCode(VenueTypeCodeKey.BOOKSTORE)
+    }
+    if (isMapWithoutPositionAndNotLocated) {
+      showVenueMapLocationModal()
+      return
+    }
+
     analytics.logConsultVenueMap({ from: 'searchPlaylist' })
     navigate('VenueMap')
   }
@@ -87,12 +103,12 @@ export const VenuePlaylist: React.FC<Props> = ({
     <React.Fragment>
       <View>
         <Title>{venuePlaylistTitle}</Title>
-        {shouldDisplayVenueMap && !shouldDisplayVenueMapInSearch ? (
+        {enabledVenueMap && currentView === 'SearchN1' ? (
           <ButtonContainer>
             <Spacer.Column numberOfSpaces={1} />
             <ButtonTertiaryBlack
               icon={Map}
-              wording={`Voir sur la carte (${venues?.length})`}
+              wording="Voir sur la carte"
               onPress={handleSeeMapPress}
             />
           </ButtonContainer>
@@ -116,6 +132,11 @@ export const VenuePlaylist: React.FC<Props> = ({
       </View>
       <Spacer.Column numberOfSpaces={3} />
       <StyledSeparator />
+      <VenueMapLocationModal
+        visible={venueMapLocationModalVisible}
+        dismissModal={hideVenueMapLocationModal}
+        openedFrom="searchPlaylist"
+      />
     </React.Fragment>
   )
 }

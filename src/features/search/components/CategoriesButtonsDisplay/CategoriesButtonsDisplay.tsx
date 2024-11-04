@@ -16,7 +16,7 @@ import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type ListCategoryButtonProps = CategoryButtonProps[]
@@ -82,6 +82,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
           <VenueMapLocationModal
             visible={venueMapLocationModalVisible}
             dismissModal={hideVenueMapLocationModal}
+            openedFrom="searchLanding"
           />
         </React.Fragment>
       }

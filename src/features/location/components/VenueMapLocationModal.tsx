@@ -10,9 +10,10 @@ import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { analytics } from 'libs/analytics'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -28,6 +29,7 @@ import { getSpacing } from 'ui/theme'
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
+  openedFrom: Referrals
   shouldOpenMapInTab?: boolean
   setTempLocationMode?: React.Dispatch<React.SetStateAction<LocationMode>>
 }
@@ -37,6 +39,7 @@ export const VenueMapLocationModal = ({
   dismissModal,
   shouldOpenMapInTab,
   setTempLocationMode,
+  openedFrom,
 }: LocationModalProps) => {
   const locationStateProps = useLocationState({
     visible,
@@ -95,6 +98,7 @@ export const VenueMapLocationModal = ({
     setTempLocationMode?.(tempLocationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {
+      analytics.logConsultVenueMap({ from: openedFrom })
       navigate('VenueMap')
     }
   }

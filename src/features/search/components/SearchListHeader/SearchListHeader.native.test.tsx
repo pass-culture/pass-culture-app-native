@@ -3,7 +3,6 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
@@ -12,13 +11,12 @@ import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
 
@@ -102,6 +100,17 @@ jest.mock('@shopify/flash-list', () => {
 })
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('features/location/helpers/useLocationState', () => ({
+  useLocationState: () => ({
+    onModalHideRef: { current: jest.fn() },
+  }),
+}))
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
 
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
@@ -460,184 +469,6 @@ describe('<SearchListHeader />', () => {
     })
   })
 
-  describe('When wipVenueMap feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true).mockReturnValue(false)
-    })
-
-    it('should not display see map button when user is not located and there is a venues playlist', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: { locationType: LocationMode.EVERYWHERE },
-        },
-      })
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(
-        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-      ).not.toBeOnTheScreen()
-    })
-
-    it('should display see map button when user location mode is around me and there is a venues playlist', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-        },
-      })
-      const location = {
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        hasGeolocPosition: true,
-      }
-      mockUseLocation.mockReturnValueOnce(location)
-      mockUseLocation.mockReturnValueOnce(location)
-
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
-    })
-
-    it('should display see map button when user location mode is around place and there is a venues playlist', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: {
-            locationType: LocationMode.AROUND_PLACE,
-            place: kourou,
-            aroundRadius: MAX_RADIUS,
-          },
-        },
-      })
-      const location = {
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        hasGeolocPosition: true,
-      }
-      mockUseLocation.mockReturnValueOnce(location)
-      mockUseLocation.mockReturnValueOnce(location)
-
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
-    })
-
-    it('should redirect to venue map when pressing see map button with playlist venues content', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-        },
-      })
-      const location = {
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        hasGeolocPosition: true,
-      }
-      mockUseLocation.mockReturnValueOnce(location)
-      mockUseLocation.mockReturnValueOnce(location)
-
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
-    })
-
-    it('should update initial venues store when pressing see map button with playlist venues content', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-        },
-      })
-      const location = {
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        hasGeolocPosition: true,
-      }
-      mockUseLocation.mockReturnValueOnce(location)
-      mockUseLocation.mockReturnValueOnce(location)
-
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
-
-      expect(mockSetInitialVenues).toHaveBeenNthCalledWith(1, adaptAlgoliaVenues(mockAlgoliaVenues))
-    })
-
-    it('should log consult venue map from search playlist when pressing see map button', () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          searchId,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-        },
-      })
-      const location = {
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        hasGeolocPosition: true,
-      }
-      mockUseLocation.mockReturnValueOnce(location)
-      mockUseLocation.mockReturnValueOnce(location)
-
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
-
-      expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchPlaylist' })
-    })
-  })
-
   describe('When wipVenueMapInSearch feature flag activated', () => {
     beforeAll(() => {
       useFeatureFlagSpy.mockReturnValue(true).mockReturnValue(true)
@@ -653,9 +484,7 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      expect(
-        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-      ).not.toBeOnTheScreen()
+      expect(screen.queryByText('Voir sur la carte')).not.toBeOnTheScreen()
     })
   })
 

@@ -13,7 +13,7 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.useFakeTimers()
 
@@ -82,6 +82,9 @@ jest.mock('features/venueMap/store/initialVenuesStore', () => ({
   }),
 }))
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal({})
@@ -118,7 +121,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     await waitFor(() => {
       expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
@@ -135,9 +138,8 @@ describe('VenueMapLocationModal', () => {
     })
 
     const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-    await act(() => {
-      fireEvent.press(geolocPositionButton)
-    })
+
+    await user.press(geolocPositionButton)
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })
@@ -182,6 +184,37 @@ describe('VenueMapLocationModal', () => {
     fireEvent.press(validateButon)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+  })
+
+  it('should trigger ConsultVenueMap log on submit when we choose a location, shouldOpenMapInTab is not true and openedFrom defined', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    renderVenueMapLocationModal({})
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    await act(async () => {
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+    })
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    await act(async () => {
+      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChange([mockRadiusPlace])
+    })
+
+    const validateButon = screen.getByText('Valider et voir sur la carte')
+    fireEvent.press(validateButon)
+
+    expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchPlaylist' })
   })
 
   it('should reset selected venue in store on submit when we choose a location', async () => {
@@ -299,9 +332,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
-    })
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
@@ -327,7 +358,7 @@ describe('VenueMapLocationModal', () => {
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
-    fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
@@ -343,10 +374,10 @@ describe('VenueMapLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      await act(async () => {
-        const openLocationModalButton = screen.getByText('Choisir une localisation')
-        fireEvent.press(openLocationModalButton)
-      })
+
+      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      await user.press(openLocationModalButton)
+
       await act(async () => {
         const searchInput = screen.getByTestId('styled-input-container')
         fireEvent.changeText(searchInput, mockPlaces[0].label)
@@ -365,9 +396,8 @@ describe('VenueMapLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      await act(async () => {
-        fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
-      })
+
+      await user.press(screen.getByText('Utiliser ma position actuelle'))
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
@@ -395,9 +425,8 @@ describe('VenueMapLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-      await act(() => {
-        fireEvent.press(geolocPositionButton)
-      })
+
+      await user.press(geolocPositionButton)
 
       expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
 
@@ -479,6 +508,7 @@ const VenueMapLocationModalWithMockButton = ({
         dismissModal={() => setVisible(false)}
         shouldOpenMapInTab={shouldOpenMapInTab}
         setTempLocationMode={setTempLocationMode}
+        openedFrom="searchPlaylist"
       />
     </React.Fragment>
   )

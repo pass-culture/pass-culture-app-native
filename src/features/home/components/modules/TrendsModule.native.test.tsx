@@ -131,13 +131,35 @@ describe('TrendsModule', () => {
     })
   })
 
-  it('should log analytics when pressing venue map block content type', async () => {
+  it('should log analytics when pressing venue map block content type and user location is not everywhere', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
+
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'trend_block' })
+  })
+
+  it('should not log analytics when pressing venue map block content type and user location is everywhere', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useModalAPISpy.mockReturnValueOnce({
+      visible: false,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: true,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      place: mockedPlace,
+      onModalHideRef: jest.fn(),
+    })
+    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+
+    await user.press(screen.getByText('Accès carte des lieux'))
+
+    expect(analytics.logConsultVenueMap).not.toHaveBeenCalled()
   })
 
   it('should log trends block clicked when pressing a trend', async () => {

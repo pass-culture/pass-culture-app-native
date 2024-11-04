@@ -99,6 +99,7 @@ export const VenueListModule: FunctionComponent<Props> = ({
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={hideVenueMapLocationModal}
+        openedFrom="venueList"
       />
     </React.Fragment>
   )
