@@ -38,6 +38,8 @@ export function LegalNotices() {
         {LINE_BREAK}
         Immatriculée au RCS de Paris sous le numéro&nbsp;: 853&nbsp;318&nbsp;459
         {LINE_BREAK}
+        N° TVA intracommunautaire&nbsp;: FR65853318459
+        {LINE_BREAK}
         Directeur de la publication&nbsp;: Sébastien Cavalier
         {LINE_BREAK}
         Hébergeur&nbsp;: Google Cloud Platform
