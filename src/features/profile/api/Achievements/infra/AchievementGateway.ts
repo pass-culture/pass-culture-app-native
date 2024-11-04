@@ -110,7 +110,7 @@ export const createAchievementGateway = () => {
       return achievements
     },
     getCompletedAchievements: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       return completedAchievements
     },
     onAchievementCompleted: (callback: (achievementId: string) => void) => {

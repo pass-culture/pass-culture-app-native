@@ -31,6 +31,7 @@ import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
 import { MarketingBlocks } from 'features/internal/cheatcodes/pages/MarketingBlocks'
 import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
+import { NavigationAchievements } from 'features/internal/cheatcodes/pages/NavigationAchievements'
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
@@ -361,6 +362,11 @@ export const routes: RootRoute[] = [
     name: 'NavigationProfile',
     component: NavigationProfile,
     path: 'cheat-navigation-profile',
+  },
+  {
+    name: 'NavigationAchievements',
+    component: NavigationAchievements,
+    path: 'cheat-navigation-achievements',
   },
   {
     name: 'NotificationsSettings',

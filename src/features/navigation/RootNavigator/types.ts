@@ -240,6 +240,7 @@ export type RootStackParamList = {
   NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
   NavigationProfile: undefined
+  NavigationAchievements: undefined
   NavigationSubscription: undefined
   NotificationsSettings: undefined
   Offer: {
