@@ -66,6 +66,12 @@ export function Navigation(): React.JSX.Element {
             <ButtonPrimary wording="AccesLibre 🌈" onPress={() => navigate('AccesLibre')} />
           </Row>
           <Row half>
+            <ButtonPrimary
+              wording="Nouvelle-Calédonie 🇳🇨"
+              onPress={() => navigate('NewCaledonia')}
+            />
+          </Row>
+          <Row half>
             <ButtonPrimary wording="SignUp 🎨" onPress={() => navigate('NavigationSignUp')} />
           </Row>
           <Row half>
