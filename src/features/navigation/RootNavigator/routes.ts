@@ -556,7 +556,7 @@ export const routes: RootRoute[] = [
   {
     name: 'NewCaledonia',
     component: NewCaledonia,
-    path: 'nouvelle-caledonie/taux-change',
+    path: 'nouvelle-caledonie',
   },
   {
     name: 'Artist',
