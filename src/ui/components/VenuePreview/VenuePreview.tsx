@@ -4,7 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -39,7 +38,7 @@ export const VenuePreview: FunctionComponent<Props> = ({
       <ImagePlaceholder height={imageHeight} width={imageWidth} testID="VenuePreviewPlaceholder" />
     )}
     <Spacer.Row numberOfSpaces={2} />
-    <VenueRightContainer gap={1} imageHeight={imageHeight}>
+    <VenueRightContainer>
       {children}
       <VenueTitleContainer>
         <VenueName>{venueName}</VenueName>
@@ -60,11 +59,10 @@ const StyledView = styled.View({
   flexDirection: 'row',
 })
 
-const VenueRightContainer = styled(ViewGap)<{ imageHeight: number }>(({ imageHeight }) => ({
+const VenueRightContainer = styled.View({
   flexShrink: 1,
   justifyContent: 'center',
-  maxHeight: imageHeight,
-}))
+})
 
 const VenueTitleContainer = styled.View({
   flexDirection: 'row',
