@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -46,7 +47,7 @@ export const ThematicSearch: React.FC = () => {
     venuesUserData,
   } = useSearchResults()
 
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -54,7 +55,7 @@ export const ThematicSearch: React.FC = () => {
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
     [selectedLocationMode]
   )
-
+  const isWeb = Platform.OS === 'web'
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
@@ -67,6 +68,19 @@ export const ThematicSearch: React.FC = () => {
     venuesUserData?.[0]?.venue_playlist_title,
     isLocated
   )
+  useEffect(() => {
+    if (params?.offerCategories && isWeb) {
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerCategories: params.offerCategories,
+        },
+      })
+    }
+    // adding searchstate in deps would result in an infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, isWeb, params?.offerCategories])
 
   if (arePlaylistsLoading) {
     return <LoadingState />
