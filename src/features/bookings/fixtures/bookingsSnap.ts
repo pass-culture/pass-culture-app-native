@@ -144,7 +144,6 @@ export const bookingsSnap = toMutable({
             street: '1 boulevard de la brique',
             postalCode: '93700',
             city: 'Drancy',
-            label: null,
             coordinates: {
               latitude: 48.91683,
               longitude: 2.43884,
