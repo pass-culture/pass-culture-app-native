@@ -37,7 +37,7 @@ direnv allow
 
 The last step can take several tens of minutes, especially the first time.
 
-If you got an error when executing `direnv allow` run it twice.
+🚨 If you got an error when executing `direnv allow` run it twice 🚨
 
 ### IOS and Android setup
 
