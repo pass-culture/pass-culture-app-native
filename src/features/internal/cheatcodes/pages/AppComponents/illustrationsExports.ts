@@ -31,6 +31,7 @@ import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { Trophy } from 'ui/svg/icons/Trophy'
 import { BicolorUserBlocked, UserBlocked } from 'ui/svg/icons/UserBlocked'
 
 export const BicolorIllustrations = {
@@ -72,4 +73,5 @@ export const UniqueColorIllustrations = {
   RequestSent,
   SadFace,
   UserBlocked,
+  Trophy,
 }

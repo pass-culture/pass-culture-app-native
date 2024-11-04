@@ -96,6 +96,12 @@ export function Navigation(): React.JSX.Element {
             <ButtonPrimary wording="Profile 👤" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
+            <ButtonPrimary
+              wording="Achievements 🏆"
+              onPress={() => navigate('NavigationAchievements')}
+            />
+          </Row>
+          <Row half>
             <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
           </Row>
           <Row half>

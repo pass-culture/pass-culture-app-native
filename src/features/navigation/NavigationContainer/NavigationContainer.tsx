@@ -65,6 +65,7 @@ export const AppNavigationContainer = () => {
   if (!isNavReady) {
     return <LoadingPage />
   }
+
   return (
     <NavigationContainer
       linking={linking}

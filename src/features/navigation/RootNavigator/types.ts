@@ -240,6 +240,7 @@ export type RootStackParamList = {
   NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
   NavigationProfile: undefined
+  NavigationAchievements: undefined
   NavigationSubscription: undefined
   NotificationsSettings: undefined
   Offer: {
@@ -307,6 +308,8 @@ export type RootStackParamList = {
   ThematicHeaders: undefined
   MarketingBlocks: undefined
   MovieCalendar: undefined
+  Achievements: undefined
+  AchievementDetails: { id: string }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &

@@ -31,6 +31,7 @@ import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
 import { MarketingBlocks } from 'features/internal/cheatcodes/pages/MarketingBlocks'
 import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
+import { NavigationAchievements } from 'features/internal/cheatcodes/pages/NavigationAchievements'
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
@@ -52,6 +53,8 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { AchievementDetails } from 'features/profile/pages/Achievements/AchievementDetails'
+import { Achievements } from 'features/profile/pages/Achievements/Achievements'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -361,6 +364,11 @@ export const routes: RootRoute[] = [
     path: 'cheat-navigation-profile',
   },
   {
+    name: 'NavigationAchievements',
+    component: NavigationAchievements,
+    path: 'cheat-navigation-achievements',
+  },
+  {
     name: 'NotificationsSettings',
     component: NotificationsSettings,
     path: 'profil/notifications',
@@ -615,5 +623,15 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
+  },
+  {
+    name: 'Achievements',
+    component: Achievements,
+    path: 'profile/achievements',
+  },
+  {
+    name: 'AchievementDetails',
+    component: AchievementDetails,
+    path: 'profile/achievements/:id',
   },
 ]
