@@ -2,6 +2,7 @@ import BottomSheet from '@gorhom/bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
+import { Directions, FlingGesture, Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import Supercluster from 'supercluster'
@@ -50,6 +51,11 @@ interface Props {
   playlistType: PlaylistType
 }
 
+const FLING_GESTURE = Gesture.Fling()
+  .withTestId('flingGesture')
+  .runOnJS(true)
+  .direction(Directions.UP)
+
 export const VenueMapView: FunctionComponent<Props> = ({
   height,
   from,
@@ -71,6 +77,9 @@ export const VenueMapView: FunctionComponent<Props> = ({
   const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const shouldDisplayPinV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2)
+  const shouldNavigateToVenueOnFling = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
+  )
   const bottomSheetOffersEnabled = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
   )
@@ -269,6 +278,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
           .filter((venueType): venueType is VenueTypeCode => !!venueType) ?? []
       return (
         <VenueMapCluster
+          key={clusterProps.properties.cluster_id}
           {...clusterProps}
           color={getClusterColorByDominantVenueType(clusterVenueTypes)}
         />
@@ -277,19 +287,33 @@ export const VenueMapView: FunctionComponent<Props> = ({
     [filteredVenues]
   )
 
+  const flingRef = useRef<FlingGesture>()
+
+  FLING_GESTURE.withRef(flingRef)
+    .enabled(shouldNavigateToVenueOnFling)
+    .onEnd(() => {
+      if (selectedVenue && bottomSheetIndex === snapPoints.length - 1) {
+        navigateToVenue(selectedVenue.venueId)
+      }
+    })
+
   return (
     <React.Fragment>
-      <VenueMapBottomSheet
-        snapPoints={snapPoints}
-        ref={bottomSheetRef}
-        onClose={removeSelectedVenue}
-        venue={selectedVenue}
-        venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
-        PlaylistContainer={PlaylistContainer}
-        onAnimate={handleBottomSheetAnimation}
-        onChange={setBottomSheetIndex}
-        playlistType={playlistType}
-      />
+      <GestureDetector gesture={FLING_GESTURE}>
+        <VenueMapBottomSheet
+          snapPoints={snapPoints}
+          ref={bottomSheetRef}
+          onClose={removeSelectedVenue}
+          venue={selectedVenue}
+          simultaneousHandlers={flingRef}
+          venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
+          PlaylistContainer={PlaylistContainer}
+          onAnimate={handleBottomSheetAnimation}
+          onChange={setBottomSheetIndex}
+          playlistType={playlistType}
+        />
+      </GestureDetector>
+
       <StyledMapView
         ref={mapViewRef}
         showsUserLocation

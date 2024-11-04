@@ -189,9 +189,9 @@ jest.mock('@batch.com/react-native-plugin', () =>
 )
 
 jest.mock('@gorhom/bottom-sheet', () => {
-  const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
+  const { View } = jest.requireActual('react-native')
 
-  class MockBottomSheet extends ActualBottomSheet {
+  class MockBottomSheet extends View {
     close() {
       this.props.onAnimate(0, -1)
     }
