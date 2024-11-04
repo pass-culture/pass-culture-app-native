@@ -1,12 +1,11 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
 import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, TypoDS, Spacer } from 'ui/theme'
@@ -15,13 +14,8 @@ export const AchievementDetails: FC = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'AchievementDetails'>>()
-  const { loadUserAchievements } = useLoadUserAchievement()
 
   const achievement = useAchievementDetails(id)
-
-  useEffect(() => {
-    loadUserAchievements()
-  }, [loadUserAchievements])
 
   if (!achievement) {
     return null

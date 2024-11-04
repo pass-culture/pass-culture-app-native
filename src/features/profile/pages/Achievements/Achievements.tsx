@@ -1,11 +1,10 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, ImageURISource } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useLoadUserAchievement } from 'features/profile/api/Achievements/application/useLoadUserAchievement'
 import { badges } from 'features/profile/pages/Achievements/AchievementData'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -14,12 +13,6 @@ import { getSpacing, TypoDS } from 'ui/theme'
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
-
-  const { loadUserAchievements } = useLoadUserAchievement()
-
-  useEffect(() => {
-    loadUserAchievements()
-  }, [loadUserAchievements])
 
   return (
     <SecondaryPageWithBlurHeader title="Mes Succès">
