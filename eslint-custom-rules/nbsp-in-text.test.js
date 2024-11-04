@@ -23,6 +23,14 @@ const tests = {
     { code: '<Text>myText&nbsp;€</Text>' },
     // &nbsp; for <Text>« myText</Text>
     { code: '<Text>«&nbsp;myText</Text>' },
+    // \u00a0 for 'myText CFP'
+    { code: `'myText\\u00a0CFP'` },
+    // \u00a0 for `myText CFP`
+    { code: `\`myText\\u00a0CFP\`` },
+    // &nbsp; for "myText CFP"
+    { code: `"myText&nbsp;CFP"` },
+    // &nbsp; for <Text>myText CFP</Text>
+    { code: '<Text>myText&nbsp;CFP</Text>' },
   ],
   invalid: [
     { code: `'myText !'`, output: `'myText\\u00a0!'`, errors: 1 },
@@ -33,6 +41,10 @@ const tests = {
     { code: `"« myText"`, output: `"«&nbsp;myText"`, errors: 1 },
     { code: '<Text>myText €</Text>', output: '<Text>myText&nbsp;€</Text>', errors: 1 },
     { code: '<Text>« myText</Text>', output: '<Text>«&nbsp;myText</Text>', errors: 1 },
+    { code: `'myText CFP'`, output: `'myText\\u00a0CFP'`, errors: 1 },
+    { code: `\`myText CFP\``, output: `\`myText\\u00a0CFP\``, errors: 1 },
+    { code: `"myText CFP"`, output: `"myText&nbsp;CFP"`, errors: 1 },
+    { code: '<Text>myText CFP</Text>', output: '<Text>myText&nbsp;CFP</Text>', errors: 1 },
   ],
 }
 
