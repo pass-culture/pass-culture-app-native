@@ -3,12 +3,14 @@ import React, { useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { VenuePlaylist } from 'features/search/pages/Search/VenuePlaylist'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -36,11 +38,12 @@ export const SearchN1: React.FC = () => {
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
       : env.ALGOLIA_OFFERS_INDEX_NAME,
   })
-
+  const { disabilities } = useAccessibilityFiltersContext()
   const { selectedLocationMode } = useLocation()
 
   const {
     hits: { venues },
+    venuesUserData,
   } = useSearchResults()
 
   const { searchState } = useSearch()
@@ -56,21 +59,14 @@ export const SearchN1: React.FC = () => {
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
 
-  const getVenuePlaylistTitle = () => {
-    if (isLocated) {
-      switch (offerCategory) {
-        case SearchGroupNameEnumv2.LIVRES:
-          return 'Les librairies près de toi'
-        case SearchGroupNameEnumv2.CINEMA:
-          return 'Les cinémas près de toi'
-        case SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES:
-          return 'Les lieux culturels près de toi'
-        default:
-          return 'Les lieux culturels'
-      }
-    }
-    return 'Les lieux culturels'
-  }
+  const shouldDisplayAccessibilityContent =
+    Object.values(disabilities).filter((disability) => disability).length > 0
+
+  const venuePlaylistTitle = getSearchVenuePlaylistTitle(
+    shouldDisplayAccessibilityContent,
+    venuesUserData?.[0]?.venue_playlist_title,
+    isLocated
+  )
 
   if (arePlaylistsLoading) {
     return <LoadingState />
@@ -85,7 +81,7 @@ export const SearchN1: React.FC = () => {
         <SubcategoryButtonListWrapper offerCategory={offerCategory} />
         {shouldDisplayVenuesPlaylist ? (
           <VenuePlaylist
-            venuePlaylistTitle={getVenuePlaylistTitle()}
+            venuePlaylistTitle={venuePlaylistTitle}
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}

@@ -1,12 +1,16 @@
 export const getSearchVenuePlaylistTitle = (
-  accessibilityFiltered: boolean,
-  venuePlaylistTitleFromUserData: string | undefined
+  isAccessibilityFiltered: boolean,
+  venuePlaylistTitleFromUserData: string | undefined,
+  isLocated: boolean
 ) => {
-  if (venuePlaylistTitleFromUserData && accessibilityFiltered) {
-    return venuePlaylistTitleFromUserData.endsWith('près de toi')
-      ? venuePlaylistTitleFromUserData.replace('près de toi', `accessibles près de toi`)
-      : `${venuePlaylistTitleFromUserData} accessibles`
+  let venuePlaylistTitle = venuePlaylistTitleFromUserData ?? 'Les lieux culturels'
+
+  if (isAccessibilityFiltered) {
+    venuePlaylistTitle += ' accessibles'
   }
-  if (venuePlaylistTitleFromUserData) return venuePlaylistTitleFromUserData
-  return accessibilityFiltered ? 'Les lieux culturels accessibles' : 'Les lieux culturels'
+  if (isLocated) {
+    venuePlaylistTitle += ' près de toi'
+  }
+
+  return venuePlaylistTitle
 }

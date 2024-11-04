@@ -131,31 +131,52 @@ describe('<SearchListHeader />', () => {
       expect(screen.getByText('10 résultats')).toBeOnTheScreen()
     })
 
-    it('should show correct title when NO userData exists', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
+    describe('venuePlaylistTitle', () => {
+      const accessibilityFilterActivated = {
+        ...defaultValuesAccessibilityContext,
+        disabilities: { ...mockDisabilities, [DisplayedDisabilitiesEnum.AUDIO]: true },
+      }
+
+      it.each`
+        mockVenuesUserData                              | accessibilityFilter                  | selectedLocationMode         | geolocPosition  | expectedTitle
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les disquaires accessibles'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les disquaires près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les disquaires près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les disquaires'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les disquaires accessibles près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les disquaires accessibles près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les lieux culturels accessibles'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les lieux culturels près de toi'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les lieux culturels près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les lieux culturels accessibles près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les lieux culturels accessibles près de toi'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les lieux culturels'}
+      `(
+        'should show correct title',
+        ({
+          accessibilityFilter,
+          mockVenuesUserData,
+          selectedLocationMode,
+          geolocPosition,
+          expectedTitle,
+        }) => {
+          mockUseAccessibilityFiltersContext.mockReturnValueOnce(accessibilityFilter)
+          mockUseLocation.mockReturnValueOnce({
+            geolocPosition,
+            selectedLocationMode,
+          })
+          render(
+            <SearchListHeader
+              nbHits={10}
+              userData={[]}
+              venuesUserData={mockVenuesUserData}
+              venues={mockAlgoliaVenues}
+            />
+          )
+
+          expect(screen.getByText(expectedTitle)).toBeOnTheScreen()
+        }
       )
-
-      expect(screen.getByText('Les lieux culturels')).toBeOnTheScreen()
-    })
-
-    it('should show correct title when userData exists', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[{ venue_playlist_title: 'test' }]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(screen.queryByText('Les lieux culturels')).not.toBeOnTheScreen()
-      expect(screen.getByText('test')).toBeOnTheScreen()
     })
 
     it('should not display the geolocation button if position is not null', () => {
