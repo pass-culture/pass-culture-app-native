@@ -10,9 +10,7 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { AchievementProvider } from 'features/profile/api/Achievements/AchievementContext'
 import { AchievementModalProvider } from 'features/profile/api/Achievements/context/AchievementModalProvider'
-import { createAchievementGateway } from 'features/profile/api/Achievements/infra/AchievementGateway'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -20,8 +18,6 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
-
-const achievementGateway = createAchievementGateway()
 
 const getNavThemeConfig = (theme: DefaultTheme) =>
   ({
@@ -67,12 +63,6 @@ export const AppNavigationContainer = () => {
     }
   }, [isNavReady, hideSplashScreen])
 
-  useEffect(() => {
-    setTimeout(() => {
-      achievementGateway.simulateCompletedAchievement('FIRST_ADD_FAVORITE')
-    }, 2000)
-  }, [])
-
   if (!isNavReady) {
     return <LoadingPage />
   }
@@ -87,9 +77,7 @@ export const AppNavigationContainer = () => {
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
       <AchievementModalProvider>
-        <AchievementProvider achievementGateway={achievementGateway}>
-          <RootNavigator />
-        </AchievementProvider>
+        <RootNavigator />
       </AchievementModalProvider>
     </NavigationContainer>
   )
