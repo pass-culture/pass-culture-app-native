@@ -31,6 +31,7 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
       ) : (
         <ArtistsText
           allowFontScaling={false}
+          numberOfLines={2}
           {...getHeadingAttrs(1)}
           {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artists}`)}>
           {artists}
@@ -42,11 +43,11 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
 
 const ArtistsText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.buttons.tertiaryBlack.textColor,
+  flex: 1,
 }))
 
 const ArtistInfoContainer = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
 })
 
 const StyledPrefix = styled(TypoDS.BodyAccent)(({ theme }) => ({
