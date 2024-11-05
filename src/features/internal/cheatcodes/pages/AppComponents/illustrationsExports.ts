@@ -31,7 +31,7 @@ import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { Trophy } from 'ui/svg/icons/Trophy'
+import { Trophy, BicolorTrophy } from 'ui/svg/icons/Trophy'
 import { BicolorUserBlocked, UserBlocked } from 'ui/svg/icons/UserBlocked'
 
 export const BicolorIllustrations = {
@@ -50,13 +50,14 @@ export const BicolorIllustrations = {
   BicolorRingingBell,
   BicolorRingingBellOff,
   BicolorSadFace,
+  BicolorShareChat,
+  BicolorSharePhones,
   BicolorTicketBooked,
+  BicolorTrophy,
   BicolorUserBlocked,
   BicolorUserError,
   BicolorUserFavorite,
   BicolorUserIdentification,
-  BicolorSharePhones,
-  BicolorShareChat,
 }
 
 export const UniqueColorIllustrations = {

@@ -48,7 +48,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
-import { TrophyBicolor } from 'ui/svg/icons/Trophy'
+import { BicolorTrophy } from 'ui/svg/icons/Trophy'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -343,12 +343,10 @@ const BadgeBanner: React.FC<{ shouldShow: boolean }> = ({ shouldShow = false }) 
         navigateTo={{
           screen: 'Achievements',
         }}>
-        <GenericBanner
-          LeftIcon={<TrophyBicolor size={theme.icons.sizes.standard} />}
-          testID="genericBanner">
-          <Typo.ButtonText>{'Mes badges'}</Typo.ButtonText>
+        <GenericBanner LeftIcon={<BicolorTrophy size={theme.icons.sizes.standard} />}>
+          <Typo.ButtonText>Mes badges</Typo.ButtonText>
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body numberOfLines={2}>{'Consulte tes prouesses'}</Typo.Body>
+          <Typo.Body numberOfLines={2}>Consulte tes prouesses</Typo.Body>
         </GenericBanner>
       </InternalTouchableLink>
       <Spacer.Column numberOfSpaces={4} />

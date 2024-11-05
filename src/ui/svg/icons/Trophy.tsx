@@ -49,8 +49,8 @@ export const Trophy = styled(TrophySVG).attrs(({ color, size, theme }) => ({
   size: size ?? theme.illustrations.sizes.medium,
 }))``
 
-export const TrophyBicolor = styled(TrophySVG).attrs(({ color, color2, size, theme }) => ({
+export const BicolorTrophy = styled(TrophySVG).attrs(({ color, color2, size, theme }) => ({
   color: color ?? theme.colors.secondary,
   color2: color2 ?? theme.colors.primary,
-  size: size ?? theme.icons.sizes.standard,
+  size: size ?? theme.illustrations.sizes.medium,
 }))``
