@@ -9,7 +9,7 @@ import {
 } from 'libs/firebase/firestore/exchangeRates/useGetEuroToCFPRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { convertEuroToCFP } from 'shared/currency/convertEuroToCFP'
+import { convertEuroToCFP, RoundUnit } from 'shared/currency/convertEuroToCFP'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
@@ -44,18 +44,28 @@ export const NewCaledonia = () => {
           autoCapitalize="none"
           value={inputEuro}
           onChangeText={setInputEuro}
-          keyboardType="number-pad"
+          keyboardType="numeric"
           placeholder="Entrez le montant en&nbsp;€"
           textContentType="none"
         />
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>Conversion en CFP avec l’arrondi&nbsp;:</TypoDS.Body>
-        <TypoDS.BodyAccentXs>qui sera affichée à l’utilisateur</TypoDS.BodyAccentXs>
+        <TypoDS.Body>CFP sans arrondi&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>{convertEuroToCFP(priceInEuro, euroToCFPRate)}&nbsp;CFP</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>Conversion en CFP sans arrondi&nbsp;:</TypoDS.Body>
-        <TypoDS.BodyAccentXs>qui sera pris en compte pour les remboursements</TypoDS.BodyAccentXs>
-        <TypoDS.Title3>{(priceInEuro * euroToCFPRate).toFixed(2)}&nbsp;CFP</TypoDS.Title3>
+        <TypoDS.Body>CFP avec l’arrondi à l’unité&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>
+          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.UNITS)}&nbsp;CFP
+        </TypoDS.Title3>
+        <Spacer.Column numberOfSpaces={4} />
+        <TypoDS.Body>CFP avec l’arrondi à la dizaine&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>
+          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.TENS)}&nbsp;CFP
+        </TypoDS.Title3>
+        <Spacer.Column numberOfSpaces={4} />
+        <TypoDS.Body>CFP avec l’arrondi à la centaine&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>
+          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.HUNDREDS)}&nbsp;CFP
+        </TypoDS.Title3>
         <StyledSeparator />
       </Container>
       <Spacer.BottomScreen />
