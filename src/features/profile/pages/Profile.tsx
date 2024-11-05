@@ -160,23 +160,7 @@ const OnlineProfile: React.FC = () => {
             <ProfileHeader user={user} />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
-              {shouldShowBadgesBanner ? (
-                <React.Fragment>
-                  <InternalTouchableLink
-                    navigateTo={{
-                      screen: 'Achievements',
-                    }}>
-                    <GenericBanner
-                      LeftIcon={<TrophyBicolor size={theme.icons.sizes.standard} />}
-                      testID="genericBanner">
-                      <Typo.ButtonText>{'Mes badges'}</Typo.ButtonText>
-                      <Spacer.Column numberOfSpaces={1} />
-                      <Typo.Body numberOfLines={2}>{'Consulte tes prouesses'}</Typo.Body>
-                    </GenericBanner>
-                  </InternalTouchableLink>
-                  <Spacer.Column numberOfSpaces={4} />
-                </React.Fragment>
-              ) : null}
+              <BadgeBanner shouldShow={!!shouldShowBadgesBanner} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
                 <VerticalUl>
                   {isLoggedIn ? (
@@ -349,6 +333,27 @@ export function Profile() {
     return <OnlineProfile />
   }
   return <OfflinePage />
+}
+
+const BadgeBanner: React.FC<{ shouldShow: boolean }> = ({ shouldShow = false }) => {
+  if (!shouldShow) return null
+  return (
+    <React.Fragment>
+      <InternalTouchableLink
+        navigateTo={{
+          screen: 'Achievements',
+        }}>
+        <GenericBanner
+          LeftIcon={<TrophyBicolor size={theme.icons.sizes.standard} />}
+          testID="genericBanner">
+          <Typo.ButtonText>{'Mes badges'}</Typo.ButtonText>
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Body numberOfLines={2}>{'Consulte tes prouesses'}</Typo.Body>
+        </GenericBanner>
+      </InternalTouchableLink>
+      <Spacer.Column numberOfSpaces={4} />
+    </React.Fragment>
+  )
 }
 
 const Container = styled.View({ flex: 1 })
