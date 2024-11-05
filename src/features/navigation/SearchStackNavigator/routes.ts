@@ -4,7 +4,7 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
+import { ThematicSearch } from 'features/search/pages/Search/ThematicSearch/ThematicSearch'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 
@@ -34,12 +34,12 @@ const routes: SearchStackRoute[] = [
     options: { title: 'Résultats de recherche' },
   },
   {
-    name: 'SearchN1',
-    component: SearchN1,
+    name: 'ThematicSearch',
+    component: ThematicSearch,
     pathConfig: {
-      path: 'rechercheN1',
-      parse: screenParamsParser['SearchN1'],
-      stringify: screenParamsStringifier['SearchN1'],
+      path: 'recherche/thematique',
+      parse: screenParamsParser['ThematicSearch'],
+      stringify: screenParamsStringifier['ThematicSearch'],
     },
     options: { title: 'recherche dans les sous-catégories' },
   },

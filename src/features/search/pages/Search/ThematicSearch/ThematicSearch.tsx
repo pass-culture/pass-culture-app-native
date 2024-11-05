@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -12,7 +13,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
-import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
+import { ThematicSearchBar } from 'features/search/pages/Search/ThematicSearch/ThematicSearchBar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -27,7 +28,7 @@ const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue
   return { ...previousValue, [currentValue.name]: currentValue.value }
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
-export const SearchN1: React.FC = () => {
+export const ThematicSearch: React.FC = () => {
   const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
@@ -46,7 +47,7 @@ export const SearchN1: React.FC = () => {
     venuesUserData,
   } = useSearchResults()
 
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -54,7 +55,7 @@ export const SearchN1: React.FC = () => {
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
     [selectedLocationMode]
   )
-
+  const isWeb = Platform.OS === 'web'
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
@@ -67,13 +68,26 @@ export const SearchN1: React.FC = () => {
     venuesUserData?.[0]?.venue_playlist_title,
     isLocated
   )
+  useEffect(() => {
+    if (params?.offerCategories && isWeb) {
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerCategories: params.offerCategories,
+        },
+      })
+    }
+    // adding searchstate in deps would result in an infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, isWeb, params?.offerCategories])
 
   if (arePlaylistsLoading) {
     return <LoadingState />
   }
 
   return (
-    <SearchN1Bar
+    <ThematicSearchBar
       offerCategories={offerCategories}
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
@@ -85,7 +99,6 @@ export const SearchN1: React.FC = () => {
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}
-            offerCategory={offerCategory}
           />
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
@@ -95,8 +108,8 @@ export const SearchN1: React.FC = () => {
               <GtlPlaylist
                 key={playlist.entryId}
                 playlist={playlist}
-                analyticsFrom="searchn1"
-                route="SearchN1"
+                analyticsFrom="thematicsearch"
+                route="ThematicSearch"
               />
             ))}
             <Spacer.Column numberOfSpaces={6} />
@@ -104,6 +117,6 @@ export const SearchN1: React.FC = () => {
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
       </ScrollView>
-    </SearchN1Bar>
+    </ThematicSearchBar>
   )
 }

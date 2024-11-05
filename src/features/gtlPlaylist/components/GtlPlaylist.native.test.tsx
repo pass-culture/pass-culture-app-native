@@ -126,9 +126,9 @@ describe('GtlPlaylist', () => {
     })
   })
 
-  describe('on searchN1 page', () => {
+  describe('on ThematicSearch page', () => {
     it('should log ConsultOffer when pressing an item', () => {
-      renderGtlPlaylistOnSearchN1Page()
+      renderGtlPlaylistOnThematicSearch()
 
       const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
 
@@ -137,7 +137,7 @@ describe('GtlPlaylist', () => {
       }
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        from: 'searchn1',
+        from: 'thematicsearch',
         index: 0,
         moduleId: '2xUlLBRfxdk6jeYyJszunX',
         offerId: 12,
@@ -145,7 +145,7 @@ describe('GtlPlaylist', () => {
     })
 
     it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
-      renderGtlPlaylistOnSearchN1Page()
+      renderGtlPlaylistOnThematicSearch()
       const scrollView = screen.getByTestId('offersModuleList')
 
       await act(async () => {
@@ -168,12 +168,12 @@ describe('GtlPlaylist', () => {
     })
 
     it('should log ModuleDisplayed when scrolling to the playlist', () => {
-      renderGtlPlaylistOnSearchN1Page()
+      renderGtlPlaylistOnThematicSearch()
 
       mockInView(true)
 
       expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
-        displayedOn: 'searchn1',
+        displayedOn: 'thematicsearch',
         moduleId: '2xUlLBRfxdk6jeYyJszunX',
       })
     })
@@ -191,7 +191,7 @@ describe('GtlPlaylist', () => {
 function renderGtlPlaylist(
   gtlPlaylist: GtlPlaylistData,
   analyticsFrom: Referrals,
-  route: Extract<ScreenNames, 'Venue' | 'SearchN1'>,
+  route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>,
   venue?: VenueResponse
 ) {
   return render(
@@ -208,4 +208,5 @@ function renderGtlPlaylist(
 
 const renderGtlPlaylistOnVenuePage = () => renderGtlPlaylist(playlist, 'venue', 'Venue', venue)
 
-const renderGtlPlaylistOnSearchN1Page = () => renderGtlPlaylist(playlist, 'searchn1', 'SearchN1')
+const renderGtlPlaylistOnThematicSearch = () =>
+  renderGtlPlaylist(playlist, 'thematicsearch', 'ThematicSearch')

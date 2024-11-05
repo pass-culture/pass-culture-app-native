@@ -45,7 +45,7 @@ describe('<VenuePlaylist />', () => {
     expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
   })
 
-  it('should not display Voir sur la carte button when current view is SearchN1 and wipVenueMap feature flag deactivated', () => {
+  it('should not display Voir sur la carte button when current view is ThematicSearch and wipVenueMap feature flag deactivated', () => {
     render(
       <VenuePlaylist
         venuePlaylistTitle="Test Playlist"
@@ -62,19 +62,19 @@ describe('<VenuePlaylist />', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
-    it('should display Voir sur la carte button when current view is SearchN1', () => {
+    it('should display Voir sur la carte button when current view is ThematicSearch', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
         />
       )
 
       expect(screen.getByText('Voir sur la carte')).toBeOnTheScreen()
     })
 
-    it('should display number of results when current view is not SearchN1', () => {
+    it('should display number of results when current view is not ThematicSearch', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
@@ -91,7 +91,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.LIVRES}
         />
       )
@@ -106,7 +106,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
         />
       )
@@ -128,7 +128,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}
         />
@@ -144,7 +144,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated
         />
@@ -160,7 +160,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated
         />
@@ -176,7 +176,7 @@ describe('<VenuePlaylist />', () => {
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
-          currentView="SearchN1"
+          currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}
         />

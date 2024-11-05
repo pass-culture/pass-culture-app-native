@@ -72,7 +72,7 @@ export function AutocompleteOfferItem({
 
   const orderedNativeCategories = nativeCategories.sort((a, b) => b.count - a.count)
 
-  const isQueryFromSearchN1 = !!offerCategories.length
+  const isQueryFromThematicSearch = !!offerCategories.length
 
   const isNativeCategoryRelatedToSearchGroup = useMemo(() => {
     return mappedNativeCategories.some(
@@ -115,7 +115,8 @@ export function AutocompleteOfferItem({
 
   const shouldDisplayNativeCategory =
     hasMostPopularHitNativeCategory &&
-    ((isQueryFromSearchN1 && isNativeCategoryRelatedToSearchGroup) || !isQueryFromSearchN1) &&
+    ((isQueryFromThematicSearch && isNativeCategoryRelatedToSearchGroup) ||
+      !isQueryFromThematicSearch) &&
     !hasSeveralCategoriesFromNativeCategory
 
   const isLivresPapierNativeCategory =
@@ -124,7 +125,7 @@ export function AutocompleteOfferItem({
   const shouldUseSearchGroupInsteadOfNativeCategory =
     !shouldDisplayNativeCategory ||
     isLivresPapierNativeCategory ||
-    (isQueryFromSearchN1 && !isNativeCategoryRelatedToSearchGroup)
+    (isQueryFromThematicSearch && !isNativeCategoryRelatedToSearchGroup)
 
   const mostPopularCategory = useMemo(() => {
     if (
@@ -184,7 +185,10 @@ export function AutocompleteOfferItem({
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
-    if (currentRoute && [SearchView.Landing, SearchView.N1].includes(currentRoute as SearchView)) {
+    if (
+      currentRoute &&
+      [SearchView.Landing, SearchView.Thematic].includes(currentRoute as SearchView)
+    ) {
       navigateToSearchResults(newSearchState, disabilities)
     }
     hideSuggestions()

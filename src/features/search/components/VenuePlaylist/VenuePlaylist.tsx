@@ -103,7 +103,7 @@ export const VenuePlaylist: React.FC<Props> = ({
     <React.Fragment>
       <View>
         <Title>{venuePlaylistTitle}</Title>
-        {enabledVenueMap && currentView === 'SearchN1' ? (
+        {enabledVenueMap && currentView === 'ThematicSearch' ? (
           <ButtonContainer>
             <Spacer.Column numberOfSpaces={1} />
             <ButtonTertiaryBlack

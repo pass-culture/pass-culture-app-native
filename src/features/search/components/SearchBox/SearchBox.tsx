@@ -62,8 +62,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
-  const { navigateToSearch: navigateToSearchN1 } = useNavigateToSearch('SearchN1')
-  const enableWipPageSearchN1 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
+  const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
+  const enableWipPageThematicSearch = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
 
   const currentView = route.name
 
@@ -104,18 +104,20 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       })
 
       if (hasSearchedForBookKeyword) {
-        return navigateToSearchN1(newSearchState, defaultDisabilitiesProperties)
+        return navigateToThematicSearch(newSearchState, defaultDisabilitiesProperties)
       }
 
       if (newSearchState.query !== '') {
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
     },
-    [dispatch, navigateToSearchN1, navigateToSearchResults, searchState]
+    [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
   )
 
   const hasEditableSearchInput =
-    isFocusOnSuggestions || currentView === SearchView.Results || currentView === SearchView.N1
+    isFocusOnSuggestions ||
+    currentView === SearchView.Results ||
+    currentView === SearchView.Thematic
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -201,7 +203,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       const searchId = uuidv4()
 
       const hasSearchedForBookKeyword =
-        enableWipPageSearchN1 &&
+        enableWipPageThematicSearch &&
         currentView === SearchView.Landing &&
         BOOK_KEYWORD_PATTERN.test(queryText.trim())
 
@@ -218,7 +220,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         isFromHistory: undefined,
       }
 
-      if (currentView === SearchView.N1) {
+      if (currentView === SearchView.Thematic) {
         partialSearchState = {
           ...partialSearchState,
           offerCategories,
@@ -246,7 +248,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.gtls,
       searchState.priceRange,
       currentView,
-      enableWipPageSearchN1,
+      enableWipPageThematicSearch,
       pushWithSearch,
       hideSuggestions,
       offerCategories,
@@ -271,10 +273,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ])
 
   const showLocationButton =
-    (currentView === SearchView.Results || currentView === SearchView.N1) && !isFocusOnSuggestions
+    (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
+    !isFocusOnSuggestions
 
   const disableInputClearButton =
-    (currentView === SearchView.Results || currentView === SearchView.N1) &&
+    (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
     !isFocusOnSuggestions &&
     !isDesktopViewport
 

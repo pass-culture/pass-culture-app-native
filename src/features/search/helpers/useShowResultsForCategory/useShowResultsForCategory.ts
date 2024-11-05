@@ -15,23 +15,29 @@ export const useShowResultsForCategory = (): OnPressCategory => {
   const { searchState, dispatch } = useSearch()
   const { data } = useSubcategories()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
-  const { navigateToSearch: navigateToSearchN1 } = useNavigateToSearch('SearchN1')
+  const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const { disabilities } = useAccessibilityFiltersContext()
-  const enableWipPageSearchN1Books = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
-  const enableWipPageSearchN1Cinema = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_N1_CINEMA)
-  const enableWipPageSearchN1FilmsDocumentairesEtSeries = useFeatureFlag(
+  const enableWipPageThematicSearchBooks = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1
+  )
+  const enableWipPageThematicSearchCinema = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SEARCH_N1_CINEMA
+  )
+  const enableWipPageThematicSearchFilmsDocumentairesEtSeries = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES
   )
-  const SEARCH_N1_CATEGORIES: (keyof typeof SearchGroupNameEnumv2 | undefined)[] = useMemo(
+  const THEMATIC_SEARCH_CATEGORIES: (keyof typeof SearchGroupNameEnumv2 | undefined)[] = useMemo(
     () => [
-      enableWipPageSearchN1Books ? 'LIVRES' : undefined,
-      enableWipPageSearchN1Cinema ? 'CINEMA' : undefined,
-      enableWipPageSearchN1FilmsDocumentairesEtSeries ? 'FILMS_DOCUMENTAIRES_SERIES' : undefined,
+      enableWipPageThematicSearchBooks ? 'LIVRES' : undefined,
+      enableWipPageThematicSearchCinema ? 'CINEMA' : undefined,
+      enableWipPageThematicSearchFilmsDocumentairesEtSeries
+        ? 'FILMS_DOCUMENTAIRES_SERIES'
+        : undefined,
     ],
     [
-      enableWipPageSearchN1Books,
-      enableWipPageSearchN1Cinema,
-      enableWipPageSearchN1FilmsDocumentairesEtSeries,
+      enableWipPageThematicSearchBooks,
+      enableWipPageThematicSearchCinema,
+      enableWipPageThematicSearchFilmsDocumentairesEtSeries,
     ]
   )
 
@@ -49,21 +55,21 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         isFullyDigitalOffersCategory: isOnlyOnline(data, pressedCategory) || undefined,
         isFromHistory: undefined,
       }
-      if (SEARCH_N1_CATEGORIES.includes(pressedCategory)) {
+      if (THEMATIC_SEARCH_CATEGORIES.includes(pressedCategory)) {
         dispatch({
           type: 'SET_STATE',
           payload: newSearchState,
         })
-        navigateToSearchN1(newSearchState, disabilities)
+        navigateToThematicSearch(newSearchState, disabilities)
       } else {
         navigateToSearchResults(newSearchState, disabilities)
       }
     },
     [
-      SEARCH_N1_CATEGORIES,
+      THEMATIC_SEARCH_CATEGORIES,
       data,
       disabilities,
-      navigateToSearchN1,
+      navigateToThematicSearch,
       navigateToSearchResults,
       searchState,
       dispatch,

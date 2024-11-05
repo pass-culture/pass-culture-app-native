@@ -109,13 +109,13 @@ const mockRoutesWithVenue = [
   },
 ]
 
-const mockRoutesWithSearchN1 = [
+const mockRoutesWithThematicSearch = [
   {
     key: 'TabNavigator',
     name: 'TabNavigator',
     params: { screen: 'SearchStackNavigator' },
     state: {
-      routes: [{ name: 'SearchStackNavigator', state: { routes: [{ name: 'SearchN1' }] } }],
+      routes: [{ name: 'SearchStackNavigator', state: { routes: [{ name: 'ThematicSearch' }] } }],
     },
   },
 ]
@@ -369,7 +369,7 @@ describe('SearchBox component', () => {
   })
 
   it.each(['LIVRE', 'Livre ', 'livre', 'LIVRES', 'Livres', 'livres '])(
-    'should redirect to searchN1 when queryText is `%s` and SearchView is `Landing`',
+    'should redirect to ThematicSearch when queryText is `%s` and SearchView is `Landing`',
     (queryText) => {
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
       useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
@@ -396,7 +396,7 @@ describe('SearchBox component', () => {
             },
             priceRange: mockSearchState.priceRange,
           },
-          screen: 'SearchN1',
+          screen: 'ThematicSearch',
         },
         screen: 'SearchStackNavigator',
       })
@@ -606,7 +606,7 @@ describe('SearchBox component with venue previous route on search results', () =
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should update searchState without offerNativeCategories set to undefined when a query is made from another page than searchN1', async () => {
+  it('should update searchState without offerNativeCategories set to undefined when a query is made from another page than ThematicSearch', async () => {
     const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
     const BOOK_OFFER_NATIVE_CATEGORIES = [BooksNativeCategoriesEnum.BD_ET_COMICS]
 
@@ -642,20 +642,20 @@ describe('SearchBox component with venue previous route on search results', () =
   })
 })
 
-describe('SearchBox component with SearchN1 previous route on search results', () => {
+describe('SearchBox component with ThematicSearch previous route on search results', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
       key: 'Navigator',
       index: 1,
       routeNames: ['TabNavigator'],
-      routes: mockRoutesWithSearchN1,
+      routes: mockRoutesWithThematicSearch,
       type: 'tab',
       stale: false,
     })
     useRoute.mockReturnValue({ name: SearchView.Results })
   })
 
-  it('should execute go back when current route is search and previous route is SearchN1', async () => {
+  it('should execute go back when current route is search and previous route is ThematicSearch', async () => {
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
@@ -665,7 +665,7 @@ describe('SearchBox component with SearchN1 previous route on search results', (
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on searchN1', async () => {
+  it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on ThematicSearch', async () => {
     const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
     const BOOK_SEARCH_BOX_PLACEHOLDER = 'Livres'
 
@@ -689,7 +689,7 @@ describe('SearchBox component with SearchN1 previous route on search results', (
     }
 
     useRoute.mockReturnValueOnce({
-      name: SearchView.N1,
+      name: SearchView.Thematic,
     })
 
     renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)

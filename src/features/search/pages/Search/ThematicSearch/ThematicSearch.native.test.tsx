@@ -6,7 +6,7 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
+import { ThematicSearch } from 'features/search/pages/Search/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
@@ -97,7 +97,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   }),
 }))
 
-describe('<SearchN1/>', () => {
+describe('<ThematicSearch/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
@@ -109,8 +109,8 @@ describe('<SearchN1/>', () => {
       mockSelectedLocationMode = LocationMode.EVERYWHERE
     })
 
-    it('should render <SearchN1 />', async () => {
-      render(reactQueryProviderHOC(<SearchN1 />))
+    it('should render <ThematicSearch />', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
 
       await screen.findByText('Romans et littérature')
 
@@ -120,7 +120,7 @@ describe('<SearchN1/>', () => {
     describe('Search bar', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
-        render(reactQueryProviderHOC(<SearchN1 />))
+        render(reactQueryProviderHOC(<ThematicSearch />))
         const searchInput = screen.getByPlaceholderText('Livres...')
         fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
@@ -143,7 +143,7 @@ describe('<SearchN1/>', () => {
 
     describe('Subcategory buttons', () => {
       it('should update SearchState with correct data', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
+        render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
         fireEvent.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
@@ -160,7 +160,7 @@ describe('<SearchN1/>', () => {
       })
 
       it('should navigate to search results with the corresponding parameters', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
+        render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
 
         fireEvent.press(subcategoryButton)
@@ -183,7 +183,7 @@ describe('<SearchN1/>', () => {
 
     describe('gtl playlists', () => {
       it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
+        render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
 
         expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
@@ -191,7 +191,7 @@ describe('<SearchN1/>', () => {
 
       it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
         jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValueOnce(true)
-        render(reactQueryProviderHOC(<SearchN1 />))
+        render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
@@ -205,7 +205,7 @@ describe('<SearchN1/>', () => {
   describe('gtl playlists', () => {
     it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<SearchN1 />))
+      render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Festivals')
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
@@ -218,6 +218,6 @@ function MockOfferCategoriesParams(offerCategoriesParams: {
 }) {
   useRoute.mockImplementation(() => ({
     params: offerCategoriesParams,
-    name: 'SearchN1',
+    name: 'ThematicSearch',
   }))
 }

@@ -356,10 +356,10 @@ describe('TabBar', () => {
         params: { screen: 'SearchLanding' },
       },
       {
-        screen: 'SearchN1',
-        key: 'SearchN1-X8VXvOMAWRm3n0SOvktHX',
-        name: 'SearchN1',
-        params: { screen: 'SearchN1' },
+        screen: 'ThematicSearch',
+        key: 'ThematicSearch-X8VXvOMAWRm3n0SOvktHX',
+        name: 'ThematicSearch',
+        params: { screen: 'ThematicSearch' },
         path: undefined,
       },
     ]
@@ -377,7 +377,7 @@ describe('TabBar', () => {
 
     renderTabBar({
       ...mockTabNavigationState,
-      routeNames: ['SearchLanding, SearchN1'],
+      routeNames: ['SearchLanding, ThematicSearch'],
       routes,
     })
 
@@ -392,7 +392,7 @@ describe('TabBar', () => {
         },
         screen: {
           ...routes[1],
-          screen: 'SearchN1',
+          screen: 'ThematicSearch',
         },
       },
       screen: 'SearchStackNavigator',
