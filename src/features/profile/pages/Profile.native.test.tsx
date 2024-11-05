@@ -95,7 +95,7 @@ const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Vers
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -162,6 +162,48 @@ describe('Profile component', () => {
     renderProfile()
 
     expect(await screen.findByText('Version\u00A01.10.5')).toBeOnTheScreen()
+  })
+
+  describe('achievements banner', () => {
+    beforeEach(() => {
+      mockUseFeatureFlag.mockReturnValue(true)
+    })
+
+    it('should show banner when FF is enabled and user is a beneficiary', () => {
+      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+
+      renderProfile()
+
+      expect(screen.getByText('Mes badges')).toBeOnTheScreen()
+    })
+
+    it('should not show banner if user is not a beneficiary', async () => {
+      renderProfile()
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Mes badges')).not.toBeOnTheScreen()
+    })
+
+    it('should not show banner when FF is disabled', async () => {
+      renderProfile()
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Mes badges')).not.toBeOnTheScreen()
+    })
+
+    it('should go to achievements when user clicks the banner', async () => {
+      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+
+      renderProfile()
+
+      const badgeBanner = await screen.findByText('Mes badges')
+
+      fireEvent.press(badgeBanner)
+
+      expect(navigate).toHaveBeenCalledWith('Achievements', undefined)
+    })
   })
 
   describe('user settings section', () => {
