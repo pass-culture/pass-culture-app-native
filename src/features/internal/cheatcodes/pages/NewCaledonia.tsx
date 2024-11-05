@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/no-currency-symbols */
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'

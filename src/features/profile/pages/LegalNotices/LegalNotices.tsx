@@ -31,6 +31,7 @@ export function LegalNotices() {
           externalNav={{ url: 'https://passculture.app/accueil' }}
           icon={ExternalSiteFilled}
         />
+        {/* eslint-disable-next-line local-rules/no-currency-symbols */}
         {LINE_BREAK}
         Société par action simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
         {LINE_BREAK}
