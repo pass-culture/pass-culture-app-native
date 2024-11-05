@@ -1,11 +1,15 @@
 import { string } from 'yup'
 
+import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+
 // integers separated by a dot or comma with 2 decimals max
 const PRICE_REGEX = /^\d+(?:[,.]\d{0,2})?$/
 const formatPriceError = `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
 
-const maxPriceError = (initialCredit: string) =>
-  `Le prix indiqué ne doit pas dépasser ${initialCredit}\u00a0€`
+const maxPriceError = (initialCredit: string) => {
+  const priceInEuro = parseCurrency(Number(initialCredit))
+  return `Le prix indiqué ne doit pas dépasser ${priceInEuro}`
+}
 
 export const makePriceSchema = (initialCredit: string) =>
   string()

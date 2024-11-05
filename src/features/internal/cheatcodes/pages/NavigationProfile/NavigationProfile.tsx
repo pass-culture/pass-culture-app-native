@@ -8,11 +8,16 @@ import { Row } from 'features/internal/cheatcodes/components/Row'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
+import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
 export function NavigationProfile(): React.JSX.Element {
+  const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
+  const eighteenYearsOldDepositDeprecated = parseCurrency(500)
+
   const {
     visible: ceilingModalVisible,
     showModal: showCeilingModal,
@@ -44,7 +49,10 @@ export function NavigationProfile(): React.JSX.Element {
         <LinkToComponent name="ConsentSettings" />
         <LinkToComponent name="NotificationsSettings" />
         <Row half>
-          <ButtonPrimary wording="Modal Limite 500&nbsp;€" onPress={showPhysicalCeilingModal} />
+          <ButtonPrimary
+            wording={`Modal Limite ${eighteenYearsOldDepositDeprecated}`}
+            onPress={showPhysicalCeilingModal}
+          />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v1}
             visible={physicalCeilingModalVisible}
@@ -52,7 +60,10 @@ export function NavigationProfile(): React.JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording="Modal Limite 300&nbsp;€" onPress={showCeilingModal} />
+          <ButtonPrimary
+            wording={`Modal Limite ${eighteenYearsOldDeposit}`}
+            onPress={showCeilingModal}
+          />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v2}
             visible={ceilingModalVisible}

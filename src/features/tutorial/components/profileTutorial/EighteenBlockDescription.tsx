@@ -5,6 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
+import { parseCurrency } from 'libs/parsers/getDisplayPrice'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
@@ -17,6 +18,7 @@ type Props = {
 
 export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCredit = false }) => {
   const { isLoggedIn, user } = useAuthContext()
+  const oneHundredEuros = parseCurrency(100)
 
   const defaultItems = [
     <BlockDescriptionItem
@@ -32,7 +34,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
     <BlockDescriptionItem
       key={3}
       icon={<SmallNumeric bicolor={ongoingCredit} />}
-      text="La limite de 100&nbsp;€ est là pour t’encourager à tester des offres culturelles variées."
+      text={`La limite de ${oneHundredEuros} est là pour t’encourager à tester des offres culturelles variées.`}
     />,
   ]
   const items =
@@ -43,7 +45,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
       <CreditProgressBar progress={1} />
       <Spacer.Column numberOfSpaces={2} />
       <StyledCaption>
-        dont 100&nbsp;€ en offres numériques (streaming, presse en ligne, …)
+        dont {oneHundredEuros} en offres numériques (streaming, presse en ligne, …)
       </StyledCaption>
       <Spacer.Column numberOfSpaces={4} />
       <AccessibleUnorderedList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
