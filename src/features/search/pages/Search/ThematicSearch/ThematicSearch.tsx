@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 

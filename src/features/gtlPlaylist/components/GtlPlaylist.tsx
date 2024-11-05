@@ -16,7 +16,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 
 export interface GtlPlaylistProps {
   analyticsFrom: Referrals
-  route: Extract<ScreenNames, 'Venue' | 'SearchN1'>
+  route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>
   playlist: GtlPlaylistData
   venue?: VenueResponse
 }

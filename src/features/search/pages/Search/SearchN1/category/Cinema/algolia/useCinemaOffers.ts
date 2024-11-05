@@ -1,3 +1,4 @@
+import { SearchResponse } from 'instantsearch.js'
 import { useQuery } from 'react-query'
 
 import { fetchCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
@@ -19,34 +20,27 @@ export function useCinemaOffers() {
   const { userLocation } = useLocation()
   const { data, isLoading } = useQuery({
     queryKey: [QueryKeys.CINEMA_OFFERS],
-    queryFn: async (): Promise<CinemaPlaylistData[]> => {
-      const [
-        moviesCurrentlyAvailable,
-        moviesCurrentlyAvailableWithReleaseDateAttribute,
-        ...cineCards
-      ] = await fetchCinemaOffers({
-        userLocation,
-      })
-      let offers = [
-        moviesCurrentlyAvailable,
-        moviesCurrentlyAvailableWithReleaseDateAttribute,
-        ...cineCards,
-      ]
-      if (moviesCurrentlyAvailableWithReleaseDateAttribute?.hits.length) {
-        const moviesOfTheWeek = getMoviesOfTheWeek(moviesCurrentlyAvailableWithReleaseDateAttribute)
-        offers = [moviesCurrentlyAvailable, moviesOfTheWeek, ...cineCards]
-      }
-      return offers.map((item, index) => ({
-        title: CINEMA_PLAYLIST_TITLES[index] ?? '',
-        offers: offers[index] ?? { hits: [] },
-      }))
+    queryFn: async (): Promise<SearchResponse<Offer>[]> => {
+      return fetchCinemaOffers({ userLocation })
     },
     enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000,
   })
+  if (!data || data.length === 0) return { offers: [], isLoading }
 
+  let offers: (SearchResponse<Offer> | undefined)[] = data
+  const [moviesCurrentlyAvailable, moviesCurrentlyAvailableWithReleaseDateAttribute, ...cineCards] =
+    offers
+
+  if (moviesCurrentlyAvailableWithReleaseDateAttribute?.hits.length) {
+    const moviesOfTheWeek = getMoviesOfTheWeek(moviesCurrentlyAvailableWithReleaseDateAttribute)
+    offers = [moviesCurrentlyAvailable, moviesOfTheWeek, ...cineCards]
+  }
   return {
-    offers: data,
+    offers: offers.map((item, index) => ({
+      title: CINEMA_PLAYLIST_TITLES[index] ?? '',
+      offers: offers[index] ?? { hits: [] },
+    })),
     isLoading,
   }
 }

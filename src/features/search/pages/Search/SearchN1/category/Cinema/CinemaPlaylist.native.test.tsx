@@ -34,7 +34,7 @@ const playlist = cinemaPlaylistAlgoliaSnapshot[0] as CinemaPlaylistData
 describe('CinemaPlaylist', () => {
   describe('on ThematicSearch page', () => {
     it('should log ConsultOffer when pressing an item', async () => {
-      renderCinemaPlaylist(playlist, 'searchn1', 'SearchN1')
+      renderCinemaPlaylist(playlist, 'thematicsearch', 'ThematicSearch')
 
       const offer = await screen.findByText('Harry potter à l’école des sorciers')
 
@@ -52,7 +52,7 @@ describe('CinemaPlaylist', () => {
 function renderCinemaPlaylist(
   cinemaPlaylist: CinemaPlaylistData,
   analyticsFrom: Referrals,
-  route: Extract<ScreenNames, 'SearchN1'>
+  route: Extract<ScreenNames, 'ThematicSearch'>
 ) {
   return render(
     reactQueryProviderHOC(

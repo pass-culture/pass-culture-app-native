@@ -19,7 +19,11 @@ export const Cinema: React.FC = () => {
         if (playlist.offers.hits.length > 0) {
           return (
             <View key={playlist.title}>
-              <CinemaPlaylist playlist={playlist} analyticsFrom="searchn1" route="SearchN1" />
+              <CinemaPlaylist
+                playlist={playlist}
+                analyticsFrom="thematicsearch"
+                route="ThematicSearch"
+              />
               <Spacer.Column numberOfSpaces={4} />
             </View>
           )

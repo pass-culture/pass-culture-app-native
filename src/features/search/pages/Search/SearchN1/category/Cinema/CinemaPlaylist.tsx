@@ -14,7 +14,7 @@ const PLAYLIST_ITEM_WIDTH = LENGTH_M * RATIO_HOME_IMAGE
 export interface CinemaPlaylistProps {
   playlist: CinemaPlaylistData
   analyticsFrom: Referrals
-  route: Extract<ScreenNames, 'SearchN1'>
+  route: Extract<ScreenNames, 'ThematicSearch'>
 }
 
 export function CinemaPlaylist({ playlist, analyticsFrom, route }: Readonly<CinemaPlaylistProps>) {
