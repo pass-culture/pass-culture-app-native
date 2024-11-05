@@ -226,6 +226,17 @@ exports[`EndedBookings should render correctly 1`] = `
             ],
             "id": 150230,
             "offer": {
+              "address": {
+                "city": "Drancy",
+                "coordinates": {
+                  "latitude": 48.91683,
+                  "longitude": 2.43884,
+                },
+                "label": null,
+                "postalCode": "93700",
+                "street": "1 boulevard de la brique",
+                "timezone": "Europe/Paris",
+              },
               "bookingContact": null,
               "extraData": null,
               "id": 147874,
@@ -271,6 +282,17 @@ exports[`EndedBookings should render correctly 1`] = `
             ],
             "id": 150230,
             "offer": {
+              "address": {
+                "city": "Drancy",
+                "coordinates": {
+                  "latitude": 48.91683,
+                  "longitude": 2.43884,
+                },
+                "label": null,
+                "postalCode": "93700",
+                "street": "1 boulevard de la brique",
+                "timezone": "Europe/Paris",
+              },
               "bookingContact": null,
               "extraData": null,
               "id": 147874,
@@ -763,6 +785,17 @@ exports[`EndedBookings should render correctly 1`] = `
                 ],
                 "id": 150230,
                 "offer": {
+                  "address": {
+                    "city": "Drancy",
+                    "coordinates": {
+                      "latitude": 48.91683,
+                      "longitude": 2.43884,
+                    },
+                    "label": null,
+                    "postalCode": "93700",
+                    "street": "1 boulevard de la brique",
+                    "timezone": "Europe/Paris",
+                  },
                   "bookingContact": null,
                   "extraData": null,
                   "id": 147874,
