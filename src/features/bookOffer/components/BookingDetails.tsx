@@ -24,7 +24,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -74,7 +74,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
-      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
@@ -171,7 +171,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   if (!selectedStock || typeof quantity !== 'number') return null
 
   const priceInCents = quantity * selectedStock.price
-  const formattedPriceWithEuro = formatToFrenchDecimal(priceInCents)
+  const formattedPriceWithEuro = parseCurrencyFromCents(priceInCents)
 
   const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
 

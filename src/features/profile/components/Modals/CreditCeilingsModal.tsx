@@ -3,7 +3,7 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { VerticalUl } from 'ui/components/Ul'
@@ -17,10 +17,10 @@ type Props = {
 
 const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
   const digitalCeiling = domainsCredit.digital
-    ? formatToFrenchDecimal(domainsCredit.digital.initial)
+    ? parseCurrencyFromCents(domainsCredit.digital.initial)
     : ''
   const physicalCeiling = domainsCredit.physical
-    ? formatToFrenchDecimal(domainsCredit.physical.initial)
+    ? parseCurrencyFromCents(domainsCredit.physical.initial)
     : ''
 
   return physicalCeiling ? (

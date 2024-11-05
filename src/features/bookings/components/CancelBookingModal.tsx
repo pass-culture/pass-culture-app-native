@@ -13,7 +13,7 @@ import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
@@ -120,7 +120,7 @@ const Refund = styled(Typo.Body)({
 function getRefundRule(booking: Booking, user?: UserProfileResponse) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
-    const price = formatToFrenchDecimal(booking.totalAmount)
+    const price = parseCurrencyFromCents(booking.totalAmount)
     if (isUserExBeneficiary(user)) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }

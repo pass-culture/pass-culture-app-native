@@ -7,7 +7,7 @@ import {
   MovieScreeningBookingData,
   MovieScreeningUserData,
 } from 'features/offer/components/MovieScreeningCalendar/types'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 const mapScreeningsToEventCardProps = (
@@ -34,7 +34,7 @@ const mapScreeningsToEventCardProps = (
     isUserLoggedIn,
   } = movieScreeningUserData ?? {}
 
-  const price = formatToFrenchDecimal(screening.price).replace(' ', '')
+  const price = parseCurrencyFromCents(screening.price).replace(' ', '')
   const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
   const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 

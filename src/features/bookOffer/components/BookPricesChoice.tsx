@@ -10,7 +10,7 @@ import {
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
@@ -54,7 +54,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 checked={stock.id === bookingState.stockId}
                 disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                rightText={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                rightText={parseCurrencyFromCents(stock.price).replace(' ', '')}
               />
               <Spacer.Column numberOfSpaces={2} />
             </Li>

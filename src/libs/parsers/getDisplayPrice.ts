@@ -9,7 +9,7 @@ type FormatPriceOptions = {
  * price in euros in the French format, ex: "5,50 €"
  * @param {number} priceInCents
  */
-export const formatToFrenchDecimal = (priceInCents: number, options?: FormatPriceOptions) => {
+export const parseCurrencyFromCents = (priceInCents: number, options?: FormatPriceOptions) => {
   const euros = priceInCents / CENTS_IN_EURO
   const fractionDigits = options?.fractionDigits ?? (euros === Math.floor(euros) ? 0 : 2)
 
@@ -22,18 +22,18 @@ export const formatToFrenchDecimal = (priceInCents: number, options?: FormatPric
   return formatter.format(euros)
 }
 
-export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
-  formatToFrenchDecimal(convertEuroToCents(priceInEuro))
+export const parseCurrency = (priceInEuro: number) =>
+  parseCurrencyFromCents(convertEuroToCents(priceInEuro))
 
 const getPricePerPlace = (prices: number[], options?: FormatPriceOptions): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
 
   // @ts-expect-error: because of noUncheckedIndexedAccess
-  if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0], options)}`
+  if (uniquePrices.length === 1) return `${parseCurrencyFromCents(uniquePrices[0], options)}`
 
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
   // @ts-expect-error: because of noUncheckedIndexedAccess
-  return `Dès ${formatToFrenchDecimal(sortedPrices[0], options)}`
+  return `Dès ${parseCurrencyFromCents(sortedPrices[0], options)}`
 }
 
 export const getDisplayPrice = (
