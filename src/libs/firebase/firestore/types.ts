@@ -32,6 +32,7 @@ export enum RemoteStoreUbble {
 }
 
 export enum RemoteStoreFeatureFlags {
+  ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
@@ -63,6 +64,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   WIP_FAKEDOOR_VIDEO_VENUE = 'wipFakeDoorVideoVenue',
+  WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
   WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
@@ -77,7 +79,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES = 'wipSearchN1FilmsDocumentairesEtSeries',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_VENUE_MAP = 'wipVenueMap',
-  WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_VENUE_MAP_HIDDEN_POI = 'wipVenueMapHiddenPOI',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
   WIP_VENUE_MAP_PIN_V2 = 'wipVenueMapPinV2',
