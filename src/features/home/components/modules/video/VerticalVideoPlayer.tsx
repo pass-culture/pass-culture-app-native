@@ -214,9 +214,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           onPress={togglePlay}
         />
       ) : (
-        <React.Fragment>
-          <PlayerCalque />
-        </React.Fragment>
+        <PlayerCalque />
       )}
 
       {isPlaying ? (

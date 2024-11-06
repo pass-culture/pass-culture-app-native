@@ -5,17 +5,21 @@ import { campaignTracker } from 'libs/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
+const enableTracking = () => {
+  amplitude.enableCollection()
+  firebaseAnalytics.enableCollection()
+  campaignTracker.init(true)
+  campaignTracker.startAppsFlyer(true)
+  Batch.optIn()
+}
+
+const disableTracking = () => {
+  amplitude.disableCollection()
+  firebaseAnalytics.disableCollection()
+  campaignTracker.startAppsFlyer(false)
+  Batch.optOut()
+}
+
 export const startTracking = (enabled: boolean) => {
-  if (enabled) {
-    amplitude.enableCollection()
-    firebaseAnalytics.enableCollection()
-    campaignTracker.init(true)
-    campaignTracker.startAppsFlyer(true)
-    Batch.optIn()
-  } else {
-    amplitude.disableCollection()
-    firebaseAnalytics.disableCollection()
-    campaignTracker.startAppsFlyer(false)
-    Batch.optOut()
-  }
+  enabled ? enableTracking() : disableTracking()
 }

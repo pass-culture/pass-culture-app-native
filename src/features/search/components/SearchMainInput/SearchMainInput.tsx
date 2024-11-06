@@ -56,7 +56,8 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   const shouldUseV2Icon = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
 
   const renderSearchChildren = () => {
-    return !showLocationButton || isDesktopViewport ? null : <LocationSearchWidget />
+    const hideLocationSearchWidget = !showLocationButton || isDesktopViewport
+    return hideLocationSearchWidget ? null : <LocationSearchWidget />
   }
   return (
     <StyledSearchInput

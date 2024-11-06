@@ -37,12 +37,10 @@ const getCompleteProfile = (profile: SubscriptionState['profile']): ProfileUpdat
   if (
     profile.status &&
     profile.address &&
-    profile.city &&
-    profile.city.name &&
-    profile.city.postalCode &&
-    profile.name &&
-    profile.name.firstName &&
-    profile.name.lastName
+    profile.city?.name &&
+    profile.city?.postalCode &&
+    profile.name?.firstName &&
+    profile.name?.lastName
   ) {
     return {
       activityId: profile.status,
