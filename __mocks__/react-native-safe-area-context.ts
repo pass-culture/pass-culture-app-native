@@ -1,5 +1,9 @@
-import { View } from 'react-native'
+const inset = { top: 16, right: 16, bottom: 16, left: 16 }
 
-export const useSafeAreaInsets = () => ({ bottom: 16, right: 16, left: 16, top: 16 })
-
-export const SafeAreaProvider = View
+module.exports = {
+  SafeAreaProvider: jest.fn().mockImplementation(({ children }) => children),
+  SafeAreaConsumer: jest.fn().mockImplementation(({ children }) => children(inset)),
+  Consumer: jest.fn().mockImplementation(({ children }) => children(inset)),
+  SafeAreaView: jest.fn().mockImplementation(({ children }) => children),
+  useSafeAreaInsets: jest.fn().mockImplementation(() => inset),
+}
