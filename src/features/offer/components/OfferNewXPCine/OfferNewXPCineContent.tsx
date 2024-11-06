@@ -1,4 +1,4 @@
-import React, { FC, useRef, useCallback, useState } from 'react'
+import React, { FC, useRef, useCallback, useState, useEffect } from 'react'
 import { View } from 'react-native'
 import Animated, { useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
@@ -20,13 +20,18 @@ export const OfferNewXPCineContent: FC<{
 }> = ({ offer, onSeeVenuePress }) => {
   const theme = useTheme()
   const { animatedStyle, onContentSizeChange } = useAnimatedHeight()
-  const { selectedDate } = useMovieCalendar()
+  const { selectedDate, displayCalendar } = useMovieCalendar()
   const {
     increaseCount,
     isEnd: hasReachedVenueListEnd,
     items,
     isLoading,
+    hasStocksOnlyAfter15Days,
   } = useGetVenuesByDay(selectedDate, offer, { initialCount: 6, nextCount: 3, radiusKm: 50 })
+
+  useEffect(() => {
+    displayCalendar(!hasStocksOnlyAfter15Days)
+  }, [displayCalendar, hasStocksOnlyAfter15Days])
 
   return (
     <View>

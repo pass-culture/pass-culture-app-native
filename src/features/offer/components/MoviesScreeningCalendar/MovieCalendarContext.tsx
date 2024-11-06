@@ -13,10 +13,8 @@ import { FlatList } from 'react-native-gesture-handler'
 import { Easing } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
-import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -25,6 +23,7 @@ import { useLayout } from 'ui/hooks/useLayout'
 type MovieCalendarContextType = {
   selectedDate: Date
   goToDate: (date: Date) => void
+  displayCalendar: (shouldDisplayCalendar: boolean) => void
 }
 
 const MovieCalendarContext = createContext<MovieCalendarContextType | undefined>(undefined)
@@ -76,13 +75,13 @@ export const MovieCalendarProvider: React.FC<{
   nbOfDays: number
   children: React.ReactNode
   containerStyle?: ViewStyle
-  offer?: OfferResponseV2
-}> = ({ nbOfDays, containerStyle, offer, children }) => {
+}> = ({ nbOfDays, containerStyle, children }) => {
   const { dates, selectedDate, setSelectedDate } = useNextDays(nbOfDays)
   const flatListRef = useRef<FlatList | null>(null)
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
+  const [isVisible, setIsVisible] = useState<boolean>(true)
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
@@ -118,13 +117,14 @@ export const MovieCalendarProvider: React.FC<{
     [scrollToAnchor, setSelectedDate]
   )
 
-  const value = useMemo(() => ({ selectedDate, goToDate }), [selectedDate, goToDate])
-
-  const { hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offer)
+  const value = useMemo(
+    () => ({ selectedDate, goToDate, displayCalendar: setIsVisible }),
+    [selectedDate, goToDate]
+  )
 
   return (
     <MovieCalendarContext.Provider value={value}>
-      {hasStocksOnlyAfter15Days === false ? null : (
+      {isVisible ? (
         <View style={containerStyle}>
           <Anchor name="movie-calendar">
             <MovieCalendar
@@ -139,7 +139,7 @@ export const MovieCalendarProvider: React.FC<{
             />
           </Anchor>
         </View>
-      )}
+      ) : null}
 
       <AnimatedCalendarView selectedDate={selectedDate}>{children}</AnimatedCalendarView>
     </MovieCalendarContext.Provider>

@@ -45,12 +45,14 @@ const spyUseGetVenuesByDay = jest.spyOn(useGetVenuesByDayModule, 'useGetVenuesBy
 
 const mockSelectedDate = new Date('2023-05-01')
 const mockGoToDate = jest.fn()
+const mockDisplayCalendar = jest.fn()
 
 describe('OfferNewXPCineContent', () => {
   beforeEach(() => {
     jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
+      displayCalendar: mockDisplayCalendar,
     })
   })
 
