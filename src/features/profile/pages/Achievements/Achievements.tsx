@@ -44,7 +44,7 @@ export const Achievements = () => {
                   <Badge
                     key={achievement.id}
                     id={achievement.id}
-                    icon={achievementIconMapper[achievement.icon]!}
+                    icon={achievementIconMapper[achievement.icon]}
                     isCompleted={achievement.isCompleted}
                   />
                 ))}
@@ -94,7 +94,7 @@ const BadgesContainer = styled.View({
 
 type BadgeProps = {
   id: string
-  icon: ImageURISource
+  icon?: ImageURISource // TODO(PC-32685): Use FunctionComponent<AccessibleIcon> instead
   isCompleted?: boolean
 }
 
@@ -106,7 +106,7 @@ const Badge: FC<BadgeProps> = ({ isCompleted = false, icon, id }) => {
         params: { id },
       }}>
       <BadgeContainer isCompleted={isCompleted}>
-        <StyledImage source={icon} resizeMode="contain" />
+        {icon ? <StyledImage source={icon} resizeMode="contain" /> : null}
         {isCompleted ? null : <NotCompletedFilter />}
       </BadgeContainer>
     </InternalTouchableLink>

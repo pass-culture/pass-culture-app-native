@@ -2,8 +2,8 @@ import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import { TCarouselProps } from 'react-native-reanimated-carousel'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default forwardRef<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any,
   Omit<TCarouselProps, 'onProgressChange'> & {
     onProgressChange: (offsetProgress: number, absoluteProgress: number) => void
