@@ -4,18 +4,18 @@ import styled from 'styled-components/native'
 
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import {
-  DEFAULT_EURO_TO_CFP_RATE,
-  useGetEuroToCFPRate,
-} from 'libs/firebase/firestore/exchangeRates/useGetEuroToCFPRate'
+  DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+  useGetPacificFrancToEuroRate,
+} from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { convertEuroToCFP, RoundUnit } from 'shared/currency/convertEuroToCFP'
+import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 export const NewCaledonia = () => {
-  const euroToCFPRate = useGetEuroToCFPRate() || DEFAULT_EURO_TO_CFP_RATE
+  const pacificFrancToEuroRate = useGetPacificFrancToEuroRate()
   const enablePacificFrancCurrency = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY
   )
@@ -33,10 +33,10 @@ export const NewCaledonia = () => {
         </StyledTitle3>
         <StyledSeparator />
         <TypoDS.Body>Taux de change sur Firestore&nbsp;:</TypoDS.Body>
-        <TypoDS.Title3>{euroToCFPRate}</TypoDS.Title3>
+        <TypoDS.Title3>{pacificFrancToEuroRate}</TypoDS.Title3>
         <StyledSeparator />
         <TypoDS.Body>Taux de change dans le code&nbsp;:</TypoDS.Body>
-        <TypoDS.Title3>{DEFAULT_EURO_TO_CFP_RATE}</TypoDS.Title3>
+        <TypoDS.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</TypoDS.Title3>
         <StyledSeparator />
         <TextInput
           label="Montant en&nbsp;€ pour conversion&nbsp;:"
@@ -49,23 +49,16 @@ export const NewCaledonia = () => {
           textContentType="none"
         />
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>CFP sans arrondi&nbsp;:</TypoDS.Body>
-        <TypoDS.Title3>{convertEuroToCFP(priceInEuro, euroToCFPRate)}&nbsp;CFP</TypoDS.Title3>
-        <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>CFP avec l’arrondi à l’unité&nbsp;:</TypoDS.Body>
+        <TypoDS.Body>Franc Pacifique sans arrondi&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>
-          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.UNITS)}&nbsp;CFP
+          {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate)}&nbsp;F
         </TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>CFP avec l’arrondi à la dizaine&nbsp;:</TypoDS.Body>
+        <TypoDS.Body>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>
-          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.TENS)}&nbsp;CFP
+          {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
         </TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>CFP avec l’arrondi à la centaine&nbsp;:</TypoDS.Body>
-        <TypoDS.Title3>
-          {convertEuroToCFP(priceInEuro, euroToCFPRate, RoundUnit.HUNDREDS)}&nbsp;CFP
-        </TypoDS.Title3>
         <StyledSeparator />
       </Container>
       <Spacer.BottomScreen />

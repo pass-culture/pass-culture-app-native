@@ -12,10 +12,10 @@ const { doc } = firestore().collection(FIRESTORE_ROOT_COLLECTION)
 const { onSnapshot } = doc(RemoteStoreDocuments.EXCHANGE_RATES)
 const mockOnSnapshot = onSnapshot as jest.Mock
 
-const MOCK_RATE_FROM_FIRESTORE = 120
+const MOCK_RATE_FROM_FIRESTORE = 0.008
 
 describe('getExchangeRates', () => {
-  let onRateChangeMock: jest.Mock<(euroToCFPRate: number) => void>
+  let onRateChangeMock: jest.Mock<(pacificFrancToEuroRate: number) => void>
 
   beforeEach(() => {
     onRateChangeMock = jest.fn()
@@ -28,7 +28,7 @@ describe('getExchangeRates', () => {
     expect(doc).toHaveBeenCalledWith(RemoteStoreDocuments.EXCHANGE_RATES)
   })
 
-  it('should call onRateChange with the euroToCFPRate value from Firestore', async () => {
+  it('should call onRateChange with the pacificFrancToEuroRate value from Firestore', async () => {
     mockOnSnapshot.mockImplementationOnce((successCallback) => {
       successCallback({ get: () => MOCK_RATE_FROM_FIRESTORE })
     })
