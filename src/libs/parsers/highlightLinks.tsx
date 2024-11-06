@@ -40,7 +40,7 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
 const normalizeURL = (partialURL: string): string => {
   if (partialURL.startsWith('http://')) return partialURL
   if (partialURL.startsWith('https://')) return partialURL
-  return `http://${partialURL}`
+  return `${partialURL}`
 }
 
 export const highlightLinks = (description: string): ParsedDescription => {

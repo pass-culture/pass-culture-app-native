@@ -65,7 +65,7 @@ describe('highlightLinks', () => {
           const parsedDescription = highlightLinks('perdu.com')
 
           expect(parsedDescription).toEqual([
-            <ExternalLink key="external-link-0" url="http://perdu.com" />,
+            <ExternalLink key="external-link-0" url="perdu.com" />,
           ])
         })
 
@@ -90,7 +90,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('www.penofchaos.com')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://www.penofchaos.com" />,
+          <ExternalLink key="external-link-0" url="www.penofchaos.com" />,
         ])
       })
 
@@ -98,7 +98,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us/418')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us/418" />,
+          <ExternalLink key="external-link-0" url="httpstat.us/418" />,
         ])
       })
 
@@ -106,7 +106,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us/200?sleep=500')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us/200?sleep=500" />,
+          <ExternalLink key="external-link-0" url="httpstat.us/200?sleep=500" />,
         ])
       })
 
@@ -114,7 +114,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us#anchor')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us#anchor" />,
+          <ExternalLink key="external-link-0" url="httpstat.us#anchor" />,
         ])
       })
     })
@@ -128,10 +128,7 @@ describe('highlightLinks', () => {
 
           expect(parsedDescription).toEqual([
             `${description1WithoutUrl} `,
-            <ExternalLink
-              key="external-link-1"
-              url="http://www.penofchaos.com/warham/donjon.htm"
-            />,
+            <ExternalLink key="external-link-1" url="www.penofchaos.com/warham/donjon.htm" />,
           ])
         })
 
@@ -149,12 +146,9 @@ describe('highlightLinks', () => {
           const parsedDescription = highlightLinks(description)
 
           expect(parsedDescription).toEqual([
-            <ExternalLink
-              key="external-link-0"
-              url="http://www.penofchaos.com/warham/donjon.htm"
-            />,
+            <ExternalLink key="external-link-0" url="www.penofchaos.com/warham/donjon.htm" />,
             '\n',
-            <ExternalLink key="external-link-2" url="http://perdu.com" />,
+            <ExternalLink key="external-link-2" url="perdu.com" />,
           ])
         })
       })
@@ -181,7 +175,7 @@ describe('highlightLinks', () => {
         )
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://www.penofchaos.com/warham/donjon.htm" />,
+          <ExternalLink key="external-link-0" url="www.penofchaos.com/warham/donjon.htm" />,
           ` ${description1WithoutUrl}`,
         ])
       })
