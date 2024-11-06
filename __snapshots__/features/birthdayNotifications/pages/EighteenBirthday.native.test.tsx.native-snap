@@ -123,7 +123,9 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       ]
     }
   >
-    Ton crédit précédent a été remis à 0 €.
+    Ton crédit précédent a été remis à 
+    0 €
+    .
   </Text>
   <View
     numberOfSpaces={8}

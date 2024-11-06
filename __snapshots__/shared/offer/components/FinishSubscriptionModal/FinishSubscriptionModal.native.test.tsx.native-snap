@@ -963,7 +963,9 @@ pour réserver cette offre
                   ]
                 }
               >
-                Ton crédit précédent a été remis à 0 €.
+                Ton crédit précédent a été remis à 
+                0 €
+                .
               </Text>
               <View
                 numberOfSpaces={6}
