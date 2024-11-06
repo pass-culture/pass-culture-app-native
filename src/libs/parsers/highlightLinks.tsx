@@ -15,12 +15,10 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   const chunks = []
   let match: RegExpExecArray | null
   while ((match = externalNavRegex.exec(textToHighlight))) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const startWithSpace = /\s/.test(textToHighlight[match.index])
+    const startWithSpace = /\s/.test(textToHighlight[match.index] || '')
     const startIndexSpaceAdjustment = startWithSpace ? 1 : 0
     const start = match.index + startIndexSpaceAdjustment
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1])
+    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1] || '')
     const endIndexSpaceAdjustment = endWithSpace ? 1 : 0
     const end = externalNavRegex.lastIndex - endIndexSpaceAdjustment
     // We do not return zero-length matches

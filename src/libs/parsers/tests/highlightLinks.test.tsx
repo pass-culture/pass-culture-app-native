@@ -41,8 +41,7 @@ describe('customFindUrlChunks', () => {
     })
 
     expect(highlightedChunks1).toHaveLength(1)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(description1.slice(0, highlightedChunks1[0].start)).toBe(description1WithoutUrl)
+    expect(description1.slice(0, highlightedChunks1[0]?.start)).toBe(description1WithoutUrl)
   })
 
   it('finds url chunks and mark them as highlited', () => {
