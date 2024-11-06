@@ -1,0 +1,16 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: # Permet de retourner sur la page précédente (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'true'}
+    commands:
+      - scroll
+      - scroll
+      - tapOn: "A côté"
+
+- runFlow: # Permet de retourner sur la page précédente (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
+    commands:
+      - scroll
+      - tapOn: "A côté"

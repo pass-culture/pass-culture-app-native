@@ -1,7 +1,9 @@
 appId: ${MAESTRO_APP_ID}
+env:
+  LOCATION: 'Ma position'
 ---
 - assertVisible: 'Rechercher'
-- runFlow: ../../subFolder/cloud/commands/SetLocalizationToEverywhere.yml
+- runFlow: ../../subFolder/cloud/commands/SetLocalizationToParis.yml
 - swipe:
     from:
       text: 'Les offres'
@@ -109,14 +111,14 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
 - scrollUntilVisible:
     element: 'Confirmer la réservation'
 - tapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
-- tapOn: 
-    text: "Voir ma réservation"
+- tapOn:
+    text: 'Voir ma réservation'
     retryTapIfNoChange: true
 
 - scroll
@@ -132,10 +134,9 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: # Si la réservation ne peut pas être annulée
     when:
-      visible: "Voir le détail de l’offre"
+      visible: 'Voir le détail de l’offre'
     commands:
       - tapOn:
-            text: "Voir le détail de l’offre"
+          text: 'Voir le détail de l’offre'
       - pressKey: back
       - pressKey: back
-
