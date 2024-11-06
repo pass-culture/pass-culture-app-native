@@ -25,11 +25,6 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueDataTest
 const venueId = venueDataTest.id
@@ -45,11 +40,6 @@ jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/subcategories/useSubcategories')
-
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
 
 const defaultParams = {
   date: null,

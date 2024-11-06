@@ -11,10 +11,6 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
 
 jest.mock('libs/jwt/jwt')
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
 
 const patchProfile = jest.spyOn(API.api, 'patchNativeV1Profile')
 

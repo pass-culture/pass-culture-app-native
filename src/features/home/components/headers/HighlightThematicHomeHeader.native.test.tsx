@@ -24,11 +24,6 @@ const headerProps = {
   introductionParagraph,
 }
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('HighlightThematicHomeHeader', () => {
   it('should display introduction when introduction title and paragraph are provided', () => {
     render(<HighlightThematicHomeHeader {...headerProps} />)

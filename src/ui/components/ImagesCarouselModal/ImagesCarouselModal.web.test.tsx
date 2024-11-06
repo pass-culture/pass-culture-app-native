@@ -5,11 +5,6 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 import { ImagesCarouselModal } from './ImagesCarouselModal'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<ImagesCarouselModal />', () => {
   let mockCallback: (
     entries: {

@@ -6,11 +6,6 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<OfferImageContainer />', () => {
   it('should not display image inside carousel when offer has only one image', () => {
     render(

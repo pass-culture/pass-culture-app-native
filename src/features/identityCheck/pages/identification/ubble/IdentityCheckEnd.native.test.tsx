@@ -30,11 +30,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.useFakeTimers()
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<IdentityCheckEnd/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)

@@ -14,11 +14,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('OfferDuo component', () => {
   it('should render OfferDuo with Activé description', () => {
     mockSearchState.mockReturnValueOnce({

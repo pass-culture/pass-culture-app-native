@@ -8,11 +8,6 @@ import { Check } from 'ui/svg/icons/Check'
 import { SnackBar } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('SnackBar Component', () => {
   it('should render the content container when visible=true', async () => {
     render(renderHelperSnackBar(true, { message: 'message' }))
