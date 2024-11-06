@@ -1,16 +1,11 @@
-/// <reference types="vitest/config" />
-
-import { defineConfig, loadEnv} from 'vite'
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
-const env = loadEnv('testing', process.cwd(), '')
 
 export default defineConfig({
-  define: {
-    global: 'window',
-    'process.env':env,
-  },
+  plugins: [react()],
   resolve: {
     extensions: allExtensions,
     alias: [
@@ -20,16 +15,23 @@ export default defineConfig({
       },
       { find: 'react-native', replacement: 'react-native-web' },
       {
-        find: 'react-native-svg',
-        replacement: 'react-native-svg/lib/module/ReactNativeSVG',
+        find: 'react-native-email-link',
+        replacement: '/src/libs/react-native-email-link',
+      },
+      { find: 'react-native-linear-gradient', replacement: 'react-native-web-linear-gradient' },
+      {
+        find: 'react-native-fast-image',
+        replacement: '/src/libs/react-native-web-fast-image',
+      },
+      {
+        find: 'react-native-share',
+        replacement: '/src/libs/react-native-share',
       },
     ],
   },
-  optimizeDeps: {
-    include: ['react-native', 'react-native-web'],
-  },
   test: {
     globals: true,
-    environment:'jsdom'
+    environment: 'jsdom',
+    setupFiles: ['./setupTests.ts'],
   },
 })
