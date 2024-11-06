@@ -11,6 +11,10 @@ const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Hilarant » Vanity Fair 
 Voir plus de critiques en suivant le lien suivant :`
 
+const descriptionWithoutSpaceAfterDot = `Lorem ipsum dolor sit amet consectetur adipiscing elit.Sed non risus.`
+
+const descriptionWitUppercaseLink = `Lorem ipsum dolor sit amet consectetur adipiscing Elit.sed non risus.`
+
 const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
 
 const description2 = `https://www.google.com/ Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -187,6 +191,18 @@ describe('highlightLinks', () => {
       const parsedDescription = highlightLinks('test@passculture.app')
 
       expect(parsedDescription).toEqual(['test@passculture.app'])
+    })
+
+    it('exclude uppercase after dot', () => {
+      const parsedDescription = highlightLinks(descriptionWithoutSpaceAfterDot)
+
+      expect(parsedDescription).toEqual([descriptionWithoutSpaceAfterDot])
+    })
+
+    it('exclude uppercase at link start', () => {
+      const parsedDescription = highlightLinks(descriptionWitUppercaseLink)
+
+      expect(parsedDescription).toEqual([descriptionWitUppercaseLink])
     })
   })
 })
