@@ -30,6 +30,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    'react-hooks/exhaustive-deps': 'error',
     'react/no-unused-prop-types': 'off', // has false positives
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/independent-mocks': 'error',
@@ -45,6 +46,8 @@ module.exports = {
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
     'local-rules/no-currency-symbols': 'off', // TODO(LucasBeneston): enable when all currency symbols will be dynamic
     'no-negated-condition': 'warn',
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/ban-ts-comment': [
       'error',
@@ -56,7 +59,6 @@ module.exports = {
     ],
     'import/no-duplicates': ['error', { considerQueryString: true }],
     'no-unused-vars': 'off', // not ideal, but programmatically necessary sometimes
-
     '@typescript-eslint/no-unused-vars': [
       'error',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -332,10 +334,8 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.test.ts', '**/*.test.tsx'],
       rules: {
-        '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/ban-ts-comment': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'error', // Disable obj!.propert statements
         '@typescript-eslint/semi': 'off', // let's insist on no semicolons
         '@typescript-eslint/indent': 'off', // turn off typescript indentation and let prettier do its job
         // no semicolons or commas in class/interface definitions

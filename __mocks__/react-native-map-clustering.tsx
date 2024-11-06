@@ -27,7 +27,7 @@ interface ExtendedMapViewProps extends MapViewProps {
 const MapViewMock = forwardRef<MockMapRef, ExtendedMapViewProps>(function MapViewMock(props, ref) {
   useEffect(() => {
     props.onMapReady?.()
-  }, [props.onMapReady])
+  }, [props])
 
   useImperativeHandle(ref, () => mockMapRef.current, [])
 
