@@ -124,7 +124,7 @@ export const MovieCalendarProvider: React.FC<{
 
   return (
     <MovieCalendarContext.Provider value={value}>
-      {hasStocksOnlyAfter15Days ? null : (
+      {hasStocksOnlyAfter15Days === false ? null : (
         <View style={containerStyle}>
           <Anchor name="movie-calendar">
             <MovieCalendar
