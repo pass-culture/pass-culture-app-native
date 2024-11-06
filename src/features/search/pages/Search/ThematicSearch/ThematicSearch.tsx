@@ -99,6 +99,7 @@ export const ThematicSearch: React.FC = () => {
             venues={venues}
             isLocated={isLocated}
             currentView={currentView}
+            offerCategory={offerCategory}
           />
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
