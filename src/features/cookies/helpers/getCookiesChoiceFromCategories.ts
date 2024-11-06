@@ -9,11 +9,9 @@ export const getCookiesChoiceFromCategories = (
   const refusedCookies: Cookies = []
 
   Object.entries(cookiesChoice).forEach(([category, accepted]) => {
-    if (accepted) {
-      acceptedCookies.push(...COOKIES_BY_CATEGORY[category as CookieCategoriesEnum])
-    } else {
-      refusedCookies.push(...COOKIES_BY_CATEGORY[category as CookieCategoriesEnum])
-    }
+    accepted
+      ? acceptedCookies.push(...COOKIES_BY_CATEGORY[category as CookieCategoriesEnum])
+      : refusedCookies.push(...COOKIES_BY_CATEGORY[category as CookieCategoriesEnum])
   })
 
   return { accepted: acceptedCookies, refused: refusedCookies }

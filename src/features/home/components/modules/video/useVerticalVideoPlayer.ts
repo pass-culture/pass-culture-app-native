@@ -101,11 +101,7 @@ export const useVerticalVideoPlayer = ({
   }
 
   const togglePlay = () => {
-    if (isPlaying) {
-      pauseVideo()
-    } else {
-      setIsPlaying(true)
-    }
+    isPlaying ? pauseVideo() : setIsPlaying(true)
   }
 
   const playVideo = () => {
