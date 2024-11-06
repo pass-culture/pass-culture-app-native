@@ -99,11 +99,13 @@ export const VenuePlaylist: React.FC<Props> = ({
     navigate('VenueMap')
   }
 
+  const shouldDisplaySeeOnMapButton = enabledVenueMap && currentView === 'ThematicSearch' && !isWeb
+
   return (
     <React.Fragment>
       <View>
         <Title>{venuePlaylistTitle}</Title>
-        {enabledVenueMap && currentView === 'ThematicSearch' ? (
+        {shouldDisplaySeeOnMapButton ? (
           <ButtonContainer>
             <Spacer.Column numberOfSpaces={1} />
             <ButtonTertiaryBlack
