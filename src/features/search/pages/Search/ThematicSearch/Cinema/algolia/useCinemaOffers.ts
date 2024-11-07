@@ -1,8 +1,8 @@
 import { SearchResponse } from 'instantsearch.js'
 import { useQuery } from 'react-query'
 
-import { fetchCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
-import { getMoviesOfTheWeek } from 'features/search/pages/Search/SearchN1/category/Cinema/utils'
+import { fetchCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
+import { getMoviesOfTheWeek } from 'features/search/pages/Search/ThematicSearch/Cinema/utils'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'

@@ -15,7 +15,7 @@ type FetchCinemaOffers = {
 
 export const fetchCinemaOffers = async ({ userLocation }: FetchCinemaOffers) => {
   const queryIndex = {
-    indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
     query: '',
   }
   const queryParams = {
