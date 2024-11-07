@@ -52,7 +52,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   })),
 }))
 
-let mockBookings = { ...bookingsSnap }
+let mockBookings: BookingsResponse = { ...bookingsSnap }
 
 jest.mock('features/bookings/api/useBookings', () => ({
   useBookings: jest.fn(() => ({
@@ -78,12 +78,12 @@ jest.mock('@batch.com/react-native-plugin', () =>
 const user = userEvent.setup()
 
 describe('BookingDetails', () => {
-  let ongoingBookings = mockBookings.ongoing_bookings[0]
-  let endedBookings = mockBookings.ended_bookings[0]
+  let ongoingBookings: BookingReponse = bookingsSnap.ongoing_bookings[0]
+  let endedBookings: BookingReponse = bookingsSnap.ended_bookings[0]
 
   beforeEach(() => {
-    ongoingBookings = mockBookings.ongoing_bookings[0]
-    endedBookings = mockBookings.ended_bookings[0]
+    ongoingBookings = bookingsSnap.ongoing_bookings[0]
+    endedBookings = bookingsSnap.ended_bookings[0]
 
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -248,7 +248,6 @@ describe('BookingDetails', () => {
 
   describe('withdrawalDetails', () => {
     it('should display withdrawal details', async () => {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       ongoingBookings.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
 
       renderBookingDetails(ongoingBookings)
@@ -386,7 +385,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
@@ -414,7 +412,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
@@ -445,7 +442,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
@@ -489,7 +485,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
@@ -517,7 +512,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
@@ -548,7 +542,6 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
