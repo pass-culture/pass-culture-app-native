@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Deploy web proxy"
+name: '4 [on_workflow] Deploy web proxy'
 
 on:
   workflow_call:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version-file: 'server/.nvmrc'
       - id: gcloud-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
         with:
           cleanup_credentials: false
@@ -74,7 +74,7 @@ jobs:
             | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
     runs-on: ubuntu-22.04
-    if: ${{ always() && contains(needs.web_proxy_deploy.result, 'success') && contains(needs.web_proxy_deploy.result, 'failure')}}
+    if: ${{ always() && (contains(needs.web_proxy_deploy.result, 'success') || contains(needs.web_proxy_deploy.result, 'failure'))}}
     needs: web_proxy_deploy
     steps:
       - name: Connect to Secret Manager
