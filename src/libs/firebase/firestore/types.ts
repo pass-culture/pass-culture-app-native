@@ -24,7 +24,7 @@ export enum RemoteStoreAppVersion {
 }
 
 export enum RemoteStoreExchangeRates {
-  EURO_TO_CFP_RATE = 'euroToCFPRate',
+  PACIFIC_FRANC_TO_EURO_RATE = 'pacificFrancToEuroRate',
 }
 
 export enum RemoteStoreUbble {

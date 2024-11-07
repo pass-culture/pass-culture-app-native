@@ -1,34 +1,34 @@
 import { getExchangeRates } from 'libs/firebase/firestore/exchangeRates/getExchangeRates'
 import {
-  DEFAULT_EURO_TO_CFP_RATE,
-  useGetEuroToCFPRate,
-} from 'libs/firebase/firestore/exchangeRates/useGetEuroToCFPRate'
+  DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+  useGetPacificFrancToEuroRate,
+} from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { renderHook } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
 jest.mock('libs/firebase/firestore/exchangeRates/getExchangeRates')
 const mockGetExchangeRates = getExchangeRates as jest.Mock
 
-describe('useGetEuroToCFPRate', () => {
+describe('useGetPacificFrancToEuroRate', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
   it('should initialize with the default rate', () => {
     mockGetExchangeRates.mockImplementationOnce(() => jest.fn())
-    const { result } = renderHook(() => useGetEuroToCFPRate())
+    const { result } = renderHook(() => useGetPacificFrancToEuroRate())
 
-    expect(result.current).toBe(DEFAULT_EURO_TO_CFP_RATE)
+    expect(result.current).toBe(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
   })
 
   it('should return remote exchange rate from firestore', () => {
-    mockGetExchangeRates.mockImplementationOnce((euroToCFPRate) => {
-      euroToCFPRate(120)
+    mockGetExchangeRates.mockImplementationOnce((pacificFrancToEuroRate) => {
+      pacificFrancToEuroRate(0.05)
       return jest.fn()
     })
 
-    const { result } = renderHook(() => useGetEuroToCFPRate())
+    const { result } = renderHook(() => useGetPacificFrancToEuroRate())
 
-    expect(result.current).toBe(120)
+    expect(result.current).toBe(0.05)
   })
 })

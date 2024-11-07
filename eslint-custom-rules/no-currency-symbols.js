@@ -3,21 +3,17 @@ module.exports = {
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow the use of the euro symbol (€) and pacific franc symbol (CFP)',
+      description: 'Disallow the use of the euro symbol (€)',
       recommended: false,
     },
     messages: {
       euroSymbol: 'Usage of the euro symbol (€) is not allowed.',
-      pacificFrancSymbol: 'Usage of the pacific franc symbol (CFP) is not allowed.',
     },
   },
   create(context) {
     function checkForSymbols(node, value) {
       if (value.includes('€')) {
         context.report({ node, messageId: 'euroSymbol' })
-      }
-      if (value.includes('CFP')) {
-        context.report({ node, messageId: 'pacificFrancSymbol' })
       }
     }
 
