@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { CinemaPlaylistData } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
+import { CinemaPlaylistData } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 

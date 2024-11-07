@@ -1,6 +1,6 @@
 import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
-import * as fetchCinemaOffersModule from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
-import { useCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
+import * as fetchCinemaOffersModule from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
+import { useCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'

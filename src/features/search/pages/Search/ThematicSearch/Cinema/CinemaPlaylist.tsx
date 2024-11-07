@@ -2,7 +2,7 @@ import { Hit } from '@algolia/client-search'
 import React from 'react'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { CinemaPlaylistData } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
+import { CinemaPlaylistData } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Offer } from 'shared/offer/types'
 import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'
