@@ -15,7 +15,7 @@ export const getNextMoviesByDate = (
   }
 
   return moviesOfferBuilder(offersWithStocks)
-    .withoutMoviesAfter15Days()
+    .withoutMoviesAfterNbDays(15)
     .withoutMoviesOnDay(date)
     .withNextScreeningFromDate(date)
     .sortedByLast30DaysBooking()

@@ -68,7 +68,7 @@ export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?:
   const dayOffers = useMemo(
     () =>
       moviesOfferBuilder(offersWithStocks?.offers)
-        .withoutMoviesAfter15Days()
+        .withoutMoviesAfterNbDays(15)
         .sortedByDistance(location)
         .withMoviesOnDay(date)
         .build(),
@@ -77,7 +77,7 @@ export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?:
 
   const nextOffers = useMemo(() => {
     return moviesOfferBuilder(offersWithStocks?.offers)
-      .withoutMoviesAfter15Days()
+      .withoutMoviesAfterNbDays(15)
       .sortedByDistance(location)
       .withoutMoviesOnDay(date)
       .withNextScreeningFromDate(date)
@@ -87,7 +87,7 @@ export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?:
   const after15DaysOffers = useMemo(
     () =>
       moviesOfferBuilder(offersWithStocks?.offers)
-        .withMoviesAfter15Days()
+        .withMoviesAfterNbDays(15)
         .sortedByDistance(location)
         .build(),
     [location, offersWithStocks?.offers]

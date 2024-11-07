@@ -110,7 +110,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
-    withMoviesAfter15Days: () => {
+    withMoviesAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers
         .map(({ offer }) => {
           const filteredStocks = offer.stocks.filter((stock) => {
@@ -118,7 +118,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
               return false
             }
 
-            return isDateNotWithinNext15Days(new Date(), new Date(stock.beginningDatetime))
+            return isDateNotWithinNextNbDays(new Date(), new Date(stock.beginningDatetime), nbDays)
           })
           return {
             nextDate: new Date(filteredStocks[0]?.beginningDatetime as string),
@@ -133,13 +133,13 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
-    withoutMoviesAfter15Days: () => {
+    withoutMoviesAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers.filter(({ offer }) =>
         offer.stocks.some((stock) => {
           if (!stock.beginningDatetime) {
             return false
           }
-          if (isDateNotWithinNext15Days(new Date(), new Date(stock.beginningDatetime))) {
+          if (isDateNotWithinNextNbDays(new Date(), new Date(stock.beginningDatetime), nbDays)) {
             return false
           }
           if (isDateBeforeToday(new Date(), new Date(stock.beginningDatetime))) {
@@ -183,10 +183,14 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
   return builderObject
 }
 
-export const isDateNotWithinNext15Days = (referenceDate: Date, targetDate: Date) => {
-  const datePlus15Days = addDays(startOfDay(referenceDate), 15)
+export const isDateNotWithinNextNbDays = (
+  referenceDate: Date,
+  targetDate: Date,
+  nbDays: number
+) => {
+  const datePlusNbDays = addDays(startOfDay(referenceDate), nbDays)
 
-  return isAfter(targetDate, datePlus15Days)
+  return isAfter(targetDate, datePlusNbDays)
 }
 
 const isDateBeforeToday = (referenceDate: Date, targetDate: Date) => {
@@ -200,7 +204,7 @@ const getNextDate = (offer: OfferResponseV2, date: Date) => {
 
   const nextDate = findClosestFutureDate(dates, date)
 
-  if (nextDate && isDateNotWithinNext15Days(new Date(), nextDate)) {
+  if (nextDate && isDateNotWithinNextNbDays(new Date(), nextDate, 15)) {
     return undefined
   }
   return findClosestFutureDate(dates, date)
