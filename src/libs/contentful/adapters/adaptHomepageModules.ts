@@ -29,7 +29,7 @@ const adaptModule = (module: HomepageNatifModule) => {
 
 const monitorError = (error: unknown, module: HomepageNatifModule) => {
   console.warn(`Error while computing home modules, with module of ID: ${module.sys.id}`, error)
-  eventMonitoring.captureException('Error while computing home modules', {
+  eventMonitoring.captureException(error, {
     extra: { moduleId: module.sys.id },
   })
 }
