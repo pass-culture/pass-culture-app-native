@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { fetchCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
-import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/SearchN1/category/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import { fetchCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
+import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Offer } from 'shared/offer/types'

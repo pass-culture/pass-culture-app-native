@@ -1,7 +1,7 @@
 import { SearchResponse } from 'instantsearch.js'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { getMoviesOfTheWeek } from 'features/search/pages/Search/SearchN1/category/Cinema/utils'
+import { getMoviesOfTheWeek } from 'features/search/pages/Search/ThematicSearch/Cinema/utils'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 

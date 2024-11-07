@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { useCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
-import { CinemaPlaylist } from 'features/search/pages/Search/SearchN1/category/Cinema/CinemaPlaylist'
+import { useCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
+import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { Spacer } from 'ui/theme'
 

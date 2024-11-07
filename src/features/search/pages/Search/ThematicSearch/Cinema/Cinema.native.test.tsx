@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
-import * as fetchCinemaOffersModule from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
-import { Cinema } from 'features/search/pages/Search/SearchN1/category/Cinema/Cinema'
+import * as fetchCinemaOffersModule from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
+import { Cinema } from 'features/search/pages/Search/ThematicSearch/Cinema/Cinema'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, GeolocationError, GeolocPermissionState } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
