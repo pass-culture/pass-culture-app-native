@@ -18,8 +18,9 @@ const useGetHomepageList = () => {
   const { data: homepages } = useQuery<Homepage[]>([QueryKeys.HOMEPAGE_MODULES], getHomeData, {
     staleTime: STALE_TIME,
     onError: (e) => {
-      const error = e as Error
-      throw new ScreenError(error.message, { Screen: NoContentError, logType })
+      if (e instanceof Error) {
+        throw new ScreenError(e.message, { Screen: NoContentError, logType })
+      }
     },
   })
   return homepages

@@ -1,4 +1,4 @@
-import { ContentTypes } from '../types'
+import { ContentTypes, Entry } from '../types'
 
 import { adaptAppV2VenuesModule } from './modules/adaptAppV2VenuesModule'
 import { adaptBusinessModule } from './modules/adaptBusinessModule'
@@ -14,7 +14,10 @@ import { adaptVenuesModule } from './modules/adaptVenuesModule'
 import { adaptVideoCarouselModule } from './modules/adaptVideoCarouselModule'
 import { adaptVideoModule } from './modules/adaptVideoModule'
 
-export type ContentfulAdapter<Contentful, Module> = (module: Contentful) => Module | null
+export type ContentfulAdapter<
+  Contentful extends Entry<unknown, ContentTypes>,
+  Module extends Record<string, unknown>,
+> = (module: Contentful) => Module | null
 
 export const contentfulAdapters: Record<string, ContentfulAdapter<any, any>> = {
   [ContentTypes.ALGOLIA]: adaptOffersModule,

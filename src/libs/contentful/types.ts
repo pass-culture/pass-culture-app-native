@@ -40,7 +40,7 @@ export enum ContentTypes {
 
 export type Layout = 'three-items' | 'two-items' | 'one-item-medium'
 
-interface Entry<T, ContentType extends ContentTypes> {
+export interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   // if the content model is unpublished/deleted, `fields` won't be provided
   fields?: T
