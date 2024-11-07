@@ -27,6 +27,7 @@ export function useCinemaOffers() {
     enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000,
   })
+
   if (!data || data.length === 0) return { offers: [], isLoading }
 
   let offers: (SearchResponse<Offer> | undefined)[] = data

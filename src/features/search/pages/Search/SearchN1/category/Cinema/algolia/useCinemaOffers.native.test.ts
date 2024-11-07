@@ -1,6 +1,6 @@
-import { fetchCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
+import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import * as fetchCinemaOffersModule from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers'
 import { useCinemaOffers } from 'features/search/pages/Search/SearchN1/category/Cinema/algolia/useCinemaOffers'
-import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/SearchN1/category/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
 import { LocationMode, Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -16,9 +16,11 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/search/pages/Search/SearchN1/category/Cinema/algolia/fetchCinemaOffers')
-const mockFetchCinemaOffers = fetchCinemaOffers as jest.Mock
-mockFetchCinemaOffers.mockResolvedValue(cinemaPlaylistAlgoliaSnapshot)
+const cinemaOffer = searchResponseOfferBuilder().build()
+
+const fetchOffersSpy = jest
+  .spyOn(fetchCinemaOffersModule, 'fetchCinemaOffers')
+  .mockResolvedValue([cinemaOffer])
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -36,7 +38,7 @@ describe('useCinemaOffers', () => {
 
     await act(() => {})
 
-    expect(mockFetchCinemaOffers).toHaveBeenCalledWith({ userLocation: mockUserLocation }),
+    expect(fetchOffersSpy).toHaveBeenCalledWith({ userLocation: mockUserLocation }),
       expect.any(Object),
       false,
       undefined

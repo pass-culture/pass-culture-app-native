@@ -41,7 +41,7 @@ describe('CinemaPlaylist', () => {
       fireEvent.press(offer)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        from: 'searchn1',
+        from: 'thematicsearch',
         index: 0,
         offerId: 1,
       })
