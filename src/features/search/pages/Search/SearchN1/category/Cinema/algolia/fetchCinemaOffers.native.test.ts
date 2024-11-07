@@ -19,7 +19,7 @@ describe('fetchCinemaOffers', () => {
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -31,7 +31,7 @@ describe('fetchCinemaOffers', () => {
         query: '',
       },
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
@@ -43,7 +43,7 @@ describe('fetchCinemaOffers', () => {
         query: '',
       },
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -64,7 +64,7 @@ describe('fetchCinemaOffers', () => {
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -75,7 +75,7 @@ describe('fetchCinemaOffers', () => {
         query: '',
       },
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
@@ -86,7 +86,7 @@ describe('fetchCinemaOffers', () => {
         query: '',
       },
       {
-        indexName: 'algoliaTopOffersIndexName',
+        indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
