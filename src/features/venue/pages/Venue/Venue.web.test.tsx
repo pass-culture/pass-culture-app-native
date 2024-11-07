@@ -74,6 +74,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.setTimeout(30000) // to avoid exceeded timeout
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/RootNavigator/routes')
@@ -86,8 +88,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.setTimeout(60000) // to avoid exceeded timeout
-
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
@@ -96,35 +96,38 @@ describe('<Venue />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<Venue />))
+  it('should not have basic accessibility issues', async () => {
+    const { container } = render(reactQueryProviderHOC(<Venue />))
 
-      await screen.findAllByText('Gratuit')
+    await screen.findAllByText('Gratuit')
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
-
-        expect(results).toHaveNoViolations()
-      })
+    let results
+    await act(async () => {
+      results = await checkAccessibilityFor(container)
     })
 
-    it('should render correctly', async () => {
-      const { container } = render(reactQueryProviderHOC(<Venue />))
+    expect(results).toHaveNoViolations()
+  })
 
-      await screen.findAllByText('Gratuit')
+  it('should show offers section', async () => {
+    render(reactQueryProviderHOC(<Venue />))
 
-      expect(container).toMatchSnapshot()
-    })
+    await screen.findAllByText('Gratuit')
 
-    it('should render correctly with practical information', async () => {
-      const { container } = render(reactQueryProviderHOC(<Venue />))
+    const sectionTitle = screen.getByText('Toutes les offres')
 
-      await screen.findAllByText('Gratuit')
+    expect(sectionTitle).toBeTruthy()
+  })
 
-      fireEvent.click(screen.getByText('Infos pratiques'))
+  it('should show practical information when switching tabs', async () => {
+    render(reactQueryProviderHOC(<Venue />))
 
-      expect(container).toMatchSnapshot()
-    })
+    await screen.findAllByText('Gratuit')
+
+    fireEvent.click(screen.getByText('Infos pratiques'))
+
+    const sectionTitle = screen.getByText('Modalités de retrait')
+
+    expect(sectionTitle).toBeTruthy()
   })
 })
