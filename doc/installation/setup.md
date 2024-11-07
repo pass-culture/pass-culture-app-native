@@ -4,29 +4,29 @@
 
 #### Install `nix` package manager
 
-If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail
+If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail.
 
-In that case, you will need to install Nix as follows
+In that case, you will need to install Nix as follows :
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install  --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
 ```
 
-If you want more information or if you have a problem you can consult [`nix` package manager installation](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
+_If you want more information or if you have a problem you can consult [`nix` package manager installation](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)._
 
 #### Install DirEnv
 
-```sh
-brew install direnv
-```
+1. Install the executable
 
-If you want more information or if you have a problem you can consult [DirEnv installation](https://direnv.net/)
+   ```sh
+   brew install direnv
+   ```
 
-You will need to add [hook into your user configuration (example: `~/.zshrc`)](https://direnv.net/docs/hook.html)
+   _If you want more information or if you have a problem you can consult [DirEnv installation](https://direnv.net/)._
 
-Start a new terminal to load the new configuration
+2. You will need to add [hook into your user configuration (example: `~/.zshrc`)](https://direnv.net/docs/hook.html).
 
-We advise to **follow [the guidelines](https://reactnative.dev/docs/set-up-your-environment)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
+3. Start a new terminal to load the new configuration.
 
 ### Load project environment
 
@@ -35,15 +35,19 @@ cd ./pass-culture-app-native # if needed
 direnv allow
 ```
 
-The last step can take several tens of minutes, especially the first time
+The last step can take several tens of minutes, especially the first time.
 
-If you got an error when executing `direnv allow` run it twice
+If you got an error when executing `direnv allow` run it twice.
 
-### Android
+### IOS and Android setup
+
+We advise to **follow [the guidelines](https://reactnative.dev/docs/set-up-your-environment)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
+
+#### Android
 
 Follow the steps [here](/doc/installation/Android.md).
 
-### iOS
+#### iOS
 
 Follow the steps [here](/doc/installation/iOS.md).
 
