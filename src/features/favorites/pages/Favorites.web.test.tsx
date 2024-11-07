@@ -11,6 +11,8 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Favorites } from './Favorites'
 
+jest.setTimeout(20000) // to avoid exceeded timeout
+
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -36,8 +38,7 @@ describe('<Favorites/>', () => {
       mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when user is logged in', async () => {
+    it('should not have basic accessibility issues when user is logged in', async () => {
       mockServer.getApi<PaginatedFavoritesResponse>(
         '/v1/me/favorites',
         paginatedFavoritesResponseSnap

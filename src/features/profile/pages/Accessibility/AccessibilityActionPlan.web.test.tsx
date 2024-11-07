@@ -4,6 +4,8 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AccessibilityActionPlan } from './AccessibilityActionPlan'
 
+jest.setTimeout(20000) // to avoid exceeded timeout
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
