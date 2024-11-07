@@ -14,7 +14,7 @@ export const Cinema: React.FC = () => {
   }
 
   return (
-    <View>
+    <View testID="cinema">
       {cinemaPlaylists?.map((playlist) => {
         if (playlist.offers.hits.length > 0) {
           return (

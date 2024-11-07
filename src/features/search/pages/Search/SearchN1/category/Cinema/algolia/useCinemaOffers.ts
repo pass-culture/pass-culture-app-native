@@ -17,6 +17,7 @@ const CINEMA_PLAYLIST_TITLES = ['Films à l’affiche', 'Films de la semaine', '
 
 export function useCinemaOffers() {
   const netInfo = useNetInfoContext()
+
   const { userLocation } = useLocation()
   const { data, isLoading } = useQuery({
     queryKey: [QueryKeys.CINEMA_OFFERS],
