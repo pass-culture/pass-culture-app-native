@@ -34,7 +34,6 @@ export enum RemoteStoreUbble {
 export enum RemoteStoreFeatureFlags {
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
-  ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',

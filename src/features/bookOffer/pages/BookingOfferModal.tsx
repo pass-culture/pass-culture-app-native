@@ -1,11 +1,11 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
-import { CategoryIdEnum, RecommendationApiParams } from 'api/gen'
+import { RecommendationApiParams } from 'api/gen'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingCloseInformation } from 'features/bookOffer/components/BookingCloseInformation'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
@@ -22,17 +22,10 @@ import { MovieScreeningBookingData } from 'features/offer/components/MovieScreen
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { storage } from 'libs/storage'
-import { useSubcategoriesMapping } from 'libs/subcategories'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { BicolorNoBookings } from 'ui/svg/icons/BicolorNoBookings'
-import { LINE_BREAK } from 'ui/theme/constants'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface BookingOfferModalComponentProps {
@@ -64,7 +57,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const route = useRoute<UseRouteType<'Offer'>>()
   const selectedStock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
-  const [isBookingStopped, setIsBookingStopped] = useState(false)
   const isFromSearch = route.params?.from === 'searchresults'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
@@ -73,10 +65,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType
-
-  const enableMusicLiveBookingSurvey = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_MUSIC_LIVE_BOOKING_SURVEY
-  )
 
   const onBookOfferSuccess = useCallback(
     ({ bookingId }: { bookingId: number }) => {
@@ -200,24 +188,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     hideModal: hideBookingCloseInformationModal,
   } = useModal(false)
 
-  const mapping = useSubcategoriesMapping()
-  const subcategory = offer && mapping[offer?.subcategoryId]
-  const isMusicLiveCategory = subcategory?.categoryId === CategoryIdEnum.MUSIQUE_LIVE
-
-  const shouldDisplaySurveyModal =
-    isMusicLiveCategory && isBookingStopped && enableMusicLiveBookingSurvey
-
   const onClose = useCallback(async () => {
     dismissModal()
 
-    if (isMusicLiveCategory) {
-      const musicLiveSurveyHasBeenDisplayed = await storage.readObject(
-        'times_music_live_booking_survey_has_been_displayed'
-      )
-      if (!musicLiveSurveyHasBeenDisplayed) {
-        setIsBookingStopped(true)
-      }
-    }
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
     if (isLoading && title.includes('Détails de la réservation')) {
@@ -226,7 +199,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     analytics.logCancelBookingFunnel(step, offerId)
   }, [
     dismissModal,
-    isMusicLiveCategory,
     bookingState.offerId,
     offerId,
     dispatch,
@@ -236,21 +208,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     showBookingCloseInformationModal,
   ])
 
-  const closeSurveyModal = async () => {
-    await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
-    setIsBookingStopped(false)
-  }
-
-  return shouldDisplaySurveyModal ? (
-    <SurveyModal
-      title="Cette offre ne t’intéresse plus&nbsp;?"
-      visible
-      hideModal={closeSurveyModal}
-      surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_9z66yFGnrB65nWC"
-      surveyDescription={DescriptionMusicLiveBookingSurvey}
-      Icon={IconMusicLiveBookingSurvey}
-    />
-  ) : (
+  return (
     <AppModal
       testID="modalWithPricesByCategories"
       noPadding
@@ -285,9 +243,3 @@ export const BookingOfferModal: React.FC<
     <BookingOfferModalComponent {...props} />
   </BookingWrapper>
 )
-
-const DescriptionMusicLiveBookingSurvey = `Tu peux nous dire pourquoi en répondant au questionnaire.${LINE_BREAK}${LINE_BREAK}Il te prendra 1 petite minute!`
-
-const IconMusicLiveBookingSurvey = styled(BicolorNoBookings).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.fullPage,
-}))``

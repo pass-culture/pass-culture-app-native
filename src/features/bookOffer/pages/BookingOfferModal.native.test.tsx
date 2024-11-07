@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import { RecommendationApiParams } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
@@ -16,7 +16,6 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -28,7 +27,7 @@ jest.mock('libs/campaign')
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockOffer = baseOffer
 
@@ -495,74 +494,4 @@ describe('<BookingOfferModalComponent />', () => {
       })
     })
   })
-
-  describe('when booking comes from music live', () => {
-    beforeEach(() => {
-      mockUseOffer.mockReturnValue({
-        data: {
-          ...mockOffer,
-          stocks: mockStocks,
-          subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
-        },
-      })
-      mockFeatureFlag.mockReturnValue(true)
-      storageResetDisplayedModal()
-    })
-
-    it('should open SurveyModal if FF surveyMusicLive is on', async () => {
-      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
-      const dismissModalButton = screen.getByTestId('Fermer la modale')
-
-      await act(() => fireEvent.press(dismissModalButton))
-
-      expect(screen.getByText('Cette offre ne t’intéresse plus ?')).toBeOnTheScreen()
-    })
-
-    it("should'nt open SurveyModal if FF surveyMusicLive is off", async () => {
-      mockFeatureFlag.mockReturnValueOnce(false).mockReturnValueOnce(false)
-      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
-      const dismissModalButton = screen.getByTestId('Fermer la modale')
-
-      await act(() => {
-        fireEvent.press(dismissModalButton)
-      })
-
-      expect(screen.queryByText('Cette offre ne t’intéresse plus ?')).not.toBeOnTheScreen()
-    })
-
-    it("should'nt open SurveyModal if offer is not music live", async () => {
-      mockUseOffer.mockReturnValueOnce({
-        ...baseOffer,
-        subcategoryId: SubcategoryIdEnum.LIVRE_NUMERIQUE,
-      })
-      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
-      const dismissModalButton = screen.getByTestId('Fermer la modale')
-
-      await act(() => {
-        fireEvent.press(dismissModalButton)
-      })
-
-      expect(screen.queryByText("Cette offre ne t'intéresse plus ?")).not.toBeOnTheScreen()
-    })
-
-    it("shouldn't show SurveyModal more than once", async () => {
-      storeDisplayedModal()
-      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
-      const dismissModalButton = screen.getByTestId('Fermer la modale')
-
-      await act(() => {
-        fireEvent.press(dismissModalButton)
-      })
-
-      expect(screen.queryByText("Cette offre ne t'intéresse plus ?")).not.toBeOnTheScreen()
-    })
-  })
 })
-
-const storageResetDisplayedModal = async () => {
-  await storage.saveString('times_music_live_booking_survey_has_been_displayed', '0')
-}
-
-const storeDisplayedModal = async () => {
-  await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
-}
