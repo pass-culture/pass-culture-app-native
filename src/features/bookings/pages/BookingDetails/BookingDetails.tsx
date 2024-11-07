@@ -76,9 +76,10 @@ export function BookingDetails() {
 
   const mapping = useSubcategoriesMapping()
 
-  const { venue, id: offerId } = booking?.stock.offer ?? {}
-  const { address, postalCode, city } = venue ?? {}
-  const venueFullAddress = address ? formatFullAddress(address, postalCode, city) : undefined
+  const { id: offerId, address } = booking?.stock.offer ?? {}
+  const offerFullAddress = address
+    ? formatFullAddress(address.street, address.postalCode, address.city)
+    : undefined
 
   const { data: bookings } = useBookings()
   const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
@@ -145,7 +146,7 @@ export function BookingDetails() {
   const { offer } = booking.stock
   const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)
   const shouldDisplayItineraryButton =
-    !!venueFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
+    !!offerFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
 
   const offerRules = getOfferRules(properties, booking)
 
@@ -236,8 +237,8 @@ export function BookingDetails() {
                 <Spacer.Column numberOfSpaces={4} />
                 <SeeItineraryButton
                   externalNav={{
-                    url: getGoogleMapsItineraryUrl(venueFullAddress),
-                    address: venueFullAddress,
+                    url: getGoogleMapsItineraryUrl(offerFullAddress),
+                    address: offerFullAddress,
                   }}
                   onPress={() =>
                     offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
