@@ -13,6 +13,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
+jest.setTimeout(20000) // to avoid exceeded timeout
+
 jest.mock('libs/network/NetInfoWrapper')
 
 const venue = mockedSuggestedVenue
@@ -98,8 +100,7 @@ describe('<SearchLanding />', () => {
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
 
       const { container } = render(reactQueryProviderHOC(<SearchLanding />))
@@ -111,8 +112,7 @@ describe('<SearchLanding />', () => {
       expect(results).toHaveNoViolations()
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when offline', async () => {
+    it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
       const { container } = render(reactQueryProviderHOC(<SearchLanding />))

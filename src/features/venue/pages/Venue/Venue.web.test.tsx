@@ -74,8 +74,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.setTimeout(15_000)
-
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/RootNavigator/routes')
@@ -88,6 +86,8 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.setTimeout(60000) // to avoid exceeded timeout
+
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
@@ -96,8 +96,7 @@ describe('<Venue />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('Accessibility', () => {
+  describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
