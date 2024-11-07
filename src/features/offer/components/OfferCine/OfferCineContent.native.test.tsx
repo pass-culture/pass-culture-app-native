@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { offerResponseBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
-import { OfferNewXPCineContent } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineContent'
+import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import * as useGetVenuesByDayModule from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
 import { render, screen } from 'tests/utils'
@@ -62,7 +62,7 @@ describe('OfferNewXPCineContent', () => {
       isLoading: true,
     })
 
-    render(<OfferNewXPCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
+    render(<OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
 
     expect(screen.getByTestId('cine-block-skeleton')).toBeOnTheScreen()
   })
@@ -70,7 +70,7 @@ describe('OfferNewXPCineContent', () => {
   it('should not display skeleton when data is loaded', async () => {
     spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: false })
 
-    render(<OfferNewXPCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
+    render(<OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
 
     expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
   })

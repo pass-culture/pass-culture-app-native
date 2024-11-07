@@ -8,7 +8,7 @@ import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
-import { OfferNewXPCineBlock } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineBlock'
+import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
@@ -59,7 +59,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const { selectedLocationMode, place, userLocation } = useLocation()
   const { isDesktopViewport } = useTheme()
 
-  const enableNewXPCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
+  const enableCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -150,8 +150,8 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const renderOfferVenueBlock = () => {
     return (
       <ViewGap gap={8}>
-        {isOfferAMovieScreening && enableNewXPCineFromOffer ? (
-          <OfferNewXPCineBlock
+        {isOfferAMovieScreening && enableCineFromOffer ? (
+          <OfferCineBlock
             title={venueSectionTitle}
             offer={offer}
             onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
@@ -168,7 +168,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           />
         )}
 
-        {isOfferAMovieScreening && !enableNewXPCineFromOffer ? (
+        {isOfferAMovieScreening && !enableCineFromOffer ? (
           <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
         ) : null}
       </ViewGap>

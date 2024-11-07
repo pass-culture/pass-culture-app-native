@@ -5,8 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { CineBlock } from 'features/offer/components/OfferNewXPCine/CineBlock'
-import { CineBlockSkeleton } from 'features/offer/components/OfferNewXPCine/CineBlockSkeleton'
+import { CineBlock } from 'features/offer/components/OfferCine/CineBlock'
+import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
@@ -14,7 +14,7 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 const ANIMATION_DURATION = 300
 
-export const OfferNewXPCineContent: FC<{
+export const OfferCineContent: FC<{
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
 }> = ({ offer, onSeeVenuePress }) => {

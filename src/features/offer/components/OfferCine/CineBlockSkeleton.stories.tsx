@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { CineBlockSkeleton } from 'features/offer/components/OfferNewXPCine/CineBlockSkeleton'
+import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
 
 const meta: ComponentMeta<typeof CineBlockSkeleton> = {
   title: 'features/offer/CineBlockSkeleton',
