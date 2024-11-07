@@ -60,7 +60,7 @@ jobs:
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
-            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
+            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
       - name: Create a directory for keystores
         run: |
@@ -85,8 +85,7 @@ jobs:
       - name: Upload APK to Maestro Cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.1
         with:
-          api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
-          project-id: proj_01javz1ncreqb9dcshv3y4da44
+          api-key: ${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           device-locale: fr_FR
           android-api-level: 34

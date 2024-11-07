@@ -1,0 +1,18 @@
+
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Localisation"
+- tapOn: "Choisir une localisation"
+- inputText: "Paris"
+- hideKeyboard
+- tapOn: "Paris0Paris"
+- tapOn: "Valider et voir sur la carte"
+
+- tapOn: 
+    text: "Carte"
+    optional: true
+
+- assertVisible: 
+    text: "Carte des lieux"
+    optional: true
+- tapOn: "Revenir en arrière"
