@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
-import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
@@ -31,13 +30,12 @@ export function OfferVenueBlock({
   title,
   offer,
 }: Readonly<Props>) {
-  const { venue } = offer
-  const { onCopyAddressPress } = useVenueBlock({ venue })
-  const venueFullAddress = formatFullAddressStartsWithPostalCode(
-    venue.address,
-    venue.postalCode,
-    venue.city
-  )
+  const { venue, metadata } = offer
+  const metadataLocation = metadata?.location
+  const { onCopyAddressPress, address: venueFullAddress } = useVenueBlock({
+    venue,
+    metadataLocation,
+  })
 
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 

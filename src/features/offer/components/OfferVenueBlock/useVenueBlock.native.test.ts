@@ -14,7 +14,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-describe('useVenueBlock', () => {
+describe('useVenueBlock without Metadata Location', () => {
   it('should return venue name', () => {
     const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
 
@@ -60,5 +60,43 @@ describe('useVenueBlock', () => {
       message: 'Une erreur est survenue, veuillez réessayer',
       timeout: undefined,
     })
+  })
+})
+
+describe('useVenueBlock with Metadata Location', () => {
+  it('should return venue name from metadata Location', () => {
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerResponseSnap.venue,
+        metadataLocation: offerResponseSnap.metadata.location,
+      })
+    )
+
+    expect(result.current.venueName).toBe('PATHE MONTPARNASSE')
+  })
+
+  it('should return address from metadata Location', () => {
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerResponseSnap.venue,
+        metadataLocation: offerResponseSnap.metadata.location,
+      })
+    )
+
+    expect(result.current.address).toBe('75013 PARIS 13, 1 RUE DES CAFÉS')
+  })
+
+  it('should copy address to clipboard', async () => {
+    const spy = jest.spyOn(Clipboard, 'setString')
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerResponseSnap.venue,
+        metadataLocation: offerResponseSnap.metadata.location,
+      })
+    )
+
+    await result.current.onCopyAddressPress()
+
+    expect(spy).toHaveBeenCalledWith('75013 PARIS 13, 1 RUE DES CAFÉS')
   })
 })

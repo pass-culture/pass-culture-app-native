@@ -5,16 +5,28 @@ import { OfferVenueResponse } from 'api/gen'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function useVenueBlock({ venue }: { venue: OfferVenueResponse }) {
+export function useVenueBlock({
+  venue,
+  metadataLocation,
+}: {
+  venue: OfferVenueResponse
+  metadataLocation?: any
+}) {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+
+  const venueAddress = metadataLocation?.address?.streetAddress || venue.address
+  const venuePostalCode = metadataLocation?.address?.postalCode || venue.postalCode
+  const venueCity = metadataLocation?.address?.addressLocality || venue.city
+
   const address = useMemo(
-    () => formatFullAddressStartsWithPostalCode(venue.address, venue.postalCode, venue.city),
-    [venue.address, venue.city, venue.postalCode]
+    () => formatFullAddressStartsWithPostalCode(venueAddress, venuePostalCode, venueCity),
+    [venueAddress, venuePostalCode, venueCity]
   )
+  const venueName = metadataLocation?.name || venue.publicName || venue.name
 
   return useMemo(
     () => ({
-      venueName: venue.publicName || venue.name,
+      venueName,
       address,
       onCopyAddressPress: async () => {
         Clipboard.setString(address)
@@ -31,6 +43,6 @@ export function useVenueBlock({ venue }: { venue: OfferVenueResponse }) {
         }
       },
     }),
-    [address, showErrorSnackBar, showSuccessSnackBar, venue.name, venue.publicName]
+    [address, showErrorSnackBar, showSuccessSnackBar, venueName]
   )
 }

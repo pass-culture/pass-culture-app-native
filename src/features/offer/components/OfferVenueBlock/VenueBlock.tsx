@@ -18,8 +18,9 @@ type Props = {
 }
 
 export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
-  const { venue } = offer
-  const { venueName, address } = useVenueBlock({ venue })
+  const { venue, metadata } = offer
+  const metadataLocation = metadata?.location
+  const { venueName, address } = useVenueBlock({ venue, metadataLocation })
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distance = useDistance({ lat, lng })
