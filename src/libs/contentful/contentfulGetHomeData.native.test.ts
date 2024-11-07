@@ -17,7 +17,7 @@ describe('Contentful contentfulGetHomeData', () => {
       spaceId,
     })
     const url = `${domain}/spaces/${spaceId}/environments/${environment}/entries`
-    mockServer.universalGet(url, { ...homepageEntriesAPIResponse })
+    mockServer.universalGet(url, homepageEntriesAPIResponse)
     const contentfulGetHomeData = createContentfulGetHomeData(contentful)
     const result = await contentfulGetHomeData()
 
