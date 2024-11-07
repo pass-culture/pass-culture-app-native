@@ -1943,7 +1943,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     ]
                   }
                 >
-                  dont 100 € en offres numériques (streaming, presse en ligne, …)
+                  dont 
+                  100 €
+                   en offres numériques (streaming, presse en ligne, …)
                 </Text>
                 <View
                   numberOfSpaces={4}
@@ -4834,7 +4836,9 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     ]
                   }
                 >
-                  dont 100 € en offres numériques (streaming, presse en ligne, …)
+                  dont 
+                  100 €
+                   en offres numériques (streaming, presse en ligne, …)
                 </Text>
                 <View
                   numberOfSpaces={4}

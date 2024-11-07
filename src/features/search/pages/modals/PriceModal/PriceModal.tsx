@@ -14,7 +14,8 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState } from 'features/search/types'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
@@ -57,20 +58,19 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 }) => {
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
-  const availableCredit = useAvailableCredit()
-  const formatAvailableCredit = availableCredit?.amount
-    ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
-    : '0'
-  const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
+
+  const availableCredit = useAvailableCredit()?.amount
+  const formatAvailableCredit = availableCredit ? convertCentsToEuros(availableCredit) : 0
+  const formatAvailableCreditWithCurrency = parseCurrency(formatAvailableCredit)
+  const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial
-  const formatInitialCredit = initialCredit
-    ? Number(formatToFrenchDecimal(initialCredit).slice(0, -2))
-    : MAX_PRICE
+  const formatInitialCredit = initialCredit ? convertCentsToEuros(initialCredit) : MAX_PRICE
+  const formatInitialCreditWithCurrency = parseCurrency(formatInitialCredit)
 
   const searchPriceSchema = makeSearchPriceSchema(String(formatInitialCredit))
 
-  const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
+  const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
@@ -169,13 +169,13 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     setValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
 
     if (toggleLimitCreditSearchValue) {
-      setValue('maxPrice', formatAvailableCredit)
+      setValue('maxPrice', String(formatAvailableCredit))
       setValue('isOnlyFreeOffersSearch', false)
       trigger(['minPrice', 'maxPrice'])
       return
     }
 
-    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
+    const availableCreditIsMaxPriceSearch = Number(searchState?.maxPrice) === formatAvailableCredit
     setValue('maxPrice', availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice ?? '')
     trigger(['minPrice', 'maxPrice'])
   }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
@@ -341,7 +341,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 textContentType="none" // disable autofill on iOS
                 accessibilityDescribedBy={maxPriceInputId}
                 testID="Entrée pour le prix maximum"
-                rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
+                rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
                 placeholder={`${formatInitialCredit}`}
                 disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
               />

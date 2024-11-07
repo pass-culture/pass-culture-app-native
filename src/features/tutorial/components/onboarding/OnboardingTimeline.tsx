@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
@@ -22,12 +23,17 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const CreditBlockContent = ({ description }: { description: string }) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={1} />
-    <DescriptionText>{description}</DescriptionText>
-  </React.Fragment>
-)
+const CreditBlockContent = () => {
+  const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
+  return (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={1} />
+      <DescriptionText>Tu auras 2 ans pour utiliser tes {eighteenYearsOldDeposit}</DescriptionText>
+    </React.Fragment>
+  )
+}
+
+const CreditResetBlock = () => <StyledBody>Remise à 0 du crédit</StyledBody>
 
 const StyledBody = styled(Typo.Body)({
   marginVertical: getSpacing(2),
@@ -42,11 +48,8 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
-      {
-        creditStep: 18,
-        children: <CreditBlockContent description="Tu auras 2 ans pour utiliser tes 300&nbsp;€" />,
-      },
+      { creditStep: 'information', children: <CreditResetBlock /> },
+      { creditStep: 18, children: <CreditBlockContent /> },
     ],
   ],
   [
@@ -55,11 +58,8 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
-      {
-        creditStep: 18,
-        children: <CreditBlockContent description="Tu auras 2 ans pour utiliser tes 300&nbsp;€" />,
-      },
+      { creditStep: 'information', children: <CreditResetBlock /> },
+      { creditStep: 18, children: <CreditBlockContent /> },
     ],
   ],
   [
@@ -68,11 +68,8 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
-      {
-        creditStep: 18,
-        children: <CreditBlockContent description="Tu auras 2 ans pour utiliser tes 300&nbsp;€" />,
-      },
+      { creditStep: 'information', children: <CreditResetBlock /> },
+      { creditStep: 18, children: <CreditBlockContent /> },
     ],
   ],
   [
@@ -81,10 +78,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      {
-        creditStep: 18,
-        children: <CreditBlockContent description="Tu auras 2 ans pour utiliser tes 300&nbsp;€" />,
-      },
+      { creditStep: 18, children: <CreditBlockContent /> },
     ],
   ],
 ])

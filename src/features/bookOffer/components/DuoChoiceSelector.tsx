@@ -6,7 +6,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -22,7 +22,7 @@ export const DuoChoiceSelector: React.FC = () => {
     return {
       price:
         enoughCredit && stock
-          ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
+          ? parseCurrencyFromCents(quantity * stock.price).replace(' ', '')
           : 'crédit insuffisant',
       title: quantity === 1 ? 'Solo' : 'Duo',
       selected: bookingState.quantity === quantity,

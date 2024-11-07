@@ -1,8 +1,4 @@
-import {
-  getDisplayPrice,
-  formatToFrenchDecimal,
-  formatPriceInEuroToDisplayPrice,
-} from '../getDisplayPrice'
+import { getDisplayPrice, parseCurrencyFromCents, parseCurrency } from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
   it.each`
@@ -45,7 +41,7 @@ describe('getDisplayPrice', () => {
   })
 })
 
-describe('formatToFrenchDecimal()', () => {
+describe('parseCurrencyFromCents()', () => {
   it.each`
     priceInCents | expected
     ${0}         | ${'0\u00a0€'}
@@ -62,9 +58,9 @@ describe('formatToFrenchDecimal()', () => {
     ${1199.6}    | ${'12,00\u00a0€'}
     ${-1199.6}   | ${'-12,00\u00a0€'}
   `(
-    'formatToFrenchDecimal($priceInCents) \t= $expected without format price options',
+    'parseCurrencyFromCents($priceInCents) \t= $expected without format price options',
     ({ priceInCents, expected }) => {
-      expect(formatToFrenchDecimal(priceInCents)).toBe(expected)
+      expect(parseCurrencyFromCents(priceInCents)).toBe(expected)
     }
   )
 
@@ -84,14 +80,14 @@ describe('formatToFrenchDecimal()', () => {
     ${1199.6}    | ${'12,00\u00a0€'}
     ${-1199.6}   | ${'-12,00\u00a0€'}
   `(
-    'formatToFrenchDecimal($priceInCents) \t= $expected with format price options',
+    'parseCurrencyFromCents($priceInCents) \t= $expected with format price options',
     ({ priceInCents, expected }) => {
-      expect(formatToFrenchDecimal(priceInCents, { fractionDigits: 2 })).toBe(expected)
+      expect(parseCurrencyFromCents(priceInCents, { fractionDigits: 2 })).toBe(expected)
     }
   )
 })
 
-describe('formatPriceInEuroToDisplayPrice()', () => {
+describe('parseCurrency()', () => {
   it.each`
     priceInEuro | expected
     ${0}        | ${'0\u00a0€'}
@@ -104,7 +100,7 @@ describe('formatPriceInEuroToDisplayPrice()', () => {
     ${-19.99}   | ${'-19,99\u00a0€'}
     ${20.999}   | ${'20,99\u00a0€'}
     ${-20.999}  | ${'-21\u00a0€'}
-  `('formatPriceInEuroToDisplayPrice($priceInEuro) \t= $expected', ({ priceInEuro, expected }) => {
-    expect(formatPriceInEuroToDisplayPrice(priceInEuro)).toBe(expected)
+  `('parseCurrency($priceInEuro) \t= $expected', ({ priceInEuro, expected }) => {
+    expect(parseCurrency(priceInEuro)).toBe(expected)
   })
 })

@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/no-currency-symbols */
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -13,6 +14,7 @@ import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEur
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 
 export const NewCaledonia = () => {
   const pacificFrancToEuroRate = useGetPacificFrancToEuroRate()
@@ -27,7 +29,12 @@ export const NewCaledonia = () => {
     <ScrollView>
       <CheatcodesHeader title="Nouvelle-Calédonie 🇳🇨" />
       <Container>
-        <TypoDS.Body>État du featureFlag&nbsp;:</TypoDS.Body>
+        <TypoDS.Body>
+          État du featureFlag
+          {SPACE}
+          <TypoDS.Title4>enablePacificFrancCurrency</TypoDS.Title4>
+          &nbsp;:
+        </TypoDS.Body>
         <StyledTitle3 active={enablePacificFrancCurrency}>
           {enablePacificFrancCurrency === true ? 'Actif' : 'Inactif'}
         </StyledTitle3>

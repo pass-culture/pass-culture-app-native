@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { Typo } from 'ui/theme'
 
 interface PriceLineProps {
@@ -45,7 +45,7 @@ export function PriceLine({
   shouldDisabledStyles = false,
   attributes,
 }: PriceLineProps) {
-  const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
+  const totalPrice = parseCurrencyFromCents(quantity * unitPrice)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
@@ -58,7 +58,7 @@ export function PriceLine({
 
       {quantity > 1 ? (
         <SecondaryText testID={getTestID('price-detail')}>
-          ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
+          ({parseCurrencyFromCents(unitPrice)} x {quantity} places)
         </SecondaryText>
       ) : null}
 

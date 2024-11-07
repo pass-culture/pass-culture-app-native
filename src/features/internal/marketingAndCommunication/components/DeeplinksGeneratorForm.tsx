@@ -25,7 +25,7 @@ import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
-import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { parseCurrency } from 'libs/parsers/getDisplayPrice'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
@@ -226,7 +226,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               showValues
               max={MAX_PRICE}
               sliderLength={sliderLength}
-              formatValues={formatPriceInEuroToDisplayPrice}
+              formatValues={parseCurrency}
               onValuesChangeFinish={onChangePriceRange}
               minLabel="Prix minimum&nbsp;:"
               maxLabel="Prix maximum&nbsp;:"

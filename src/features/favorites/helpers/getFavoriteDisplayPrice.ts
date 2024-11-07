@@ -1,4 +1,4 @@
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 
 export const getFavoriteDisplayPrice = ({
   startPrice,
@@ -8,9 +8,9 @@ export const getFavoriteDisplayPrice = ({
   price?: number | null
 }): string | undefined => {
   if (price === 0) return 'Gratuit'
-  if (price && price > 0) return formatToFrenchDecimal(price)
+  if (price && price > 0) return parseCurrencyFromCents(price)
   if (startPrice === 0 || (startPrice && startPrice > 0)) {
-    return `Dès ${formatToFrenchDecimal(startPrice)}`
+    return `Dès ${parseCurrencyFromCents(startPrice)}`
   }
   return undefined
 }

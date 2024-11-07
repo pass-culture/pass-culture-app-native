@@ -6,7 +6,7 @@ import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -29,7 +29,7 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
-        const credit = formatToFrenchDecimal(availableCredit.amount)
+        const credit = parseCurrencyFromCents(availableCredit.amount)
         return `Tu as ${credit} sur ton pass`
       }
       return 'Ton crédit est expiré'

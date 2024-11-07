@@ -18,7 +18,7 @@ import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -86,7 +86,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
 
 export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += formatToFrenchDecimal(price).replace(' ', '')
+  dayDescription += parseCurrencyFromCents(price).replace(' ', '')
 
   return dayDescription
 }
