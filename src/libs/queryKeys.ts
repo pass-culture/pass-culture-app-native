@@ -5,6 +5,7 @@ export enum QueryKeys {
   ACCOUNT_SUSPEND_TOKEN_VALIDATION = 'accountSuspendTokenValidation',
   BOOKINGS = 'bookings',
   CITIES = 'cities',
+  CINEMA_OFFERS = 'cinema_offers',
   CULTURAL_SURVEY_ANSWERS = 'culturalSurveyAnswers',
   CULTURAL_SURVEY_QUESTIONS = 'culturalSurveyQuestions',
   EMAIL_CHANGE_EXPIRATION_TIMESTAMP = 'emailChangeExpirationTimestamp',
