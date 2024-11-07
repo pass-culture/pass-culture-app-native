@@ -10,19 +10,44 @@ export function useVenueBlock({
   metadataLocation,
 }: {
   venue: OfferVenueResponse
-  metadataLocation?: any
+  metadataLocation?: unknown
 }) {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const venueAddress = metadataLocation?.address?.streetAddress || venue.address
-  const venuePostalCode = metadataLocation?.address?.postalCode || venue.postalCode
-  const venueCity = metadataLocation?.address?.addressLocality || venue.city
-
+  let venueAddress = venue.address
+  let venuePostalCode = venue.postalCode
+  let venueCity = venue.city
+  if (
+    metadataLocation instanceof Object &&
+    'address' in metadataLocation &&
+    metadataLocation?.address instanceof Object
+  ) {
+    venueAddress =
+      'streetAddress' in metadataLocation.address &&
+      typeof metadataLocation.address.streetAddress === 'string'
+        ? metadataLocation?.address?.streetAddress
+        : venue.address
+    venuePostalCode =
+      'postalCode' in metadataLocation.address &&
+      typeof metadataLocation?.address?.postalCode === 'string'
+        ? metadataLocation?.address?.postalCode
+        : venue.postalCode
+    venueCity =
+      'addressLocality' in metadataLocation.address &&
+      typeof metadataLocation?.address?.addressLocality === 'string'
+        ? metadataLocation?.address?.addressLocality
+        : venue.city
+  }
   const address = useMemo(
     () => formatFullAddressStartsWithPostalCode(venueAddress, venuePostalCode, venueCity),
     [venueAddress, venuePostalCode, venueCity]
   )
-  const venueName = metadataLocation?.name || venue.publicName || venue.name
+  const venueName =
+    metadataLocation instanceof Object &&
+    'name' in metadataLocation &&
+    typeof metadataLocation?.name === 'string'
+      ? metadataLocation?.name
+      : venue.publicName || venue.name
 
   return useMemo(
     () => ({
