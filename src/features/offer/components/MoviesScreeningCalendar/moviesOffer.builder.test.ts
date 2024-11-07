@@ -23,7 +23,7 @@ describe('moviesOfferBuilder', () => {
         .build()
 
       const result = moviesOfferBuilder([offer1, offer2])
-        .withMoviesOnDay(selectedDate)
+        .withScreeningsOnDay(selectedDate)
         .buildOfferResponse()
 
       expect(result).toHaveLength(1)
@@ -141,7 +141,7 @@ describe('moviesOfferBuilder', () => {
         .build()
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
-        .withoutMoviesAfterNbDays(15)
+        .withoutScreeningsAfterNbDays(15)
         .buildOfferResponse()
 
       expect(result).toHaveLength(2)
@@ -187,7 +187,7 @@ describe('moviesOfferBuilder', () => {
         .build()
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
-        .withMoviesAfterNbDays(15)
+        .withScreeningsAfterNbDays(15)
         .buildOfferResponse()
 
       expect(result).toHaveLength(1)

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { isDateNotWithinNext15Days } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
+import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
@@ -41,7 +41,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
         <NextScreeningButton
           date={nextDate}
           onPress={
-            isDateNotWithinNext15Days(new Date(), nextDate)
+            isDateNotWithinNextNbDays(new Date(), nextDate, 15)
               ? () => onPressOfferCTA()
               : () => goToDate(nextDate)
           }

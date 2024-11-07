@@ -7,5 +7,5 @@ export const filterOffersStocksByDate = (offers: OfferResponseV2[], date: Date):
     return []
   }
 
-  return moviesOfferBuilder(offers).withMoviesOnDay(date).sortedByLast30DaysBooking().build()
+  return moviesOfferBuilder(offers).withScreeningsOnDay(date).sortedByLast30DaysBooking().build()
 }

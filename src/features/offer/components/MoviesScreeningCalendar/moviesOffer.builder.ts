@@ -19,7 +19,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
   }))
 
   const builderObject = {
-    withoutMoviesOnDay: (selectedDate: Date) => {
+    withoutScreeningsOnDay: (selectedDate: Date) => {
       movieOffers = movieOffers.filter(
         ({ offer }) =>
           !offer.stocks.some((stock) => {
@@ -35,7 +35,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
-    withMoviesOnDay: (selectedDate: Date) => {
+    withScreeningsOnDay: (selectedDate: Date) => {
       movieOffers = movieOffers
         .map(({ offer, ...rest }) => ({
           ...rest,
@@ -110,7 +110,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
-    withMoviesAfterNbDays: (nbDays: number) => {
+    withScreeningsAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers
         .map(({ offer }) => {
           const filteredStocks = offer.stocks.filter((stock) => {
@@ -133,7 +133,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
       return builderObject
     },
 
-    withoutMoviesAfterNbDays: (nbDays: number) => {
+    withoutScreeningsAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers.filter(({ offer }) =>
         offer.stocks.some((stock) => {
           if (!stock.beginningDatetime) {
