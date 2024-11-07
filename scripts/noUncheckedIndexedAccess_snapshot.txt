@@ -20,14 +20,6 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:47
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
-./src/features/bookOffer/pages/BookingOfferModal.tsx:134
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:251
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:394
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:422
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:453
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:497
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:525
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:556
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:240
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:13
