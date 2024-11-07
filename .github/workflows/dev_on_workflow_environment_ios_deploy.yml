@@ -103,7 +103,7 @@ jobs:
 
   slack_notify:
     runs-on: ubuntu-22.04
-    if: ${{ always() && contains(needs.sentry_and_deploy.result, 'success') && contains(needs.sentry_and_deploy.result, 'failure')}}
+    if: ${{ always() && (contains(needs.sentry_and_deploy.result, 'success') || contains(needs.sentry_and_deploy.result, 'failure'))}}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
