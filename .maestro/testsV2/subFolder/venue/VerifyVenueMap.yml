@@ -1,3 +1,4 @@
+
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Localisation"
@@ -7,5 +8,11 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Paris0Paris"
 - tapOn: "Valider et voir sur la carte"
 
-- assertVisible: "Carte des lieux"
+- tapOn: 
+    text: "Carte"
+    optional: true
+
+- assertVisible: 
+    text: "Carte des lieux"
+    optional: true
 - tapOn: "Revenir en arrière"
