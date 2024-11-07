@@ -31,7 +31,8 @@ export function OfferVenueBlock({
   offer,
 }: Readonly<Props>) {
   const { venue, metadata } = offer
-  const metadataLocation = metadata?.location
+  const metadataLocation =
+    metadata instanceof Object && 'location' in metadata ? metadata.location : null
   const { onCopyAddressPress, address: venueFullAddress } = useVenueBlock({
     venue,
     metadataLocation,
