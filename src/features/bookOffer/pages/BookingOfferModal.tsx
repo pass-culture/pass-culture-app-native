@@ -117,11 +117,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
-
-        if (content?.code in errorCodeToMessage) {
-          // @ts-expect-error: because of noUncheckedIndexedAccess
-          message = errorCodeToMessage[content.code]
-
+        const errorCode = errorCodeToMessage[content?.code]
+        if (errorCode) {
+          message = errorCode
           if (typeof offerId === 'number') {
             analytics.logBookingError(offerId, content.code)
           }
