@@ -43,6 +43,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -263,7 +264,7 @@ export function BookingDetails() {
 
           <Spacer.Column numberOfSpaces={14} />
 
-          <InfoContainer>
+          <InfoBottomContainer gap={4}>
             <InternalTouchableLink
               enableNavigate={!!netInfo.isConnected}
               as={ButtonPrimary}
@@ -272,14 +273,13 @@ export function BookingDetails() {
               onBeforeNavigate={onNavigateToOfferPress}
               fullWidth
             />
-            <Spacer.Column numberOfSpaces={4} />
             <BookingDetailsCancelButton
               booking={booking}
               onCancel={cancelBooking}
               onTerminate={showArchiveModal}
               fullWidth
             />
-          </InfoContainer>
+          </InfoBottomContainer>
         </View>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
@@ -307,6 +307,10 @@ const OfferRules = styled(Typo.CaptionNeutralInfo)({
 })
 
 const InfoContainer = styled.View({
+  paddingHorizontal: getSpacing(6),
+})
+
+const InfoBottomContainer = styled(ViewGap)({
   paddingHorizontal: getSpacing(6),
 })
 

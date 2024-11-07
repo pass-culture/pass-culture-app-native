@@ -22,7 +22,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -74,6 +74,8 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')
 )
+
+const user = userEvent.setup()
 
 describe('BookingDetails', () => {
   let ongoingBookings = mockBookings.ongoing_bookings[0]
@@ -139,9 +141,7 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const offerButton = screen.getByText('Accéder à l’offre en ligne')
-      await act(async () => {
-        fireEvent.press(offerButton)
-      })
+      await user.press(offerButton)
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         booking.completedUrl,
@@ -299,11 +299,9 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
       await screen.findByText('Ma réservation')
 
-      fireEvent.press(screen.getByText('bookingContactTest@email.com'))
+      await user.press(screen.getByText('bookingContactTest@email.com'))
 
       expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
-
-      await act(() => {})
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         `mailto:bookingContactTest@email.com`,
@@ -318,9 +316,8 @@ describe('BookingDetails', () => {
     renderBookingDetails(booking)
 
     const text = screen.getByText('Voir le détail de l’offre')
-    await act(async () => {
-      fireEvent.press(text)
-    })
+
+    await user.press(text)
 
     const offerId = booking.stock.offer.id
 
@@ -337,9 +334,8 @@ describe('BookingDetails', () => {
     renderBookingDetails(ongoingBookings)
 
     const text = screen.getByText('Voir le détail de l’offre')
-    await act(async () => {
-      fireEvent.press(text)
-    })
+
+    await user.press(text)
 
     const offerId = ongoingBookings.stock.offer.id
 
@@ -363,11 +359,10 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const cancelButton = screen.getAllByTestId('Annuler ma réservation')[0]
-      await act(async () => {
-        if (cancelButton) {
-          fireEvent.press(cancelButton)
-        }
-      })
+
+      if (cancelButton) {
+        await user.press(cancelButton)
+      }
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })

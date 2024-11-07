@@ -982,9 +982,11 @@ exports[`BookingDetails should render correctly 1`] = `
           }
         />
         <View
+          gap={4}
           style={
             [
               {
+                "gap": 16,
                 "paddingHorizontal": 24,
               },
             ]
@@ -1067,16 +1069,6 @@ exports[`BookingDetails should render correctly 1`] = `
               </Text>
             </View>
           </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
           <View
             numberOfSpaces={4}
             style={
