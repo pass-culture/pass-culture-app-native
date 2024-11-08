@@ -7,9 +7,13 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
+
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const searchState: SearchState = { ...initialSearchState, searchId }

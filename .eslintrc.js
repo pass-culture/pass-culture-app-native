@@ -44,7 +44,7 @@ module.exports = {
     'local-rules/todo-format': 'error',
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
-    'local-rules/no-currency-symbols': 'off', // TODO(LucasBeneston): enable when all currency symbols will be dynamic
+    'local-rules/no-currency-symbols': 'error',
     'no-negated-condition': 'warn',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
