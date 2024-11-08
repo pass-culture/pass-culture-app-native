@@ -31,12 +31,14 @@ describe('express server', () => {
     const commitHashRegExp = /<meta name="commit-hash".*?>/gm
     const cspRegExp = /<meta http-equiv="Content-Security-Policy".*?>/gm
     const versionRegExp = /<meta name="version" content=".+?"\/>/gm
+    const assetBundleRegExp = /src="\/assets\/index-.*\.js"/
     const canonicalLinkRegExp = /<link rel="canonical".*?>/gm
     const response = await fetch(env.APP_PUBLIC_URL)
     const html = (await response.text())
       .replace(scriptWithChunkRegExp, '/$1$2')
       .replace(chunkInScriptRegExp, '')
       .replace(commitHashRegExp, '')
+      .replace(assetBundleRegExp, 'src="assets/index.js"')
       .replace(cspRegExp, '<meta http-equiv="Content-Security-Policy">')
       .replace(versionRegExp, '')
       .replace(canonicalLinkRegExp, '')
@@ -45,6 +47,7 @@ describe('express server', () => {
       .replace(scriptWithChunkRegExp, '/$1$2')
       .replace(chunkInScriptRegExp, '')
       .replace(commitHashRegExp, '')
+      .replace(assetBundleRegExp, 'src="assets/index.js"')
       .replace(cspRegExp, '<meta http-equiv="Content-Security-Policy">')
       .replace(versionRegExp, '')
       .replace(canonicalLinkRegExp, '')
