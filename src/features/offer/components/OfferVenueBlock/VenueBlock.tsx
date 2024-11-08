@@ -19,7 +19,10 @@ type Props = {
 
 export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
   const { venue, address } = offer
-  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({ venue, address })
+  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
+    venue,
+    offerAddress: address,
+  })
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distance = useDistance({ lat, lng })
