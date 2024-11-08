@@ -384,6 +384,7 @@ export enum BookingCancellationReasons {
   'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
   'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
 }
+// #region BOOKING
 /**
  * @export
  * @interface BookingDisplayStatusRequest
@@ -707,6 +708,7 @@ export interface BookingsResponse {
    */
   ongoing_bookings: Array<BookingReponse>
 }
+// #endregion BOOKING
 /**
  * An enumeration.
  * @export
@@ -1145,6 +1147,7 @@ export enum EligibilityType {
   'underage' = 'underage',
   'age-18' = 'age-18',
 }
+// #region EMAIL
 /**
  * @export
  * @interface EmailChangeConfirmationResponse
@@ -1259,6 +1262,7 @@ export interface EmailValidationRemainingResendsResponse {
    */
   remainingResends: number
 }
+// #endregion EMAIL
 /**
  * An enumeration.
  * @export
@@ -1966,6 +1970,7 @@ export interface OauthStateResponse {
    */
   oauthStateToken: string
 }
+// #region OFFER
 /**
  * @export
  * @interface OfferAccessibilityResponse
@@ -2313,6 +2318,11 @@ export interface OfferResponseV2 {
    * @type {string}
    * @memberof OfferResponseV2
    */
+  address?: OfferAddressResponse
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
   description?: string | null
   /**
    * @type {Array<ExpenseDomain>}
@@ -2419,6 +2429,42 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   withdrawalDetails?: string | null
+}
+/**
+ * @export
+ * @interface OfferStockActivationCodeResponse
+ */
+export interface OfferAddressResponse {
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof OfferAddressResponse
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  timezone: string
 }
 /**
  * @export
@@ -2596,6 +2642,7 @@ export interface OffersStocksResponseV2 {
    */
   offers: Array<OfferResponseV2>
 }
+// #endregion OFFER
 /**
  * An enumeration.
  * @export

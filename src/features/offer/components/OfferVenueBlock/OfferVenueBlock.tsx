@@ -30,12 +30,10 @@ export function OfferVenueBlock({
   title,
   offer,
 }: Readonly<Props>) {
-  const { venue, metadata } = offer
-  const metadataLocation =
-    metadata instanceof Object && 'location' in metadata ? metadata.location : null
-  const { onCopyAddressPress, address: venueFullAddress } = useVenueBlock({
+  const { venue, address } = offer
+  const { onCopyAddressPress, venueAddress } = useVenueBlock({
     venue,
-    metadataLocation,
+    address,
   })
 
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
@@ -81,8 +79,8 @@ export function OfferVenueBlock({
               <Spacer.Column numberOfSpaces={6} />
               <SeeItineraryButton
                 externalNav={{
-                  url: getGoogleMapsItineraryUrl(venueFullAddress),
-                  address: venueFullAddress,
+                  url: getGoogleMapsItineraryUrl(venueAddress),
+                  address: venueAddress,
                 }}
                 onPress={onSeeItineraryPress}
               />

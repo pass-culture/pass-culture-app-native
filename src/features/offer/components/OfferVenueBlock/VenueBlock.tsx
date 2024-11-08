@@ -18,10 +18,8 @@ type Props = {
 }
 
 export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
-  const { venue, metadata } = offer
-  const metadataLocation =
-    metadata instanceof Object && 'location' in metadata ? metadata.location : null
-  const { venueName, address } = useVenueBlock({ venue, metadataLocation })
+  const { venue, address } = offer
+  const { venueName, venueAddress } = useVenueBlock({ venue, address })
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distance = useDistance({ lat, lng })
@@ -49,7 +47,7 @@ export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={onSeeVenuePress}>
         <VenuePreview
-          address={address}
+          address={venueAddress}
           bannerUrl={venue.bannerUrl}
           withRightArrow={hasVenuePage}
           venueName={venueName}

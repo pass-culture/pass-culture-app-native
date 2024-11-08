@@ -80,12 +80,12 @@ export const offerResponseSnap = toMutable({
       'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
     location: {
       '@type': 'Place',
-      name: 'PATHE MONTPARNASSE',
+      name: 'PATHE BEAUGRENELLE',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '1 RUE DES CAFÉS',
-        postalCode: '75013',
-        addressLocality: 'PARIS 13',
+        streetAddress: '2 RUE LAMENNAIS',
+        postalCode: '75008',
+        addressLocality: 'PARIS 8',
       },
       geo: { '@type': 'GeoCoordinates', latitude: 20, longitude: 2 },
     },
