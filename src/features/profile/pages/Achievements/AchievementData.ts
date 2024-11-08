@@ -1,239 +1,123 @@
 type Achievement = {
-  id: string
+  id: AchievementID
   name: string
   description: string
-  category: string
   icon: string
+  category: AchievementCategory
 }
 
 type UserAchievement = {
-  id: string
+  id: AchievementID
   completedAt: Date
+}
+
+enum AchievementID {
+  FIRST_BOOKING_MOVIE = 'FIRST_BOOKING_MOVIE',
+  FIRST_BOOKING_BOOK = 'FIRST_BOOKING_BOOK',
+  FIRST_BOOKING_RECORDED_MUSIC = 'FIRST_BOOKING_RECORDED_MUSIC',
+  FIRST_BOOKING_SHOW = 'FIRST_BOOKING_SHOW',
+  FIRST_BOOKING_MUSEUM = 'FIRST_BOOKING_MUSEUM',
+  FIRST_BOOKING_LIVE_MUSIC = 'FIRST_BOOKING_LIVE_MUSIC',
+  FIRST_BOOKING_MEDIA = 'FIRST_BOOKING_MEDIA',
+  FIRST_BOOKING_INSTRUMENT = 'FIRST_BOOKING_INSTRUMENT',
+  FIRST_BOOKING_ART = 'FIRST_BOOKING_ART',
+}
+
+enum AchievementCategory {
+  FIRST_BOOKINGS = 'FIRST_BOOKINGS',
 }
 
 export const achievements: Achievement[] = [
   {
-    id: 'FIRST_ADD_FAVORITE',
-    name: 'Ajout d’un favori',
-    description: 'Tu as mis une offre en favoris pour la première fois\u00a0!',
-    category: 'Tutoriel',
+    id: AchievementID.FIRST_BOOKING_MOVIE,
+    name: 'Cinéphile en herbe',
+    description: 'Réserve ta première place de cinéma',
     icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: 'SECOND_ADD_FAVORITE',
-    name: 'Second favorite',
-    description: 'Add your second favorite',
-    category: 'Tutoriel',
-    icon: 'Profile',
+    id: AchievementID.FIRST_BOOKING_BOOK,
+    name: 'Rat de bibliothèque',
+    description: 'Réserve ton premier livre',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: 'THIRD_ADD_FAVORITE',
-    name: 'Third favorite',
-    description: 'Add your third favorite',
-    category: 'Tutoriel',
-    icon: 'Welcome',
+    id: AchievementID.FIRST_BOOKING_RECORDED_MUSIC,
+    name: 'Premier tour de platine',
+    description: 'Réserve ton premier CD ou vinyle',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: '0',
-    name: 'Third favorite',
-    description: 'Add your third favorite',
-    category: 'Tutoriel',
-    icon: 'Info',
-  },
-
-  {
-    id: 'SECOND_WATCH_MOVIE',
-    name: 'First movie',
-    description: 'Watch your first movie',
-    category: 'Découvre le catalogue',
-    icon: 'TwoIsBetter',
+    id: AchievementID.FIRST_BOOKING_SHOW,
+    name: 'Rideau rouge levé',
+    description: 'Réserve ton premier spectacle',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: 'FIRST_WATCH_MOVIE',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Découvre le catalogue',
-    icon: 'Opera',
+    id: AchievementID.FIRST_BOOKING_MUSEUM,
+    name: 'Explorateur culturel',
+    description: 'Réserve ta première visite',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: 'THIRD_WATCH_MOVIE',
-    name: 'Premier festival',
-    description: 'Tu as participé à ton premier festival\u00a0!',
-    category: 'Découvre le catalogue',
-    icon: 'Festival',
-  },
-
-  {
-    id: '1',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Activité',
-    icon: 'Festival',
+    id: AchievementID.FIRST_BOOKING_LIVE_MUSIC,
+    name: 'Premier Beat',
+    description: 'Réserve ton premier concert ou festival',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: '2',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Activité',
-    icon: 'Fidelity',
-  },
-
-  {
-    id: '3',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Évènements',
-    icon: 'Opera',
+    id: AchievementID.FIRST_BOOKING_MEDIA,
+    name: 'Futur Hugo Décrypte',
+    description: 'Abonne-toi à un média',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: '4',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
+    id: AchievementID.FIRST_BOOKING_INSTRUMENT,
+    name: 'Artiste en devenir',
+    description: 'Réserve du matériel créatif',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
   {
-    id: '5',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
-  },
-  {
-    id: '6',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
+    id: AchievementID.FIRST_BOOKING_ART,
+    name: 'Se mettre à la pratique',
+    description: 'Réserve ton premier atelier ou cours artistique',
+    icon: 'Heart',
+    category: AchievementCategory.FIRST_BOOKINGS,
   },
 ]
 
 export const completedAchievements: UserAchievement[] = [
-  { id: 'FIRST_ADD_FAVORITE', completedAt: new Date() },
+  { id: AchievementID.FIRST_BOOKING_MOVIE, completedAt: new Date() },
 ]
 
 export const badges = [
   {
     achievements: [
       {
-        description: 'Tu as mis une offre en favoris pour la première fois\u00a0!',
+        id: AchievementID.FIRST_BOOKING_MOVIE,
+        name: 'Cinéphile en herbe',
+        description: 'Réserve ta première place de cinéma',
         icon: 'Heart',
-        id: 'FIRST_ADD_FAVORITE',
         isCompleted: true,
-        name: 'Ajout d’un favori',
       },
       {
-        description: 'Add your second favorite',
-        icon: 'Profile',
-        id: 'SECOND_ADD_FAVORITE',
+        id: AchievementID.FIRST_BOOKING_BOOK,
+        name: 'Rat de bibliothèque',
+        description: 'Réserve ton premier livre',
+        icon: 'Heart',
         isCompleted: false,
-        name: 'Second favorite',
-      },
-      {
-        description: 'Add your third favorite',
-        icon: 'Welcome',
-        id: 'THIRD_ADD_FAVORITE',
-        isCompleted: false,
-        name: 'Third favorite',
-      },
-      {
-        description: 'Add your third favorite',
-        icon: 'Info',
-        id: '0',
-        isCompleted: false,
-        name: 'Third favorite',
       },
     ],
-    category: 'Tutoriel',
+    category: AchievementCategory.FIRST_BOOKINGS,
     progress: 0.25,
     progressText: '25%',
     remainingAchievements: 3,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your first movie',
-        icon: 'TwoIsBetter',
-        id: 'SECOND_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'First movie',
-      },
-      {
-        description: 'Watch your second movie',
-        icon: 'Opera',
-        id: 'FIRST_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Tu as participé à ton premier festival\u00a0!',
-        icon: 'Festival',
-        id: 'THIRD_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'Premier festival',
-      },
-    ],
-    category: 'Découvre le catalogue',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 3,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your second movie',
-        icon: 'Festival',
-        id: '1',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Fidelity',
-        id: '2',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-    ],
-    category: 'Activité',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 2,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your second movie',
-        icon: 'Opera',
-        id: '3',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '4',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '5',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '6',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-    ],
-    category: 'Évènements',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 4,
   },
 ]
