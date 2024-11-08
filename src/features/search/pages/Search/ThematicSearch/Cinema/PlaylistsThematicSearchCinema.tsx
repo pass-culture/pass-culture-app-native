@@ -6,7 +6,7 @@ import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cine
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { Spacer } from 'ui/theme'
 
-export const Cinema: React.FC = () => {
+export const PlaylistsThematicSearchCinema: React.FC = () => {
   const { offers: cinemaPlaylists, isLoading: arePlaylistsLoading } = useCinemaOffers()
 
   if (arePlaylistsLoading) {
@@ -14,7 +14,7 @@ export const Cinema: React.FC = () => {
   }
 
   return (
-    <View testID="cinema">
+    <View testID="playlistsThematicSearchCinema">
       {cinemaPlaylists?.map((playlist) => {
         if (playlist.offers.hits.length > 0) {
           return (

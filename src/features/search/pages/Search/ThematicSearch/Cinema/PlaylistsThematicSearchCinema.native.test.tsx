@@ -2,7 +2,7 @@ import React from 'react'
 
 import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import * as fetchCinemaOffersModule from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
-import { Cinema } from 'features/search/pages/Search/ThematicSearch/Cinema/Cinema'
+import { PlaylistsThematicSearchCinema } from 'features/search/pages/Search/ThematicSearch/Cinema/PlaylistsThematicSearchCinema'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, GeolocationError, GeolocPermissionState } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -43,7 +43,7 @@ describe('Cinema', () => {
     fetchOffersSpy.mockResolvedValueOnce([cinemaOffer])
     renderCinema()
 
-    await screen.findByTestId('cinema')
+    await screen.findByTestId('playlistsThematicSearchCinema')
 
     expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
   })
@@ -52,10 +52,10 @@ describe('Cinema', () => {
     fetchOffersSpy.mockResolvedValueOnce([])
     renderCinema()
 
-    await screen.findByTestId('cinema')
+    await screen.findByTestId('playlistsThematicSearchCinema')
 
     expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
   })
 })
 
-const renderCinema = () => render(reactQueryProviderHOC(<Cinema />))
+const renderCinema = () => render(reactQueryProviderHOC(<PlaylistsThematicSearchCinema />))
