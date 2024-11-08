@@ -1,4 +1,5 @@
 import {
+  Achievement,
   AchievementCategory,
   AchievementId,
   firstArtLessonBooking,
@@ -54,7 +55,7 @@ describe('useAchievements', () => {
   it('should return achievements grouped by category', () => {
     const { result } = renderHook(() =>
       useAchievements({
-        achievements: [firstArtLessonBooking, testAchievement],
+        achievements: [firstArtLessonBooking, testAchievement as unknown as Achievement],
         completedAchievements: [],
       })
     )
