@@ -14,7 +14,22 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-describe('useVenueBlock', () => {
+const offerWithAddress = {
+  ...offerResponseSnap,
+  address: {
+    street: '1 RUE DES CAFÉS',
+    postalCode: '75013',
+    city: 'PARIS 13',
+    label: 'PATHE MONTPARNASSE',
+    coordinates: {
+      latitude: 48.91683,
+      longitude: 2.43884,
+    },
+    timezone: 'Europe/Paris',
+  },
+}
+
+describe('useVenueBlock without offer address', () => {
   it('should return venue name', () => {
     const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
 
@@ -24,7 +39,7 @@ describe('useVenueBlock', () => {
   it('should return address', () => {
     const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
 
-    expect(result.current.address).toBe('75008 PARIS 8, 2 RUE LAMENNAIS')
+    expect(result.current.venueAddress).toBe('75008 PARIS 8, 2 RUE LAMENNAIS')
   })
 
   it('should copy address to clipboard', async () => {
@@ -60,5 +75,43 @@ describe('useVenueBlock', () => {
       message: 'Une erreur est survenue, veuillez réessayer',
       timeout: undefined,
     })
+  })
+})
+
+describe('useVenueBlock with offer address', () => {
+  it('should return venue name from offer address', () => {
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerWithAddress.venue,
+        address: offerWithAddress.address,
+      })
+    )
+
+    expect(result.current.venueName).toBe('PATHE MONTPARNASSE')
+  })
+
+  it('should return address from metadata Location', () => {
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerWithAddress.venue,
+        address: offerWithAddress.address,
+      })
+    )
+
+    expect(result.current.venueAddress).toBe('75013 PARIS 13, 1 RUE DES CAFÉS')
+  })
+
+  it('should copy address to clipboard', async () => {
+    const spy = jest.spyOn(Clipboard, 'setString')
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerWithAddress.venue,
+        address: offerWithAddress.address,
+      })
+    )
+
+    await result.current.onCopyAddressPress()
+
+    expect(spy).toHaveBeenCalledWith('75013 PARIS 13, 1 RUE DES CAFÉS')
   })
 })
