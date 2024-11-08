@@ -13,7 +13,7 @@ const mockOnCopyAddressPress = jest.fn()
 jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock', () => ({
   useVenueBlock: jest.fn(() => ({
     venueName: 'PATHE BEAUGRENELLE',
-    address: '75008 PARIS 8, 2 RUE LAMENNAIS',
+    venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
     onCopyAddressPress: mockOnCopyAddressPress,
   })),
 }))
