@@ -16,6 +16,7 @@ import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearch
 import { SearchState } from 'features/search/types'
 import { parseCurrency } from 'libs/parsers/getDisplayPrice'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
@@ -58,6 +59,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 }) => {
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
+
+  const currency = useGetCurrencyToDisplay('full')
 
   const availableCredit = useAvailableCredit()?.amount
   const formatAvailableCredit = availableCredit ? convertCentsToEuros(availableCredit) : 0
@@ -301,7 +304,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 autoCapitalize="none"
                 isError={error && value.length > 0}
                 keyboardType="numeric"
-                label="Prix minimum (en&nbsp;€)"
+                label={`Prix minimum (en\u00a0${currency})`}
                 value={value}
                 onChangeText={onChange}
                 onBlur={onBlur}
@@ -331,7 +334,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 autoCapitalize="none"
                 isError={error && value.length > 0}
                 keyboardType="numeric"
-                label="Prix maximum (en&nbsp;€)"
+                label={`Prix maximum (en\u00a0${currency})`}
                 value={value}
                 onChangeText={(value) => {
                   onChange(value)
