@@ -10,7 +10,9 @@ import {
 } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location'
 import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
@@ -25,12 +27,15 @@ export const NewCaledonia = () => {
   const [inputEuro, setInputEuro] = useState('')
   const priceInEuro = parseFloat(inputEuro) || 0
 
+  const { selectedPlace } = useLocation()
+  const currency = useGetCurrencyToDisplay()
+
   return (
     <ScrollView>
       <CheatcodesHeader title="Nouvelle-Calédonie 🇳🇨" />
       <Container>
         <TypoDS.Body>
-          État du featureFlag
+          FeatureFlag
           {SPACE}
           <TypoDS.Title4>enablePacificFrancCurrency</TypoDS.Title4>
           &nbsp;:
@@ -38,6 +43,12 @@ export const NewCaledonia = () => {
         <StyledTitle3 active={enablePacificFrancCurrency}>
           {enablePacificFrancCurrency === true ? 'Actif' : 'Inactif'}
         </StyledTitle3>
+        <StyledSeparator />
+        <TypoDS.Body>Localisation de l’utilisateur&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</TypoDS.Title3>
+        <StyledSeparator />
+        <TypoDS.Body>Devise affichée&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>{currency}</TypoDS.Title3>
         <StyledSeparator />
         <TypoDS.Body>Taux de change sur Firestore&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>{pacificFrancToEuroRate}</TypoDS.Title3>
@@ -65,7 +76,6 @@ export const NewCaledonia = () => {
         <TypoDS.Title3>
           {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
         </TypoDS.Title3>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledSeparator />
       </Container>
       <Spacer.BottomScreen />
