@@ -33,7 +33,7 @@ export function OfferVenueBlock({
   const { venue, address } = offer
   const { onCopyAddressPress, venueAddress } = useVenueBlock({
     venue,
-    address,
+    offerAddress: address,
   })
 
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
