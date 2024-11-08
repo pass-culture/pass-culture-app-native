@@ -43,35 +43,35 @@ export const firstBookBooking = {
   icon: 'Heart',
   category: AchievementCategory.FIRST_BOOKINGS,
 }
-export const firstRecordedMusicBooking = {
+const firstRecordedMusicBooking = {
   id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
   name: 'Premier tour de platine',
   description: 'Réserve ton premier CD ou vinyle',
   icon: 'Heart',
   category: AchievementCategory.FIRST_BOOKINGS,
 }
-export const firstShowBooking = {
+const firstShowBooking = {
   id: AchievementId.FIRST_SHOW_BOOKING,
   name: 'Rideau rouge levé',
   description: 'Réserve ton premier spectacle',
   icon: 'Heart',
   category: AchievementCategory.FIRST_BOOKINGS,
 }
-export const firstMuseumBooking = {
+const firstMuseumBooking = {
   id: AchievementId.FIRST_MUSEUM_BOOKING,
   name: 'Explorateur culturel',
   description: 'Réserve ta première visite',
   icon: 'Heart',
   category: AchievementCategory.FIRST_BOOKINGS,
 }
-export const firstLiveMusicBooking = {
+const firstLiveMusicBooking = {
   id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
   name: 'Premier Beat',
   description: 'Réserve ton premier concert ou festival',
   icon: 'Heart',
   category: AchievementCategory.FIRST_BOOKINGS,
 }
-export const firstNewsBooking = {
+const firstNewsBooking = {
   id: AchievementId.FIRST_NEWS_BOOKING,
   name: 'Futur Hugo Décrypte',
   description: 'Abonne-toi à un média',
@@ -122,23 +122,4 @@ export const mockCompletedAchievements: UserAchievement[] = [
   userCompletedMovieBooking,
   userCompletedBookBooking,
   userCompletedArtLessonBooking,
-]
-
-export const badges = [
-  {
-    achievements: [
-      {
-        ...firstMovieBooking,
-        isCompleted: true,
-      },
-      {
-        ...firstBookBooking,
-        isCompleted: false,
-      },
-    ],
-    category: AchievementCategory.FIRST_BOOKINGS,
-    progress: 0.25,
-    progressText: '25%',
-    remainingAchievements: 3,
-  },
 ]
