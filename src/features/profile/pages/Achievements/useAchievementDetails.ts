@@ -5,7 +5,9 @@ import {
 
 export const useAchievementDetails = (id: string) => {
   const achievement = mockAchievements.find((achievement) => achievement.id === id)
-  const completedAchievement = mockCompletedAchievements.find((u) => u.id === id)
+  const completedAchievement = mockCompletedAchievements.find(
+    (userAchievement) => userAchievement.id === id
+  )
 
   if (!achievement) {
     return

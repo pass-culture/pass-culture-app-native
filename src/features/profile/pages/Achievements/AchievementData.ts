@@ -21,12 +21,10 @@ export enum AchievementId {
   FIRST_NEWS_BOOKING = 'FIRST_NEWS_BOOKING',
   FIRST_INSTRUMENT_BOOKING = 'FIRST_INSTRUMENT_BOOKING',
   FIRST_ART_LESSON_BOOKING = 'FIRST_ART_LESSON_BOOKING',
-  TEST = 'TEST',
 }
 
 export enum AchievementCategory {
   FIRST_BOOKINGS = 'FIRST_BOOKINGS',
-  TEST = 'TEST',
 }
 
 export const firstMovieBooking = {
