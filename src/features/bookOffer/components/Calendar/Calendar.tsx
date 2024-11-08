@@ -86,7 +86,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
 
 export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += parseCurrencyFromCents(price).replace(' ', '')
+  dayDescription += parseCurrencyFromCents(price).replace(/\u00A0/g, '')
 
   return dayDescription
 }
@@ -95,7 +95,7 @@ const RNCalendarTheme = {
   // Prevent calendar height from changing when switching month
   minHeight: 415,
   // Hack to remove unnecessary calendar horizontal margins
-  marginHorizontal: getSpacing(-2),
+  marginHorizontal: getSpacing(-2.5),
 }
 
 export const Calendar: React.FC<Props> = ({
@@ -166,12 +166,10 @@ const Caption = styled(Typo.Caption)<{ status: OfferStatus }>(({ status, theme }
   textAlign: 'center',
 }))
 
-const Container = styled(TouchableOpacity).attrs({
-  hitSlop,
-})({
+const Container = styled(TouchableOpacity).attrs({ hitSlop })(({ theme }) => ({
   alignItems: 'center',
-  width: getSpacing(9.25), // Max width limite for small devices
-})
+  width: theme.appContentWidth < theme.breakpoints.xs ? getSpacing(9.5) : getSpacing(11),
+}))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
