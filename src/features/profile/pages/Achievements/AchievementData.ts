@@ -1,117 +1,138 @@
-type Achievement = {
-  id: AchievementID
+export type Achievement = {
+  id: AchievementId
   name: string
   description: string
   icon: string
   category: AchievementCategory
 }
 
-type UserAchievement = {
-  id: AchievementID
+export type UserAchievement = {
+  id: AchievementId
   completedAt: Date
 }
 
-enum AchievementID {
-  FIRST_BOOKING_MOVIE = 'FIRST_BOOKING_MOVIE',
-  FIRST_BOOKING_BOOK = 'FIRST_BOOKING_BOOK',
-  FIRST_BOOKING_RECORDED_MUSIC = 'FIRST_BOOKING_RECORDED_MUSIC',
-  FIRST_BOOKING_SHOW = 'FIRST_BOOKING_SHOW',
-  FIRST_BOOKING_MUSEUM = 'FIRST_BOOKING_MUSEUM',
-  FIRST_BOOKING_LIVE_MUSIC = 'FIRST_BOOKING_LIVE_MUSIC',
-  FIRST_BOOKING_MEDIA = 'FIRST_BOOKING_MEDIA',
-  FIRST_BOOKING_INSTRUMENT = 'FIRST_BOOKING_INSTRUMENT',
-  FIRST_BOOKING_ART = 'FIRST_BOOKING_ART',
+export enum AchievementId {
+  FIRST_MOVIE_BOOKING = 'FIRST_MOVIE_BOOKING',
+  FIRST_BOOK_BOOKING = 'FIRST_BOOK_BOOKING',
+  FIRST_RECORDED_MUSIC_BOOKING = 'FIRST_RECORDED_MUSIC_BOOKING',
+  FIRST_SHOW_BOOKING = 'FIRST_SHOW_BOOKING',
+  FIRST_MUSEUM_BOOKING = 'FIRST_MUSEUM_BOOKING',
+  FIRST_LIVE_MUSIC_BOOKING = 'FIRST_LIVE_MUSIC_BOOKING',
+  FIRST_NEWS_BOOKING = 'FIRST_NEWS_BOOKING',
+  FIRST_INSTRUMENT_BOOKING = 'FIRST_INSTRUMENT_BOOKING',
+  FIRST_ART_LESSON_BOOKING = 'FIRST_ART_LESSON_BOOKING',
+  TEST = 'TEST',
 }
 
-enum AchievementCategory {
+export enum AchievementCategory {
   FIRST_BOOKINGS = 'FIRST_BOOKINGS',
+  TEST = 'TEST',
 }
 
-export const achievements: Achievement[] = [
-  {
-    id: AchievementID.FIRST_BOOKING_MOVIE,
-    name: 'Cinéphile en herbe',
-    description: 'Réserve ta première place de cinéma',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_BOOK,
-    name: 'Rat de bibliothèque',
-    description: 'Réserve ton premier livre',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_RECORDED_MUSIC,
-    name: 'Premier tour de platine',
-    description: 'Réserve ton premier CD ou vinyle',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_SHOW,
-    name: 'Rideau rouge levé',
-    description: 'Réserve ton premier spectacle',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_MUSEUM,
-    name: 'Explorateur culturel',
-    description: 'Réserve ta première visite',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_LIVE_MUSIC,
-    name: 'Premier Beat',
-    description: 'Réserve ton premier concert ou festival',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_MEDIA,
-    name: 'Futur Hugo Décrypte',
-    description: 'Abonne-toi à un média',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_INSTRUMENT,
-    name: 'Artiste en devenir',
-    description: 'Réserve du matériel créatif',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
-  {
-    id: AchievementID.FIRST_BOOKING_ART,
-    name: 'Se mettre à la pratique',
-    description: 'Réserve ton premier atelier ou cours artistique',
-    icon: 'Heart',
-    category: AchievementCategory.FIRST_BOOKINGS,
-  },
+export const firstMovieBooking = {
+  id: AchievementId.FIRST_MOVIE_BOOKING,
+  name: 'Cinéphile en herbe',
+  description: 'Réserve ta première place de cinéma',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstBookBooking = {
+  id: AchievementId.FIRST_BOOK_BOOKING,
+  name: 'Rat de bibliothèque',
+  description: 'Réserve ton premier livre',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstRecordedMusicBooking = {
+  id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
+  name: 'Premier tour de platine',
+  description: 'Réserve ton premier CD ou vinyle',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstShowBooking = {
+  id: AchievementId.FIRST_SHOW_BOOKING,
+  name: 'Rideau rouge levé',
+  description: 'Réserve ton premier spectacle',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstMuseumBooking = {
+  id: AchievementId.FIRST_MUSEUM_BOOKING,
+  name: 'Explorateur culturel',
+  description: 'Réserve ta première visite',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstLiveMusicBooking = {
+  id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
+  name: 'Premier Beat',
+  description: 'Réserve ton premier concert ou festival',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstNewsBooking = {
+  id: AchievementId.FIRST_NEWS_BOOKING,
+  name: 'Futur Hugo Décrypte',
+  description: 'Abonne-toi à un média',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstInstrumentBooking = {
+  id: AchievementId.FIRST_INSTRUMENT_BOOKING,
+  name: 'Artiste en devenir',
+  description: 'Réserve du matériel créatif',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstArtLessonBooking = {
+  id: AchievementId.FIRST_ART_LESSON_BOOKING,
+  name: 'Se mettre à la pratique',
+  description: 'Réserve ton premier atelier ou cours artistique',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+
+export const mockAchievements: Achievement[] = [
+  firstMovieBooking,
+  firstBookBooking,
+  firstRecordedMusicBooking,
+  firstShowBooking,
+  firstMuseumBooking,
+  firstLiveMusicBooking,
+  firstNewsBooking,
+  firstInstrumentBooking,
+  firstArtLessonBooking,
 ]
 
-export const completedAchievements: UserAchievement[] = [
-  { id: AchievementID.FIRST_BOOKING_MOVIE, completedAt: new Date() },
+export const userCompletedMovieBooking = {
+  id: AchievementId.FIRST_MOVIE_BOOKING,
+  completedAt: new Date(),
+}
+export const userCompletedBookBooking = {
+  id: AchievementId.FIRST_BOOK_BOOKING,
+  completedAt: new Date(),
+}
+export const userCompletedArtLessonBooking = {
+  id: AchievementId.FIRST_ART_LESSON_BOOKING,
+  completedAt: new Date(),
+}
+
+export const mockCompletedAchievements: UserAchievement[] = [
+  userCompletedMovieBooking,
+  userCompletedBookBooking,
+  userCompletedArtLessonBooking,
 ]
 
 export const badges = [
   {
     achievements: [
       {
-        id: AchievementID.FIRST_BOOKING_MOVIE,
-        name: 'Cinéphile en herbe',
-        description: 'Réserve ta première place de cinéma',
-        icon: 'Heart',
+        ...firstMovieBooking,
         isCompleted: true,
       },
       {
-        id: AchievementID.FIRST_BOOKING_BOOK,
-        name: 'Rat de bibliothèque',
-        description: 'Réserve ton premier livre',
-        icon: 'Heart',
+        ...firstBookBooking,
         isCompleted: false,
       },
     ],
