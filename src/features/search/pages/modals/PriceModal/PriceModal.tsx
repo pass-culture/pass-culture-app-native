@@ -16,6 +16,7 @@ import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearch
 import { SearchState } from 'features/search/types'
 import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
@@ -58,6 +59,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 }) => {
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
+
+  const currency = useGetCurrencyToDisplay('full')
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
   const formatAvailableCredit = convertCentsToEuros(availableCredit)

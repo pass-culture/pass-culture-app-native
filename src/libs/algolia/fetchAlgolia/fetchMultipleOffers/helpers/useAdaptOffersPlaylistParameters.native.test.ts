@@ -4,7 +4,7 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-const mockMaxPrice = 172_00
+const mockMaxPrice = 17200
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => mockMaxPrice),
 }))
@@ -36,7 +36,7 @@ describe('useAdaptOffersPlaylistParameters', () => {
     result.current(parameters)
 
     expect(adaptOffersPlaylistParametersSpy).toHaveBeenCalledWith(
-      { priceMax: mockMaxPrice },
+      { priceMax: 172 },
       subcategoryLabelMapping,
       genreTypeMapping
     )
