@@ -40,6 +40,7 @@ export const ThematicSearch: React.FC = () => {
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
       : env.ALGOLIA_OFFERS_INDEX_NAME,
   })
+  const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
   const { selectedLocationMode } = useLocation()
 
@@ -49,24 +50,14 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
-  useEffect(() => {
-    if (params?.offerCategories) {
-      dispatch({
-        type: 'SET_STATE',
-        payload: {
-          ...searchState,
-          offerCategories: params.offerCategories,
-        },
-      })
-    }
-  }, [dispatch, params?.offerCategories, searchState])
+
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
     [selectedLocationMode]
   )
-  const isWeb = Platform.OS === 'web'
+
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
