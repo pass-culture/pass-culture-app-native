@@ -132,7 +132,7 @@ describe('getDefaultScreenParams', () => {
     const defaultParams = getDefaultScreenParams('SearchResults')
 
     expect(defaultParams).toEqual({
-      locationFilter: { locationType: LocationMode.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 'all' },
       from: 'deeplink',
     })
   })

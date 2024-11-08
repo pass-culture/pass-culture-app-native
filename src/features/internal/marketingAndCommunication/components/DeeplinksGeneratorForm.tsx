@@ -59,7 +59,7 @@ type DeeplinksAppParams = Record<string, unknown> & {
 export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
   if (screenName === 'SearchResults') {
     return {
-      locationFilter: { locationType: LocationMode.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 'all' },
       from: 'deeplink',
     }
   }
