@@ -1,11 +1,13 @@
 import {
-  achievements,
-  completedAchievements,
+  mockAchievements,
+  mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
 
 export const useAchievementDetails = (id: string) => {
-  const achievement = achievements.find((achievement) => achievement.id === id)
-  const completedAchievement = completedAchievements.find((u) => u.id === id)
+  const achievement = mockAchievements.find((achievement) => achievement.id === id)
+  const completedAchievement = mockCompletedAchievements.find(
+    (userAchievement) => userAchievement.id === id
+  )
 
   if (!achievement) {
     return

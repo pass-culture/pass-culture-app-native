@@ -1,239 +1,123 @@
-type Achievement = {
-  id: string
+export type Achievement = {
+  id: AchievementId
   name: string
   description: string
-  category: string
   icon: string
+  category: AchievementCategory
 }
 
-type UserAchievement = {
-  id: string
+export type UserAchievement = {
+  id: AchievementId
   completedAt: Date
 }
 
-export const achievements: Achievement[] = [
-  {
-    id: 'FIRST_ADD_FAVORITE',
-    name: 'Ajout d’un favori',
-    description: 'Tu as mis une offre en favoris pour la première fois\u00a0!',
-    category: 'Tutoriel',
-    icon: 'Heart',
-  },
-  {
-    id: 'SECOND_ADD_FAVORITE',
-    name: 'Second favorite',
-    description: 'Add your second favorite',
-    category: 'Tutoriel',
-    icon: 'Profile',
-  },
-  {
-    id: 'THIRD_ADD_FAVORITE',
-    name: 'Third favorite',
-    description: 'Add your third favorite',
-    category: 'Tutoriel',
-    icon: 'Welcome',
-  },
-  {
-    id: '0',
-    name: 'Third favorite',
-    description: 'Add your third favorite',
-    category: 'Tutoriel',
-    icon: 'Info',
-  },
+export enum AchievementId {
+  FIRST_MOVIE_BOOKING = 'FIRST_MOVIE_BOOKING',
+  FIRST_BOOK_BOOKING = 'FIRST_BOOK_BOOKING',
+  FIRST_RECORDED_MUSIC_BOOKING = 'FIRST_RECORDED_MUSIC_BOOKING',
+  FIRST_SHOW_BOOKING = 'FIRST_SHOW_BOOKING',
+  FIRST_MUSEUM_BOOKING = 'FIRST_MUSEUM_BOOKING',
+  FIRST_LIVE_MUSIC_BOOKING = 'FIRST_LIVE_MUSIC_BOOKING',
+  FIRST_NEWS_BOOKING = 'FIRST_NEWS_BOOKING',
+  FIRST_INSTRUMENT_BOOKING = 'FIRST_INSTRUMENT_BOOKING',
+  FIRST_ART_LESSON_BOOKING = 'FIRST_ART_LESSON_BOOKING',
+}
 
-  {
-    id: 'SECOND_WATCH_MOVIE',
-    name: 'First movie',
-    description: 'Watch your first movie',
-    category: 'Découvre le catalogue',
-    icon: 'TwoIsBetter',
-  },
-  {
-    id: 'FIRST_WATCH_MOVIE',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Découvre le catalogue',
-    icon: 'Opera',
-  },
-  {
-    id: 'THIRD_WATCH_MOVIE',
-    name: 'Premier festival',
-    description: 'Tu as participé à ton premier festival\u00a0!',
-    category: 'Découvre le catalogue',
-    icon: 'Festival',
-  },
+export enum AchievementCategory {
+  FIRST_BOOKINGS = 'FIRST_BOOKINGS',
+}
 
-  {
-    id: '1',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Activité',
-    icon: 'Festival',
-  },
-  {
-    id: '2',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Activité',
-    icon: 'Fidelity',
-  },
+export const firstMovieBooking = {
+  id: AchievementId.FIRST_MOVIE_BOOKING,
+  name: 'Cinéphile en herbe',
+  description: 'Réserve ta première place de cinéma',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstBookBooking = {
+  id: AchievementId.FIRST_BOOK_BOOKING,
+  name: 'Rat de bibliothèque',
+  description: 'Réserve ton premier livre',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+const firstRecordedMusicBooking = {
+  id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
+  name: 'Premier tour de platine',
+  description: 'Réserve ton premier CD ou vinyle',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+const firstShowBooking = {
+  id: AchievementId.FIRST_SHOW_BOOKING,
+  name: 'Rideau rouge levé',
+  description: 'Réserve ton premier spectacle',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+const firstMuseumBooking = {
+  id: AchievementId.FIRST_MUSEUM_BOOKING,
+  name: 'Explorateur culturel',
+  description: 'Réserve ta première visite',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+const firstLiveMusicBooking = {
+  id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
+  name: 'Premier Beat',
+  description: 'Réserve ton premier concert ou festival',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+const firstNewsBooking = {
+  id: AchievementId.FIRST_NEWS_BOOKING,
+  name: 'Futur Hugo Décrypte',
+  description: 'Abonne-toi à un média',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstInstrumentBooking = {
+  id: AchievementId.FIRST_INSTRUMENT_BOOKING,
+  name: 'Artiste en devenir',
+  description: 'Réserve du matériel créatif',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
+export const firstArtLessonBooking = {
+  id: AchievementId.FIRST_ART_LESSON_BOOKING,
+  name: 'Se mettre à la pratique',
+  description: 'Réserve ton premier atelier ou cours artistique',
+  icon: 'Heart',
+  category: AchievementCategory.FIRST_BOOKINGS,
+}
 
-  {
-    id: '3',
-    name: 'Second movie',
-    description: 'Watch your second movie',
-    category: 'Évènements',
-    icon: 'Opera',
-  },
-  {
-    id: '4',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
-  },
-  {
-    id: '5',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
-  },
-  {
-    id: '6',
-    name: 'Third movie',
-    description: 'Watch your third movie',
-    category: 'Évènements',
-    icon: 'Profile',
-  },
+export const mockAchievements: Achievement[] = [
+  firstMovieBooking,
+  firstBookBooking,
+  firstRecordedMusicBooking,
+  firstShowBooking,
+  firstMuseumBooking,
+  firstLiveMusicBooking,
+  firstNewsBooking,
+  firstInstrumentBooking,
+  firstArtLessonBooking,
 ]
 
-export const completedAchievements: UserAchievement[] = [
-  { id: 'FIRST_ADD_FAVORITE', completedAt: new Date() },
-]
+export const userCompletedMovieBooking = {
+  id: AchievementId.FIRST_MOVIE_BOOKING,
+  completedAt: new Date(),
+}
+export const userCompletedBookBooking = {
+  id: AchievementId.FIRST_BOOK_BOOKING,
+  completedAt: new Date(),
+}
+export const userCompletedArtLessonBooking = {
+  id: AchievementId.FIRST_ART_LESSON_BOOKING,
+  completedAt: new Date(),
+}
 
-export const badges = [
-  {
-    achievements: [
-      {
-        description: 'Tu as mis une offre en favoris pour la première fois\u00a0!',
-        icon: 'Heart',
-        id: 'FIRST_ADD_FAVORITE',
-        isCompleted: true,
-        name: 'Ajout d’un favori',
-      },
-      {
-        description: 'Add your second favorite',
-        icon: 'Profile',
-        id: 'SECOND_ADD_FAVORITE',
-        isCompleted: false,
-        name: 'Second favorite',
-      },
-      {
-        description: 'Add your third favorite',
-        icon: 'Welcome',
-        id: 'THIRD_ADD_FAVORITE',
-        isCompleted: false,
-        name: 'Third favorite',
-      },
-      {
-        description: 'Add your third favorite',
-        icon: 'Info',
-        id: '0',
-        isCompleted: false,
-        name: 'Third favorite',
-      },
-    ],
-    category: 'Tutoriel',
-    progress: 0.25,
-    progressText: '25%',
-    remainingAchievements: 3,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your first movie',
-        icon: 'TwoIsBetter',
-        id: 'SECOND_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'First movie',
-      },
-      {
-        description: 'Watch your second movie',
-        icon: 'Opera',
-        id: 'FIRST_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Tu as participé à ton premier festival\u00a0!',
-        icon: 'Festival',
-        id: 'THIRD_WATCH_MOVIE',
-        isCompleted: false,
-        name: 'Premier festival',
-      },
-    ],
-    category: 'Découvre le catalogue',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 3,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your second movie',
-        icon: 'Festival',
-        id: '1',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Fidelity',
-        id: '2',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-    ],
-    category: 'Activité',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 2,
-  },
-  {
-    achievements: [
-      {
-        description: 'Watch your second movie',
-        icon: 'Opera',
-        id: '3',
-        isCompleted: false,
-        name: 'Second movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '4',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '5',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-      {
-        description: 'Watch your third movie',
-        icon: 'Profile',
-        id: '6',
-        isCompleted: false,
-        name: 'Third movie',
-      },
-    ],
-    category: 'Évènements',
-    progress: 0,
-    progressText: '0%',
-    remainingAchievements: 4,
-  },
+export const mockCompletedAchievements: UserAchievement[] = [
+  userCompletedMovieBooking,
+  userCompletedBookBooking,
+  userCompletedArtLessonBooking,
 ]

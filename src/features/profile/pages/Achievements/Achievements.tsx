@@ -5,7 +5,11 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { badges } from 'features/profile/pages/Achievements/AchievementData'
+import {
+  mockAchievements,
+  mockCompletedAchievements,
+} from 'features/profile/pages/Achievements/AchievementData'
+import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -13,6 +17,10 @@ import { getSpacing, TypoDS } from 'ui/theme'
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
+  const { badges } = useAchievements({
+    achievements: mockAchievements,
+    completedAchievements: mockCompletedAchievements,
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Mes Succès">
