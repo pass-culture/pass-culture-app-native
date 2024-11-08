@@ -1,4 +1,4 @@
-import { CENTS_IN_EURO, convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
 
 type FormatPriceOptions = {
   fractionDigits?: number
@@ -21,9 +21,6 @@ export const parseCurrencyFromCents = (priceInCents: number, options?: FormatPri
 
   return formatter.format(euros)
 }
-
-export const parseCurrency = (priceInEuro: number) =>
-  parseCurrencyFromCents(convertEuroToCents(priceInEuro))
 
 const getPricePerPlace = (prices: number[], options?: FormatPriceOptions): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))

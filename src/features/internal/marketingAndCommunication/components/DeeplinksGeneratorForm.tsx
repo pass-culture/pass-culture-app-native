@@ -21,11 +21,12 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/h
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/routes'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
-import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
@@ -145,7 +146,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     function onChangePriceRange(value: number[]) {
       setScreenParams((prevPageParams) =>
-        value[0] === 0 && value[1] === MAX_PRICE
+        value[0] === 0 && value[1] === convertCentsToEuros(MAX_PRICE_IN_CENTS)
           ? omit(prevPageParams, name)
           : {
               ...prevPageParams,
@@ -224,9 +225,9 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <PaddingContainer>
             <Slider
               showValues
-              max={MAX_PRICE}
+              max={convertCentsToEuros(MAX_PRICE_IN_CENTS)}
               sliderLength={sliderLength}
-              formatValues={parseCurrency}
+              formatValues={parseCurrencyFromCents}
               onValuesChangeFinish={onChangePriceRange}
               minLabel="Prix minimum&nbsp;:"
               maxLabel="Prix maximum&nbsp;:"

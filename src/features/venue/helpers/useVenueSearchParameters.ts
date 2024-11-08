@@ -2,12 +2,13 @@ import { VenueResponse } from 'api/gen'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState => {
   const {
     searchState: { locationFilter },
   } = useSearch()
-  const maxPrice = useMaxPrice()
+  const maxPriceInCents = useMaxPrice()
 
   const venue = (
     dataVenue
@@ -30,7 +31,7 @@ export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState
     offerIsDuo: false,
     offerIsFree: false,
     isDigital: false,
-    priceRange: [0, maxPrice],
+    priceRange: [0, convertCentsToEuros(maxPriceInCents)],
     tags: [],
     date: null,
     timeRange: null,

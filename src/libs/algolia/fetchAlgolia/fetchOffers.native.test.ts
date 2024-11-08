@@ -2,12 +2,13 @@ import algoliasearch from 'algoliasearch'
 
 import { GenreType } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 const mockGetFromDate = jest.fn()
@@ -836,24 +837,27 @@ describe('fetchOffer', () => {
       })
     })
 
-    it.each([MAX_PRICE])('should fetch with %s when maximum price is not provided', () => {
-      const query = 'searched query'
+    it.each([convertCentsToEuros(MAX_PRICE_IN_CENTS)])(
+      'should fetch with %s when maximum price is not provided',
+      () => {
+        const query = 'searched query'
 
-      fetchOffers({
-        parameters: { query } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
+        fetchOffers({
+          parameters: { query } as SearchQueryParameters,
+          buildLocationParameterParams,
+          isUserUnderage: false,
+        })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [[`offer.prices: 0 TO ${MAX_PRICE}`]],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
+        expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [[`offer.prices: 0 TO ${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`]],
+          page: 0,
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
+        })
+      }
+    )
   })
 
   describe('date', () => {

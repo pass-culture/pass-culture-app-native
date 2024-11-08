@@ -11,7 +11,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
-  useMaxPrice: jest.fn(() => 300),
+  useMaxPrice: jest.fn(() => 300_00),
 }))
 
 const props = {

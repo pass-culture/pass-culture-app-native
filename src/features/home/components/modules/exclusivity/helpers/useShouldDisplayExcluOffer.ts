@@ -12,13 +12,13 @@ export function useShouldDisplayExcluOffer(
 ) {
   const { userLocation } = useLocation()
 
-  const maxPrice = useMaxPrice()
+  const maxPriceInCents = useMaxPrice()
   const { data: offer } = useExcluOffer(offerId)
 
   if (!offer) return false
 
   const price = convertCentsToEuros(getOfferPrice(offer.stocks))
-  if (price > maxPrice) return false
+  if (price > convertCentsToEuros(maxPriceInCents)) return false
 
   // Exclu module is not geolocated
   if (!displayParameters?.isGeolocated || !displayParameters?.aroundRadius) return true

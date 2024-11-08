@@ -23,7 +23,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = jest.mocked(useMaxPrice)
-mockedUseMaxPrice.mockReturnValue(300)
+mockedUseMaxPrice.mockReturnValue(300_00)
 
 const offerId = 116656
 const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')

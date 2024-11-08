@@ -1,4 +1,4 @@
-import { getDisplayPrice, parseCurrencyFromCents, parseCurrency } from '../getDisplayPrice'
+import { getDisplayPrice, parseCurrencyFromCents } from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
   it.each`
@@ -85,22 +85,4 @@ describe('parseCurrencyFromCents()', () => {
       expect(parseCurrencyFromCents(priceInCents, { fractionDigits: 2 })).toBe(expected)
     }
   )
-})
-
-describe('parseCurrency()', () => {
-  it.each`
-    priceInEuro | expected
-    ${0}        | ${'0\u00a0€'}
-    ${50}       | ${'50\u00a0€'}
-    ${-50}      | ${'-50\u00a0€'}
-    ${10.5}     | ${'10,50\u00a0€'}
-    ${-10.5}    | ${'-10,50\u00a0€'}
-    ${17.9}     | ${'17,90\u00a0€'}
-    ${19.99}    | ${'19,99\u00a0€'}
-    ${-19.99}   | ${'-19,99\u00a0€'}
-    ${20.999}   | ${'20,99\u00a0€'}
-    ${-20.999}  | ${'-21\u00a0€'}
-  `('parseCurrency($priceInEuro) \t= $expected', ({ priceInEuro, expected }) => {
-    expect(parseCurrency(priceInEuro)).toBe(expected)
-  })
 })

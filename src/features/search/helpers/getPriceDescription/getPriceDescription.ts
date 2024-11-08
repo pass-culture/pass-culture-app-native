@@ -1,20 +1,24 @@
-import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
-export const getPriceDescription = (minPrice?: number, maxPrice?: number) => {
-  if ((minPrice === 0 && maxPrice === 0) || (minPrice === undefined && maxPrice === 0)) {
+export const getPriceDescription = (minPriceInEuro?: number, maxPriceInEuro?: number) => {
+  if (
+    (minPriceInEuro === 0 && maxPriceInEuro === 0) ||
+    (minPriceInEuro === undefined && maxPriceInEuro === 0)
+  ) {
     return 'Gratuit'
   }
 
-  if (minPrice && minPrice > 0 && maxPrice && maxPrice > 0) {
-    return `de ${parseCurrency(minPrice)} à ${parseCurrency(maxPrice)}`
+  if (minPriceInEuro && minPriceInEuro > 0 && maxPriceInEuro && maxPriceInEuro > 0) {
+    return `de ${parseCurrencyFromCents(convertEuroToCents(minPriceInEuro))} à ${parseCurrencyFromCents(convertEuroToCents(maxPriceInEuro))}`
   }
 
-  if (minPrice && minPrice >= 0) {
-    return `${parseCurrency(minPrice)} et plus`
+  if (minPriceInEuro && minPriceInEuro >= 0) {
+    return `${parseCurrencyFromCents(convertEuroToCents(minPriceInEuro))} et plus`
   }
 
-  if (maxPrice && maxPrice >= 0) {
-    return `${parseCurrency(maxPrice)} et moins`
+  if (maxPriceInEuro && maxPriceInEuro >= 0) {
+    return `${parseCurrencyFromCents(convertEuroToCents(maxPriceInEuro))} et moins`
   }
 
   return ''
