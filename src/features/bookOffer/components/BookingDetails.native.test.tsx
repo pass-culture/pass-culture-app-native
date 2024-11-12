@@ -475,6 +475,7 @@ describe('<BookingDetails />', () => {
       })
 
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(await screen.findByText('75013 PARIS 13, 2 RUE DU CAFÉ')).toBeOnTheScreen()
     })
 
@@ -491,6 +492,7 @@ describe('<BookingDetails />', () => {
       })
 
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(await screen.findByText('97310 Kourou, RUE DE CALI')).toBeOnTheScreen()
     })
   })
