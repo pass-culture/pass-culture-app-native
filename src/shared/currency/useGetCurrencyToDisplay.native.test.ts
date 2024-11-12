@@ -78,10 +78,10 @@ describe('useGetCurrencyToDisplay', () => {
         expect(result.current).toBe('F')
       })
 
-      it('should return Pacific Franc full ("Franc Pacifique") when displayFormat is "full"', () => {
+      it('should return Pacific Franc full ("francs Pacifique") when displayFormat is "full"', () => {
         const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
 
-        expect(result.current).toBe('Franc\u00a0Pacifique')
+        expect(result.current).toBe('francs\u00a0Pacifique')
       })
     })
 
