@@ -13,8 +13,6 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<BookingPropertiesSection />', () => {
   beforeAll(() => {
     mockAuthContextWithUser(

@@ -41,8 +41,6 @@ jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

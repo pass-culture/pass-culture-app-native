@@ -23,8 +23,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

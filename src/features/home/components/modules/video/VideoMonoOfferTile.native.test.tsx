@@ -28,8 +28,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
 
 const hideModalMock = jest.fn()
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()

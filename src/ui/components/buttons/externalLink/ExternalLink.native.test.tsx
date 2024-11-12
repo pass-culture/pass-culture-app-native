@@ -10,8 +10,6 @@ const someUrl = 'https://domain-that-does-not-exist.fr'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('ExternalLink', () => {
   it('should open given url when text clicked', async () => {
     render(<ExternalLink url={someUrl} />)

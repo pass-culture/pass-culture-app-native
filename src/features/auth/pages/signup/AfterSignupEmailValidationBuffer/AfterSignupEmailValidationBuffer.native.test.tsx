@@ -40,8 +40,6 @@ const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidatio
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<AfterSignupEmailValidationBuffer />', () => {
   beforeAll(() => {
     useRoute.mockImplementation(() => ({

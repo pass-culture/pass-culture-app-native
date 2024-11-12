@@ -29,8 +29,6 @@ const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnV
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('BusinessModule component', () => {
   it('should render NewBusinessModule if FF WIP_APP_V2_BUSINESS_BLOCK is on', () => {
     mockFeatureFlag.mockReturnValueOnce(true)

@@ -16,8 +16,6 @@ const mockUseIsUserUnderageBeneficiary = jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('BeneficiaryCeilings', () => {
   it('should not return credits if credit is exhausted', () => {
     render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v1} />)

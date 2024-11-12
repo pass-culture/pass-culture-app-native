@@ -24,8 +24,6 @@ const fetchOffersSpy = jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useCinemaOffers', () => {
   it('should fetch cinema offers', async () => {
     renderHook(() => useCinemaOffers(), {

@@ -8,8 +8,6 @@ import { useOffer } from './useOffer'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useOffer', () => {
   beforeEach(() =>
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)

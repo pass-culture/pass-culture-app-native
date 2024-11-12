@@ -10,8 +10,6 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('CategoryListModule', () => {
   describe('with FF enableAppV2CategoryBlock false', () => {
     beforeEach(() => useFeatureFlagSpy.mockReturnValue(false))

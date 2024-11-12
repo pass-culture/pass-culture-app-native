@@ -9,8 +9,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('SignupBanner', () => {
   describe('When wipAppV2SystemBlock deactivated', () => {
     it('should display banner with background', () => {

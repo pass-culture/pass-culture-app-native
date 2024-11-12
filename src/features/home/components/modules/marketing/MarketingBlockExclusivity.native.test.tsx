@@ -28,8 +28,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('MarketingBlockExclusivity', () => {
   it('navigate to offer when pressing', async () => {
     render(<MarketingBlockExclusivity {...props} />)

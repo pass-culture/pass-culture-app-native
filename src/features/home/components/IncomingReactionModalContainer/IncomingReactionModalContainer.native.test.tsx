@@ -33,8 +33,6 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({

@@ -19,8 +19,6 @@ jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()

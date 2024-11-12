@@ -24,8 +24,6 @@ const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEA
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const distanceSpy = jest.spyOn(useDistanceModule, 'useDistance')
 
 describe('<OfferVenueBlock />', () => {

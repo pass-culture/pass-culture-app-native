@@ -10,8 +10,6 @@ jest.mock('libs/subcategories/useSubcategory')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('BookingDetailsTicketContent', () => {
   const originalBooking = bookingsSnap.ongoing_bookings[0]
   const booking = {

@@ -31,8 +31,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const mockOffer = offerResponseBuilder().build()
 
 const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGetVenuesByDay']> = {

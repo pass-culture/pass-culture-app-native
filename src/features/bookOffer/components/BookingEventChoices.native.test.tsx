@@ -29,8 +29,6 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   })),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<BookingEventChoices />', () => {
   beforeEach(() => {
     mockServer.getApi<OfferResponseV2>(`/v2/offer/116656`, offerResponseSnap)

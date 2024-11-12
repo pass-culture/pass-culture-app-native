@@ -15,8 +15,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 // We mock server instead of hooks to test the real behavior of the component.
 mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 

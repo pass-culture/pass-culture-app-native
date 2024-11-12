@@ -12,8 +12,6 @@ const getTrackingStatusSpy = jest
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('campaignTracker', () => {
   it('should not request ATT when init parameter is false', async () => {
     campaignTracker.init(false)

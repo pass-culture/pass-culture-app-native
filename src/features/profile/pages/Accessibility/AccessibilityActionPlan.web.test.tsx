@@ -10,7 +10,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),
 }))

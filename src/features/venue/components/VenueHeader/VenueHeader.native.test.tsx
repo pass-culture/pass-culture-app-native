@@ -22,8 +22,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     renderVenueHeader()

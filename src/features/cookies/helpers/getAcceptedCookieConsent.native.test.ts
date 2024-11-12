@@ -8,8 +8,6 @@ const COOKIES_CONSENT_KEY_V2 = 'cookies'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('getAcceptedCookieConsent', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY_V2))
 

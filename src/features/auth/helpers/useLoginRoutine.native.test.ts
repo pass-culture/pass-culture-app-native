@@ -48,8 +48,6 @@ const scheduleAccessTokenRemovalSpy = jest.spyOn(
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useLoginRoutine', () => {
   beforeEach(async () => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)

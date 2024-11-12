@@ -28,8 +28,6 @@ const hideModalMock = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()

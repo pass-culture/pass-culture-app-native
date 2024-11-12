@@ -37,8 +37,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<SubcategoryButtonList/>', () => {
   it('should render SubcategoryButtonList', async () => {
     render(

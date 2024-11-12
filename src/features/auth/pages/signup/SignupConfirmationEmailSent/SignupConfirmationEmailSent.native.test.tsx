@@ -23,8 +23,6 @@ jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
   useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

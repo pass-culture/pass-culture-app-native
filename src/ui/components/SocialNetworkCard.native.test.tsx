@@ -8,8 +8,6 @@ import { SocialNetworkCard } from './SocialNetworkCard'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', async () => {
     const openUrl = jest

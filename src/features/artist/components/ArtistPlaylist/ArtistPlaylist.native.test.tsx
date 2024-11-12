@@ -25,8 +25,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('ArtistPlaylist', () => {
   it('should display artist playlist when there is some offer from this artist', () => {
     render(
