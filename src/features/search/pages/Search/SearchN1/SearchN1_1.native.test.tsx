@@ -141,75 +141,99 @@ describe('<SearchN1/>', () => {
       })
     })
 
-    describe('Subcategory buttons', () => {
-      it('should update SearchState with correct data', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
-        const subcategoryButton = await screen.findByText('Romans et littérature')
-        fireEvent.press(subcategoryButton)
-        await screen.findByText('Romans et littérature')
+    // si on a offercategories dans les params ->
+    // vérifier qu'on appelle la offer categories dans l'url de la query algolia
+    it('should navigate to search results with the corresponding parameters', async () => {
+      const QUERY = 'Harry'
+      render(reactQueryProviderHOC(<SearchN1 />))
+      const searchInput = screen.getByPlaceholderText('Livres...')
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            payload: expect.objectContaining({
-              offerCategories: [SearchGroupNameEnumv2.LIVRES],
-              offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
-            }),
-            type: 'SET_STATE',
-          })
-        )
-      })
+      await act(async () => {})
 
-      it('should navigate to search results with the corresponding parameters', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
-        const subcategoryButton = await screen.findByText('Romans et littérature')
-
-        fireEvent.press(subcategoryButton)
-        await screen.findByText('Romans et littérature')
-
-        expect(navigate).toHaveBeenCalledWith(
-          'TabNavigator',
-          expect.objectContaining({
-            screen: 'SearchStackNavigator',
+      expect(navigate).toHaveBeenCalledWith(
+        'TabNavigator',
+        expect.objectContaining({
+          screen: 'SearchStackNavigator',
+          params: expect.objectContaining({
             params: expect.objectContaining({
-              params: expect.objectContaining({
-                offerCategories: ['LIVRES'],
-                offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
-              }),
+              offerCategories: ['LIVRES'],
+              query: QUERY,
             }),
-          })
-        )
-      })
+          }),
+        })
+      )
+    })
+  })
+
+  describe('Subcategory buttons', () => {
+    it('should update SearchState with correct data', async () => {
+      render(reactQueryProviderHOC(<SearchN1 />))
+      const subcategoryButton = await screen.findByText('Romans et littérature')
+      fireEvent.press(subcategoryButton)
+      await screen.findByText('Romans et littérature')
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payload: expect.objectContaining({
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+            offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
+          }),
+          type: 'SET_STATE',
+        })
+      )
     })
 
-    describe('gtl playlists', () => {
-      it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
+    it('should navigate to search results with the corresponding parameters', async () => {
+      render(reactQueryProviderHOC(<SearchN1 />))
+      const subcategoryButton = await screen.findByText('Romans et littérature')
 
-        expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
-      })
+      fireEvent.press(subcategoryButton)
+      await screen.findByText('Romans et littérature')
 
-      it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
-        jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValueOnce(true)
-        render(reactQueryProviderHOC(<SearchN1 />))
-        await screen.findByText('Romans et littérature')
-
-        expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
-          queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
-          searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      expect(navigate).toHaveBeenCalledWith(
+        'TabNavigator',
+        expect.objectContaining({
+          screen: 'SearchStackNavigator',
+          params: expect.objectContaining({
+            params: expect.objectContaining({
+              offerCategories: ['LIVRES'],
+              offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
+            }),
+          }),
         })
-      })
+      )
     })
   })
 
   describe('gtl playlists', () => {
-    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+    it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
       render(reactQueryProviderHOC(<SearchN1 />))
-      await screen.findByText('Festivals')
+      await screen.findByText('Romans et littérature')
 
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+      expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
     })
+
+    it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
+      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValueOnce(true)
+      render(reactQueryProviderHOC(<SearchN1 />))
+      await screen.findByText('Romans et littérature')
+
+      expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
+        queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
+        searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      })
+    })
+  })
+})
+
+describe('gtl playlists', () => {
+  it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+    render(reactQueryProviderHOC(<SearchN1 />))
+    await screen.findByText('Festivals')
+
+    expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
 })
 

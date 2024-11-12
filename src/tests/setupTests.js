@@ -6,6 +6,8 @@ import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
+import { PositionError } from '__mocks__/react-native-geolocation-service'
+
 import { queryCache } from './reactQueryProviderHOC'
 
 // Configuration for performance tests
@@ -36,12 +38,9 @@ global.AbortController = jest.fn(() => ({
 }))
 
 // WEB MOCKS
-// To replicate the browser behaviour in our node test environement (jsdom), we have to make the following mocks :
-global.GeolocationPositionError = {
-  PERMISSION_DENIED: 1,
-  POSITION_UNAVAILABLE: 2,
-  TIMEOUT: 3,
-}
+// To replicate the browser behavior in our node test environment (jsdom), we have to make the following mocks :
+global.GeolocationPositionError = PositionError
+
 const geolocation = {
   getCurrentPosition: jest.fn((success) =>
     Promise.resolve(success({ coords: { latitude: 48.85, longitude: 2.29 } }))

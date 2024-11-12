@@ -27,6 +27,7 @@ import { Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
+  //TO-DO : check si on peut retirer la condition qui semble toujours être à true
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
   useSync(currentRoute === 'SearchFilter')

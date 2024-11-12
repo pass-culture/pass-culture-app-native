@@ -9,6 +9,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useSync } from 'features/search/helpers/useSync/useSync'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { VenuePlaylist } from 'features/search/pages/Search/VenuePlaylist'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -30,6 +31,11 @@ export const SearchN1: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
+
+  // const routes = useNavigationState((state) => state?.routes)
+  // const currentRoute = routes?.at(-1)?.name
+  useSync()
+
   const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
     searchIndex: isReplicaAlgoliaIndexActive
@@ -52,7 +58,7 @@ export const SearchN1: React.FC = () => {
     [selectedLocationMode]
   )
 
-  const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
+  const offerCategories = params.offerCategories ?? []
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
 

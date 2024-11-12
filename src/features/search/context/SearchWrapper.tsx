@@ -22,7 +22,16 @@ export interface ISearchContext {
   hideSuggestions: () => void
 }
 
-const SearchContext = React.createContext<ISearchContext | null>(null)
+/* eslint-disable @typescript-eslint/no-empty-function */
+const SearchContext = React.createContext<ISearchContext>({
+  searchState: initialSearchState,
+  dispatch: () => {},
+  resetSearch: () => {},
+  isFocusOnSuggestions: false,
+  showSuggestions: () => {},
+  hideSuggestions: () => {},
+})
+/* eslint-disable @typescript-eslint/no-empty-function */
 
 export const SearchWrapper = memo(function SearchWrapper({
   children,
@@ -84,6 +93,4 @@ export const SearchWrapper = memo(function SearchWrapper({
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })
 
-// The searchState is initialized so his can't be null
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-export const useSearch = () => useContext(SearchContext)!
+export const useSearch = () => useContext(SearchContext)
