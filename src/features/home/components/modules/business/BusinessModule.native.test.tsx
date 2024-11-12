@@ -31,10 +31,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('BusinessModule component', () => {
   it('should render NewBusinessModule if FF WIP_APP_V2_BUSINESS_BLOCK is on', () => {
     mockFeatureFlag.mockReturnValueOnce(true)

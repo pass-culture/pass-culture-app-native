@@ -2,8 +2,8 @@
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
+import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
 import {
   AccountState,
@@ -80,10 +80,6 @@ jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

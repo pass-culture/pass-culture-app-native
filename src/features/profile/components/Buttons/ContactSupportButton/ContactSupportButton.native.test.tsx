@@ -11,10 +11,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('ContactSupportButton', () => {
   it('should open mail app when clicking on contact service button', () => {
     render(<AccessibilityEngagement />)

@@ -13,9 +13,6 @@ jest.unmock('libs/firebase/analytics/analytics')
 jest.unmock('libs/analytics/provider')
 jest.unmock('libs/analytics/logEventAnalytics')
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 const { analytics } = jest.requireActual('libs/analytics')
 

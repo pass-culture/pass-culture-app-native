@@ -28,9 +28,7 @@ jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 jest.mock('libs/subcategories')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
+
 jest.mock('ui/components/eventCard/EventCardList', () => ({
   EventCardList: () => 'EventCardList',
 }))

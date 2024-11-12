@@ -18,10 +18,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('<GenericSuspendedAccount />', () => {
   it('should open mail app when clicking on "Contacter le support" button', async () => {
     render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)

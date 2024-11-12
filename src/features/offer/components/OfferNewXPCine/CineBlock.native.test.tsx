@@ -21,9 +21,6 @@ jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 const mockUseSubcategoriesMapping = jest.fn()
 jest.mock('libs/subcategories/mappings', () => ({

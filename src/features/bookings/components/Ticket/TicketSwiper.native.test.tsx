@@ -14,10 +14,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('<TicketSwiper/>', () => {
   it('should display ticket without external bookings information if there are no external bookings (externalBookings is null)', () => {
     booking.externalBookings = null

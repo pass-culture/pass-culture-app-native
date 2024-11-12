@@ -36,10 +36,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('useOfferPlaylist', () => {
   describe('When offer is defined', () => {
     it('should return same category similar offers playlist', () => {

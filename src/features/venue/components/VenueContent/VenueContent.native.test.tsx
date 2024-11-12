@@ -53,10 +53,6 @@ const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 const mockShowModal = jest.fn()
 jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
   visible: false,

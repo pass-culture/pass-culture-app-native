@@ -18,10 +18,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('AnimatedCategoryThematicHomeHeader', () => {
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is on', () => {
     beforeAll(() => {
