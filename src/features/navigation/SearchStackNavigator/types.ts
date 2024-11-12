@@ -4,10 +4,18 @@ import { SearchState } from 'features/search/types'
 
 export type SearchStackRouteName = keyof SearchStackParamList
 
+type SearchStackParam = Partial<
+  SearchState & {
+    accessibilityFilter: Partial<DisabilitiesProperties>
+  }
+>
+
 export type SearchStackParamList = {
-  SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
-  SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
-  SearchN1?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchLanding: SearchStackParam
+} & {
+  SearchResults: SearchStackParam
+} & {
+  SearchN1: SearchStackParam
 }
 
 export type SearchStackScreenNames = keyof SearchStackParamList
