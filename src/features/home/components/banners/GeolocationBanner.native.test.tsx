@@ -9,7 +9,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('libs/location')
-const mockUseGeolocation = useLocation as jest.Mock
+const mockUseLocation = useLocation as jest.Mock
 
 describe('<GeolocationBanner />', () => {
   describe('When wipAppV2SystemBlock feature flag activated', () => {
@@ -18,7 +18,7 @@ describe('<GeolocationBanner />', () => {
     })
 
     it('should display system banner for geolocation incitation', () => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
         showGeolocPermissionModal,
       })
@@ -40,7 +40,7 @@ describe('<GeolocationBanner />', () => {
     })
 
     it('should display generic banner for geolocation incitation', () => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
         showGeolocPermissionModal,
       })
@@ -57,7 +57,7 @@ describe('<GeolocationBanner />', () => {
   })
 
   it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
       showGeolocPermissionModal,
     })
@@ -76,7 +76,7 @@ describe('<GeolocationBanner />', () => {
   })
 
   it('should ask for permission when pressing button and permission is denied', () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.DENIED,
       requestGeolocPermission,
     })

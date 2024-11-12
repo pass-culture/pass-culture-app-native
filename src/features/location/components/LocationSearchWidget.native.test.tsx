@@ -16,7 +16,7 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 jest.mock('libs/location')
-const mockUseGeolocation = useLocation as jest.Mock
+const mockUseLocation = useLocation as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -26,7 +26,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'test' },
     })
@@ -46,7 +46,7 @@ describe('LocationSearchWidget', () => {
   `(
     "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
     async ({ hasGeolocPosition, place }) => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
         selectedLocationMode: LocationMode.AROUND_ME,
@@ -66,7 +66,7 @@ describe('LocationSearchWidget', () => {
   `(
     "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
     async ({ hasGeolocPosition, place }) => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
         geolocPosition: null,
@@ -81,7 +81,7 @@ describe('LocationSearchWidget', () => {
   )
 
   it('should render a filled location pointer and label of the place if the user has selected a place', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'my place' },
       geolocPosition: null,

@@ -21,13 +21,13 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 jest.mock('libs/location')
-const mockUseGeolocation = useLocation as jest.Mock
+const mockUseLocation = useLocation as jest.Mock
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'test' },
       isCurrentLocationMode: jest.fn(),
@@ -48,7 +48,7 @@ describe('LocationWidgetDesktop', () => {
   `(
     "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
     async ({ hasGeolocPosition, place }) => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
         isCurrentLocationMode: jest.fn(),
@@ -69,7 +69,7 @@ describe('LocationWidgetDesktop', () => {
   `(
     "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
     async ({ hasGeolocPosition, place }) => {
-      mockUseGeolocation.mockReturnValueOnce({
+      mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
         geolocPosition: null,
@@ -85,7 +85,7 @@ describe('LocationWidgetDesktop', () => {
   )
 
   it('should render a filled location pointer and label of the place if the user has selected a custom place', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
+    mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'my place' },
       geolocPosition: null,
@@ -100,7 +100,7 @@ describe('LocationWidgetDesktop', () => {
   })
 
   describe('tooltip', () => {
-    mockUseGeolocation.mockReturnValue({
+    mockUseLocation.mockReturnValue({
       hasGeolocPosition: true,
       place: null,
       geolocPosition: null,
