@@ -1,23 +1,16 @@
 import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useDistanceModule from 'libs/location/hooks/useDistance'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
-// Mock useVenueBlock hook to avoid using Clipboard API
+jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock')
 const mockOnCopyAddressPress = jest.fn()
-const mockUseVenueBlock = jest.fn(() => ({
-  venueName: 'PATHE BEAUGRENELLE',
-  venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
-  isOfferAddressDifferent: false,
-  onCopyAddressPress: mockOnCopyAddressPress,
-}))
-jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock', () => ({
-  useVenueBlock: jest.fn(() => mockUseVenueBlock()),
-}))
+const mockUseVenueBlock = jest.mocked(useVenueBlock)
 
 const mockNavigateToItinerary = jest.fn()
 const mockUseItinerary = () => ({
@@ -40,6 +33,13 @@ jest.mock('@batch.com/react-native-plugin', () =>
 const distanceSpy = jest.spyOn(useDistanceModule, 'useDistance')
 
 describe('<OfferVenueBlock />', () => {
+  mockUseVenueBlock.mockReturnValue({
+    venueName: 'PATHE BEAUGRENELLE',
+    venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+    isOfferAddressDifferent: false,
+    onCopyAddressPress: mockOnCopyAddressPress,
+  })
+
   it('should display title and distance', () => {
     distanceSpy.mockReturnValueOnce('1,1 km')
 
@@ -209,6 +209,33 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
+  it('should not display right icon when venue is permanent but offer address is different than venue address', () => {
+    // useVenue hook is called twice, the second call is the one we want to mock for the test
+    mockUseVenueBlock
+      .mockReturnValueOnce({
+        venueName: 'PATHE BEAUGRENELLE',
+        venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+        isOfferAddressDifferent: false,
+        onCopyAddressPress: mockOnCopyAddressPress,
+      })
+      .mockReturnValueOnce({
+        venueName: 'PATHE BEAUGRENELLE',
+        venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+        isOfferAddressDifferent: true,
+        onCopyAddressPress: mockOnCopyAddressPress,
+      })
+
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+        onSeeVenuePress={jest.fn()}
+      />
+    )
+
+    expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
+  })
+
   it('should handle see venue button press', () => {
     const onSeeVenuePress = jest.fn()
     render(
@@ -225,18 +252,6 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should not render see venue button when onSeeVenuePress is undefined', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
-
-    expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
-  })
-
-  it('should not render see venue button when onSeeVenuePress is undefined', () => {
-    mockUseVenueBlock.mockReturnValueOnce({
-      venueName: 'PATHE BEAUGRENELLE',
-      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
-      isOfferAddressDifferent: true,
-      onCopyAddressPress: mockOnCopyAddressPress,
-    })
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
