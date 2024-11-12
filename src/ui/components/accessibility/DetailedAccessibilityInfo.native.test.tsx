@@ -7,8 +7,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

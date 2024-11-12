@@ -13,7 +13,6 @@ const wrapper = (props: { children: unknown }) =>
     <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('useInitialScreen()', () => {

@@ -8,8 +8,6 @@ import { ExternalLink } from './ExternalLink'
 const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ExternalLink', () => {
   it('should open given url when text clicked', async () => {
     render(<ExternalLink url={someUrl} />)

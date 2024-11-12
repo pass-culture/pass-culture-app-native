@@ -1,6 +1,4 @@
-import { firebaseAnalytics as actualAnalytics } from '../analytics'
-
-export const firebaseAnalytics: typeof actualAnalytics = {
+const firebaseAnalytics = () => ({
   disableCollection: jest.fn(),
   enableCollection: jest.fn(),
   getAppInstanceId: jest.fn().mockReturnValue('firebase_pseudo_id'),
@@ -8,5 +6,7 @@ export const firebaseAnalytics: typeof actualAnalytics = {
   logScreenView: jest.fn(),
   setDefaultEventParameters: jest.fn(),
   setUserId: jest.fn(),
-  useInit: jest.fn(),
-}
+  setAnalyticsCollectionEnabled: jest.fn(),
+})
+
+module.exports = firebaseAnalytics

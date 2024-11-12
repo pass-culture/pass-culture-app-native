@@ -8,8 +8,6 @@ import { AccountCreated } from './AccountCreated'
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<AccountCreated/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

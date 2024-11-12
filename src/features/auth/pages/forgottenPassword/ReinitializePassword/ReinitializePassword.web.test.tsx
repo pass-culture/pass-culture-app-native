@@ -18,7 +18,6 @@ jest.mock('uuid', () => {
 
 jest.spyOn(LoginRoutine, 'useLoginRoutine').mockReturnValue(jest.fn())
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ReinitializePassword/>', () => {

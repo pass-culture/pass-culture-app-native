@@ -14,7 +14,6 @@ jest.mock('features/cookies/helpers/getAcceptedCookieConsent')
 const mockGetAcceptedCookieConsent = getAcceptedCookieConsent as jest.Mock
 mockGetAcceptedCookieConsent.mockResolvedValue(true)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('logClickOnOffer', () => {

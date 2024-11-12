@@ -39,8 +39,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.useFakeTimers()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('<SSOButton />', () => {

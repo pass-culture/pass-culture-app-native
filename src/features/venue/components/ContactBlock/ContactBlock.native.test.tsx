@@ -18,8 +18,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<ContactBlock/>', () => {
   it('should navigate to mail when pressing on email', async () => {
     render(<ContactBlock venue={venueDataTest} />)

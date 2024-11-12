@@ -30,7 +30,6 @@ jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/location')
 jest.mock('features/search/context/SearchWrapper')
-jest.mock('libs/firebase/analytics/analytics')
 
 const defaultSearchParams = {
   beginningDatetime: undefined,

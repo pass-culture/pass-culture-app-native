@@ -5,8 +5,6 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ArtistPlaylist', () => {
   it('should display top offers when there is some offer from this artist', () => {
     render(

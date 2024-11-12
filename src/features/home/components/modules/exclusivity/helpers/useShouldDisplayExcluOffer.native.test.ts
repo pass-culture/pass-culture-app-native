@@ -32,8 +32,6 @@ excluOfferAPISpy.mockReturnValue({
   data: mockOffer,
 } as unknown as UseQueryResult<OfferResponseV2>)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
     const { result } = renderHook(() => useShouldDisplayExcluOffer(undefined, offerId))

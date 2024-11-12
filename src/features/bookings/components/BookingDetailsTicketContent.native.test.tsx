@@ -8,8 +8,6 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/subcategories/useSubcategory')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('BookingDetailsTicketContent', () => {
   const originalBooking = bookingsSnap.ongoing_bookings[0]
   const booking = {

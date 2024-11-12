@@ -7,8 +7,6 @@ import {
 } from 'features/internal/marketingAndCommunication/components/DeeplinksHistory'
 import { render, screen, waitFor } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<DeeplinksHistory />', () => {
   const history = [
     {

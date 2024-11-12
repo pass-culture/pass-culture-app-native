@@ -16,8 +16,6 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('BookingOfferModalFooter', () => {
   describe('when current step is date selection', () => {
     it('should display "Valider la date"', () => {

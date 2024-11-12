@@ -22,8 +22,6 @@ const hideModalMock = jest.fn()
 
 const mockOffers = mockedAlgoliaResponse.hits
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

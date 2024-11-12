@@ -22,8 +22,6 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const distanceSpy = jest.spyOn(useDistanceModule, 'useDistance')
 
 describe('<OfferVenueBlock />', () => {

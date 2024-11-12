@@ -36,8 +36,6 @@ const defaultParameters = {
   isDepositExpired: false,
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {

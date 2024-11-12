@@ -20,8 +20,6 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<AlreadyBooked />', () => {

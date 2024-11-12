@@ -68,8 +68,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set('2021-07-01T00:00:00Z')

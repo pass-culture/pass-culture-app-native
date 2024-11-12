@@ -37,8 +37,6 @@ const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
 jest.useFakeTimers()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('AuthContext', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)

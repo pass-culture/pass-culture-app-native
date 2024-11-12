@@ -18,7 +18,6 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')

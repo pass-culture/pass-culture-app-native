@@ -11,7 +11,6 @@ import { render, screen } from 'tests/utils'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/network/NetInfoWrapper')
-jest.mock('libs/firebase/analytics/analytics')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null

@@ -9,7 +9,7 @@ import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthC
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('features/auth/context/AuthContext')
 
 const mockBookings = { ...bookingsSnap }

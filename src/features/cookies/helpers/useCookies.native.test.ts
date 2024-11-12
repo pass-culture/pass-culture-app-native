@@ -42,8 +42,6 @@ mockdate.set(TODAY)
 
 jest.mock('api/api')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('useCookies', () => {

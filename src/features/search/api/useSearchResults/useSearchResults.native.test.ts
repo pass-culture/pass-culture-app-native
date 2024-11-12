@@ -20,8 +20,6 @@ jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
 const mockUserLocation = null as GeoCoordinates | null

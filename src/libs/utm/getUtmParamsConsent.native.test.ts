@@ -14,8 +14,6 @@ const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getUtmParamsConsent', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)

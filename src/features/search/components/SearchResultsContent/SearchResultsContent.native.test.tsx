@@ -159,8 +159,6 @@ const venue = mockedSuggestedVenue
 
 jest.useFakeTimers()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {

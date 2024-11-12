@@ -11,7 +11,6 @@ const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
 } as StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SignupConfirmationExpiredLink/>', () => {

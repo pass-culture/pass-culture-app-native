@@ -14,8 +14,6 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<GenericSuspendedAccount />', () => {
   it('should open mail app when clicking on "Contacter le support" button', async () => {
     render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)

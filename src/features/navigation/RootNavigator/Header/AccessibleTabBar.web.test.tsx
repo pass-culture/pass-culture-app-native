@@ -38,7 +38,6 @@ const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []
   useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/helpers/useTabBarItemBadges')

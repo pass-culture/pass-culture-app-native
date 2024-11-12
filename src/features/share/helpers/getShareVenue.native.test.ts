@@ -11,8 +11,6 @@ const mockShare = jest
 
 const venue = venueDataTest
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getShareVenue', () => {
   describe('should display share modal with data from offer', () => {
     it('for ios', async () => {

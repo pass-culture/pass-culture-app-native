@@ -22,8 +22,6 @@ const fetchOffersSpy = jest
   .spyOn(fetchCinemaOffersModule, 'fetchCinemaOffers')
   .mockResolvedValue([cinemaOffer])
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useCinemaOffers', () => {
   it('should fetch cinema offers', async () => {
     renderHook(() => useCinemaOffers(), {

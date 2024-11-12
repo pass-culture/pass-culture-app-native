@@ -15,7 +15,6 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<OfferHeader />', () => {

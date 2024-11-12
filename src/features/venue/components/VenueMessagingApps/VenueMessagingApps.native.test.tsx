@@ -13,8 +13,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueDataTest.id}`, venueDataTest)

@@ -7,8 +7,6 @@ import { FraudulentSuspendedAccount } from './FraudulentSuspendedAccount'
 
 jest.mock('features/auth/helpers/useLogoutRoutine')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

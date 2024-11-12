@@ -31,8 +31,6 @@ const dateInFuture = '2100-02-09T11:17:14.786670'
 const today = '2023-02-10T21:00:00'
 const tomorrow = '2023-02-11T21:00:00'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {

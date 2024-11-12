@@ -15,8 +15,6 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

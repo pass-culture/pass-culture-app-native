@@ -50,8 +50,6 @@ const apiReinitializePasswordSpy = jest.spyOn(api, 'postNativeV1ResetPassword')
 jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

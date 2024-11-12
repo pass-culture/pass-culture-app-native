@@ -6,7 +6,6 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 // To see the linking config used in the tests, check the file :
 // features/navigation/RootNavigator/__mocks__/routes.ts
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('getScreenFromDeeplink()', () => {

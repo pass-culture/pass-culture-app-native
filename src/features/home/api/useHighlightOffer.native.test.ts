@@ -31,8 +31,6 @@ const mockOffers = mockedAlgoliaResponse.hits
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
     mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])

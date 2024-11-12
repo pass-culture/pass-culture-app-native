@@ -12,8 +12,6 @@ const acceptAll = jest.fn()
 const declineAll = jest.fn()
 const customChoice = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useCookiesModalContent hook description', () => {
   it('should display the CookiesDescription and not show back button if first step', () => {
     const { childrenProps } = useCookiesModalContent({
