@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BatchUser } from '__mocks__/libs/react-native-batch'
+import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -27,10 +27,6 @@ const navigation = {
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 describe('CheatCodes component', () => {
   it('should display code push button for testing environment', async () => {

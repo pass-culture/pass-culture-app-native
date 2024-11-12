@@ -47,10 +47,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
 

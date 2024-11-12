@@ -44,10 +44,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('<VenueBody />', () => {
   beforeEach(() => {
     // We mock only the first call to canOpenURL so we can wait for instagram to be displayed

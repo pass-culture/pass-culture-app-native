@@ -15,10 +15,6 @@ jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),
 }))
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 const TEST_TIMEOUT_IN_MS = 15000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 

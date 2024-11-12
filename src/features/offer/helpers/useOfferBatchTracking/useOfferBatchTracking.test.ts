@@ -3,7 +3,9 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/react-native-batch', () => jest.requireActual('__mocks__/libs/react-native-batch'))
+jest.mock('libs/react-native-batch', () =>
+  jest.requireActual('__mocks__/@batch.com/react-native-plugin')
+)
 
 describe('useOfferBatchTracking', () => {
   it('should return trackEventHasSeenOfferOnce', () => {

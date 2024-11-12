@@ -18,10 +18,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('BeneficiaryCeilings', () => {
   it('should not return credits if credit is exhausted', () => {
     render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v1} />)

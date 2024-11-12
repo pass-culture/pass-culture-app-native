@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
 import * as jwt from '__mocks__/jwt-decode'
-import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
@@ -40,10 +40,6 @@ jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 describe('AuthContext', () => {
   beforeEach(async () => {

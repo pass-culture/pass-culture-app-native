@@ -34,10 +34,6 @@ const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('<VideoCarouselModule />', () => {
   beforeEach(() => {
     MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
