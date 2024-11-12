@@ -89,11 +89,6 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues', () => ({
   useSearchAndPlaylistVenues: jest.fn(),
 }))

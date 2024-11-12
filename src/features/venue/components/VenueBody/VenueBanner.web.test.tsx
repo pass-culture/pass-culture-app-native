@@ -3,11 +3,6 @@ import React from 'react'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 const mockHandleImagePress = jest.fn()
 
 describe('<VenueBanner />', () => {

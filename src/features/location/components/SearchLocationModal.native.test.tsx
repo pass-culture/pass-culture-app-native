@@ -69,11 +69,6 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()

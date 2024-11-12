@@ -14,11 +14,6 @@ jest.mock('features/venue/api/useVenue', () => ({
   useVenue: () => mockUseVenue(),
 }))
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('VenuePreviewCarousel', () => {
   it('should render images carousel when bannerUrl defined', () => {
     useRoute.mockReturnValueOnce({

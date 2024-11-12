@@ -17,11 +17,6 @@ jest.mock('features/bookings/api/useBookings', () => ({
   useBookings: jest.fn(() => ({ data: mockBookings })),
 }))
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 const mockUseSubcategoriesMapping = jest.fn()
 mockUseSubcategoriesMapping.mockReturnValue({
   [SubcategoryIdEnum.SEANCE_CINE]: {

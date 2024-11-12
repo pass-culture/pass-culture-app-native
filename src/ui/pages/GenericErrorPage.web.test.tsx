@@ -11,11 +11,6 @@ jest.unmock('@react-navigation/stack')
 jest.unmock('@react-navigation/bottom-tabs')
 jest.unmock('features/navigation/useGoBack')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<GenericErrorPage />', () => {
   it('should render correctly', () => {
     const { container } = render(

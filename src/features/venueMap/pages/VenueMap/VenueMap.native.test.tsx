@@ -23,11 +23,6 @@ mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueType
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
 

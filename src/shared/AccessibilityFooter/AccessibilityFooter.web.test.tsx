@@ -10,11 +10,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('AccessibilityFooter', () => {
   it('should go to CGUs when the "CGU utilisateurs" link is pressed', () => {
     render(<AccessibilityFooter />)

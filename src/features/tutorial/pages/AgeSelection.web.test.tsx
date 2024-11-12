@@ -7,11 +7,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { AgeSelection } from './AgeSelection'
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<AgeSelection/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for onboarding tutorial', async () => {

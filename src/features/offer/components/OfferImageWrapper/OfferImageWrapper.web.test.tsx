@@ -5,11 +5,6 @@ import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/O
 import { render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<OfferImageBody />', () => {
   it('should apply sticky styles when on web and isDesktopViewport is true', () => {
     renderOfferImageWrapper({ isDesktopViewport: true })

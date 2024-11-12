@@ -8,11 +8,14 @@ import { act, render } from 'tests/utils'
 
 import { onNavigationStateChange } from './services'
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
-jest.mock('@react-navigation/bottom-tabs', () =>
-  jest.requireActual('@react-navigation/bottom-tabs')
-)
+jest.unmock('@react-navigation/native')
+jest.unmock('@react-navigation/stack')
+jest.unmock('@react-navigation/bottom-tabs')
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...jest.requireActual('react-native-safe-area-context'),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

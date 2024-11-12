@@ -22,11 +22,6 @@ mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueType
 jest.mock('features/venueMap/store/venuesStore')
 const mockUseVenues = useVenues as jest.Mock
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

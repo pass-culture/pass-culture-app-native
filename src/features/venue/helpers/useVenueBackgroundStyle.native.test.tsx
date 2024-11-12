@@ -6,11 +6,6 @@ import { computedTheme } from 'tests/computedTheme'
 import { renderHook } from 'tests/utils'
 import { theme } from 'theme'
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('useVenueBackgroundStyle', () => {
   it('should return desktop background style', () => {
     const customTheme = { ...theme, ...computedTheme, isDesktopViewport: true }

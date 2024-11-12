@@ -6,11 +6,6 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 const onSkip = jest.fn()
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 describe('<GenericInfoPageWhite />', () => {
   it('should render correctly', () => {
     render(<GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />)

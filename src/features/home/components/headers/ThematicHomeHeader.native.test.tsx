@@ -18,11 +18,6 @@ const HeaderInterpolation = animatedValue.interpolate({
   outputRange: [0, 1],
 })
 
-jest.mock('react-native-safe-area-context', () => ({
-  ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
-  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
 const categoryThematicHeader: CategoryThematicHeader = {
   type: ThematicHeaderType.Category,
   title: 'Cinéma',

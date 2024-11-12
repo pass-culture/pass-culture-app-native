@@ -12,6 +12,11 @@ jest.unmock('@react-navigation/native')
 jest.unmock('@react-navigation/stack')
 jest.unmock('@react-navigation/bottom-tabs')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...jest.requireActual('react-native-safe-area-context'),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
+
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {
     // Waiting for React Navigation to fix this issue:
