@@ -24,10 +24,6 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 //   alert: jest.fn(),
 // }))
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-instantsearch-core', () => ({

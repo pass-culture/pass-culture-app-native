@@ -44,10 +44,6 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
 
 const mockArtist = {

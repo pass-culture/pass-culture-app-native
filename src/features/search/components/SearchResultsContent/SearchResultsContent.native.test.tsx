@@ -179,10 +179,6 @@ jest.mock('@shopify/flash-list', () => {
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const { View } = jest.requireActual('react-native')
 

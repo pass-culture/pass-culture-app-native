@@ -9,10 +9,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('getTickets', () => {
   it('should not display any ticket when external bookings is null', () => {
     booking.externalBookings = null

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as ReactQueryAPI from 'react-query'
 
-import { BatchUser } from '__mocks__/libs/react-native-batch'
+import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -18,10 +18,6 @@ const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
 
 describe('useLogoutRoutine', () => {
   it('should remove batch identifier', async () => {

@@ -30,10 +30,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('<CollapsibleText />', () => {
   it('should not display all text', () => {
     render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)

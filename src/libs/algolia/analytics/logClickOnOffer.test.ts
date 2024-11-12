@@ -17,10 +17,6 @@ mockGetAcceptedCookieConsent.mockResolvedValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('logClickOnOffer', () => {
   it('should send the corresponding Algolia click event when called', async () => {
     await logClickOnOffer('abc123')({ objectID: 'object123', position: 0 })

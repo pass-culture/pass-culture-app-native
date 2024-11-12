@@ -21,10 +21,6 @@ jest.mock('@react-native-clipboard/clipboard')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()

@@ -33,10 +33,6 @@ const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {

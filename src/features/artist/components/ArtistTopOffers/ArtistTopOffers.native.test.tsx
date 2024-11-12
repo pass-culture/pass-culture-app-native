@@ -8,10 +8,6 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
-jest.mock('@batch.com/react-native-plugin', () =>
-  jest.requireActual('__mocks__/libs/react-native-batch')
-)
-
 describe('ArtistPlaylist', () => {
   it('should display top offers when there is some offer from this artist', () => {
     render(
