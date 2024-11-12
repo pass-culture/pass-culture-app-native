@@ -7,30 +7,35 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 export function useVenueBlock({
   venue,
-  address,
+  offerAddress,
 }: {
   venue: OfferVenueResponse
-  address?: OfferAddressResponse
+  offerAddress?: OfferAddressResponse
 }) {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const venueStreet = address?.street || venue.address
-  const venuePostalCode = address?.postalCode || venue.postalCode
-  const venueCity = address?.city || venue.city
+  const street = offerAddress?.street || venue.address
+  const postalCode = offerAddress?.postalCode || venue.postalCode
+  const city = offerAddress?.city || venue.city
 
-  const venueName = address?.label || venue.publicName || venue.name
+  const venueName = offerAddress?.label || venue.publicName || venue.name
+  const address = useMemo(
+    () => formatFullAddressStartsWithPostalCode(street, postalCode, city),
+    [street, postalCode, city]
+  )
   const venueAddress = useMemo(
-    () => formatFullAddressStartsWithPostalCode(venueStreet, venuePostalCode, venueCity),
-    [venueStreet, venuePostalCode, venueCity]
+    () => formatFullAddressStartsWithPostalCode(venue.address, venue.postalCode, venue.city),
+    [venue.address, venue.postalCode, venue.city]
   )
 
   return useMemo(
     () => ({
       venueName,
-      venueAddress,
+      venueAddress: address,
+      isOfferAddressDifferent: address !== venueAddress,
       onCopyAddressPress: async () => {
-        Clipboard.setString(venueAddress)
-        if ((await Clipboard.getString()) === venueAddress) {
+        Clipboard.setString(address)
+        if ((await Clipboard.getString()) === address) {
           showSuccessSnackBar({
             message: 'L’adresse a bien été copiée',
             timeout: SNACK_BAR_TIME_OUT,
@@ -43,6 +48,6 @@ export function useVenueBlock({
         }
       },
     }),
-    [venueAddress, showErrorSnackBar, showSuccessSnackBar, venueName]
+    [address, venueAddress, showErrorSnackBar, showSuccessSnackBar, venueName]
   )
 }
