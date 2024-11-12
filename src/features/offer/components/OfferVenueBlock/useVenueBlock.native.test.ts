@@ -42,6 +42,12 @@ describe('useVenueBlock without offer address', () => {
     expect(result.current.venueAddress).toBe('75008 PARIS 8, 2 RUE LAMENNAIS')
   })
 
+  it('should return isOfferAddressDifferent to false if offer address is not present', () => {
+    const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
+
+    expect(result.current.isOfferAddressDifferent).toEqual(false)
+  })
+
   it('should copy address to clipboard', async () => {
     const spy = jest.spyOn(Clipboard, 'setString')
     const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
@@ -83,22 +89,55 @@ describe('useVenueBlock with offer address', () => {
     const { result } = renderHook(() =>
       useVenueBlock({
         venue: offerWithAddress.venue,
-        address: offerWithAddress.address,
+        offerAddress: offerWithAddress.address,
       })
     )
 
     expect(result.current.venueName).toBe('PATHE MONTPARNASSE')
   })
 
-  it('should return address from metadata Location', () => {
+  it('should return address from  offer address', () => {
     const { result } = renderHook(() =>
       useVenueBlock({
         venue: offerWithAddress.venue,
-        address: offerWithAddress.address,
+        offerAddress: offerWithAddress.address,
       })
     )
 
     expect(result.current.venueAddress).toBe('75013 PARIS 13, 1 RUE DES CAFÉS')
+  })
+
+  it('should return isOfferAddressDifferent to true if offer and venue address are different', () => {
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerWithAddress.venue,
+        offerAddress: offerWithAddress.address,
+      })
+    )
+
+    expect(result.current.isOfferAddressDifferent).toEqual(true)
+  })
+
+  it('should return isOfferAddressDifferent to false if offer and venue address are the same', () => {
+    const offerWithSameAddress = {
+      ...offerResponseSnap,
+      address: {
+        street: '2 RUE LAMENNAIS',
+        postalCode: '75008',
+        city: 'PARIS 8',
+        label: 'PATHE BEAUGRENELLE',
+        coordinates: { latitude: 20, longitude: 2 },
+        timezone: 'Europe/Paris',
+      },
+    }
+    const { result } = renderHook(() =>
+      useVenueBlock({
+        venue: offerWithSameAddress.venue,
+        offerAddress: offerWithSameAddress.address,
+      })
+    )
+
+    expect(result.current.isOfferAddressDifferent).toEqual(false)
   })
 
   it('should copy address to clipboard', async () => {
@@ -106,7 +145,7 @@ describe('useVenueBlock with offer address', () => {
     const { result } = renderHook(() =>
       useVenueBlock({
         venue: offerWithAddress.venue,
-        address: offerWithAddress.address,
+        offerAddress: offerWithAddress.address,
       })
     )
 
