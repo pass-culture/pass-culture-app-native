@@ -360,28 +360,40 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('à 7 km')).not.toBeOnTheScreen()
   })
 
-  it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
-    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponseV2 = {
-      ...mockOffer,
-      venue: {
-        ...mockOffer.venue,
-        isPermanent: false,
-      },
-    }
-    renderOfferPlace({ offer })
-
-    expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
-  })
-
-  describe('When venue is permanent', () => {
+  describe('Venue is permanent', () => {
     const offer: OfferResponseV2 = {
       ...mockOffer,
       venue: {
         ...mockOffer.venue,
         isPermanent: true,
       },
+      address: {
+        street: 'RUE DE CALI',
+        city: 'Kourou',
+        timezone: 'Europe/Paris',
+        label: 'Cinéma de la fin',
+        postalCode: '97310',
+        coordinates: {
+          latitude: 5.15839,
+          longitude: -52.63741,
+        },
+      },
     }
+
+    it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
+      const offer: OfferResponseV2 = {
+        ...mockOffer,
+        venue: {
+          ...mockOffer.venue,
+          isPermanent: false,
+        },
+        address: undefined,
+      }
+      renderOfferPlace({ offer })
+
+      expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
+    })
 
     it('should navigate to venue page when pressing venue button', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
@@ -405,25 +417,41 @@ describe('<OfferPlace />', () => {
     })
   })
 
-  it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
-    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponseV2 = {
-      ...mockOffer,
-      venue: {
-        ...mockOffer.venue,
-        address: 'RUE DE CALI',
-        city: 'Kourou',
-        postalCode: '97310',
-      },
-    }
+  describe('"Voir l’itinéraire" button', () => {
+    it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
+      const offer: OfferResponseV2 = {
+        ...mockOffer,
+        venue: {
+          ...mockOffer.venue,
+          address: 'RUE DE CALI',
+          city: 'Kourou',
+          postalCode: '97310',
+        },
+      }
 
-    renderOfferPlace({ offer })
+      renderOfferPlace({ offer })
 
-    expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
-  })
+      expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
+    })
 
-  describe('should not display "Voir l’itinéraire" button', () => {
-    it('When address, city and postal code not provided', () => {
+    it('should log consult itinerary when pressing "Voir l’itinéraire" button', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
+      const offer: OfferResponseV2 = {
+        ...mockOffer,
+        id: 146112,
+      }
+      renderOfferPlace({ offer })
+
+      fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+      expect(analytics.logConsultItinerary).toHaveBeenNthCalledWith(1, {
+        from: 'offer',
+        offerId: 146112,
+      })
+    })
+
+    it('should not display "Voir l’itinéraire" button when venue address, city and postal code not provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponseV2 = {
         ...mockOffer,
@@ -433,6 +461,7 @@ describe('<OfferPlace />', () => {
           city: undefined,
           postalCode: undefined,
         },
+        address: undefined,
       }
 
       renderOfferPlace({ offer })
@@ -440,7 +469,7 @@ describe('<OfferPlace />', () => {
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
-    it('When only address provided', () => {
+    it('should not display "Voir l’itinéraire" button when only venue address provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponseV2 = {
         ...mockOffer,
@@ -457,7 +486,7 @@ describe('<OfferPlace />', () => {
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
-    it('When only city provided', () => {
+    it('should not display "Voir l’itinéraire" button when only venue city provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponseV2 = {
         ...mockOffer,
@@ -474,7 +503,7 @@ describe('<OfferPlace />', () => {
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
-    it('When only city postalCode', () => {
+    it('should not display "Voir l’itinéraire" button when only venue city postalCode', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponseV2 = {
         ...mockOffer,
@@ -489,22 +518,6 @@ describe('<OfferPlace />', () => {
       renderOfferPlace({ offer })
 
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should log consult itinerary when pressing "Voir l’itinéraire" button', () => {
-    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponseV2 = {
-      ...mockOffer,
-      id: 146112,
-    }
-    renderOfferPlace({ offer })
-
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
-
-    expect(analytics.logConsultItinerary).toHaveBeenNthCalledWith(1, {
-      from: 'offer',
-      offerId: 146112,
     })
   })
 
