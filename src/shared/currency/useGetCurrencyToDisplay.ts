@@ -6,7 +6,7 @@ import { useLocation } from 'libs/location'
 enum Currency {
   EURO = '€',
   PACIFIC_FRANC_SHORT = 'F',
-  PACIFIC_FRANC_FULL = 'Franc\u00a0Pacifique',
+  PACIFIC_FRANC_FULL = 'francs\u00a0Pacifique',
 }
 
 type CurrencyDisplayFormat = 'short' | 'full'
