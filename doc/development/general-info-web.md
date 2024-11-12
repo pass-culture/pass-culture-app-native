@@ -125,21 +125,32 @@ Keep in mind to [do the following change to not run into CORS errors](./general-
 
 There are certain number of optimizations/improvements and things that were done in webpack that we didn't think were immediately necessary:
 
-- Chunk protection
+MUST HAVE:
+
+- Remove service workers (caused cache update issues) and manifest if we decide to not use PWA (because it requires maintenance).
+
+SHOULD HAVE:
+
+- Try to solve all warnings on `vite serve` and `vite build`
 - CSP: atm, we haven't added any. In the webpack config we had them.
+- Remove `deprecated-react-native-prop-types`
+
+COULD HAVE:
+
+- Using vite's chunking technology (or any other chunking technology) to reduce the initial loading time of the web app
+- Chunk protection (check there isn't any bundle issues and protect against future issues)
 - Testing older browser and increasing compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work), and update `src/web/SupportedBrowsersGate.web.test.tsx` and `package.json.browserList`
 - PWA (it seems that vite generates a manifest but we should make sure the service worker is functioning)
+
+COULD BE NICE TO HAVE:
+
 - Web vitals
-- Profiling tools (maybe vite offers something)
-- BundleAnalyzerPlugin and update `doc/development/optimization.md`
-- DuplicatesPlugin
+- Performance Monitoring:
+  - Profiling tools (maybe vite offers something): atm we use lighthouse
+  - BundleAnalyzerPlugin and update `doc/development/optimization.md`
+- DuplicatesPlugin (used to be in Webpack, investigate is we need one in vite)
 - It might be worth it to investigate using `@vitejs/plugin-react-swc` in place of `@vitejs/plugin-react` (for development mode)
-- Try to solve all warnings on `vite serve` and `vite build`
-- Using vite's chunking technology to reduce the initial loading time of the web app
-- Remove `deprecated-react-native-prop-types`
 - For the CI Guild: either include all the build commands (for the web) in the `package.json` (which means adding a command for vite preview) or remove them and create a separate script
-- Better handling (allowing empty string instead of making it optional) of `API_BASE_URL` in yup scheme (`src/libs/environment/schema.ts`)
-- Test if "Push debug log for testing" works (in script `.github/workflows/dev_on_workflow_web_deploy.yml`)
 
 ## Troubleshooting (issues meet when setting up vite)
 
