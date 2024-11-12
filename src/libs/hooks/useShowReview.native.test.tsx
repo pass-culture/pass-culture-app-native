@@ -22,8 +22,6 @@ const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
 
 jest.useFakeTimers()
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useShowReview', () => {
   it('should show the review when it is available and we want to show it', () => {
     mockIsAvailable.mockReturnValueOnce(true)

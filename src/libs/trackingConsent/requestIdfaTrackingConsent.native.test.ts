@@ -9,8 +9,6 @@ const logOpenAppMock = jest.spyOn(TrackOpenApp, 'logOpenApp')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('requestIDFATrackingConsent', () => {
   it('should ask for consent when it has not already been asked', async () => {
     getTrackingStatusSpy.mockResolvedValueOnce('not-determined')

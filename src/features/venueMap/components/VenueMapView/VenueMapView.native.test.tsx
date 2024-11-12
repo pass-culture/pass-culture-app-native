@@ -47,8 +47,6 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const { View } = jest.requireActual('react-native')
   class MockBottomSheet extends View {

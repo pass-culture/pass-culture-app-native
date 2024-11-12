@@ -43,8 +43,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<SSOButton />', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {

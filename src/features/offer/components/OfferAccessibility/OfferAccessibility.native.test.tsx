@@ -10,8 +10,6 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const accessibility = offerResponseSnap.accessibility
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<OfferAccessibility />', () => {
   it('should display section title when there is at least one handicap information', () => {
     render(<OfferAccessibility accessibility={accessibility} />)

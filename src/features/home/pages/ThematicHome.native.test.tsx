@@ -69,8 +69,6 @@ const modules = [formattedVenuesModule]
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 

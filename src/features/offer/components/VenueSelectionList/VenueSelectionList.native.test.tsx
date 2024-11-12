@@ -32,8 +32,6 @@ const nbHits = 40
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<VenueSelectionList />', () => {
   it('should show list of items', () => {
     render(

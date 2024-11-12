@@ -5,8 +5,6 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<OfferBookingButton />', () => {
   const mockCtaWordingAndAction = {
     wording: 'Réserver l’offre',

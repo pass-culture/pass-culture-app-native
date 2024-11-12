@@ -8,8 +8,6 @@ const mockProps = {
   visible: false,
 } as const
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useRadiusChange', () => {
   it('should call setTempAroundPlaceRadius when onTempAroundRadiusPlaceValueChange is called and visible is true', () => {
     const { result } = renderHook(() => useRadiusChange({ ...mockProps, visible: true }))

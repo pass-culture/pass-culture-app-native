@@ -34,8 +34,6 @@ const externalNav = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {
     it('should open url with expected parameters (nominal case)', async () => {

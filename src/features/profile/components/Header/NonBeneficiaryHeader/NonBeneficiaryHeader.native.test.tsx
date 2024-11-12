@@ -34,8 +34,6 @@ mockdate.set(new Date(today))
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 

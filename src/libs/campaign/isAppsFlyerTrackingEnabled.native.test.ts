@@ -16,8 +16,6 @@ mockdate.set(Today)
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('isAppsFlyerTrackingEnabled', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)

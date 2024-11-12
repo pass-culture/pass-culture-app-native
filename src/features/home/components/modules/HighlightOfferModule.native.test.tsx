@@ -26,8 +26,6 @@ jest.mock('features/auth/context/AuthContext')
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

@@ -27,8 +27,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const playlist = cinemaPlaylistAlgoliaSnapshot[0] as CinemaPlaylistData
 
 describe('CinemaPlaylist', () => {

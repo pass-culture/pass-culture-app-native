@@ -4,8 +4,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('getScreenPath()', () => {
   it.each`
     screen             | params                        | expectedPath

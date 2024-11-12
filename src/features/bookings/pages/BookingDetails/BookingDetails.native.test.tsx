@@ -64,7 +64,9 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+// jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter', () => {
+//   return jest.requireActual('react-native/Libraries/EventEmitter/__mocks__/NativeEventEmitter')
+// })
 
 const user = userEvent.setup()
 

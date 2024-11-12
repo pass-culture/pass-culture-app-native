@@ -51,8 +51,6 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
   }),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and all facets', async () => {

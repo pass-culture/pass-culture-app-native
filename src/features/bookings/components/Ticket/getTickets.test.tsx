@@ -7,8 +7,6 @@ const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoi
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('getTickets', () => {
   it('should not display any ticket when external bookings is null', () => {
     booking.externalBookings = null

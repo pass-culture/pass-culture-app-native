@@ -41,8 +41,6 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
   }),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<VenueListModule />', () => {
   it('should display venue list', () => {
     render(

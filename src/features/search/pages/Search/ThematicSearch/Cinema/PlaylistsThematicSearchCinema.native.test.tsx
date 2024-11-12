@@ -10,7 +10,6 @@ import { render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 

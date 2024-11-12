@@ -42,8 +42,6 @@ useRoute.mockReturnValue({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
 
 const mockArtist = {

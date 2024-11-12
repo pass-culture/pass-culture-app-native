@@ -49,8 +49,6 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<OfferHeader />', () => {
   it('should render all the icons', async () => {
     renderOfferHeader()

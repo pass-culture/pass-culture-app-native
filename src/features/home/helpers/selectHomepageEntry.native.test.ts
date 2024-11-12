@@ -115,8 +115,6 @@ const homepageEntries = [
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider')
 const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction<
   typeof useRemoteConfigContext

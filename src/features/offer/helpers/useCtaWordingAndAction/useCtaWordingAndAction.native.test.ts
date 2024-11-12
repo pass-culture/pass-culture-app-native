@@ -38,8 +38,6 @@ const defaultParameters = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {

@@ -10,7 +10,6 @@ import { act, renderHook } from 'tests/utils'
 
 import { useMoviesScreeningsList } from './useMoviesScreeningsList'
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/network/NetInfoWrapper')
 
 const getStocksByOfferIdsModuleSpy = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')

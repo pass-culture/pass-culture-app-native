@@ -30,8 +30,6 @@ const defaultSearchParameters = omit(
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('adaptOffersPlaylistParameters', () => {
   const {
     result: { current: subcategoryLabelMapping },

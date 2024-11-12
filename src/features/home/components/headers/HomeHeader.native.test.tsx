@@ -48,8 +48,6 @@ mockUseAuthContext.mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('HomeHeader', () => {
   it.each`
     usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle

@@ -5,8 +5,6 @@ import { GeolocPermissionState } from '../enums'
 
 import { requestGeolocPermission } from './requestGeolocPermission.ios'
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('requestGeolocPermission ios', () => {
   beforeAll(() => (Platform.OS = 'ios'))
 
