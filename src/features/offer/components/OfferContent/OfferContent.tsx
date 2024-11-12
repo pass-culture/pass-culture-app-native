@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -24,12 +24,15 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
 
-  const footer = (
-    <OfferCTAButton
-      offer={offer}
-      subcategory={subcategory}
-      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-    />
+  const footer = useMemo(
+    () => (
+      <OfferCTAButton
+        offer={offer}
+        subcategory={subcategory}
+        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      />
+    ),
+    [offer, subcategory, trackEventHasSeenOfferOnce]
   )
 
   return (

@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
+import * as ReactQueryAPI from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
-import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -14,10 +14,19 @@ import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+const mockShowModal = jest.fn()
+jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
+  visible: false,
+  showModal: mockShowModal,
+  hideModal: jest.fn(),
+  toggleModal: jest.fn(),
+})
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -34,6 +43,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
     place: Kourou,
   }),
 }))
+
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+
+useQueryClientSpy.mockReturnValue({
+  getQueryData: () => ({ images: { recto: { url: 'image.jpeg' } } }),
+} as unknown as ReactQueryAPI.QueryClient)
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -55,7 +70,7 @@ function renderOfferContent({
   subcategory = mockSubcategory,
   isDesktopViewport = false,
 }: RenderOfferContentType) {
-  render(
+  return render(
     reactQueryProviderHOC(
       <OfferContent
         offer={offer}
@@ -71,6 +86,7 @@ function renderOfferContent({
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
+    jest.useRealTimers()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -86,7 +102,6 @@ describe('<OfferContent />', () => {
 
   it('should display sticky booking button on mobile', async () => {
     renderOfferContent({ isDesktopViewport: false })
-
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('sticky-booking-button')).toBeInTheDocument()
@@ -101,49 +116,59 @@ describe('<OfferContent />', () => {
   })
 
   it('should display mobile body on mobile', async () => {
-    renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false })
 
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('offer-body-mobile')).toBeInTheDocument()
+
+    unmount()
   })
 
   it('should display desktop body on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
+    const { unmount } = renderOfferContent({ isDesktopViewport: true })
     await screen.findByText('Réserver l’offre')
 
     expect(await screen.findByTestId('offer-body-desktop')).toBeInTheDocument()
+
+    unmount()
   })
 
   it('should display nonadhesive booking button on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
+    const { unmount } = renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
 
     expect(await screen.findByTestId('booking-button')).toBeInTheDocument()
+
+    unmount()
   })
 
-  it('should not display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
+  it('should display linear gradient on offer image', async () => {
     renderOfferContent({ isDesktopViewport: false })
 
-    await waitFor(async () => {
-      expect(screen.queryByTestId('imageGradient')).not.toBeInTheDocument()
-    })
+    expect(await screen.findByTestId('imageGradient')).toBeInTheDocument()
   })
 
   it('should not display tag on offer image when enableOfferPreview feature flag activated', async () => {
-    renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false })
 
     await waitFor(async () => {
       expect(screen.queryByTestId('imageTag')).not.toBeInTheDocument()
     })
+    unmount()
   })
 
-  it('should not navigate to offer preview screen when clicking on image offer', async () => {
-    renderOfferContent({ isDesktopViewport: false })
+  it('should show preview modal when carousel is not ready and clicking on offer placeholder image', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      images: null,
+    }
+    const { unmount } = renderOfferContent({ offer })
 
-    fireEvent.click(await screen.findByTestId('offerImageWithoutCarousel'))
+    fireEvent.click(await screen.findByLabelText('Carousel image 1'))
 
-    await waitFor(async () => {
-      expect(navigate).not.toHaveBeenCalled()
-    })
+    await waitFor(() => expect(mockShowModal).toHaveBeenCalledTimes(1))
+    unmount()
   })
 })

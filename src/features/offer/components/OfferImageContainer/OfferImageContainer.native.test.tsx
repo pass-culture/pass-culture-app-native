@@ -7,7 +7,7 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/subcategories/useCategoryId')
 
 describe('<OfferImageContainer />', () => {
-  it('should not display image inside carousel when offer has only one image', () => {
+  it('should display image inside carousel when offer has only one image with no pagination', () => {
     render(
       <OfferImageContainer
         imageUrls={['some_url_to_some_resource']}
@@ -16,7 +16,8 @@ describe('<OfferImageContainer />', () => {
       />
     )
 
-    expect(screen.queryByTestId('offerImageContainerCarousel')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
+    expect(screen.queryByTestId('onlyDotsContainer')).not.toBeOnTheScreen()
   })
 
   it('should not display carousel dots when offer has only one', () => {
@@ -57,9 +58,14 @@ describe('<OfferImageContainer />', () => {
   })
 
   it('should display image placeholder outside carousel when image url defined', () => {
-    render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} onPress={jest.fn()} />)
+    render(
+      <OfferImageContainer
+        categoryId={CategoryIdEnum.CINEMA}
+        onPress={jest.fn()}
+        placeholderImage="placeholder_image"
+      />
+    )
 
-    expect(screen.getByTestId('offerImageWithoutCarousel')).toBeOnTheScreen()
-    expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
+    expect(screen.getByTestId('placeholderImage')).toBeOnTheScreen()
   })
 })

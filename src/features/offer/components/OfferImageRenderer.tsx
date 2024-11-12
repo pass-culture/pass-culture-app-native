@@ -1,49 +1,62 @@
-import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
-import { SharedValue } from 'react-native-reanimated'
+import React, { FunctionComponent, useCallback, useState } from 'react'
+import Animated, { FadeIn, FadeOut, SharedValue } from 'react-native-reanimated'
+import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
-import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel'
-import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
+import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  offerImages: string[]
-  hasCarousel: boolean
+  offerImages?: string[]
+  placeholderImage?: string
   progressValue: SharedValue<number>
   onPress?: (index: number) => void
 }
 
 export const OfferImageRenderer: FunctionComponent<Props> = ({
-  categoryId,
-  offerImages,
-  hasCarousel,
+  offerImages = [],
   progressValue,
+  placeholderImage,
+  categoryId,
   onPress,
 }) => {
-  const offerBodyImage = offerImages[0] ? (
-    <OfferBodyImage imageUrl={offerImages[0]} />
-  ) : (
-    <OfferBodyImagePlaceholder categoryId={categoryId} />
-  )
+  const [carouselReady, setCarouselReady] = useState(false)
 
-  return hasCarousel ? (
-    <OfferImageCarousel
-      progressValue={progressValue}
-      offerImages={offerImages}
-      onItemPress={onPress}
-    />
-  ) : (
-    <TouchableOpacity onPress={() => onPress?.(0)} disabled={!onPress}>
-      <OfferImageWrapper
-        testID="offerImageWithoutCarousel"
-        imageUrl={offerImages.length ? offerImages[0] : ''}
-        shouldDisplayOfferPreview={Platform.OS !== 'web'}>
-        {offerBodyImage}
-      </OfferImageWrapper>
-    </TouchableOpacity>
+  const handleCarouselLoad = useCallback(() => {
+    setCarouselReady(true)
+  }, [setCarouselReady])
+
+  return (
+    <Animated.View entering={FadeIn}>
+      <StyledOfferImageCarousel
+        progressValue={progressValue}
+        offerImages={offerImages}
+        onItemPress={onPress}
+        onLoad={handleCarouselLoad}
+        isReady={carouselReady}
+      />
+      {carouselReady ? null : (
+        <AnimatedImageContainer exiting={FadeOut.delay(100)} testID="placeholderImage">
+          <OfferImageCarouselItem imageURL={placeholderImage} onPress={onPress} index={0}>
+            <OfferBodyImagePlaceholder categoryId={categoryId} />
+          </OfferImageCarouselItem>
+        </AnimatedImageContainer>
+      )}
+    </Animated.View>
   )
 }
+
+const StyledOfferImageCarousel = styled(OfferImageCarousel)<{ isReady?: boolean }>(
+  ({ isReady }) => ({
+    zIndex: isReady ? 2 : 0,
+  })
+)
+
+const AnimatedImageContainer = styled(Animated.View)({
+  zIndex: 1,
+  position: 'absolute',
+  top: 0,
+  left: 0,
+})

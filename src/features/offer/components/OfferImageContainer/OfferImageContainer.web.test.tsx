@@ -9,7 +9,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const mockOnPress = jest.fn()
 
 describe('<OfferImageContainer />', () => {
-  it('should not display carousel with one image', () => {
+  it('should display carousel with one image', () => {
     render(
       <OfferImageContainer
         imageUrls={['some_url_to_some_resource']}
@@ -19,7 +19,7 @@ describe('<OfferImageContainer />', () => {
       { theme: { isDesktopViewport: true } }
     )
 
-    expect(screen.getByTestId('offerImageWithoutCarousel')).toBeInTheDocument()
+    expect(screen.getByTestId('offerImageContainerCarousel')).toBeInTheDocument()
   })
 
   // TODO(PC-30559) : test flaky sur la CI
@@ -34,6 +34,6 @@ describe('<OfferImageContainer />', () => {
       { theme: { isDesktopViewport: true } }
     )
 
-    expect(screen.queryByTestId('offerImageWithoutCarousel')).not.toBeInTheDocument()
+    expect(screen.getByTestId('offerImageContainerCarousel')).toBeInTheDocument()
   })
 })

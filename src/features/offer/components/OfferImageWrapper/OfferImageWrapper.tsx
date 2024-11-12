@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import LinearGradient from 'react-native-linear-gradient'
@@ -16,6 +16,8 @@ type Props = {
   shouldDisplayOfferPreview?: boolean
   testID?: string
   isInCarousel?: boolean
+  withDropShadow?: boolean
+  style?: StyleProp<ViewStyle>
 }
 
 const isWeb = Platform.OS === 'web'
@@ -26,6 +28,8 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   shouldDisplayOfferPreview,
   testID = 'imageContainer',
   isInCarousel,
+  withDropShadow,
+  style,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const headerHeight = useGetHeaderHeight()
@@ -34,7 +38,12 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   const isSticky = isWeb && isDesktopViewport
 
   return (
-    <Container style={imageStyle} isSticky={isSticky} headerHeight={headerHeight} testID={testID}>
+    <Container
+      style={[style, imageStyle]}
+      isSticky={isSticky}
+      headerHeight={headerHeight}
+      withDropShadow={withDropShadow}
+      testID={testID}>
       {imageUrl && shouldDisplayOfferPreview ? (
         <React.Fragment>
           <StyledLinearGradient testID="imageGradient" isInCarousel={isInCarousel} />
@@ -47,23 +56,27 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(View)<{ headerHeight: number; isSticky?: boolean }>(
-  ({ headerHeight, isSticky, theme }) => ({
-    backgroundColor: theme.colors.white,
-    bottom: 0,
-    ...getShadow({
-      shadowOffset: {
-        width: 0,
-        height: getSpacing(2),
-      },
-      shadowRadius: getSpacing(3),
-      shadowColor: theme.colors.black,
-      shadowOpacity: 0.2,
-    }),
-    // position sticky only works in web
-    ...(isSticky ? { position: 'sticky', top: 48 + headerHeight, zIndex: 1 } : {}),
-  })
-)
+const Container = styled(View)<{
+  headerHeight: number
+  isSticky?: boolean
+  withDropShadow?: boolean
+}>(({ headerHeight, isSticky, withDropShadow, theme }) => ({
+  backgroundColor: 'transparent',
+  bottom: 0,
+  ...(withDropShadow
+    ? getShadow({
+        shadowOffset: {
+          width: 0,
+          height: getSpacing(2),
+        },
+        shadowRadius: getSpacing(3),
+        shadowColor: theme.colors.black,
+        shadowOpacity: 0.2,
+      })
+    : {}),
+  // position sticky only works in web
+  ...(isSticky ? { position: 'sticky', top: 48 + headerHeight, zIndex: 1 } : {}),
+}))
 
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
