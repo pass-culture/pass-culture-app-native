@@ -107,7 +107,7 @@ describe('useVenueBlock with offer address', () => {
     expect(result.current.venueAddress).toBe('75013 PARIS 13, 1 RUE DES CAFÉS')
   })
 
-  it('should return isOfferAddressDifferent to true if offer address different than venue address', () => {
+  it('should return isOfferAddressDifferent to true if offer and venue address are different', () => {
     const { result } = renderHook(() =>
       useVenueBlock({
         venue: offerWithAddress.venue,
@@ -118,7 +118,7 @@ describe('useVenueBlock with offer address', () => {
     expect(result.current.isOfferAddressDifferent).toEqual(true)
   })
 
-  it('should return isOfferAddressDifferent to false if offer address different and venue address are the same', () => {
+  it('should return isOfferAddressDifferent to false if offer and venue address are the same', () => {
     const offerWithSameAddress = {
       ...offerResponseSnap,
       address: {
