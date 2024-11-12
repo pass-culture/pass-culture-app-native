@@ -28,3 +28,20 @@ export type OfferAnalyticsParams = {
   playlistType?: PlaylistType
   artistName?: string
 }
+
+export type ConsultOfferLogParams = {
+  offerId: number
+  from: Referrals
+  moduleId?: string
+  moduleName?: string
+  query?: string
+  venueId?: number
+  homeEntryId?: string
+  searchId?: string
+  fromOfferId?: number
+  fromMultivenueOfferId?: number
+  playlistType?: PlaylistType
+  offer_display_index?: number
+  index?: number
+  artistName?: string
+}
