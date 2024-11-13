@@ -17,6 +17,7 @@ import { newColorMapping } from 'features/home/components/modules/categories/Cat
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -116,7 +117,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
                 offerId: +offer.objectID,
                 categoryId,
               })
-              analytics.logConsultOffer({
+              triggerConsultOfferLog({
                 offerId: +offer.objectID,
                 moduleId: item.id,
                 from: 'video_carousel_block',

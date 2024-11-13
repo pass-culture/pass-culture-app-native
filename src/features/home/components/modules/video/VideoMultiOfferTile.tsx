@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -62,7 +62,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
             offerId: +offer.objectID,
             categoryId,
           })
-          analytics.logConsultOffer({
+          triggerConsultOfferLog({
             offerId: +offer.objectID,
             ...analyticsParams,
           })

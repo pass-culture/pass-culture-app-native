@@ -11,9 +11,10 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
-import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +27,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -92,7 +93,7 @@ export const Favorite: React.FC<Props> = (props) => {
       offerId: offer.id,
     })
 
-    analytics.logConsultOffer({ offerId: offer.id, from: 'favorites' })
+    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' })
   }
 
   function onRemove() {

@@ -8,6 +8,7 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -121,7 +122,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
                 offerId: +highlightOfferId,
                 categoryId,
               })
-              analytics.logConsultOffer({
+              triggerConsultOfferLog({
                 offerId: +highlightOfferId,
                 from: 'highlightOffer',
                 moduleId: props.id,

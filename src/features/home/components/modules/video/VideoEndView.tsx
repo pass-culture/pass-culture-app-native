@@ -4,7 +4,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -45,7 +45,7 @@ export const VideoEndView: React.FC<{
                     offerId: +offer.objectID,
                     categoryId: mapping[offer.offer.subcategoryId],
                   })
-                  analytics.logConsultOffer({
+                  triggerConsultOfferLog({
                     offerId: +offer.objectID,
                     from: 'video',
                     moduleId,

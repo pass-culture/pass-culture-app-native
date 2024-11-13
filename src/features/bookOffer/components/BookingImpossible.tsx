@@ -8,11 +8,12 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useAddFavorite, useFavorite } from 'features/favorites/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -52,7 +53,7 @@ export const BookingImpossible: React.FC = () => {
     dismissModal()
 
     const from = 'bookingimpossible'
-    analytics.logConsultOffer({ offerId, from })
+    triggerConsultOfferLog({ offerId, from })
     navigate('Offer', { id: offerId, from })
   }
 

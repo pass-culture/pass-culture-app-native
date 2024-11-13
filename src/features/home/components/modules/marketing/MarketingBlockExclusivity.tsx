@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { Offer } from 'shared/offer/types'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
@@ -20,7 +20,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
   backgroundImageUrl,
 }: AttachedOfferCardProps) => {
   const logConsultOffer = () => {
-    analytics.logConsultOffer({
+    triggerConsultOfferLog({
       offerId: parseInt(offer.objectID),
       from: 'home',
       homeEntryId,

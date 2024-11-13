@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -65,7 +65,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         offerId: +offer.objectID,
         categoryId,
       })
-      analytics.logConsultOffer({
+      triggerConsultOfferLog({
         offerId: +offer.objectID,
         ...analyticsParams,
       })

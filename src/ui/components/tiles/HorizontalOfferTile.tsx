@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -19,6 +19,7 @@ import { getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
+
 interface Props extends Partial<HorizontalTileProps> {
   offer: Offer
   subtitles?: string[]
@@ -75,7 +76,7 @@ export const HorizontalOfferTile = ({
       offerId,
     })
 
-    analytics.logConsultOffer({
+    triggerConsultOfferLog({
       offerId,
       ...analyticsParams,
     })
