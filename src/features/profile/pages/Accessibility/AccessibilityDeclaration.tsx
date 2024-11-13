@@ -14,7 +14,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -413,7 +413,7 @@ export function AccessibilityDeclaration() {
   )
 }
 
-const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,

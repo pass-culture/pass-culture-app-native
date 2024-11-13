@@ -7,7 +7,7 @@ import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateTo
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function NoSearchResult() {
@@ -76,7 +76,7 @@ const ContainerText = styled.View(({ theme }) => ({
     : {}),
 }))
 
-const MainTitle = styled(Typo.Title4).attrs({
+const MainTitle = styled(TypoDS.Title4).attrs({
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
   color: theme.colors.black,

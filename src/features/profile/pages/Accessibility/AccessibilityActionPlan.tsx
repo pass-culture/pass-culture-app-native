@@ -12,7 +12,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -346,7 +346,7 @@ export function AccessibilityActionPlan() {
   )
 }
 
-const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,

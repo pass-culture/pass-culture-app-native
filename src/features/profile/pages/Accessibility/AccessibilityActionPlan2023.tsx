@@ -6,12 +6,12 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccessibilityActionPlan2023 = () => (
   <React.Fragment>
-    <Typo.Title4 {...getHeadingAttrs(2)}>Plan annuel 2023</Typo.Title4>
+    <TypoDS.Title4 {...getHeadingAttrs(2)}>Plan annuel 2023</TypoDS.Title4>
     <Spacer.Column numberOfSpaces={6} />
     <VerticalUl>
       <BulletListItem text="Formation des équipes produit aux enjeux de l’accessibilité">

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/marketingAndCommunication/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 
 interface Props {
   result?: GeneratedDeeplink
@@ -43,7 +43,7 @@ const ResultContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(TypoDS.Title4)({
   textAlign: 'center',
 })
 

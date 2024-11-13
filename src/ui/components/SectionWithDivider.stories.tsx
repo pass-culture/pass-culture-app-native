@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
 
@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof SectionWithDivider> = (props) => (
 
 const SectionContent: React.JSX.Element = (
   <View>
-    <Typo.Title4>Section with divider</Typo.Title4>
+    <TypoDS.Title4>Section with divider</TypoDS.Title4>
     <Typo.Body>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quas aut laborum, dolor
       sapiente quos doloribus sequi reprehenderit ullam porro rem corrupti libero repellendus nam

@@ -79,7 +79,7 @@ const DateRangeCaption = styled(Typo.Caption)(({ theme }) => ({
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
-const Subtitle = styled(Typo.Title4)(({ theme }) => ({
+const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

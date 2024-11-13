@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type IntroductionProps = {
   title: string
@@ -11,7 +11,7 @@ type IntroductionProps = {
 export const Introduction = ({ title, paragraph }: IntroductionProps) => (
   <React.Fragment>
     <IntroductionContainer>
-      <Typo.Title4 numberOfLines={3}>{title}</Typo.Title4>
+      <TypoDS.Title4 numberOfLines={3}>{title}</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>{paragraph}</Typo.Body>
     </IntroductionContainer>

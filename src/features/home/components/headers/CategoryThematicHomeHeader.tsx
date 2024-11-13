@@ -7,7 +7,7 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 const HEADER_HEIGHT = getSpacing(45)
@@ -86,7 +86,7 @@ const TextContainer = styled.View({
   right: 0,
 })
 
-const Subtitle = styled(Typo.Title4)(({ theme }) => ({
+const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

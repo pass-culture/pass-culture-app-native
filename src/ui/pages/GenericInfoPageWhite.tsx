@@ -14,7 +14,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 import { TextProps } from 'ui/theme/typography'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -55,7 +55,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const { animation } = props as PropsWithAnimation
   const { icon: Icon, iconSize } = props as PropsWithIcon
   const titleComponent = props.titleComponent ?? TypoDS.Title1
-  const subtitleComponent = props.subtitleComponent ?? Typo.Title4
+  const subtitleComponent = props.subtitleComponent ?? TypoDS.Title4
   const { isDesktopViewport } = useTheme()
   const { top } = useCustomSafeInsets()
   const StyledTitle = useMemo(() => {

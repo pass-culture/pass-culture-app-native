@@ -7,7 +7,7 @@ import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const AppComponents: FunctionComponent = () => {
   return (
@@ -71,7 +71,7 @@ const SnackBars = () => {
       {snackbars.map(({ title, showSnackBar, ...settings }) => (
         <React.Fragment key={title}>
           <TouchableOpacity onPress={() => showSnackBar(settings)}>
-            <Typo.Title4>{title}</Typo.Title4>
+            <TypoDS.Title4>{title}</TypoDS.Title4>
           </TouchableOpacity>
           <Spacer.Column numberOfSpaces={1} />
         </React.Fragment>

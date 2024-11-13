@@ -20,7 +20,7 @@ import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocu
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
-import { getSpacing, Spacer, Typo } from '../theme'
+import { getSpacing, Spacer, TypoDS } from '../theme'
 
 interface AccordionProps {
   title: React.JSX.Element | string
@@ -170,7 +170,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({ flex: 1, ...touchableFocusOutline(theme, isFocus) }))
 
-const StyledTitle = styled(Typo.Title4)({ flexShrink: 1 })
+const StyledTitle = styled(TypoDS.Title4)({ flexShrink: 1 })
 
 const StyledArrowAnimatedView = styled(Animated.View)({
   marginLeft: getSpacing(2),

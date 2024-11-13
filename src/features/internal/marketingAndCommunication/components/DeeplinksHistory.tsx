@@ -8,7 +8,7 @@ import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/c
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { getSpacing, padding, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
   history: Readonly<GeneratedDeeplink[]>
@@ -123,7 +123,7 @@ const Container = styled.View({
   padding: getSpacing(2),
 })
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(TypoDS.Title4)({
   textAlign: 'center',
 })
 

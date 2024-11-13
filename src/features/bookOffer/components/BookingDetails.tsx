@@ -33,7 +33,7 @@ import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -196,7 +196,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       />
       <Spacer.Column numberOfSpaces={6} />
 
-      <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>Informations</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <BookingInformations />
       <Spacer.Column numberOfSpaces={6} />
@@ -316,7 +316,7 @@ const VenueTitleContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+const VenueTitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 
