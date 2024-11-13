@@ -29,15 +29,14 @@ import { theme } from 'theme'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
-const searchState = { ...initialSearchState, searchId }
-let mockSearchState = searchState
+const mockSearchState: SearchState = { ...initialSearchState, searchId }
 const mockDispatch = jest.fn()
-
+const mockUseSearch = jest.fn(() => ({
+  searchState: mockSearchState,
+  dispatch: mockDispatch,
+}))
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 jest.mock('features/venueMap/useGetAllVenues')
@@ -245,7 +244,10 @@ describe('SearchResultsContent component', () => {
       nbHits: 0,
       userData: [],
     })
-    mockSearchState = searchState
+    mockUseSearch.mockReturnValue({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
 
     mockUseLocation.mockReturnValue({
       ...everywhereUseLocation,
@@ -321,10 +323,14 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display an icon and change color in category button when has category selected', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+        },
+        dispatch: mockDispatch,
+      })
+
       renderSearchResultsContent()
 
       const categoryButtonIcon = await screen.findByTestId('categoryButtonIcon')
@@ -359,10 +365,14 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display an icon and change color in prices filter button when has prices filter selected', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        minPrice: '5',
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          minPrice: '5',
+        },
+        dispatch: mockDispatch,
+      })
+
       renderSearchResultsContent()
 
       const priceButtonIcon = await screen.findByTestId('priceButtonIcon')
@@ -460,10 +470,14 @@ describe('SearchResultsContent component', () => {
 
     it('when a category filter is selected and position is null', async () => {
       mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
-      mockSearchState = {
-        ...mockSearchState,
-        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
+          searchId,
+        },
+        dispatch: mockDispatch,
+      })
 
       renderSearchResultsContent()
 
@@ -483,7 +497,13 @@ describe('SearchResultsContent component', () => {
   })
 
   it(`should display ${venue.label} in location filter button label when a venue is selected`, async () => {
-    mockSearchState = { ...searchState, venue }
+    mockUseSearch.mockReturnValueOnce({
+      searchState: {
+        ...mockSearchState,
+        venue,
+      },
+      dispatch: mockDispatch,
+    })
     renderSearchResultsContent()
 
     expect(await screen.findByText(venue.label)).toBeOnTheScreen()
@@ -525,30 +545,40 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display venueButtonLabel in venue filter if a venue is selected', async () => {
-      mockSearchState = {
-        ...searchState,
-        venue,
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          venue,
+        },
+        dispatch: mockDispatch,
+      })
       renderSearchResultsContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
     })
 
     it('should display "Lieu culturel" in venue filter if location type is AROUND_ME', async () => {
-      mockSearchState = {
-        ...searchState,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+        },
+        dispatch: mockDispatch,
+      })
+
       renderSearchResultsContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
 
     it('should display "Lieu culturel" in venue filter if location type is EVERYWHERE', async () => {
-      mockSearchState = {
-        ...searchState,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
+        },
+        dispatch: mockDispatch,
+      })
       renderSearchResultsContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
@@ -580,10 +610,13 @@ describe('SearchResultsContent component', () => {
     `(
       'should display an icon and change color in dates and hours filter button when has $type selected',
       async ({ params }: { params: SearchState }) => {
-        mockSearchState = {
-          ...mockSearchState,
-          ...params,
-        }
+        mockUseSearch.mockReturnValueOnce({
+          searchState: {
+            ...mockSearchState,
+            ...params,
+          },
+          dispatch: mockDispatch,
+        })
         renderSearchResultsContent()
 
         const datesHoursButtonIcon = await screen.findByTestId('datesHoursButtonIcon')
@@ -701,7 +734,10 @@ describe('SearchResultsContent component', () => {
 
     mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
 
-    mockSearchState = searchState
+    mockUseSearch.mockReturnValueOnce({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
     const mockAccessibilityFilter = {
       isAudioDisabilityCompliant: undefined,
       isMentalDisabilityCompliant: undefined,
@@ -746,7 +782,10 @@ describe('SearchResultsContent component', () => {
 
     mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
 
-    mockSearchState = searchState
+    mockUseSearch.mockReturnValueOnce({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
 
     screen.rerender(<SearchResultsContent />)
 
@@ -791,7 +830,10 @@ describe('SearchResultsContent component', () => {
 
     mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
 
-    mockSearchState = searchState
+    mockUseSearch.mockReturnValueOnce({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+    })
     screen.rerender(<SearchResultsContent />)
 
     await waitFor(() => {
@@ -842,7 +884,11 @@ describe('SearchResultsContent component', () => {
         nbHits: mockedAlgoliaResponse.nbHits,
         userData: [{ message: 'n’est pas disponible sur le pass Culture.' }],
       })
-      mockSearchState = { ...searchState, query: 'iPhone' }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: { ...mockSearchState, query: 'iPhone' },
+        dispatch: mockDispatch,
+      })
+
       renderSearchResultsContent()
       await screen.findByText('Lieu culturel')
 
@@ -859,7 +905,10 @@ describe('SearchResultsContent component', () => {
         userData: [{ message: 'Offre non disponible sur le pass Culture.' }],
       })
 
-      mockSearchState = { ...searchState, query: 'iPhone' }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: { ...mockSearchState, query: 'iPhone' },
+        dispatch: mockDispatch,
+      })
       renderSearchResultsContent()
 
       expect(await screen.findByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
@@ -872,7 +921,10 @@ describe('SearchResultsContent component', () => {
         nbHits: mockedAlgoliaResponse.nbHits,
         userData: [],
       })
-      mockSearchState = { ...searchState, query: 'Deezer' }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: { ...mockSearchState, query: 'Deezer' },
+        dispatch: mockDispatch,
+      })
       renderSearchResultsContent()
       await screen.findByText('Lieu culturel')
 
@@ -882,11 +934,10 @@ describe('SearchResultsContent component', () => {
 
   describe('Main filter button', () => {
     it('should display filter button with the number of active filters', async () => {
-      mockSearchState = {
-        ...searchState,
-        priceRange: [5, 300],
-        offerIsDuo: true,
-      }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: { ...mockSearchState, priceRange: [5, 300], offerIsDuo: true },
+        dispatch: mockDispatch,
+      })
 
       renderSearchResultsContent()
 
