@@ -11,10 +11,11 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
+jest.useFakeTimers()
 jest.mock('libs/address/useFormatFullAddress')
 const offerVenues = [
   {
@@ -104,6 +105,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
 
 describe('<OfferPlace />', () => {
   beforeEach(() => {
@@ -271,7 +274,7 @@ describe('<OfferPlace />', () => {
     expect(screen.getByText('Lieu de l’évènement')).toBeOnTheScreen()
   })
 
-  it('should navigate to an other offer when user choose an other venue from "Changer le lieu de retrait" button', () => {
+  it('should navigate to an other offer when user choose an other venue from "Changer le lieu de retrait" button', async () => {
     const mockShowModal = jest.fn()
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: true,
@@ -289,8 +292,8 @@ describe('<OfferPlace />', () => {
       },
     })
 
-    fireEvent.press(screen.getByText('Le Livre Éclaire'))
-    fireEvent.press(screen.getByText('Choisir ce lieu'))
+    await user.press(screen.getByText('Le Livre Éclaire'))
+    await user.press(screen.getByText('Choisir ce lieu'))
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       fromOfferId: mockOffer.id,
@@ -299,7 +302,7 @@ describe('<OfferPlace />', () => {
     })
   })
 
-  it('should log ConsultOffer when new offer venue is selected', () => {
+  it('should log ConsultOffer when new offer venue is selected', async () => {
     const mockShowModal = jest.fn()
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: true,
@@ -317,8 +320,8 @@ describe('<OfferPlace />', () => {
       },
     })
 
-    fireEvent.press(screen.getByText('Le Livre Éclaire'))
-    fireEvent.press(screen.getByText('Choisir ce lieu'))
+    await user.press(screen.getByText('Le Livre Éclaire'))
+    await user.press(screen.getByText('Choisir ce lieu'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -328,7 +331,7 @@ describe('<OfferPlace />', () => {
     })
   })
 
-  it('should log when the users press "Changer le lieu de retrait" button', () => {
+  it('should log when the users press "Changer le lieu de retrait" button', async () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -340,7 +343,7 @@ describe('<OfferPlace />', () => {
       },
     })
 
-    fireEvent.press(screen.getByText('Changer le lieu de retrait'))
+    await user.press(screen.getByText('Changer le lieu de retrait'))
 
     expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
   })
@@ -395,20 +398,20 @@ describe('<OfferPlace />', () => {
       expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
     })
 
-    it('should navigate to venue page when pressing venue button', () => {
+    it('should navigate to venue page when pressing venue button', async () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
-      fireEvent.press(screen.getByTestId('RightFilled'))
+      await user.press(screen.getByTestId('RightFilled'))
 
       expect(navigate).toHaveBeenCalledWith('Venue', { id: mockOffer.venue.id })
     })
 
-    it('should log ConsultVenue when pressing venue button', () => {
+    it('should log ConsultVenue when pressing venue button', async () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
-      fireEvent.press(screen.getByTestId('RightFilled'))
+      await user.press(screen.getByTestId('RightFilled'))
 
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: mockOffer.venue.id,
@@ -435,7 +438,7 @@ describe('<OfferPlace />', () => {
       expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
     })
 
-    it('should log consult itinerary when pressing "Voir l’itinéraire" button', () => {
+    it('should log consult itinerary when pressing "Voir l’itinéraire" button', async () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponseV2 = {
         ...mockOffer,
@@ -443,7 +446,7 @@ describe('<OfferPlace />', () => {
       }
       renderOfferPlace({ offer })
 
-      fireEvent.press(screen.getByText('Voir l’itinéraire'))
+      await user.press(screen.getByText('Voir l’itinéraire'))
 
       expect(analytics.logConsultItinerary).toHaveBeenNthCalledWith(1, {
         from: 'offer',
@@ -564,7 +567,7 @@ describe('<OfferPlace />', () => {
         })
 
         await act(async () => {
-          fireEvent.press(screen.getByText('Changer le lieu de retrait'))
+          await user.press(screen.getByText('Changer le lieu de retrait'))
         })
 
         expect(screen.getByText(headerMessage)).toBeOnTheScreen()
