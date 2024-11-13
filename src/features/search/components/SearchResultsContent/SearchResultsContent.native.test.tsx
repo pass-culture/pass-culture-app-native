@@ -16,7 +16,7 @@ import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/ve
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/location'
+import { GeolocPermissionState, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -124,26 +124,56 @@ jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
-const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
-let mockPosition: Position = DEFAULT_POSITION
-let mockHasGeolocPosition = false
-const mockPlace: SuggestedPlace = {
+const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const mockShowGeolocPermissionModal = jest.fn()
-let mockSelectedLocationMode = LocationMode.AROUND_ME
 
+const mockShowGeolocPermissionModal = jest.fn()
+const mockedPosition = { latitude: 2, longitude: 40 } as Position
+const mockedNoPosition = null as Position
+const DEFAULT_RADIUS = 50
+const everywhereUseLocation = {
+  geolocPosition: mockedNoPosition,
+  geolocPositionError: null,
+  place: mockedPlace,
+  userLocation: mockedNoPosition,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  hasGeolocPosition: false,
+  permissionState: GeolocPermissionState.DENIED,
+  onModalHideRef: jest.fn(),
+  setPlace: jest.fn(),
+  isCurrentLocationMode: jest.fn(),
+  setSelectedLocationMode: jest.fn(),
+  showGeolocPermissionModal: mockShowGeolocPermissionModal,
+  requestGeolocPermission: jest.fn(),
+  triggerPositionUpdate: jest.fn(),
+  onPressGeolocPermissionModalButton: jest.fn(),
+  onResetPlace: jest.fn(),
+  onSetSelectedPlace: jest.fn(),
+  selectedPlace: null,
+  setSelectedPlace: jest.fn(),
+  placeQuery: '',
+  setPlaceQuery: jest.fn(),
+  aroundPlaceRadius: DEFAULT_RADIUS,
+  setAroundPlaceRadius: jest.fn(),
+  aroundMeRadius: DEFAULT_RADIUS,
+  setAroundMeRadius: jest.fn(),
+}
+const aroundMeUseLocation = {
+  ...everywhereUseLocation,
+  geolocPosition: mockedPosition,
+  userLocation: mockedPosition,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  hasGeolocPosition: true,
+  permissionState: GeolocPermissionState.GRANTED,
+}
+
+const mockUseLocation = jest.fn(() => everywhereUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    hasGeolocPosition: mockHasGeolocPosition,
-    place: mockPlace,
-    selectedLocationMode: mockSelectedLocationMode,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockRemoveSelectedVenue = jest.fn()
@@ -216,9 +246,12 @@ describe('SearchResultsContent component', () => {
       userData: [],
     })
     mockSearchState = searchState
-    mockPosition = DEFAULT_POSITION
 
-    mockHasGeolocPosition = false
+    mockUseLocation.mockReturnValue({
+      ...everywhereUseLocation,
+      userLocation: mockedPosition,
+      hasGeolocPosition: false,
+    })
   })
 
   it('should render correctly', async () => {
@@ -425,14 +458,11 @@ describe('SearchResultsContent component', () => {
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
 
-    it.each`
-      filter                                                     | params
-      ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
-    `('when $filter filter selected and position is null', async ({ params }) => {
-      mockPosition = null
+    it('when a category filter is selected and position is null', async () => {
+      mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
       mockSearchState = {
         ...mockSearchState,
-        ...params,
+        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
       }
 
       renderSearchResultsContent()
@@ -443,7 +473,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('when position is null and no results search', async () => {
-      mockPosition = null
+      mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
       renderSearchResultsContent()
 
       await screen.findByText('Lieu culturel')
@@ -592,7 +622,10 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    mockPosition = null
+    mockUseLocation.mockReturnValueOnce({
+      ...everywhereUseLocation,
+      userLocation: null,
+    })
     mockUseSearchResults.mockReturnValueOnce({
       ...initialSearchResults,
       hits: mockedAlgoliaResponse.hits,
@@ -607,20 +640,21 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should refetch results when user position received in a second time', async () => {
-    mockPosition = null
+    mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
     renderSearchResultsContent()
     await screen.findByText('Lieu culturel')
 
     expect(mockRefetch).not.toHaveBeenCalled()
 
-    mockPosition = DEFAULT_POSITION
+    mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
+
     screen.rerender(<SearchResultsContent />)
 
     expect(mockRefetch).toHaveBeenCalledTimes(1)
   })
 
   it('should refetch results when user stop to share his position', async () => {
-    mockPosition = DEFAULT_POSITION
+    mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
     renderSearchResultsContent()
     await screen.findByText('Lieu culturel')
 
@@ -631,11 +665,10 @@ describe('SearchResultsContent component', () => {
 
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
-    mockPosition = null
+    mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
     screen.rerender(<SearchResultsContent />)
 
-    // first rendering + rendering when user stop to share his position
-    expect(mockRefetch).toHaveBeenCalledTimes(2)
+    expect(mockRefetch).toHaveBeenCalledTimes(1)
   })
 
   it('should not log PerformSearch when there is not search query execution', async () => {
@@ -767,7 +800,10 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    mockPosition = null
+    mockUseLocation.mockReturnValueOnce({
+      ...everywhereUseLocation,
+      userLocation: null,
+    })
     mockUseSearchResults.mockReturnValueOnce({
       ...initialSearchResults,
       hits: mockedAlgoliaResponse.hits,
@@ -782,7 +818,10 @@ describe('SearchResultsContent component', () => {
 
   describe('should display geolocation incitation button', () => {
     beforeAll(() => {
-      mockPosition = null
+      mockUseLocation.mockReturnValue({
+        ...everywhereUseLocation,
+        userLocation: null,
+      })
       mockUseSearchResults.mockReturnValueOnce({
         ...initialSearchResults,
         hits: mockedAlgoliaResponse.hits,
@@ -860,6 +899,27 @@ describe('SearchResultsContent component', () => {
     })
   })
 
+  describe('when feature flag map in search desactivated', () => {
+    beforeEach(() => {
+      mockUseSearchResults.mockReturnValue({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+      })
+      useFeatureFlagSpy.mockReturnValue(false)
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should not display tabs', async () => {
+      renderSearchResultsContent()
+
+      await screen.findByText('Prix')
+
+      expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
+    })
+  })
+
   describe('when feature flag map in search activated', () => {
     beforeEach(() => {
       mockUseSearchResults.mockReturnValue({
@@ -868,28 +928,14 @@ describe('SearchResultsContent component', () => {
         nbHits: mockedAlgoliaResponse.nbHits,
       })
       useFeatureFlagSpy.mockReturnValue(true)
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 
-    afterEach(() => {
-      mockSelectedLocationMode = LocationMode.AROUND_ME
-    })
-
-    it('should display tabs when FF map active', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+    it('should display tabs', async () => {
       renderSearchResultsContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
       expect(await screen.findByText('Liste')).toBeOnTheScreen()
-    })
-
-    it('should not display tabs when FF map deactivated', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
-      renderSearchResultsContent()
-
-      await screen.findByText('Prix')
-
-      expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
     })
 
     it('should log consult venue map when pressing map tab', async () => {
@@ -924,15 +970,6 @@ describe('SearchResultsContent component', () => {
       expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()
     })
 
-    it('should open venue map location modal when pressing map tab and user location selected is everywhere', async () => {
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
-      renderSearchResultsContent()
-
-      await user.press(await screen.findByText('Carte'))
-
-      expect(await screen.findByText('Localisation')).toBeOnTheScreen()
-    })
-
     it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
@@ -951,13 +988,26 @@ describe('SearchResultsContent component', () => {
       expect(screen.getByTestId('venue-map-view')).toBeOnTheScreen()
     })
 
-    it('should not display venue map when pressing map tab if user location selected is everywhere', async () => {
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
-      renderSearchResultsContent()
+    describe('and user location selected is everywhere', () => {
+      beforeEach(() => {
+        mockUseLocation.mockReturnValue(everywhereUseLocation)
+      })
 
-      await user.press(await screen.findByText('Carte'))
+      it('should open venue map location modal when pressing map tab', async () => {
+        render(reactQueryProviderHOC(<SearchResultsContent />))
 
-      expect(screen.queryByTestId('venue-map-view')).not.toBeOnTheScreen()
+        await user.press(await screen.findByText('Carte'))
+
+        expect(await screen.findByText('Localisation')).toBeOnTheScreen()
+      })
+
+      it('should not display venue map when pressing map tab', async () => {
+        render(reactQueryProviderHOC(<SearchResultsContent />))
+
+        await user.press(await screen.findByText('Carte'))
+
+        expect(screen.queryByTestId('venue-map-view')).not.toBeOnTheScreen()
+      })
     })
   })
 })
