@@ -47,7 +47,7 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
 
       const actualAchievements = category.achievements.length - category.remainingAchievements
       category.progress = actualAchievements / category.achievements.length
-      category.progressText = `${(category.progress * 100).toFixed(0)}%`
+      category.progressText = `${actualAchievements}/${category.achievements.length}`
       return acc
     }
 

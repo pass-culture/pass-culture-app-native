@@ -269,7 +269,7 @@ describe('useAchievements', () => {
       })
 
       describe('text', () => {
-        it('should return 0% when no achievements are completed', () => {
+        it('should return 0/2 when no achievements are completed', () => {
           const { result } = renderHook(() =>
             useAchievements({
               achievements: [firstArtLessonBooking, firstBookBooking],
@@ -281,12 +281,12 @@ describe('useAchievements', () => {
           expect(badges).toEqual([
             expect.objectContaining({
               category: CombinedAchievementCategory.FIRST_BOOKINGS,
-              progressText: '0%',
+              progressText: '0/2',
             }),
           ])
         })
 
-        it('should return 100% when all achievements are completed', () => {
+        it('should return 2/2 when all achievements are completed', () => {
           const { result } = renderHook(() =>
             useAchievements({
               achievements: [firstArtLessonBooking, firstBookBooking],
@@ -298,7 +298,7 @@ describe('useAchievements', () => {
           expect(badges).toEqual([
             expect.objectContaining({
               category: CombinedAchievementCategory.FIRST_BOOKINGS,
-              progressText: '100%',
+              progressText: '2/2',
             }),
           ])
         })
@@ -315,24 +315,7 @@ describe('useAchievements', () => {
           expect(badges).toEqual([
             expect.objectContaining({
               category: CombinedAchievementCategory.FIRST_BOOKINGS,
-              progressText: '50%',
-            }),
-          ])
-        })
-
-        it('should return 33% when 1 achievement of 3 are completed', () => {
-          const { result } = renderHook(() =>
-            useAchievements({
-              achievements: [firstArtLessonBooking, firstBookBooking, firstMovieBooking],
-              completedAchievements: [userCompletedArtLessonBooking],
-            })
-          )
-          const { badges } = result.current
-
-          expect(badges).toEqual([
-            expect.objectContaining({
-              category: CombinedAchievementCategory.FIRST_BOOKINGS,
-              progressText: '33%',
+              progressText: '1/2',
             }),
           ])
         })
