@@ -128,6 +128,8 @@ There are certain number of optimizations/improvements and things that were done
 MUST HAVE:
 
 - Remove service workers (caused cache update issues) and manifest if we decide to not use PWA (because it requires maintenance).
+- Test older browsers
+- If needed, increase compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work)
 
 SHOULD HAVE:
 
@@ -139,7 +141,7 @@ COULD HAVE:
 
 - Using vite's chunking technology (or any other chunking technology) to reduce the initial loading time of the web app
 - Chunk protection (check there isn't any bundle issues and protect against future issues)
-- Testing older browser and increasing compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work), and update `src/web/SupportedBrowsersGate.web.test.tsx` and `package.json.browserList`
+- Depending on the compatibility with older browsers, update `src/web/SupportedBrowsersGate.web.test.tsx` and `package.json.browserList`
 - PWA (it seems that vite generates a manifest but we should make sure the service worker is functioning)
 
 COULD BE NICE TO HAVE:
