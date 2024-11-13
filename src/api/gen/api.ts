@@ -382,6 +382,7 @@ export enum BookingCancellationReasons {
   'BACKOFFICE_BENEFICIARY_REQUEST' = 'BACKOFFICE_BENEFICIARY_REQUEST',
   'BACKOFFICE_OFFER_MODIFIED' = 'BACKOFFICE_OFFER_MODIFIED',
   'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
+  'BACKOFFICE_OFFERER_BUSINESS_CLOSED' = 'BACKOFFICE_OFFERER_BUSINESS_CLOSED',
   'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
 }
 // #region BOOKING
@@ -1773,45 +1774,19 @@ export interface MovieType {
 }
 /**
  * @export
- * @interface MusicSubType
- */
-export interface MusicSubType {
-  /**
-   * @type {number}
-   * @memberof MusicSubType
-   */
-  code: number
-  /**
-   * @type {string}
-   * @memberof MusicSubType
-   */
-  label: string
-  /**
-   * @type {string}
-   * @memberof MusicSubType
-   */
-  slug: string
-}
-/**
- * @export
  * @interface MusicType
  */
 export interface MusicType {
   /**
-   * @type {Array<MusicSubType>}
-   * @memberof MusicType
-   */
-  children: Array<MusicSubType>
-  /**
-   * @type {number}
-   * @memberof MusicType
-   */
-  code: number
-  /**
    * @type {string}
    * @memberof MusicType
    */
   label: string
+  /**
+   * @type {string}
+   * @memberof MusicType
+   */
+  name: string
 }
 /**
  * An enumeration.
@@ -1999,6 +1974,42 @@ export interface OfferAccessibilityResponse {
 }
 /**
  * @export
+ * @interface OfferAddressResponse
+ */
+export interface OfferAddressResponse {
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof OfferAddressResponse
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  timezone: string
+}
+/**
+ * @export
  * @interface OfferExtraDataResponse
  */
 export interface OfferExtraDataResponse {
@@ -2017,6 +2028,11 @@ export interface OfferExtraDataResponse {
    * @memberof OfferExtraDataResponse
    */
   cast?: Array<string> | null
+  /**
+   * @type {string}
+   * @memberof OfferExtraDataResponse
+   */
+  certificate?: string | null
   /**
    * @type {number}
    * @memberof OfferExtraDataResponse
@@ -2193,6 +2209,11 @@ export interface OfferResponse {
    * @memberof OfferResponse
    */
   accessibility: OfferAccessibilityResponse
+  /**
+   * @type {OfferAddressResponse}
+   * @memberof OfferResponse
+   */
+  address?: OfferAddressResponse | null
   /**
    * @type {string}
    * @memberof OfferResponse
@@ -3100,6 +3121,7 @@ export enum SearchGroupNameEnumv2 {
   'LIVRES' = 'LIVRES',
   'MEDIA_PRESSE' = 'MEDIA_PRESSE',
   'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
+  'MUSIQUE' = 'MUSIQUE',
   'NONE' = 'NONE',
   'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
   'SPECTACLES' = 'SPECTACLES',
