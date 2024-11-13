@@ -33,7 +33,7 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
       category.achievements.push({
         id: achievement.id,
         name: achievement.name,
-        description: achievement.description,
+        description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
         illustration: isCompleted
           ? achievement.illustrationUnlocked
           : achievement.illustrationLocked,
@@ -60,7 +60,7 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
         {
           id: achievement.id,
           name: achievement.name,
-          description: achievement.description,
+          description: achievement.descriptionLocked,
           illustration: isCompleted
             ? achievement.illustrationUnlocked
             : achievement.illustrationLocked,

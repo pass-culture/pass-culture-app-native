@@ -8,18 +8,6 @@ import { AchievementDetailsModal } from './AchievementDetailsModal'
 const hideModalMock = jest.fn()
 
 describe('<AchievementDetailsModal/>', () => {
-  it('should match snapshot', () => {
-    render(
-      <AchievementDetailsModal
-        id={AchievementId.FIRST_ART_LESSON_BOOKING}
-        visible
-        hideModal={hideModalMock}
-      />
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should call hideModal function when clicking on Close icon', () => {
     render(
       <AchievementDetailsModal

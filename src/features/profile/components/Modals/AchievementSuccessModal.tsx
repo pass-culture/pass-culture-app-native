@@ -1,8 +1,8 @@
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
 import styled from 'styled-components/native'
 
 import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
+import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -13,7 +13,7 @@ import { getSpacing, TypoDS } from 'ui/theme'
 interface Props {
   visible: boolean
   hideModal: () => void
-  id: string
+  id: AchievementId
 }
 
 export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
@@ -35,7 +35,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       <Spacer.Column numberOfSpaces={2} />
       <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.Body>{achievement?.description}</TypoDS.Body>
+      <TypoDS.Body>{achievement?.descriptionUnlocked}</TypoDS.Body>
       <Spacer.Column numberOfSpaces={10} />
 
       <InternalTouchableLink

@@ -16,6 +16,6 @@ describe('<Achievements/>', () => {
     const firstMovieBookingBadge = screen.getByText('Cinéphile en herbe')
     fireEvent.press(firstMovieBookingBadge)
 
-    expect(await screen.findByText('Fait le 13/11/2024')).toBeOnTheScreen()
+    expect(await screen.findByText('Tu as réservé ta première séance de cinéma')).toBeOnTheScreen()
   })
 })

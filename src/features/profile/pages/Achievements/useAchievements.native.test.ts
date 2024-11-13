@@ -34,7 +34,8 @@ const CombinedAchievementCategory = {
 const testAchievement = {
   id: CombinedAchievementId.TEST,
   name: 'Test',
-  description: 'Test',
+  descriptionLocked: 'Test',
+  descriptionUnlocked: 'Test',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: CombinedAchievementCategory.TEST,

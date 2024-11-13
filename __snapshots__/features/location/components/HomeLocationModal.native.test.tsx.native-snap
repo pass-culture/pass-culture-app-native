@@ -1,141 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeLocationModal should render correctly if modal visible 1`] = `
-<Modal
-  accessibilityLabelledBy="testUuidV4"
-  accessibilityModal={true}
-  animationType="none"
-  deviceHeight={1334}
-  deviceWidth={750}
-  hardwareAccelerated={false}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[Function]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={true}
->
-  <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          [
-            {
-              "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
-            },
-          ],
-        ],
-        {},
-        {
-          "opacity": 0.7,
-        },
-      ]
-    }
-  />
-  <View
+[
+  <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
+    animationType="none"
     deviceHeight={1334}
     deviceWidth={750}
+    hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
     onModalWillHide={[Function]}
     onModalWillShow={[Function]}
+    onRequestClose={[Function]}
     panResponderThreshold={4}
-    pointerEvents="box-none"
     scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
     statusBarTranslucent={true}
-    style={
-      [
-        [
-          {},
-          [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            [
-              {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
-              },
-              {
-                "margin": "auto",
-              },
-            ],
-          ],
-        ],
-        {
-          "transform": [
-            {
-              "translateY": 0,
-            },
-          ],
-        },
-        {},
-      ]
-    }
     supportedOrientations={
       [
         "portrait",
@@ -143,136 +28,347 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
       ]
     }
     swipeThreshold={100}
+    testID="modal"
+    transparent={true}
+    visible={true}
   >
     <View
-      height={1318}
-      maxHeight={1334}
-      noPadding={true}
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
         [
+          [
+            {
+              "backgroundColor": "black",
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
+          ],
+          {},
           {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 1318,
-            "justifyContent": "center",
-            "maxHeight": 1334,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "width": "100%",
+            "opacity": 0.7,
           },
         ]
       }
-      testID="modalContainer"
+    />
+    <View
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      deviceHeight={1334}
+      deviceWidth={750}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      panResponderThreshold={4}
+      pointerEvents="box-none"
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      style={
+        [
+          [
+            {},
+            [
+              {
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
+              },
+              {
+                "flex": 1,
+                "justifyContent": "center",
+              },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
+            ],
+          ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
+        ]
+      }
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
     >
       <View
-        nativeID="testUuidV4"
+        height={1318}
+        maxHeight={1334}
+        noPadding={true}
         style={
           [
             {
-              "flexDirection": "row",
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomEndRadius": 0,
+              "borderBottomLeftRadius": 0,
+              "borderBottomRightRadius": 0,
+              "borderBottomStartRadius": 0,
+              "borderTopEndRadius": 16,
+              "borderTopLeftRadius": 20,
+              "borderTopRightRadius": 20,
+              "borderTopStartRadius": 16,
+              "flexDirection": "column",
+              "height": 1318,
+              "justifyContent": "center",
+              "maxHeight": 1334,
+              "maxWidth": 960,
+              "paddingBottom": 32,
               "width": "100%",
             },
           ]
         }
-        testID="customModalHeader"
+        testID="modalContainer"
       >
         <View
+          nativeID="testUuidV4"
           style={
             [
               {
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
+                "flexDirection": "row",
                 "width": "100%",
               },
             ]
           }
+          testID="customModalHeader"
         >
           <View
             style={
               [
                 {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
                   "width": "100%",
                 },
               ]
             }
-            testID="modalHeader"
           >
             <View
-              justifyContent="left"
               style={
                 [
                   {
-                    "alignItems": "flex-start",
+                    "display": "flex",
                     "flexDirection": "row",
-                    "height": 28,
-                    "justifyContent": "flex-start",
-                    "width": 28,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "justifyContent": "center",
-                    "paddingHorizontal": 12,
-                    "zIndex": 1,
+                    "width": "100%",
                   },
                 ]
               }
+              testID="modalHeader"
             >
-              <Text
-                numberOfLines={2}
+              <View
+                justifyContent="left"
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "height": 28,
+                      "justifyContent": "flex-start",
+                      "width": 28,
                     },
                   ]
                 }
-                testID="modalHeaderTitle"
-              >
-                Localisation
-              </Text>
-            </View>
-            <View
-              justifyContent="right"
-              style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row",
-                    "height": 28,
-                    "justifyContent": "flex-end",
-                    "width": 28,
-                  },
-                ]
-              }
-            >
+              />
               <View
-                accessibilityLabel="Fermer la modale"
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
+                      "paddingHorizontal": 12,
+                      "zIndex": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 27.2,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                  testID="modalHeaderTitle"
+                >
+                  Localisation
+                </Text>
+              </View>
+              <View
+                justifyContent="right"
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
+                      "height": 28,
+                      "justifyContent": "flex-end",
+                      "width": 28,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Fermer la modale"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "paddingBottom": 4,
+                          "paddingLeft": 4,
+                          "paddingRight": 4,
+                          "paddingTop": 4,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Fermer la modale"
+                >
+                  <View
+                    height={20}
+                    testID="rightIcon"
+                    width={20}
+                  >
+                    <Text>
+                      rightIcon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "width": "100%",
+              },
+            ]
+          }
+          testID="fullscreenModalView"
+        >
+          <RCTScrollView
+            style={
+              [
+                {
+                  "paddingHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -291,7 +387,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={true}
+                accessible={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -306,11 +402,123 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       {
                         "userSelect": "auto",
                       },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
                       {
-                        "paddingBottom": 4,
-                        "paddingLeft": 4,
-                        "paddingRight": 4,
-                        "paddingTop": 4,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="none"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#161617"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    Utiliser ma position actuelle
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
                       },
                     ],
                     {
@@ -318,322 +526,226 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                     },
                   ]
                 }
-                testID="Fermer la modale"
               >
                 <View
-                  height={20}
-                  testID="rightIcon"
-                  width={20}
-                >
-                  <Text>
-                    rightIcon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "width": "100%",
-            },
-          ]
-        }
-        testID="fullscreenModalView"
-      >
-        <RCTScrollView
-          style={
-            [
-              {
-                "paddingHorizontal": 24,
-              },
-            ]
-          }
-        >
-          <View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="none"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "width": 8,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="none"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#161617"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    Choisir une localisation
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "height": 4,
                       },
                     ]
                   }
                 />
                 <Text
-                  color="#161617"
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
                 >
-                  Utiliser ma position actuelle
-                </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="none"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  color="#161617"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Choisir une localisation
+                  Ville, code postal, adresse
                 </Text>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 24,
                     },
                   ]
                 }
               />
-              <Text
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
                     },
                   ]
                 }
               >
-                Ville, code postal, adresse
-              </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="position dans le monde"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#eb0055"
+                    style={
+                      [
+                        {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    Partout
+                  </Text>
+                </View>
+              </View>
             </View>
+          </RCTScrollView>
+        </View>
+        <View
+          style={
+            [
+              {
+                "width": "100%",
+              },
+            ]
+          }
+          testID="fixedModalBottom"
+        >
+          <View
+            paddingBottom={0}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "paddingHorizontal": 24,
+                },
+              ]
+            }
+          >
             <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityRole="button"
+              accessibilityLabel="Valider la localisation"
               accessibilityState={
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": true,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -646,8 +758,8 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
-              focusable={true}
+              accessible={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -661,12 +773,28 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                     {
                       "userSelect": "auto",
                     },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {},
                   ],
                   {
                     "opacity": 1,
                   },
                 ]
               }
+              testID="Valider la localisation"
             >
               <View
                 style={
@@ -678,166 +806,49 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   ]
                 }
               >
-                <View
-                  accessibilityLabel="position dans le monde"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
                 <Text
-                  color="#eb0055"
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
                   style={
                     [
                       {
-                        "color": "#eb0055",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "maxWidth": "100%",
                       },
                     ]
                   }
                 >
-                  Partout
+                  Valider la localisation
                 </Text>
               </View>
             </View>
           </View>
-        </RCTScrollView>
-      </View>
-      <View
-        style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
-        }
-        testID="fixedModalBottom"
-      >
+        </View>
         <View
-          paddingBottom={0}
+          customHeight={8}
+          enable={true}
           style={
             [
               {
-                "alignItems": "center",
-                "paddingHorizontal": 24,
+                "height": 8,
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="Valider la localisation"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Valider la localisation"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Valider la localisation
-              </Text>
-            </View>
-          </View>
-        </View>
+        />
       </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </View>
-</Modal>
+  </Modal>,
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    statusBarTranslucent={true}
+    testID="modal-geoloc-permission-modal"
+    transparent={true}
+    visible={false}
+  />,
+]
 `;

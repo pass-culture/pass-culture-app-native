@@ -4,7 +4,8 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 export type Achievement = {
   id: AchievementId
   name: string
-  description: string
+  descriptionLocked: string
+  descriptionUnlocked: string
   illustrationUnlocked: React.FC<AccessibleIcon>
   illustrationLocked: React.FC<AccessibleIcon>
   category: AchievementCategory
@@ -34,7 +35,8 @@ export enum AchievementCategory {
 export const firstMovieBooking = {
   id: AchievementId.FIRST_MOVIE_BOOKING,
   name: 'Cinéphile en herbe',
-  description: 'Réserve ta première place de cinéma',
+  descriptionLocked: 'Réserve ta première place de cinéma',
+  descriptionUnlocked: 'Tu as réservé ta première séance de cinéma',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -43,7 +45,8 @@ export const firstMovieBooking = {
 export const firstBookBooking = {
   id: AchievementId.FIRST_BOOK_BOOKING,
   name: 'Rat de bibliothèque',
-  description: 'Réserve ton premier livre',
+  descriptionLocked: 'Réserve ton premier livre',
+  descriptionUnlocked: 'Tu as réservé ton premier livre',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -52,7 +55,8 @@ export const firstBookBooking = {
 const firstRecordedMusicBooking = {
   id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
   name: 'Premier tour de platine',
-  description: 'Réserve ton premier CD ou vinyle',
+  descriptionLocked: 'Réserve ton premier CD ou vinyle',
+  descriptionUnlocked: 'Tu as réservé ton CD ou vinyle',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -61,7 +65,8 @@ const firstRecordedMusicBooking = {
 const firstShowBooking = {
   id: AchievementId.FIRST_SHOW_BOOKING,
   name: 'Rideau rouge levé',
-  description: 'Réserve ton premier spectacle',
+  descriptionLocked: 'Réserve ton premier spectacle',
+  descriptionUnlocked: 'Tu as réservé ton premier spectacle',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -70,7 +75,8 @@ const firstShowBooking = {
 const firstMuseumBooking = {
   id: AchievementId.FIRST_MUSEUM_BOOKING,
   name: 'Explorateur culturel',
-  description: 'Réserve ta première visite',
+  descriptionLocked: 'Réserve ta première visite',
+  descriptionUnlocked: 'Tu as réservé ta première visite ',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -79,7 +85,8 @@ const firstMuseumBooking = {
 const firstLiveMusicBooking = {
   id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
   name: 'Premier Beat',
-  description: 'Réserve ton premier concert ou festival',
+  descriptionLocked: 'Réserve ton premier concert ou festival',
+  descriptionUnlocked: 'Tu as réservé ton premier concert ou festival',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -88,7 +95,8 @@ const firstLiveMusicBooking = {
 const firstNewsBooking = {
   id: AchievementId.FIRST_NEWS_BOOKING,
   name: 'Futur Hugo Décrypte',
-  description: 'Abonne-toi à un média',
+  descriptionLocked: 'Abonne-toi à un média',
+  descriptionUnlocked: 'Tu t’es abonné à ton premier média',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -97,7 +105,8 @@ const firstNewsBooking = {
 export const firstInstrumentBooking = {
   id: AchievementId.FIRST_INSTRUMENT_BOOKING,
   name: 'Artiste en devenir',
-  description: 'Réserve du matériel créatif',
+  descriptionLocked: 'Réserve du matériel créatif',
+  descriptionUnlocked: 'Tu as réservé du matériel créatif',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,
@@ -106,7 +115,8 @@ export const firstInstrumentBooking = {
 export const firstArtLessonBooking = {
   id: AchievementId.FIRST_ART_LESSON_BOOKING,
   name: 'Se mettre à la pratique',
-  description: 'Réserve ton premier atelier ou cours artistique',
+  descriptionLocked: 'Réserve ton premier atelier ou cours artistique',
+  descriptionUnlocked: 'Tu as réservé ton premier atelier ou cours artistique',
   illustrationLocked: Trophy,
   illustrationUnlocked: BicolorTrophy,
   category: AchievementCategory.FIRST_BOOKINGS,

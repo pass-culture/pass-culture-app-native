@@ -46,7 +46,9 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
         <Spacer.Column numberOfSpaces={4} />
         <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledDescrption>{achievement.description}</StyledDescrption>
+        <StyledDescrption>
+          {achievement.completed ? achievement.descriptionUnlocked : achievement.descriptionLocked}
+        </StyledDescrption>
       </Container>
     </AppInformationModal>
   )
