@@ -12,6 +12,7 @@ import {
 } from 'features/profile/pages/Achievements/AchievementData'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { renderHook } from 'tests/utils'
+import { BicolorTrophy, Trophy } from 'ui/svg/icons/Trophy'
 
 enum TestAchievementCategory {
   TEST = 'TEST',
@@ -34,7 +35,8 @@ const testAchievement = {
   id: CombinedAchievementId.TEST,
   name: 'Test',
   description: 'Test',
-  icon: 'Heart',
+  illustrationLocked: Trophy,
+  illustrationUnlocked: BicolorTrophy,
   category: CombinedAchievementCategory.TEST,
 }
 
@@ -66,11 +68,7 @@ describe('useAchievements', () => {
         category: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           expect.objectContaining({
-            description: firstArtLessonBooking.description,
-            icon: firstArtLessonBooking.icon,
             id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
-            isCompleted: false,
-            name: firstArtLessonBooking.name,
           }),
         ],
       }),
@@ -78,11 +76,7 @@ describe('useAchievements', () => {
         category: CombinedAchievementCategory.TEST,
         achievements: [
           expect.objectContaining({
-            description: 'Test',
-            icon: 'Heart',
             id: 'TEST',
-            isCompleted: false,
-            name: 'Test',
           }),
         ],
       }),

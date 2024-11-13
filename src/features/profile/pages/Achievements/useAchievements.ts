@@ -1,4 +1,9 @@
-import { Achievement, UserAchievement } from 'features/profile/pages/Achievements/AchievementData'
+import {
+  Achievement,
+  AchievementId,
+  UserAchievement,
+} from 'features/profile/pages/Achievements/AchievementData'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Badges = {
   category: string
@@ -6,10 +11,10 @@ type Badges = {
   progress: number
   progressText: string
   achievements: {
-    id: string
+    id: AchievementId
     name: string
     description: string
-    icon: string
+    illustration: React.FC<AccessibleIcon>
     isCompleted: boolean
   }[]
 }[]
@@ -29,15 +34,17 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
         id: achievement.id,
         name: achievement.name,
         description: achievement.description,
-        icon: achievement.icon,
+        illustration: isCompleted
+          ? achievement.illustrationUnlocked
+          : achievement.illustrationLocked,
         isCompleted,
       })
+
       if (!isCompleted) {
         category.remainingAchievements++
       }
 
       const actualAchievements = category.achievements.length - category.remainingAchievements
-
       category.progress = actualAchievements / category.achievements.length
       category.progressText = `${(category.progress * 100).toFixed(0)}%`
       return acc
@@ -54,7 +61,9 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
           id: achievement.id,
           name: achievement.name,
           description: achievement.description,
-          icon: achievement.icon,
+          illustration: isCompleted
+            ? achievement.illustrationUnlocked
+            : achievement.illustrationLocked,
           isCompleted,
         },
       ],

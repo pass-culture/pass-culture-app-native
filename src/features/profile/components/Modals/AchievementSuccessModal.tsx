@@ -1,16 +1,13 @@
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { Image } from 'react-native'
 import styled from 'styled-components/native'
 
-import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
-import { useAchievementDetails } from 'features/profile/pages/Achievements/useAchievementDetails'
+import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Trophy } from 'ui/svg/icons/Trophy'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 interface Props {
@@ -22,11 +19,10 @@ interface Props {
 export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
   const achievement = useAchievementDetails(id)
 
-  if (!achievement) {
-    return null
-  }
+  if (!achievement) return null
 
-  const icon = achievementIconMapper[achievement.icon]
+  const IllustrationUnlocked = achievement.illustrationUnlocked
+
   return (
     <AppInformationModal
       title="Félicitations&nbsp;!"
@@ -34,7 +30,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       visible={visible}>
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
-        {icon ? <StyledIcon source={icon} resizeMode="contain" /> : <StyledTrophy />}
+        <IllustrationUnlocked />
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={2} />
       <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
@@ -67,16 +63,6 @@ const IconsWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
-
-const StyledIcon = styled(Image)({
-  position: 'absolute',
-  height: getSpacing(50),
-  width: getSpacing(50),
-})
-
-const StyledTrophy = styled(Trophy).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.fullPage,
-}))``
 
 const ButtonWrapper = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(2),

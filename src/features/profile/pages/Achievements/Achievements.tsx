@@ -1,19 +1,17 @@
-import React, { FC } from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { Image, ImageURISource } from 'react-native'
+import React from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { achievementIconMapper } from 'features/profile/api/Achievements/AchievementIconMapper'
+import { Badge } from 'features/profile/components/Achievements/Badge'
 import {
   mockAchievements,
   mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, TypoDS } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
@@ -21,7 +19,6 @@ export const Achievements = () => {
     achievements: mockAchievements,
     completedAchievements: mockCompletedAchievements,
   })
-
   return (
     <SecondaryPageWithBlurHeader title="Mes Succès">
       <AchievementsContainer>
@@ -32,7 +29,7 @@ export const Achievements = () => {
             <AchievementsGroupe key={badge.category}>
               <AchievementsGroupeHeader>
                 <AchievementsGroupeTitle>
-                  <TypoDS.Title4>{badge.category}</TypoDS.Title4>
+                  <TypoDS.Title4 {...getHeadingAttrs(2)}>{badge.category}</TypoDS.Title4>
                   <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
                 </AchievementsGroupeTitle>
 
@@ -52,7 +49,7 @@ export const Achievements = () => {
                   <Badge
                     key={achievement.id}
                     id={achievement.id}
-                    icon={achievementIconMapper[achievement.icon]}
+                    Illustration={achievement.illustration}
                     isCompleted={achievement.isCompleted}
                   />
                 ))}
@@ -98,47 +95,4 @@ const BadgesContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
   gap: getSpacing(4),
-})
-
-type BadgeProps = {
-  id: string
-  icon?: ImageURISource // TODO(PC-32685): Use FunctionComponent<AccessibleIcon> instead
-  isCompleted?: boolean
-}
-
-const Badge: FC<BadgeProps> = ({ isCompleted = false, icon, id }) => {
-  return (
-    <InternalTouchableLink
-      navigateTo={{
-        screen: 'AchievementDetails',
-        params: { id },
-      }}>
-      <BadgeContainer isCompleted={isCompleted}>
-        {icon ? <StyledImage source={icon} resizeMode="contain" /> : null}
-        {isCompleted ? null : <NotCompletedFilter />}
-      </BadgeContainer>
-    </InternalTouchableLink>
-  )
-}
-
-const BadgeContainer = styled.View<{ isCompleted: boolean }>({
-  padding: getSpacing(4),
-  border: '1px solid',
-  borderRadius: 8,
-  alignItems: 'center',
-})
-
-const StyledImage = styled(Image)({
-  height: getSpacing(15),
-  width: getSpacing(15),
-})
-
-const NotCompletedFilter = styled.View({
-  position: 'absolute',
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-  backgroundColor: 'rgba(0,0,0,0.5)',
-  borderRadius: 8,
 })

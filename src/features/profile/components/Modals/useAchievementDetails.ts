@@ -9,14 +9,13 @@ export const useAchievementDetails = (id: string) => {
     (userAchievement) => userAchievement.id === id
   )
 
-  if (!achievement) {
-    return
-  }
+  if (!achievement) return
 
   return {
     name: achievement.name,
     description: achievement.description,
-    icon: achievement.icon,
+    illustrationUnlocked: achievement.illustrationUnlocked,
+    illustrationLocked: achievement.illustrationLocked,
     completedAt: completedAchievement?.completedAt.toLocaleDateString(),
     completed: !!completedAchievement,
   }

@@ -450,6 +450,14 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
       ]
     }
   />,
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[MockFunction]}
+    statusBarTranslucent={true}
+    transparent={true}
+    visible={false}
+  />,
 ]
 `;
 
@@ -900,6 +908,14 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
         },
       ]
     }
+  />,
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[MockFunction]}
+    statusBarTranslucent={true}
+    transparent={true}
+    visible={false}
   />,
 ]
 `;
