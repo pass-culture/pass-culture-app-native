@@ -28,34 +28,30 @@ export const AppInformationModal: FunctionComponent<Props> = ({
 }) => {
   const titleID = uuidv4()
   return (
-    <React.Fragment>
-      {visible ? (
-        <Modal
-          animationType="fade"
-          statusBarTranslucent
-          transparent
-          visible={visible}
-          testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
-          onRequestClose={onCloseIconPress}>
-          <ClicAwayArea onPress={onCloseIconPress} />
-          <FlexSpacer />
-          <Container accessibilityLabelledBy={titleID}>
-            <ModalHeader
-              title={title}
-              titleID={titleID}
-              boldTitle
-              rightIconAccessibilityLabel="Fermer la modale"
-              rightIcon={Close}
-              onRightIconPress={onCloseIconPress}
-              numberOfLines={numberOfLinesTitle}
-            />
-            <Spacer.Column numberOfSpaces={6} />
-            <Content>{children}</Content>
-          </Container>
-          <FlexSpacer />
-        </Modal>
-      ) : null}
-    </React.Fragment>
+    <Modal
+      animationType="fade"
+      statusBarTranslucent
+      transparent
+      visible={visible}
+      testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
+      onRequestClose={onCloseIconPress}>
+      <ClicAwayArea onPress={onCloseIconPress} />
+      <FlexSpacer />
+      <Container accessibilityLabelledBy={titleID}>
+        <ModalHeader
+          title={title}
+          titleID={titleID}
+          boldTitle
+          rightIconAccessibilityLabel="Fermer la modale"
+          rightIcon={Close}
+          onRightIconPress={onCloseIconPress}
+          numberOfLines={numberOfLinesTitle}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <Content>{children}</Content>
+      </Container>
+      <FlexSpacer />
+    </Modal>
   )
 }
 
