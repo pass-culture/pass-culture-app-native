@@ -1,5 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- tapOn:
-    text: "${MAESTRO_PHYSICAL_OFFER}"
-    index: 1

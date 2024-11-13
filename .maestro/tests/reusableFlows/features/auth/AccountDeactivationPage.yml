@@ -1,7 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-#AccountDeactivationPage
-- assertVisible: "Ton compte est désactivé"
-- assertVisible: "Une fois cette date passée, ton compte pass Culture sera définitivement\
-    \ supprimé."
-- assertVisible: "Réactiver mon compte"

@@ -1,4 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- assertVisible: "Confirme ton email"
-- tapOn: "Confirme ton email"

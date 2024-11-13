@@ -1,5 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-#LibelleMail
-
-- tapOn: "STAGING"

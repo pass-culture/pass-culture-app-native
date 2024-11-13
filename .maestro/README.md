@@ -165,8 +165,8 @@ yarn test:e2e:ios:testing
 yarn test:e2e:web:testing
 
 # Commande pour lancer un test spécifique
-yarn test:e2e:android:staging .maestro/tests/reusableFlows/LaunchApp.yml
-yarn test:e2e:android:staging:cloud --app-file <Path of your ipa/app or apk> .maestro/testsV2/
+yarn test:e2e:android:staging .maestro/tests/subFolder/LaunchApp.yml
+yarn test:e2e:android:staging:cloud --app-file <Path of your ipa/app or apk> .maestro/tests/
 ```
 
 ## Lancer un test simple sur le web

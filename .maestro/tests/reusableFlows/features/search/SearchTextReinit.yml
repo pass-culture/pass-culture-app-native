@@ -1,4 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- tapOn:
-    id: "Réinitialiser la recherche"
