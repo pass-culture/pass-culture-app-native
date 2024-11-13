@@ -18,10 +18,6 @@ jest.mock('features/navigation/TabBar/routes')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-// jest.mock('react-native/Libraries/Alert/Alert', () => ({
-//   alert: jest.fn(),
-// }))
-
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-instantsearch-core', () => ({
