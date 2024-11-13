@@ -1,6 +1,7 @@
 const apostropheInText = require('./eslint-custom-rules/apostrophe-in-text')
 const independentMocks = require('./eslint-custom-rules/independent-mocks')
 const nbspInText = require('./eslint-custom-rules/nbsp-in-text')
+const noDirectConsultOfferLog = require('./eslint-custom-rules/no-direct-consult-offer-log')
 const noEmptyArrowFunction = require('./eslint-custom-rules/no-empty-arrow-function')
 const noCurrencySymbols = require('./eslint-custom-rules/no-currency-symbols')
 const noHardcodeIdInSvg = require('./eslint-custom-rules/no-hardcoded-id-in-svg')
@@ -15,6 +16,7 @@ module.exports = {
   'apostrophe-in-text': apostropheInText,
   'independent-mocks': independentMocks,
   'nbsp-in-text': nbspInText,
+  'no-direct-consult-offer-log': noDirectConsultOfferLog,
   'no-empty-arrow-function': noEmptyArrowFunction,
   'no-currency-symbols': noCurrencySymbols,
   'no-hardcoded-id-in-svg': noHardcodeIdInSvg,
