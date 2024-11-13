@@ -95,26 +95,28 @@ const mockData = {
     },
   ],
 }
-let mockHits: Offer[] = []
-let mockNbHits = 0
-const mockHasNextPage = true
+
+const mockHits: Offer[] = []
 const mockFetchNextPage = jest.fn()
 const mockRefetch = jest.fn()
-let mockUserData: UserData[] = []
-let mockIsLoading = false
+const mockUserData: UserData[] = []
+
+const initialSearchResults = {
+  data: mockData,
+  hits: mockHits,
+  nbHits: 0,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: true,
+  fetchNextPage: mockFetchNextPage,
+  isFetchingNextPage: false,
+  userData: mockUserData,
+  refetch: mockRefetch,
+}
+
+const mockUseSearchResults = jest.fn(() => initialSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: mockHits,
-    nbHits: mockNbHits,
-    isFetching: false,
-    isLoading: mockIsLoading,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-    userData: mockUserData,
-    refetch: mockRefetch,
-  }),
+  useSearchResults: () => mockUseSearchResults(),
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
@@ -202,17 +204,20 @@ describe('SearchResultsContent component', () => {
   const user = userEvent.setup()
 
   beforeAll(() => {
-    mockHits = []
-    mockNbHits = 0
+    mockUseSearchResults.mockReturnValue({ ...initialSearchResults, hits: [], nbHits: 0 })
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
   })
 
   afterEach(() => {
-    mockHits = []
-    mockNbHits = 0
+    mockUseSearchResults.mockReturnValue({
+      ...initialSearchResults,
+      hits: [],
+      nbHits: 0,
+      userData: [],
+    })
     mockSearchState = searchState
     mockPosition = DEFAULT_POSITION
-    mockUserData = []
+
     mockHasGeolocPosition = false
   })
 
@@ -224,8 +229,12 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockUseSearchResults.mockReturnValueOnce({
+      ...initialSearchResults,
+      hits: mockedAlgoliaResponse.hits,
+      nbHits: mockedAlgoliaResponse.nbHits,
+      userData: [],
+    })
 
     mockData.pages.push({
       offers: {
@@ -584,8 +593,12 @@ describe('SearchResultsContent component', () => {
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockUseSearchResults.mockReturnValueOnce({
+      ...initialSearchResults,
+      hits: mockedAlgoliaResponse.hits,
+      nbHits: mockedAlgoliaResponse.nbHits,
+      userData: [],
+    })
     renderSearchResultsContent()
 
     await user.press(screen.getByText('Géolocalise-toi'))
@@ -633,10 +646,12 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
-    mockIsLoading = true
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
     renderSearchResultsContent()
 
-    mockIsLoading = false
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
     screen.rerender(<SearchResultsContent />)
 
     screen.rerender(<SearchResultsContent />)
@@ -647,10 +662,12 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log PerformSearch with search result when there is search query execution', async () => {
-    mockIsLoading = true
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
     renderSearchResultsContent()
 
-    mockIsLoading = false
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
     mockSearchState = searchState
     const mockAccessibilityFilter = {
       isAudioDisabilityCompliant: undefined,
@@ -665,7 +682,7 @@ describe('SearchResultsContent component', () => {
         1,
         mockSearchState,
         mockAccessibilityFilter,
-        mockNbHits,
+        0,
         'SearchResults'
       )
     })
@@ -690,10 +707,12 @@ describe('SearchResultsContent component', () => {
         setDisabilities: () => jest.fn(),
       })
 
-    mockIsLoading = true
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
     renderSearchResultsContent()
 
-    mockIsLoading = false
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
     mockSearchState = searchState
 
     screen.rerender(<SearchResultsContent />)
@@ -703,7 +722,7 @@ describe('SearchResultsContent component', () => {
         1,
         mockSearchState,
         mockDisabilitesPropertiesTruthy,
-        mockNbHits,
+        0,
         'SearchResults'
       )
     })
@@ -717,10 +736,12 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
-    mockIsLoading = true
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
     renderSearchResultsContent()
 
-    mockIsLoading = false
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
     screen.rerender(<SearchResultsContent />)
 
     screen.rerender(<SearchResultsContent />)
@@ -731,10 +752,12 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
-    mockIsLoading = true
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
     renderSearchResultsContent()
 
-    mockIsLoading = false
+    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
     mockSearchState = searchState
     screen.rerender(<SearchResultsContent />)
 
@@ -745,8 +768,11 @@ describe('SearchResultsContent component', () => {
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockUseSearchResults.mockReturnValueOnce({
+      ...initialSearchResults,
+      hits: mockedAlgoliaResponse.hits,
+      nbHits: mockedAlgoliaResponse.nbHits,
+    })
     renderSearchResultsContent()
 
     await user.press(screen.getByText('Géolocalise-toi'))
@@ -757,8 +783,11 @@ describe('SearchResultsContent component', () => {
   describe('should display geolocation incitation button', () => {
     beforeAll(() => {
       mockPosition = null
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
+      mockUseSearchResults.mockReturnValueOnce({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+      })
     })
 
     it('when position is null', async () => {
@@ -768,7 +797,12 @@ describe('SearchResultsContent component', () => {
     })
 
     it('when position is null and query is not an offer not present', async () => {
-      mockUserData = [{ message: 'n’est pas disponible sur le pass Culture.' }]
+      mockUseSearchResults.mockReturnValueOnce({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+        userData: [{ message: 'n’est pas disponible sur le pass Culture.' }],
+      })
       mockSearchState = { ...searchState, query: 'iPhone' }
       renderSearchResultsContent()
       await screen.findByText('Lieu culturel')
@@ -779,9 +813,13 @@ describe('SearchResultsContent component', () => {
 
   describe('Offer unavailable message', () => {
     it('should display when query is an unavailable offer', async () => {
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
-      mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
+      mockUseSearchResults.mockReturnValueOnce({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+        userData: [{ message: 'Offre non disponible sur le pass Culture.' }],
+      })
+
       mockSearchState = { ...searchState, query: 'iPhone' }
       renderSearchResultsContent()
 
@@ -789,9 +827,12 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should not display when query is an available offer', async () => {
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
-      mockUserData = []
+      mockUseSearchResults.mockReturnValueOnce({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+        userData: [],
+      })
       mockSearchState = { ...searchState, query: 'Deezer' }
       renderSearchResultsContent()
       await screen.findByText('Lieu culturel')
@@ -821,8 +862,11 @@ describe('SearchResultsContent component', () => {
 
   describe('when feature flag map in search activated', () => {
     beforeEach(() => {
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
+      mockUseSearchResults.mockReturnValue({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+      })
       useFeatureFlagSpy.mockReturnValue(true)
     })
 
@@ -870,8 +914,11 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display empty state view when there is no search result', async () => {
-      mockHits = []
-      mockNbHits = 0
+      mockUseSearchResults.mockReturnValueOnce({
+        ...initialSearchResults,
+        hits: [],
+        nbHits: 0,
+      })
       renderSearchResultsContent()
 
       expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()
