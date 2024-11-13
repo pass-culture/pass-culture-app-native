@@ -18,9 +18,8 @@ export function NavigationAchievements(): React.JSX.Element {
       <CheatcodesHeader title="Achievements 🏆" />
       <StyledContainer>
         <LinkToComponent name="Achievements" />
-
         <Row half>
-          <ButtonPrimary wording="Modal Achievement" onPress={showModal} />
+          <ButtonPrimary wording="AchievementSuccessModal" onPress={showModal} />
           <AchievementSuccessModal
             id="FIRST_ADD_FAVORITE"
             visible={visible}
