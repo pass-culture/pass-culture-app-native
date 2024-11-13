@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
+import { VenueResponse } from 'api/gen'
 import { GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
@@ -14,9 +15,8 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { Offer } from 'shared/offer/types'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
-//typescript is mad if venue is in this hook's props when venue doesn't exist on CinemaPlaylistProps
 type CinemaPlaylistPropsContainingVenue = CinemaPlaylistProps & {
-  venue?: never
+  venue?: VenueResponse
 }
 
 export const useRenderPassPlaylist = ({

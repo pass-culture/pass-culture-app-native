@@ -9,7 +9,7 @@ import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/Search/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode } from 'libs/location/types'
+import { LocationMode, Position } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,6 +17,15 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
+
+const mockLocationMode = LocationMode.AROUND_ME
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockUserLocation,
+    selectedLocationMode: mockLocationMode,
+  }),
+}))
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')

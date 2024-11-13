@@ -7,9 +7,9 @@ import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/Them
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx
 
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
@@ -38,7 +38,9 @@ describe('CinemaPlaylist', () => {
 
       const offer = await screen.findByText('Harry potter à l’école des sorciers')
 
-      fireEvent.press(offer)
+      await act(async () => {
+        fireEvent.press(offer)
+      })
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
         from: 'thematicsearch',
