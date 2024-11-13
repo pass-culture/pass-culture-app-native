@@ -75,9 +75,13 @@ export function DeleteProfileReason() {
   const headerHeight = useGetHeaderHeight()
   const gradientRef = useRef<AnimatedViewRefType>(null)
   const { user } = useAuthContext()
-  const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
-  const canDeleteProfile = user?.isBeneficiary || userIsDefinedAndAbove21
-  const reasons = reasonButtons(!!canDeleteProfile)
+  // TODO(PC-32885): Fix this typescript error
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const userHas21YearsOld = getAge(user!.birthDate!) >= 21
+  // TODO(PC-32885): Fix this typescript error
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const canDeleteProfile = !user!.isBeneficiary || userHas21YearsOld
+  const reasons = reasonButtons(canDeleteProfile)
   const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
 
   return (
