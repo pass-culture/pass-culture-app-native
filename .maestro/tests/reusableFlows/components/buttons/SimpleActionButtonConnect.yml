@@ -1,7 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-
-- scrollUntilVisible:
-    element: "Se connecter"
-    direction: DOWN
-- tapOn: "Se connecter"

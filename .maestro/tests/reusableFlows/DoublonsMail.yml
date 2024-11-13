@@ -1,4 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-#DoublonsMail
-- tapOn: "Afficher le texte des messages précédents"

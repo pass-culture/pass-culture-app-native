@@ -39,7 +39,7 @@ case "$target" in
 esac
 
 if [ "$#" -eq 3 ]; then
-  rest_of_arguments=".maestro/testsV2"
+  rest_of_arguments=".maestro/tests"
 else
   shift
   shift

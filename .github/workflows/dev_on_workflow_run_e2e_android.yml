@@ -89,7 +89,7 @@ jobs:
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           device-locale: fr_FR
           android-api-level: 34
-          workspace: .maestro/testsV2/
+          workspace: .maestro/tests/
           include-tags: cloud
           env: |
             MAESTRO_APP_ID=app.passculture.staging

@@ -1,1 +1,0 @@
-http.delete(MAESTRO_MOCK_ANALYTICS_SERVER)

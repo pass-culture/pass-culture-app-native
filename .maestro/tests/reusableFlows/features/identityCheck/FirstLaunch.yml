@@ -1,8 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- tapOn: 'Tout accepter'
-- tapOn: "C’est parti\_!"
-- tapOn: 'Aller à l’écran suivant'
-- tapOn:
-    id: 'j’ai 18 ans'
-- tapOn: 'Plus tard'

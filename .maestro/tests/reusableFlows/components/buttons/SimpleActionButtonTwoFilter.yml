@@ -1,5 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-
-- tapOn:
-    id: "Voir tous les filtres\_: 2 filtres actifs"

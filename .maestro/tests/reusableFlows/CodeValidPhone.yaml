@@ -1,8 +1,0 @@
-appId: ${MAESTRO_APP_ID ?? 'com.sampleapp.appid'}
-jsEngine: graaljs
-name: Sample
-env:
-  CODEVALIDPHONE: ${CODEVALIDPHONE ?? '466509'}
----
-- runScript: reusableFlows/helper/CodeValidationphoneUtils.js # it just loads the file to have the js method inside the global output
-- evalScript: ${output.validationPhone = output.validationPhone(CODEVALIDPHONE)}
