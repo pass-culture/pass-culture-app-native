@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
-import algoliasearch from 'algoliasearch'
 
+import algoliasearch from '__mocks__/algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
@@ -16,9 +16,7 @@ import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/lo
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('algoliasearch')
-
-const mockMultipleQueries = algoliasearch('', '').multipleQueries
+const { multipleQueries } = algoliasearch()
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -62,7 +60,7 @@ describe('useSearchResults', () => {
       })
 
       await waitFor(() => {
-        expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+        expect(multipleQueries).toHaveBeenNthCalledWith(1, [
           {
             indexName: 'algoliaOffersIndexName',
             params: {
@@ -151,7 +149,7 @@ describe('useSearchResults', () => {
 
       rerender({ ...initialSearchState })
       await waitFor(() => {
-        expect(mockMultipleQueries).toHaveBeenCalledTimes(1)
+        expect(multipleQueries).toHaveBeenCalledTimes(1)
       })
     })
 
