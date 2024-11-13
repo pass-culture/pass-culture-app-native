@@ -14,6 +14,7 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -117,7 +118,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
       hideChangeVenueModal()
-      analytics.logConsultOffer({
+      triggerConsultOfferLog({
         offerId: nextOfferId,
         from: 'offer',
         fromMultivenueOfferId: offer.id,

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferTileProps } from 'features/offer/types'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -55,7 +55,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     prePopulateOffer(offer)
-    analytics.logConsultOffer({
+    triggerConsultOfferLog({
       ...apiRecoParams,
       offerId,
       from: fromOfferId ? 'similar_offer' : analyticsFrom,

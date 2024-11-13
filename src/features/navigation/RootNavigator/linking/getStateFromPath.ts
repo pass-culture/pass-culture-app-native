@@ -1,7 +1,7 @@
 import { getStateFromPath } from '@react-navigation/native'
 
 import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { oldCampaigns } from 'libs/firebase/analytics/useInit'
@@ -28,7 +28,7 @@ async function addLinkAnalytics(...navigateParams: RootNavigateParams) {
   if (params) {
     await setUtmParameters(params as QueryParams)
     if (isScreen('Offer', screen, params)) {
-      analytics.logConsultOffer({ offerId: params.id, from: 'deeplink' })
+      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
     }
   }
 }

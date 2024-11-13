@@ -22,6 +22,7 @@ import {
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -168,7 +169,7 @@ export function BookingDetails() {
         offerId: offer.id,
       })
 
-      analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
+      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
     } else {
       showErrorSnackBar({
         message:

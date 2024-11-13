@@ -11,6 +11,7 @@ import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reaction
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -122,7 +123,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         offerId: offer.id,
       })
 
-      analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
+      triggerConsultOfferLog({ offerId: offer.id, from: 'endedbookings' })
     } else {
       showErrorSnackBar({
         message:

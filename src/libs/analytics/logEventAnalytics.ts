@@ -25,6 +25,7 @@ import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -242,22 +243,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_MODAL_BENEFICIARY_CEILINGS }),
   logConsultModalExpiredGrant: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_MODAL_EXPIRED_GRANT }),
-  logConsultOffer: (params: {
-    offerId: number
-    from: Referrals
-    moduleId?: string
-    moduleName?: string
-    query?: string
-    venueId?: number
-    homeEntryId?: string
-    searchId?: string
-    fromOfferId?: number
-    fromMultivenueOfferId?: number
-    playlistType?: PlaylistType
-    offer_display_index?: number
-    index?: number
-    artistName?: string
-  }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
+  logConsultOffer: (params: ConsultOfferLogParams) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
   logConsultPracticalInformations: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_PRACTICAL_INFORMATIONS }, params),
   logConsultReactionFakeDoor: (params: { from: NativeCategoryIdEnumv2 }) =>

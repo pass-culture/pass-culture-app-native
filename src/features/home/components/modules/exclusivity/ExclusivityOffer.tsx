@@ -6,6 +6,7 @@ import { ExclusivityBannerProps } from 'features/home/components/modules/exclusi
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -32,7 +33,7 @@ const UnmemoizedExclusivityOffer = ({
   const handlePressExclu = useCallback(() => {
     if (typeof offerId !== 'number') return
     analytics.logExclusivityBlockClicked({ moduleName: title, moduleId, homeEntryId })
-    analytics.logConsultOffer({
+    triggerConsultOfferLog({
       offerId,
       moduleName: title,
       moduleId,

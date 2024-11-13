@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -32,7 +32,7 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   const hasSubtitleRight = !!subtitleRight
   const handleEventCardPress = () => {
     if (analyticsFrom === 'venue' && offerId !== undefined) {
-      analytics.logConsultOffer({ offerId, from: analyticsFrom })
+      triggerConsultOfferLog({ offerId, from: analyticsFrom })
     }
     onPress()
   }
