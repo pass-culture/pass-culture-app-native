@@ -12,7 +12,8 @@ import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategory } from 'libs/subcategories'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export interface BookingDetailsCancelButtonProps {
@@ -82,20 +83,16 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   }
 
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       {button}
       {cancelAnnulationMessage ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledCaption testID="cancel-annulation-message">
-            {cancelAnnulationMessage}
-          </StyledCaption>
-        </React.Fragment>
+        <StyledCaption testID="cancel-annulation-message">{cancelAnnulationMessage}</StyledCaption>
       ) : null}
-    </React.Fragment>
+    </ViewGap>
   )
 }
 
 const StyledCaption = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })

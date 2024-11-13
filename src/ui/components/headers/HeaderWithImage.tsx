@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
+import { Platform, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
@@ -8,6 +8,7 @@ interface Props {
   imageUrl?: string
   imageHeight: number
   minHeight?: number
+  style?: ViewStyle
   children?: React.ReactNode
 }
 
@@ -19,6 +20,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
   imageUrl,
   imageHeight,
   minHeight,
+  style,
   children,
 }) => {
   const { appContentWidth } = useTheme()
@@ -26,7 +28,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
   const blurImageStyle = { height: imageHeight, width: appContentWidth }
 
   return (
-    <Container minHeight={minHeight}>
+    <Container minHeight={minHeight} style={style}>
       <ImageContainer>
         {imageUrl ? (
           <Image

@@ -1,4 +1,4 @@
-import React, { useState, useRef, ReactElement } from 'react'
+import React, { ReactElement, useRef, useState } from 'react'
 import {
   FlatList,
   ListRenderItem,
@@ -106,7 +106,8 @@ export function TicketSwiper({ booking }: TicketsProps) {
 const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
-  paddingVertical: getSpacing(2),
+  paddingTop: getSpacing(2),
+  paddingBottom: getSpacing(6),
   width,
 }))
 
