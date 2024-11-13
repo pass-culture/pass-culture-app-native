@@ -1,12 +1,13 @@
 import {
   Achievement,
+  AchievementCategory,
   AchievementId,
   UserAchievement,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Badges = {
-  category: string
+  category: AchievementCategory
   remainingAchievements: number
   progress: number
   progressText: string

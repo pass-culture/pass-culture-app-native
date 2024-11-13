@@ -154,3 +154,7 @@ export const mockCompletedAchievements: UserAchievement[] = [
   userCompletedBookBooking,
   userCompletedArtLessonBooking,
 ]
+
+export const achievementCategoryDisplayNames: Record<AchievementCategory, string> = {
+  [AchievementCategory.FIRST_BOOKINGS]: 'Premières réservations',
+}

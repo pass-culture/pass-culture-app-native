@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { Badge } from 'features/profile/components/Achievements/Badge'
 import {
+  achievementCategoryDisplayNames,
   mockAchievements,
   mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
@@ -19,6 +20,7 @@ export const Achievements = () => {
     achievements: mockAchievements,
     completedAchievements: mockCompletedAchievements,
   })
+
   return (
     <SecondaryPageWithBlurHeader title="Mes Succès">
       <AchievementsContainer>
@@ -29,7 +31,9 @@ export const Achievements = () => {
             <AchievementsGroupe key={badge.category}>
               <AchievementsGroupeHeader>
                 <AchievementsGroupeTitle>
-                  <TypoDS.Title4 {...getHeadingAttrs(2)}>{badge.category}</TypoDS.Title4>
+                  <TypoDS.Title4 {...getHeadingAttrs(2)}>
+                    {achievementCategoryDisplayNames[badge.category]}
+                  </TypoDS.Title4>
                   <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
                 </AchievementsGroupeTitle>
 
@@ -94,5 +98,7 @@ const ProgressBarContainer = styled.View({
 const BadgesContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
-  gap: getSpacing(4),
+  gap: getSpacing(6),
+  paddingLeft: getSpacing(2),
+  paddingRight: getSpacing(2),
 })
