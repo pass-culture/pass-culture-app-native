@@ -310,7 +310,6 @@ export type RootStackParamList = {
   MarketingBlocks: undefined
   MovieCalendar: undefined
   Achievements: undefined
-  AchievementDetails: { id: string }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &

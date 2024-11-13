@@ -2305,6 +2305,15 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
         </View>
         <Modal
+          animationType="fade"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          testID="modal-notifications-permission-modal"
+          transparent={true}
+          visible={false}
+        />
+        <Modal
           accessibilityLabelledBy="testUuidV4"
           accessibilityModal={true}
           animationType="none"
@@ -4671,6 +4680,15 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             </View>
           </View>
         </View>
+        <Modal
+          animationType="fade"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          testID="modal-notifications-permission-modal"
+          transparent={true}
+          visible={false}
+        />
         <Modal
           accessibilityLabelledBy="testUuidV4"
           accessibilityModal={true}
