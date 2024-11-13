@@ -823,6 +823,7 @@ export const useSearchGroupLabelMappingSnap = {
   LIVRES: 'Livres',
   MEDIA_PRESSE: 'Médias & presse',
   MUSEES_VISITES_CULTURELLES: 'Musées & visites culturelles',
+  MUSIQUE: 'Musique',
   NONE: 'Toutes les catégories',
   SPECTACLES: 'Spectacles',
 }

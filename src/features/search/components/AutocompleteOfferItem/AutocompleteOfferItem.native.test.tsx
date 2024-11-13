@@ -472,7 +472,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
-            offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+            offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
             offerNativeCategories: undefined,
             locationFilter: mockSearchState.locationFilter,
             priceRange: mockSearchState.priceRange,
@@ -696,7 +696,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        expect(await screen.findByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
+        expect(await screen.findByText('Musique')).toBeOnTheScreen()
       })
 
       it('native category is Livres Papier', async () => {

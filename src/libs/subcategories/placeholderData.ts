@@ -749,6 +749,10 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
       value: 'CD, vinyles, musique en ligne',
     },
+    {
+      name: SearchGroupNameEnumv2.MUSIQUE,
+      value: 'Musique',
+    },
     { name: SearchGroupNameEnumv2.CONCERTS_FESTIVALS, value: 'Concerts & festivals' },
     { name: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES, value: 'Conférences & rencontres' },
     { name: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE, value: 'Évènements en ligne' },
@@ -772,6 +776,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     { name: HomepageLabelNameEnumv2.BEAUX_ARTS, value: 'Beaux-Arts' },
     { name: HomepageLabelNameEnumv2.CARTE_JEUNES, value: 'Carte jeunes' },
     { name: HomepageLabelNameEnumv2.CINEMA, value: 'Cinéma' },
+    { name: HomepageLabelNameEnumv2.MUSIQUE, value: 'Musique' },
     { name: HomepageLabelNameEnumv2.CONCERT, value: 'Concert' },
     { name: HomepageLabelNameEnumv2.COURS, value: 'Cours' },
     { name: HomepageLabelNameEnumv2.FESTIVAL, value: 'Festival' },

@@ -657,7 +657,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "CD, vinyles, musique en ligne",
+            "label": "Musique",
             "onPress": [Function],
             "position": 5,
             "textColor": "#C01371",
@@ -800,36 +800,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#C01371",
-            "borderColor": "#20C5E9",
-            "fillColor": "#D6F8FF",
-            "gradients": [
-              "#EC3478",
-              "#C01371",
-            ],
-            "label": "Instruments de musique",
-            "onPress": [Function],
-            "position": 10,
-            "textColor": "#CA3F13",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
             "baseColor": "#8337E9",
             "borderColor": "#AD87FF",
             "fillColor": "#EAE3FF",
@@ -839,7 +809,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             ],
             "label": "Médias & presse",
             "onPress": [Function],
-            "position": 11,
+            "position": 10,
             "textColor": "#C01371",
           },
           {
@@ -869,7 +839,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             ],
             "label": "Cartes jeunes",
             "onPress": [Function],
-            "position": 12,
+            "position": 11,
             "textColor": "#8337E9",
           },
           {
@@ -914,7 +884,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
-            "position": 13,
+            "position": 12,
             "textColor": "#8337E9",
           },
           {
@@ -944,7 +914,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-            "position": 14,
+            "position": 13,
             "textColor": "#0E78B7",
           },
         ]
@@ -1612,7 +1582,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               }
             >
               <View
-                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
+                accessibilityLabel="Catégorie Musique"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1662,7 +1632,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                     },
                   ]
                 }
-                testID="Catégorie CD, vinyles, musique en ligne"
+                testID="Catégorie Musique"
               >
                 <View
                   style={
@@ -1692,7 +1662,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       ]
                     }
                   >
-                    CD, VINYLES, MUSIQUE EN LIGNE
+                    MUSIQUE
                   </Text>
                 </View>
               </View>
@@ -2135,119 +2105,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               }
             >
               <View
-                accessibilityLabel="Catégorie Instruments de musique"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#D6F8FF",
-                        "borderColor": "#20C5E9",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Instruments de musique"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    INSTRUMENTS DE MUSIQUE
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
                 accessibilityLabel="Catégorie Médias & presse"
                 accessibilityState={
                   {
@@ -2333,6 +2190,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -2432,20 +2303,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -2545,6 +2402,20 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -3280,7 +3151,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "#AD87FF",
               "#8337E9",
             ],
-            "label": "CD, vinyles, musique en ligne",
+            "label": "Musique",
             "onPress": [Function],
             "position": 5,
             "textColor": "#C01371",
@@ -3423,36 +3294,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#C01371",
-            "borderColor": "#20C5E9",
-            "fillColor": "#D6F8FF",
-            "gradients": [
-              "#EC3478",
-              "#C01371",
-            ],
-            "label": "Instruments de musique",
-            "onPress": [Function],
-            "position": 10,
-            "textColor": "#CA3F13",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
             "baseColor": "#8337E9",
             "borderColor": "#AD87FF",
             "fillColor": "#EAE3FF",
@@ -3462,7 +3303,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             ],
             "label": "Médias & presse",
             "onPress": [Function],
-            "position": 11,
+            "position": 10,
             "textColor": "#C01371",
           },
           {
@@ -3492,7 +3333,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             ],
             "label": "Cartes jeunes",
             "onPress": [Function],
-            "position": 12,
+            "position": 11,
             "textColor": "#8337E9",
           },
           {
@@ -3537,7 +3378,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
-            "position": 13,
+            "position": 12,
             "textColor": "#8337E9",
           },
           {
@@ -3567,7 +3408,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-            "position": 14,
+            "position": 13,
             "textColor": "#0E78B7",
           },
         ]
@@ -4328,7 +4169,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
+                accessibilityLabel="Catégorie Musique"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4373,7 +4214,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     },
                   ]
                 }
-                testID="Catégorie CD, vinyles, musique en ligne"
+                testID="Catégorie Musique"
               >
                 <View
                   style={
@@ -4467,7 +4308,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                       ]
                     }
                   >
-                    CD, vinyles, musique en ligne
+                    Musique
                   </Text>
                 </View>
               </View>
@@ -5146,178 +4987,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
               }
             >
               <View
-                accessibilityLabel="Catégorie Instruments de musique"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Instruments de musique"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4293670008,
-                        4290777969,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#C01371"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#C01371",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Instruments de musique
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
                 accessibilityLabel="Catégorie Médias & presse"
                 accessibilityRole="button"
                 accessibilityState={
@@ -5462,6 +5131,20 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
@@ -5620,20 +5303,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -5792,6 +5461,20 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [

@@ -30,7 +30,7 @@ describe('CategoriesButtons', () => {
     render(<CategoriesButtons />)
 
     await waitFor(async () => {
-      expect(screen.queryAllByRole('button')).toHaveLength(14)
+      expect(screen.queryAllByRole('button')).toHaveLength(13)
     })
   })
 
