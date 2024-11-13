@@ -216,7 +216,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-1ln193j r-textAlign-q4m81j"
                   dir="ltr"
                   role="heading"
                 >
