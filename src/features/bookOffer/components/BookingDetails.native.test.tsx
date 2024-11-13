@@ -376,38 +376,130 @@ describe('<BookingDetails />', () => {
     expect(await screen.findByText('Lieu de retrait')).toBeOnTheScreen()
   })
 
-  it('should display venue name in venue section', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
-      ...mockOffer,
-      isDuo: true,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+  describe('venue name', () => {
+    it('should display venue name in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+      await screen.findByText('Informations')
+
+      expect(await screen.findByTestId('venueName')).toBeOnTheScreen()
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
-      LIVRE_PAPIER: { isEvent: false },
+    it('should display name from offer address when present', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('PATHE MONTPARNASSE')).toBeOnTheScreen()
     })
 
-    renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await screen.findByText('Informations')
+    it('should display venue publicName when offer.address is not present', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        address: undefined,
+        venue: {
+          ...mockOffer.venue,
+          name: 'Cinéma de la fin',
+          publicName: 'Cinéma du début',
+        },
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
 
-    expect(await screen.findByTestId('venueName')).toBeOnTheScreen()
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('Cinéma du début')).toBeOnTheScreen()
+    })
+
+    it('should display venue name when offer.address and venue.publicName are not present', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        address: undefined,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('Cinéma de la fin')).toBeOnTheScreen()
+    })
   })
 
-  it('should display venue address in venue section', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
-      ...mockOffer,
-      isDuo: true,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+  describe('venue address', () => {
+    it('should display venue address in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+      await screen.findByText('Informations')
+
+      expect(await screen.findByTestId('venueAddress')).toBeOnTheScreen()
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
-      LIVRE_PAPIER: { isEvent: false },
+    it('should display offer address when present', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('75013 PARIS 13, 2 RUE DU CAFÉ')).toBeOnTheScreen()
     })
 
-    renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await screen.findByText('Informations')
+    it('should display venue address when offer.address is not present', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        address: undefined,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
 
-    expect(await screen.findByTestId('venueAddress')).toBeOnTheScreen()
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('97310 Kourou, RUE DE CALI')).toBeOnTheScreen()
+    })
   })
 
   it('should display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are other venues offering the same offer', async () => {
@@ -590,10 +682,10 @@ describe('<BookingDetails />', () => {
 
   describe('HeaderMessage', () => {
     it.each`
-      locationMode                 | place                                                                                             | headerMessage
-      ${LocationMode.AROUND_ME}    | ${null}                                                                                           | ${'Lieux disponibles autour de moi'}
-      ${LocationMode.EVERYWHERE}   | ${null}                                                                                           | ${'Lieux à proximité de “Cinéma de la fin”'}
-      ${LocationMode.AROUND_PLACE} | ${{ label: 'Kourou', info: 'Guyane', geolocation: { longitude: -52.669736, latitude: 5.16186 } }} | ${'Lieux à proximité de “Kourou”'}
+      locationMode                 | place                                                                                      | headerMessage
+      ${LocationMode.AROUND_ME}    | ${null}                                                                                    | ${'Lieux disponibles autour de moi'}
+      ${LocationMode.EVERYWHERE}   | ${null}                                                                                    | ${'Lieux à proximité de “PATHE MONTPARNASSE”'}
+      ${LocationMode.AROUND_PLACE} | ${{ label: 'PARIS 13', info: 'France', geolocation: { longitude: 3.12, latitude: 46.2 } }} | ${'Lieux à proximité de “PARIS 13”'}
     `(
       'should return "$headerMessage" when location mode is $locationMode and place is $place',
       async ({

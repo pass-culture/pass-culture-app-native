@@ -80,7 +80,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation, selectedLocationMode, place } = useLocation()
-  const venueName = offer?.venue.publicName || offer?.venue.name
+  const venueName = offer?.address?.label || offer?.venue.publicName || offer?.venue.name
 
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
@@ -120,10 +120,14 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     shouldFetchSearchVenueOffers && nbVenueItems > 0
   )
 
+  const venueStreet = offer?.address?.street || offer?.venue.address
+  const venuePostalCode = offer?.address?.postalCode || offer?.venue.postalCode
+  const venueCity = offer?.address?.city || offer?.venue.city
+
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
-    offer?.venue.address,
-    offer?.venue.postalCode,
-    offer?.venue.city
+    venueStreet,
+    venuePostalCode,
+    venueCity
   )
 
   const { visible, hideModal, showModal } = useModal(false)
