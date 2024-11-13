@@ -13,7 +13,7 @@ export const IconsContainer: ComponentStory<
     icons: Record<string, React.ComponentType<AccessibleIcon>>
     isBicolor?: boolean
     children?: never
-    isIllustration?: boolean // Ajout de la prop isIllustration
+    isIllustration?: boolean
   }>
 > = ({ title, icons, isBicolor = false, isIllustration = false }) => {
   const [copiedIconName, setCopiedIconName] = useState<string | null>(null)
@@ -29,7 +29,7 @@ export const IconsContainer: ComponentStory<
   const handleIconClick = (iconName: string) => {
     Clipboard.setString(iconName)
     setCopiedIconName(iconName)
-    setTimeout(() => setCopiedIconName(null), 1000) // Effacer après 1 seconde
+    setTimeout(() => setCopiedIconName(null), 1000)
   }
 
   return (
