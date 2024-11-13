@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { Platform, ScrollView, useWindowDimensions, View } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingReponse } from 'api/gen'
@@ -46,7 +46,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -186,7 +186,7 @@ export function BookingDetails() {
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <ScrollView
+      <StyledScrollView
         onScroll={onScroll}
         scrollEventThrottle={16}
         scrollIndicatorInsets={scrollIndicatorInsets}
@@ -197,46 +197,41 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeaderWithImage imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
-        <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
+        <StyledHeaderWithImage imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <TicketSwiper booking={booking} />
-        <View>
-          <InfoContainer>
-            <Spacer.Column numberOfSpaces={6} />
-            <OfferRules>{offerRules}</OfferRules>
-            <Spacer.Column numberOfSpaces={offerRules === '' ? 2 : 6} />
+        <ViewGap gap={6}>
+          <InfoContainer gap={6}>
+            {offerRules === '' ? null : <OfferRules>{offerRules}</OfferRules>}
 
             {bookingContactEmail ? (
               <React.Fragment>
-                <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
-                <Spacer.Column numberOfSpaces={2.5} />
-                <Typo.CaptionNeutralInfo>
-                  Si tu n’as pas reçu tes billets, contacte l’organisateur
-                </Typo.CaptionNeutralInfo>
-                <Spacer.Column numberOfSpaces={2.5} />
-                <SendEmailContainer>
-                  <ExternalTouchableLink
-                    as={ButtonTertiaryBlack}
-                    inline
-                    wording={bookingContactEmail}
-                    accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
-                    externalNav={{ url: `mailto:${bookingContactEmail}` }}
-                    icon={EmailFilled}
-                    onBeforeNavigate={onEmailPress}
-                  />
-                </SendEmailContainer>
+                <ViewGap gap={2.5}>
+                  <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
 
-                <Spacer.Column numberOfSpaces={6} />
+                  <Typo.CaptionNeutralInfo>
+                    Si tu n’as pas reçu tes billets, contacte l’organisateur
+                  </Typo.CaptionNeutralInfo>
+
+                  <SendEmailContainer>
+                    <ExternalTouchableLink
+                      as={ButtonTertiaryBlack}
+                      inline
+                      wording={bookingContactEmail}
+                      accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
+                      externalNav={{ url: `mailto:${bookingContactEmail}` }}
+                      icon={EmailFilled}
+                      onBeforeNavigate={onEmailPress}
+                    />
+                  </SendEmailContainer>
+                </ViewGap>
+
                 <Separator.Horizontal />
-                <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             ) : null}
             <BookingPropertiesSection booking={booking} />
             {shouldDisplayItineraryButton ? (
               <React.Fragment>
-                <Spacer.Column numberOfSpaces={4} />
                 <Separator.Horizontal />
-                <Spacer.Column numberOfSpaces={4} />
                 <SeeItineraryButton
                   externalNav={{
                     url: getGoogleMapsItineraryUrl(offerFullAddress),
@@ -251,21 +246,15 @@ export function BookingDetails() {
           </InfoContainer>
 
           {offer.withdrawalDetails ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
-                <InfoContainer>
-                  <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
-                  <Spacer.Column numberOfSpaces={4} />
-                  <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
-                </InfoContainer>
-              </SectionWithDivider>
-            </React.Fragment>
+            <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
+              <InfoContainer gap={4}>
+                <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
+                <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
+              </InfoContainer>
+            </SectionWithDivider>
           ) : null}
 
-          <Spacer.Column numberOfSpaces={14} />
-
-          <InfoBottomContainer gap={4}>
+          <InfoButtonsContainer gap={4}>
             <InternalTouchableLink
               enableNavigate={!!netInfo.isConnected}
               as={ButtonPrimary}
@@ -280,10 +269,9 @@ export function BookingDetails() {
               onTerminate={showArchiveModal}
               fullWidth
             />
-          </InfoBottomContainer>
-        </View>
-        <Spacer.Column numberOfSpaces={5} />
-      </ScrollView>
+          </InfoButtonsContainer>
+        </ViewGap>
+      </StyledScrollView>
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
 
@@ -303,18 +291,29 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
+const StyledScrollView = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    marginBottom: getSpacing(5),
+  },
+})``
+
 const OfferRules = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
 })
 
-const InfoContainer = styled.View({
+const InfoContainer = styled(ViewGap)({
   paddingHorizontal: getSpacing(6),
 })
 
-const InfoBottomContainer = styled(ViewGap)({
+const InfoButtonsContainer = styled(ViewGap)({
   paddingHorizontal: getSpacing(6),
+  marginTop: getSpacing(2),
 })
 
 const SendEmailContainer = styled.View({
   alignItems: 'flex-start',
+})
+
+const StyledHeaderWithImage = styled(HeaderWithImage)({
+  marginBottom: getSpacing(offerImageContainerMarginTop),
 })

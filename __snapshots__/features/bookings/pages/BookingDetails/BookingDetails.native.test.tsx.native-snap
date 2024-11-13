@@ -15,6 +15,11 @@ exports[`BookingDetails should render correctly 1`] = `
 >
   <RCTScrollView
     bounces={false}
+    contentContainerStyle={
+      {
+        "marginBottom": 20,
+      }
+    }
     onContentSizeChange={[Function]}
     onScroll={[Function]}
     scrollEventThrottle={16}
@@ -22,6 +27,11 @@ exports[`BookingDetails should render correctly 1`] = `
       {
         "right": 1,
       }
+    }
+    style={
+      [
+        {},
+      ]
     }
     testID="BookingDetailsScrollView"
   >
@@ -32,6 +42,9 @@ exports[`BookingDetails should render correctly 1`] = `
             {
               "alignItems": "center",
               "minHeight": 0,
+            },
+            {
+              "marginBottom": 128,
             },
           ]
         }
@@ -61,16 +74,6 @@ exports[`BookingDetails should render correctly 1`] = `
           />
         </View>
       </View>
-      <View
-        numberOfSpaces={32}
-        style={
-          [
-            {
-              "height": 128,
-            },
-          ]
-        }
-      />
       <RCTScrollView
         ItemSeparatorComponent={[Function]}
         bounces={false}
@@ -190,7 +193,8 @@ exports[`BookingDetails should render correctly 1`] = `
                   {
                     "alignItems": "center",
                     "justifyContent": "flex-end",
-                    "paddingVertical": 8,
+                    "paddingBottom": 24,
+                    "paddingTop": 8,
                     "width": 724.8,
                   },
                 ]
@@ -458,26 +462,27 @@ exports[`BookingDetails should render correctly 1`] = `
           </View>
         </View>
       </RCTScrollView>
-      <View>
+      <View
+        gap={6}
+        style={
+          [
+            {
+              "gap": 24,
+            },
+          ]
+        }
+      >
         <View
+          gap={6}
           style={
             [
               {
+                "gap": 24,
                 "paddingHorizontal": 24,
               },
             ]
           }
         >
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
           <Text
             style={
               [
@@ -493,16 +498,6 @@ exports[`BookingDetails should render correctly 1`] = `
           >
             Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
           </Text>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
           <View>
             <Text
               style={
@@ -819,32 +814,12 @@ exports[`BookingDetails should render correctly 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
             style={
               [
                 {
                   "backgroundColor": "#F1F1F4",
                   "height": 1,
                   "width": "100%",
-                },
-              ]
-            }
-          />
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
                 },
               ]
             }
@@ -972,21 +947,12 @@ exports[`BookingDetails should render correctly 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={14}
-          style={
-            [
-              {
-                "height": 56,
-              },
-            ]
-          }
-        />
-        <View
           gap={4}
           style={
             [
               {
                 "gap": 16,
+                "marginTop": 8,
                 "paddingHorizontal": 24,
               },
             ]
@@ -1070,43 +1036,35 @@ exports[`BookingDetails should render correctly 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={4}
+            gap={4}
             style={
               [
                 {
-                  "height": 16,
+                  "gap": 16,
                 },
               ]
             }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "textAlign": "center",
-                },
-              ]
-            }
-            testID="cancel-annulation-message"
           >
-            Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
-          </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginBottom": 24,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+              testID="cancel-annulation-message"
+            >
+              Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
+            </Text>
+          </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>
   <View
