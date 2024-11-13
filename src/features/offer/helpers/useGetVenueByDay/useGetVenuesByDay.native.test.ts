@@ -2,14 +2,10 @@ import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
 
 import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferIds'
-import {
-  dateBuilder,
-  offerResponseBuilder,
-  stockBuilder,
-} from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
+import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -19,17 +15,35 @@ const TODAY_DATE = TODAY.toDate()
 const AFTER_15_DAYS = addDays(TODAY.toDate(), 16)
 const TOMORROW = dateBuilder().withDay(3)
 
-const TODAY_STOCK = stockBuilder().withBeginningDatetime(TODAY_LATER.toString()).build()
-const TOMORROW_STOCK = stockBuilder().withBeginningDatetime(TOMORROW.toString()).build()
-const STOCK_AFTER_15_DAYS = stockBuilder().withBeginningDatetime(AFTER_15_DAYS.toString()).build()
+const TODAY_STOCK = mockBuilder.offerStockResponse({
+  beginningDatetime: TODAY_LATER.toString(),
+})
 
-const OFFER_WITH_STOCKS_TODAY = offerResponseBuilder().withStocks([TODAY_STOCK]).build()
-const OFFER_WITH_STOCKS_TOMORROW = offerResponseBuilder().withStocks([TOMORROW_STOCK]).build()
-const OFFER_WITH_STOCKS_AFTER_15_DAYS = offerResponseBuilder()
-  .withStocks([STOCK_AFTER_15_DAYS])
-  .build()
-const OFFER_WITHOUT_STOCKS = offerResponseBuilder().withStocks([]).build()
-const OFFER_WITHOUT_ALLOCINE_ID = offerResponseBuilder().withExtraData({}).build()
+const TOMORROW_STOCK = mockBuilder.offerStockResponse({
+  beginningDatetime: TOMORROW.toString(),
+})
+
+const STOCK_AFTER_15_DAYS = mockBuilder.offerStockResponse({
+  beginningDatetime: AFTER_15_DAYS.toString(),
+})
+
+const OFFER_WITH_STOCKS_TODAY = mockBuilder.offerResponseV2({
+  stocks: [TODAY_STOCK],
+})
+
+const OFFER_WITH_STOCKS_TOMORROW = mockBuilder.offerResponseV2({
+  stocks: [TOMORROW_STOCK],
+})
+
+const OFFER_WITH_STOCKS_AFTER_15_DAYS = mockBuilder.offerResponseV2({
+  stocks: [STOCK_AFTER_15_DAYS],
+})
+
+const OFFER_WITHOUT_STOCKS = mockBuilder.offerResponseV2({
+  stocks: [],
+})
+
+const OFFER_WITHOUT_ALLOCINE_ID = mockBuilder.offerResponseV2({ extraData: { allocineId: null } })
 
 mockdate.set(TODAY_DATE)
 
@@ -81,7 +95,7 @@ describe('useGetVenueByDay', () => {
     it('should return an empty list when the offer is not available in any cinema', async () => {
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(() => {})
 
@@ -93,7 +107,7 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(initialNumberOfCinema, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 
@@ -109,7 +123,7 @@ describe('useGetVenueByDay', () => {
       ]
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 
@@ -122,7 +136,7 @@ describe('useGetVenueByDay', () => {
 
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}), {
         initialCount: initialNumberOfCinema,
       })
 
@@ -137,7 +151,7 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}), {
         initialCount: 6,
         nextCount: 3,
       })
@@ -155,7 +169,7 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(10, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}), {
         initialCount: 6,
       })
 
@@ -168,7 +182,7 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(3, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}), {
         initialCount: 6,
       })
 
@@ -181,7 +195,7 @@ describe('useGetVenueByDay', () => {
       const offers = generateOfferNumber(8, OFFER_WITH_STOCKS_TODAY)
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = await renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build(), {
+      const { result } = await renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}), {
         initialCount: 6,
         nextCount: 3,
       })
@@ -202,7 +216,7 @@ describe('useGetVenueByDay', () => {
         offers: tomorrowOffers,
       })
 
-      const offer = offerResponseBuilder().build()
+      const offer = mockBuilder.offerResponseV2({})
       const options = {
         initialCount: 6,
         nextCount: 3,
@@ -227,7 +241,7 @@ describe('useGetVenueByDay', () => {
         offers: [...todaysOffers, ...tomorrowOffers],
       })
 
-      const offer = offerResponseBuilder().build()
+      const offer = mockBuilder.offerResponseV2({})
       const options = {
         initialCount: 6,
         nextCount: 3,
@@ -254,7 +268,7 @@ describe('useGetVenueByDay', () => {
     it('should be true when fetching data', async () => {
       mockedGetStocksByOfferIds.mockReturnValueOnce(new Promise(jest.fn())) // Never resolving promise to simulate loading
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 
@@ -264,7 +278,7 @@ describe('useGetVenueByDay', () => {
     it('should be false when data is loaded', async () => {
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers: [] })
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 
@@ -277,7 +291,7 @@ describe('useGetVenueByDay', () => {
       const offers = [OFFER_WITHOUT_STOCKS, OFFER_WITH_STOCKS_AFTER_15_DAYS]
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 
@@ -288,7 +302,7 @@ describe('useGetVenueByDay', () => {
       const offers = [OFFER_WITH_STOCKS_TODAY, OFFER_WITHOUT_STOCKS]
       mockedGetStocksByOfferIds.mockResolvedValueOnce({ offers })
 
-      const { result } = renderUseGetVenueByDay(TODAY_DATE, offerResponseBuilder().build())
+      const { result } = renderUseGetVenueByDay(TODAY_DATE, mockBuilder.offerResponseV2({}))
 
       await act(async () => {})
 

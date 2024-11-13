@@ -1,10 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferIds'
 import * as useMovieCalendarModule from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import {
-  offerResponseBuilder,
-  stockBuilder,
-} from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -28,21 +25,33 @@ describe('useMoviesScreeningsList', () => {
 
   it('should return filtered movie offers', async () => {
     const mockOffers = [
-      offerResponseBuilder()
-        .withId(1)
-        .withSubcategoryId(SubcategoryIdEnum.SEANCE_CINE)
-        .withStocks([stockBuilder().withBeginningDatetime('2023-05-15T10:00:00Z').build()])
-        .build(),
-      offerResponseBuilder()
-        .withId(2)
-        .withSubcategoryId(SubcategoryIdEnum.SEANCE_CINE)
-        .withStocks([stockBuilder().withBeginningDatetime('2023-05-16T10:00:00Z').build()])
-        .build(),
-      offerResponseBuilder()
-        .withId(3)
-        .withSubcategoryId(SubcategoryIdEnum.LIVRE_PAPIER)
-        .withStocks([stockBuilder().withBeginningDatetime('2023-05-15T10:00:00Z').build()])
-        .build(),
+      mockBuilder.offerResponseV2({
+        id: 1,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: '2023-05-15T10:00:00Z',
+          }),
+        ],
+      }),
+      mockBuilder.offerResponseV2({
+        id: 2,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: '2023-05-16T10:00:00Z',
+          }),
+        ],
+      }),
+      mockBuilder.offerResponseV2({
+        id: 3,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: '2023-05-15T10:00:00Z',
+          }),
+        ],
+      }),
     ]
 
     getStocksByOfferIdsModuleSpy.mockResolvedValueOnce({ offers: mockOffers })

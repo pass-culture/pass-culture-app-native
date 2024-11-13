@@ -1,7 +1,7 @@
-import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import * as fetchFilmsOffersModule from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
 import { useFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/useFilmsOffers'
 import { LocationMode, Position } from 'libs/location/types'
+import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -16,7 +16,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const filmsOffer = searchResponseOfferBuilder().build()
+const filmsOffer = mockBuilder.searchResponseOffer({})
 
 const fetchOffersSpy = jest
   .spyOn(fetchFilmsOffersModule, 'fetchFilmsOffers')
