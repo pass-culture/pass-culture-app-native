@@ -9,11 +9,14 @@ import { useAddFavorite, useFavorite } from 'features/favorites/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFunctionOnce } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+
+const FROM = 'bookingimpossible'
 
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -42,6 +45,11 @@ export const BookingImpossible: React.FC = () => {
     },
   })
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() => {
+    if (typeof offerId == 'undefined') return
+    triggerConsultOfferLog({ offerId, from: FROM })
+  })
+
   if (typeof offerId == 'undefined') return null
 
   const addToFavourite = () => {
@@ -52,9 +60,8 @@ export const BookingImpossible: React.FC = () => {
   const navigateToOffer = () => {
     dismissModal()
 
-    const from = 'bookingimpossible'
-    triggerConsultOfferLog({ offerId, from })
-    navigate('Offer', { id: offerId, from })
+    triggerConsultOfferLogOnce()
+    navigate('Offer', { id: offerId, from: FROM })
   }
 
   return (

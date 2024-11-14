@@ -16,6 +16,7 @@ import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useFunctionOnce } from 'libs/hooks'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -95,6 +96,10 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     [iconFactory]
   )
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
+    triggerConsultOfferLog({ offerId: stock.offer.id, from: 'endedbookings' })
+  )
+
   const getCustomReactionIcon = useCallback(
     (reaction?: ReactionTypeEnum | null): React.FC<AccessibleIcon> => {
       switch (reaction) {
@@ -122,8 +127,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         name: offer.name,
         offerId: offer.id,
       })
-
-      triggerConsultOfferLog({ offerId: offer.id, from: 'endedbookings' })
+      triggerConsultOfferLogOnce()
     } else {
       showErrorSnackBar({
         message:

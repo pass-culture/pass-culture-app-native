@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useFunctionOnce } from 'libs/hooks'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
@@ -63,6 +64,13 @@ export const HorizontalOfferTile = ({
     return subtitles ?? [nativeCategoryValue, formattedDate].filter((subtitle) => !!subtitle)
   }, [formattedDate, nativeCategoryValue, subtitles])
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
+    triggerConsultOfferLog({
+      offerId,
+      ...analyticsParams,
+    })
+  )
+
   function handlePressOffer() {
     if (!offerId) return
     if (onPress) onPress()
@@ -76,10 +84,7 @@ export const HorizontalOfferTile = ({
       offerId,
     })
 
-    triggerConsultOfferLog({
-      offerId,
-      ...analyticsParams,
-    })
+    triggerConsultOfferLogOnce()
 
     if (analyticsParams.from === 'searchresults')
       logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })

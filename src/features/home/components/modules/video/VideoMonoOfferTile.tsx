@@ -9,6 +9,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useFunctionOnce } from 'libs/hooks'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -42,6 +43,13 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const prePopulateOffer = usePrePopulateOffer()
   const theme = useTheme()
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() => {
+    triggerConsultOfferLog({
+      offerId: +offer.objectID,
+      ...analyticsParams,
+    })
+  })
+
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
 
@@ -65,10 +73,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         offerId: +offer.objectID,
         categoryId,
       })
-      triggerConsultOfferLog({
-        offerId: +offer.objectID,
-        ...analyticsParams,
-      })
+      triggerConsultOfferLogOnce()
     },
   }
 

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components/native'
@@ -58,6 +58,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, userLocation } = useLocation()
   const { isDesktopViewport } = useTheme()
+  const hasTriggeredConsultOfferLog = useRef(false)
 
   const enableNewXPCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
 
@@ -118,11 +119,14 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
       hideChangeVenueModal()
-      triggerConsultOfferLog({
-        offerId: nextOfferId,
-        from: 'offer',
-        fromMultivenueOfferId: offer.id,
-      })
+      if (!hasTriggeredConsultOfferLog.current) {
+        triggerConsultOfferLog({
+          offerId: nextOfferId,
+          from: 'offer',
+          fromMultivenueOfferId: offer.id,
+        })
+        hasTriggeredConsultOfferLog.current = true // Marquer comme logué après le premier appel
+      }
       navigate('Offer', {
         fromOfferId: offer.id,
         id: nextOfferId,

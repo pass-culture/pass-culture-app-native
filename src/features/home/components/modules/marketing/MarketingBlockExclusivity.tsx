@@ -3,6 +3,7 @@ import React, { memo } from 'react'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFunctionOnce } from 'libs/hooks'
 import { Offer } from 'shared/offer/types'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
@@ -19,7 +20,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
   homeEntryId,
   backgroundImageUrl,
 }: AttachedOfferCardProps) => {
-  const logConsultOffer = () => {
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
     triggerConsultOfferLog({
       offerId: parseInt(offer.objectID),
       from: 'home',
@@ -27,12 +28,12 @@ const UnmemoizedMarketingBlockExclusivity = ({
       moduleName: offer.offer.name,
       moduleId,
     })
-  }
+  )
 
   return (
     <MarketingBlock
       navigateTo={{ screen: 'Offer', params: { id: offer.objectID } }}
-      onBeforeNavigate={logConsultOffer}
+      onBeforeNavigate={triggerConsultOfferLogOnce}
       backgroundImageUrl={backgroundImageUrl}
       AttachedCardComponent={
         <ShadowWrapper>

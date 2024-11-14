@@ -12,6 +12,7 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFunctionOnce } from 'libs/hooks'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
@@ -82,6 +83,10 @@ export const Favorite: React.FC<Props> = (props) => {
     price: displayPrice,
   })
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
+    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' })
+  )
+
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     if (!offer.id) return
@@ -93,7 +98,7 @@ export const Favorite: React.FC<Props> = (props) => {
       offerId: offer.id,
     })
 
-    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' })
+    triggerConsultOfferLogOnce()
   }
 
   function onRemove() {

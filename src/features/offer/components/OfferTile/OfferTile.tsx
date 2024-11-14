@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFunctionOnce } from 'libs/hooks'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -52,9 +53,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
 
   const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
 
-  function handlePressOffer() {
-    // We pre-populate the query-cache with the data from the search result for a smooth transition
-    prePopulateOffer(offer)
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
     triggerConsultOfferLog({
       ...apiRecoParams,
       offerId,
@@ -69,6 +68,12 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       index,
       artistName,
     })
+  )
+
+  function handlePressOffer() {
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
+    prePopulateOffer(offer)
+    triggerConsultOfferLogOnce()
   }
 
   return (

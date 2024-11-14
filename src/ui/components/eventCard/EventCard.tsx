@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFunctionOnce } from 'libs/hooks'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -29,11 +30,15 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   analyticsFrom,
   offerId,
 }) => {
-  const hasSubtitleRight = !!subtitleRight
-  const handleEventCardPress = () => {
+  const triggerConsultOfferLogOnce = useFunctionOnce(() => {
     if (analyticsFrom === 'venue' && offerId !== undefined) {
       triggerConsultOfferLog({ offerId, from: analyticsFrom })
     }
+  })
+
+  const hasSubtitleRight = !!subtitleRight
+  const handleEventCardPress = () => {
+    triggerConsultOfferLogOnce()
     onPress()
   }
   return (

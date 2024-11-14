@@ -8,6 +8,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useFunctionOnce } from 'libs/hooks'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
@@ -37,6 +38,13 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const mapping = useCategoryIdMapping()
   const { user } = useAuthContext()
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() => {
+    triggerConsultOfferLog({
+      offerId: +offer.objectID,
+      ...analyticsParams,
+    })
+  })
+
   const displayPrice = getDisplayPrice(offer?.offer?.prices)
 
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -62,10 +70,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
             offerId: +offer.objectID,
             categoryId,
           })
-          triggerConsultOfferLog({
-            offerId: +offer.objectID,
-            ...analyticsParams,
-          })
+          triggerConsultOfferLogOnce()
         }}
         testId="multi-offer-tile">
         {enableMultiVideoModule ? (

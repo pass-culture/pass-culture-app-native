@@ -113,6 +113,10 @@ export function BookingDetails() {
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
 
+  const triggerConsultOfferLogOnce = useFunctionOnce(() =>
+    triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
+  )
+
   const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
       if (isCloseToBottom(nativeEvent)) logConsultWholeBooking()
@@ -169,7 +173,7 @@ export function BookingDetails() {
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
+      triggerConsultOfferLogOnce()
     } else {
       showErrorSnackBar({
         message:
