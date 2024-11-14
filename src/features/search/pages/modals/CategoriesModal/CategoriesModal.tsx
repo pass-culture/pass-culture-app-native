@@ -82,7 +82,7 @@ export const CategoriesModal = ({
   const nativeCategories = useMemo(() => {
     return (category &&
       category !== SearchGroupNameEnumv2.NONE &&
-      tree[category].children) as MappedNativeCategories
+      tree[category]?.children) as MappedNativeCategories
   }, [category, tree])
 
   const genreTypes = useMemo(() => {
