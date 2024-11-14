@@ -280,6 +280,7 @@ describe('getCategories', () => {
     expect(categories).toEqual([
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      SearchGroupNameEnumv2.MUSIQUE,
       SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
       SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
       SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,

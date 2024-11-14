@@ -127,6 +127,10 @@ describe('categoriesHelpers', () => {
         value: 'Musées & visites culturelles',
       },
       {
+        name: 'MUSIQUE',
+        value: 'Musique',
+      },
+      {
         name: 'SPECTACLES',
         value: 'Spectacles',
       },

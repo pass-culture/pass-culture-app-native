@@ -17,7 +17,7 @@ describe('useAvailableCategories', () => {
   it('should all availables categories', () => {
     const categories = useAvailableCategories()
 
-    expect(categories).toHaveLength(14)
+    expect(categories).toHaveLength(13)
     expect(categories).toEqual(
       expect.arrayContaining([
         {
@@ -67,7 +67,7 @@ describe('useAvailableCategories', () => {
         {
           icon: categoriesIcons.Disk,
           illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
-          facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+          facetFilter: SearchGroupNameEnumv2.MUSIQUE,
           position: 5,
           baseColor: theme.colors.lilacDark,
           gradients: gradientColorsMapping.Lilac,
@@ -120,21 +120,10 @@ describe('useAvailableCategories', () => {
           fillColor: theme.colors.deepPinkLight,
         },
         {
-          icon: categoriesIcons.Instrument,
-          illustration: SearchCategoriesIllustrations.MusicalInstruments,
-          facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
-          position: 10,
-          baseColor: theme.colors.deepPinkDark,
-          gradients: gradientColorsMapping.DeepPink,
-          textColor: theme.colors.coralDark,
-          borderColor: theme.colors.skyBlue,
-          fillColor: theme.colors.skyBlueLight,
-        },
-        {
           icon: categoriesIcons.Press,
           illustration: SearchCategoriesIllustrations.MediaPress,
           facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
-          position: 11,
+          position: 10,
           baseColor: theme.colors.lilacDark,
           gradients: gradientColorsMapping.Lilac,
           textColor: theme.colors.deepPinkDark,
@@ -145,7 +134,7 @@ describe('useAvailableCategories', () => {
           icon: categoriesIcons.Card,
           illustration: SearchCategoriesIllustrations.YouthCards,
           facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
-          position: 12,
+          position: 11,
           baseColor: theme.colors.goldDark,
           gradients: gradientColorsMapping.Gold,
           textColor: theme.colors.lilacDark,
@@ -156,7 +145,7 @@ describe('useAvailableCategories', () => {
           icon: categoriesIcons.Microphone,
           illustration: SearchCategoriesIllustrations.ConferencesMeetings,
           facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
-          position: 13,
+          position: 12,
           baseColor: theme.colors.aquamarineDark,
           gradients: gradientColorsMapping.Aquamarine,
           textColor: theme.colors.lilacDark,
@@ -166,7 +155,7 @@ describe('useAvailableCategories', () => {
         {
           icon: categoriesIcons.LiveEvent,
           illustration: SearchCategoriesIllustrations.OnlineEvents,
-          position: 14,
+          position: 13,
           facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
           baseColor: theme.colors.aquamarineDark,
           gradients: gradientColorsMapping.Aquamarine,
@@ -204,7 +193,7 @@ describe('useAvailableCategories', () => {
         icon: categoriesIcons.Card,
         illustration: SearchCategoriesIllustrations.YouthCards,
         facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
-        position: 12,
+        position: 11,
         baseColor: theme.colors.goldDark,
         gradients: [theme.colors.gold, theme.colors.goldDark],
         textColor: theme.colors.lilacDark,

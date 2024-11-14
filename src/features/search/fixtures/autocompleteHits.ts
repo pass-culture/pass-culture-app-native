@@ -191,7 +191,7 @@ export const mockHitUnknownNativeCategory: AlgoliaSuggestionHit = {
           {
             attribute: '',
             operator: '',
-            value: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+            value: SearchGroupNameEnumv2.MUSIQUE,
             count: 10,
           },
         ],

@@ -1773,45 +1773,19 @@ export interface MovieType {
 }
 /**
  * @export
- * @interface MusicSubType
- */
-export interface MusicSubType {
-  /**
-   * @type {number}
-   * @memberof MusicSubType
-   */
-  code: number
-  /**
-   * @type {string}
-   * @memberof MusicSubType
-   */
-  label: string
-  /**
-   * @type {string}
-   * @memberof MusicSubType
-   */
-  slug: string
-}
-/**
- * @export
  * @interface MusicType
  */
 export interface MusicType {
   /**
-   * @type {Array<MusicSubType>}
-   * @memberof MusicType
-   */
-  children: Array<MusicSubType>
-  /**
-   * @type {number}
-   * @memberof MusicType
-   */
-  code: number
-  /**
    * @type {string}
    * @memberof MusicType
    */
   label: string
+  /**
+   * @type {string}
+   * @memberof MusicType
+   */
+  name: string
 }
 /**
  * An enumeration.
@@ -3100,6 +3074,7 @@ export enum SearchGroupNameEnumv2 {
   'LIVRES' = 'LIVRES',
   'MEDIA_PRESSE' = 'MEDIA_PRESSE',
   'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
+  'MUSIQUE' = 'MUSIQUE',
   'NONE' = 'NONE',
   'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
   'SPECTACLES' = 'SPECTACLES',
