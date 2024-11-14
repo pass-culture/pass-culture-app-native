@@ -10,6 +10,7 @@ import {
 } from 'features/profile/pages/Achievements/AchievementData'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -22,7 +23,7 @@ export const Achievements = () => {
   })
 
   return (
-    <SecondaryPageWithBlurHeader title="Mes Succès">
+    <SecondaryPageWithBlurHeader title="">
       <AchievementsContainer>
         <TypoDS.Title2>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
@@ -82,12 +83,11 @@ const AchievementsGroupeHeader = styled.View({
 
 const AchievementsGroupeTitle = styled.View({})
 
-const CompletionContainer = styled.View({
+const CompletionContainer = styled(ViewGap).attrs({ gap: 2 })({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  gap: getSpacing(2),
 })
 
 const ProgressBarContainer = styled.View({
@@ -95,10 +95,8 @@ const ProgressBarContainer = styled.View({
   maxWidth: 80,
 })
 
-const BadgesContainer = styled.View({
+const BadgesContainer = styled(ViewGap).attrs({ gap: 6 })({
   flexDirection: 'row',
   flexWrap: 'wrap',
-  gap: getSpacing(6),
-  paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(2),
+  paddingHorizontal: getSpacing(2),
 })
