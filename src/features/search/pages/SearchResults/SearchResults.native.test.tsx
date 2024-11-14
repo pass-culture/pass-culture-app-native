@@ -403,11 +403,11 @@ describe('<SearchResults/>', () => {
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
-      render(<SearchResults />)
+      render(reactQueryProviderHOC(<SearchResults />))
       await act(async () => {})
       await act(async () => {})
 
-      expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
 })

@@ -56,7 +56,6 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchCinemaOffers) => 
 
   try {
     const allQueries = await multipleQueries<Offer>(queries)
-    //console.log({ truc: allQueries.filter(searchResponsePredicate) })
     return allQueries.filter(searchResponsePredicate)
   } catch (error) {
     captureAlgoliaError(error)
