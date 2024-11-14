@@ -1,3 +1,6 @@
+import { ComponentStory } from '@storybook/react'
+import React from 'react'
+
 import { IconsContainer as Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   BicolorIllustrations,
@@ -15,20 +18,33 @@ export default {
   },
 }
 
-export const Bicolors = Illustrations.bind({})
-Bicolors.args = {
-  title: 'Illustration icons should have a standard size of 140',
-  icons: BicolorIllustrations,
-}
+const illustrationSets = [
+  {
+    title: 'BicolorIllustrations',
+    icons: BicolorIllustrations,
+  },
+  {
+    title: 'UniqueColorIllustrations',
+    icons: UniqueColorIllustrations,
+  },
+  {
+    title: 'SearchCategoriesIllustrations',
+    icons: SearchCategoriesIllustrations,
+  },
+]
 
-export const UniqueColor = Illustrations.bind({})
-UniqueColor.args = {
-  title: 'Illustration icons should have a standard size of 140',
-  icons: UniqueColorIllustrations,
-}
+const Template: ComponentStory<typeof Illustrations> = () => (
+  <React.Fragment>
+    {illustrationSets.map((illustration) => (
+      <Illustrations
+        key={illustration.title}
+        title={illustration.title}
+        icons={illustration.icons}
+        isIllustration
+      />
+    ))}
+  </React.Fragment>
+)
 
-export const SearchCategories = Illustrations.bind({})
-SearchCategories.args = {
-  title: 'Illustration icons should have a standard size of 140',
-  icons: SearchCategoriesIllustrations,
-}
+export const AllIllustrations = Template.bind({})
+AllIllustrations.storyName = 'Illustrations'

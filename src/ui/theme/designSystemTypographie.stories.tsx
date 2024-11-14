@@ -6,13 +6,13 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { TypoDS } from './designSystemTypographie'
 
 export default {
-  title: 'Design System/TypoDS',
+  title: 'Design System/Typographies',
 }
 
 type TypographyComponents = (typeof TypoDS)[keyof typeof TypoDS]
 
-export const Typographies: ComponentStory<TypographyComponents> = () => (
-  <ViewGap gap={2}>
+const Template: ComponentStory<TypographyComponents> = () => (
+  <ViewGap gap={5}>
     <TypoDS.Title1>Title1</TypoDS.Title1>
     <TypoDS.Title2>Title2</TypoDS.Title2>
     <TypoDS.Title3>Title3</TypoDS.Title3>
@@ -28,3 +28,6 @@ export const Typographies: ComponentStory<TypographyComponents> = () => (
     <TypoDS.Button>Button</TypoDS.Button>
   </ViewGap>
 )
+
+export const Typographies = Template.bind({})
+Typographies.storyName = 'Typographies'

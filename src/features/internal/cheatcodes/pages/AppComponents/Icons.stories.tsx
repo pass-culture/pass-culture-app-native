@@ -1,3 +1,6 @@
+import { ComponentStory } from '@storybook/react'
+import React from 'react'
+
 import { IconsContainer as Icons } from 'features/internal/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   SecondaryAndBiggerIcons,
@@ -14,44 +17,47 @@ export default {
   title: 'Fondations/Icons',
 }
 
-export const SocialNetwork = Icons.bind({})
-SocialNetwork.args = {
-  icons: SocialNetworkIcons,
-}
+const iconSets = [
+  {
+    title: 'SocialNetworkIcons',
+    icons: SocialNetworkIcons,
+  },
+  {
+    title: 'categoriesIcons',
+    icons: categoriesIcons,
+    isBicolor: true,
+  },
+  {
+    title: 'venueTypesIcons',
+    icons: venueTypesIcons,
+    isBicolor: true,
+  },
+  {
+    title: `SecondaryAndBiggerIcons ( > 20x20 ) should have a standard size of ${STANDARD_ICON_SIZE}`,
+    icons: SecondaryAndBiggerIcons,
+  },
+  {
+    title: `TertiaryAndSmallerIcons ( <= 20x20 ) should have a standard size of ${SMALLER_ICON_SIZE}`,
+    icons: TertiaryAndSmallerIcons,
+  },
+  {
+    title: 'UnconventionalIcons (to be standardized)',
+    icons: UnconventionalIcons,
+  },
+  {
+    title: 'culturalSurveyIcons',
+    icons: culturalSurveyIcons,
+    isBicolor: true,
+  },
+]
 
-export const Categories = Icons.bind({})
-Categories.args = {
-  isBicolor: true,
-  icons: categoriesIcons,
-}
+const Template: ComponentStory<typeof Icons> = () => (
+  <React.Fragment>
+    {iconSets.map((icon) => (
+      <Icons key={icon.title} title={icon.title} icons={icon.icons} isBicolor={icon.isBicolor} />
+    ))}
+  </React.Fragment>
+)
 
-export const VenueTypes = Icons.bind({})
-VenueTypes.args = {
-  isBicolor: true,
-  icons: venueTypesIcons,
-}
-
-export const SecondaryAndBigger = Icons.bind({})
-SecondaryAndBigger.args = {
-  title: `Secondary and bigger Icons ( > 20x20 ) should have a standard size of ${STANDARD_ICON_SIZE}`,
-  icons: SecondaryAndBiggerIcons,
-}
-
-export const TertiaryAndSmaller = Icons.bind({})
-TertiaryAndSmaller.args = {
-  title: `Tertiary and smaller plain Icons ( <= 20x20 ) should have a standard size of ${SMALLER_ICON_SIZE}`,
-  icons: TertiaryAndSmallerIcons,
-}
-
-export const Unconventional = Icons.bind({})
-Unconventional.args = {
-  title: `Icônes à uniformiser (conversion en illustrations)`,
-  icons: UnconventionalIcons,
-}
-
-export const CulturalSurvey = Icons.bind({})
-CulturalSurvey.args = {
-  title: `Icones pour QPI`,
-  icons: culturalSurveyIcons,
-  isBicolor: true,
-}
+export const AllIcons = Template.bind({})
+AllIcons.storyName = 'Icons'
