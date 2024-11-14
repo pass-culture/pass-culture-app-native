@@ -12,7 +12,6 @@ jest.unmock('libs/firebase/analytics/provider')
 jest.unmock('libs/firebase/analytics/analytics')
 jest.unmock('libs/analytics/provider')
 jest.unmock('libs/analytics/logEventAnalytics')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 const { analytics } = jest.requireActual('libs/analytics')
 

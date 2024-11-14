@@ -17,8 +17,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('features/search/context/SearchWrapper')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)

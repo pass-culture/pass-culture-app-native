@@ -22,8 +22,6 @@ jest.mock('features/venueMap/store/venuesStore')
 const mockUseVenuesActions = useVenuesActions as jest.MockedFunction<typeof useVenuesActions>
 mockUseVenuesActions.mockReturnValue({ setVenues: mockSetVenues })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useVenuesMapData', () => {
   it('should return default values without transformVenues', () => {
     const { result } = renderHook(() => useVenuesMapData(venuesFixture), {

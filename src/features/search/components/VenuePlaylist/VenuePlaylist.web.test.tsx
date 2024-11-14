@@ -20,8 +20,6 @@ jest.mock('features/venueMap/store/venueTypeCodeStore', () => ({
   useVenueTypeCodeActions: () => ({ setVenueTypeCode: mockSetVenueTypeCode }),
 }))
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-native-safe-area-context', () => ({

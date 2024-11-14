@@ -15,8 +15,6 @@ jest.mock('libs/location')
 jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<VenueTopComponent />', () => {
   it('should display preview in modal', async () => {
     render(

@@ -16,8 +16,6 @@ jest.mock('features/navigation/TabBar/routes')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/favorites/context/FavoritesWrapper')

@@ -20,8 +20,6 @@ const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: S
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
 

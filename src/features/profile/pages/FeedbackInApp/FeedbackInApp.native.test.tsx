@@ -28,8 +28,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const postFeedbackSpy = jest.spyOn(API.api, 'postNativeV1Feedback')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

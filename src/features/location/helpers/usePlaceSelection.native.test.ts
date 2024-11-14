@@ -7,8 +7,6 @@ import { renderHook } from 'tests/utils'
 
 const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('usePlaceSelection', () => {
   it('should call onSetSelectedPlace when onPlaceSelection is called', () => {
     const { result } = renderHook(() => usePlaceSelection(mockLocationState))

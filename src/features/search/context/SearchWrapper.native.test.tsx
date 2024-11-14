@@ -32,8 +32,6 @@ const mockPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('SearchWrapper', () => {
   it('should update locationType with type Around Place when Location Context is switched to a specified place', async () => {
     renderDummyComponent()

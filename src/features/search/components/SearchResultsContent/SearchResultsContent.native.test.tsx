@@ -177,8 +177,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const { View } = jest.requireActual('react-native')
 

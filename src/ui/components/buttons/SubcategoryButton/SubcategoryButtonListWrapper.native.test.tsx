@@ -16,7 +16,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 describe('<SubcategoryButtonListWrapper/>', () => {
   it('should display "Films à l’affiche" instead of "Séances de cinéma" if offerCategory is "Cinema"', async () => {

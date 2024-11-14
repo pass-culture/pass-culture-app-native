@@ -25,8 +25,6 @@ const mockUseGeolocation = useLocation as jest.Mock
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({

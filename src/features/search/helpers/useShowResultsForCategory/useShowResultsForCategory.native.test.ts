@@ -27,8 +27,6 @@ jest.mock('features/navigation/TabBar/routes')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const navigationParams = {
   params: {
     params: {

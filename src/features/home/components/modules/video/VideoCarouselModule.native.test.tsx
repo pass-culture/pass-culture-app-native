@@ -32,8 +32,6 @@ const DEFAULT_ITEM_WITH_TAG = videoCarouselModuleFixture.items[1]
 const DEFAULT_ITEM_WITH_HOME_ENTRY_ID = videoCarouselModuleFixture.items[2]
 const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<VideoCarouselModule />', () => {
   beforeEach(() => {
     MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)

@@ -42,8 +42,6 @@ const mockedSearchWrapper = {
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
 mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

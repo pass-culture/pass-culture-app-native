@@ -30,8 +30,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('useSearchHistory', () => {
   beforeEach(async () => {
     mockdate.set(TODAY_DATE)

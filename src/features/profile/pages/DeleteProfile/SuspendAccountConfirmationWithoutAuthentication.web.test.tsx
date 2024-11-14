@@ -7,7 +7,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
 
 jest.spyOn(NavigationHelpers, 'openUrl')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 

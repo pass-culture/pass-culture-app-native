@@ -39,8 +39,6 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('AuthContext', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)

@@ -16,7 +16,6 @@ mockdate.set(CURRENT_DATE)
 const useUtmParamsSpy = jest.spyOn(UtmAPI, 'useUtmParams')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
 const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock

@@ -8,7 +8,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 const mockRemoveSelectedVenue = jest.fn()
 jest.mock('features/venueMap/store/selectedVenueStore', () => ({
   useSelectedVenueActions: () => ({

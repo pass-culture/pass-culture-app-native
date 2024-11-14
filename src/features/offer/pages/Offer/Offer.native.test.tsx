@@ -38,8 +38,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<Offer />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })

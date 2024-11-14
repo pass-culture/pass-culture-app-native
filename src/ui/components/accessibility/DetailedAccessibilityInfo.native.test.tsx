@@ -11,8 +11,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

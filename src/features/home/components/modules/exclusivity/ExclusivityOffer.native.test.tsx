@@ -25,8 +25,6 @@ const props = {
   index: 1,
 }
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('ExclusivityModule component', () => {
   const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
 

@@ -11,8 +11,6 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<GeolocationBanner />', () => {
   describe('When wipAppV2SystemBlock feature flag activated', () => {
     beforeAll(() => {

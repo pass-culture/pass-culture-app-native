@@ -63,7 +63,6 @@ const mockBookingsWithDislike = {
 jest.mock('features/bookings/api')
 const mockUseBookings = useBookings as jest.Mock
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('features/auth/context/AuthContext')
 
 const mockMutate = jest.fn()

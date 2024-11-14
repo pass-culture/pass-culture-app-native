@@ -50,8 +50,6 @@ const VenueOffersResponseMatchingFixture = [
 const venueOffersMock = { hits: VenueOffersResponseMatchingFixture, nbHits: 1 }
 const mockedOfferStockResponse = { offers: [offersStocksResponseSnap.offers[0]] }
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

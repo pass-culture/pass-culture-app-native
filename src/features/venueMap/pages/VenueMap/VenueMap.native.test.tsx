@@ -21,8 +21,6 @@ const mockSetVenueTypeCode = jest.fn()
 const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
 mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
 

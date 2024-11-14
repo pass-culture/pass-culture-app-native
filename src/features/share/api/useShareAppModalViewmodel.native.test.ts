@@ -12,7 +12,6 @@ import {
 } from './useShareAppModalViewmodel'
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 const mockShareApp = jest.spyOn(shareApp, 'shareApp')
 mockShareApp.mockImplementation(jest.fn())

@@ -90,8 +90,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('<Venue />', () => {
   beforeEach(() => {
     activateFeatureFlags()
