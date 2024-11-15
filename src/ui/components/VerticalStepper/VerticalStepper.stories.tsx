@@ -4,6 +4,7 @@ import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { theme } from 'theme'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { VerticalStepper } from 'ui/components/VerticalStepper/VerticalStepper'
 
@@ -74,29 +75,23 @@ WithCustomComponent.args = {
   iconComponent: <View style={{ width: 20, height: 20, backgroundColor: 'blue' }} />,
 }
 
-/**
- * extract in a variable so ESLint is happy and does not cry about color
- * in a string instead of using theme...
- */
-const wrapperBackground = 'rgba(100, 100, 100, .03)'
-
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: wrapperBackground,
+    backgroundColor: theme.colors.greyLight,
     padding: 12,
     width: 50,
     height: 200,
   },
 
   wrapperBig: {
-    backgroundColor: wrapperBackground,
+    backgroundColor: theme.colors.greyLight,
     padding: 12,
     width: 50,
     height: 500,
   },
 
   wrapperSmall: {
-    backgroundColor: wrapperBackground,
+    backgroundColor: theme.colors.greyLight,
     padding: 12,
     width: 50,
     height: 100,

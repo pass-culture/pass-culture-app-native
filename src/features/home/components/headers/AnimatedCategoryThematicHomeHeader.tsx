@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
@@ -146,6 +147,6 @@ const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground
 const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
 const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
 
-const AnimatedBackground = styled(AnimatedBlackBackground)({
-  backgroundColor: 'rgba(0, 0, 0, 0)',
-})
+const AnimatedBackground = styled(AnimatedBlackBackground)(({ theme }) => ({
+  backgroundColor: colorAlpha(theme.colors.black, 0),
+}))

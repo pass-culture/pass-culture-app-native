@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { Platform, View } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
@@ -64,12 +65,16 @@ const Container = styled(View)<{ headerHeight: number; isSticky?: boolean }>(
   })
 )
 
-const StyledLinearGradient = styled(LinearGradient).attrs({
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.362, 0.6356, 1],
-  colors: ['rgba(0, 0, 0, 0.00)', 'rgba(0, 0, 0, 0.12)', 'rgba(0, 0, 0, 0.32)'],
-})<{ isInCarousel?: boolean }>(({ theme, isInCarousel }) => ({
+  colors: [
+    colorAlpha(theme.colors.black, 0),
+    colorAlpha(theme.colors.black, 0.12),
+    colorAlpha(theme.colors.black, 0.32),
+  ],
+}))<{ isInCarousel?: boolean }>(({ theme, isInCarousel }) => ({
   height: '100%',
   width: '100%',
   zIndex: 2,

@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { PropsWithChildren } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -74,12 +75,12 @@ const GoogleWatermarkWrapper = ({
     </TouchableOpacity>
   )
 
-const StyledLinearGradient = styled(LinearGradient).attrs({
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.45, 1],
-  colors: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)'],
-})(({ theme }) => ({
+  colors: [colorAlpha(theme.colors.black, 0), colorAlpha(theme.colors.black, 0.5)],
+}))(({ theme }) => ({
   height: '100%',
   width: '100%',
   position: 'absolute',

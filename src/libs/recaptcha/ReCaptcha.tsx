@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { useState, useRef, useEffect } from 'react'
 import { Modal, Platform } from 'react-native'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
@@ -121,8 +122,8 @@ export const ReCaptcha: React.FC<Props> = (props) => {
   )
 }
 
-const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop }) => ({
+const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop, theme }) => ({
   flex: 1,
-  backgroundColor: 'rgba(0, 0, 0, 0)',
+  backgroundColor: colorAlpha(theme.colors.black, 0),
   marginTop: Platform.OS === 'ios' ? marginTop : 0,
 }))
