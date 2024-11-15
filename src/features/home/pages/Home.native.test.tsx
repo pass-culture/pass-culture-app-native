@@ -14,8 +14,6 @@ import { act, render, screen } from 'tests/utils'
 
 import { Home } from './Home'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockShouldShowSkeleton = false

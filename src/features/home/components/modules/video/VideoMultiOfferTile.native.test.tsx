@@ -12,8 +12,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

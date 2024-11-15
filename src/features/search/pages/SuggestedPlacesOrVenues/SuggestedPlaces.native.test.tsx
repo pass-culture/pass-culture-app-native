@@ -6,8 +6,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const mockSetSelectedPlace = jest.fn()
 
 describe('<SuggestedPlaces/>', () => {

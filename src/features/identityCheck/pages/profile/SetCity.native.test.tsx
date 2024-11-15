@@ -11,7 +11,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
-jest.mock('libs/network/NetInfoWrapper')
 
 const POSTAL_CODE = '83570'
 

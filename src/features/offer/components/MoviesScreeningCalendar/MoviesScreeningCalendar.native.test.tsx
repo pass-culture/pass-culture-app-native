@@ -19,7 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
-jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 

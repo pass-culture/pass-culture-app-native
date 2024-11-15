@@ -27,8 +27,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
   },
 }))
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

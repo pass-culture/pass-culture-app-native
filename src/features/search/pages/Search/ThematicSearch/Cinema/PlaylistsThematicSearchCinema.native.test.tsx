@@ -10,7 +10,6 @@ import { render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx

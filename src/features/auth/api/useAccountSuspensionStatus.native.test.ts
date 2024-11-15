@@ -4,8 +4,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
   mockServer.getApi<UserSuspensionStatusResponse>('/v1/account/suspension_status', expectedResponse)

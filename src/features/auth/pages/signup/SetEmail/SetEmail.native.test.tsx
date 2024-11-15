@@ -14,8 +14,6 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { SetEmail } from './SetEmail'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))

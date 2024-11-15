@@ -17,8 +17,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',

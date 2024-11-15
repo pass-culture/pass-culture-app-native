@@ -2,7 +2,19 @@ const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFro
 
 module.exports = {
   preset: 'react-native',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node','android.tsx','android.ts','android.jsx','android.js'],
+  resolver: './jest/custom-resolver.js',
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js',
+    'jsx',
+    'json',
+    'node',
+    'android.tsx',
+    'android.ts',
+    'android.jsx',
+    'android.js',
+  ],
   testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
     '^api(.*)$': '<rootDir>/src/api$1',

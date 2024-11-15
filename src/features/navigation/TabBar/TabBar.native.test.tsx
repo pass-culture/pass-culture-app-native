@@ -21,8 +21,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { TabBar } from './TabBar'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
   const { DEFAULT_TAB_ROUTES } = jest.requireActual(
     'features/navigation/TabBar/TabNavigationStateContext'

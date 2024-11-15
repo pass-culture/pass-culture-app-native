@@ -5,8 +5,6 @@ import * as usePushPermission from 'features/profile/pages/NotificationSettings/
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/react-native-device-info/getDeviceId')
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {

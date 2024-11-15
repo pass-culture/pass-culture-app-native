@@ -17,7 +17,6 @@ jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 jest.useFakeTimers()
-jest.mock('libs/network/NetInfoWrapper')
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 

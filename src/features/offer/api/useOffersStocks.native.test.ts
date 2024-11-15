@@ -5,8 +5,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 describe('useOffersStocks', () => {
   beforeEach(() => {
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)

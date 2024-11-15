@@ -15,8 +15,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20000) // to avoid exceeded timeout
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const venue = mockedSuggestedVenue
 
 const mockSearchState: SearchState = {

@@ -8,7 +8,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
-jest.mock('libs/network/NetInfoWrapper')
 
 const POSTAL_CODE = '83570'
 const NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE = '98825'

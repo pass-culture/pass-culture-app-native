@@ -31,7 +31,6 @@ import { SignupForm } from './SignupForm'
 
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
-jest.mock('libs/network/NetInfoWrapper')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

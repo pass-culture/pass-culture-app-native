@@ -42,8 +42,6 @@ import { Login } from './Login'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/monitoring')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')

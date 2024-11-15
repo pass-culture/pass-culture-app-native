@@ -9,8 +9,6 @@ import { act, renderHook } from 'tests/utils'
 const apiOAuthStateSpy = jest.spyOn(API.api, 'getNativeV1OauthState')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/network/NetInfoWrapper')
-
 describe('useOAuthState', () => {
   it('should not fetch oauth state when FF is disabled', async () => {
     const { result } = renderOAuthState()

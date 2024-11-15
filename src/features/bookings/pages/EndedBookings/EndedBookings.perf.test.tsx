@@ -21,7 +21,7 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('libs/subcategories/useCategoryId')
-jest.mock('libs/network/NetInfoWrapper')
+
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.useFakeTimers()

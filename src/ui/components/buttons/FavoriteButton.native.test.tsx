@@ -21,8 +21,6 @@ import {
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 

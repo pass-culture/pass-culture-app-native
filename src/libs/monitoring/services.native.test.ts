@@ -4,6 +4,8 @@ import { waitFor } from 'tests/utils'
 
 import { eventMonitoring } from './services'
 
+jest.unmock('libs/monitoring/services')
+
 describe('eventMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", async () => {

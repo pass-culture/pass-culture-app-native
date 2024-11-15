@@ -9,7 +9,6 @@ import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/we
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
-jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')

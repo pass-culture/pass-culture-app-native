@@ -19,7 +19,6 @@ const position = {
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/subcategories/useSubcategories')
-jest.mock('libs/network/NetInfoWrapper')
 
 const algoliaSpy = jest
   .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')

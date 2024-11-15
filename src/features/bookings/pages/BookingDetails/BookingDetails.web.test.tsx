@@ -22,7 +22,7 @@ jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
-jest.mock('libs/network/NetInfoWrapper')
+
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)

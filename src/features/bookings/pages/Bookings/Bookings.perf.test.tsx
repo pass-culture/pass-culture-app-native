@@ -22,7 +22,6 @@ jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),
 }))
 
-jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
 // Performance measuring is run multiple times so we need to increase the timeout

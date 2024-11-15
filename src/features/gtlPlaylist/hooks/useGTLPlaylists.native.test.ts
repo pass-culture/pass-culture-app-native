@@ -9,8 +9,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 import { useGTLPlaylists } from './useGTLPlaylists'
 
 const mockVenue: VenueResponse = {

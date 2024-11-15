@@ -10,8 +10,6 @@ import { act, renderHook } from 'tests/utils'
 
 import { useMoviesScreeningsList } from './useMoviesScreeningsList'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const getStocksByOfferIdsModuleSpy = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
 
 describe('useMoviesScreeningsList', () => {

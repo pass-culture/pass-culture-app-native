@@ -21,8 +21,6 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 

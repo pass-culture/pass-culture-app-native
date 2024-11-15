@@ -12,7 +12,6 @@ import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
 jest.mock('libs/monitoring')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/network/NetInfoWrapper')
 
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {

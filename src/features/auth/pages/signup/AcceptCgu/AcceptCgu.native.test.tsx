@@ -12,8 +12,6 @@ import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 
 
 import { AcceptCgu } from './AcceptCgu'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 

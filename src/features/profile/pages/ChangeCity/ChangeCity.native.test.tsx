@@ -33,8 +33,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const POSTAL_CODE = '83570'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
