@@ -17,6 +17,7 @@ export async function getSentryConfig() {
         ? `${getAppBuildVersion()}-web-${String(env.COMMIT_HASH)}`
         : `${getAppBuildVersion()}-web`,
     integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 0.01,
+    tracesSampleRate: env.SENTRY_TRACES_SAMPLE_RATE as unknown as number,
+    sampleRate: env.SENTRY_SAMPLE_RATE as unknown as number,
   }
 }

@@ -17,7 +17,8 @@ describe('eventMonitoring', () => {
         release: `${getAppVersion()}-${Platform.OS}`,
         dist: `${getAppBuildVersion()}-web-13371337`,
         integrations: [expect.anything()],
-        tracesSampleRate: 0.01,
+        tracesSampleRate: '1.0',
+        sampleRate: '1.0',
       })
     })
 

@@ -75,6 +75,7 @@ export const whiteListEnv = (env) => {
     'SENTRY_DSN',
     'SENTRY_PROFILES_SAMPLE_RATE',
     'SENTRY_TRACES_SAMPLE_RATE',
+    'SENTRY_SAMPLE_RATE',
     'SITE_PUBLIC_KEY',
     'SUPPORT_EMAIL_ADDRESS',
     'URL_PREFIX',
