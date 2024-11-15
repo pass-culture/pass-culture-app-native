@@ -13,6 +13,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place/types'
 import { useCities } from 'libs/place/useCities'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -20,13 +21,8 @@ import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
+import { Error } from 'ui/svg/icons/Error'
 import { Spacer } from 'ui/theme'
-
-const snackbarMessage =
-  'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.'
-const exceptionMessage = 'Failed to fetch data from API: https://geo.api.gouv.fr/communes'
-const noPostalCodeFound =
-  'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -37,18 +33,48 @@ type CitySearchInputProps = {
 
 type PostalCodeForm = { postalCode: string }
 
+const NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE = [
+  '98825',
+  '98860',
+  '98833',
+  '98817',
+  '98850',
+  '98821',
+  '98824',
+  '98815',
+  '98831',
+  '98822',
+  '98823',
+  '98816',
+  '98818',
+  '98813',
+  '98826',
+  '98811',
+]
+
 export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
+  const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
   const { data: cities = [], isLoading } = useCities(postalCodeQuery, {
     onError: () => {
-      showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
-      eventMonitoring.captureException(new IdentityCheckError(exceptionMessage))
+      showErrorSnackBar({
+        message:
+          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      eventMonitoring.captureException(
+        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
+      )
     },
     onSuccess: (cities) => {
       const isEmpty = cities.length === 0
-      if (isEmpty) setError('postalCode', { message: noPostalCodeFound })
+      if (isEmpty)
+        setError('postalCode', {
+          message:
+            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
+        })
     },
   })
   const postalCodeInputId = uuidv4()
@@ -72,12 +98,18 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
     [debouncedSetPostalCode, onCitySelected]
   )
 
+  const handlePostalCodeChange = (postalCode: string) => {
+    setPostalCodeQuery(postalCode)
+    setIsPostalCodeIneligible(NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE.includes(postalCode))
+  }
+
   useEffect(() => {
     const subscription = watch(() => handleSubmit(onSubmit)())
     return () => subscription.unsubscribe()
   }, [onSubmit, handleSubmit, watch])
 
   const onPressOption = (cityKey: string) => {
+    if (isPostalCodeIneligible) return
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
@@ -86,8 +118,9 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   }
 
   const resetSearch = () => {
-    resetForm()
+    resetForm({ postalCode: '' })
     setPostalCodeQuery('')
+    setIsPostalCodeIneligible(false)
     onCitySelected?.()
   }
 
@@ -101,7 +134,10 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
             <React.Fragment>
               <SearchInput
                 autoFocus
-                onChangeText={onChange}
+                onChangeText={(text) => {
+                  onChange(text)
+                  handlePostalCodeChange(text)
+                }}
                 value={value}
                 label="Indique ton code postal et choisis ta ville"
                 placeholder="Ex&nbsp;: 75017"
@@ -122,22 +158,34 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
         />
         <Spacer.Column numberOfSpaces={2} />
       </Form.MaxWidth>
-      {isLoading ? <Spinner /> : null}
-      <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
-        <VerticalUl>
-          {cities.map((cityOption, index) => (
-            <Li key={cityOption.name}>
-              <AddressOption
-                label={cityOption.name}
-                selected={city ? keyExtractor(cityOption) === keyExtractor(city) : false}
-                onPressOption={onPressOption}
-                optionKey={keyExtractor(cityOption)}
-                accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityOption.name}`}
-              />
-            </Li>
-          ))}
-        </VerticalUl>
-      </CitiesContainer>
+      {isPostalCodeIneligible ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <InfoBanner
+            icon={Error}
+            message="Malheureusement, tu n’es pas éligible au pass Culture. Ton code postal est dans une région où nous ne sommes pas présents."
+          />
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          {isLoading ? <Spinner /> : null}
+          <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
+            <VerticalUl>
+              {cities.map((cityOption, index) => (
+                <Li key={cityOption.name}>
+                  <AddressOption
+                    label={cityOption.name}
+                    selected={city ? keyExtractor(cityOption) === keyExtractor(city) : false}
+                    onPressOption={onPressOption}
+                    optionKey={keyExtractor(cityOption)}
+                    accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityOption.name}`}
+                  />
+                </Li>
+              ))}
+            </VerticalUl>
+          </CitiesContainer>
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
