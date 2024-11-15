@@ -34,6 +34,7 @@ export default ({ mode }) => {
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
   const proxyConfig = {
+    host: true, // This allow VSCode live share port forwarding
     proxy: {
       '/native': {
         target: env.API_BASE_URL,
