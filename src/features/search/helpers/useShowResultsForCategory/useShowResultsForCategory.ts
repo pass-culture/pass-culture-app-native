@@ -26,6 +26,9 @@ export const useShowResultsForCategory = (): OnPressCategory => {
   const enableWipPageThematicSearchFilmsDocumentairesEtSeries = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES
   )
+  const enableWipPageThematicSearchMusic = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_MUSIC
+  )
   const THEMATIC_SEARCH_CATEGORIES: (keyof typeof SearchGroupNameEnumv2 | undefined)[] = useMemo(
     () => [
       enableWipPageThematicSearchBooks ? 'LIVRES' : undefined,
@@ -33,11 +36,13 @@ export const useShowResultsForCategory = (): OnPressCategory => {
       enableWipPageThematicSearchFilmsDocumentairesEtSeries
         ? 'FILMS_DOCUMENTAIRES_SERIES'
         : undefined,
+      enableWipPageThematicSearchMusic ? 'MUSIQUE' : undefined,
     ],
     [
       enableWipPageThematicSearchBooks,
       enableWipPageThematicSearchCinema,
       enableWipPageThematicSearchFilmsDocumentairesEtSeries,
+      enableWipPageThematicSearchMusic,
     ]
   )
 
