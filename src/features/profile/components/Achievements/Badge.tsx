@@ -22,16 +22,21 @@ export const Badge: FC<BadgeProps> = ({ Illustration, id, isCompleted }) => {
 
   return (
     <React.Fragment>
-      <TouchableOpacity onPress={showModal}>
+      <StyledTouchableOpacity onPress={showModal}>
         <BadgeContainer isCompleted={isCompleted}>
           <Illustration size={theme.illustrations.sizes.small} />
           <TypoBadgeName numberOfLines={2}>{achievement?.name}</TypoBadgeName>
         </BadgeContainer>
-      </TouchableOpacity>
+      </StyledTouchableOpacity>
       <AchievementDetailsModal visible={visible} hideModal={hideModal} id={id} />
     </React.Fragment>
   )
 }
+
+const StyledTouchableOpacity = styled(TouchableOpacity)({
+  flex: 1 / 2,
+  height: getSpacing(50),
+})
 
 const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
   paddingVertical: getSpacing(6),
@@ -40,11 +45,11 @@ const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ theme, isComplet
   borderRadius: getSpacing(2),
   alignItems: 'center',
   backgroundColor: isCompleted ? theme.colors.white : theme.colors.greyLight,
-  width: getSpacing(35),
-  height: getSpacing(50),
+  flex: 1,
   gap: getSpacing(2),
 }))
 
 const TypoBadgeName = styled(TypoDS.Button)({
   textAlign: 'center',
+  maxWidth: getSpacing(30),
 })

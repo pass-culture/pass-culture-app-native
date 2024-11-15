@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -49,16 +50,26 @@ export const Achievements = () => {
                   <TypoDS.BodyS>{badge.progressText}</TypoDS.BodyS>
                 </CompletionContainer>
               </AchievementsGroupeHeader>
-              <BadgesContainer>
-                {badge.achievements.map((achievement) => (
+              <FlatList
+                data={badge.achievements}
+                numColumns={2}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={{
+                  gap: getSpacing(6),
+                  rowGap: getSpacing(6),
+                  paddingHorizontal: getSpacing(2),
+                }}
+                columnWrapperStyle={{
+                  gap: getSpacing(6),
+                }}
+                renderItem={({ item }) => (
                   <Badge
-                    key={achievement.id}
-                    id={achievement.id}
-                    Illustration={achievement.illustration}
-                    isCompleted={achievement.isCompleted}
+                    id={item.id}
+                    Illustration={item.illustration}
+                    isCompleted={item.isCompleted}
                   />
-                ))}
-              </BadgesContainer>
+                )}
+              />
             </AchievementsGroupe>
           )
         })}
@@ -93,10 +104,4 @@ const CompletionContainer = styled(ViewGap).attrs({ gap: 2 })({
 const ProgressBarContainer = styled.View({
   flex: 1,
   maxWidth: 80,
-})
-
-const BadgesContainer = styled(ViewGap).attrs({ gap: 6 })({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  paddingHorizontal: getSpacing(2),
 })
