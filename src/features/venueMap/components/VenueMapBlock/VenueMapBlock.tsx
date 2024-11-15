@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -95,12 +96,16 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
   height: getSpacing(25),
 })
 
-const StyledLinearGradient = styled(LinearGradient).attrs({
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
   angle: 69,
   locations: [0.11, 0.68, 1],
-  colors: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.7)', 'rgba(255, 255, 255, 0)'],
-})(({ theme }) => ({
+  colors: [
+    colorAlpha(theme.colors.white, 1),
+    colorAlpha(theme.colors.white, 0.7),
+    colorAlpha(theme.colors.white, 0),
+  ],
+}))(({ theme }) => ({
   height: '100%',
   width: '100%',
   borderRadius: theme.borderRadius.radius,

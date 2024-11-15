@@ -9,7 +9,7 @@ const blurHeaderWebInterpolation = () => ({
 
 const iconBackgroundInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [theme.colors.white, 'rgba(255, 255, 255, 0)'],
+  outputRange: [theme.colors.white, colorAlpha(theme.colors.white, 0)],
 })
 
 const strokeBorderInterpolation = () => ({

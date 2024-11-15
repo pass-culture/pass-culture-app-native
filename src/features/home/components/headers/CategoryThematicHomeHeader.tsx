@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -94,6 +95,6 @@ const Title = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Background = styled(BlackBackground)({
-  backgroundColor: 'rgba(0, 0, 0, 0)',
-})
+const Background = styled(BlackBackground)(({ theme }) => ({
+  backgroundColor: colorAlpha(theme.colors.black, 0),
+}))

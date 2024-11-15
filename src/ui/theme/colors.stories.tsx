@@ -1,5 +1,6 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 import { ComponentStory } from '@storybook/react'
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -54,11 +55,11 @@ const ColorContainer = styled.View({
   margin: getSpacing(5),
 })
 
-const Rectangle = styled.TouchableOpacity<RectangleProps>(({ color }) => ({
+const Rectangle = styled.TouchableOpacity<RectangleProps>(({ color, theme }) => ({
   height: getSpacing(15),
   width: getSpacing(45),
   backgroundColor: color,
-  boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 0 5px ${colorAlpha(theme.colors.white, 0.2)}`,
   marginBottom: getSpacing(2),
   position: 'relative',
   alignItems: 'center',
