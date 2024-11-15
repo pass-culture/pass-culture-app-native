@@ -1,4 +1,5 @@
 import { MultipleQueriesQuery } from '@algolia/client-search'
+import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { FetchThematicSearchOffers } from 'features/search/pages/Search/ThematicSearch/types'
@@ -24,6 +25,10 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
     distinct: true,
   }
 
+  // We need the timestamps in seconds format for Algolia search
+  const today = Math.floor(new Date().getTime() / 1000)
+  const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
+
   const queries: MultipleQueriesQuery[] = [
     {
       ...queryIndex,
@@ -38,7 +43,7 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
       params: {
         ...queryParams,
         filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+        numericFilters: `offer.releaseDate: ${sevenDaysAgo} TO ${today}`,
       },
     },
     {

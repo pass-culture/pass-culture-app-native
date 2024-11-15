@@ -25,18 +25,10 @@ export function useCinemaOffers() {
 
   if (!data || data.length === 0) return { offers: [], isLoading }
 
-  let offers: (SearchResponse<Offer> | undefined)[] = data
-  const [moviesCurrentlyAvailable, moviesCurrentlyAvailableWithReleaseDateAttribute, ...cineCards] =
-    offers
-
-  if (moviesCurrentlyAvailableWithReleaseDateAttribute?.hits.length) {
-    const moviesOfTheWeek = getMoviesOfTheWeek(moviesCurrentlyAvailableWithReleaseDateAttribute)
-    offers = [moviesCurrentlyAvailable, moviesOfTheWeek, ...cineCards]
-  }
   return {
-    offers: offers.map((item, index) => ({
+    offers: data.map((item, index) => ({
       title: CINEMA_PLAYLIST_TITLES[index] ?? '',
-      offers: offers[index] ?? { hits: [] },
+      offers: data[index] ?? { hits: [] },
     })),
     isLoading,
   }
