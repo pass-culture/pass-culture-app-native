@@ -49,8 +49,7 @@ export default ({ mode }) => {
   return defineConfig({
     define: {
       global: 'window',
-      'process.env': whiteListEnv(env), // Do not expose the global object directly
-      'process.env.COMMIT_HASH': JSON.stringify(commitHash),
+      'process.env': whiteListEnv(env, commitHash), // Do not expose the global object directly
       __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [

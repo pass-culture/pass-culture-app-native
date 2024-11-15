@@ -1,4 +1,4 @@
-export const whiteListEnv = (env) => {
+export const whiteListEnv = (env, commitHash) => {
   const authorizedEnvVars = [
     'ACCESSIBILITY_LINK',
     'ALGOLIA_APPLICATION_ID',
@@ -81,10 +81,13 @@ export const whiteListEnv = (env) => {
     'WEBAPP_V2_DOMAIN',
   ]
 
-  return authorizedEnvVars.reduce((acc, key) => {
-    if (env[key] !== undefined) {
-      acc[key] = env[key]
-    }
-    return acc
-  }, {})
+  return {
+    ...authorizedEnvVars.reduce((acc, key) => {
+      if (env[key] !== undefined) {
+        acc[key] = env[key]
+      }
+      return acc
+    }, {}),
+    COMMIT_HASH: commitHash, // Variables passed in our vite's config define (ex: 'process.env.COMMIT_HASH': JSON.stringify(commitHash)) are undefined for some reason in builds (in serve they were defined).
+  }
 }
