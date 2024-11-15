@@ -30,7 +30,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type NotificationsSettingsState = {
@@ -161,7 +161,7 @@ export const NotificationsSettings = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         )}
-        <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
+        <TypoDS.Title4 {...getHeadingAttrs(2)}>Type d’alerte</TypoDS.Title4>
         <Spacer.Column numberOfSpaces={4} />
         <Typo.Body>
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -195,7 +195,7 @@ export const NotificationsSettings = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />
-          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
+          <TypoDS.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</TypoDS.Title4>
           {!isLoggedIn || areNotificationsEnabled ? null : (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />

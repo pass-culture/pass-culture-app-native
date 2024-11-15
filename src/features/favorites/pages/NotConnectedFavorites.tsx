@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 const onBeforeSignupNavigate = () => {
   analytics.logSignUpFromFavorite()
@@ -43,7 +43,7 @@ export const NotConnectedFavorites = () => (
   </GenericInfoPageWhite>
 )
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(TypoDS.Title4)({
   textAlign: 'center',
   marginBottom: getSpacing(4),
 })

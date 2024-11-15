@@ -14,7 +14,7 @@ import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -40,7 +40,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 
   return (
     <View style={style}>
-      <Typo.Title4 {...getHeadingAttrs(2)}>Ma réservation</Typo.Title4>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>Ma réservation</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
       {userFullName ? (
         <SectionRow

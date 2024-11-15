@@ -15,7 +15,7 @@ import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT_MULTI_OFFER = getSpacing(90)
@@ -176,7 +176,7 @@ const BlackBackground = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
 }))
 
-const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
+const VideoTitle = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'left',
 }))

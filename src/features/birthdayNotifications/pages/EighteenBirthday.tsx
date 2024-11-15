@@ -11,8 +11,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Spacer } from 'ui/theme'
-import { CaptionNeutralInfo, Typo } from 'ui/theme/typography'
+import { Spacer, TypoDS } from 'ui/theme'
+import { CaptionNeutralInfo } from 'ui/theme/typography'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const useGetPageWording = (userRequiresIdCheck?: boolean) => {
@@ -66,6 +66,6 @@ const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
   textAlign: 'center',
 })
 
-const StyledTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })

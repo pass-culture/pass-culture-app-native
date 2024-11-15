@@ -16,7 +16,7 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
@@ -69,9 +69,9 @@ export const FavoritesSorts: React.FC = () => {
       <View>
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
+          <TypoDS.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
             Trier par
-          </Typo.Title4>
+          </TypoDS.Title4>
         </TitleContainer>
         <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
           <VerticalUl>

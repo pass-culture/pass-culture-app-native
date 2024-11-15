@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const NoInformationPlaceholder = () => (
   <Container>
@@ -24,6 +24,6 @@ const NoInfoIllustration = styled(BicolorCircledClock).attrs(({ theme }) => ({
   color2: theme.colors.greyMedium,
 }))``
 
-const Text = styled(Typo.Title4)({
+const Text = styled(TypoDS.Title4)({
   textAlign: 'center',
 })

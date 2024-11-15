@@ -17,7 +17,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
@@ -65,7 +65,7 @@ export const ConsentSettings = () => {
         setSettingsCookiesChoice={setSettingsCookiesChoice}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
         Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.

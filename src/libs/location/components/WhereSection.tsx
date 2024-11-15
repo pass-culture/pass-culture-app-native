@@ -13,7 +13,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -68,7 +68,7 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>Où&nbsp;?</Typo.Title4>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>Où&nbsp;?</TypoDS.Title4>
       {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />

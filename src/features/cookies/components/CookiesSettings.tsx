@@ -12,7 +12,7 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const checkboxID = uuidv4()
@@ -54,9 +54,9 @@ export const CookiesSettings = ({
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)}>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>
         À quoi servent tes cookies et tes données&nbsp;?
-      </Typo.Title4>
+      </TypoDS.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
         <StyledCaptionNeutralInfo>Je choisis mes cookies</StyledCaptionNeutralInfo>

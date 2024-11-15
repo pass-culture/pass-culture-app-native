@@ -104,6 +104,6 @@ const Title3Text = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) =>
   color: theme.colors.secondary,
 }))
 
-const Title4Text = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const Title4Text = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

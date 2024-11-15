@@ -253,9 +253,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 27.2,
                     "textAlign": "center",
                   },
                 ]
@@ -351,9 +351,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         {
                           "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 27.2,
                         },
                       ]
                     }
@@ -1690,9 +1690,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         {
                           "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 27.2,
                         },
                       ]
                     }
@@ -1961,9 +1961,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         {
                           "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 27.2,
                         },
                       ]
                     }
@@ -2713,9 +2713,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         {
                           "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 27.2,
                         },
                       ]
                     }
@@ -3084,9 +3084,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 27.2,
                     "textAlign": "center",
                   },
                 ]
@@ -3187,9 +3187,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 27.2,
                   "textAlign": "center",
                 },
               ]

@@ -100,7 +100,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </React.Fragment>
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title4>{props.offerTitle}</Typo.Title4>
+        <TypoDS.Title4>{props.offerTitle}</TypoDS.Title4>
         <Spacer.Column numberOfSpaces={4} />
         {props.isMultiOffer ? (
           <VideoMultiOfferList

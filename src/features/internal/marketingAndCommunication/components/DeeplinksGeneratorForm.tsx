@@ -37,7 +37,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export interface GeneratedDeeplink {
   universalLink: string
@@ -412,7 +412,7 @@ const ErrorText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.error,
 }))
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(TypoDS.Title4)({
   textAlign: 'center',
 })
 

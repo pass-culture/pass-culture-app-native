@@ -46,7 +46,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -206,7 +206,7 @@ export function BookingDetails() {
             {bookingContactEmail ? (
               <React.Fragment>
                 <ViewGap gap={2.5}>
-                  <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
+                  <TypoDS.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</TypoDS.Title4>
 
                   <Typo.CaptionNeutralInfo>
                     Si tu n’as pas reçu tes billets, contacte l’organisateur
@@ -248,7 +248,7 @@ export function BookingDetails() {
           {offer.withdrawalDetails ? (
             <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
               <InfoContainer gap={4}>
-                <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
+                <TypoDS.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</TypoDS.Title4>
                 <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
               </InfoContainer>
             </SectionWithDivider>

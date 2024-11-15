@@ -65,7 +65,7 @@ export const AccesLibre = () => {
               </View>
             ))
           ) : (
-            <Typo.Title4>Lieu non disponible sur AccesLibre</Typo.Title4>
+            <TypoDS.Title4>Lieu non disponible sur AccesLibre</TypoDS.Title4>
           )
         ) : null}
       </Container>

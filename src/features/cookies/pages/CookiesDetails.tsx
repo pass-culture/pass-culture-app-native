@@ -8,7 +8,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
@@ -27,7 +27,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
       <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings {...props} />
       <Spacer.Column numberOfSpaces={8} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
+      <TypoDS.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
         Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de

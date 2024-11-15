@@ -77,7 +77,7 @@ export function BeneficiaryAccountCreated() {
   )
 }
 
-const StyledSubtitle = styled(Typo.Title4).attrs(getNoHeadingAttrs())({
+const StyledSubtitle = styled(TypoDS.Title4).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 

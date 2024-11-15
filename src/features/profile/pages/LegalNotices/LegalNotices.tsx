@@ -11,7 +11,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { LINE_BREAK, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -79,7 +79,7 @@ export function LegalNotices() {
   )
 }
 
-const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
 
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,
