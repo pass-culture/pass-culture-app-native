@@ -10,6 +10,12 @@ jest.mock('react-native-safe-area-context', () => ({
 }))
 
 describe('<Achievements/>', () => {
+  it('should match snapshot', () => {
+    render(<Achievements />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should open modale when press a badge', async () => {
     render(<Achievements />)
 

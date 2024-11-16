@@ -1,0 +1,1826 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Achievements/> should match snapshot 1`] = `
+[
+  <View
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    scrollEnabled={true}
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
+      <View
+        gap={4}
+        style={
+          [
+            {
+              "gap": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 21,
+                "lineHeight": 33.6,
+              },
+            ]
+          }
+        >
+          Mes Succès
+        </Text>
+        <View
+          gap={4}
+          style={
+            [
+              {
+                "gap": 16,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 27.2,
+                    },
+                  ]
+                }
+              >
+                Premières réservations
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#90949D",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    },
+                  ]
+                }
+              >
+                6 badges restant
+              </Text>
+            </View>
+            <View
+              gap={2}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                    "justifyContent": "flex-end",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": 80,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "maxHeight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={2.5}
+                    style={
+                      [
+                        {
+                          "borderColor": "#CBCDD2",
+                          "borderRadius": 48,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "height": 10,
+                          "zIndex": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <BVLinearGradient
+                      angle={90}
+                      colors={
+                        [
+                          4287037575,
+                          4287037575,
+                        ]
+                      }
+                      endPoint={
+                        {
+                          "x": 0.5,
+                          "y": 1,
+                        }
+                      }
+                      locations={null}
+                      startPoint={
+                        {
+                          "x": 0.5,
+                          "y": 0,
+                        }
+                      }
+                      style={
+                        [
+                          {
+                            "borderRadius": 48,
+                            "flexBasis": 0,
+                            "flexGrow": 0.3333333333333333,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                      testID="progress-bar"
+                      useAngle={true}
+                    />
+                  </View>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    },
+                  ]
+                }
+              >
+                3/9
+              </Text>
+            </View>
+          </View>
+          <RCTScrollView
+            collapsable={false}
+            contentContainerStyle={
+              {
+                "gap": 24,
+                "paddingHorizontal": 8,
+                "rowGap": 24,
+              }
+            }
+            data={
+              [
+                {
+                  "description": "Réserve ta première place de cinéma",
+                  "id": "FIRST_MOVIE_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": true,
+                  "name": "Cinéphile en herbe",
+                },
+                {
+                  "description": "Tu as réservé ton premier livre",
+                  "id": "FIRST_BOOK_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": true,
+                  "name": "Rat de bibliothèque",
+                },
+                {
+                  "description": "Tu as réservé ton premier atelier ou cours artistique",
+                  "id": "FIRST_ART_LESSON_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": true,
+                  "name": "Se mettre à la pratique",
+                },
+                {
+                  "description": "Réserve du matériel créatif",
+                  "id": "FIRST_INSTRUMENT_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Artiste en devenir",
+                },
+                {
+                  "description": "Réserve ta première visite",
+                  "id": "FIRST_MUSEUM_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Explorateur culturel",
+                },
+                {
+                  "description": "Abonne-toi à un média",
+                  "id": "FIRST_NEWS_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Futur Hugo Décrypte",
+                },
+                {
+                  "description": "Réserve ton premier concert ou festival",
+                  "id": "FIRST_LIVE_MUSIC_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Premier Beat",
+                },
+                {
+                  "description": "Réserve ton premier CD ou vinyle",
+                  "id": "FIRST_RECORDED_MUSIC_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Premier tour de platine",
+                },
+                {
+                  "description": "Réserve ton premier spectacle",
+                  "id": "FIRST_SHOW_BOOKING",
+                  "illustration": {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  },
+                  "isCompleted": false,
+                  "name": "Rideau rouge levé",
+                },
+                {
+                  "description": "",
+                  "id": "empty",
+                  "illustration": null,
+                  "isCompleted": false,
+                  "name": "",
+                },
+              ]
+            }
+            getItem={[Function]}
+            getItemCount={[Function]}
+            handlerTag={1}
+            handlerType="NativeViewGestureHandler"
+            keyExtractor={[Function]}
+            onContentSizeChange={[Function]}
+            onGestureHandlerEvent={[Function]}
+            onGestureHandlerStateChange={[Function]}
+            onLayout={[Function]}
+            onMomentumScrollBegin={[Function]}
+            onMomentumScrollEnd={[Function]}
+            onScroll={[Function]}
+            onScrollBeginDrag={[Function]}
+            onScrollEndDrag={[Function]}
+            removeClippedSubviews={false}
+            renderItem={[Function]}
+            renderScrollComponent={[Function]}
+            scrollEventThrottle={50}
+            stickyHeaderIndices={[]}
+            viewabilityConfigCallbackPairs={[]}
+            waitFor={
+              [
+                {
+                  "current": null,
+                },
+                {
+                  "current": null,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={true}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Cinéphile en herbe
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={true}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Rat de bibliothèque
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={true}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Se mettre à la pratique
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Artiste en devenir
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Explorateur culturel
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Futur Hugo Décrypte
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Premier Beat
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Premier tour de platine
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#F1F1F4",
+                            "borderColor": "#696A6F",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 8,
+                            "paddingVertical": 24,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 100,
+                              "width": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "height": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#90949D",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Rideau rouge levé
+                      </Text>
+                    </View>
+                  </View>
+                  <Modal
+                    animationType="fade"
+                    hardwareAccelerated={false}
+                    onRequestClose={[Function]}
+                    statusBarTranslucent={true}
+                    testID="modal-achievement-details"
+                    transparent={true}
+                    visible={false}
+                  />
+                  <View
+                    accessible={false}
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 0.5,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </RCTScrollView>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
+  </View>,
+]
+`;

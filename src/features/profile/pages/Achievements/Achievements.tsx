@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -6,6 +7,7 @@ import styled from 'styled-components/native'
 import { Badge } from 'features/profile/components/Achievements/Badge'
 import {
   achievementCategoryDisplayNames,
+  AchievementId,
   mockAchievements,
   mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
@@ -13,8 +15,17 @@ import { useAchievements } from 'features/profile/pages/Achievements/useAchievem
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+const emptyBadge = {
+  id: 'empty' as AchievementId,
+  isCompleted: false,
+  illustration: null as unknown as FC<AccessibleIcon>,
+  name: '',
+  description: '',
+}
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
@@ -25,20 +36,35 @@ export const Achievements = () => {
 
   return (
     <SecondaryPageWithBlurHeader title="">
-      <AchievementsContainer>
-        <TypoDS.Title2>Mes Succès</TypoDS.Title2>
+      <ViewGap gap={4}>
+        <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
           const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
+
+          const completedAchievements = badge.achievements.filter((item) => item.isCompleted)
+          const incompleteAchievements = badge.achievements.filter((item) => !item.isCompleted)
+
+          const sortedCompletedAchievements = [...completedAchievements].sort((a, b) =>
+            a.name.localeCompare(b.name)
+          )
+
+          const sortedIncompleteAchievements = [...incompleteAchievements].sort((a, b) =>
+            a.name.localeCompare(b.name)
+          )
+
+          let sortedAchievements = [...sortedCompletedAchievements, ...sortedIncompleteAchievements]
+          const oddAchievements = sortedAchievements.length % 2 !== 0
+          if (oddAchievements) sortedAchievements = [...sortedAchievements, emptyBadge]
+
           return (
-            <AchievementsGroupe key={badge.category}>
+            <ViewGap gap={4} key={badge.category}>
               <AchievementsGroupeHeader>
-                <AchievementsGroupeTitle>
+                <View>
                   <TypoDS.Title4 {...getHeadingAttrs(2)}>
                     {achievementCategoryDisplayNames[badge.category]}
                   </TypoDS.Title4>
-                  <TypoDS.BodyS>{remainingAchievementsText}</TypoDS.BodyS>
-                </AchievementsGroupeTitle>
-
+                  <StyledBody>{remainingAchievementsText}</StyledBody>
+                </View>
                 <CompletionContainer>
                   <ProgressBarContainer>
                     <ProgressBar
@@ -51,7 +77,7 @@ export const Achievements = () => {
                 </CompletionContainer>
               </AchievementsGroupeHeader>
               <FlatList
-                data={badge.achievements}
+                data={sortedAchievements}
                 numColumns={2}
                 keyExtractor={(item) => item.id}
                 contentContainerStyle={{
@@ -62,37 +88,39 @@ export const Achievements = () => {
                 columnWrapperStyle={{
                   gap: getSpacing(6),
                 }}
-                renderItem={({ item }) => (
-                  <Badge
-                    id={item.id}
-                    Illustration={item.illustration}
-                    isCompleted={item.isCompleted}
-                  />
-                )}
+                renderItem={({ item }) =>
+                  item.illustration ? (
+                    <Badge
+                      id={item.id}
+                      Illustration={item.illustration}
+                      isCompleted={item.isCompleted}
+                    />
+                  ) : (
+                    <EmptyBadge accessible={false} />
+                  )
+                }
               />
-            </AchievementsGroupe>
+            </ViewGap>
           )
         })}
-      </AchievementsContainer>
+      </ViewGap>
     </SecondaryPageWithBlurHeader>
   )
 }
 
-const AchievementsContainer = styled.View({
-  gap: getSpacing(4),
+const EmptyBadge = styled.View({
+  flex: 0.5,
 })
 
-const AchievementsGroupe = styled.View({
-  gap: getSpacing(4),
-})
+const StyledBody = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+}))
 
 const AchievementsGroupeHeader = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
 })
-
-const AchievementsGroupeTitle = styled.View({})
 
 const CompletionContainer = styled(ViewGap).attrs({ gap: 2 })({
   flex: 1,
@@ -103,5 +131,5 @@ const CompletionContainer = styled(ViewGap).attrs({ gap: 2 })({
 
 const ProgressBarContainer = styled.View({
   flex: 1,
-  maxWidth: 80,
+  maxWidth: getSpacing(20),
 })

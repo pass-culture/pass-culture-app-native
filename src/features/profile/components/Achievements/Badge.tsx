@@ -7,7 +7,7 @@ import { AchievementId } from 'features/profile/pages/Achievements/AchievementDa
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type BadgeProps = {
   id: AchievementId
@@ -24,8 +24,13 @@ export const Badge: FC<BadgeProps> = ({ Illustration, id, isCompleted }) => {
     <React.Fragment>
       <StyledTouchableOpacity onPress={showModal}>
         <BadgeContainer isCompleted={isCompleted}>
-          <Illustration size={theme.illustrations.sizes.small} />
-          <TypoBadgeName numberOfLines={2}>{achievement?.name}</TypoBadgeName>
+          <IllustrationContainer>
+            <Illustration size={theme.illustrations.sizes.small} />
+          </IllustrationContainer>
+          <Spacer.Column numberOfSpaces={2} />
+          <TypoBadgeName numberOfLines={2} isCompleted={!!isCompleted}>
+            {achievement?.name}
+          </TypoBadgeName>
         </BadgeContainer>
       </StyledTouchableOpacity>
       <AchievementDetailsModal visible={visible} hideModal={hideModal} id={id} />
@@ -34,22 +39,27 @@ export const Badge: FC<BadgeProps> = ({ Illustration, id, isCompleted }) => {
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  flex: 1 / 2,
-  height: getSpacing(50),
+  flex: 0.5,
+  height: getSpacing(55),
 })
 
 const BadgeContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
   paddingVertical: getSpacing(6),
   paddingHorizontal: getSpacing(2),
-  border: `1px solid ${theme.colors.greySemiDark}`,
+  border: `1px solid ${theme.colors.greyDark}`,
   borderRadius: getSpacing(2),
   alignItems: 'center',
   backgroundColor: isCompleted ? theme.colors.white : theme.colors.greyLight,
   flex: 1,
-  gap: getSpacing(2),
+  justifyContent: 'center',
 }))
 
-const TypoBadgeName = styled(TypoDS.Button)({
+const TypoBadgeName = styled(TypoDS.Button)<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
+  color: isCompleted ? theme.colors.black : theme.colors.greySemiDark,
   textAlign: 'center',
-  maxWidth: getSpacing(30),
-})
+}))
+
+const IllustrationContainer = styled.View(({ theme }) => ({
+  height: theme.illustrations.sizes.small,
+  width: theme.illustrations.sizes.small,
+}))
