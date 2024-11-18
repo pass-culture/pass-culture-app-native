@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { OpeningHoursStatus } from './OpeningHoursStatus'
 
 const meta: ComponentMeta<typeof OpeningHoursStatus> = {
@@ -9,10 +11,6 @@ const meta: ComponentMeta<typeof OpeningHoursStatus> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OpeningHoursStatus> = (props) => (
-  <OpeningHoursStatus {...props} currentDate={new Date(props.currentDate)} />
-)
-
 const TIMEZONE = 'UTC'
 
 const openingHours = {
@@ -20,30 +18,73 @@ const openingHours = {
   TUESDAY: [{ open: '09:00', close: '19:00' }],
 }
 
-export const Close = Template.bind({})
-Close.args = {
+const baseProps = {
   openingHours,
-  currentDate: new Date('2024-05-13T20:00:00Z'),
   timezone: TIMEZONE,
 }
 
-export const Open = Template.bind({})
-Open.args = {
-  openingHours,
-  currentDate: new Date('2024-05-13T12:00:00Z'),
-  timezone: TIMEZONE,
-}
+const variantConfig = [
+  {
+    label: 'OpeningHoursStatus close',
+    props: {
+      ...baseProps,
+      currentDate: new Date('2024-05-13T20:00:00Z'),
+    },
+  },
+  {
+    label: 'OpeningHoursStatus open',
+    props: {
+      ...baseProps,
+      currentDate: new Date('2024-05-13T12:00:00Z'),
+    },
+  },
+  {
+    label: 'OpeningHoursStatus open soon',
+    props: {
+      ...baseProps,
+      currentDate: new Date('2024-05-13T06:00:00Z'),
+    },
+  },
+  {
+    label: 'OpeningHoursStatus close soon',
+    props: {
+      ...baseProps,
+      currentDate: new Date('2024-05-13T16:00:00Z'),
+    },
+  },
+]
 
-export const OpenSoon = Template.bind({})
-OpenSoon.args = {
-  openingHours,
-  currentDate: new Date('2024-05-13T06:00:00Z'),
-  timezone: TIMEZONE,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={OpeningHoursStatus} />
+)
 
-export const CloseSoon = Template.bind({})
-CloseSoon.args = {
-  openingHours,
-  currentDate: new Date('2024-05-13T16:00:00Z'),
-  timezone: TIMEZONE,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'OpeningHoursStatus'
+
+// export const Close = Template.bind({})
+// Close.args = {
+//   openingHours,
+//   currentDate: new Date('2024-05-13T20:00:00Z'),
+//   timezone: TIMEZONE,
+// }
+
+// export const Open = Template.bind({})
+// Open.args = {
+//   openingHours,
+//   currentDate: new Date('2024-05-13T12:00:00Z'),
+//   timezone: TIMEZONE,
+// }
+
+// export const OpenSoon = Template.bind({})
+// OpenSoon.args = {
+//   openingHours,
+//   currentDate: new Date('2024-05-13T06:00:00Z'),
+//   timezone: TIMEZONE,
+// }
+
+// export const CloseSoon = Template.bind({})
+// CloseSoon.args = {
+//   openingHours,
+//   currentDate: new Date('2024-05-13T16:00:00Z'),
+//   timezone: TIMEZONE,
+// }
