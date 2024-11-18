@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { screen, userEvent } from '@storybook/testing-library'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 
 import { CheckboxBlock } from './CheckboxBlock'
@@ -20,55 +20,51 @@ const meta: ComponentMeta<typeof CheckboxBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof CheckboxBlock> = (args) => <CheckboxBlock {...args} />
+const variantConfig = [
+  {
+    label: 'CheckboxBlock unchecked',
+    props: {
+      label: 'Label',
+      checked: false,
+    },
+  },
+  {
+    label: 'CheckboxBlock checked',
+    props: {
+      label: 'Label',
+      checked: true,
+    },
+  },
+  {
+    label: 'CheckboxBlock with sub label',
+    props: {
+      label: 'Label',
+      checked: false,
+      sublabel: 'Sublabel',
+    },
+  },
+  {
+    label: 'CheckboxBlock with left icon',
+    props: {
+      label: 'Label',
+      checked: false,
+      LeftIcon: BicolorAroundMe,
+    },
+  },
+  {
+    label: 'CheckboxBlock with sub label and left icon',
+    props: {
+      label: 'Label',
+      checked: false,
+      sublabel: 'Sublabel',
+      LeftIcon: BicolorAroundMe,
+    },
+  },
+]
 
-export const Unchecked = Template.bind({})
-Unchecked.args = {
-  label: 'Label',
-  checked: false,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={CheckboxBlock} />
+)
 
-export const Checked = Template.bind({})
-Checked.args = {
-  label: 'Label',
-  checked: true,
-}
-
-export const WithSublabel = Template.bind({})
-WithSublabel.args = {
-  label: 'Label',
-  sublabel: 'Sublabel',
-  checked: false,
-}
-
-export const WithLeftIcon = Template.bind({})
-WithLeftIcon.args = {
-  label: 'Label',
-  sublabel: 'Sublabel',
-  LeftIcon: BicolorAroundMe,
-  checked: false,
-}
-
-export const Focused = Template.bind({})
-Focused.args = {
-  label: 'Label',
-  sublabel: 'Sublabel',
-  LeftIcon: BicolorAroundMe,
-  checked: false,
-}
-Focused.play = async () => {
-  const checkbox = await screen.findByRole('checkbox')
-  checkbox.focus()
-}
-
-export const Hovered = Template.bind({})
-Hovered.args = {
-  label: 'Label',
-  sublabel: 'Sublabel',
-  LeftIcon: BicolorAroundMe,
-  checked: false,
-}
-Hovered.play = async () => {
-  const checkbox = await screen.findByRole('checkbox')
-  userEvent.hover(checkbox)
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'CheckboxBlock'
