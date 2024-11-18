@@ -5,6 +5,7 @@ import { Text } from 'react-native'
 
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
@@ -24,8 +25,6 @@ const meta: ComponentMeta<typeof HeroButtonList> = {
   ],
 }
 export default meta
-
-const Template: ComponentStory<typeof HeroButtonList> = (props) => <HeroButtonList {...props} />
 
 const description = (
   <Text>
@@ -48,22 +47,33 @@ const caption = (
   </Text>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  Title: description,
-  Icon: <BicolorSmartphone />,
-}
-export const HeroButtonListWithCaption = Template.bind({})
-HeroButtonListWithCaption.args = {
-  Title: description2,
-  Subtitle: caption,
-  Icon: <BicolorSmartphone />,
-}
-export const HeroButtonListWithCustomIconProps = Template.bind({})
-HeroButtonListWithCustomIconProps.args = {
-  Title: description2,
-  Subtitle: caption,
-  Icon: (
-    <LocationPointer color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} size={iconSizes.small} />
-  ),
-}
+const variantConfig = [
+  {
+    label: 'HeroButtonList default',
+    props: { Title: description, Icon: <BicolorSmartphone /> },
+  },
+  {
+    label: 'HeroButtonList with caption',
+    props: { Title: description2, Subtitle: caption, Icon: <BicolorSmartphone /> },
+  },
+  {
+    label: 'HeroButtonList with custom icon',
+    props: {
+      Title: description2,
+      Icon: (
+        <LocationPointer
+          color={ColorsEnum.BLACK}
+          color2={ColorsEnum.BLACK}
+          size={iconSizes.small}
+        />
+      ),
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={HeroButtonList} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'HeroButtonList'
