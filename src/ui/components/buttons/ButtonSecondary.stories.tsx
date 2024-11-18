@@ -1,10 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
-import { StoryContainer } from 'ui/storybook/StoryContainer'
-import { EditPen } from 'ui/svg/icons/EditPen'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonSecondary } from './ButtonSecondary'
@@ -12,87 +9,78 @@ import { ButtonSecondary } from './ButtonSecondary'
 const meta: ComponentMeta<typeof ButtonSecondary> = {
   title: 'ui/buttons/ButtonSecondary',
   component: ButtonSecondary,
-  argTypes: {
-    icon: selectArgTypeFromObject({
-      Email,
-      EditPen,
-    }),
-  },
 }
 export default meta
 
-const Template: ComponentStory<typeof ButtonSecondary> = (props) => (
-  <React.Fragment>
-    <StoryContainer title="ButtonSecondary">
-      <ButtonSecondary {...props} />
-    </StoryContainer>
-    <StoryContainer title="ButtonSecondaryWhite" withBackground>
-      <ButtonSecondaryWhite {...props} />
-    </StoryContainer>
-  </React.Fragment>
+const variantConfig = [
+  // Default
+  {
+    label: 'ButtonSecondary default',
+    props: { wording: 'Confirmer' },
+  },
+  {
+    label: 'ButtonSecondary default disabled',
+    props: { wording: 'Confirmer', disabled: true },
+  },
+  {
+    label: 'ButtonSecondary default loading',
+    props: { wording: 'Confirmer', isLoading: true },
+  },
+  {
+    label: 'ButtonSecondary default with icon',
+    props: { wording: 'Confirmer', icon: Email },
+  },
+  {
+    label: 'ButtonSecondary default disabled with icon',
+    props: { wording: 'Confirmer', disabled: true, icon: Email },
+  },
+  // Tall
+  {
+    label: 'ButtonSecondary tall',
+    props: { wording: 'Confirmer', buttonHeight: 'tall' },
+  },
+  {
+    label: 'ButtonSecondary tall disabled',
+    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true },
+  },
+  {
+    label: 'ButtonSecondary tall loading',
+    props: { wording: 'Confirmer', buttonHeight: 'tall', isLoading: true },
+  },
+  {
+    label: 'ButtonSecondary tall with icon',
+    props: { wording: 'Confirmer', buttonHeight: 'tall', icon: Email },
+  },
+  {
+    label: 'ButtonSecondary tall disabled with icon',
+    props: { wording: 'Confirmer', buttonHeight: 'tall', disabled: true, icon: Email },
+  },
+  // Extra small
+  {
+    label: 'ButtonSecondary extra small',
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall' },
+  },
+  {
+    label: 'ButtonSecondary extra small disabled',
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true },
+  },
+  {
+    label: 'ButtonSecondary extra small loading',
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', isLoading: true },
+  },
+  {
+    label: 'ButtonSecondary extra small with icon',
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', icon: Email },
+  },
+  {
+    label: 'ButtonSecondary extra small disabled with icon',
+    props: { wording: 'Confirmer', buttonHeight: 'extraSmall', disabled: true, icon: Email },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={ButtonSecondary} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  wording: 'Confirmer',
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonSecondary wording="Confirmer" />',
-    },
-  },
-}
-
-export const Loading = Template.bind({})
-Loading.args = {
-  wording: 'Confirmer',
-  isLoading: true,
-}
-Loading.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonSecondary wording="Confirmer" isLoading />',
-    },
-  },
-}
-
-export const Tall = Template.bind({})
-Tall.args = {
-  wording: 'Confirmer',
-  buttonHeight: 'tall',
-}
-Tall.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonSecondary wording="Confirmer" buttonHeight="tall" />',
-    },
-  },
-}
-
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  wording: 'Confirmer',
-  icon: 'Email',
-}
-WithIcon.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonSecondary wording="Confirmer" icon={Email} />',
-    },
-  },
-}
-
-export const DisabledWithIcon = Template.bind({})
-DisabledWithIcon.args = {
-  wording: 'Confirmer',
-  icon: 'Email',
-  disabled: true,
-}
-DisabledWithIcon.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonSecondary wording="Confirmer" disabled={true} icon={Email} />',
-    },
-  },
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ButtonSecondary'

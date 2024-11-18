@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMovieCalendarDay'
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
