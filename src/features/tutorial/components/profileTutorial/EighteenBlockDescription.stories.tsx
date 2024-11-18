@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof EighteenBlockDescription> = () => (
     <EighteenBlockDescription />
   </GreyContainer>
 )
-export const Description = Template.bind({})
+export const Default = Template.bind({})
+Default.storyName = 'EighteenBlockDescription'
 
 const GreyContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,

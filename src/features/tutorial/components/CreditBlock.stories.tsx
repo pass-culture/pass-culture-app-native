@@ -2,7 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
-import { Typo } from 'ui/theme'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { TypoDS } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
@@ -12,28 +13,26 @@ const meta: ComponentMeta<typeof CreditBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof CreditBlock> = (props) => (
-  <CreditBlock {...props}>
-    <Typo.Caption>Tu auras deux ans pour utiliser tes 300€</Typo.Caption>
-  </CreditBlock>
+const Text = <TypoDS.BodyAccentXs>Tu auras deux ans pour utiliser tes 300€</TypoDS.BodyAccentXs>
+
+const variantConfig = [
+  {
+    label: 'CreditBlock ongoing',
+    props: { creditStatus: CreditStatus.ONGOING, children: Text },
+  },
+  {
+    label: 'CreditBlock gone',
+    props: { creditStatus: CreditStatus.GONE, children: Text },
+  },
+  {
+    label: 'CreditBlock coming',
+    props: { creditStatus: CreditStatus.COMING, children: Text },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={CreditBlock} />
 )
 
-export const Ongoing = Template.bind({})
-Ongoing.args = {
-  creditStatus: CreditStatus.ONGOING,
-}
-export const Gone = Template.bind({})
-Gone.args = {
-  creditStatus: CreditStatus.GONE,
-}
-export const Coming = Template.bind({})
-Coming.args = {
-  creditStatus: CreditStatus.COMING,
-}
-
-//TODO(PC-28526): Fix this stories
-const Animated = Template.bind({})
-Animated.args = {
-  creditStatus: CreditStatus.ONGOING,
-  animated: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'CreditBlock'

@@ -12,8 +12,6 @@ export default meta
 const Template: ComponentStory<typeof InformationStepContent> = (props) => (
   <InformationStepContent {...props} />
 )
-export const Information = Template.bind({})
-Information.args = {
-  title: 'La veille de tes 18 ans',
-  subtitle: 'Ton crédit est remis à 0',
-}
+export const Default = Template.bind({})
+Default.args = { title: 'La veille de tes 18 ans', subtitle: 'Ton crédit est remis à 0' }
+Default.storyName = 'InformationStepContent'
