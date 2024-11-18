@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from 'uuid'
 import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
@@ -581,7 +582,9 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const maxPriceInput = screen.getByPlaceholderText(`${MAX_PRICE}`)
+      const maxPriceInput = screen.getByPlaceholderText(
+        `${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`
+      )
 
       expect(maxPriceInput).toBeOnTheScreen()
     })
@@ -593,7 +596,9 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const rightLabelMaxInput = screen.getByText(`max : ${MAX_PRICE} €`)
+      const rightLabelMaxInput = screen.getByText(
+        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`
+      )
 
       expect(rightLabelMaxInput).toBeOnTheScreen()
     })
@@ -638,7 +643,9 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const maxPriceInput = screen.getByPlaceholderText(`${MAX_PRICE}`)
+      const maxPriceInput = screen.getByPlaceholderText(
+        `${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`
+      )
 
       expect(maxPriceInput).toBeOnTheScreen()
     })
@@ -650,7 +657,9 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const rightLabelMaxInput = screen.getByText(`max : ${MAX_PRICE} €`)
+      const rightLabelMaxInput = screen.getByText(
+        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`
+      )
 
       expect(rightLabelMaxInput).toBeOnTheScreen()
     })

@@ -16,7 +16,7 @@ jest.mock('features/venue/api/useVenue', () => ({
   useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
 }))
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
-  useMaxPrice: jest.fn(() => 300),
+  useMaxPrice: jest.fn(() => 300_00),
 }))
 
 describe('useVenueSearchParameters', () => {

@@ -1,12 +1,13 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
-import { clampPrice, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { clampPrice, MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   computeTimeRangeFromHoursToSeconds,
   TIMESTAMP,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/time'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { NoNullProperties, Range } from 'libs/typesUtils/typeHelpers'
 
 export const buildOfferLast30DaysBookings = (
@@ -30,7 +31,9 @@ export const buildOfferPriceRangePredicate = ({
 
   const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
   const formatMaxPrice =
-    getPriceAsNumber(maxPrice) || getPriceAsNumber(maxPossiblePrice) || MAX_PRICE
+    getPriceAsNumber(maxPrice) ||
+    getPriceAsNumber(maxPossiblePrice) ||
+    convertCentsToEuros(MAX_PRICE_IN_CENTS)
   const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
     return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]

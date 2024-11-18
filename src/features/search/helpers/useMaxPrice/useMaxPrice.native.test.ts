@@ -15,7 +15,7 @@ describe('useMaxPrice when no user', () => {
   })
 
   it('returns 300 when no user logged in', () => {
-    expect(renderHook(useMaxPrice).result.current).toEqual(300)
+    expect(renderHook(useMaxPrice).result.current).toEqual(300_00)
   })
 })
 
@@ -23,7 +23,7 @@ describe('useMaxPrice when user is not beneficiary', () => {
   it('returns 300 when the user is not a beneficiary', () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
 
-    expect(renderHook(useMaxPrice).result.current).toEqual(300)
+    expect(renderHook(useMaxPrice).result.current).toEqual(300_00)
   })
 })
 
@@ -34,7 +34,7 @@ describe('useMaxPrice when user under 18', () => {
       domainsCredit: { all: { remaining: 10_00, initial: 30_00 } },
     })
 
-    expect(renderHook(useMaxPrice).result.current).toEqual(30)
+    expect(renderHook(useMaxPrice).result.current).toEqual(30_00)
   })
 
   describe('useMaxPrice when user is ex-beneficiary', () => {
@@ -43,7 +43,7 @@ describe('useMaxPrice when user under 18', () => {
     })
 
     it('returns 300 when the user is ex-beneficiary', () => {
-      expect(renderHook(useMaxPrice).result.current).toEqual(300)
+      expect(renderHook(useMaxPrice).result.current).toEqual(300_00)
     })
   })
 })

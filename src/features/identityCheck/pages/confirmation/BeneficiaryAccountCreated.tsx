@@ -8,7 +8,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
@@ -22,7 +22,7 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
-  const maxPrice = useMaxPrice()
+  const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -31,7 +31,7 @@ export function BeneficiaryAccountCreated() {
   const { showShareAppModal } = useShareAppContext()
   const { actions } = useCreditStore()
 
-  const subtitle = `${parseCurrency(maxPrice)} viennent d’être crédités sur ton compte pass Culture`
+  const subtitle = `${parseCurrencyFromCents(maxPriceInCents)} viennent d’être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.'
     : 'Tu as deux ans pour profiter de ton budget.'
@@ -56,7 +56,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount>{parseCurrency(maxPrice)}</Amount>
+        <Amount>{parseCurrencyFromCents(maxPriceInCents)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>

@@ -11,10 +11,10 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState } from 'features/search/types'
-import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -62,14 +62,14 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const currency = useGetCurrencyToDisplay('full')
 
-  const availableCredit = useAvailableCredit()?.amount
-  const formatAvailableCredit = availableCredit ? convertCentsToEuros(availableCredit) : 0
-  const formatAvailableCreditWithCurrency = parseCurrency(formatAvailableCredit)
+  const availableCredit = useAvailableCredit()?.amount ?? 0
+  const formatAvailableCredit = convertCentsToEuros(availableCredit)
+  const formatAvailableCreditWithCurrency = parseCurrencyFromCents(availableCredit)
   const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
-  const initialCredit = user?.domainsCredit?.all?.initial
-  const formatInitialCredit = initialCredit ? convertCentsToEuros(initialCredit) : MAX_PRICE
-  const formatInitialCreditWithCurrency = parseCurrency(formatInitialCredit)
+  const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
+  const formatInitialCredit = convertCentsToEuros(initialCredit)
+  const formatInitialCreditWithCurrency = parseCurrencyFromCents(initialCredit)
 
   const searchPriceSchema = makeSearchPriceSchema(String(formatInitialCredit))
 

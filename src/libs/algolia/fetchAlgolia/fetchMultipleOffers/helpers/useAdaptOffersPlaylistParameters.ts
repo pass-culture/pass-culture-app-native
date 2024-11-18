@@ -5,10 +5,11 @@ import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { adaptOffersPlaylistLocationParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistLocationParameters'
 import { adaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
 import { useLocation } from 'libs/location'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
 export const useAdaptOffersPlaylistParameters = () => {
-  const defaultPriceMax = useMaxPrice()
+  const defaultPriceMaxInCents = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const genreTypeMapping = useGenreTypeMapping()
   const { userLocation } = useLocation()
@@ -16,7 +17,10 @@ export const useAdaptOffersPlaylistParameters = () => {
   return useCallback(
     (parameters: OffersModuleParameters): PlaylistOffersParams => {
       const offersAdaptedParams = adaptOffersPlaylistParameters(
-        { ...parameters, priceMax: parameters.priceMax ?? defaultPriceMax },
+        {
+          ...parameters,
+          priceMax: parameters.priceMax ?? convertCentsToEuros(defaultPriceMaxInCents),
+        },
         subcategoryLabelMapping,
         genreTypeMapping
       )
@@ -33,6 +37,6 @@ export const useAdaptOffersPlaylistParameters = () => {
     },
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [defaultPriceMax, subcategoryLabelMapping, userLocation]
+    [defaultPriceMaxInCents, subcategoryLabelMapping, userLocation]
   )
 }

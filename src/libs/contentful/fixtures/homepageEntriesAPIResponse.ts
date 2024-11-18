@@ -2,7 +2,7 @@ import { classicThematicHeaderFixture } from 'libs/contentful/fixtures/homepageN
 import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
 import { ContentTypes } from 'libs/contentful/types'
-import { parseCurrency } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { toMutable } from 'shared/types/toMutable'
 
 export const homepageEntriesAPIResponse = toMutable({
@@ -316,7 +316,7 @@ export const homepageEntriesAPIResponse = toMutable({
         fields: {
           title: 'Crée un compte\u00a0!',
           firstLine: 'Crée un compte\u00a0!',
-          secondLine: `Si tu as 18 ans, bénéficie de ${parseCurrency(300)}.`,
+          secondLine: `Si tu as 18 ans, bénéficie de ${parseCurrencyFromCents(300_00)}.`,
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
           url: 'https://passculture.zendesk.com/hc/fr/',
           targetNotConnectedUsersOnly: false,

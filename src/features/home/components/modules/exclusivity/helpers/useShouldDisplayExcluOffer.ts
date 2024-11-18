@@ -4,7 +4,6 @@ import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPric
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export function useShouldDisplayExcluOffer(
   displayParameters: ExclusivityModule['displayParameters'],
@@ -17,7 +16,7 @@ export function useShouldDisplayExcluOffer(
 
   if (!offer) return false
 
-  const price = convertCentsToEuros(getOfferPrice(offer.stocks))
+  const price = getOfferPrice(offer.stocks)
   if (price > maxPrice) return false
 
   // Exclu module is not geolocated

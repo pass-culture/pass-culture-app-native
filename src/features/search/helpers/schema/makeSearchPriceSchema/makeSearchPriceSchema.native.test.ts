@@ -1,10 +1,11 @@
 import { ValidationError } from 'yup'
 
-import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import {
   minPriceError,
   makeSearchPriceSchema,
 } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 describe('search price schema', () => {
   const initialValues = {
@@ -15,28 +16,36 @@ describe('search price schema', () => {
   describe('should match minimum price', () => {
     it('when input less than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '10' }
-      const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+      const result = await makeSearchPriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      ).validate(values)
 
       expect(result).toEqual(values)
     })
 
     it('when input equal than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '20' }
-      const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+      const result = await makeSearchPriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      ).validate(values)
 
       expect(result).toEqual(values)
     })
 
     it('when input less than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '10' }
-      const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+      const result = await makeSearchPriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      ).validate(values)
 
       expect(result).toEqual(values)
     })
 
     it('when input equal than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '20,15' }
-      const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+      const result = await makeSearchPriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      ).validate(values)
 
       expect(result).toEqual(values)
     })
@@ -44,28 +53,36 @@ describe('search price schema', () => {
 
   it('should match decimal minimum price when input less than maximum price input', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '10,50' }
-    const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+    const result = await makeSearchPriceSchema(
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+    ).validate(values)
 
     expect(result).toEqual(values)
   })
 
   it('should invalidate minimum price when input higher than maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '21' }
-    const result = makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+    const result = makeSearchPriceSchema(
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+    ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))
   })
 
   it('should invalidate minimum price when input higher than decimal maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20,15', minPrice: '21' }
-    const result = makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+    const result = makeSearchPriceSchema(
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+    ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))
   })
 
   it('should invalidate decimal minimum price when input higher than maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '21,15' }
-    const result = makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+    const result = makeSearchPriceSchema(
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+    ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))
   })
