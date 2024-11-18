@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
@@ -12,30 +12,11 @@ import { InfoBanner } from './InfoBanner'
 const meta: ComponentMeta<typeof InfoBanner> = {
   title: 'ui/banners/InfoBanner',
   component: InfoBanner,
-  argTypes: {
-    icon: selectArgTypeFromObject({
-      BicolorClock,
-      NoIcon: undefined,
-    }),
-  },
 }
 export default meta
 
-const Template: ComponentStory<typeof InfoBanner> = (props) => <InfoBanner {...props} />
-
 const message =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
-
-export const Default = Template.bind({})
-Default.args = {
-  message,
-}
-
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  message,
-  icon: BicolorClock,
-}
 
 const ActionButton = (
   <ButtonQuaternarySecondary
@@ -47,15 +28,28 @@ const ActionButton = (
   />
 )
 
-export const WithChildren = Template.bind({})
-WithChildren.args = {
-  message,
-  children: ActionButton,
-}
+const variantConfig = [
+  {
+    label: 'InfoBanner default',
+    props: { message },
+  },
+  {
+    label: 'InfoBanner with icon',
+    props: { message, icon: BicolorClock },
+  },
+  {
+    label: 'InfoBanner with children',
+    props: { message, children: ActionButton },
+  },
+  {
+    label: 'InfoBanner with color message',
+    props: { message, withLightColorMessage: true },
+  },
+]
 
-export const WithLightColorMessage = Template.bind({})
-WithLightColorMessage.args = {
-  message,
-  withLightColorMessage: true,
-  children: ActionButton,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={InfoBanner} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'InfoBanner'
