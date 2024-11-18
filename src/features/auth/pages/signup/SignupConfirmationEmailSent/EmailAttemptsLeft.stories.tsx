@@ -1,5 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { EmailAttemptsLeft } from './EmailAttemptsLeft'
 
@@ -9,14 +11,20 @@ const meta: ComponentMeta<typeof EmailAttemptsLeft> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof EmailAttemptsLeft> = (props) => (
-  <EmailAttemptsLeft {...props} />
+const variantConfig = [
+  {
+    label: 'EmailAttemptsLeft multiple attempt',
+    props: { attemptsLeft: 2 },
+  },
+  {
+    label: 'EmailAttemptsLeft last attempt',
+    props: { attemptsLeft: 1 },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={EmailAttemptsLeft} />
 )
-export const MultipleAttempts = Template.bind({})
-MultipleAttempts.args = {
-  attemptsLeft: 2,
-}
-export const LastAttempt = Template.bind({})
-LastAttempt.args = {
-  attemptsLeft: 1,
-}
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'EmailAttemptsLeft'
