@@ -8,7 +8,6 @@ import { LocationMode, Position } from 'libs/location/types'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
-jest.mock('libs/firebase/analytics/analytics')
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }

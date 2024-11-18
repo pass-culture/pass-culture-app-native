@@ -30,8 +30,6 @@ function mockUseCurrentRoute(name: string) {
   mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<AccountStatusScreenHandler />', () => {
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST

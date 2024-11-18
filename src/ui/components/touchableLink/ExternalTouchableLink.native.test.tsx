@@ -32,8 +32,6 @@ const externalNav = {
   params: { fallbackUrl: SocialNetworkIconsMap[socialNetwork].fallbackLink },
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {
     it('should open url with expected parameters (nominal case)', async () => {

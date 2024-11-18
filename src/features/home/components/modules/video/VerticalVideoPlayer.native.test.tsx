@@ -10,8 +10,6 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('features/home/components/modules/video/useVerticalVideoPlayer', () => {
   return {
     useVerticalVideoPlayer: (params: unknown) => ({

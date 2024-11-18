@@ -7,8 +7,6 @@ const getTrackingStatusSpy = jest.spyOn(TrackingTransparency, 'getTrackingStatus
 const requestTrackingPermissionSpy = jest.spyOn(TrackingTransparency, 'requestTrackingPermission')
 const logOpenAppMock = jest.spyOn(TrackOpenApp, 'logOpenApp')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('requestIDFATrackingConsent', () => {
   it('should ask for consent when it has not already been asked', async () => {
     getTrackingStatusSpy.mockResolvedValueOnce('not-determined')

@@ -121,8 +121,6 @@ const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []
   useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

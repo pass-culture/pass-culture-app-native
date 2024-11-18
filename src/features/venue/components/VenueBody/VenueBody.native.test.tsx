@@ -40,8 +40,6 @@ jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id
 useRoute.mockImplementation(() => ({ params: { id: venueId } }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<VenueBody />', () => {
   beforeEach(() => {
     // We mock only the first call to canOpenURL so we can wait for instagram to be displayed

@@ -26,8 +26,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 jest.mock('libs/subcategories/useSubcategories')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('useSearchHistory', () => {

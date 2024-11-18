@@ -26,7 +26,6 @@ jest.mock('features/offer/components/MovieScreeningCalendar/useMovieScreeningCal
 jest.mock('features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings')
 jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 jest.mock('libs/subcategories')
-jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('ui/components/eventCard/EventCardList', () => ({
   EventCardList: () => 'EventCardList',

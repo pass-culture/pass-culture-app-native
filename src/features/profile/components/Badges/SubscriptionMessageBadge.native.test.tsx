@@ -14,8 +14,6 @@ jest.mock('features/profile/helpers/shouldOpenInbox', () => ({
   shouldOpenInbox: jest.fn(() => mockShouldOpenInbox()),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<SubscriptionMessageBadge />', () => {
   it('should display the subscription message', () => {
     renderSubscriptionMessageBadge({

@@ -31,7 +31,6 @@ const mockRef = {
 
 const showError: unknown = true
 const hideError: unknown = false
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('VideoPlayer', () => {
   it('should render error view when showErrorView is true', async () => {

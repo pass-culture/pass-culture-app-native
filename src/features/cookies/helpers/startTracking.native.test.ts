@@ -8,8 +8,6 @@ import { Batch } from 'libs/react-native-batch'
 jest.mock('libs/amplitude/amplitude')
 jest.mock('libs/campaign')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('startTracking', () => {
   it('should disable tracking if enabled = false', () => {
     startTracking(false)

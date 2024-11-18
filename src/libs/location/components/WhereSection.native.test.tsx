@@ -17,8 +17,6 @@ jest.mock('libs/location/hooks/useDistance', () => ({
 
 const beforeNavigateToItinerary = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('WhereSection', () => {
   it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
     render(

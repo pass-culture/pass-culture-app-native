@@ -6,7 +6,6 @@ import { render, screen } from 'tests/utils'
 
 import { AccessibilityBlock } from './AccessibilityBlock'
 
-jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('AccessibilityBlock', () => {

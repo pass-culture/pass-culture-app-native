@@ -30,8 +30,6 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 const today = '2021-03-30T00:00:00Z'
 mockdate.set(new Date(today))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 

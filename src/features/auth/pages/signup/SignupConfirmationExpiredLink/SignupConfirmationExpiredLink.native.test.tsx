@@ -30,8 +30,6 @@ function renderSignupConfirmationExpiredLink() {
   )
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

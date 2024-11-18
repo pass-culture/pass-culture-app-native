@@ -5,8 +5,6 @@ import { EduConnectError } from 'features/identityCheck/pages/identification/err
 import { eventMonitoring } from 'libs/monitoring'
 import { render } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('EduConnectErrorBoundary component', () => {
   it('should not log error on sentry when error is an expected EduConnectError', () => {
     render(

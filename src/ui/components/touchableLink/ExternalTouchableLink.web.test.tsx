@@ -32,7 +32,6 @@ const externalNav = {
   params: { fallbackUrl: SocialNetworkIconsMap[socialNetwork].fallbackLink },
 }
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ExternalTouchableLink />', () => {

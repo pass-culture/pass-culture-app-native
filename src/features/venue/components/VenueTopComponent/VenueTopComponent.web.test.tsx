@@ -9,7 +9,6 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/location')
 jest.mocked(useLocation)

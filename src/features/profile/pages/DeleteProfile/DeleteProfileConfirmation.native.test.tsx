@@ -13,8 +13,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,

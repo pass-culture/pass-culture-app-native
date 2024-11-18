@@ -8,8 +8,6 @@ import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigPro
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockGetConfigValues = jest.fn()
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
   remoteConfig: {

@@ -8,8 +8,6 @@ import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('DeleteProfileConfirmation', () => {

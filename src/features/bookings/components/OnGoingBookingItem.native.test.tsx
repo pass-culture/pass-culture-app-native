@@ -18,8 +18,6 @@ jest.mock('libs/subcategories/useSubcategory')
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
 

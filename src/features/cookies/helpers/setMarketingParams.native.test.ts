@@ -34,8 +34,6 @@ const spyOnGetUtmParamsConsent = jest.spyOn(getUtmParamsConsentAPI, 'getUtmParam
 
 jest.useFakeTimers()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('setMarketingParams', () => {
   beforeEach(() => {
     spyOnGetUtmParamsConsent.mockResolvedValueOnce({

@@ -31,8 +31,6 @@ jest.mock('libs/subcategories/useSubcategories')
 
 const onPressBookOffer = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useModalContent', () => {
   it('show default modal if no information yet', () => {
     mockOffer = undefined

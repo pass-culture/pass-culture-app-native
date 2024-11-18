@@ -10,8 +10,6 @@ jest.mock('libs/subcategories/useSubcategory')
 
 const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[1]
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<TicketSwiper/>', () => {
   it('should display ticket without external bookings information if there are no external bookings (externalBookings is null)', () => {
     booking.externalBookings = null

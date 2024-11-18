@@ -9,8 +9,6 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('Contact support button', () => {
   it('should open mail app when clicking on contact support button', async () => {
     render(<PhoneValidationTooManyAttempts />)
@@ -27,8 +25,6 @@ describe('Contact support button', () => {
     })
   })
 })
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('Navigate to home button', () => {
   it('should redirect to Home when clicking on homepage button', async () => {

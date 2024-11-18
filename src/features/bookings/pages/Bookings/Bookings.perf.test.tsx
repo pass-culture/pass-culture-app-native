@@ -14,8 +14,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('react-native/Libraries/Alert/Alert', () => ({

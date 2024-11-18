@@ -20,7 +20,6 @@ import { act, render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
-jest.mock('libs/firebase/analytics/analytics')
 
 const MOCK_TIMESTAMP = '2024-05-08T12:50:00Z'
 const MOCK_DATE = new Date(MOCK_TIMESTAMP)

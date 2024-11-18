@@ -63,8 +63,6 @@ const offerEventCTAButtonProps = {
   subcategory: mockSubcategory,
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.useFakeTimers()
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

@@ -10,8 +10,6 @@ const getTrackingStatusSpy = jest
   .spyOn(TrackingTransparency, 'getTrackingStatus')
   .mockResolvedValue('authorized')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('campaignTracker', () => {
   it('should not request ATT when init parameter is false', async () => {
     campaignTracker.init(false)

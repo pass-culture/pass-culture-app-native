@@ -21,7 +21,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('features/bookings/api')
 const mockUseBookings = useBookings as jest.Mock

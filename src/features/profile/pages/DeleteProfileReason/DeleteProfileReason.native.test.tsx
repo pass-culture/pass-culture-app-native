@@ -15,8 +15,6 @@ jest.mock('features/auth/context/SettingsContext')
 const signOutMock = jest.fn()
 jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

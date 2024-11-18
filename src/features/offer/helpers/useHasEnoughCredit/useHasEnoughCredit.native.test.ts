@@ -18,8 +18,6 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   refetchUser: jest.fn(),
 })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('hasEnoughCredit', () => {
   it.each`
     domains                | price | domainsCredit
@@ -95,8 +93,6 @@ describe('hasEnoughCredit', () => {
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
   })
 })
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('useHasEnoughCredit', () => {
   it('should return false if no offer nor user found', () => {

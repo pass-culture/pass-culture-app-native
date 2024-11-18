@@ -67,8 +67,6 @@ jest.useFakeTimers()
 
 mockdate.set(CURRENT_DATE)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

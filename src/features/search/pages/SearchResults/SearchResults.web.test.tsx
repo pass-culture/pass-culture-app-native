@@ -65,7 +65,6 @@ jest.mock('uuid', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockSetInitialVenues = jest.fn()

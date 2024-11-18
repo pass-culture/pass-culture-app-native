@@ -25,8 +25,6 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 mockedUseMaxPrice.mockImplementation(() => convertCentsToEuros(MAX_PRICE_IN_CENTS))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useFilterCount', () => {
   it.each`
     section                                | partialSearchState                                                                                  | expected

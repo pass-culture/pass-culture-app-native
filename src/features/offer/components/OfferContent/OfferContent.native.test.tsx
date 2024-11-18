@@ -136,8 +136,6 @@ const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.useFakeTimers()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

@@ -36,8 +36,6 @@ jest.mock('libs/algolia/fetchAlgolia/fetchOffersByGTL')
 const mockFetchOffersByGTL = fetchOffersByGTL as jest.Mock
 mockFetchOffersByGTL.mockResolvedValue([mockedAlgoliaResponse])
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useGTLPlaylists', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

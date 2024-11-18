@@ -24,8 +24,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
 
 const hideModalMock = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()

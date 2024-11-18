@@ -70,8 +70,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 

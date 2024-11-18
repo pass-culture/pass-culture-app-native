@@ -60,8 +60,6 @@ jest.mock('features/bookings/api/useBookings', () => ({
   })),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const user = userEvent.setup()

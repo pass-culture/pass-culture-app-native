@@ -7,7 +7,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AgeSelectionOther } from './AgeSelectionOther'
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<AgeSelectionOther/>', () => {
