@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import LottieView from 'libs/lottie'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -17,11 +16,10 @@ import confetti from './confetti.json'
 interface Props {
   visible: boolean
   hideModal: () => void
-  id: AchievementId
+  ids: AchievementId[]
 }
 
-export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
-  const achievement = useAchievementDetails(id)
+export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
   const confettiRef = useRef<LottieView>(null)
   const logoRef = useRef<LottieView>(null)
 
@@ -32,7 +30,9 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
     }
   }, [visible])
 
-  if (!achievement) return null
+  if (ids.length <= 0) return null
+
+  const severalBadgesUnlocked = ids.length >= 2
 
   return (
     <AppInformationModal
@@ -57,10 +57,12 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
         />
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
-      <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.Body>{achievement?.descriptionUnlocked}</TypoDS.Body>
-      <Spacer.Column numberOfSpaces={10} />
+      <TypoDS.Title3>
+        {severalBadgesUnlocked
+          ? 'Tu as débloqué des succès\u00a0!'
+          : 'Tu as débloqué un succès\u00a0!'}
+      </TypoDS.Title3>
+      <Spacer.Column numberOfSpaces={12} />
 
       <InternalTouchableLink
         navigateTo={{ screen: 'Achievements' }}
