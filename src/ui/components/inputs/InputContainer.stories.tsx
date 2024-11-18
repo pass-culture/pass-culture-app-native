@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { InputContainer } from './InputContainer'
 
 const meta: ComponentMeta<typeof InputContainer> = {
@@ -9,22 +11,28 @@ const meta: ComponentMeta<typeof InputContainer> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof InputContainer> = (args) => <InputContainer {...args} />
+const variantConfig = [
+  {
+    label: 'InputContainer',
+  },
+  {
+    label: 'InputContainer focus',
+    props: { isFocus: true },
+  },
+  {
+    label: 'InputContainer with Error',
+    props: { isError: true },
+  },
 
-export const Default = Template.bind({})
-Default.args = {}
+  {
+    label: 'Disabled InputContainer',
+    props: { isDisabled: true },
+  },
+]
 
-export const Focus = Template.bind({})
-Focus.args = {
-  isFocus: true,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={InputContainer} />
+)
 
-export const Error = Template.bind({})
-Error.args = {
-  isError: true,
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  isDisabled: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'InputContainer'

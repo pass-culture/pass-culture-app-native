@@ -3,6 +3,7 @@ import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment } from 'react'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
@@ -12,43 +13,6 @@ const meta: ComponentMeta<typeof SearchInput> = {
   component: SearchInput,
 }
 export default meta
-
-const Template: ComponentStory<typeof SearchInput> = (args) => <SearchInput {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  placeholder: 'Placeholder...',
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  placeholder: 'Placeholder...',
-  disabled: true,
-}
-
-export const WithTallHeight = Template.bind({})
-WithTallHeight.args = {
-  placeholder: 'Placeholder...',
-  inputHeight: 'tall',
-}
-
-export const WithLeftIcon = Template.bind({})
-WithLeftIcon.args = {
-  placeholder: 'Placeholder...',
-  LeftIcon: () => <MagnifyingGlass />,
-}
-
-export const WithLabel = Template.bind({})
-WithLabel.args = {
-  placeholder: 'Placeholder...',
-  label: 'Label',
-}
-
-export const WithValue = Template.bind({})
-WithValue.args = {
-  placeholder: 'Placeholder...',
-  value: 'Value',
-}
 
 export const NotFocusable: ComponentStory<typeof SearchInput> = (args) => (
   <Fragment>
@@ -65,3 +29,37 @@ NotFocusable.play = async () => {
 
   userEvent.tab()
 }
+
+const variantConfig = [
+  {
+    label: 'SearchInput',
+    props: { placeholder: 'Placeholder...' },
+  },
+  {
+    label: 'Disabled SearchInput',
+    props: { placeholder: 'Placeholder...', disabled: true },
+  },
+  {
+    label: 'SearchInput WithTallHeight',
+    props: { placeholder: 'Placeholder...', inputHeight: 'tall' },
+  },
+  {
+    label: 'SearchInput with LeftIcon',
+    props: { placeholder: 'Placeholder...', LeftIcon: () => <MagnifyingGlass /> },
+  },
+  {
+    label: 'SearchInput with label',
+    props: { placeholder: 'Placeholder...', label: 'Label' },
+  },
+  {
+    label: 'SearchInput with value',
+    props: { placeholder: 'Placeholder...', value: 'Value' },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SearchInput} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SearchInput'

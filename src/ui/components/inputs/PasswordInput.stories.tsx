@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { PasswordInput } from './PasswordInput'
 
 const meta: ComponentMeta<typeof PasswordInput> = {
@@ -9,33 +11,36 @@ const meta: ComponentMeta<typeof PasswordInput> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof PasswordInput> = (args) => <PasswordInput {...args} />
+const variantConfig = [
+  {
+    label: 'PasswordInput',
+  },
+  {
+    label: 'PasswordInput with custom label and placeholder',
+    props: { label: 'Custom label', placeholder: 'Custom placeholder...' },
+  },
+  {
+    label: 'PasswordInput with value',
+    props: { value: 'password' },
+  },
+  {
+    label: 'PasswordInput required',
+    props: { isRequiredField: true },
+  },
+  {
+    label: 'PasswordInput with Error',
+    props: { isError: true },
+  },
 
-export const Default = Template.bind({})
-Default.args = {}
+  {
+    label: 'Disabled PasswordInput',
+    props: { disabled: true },
+  },
+]
 
-export const WithCustomLabelAndPlaceholder = Template.bind({})
-WithCustomLabelAndPlaceholder.args = {
-  label: 'Custom label',
-  placeholder: 'Custom placeholder...',
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={PasswordInput} />
+)
 
-export const WithValue = Template.bind({})
-WithValue.args = {
-  value: 'password',
-}
-
-export const Required = Template.bind({})
-Required.args = {
-  isRequiredField: true,
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  disabled: true,
-}
-
-export const Error = Template.bind({})
-Error.args = {
-  isError: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'PasswordInput'

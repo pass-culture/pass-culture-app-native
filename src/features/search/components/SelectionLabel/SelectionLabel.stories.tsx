@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { SelectionLabel } from './SelectionLabel'
 
 const meta: ComponentMeta<typeof SelectionLabel> = {
@@ -9,28 +11,41 @@ const meta: ComponentMeta<typeof SelectionLabel> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SelectionLabel> = (props) => <SelectionLabel {...props} />
+const variantConfig = [
+  {
+    label: 'SelectionLabel',
+    props: {
+      label: 'Cinéma',
+      selected: false,
+    },
+  },
+  {
+    label: 'Selected SelectionLabel',
+    props: {
+      label: 'Cinéma',
+      selected: true,
+    },
+  },
+  {
+    label: 'Very long SelectionLabel',
+    props: {
+      label: 'Conférences, rencontres, spectacles, expositions et visites',
+      selected: false,
+    },
+  },
+  {
+    label: 'Selected Very long SelectionLabel',
+    props: {
+      label: 'Conférences, rencontres, spectacles, expositions et visites',
 
-export const Label = Template.bind({})
-Label.args = {
-  label: 'Cinéma',
-  selected: false,
-}
+      selected: true,
+    },
+  },
+]
 
-export const SelectedLabel = Template.bind({})
-SelectedLabel.args = {
-  label: 'Cinéma',
-  selected: true,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SelectionLabel} />
+)
 
-export const VeryLongLabel = Template.bind({})
-VeryLongLabel.args = {
-  label: 'Conférences, rencontres, spectacles, expositions et visites',
-  selected: false,
-}
-
-export const SelectedVeryLongLabel = Template.bind({})
-SelectedVeryLongLabel.args = {
-  label: 'Conférences, rencontres, spectacles, expositions et visites',
-  selected: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SelectionLabel'

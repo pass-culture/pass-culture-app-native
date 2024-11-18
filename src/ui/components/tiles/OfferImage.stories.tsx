@@ -3,6 +3,7 @@ import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { OfferImage } from './OfferImage'
 
@@ -29,18 +30,26 @@ const meta: ComponentMeta<typeof OfferImage> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferImage> = (props) => <OfferImage {...props} />
+const variantConfig = [
+  {
+    label: 'OfferImage',
+  },
+  {
+    label: 'Tall OfferImage',
+    props: { size: 'tall' },
+  },
+  {
+    label: 'OfferImage withImage',
+    props: {
+      imageUrl:
+        'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+    },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={OfferImage} />
+)
 
-export const Tall = Template.bind({})
-Tall.args = {
-  size: 'tall',
-}
-
-export const WithImage = Template.bind({})
-WithImage.args = {
-  imageUrl:
-    'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'OfferImage'

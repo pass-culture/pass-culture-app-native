@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { ActionPlanStatus, ActionPlanTag } from './ActionPlanTag'
 
 const meta: ComponentMeta<typeof ActionPlanTag> = {
@@ -9,17 +11,27 @@ const meta: ComponentMeta<typeof ActionPlanTag> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ActionPlanTag> = (props) => <ActionPlanTag {...props} />
+const variantConfig = [
+  {
+    label: 'ActionPlanTag',
+  },
+  {
+    label: 'Ongoing ActionPlanTag',
+    props: {
+      status: ActionPlanStatus.ONGOING,
+    },
+  },
+  {
+    label: 'ToDo ActionPlanTag',
+    props: {
+      status: ActionPlanStatus.TODO,
+    },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} />
+)
 
-export const Ongoing = Template.bind({})
-Ongoing.args = {
-  status: ActionPlanStatus.ONGOING,
-}
-
-export const ToDo = Template.bind({})
-ToDo.args = {
-  status: ActionPlanStatus.TODO,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ActionPlanTag'

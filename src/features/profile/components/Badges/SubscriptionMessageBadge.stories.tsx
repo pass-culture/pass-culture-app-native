@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CallToActionIcon, PopOverIcon } from 'api/gen'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { SubscriptionMessageBadge } from './SubscriptionMessageBadge'
 
@@ -11,43 +12,52 @@ const meta: ComponentMeta<typeof SubscriptionMessageBadge> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubscriptionMessageBadge> = (props) => (
-  <SubscriptionMessageBadge {...props} />
-)
-
-export const Default = Template.bind({})
-Default.args = {
-  subscriptionMessage: {
-    userMessage: 'Dossier déposé, nous sommes en train de le traiter',
-  },
-}
-
-export const WithUpdatedAt = Template.bind({})
-WithUpdatedAt.args = {
-  subscriptionMessage: {
-    userMessage: 'Dossier déposé, nous sommes en train de le traiter',
-    updatedAt: '2021-10-25T13:24Z',
-  },
-}
-
-export const WithPopOverIcon = Template.bind({})
-WithPopOverIcon.args = {
-  subscriptionMessage: {
-    userMessage: 'Dossier déposé, nous sommes en train de le traiter',
-    popOverIcon: PopOverIcon.FILE,
-  },
-}
-
-// TODO(PC-17931): Fix this story
-const WithCTA = Template.bind({})
-WithCTA.args = {
-  subscriptionMessage: {
-    userMessage: 'Dossier déposé, nous sommes en train de le traiter',
-    popOverIcon: PopOverIcon.FILE,
-    callToAction: {
-      callToActionIcon: CallToActionIcon.RETRY,
-      callToActionLink: 'https://google.com',
-      callToActionTitle: 'Tu peux cliquer',
+const variantConfig = [
+  {
+    label: 'SubscriptionMessageBadge',
+    props: {
+      subscriptionMessage: {
+        userMessage: 'Dossier déposé, nous sommes en train de le traiter',
+      },
     },
   },
-}
+  {
+    label: 'SubscriptionMessageBadge with UpdatedAt',
+    props: {
+      subscriptionMessage: {
+        userMessage: 'Dossier déposé, nous sommes en train de le traiter',
+        updatedAt: '2021-10-25T13:24Z',
+      },
+    },
+  },
+  {
+    label: 'SubscriptionMessageBadge with PopOverIcon',
+    props: {
+      subscriptionMessage: {
+        userMessage: 'Dossier déposé, nous sommes en train de le traiter',
+        popOverIcon: PopOverIcon.FILE,
+      },
+    },
+  },
+  {
+    label: 'SubscriptionMessageBadge with CTA',
+    props: {
+      subscriptionMessage: {
+        userMessage: 'Dossier déposé, nous sommes en train de le traiter',
+        popOverIcon: PopOverIcon.FILE,
+        callToAction: {
+          callToActionIcon: CallToActionIcon.RETRY,
+          callToActionLink: 'https://google.com',
+          callToActionTitle: 'Tu peux cliquer',
+        },
+      },
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SubscriptionMessageBadge} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SubscriptionMessageBadge'

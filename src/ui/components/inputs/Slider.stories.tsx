@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { Slider } from './Slider'
 
 const meta: ComponentMeta<typeof Slider> = {
@@ -9,52 +11,58 @@ const meta: ComponentMeta<typeof Slider> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Slider> = (props) => <Slider {...props} />
+const variantConfig = [
+  {
+    label: 'Slider',
+  },
+  {
+    label: 'Slider with values',
+    props: { values: [100], max: 300, showValues: true },
+  },
+  {
+    label: 'Slider with min and max values',
+    props: {
+      values: [50],
+      max: 100,
+      showValues: false,
+      shouldShowMinMaxValues: true,
+      minMaxValuesComplement: `\u00a0km`,
+    },
+  },
+  {
+    label: 'Slider with formatted values',
+    props: { values: [50], min: 20, showValues: true, formatValues: (n: number) => `${n} km` },
+  },
+  {
+    label: 'Slider with custom step',
+    props: {
+      values: [50],
+      min: 20,
+      step: 10,
+      showValues: true,
+    },
+  },
+  {
+    label: 'Multislider',
+    props: {
+      values: [0, 75],
+      showValues: true,
+      formatValues: (n: number) => `${n}\u00a0€`,
+    },
+  },
+  {
+    label: 'Multislider with overlap',
+    props: {
+      values: [50, 50],
+      showValues: true,
+      formatValues: (n: number) => `${n}\u00a0€`,
+    },
+  },
+]
 
-export const DefaultSlider = Template.bind({})
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Slider} />
+)
 
-export const SliderWithValues = Template.bind({})
-SliderWithValues.args = {
-  values: [100],
-  max: 300,
-  showValues: true,
-}
-
-export const SliderWithMinMaxValues = Template.bind({})
-SliderWithMinMaxValues.args = {
-  values: [50],
-  max: 100,
-  showValues: false,
-  shouldShowMinMaxValues: true,
-  minMaxValuesComplement: `\u00a0km`,
-}
-
-export const SliderWithFormattedValues = Template.bind({})
-SliderWithFormattedValues.args = {
-  values: [50],
-  min: 20,
-  showValues: true,
-  formatValues: (n) => `${n} km`,
-}
-
-export const SliderWithCustomStep = Template.bind({})
-SliderWithCustomStep.args = {
-  values: [50],
-  min: 20,
-  step: 10,
-  showValues: true,
-}
-
-export const Multislider = Template.bind({})
-Multislider.args = {
-  values: [0, 75],
-  showValues: true,
-  formatValues: (n) => `${n}\u00a0€`,
-}
-
-export const MultisliderWithOverlap = Template.bind({})
-MultisliderWithOverlap.args = {
-  values: [50, 50],
-  showValues: true,
-  formatValues: (n) => `${n}\u00a0€`,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Slider'

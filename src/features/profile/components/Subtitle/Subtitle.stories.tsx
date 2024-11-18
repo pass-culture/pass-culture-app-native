@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { Subtitle } from './Subtitle'
 
 const meta: ComponentMeta<typeof Subtitle> = {
@@ -9,15 +11,20 @@ const meta: ComponentMeta<typeof Subtitle> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Subtitle> = (props) => <Subtitle {...props} />
+const variantConfig = [
+  {
+    label: 'Subtitle',
+    props: { startSubtitle: 'Subtitle' },
+  },
+  {
+    label: 'Subtitle WithBoldEndSubtitle',
+    props: { startSubtitle: 'Subtitle', boldEndSubtitle: 'with bold subtitle' },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {
-  startSubtitle: 'Subtitle',
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Subtitle} />
+)
 
-export const WithBoldEndSubtitle = Template.bind({})
-WithBoldEndSubtitle.args = {
-  startSubtitle: 'Subtitle',
-  boldEndSubtitle: 'with bold subtitle',
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Subtitle'

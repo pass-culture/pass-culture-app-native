@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { EmailInput } from './EmailInput'
 
 const meta: ComponentMeta<typeof EmailInput> = {
@@ -9,36 +11,35 @@ const meta: ComponentMeta<typeof EmailInput> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof EmailInput> = (args) => <EmailInput {...args} />
+const variantConfig = [
+  {
+    label: 'Input Email',
+  },
+  {
+    label: 'Input Email with label',
+    props: { label: 'Adresse e-mail' },
+  },
+  {
+    label: 'Input Email with label and value',
+    props: { label: 'Adresse e-mail', email: 'email@example.com' },
+  },
+  {
+    label: 'Required Input Email',
+    props: { label: 'Adresse e-mail', isRequiredField: true },
+  },
+  {
+    label: 'Disabled Input Email',
+    props: { label: 'Adresse e-mail', disabled: true },
+  },
+  {
+    label: ' Input Email with Error',
+    props: { label: 'Adresse e-mail', isError: true },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={EmailInput} />
+)
 
-export const WithLabel = Template.bind({})
-WithLabel.args = {
-  label: 'Adresse e-mail',
-}
-
-export const WithValue = Template.bind({})
-WithValue.args = {
-  label: 'Adresse e-mail',
-  email: 'email@example.com',
-}
-
-export const Required = Template.bind({})
-Required.args = {
-  label: 'Adresse e-mail',
-  isRequiredField: true,
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  label: 'Adresse e-mail',
-  disabled: true,
-}
-
-export const Error = Template.bind({})
-Error.args = {
-  label: 'Adresse e-mail',
-  isError: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'EmailInput'

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { VenueListModule } from './VenueListModule'
 
@@ -32,6 +33,18 @@ const venues = [
   },
 ]
 
-const Template: ComponentStory<typeof VenueListModule> = (props) => <VenueListModule {...props} />
-export const Default = Template.bind({})
-Default.args = { venues }
+const variantConfig = [
+  {
+    label: 'VenueListModule',
+    props: {
+      venues,
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={VenueListModule} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'VenueListModule'

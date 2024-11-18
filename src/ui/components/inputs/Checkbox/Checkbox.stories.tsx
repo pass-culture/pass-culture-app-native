@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { Checkbox } from './Checkbox'
 
 const meta: ComponentMeta<typeof Checkbox> = {
@@ -17,23 +19,24 @@ const meta: ComponentMeta<typeof Checkbox> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />
+const variantConfig = [
+  {
+    label: 'CheckBox not checked',
+    props: { label: 'I agree to disagree', isChecked: false },
+  },
+  {
+    label: 'CheckBox checked',
+    props: { label: 'I agree to disagree', isChecked: true },
+  },
+  {
+    label: 'CheckBox required',
+    props: { label: 'I have to agree', isChecked: false, required: true },
+  },
+]
 
-export const NotChecked = Template.bind({})
-NotChecked.args = {
-  label: 'I agree to disagree',
-  isChecked: false,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Checkbox} />
+)
 
-export const IsChecked = Template.bind({})
-IsChecked.args = {
-  label: 'I agree to disagree',
-  isChecked: true,
-}
-
-export const Required = Template.bind({})
-Required.args = {
-  label: 'I have to agree',
-  isChecked: false,
-  required: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Checkbox'
