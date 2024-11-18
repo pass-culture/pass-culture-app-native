@@ -17,7 +17,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Romance'
 - tapOn: 'Rechercher'
 
-- swipe: # Permet d'éviter les offres gratuite en haut de liste
+- swipe:
     from:
       text: Les offres
     direction: UP

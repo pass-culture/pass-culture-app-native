@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - fix
+  - cloud
   - local
 ---
 - runFlow: subFolder/LaunchAppWithPermissions.yml

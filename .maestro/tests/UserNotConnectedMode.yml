@@ -16,7 +16,7 @@ tags:
 - runFlow: subFolder/profil/CantSetNotification.yml
 
 - runFlow: subFolder/GoToSearchFromTabBar.yml
-- runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
+- runFlow: subFolder/search/SearchOfferFromText.yml
 - runFlow: subFolder/auth/LoginFromPhysicalOffer.yml
 - runFlow: subFolder/auth/LoginFromModal.yml
 

@@ -1,16 +1,11 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Rechercher'
-- tapOn:
-    text: 'Livres papier'
-    index: 0
-
 - waitForAnimationToEnd
 
 - assertVisible:
     id: 'tagsContainer'
 
-- swipe: # Pour ne pas swipe depuis le module aperçu
+- swipe:
     from:
       id: 'tagsContainer'
     direction: UP
@@ -37,4 +32,3 @@ appId: ${MAESTRO_APP_ID}
     id: 'AnimatedHeaderIconRoundContainer'
     index: 2
 
-# Faire connexion après
