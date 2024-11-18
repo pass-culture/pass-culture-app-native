@@ -57,8 +57,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
 const Container = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-  paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(6),
+  padding: getSpacing(6),
 })
 const IconsWrapper = styled.View({
   alignItems: 'center',

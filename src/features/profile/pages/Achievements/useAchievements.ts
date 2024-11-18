@@ -1,12 +1,13 @@
 import {
   Achievement,
+  AchievementCategory,
   AchievementId,
   UserAchievement,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Badges = {
-  category: string
+  category: AchievementCategory
   remainingAchievements: number
   progress: number
   progressText: string
@@ -46,7 +47,7 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
 
       const actualAchievements = category.achievements.length - category.remainingAchievements
       category.progress = actualAchievements / category.achievements.length
-      category.progressText = `${(category.progress * 100).toFixed(0)}%`
+      category.progressText = `${actualAchievements}/${category.achievements.length}`
       return acc
     }
 
