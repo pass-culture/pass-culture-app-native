@@ -10,7 +10,7 @@ export function useVenueBlock({
   offerAddress,
 }: {
   venue: OfferVenueResponse
-  offerAddress?: OfferAddressResponse
+  offerAddress?: OfferAddressResponse | null
 }) {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
