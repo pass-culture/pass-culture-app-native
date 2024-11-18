@@ -13,7 +13,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
-import { PlaylistsThematicSearchCinema } from 'features/search/pages/Search/ThematicSearch/Cinema/PlaylistsThematicSearchCinema'
+import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/Search/ThematicSearch/ThematicSearchBar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
@@ -119,7 +119,7 @@ export const ThematicSearch: React.FC = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         ) : null}
-        {isCinemaCategory ? <PlaylistsThematicSearchCinema /> : null}
+        {isCinemaCategory ? <CinemaPlaylist /> : null}
         <Spacer.Column numberOfSpaces={6} />
       </ScrollView>
     </ThematicSearchBar>

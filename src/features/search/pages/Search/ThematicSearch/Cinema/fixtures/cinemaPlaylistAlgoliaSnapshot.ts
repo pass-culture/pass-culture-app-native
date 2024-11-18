@@ -1,11 +1,11 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { CinemaPlaylistData } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
+import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 
-export const cinemaPlaylistAlgoliaSnapshot: CinemaPlaylistData[] = [
+export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
   {
     title: 'Films à l’affiche',
     offers: {
@@ -128,7 +128,7 @@ export const cinemaPlaylistAlgoliaSnapshot: CinemaPlaylistData[] = [
   },
 ]
 
-export const cinemaPlaylistAlgoliaSnapshotWithoutHits: CinemaPlaylistData[] = [
+export const cinemaPlaylistAlgoliaSnapshotWithoutHits: ThematicSearchPlaylistData[] = [
   {
     title: 'Films à l’affiche',
     offers: {

@@ -1,33 +1,36 @@
-import { Hit } from '@algolia/client-search'
 import React from 'react'
+import { View } from 'react-native'
 
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { CinemaPlaylistData } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
-import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Offer } from 'shared/offer/types'
-import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { LENGTH_M, RATIO_HOME_IMAGE } from 'ui/theme'
+import { useCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
+import { ThematicSearchPlaylist } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylist'
+import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
+import { Spacer } from 'ui/theme'
 
-const PLAYLIST_ITEM_HEIGHT = LENGTH_M
-const PLAYLIST_ITEM_WIDTH = LENGTH_M * RATIO_HOME_IMAGE
-export interface CinemaPlaylistProps {
-  playlist: CinemaPlaylistData
-  analyticsFrom: Referrals
-  route: Extract<ScreenNames, 'ThematicSearch'>
-}
+export const CinemaPlaylist: React.FC = () => {
+  const { offers: cinemaPlaylists, isLoading: arePlaylistsLoading } = useCinemaOffers()
 
-export function CinemaPlaylist({ playlist, analyticsFrom, route }: Readonly<CinemaPlaylistProps>) {
-  const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist })
-  const transformOfferHits = useTransformOfferHits()
+  if (arePlaylistsLoading) {
+    return <LoadingState />
+  }
+
   return (
-    <PassPlaylist
-      data={playlist.offers.hits}
-      itemWidth={PLAYLIST_ITEM_WIDTH}
-      itemHeight={PLAYLIST_ITEM_HEIGHT}
-      renderItem={renderPassPlaylist}
-      keyExtractor={(item: Hit<Offer>) => transformOfferHits(item).objectID}
-      title={playlist.title}
-    />
+    <View testID="playlistsThematicSearchCinema">
+      {cinemaPlaylists?.map((playlist) => {
+        if (playlist.offers.hits.length > 0) {
+          return (
+            <View key={playlist.title}>
+              <ThematicSearchPlaylist
+                playlist={playlist}
+                analyticsFrom="thematicsearch"
+                route="ThematicSearch"
+              />
+              <Spacer.Column numberOfSpaces={4} />
+            </View>
+          )
+        }
+        return null
+      })}
+      <Spacer.Column numberOfSpaces={6} />
+    </View>
   )
 }

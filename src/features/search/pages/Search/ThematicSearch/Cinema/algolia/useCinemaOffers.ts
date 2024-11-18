@@ -8,11 +8,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-export type CinemaPlaylistData = {
-  title: string
-  offers: { hits: Offer[] }
-}
-
 const CINEMA_PLAYLIST_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']
 
 export function useCinemaOffers() {
