@@ -14,9 +14,10 @@ import {
   ViewStyle,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { OfferImageResponse } from 'api/gen'
+import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
@@ -27,6 +28,7 @@ import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOff
 import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
+import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -65,10 +67,17 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const { shouldTriggerBatchSurveyEvent, trackBatchEvent, trackEventHasSeenOfferOnce } =
     useOfferBatchTracking(subcategory.id)
 
+  // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
   const offerImages = useMemo(
-    () => (offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
-    [offer.images]
+    () => (offer.metadata && offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
+    [offer]
   )
+
+  const queryClient = useQueryClient()
+  const cachedOffer = queryClient.getQueryData<OfferResponseV2>([QueryKeys.OFFER, offer.id])
+
+  // Extract cached image before it's been updated by next offer query
+  const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
@@ -97,9 +106,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     listener: scrollEventListener,
   })
 
-  const handleCheckScrollY = () => {
+  const handleCheckScrollY = useRef(() => {
     return scrollYRef.current
-  }
+  }).current
 
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -126,7 +135,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             <OfferImageContainer
               imageUrls={offerImages}
               categoryId={subcategory.categoryId}
-              onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
+              onPress={onOfferPreviewPress}
+              placeholderImage={placeholderImage}
             />
             <OfferBody
               offer={offer}
@@ -154,6 +164,8 @@ const Container = styled.View({
   flex: 1,
 })
 
-const ScrollViewContainer = styled(IntersectionObserverScrollView)({
-  overflow: 'visible',
-})
+const ScrollViewContainer = React.memo(
+  styled(IntersectionObserverScrollView)({
+    overflow: 'visible',
+  })
+)

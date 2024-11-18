@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -50,11 +50,16 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     distance: distanceFromOffer,
   })
 
+  useEffect(() => {
+    if (offer) {
+      // We pre-populate the query-cache with the data from the search result for a smooth transition
+      prePopulateOffer(offer)
+    }
+  }, [offer, prePopulateOffer])
+
   const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
 
   function handlePressOffer() {
-    // We pre-populate the query-cache with the data from the search result for a smooth transition
-    prePopulateOffer(offer)
     triggerConsultOfferLog({
       ...apiRecoParams,
       offerId,

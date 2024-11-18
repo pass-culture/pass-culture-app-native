@@ -1,13 +1,14 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import {
   OfferResponseV2,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import * as useGoBack from 'features/navigation/useGoBack'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -24,10 +25,9 @@ import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
-import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
@@ -49,6 +49,18 @@ jest.mock('libs/location/LocationWrapper', () => ({
     place: Kourou,
   }),
 }))
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+  useRoute: () => ({ params: { id: 123 } }),
+}))
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -139,6 +151,8 @@ jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<OfferContent />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
@@ -156,21 +170,23 @@ describe('<OfferContent />', () => {
   it('should navigate to offer preview screen when clicking on image offer', async () => {
     renderOfferContent({})
 
-    fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
+    await user.press(await screen.findByLabelText('Carousel image 1'))
 
-    expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
+    expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
   })
 
-  it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
+  it('should navigate to offer preview screen when clicking on placeholder image', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       images: null,
     }
     renderOfferContent({ offer })
 
-    fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
+    await user.press(await screen.findByLabelText('Carousel image 1'))
 
-    expect(navigate).not.toHaveBeenCalled()
+    await waitFor(() =>
+      expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
+    )
   })
 
   it('should animate on scroll', async () => {
@@ -341,11 +357,7 @@ describe('<OfferContent />', () => {
     it('should log analytics when display authentication modal', async () => {
       renderOfferContent({})
 
-      fireEvent.press(await screen.findByText('Réserver l’offre'))
-
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
+      await user.press(await screen.findByText('Réserver l’offre'))
 
       expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(
         1,
@@ -428,6 +440,8 @@ describe('<OfferContent />', () => {
 
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
       renderOfferContent({})
+
+      await screen.findByTestId('sticky-booking-button')
 
       fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventBottom)
 
@@ -524,11 +538,13 @@ function renderOfferContent({
 }: RenderOfferContentType) {
   render(
     reactQueryProviderHOC(
-      <OfferContent
-        offer={offer}
-        searchGroupList={subcategoriesDataTest.searchGroups}
-        subcategory={subcategory}
-      />
+      <NavigationContainer>
+        <OfferContent
+          offer={offer}
+          searchGroupList={subcategoriesDataTest.searchGroups}
+          subcategory={subcategory}
+        />
+      </NavigationContainer>
     ),
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },

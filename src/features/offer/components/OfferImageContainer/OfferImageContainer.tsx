@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, useCallback } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { Platform } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { useTheme } from 'styled-components/native'
@@ -16,42 +16,41 @@ type Props = {
   categoryId: CategoryIdEnum | null
   imageUrls?: string[]
   onPress?: (defaultIndex?: number) => void
+  placeholderImage?: string
 }
 
 const isWeb = Platform.OS === 'web'
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
-  categoryId,
   imageUrls = [],
   onPress,
+  categoryId,
+  placeholderImage,
 }) => {
   const { backgroundHeight } = useOfferImageContainerDimensions()
   const { isDesktopViewport } = useTheme()
 
-  const hasCarousel = imageUrls.length > 1
   const progressValue = useSharedValue<number>(0)
 
-  const Wrapper = useCallback(
-    ({ children }: PropsWithChildren) =>
-      isWeb && isDesktopViewport ? (
-        <React.Fragment>{children}</React.Fragment>
-      ) : (
-        <HeaderWithImage imageHeight={backgroundHeight} imageUrl={imageUrls[0]}>
-          <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
-          {children}
-        </HeaderWithImage>
-      ),
-    [imageUrls, backgroundHeight, isDesktopViewport]
-  )
+  const Wrapper = useRef(({ children }: PropsWithChildren) =>
+    isWeb && isDesktopViewport ? (
+      <React.Fragment>{children}</React.Fragment>
+    ) : (
+      <HeaderWithImage imageHeight={backgroundHeight} imageUrl={placeholderImage}>
+        <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
+        {children}
+      </HeaderWithImage>
+    )
+  ).current
 
   return (
     <Wrapper>
       <OfferImageRenderer
-        categoryId={categoryId}
         offerImages={imageUrls}
-        hasCarousel={hasCarousel}
+        placeholderImage={placeholderImage}
         progressValue={progressValue}
         onPress={onPress}
+        categoryId={categoryId}
       />
     </Wrapper>
   )

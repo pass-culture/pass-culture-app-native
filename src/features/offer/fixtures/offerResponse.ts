@@ -50,7 +50,7 @@ export const offerResponseSnap = toMutable({
     },
   ],
   images: {
-    image1: {
+    recto: {
       url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
       credit: 'Author: photo credit author',
     },

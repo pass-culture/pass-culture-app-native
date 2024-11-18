@@ -23,7 +23,6 @@ export const OfferBodyImagePlaceholder: FunctionComponent<Props> = ({ categoryId
     })
   )({
     position: 'absolute',
-    zIndex: 1,
   })
 
   return <ImagePlaceholder />
