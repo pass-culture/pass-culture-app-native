@@ -384,7 +384,6 @@ export enum BookingCancellationReasons {
   'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
   'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
 }
-// #region BOOKING
 /**
  * @export
  * @interface BookingDisplayStatusRequest
@@ -708,7 +707,6 @@ export interface BookingsResponse {
    */
   ongoing_bookings: Array<BookingReponse>
 }
-// #endregion BOOKING
 /**
  * An enumeration.
  * @export
@@ -1083,6 +1081,15 @@ export interface CulturalSurveyUserAnswer {
   questionId: CulturalSurveyQuestionEnum
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CurrencyEnum {
+  'EUR' = 'EUR',
+  'XPF' = 'XPF',
+}
+/**
  * @export
  * @interface DepositAmountsByAge
  */
@@ -1147,7 +1154,6 @@ export enum EligibilityType {
   'underage' = 'underage',
   'age-18' = 'age-18',
 }
-// #region EMAIL
 /**
  * @export
  * @interface EmailChangeConfirmationResponse
@@ -1262,7 +1268,6 @@ export interface EmailValidationRemainingResendsResponse {
    */
   remainingResends: number
 }
-// #endregion EMAIL
 /**
  * An enumeration.
  * @export
@@ -1944,7 +1949,6 @@ export interface OauthStateResponse {
    */
   oauthStateToken: string
 }
-// #region OFFER
 /**
  * @export
  * @interface OfferAccessibilityResponse
@@ -2616,7 +2620,6 @@ export interface OffersStocksResponseV2 {
    */
   offers: Array<OfferResponseV2>
 }
-// #endregion OFFER
 /**
  * An enumeration.
  * @export
@@ -3865,6 +3868,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   city?: string | null
+  /**
+   * @type {CurrencyEnum}
+   * @memberof UserProfileResponse
+   */
+  currency: CurrencyEnum
   /**
    * @type {string}
    * @memberof UserProfileResponse

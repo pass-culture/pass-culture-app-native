@@ -4,6 +4,7 @@ import React from 'react'
 import {
   BannerName,
   BannerResponse,
+  CurrencyEnum,
   SubscriptionStepperResponseV2,
   UserProfileResponse,
   YoungStatusType,
@@ -40,6 +41,7 @@ const user: UserProfileResponse = {
     marketingPush: true,
   },
   status: { statusType: YoungStatusType.beneficiary },
+  currency: CurrencyEnum.EUR,
 }
 
 const exBeneficiaryUser: UserProfileResponse = {
