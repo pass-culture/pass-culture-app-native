@@ -143,7 +143,7 @@ describe('OffersModule', () => {
       })
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+    it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
       renderOffersModule({
         offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
         displayParameters: { ...props.displayParameters, minOffers: mockNbHits + 1 },
