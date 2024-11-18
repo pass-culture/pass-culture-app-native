@@ -22,3 +22,4 @@ Default.args = {
   accessibilityLabel: 'Active ta géolocalisation',
   analyticsParams: { type: 'location', from: 'home' },
 }
+Default.storyName = 'SystemBanner'
