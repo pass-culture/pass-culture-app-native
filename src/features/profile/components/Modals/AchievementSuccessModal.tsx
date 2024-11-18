@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
+import LottieView from 'libs/lottie'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
+
+import confetti from './confetti.json'
 
 interface Props {
   visible: boolean
@@ -18,6 +21,11 @@ interface Props {
 
 export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
   const achievement = useAchievementDetails(id)
+  const confettiRef = useRef<LottieView>(null)
+
+  useEffect(() => {
+    if (visible) confettiRef.current?.play(0)
+  }, [visible])
 
   if (!achievement) return null
 
@@ -28,6 +36,13 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       title="Félicitations&nbsp;!"
       onCloseIconPress={hideModal}
       visible={visible}>
+      <StyledLottieView
+        ref={confettiRef}
+        source={confetti}
+        autoPlay={false}
+        loop={false}
+        resizeMode="cover"
+      />
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
         <IllustrationUnlocked />
@@ -74,3 +89,13 @@ const ButtonWrapper = styled.View(({ theme }) => ({
 const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const StyledLottieView = styled(LottieView)({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 1000,
+  pointerEvents: 'none',
+})
