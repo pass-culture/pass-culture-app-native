@@ -15,4 +15,11 @@ describe('<OfferMetadataItem />', () => {
 
     expect(screen.getByText('Jean Paul Sartre')).toBeOnTheScreen()
   })
+
+  it('should display only value when no label', () => {
+    render(<OfferMetadataItem label="" value="Jean Paul Sartre" />)
+
+    expect(screen.queryByText('Intervenant')).not.toBeOnTheScreen()
+    expect(screen.getByText('Jean Paul Sartre')).toBeOnTheScreen()
+  })
 })

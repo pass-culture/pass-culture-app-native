@@ -41,4 +41,11 @@ describe('getOfferMetadata', () => {
 
     expect(result).toEqual([])
   })
+
+  it('should return correct metadata certificate with no label', () => {
+    const extraData = { certificate: 'Interdection au moins de 18 ans' }
+    const result = getOfferMetadata(extraData)
+
+    expect(result).toEqual([{ label: '', value: 'Interdection au moins de 18 ans' }])
+  })
 })
