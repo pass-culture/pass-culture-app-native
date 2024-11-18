@@ -22,19 +22,19 @@ export default meta
 const variantConfig = [
   {
     label: 'FilterSwitch inactive',
-    props: { active: false },
+    props: { active: false, accessibilityLabel: 'FilterSwitch inactive' },
   },
   {
     label: 'FilterSwitch inactive disabled',
-    props: { active: false, disabled: true },
+    props: { active: false, accessibilityLabel: 'FilterSwitch inactive disabled', disabled: true },
   },
   {
     label: 'FilterSwitch active',
-    props: { active: true },
+    props: { active: true, accessibilityLabel: 'FilterSwitch active' },
   },
   {
     label: 'FilterSwitch active disabled',
-    props: { active: true, disabled: true },
+    props: { active: true, accessibilityLabel: 'FilterSwitch active disabled', disabled: true },
   },
 ]
 
