@@ -1,7 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Typo, TypoDS } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
@@ -11,10 +12,6 @@ const meta: ComponentMeta<typeof SectionWithDivider> = {
   component: SectionWithDivider,
 }
 export default meta
-
-const Template: ComponentStory<typeof SectionWithDivider> = (props) => (
-  <SectionWithDivider {...props} />
-)
 
 const SectionContent: React.JSX.Element = (
   <View>
@@ -27,21 +24,24 @@ const SectionContent: React.JSX.Element = (
   </View>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  visible: true,
-  children: SectionContent,
-}
+const variantConfig = [
+  {
+    label: 'SectionWithDivider default',
+    props: { visible: true, children: SectionContent },
+  },
+  {
+    label: 'SectionWithDivider not visible',
+    props: { visible: false, children: SectionContent },
+  },
+  {
+    label: 'SectionWithDivider with margin',
+    props: { visible: true, children: SectionContent, margin: true },
+  },
+]
 
-export const IsNotVisible = Template.bind({})
-IsNotVisible.args = {
-  visible: false,
-  children: SectionContent,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SectionWithDivider} />
+)
 
-export const WithMargin = Template.bind({})
-WithMargin.args = {
-  visible: true,
-  children: SectionContent,
-  margin: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SectionWithDivider'

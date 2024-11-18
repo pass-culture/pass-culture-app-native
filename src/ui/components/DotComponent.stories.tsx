@@ -1,41 +1,44 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { DotComponent } from './DotComponent'
 
 const meta: ComponentMeta<typeof DotComponent> = {
-  title: 'ui/dotComponent',
+  title: 'ui/DotComponent',
   component: DotComponent,
 }
 export default meta
 
-const Template: ComponentStory<typeof DotComponent> = (props) => <DotComponent {...props} />
-export const Done = Template.bind({})
-Done.args = {
-  index: 1,
-  activeIndex: 2,
-  numberOfSteps: 3,
-  isActive: false,
-}
-export const DoneNeutral = Template.bind({})
-DoneNeutral.args = {
-  index: 1,
-  activeIndex: 2,
-  numberOfSteps: 3,
-  isActive: false,
-  withNeutralPreviousStepsColor: true,
-}
-export const Active = Template.bind({})
-Active.args = {
-  index: 1,
-  activeIndex: 1,
-  numberOfSteps: 3,
-  isActive: true,
-}
-export const ToDo = Template.bind({})
-ToDo.args = {
-  index: 2,
-  activeIndex: 1,
-  numberOfSteps: 3,
-  isActive: false,
-}
+const variantConfig = [
+  {
+    label: 'DotComponent done',
+    props: { index: 1, activeIndex: 2, numberOfSteps: 3, isActive: false },
+  },
+  {
+    label: 'DotComponent done neutral',
+    props: {
+      index: 1,
+      activeIndex: 2,
+      numberOfSteps: 3,
+      isActive: false,
+      withNeutralPreviousStepsColor: true,
+    },
+  },
+  {
+    label: 'DotComponent active',
+    props: { index: 1, activeIndex: 1, numberOfSteps: 3, isActive: true },
+  },
+  {
+    label: 'DotComponent to do',
+    props: { index: 2, activeIndex: 1, numberOfSteps: 3, isActive: false },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={DotComponent} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'DotComponent'

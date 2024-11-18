@@ -3,6 +3,7 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { SummaryInfo } from 'ui/components/SummaryInfo'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 const meta: ComponentMeta<typeof SummaryInfo> = {
   title: 'ui/SummaryInfo',
@@ -10,17 +11,28 @@ const meta: ComponentMeta<typeof SummaryInfo> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SummaryInfo> = (props) => <SummaryInfo {...props} />
-
-export const Default = Template.bind({})
-Default.args = {
+const baseProps = {
   Icon: <CalendarS size={theme.icons.sizes.small} />,
   title: 'Info name',
 }
 
-export const WithSubtitle = Template.bind({})
-WithSubtitle.args = {
-  Icon: <CalendarS size={theme.icons.sizes.small} />,
-  title: 'Info name',
-  subtitle: 'Lorem ipsum dolor sit amet consectetur. Hendrerit massa dolor blandit.',
-}
+const variantConfig = [
+  {
+    label: 'SummaryInfo default',
+    props: baseProps,
+  },
+  {
+    label: 'SummaryInfo with subtitle',
+    props: {
+      ...baseProps,
+      subtitle: 'Lorem ipsum dolor sit amet consectetur. Hendrerit massa dolor blandit.',
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SummaryInfo} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SummaryInfo'

@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, StoryObj } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
-import { OfferTileProps } from 'features/offer/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { OfferTile } from './OfferTile'
 
@@ -21,9 +21,7 @@ const meta: ComponentMeta<typeof OfferTile> = {
 
 export default meta
 
-type Story = StoryObj<OfferTileProps>
-
-const props: Partial<OfferTileProps> = {
+const baseProps = {
   date: 'le 18 juin 2024',
   name: 'The Fall Guy',
   price: 'dès 15,60\u00a0€',
@@ -33,16 +31,20 @@ const props: Partial<OfferTileProps> = {
   offerLocation: { lat: 48.94374, lng: 2.48171 },
 }
 
-export const Default: Story = {
-  args: {
-    ...props,
-    variant: 'default',
+const variantConfig = [
+  {
+    label: 'OfferTile default',
+    props: { ...baseProps, variant: 'default' },
   },
-}
+  {
+    label: 'OfferTile new',
+    props: { ...baseProps, variant: 'new' },
+  },
+]
 
-export const New: Story = {
-  args: {
-    ...props,
-    variant: 'new',
-  },
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={OfferTile} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'OfferTile'

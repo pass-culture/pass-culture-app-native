@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { VerticalUl } from 'ui/components/Ul'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { BulletListItem } from './BulletListItem'
 
@@ -11,27 +11,24 @@ const meta: ComponentMeta<typeof BulletListItem> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof BulletListItem> = (props) => (
-  <VerticalUl>
-    <BulletListItem {...props} />
-    <BulletListItem {...props} />
-    <BulletListItem {...props} />
-  </VerticalUl>
+const variantConfig = [
+  {
+    label: 'BulletListItem default',
+    props: { text: 'List item' },
+  },
+  {
+    label: 'BulletListItem with spacing',
+    props: { text: 'List item with spacing', spacing: 3 },
+  },
+  {
+    label: 'BulletListItem with nested list',
+    props: { text: 'List item', nestedListTexts: ['First item', 'Second item', 'Third item'] },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={BulletListItem} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  text: 'List item',
-}
-
-export const ListItemWithSpacing = Template.bind({})
-ListItemWithSpacing.args = {
-  text: 'List item with spacing',
-  spacing: 3,
-}
-
-export const ListWithNestedList = Template.bind({})
-ListWithNestedList.args = {
-  text: 'List item',
-  nestedListTexts: ['First item', 'Second item', 'Third item'],
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'BulletListItem'

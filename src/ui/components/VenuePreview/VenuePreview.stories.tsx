@@ -1,7 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { getSpacing } from 'ui/theme'
 
 import { VenuePreview } from './VenuePreview'
@@ -14,34 +15,40 @@ const meta: ComponentMeta<typeof VenuePreview> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof VenuePreview> = (props) => <VenuePreview {...props} />
-export const Default = Template.bind({})
-Default.args = {
+const baseProps = {
   venueName: offerResponseSnap.venue.name,
   address: offerResponseSnap.venue.address ?? '',
   imageHeight: VENUE_THUMBNAIL_SIZE,
   imageWidth: VENUE_THUMBNAIL_SIZE,
-  bannerUrl:
-    'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
 }
 
-export const WithArrow = Template.bind({})
-WithArrow.args = {
-  venueName: offerResponseSnap.venue.name,
-  withRightArrow: true,
-  address: offerResponseSnap.venue.address ?? '',
-  imageHeight: VENUE_THUMBNAIL_SIZE,
-  imageWidth: VENUE_THUMBNAIL_SIZE,
-  bannerUrl:
-    'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
-}
+const variantConfig = [
+  {
+    label: 'VenuePreview default',
+    props: {
+      ...baseProps,
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
+    },
+  },
+  {
+    label: 'VenuePreview with arrow',
+    props: {
+      ...baseProps,
+      withRightArrow: true,
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
+    },
+  },
+  {
+    label: 'VenuePreview without image',
+    props: { ...baseProps, withRightArrow: true, bannerUrl: undefined },
+  },
+]
 
-export const WithoutImage = Template.bind({})
-WithoutImage.args = {
-  venueName: offerResponseSnap.venue.name,
-  withRightArrow: true,
-  address: offerResponseSnap.venue.address ?? '',
-  imageHeight: VENUE_THUMBNAIL_SIZE,
-  imageWidth: VENUE_THUMBNAIL_SIZE,
-  bannerUrl: undefined,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={VenuePreview} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'VenuePreview'

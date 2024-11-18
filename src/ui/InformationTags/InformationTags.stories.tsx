@@ -4,14 +4,13 @@ import React from 'react'
 import { OfferExtraDataResponse } from 'api/gen'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof InformationTags> = {
   title: 'ui/InformationTags',
   component: InformationTags,
 }
 export default meta
-
-const Template: ComponentStory<typeof InformationTags> = (props) => <InformationTags {...props} />
 
 const tagsList = [
   'vinyle',
@@ -56,20 +55,26 @@ const tagsList = [
   'sorties',
   'association',
 ]
-
-export const WithCustomDataOnTwoLines = Template.bind({})
-WithCustomDataOnTwoLines.args = {
-  tags: tagsList,
-}
-
-export const WithCustomDataOnThreeLines = Template.bind({})
-WithCustomDataOnThreeLines.args = {
-  tags: tagsList,
-  tagsLines: 3,
-}
-
 const offerExtraData: OfferExtraDataResponse = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
-export const WithOfferExample = Template.bind({})
-WithOfferExample.args = {
-  tags: getOfferTags('Vinyle', offerExtraData),
-}
+
+const variantConfig = [
+  {
+    label: 'InformationTags with custom data on two lines',
+    props: { tags: tagsList },
+  },
+  {
+    label: 'InformationTags with custom data on three lines',
+    props: { tags: tagsList, tagsLines: 3 },
+  },
+  {
+    label: 'InformationTags with offer example',
+    props: { tags: getOfferTags('Vinyle', offerExtraData) },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={InformationTags} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'InformationTags'
