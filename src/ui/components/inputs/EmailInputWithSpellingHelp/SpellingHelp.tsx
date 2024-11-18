@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer } from 'ui/theme'
 

@@ -9,7 +9,7 @@ import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheck
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

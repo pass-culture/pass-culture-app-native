@@ -8,7 +8,7 @@ import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAc
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

@@ -9,7 +9,7 @@ import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matc
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Clock } from 'ui/svg/icons/BicolorClock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
