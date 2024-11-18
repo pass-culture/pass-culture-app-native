@@ -1,6 +1,6 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import { AppState, AppStateStatus, NativeEventSubscription } from 'react-native'
 
-import { useAppStateChange } from 'libs/appState'
 import { eventMonitoring } from 'libs/monitoring'
 
 /**
@@ -9,18 +9,35 @@ import { eventMonitoring } from 'libs/monitoring'
 export const useTrackDuration = (callback: (durationInSeconds: number) => void) => {
   const timeInBackground = useRef(0)
   const startTimeBackground = useRef<Date | null>(null)
+  const appStateChangeSubscription = useRef<NativeEventSubscription>()
 
   const onAppBecomeActive = () => {
     const endTimeBackground = new Date()
-    if (startTimeBackground.current)
+    if (startTimeBackground.current) {
       timeInBackground.current +=
         (endTimeBackground.getTime() - startTimeBackground.current.getTime()) / 1000
+    }
   }
   const onAppBecomeInactive = () => {
     startTimeBackground.current = new Date()
   }
 
-  useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
+  /**
+   * We cannot use useAppStateChange here, because we need to have more control over the "change" event subscription.
+   * The default automated behavior on unmount is not enough.
+   */
+  useEffect(() => {
+    appStateChangeSubscription.current = AppState.addEventListener(
+      'change',
+      (status: AppStateStatus) => {
+        if (status === 'active') {
+          onAppBecomeActive()
+        } else if (status === 'background' || status === 'inactive') {
+          onAppBecomeInactive()
+        }
+      }
+    )
+  }, [])
 
   const getMapSeenDuration = useCallback(() => {
     const startTime = new Date()
@@ -45,6 +62,8 @@ export const useTrackDuration = (callback: (durationInSeconds: number) => void) 
       // Resetting the refs to initial values
       timeInBackground.current = 0
       startTimeBackground.current = null
+      // Remove AppState change subscription
+      appStateChangeSubscription.current?.remove()
     }
   }, [callback])
 
