@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { DeviceInformationsBanner } from './DeviceInformationsBanner'
@@ -18,3 +18,4 @@ Default.args = {
   osAndSource: 'iOS - iPhone 13',
   loginDate: 'Le 09/06/2023 à 12h00',
 }
+Default.storyName = 'DeviceInformationsBanner'
