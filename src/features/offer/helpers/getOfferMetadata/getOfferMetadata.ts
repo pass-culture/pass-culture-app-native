@@ -26,6 +26,10 @@ export function getOfferMetadata(extraData?: OfferExtraDataResponse): OfferMetad
 
   return [
     {
+      label: '',
+      value: getValue(extraData?.certificate),
+    },
+    {
       label: 'Date de sortie',
       value: formatDate(getValue(extraData?.releaseDate)),
     },
