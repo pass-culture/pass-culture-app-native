@@ -11,7 +11,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')

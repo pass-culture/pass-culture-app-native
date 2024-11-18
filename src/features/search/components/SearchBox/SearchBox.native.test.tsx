@@ -134,8 +134,6 @@ jest.useFakeTimers()
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('SearchBox component', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
@@ -556,8 +554,6 @@ describe('SearchBox component', () => {
     expect(screen.getByText('Me localiser')).toBeOnTheScreen()
   })
 })
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('SearchBox component with venue previous route on search results', () => {
   beforeEach(() => {

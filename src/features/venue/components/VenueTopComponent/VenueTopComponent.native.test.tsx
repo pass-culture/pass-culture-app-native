@@ -14,7 +14,6 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')

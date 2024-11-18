@@ -9,8 +9,6 @@ const mockOnInAppBooking = jest.fn()
 
 const hasEnoughCreditSpy = jest.spyOn(useHasEnoughCreditAPI, 'hasEnoughCredit')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getBeneficiaryBookingButtonProps', () => {
   it('should return "Offre réservée" and button should be disabled when offer is already booked', () => {
     const buttonProperties = getBeneficiaryBookingButtonProps(

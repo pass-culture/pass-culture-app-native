@@ -24,7 +24,6 @@ jest.mock('libs/location')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<Home/>', () => {

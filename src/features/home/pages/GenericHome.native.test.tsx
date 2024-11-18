@@ -46,8 +46,6 @@ jest.mock('shared/performance/transactions', () => {
   }
 })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -190,8 +188,6 @@ describe('GenericHome', () => {
     })
   })
 })
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('GenericHome page - Analytics', () => {
   const scrollEventMiddle = {

@@ -34,8 +34,6 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('RecommendationModule', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

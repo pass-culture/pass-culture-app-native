@@ -3,8 +3,6 @@ import React from 'react'
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 import { render, screen } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<OfferBookingButton />', () => {
   const mockCtaWordingAndAction = {
     wording: 'Réserver l’offre',

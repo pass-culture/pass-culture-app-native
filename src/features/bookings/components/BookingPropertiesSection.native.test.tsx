@@ -11,8 +11,6 @@ import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<BookingPropertiesSection />', () => {
   beforeAll(() => {
     mockAuthContextWithUser(

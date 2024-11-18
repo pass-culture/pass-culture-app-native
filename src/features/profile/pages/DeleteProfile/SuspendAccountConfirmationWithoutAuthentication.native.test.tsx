@@ -12,8 +12,6 @@ import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccoun
 jest.mock('libs/jwt/jwt')
 jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),

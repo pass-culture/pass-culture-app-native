@@ -5,7 +5,6 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 const mockedSubcateroriesV2Response = PLACEHOLDER_DATA
 const mockedUndefinedFacets = undefined
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('MappingTree', () => {

@@ -19,8 +19,6 @@ const props = {
   url: 'http://toto.com',
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ExclusivityExternalLink component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
     render(<ExclusivityExternalLink {...props} />)

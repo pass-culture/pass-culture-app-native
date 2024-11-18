@@ -5,7 +5,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SuspensionChoice } from './SuspensionChoice'
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SuspensionChoice/>', () => {

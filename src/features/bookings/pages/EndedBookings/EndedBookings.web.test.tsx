@@ -9,7 +9,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { EndedBookings } from './EndedBookings'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockBookings = { ...bookingsSnap }

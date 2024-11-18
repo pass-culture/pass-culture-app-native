@@ -67,8 +67,6 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const modules = [formattedVenuesModule]
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 

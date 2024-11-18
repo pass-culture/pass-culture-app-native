@@ -4,7 +4,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { DeleteProfileAccountNotDeletable } from './DeleteProfileAccountNotDeletable'
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

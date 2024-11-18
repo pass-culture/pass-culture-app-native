@@ -21,8 +21,6 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
   params: { email: 'john.doe@gmail.com' },
 }
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

@@ -23,8 +23,6 @@ mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
 jest.mock('libs/subcategories/useSubcategories')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useHomeRecommendedOffers', () => {
   it('should call algolia hook', () => {
     jest
@@ -43,8 +41,6 @@ describe('useHomeRecommendedOffers', () => {
     expect(algoliaSpy).toHaveBeenCalledWith(['1234'], 'abcd', true)
   })
 })
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('getRecommendationParameters', () => {
   const {

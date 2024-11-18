@@ -6,8 +6,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SocialNetworkCard } from './SocialNetworkCard'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', async () => {
     const openUrl = jest

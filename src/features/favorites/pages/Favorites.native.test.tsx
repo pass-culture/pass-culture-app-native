@@ -24,8 +24,6 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

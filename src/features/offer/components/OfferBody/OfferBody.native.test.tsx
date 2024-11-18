@@ -73,8 +73,6 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('ui/components/anchor/AnchorContext', () => ({
   useScrollToAnchor: jest.fn,
   useRegisterAnchor: jest.fn,

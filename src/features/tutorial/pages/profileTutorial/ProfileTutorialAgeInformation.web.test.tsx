@@ -14,7 +14,6 @@ const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ProfileTutorialAgeInformation/>', () => {

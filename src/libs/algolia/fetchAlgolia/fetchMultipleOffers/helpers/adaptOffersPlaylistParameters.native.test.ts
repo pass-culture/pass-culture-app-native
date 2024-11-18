@@ -28,8 +28,6 @@ const defaultSearchParameters = omit(
   ['offerIsFree', 'view', 'venue', 'locationFilter', 'gtls']
 )
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('adaptOffersPlaylistParameters', () => {
   const {
     result: { current: subcategoryLabelMapping },

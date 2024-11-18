@@ -55,8 +55,6 @@ jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
 
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

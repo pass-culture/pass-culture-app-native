@@ -15,8 +15,6 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useOnboardingContext()', () => {
   it.each(Object.values(NonEligible))(
     'should show modal when showNonEligibleModal is called',

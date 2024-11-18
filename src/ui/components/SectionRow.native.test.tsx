@@ -4,8 +4,6 @@ import { render, screen } from 'tests/utils'
 
 import { SectionRow } from './SectionRow'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<SectionRow/>', () => {
   it('should use TouchableLink when is internal navigate', () => {
     render(

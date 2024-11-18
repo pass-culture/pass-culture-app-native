@@ -11,8 +11,6 @@ jest.mock('features/navigation/helpers/navigateToHome')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const hideModal = jest.fn()
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

@@ -3,8 +3,6 @@ import { renderHook } from 'tests/utils'
 
 import useOpenItinerary from './useOpenItinerary'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useOpenItinerary', () => {
   let useItinerary: jest.SpyInstance<ReturnType<typeof Itinerary.useItinerary>, []> | undefined
 

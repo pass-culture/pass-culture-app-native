@@ -37,8 +37,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

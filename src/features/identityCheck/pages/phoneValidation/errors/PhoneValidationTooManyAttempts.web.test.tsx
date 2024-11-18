@@ -9,7 +9,6 @@ import { checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<PhoneValidationTooManyAttempts/>', () => {

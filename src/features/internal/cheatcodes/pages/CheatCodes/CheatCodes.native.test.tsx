@@ -24,8 +24,6 @@ const navigation = {
   dispatch: jest.fn(),
 } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('CheatCodes component', () => {
   it('should display code push button for testing environment', async () => {
     env.ENV = 'testing'

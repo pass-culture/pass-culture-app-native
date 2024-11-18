@@ -4,7 +4,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AccountSecurity } from './AccountSecurity'
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<AccountSecurity />', () => {

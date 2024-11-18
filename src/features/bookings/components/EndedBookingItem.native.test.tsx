@@ -56,8 +56,6 @@ mockUseSubcategoriesMapping.mockReturnValue({
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

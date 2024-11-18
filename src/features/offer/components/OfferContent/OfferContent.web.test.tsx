@@ -43,7 +43,6 @@ jest
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {

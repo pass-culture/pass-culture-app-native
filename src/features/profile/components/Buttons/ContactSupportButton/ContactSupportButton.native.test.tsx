@@ -7,8 +7,6 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('ContactSupportButton', () => {
   it('should open mail app when clicking on contact service button', () => {
     render(<AccessibilityEngagement />)

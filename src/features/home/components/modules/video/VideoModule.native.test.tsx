@@ -25,8 +25,6 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('VideoModule', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

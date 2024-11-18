@@ -16,7 +16,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/firebase/analytics/analytics')
+
 mockAuthContextWithUser(beneficiaryUser)
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
@@ -29,7 +29,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
-jest.mock('libs/firebase/analytics/analytics')
 
 const POSTAL_CODE = '83570'
 

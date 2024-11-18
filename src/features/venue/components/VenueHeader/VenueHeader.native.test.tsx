@@ -20,8 +20,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     renderVenueHeader()

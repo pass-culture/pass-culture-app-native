@@ -30,8 +30,6 @@ const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
 
 const mockOffers = mockedAlgoliaResponse.hits
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('useVideoOffers', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

@@ -23,8 +23,6 @@ const favoriteOffer = favoriteOfferResponseSnap
 const mockOnInAppBooking = jest.fn()
 const user = beneficiaryUser
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getBookingButtonProperties', () => {
   describe('when user is eligible', () => {
     it('should call eligible button props helpers', () => {

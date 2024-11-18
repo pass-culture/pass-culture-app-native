@@ -22,7 +22,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
   useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))

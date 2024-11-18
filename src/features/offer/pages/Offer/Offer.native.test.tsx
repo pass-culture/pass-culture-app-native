@@ -35,7 +35,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('<Offer />', () => {

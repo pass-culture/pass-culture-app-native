@@ -6,8 +6,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<OfferNativeCategoryChoices />', () => {
   it('should call onChange with proper subcategory when toggling', () => {
     const onChange = jest.fn()

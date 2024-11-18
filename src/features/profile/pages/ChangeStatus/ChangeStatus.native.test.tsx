@@ -89,7 +89,6 @@ jest.mock('features/identityCheck/api/useActivityTypes', () => {
 jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser)
 

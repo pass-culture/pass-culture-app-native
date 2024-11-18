@@ -16,8 +16,6 @@ jest.mock('libs/campaign')
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
 const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('startTrackingAcceptedCookies', () => {
   it('should disable tracking when refused all cookies', () => {
     startTrackingAcceptedCookies([])

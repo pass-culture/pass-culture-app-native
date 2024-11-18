@@ -19,8 +19,6 @@ jest.mock('features/offer/components/MoviesScreeningCalendar/MovieCalendarContex
 
 jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 
-jest.mock('libs/firebase/analytics/analytics')
-
 const mockUseSubcategoriesMapping = jest.fn()
 jest.mock('libs/subcategories/mappings', () => ({
   useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),

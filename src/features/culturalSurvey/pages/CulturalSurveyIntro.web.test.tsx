@@ -14,7 +14,7 @@ jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('CulturalSurveyIntro page', () => {

@@ -6,8 +6,6 @@ import { renderHook } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY_V2 = 'cookies'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('getAcceptedCookieConsent', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY_V2))
 

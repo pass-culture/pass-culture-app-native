@@ -54,8 +54,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
     renderSetEmail()

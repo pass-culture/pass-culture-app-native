@@ -33,7 +33,6 @@ const OFFER_WITHOUT_ALLOCINE_ID = offerResponseBuilder().withExtraData({}).build
 
 mockdate.set(TODAY_DATE)
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockLocationMode = LocationMode.AROUND_ME

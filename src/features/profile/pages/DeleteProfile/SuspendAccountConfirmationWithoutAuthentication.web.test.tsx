@@ -8,7 +8,6 @@ import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccoun
 
 jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('SuspendAccountConfirmationWithoutAuthentication', () => {

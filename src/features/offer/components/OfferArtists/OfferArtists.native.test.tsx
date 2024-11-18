@@ -3,8 +3,6 @@ import React from 'react'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { render, screen, fireEvent } from 'tests/utils'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<OfferArtists />', () => {
   it('should display artists', () => {
     render(<OfferArtists artists="Edith Piaf" />)

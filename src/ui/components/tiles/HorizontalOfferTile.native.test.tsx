@@ -35,8 +35,6 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
   useSearchAnalyticsState: () => ({ currentQueryID: 'abc123' }),
 }))
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
