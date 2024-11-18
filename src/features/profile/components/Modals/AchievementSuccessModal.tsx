@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import LottieView from 'libs/lottie'
+import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -22,21 +23,23 @@ interface Props {
 export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
   const achievement = useAchievementDetails(id)
   const confettiRef = useRef<LottieView>(null)
+  const logoRef = useRef<LottieView>(null)
 
   useEffect(() => {
-    if (visible) confettiRef.current?.play(0)
+    if (visible) {
+      confettiRef.current?.play(0)
+      logoRef.current?.play(0, 62)
+    }
   }, [visible])
 
   if (!achievement) return null
-
-  const IllustrationUnlocked = achievement.illustrationUnlocked
 
   return (
     <AppInformationModal
       title="Félicitations&nbsp;!"
       onCloseIconPress={hideModal}
       visible={visible}>
-      <StyledLottieView
+      <ConfettiView
         ref={confettiRef}
         source={confetti}
         autoPlay={false}
@@ -45,7 +48,13 @@ export const AchievementSuccessModal = ({ visible, hideModal, id }: Props) => {
       />
       <Spacer.Column numberOfSpaces={2} />
       <IconsWrapper>
-        <IllustrationUnlocked />
+        <BadgeView
+          ref={logoRef}
+          source={TutorialPassLogo}
+          autoPlay={false}
+          loop={false}
+          resizeMode="cover"
+        />
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={2} />
       <TypoDS.Title3>{achievement?.name}</TypoDS.Title3>
@@ -90,7 +99,7 @@ const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledLottieView = styled(LottieView)({
+const ConfettiView = styled(LottieView)({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -98,4 +107,8 @@ const StyledLottieView = styled(LottieView)({
   bottom: 0,
   zIndex: 1000,
   pointerEvents: 'none',
+})
+
+const BadgeView = styled(LottieView)({
+  height: getSpacing(60),
 })
