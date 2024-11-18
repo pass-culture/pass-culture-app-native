@@ -16,6 +16,7 @@ export enum ContentTypes {
   GTL_PLAYLIST = 'gtlPlaylist',
   HIGHLIGHT_OFFER = 'highlightOffer',
   HOMEPAGE_NATIF = 'homepageNatif',
+  HYBRID = 'hybrid',
   INFORMATION = 'information',
   MOVIE_GENRES = 'movieGenres',
   MUSIC_TYPES = 'musicTypes',
