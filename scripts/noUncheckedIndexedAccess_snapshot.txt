@@ -20,6 +20,7 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:47
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
+./src/features/bookOffer/pages/BookingOfferModal.tsx:134
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:240
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:13
