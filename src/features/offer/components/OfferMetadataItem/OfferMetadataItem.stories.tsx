@@ -18,3 +18,4 @@ Default.args = {
   label: 'Intervenant',
   value: 'Jean Paul Sartre',
 }
+Default.storyName = 'OfferMetadataItem'

@@ -5,6 +5,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof OfferArtists> = {
   title: 'features/offer/OfferArtists',
@@ -12,57 +13,70 @@ const meta: ComponentMeta<typeof OfferArtists> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferArtists> = (props) => <OfferArtists {...props} />
+const variantConfig = [
+  {
+    label: 'OfferArtists with one artist',
+    props: { artists: 'Martin Scorsese' },
+  },
+  {
+    label: 'OfferArtists with several artists',
+    props: {
+      artists:
+        'Martin Scorsese, Eric Roth, Leonardo DiCaprio, Lily Gladstone, Robert De Niro, Jesse Plemons, John Lithgow, Brendan Fraser, Tatanka Means, ' +
+        'William Belleau, Scott Sheperd, Louis Cancelmi, Jason Isbell, Sturgill Simpson, Tantoo Cardinal, Cara Jade Myers, Janae Collins, Jillian Dion, ' +
+        'Michael Abbott Jr, Pat Healy, Evereth Waller, Yancey Red Corn',
+    },
+  },
+  {
+    label: 'OfferArtists with author for a book',
+    props: {
+      artists: getOfferArtists(CategoryIdEnum.LIVRE, {
+        ...offerResponseSnap,
+        extraData: { author: 'JK Rowling' },
+      }),
+    },
+  },
+  {
+    label: 'OfferArtists with performer for music recording',
+    props: {
+      artists: getOfferArtists(CategoryIdEnum.MUSIQUE_ENREGISTREE, {
+        ...offerResponseSnap,
+        extraData: { performer: 'Edith Piaf' },
+      }),
+    },
+  },
+  {
+    label: 'OfferArtists with performer for music live',
+    props: {
+      artists: getOfferArtists(CategoryIdEnum.MUSIQUE_LIVE, {
+        ...offerResponseSnap,
+        extraData: { performer: 'Jul' },
+      }),
+    },
+  },
+  {
+    label: 'OfferArtists with stage director for show',
+    props: {
+      artists: getOfferArtists(CategoryIdEnum.SPECTACLE, {
+        ...offerResponseSnap,
+        extraData: { stageDirector: 'Thierry Suc' },
+      }),
+    },
+  },
+  {
+    label: 'OfferArtists with director for cinema',
+    props: {
+      artists: getOfferArtists(CategoryIdEnum.CINEMA, {
+        ...offerResponseSnap,
+        extraData: { stageDirector: 'Thierry Suc' },
+      }),
+    },
+  },
+]
 
-export const WithOneArtist = Template.bind({})
-WithOneArtist.args = {
-  artists: 'Martin Scorsese',
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={OfferArtists} />
+)
 
-export const WithSeveralArtist = Template.bind({})
-WithSeveralArtist.args = {
-  artists:
-    'Martin Scorsese, Eric Roth, Leonardo DiCaprio, Lily Gladstone, Robert De Niro, Jesse Plemons, John Lithgow, Brendan Fraser, Tatanka Means, ' +
-    'William Belleau, Scott Sheperd, Louis Cancelmi, Jason Isbell, Sturgill Simpson, Tantoo Cardinal, Cara Jade Myers, Janae Collins, Jillian Dion, ' +
-    'Michael Abbott Jr, Pat Healy, Evereth Waller, Yancey Red Corn',
-}
-
-export const WithAuthorForABook = Template.bind({})
-WithAuthorForABook.args = {
-  artists: getOfferArtists(CategoryIdEnum.LIVRE, {
-    ...offerResponseSnap,
-    extraData: { author: 'JK Rowling' },
-  }),
-}
-
-export const WithPerformerForMusicRecording = Template.bind({})
-WithPerformerForMusicRecording.args = {
-  artists: getOfferArtists(CategoryIdEnum.MUSIQUE_ENREGISTREE, {
-    ...offerResponseSnap,
-    extraData: { performer: 'Edith Piaf' },
-  }),
-}
-
-export const WithPerformerForLiveMusic = Template.bind({})
-WithPerformerForLiveMusic.args = {
-  artists: getOfferArtists(CategoryIdEnum.MUSIQUE_LIVE, {
-    ...offerResponseSnap,
-    extraData: { performer: 'Jul' },
-  }),
-}
-
-export const WithStageDirectorForShow = Template.bind({})
-WithStageDirectorForShow.args = {
-  artists: getOfferArtists(CategoryIdEnum.SPECTACLE, {
-    ...offerResponseSnap,
-    extraData: { stageDirector: 'Thierry Suc' },
-  }),
-}
-
-export const WithDirectorForCinema = Template.bind({})
-WithDirectorForCinema.args = {
-  artists: getOfferArtists(CategoryIdEnum.CINEMA, {
-    ...offerResponseSnap,
-    extraData: { stageDirector: 'Thierry Suc' },
-  }),
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'OfferArtists'

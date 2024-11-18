@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { BottomBanner } from './BottomBanner'
@@ -14,3 +14,5 @@ export const Default: ComponentStory<typeof BottomBanner> = (props) => <BottomBa
 Default.args = {
   text: 'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
 }
+
+Default.storyName = 'BottomBanner'

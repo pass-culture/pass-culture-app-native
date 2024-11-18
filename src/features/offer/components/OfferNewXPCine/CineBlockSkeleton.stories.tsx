@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { CineBlockSkeleton } from 'features/offer/components/OfferNewXPCine/CineBlockSkeleton'
@@ -14,3 +14,4 @@ export const Default: ComponentStory<typeof CineBlockSkeleton> = (props) => (
 )
 
 Default.args = {}
+Default.storyName = 'CineBlockSkeleton'

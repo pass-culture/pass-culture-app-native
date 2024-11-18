@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { VenueBlockSkeleton } from './VenueBlockSkeleton'
@@ -12,3 +12,4 @@ export default meta
 export const Default: ComponentStory<typeof VenueBlockSkeleton> = () => <VenueBlockSkeleton />
 
 Default.args = {}
+Default.storyName = 'VenueBlockSkeleton'

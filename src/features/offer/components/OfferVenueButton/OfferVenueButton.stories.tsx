@@ -4,6 +4,7 @@ import React from 'react'
 
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof OfferVenueButton> = {
   title: 'features/offer/OfferVenueButton',
@@ -18,14 +19,20 @@ const meta: ComponentMeta<typeof OfferVenueButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferVenueButton> = (props) => <OfferVenueButton {...props} />
+const variantConfig = [
+  {
+    label: 'OfferVenueButton default',
+    props: { venue: offerResponseSnap.venue },
+  },
+  {
+    label: 'OfferVenueButton without subtitle',
+    props: { venue: { ...offerResponseSnap.venue, city: undefined } },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {
-  venue: offerResponseSnap.venue,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={OfferVenueButton} />
+)
 
-export const WithoutSubtitle = Template.bind({})
-WithoutSubtitle.args = {
-  venue: { ...offerResponseSnap.venue, city: undefined },
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'OfferVenueButton'
