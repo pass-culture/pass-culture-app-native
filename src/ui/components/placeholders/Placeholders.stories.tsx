@@ -1,5 +1,7 @@
+import { ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import {
   BookingHitPlaceholder,
   FavoriteHitPlaceholder,
@@ -7,30 +9,37 @@ import {
   NumberOfBookingsPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
-import { StoryContainer } from 'ui/storybook/StoryContainer'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 export default {
-  title: 'ui/placeholders',
+  title: 'ui/Placeholders',
 }
 
-const Template = () => (
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
   <React.Fragment>
-    <StoryContainer title="HitPlaceholder">
-      <HitPlaceholder />
-    </StoryContainer>
-    <StoryContainer title="FavoriteHitPlaceholder">
-      <FavoriteHitPlaceholder />
-    </StoryContainer>
-    <StoryContainer title="BookingHitPlaceholder">
-      <BookingHitPlaceholder />
-    </StoryContainer>
-    <StoryContainer title="NumberOfResultsPlaceholder">
-      <NumberOfResultsPlaceholder />
-    </StoryContainer>
-    <StoryContainer title="NumberOfBookingsPlaceholder">
-      <NumberOfBookingsPlaceholder />
-    </StoryContainer>
+    <VariantsTemplate variants={[{ label: 'HitPlaceholder' }]} Component={HitPlaceholder} />
+    <VariantsTemplate
+      variants={[{ label: 'FavoriteHitPlaceholder' }]}
+      Component={FavoriteHitPlaceholder}
+    />
+    <VariantsTemplate
+      variants={[{ label: 'BookingHitPlaceholder' }]}
+      Component={BookingHitPlaceholder}
+    />
+    <VariantsTemplate
+      variants={[{ label: 'NumberOfResultsPlaceholder' }]}
+      Component={NumberOfResultsPlaceholder}
+    />
+    <VariantsTemplate
+      variants={[{ label: 'NumberOfBookingsPlaceholder' }]}
+      Component={NumberOfBookingsPlaceholder}
+    />
+    <VariantsTemplate
+      variants={[{ label: 'HomeBodyPlaceholder' }]}
+      Component={HomeBodyPlaceholder}
+    />
   </React.Fragment>
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'Placeholders'
