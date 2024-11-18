@@ -1,84 +1,62 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { Email } from 'ui/svg/icons/Email'
+import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { ButtonInsideText } from './ButtonInsideText'
 
 const meta: ComponentMeta<typeof ButtonInsideText> = {
   title: 'ui/buttons/ButtonInsideText',
   component: ButtonInsideText,
-  argTypes: {
-    icon: selectArgTypeFromObject({
-      Email,
-      ExternalSiteFilled,
-    }),
-  },
 }
 export default meta
 
-const Template: ComponentStory<typeof ButtonInsideText> = (args) => <ButtonInsideText {...args} />
+const variantConfig = [
+  {
+    label: 'ButtonInsideText inactive',
+    props: { wording: 'wording' },
+  },
+  {
+    label: 'ButtonInsideText inactive disabled',
+    props: { wording: 'wording', icon: ExternalSiteFilled },
+  },
+  {
+    label: 'ButtonInsideText active',
+    props: {
+      wording: 'wording',
+      typography: 'Caption',
+    },
+  },
+  {
+    label: 'ButtonInsideText active disabled',
+    props: {
+      wording: 'wording',
+      typography: 'Caption',
+      icon: ExternalSiteFilled,
+    },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {
-  wording: 'wording',
-}
+const RandomText = (props: ButtonInsideTexteProps) => {
+  const startText = 'Lorem ipsum dolor '
+  const endText = ' sit amet consectetur adipisicing elit.'
+  const TypoComponent = props.typography ? Typo[props.typography] : Typo.Body
 
-export const DefaultWithIcon = Template.bind({})
-DefaultWithIcon.args = {
-  wording: 'wording',
-  icon: ExternalSiteFilled,
-}
-
-export const Caption = Template.bind({})
-Caption.args = {
-  wording: 'wording',
-  typography: 'Caption',
-}
-
-export const CaptionWithIcon = Template.bind({})
-CaptionWithIcon.args = {
-  wording: 'wording',
-  typography: 'Caption',
-  icon: ExternalSiteFilled,
-}
-
-const startText = 'Lorem ipsum dolor '
-const endText = ' sit amet consectetur adipisicing elit.'
-const RandomText = () => {
   return (
-    <React.Fragment>
-      <Typo.Body>
-        {startText}
-        <ButtonInsideText wording="default" />
-        {endText}
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>
-        {startText}
-        <ButtonInsideText wording="default with icon" icon={ExternalSiteFilled} />
-        {endText}
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Caption>
-        {startText}
-        <ButtonInsideText wording="caption" typography="Caption" />
-        {endText}
-      </Typo.Caption>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Caption>
-        {startText}
-        <ButtonInsideText
-          wording="caption with icon"
-          typography="Caption"
-          icon={ExternalSiteFilled}
-        />
-        {endText}
-      </Typo.Caption>
-    </React.Fragment>
+    <TypoComponent>
+      {startText}
+      <ButtonInsideText {...props} />
+      {endText}
+    </TypoComponent>
   )
 }
-export const InsideRandomText = RandomText.bind({})
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={RandomText} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ButtonInsideText'
