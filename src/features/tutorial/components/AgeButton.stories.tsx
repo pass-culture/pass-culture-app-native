@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { TutorialTypes } from 'features/tutorial/enums'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -39,8 +40,6 @@ const meta: ComponentMeta<typeof AgeButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AgeButton> = (props) => <AgeButton {...props} />
-
 const TextExample = ({ withSubtitle = false }) => (
   <React.Fragment>
     <StyledBody>
@@ -57,47 +56,75 @@ const TextExample = ({ withSubtitle = false }) => (
   </React.Fragment>
 )
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  children: TextExample({}),
-  Icon: <BicolorAll />,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
+const variantConfig = [
+  {
+    label: 'AgeButton default',
+    props: {
+      children: TextExample({}),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+    },
+  },
+  {
+    label: 'AgeButton dense',
+    props: {
+      children: TextExample({}),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      dense: true,
+    },
+  },
+  {
+    label: 'AgeButton with subtitle',
+    props: {
+      children: TextExample({ withSubtitle: true }),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+    },
+  },
+  {
+    label: 'AgeButton dense with subtitle',
+    props: {
+      children: TextExample({ withSubtitle: true }),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      dense: true,
+    },
+  },
+  {
+    label: 'AgeButton with icon',
+    props: {
+      children: TextExample({}),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      Icon: <BicolorAll />,
+    },
+  },
+  {
+    label: 'AgeButton with subtitle and icon',
+    props: {
+      children: TextExample({ withSubtitle: true }),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      Icon: <BicolorAll />,
+    },
+  },
+  {
+    label: 'AgeButton dense with subtitle and icon',
+    props: {
+      children: TextExample({ withSubtitle: true }),
+      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      dense: true,
+      Icon: <BicolorAll />,
+    },
+  },
+]
 
-export const WithoutIcon = Template.bind({})
-WithoutIcon.args = {
-  children: TextExample({}),
-  Icon: undefined,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={AgeButton} />
+)
 
-export const WithSubtitle = Template.bind({})
-WithSubtitle.args = {
-  children: TextExample({ withSubtitle: true }),
-  Icon: <BicolorAll />,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'AgeButton'
 
-export const Dense = Template.bind({})
-Dense.args = {
-  children: TextExample({}),
-  Icon: <BicolorAll />,
-  dense: true,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
-
-export const DenseWithSubtitle = Template.bind({})
-DenseWithSubtitle.args = {
-  children: TextExample({ withSubtitle: true }),
-  Icon: <BicolorAll />,
-  dense: true,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
-
-export const DenseWithoutIcon = Template.bind({})
-DenseWithoutIcon.args = {
-  children: TextExample({}),
-  dense: true,
-  Icon: undefined,
-  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-}
+// export const DenseWithoutIcon = Template.bind({})
+// DenseWithoutIcon.args = {
+//   children: TextExample({}),
+//   dense: true,
+//   Icon: undefined,
+//   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+// }

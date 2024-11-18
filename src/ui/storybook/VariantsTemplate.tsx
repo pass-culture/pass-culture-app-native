@@ -10,6 +10,7 @@ type Variant<Props extends Record<string, unknown>> = {
   label: string
   props: Partial<Props>
   withBackground?: boolean
+  minHeight?: number
 }
 
 type VariantsTemplateProps<Props extends Record<string, unknown>> = {
@@ -26,7 +27,7 @@ export const VariantsTemplate = <Props extends Record<string, unknown>>({
       <React.Fragment key={variant.label}>
         <TypoDS.BodyAccentXs>{variant.label}</TypoDS.BodyAccentXs>
 
-        <ComponentContainer withBackground={variant.withBackground}>
+        <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
           <Component {...variant.props} />
           {variant.withBackground ? (
             <StyledBody>Le background ne fait pas partie du composant</StyledBody>
@@ -39,11 +40,12 @@ export const VariantsTemplate = <Props extends Record<string, unknown>>({
   </ViewGap>
 )
 
-const ComponentContainer = styled.View<{ withBackground?: boolean }>(
-  ({ withBackground, theme }) => ({
+const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
+  ({ withBackground, minHeight, theme }) => ({
     backgroundColor: withBackground ? theme.colors.secondaryLight200 : theme.colors.transparent,
     padding: getSpacing(2),
     borderRadius: getSpacing(2),
+    minHeight,
   })
 )
 

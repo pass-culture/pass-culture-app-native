@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof UnderageBlockDescription> = () => (
     <UnderageBlockDescription />
   </GreyContainer>
 )
-export const Description = Template.bind({})
+export const Default = Template.bind({})
+Default.storyName = 'UnderageBlockDescription'
 
 const GreyContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,

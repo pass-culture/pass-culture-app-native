@@ -3,57 +3,45 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
 
 const meta: ComponentMeta<typeof BannerWithBackground> = {
   title: 'ui/banners/BannerWithBackground',
   component: BannerWithBackground,
-  argTypes: {
-    leftIcon: selectArgTypeFromObject({
-      Bell,
-      NoIcon: undefined,
-    }),
-    rightIcon: selectArgTypeFromObject({
-      Bell,
-      NoIcon: undefined,
-    }),
-  },
 }
 export default meta
 
-const Template: ComponentStory<typeof BannerWithBackground> = (props) => (
-  <BannerWithBackground {...props} />
-)
-
 const TextComponent = () => <StyledBody>Banner text</StyledBody>
-
-export const Default = Template.bind({})
-Default.args = {
-  children: <TextComponent />,
-}
-
-export const WithCustomImage = Template.bind({})
-WithCustomImage.args = {
-  backgroundSource: SHARE_APP_BANNER_IMAGE_SOURCE,
-  children: <TextComponent />,
-}
-
-export const WithCustomRightIcon = Template.bind({})
-WithCustomRightIcon.args = {
-  children: <TextComponent />,
-  rightIcon: Bell,
-}
-
-export const WithLeftIcon = Template.bind({})
-WithLeftIcon.args = {
-  children: <TextComponent />,
-  leftIcon: Bell,
-}
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const variantConfig = [
+  {
+    label: 'BannerWithBackground default',
+    props: { children: <TextComponent /> },
+  },
+  {
+    label: 'BannerWithBackground with custom image',
+    props: { children: <TextComponent />, backgroundSource: SHARE_APP_BANNER_IMAGE_SOURCE },
+  },
+  {
+    label: 'BannerWithBackground with right icon',
+    props: { children: <TextComponent />, rightIcon: Bell },
+  },
+  {
+    label: 'BannerWithBackground with left icon',
+    props: { children: <TextComponent />, leftIcon: Bell },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={BannerWithBackground} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'BannerWithBackground'

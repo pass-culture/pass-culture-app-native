@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React, { FunctionComponent } from 'react'
-import { Button } from 'react-native'
+import React from 'react'
 
 import { computedTheme } from 'tests/computedTheme'
+import { mapSnackBarTypeToStyle } from 'ui/components/snackBar/mapSnackBarTypeToStyle'
+import { SnackBarType } from 'ui/components/snackBar/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { getSpacing } from 'ui/theme'
 
-import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
-import { SnackBar, SnackBarProps } from './SnackBar'
-import { SnackBarProvider, useSnackBarContext } from './SnackBarContext'
-import { SnackBarType } from './types'
+import { SnackBar } from './SnackBar'
 
 const meta: ComponentMeta<typeof SnackBar> = {
   title: 'ui/SnackBar',
@@ -15,55 +15,39 @@ const meta: ComponentMeta<typeof SnackBar> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SnackBar> = (props) => <SnackBar {...props} />
+const variantConfig = [
+  {
+    label: 'SnackBar success',
+    props: {
+      visible: true,
+      message: 'Une petite snackbar de succès',
+      ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.SUCCESS),
+    },
+    minHeight: getSpacing(10),
+  },
+  {
+    label: 'SnackBar info',
+    props: {
+      visible: true,
+      message: 'Une petite snackbar d’info',
+      ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.INFO),
+    },
+    minHeight: getSpacing(10),
+  },
+  {
+    label: 'SnackBar error',
+    props: {
+      visible: true,
+      message: 'Une petite snackbar d’erreur',
+      ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.ERROR),
+    },
+    minHeight: getSpacing(10),
+  },
+]
 
-export const Simple = Template.bind({})
-Simple.args = {
-  visible: true,
-  message: 'Une petite snackbar standard',
-  backgroundColor: computedTheme.colors.primary,
-  progressBarColor: computedTheme.colors.white,
-  color: computedTheme.colors.white,
-}
-
-export const Success = Template.bind({})
-Success.args = {
-  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.SUCCESS),
-  visible: true,
-  message: 'Une petite snackbar de succès',
-}
-
-export const Info = Template.bind({})
-Info.args = {
-  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.INFO),
-  visible: true,
-  message: 'Une petite snackbar d’info',
-}
-
-export const InError = Template.bind({})
-InError.args = {
-  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.ERROR),
-  visible: true,
-  message: 'Une petite snackbar d’erreur',
-}
-
-const SnackBarButton: FunctionComponent<SnackBarProps> = (props) => {
-  const { showSuccessSnackBar, hideSnackBar } = useSnackBarContext()
-  return (
-    <Button
-      title="Press here"
-      onPress={() => showSuccessSnackBar({ ...props, onClose: hideSnackBar })}
-      color="green"
-    />
-  )
-}
-export const SuccessWithTimeout: ComponentStory<typeof SnackBar> = (props) => (
-  <SnackBarProvider>
-    <SnackBarButton {...props} />
-  </SnackBarProvider>
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SnackBar} />
 )
 
-SuccessWithTimeout.args = {
-  message: 'You pressed me',
-  timeout: 3000,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SnackBar'

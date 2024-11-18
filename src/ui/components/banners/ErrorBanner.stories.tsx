@@ -11,10 +11,9 @@ export default meta
 
 const Template: ComponentStory<typeof ErrorBanner> = (props) => <ErrorBanner {...props} />
 
-const message =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
-
 export const Default = Template.bind({})
 Default.args = {
-  message,
+  message:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
 }
+Default.storyName = 'ErrorBanner'

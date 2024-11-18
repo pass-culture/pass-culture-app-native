@@ -1,10 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
-import styled from 'styled-components/native'
 
-import { Spacer } from 'ui/components/spacer/Spacer'
-import { Typo } from 'ui/theme'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import FilterSwitch from './FilterSwitch'
 
@@ -21,37 +19,28 @@ const meta: ComponentMeta<typeof FilterSwitch> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof FilterSwitch> = (props) => (
-  <StyledView>
-    <Typo.Body nativeID="filter-switch-id">{'Switch label'}</Typo.Body>
-    <Spacer.Row numberOfSpaces={2} />
-    <FilterSwitch {...props} accessibilityLabelledBy="filter-switch-id" />
-  </StyledView>
+const variantConfig = [
+  {
+    label: 'FilterSwitch inactive',
+    props: { active: false, accessibilityLabel: 'FilterSwitch inactive' },
+  },
+  {
+    label: 'FilterSwitch inactive disabled',
+    props: { active: false, accessibilityLabel: 'FilterSwitch inactive disabled', disabled: true },
+  },
+  {
+    label: 'FilterSwitch active',
+    props: { active: true, accessibilityLabel: 'FilterSwitch active' },
+  },
+  {
+    label: 'FilterSwitch active disabled',
+    props: { active: true, accessibilityLabel: 'FilterSwitch active disabled', disabled: true },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={FilterSwitch} />
 )
 
-export const Inactive = Template.bind({})
-Inactive.args = {
-  active: false,
-}
-
-export const Active = Template.bind({})
-Active.args = {
-  active: true,
-}
-
-export const InactiveDisabled = Template.bind({})
-InactiveDisabled.args = {
-  active: false,
-  disabled: true,
-}
-
-export const ActiveDisabled = Template.bind({})
-ActiveDisabled.args = {
-  active: true,
-  disabled: true,
-}
-
-const StyledView = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'FilterSwitch'
