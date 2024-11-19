@@ -40,7 +40,7 @@ describe('<CitySearchInput />', () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          'Malheureusement, tu n’es pas éligible au pass Culture. Ton code postal est dans une région où nous ne sommes pas présents.'
+          'Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture.'
         )
       ).toBeOnTheScreen()
     })
