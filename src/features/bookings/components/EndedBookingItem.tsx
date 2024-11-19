@@ -6,6 +6,7 @@ import { PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
+import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
 import { BookingItemProps } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -263,12 +264,6 @@ const EndedReasonAndDate = styled.View({
   alignItems: 'center',
   flexWrap: 'wrap',
 })
-
-function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
-  const endDate = dateUsed ?? cancellationDate
-  if (endDate) return `le ${formatToSlashedFrenchDate(endDate)}`
-  return null
-}
 
 const ShareContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
