@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
@@ -18,11 +19,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
-
   const handlePress = (defaultIndex = 0) => {
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
+  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
 
   const footer = useMemo(
     () => (
@@ -36,15 +36,17 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   )
 
   return (
-    <OfferContentBase
-      offer={offer}
-      searchGroupList={searchGroupList}
-      contentContainerStyle={CONTENT_CONTAINER_STYLE}
-      onOfferPreviewPress={handlePress}
-      footer={footer}
-      BodyWrapper={BodyWrapper}
-      subcategory={subcategory}
-    />
+    <OfferCTAProvider>
+      <OfferContentBase
+        offer={offer}
+        searchGroupList={searchGroupList}
+        contentContainerStyle={CONTENT_CONTAINER_STYLE}
+        onOfferPreviewPress={handlePress}
+        BodyWrapper={BodyWrapper}
+        footer={footer}
+        subcategory={subcategory}
+      />
+    </OfferCTAProvider>
   )
 }
 

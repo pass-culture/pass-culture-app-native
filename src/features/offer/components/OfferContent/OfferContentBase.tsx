@@ -19,6 +19,8 @@ import styled from 'styled-components/native'
 
 import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
+import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
@@ -59,6 +61,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
+  const { isButtonVisible } = useOfferCTA()
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
@@ -120,9 +123,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   return (
     <Container>
-      <OfferWebMetaHeader offer={offer} />
-      <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <OfferWebMetaHeader offer={offer} />
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
         <ScrollViewContainer
           testID="offerv2-container"
           scrollEventThrottle={16}
@@ -152,8 +155,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           />
         </ScrollViewContainer>
+        {isButtonVisible ? <CineContentCTA /> : footer}
       </AnchorProvider>
-      {footer}
     </Container>
   )
 }

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { OfferImageResponse } from 'api/gen'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
@@ -53,22 +54,24 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   )
 
   return (
-    <React.Fragment>
-      <ImagesCarouselModal
-        hideModal={hideModal}
-        isVisible={visible}
-        imagesURL={offerImages}
-        defaultIndex={carouselDefaultIndex}
-      />
-      <StyledOfferContentBase
-        offer={offer}
-        searchGroupList={searchGroupList}
-        subcategory={subcategory}
-        onOfferPreviewPress={handlePress}
-        BodyWrapper={BodyWrapper}
-        footer={footer}
-      />
-    </React.Fragment>
+    <OfferCTAProvider>
+      <React.Fragment>
+        <ImagesCarouselModal
+          hideModal={hideModal}
+          isVisible={visible}
+          imagesURL={offerImages}
+          defaultIndex={carouselDefaultIndex}
+        />
+        <StyledOfferContentBase
+          offer={offer}
+          searchGroupList={searchGroupList}
+          subcategory={subcategory}
+          onOfferPreviewPress={handlePress}
+          BodyWrapper={BodyWrapper}
+          footer={footer}
+        />
+      </React.Fragment>
+    </OfferCTAProvider>
   )
 }
 

@@ -1,11 +1,13 @@
-import React, { Fragment, useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import Animated, { FadeOut, Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
+import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
@@ -79,7 +81,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
   const { visible, hideModal, showModal } = useModal()
-
+  const { isButtonVisible, wording } = useOfferCTA()
   const closeModal = () => {
     onCloseVideoFakeDoor?.()
     hideModal()
@@ -100,10 +102,18 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   }
 
   const shouldDisplayCTA =
-    (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
+    venue.venueTypeCode !== VenueTypeCodeKey.MOVIE &&
+    ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
+
+  const renderVenueCTA = useCallback(() => {
+    if (wording.length) {
+      return isButtonVisible ? <CineContentCTA /> : null
+    }
+    return shouldDisplayCTA ? <VenueCTA venue={venue} /> : null
+  }, [isButtonVisible, shouldDisplayCTA, venue, wording.length])
 
   return (
-    <Fragment>
+    <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
       <SurveyModal
         Icon={BicolorCircledClock}
         hideModal={closeModal}
@@ -116,38 +126,33 @@ export const VenueContent: React.FunctionComponent<Props> = ({
         <VenueWebMetaHeader venue={venue} />
         {/* On web VenueHeader is called before Body for accessibility navigate order */}
         {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
-        <AnchorProvider
-          scrollViewRef={scrollViewRef}
-          handleCheckScrollY={handleCheckScrollY}
-          offset={isLargeScreen ? headerHeight : 0}>
-          <ContentContainer
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-            bounces={false}
-            ref={scrollViewRef}>
-            {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
-            <VenueTopComponent venue={venue} />
-            <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-            {videoSectionVisible ? (
-              <Animated.View exiting={FadeOut.duration(200)}>
-                <VideoSection venueType={venue.venueTypeCode} onPress={handlePressVideo} />
-              </Animated.View>
-            ) : null}
-            <Animated.View layout={Layout.duration(200)}>
-              <VenueBody
-                venue={venue}
-                playlists={gtlPlaylists}
-                venueOffers={venueOffers}
-                shouldDisplayCTA={shouldDisplayCTA}
-              />
+        <ContentContainer
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+          bounces={false}
+          ref={scrollViewRef}>
+          {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
+          <VenueTopComponent venue={venue} />
+          <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+          {videoSectionVisible ? (
+            <Animated.View exiting={FadeOut.duration(200)}>
+              <VideoSection venueType={venue.venueTypeCode} onPress={handlePressVideo} />
             </Animated.View>
-          </ContentContainer>
-        </AnchorProvider>
+          ) : null}
+          <Animated.View layout={Layout.duration(200)}>
+            <VenueBody
+              venue={venue}
+              playlists={gtlPlaylists}
+              venueOffers={venueOffers}
+              shouldDisplayCTA={shouldDisplayCTA}
+            />
+          </Animated.View>
+        </ContentContainer>
         {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
         {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
-        {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
+        {renderVenueCTA()}
       </Container>
-    </Fragment>
+    </AnchorProvider>
   )
 }
 
