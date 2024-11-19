@@ -33,4 +33,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "devbox.autoShellOnTerminal": false,
+  "window.confirmBeforeClose": "keyboardOnly",
 }
