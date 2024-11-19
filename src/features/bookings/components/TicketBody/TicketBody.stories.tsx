@@ -1,8 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { TicketBody } from './TicketBody'
 
@@ -18,39 +19,44 @@ const meta: ComponentMeta<typeof TicketBody> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof TicketBody> = (props) => (
+const variantConfig = [
+  {
+    label: 'TicketBody default',
+    props: {
+      withdrawalDelay: 1000,
+      withdrawalType: WithdrawalTypeEnum.on_site,
+    },
+  },
+  {
+    label: 'TicketBody external booking',
+    props: {
+      withdrawalDelay: 1000,
+      externalBookings: { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+    },
+  },
+  {
+    label: 'TicketBody with subcategory should have QR Code',
+    props: {
+      withdrawalDelay: 1000,
+      qrCodeData: '1234',
+      subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+    },
+  },
+  {
+    label: 'TicketBody no ticket needed',
+    props: { withdrawalDelay: 1000, withdrawalType: WithdrawalTypeEnum.no_ticket },
+  },
+  {
+    label: 'TicketBody by email with beginning date',
+    props: { withdrawalDelay: 1000, withdrawalType: WithdrawalTypeEnum.by_email },
+  },
+]
+
+const Template: ComponentStory<typeof TicketBody> = () => (
   <ThreeShapesTicket>
-    <TicketBody {...props} />
+    <VariantsTemplate variants={variantConfig} Component={TicketBody} />
   </ThreeShapesTicket>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  withdrawalDelay: 1000,
-  withdrawalType: WithdrawalTypeEnum.on_site,
-}
-
-export const ExternalBookings = Template.bind({})
-ExternalBookings.args = {
-  withdrawalDelay: 1000,
-  externalBookings: { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
-}
-
-export const SubcategoryShouldHaveQrCode = Template.bind({})
-SubcategoryShouldHaveQrCode.args = {
-  withdrawalDelay: 1000,
-  qrCodeData: '1234',
-  subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
-}
-
-export const NoTicketNeeded = Template.bind({})
-NoTicketNeeded.args = {
-  withdrawalDelay: 1000,
-  withdrawalType: WithdrawalTypeEnum.no_ticket,
-}
-
-export const ByEmailWithBeginningDate = Template.bind({})
-ByEmailWithBeginningDate.args = {
-  withdrawalDelay: 1000,
-  withdrawalType: WithdrawalTypeEnum.by_email,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'TicketBody'

@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { VerticalUl } from 'ui/components/Ul'
 import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { BulletListItem } from './BulletListItem'
@@ -27,7 +28,9 @@ const variantConfig = [
 ]
 
 const Template: ComponentStory<typeof VariantsTemplate> = () => (
-  <VariantsTemplate variants={variantConfig} Component={BulletListItem} />
+  <VerticalUl>
+    <VariantsTemplate variants={variantConfig} Component={BulletListItem} />
+  </VerticalUl>
 )
 
 export const AllVariants = Template.bind({})
