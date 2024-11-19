@@ -44,7 +44,6 @@ const variantConfig: Variants<typeof StepButton> = [
   {
     label: 'StepButton default',
     props: {
-      navigateTo: { screen: 'SelectIDOrigin' },
       step: {
         stepState: StepButtonState.CURRENT,
         title: 'Identification',
