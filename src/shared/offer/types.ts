@@ -15,7 +15,6 @@ export type HitOffer = {
   prices?: number[]
   subcategoryId: SubcategoryIdEnum
   thumbUrl?: string
-  releaseDate?: string
 }
 
 export interface Offer {
