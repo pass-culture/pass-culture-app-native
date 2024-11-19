@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof BasicAccessibilityInfo> = (props) => (
   <BasicAccessibilityInfo {...props} />
 )
 export const Default = Template.bind({})
+Default.storyName = 'BasicAccessibilityInfo'
 Default.args = {
   accessibility: {
     audioDisability: false,

@@ -5,6 +5,7 @@ import React from 'react'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { theme } from 'theme'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -32,28 +33,37 @@ const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof MarketingBlockExclusivity> = (props) => (
-  <MarketingBlockExclusivity {...props} />
+const variantConfig = [
+  {
+    label: 'MarketingBlockExclusivity default',
+    props: {
+      title: 'Marathon Harry Potter dans tous les cinémas de France',
+      subtitle: 'Du 12/06 au 24/06',
+      homeId: 'homeId',
+      moduleId: 'moduleId',
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+      offer: offersFixture[0],
+    },
+  },
+  {
+    label: 'MarketingBlockExclusivity without image',
+    props: {
+      title: 'Marathon Harry Potter dans tous les cinémas de France',
+      subtitle: 'Du 12/06 au 24/06',
+      homeId: 'homeId',
+      moduleId: 'moduleId',
+      offer: offersFixture[0],
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={MarketingBlockExclusivity} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  moduleId: '1',
-  backgroundImageUrl:
-    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-  offer: offersFixture[0],
-}
-
-Default.parameters = {
-  chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
-}
-
-export const WithoutBackgroundImage = Template.bind({})
-WithoutBackgroundImage.args = {
-  moduleId: '1',
-  offer: offersFixture[0],
-}
-
-WithoutBackgroundImage.parameters = {
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'MarketingBlockExclusivity'
+AllVariants.parameters = {
   chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
 }

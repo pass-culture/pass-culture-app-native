@@ -26,3 +26,4 @@ export default meta
 const Template: ComponentStory<typeof LocationSearchWidget> = () => <LocationSearchWidget />
 
 export const Default = Template.bind({})
+Default.storyName = 'LocationSearchWidget'

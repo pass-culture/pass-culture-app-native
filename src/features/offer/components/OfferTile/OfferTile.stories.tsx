@@ -8,7 +8,7 @@ import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { OfferTile } from './OfferTile'
 
 const meta: ComponentMeta<typeof OfferTile> = {
-  title: 'ui/OfferTile',
+  title: 'ui/tiles/OfferTile',
   component: OfferTile,
   decorators: [
     (stories, { args }) => (

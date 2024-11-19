@@ -20,6 +20,7 @@ const Template: ComponentStory<typeof BlurryWrapper> = (props) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'BlurryWrapper'
 Default.args = {
   children: <ButtonPrimary wording="Réserver l’offre" mediumWidth />,
 }

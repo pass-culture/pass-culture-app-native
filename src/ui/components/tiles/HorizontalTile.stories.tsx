@@ -8,7 +8,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { HorizontalTile } from './HorizontalTile'
 
 const meta: ComponentMeta<typeof HorizontalTile> = {
-  title: 'ui/HorizontalTile',
+  title: 'ui/tiles/HorizontalTile',
   component: HorizontalTile,
 }
 export default meta
@@ -41,6 +41,7 @@ const Template: ComponentStory<typeof HorizontalTile> = (props) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'HorizontalTile'
 
 const imageUrl =
   'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW'

@@ -19,6 +19,7 @@ export default {
 export const Default: ComponentStory<typeof ImagePlaceholder> = (props) => (
   <ImagePlaceholder {...props} />
 )
+Default.storyName = 'ImagePlaceholder'
 Default.args = {
   size: getSpacing(24),
   borderRadius: 4,

@@ -26,4 +26,5 @@ export default meta
 const Template: ComponentStory<typeof Trend> = (props) => <Trend {...props} />
 
 export const Default = Template.bind({})
+Default.storyName = 'Trend'
 Default.args = formattedTrendsModule.items[1]

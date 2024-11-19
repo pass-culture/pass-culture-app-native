@@ -7,15 +7,16 @@ import { theme } from 'theme'
 import { EventCardList } from './EventCardList'
 
 const meta: ComponentMeta<typeof EventCardList> = {
-  title: 'ui/EventCardList',
+  title: 'ui/EventCard/EventCardList',
   component: EventCardList,
 }
 export default meta
 
 const Template: ComponentStory<typeof EventCardList> = (props) => <EventCardList {...props} />
 
-export const EventCardListDefault = Template.bind({})
-EventCardListDefault.args = {
+export const Default = Template.bind({})
+Default.storyName = 'EventCardList'
+Default.args = {
   data: [
     {
       title: '10h35',
@@ -90,6 +91,6 @@ EventCardListDefault.args = {
   ],
 }
 
-EventCardListDefault.parameters = {
+Default.parameters = {
   chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
 }
