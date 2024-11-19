@@ -37,28 +37,32 @@ const variantConfig: Variants<typeof SearchInput> = [
   },
   {
     label: 'Disabled SearchInput',
-    props: { placeholder: 'Placeholder...', disabled: true },
+    props: { disabled: true },
   },
   {
     label: 'SearchInput WithTallHeight',
-    props: { placeholder: 'Placeholder...', inputHeight: 'tall' },
+    props: { inputHeight: 'tall' },
   },
   {
     label: 'SearchInput with LeftIcon',
-    props: { placeholder: 'Placeholder...', LeftIcon: () => <MagnifyingGlass /> },
+    props: { LeftIcon: () => <MagnifyingGlass /> },
   },
   {
     label: 'SearchInput with label',
-    props: { placeholder: 'Placeholder...', label: 'Label' },
+    props: { label: 'Label' },
   },
   {
     label: 'SearchInput with value',
-    props: { placeholder: 'Placeholder...', value: 'Value' },
+    props: { value: 'Value' },
   },
 ]
 
 const Template: VariantsStory<typeof SearchInput> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SearchInput} />
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={SearchInput}
+    defaultProps={{ placeholder: 'Placeholder...' }}
+  />
 )
 
 export const AllVariants = Template.bind({})

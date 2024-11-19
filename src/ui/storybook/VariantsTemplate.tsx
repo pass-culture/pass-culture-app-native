@@ -22,27 +22,36 @@ export type Variants<
 type VariantsTemplateProps<Props extends Record<string, unknown>> = {
   variants: Variant<Props>[] | any[]
   Component: React.ComponentType<Props> | any
+  defaultProps?: Partial<Props>
 }
 
 export const VariantsTemplate = <Props extends Record<string, unknown>>({
   variants,
   Component,
+  defaultProps = {},
 }: VariantsTemplateProps<Props>) => (
   <ViewGap gap={4}>
-    {variants.map((variant, index) => (
-      <React.Fragment key={variant.label}>
-        <TypoDS.BodyAccentXs>{variant.label}</TypoDS.BodyAccentXs>
+    {variants.map((variant, index) => {
+      const props = {
+        ...defaultProps,
+        ...variant.props,
+      } as Props
 
-        <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
-          <Component {...variant.props} />
-          {variant.withBackground ? (
-            <StyledBody>Le background ne fait pas partie du composant</StyledBody>
-          ) : null}
-        </ComponentContainer>
+      return (
+        <React.Fragment key={variant.label}>
+          <TypoDS.BodyAccentXs>{variant.label}</TypoDS.BodyAccentXs>
 
-        {index < variants.length - 1 ? <Separator.Horizontal /> : null}
-      </React.Fragment>
-    ))}
+          <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
+            <Component {...props} />
+            {variant.withBackground ? (
+              <StyledBody>Le background ne fait pas partie du composant</StyledBody>
+            ) : null}
+          </ComponentContainer>
+
+          {index < variants.length - 1 ? <Separator.Horizontal /> : null}
+        </React.Fragment>
+      )
+    })}
   </ViewGap>
 )
 
