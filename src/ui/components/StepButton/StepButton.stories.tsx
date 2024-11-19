@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta } from '@storybook/react'
-import React, { type ComponentProps } from 'react'
+import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
@@ -40,15 +40,11 @@ const icon = {
   retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
 }
 
-const baseProps: Partial<ComponentProps<typeof StepButton>> = {
-  navigateTo: { screen: 'SelectIDOrigin' },
-}
-
 const variantConfig: Variants<typeof StepButton> = [
   {
     label: 'StepButton default',
     props: {
-      ...baseProps,
+      navigateTo: { screen: 'SelectIDOrigin' },
       step: {
         stepState: StepButtonState.CURRENT,
         title: 'Identification',
@@ -59,7 +55,6 @@ const variantConfig: Variants<typeof StepButton> = [
   {
     label: 'StepButton disabled step',
     props: {
-      ...baseProps,
       step: {
         stepState: StepButtonState.DISABLED,
         title: 'Identification',
@@ -70,7 +65,6 @@ const variantConfig: Variants<typeof StepButton> = [
   {
     label: 'StepButton retry step',
     props: {
-      ...baseProps,
       step: {
         stepState: StepButtonState.RETRY,
         title: 'Identification',
@@ -82,7 +76,6 @@ const variantConfig: Variants<typeof StepButton> = [
   {
     label: 'StepButton completed step',
     props: {
-      ...baseProps,
       step: {
         stepState: StepButtonState.COMPLETED,
         title: 'Identification',
@@ -93,7 +86,11 @@ const variantConfig: Variants<typeof StepButton> = [
 ]
 
 const Template: VariantsStory<typeof StepButton> = () => (
-  <VariantsTemplate variants={variantConfig} Component={StepButton} />
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={StepButton}
+    defaultProps={{ navigateTo: { screen: 'SelectIDOrigin' } }}
+  />
 )
 
 export const AllVariants = Template.bind({})
