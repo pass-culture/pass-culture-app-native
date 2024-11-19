@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 import { InformationWithIcon } from './InformationWithIcon'
@@ -17,7 +17,7 @@ const baseProps = {
   text: 'Information title',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof InformationWithIcon> = [
   {
     label: 'InformationWithIcon default',
     props: baseProps,
@@ -28,7 +28,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof InformationWithIcon> = () => (
   <VariantsTemplate variants={variantConfig} Component={InformationWithIcon} />
 )
 

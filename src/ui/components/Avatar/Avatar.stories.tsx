@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
 import { TypoDS } from 'ui/theme'
@@ -25,7 +25,7 @@ const DefaultAvatar = styled(LinearGradient).attrs(({ theme }) => ({
 
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof Avatar> = [
   {
     label: 'Avatar small',
     props: { size: AVATAR_SMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
@@ -78,7 +78,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof Avatar> = () => (
   <VariantsTemplate variants={variantConfig} Component={Avatar} />
 )
 

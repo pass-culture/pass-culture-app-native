@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { ToggleButton, ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 
@@ -30,7 +30,7 @@ const baseProps = {
   onPress: action('press'),
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof ToggleButton> = [
   {
     label: 'ToggleButton inactive medium',
     props: { ...baseProps, active: false, size: ToggleButtonSize.MEDIUM },
@@ -49,7 +49,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof ToggleButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={ToggleButton} />
 )
 

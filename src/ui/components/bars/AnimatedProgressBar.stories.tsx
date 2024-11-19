@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
@@ -14,7 +14,7 @@ const meta: ComponentMeta<typeof AnimatedProgressBar> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof AnimatedProgressBar> = [
   {
     label: 'AnimatedProgressBar default',
     props: { progress: 0.5, color: theme.colors.primary, icon: Email },
@@ -29,7 +29,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof AnimatedProgressBar> = () => (
   <VariantsTemplate variants={variantConfig} Component={AnimatedProgressBar} />
 )
 

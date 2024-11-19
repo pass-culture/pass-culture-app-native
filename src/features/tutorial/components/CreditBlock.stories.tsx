@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { TypoDS } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
@@ -15,7 +15,7 @@ export default meta
 
 const Text = <TypoDS.BodyAccentXs>Tu auras deux ans pour utiliser tes 300€</TypoDS.BodyAccentXs>
 
-const variantConfig = [
+const variantConfig: Variants<typeof CreditBlock> = [
   {
     label: 'CreditBlock ongoing',
     props: { creditStatus: CreditStatus.ONGOING, children: Text },
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof CreditBlock> = () => (
   <VariantsTemplate variants={variantConfig} Component={CreditBlock} />
 )
 

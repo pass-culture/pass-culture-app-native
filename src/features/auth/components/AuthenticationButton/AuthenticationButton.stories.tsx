@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { AuthenticationButton } from './AuthenticationButton'
 
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof AuthenticationButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof AuthenticationButton> = [
   {
     label: 'AuthenticationButton round price',
     props: { type: 'login' },
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof AuthenticationButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={AuthenticationButton} />
 )
 

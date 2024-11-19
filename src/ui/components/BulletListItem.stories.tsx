@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { VerticalUl } from 'ui/components/Ul'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { BulletListItem } from './BulletListItem'
 
@@ -12,7 +12,7 @@ const meta: ComponentMeta<typeof BulletListItem> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof BulletListItem> = [
   {
     label: 'BulletListItem default',
     props: { text: 'List item' },
@@ -27,7 +27,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof BulletListItem> = () => (
   <VerticalUl>
     <VariantsTemplate variants={variantConfig} Component={BulletListItem} />
   </VerticalUl>

@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof OfferVenueButton> = {
   title: 'features/offer/OfferVenueButton',
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof OfferVenueButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof OfferVenueButton> = [
   {
     label: 'OfferVenueButton default',
     props: { venue: offerResponseSnap.venue },
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OfferVenueButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={OfferVenueButton} />
 )
 

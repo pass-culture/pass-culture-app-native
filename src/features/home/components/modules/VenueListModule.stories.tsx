@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueListModule } from './VenueListModule'
 
@@ -33,7 +33,7 @@ const venues = [
   },
 ]
 
-const variantConfig = [
+const variantConfig: Variants<typeof VenueListModule> = [
   {
     label: 'VenueListModule',
     props: {
@@ -42,7 +42,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof VenueListModule> = () => (
   <VariantsTemplate variants={variantConfig} Component={VenueListModule} />
 )
 

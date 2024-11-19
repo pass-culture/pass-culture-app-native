@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Loader } from './Loader'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof Loader> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof Loader> = [
   {
     label: 'Loader default',
   },
@@ -21,7 +21,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof Loader> = () => (
   <VariantsTemplate variants={variantConfig} Component={Loader} />
 )
 

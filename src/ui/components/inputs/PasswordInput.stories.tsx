@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { PasswordInput } from './PasswordInput'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof PasswordInput> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof PasswordInput> = [
   {
     label: 'PasswordInput',
   },
@@ -38,7 +38,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof PasswordInput> = () => (
   <VariantsTemplate variants={variantConfig} Component={PasswordInput} />
 )
 

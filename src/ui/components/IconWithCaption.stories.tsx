@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 import { IconWithCaption } from './IconWithCaption'
@@ -22,7 +22,7 @@ const baseProps = {
   accessibilityLabel: 'Festival de musique',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof IconWithCaption> = [
   {
     label: 'IconWithCaption default',
     props: baseProps,
@@ -33,7 +33,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof IconWithCaption> = () => (
   <VariantsTemplate variants={variantConfig} Component={IconWithCaption} />
 )
 

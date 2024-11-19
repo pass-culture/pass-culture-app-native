@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof OfferPrice> = {
   title: 'features/offer/OfferPrice',
@@ -10,7 +10,7 @@ const meta: ComponentMeta<typeof OfferPrice> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof OfferPrice> = [
   {
     label: 'OfferPrice round price',
     props: { prices: [1000] },
@@ -29,7 +29,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OfferPrice> = () => (
   <VariantsTemplate variants={variantConfig} Component={OfferPrice} />
 )
 

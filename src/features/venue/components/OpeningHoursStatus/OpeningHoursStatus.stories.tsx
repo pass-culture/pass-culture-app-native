@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { OpeningHoursStatus } from './OpeningHoursStatus'
 
@@ -23,7 +23,7 @@ const baseProps = {
   timezone: TIMEZONE,
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof OpeningHoursStatus> = [
   {
     label: 'OpeningHoursStatus close',
     props: {
@@ -54,7 +54,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OpeningHoursStatus> = () => (
   <VariantsTemplate variants={variantConfig} Component={OpeningHoursStatus} />
 )
 

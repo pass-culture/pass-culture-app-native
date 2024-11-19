@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { getSpacing } from 'ui/theme'
 
 import { VenuePreview } from './VenuePreview'
@@ -22,7 +22,7 @@ const baseProps = {
   imageWidth: VENUE_THUMBNAIL_SIZE,
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof VenuePreview> = [
   {
     label: 'VenuePreview default',
     props: {
@@ -46,7 +46,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof VenuePreview> = () => (
   <VariantsTemplate variants={variantConfig} Component={VenuePreview} />
 )
 

@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { theme } from 'theme'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { AttachedCardDisplay } from './AttachedCardDisplay'
@@ -21,7 +21,7 @@ const baseProps = {
   rightTagLabel: 'Gratuit',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
     label: 'AttachedCardDisplay default',
     props: baseProps,
@@ -67,7 +67,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof AttachedCardDisplay> = () => (
   <VariantsTemplate variants={variantConfig} Component={AttachedCardDisplay} />
 )
 

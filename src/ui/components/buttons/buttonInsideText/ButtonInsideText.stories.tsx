@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 
@@ -14,7 +14,7 @@ const meta: ComponentMeta<typeof ButtonInsideText> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof RandomText> = [
   {
     label: 'ButtonInsideText inactive',
     props: { wording: 'wording' },
@@ -54,7 +54,7 @@ const RandomText = (props: ButtonInsideTexteProps) => {
   )
 }
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof RandomText> = () => (
   <VariantsTemplate variants={variantConfig} Component={RandomText} />
 )
 

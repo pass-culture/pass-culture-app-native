@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -33,7 +33,7 @@ const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof MarketingBlockExclusivity> = [
   {
     label: 'MarketingBlockExclusivity default',
     props: {
@@ -58,7 +58,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof MarketingBlockExclusivity> = () => (
   <VariantsTemplate variants={variantConfig} Component={MarketingBlockExclusivity} />
 )
 

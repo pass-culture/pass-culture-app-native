@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { InputContainer } from './InputContainer'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof InputContainer> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof InputContainer> = [
   {
     label: 'InputContainer',
   },
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof InputContainer> = () => (
   <VariantsTemplate variants={variantConfig} Component={InputContainer} />
 )
 

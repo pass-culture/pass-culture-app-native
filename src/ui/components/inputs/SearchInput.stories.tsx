@@ -3,7 +3,7 @@ import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment } from 'react'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
@@ -30,7 +30,7 @@ NotFocusable.play = async () => {
   userEvent.tab()
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof SearchInput> = [
   {
     label: 'SearchInput',
     props: { placeholder: 'Placeholder...' },
@@ -57,7 +57,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SearchInput> = () => (
   <VariantsTemplate variants={variantConfig} Component={SearchInput} />
 )
 

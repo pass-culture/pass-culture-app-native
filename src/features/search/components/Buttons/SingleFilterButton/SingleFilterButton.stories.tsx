@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { SingleFilterButton } from './SingleFilterButton'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof SingleFilterButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof SingleFilterButton> = [
   {
     label: 'SingleFilterButton selected',
     props: { label: 'CD, vinyles, musique en ligne', isSelected: true },
@@ -25,7 +25,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SingleFilterButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={SingleFilterButton} />
 )
 

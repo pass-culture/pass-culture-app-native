@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { LargeTextInput } from './LargeTextInput'
 
@@ -15,7 +15,7 @@ const textWith801Character = 'a'.repeat(801)
 
 const baseProps = { label: 'Label', placeholder: 'Placeholder...' }
 
-const variantConfig = [
+const variantConfig: Variants<typeof LargeTextInput> = [
   {
     label: 'LargeTextInput',
     props: { ...baseProps },
@@ -38,7 +38,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof LargeTextInput> = () => (
   <VariantsTemplate variants={variantConfig} Component={LargeTextInput} />
 )
 

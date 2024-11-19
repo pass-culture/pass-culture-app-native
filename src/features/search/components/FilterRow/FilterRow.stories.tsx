@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Calendar } from 'ui/svg/icons/Calendar'
@@ -16,7 +16,7 @@ const meta: ComponentMeta<typeof FilterRow> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof FilterRow> = [
   {
     label: 'Localisation',
     props: { title: 'Localisation', icon: BicolorAroundMe, description: 'Autour de moi' },
@@ -43,7 +43,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof FilterRow> = () => (
   <VariantsTemplate variants={variantConfig} Component={FilterRow} />
 )
 

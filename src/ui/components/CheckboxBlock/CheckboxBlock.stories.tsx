@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 
 import { CheckboxBlock } from './CheckboxBlock'
@@ -20,7 +20,7 @@ const meta: ComponentMeta<typeof CheckboxBlock> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof CheckboxBlock> = [
   {
     label: 'CheckboxBlock unchecked',
     props: {
@@ -62,7 +62,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof CheckboxBlock> = () => (
   <VariantsTemplate variants={variantConfig} Component={CheckboxBlock} />
 )
 

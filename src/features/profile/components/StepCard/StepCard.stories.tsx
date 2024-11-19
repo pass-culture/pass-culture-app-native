@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { StepButtonState } from 'ui/components/StepButton/types'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
 
@@ -19,7 +19,7 @@ const baseProps = {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies non ante a egestas. Aliquam sed efficitur risus. Cras ut gravida quam, quis venenatis turpis. ',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof StepCard> = [
   {
     label: 'StepCard',
     props: {
@@ -49,7 +49,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof StepCard> = () => (
   <VariantsTemplate variants={variantConfig} Component={StepCard} />
 )
 
