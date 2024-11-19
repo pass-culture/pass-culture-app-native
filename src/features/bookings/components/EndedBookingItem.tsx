@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { ComponentProps, FunctionComponent, useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,6 +7,7 @@ import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
+import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
 import { BookingItemProps } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -23,14 +24,12 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Pastille } from 'ui/svg/icons/Pastille'
-import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 function withSmallBadge<P extends object>(Component: FunctionComponent<P>) {
@@ -53,13 +52,14 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const iconFactory = useIconFactory()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { reactionCategories } = useRemoteConfigContext()
 
   const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
     booking.userReaction
   )
+
+  const ReactionIcon = useReactionIcon(userReaction)
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
@@ -72,36 +72,6 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
-
-  const ReactionLikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('like-filled')).attrs(({ theme }) => ({
-        color: theme.colors.primary,
-      }))``,
-    [iconFactory]
-  )
-
-  const ReactionDislikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
-        color: theme.colors.black,
-      }))``,
-    [iconFactory]
-  )
-
-  const getCustomReactionIcon = useCallback(
-    (reaction?: ReactionTypeEnum | null): React.FC<AccessibleIcon> => {
-      switch (reaction) {
-        case ReactionTypeEnum.LIKE:
-          return ReactionLikeIcon
-        case ReactionTypeEnum.DISLIKE:
-          return ReactionDislikeIcon
-        default:
-          return iconFactory.getIcon('like')
-      }
-    },
-    [iconFactory, ReactionLikeIcon, ReactionDislikeIcon]
-  )
 
   function handlePressOffer() {
     const { offer } = stock
@@ -212,7 +182,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
           <ReactionContainer>
             <ReactionButton
               iconName="like"
-              Icon={getCustomReactionIcon(userReaction)}
+              Icon={ReactionIcon}
               onPress={showReactionModal}
               accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
             />
