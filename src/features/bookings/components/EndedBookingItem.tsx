@@ -1,10 +1,10 @@
-import React, { ComponentProps, FunctionComponent, useCallback, useState } from 'react'
-import { View } from 'react-native'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
+import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
@@ -29,21 +29,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Pastille } from 'ui/svg/icons/Pastille'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-function withSmallBadge<P extends object>(Component: FunctionComponent<P>) {
-  return function ComponentWithSmallBadge(props: P) {
-    return (
-      <View>
-        <Component {...props} />
-        <SmallBadge />
-      </View>
-    )
-  }
-}
-
-const SmallBadgedButton = withSmallBadge<ComponentProps<typeof RoundedButton>>(RoundedButton)
 
 export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
@@ -242,14 +228,3 @@ const ShareContainer = styled.View(({ theme }) => ({
 const ReactionContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
 }))
-
-const SmallBadge = styled(Pastille).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  width: 8,
-  height: 8,
-  testID: 'smallBadge',
-}))({
-  position: 'absolute',
-  top: 2,
-  right: 2,
-})
