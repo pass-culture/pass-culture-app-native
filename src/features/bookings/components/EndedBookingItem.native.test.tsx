@@ -2,7 +2,6 @@ import React, { Fragment, FunctionComponent } from 'react'
 import { Share } from 'react-native'
 
 import {
-  BookingCancellationReasons,
   CategoryIdEnum,
   NativeCategoryIdEnumv2,
   ReactionTypeEnum,
@@ -73,57 +72,6 @@ describe('EndedBookingItem', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
     expect(screen.getByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
-  })
-
-  it('should display "Réservation utilisée" and dateUsed labels if booking was used', () => {
-    renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      dateUsed: '2021-03-16T23:01:37.925926',
-    })
-
-    expect(screen.getByText('Réservation utilisée')).toBeOnTheScreen()
-
-    expect(screen.getByText('le 16/03/2021')).toBeOnTheScreen()
-  })
-
-  it('should display "Annulée" and cancellationDate labels if booking was cancelled by offerer', () => {
-    renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationReason: BookingCancellationReasons.OFFERER,
-    })
-
-    expect(screen.getByText('Annulée')).toBeOnTheScreen()
-    expect(screen.getByText('le 15/03/2021')).toBeOnTheScreen()
-  })
-
-  it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date', () => {
-    renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationReason: BookingCancellationReasons.BENEFICIARY,
-    })
-
-    expect(screen.getByText('Réservation annulée')).toBeOnTheScreen()
-    expect(screen.getByText('le 15/03/2021')).toBeOnTheScreen()
-  })
-
-  it('should display "Réservation annulée" and cancellationDate labels if booking was expired and offer is not digital without expiration date', () => {
-    renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationReason: BookingCancellationReasons.EXPIRED,
-    })
-
-    expect(screen.getByText('Réservation annulée')).toBeOnTheScreen()
-    expect(screen.getByText('le 15/03/2021')).toBeOnTheScreen()
-  })
-
-  it('should display "Réservation archivée" when offer is digital without expiration date and not cancelled', () => {
-    renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
-    })
-
-    expect(screen.getByText('Réservation archivée')).toBeOnTheScreen()
   })
 
   it('should navigate to offer page when offer is not digital without expiration date', async () => {

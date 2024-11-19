@@ -2,8 +2,9 @@ import React, { ComponentProps, FunctionComponent, useCallback, useMemo, useStat
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
+import { PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
+import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -22,7 +23,6 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useIconFactory } from 'ui/components/icons/useIconFactory'
-import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -30,8 +30,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Pastille } from 'ui/svg/icons/Pastille'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Valid } from 'ui/svg/icons/Valid'
-import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 function withSmallBadge<P extends object>(Component: FunctionComponent<P>) {
@@ -66,11 +64,6 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
 
   const shouldRedirectToBooking = isEligibleBookingsForArchiveValue && !cancellationReason
 
-  const endedBookingReason = getEndedBookingReason(
-    cancellationReason,
-    dateUsed,
-    isEligibleBookingsForArchiveValue
-  )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
@@ -197,7 +190,10 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           <EndedReasonAndDate>
-            {endedBookingReason}
+            <EndedBookingReason
+              booking={booking}
+              isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
+            />
             <Spacer.Row numberOfSpaces={1} />
             <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
           </EndedReasonAndDate>
@@ -268,35 +264,11 @@ const EndedReasonAndDate = styled.View({
   flexWrap: 'wrap',
 })
 
-function getEndedBookingReason(
-  cancellationReason?: BookingCancellationReasons | null,
-  dateUsed?: string | null,
-  isEligibleBookingsForArchiveValue?: boolean
-) {
-  if (dateUsed) {
-    return <StyledInputRule title="Réservation utilisée" icon={Valid} type="Valid" noFullWidth />
-  }
-
-  if (cancellationReason === BookingCancellationReasons.OFFERER) {
-    return <StyledInputRule title="Annulée" icon={Wrong} type="Error" noFullWidth />
-  }
-
-  if (!!isEligibleBookingsForArchiveValue && !cancellationReason) {
-    return <StyledInputRule title="Réservation archivée" icon={Valid} type="Valid" noFullWidth />
-  }
-
-  return <StyledInputRule title="Réservation annulée" icon={Wrong} type="Error" noFullWidth />
-}
-
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
   const endDate = dateUsed ?? cancellationDate
   if (endDate) return `le ${formatToSlashedFrenchDate(endDate)}`
   return null
 }
-
-const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
-  iconSize: theme.icons.sizes.smaller,
-}))``
 
 const ShareContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
