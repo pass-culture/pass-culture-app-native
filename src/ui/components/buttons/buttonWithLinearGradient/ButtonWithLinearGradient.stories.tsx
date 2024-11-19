@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -16,28 +17,28 @@ export default meta
 const variantConfig = [
   {
     label: 'ButtonWithLinearGradient default',
-    props: { onPress: () => 'doNothing', wording: 'Confirmer' },
+    props: { onPress: action('press'), wording: 'Confirmer' },
   },
   {
     label: 'ButtonWithLinearGradient disabled',
     props: {
-      onPress: () => 'doNothing',
+      onPress: action('press'),
       wording: 'Confirmer',
       isDisabled: true,
     },
   },
   {
     label: 'ButtonWithLinearGradient with fit content width',
-    props: { onPress: () => 'doNothing', wording: 'Confirmer', fitContentWidth: true },
+    props: { onPress: action('press'), wording: 'Confirmer', fitContentWidth: true },
   },
   {
     label: 'ButtonWithLinearGradient with icon',
-    props: { onPress: () => 'doNothing', wording: 'Consulter mes e-mails', icon: Email },
+    props: { onPress: action('press'), wording: 'Consulter mes e-mails', icon: Email },
   },
   {
     label: 'ButtonWithLinearGradient with icon after wording',
     props: {
-      onPress: () => 'doNothing',
+      onPress: action('press'),
       wording: 'C’est parti\u00a0!',
       icon: PlainArrowNext,
       iconAfterWording: true,

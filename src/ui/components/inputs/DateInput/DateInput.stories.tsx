@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -15,7 +16,7 @@ const baseProps = {
   date: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
-  onChange: () => 'doNothing',
+  onChange: action('change'),
 }
 
 const variantConfig = [
