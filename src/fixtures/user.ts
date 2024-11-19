@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 
 import {
   ActivityIdEnum,
+  CurrencyEnum,
   DepositType,
   EligibilityType,
   UserProfileResponse,
@@ -33,6 +34,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
     marketingPush: true,
   },
   status: { statusType: YoungStatusType.non_eligible },
+  currency: CurrencyEnum.EUR,
 }
 
 export const beneficiaryUser: UserProfileResponse = {

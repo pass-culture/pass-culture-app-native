@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { UserProfileResponse, YoungStatusType } from 'api/gen'
+import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { render, screen } from 'tests/utils/web'
@@ -29,6 +29,7 @@ const user: UserProfileResponse = {
     marketingPush: true,
   },
   status: { statusType: YoungStatusType.beneficiary },
+  currency: CurrencyEnum.EUR,
 }
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
