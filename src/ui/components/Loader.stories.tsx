@@ -1,6 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { Loader } from './Loader'
 
@@ -10,17 +11,19 @@ const meta: ComponentMeta<typeof Loader> = {
 }
 export default meta
 
-const DynamicTemplate: ComponentStory<typeof Loader> = (props) => {
-  return (
-    <NavigationContainer>
-      <Loader {...props} />
-    </NavigationContainer>
-  )
-}
+const variantConfig = [
+  {
+    label: 'Loader default',
+  },
+  {
+    label: 'Loader with message',
+    props: { message: 'Chargement en cours...' },
+  },
+]
 
-export const Default = DynamicTemplate.bind({})
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Loader} />
+)
 
-export const WithMessage = DynamicTemplate.bind({})
-WithMessage.args = {
-  message: 'Chargement en cours...',
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Loader'

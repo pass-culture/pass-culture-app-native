@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { OfferEventCardListSkeleton } from './OfferEventCardListSkeleton'
@@ -14,3 +14,4 @@ export const Default: ComponentStory<typeof OfferEventCardListSkeleton> = () => 
 )
 
 Default.args = {}
+Default.storyName = 'OfferEventCardListSkeleton'

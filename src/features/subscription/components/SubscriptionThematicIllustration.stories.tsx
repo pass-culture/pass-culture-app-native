@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -51,6 +51,7 @@ const Template: ComponentStory<typeof SubscriptionThematicIllustration> = () => 
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'SubscriptionThematicIllustration'
 
 const ThematicContainer = styled.View({
   flexDirection: 'row',

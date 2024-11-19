@@ -1,29 +1,36 @@
-import { ComponentStory } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { Tag } from './Tag'
 
-export default {
+const meta: ComponentMeta<typeof Tag> = {
   title: 'ui/Tag',
   component: Tag,
 }
-
-const Template: ComponentStory<typeof Tag> = (props) => <Tag {...props} />
-
-export const Default = Template.bind({})
-Default.args = {
-  label: '1,4km',
-}
+export default meta
 
 const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  label: '1',
-  Icon: StyledArrowRight,
-}
+const variantConfig = [
+  {
+    label: 'Tag default',
+    props: { label: '1,4km' },
+  },
+  {
+    label: 'Tag with icon',
+    props: { label: '1', Icon: StyledArrowRight },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Tag} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Tag'

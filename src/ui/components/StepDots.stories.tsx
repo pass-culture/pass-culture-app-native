@@ -1,5 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { StepDots } from './StepDots'
 
@@ -9,29 +11,32 @@ const meta: ComponentMeta<typeof StepDots> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof StepDots> = (props) => <StepDots {...props} />
-
-export const WithFirstCurrentStep = Template.bind({})
-WithFirstCurrentStep.args = {
+const baseProps = {
   numberOfSteps: 4,
-  currentStep: 1,
 }
 
-export const WithThirdCurrentStep = Template.bind({})
-WithThirdCurrentStep.args = {
-  numberOfSteps: 4,
-  currentStep: 3,
-}
+const variantConfig = [
+  {
+    label: 'StepDots with first current step',
+    props: { ...baseProps, currentStep: 1 },
+  },
+  {
+    label: 'StepDots with third current step',
+    props: { ...baseProps, currentStep: 3 },
+  },
+  {
+    label: 'StepDots with last current step',
+    props: { ...baseProps, currentStep: 4 },
+  },
+  {
+    label: 'StepDots with neutral previous steps color',
+    props: { ...baseProps, currentStep: 3, withNeutralPreviousStepsColor: true },
+  },
+]
 
-export const WithLastCurrentStep = Template.bind({})
-WithLastCurrentStep.args = {
-  numberOfSteps: 4,
-  currentStep: 4,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={StepDots} />
+)
 
-export const WithNeutralPreviousStepsColor = Template.bind({})
-WithNeutralPreviousStepsColor.args = {
-  numberOfSteps: 4,
-  currentStep: 3,
-  withNeutralPreviousStepsColor: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'StepDots'

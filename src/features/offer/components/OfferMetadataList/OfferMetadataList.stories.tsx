@@ -25,3 +25,4 @@ export const Default = Template.bind({})
 Default.args = {
   metadata,
 }
+Default.storyName = 'OfferMetadataList'

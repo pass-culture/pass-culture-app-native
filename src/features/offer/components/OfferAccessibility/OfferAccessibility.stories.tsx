@@ -22,3 +22,5 @@ Default.args = {
     visualDisability: true,
   },
 }
+
+Default.storyName = 'OfferAccessibility'

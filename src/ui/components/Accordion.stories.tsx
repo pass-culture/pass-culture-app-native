@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
 
 import { Accordion } from './Accordion'
@@ -20,32 +21,35 @@ const meta: ComponentMeta<typeof Accordion> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Accordion> = (props) => <Accordion {...props} />
 const children = 'children'
 
-export const Close = Template.bind({})
-Close.args = {
+const baseProps = {
   title: 'My accordion',
   children: <Typo.Body>{children}</Typo.Body>,
 }
 
-export const Open = Template.bind({})
-Open.args = {
-  title: 'My accordion',
-  children: <Typo.Body>{children}</Typo.Body>,
-  defaultOpen: true,
-}
+const variantConfig = [
+  {
+    label: 'Accordion close',
+    props: baseProps,
+  },
+  {
+    label: 'Accordion open',
+    props: { ...baseProps, defaultOpen: true },
+  },
+  {
+    label: 'Accordion with left component',
+    props: { ...baseProps, leftComponent: <FilterSwitch active toggle={() => undefined} /> },
+  },
+  {
+    label: 'Accordion with custom title component',
+    props: { ...baseProps, titleComponent: Typo.ButtonText },
+  },
+]
 
-export const WithLeftComponent = Template.bind({})
-WithLeftComponent.args = {
-  title: 'Accordion with switch',
-  children: <Typo.Body>{children}</Typo.Body>,
-  leftComponent: <FilterSwitch active toggle={() => undefined} />,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Accordion} />
+)
 
-export const withCustomTitleComponent = Template.bind({})
-withCustomTitleComponent.args = {
-  title: 'Accordion with switch',
-  children: <Typo.Body>{children}</Typo.Body>,
-  titleComponent: Typo.ButtonText,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Accordion'

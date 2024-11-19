@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { ThematicSubscriptionBlock } from './ThematicSubscriptionBlock'
 
@@ -19,18 +20,20 @@ const meta: ComponentMeta<typeof ThematicSubscriptionBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ThematicSubscriptionBlock> = (props) => (
-  <ThematicSubscriptionBlock {...props} />
+const variantConfig = [
+  {
+    label: 'ThematicSubscriptionBlock inactive',
+    props: { thematic: SubscriptionTheme.CINEMA, isSubscribeButtonActive: false },
+  },
+  {
+    label: 'ThematicSubscriptionBlock active',
+    props: { thematic: SubscriptionTheme.CINEMA, isSubscribeButtonActive: true },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={ThematicSubscriptionBlock} />
 )
 
-export const Inactive = Template.bind({})
-Inactive.args = {
-  thematic: SubscriptionTheme.CINEMA,
-  isSubscribeButtonActive: false,
-}
-
-export const Active = Template.bind({})
-Active.args = {
-  thematic: SubscriptionTheme.CINEMA,
-  isSubscribeButtonActive: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'ThematicSubscriptionBlock'

@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
 import { TypoDS } from 'ui/theme'
@@ -24,51 +25,62 @@ const DefaultAvatar = styled(LinearGradient).attrs(({ theme }) => ({
 
 export default meta
 
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
+const variantConfig = [
+  {
+    label: 'Avatar small',
+    props: { size: AVATAR_SMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
+  },
+  {
+    label: 'Avatar medium',
+    props: {
+      size: AVATAR_MEDIUM,
+      backgroundColor: theme.colors.attentionLight,
+      children: <TypoDS.Title3>M</TypoDS.Title3>,
+    },
+  },
+  {
+    label: 'Avatar large',
+    props: {
+      size: AVATAR_LARGE,
+      children: <Profile size={40} />,
+    },
+  },
+  {
+    label: 'Avatar with borders',
+    props: {
+      size: AVATAR_LARGE,
+      borderWidth: 6,
+      backgroundColor: theme.colors.aquamarineDark,
+      children: <Profile size={48} color={theme.colors.white} />,
+    },
+  },
+  {
+    label: 'Avatar with custom images',
+    props: {
+      size: AVATAR_LARGE,
+      borderWidth: 6,
+      children: (
+        <DefaultAvatar>
+          <BicolorProfile size={35} color={theme.colors.white} color2={theme.colors.white} />
+        </DefaultAvatar>
+      ),
+    },
+  },
+  {
+    label: 'Avatar square',
+    props: {
+      size: AVATAR_LARGE,
+      rounded: false,
+      borderWidth: 6,
+      backgroundColor: theme.colors.coralLight,
+      children: <TypoDS.Title1>M.M</TypoDS.Title1>,
+    },
+  },
+]
 
-export const Small = Template.bind({})
-Small.args = {
-  size: AVATAR_SMALL,
-  children: <TypoDS.Title3>M</TypoDS.Title3>,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={Avatar} />
+)
 
-export const Medium = Template.bind({})
-Medium.args = {
-  size: AVATAR_MEDIUM,
-  backgroundColor: theme.colors.attentionLight,
-  children: <TypoDS.Title3>M</TypoDS.Title3>,
-}
-
-export const Large = Template.bind({})
-Large.args = {
-  size: AVATAR_LARGE,
-  children: <Profile size={40} />,
-}
-
-export const WithBorders = Template.bind({})
-WithBorders.args = {
-  size: AVATAR_LARGE,
-  borderWidth: 6,
-  backgroundColor: theme.colors.aquamarineDark,
-  children: <Profile size={48} color={theme.colors.white} />,
-}
-
-export const WithCustomImage = Template.bind({})
-WithCustomImage.args = {
-  size: AVATAR_LARGE,
-  borderWidth: 6,
-  children: (
-    <DefaultAvatar>
-      <BicolorProfile size={35} color={theme.colors.white} color2={theme.colors.white} />
-    </DefaultAvatar>
-  ),
-}
-
-export const Square = Template.bind({})
-Square.args = {
-  size: AVATAR_LARGE,
-  rounded: false,
-  borderWidth: 6,
-  backgroundColor: theme.colors.coralLight,
-  children: <TypoDS.Title1>M.M</TypoDS.Title1>,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'Avatar'

@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { SubscriptionThematicButton } from './SubscriptionThematicButton'
 
@@ -19,18 +20,19 @@ const meta: ComponentMeta<typeof SubscriptionThematicButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubscriptionThematicButton> = (props) => (
-  <SubscriptionThematicButton {...props} />
+const variantConfig = [
+  {
+    label: 'SubscriptionThematicButton default',
+    props: { thematic: SubscriptionTheme.CINEMA, checked: false },
+  },
+  {
+    label: 'SubscriptionThematicButton checked',
+    props: { thematic: SubscriptionTheme.CINEMA, checked: true },
+  },
+]
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SubscriptionThematicButton} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  thematic: SubscriptionTheme.CINEMA,
-  checked: false,
-}
-
-export const Checked = Template.bind({})
-Checked.args = {
-  thematic: SubscriptionTheme.CINEMA,
-  checked: true,
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SubscriptionThematicButton'

@@ -1,11 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { AuthenticationButton } from './AuthenticationButton'
 
 const meta: ComponentMeta<typeof AuthenticationButton> = {
-  title: 'Features/auth/LogInButton',
+  title: 'Features/auth/AuthenticationButton',
   component: AuthenticationButton,
   decorators: [
     (Story) => (
@@ -17,16 +19,20 @@ const meta: ComponentMeta<typeof AuthenticationButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AuthenticationButton> = (props) => (
-  <AuthenticationButton {...props} />
+const variantConfig = [
+  {
+    label: 'AuthenticationButton round price',
+    props: { type: 'login' },
+  },
+  {
+    label: 'AuthenticationButton decimal price',
+    props: { type: 'signup' },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={AuthenticationButton} />
 )
 
-export const Login = Template.bind({})
-Login.args = {
-  type: 'login',
-}
-
-export const Signup = Template.bind({})
-Signup.args = {
-  type: 'signup',
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'AuthenticationButton'
