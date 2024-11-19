@@ -1,8 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { DEFAULT_SELECTED_DATE, MAXIMUM_DATE, MINIMUM_DATE } from 'features/auth/fixtures/fixtures'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof DateInput> = {
   title: 'ui/inputs/DateInput',
@@ -10,19 +11,27 @@ const meta: ComponentMeta<typeof DateInput> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof DateInput> = (args) => <DateInput {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
+const baseProps = {
   date: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
+  onChange: () => 'doNothing',
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  date: DEFAULT_SELECTED_DATE,
-  minimumDate: MINIMUM_DATE,
-  maximumDate: MAXIMUM_DATE,
-  errorMessage: 'Error message',
-}
+const variantConfig = [
+  {
+    label: 'DateInput',
+    props: { ...baseProps },
+  },
+  {
+    label: 'DateInput with error',
+    props: { ...baseProps, errorMessage: 'Error message' },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={DateInput} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'DateInput'

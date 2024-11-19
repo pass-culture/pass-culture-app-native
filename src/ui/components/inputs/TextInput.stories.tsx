@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { Eye } from 'ui/svg/icons/Eye'
 
 import { TextInput } from './TextInput'
@@ -11,47 +12,45 @@ const meta: ComponentMeta<typeof TextInput> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args} />
+const baseProps = { placeholder: 'Placeholder...', label: 'Label' }
 
-export const Default = Template.bind({})
-Default.args = {
-  placeholder: 'Placeholder...',
-}
-
-export const WithLabel = Template.bind({})
-WithLabel.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-}
-
-export const Required = Template.bind({})
-Required.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  isRequiredField: true,
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  disabled: true,
-}
-
-export const Error = Template.bind({})
-Error.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  isError: true,
-}
-
-export const WithInsideRightButton = Template.bind({})
-WithInsideRightButton.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  rightButton: {
-    icon: Eye,
-    onPress: () => alert('Do nothing'),
-    accessibilityLabel: 'Afficher le mot de passe',
+const variantConfig = [
+  {
+    label: 'TextInput',
+    props: { placeholder: 'Placeholder...' },
   },
-}
+  {
+    label: 'TextInput with label',
+    props: { ...baseProps },
+  },
+  {
+    label: 'Disabled TextInput',
+    props: { ...baseProps, disabled: true },
+  },
+  {
+    label: 'Required TextInput',
+    props: { ...baseProps, isRequiredField: true },
+  },
+  {
+    label: 'TextInput with error',
+    props: { ...baseProps, isError: true },
+  },
+  {
+    label: 'TextInput with inside rightButton',
+    props: {
+      ...baseProps,
+      rightButton: {
+        icon: Eye,
+        onPress: () => alert('Do nothing'),
+        accessibilityLabel: 'Afficher le mot de passe',
+      },
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={TextInput} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'TextInput'

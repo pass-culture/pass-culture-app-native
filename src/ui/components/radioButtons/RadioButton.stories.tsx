@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
@@ -29,60 +30,41 @@ const meta: ComponentMeta<typeof RadioButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof RadioButton> = (args) => <RadioButton {...args} />
+const variantConfig = [
+  {
+    label: 'RadioButton',
+    props: { label: 'label 1', isSelected: false },
+  },
+  {
+    label: 'RadioButton with description',
+    props: {
+      label: 'label 1',
+      description: 'description label 1',
+      isSelected: false,
+    },
+  },
+  {
+    label: 'Selected RadioButton',
+    props: { label: 'label 1', isSelected: true },
+  },
+  {
+    label: 'Selected RadioButton with description',
+    props: { label: 'label 1', description: 'description item 1', isSelected: true },
+  },
+  {
+    label: 'RadioButton with icon',
+    props: {
+      label: 'label 1',
+      description: 'description item 1',
+      icon: VideoGame,
+      isSelected: false,
+    },
+  },
+]
 
-export const Default = Template.bind({})
-Default.args = {
-  label: 'label 1',
-  isSelected: false,
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={RadioButton} />
+)
 
-export const WithDescription = Template.bind({})
-WithDescription.args = {
-  label: 'label 1',
-  description: 'description label 1',
-  isSelected: false,
-}
-
-export const WithSelectedValue = Template.bind({})
-WithSelectedValue.args = {
-  label: 'label 1',
-  isSelected: true,
-}
-
-export const WithSelectedValueAndDescription = Template.bind({})
-WithSelectedValueAndDescription.args = {
-  label: 'label 1',
-  description: 'description item 1',
-  isSelected: false,
-}
-
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  label: 'label 1',
-  description: 'description item 1',
-  icon: VideoGame,
-  isSelected: false,
-}
-
-const items = [{ label: 'label 1' }, { label: 'label 2' }, { label: 'label 3' }]
-const ListTemplate = () => {
-  const [selectedValue, setSelectedRadioButton] = useState('')
-  return (
-    <React.Fragment>
-      {items.map((item) => {
-        const isSelected = selectedValue === item.label
-        return (
-          <RadioButton
-            key={item.label}
-            onSelect={() => setSelectedRadioButton(item.label)}
-            isSelected={isSelected}
-            {...item}
-          />
-        )
-      })}
-    </React.Fragment>
-  )
-}
-
-export const WithMultipleRadioButton = ListTemplate.bind({})
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'RadioButton'

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { CAPITALIZED_MONTHS } from 'shared/date/months'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof DropDown> = {
   title: 'ui/inputs/DropDown',
@@ -10,27 +11,30 @@ const meta: ComponentMeta<typeof DropDown> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof DropDown> = (args) => <DropDown {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
+const baseProps = {
   label: 'Mois',
   placeholder: 'Mois',
   options: [...CAPITALIZED_MONTHS],
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  label: 'Mois',
-  placeholder: 'Mois',
-  options: [...CAPITALIZED_MONTHS],
-  isError: true,
-}
+const variantConfig = [
+  {
+    label: 'DateInput',
+    props: { ...baseProps },
+  },
+  {
+    label: 'DateInput with error',
+    props: { ...baseProps, isError: true },
+  },
+  {
+    label: 'DateInput with default selected value',
+    props: { ...baseProps, value: CAPITALIZED_MONTHS[7] },
+  },
+]
 
-export const WithDefaultSelectedValue = Template.bind({})
-WithDefaultSelectedValue.args = {
-  label: 'Mois',
-  placeholder: 'Mois',
-  options: [...CAPITALIZED_MONTHS],
-  value: CAPITALIZED_MONTHS[7],
-}
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={DropDown} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'DropDown'

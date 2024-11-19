@@ -4,6 +4,7 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -52,21 +53,31 @@ const venue: AlgoliaVenue = {
 const ITEM_HEIGHT = LENGTH_XXS
 const ITEM_WIDTH = LENGTH_XS
 
-const Template: ComponentStory<typeof SearchVenueItem> = (props) => <SearchVenueItem {...props} />
+const baseProps = { width: ITEM_WIDTH, height: ITEM_HEIGHT }
 
-export const Default = Template.bind({})
-Default.args = {
-  venue,
-  width: ITEM_WIDTH,
-  height: ITEM_HEIGHT,
-}
-
-export const WithoutImage = Template.bind({})
-WithoutImage.args = {
-  venue: {
-    ...venue,
-    banner_url: null,
+const variantConfig = [
+  {
+    label: 'SearchVenueItem',
+    props: {
+      ...baseProps,
+      venue,
+    },
   },
-  width: ITEM_WIDTH,
-  height: ITEM_HEIGHT,
-}
+  {
+    label: 'SearchVenueItem without image',
+    props: {
+      ...baseProps,
+      venue: {
+        ...venue,
+        banner_url: null,
+      },
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SearchVenueItem} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SearchVenueItem'

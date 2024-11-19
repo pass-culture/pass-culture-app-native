@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { LargeTextInput } from './LargeTextInput'
 
 const meta: ComponentMeta<typeof LargeTextInput> = {
@@ -9,41 +11,36 @@ const meta: ComponentMeta<typeof LargeTextInput> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof LargeTextInput> = (props) => <LargeTextInput {...props} />
-
-export const Default = Template.bind({})
-Default.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-}
-
-export const WithValue = Template.bind({})
-WithValue.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  value: 'Value...',
-}
-
-export const Required = Template.bind({})
-Required.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  isRequiredField: true,
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  disabled: true,
-}
-
 const textWith801Character = 'a'.repeat(801)
-export const Error = Template.bind({})
-Error.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
-  value: textWith801Character,
-  showErrorMessage: true,
-  isError: true,
-}
+
+const baseProps = { label: 'Label', placeholder: 'Placeholder...' }
+
+const variantConfig = [
+  {
+    label: 'LargeTextInput',
+    props: { ...baseProps },
+  },
+  {
+    label: 'LargeTextInput with value',
+    props: { ...baseProps, value: 'Value...' },
+  },
+  {
+    label: 'Required LargeTextInput',
+    props: { ...baseProps, isRequiredField: true },
+  },
+  {
+    label: 'Disabled LargeTextInput',
+    props: { ...baseProps, disabled: true },
+  },
+  {
+    label: ' LargeTextInput with Error',
+    props: { ...baseProps, isError: true, showErrorMessage: true, value: textWith801Character },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={LargeTextInput} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'LargeTextInput'

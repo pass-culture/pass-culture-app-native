@@ -5,6 +5,7 @@ import React from 'react'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
 import { Highlighted, HistoryItem } from 'features/search/types'
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof SearchHistoryItem> = {
   title: 'features/search/SearchHistoryItem',
@@ -20,46 +21,48 @@ const historyItem: Highlighted<HistoryItem> = {
   _highlightResult: { query: { value: 'one piece' } },
 }
 
-const Template: ComponentStory<typeof SearchHistoryItem> = (props) => (
-  <SearchHistoryItem {...props} />
+const variantConfig = [
+  {
+    label: 'SearchHistoryItem',
+    props: {
+      item: historyItem,
+      queryHistory: '',
+      onPress: action('pressed!'),
+    },
+  },
+  {
+    label: 'SearchHistoryItem with Category',
+    props: {
+      item: {
+        ...historyItem,
+        category: SearchGroupNameEnumv2.LIVRES,
+        categoryLabel: 'Livres',
+        label: 'one piece dans Livres',
+      },
+      queryHistory: '',
+      onPress: action('pressed!'),
+    },
+  },
+  {
+    label: 'SearchHistoryItem with nativeCategory',
+    props: {
+      item: {
+        ...historyItem,
+        category: SearchGroupNameEnumv2.LIVRES,
+        categoryLabel: 'Livres',
+        nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+        nativeCategoryLabel: 'Livres papier',
+        label: 'one piece dabs Livres papier',
+      },
+      queryHistory: '',
+      onPress: action('pressed!'),
+    },
+  },
+]
+
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={SearchHistoryItem} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  item: historyItem,
-  queryHistory: '',
-  onPress: action('pressed!'),
-}
-
-export const WithHighlightening = Template.bind({})
-WithHighlightening.args = {
-  item: { ...historyItem, _highlightResult: { query: { value: '<mark>one</mark> piece' } } },
-  queryHistory: 'one',
-  onPress: action('pressed!'),
-}
-
-export const WithCategory = Template.bind({})
-WithCategory.args = {
-  item: {
-    ...historyItem,
-    category: SearchGroupNameEnumv2.LIVRES,
-    categoryLabel: 'Livres',
-    label: 'one piece dans Livres',
-  },
-  queryHistory: '',
-  onPress: action('pressed!'),
-}
-
-export const WithNativeCategory = Template.bind({})
-WithNativeCategory.args = {
-  item: {
-    ...historyItem,
-    category: SearchGroupNameEnumv2.LIVRES,
-    categoryLabel: 'Livres',
-    nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER,
-    nativeCategoryLabel: 'Livres papier',
-    label: 'one piece dabs Livres papier',
-  },
-  queryHistory: '',
-  onPress: action('pressed!'),
-}
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'SearchHistoryItem'

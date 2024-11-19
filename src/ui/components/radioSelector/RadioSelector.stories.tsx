@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+
 import { RadioSelector } from './RadioSelector'
 
 const meta: ComponentMeta<typeof RadioSelector> = {
@@ -30,9 +32,7 @@ const meta: ComponentMeta<typeof RadioSelector> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof RadioSelector> = (args) => <RadioSelector {...args} />
-export const Default = Template.bind({})
-Default.args = {
+const baseProps = {
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
   description: '1 place restante',
   rightText: `35\u00a0€`,
@@ -41,32 +41,32 @@ Default.args = {
   testID: '',
   accessibilityLabel: '',
 }
-Default.storyName = 'RadioSelector Default Mode'
 
-export const IsActive = Template.bind({})
-IsActive.args = {
-  ...Default.args,
-  checked: true,
-}
-IsActive.storyName = 'RadioSelector Active Mode'
+const variantConfig = [
+  {
+    label: 'Checked RadioSelector',
+    props: { ...baseProps, checked: true },
+  },
+  {
+    label: 'Disabled RadioSelector',
+    props: { ...baseProps, disabled: true },
+  },
+  {
+    label: 'RadioSelector without description',
+    props: { ...baseProps, description: '' },
+  },
+  {
+    label: 'RadioSelector without right text',
+    props: {
+      ...baseProps,
+      rightText: '',
+    },
+  },
+]
 
-export const IsDisabled = Template.bind({})
-IsDisabled.args = {
-  ...Default.args,
-  disabled: true,
-}
-IsDisabled.storyName = 'RadioSelector Disabled Mode'
+const Template: ComponentStory<typeof VariantsTemplate> = () => (
+  <VariantsTemplate variants={variantConfig} Component={RadioSelector} />
+)
 
-export const WithoutDescription = Template.bind({})
-WithoutDescription.args = {
-  ...Default.args,
-  description: '',
-}
-WithoutDescription.storyName = 'RadioSelector Default Mode without description'
-
-export const WithoutRightText = Template.bind({})
-WithoutRightText.args = {
-  ...Default.args,
-  rightText: '',
-}
-WithoutRightText.storyName = 'RadioSelector Default Mode without right text'
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'RadioSelector'
