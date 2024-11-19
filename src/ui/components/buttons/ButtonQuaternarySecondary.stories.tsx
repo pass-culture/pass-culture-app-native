@@ -35,8 +35,12 @@ const variantConfig: Variants<typeof ButtonQuaternarySecondary> = [
   },
 ]
 
-const Template: VariantsStory<typeof ButtonQuaternarySecondary> = () => (
-  <VariantsTemplate variants={variantConfig} Component={ButtonQuaternarySecondary} />
+const Template: VariantsStory<typeof ButtonQuaternarySecondary> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={ButtonQuaternarySecondary}
+    defaultProps={args}
+  />
 )
 
 export const AllVariants = Template.bind({})

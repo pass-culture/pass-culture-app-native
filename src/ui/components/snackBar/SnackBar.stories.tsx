@@ -45,8 +45,8 @@ const variantConfig: Variants<typeof SnackBar> = [
   },
 ]
 
-const Template: VariantsStory<typeof SnackBar> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SnackBar} />
+const Template: VariantsStory<typeof SnackBar> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={SnackBar} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

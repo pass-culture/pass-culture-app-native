@@ -29,8 +29,8 @@ const variantConfig: Variants<typeof ActionPlanTag> = [
   },
 ]
 
-const Template: VariantsStory<typeof ActionPlanTag> = () => (
-  <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} />
+const Template: VariantsStory<typeof ActionPlanTag> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

@@ -84,11 +84,11 @@ const variantConfig: Variants<typeof StepButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof StepButton> = () => (
+const Template: VariantsStory<typeof StepButton> = (args) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={StepButton}
-    defaultProps={{ navigateTo: { screen: 'SelectIDOrigin' } }}
+    defaultProps={{ navigateTo: { screen: 'SelectIDOrigin' }, ...args }}
   />
 )
 

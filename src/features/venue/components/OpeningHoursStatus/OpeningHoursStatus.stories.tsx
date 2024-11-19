@@ -54,8 +54,8 @@ const variantConfig: Variants<typeof OpeningHoursStatus> = [
   },
 ]
 
-const Template: VariantsStory<typeof OpeningHoursStatus> = () => (
-  <VariantsTemplate variants={variantConfig} Component={OpeningHoursStatus} />
+const Template: VariantsStory<typeof OpeningHoursStatus> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={OpeningHoursStatus} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

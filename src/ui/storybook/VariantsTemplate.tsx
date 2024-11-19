@@ -19,17 +19,23 @@ export type Variants<
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
 > = Variant<Props>[]
 
-type VariantsTemplateProps<Props extends Record<string, unknown>> = {
+type VariantsTemplateProps<
+  ComponentType extends React.ComponentType<Props>,
+  Props extends Record<string, unknown>,
+> = {
   variants: Variant<Props>[] | any[]
-  Component: React.ComponentType<Props> | any
+  Component: ComponentType | any
   defaultProps?: Partial<Props>
 }
 
-export const VariantsTemplate = <Props extends Record<string, unknown>>({
+export const VariantsTemplate = <
+  ComponentType extends React.ComponentType<Props>,
+  Props extends Record<string, unknown> = ComponentProps<ComponentType>,
+>({
   variants,
   Component,
   defaultProps = {},
-}: VariantsTemplateProps<Props>) => (
+}: VariantsTemplateProps<ComponentType, Props>): ReturnType<ComponentStory<ComponentType>> => (
   <ViewGap gap={4}>
     {variants.map((variant, index) => {
       const props = {
@@ -58,7 +64,7 @@ export const VariantsTemplate = <Props extends Record<string, unknown>>({
 export type VariantsStory<
   ComponentType extends React.ComponentType<Props>,
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
-> = ComponentStory<typeof VariantsTemplate<Props>>
+> = ComponentStory<ComponentType>
 
 const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
   ({ withBackground, minHeight, theme }) => ({

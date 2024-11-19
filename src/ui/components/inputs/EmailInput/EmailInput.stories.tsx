@@ -37,8 +37,8 @@ const variantConfig: Variants<typeof EmailInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof EmailInput> = () => (
-  <VariantsTemplate variants={variantConfig} Component={EmailInput} />
+const Template: VariantsStory<typeof EmailInput> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={EmailInput} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

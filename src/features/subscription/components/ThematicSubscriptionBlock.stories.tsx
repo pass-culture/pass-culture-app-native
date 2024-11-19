@@ -31,8 +31,12 @@ const variantConfig: Variants<typeof ThematicSubscriptionBlock> = [
   },
 ]
 
-const Template: VariantsStory<typeof ThematicSubscriptionBlock> = () => (
-  <VariantsTemplate variants={variantConfig} Component={ThematicSubscriptionBlock} />
+const Template: VariantsStory<typeof ThematicSubscriptionBlock> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={ThematicSubscriptionBlock}
+    defaultProps={{ ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

@@ -67,8 +67,12 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   },
 ]
 
-const Template: VariantsStory<typeof AttachedCardDisplay> = () => (
-  <VariantsTemplate variants={variantConfig} Component={AttachedCardDisplay} />
+const Template: VariantsStory<typeof AttachedCardDisplay> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={AttachedCardDisplay}
+    defaultProps={{ ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

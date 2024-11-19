@@ -64,8 +64,8 @@ const variantConfig: Variants<typeof RadioSelector> = [
   },
 ]
 
-const Template: VariantsStory<typeof RadioSelector> = () => (
-  <VariantsTemplate variants={variantConfig} Component={RadioSelector} />
+const Template: VariantsStory<typeof RadioSelector> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={RadioSelector} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

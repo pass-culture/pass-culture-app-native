@@ -43,8 +43,8 @@ const variantConfig: Variants<typeof CreditProgressBar> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditProgressBar> = () => (
-  <VariantsTemplate variants={variantConfig} Component={CreditProgressBar} />
+const Template: VariantsStory<typeof CreditProgressBar> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={CreditProgressBar} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

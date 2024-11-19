@@ -34,8 +34,8 @@ const variantConfig: Variants<typeof Checkbox> = [
   },
 ]
 
-const Template: VariantsStory<typeof Checkbox> = () => (
-  <VariantsTemplate variants={variantConfig} Component={Checkbox} />
+const Template: VariantsStory<typeof Checkbox> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={Checkbox} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

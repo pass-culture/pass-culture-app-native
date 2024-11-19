@@ -39,8 +39,12 @@ const variantConfig: Variants<typeof SectionWithDivider> = [
   },
 ]
 
-const Template: VariantsStory<typeof SectionWithDivider> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SectionWithDivider} />
+const Template: VariantsStory<typeof SectionWithDivider> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={SectionWithDivider}
+    defaultProps={{ ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

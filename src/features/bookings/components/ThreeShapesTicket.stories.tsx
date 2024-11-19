@@ -28,8 +28,8 @@ const variantConfig: Variants<typeof ThreeShapesTicket> = [
   },
 ]
 
-const Template: VariantsStory<typeof ThreeShapesTicket> = () => (
-  <VariantsTemplate variants={variantConfig} Component={ThreeShapesTicket} />
+const Template: VariantsStory<typeof ThreeShapesTicket> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={ThreeShapesTicket} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

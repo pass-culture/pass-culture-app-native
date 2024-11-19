@@ -55,8 +55,12 @@ const variantConfig: Variants<typeof SubscriptionMessageBadge> = [
   },
 ]
 
-const Template: VariantsStory<typeof SubscriptionMessageBadge> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SubscriptionMessageBadge} />
+const Template: VariantsStory<typeof SubscriptionMessageBadge> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={SubscriptionMessageBadge}
+    defaultProps={args}
+  />
 )
 
 export const AllVariants = Template.bind({})

@@ -30,8 +30,8 @@ const variantConfig: Variants<typeof InputContainer> = [
   },
 ]
 
-const Template: VariantsStory<typeof InputContainer> = () => (
-  <VariantsTemplate variants={variantConfig} Component={InputContainer} />
+const Template: VariantsStory<typeof InputContainer> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={InputContainer} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

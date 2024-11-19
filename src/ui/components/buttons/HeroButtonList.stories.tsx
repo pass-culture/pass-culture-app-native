@@ -71,8 +71,8 @@ const variantConfig: Variants<typeof HeroButtonList> = [
   },
 ]
 
-const Template: VariantsStory<typeof HeroButtonList> = () => (
-  <VariantsTemplate variants={variantConfig} Component={HeroButtonList} />
+const Template: VariantsStory<typeof HeroButtonList> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={HeroButtonList} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

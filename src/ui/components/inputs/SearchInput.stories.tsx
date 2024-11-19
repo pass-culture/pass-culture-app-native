@@ -57,11 +57,11 @@ const variantConfig: Variants<typeof SearchInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchInput> = () => (
+const Template: VariantsStory<typeof SearchInput> = (args) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SearchInput}
-    defaultProps={{ placeholder: 'Placeholder...' }}
+    defaultProps={{ placeholder: 'Placeholder...', ...args }}
   />
 )
 

@@ -47,8 +47,8 @@ const variantConfig: Variants<typeof OfferImage> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferImage> = () => (
-  <VariantsTemplate variants={variantConfig} Component={OfferImage} />
+const Template: VariantsStory<typeof OfferImage> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={OfferImage} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

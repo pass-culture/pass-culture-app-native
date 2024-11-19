@@ -114,8 +114,8 @@ const variantConfig: Variants<typeof AgeButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof AgeButton> = () => (
-  <VariantsTemplate variants={variantConfig} Component={AgeButton} />
+const Template: VariantsStory<typeof AgeButton> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={AgeButton} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
