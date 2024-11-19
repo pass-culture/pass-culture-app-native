@@ -32,13 +32,7 @@ If `bundle exec pod install` didn't work, check in Xcode -> Settings -> Location
 
 ### 🔥 Firebase setup
 
-In your password manager application, go to the `Tech/Firebase` folder, download all `GoogleService-Info.plist` files for each environment. Then rename the files accordingly :
-
-- `GoogleService-Info-testing.plist`
-- `GoogleService-Info-staging.plist`
-- `GoogleService-Info-production.plist`
-
-Add these files into the `ios/Firebase` folder
+You will need to add the `GoogleService-Info.plist` file in the `ios` directory. You can get a copy of the testing configuration one through the password manager, or directly through the Firebase console inside `Project Settings`.
 
 ### 🔨Setup Xcode
 
