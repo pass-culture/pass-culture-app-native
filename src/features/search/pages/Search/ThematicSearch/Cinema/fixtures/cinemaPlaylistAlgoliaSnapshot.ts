@@ -93,7 +93,6 @@ export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
           offer: {
             name: 'Harry potter et la coupe de feu',
             subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-            releaseDate: '2005-11-30',
           },
           venue: venueDataTest,
           _geoloc: {
@@ -106,7 +105,6 @@ export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
           offer: {
             name: 'Harry potter et le prince de sang-mêlé',
             subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-            releaseDate: '2009-07-15',
           },
           venue: venueDataTest,
           _geoloc: {
@@ -146,7 +144,6 @@ export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
           offer: {
             name: 'Carte ciné - multi',
             subcategoryId: SubcategoryIdEnum.CARTE_CINE_MULTISEANCES,
-            releaseDate: '2009-07-15',
           },
           venue: venueDataTest,
           _geoloc: {
