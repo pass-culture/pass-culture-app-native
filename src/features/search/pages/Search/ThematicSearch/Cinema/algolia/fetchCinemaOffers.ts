@@ -1,19 +1,15 @@
 import { MultipleQueriesQuery } from '@algolia/client-search'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
+import { FetchThematicSearchOffers } from 'features/search/pages/Search/ThematicSearch/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
-type FetchCinemaOffers = {
-  userLocation?: Position
-}
-
-export const fetchCinemaOffers = async ({ userLocation }: FetchCinemaOffers) => {
+export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOffers) => {
   const queryIndex = {
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
     query: '',
