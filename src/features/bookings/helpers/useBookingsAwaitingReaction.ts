@@ -14,7 +14,8 @@ export function useBookingsAwaitingReaction() {
     const subCategory = subcategoriesMapping[data.stock.offer.subcategoryId]
     return (
       reactionCategories.categories.includes(subCategory.nativeCategoryId) &&
-      data.userReaction === null
+      data.userReaction === null &&
+      !data.cancellationDate
     )
   }).length
 }
