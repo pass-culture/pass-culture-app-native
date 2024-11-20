@@ -15,7 +15,6 @@ import { ModalIconProps } from './types'
 type ModalHeaderProps = {
   title: string
   titleID?: string
-  boldTitle?: boolean
   numberOfLines?: number
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
