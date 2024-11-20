@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { DotComponent } from './DotComponent'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof DotComponent> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof DotComponent> = [
   {
     label: 'DotComponent done',
     props: { index: 1, activeIndex: 2, numberOfSteps: 3, isActive: false },
@@ -36,7 +36,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof DotComponent> = () => (
   <VariantsTemplate variants={variantConfig} Component={DotComponent} />
 )
 

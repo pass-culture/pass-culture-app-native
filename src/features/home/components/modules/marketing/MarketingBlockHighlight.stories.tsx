@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { MarketingBlockHighlight } from './MarketingBlockHighlight'
 
@@ -20,30 +20,51 @@ const meta: ComponentMeta<typeof MarketingBlockHighlight> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof MarketingBlockHighlight> = [
   {
     label: 'MarketingBlockHighlight default',
     props: {
       title: 'Marathon Harry Potter dans tous les cinémas de France',
-      backgroundImageUrl:
-        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-      subtitle: 'Du 12/06 au 24/06',
       homeId: 'homeId',
       moduleId: 'moduleId',
     },
   },
   {
-    label: 'MarketingBlockHighlight without image',
+    label: 'MarketingBlockHighlight with image',
     props: {
       title: 'Marathon Harry Potter dans tous les cinémas de France',
-      subtitle: 'Du 12/06 au 24/06',
       homeId: 'homeId',
       moduleId: 'moduleId',
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+    },
+  },
+  {
+    label: 'MarketingBlockHighlight with image and subtitle',
+    props: {
+      title: 'Marathon Harry Potter dans tous les cinémas de France',
+      homeId: 'homeId',
+      moduleId: 'moduleId',
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+      subtitle: 'Du 12/06 au 24/06',
+    },
+  },
+  {
+    label: 'MarketingBlockHighlight with image, subtitle and label',
+    props: {
+      title: 'Marathon Harry Potter dans tous les cinémas de France',
+      homeId: 'homeId',
+      moduleId: 'moduleId',
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+      subtitle: 'Du 12/06 au 24/06',
+      label: 'Cinéma',
     },
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof MarketingBlockHighlight> = () => (
   <VariantsTemplate variants={variantConfig} Component={MarketingBlockHighlight} />
 )
 

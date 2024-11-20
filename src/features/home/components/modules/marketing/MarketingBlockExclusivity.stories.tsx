@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -33,32 +33,26 @@ const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof MarketingBlockExclusivity> = [
   {
     label: 'MarketingBlockExclusivity default',
     props: {
-      title: 'Marathon Harry Potter dans tous les cinémas de France',
-      subtitle: 'Du 12/06 au 24/06',
-      homeId: 'homeId',
       moduleId: 'moduleId',
-      backgroundImageUrl:
-        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
       offer: offersFixture[0],
     },
   },
   {
-    label: 'MarketingBlockExclusivity without image',
+    label: 'MarketingBlockExclusivity with image',
     props: {
-      title: 'Marathon Harry Potter dans tous les cinémas de France',
-      subtitle: 'Du 12/06 au 24/06',
-      homeId: 'homeId',
       moduleId: 'moduleId',
       offer: offersFixture[0],
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
     },
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof MarketingBlockExclusivity> = () => (
   <VariantsTemplate variants={variantConfig} Component={MarketingBlockExclusivity} />
 )
 

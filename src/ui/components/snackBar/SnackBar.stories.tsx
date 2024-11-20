@@ -1,10 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { computedTheme } from 'tests/computedTheme'
 import { mapSnackBarTypeToStyle } from 'ui/components/snackBar/mapSnackBarTypeToStyle'
 import { SnackBarType } from 'ui/components/snackBar/types'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { getSpacing } from 'ui/theme'
 
 import { SnackBar } from './SnackBar'
@@ -15,7 +15,7 @@ const meta: ComponentMeta<typeof SnackBar> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof SnackBar> = [
   {
     label: 'SnackBar success',
     props: {
@@ -45,7 +45,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SnackBar> = () => (
   <VariantsTemplate variants={variantConfig} Component={SnackBar} />
 )
 

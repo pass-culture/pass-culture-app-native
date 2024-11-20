@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueMapPreview } from './VenueMapPreview'
 
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof VenueMapPreview> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof VenueMapPreview> = [
   {
     label: 'VenueMapPreview',
     props: {
@@ -32,7 +32,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof VenueMapPreview> = () => (
   <VariantsTemplate variants={variantConfig} Component={VenueMapPreview} />
 )
 

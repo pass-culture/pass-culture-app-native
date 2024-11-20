@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -25,7 +25,7 @@ const textExample = ({ withSubtitle = true }) => (
   </React.Fragment>
 )
 
-const variantConfig = [
+const variantConfig: Variants<typeof GenericBanner> = [
   {
     label: 'GenericBanner default',
     props: { children: textExample({}) },
@@ -44,7 +44,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof GenericBanner> = () => (
   <VariantsTemplate variants={variantConfig} Component={GenericBanner} />
 )
 

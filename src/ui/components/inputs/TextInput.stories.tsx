@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Eye } from 'ui/svg/icons/Eye'
 
 import { TextInput } from './TextInput'
@@ -14,7 +14,7 @@ export default meta
 
 const baseProps = { placeholder: 'Placeholder...', label: 'Label' }
 
-const variantConfig = [
+const variantConfig: Variants<typeof TextInput> = [
   {
     label: 'TextInput',
     props: { placeholder: 'Placeholder...' },
@@ -48,7 +48,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof TextInput> = () => (
   <VariantsTemplate variants={variantConfig} Component={TextInput} />
 )
 

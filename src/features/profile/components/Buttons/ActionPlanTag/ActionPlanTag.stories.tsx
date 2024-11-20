@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { ActionPlanStatus, ActionPlanTag } from './ActionPlanTag'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof ActionPlanTag> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof ActionPlanTag> = [
   {
     label: 'ActionPlanTag',
   },
@@ -29,7 +29,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof ActionPlanTag> = () => (
   <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} />
 )
 

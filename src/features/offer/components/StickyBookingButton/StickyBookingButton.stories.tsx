@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof StickyBookingButton> = {
   title: 'features/offer/StickyBookingButton',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const variantConfig = [
+const variantConfig: Variants<typeof StickyBookingButton> = [
   {
     label: 'StickyBookingButton default',
     props: {
@@ -87,7 +87,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof StickyBookingButton> = () => (
+const Template: VariantsStory<typeof StickyBookingButton> = () => (
   <View style={styles.container}>
     <VariantsTemplate variants={variantConfig} Component={StickyBookingButton} />
   </View>

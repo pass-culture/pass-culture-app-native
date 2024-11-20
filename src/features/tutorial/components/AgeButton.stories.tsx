@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { TutorialTypes } from 'features/tutorial/enums'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -56,7 +56,7 @@ const TextExample = ({ withSubtitle = false }) => (
   </React.Fragment>
 )
 
-const variantConfig = [
+const variantConfig: Variants<typeof AgeButton> = [
   {
     label: 'AgeButton default',
     props: {
@@ -114,7 +114,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof AgeButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={AgeButton} />
 )
 

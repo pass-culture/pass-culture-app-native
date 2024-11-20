@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CAPITALIZED_MONTHS } from 'shared/date/months'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof DropDown> = {
   title: 'ui/inputs/DropDown',
@@ -17,7 +17,7 @@ const baseProps = {
   options: [...CAPITALIZED_MONTHS],
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof DropDown> = [
   {
     label: 'DateInput',
     props: { ...baseProps },
@@ -32,7 +32,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof DropDown> = () => (
   <VariantsTemplate variants={variantConfig} Component={DropDown} />
 )
 

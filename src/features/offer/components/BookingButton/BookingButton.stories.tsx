@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof BookingButton> = {
   title: 'features/offer/BookingButton',
@@ -10,7 +10,7 @@ const meta: ComponentMeta<typeof BookingButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof BookingButton> = [
   {
     label: 'BookingButton default',
     props: {
@@ -70,7 +70,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof BookingButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={BookingButton} />
 )
 

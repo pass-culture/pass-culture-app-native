@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo, TypoDS } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
@@ -24,7 +24,7 @@ const SectionContent: React.JSX.Element = (
   </View>
 )
 
-const variantConfig = [
+const variantConfig: Variants<typeof SectionWithDivider> = [
   {
     label: 'SectionWithDivider default',
     props: { visible: true, children: SectionContent },
@@ -39,7 +39,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SectionWithDivider> = () => (
   <VariantsTemplate variants={variantConfig} Component={SectionWithDivider} />
 )
 

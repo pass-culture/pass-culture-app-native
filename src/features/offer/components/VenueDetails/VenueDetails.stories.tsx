@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueDetails } from './VenueDetails'
 
@@ -16,7 +16,7 @@ const baseProps = {
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof VenueDetails> = [
   {
     label: 'VenueDetails default',
     props: baseProps,
@@ -27,7 +27,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof VenueDetails> = () => (
   <VariantsTemplate variants={variantConfig} Component={VenueDetails} />
 )
 

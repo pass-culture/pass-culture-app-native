@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Subtitle } from './Subtitle'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof Subtitle> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof Subtitle> = [
   {
     label: 'Subtitle',
     props: { startSubtitle: 'Subtitle' },
@@ -22,7 +22,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof Subtitle> = () => (
   <VariantsTemplate variants={variantConfig} Component={Subtitle} />
 )
 

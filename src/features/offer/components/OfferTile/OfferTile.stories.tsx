@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { OfferTile } from './OfferTile'
 
@@ -31,7 +31,7 @@ const baseProps = {
   offerLocation: { lat: 48.94374, lng: 2.48171 },
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof OfferTile> = [
   {
     label: 'OfferTile default',
     props: { ...baseProps, variant: 'default' },
@@ -42,7 +42,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OfferTile> = () => (
   <VariantsTemplate variants={variantConfig} Component={OfferTile} />
 )
 

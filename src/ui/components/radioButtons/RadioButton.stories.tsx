@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
@@ -30,7 +30,7 @@ const meta: ComponentMeta<typeof RadioButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof RadioButton> = [
   {
     label: 'RadioButton',
     props: { label: 'label 1', isSelected: false },
@@ -62,7 +62,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof RadioButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={RadioButton} />
 )
 

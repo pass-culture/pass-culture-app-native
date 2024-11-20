@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditInfo } from './CreditInfo'
 
@@ -11,7 +11,7 @@ export default {
   component: CreditInfo,
 } as ComponentMeta<typeof CreditInfo>
 
-const variantConfig = [
+const variantConfig: Variants<typeof CreditInfo> = [
   {
     label: 'CreditInfo',
     props: {
@@ -20,7 +20,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof CreditInfo> = () => (
   <VariantsTemplate variants={variantConfig} Component={CreditInfo} />
 )
 

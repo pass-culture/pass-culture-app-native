@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { StepDots } from './StepDots'
 
@@ -15,7 +15,7 @@ const baseProps = {
   numberOfSteps: 4,
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof StepDots> = [
   {
     label: 'StepDots with first current step',
     props: { ...baseProps, currentStep: 1 },
@@ -34,7 +34,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof StepDots> = () => (
   <VariantsTemplate variants={variantConfig} Component={StepDots} />
 )
 

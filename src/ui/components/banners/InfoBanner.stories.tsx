@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
@@ -28,7 +28,7 @@ const ActionButton = (
   />
 )
 
-const variantConfig = [
+const variantConfig: Variants<typeof InfoBanner> = [
   {
     label: 'InfoBanner default',
     props: { message },
@@ -47,7 +47,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof InfoBanner> = () => (
   <VariantsTemplate variants={variantConfig} Component={InfoBanner} />
 )
 

@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Email } from 'ui/svg/icons/Email'
 
 const meta: ComponentMeta<typeof ButtonPrimaryWhite> = {
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof ButtonPrimaryWhite> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof ButtonPrimaryWhite> = [
   // Default
   {
     label: 'ButtonPrimaryWhite default',
@@ -92,7 +92,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof ButtonPrimaryWhite> = () => (
   <VariantsTemplate variants={variantConfig} Component={ButtonPrimaryWhite} />
 )
 

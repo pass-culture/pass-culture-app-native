@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
 
 import { Accordion } from './Accordion'
@@ -28,7 +28,7 @@ const baseProps = {
   children: <Typo.Body>{children}</Typo.Body>,
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof Accordion> = [
   {
     label: 'Accordion close',
     props: baseProps,
@@ -47,7 +47,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof Accordion> = () => (
   <VariantsTemplate variants={variantConfig} Component={Accordion} />
 )
 

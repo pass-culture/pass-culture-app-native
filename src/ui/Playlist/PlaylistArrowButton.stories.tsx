@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { getSpacing } from 'ui/theme'
 
 import { PlaylistArrowButton } from './PlaylistArrowButton'
@@ -12,7 +12,7 @@ const meta: ComponentMeta<typeof PlaylistArrowButton> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof PlaylistArrowButton> = [
   {
     label: 'PlaylistArrowButton left',
     props: { direction: 'left', top: getSpacing(5) },
@@ -25,7 +25,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof PlaylistArrowButton> = () => (
   <VariantsTemplate variants={variantConfig} Component={PlaylistArrowButton} />
 )
 

@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { RadioSelector } from './RadioSelector'
 
@@ -42,7 +42,7 @@ const baseProps = {
   accessibilityLabel: '',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof RadioSelector> = [
   {
     label: 'Checked RadioSelector',
     props: { ...baseProps, checked: true },
@@ -64,7 +64,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof RadioSelector> = () => (
   <VariantsTemplate variants={variantConfig} Component={RadioSelector} />
 )
 

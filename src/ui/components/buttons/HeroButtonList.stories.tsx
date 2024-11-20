@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'
 
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
@@ -47,7 +47,7 @@ const caption = (
   </Text>
 )
 
-const variantConfig = [
+const variantConfig: Variants<typeof HeroButtonList> = [
   {
     label: 'HeroButtonList default',
     props: { Title: description, Icon: <BicolorSmartphone /> },
@@ -71,7 +71,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof HeroButtonList> = () => (
   <VariantsTemplate variants={variantConfig} Component={HeroButtonList} />
 )
 

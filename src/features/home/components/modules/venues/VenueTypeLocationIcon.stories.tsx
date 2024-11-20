@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bag } from 'ui/svg/icons/bicolor/Bag'
 
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
@@ -13,7 +13,7 @@ const meta: ComponentMeta<typeof VenueTypeLocationIcon> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
   {
     label: 'VenueTypeLocationIcon with color',
     props: {
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof VenueTypeLocationIcon> = () => (
   <VariantsTemplate variants={variantConfig} Component={VenueTypeLocationIcon} />
 )
 

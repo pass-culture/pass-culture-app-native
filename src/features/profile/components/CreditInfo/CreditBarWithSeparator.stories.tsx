@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditBarWithSeparator } from './CreditBarWithSeparator'
 
@@ -10,7 +10,7 @@ export default {
   component: CreditBarWithSeparator,
 } as ComponentMeta<typeof CreditBarWithSeparator>
 
-const variantConfig = [
+const variantConfig: Variants<typeof CreditBarWithSeparator> = [
   {
     label: 'CreditBarWithSeparator: OneInThree',
     props: {
@@ -53,7 +53,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof CreditBarWithSeparator> = () => (
   <VariantsTemplate variants={variantConfig} Component={CreditBarWithSeparator} />
 )
 

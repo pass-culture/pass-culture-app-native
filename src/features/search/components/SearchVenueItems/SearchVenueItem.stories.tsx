@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -55,7 +55,7 @@ const ITEM_WIDTH = LENGTH_XS
 
 const baseProps = { width: ITEM_WIDTH, height: ITEM_HEIGHT }
 
-const variantConfig = [
+const variantConfig: Variants<typeof SearchVenueItem> = [
   {
     label: 'SearchVenueItem',
     props: {
@@ -75,7 +75,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SearchVenueItem> = () => (
   <VariantsTemplate variants={variantConfig} Component={SearchVenueItem} />
 )
 

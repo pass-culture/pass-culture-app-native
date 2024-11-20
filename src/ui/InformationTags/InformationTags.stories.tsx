@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { OfferExtraDataResponse } from 'api/gen'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof InformationTags> = {
   title: 'ui/InformationTags',
@@ -57,7 +57,7 @@ const tagsList = [
 ]
 const offerExtraData: OfferExtraDataResponse = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
 
-const variantConfig = [
+const variantConfig: Variants<typeof InformationTags> = [
   {
     label: 'InformationTags with custom data on two lines',
     props: { tags: tagsList },
@@ -72,7 +72,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof InformationTags> = () => (
   <VariantsTemplate variants={variantConfig} Component={InformationTags} />
 )
 

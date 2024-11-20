@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 import { SummaryInfo } from 'ui/components/SummaryInfo'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 const meta: ComponentMeta<typeof SummaryInfo> = {
   title: 'ui/SummaryInfo',
@@ -16,7 +16,7 @@ const baseProps = {
   title: 'Info name',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof SummaryInfo> = [
   {
     label: 'SummaryInfo default',
     props: baseProps,
@@ -30,7 +30,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SummaryInfo> = () => (
   <VariantsTemplate variants={variantConfig} Component={SummaryInfo} />
 )
 

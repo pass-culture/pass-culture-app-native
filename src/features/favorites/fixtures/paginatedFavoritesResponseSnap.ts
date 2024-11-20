@@ -38,7 +38,7 @@ export const paginatedFavoritesResponseSnap = toMutable({
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+          url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CW8Q',
         },
         subcategoryId: SubcategoryIdEnum.CONFERENCE,
         coordinates: {
@@ -62,7 +62,7 @@ export const paginatedFavoritesResponseSnap = toMutable({
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
+          url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CWJQ',
         },
         subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
         coordinates: {
@@ -86,7 +86,7 @@ export const paginatedFavoritesResponseSnap = toMutable({
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+          url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CWMA',
         },
         subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
         coordinates: {

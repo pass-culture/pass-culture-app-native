@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { OfferImage } from './OfferImage'
 
@@ -30,7 +30,7 @@ const meta: ComponentMeta<typeof OfferImage> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof OfferImage> = [
   {
     label: 'OfferImage',
   },
@@ -47,7 +47,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OfferImage> = () => (
   <VariantsTemplate variants={variantConfig} Component={OfferImage} />
 )
 

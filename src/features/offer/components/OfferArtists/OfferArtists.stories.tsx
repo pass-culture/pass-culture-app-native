@@ -1,11 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof OfferArtists> = {
   title: 'features/offer/OfferArtists',
@@ -13,7 +13,7 @@ const meta: ComponentMeta<typeof OfferArtists> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof OfferArtists> = [
   {
     label: 'OfferArtists with one artist',
     props: { artists: 'Martin Scorsese' },
@@ -74,7 +74,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof OfferArtists> = () => (
   <VariantsTemplate variants={variantConfig} Component={OfferArtists} />
 )
 

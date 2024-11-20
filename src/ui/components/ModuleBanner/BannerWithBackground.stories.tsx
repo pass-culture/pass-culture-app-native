@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bell } from 'ui/svg/icons/Bell'
 import { TypoDS } from 'ui/theme'
 
@@ -20,7 +20,7 @@ const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const variantConfig = [
+const variantConfig: Variants<typeof BannerWithBackground> = [
   {
     label: 'BannerWithBackground default',
     props: { children: <TextComponent /> },
@@ -39,7 +39,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof BannerWithBackground> = () => (
   <VariantsTemplate variants={variantConfig} Component={BannerWithBackground} />
 )
 

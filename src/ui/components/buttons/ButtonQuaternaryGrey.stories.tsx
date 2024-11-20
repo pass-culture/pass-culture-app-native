@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Email } from 'ui/svg/icons/Email'
 
 const meta: ComponentMeta<typeof ButtonQuaternaryGrey> = {
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof ButtonQuaternaryGrey> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof ButtonQuaternaryGrey> = [
   {
     label: 'ButtonQuaternaryGrey default',
     props: { wording: 'Confirmer' },
@@ -34,7 +34,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof ButtonQuaternaryGrey> = () => (
   <VariantsTemplate variants={variantConfig} Component={ButtonQuaternaryGrey} />
 )
 

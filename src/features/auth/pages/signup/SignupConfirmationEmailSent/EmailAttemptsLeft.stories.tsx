@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { EmailAttemptsLeft } from './EmailAttemptsLeft'
 
@@ -11,7 +11,7 @@ const meta: ComponentMeta<typeof EmailAttemptsLeft> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof EmailAttemptsLeft> = [
   {
     label: 'EmailAttemptsLeft multiple attempt',
     props: { attemptsLeft: 2 },
@@ -22,7 +22,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof EmailAttemptsLeft> = () => (
   <VariantsTemplate variants={variantConfig} Component={EmailAttemptsLeft} />
 )
 

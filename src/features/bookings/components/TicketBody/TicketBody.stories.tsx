@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { TicketBody } from './TicketBody'
 
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof TicketBody> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof TicketBody> = [
   {
     label: 'TicketBody default',
     props: {
@@ -52,7 +52,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof TicketBody> = () => (
+const Template: VariantsStory<typeof TicketBody> = () => (
   <ThreeShapesTicket>
     <VariantsTemplate variants={variantConfig} Component={TicketBody} />
   </ThreeShapesTicket>

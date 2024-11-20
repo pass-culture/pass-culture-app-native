@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof SeparatorWithText> = {
   title: 'ui/sections/SeparatorWithText',
@@ -15,7 +15,7 @@ const baseProps = {
   label: 'label',
 }
 
-const variantConfig = [
+const variantConfig: Variants<typeof SeparatorWithText> = [
   {
     label: 'SeparatorWithText default',
     props: baseProps,
@@ -26,7 +26,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof SeparatorWithText> = () => (
   <VariantsTemplate variants={variantConfig} Component={SeparatorWithText} />
 )
 

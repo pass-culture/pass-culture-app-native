@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { Tag } from './Tag'
@@ -17,7 +17,7 @@ const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const variantConfig = [
+const variantConfig: Variants<typeof Tag> = [
   {
     label: 'Tag default',
     props: { label: '1,4km' },
@@ -28,7 +28,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: VariantsStory<typeof Tag> = () => (
   <VariantsTemplate variants={variantConfig} Component={Tag} />
 )
 
