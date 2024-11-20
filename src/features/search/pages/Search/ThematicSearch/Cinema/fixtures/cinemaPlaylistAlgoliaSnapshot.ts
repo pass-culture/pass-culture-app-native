@@ -5,6 +5,46 @@ import { ThematicSearchPlaylistData } from 'features/search/pages/Search/Themati
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 
+export const defaultCinemaPlaylistOffer: ThematicSearchPlaylistData = {
+  title: 'Films à l’affiche',
+  offers: {
+    hits: [
+      {
+        offer: {
+          name: 'Harry potter à l’école des sorciers',
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        },
+        venue: venueDataTest,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '1',
+      },
+      {
+        offer: {
+          name: 'Harry potter et le prisonnier d’Azkhaban',
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        },
+        venue: venueDataTest,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '2',
+      },
+    ],
+    page: 0,
+    nbPages: 1,
+    nbHits: 2,
+    hitsPerPage: 20,
+    processingTimeMS: 1,
+    exhaustiveNbHits: true,
+    query: '',
+    params: '',
+  } as SearchResponse<Offer>,
+}
+
 export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
   {
     title: 'Films à l’affiche',

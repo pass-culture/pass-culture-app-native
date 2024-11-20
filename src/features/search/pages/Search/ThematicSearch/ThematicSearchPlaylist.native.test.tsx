@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import { defaultCinemaPlaylistOffer } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
 import { ThematicSearchPlaylist } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
 import { analytics } from 'libs/analytics'
@@ -27,7 +27,7 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-const playlist = cinemaPlaylistAlgoliaSnapshot[0] as ThematicSearchPlaylistData
+const playlist = defaultCinemaPlaylistOffer
 
 describe('ThematicSearchPlaylist', () => {
   it('should log ConsultOffer when pressing an item', async () => {

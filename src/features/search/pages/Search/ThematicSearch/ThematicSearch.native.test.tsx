@@ -227,6 +227,26 @@ describe('<ThematicSearch/>', () => {
       expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
     })
   })
+
+  describe('films playlists', () => {
+    it('should render films playlists when offerCategory is `FILMS_DOCUMENTAIRES_SERIES`', async () => {
+      MockOfferCategoriesParams({
+        offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES],
+      })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Films, documentaires et séries')
+
+      expect(await screen.findByText('DVD, Blu-Ray')).toBeOnTheScreen()
+    })
+
+    it('should not render films playlists when offerCategory is not `FILMS_DOCUMENTAIRES_SERIES`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Festivals')
+
+      expect(screen.queryByText('DVD, Blu-Ray')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 function MockOfferCategoriesParams(offerCategoriesParams: {

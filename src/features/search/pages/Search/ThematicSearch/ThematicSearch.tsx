@@ -14,6 +14,7 @@ import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePla
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
+import { FilmsPlaylist } from 'features/search/pages/Search/ThematicSearch/Films/FilmsPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/Search/ThematicSearch/ThematicSearchBar'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { env } from 'libs/environment'
@@ -62,6 +63,7 @@ export const ThematicSearch: React.FC = () => {
   const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
   const isCinemaCategory = offerCategory === SearchGroupNameEnumv2.CINEMA
+  const isFilmsCategory = offerCategory === SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
 
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
@@ -120,6 +122,7 @@ export const ThematicSearch: React.FC = () => {
           </React.Fragment>
         ) : null}
         {isCinemaCategory ? <CinemaPlaylist /> : null}
+        {isFilmsCategory ? <FilmsPlaylist /> : null}
         <Spacer.Column numberOfSpaces={6} />
       </ScrollView>
     </ThematicSearchBar>
