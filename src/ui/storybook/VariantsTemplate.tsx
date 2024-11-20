@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 import styled from 'styled-components/native'
@@ -23,8 +22,11 @@ type VariantsTemplateProps<
   ComponentType extends React.ComponentType<Props>,
   Props extends Record<string, unknown>,
 > = {
-  variants: Variant<Props>[] | any[]
-  Component: ComponentType | any
+  variants: Variants<ComponentType, Props>
+  // i don't know how to fix this
+  // this component is generic, without this any, 1/3 of stories have typing issues
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Component: ComponentType | React.ComponentType<any>
   defaultProps?: Partial<Props>
 }
 
@@ -41,7 +43,10 @@ export const VariantsTemplate = <
       const props = {
         ...defaultProps,
         ...variant.props,
-      } as Props
+        // i don't know how to fix this
+        // this component is generic, i don't know how to check in runtime
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any
 
       return (
         <React.Fragment key={variant.label}>
