@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import LottieView from 'libs/lottie'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -65,14 +66,13 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
       <Spacer.Column numberOfSpaces={12} />
 
       <InternalTouchableLink
+        as={ButtonPrimary}
+        wording="Accéder à mes succès"
         navigateTo={{ screen: 'Achievements' }}
         onBeforeNavigate={() => {
           hideModal()
-        }}>
-        <ButtonWrapper>
-          <StyledButtonText>Accéder à mes succès</StyledButtonText>
-        </ButtonWrapper>
-      </InternalTouchableLink>
+        }}
+      />
 
       <Spacer.Column numberOfSpaces={2} />
       <ButtonQuaternaryBlack
@@ -89,17 +89,6 @@ const IconsWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
-
-const ButtonWrapper = styled.View(({ theme }) => ({
-  paddingVertical: getSpacing(2),
-  paddingHorizontal: getSpacing(4),
-  backgroundColor: theme.colors.primary,
-  borderRadius: theme.borderRadius.button,
-}))
-
-const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
-  color: theme.colors.white,
-}))
 
 const ConfettiView = styled(LottieView)({
   position: 'absolute',
