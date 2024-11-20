@@ -1,14 +1,14 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentStory, Meta } from '@storybook/react'
+import { type ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
-import { VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
-const meta: Meta<typeof SelectableListItem> = {
+const meta: ComponentMeta<typeof SelectableListItem> = {
   title: 'features/offer/SelectableListItem',
   component: SelectableListItem,
 
@@ -18,7 +18,7 @@ const meta: Meta<typeof SelectableListItem> = {
 }
 export default meta
 
-const variantConfig = [
+const variantConfig: Variants<typeof SelectableListItem> = [
   {
     label: 'SelectableListItem default',
     props: {
@@ -54,7 +54,7 @@ const variantConfig = [
   },
 ]
 
-const Template: ComponentStory<typeof SelectableListItem> = () => (
+const Template: VariantsStory<typeof SelectableListItem> = () => (
   <VariantsTemplate variants={variantConfig} Component={SelectableListItem} />
 )
 
