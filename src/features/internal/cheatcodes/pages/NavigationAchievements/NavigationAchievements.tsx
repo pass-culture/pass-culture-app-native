@@ -12,20 +12,47 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
 export function NavigationAchievements(): React.JSX.Element {
-  const { visible, showModal, hideModal } = useModal(false)
+  const {
+    visible: visibleOneAchievement,
+    showModal: showModalOneAchievement,
+    hideModal: hideModalOneAchievement,
+  } = useModal(false)
+  const {
+    visible: visibleSeveralAchievements,
+    showModal: showModalSeveralAchievements,
+    hideModal: hideModalSeveralAchievements,
+  } = useModal(false)
 
   return (
     <ScrollView>
       <CheatcodesHeader title="Achievements 🏆" />
       <StyledContainer>
-        <LinkToComponent name="Achievements" />
-        <Row half>
-          <ButtonPrimary wording="AchievementSuccessModal" onPress={showModal} />
-          <AchievementSuccessModal
-            id={AchievementId.FIRST_ART_LESSON_BOOKING}
-            visible={visible}
-            hideModal={hideModal}
+        <LinkToComponent name="Achievements" half={false} />
+        <Row>
+          <ButtonPrimary
+            wording="AchievementSuccessModal (1 unlocked)"
+            onPress={showModalOneAchievement}
           />
+          {visibleOneAchievement ? (
+            <AchievementSuccessModal
+              ids={[AchievementId.FIRST_BOOK_BOOKING]}
+              visible={visibleOneAchievement}
+              hideModal={hideModalOneAchievement}
+            />
+          ) : null}
+        </Row>
+        <Row>
+          <ButtonPrimary
+            wording="AchievementSuccessModal (2+ unlocked)"
+            onPress={showModalSeveralAchievements}
+          />
+          {visibleSeveralAchievements ? (
+            <AchievementSuccessModal
+              ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_BOOK_BOOKING]}
+              visible={visibleSeveralAchievements}
+              hideModal={hideModalSeveralAchievements}
+            />
+          ) : null}
         </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
