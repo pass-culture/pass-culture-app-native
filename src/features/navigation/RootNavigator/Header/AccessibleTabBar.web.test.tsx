@@ -119,12 +119,13 @@ describe('AccessibleTabBar', () => {
 
   it('should reset params on press "Recherche" when already on Search tab', async () => {
     const navigateFromRefSpy = jest.spyOn(navigationRefAPI, 'navigateFromRef')
+    jest.useFakeTimers()
     renderTabBar()
     const searchButton = screen.getByText('Recherche')
     await act(() => {
       fireEvent.click(searchButton)
     })
-
+    jest.advanceTimersByTime(300)
     await act(() => {
       fireEvent.click(searchButton)
     })
@@ -132,6 +133,8 @@ describe('AccessibleTabBar', () => {
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
       ...getSearchStackConfig('SearchLanding', mockSearchState)
     )
+
+    jest.useRealTimers()
   })
 })
 

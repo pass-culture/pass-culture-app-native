@@ -20,6 +20,18 @@ describe('<TouchableLink />', () => {
     expect(handleNavigationMock).toHaveBeenCalledTimes(1)
   })
 
+  it('should not call handleNavigation when disabled', async () => {
+    render(
+      <TouchableLink handleNavigation={handleNavigationMock} disabled>
+        <Text>linkText</Text>
+      </TouchableLink>
+    )
+
+    fireEvent.click(screen.getByText('linkText'))
+
+    expect(handleNavigationMock).not.toHaveBeenCalled()
+  })
+
   it('should not handleNavigation when metaKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
