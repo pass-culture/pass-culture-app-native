@@ -19,13 +19,14 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
@@ -116,19 +117,19 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         }
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={subcategory.categoryId} />
-        <Spacer.Row numberOfSpaces={4} />
-        <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          <EndedReasonAndDate>
-            <EndedBookingReason
-              booking={booking}
-              isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
-            />
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
-          </EndedReasonAndDate>
-        </AttributesView>
+        <ContentContainerGap gap={4}>
+          <OfferImage imageUrl={stock.offer.image?.url} categoryId={subcategory.categoryId} />
+          <AttributesView>
+            <BookingItemTitle title={stock.offer.name} />
+            <EndedReasonAndDate gap={1}>
+              <EndedBookingReason
+                booking={booking}
+                isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
+              />
+              <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
+            </EndedReasonAndDate>
+          </AttributesView>
+        </ContentContainerGap>
       </ContentContainer>
       <EndedBookingInteractionButtons
         booking={booking}
@@ -172,12 +173,17 @@ const ContentContainer = styled(InternalTouchableLink)(({ theme }) => ({
   flex: 1,
 }))
 
+const ContentContainerGap = styled(ViewGap)({
+  flexDirection: 'row',
+  flex: 1,
+})
+
 const AttributesView = styled.View({
   flex: 1,
   paddingRight: getSpacing(1),
 })
 
-const EndedReasonAndDate = styled.View({
+const EndedReasonAndDate = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
   flexWrap: 'wrap',

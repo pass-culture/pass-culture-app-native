@@ -450,217 +450,214 @@ exports[`EndedBookings should render correctly 1`] = `
             testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
           >
             <View
-              size="small"
-              style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
-                    "width": 64,
-                  },
-                ]
-              }
-              withShadow={true}
-            >
-              <BVLinearGradient
-                borderRadius={4}
-                colors={
-                  [
-                    4294046196,
-                    4291546578,
-                  ]
-                }
-                endPoint={
-                  {
-                    "x": 0.5,
-                    "y": 1,
-                  }
-                }
-                locations={null}
-                startPoint={
-                  {
-                    "x": 0.5,
-                    "y": 0,
-                  }
-                }
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderRadius": 4,
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "width": "100%",
-                    },
-                    {},
-                  ]
-                }
-                testID="imagePlaceholder"
-              >
-                <View
-                  height={32}
-                  testID="categoryIcon"
-                  width={32}
-                >
-                  <Text>
-                    categoryIcon-SVG-Mock
-                  </Text>
-                </View>
-              </BVLinearGradient>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
+              gap={4}
               style={
                 [
                   {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "paddingRight": 4,
+                    "gap": 16,
                   },
                 ]
               }
             >
               <View
+                size="small"
                 style={
                   [
                     {
-                      "paddingBottom": 4,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 4,
+                      "height": 96,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "width": 64,
                     },
                   ]
                 }
+                withShadow={true}
               >
-                <Text
-                  numberOfLines={2}
-                  shrink={true}
+                <BVLinearGradient
+                  borderRadius={4}
+                  colors={
+                    [
+                      4294046196,
+                      4291546578,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "height": "100%",
+                        "justifyContent": "center",
+                        "width": "100%",
                       },
+                      {},
                     ]
                   }
+                  testID="imagePlaceholder"
                 >
-                  Avez-vous déjà vu ?
-                </Text>
+                  <View
+                    height={32}
+                    testID="categoryIcon"
+                    width={32}
+                  >
+                    <Text>
+                      categoryIcon-SVG-Mock
+                    </Text>
+                  </View>
+                </BVLinearGradient>
               </View>
               <View
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingRight": 4,
                     },
                   ]
                 }
               >
                 <View
-                  noFullWidth={true}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row-reverse",
-                        "justifyContent": "flex-end",
-                        "maxWidth": 500,
+                        "paddingBottom": 4,
                       },
                     ]
                   }
                 >
                   <Text
-                    color="#b60025"
-                    noFullWidth={true}
+                    numberOfLines={2}
+                    shrink={true}
                     style={
                       [
                         {
-                          "color": "#b60025",
+                          "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "paddingLeft": 4,
-                          "textAlign": "center",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
                         },
                       ]
                     }
                   >
-                    Réservation annulée
+                    Avez-vous déjà vu ?
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
                 </View>
                 <View
-                  numberOfSpaces={1}
+                  gap={1}
                   style={
                     [
                       {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 4,
                       },
                     ]
                   }
                 >
-                  le 15/03/2021
-                </Text>
+                  <View
+                    noFullWidth={true}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row-reverse",
+                          "justifyContent": "flex-end",
+                          "maxWidth": 500,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#b60025"
+                      noFullWidth={true}
+                      style={
+                        [
+                          {
+                            "color": "#b60025",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingLeft": 4,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Réservation annulée
+                    </Text>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    le 15/03/2021
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -905,217 +902,214 @@ exports[`EndedBookings should render correctly 1`] = `
             testID="Réservation utilisée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
           >
             <View
-              size="small"
-              style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
-                    "width": 64,
-                  },
-                ]
-              }
-              withShadow={true}
-            >
-              <BVLinearGradient
-                borderRadius={4}
-                colors={
-                  [
-                    4294046196,
-                    4291546578,
-                  ]
-                }
-                endPoint={
-                  {
-                    "x": 0.5,
-                    "y": 1,
-                  }
-                }
-                locations={null}
-                startPoint={
-                  {
-                    "x": 0.5,
-                    "y": 0,
-                  }
-                }
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderRadius": 4,
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "width": "100%",
-                    },
-                    {},
-                  ]
-                }
-                testID="imagePlaceholder"
-              >
-                <View
-                  height={32}
-                  testID="categoryIcon"
-                  width={32}
-                >
-                  <Text>
-                    categoryIcon-SVG-Mock
-                  </Text>
-                </View>
-              </BVLinearGradient>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
+              gap={4}
               style={
                 [
                   {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "paddingRight": 4,
+                    "gap": 16,
                   },
                 ]
               }
             >
               <View
+                size="small"
                 style={
                   [
                     {
-                      "paddingBottom": 4,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 4,
+                      "height": 96,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "width": 64,
                     },
                   ]
                 }
+                withShadow={true}
               >
-                <Text
-                  numberOfLines={2}
-                  shrink={true}
+                <BVLinearGradient
+                  borderRadius={4}
+                  colors={
+                    [
+                      4294046196,
+                      4291546578,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "height": "100%",
+                        "justifyContent": "center",
+                        "width": "100%",
                       },
+                      {},
                     ]
                   }
+                  testID="imagePlaceholder"
                 >
-                  Avez-vous déjà vu ?
-                </Text>
+                  <View
+                    height={32}
+                    testID="categoryIcon"
+                    width={32}
+                  >
+                    <Text>
+                      categoryIcon-SVG-Mock
+                    </Text>
+                  </View>
+                </BVLinearGradient>
               </View>
               <View
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingRight": 4,
                     },
                   ]
                 }
               >
                 <View
-                  noFullWidth={true}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row-reverse",
-                        "justifyContent": "flex-end",
-                        "maxWidth": 500,
+                        "paddingBottom": 4,
                       },
                     ]
                   }
                 >
                   <Text
-                    color="#15884f"
-                    noFullWidth={true}
+                    numberOfLines={2}
+                    shrink={true}
                     style={
                       [
                         {
-                          "color": "#15884f",
+                          "color": "#161617",
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "paddingLeft": 4,
-                          "textAlign": "center",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
                         },
                       ]
                     }
                   >
-                    Réservation utilisée
+                    Avez-vous déjà vu ?
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
                 </View>
                 <View
-                  numberOfSpaces={1}
+                  gap={1}
                   style={
                     [
                       {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 4,
                       },
                     ]
                   }
                 >
-                  le 15/03/2021
-                </Text>
+                  <View
+                    noFullWidth={true}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row-reverse",
+                          "justifyContent": "flex-end",
+                          "maxWidth": 500,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#15884f"
+                      noFullWidth={true}
+                      style={
+                        [
+                          {
+                            "color": "#15884f",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingLeft": 4,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Réservation utilisée
+                    </Text>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    le 15/03/2021
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
