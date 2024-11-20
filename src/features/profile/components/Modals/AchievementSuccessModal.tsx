@@ -9,6 +9,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
 
@@ -40,15 +41,15 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
       title="Félicitations&nbsp;!"
       onCloseIconPress={hideModal}
       visible={visible}>
-      <ConfettiView
-        ref={confettiRef}
-        source={confetti}
-        autoPlay={false}
-        loop={false}
-        resizeMode="cover"
-      />
-      <Spacer.Column numberOfSpaces={2} />
-      <IconsWrapper>
+      <StyledViewGap gap={2}>
+        <ConfettiView
+          ref={confettiRef}
+          source={confetti}
+          autoPlay={false}
+          loop={false}
+          resizeMode="cover"
+        />
+
         <BadgeView
           ref={logoRef}
           source={TutorialPassLogo}
@@ -56,39 +57,39 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
           loop={false}
           resizeMode="cover"
         />
-      </IconsWrapper>
-      <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.Title3>
-        {severalBadgesUnlocked
-          ? 'Tu as débloqué des succès\u00a0!'
-          : 'Tu as débloqué un succès\u00a0!'}
-      </TypoDS.Title3>
-      <Spacer.Column numberOfSpaces={12} />
+        <TypoDS.Title3>
+          {severalBadgesUnlocked
+            ? 'Tu as débloqué des succès\u00a0!'
+            : 'Tu as débloqué un succès\u00a0!'}
+        </TypoDS.Title3>
+        <Spacer.Column numberOfSpaces={6} />
 
-      <InternalTouchableLink
-        as={ButtonPrimary}
-        wording="Accéder à mes succès"
-        navigateTo={{ screen: 'Achievements' }}
-        onBeforeNavigate={() => {
-          hideModal()
-        }}
-      />
+        <InternalTouchableLink
+          as={ButtonPrimary}
+          wording="Accéder à mes succès"
+          navigateTo={{ screen: 'Achievements' }}
+          onBeforeNavigate={() => {
+            hideModal()
+          }}
+        />
 
-      <Spacer.Column numberOfSpaces={2} />
-      <ButtonTertiaryBlack
-        wording="Fermer"
-        accessibilityLabel="Fermer la modale"
-        icon={Invalidate}
-        onPress={hideModal}
-      />
+        <ButtonTertiaryBlack
+          wording="Fermer"
+          accessibilityLabel="Fermer la modale"
+          icon={Invalidate}
+          onPress={hideModal}
+        />
+      </StyledViewGap>
     </AppInformationModal>
   )
 }
 
-const IconsWrapper = styled.View({
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-})
+  width: '100%',
+  maxWidth: theme.contentPage.maxWidth,
+}))
 
 const ConfettiView = styled(LottieView)({
   position: 'absolute',
