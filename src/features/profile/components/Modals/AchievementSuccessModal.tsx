@@ -5,7 +5,7 @@ import { AchievementId } from 'features/profile/pages/Achievements/AchievementDa
 import LottieView from 'libs/lottie'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -75,7 +75,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
       />
 
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonQuaternaryBlack
+      <ButtonTertiaryBlack
         wording="Fermer"
         accessibilityLabel="Fermer la modale"
         icon={Invalidate}
