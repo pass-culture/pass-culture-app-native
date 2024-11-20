@@ -35,7 +35,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
       visible={visible}
       testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
       onRequestClose={onCloseIconPress}>
-      <ClicAwayArea onPress={onCloseIconPress} />
+      <ClickAwayArea onPress={onCloseIconPress} />
       <FlexSpacer />
       <Container accessibilityLabelledBy={titleID}>
         <ModalHeader
@@ -54,7 +54,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   )
 }
 
-const ClicAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ theme }) => ({
+const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ theme }) => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
