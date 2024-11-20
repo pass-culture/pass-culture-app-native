@@ -37,4 +37,14 @@ describe('useCinemaOffers', () => {
       false,
       undefined
   })
+
+  it('should return cinema offers with playlists titles', async () => {
+    const { result } = renderHook(() => useCinemaOffers(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await act(() => {})
+
+    expect(result.current.offers).toEqual([{ offers: cinemaOffer, title: 'Films à l’affiche' }])
+  })
 })
