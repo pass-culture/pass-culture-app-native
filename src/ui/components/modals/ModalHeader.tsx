@@ -30,12 +30,10 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon,
   rightIconAccessibilityLabel = 'Fermer la modale',
   onRightIconPress,
-  boldTitle = false,
   numberOfLines = 2,
   modalSpacing,
   onLayout,
 }) => {
-  const TitleComponent = boldTitle ? BoldTitle : Title
   const LeftIcon =
     !!leftIcon &&
     styled(leftIcon).attrs(({ theme }) => ({
@@ -58,9 +56,9 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         ) : null}
       </HeaderActionContainer>
       <TitleContainer>
-        <TitleComponent numberOfLines={numberOfLines} nativeID={titleID} testID="modalHeaderTitle">
+        <Title numberOfLines={numberOfLines} nativeID={titleID} testID="modalHeaderTitle">
           {title}
-        </TitleComponent>
+        </Title>
       </TitleContainer>
       <HeaderActionContainer justifyContent="right">
         {RightIcon ? (
@@ -106,8 +104,5 @@ const HeaderAction = styledButton(Touchable)({
 })
 
 const Title = styled(TypoDS.Title4).attrs(() => getHeadingAttrs(1))({
-  textAlign: 'center',
-})
-const BoldTitle = styled(TypoDS.Title4).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })

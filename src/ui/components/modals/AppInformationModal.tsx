@@ -41,7 +41,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
         <ModalHeader
           title={title}
           titleID={titleID}
-          boldTitle
           rightIconAccessibilityLabel="Fermer la modale"
           rightIcon={Close}
           onRightIconPress={onCloseIconPress}
