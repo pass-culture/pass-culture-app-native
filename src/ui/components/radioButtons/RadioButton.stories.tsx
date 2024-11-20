@@ -11,7 +11,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { RadioButton } from './RadioButton'
 
 const meta: ComponentMeta<typeof RadioButton> = {
-  title: 'ui/inputs/radioButtons/RadioButton',
+  title: 'ui/inputs/RadioButton',
   component: RadioButton,
   decorators: [
     (Story) => (

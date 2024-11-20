@@ -12,6 +12,5 @@ export default meta
 const Template: ComponentStory<typeof PageHeader> = (props) => <PageHeader {...props} />
 
 export const Default = Template.bind({})
-Default.args = {
-  title: 'Page header',
-}
+Default.storyName = 'PageHeader'
+Default.args = { title: 'Page header' }

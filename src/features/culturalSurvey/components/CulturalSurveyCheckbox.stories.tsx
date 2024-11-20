@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof CulturalSurveyCheckbox> = (props) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'CulturalSurveyCheckbox'
 Default.args = {
   title: 'Visité un musée,',
   subtitle: 'une piscine gonflable',

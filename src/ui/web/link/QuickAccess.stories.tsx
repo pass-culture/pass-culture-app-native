@@ -26,6 +26,7 @@ const Template: ComponentStory<typeof QuickAccess> = (args) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'QuickAccess'
 Default.args = {
   href: '#',
   title: 'Go to link',

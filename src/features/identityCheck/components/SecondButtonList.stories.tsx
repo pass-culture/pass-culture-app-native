@@ -21,6 +21,7 @@ export default meta
 const Template: ComponentStory<typeof SecondButtonList> = (props) => <SecondButtonList {...props} />
 
 export const Default = Template.bind({})
+Default.storyName = 'SecondButtonList'
 Default.args = {
   label: 'test',
   navigateTo: { screen: 'Login' },

@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof ShareMessagingAppOther> = (args) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'ShareMessagingAppOther'
 Default.args = {
   onPress: async () => {
     return

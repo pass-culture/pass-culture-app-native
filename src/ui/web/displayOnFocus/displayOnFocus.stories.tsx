@@ -45,6 +45,7 @@ const Template: ComponentStory<FunctionComponent> = () => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'displayOnFocus'
 Default.play = async () => {
   await screen.findByRole('button') // wait first render
 

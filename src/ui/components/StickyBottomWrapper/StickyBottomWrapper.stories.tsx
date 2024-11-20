@@ -27,6 +27,7 @@ const Template: ComponentStory<typeof StickyBottomWrapper> = (props) => (
 )
 
 export const Default = Template.bind({})
+Default.storyName = 'StickyBottomWrapper'
 Default.args = {
   children: <ButtonPrimary wording="Réserver l’offre" />,
 }

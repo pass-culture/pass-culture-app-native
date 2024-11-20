@@ -13,6 +13,7 @@ export default meta
 const Template: ComponentStory<typeof ShareMessagingApp> = (args) => <ShareMessagingApp {...args} />
 
 export const Default = Template.bind({})
+Default.storyName = 'ShareMessagingApp'
 Default.args = {
   network: Network.instagram,
   onPress: async () => {

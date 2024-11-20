@@ -42,7 +42,7 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
     />
   </Container>
 )
-CategoryBlockWithoutImage.storyName = 'CategoryBlocWithoutImage'
+CategoryBlockWithoutImage.storyName = 'CategoryBlock'
 
 const Container = styled.View({
   height: 100,
