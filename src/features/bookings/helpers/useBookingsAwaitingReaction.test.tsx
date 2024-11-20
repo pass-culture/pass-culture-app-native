@@ -4,20 +4,16 @@ import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/g
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useBookingsAwaitingReaction } from 'features/bookings/helpers/useBookingsAwaitingReaction'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockGetConfigValues = jest.fn()
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
-  remoteConfig: {
-    configure: () => Promise.resolve(true),
-    refresh: () => Promise.resolve(true),
-    getValues: () => mockGetConfigValues(),
-  },
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('features/bookings/api')
 const mockUseBookings = useBookings as jest.Mock
@@ -44,23 +40,46 @@ const MOCK_BOOKINGS = {
   ended_bookings: bookingsSnap.ended_bookings.map((booking) => ({
     ...booking,
     userReaction: null,
+    cancellationDate: null,
+  })),
+}
+
+const MOCK_CANCELLED_BOOKINGS = {
+  ...bookingsSnap,
+  ended_bookings: bookingsSnap.ended_bookings.map((booking) => ({
+    ...booking,
+    userReaction: null,
+    cancellationDate: '2021-03-15T23:01:37.925926',
   })),
 }
 
 describe('useBookingsAwaitingReaction', () => {
   beforeAll(() => {
-    mockGetConfigValues.mockReturnValue({
-      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
+    useRemoteConfigContextSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      reactionCategories: { categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA] },
     })
-    mockUseBookings.mockReturnValue({ data: MOCK_BOOKINGS })
   })
 
-  it('get bookings awaiting reactions count', async () => {
+  it('should return bookings awaiting reactions count without cancelled booking', () => {
+    mockUseBookings.mockReturnValueOnce({ data: MOCK_BOOKINGS })
     const { result } = renderHook(() => useBookingsAwaitingReaction(), {
       wrapper: ({ children }) => (
         <RemoteConfigProvider>{reactQueryProviderHOC(children)}</RemoteConfigProvider>
       ),
     })
-    await waitFor(() => expect(result.current).toBe(1))
+
+    expect(result.current).toBe(1)
+  })
+
+  it('should return 0 when booking is cancelled and without reaction', () => {
+    mockUseBookings.mockReturnValueOnce({ data: MOCK_CANCELLED_BOOKINGS })
+    const { result } = renderHook(() => useBookingsAwaitingReaction(), {
+      wrapper: ({ children }) => (
+        <RemoteConfigProvider>{reactQueryProviderHOC(children)}</RemoteConfigProvider>
+      ),
+    })
+
+    expect(result.current).toBe(0)
   })
 })
