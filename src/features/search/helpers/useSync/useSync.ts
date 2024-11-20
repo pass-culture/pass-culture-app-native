@@ -18,15 +18,35 @@ export const useSync = (shouldUpdate = true) => {
   const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
-  const { setPlace, setSelectedLocationMode, hasGeolocPosition, setSelectedPlace } = useLocation()
+  const {
+    setPlace,
+    setSelectedLocationMode,
+    hasGeolocPosition,
+    setSelectedPlace,
+    setAroundMeRadius,
+  } = useLocation()
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
 
   useEffect(() => {
     if (canSwitchToAroundMe && hasGeolocPosition) {
       setSelectedLocationMode(LocationMode.AROUND_ME)
       setCanSwitchToAroundMe(false)
+      if (
+        params?.locationFilter?.locationType === LocationMode.AROUND_ME &&
+        params?.locationFilter?.aroundRadius
+      ) {
+        setAroundMeRadius(params.locationFilter.aroundRadius)
+      }
     }
-  }, [hasGeolocPosition, canSwitchToAroundMe, setSelectedLocationMode])
+    // locationFilter.aroundRadius does not exist on every locationFilter so we don't want it in dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    hasGeolocPosition,
+    canSwitchToAroundMe,
+    setSelectedLocationMode,
+    setAroundMeRadius,
+    params?.locationFilter?.locationType,
+  ])
 
   // update params -> accessibilityContext
   useEffect(() => {

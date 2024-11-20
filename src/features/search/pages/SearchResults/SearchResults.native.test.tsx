@@ -22,22 +22,23 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const venue = mockedSuggestedVenue
 
-let mockSearchState: SearchState = {
+const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   venue,
   priceRange: [0, 20],
 }
-
 const mockDispatch = jest.fn()
-let mockIsFocusOnSuggestions = false
+const mockIsFocusOnSuggestions = false
+
+const mockUseSearch = jest.fn(() => ({
+  searchState: mockSearchState,
+  dispatch: mockDispatch,
+  isFocusOnSuggestions: mockIsFocusOnSuggestions,
+  hideSuggestions: jest.fn(),
+}))
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-    isFocusOnSuggestions: mockIsFocusOnSuggestions,
-    hideSuggestions: jest.fn(),
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
@@ -223,13 +224,12 @@ describe('<SearchResults/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
-    mockSearchState = {
-      ...initialSearchState,
-      offerCategories: [SearchGroupNameEnumv2.CINEMA],
-      venue,
-      priceRange: [0, 20],
-    }
-    mockIsFocusOnSuggestions = false
+    mockUseSearch.mockReturnValue({
+      searchState: mockSearchState,
+      dispatch: mockDispatch,
+      isFocusOnSuggestions: false,
+      hideSuggestions: jest.fn(),
+    })
   })
 
   it('should render SearchResults', async () => {
@@ -244,7 +244,12 @@ describe('<SearchResults/>', () => {
 
   describe('When SearchResults is focus on suggestions', () => {
     beforeEach(() => {
-      mockIsFocusOnSuggestions = true
+      mockUseSearch.mockReturnValue({
+        searchState: mockSearchState,
+        dispatch: mockDispatch,
+        isFocusOnSuggestions: true,
+        hideSuggestions: jest.fn(),
+      })
     })
 
     it('should display offer suggestions', async () => {
