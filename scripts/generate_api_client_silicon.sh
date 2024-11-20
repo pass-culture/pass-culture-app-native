@@ -14,7 +14,8 @@ docker run \
     --network="host" \
     --rm \
     --volume "${PWD}:/local" \
-    "parsertongue/swagger-codegen-cli:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
+    --volume "$JAVA_HOME/lib/security/cacerts:/opt/java/openjdk/lib/security/cacerts" \
+    "parsertongue/swagger-codegen-cli:latest" generate \
         --input-spec https://backend.testing.passculture.team/native/openapi.json `# schema location` \
         --lang typescript-fetch `# client type` \
         --config /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
