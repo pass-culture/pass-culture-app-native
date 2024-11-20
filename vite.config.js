@@ -129,7 +129,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: proxyConfig,
+    server: {...proxyConfig, open:true},
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

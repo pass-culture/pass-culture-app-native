@@ -29,8 +29,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   return (
     <ExternalTouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
-      onBeforeNavigate={onBeforeNavigate}
-      isOnPressThrottled>
+      onBeforeNavigate={onBeforeNavigate}>
       <Container>
         <NetworkIconBox>
           <StyledIcon />
