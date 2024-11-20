@@ -102,7 +102,7 @@ describe('categoriesHelpers', () => {
       },
       {
         name: 'FILMS_DOCUMENTAIRES_SERIES',
-        value: 'Films, documentaires et séries',
+        value: 'Films, séries et documentaires',
       },
       {
         name: 'INSTRUMENTS',

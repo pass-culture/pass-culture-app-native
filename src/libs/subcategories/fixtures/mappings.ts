@@ -817,7 +817,7 @@ export const useSearchGroupLabelMappingSnap = {
   RENCONTRES_CONFERENCES: 'Conférences & rencontres',
   EVENEMENTS_EN_LIGNE: 'Évènements en ligne',
   CINEMA: 'Cinéma',
-  FILMS_DOCUMENTAIRES_SERIES: 'Films, documentaires et séries',
+  FILMS_DOCUMENTAIRES_SERIES: 'Films, séries et documentaires',
   INSTRUMENTS: 'Instruments de musique',
   JEUX_JEUX_VIDEOS: 'Jeux & jeux vidéos',
   LIVRES: 'Livres',
