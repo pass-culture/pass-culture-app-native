@@ -8,7 +8,7 @@ import { TypoDS, getSpacing } from 'ui/theme'
 
 type Variant<Props extends Record<string, unknown>> = {
   label: string
-  props: Partial<Props>
+  props?: Partial<Props>
   withBackground?: boolean
   minHeight?: number
 }

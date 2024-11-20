@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -26,7 +27,7 @@ const baseProps = {
   Icon: { active: ActiveBell, inactive: InactiveBell },
   label: { active: 'Déjà suivi', inactive: 'Suivre' },
   accessibilityLabel: { active: 'Thème déjà suivi', inactive: 'Suivre ce thème' },
-  onPress: () => 'doNothing',
+  onPress: action('press'),
 }
 
 const variantConfig = [

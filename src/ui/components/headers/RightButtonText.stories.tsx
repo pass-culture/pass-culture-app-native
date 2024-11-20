@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -14,15 +15,15 @@ export default meta
 const variantConfig = [
   {
     label: 'RightButtonText quit',
-    props: { wording: 'Quitter', onClose: () => 'doNothing' },
+    props: { wording: 'Quitter', onClose: action('close') },
   },
   {
     label: 'RightButtonText close',
-    props: { wording: 'Fermer', onClose: () => 'doNothing' },
+    props: { wording: 'Fermer', onClose: action('close') },
   },
   {
     label: 'RightButtonText cancel',
-    props: { wording: 'Annuler', onClose: () => 'doNothing' },
+    props: { wording: 'Annuler', onClose: action('close') },
   },
 ]
 
