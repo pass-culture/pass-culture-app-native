@@ -1,12 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import { Share } from 'react-native'
 
-import {
-  CategoryIdEnum,
-  NativeCategoryIdEnumv2,
-  ReactionTypeEnum,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
@@ -174,54 +169,6 @@ describe('EndedBookingItem', () => {
       mockGetConfigValues.mockReturnValue({
         reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
       })
-    })
-
-    it('should display reaction button', async () => {
-      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
-
-      expect(await screen.findByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
-    })
-
-    it('should not display reaction button when category is not in remoteConfig param', async () => {
-      mockGetConfigValues.mockReturnValueOnce({
-        reactionCategories: { categories: ['THEATRE'] },
-      })
-      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
-
-      await screen.findByText('Réservation utilisée')
-
-      expect(screen.queryByLabelText('Réagis à ta réservation')).not.toBeOnTheScreen()
-    })
-
-    it.each([
-      [ReactionTypeEnum.LIKE, /tu as liké/],
-      [ReactionTypeEnum.DISLIKE, /tu as disliké/],
-      [ReactionTypeEnum.NO_REACTION, /tu n’as pas souhaité réagir/],
-    ])(
-      'should display correct icon and correct a11y label when data has reaction %s',
-      async (userReaction, labelRegex) => {
-        renderEndedBookingItem(
-          {
-            ...bookingsSnap.ended_bookings[1],
-            userReaction,
-          },
-          RemoteConfigProvider
-        )
-
-        expect(await screen.findByLabelText(labelRegex)).toBeOnTheScreen()
-      }
-    )
-
-    it('should display a small badge when offer is waiting for a reaction', async () => {
-      renderEndedBookingItem(
-        {
-          ...bookingsSnap.ended_bookings[1],
-          userReaction: null,
-        },
-        RemoteConfigProvider
-      )
-
-      expect(await screen.findByTestId('smallBadge')).toBeOnTheScreen()
     })
 
     it('should open reaction modal on press', async () => {

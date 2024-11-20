@@ -3,11 +3,10 @@ import styled from 'styled-components/native'
 
 import { PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
+import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
-import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
-import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
 import { BookingItemProps } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -18,34 +17,28 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
-  const subCategory = subcategoriesMapping[stock.offer.subcategoryId]
+  const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { reactionCategories } = useRemoteConfigContext()
 
   const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
     booking.userReaction
   )
-
-  const ReactionIcon = useReactionIcon(userReaction)
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
@@ -67,7 +60,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       prePopulateOffer({
         ...offer,
-        categoryId: subCategory.categoryId,
+        categoryId: subcategory.categoryId,
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
@@ -112,25 +105,6 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     showShareOfferModal()
   }, [stock.offer.id, shareOffer, showShareOfferModal])
 
-  const getReactionButtonAccessibilityLabel = (reaction?: ReactionTypeEnum | null) => {
-    const additionalInfoMap: Record<ReactionTypeEnum, string> = {
-      LIKE: '(tu as liké)',
-      DISLIKE: '(tu as disliké)',
-      NO_REACTION: '(tu n’as pas souhaité réagir)',
-    }
-
-    return ['Réagis à ta réservation']
-      .concat(reaction ? [additionalInfoMap[reaction]] : [])
-      .join(' ')
-  }
-
-  const canReact =
-    shouldDisplayReactionFeature &&
-    reactionCategories.categories.includes(subCategory.nativeCategoryId) &&
-    !cancellationDate
-
-  const ReactionButton = userReaction === null ? SmallBadgedButton : RoundedButton
-
   return (
     <Container>
       <ContentContainer
@@ -142,7 +116,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         }
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={subCategory.categoryId} />
+        <OfferImage imageUrl={stock.offer.image?.url} categoryId={subcategory.categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
@@ -156,25 +130,13 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
           </EndedReasonAndDate>
         </AttributesView>
       </ContentContainer>
-      <ViewGap gap={4}>
-        <ShareContainer>
-          <RoundedButton
-            iconName="share"
-            onPress={pressShareOffer}
-            accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
-          />
-        </ShareContainer>
-        {canReact ? (
-          <ReactionContainer>
-            <ReactionButton
-              iconName="like"
-              Icon={ReactionIcon}
-              onPress={showReactionModal}
-              accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
-            />
-          </ReactionContainer>
-        ) : null}
-      </ViewGap>
+      <EndedBookingInteractionButtons
+        booking={booking}
+        nativeCategoryId={subcategory.nativeCategoryId}
+        handlePressShareOffer={pressShareOffer}
+        handleShowReactionModal={showReactionModal}
+        userReaction={userReaction}
+      />
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
@@ -220,11 +182,3 @@ const EndedReasonAndDate = styled.View({
   alignItems: 'center',
   flexWrap: 'wrap',
 })
-
-const ShareContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
-}))
-
-const ReactionContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
-}))
