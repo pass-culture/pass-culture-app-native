@@ -27,9 +27,12 @@ export function NavigationAchievements(): React.JSX.Element {
     <ScrollView>
       <CheatcodesHeader title="Achievements 🏆" />
       <StyledContainer>
-        <LinkToComponent name="Achievements" />
-        <Row half>
-          <ButtonPrimary wording="ModalOneAchievement" onPress={showModalOneAchievement} />
+        <LinkToComponent name="Achievements" half={false} />
+        <Row>
+          <ButtonPrimary
+            wording="AchievementSuccessModal (1 unlocked)"
+            onPress={showModalOneAchievement}
+          />
           {visibleOneAchievement ? (
             <AchievementSuccessModal
               ids={[AchievementId.FIRST_BOOK_BOOKING]}
@@ -38,8 +41,11 @@ export function NavigationAchievements(): React.JSX.Element {
             />
           ) : null}
         </Row>
-        <Row half>
-          <ButtonPrimary wording="ModalSeveralAchievement" onPress={showModalSeveralAchievements} />
+        <Row>
+          <ButtonPrimary
+            wording="AchievementSuccessModal (2+ unlocked)"
+            onPress={showModalSeveralAchievements}
+          />
           {visibleSeveralAchievements ? (
             <AchievementSuccessModal
               ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_BOOK_BOOKING]}
