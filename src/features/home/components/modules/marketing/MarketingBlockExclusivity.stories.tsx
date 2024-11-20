@@ -37,23 +37,17 @@ const variantConfig: Variants<typeof MarketingBlockExclusivity> = [
   {
     label: 'MarketingBlockExclusivity default',
     props: {
-      title: 'Marathon Harry Potter dans tous les cinémas de France',
-      subtitle: 'Du 12/06 au 24/06',
-      homeId: 'homeId',
       moduleId: 'moduleId',
-      backgroundImageUrl:
-        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
       offer: offersFixture[0],
     },
   },
   {
-    label: 'MarketingBlockExclusivity without image',
+    label: 'MarketingBlockExclusivity with image',
     props: {
-      title: 'Marathon Harry Potter dans tous les cinémas de France',
-      subtitle: 'Du 12/06 au 24/06',
-      homeId: 'homeId',
       moduleId: 'moduleId',
       offer: offersFixture[0],
+      backgroundImageUrl:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
     },
   },
 ]

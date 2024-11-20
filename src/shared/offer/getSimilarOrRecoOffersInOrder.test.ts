@@ -19,7 +19,7 @@ describe('getSimilarOffersInOrder', () => {
           prices: [28.0],
           subcategoryId: SubcategoryIdEnum.CONCERT,
           thumbUrl:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ',
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
         },
         _geoloc: { lat: 4.90339, lng: -52.31663 },
         objectID: '102310',
@@ -41,7 +41,7 @@ describe('getSimilarOffersInOrder', () => {
           prices: [34.0],
           subcategoryId: SubcategoryIdEnum.CONCERT,
           thumbUrl:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA',
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA',
         },
         _geoloc: { lat: 4.90339, lng: -52.31663 },
         objectID: '102249',
@@ -63,7 +63,7 @@ describe('getSimilarOffersInOrder', () => {
           prices: [23.0],
           subcategoryId: SubcategoryIdEnum.CONCERT,
           thumbUrl:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ',
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ',
         },
         _geoloc: { lat: 48.91265, lng: 2.4513 },
         objectID: '102272',
@@ -85,7 +85,7 @@ describe('getSimilarOffersInOrder', () => {
           prices: [28.0],
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           thumbUrl:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ',
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ',
         },
         _geoloc: { lat: 48.94374, lng: 2.48171 },
         objectID: '102280',

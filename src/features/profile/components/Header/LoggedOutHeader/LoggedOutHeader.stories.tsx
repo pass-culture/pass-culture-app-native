@@ -19,16 +19,7 @@ const meta: ComponentMeta<typeof LoggedOutHeader> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof LoggedOutHeader> = [
-  {
-    label: 'LoggedOutHeader',
-    parameters: {
-      chromatic: {
-        viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl],
-      },
-    },
-  },
-]
+const variantConfig: Variants<typeof LoggedOutHeader> = [{ label: 'LoggedOutHeader' }]
 
 const Template: VariantsStory<typeof LoggedOutHeader> = () => (
   <VariantsTemplate variants={variantConfig} Component={LoggedOutHeader} />
@@ -36,3 +27,6 @@ const Template: VariantsStory<typeof LoggedOutHeader> = () => (
 
 export const AllVariants = Template.bind({})
 AllVariants.storyName = 'LoggedOutHeader'
+AllVariants.parameters = {
+  chromatic: { viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl] },
+}

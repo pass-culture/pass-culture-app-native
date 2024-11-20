@@ -66,7 +66,7 @@ describe('useSearchVenueOffers', () => {
             prices: [35.0],
             subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
             thumbUrl:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ',
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ',
           },
           _geoloc: { lat: 48.94374, lng: 2.48171 },
           objectID: '102280',
@@ -88,7 +88,7 @@ describe('useSearchVenueOffers', () => {
             prices: [28.0],
             subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
             thumbUrl:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ',
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ',
           },
           _geoloc: { lat: 48.94374, lng: 2.48171 },
           objectID: '102281',
