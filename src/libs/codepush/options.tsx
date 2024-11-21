@@ -14,6 +14,7 @@ const TEN_MINUTES = 60 * 10
 // On each app start/resume, we check for update, that we install on
 // next app start/resume. This means the app doesn't flicker and the update
 // is not visible to the user.
+// it would seem that this behavior is over-written when setting the CodePush to mandatory via the app center options. If set to mandatory, the CodePush will be applied ASAP (causing flickering)
 export const NextResume: CodePushOptions = {
   installMode: CodePush.InstallMode.ON_NEXT_RESUME,
   minimumBackgroundDuration: TEN_MINUTES,
