@@ -38,7 +38,7 @@ describe('useSortedSearchCategories', () => {
     expect(actualCategoriesLabels).toEqual([
       'Concerts & festivals',
       'Cinéma',
-      'Films, documentaires et séries',
+      'Films, séries et documentaires',
       'Livres',
       'Musique',
       'Arts & loisirs créatifs',

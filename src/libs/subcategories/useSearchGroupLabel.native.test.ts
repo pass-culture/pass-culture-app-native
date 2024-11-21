@@ -14,7 +14,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}     | ${'Conférences & rencontres'}
     ${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE}        | ${'Évènements en ligne'}
     ${SearchGroupNameEnumv2.CINEMA}                     | ${'Cinéma'}
-    ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES} | ${'Films, documentaires et séries'}
+    ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES} | ${'Films, séries et documentaires'}
     ${SearchGroupNameEnumv2.INSTRUMENTS}                | ${'Instruments de musique'}
     ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}           | ${'Jeux & jeux vidéos'}
     ${SearchGroupNameEnumv2.LIVRES}                     | ${'Livres'}
