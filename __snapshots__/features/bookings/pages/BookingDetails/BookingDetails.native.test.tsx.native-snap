@@ -17,7 +17,7 @@ exports[`BookingDetails should render correctly 1`] = `
     bounces={false}
     contentContainerStyle={
       {
-        "marginBottom": 20,
+        "paddingBottom": 20,
       }
     }
     onContentSizeChange={[Function]}
