@@ -19,7 +19,15 @@ describe('filterBookingsWithoutReaction', () => {
   })
 
   const reactionCategories = {
-    categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
+    categories: [
+      NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+      NativeCategoryIdEnumv2.DVD_BLU_RAY,
+      NativeCategoryIdEnumv2.CD,
+      NativeCategoryIdEnumv2.VINYLES,
+      NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
+      NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+      NativeCategoryIdEnumv2.LIVRES_PAPIER,
+    ],
   }
 
   const baseBooking: BookingReponse = {
@@ -56,7 +64,7 @@ describe('filterBookingsWithoutReaction', () => {
         ...baseBooking.stock,
         offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE },
       },
-      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // Plus de 24 heures
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // More than 24 hours
       userReaction: null,
     }
     const result = filterBookingsWithoutReaction(
@@ -75,7 +83,7 @@ describe('filterBookingsWithoutReaction', () => {
         ...baseBooking.stock,
         offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
       },
-      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // Plus de 24 heures
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // More than 24 hours
       userReaction: ReactionTypeEnum.LIKE,
     }
     const result = filterBookingsWithoutReaction(
@@ -87,14 +95,14 @@ describe('filterBookingsWithoutReaction', () => {
     expect(result).toBe(false)
   })
 
-  it('should return false if elapsed time is less than 24 hours', () => {
+  it('should return false if elapsed time is less than 24 hours for SEANCES_DE_CINEMA', () => {
     const bookingWithin24Hours = {
       ...baseBooking,
       stock: {
         ...baseBooking.stock,
         offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
       },
-      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS + 1).toISOString(), // Moins de 24 heures
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS + 1).toISOString(), // Less than 24 hours
       userReaction: null,
     }
     const result = filterBookingsWithoutReaction(
@@ -106,14 +114,52 @@ describe('filterBookingsWithoutReaction', () => {
     expect(result).toBe(false)
   })
 
-  it('should return true if elapsed time is more than 24 hours and all conditions are met', () => {
+  it('should return true if elapsed time is more than 24 hours for SEANCES_DE_CINEMA', () => {
     const validBooking = {
       ...baseBooking,
       stock: {
         ...baseBooking.stock,
         offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
       },
-      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // Plus de 24 heures
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // More than 24 hours
+      userReaction: null,
+    }
+    const result = filterBookingsWithoutReaction(
+      validBooking,
+      subcategoriesMapping,
+      reactionCategories
+    )
+
+    expect(result).toBe(true)
+  })
+
+  it('should return false if elapsed time is less than 31 days for eligible categories', () => {
+    const bookingWithin31Days = {
+      ...baseBooking,
+      stock: {
+        ...baseBooking.stock,
+        offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+      },
+      dateUsed: new Date(CURRENT_DATE.getTime() - 30 * TWENTY_FOUR_HOURS).toISOString(), // Less than 31 days
+      userReaction: null,
+    }
+    const result = filterBookingsWithoutReaction(
+      bookingWithin31Days,
+      subcategoriesMapping,
+      reactionCategories
+    )
+
+    expect(result).toBe(false)
+  })
+
+  it('should return true if elapsed time is more than 31 days for eligible categories and all conditions are met', () => {
+    const validBooking = {
+      ...baseBooking,
+      stock: {
+        ...baseBooking.stock,
+        offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+      },
+      dateUsed: new Date(CURRENT_DATE.getTime() - 31 * TWENTY_FOUR_HOURS - 1).toISOString(), // More than 31 days
       userReaction: null,
     }
     const result = filterBookingsWithoutReaction(
