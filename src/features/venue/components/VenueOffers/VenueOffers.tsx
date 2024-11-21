@@ -50,7 +50,7 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
   const isOfferAMovieScreening = venueOffers?.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
-  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
+  const enableCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
@@ -60,7 +60,7 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
     return <NoOfferPlaceholder />
   }
 
-  if (isOfferAMovieScreening && enableNewXpCine) {
+  if (isOfferAMovieScreening && enableCine) {
     return <MovieScreening venueOffers={venueOffers} />
   }
 

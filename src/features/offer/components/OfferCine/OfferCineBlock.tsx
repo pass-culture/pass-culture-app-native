@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { OfferNewXPCineContent } from 'features/offer/components/OfferNewXPCine/OfferNewXPCineContent'
+import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { AppThemeType } from 'theme'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -15,7 +15,7 @@ type Props = {
   onSeeVenuePress?: VoidFunction
 }
 
-export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
+export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
   const theme = useTheme()
 
   return (
@@ -24,8 +24,8 @@ export const OfferNewXPCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }
         <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       </TitleContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <MovieCalendarProvider offer={offer} nbOfDays={15} containerStyle={getCalendarStyle(theme)}>
-        <OfferNewXPCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
+      <MovieCalendarProvider nbOfDays={15} containerStyle={getCalendarStyle(theme)}>
+        <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>
   )
