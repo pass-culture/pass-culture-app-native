@@ -91,11 +91,3 @@ export const useRegisterAnchor = () => {
 
   return context.registerAnchor
 }
-
-// - doit s'afficher sur les pages cine
-// - ne doit pas être affiché sur les pages livres
-// - doit faire un scroll
-
-// - même chose sur les venues
-
-// - faire les screens de PR

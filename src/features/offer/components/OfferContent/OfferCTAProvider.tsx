@@ -21,10 +21,15 @@ export const OfferCTAProvider: React.FC<OfferCTAProviderProps> = ({ children }) 
     return
   })
 
-  const setButton = useCallback((newWording: string, newOnPress: () => void) => {
-    setWording(newWording)
-    setOnPress(() => newOnPress)
-  }, [])
+  const setButton = useCallback(
+    (newWording: string, newOnPress: () => void) => {
+      if (newWording !== wording) {
+        setWording(newWording)
+        setOnPress(() => newOnPress)
+      }
+    },
+    [wording]
+  )
 
   const value = useMemo(
     () => ({ wording, onPress, setButton, showButton: setIsVisible, isButtonVisible: isVisible }),

@@ -26,6 +26,8 @@ export interface VenueOffersProps {
   playlists?: GtlPlaylistData[]
 }
 
+export const cinemaCTAButtonName = 'Accéder aux séances'
+
 export const LoadingState: React.FC = () => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={6} />
@@ -39,11 +41,10 @@ const MovieScreening: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffers })
   const scrollToAnchor = useScrollToAnchor()
 
   useEffect(() => {
-    console.log('yo')
-    setButton('Accéder aux séances', () => {
+    setButton(cinemaCTAButtonName, () => {
       scrollToAnchor('venue-cine-availabilities')
     })
-  }, [setButton])
+  }, [scrollToAnchor, setButton])
 
   return (
     <React.Fragment>
@@ -72,8 +73,6 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
   const enableCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
-
-  console.log({ isOfferAMovieScreening, enableCine })
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />

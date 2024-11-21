@@ -6,6 +6,7 @@ import { push } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
+import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -14,9 +15,12 @@ import {
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
+import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
+
+const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
 let mockFFValue = false
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag', () => ({
@@ -40,6 +44,26 @@ jest.mock('libs/subcategories/useSubcategories')
 jest.mock('libs/location')
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/firebase/analytics/analytics')
+
+const mockInView = jest.fn()
+const InViewMock = ({
+  onChange,
+  children,
+}: {
+  onChange: VoidFunction
+  children: React.ReactNode
+}) => {
+  mockInView.mockImplementation(onChange)
+  return <React.Fragment>{children}</React.Fragment>
+}
+
+jest.mock('react-native-intersection-observer', () => {
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView: InViewMock,
+    mockInView,
+  }
+})
 
 const defaultSearchParams = {
   beginningDatetime: undefined,
@@ -158,15 +182,51 @@ describe('<VenueContent />', () => {
 
   describe('movie screening access button', () => {
     const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
-
     mockFFValue = true
-    renderVenueContent({
-      venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-      venueOffers: venueMoviesOffersMock,
+
+    it('should show button', async () => {
+      renderVenueContent({
+        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
+        venueOffers: venueMoviesOffersMock,
+      })
+      await act(async () => {
+        mockInView(false)
+      })
+
+      await screen.findByText('Les films à l’affiche')
+
+      expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
     })
 
-    it.only('should be tested', () => {
-      expect(true).toBeTruthy()
+    it('should not show button', async () => {
+      renderVenueContent({
+        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
+        venueOffers: venueMoviesOffersMock,
+      })
+      await act(async () => {
+        mockInView(true)
+      })
+
+      await screen.findByText('Les films à l’affiche')
+
+      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+    })
+
+    it('should scroll to anchor', async () => {
+      renderVenueContent({
+        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
+        venueOffers: venueMoviesOffersMock,
+      })
+
+      await act(async () => {
+        mockInView(false)
+      })
+
+      const button = await screen.findByText(cinemaCTAButtonName)
+
+      await userEvent.press(button)
+
+      expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
     })
   })
 })

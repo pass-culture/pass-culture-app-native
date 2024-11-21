@@ -7,6 +7,7 @@ import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -25,7 +26,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
   const scrollToAnchor = useScrollToAnchor()
 
   useEffect(() => {
-    setButton('Accéder aux séances', () => {
+    setButton(cinemaCTAButtonName, () => {
       scrollToAnchor('offer-cine-availabilities')
     })
   }, [scrollToAnchor, setButton])
