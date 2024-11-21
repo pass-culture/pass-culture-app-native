@@ -19,9 +19,11 @@ describe('useMoviesScreeningsList', () => {
   const mockOfferIds = [1, 2, 3]
 
   beforeEach(() => {
-    jest
-      .spyOn(useMovieCalendarModule, 'useMovieCalendar')
-      .mockReturnValue({ selectedDate: mockSelectedDate, goToDate: jest.fn })
+    jest.spyOn(useMovieCalendarModule, 'useMovieCalendar').mockReturnValue({
+      selectedDate: mockSelectedDate,
+      goToDate: jest.fn(),
+      displayCalendar: jest.fn(),
+    })
   })
 
   it('should return filtered movie offers', async () => {

@@ -10,13 +10,9 @@ export const getNextMoviesByDate = (
   offersWithStocks: OfferResponseV2[],
   date: Date
 ): MovieOffer[] => {
-  if (!offersWithStocks.length) {
-    return []
-  }
-
   return moviesOfferBuilder(offersWithStocks)
-    .withoutMoviesAfter15Days()
-    .withoutMoviesOnDay(date)
+    .withoutScreeningsAfterNbDays(15)
+    .withoutScreeningsOnDay(date)
     .withNextScreeningFromDate(date)
     .sortedByLast30DaysBooking()
     .build()
