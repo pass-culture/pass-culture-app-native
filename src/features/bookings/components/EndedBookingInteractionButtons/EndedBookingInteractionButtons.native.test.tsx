@@ -80,8 +80,7 @@ describe('EndedBookingInteractionButtons', () => {
             userReaction,
           },
           NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-          RemoteConfigProvider,
-          userReaction
+          RemoteConfigProvider
         )
 
         expect(await screen.findByLabelText(labelRegex)).toBeOnTheScreen()
@@ -95,8 +94,7 @@ describe('EndedBookingInteractionButtons', () => {
           userReaction: null,
         },
         NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-        RemoteConfigProvider,
-        null
+        RemoteConfigProvider
       )
 
       expect(await screen.findByTestId('smallBadge')).toBeOnTheScreen()
@@ -107,8 +105,7 @@ describe('EndedBookingInteractionButtons', () => {
 function renderEndedBookingInteractionButtons(
   booking: BookingReponse,
   nativeCategoryId: NativeCategoryIdEnumv2,
-  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment,
-  userReaction?: ReactionTypeEnum | null
+  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
 ) {
   return render(
     <Wrapper>
@@ -118,7 +115,6 @@ function renderEndedBookingInteractionButtons(
           nativeCategoryId={nativeCategoryId}
           handlePressShareOffer={jest.fn()}
           handleShowReactionModal={jest.fn()}
-          userReaction={userReaction}
         />
       )}
     </Wrapper>

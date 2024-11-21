@@ -6,12 +6,13 @@ import { EndedBookingInteractionButtons } from 'features/bookings/components/End
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
-import { BookingItemProps } from 'features/bookings/types'
+import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { ShareContent } from 'libs/share/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -21,11 +22,17 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 
+type Props = {
+  booking: Booking
+  handleShowReactionModal: (booking: Booking) => void
+  handleShowShareOfferModal: (shareContent: ShareContent | null) => void
+}
+
 export const EndedBookingItem = ({
   booking,
   handleShowReactionModal,
   handleShowShareOfferModal,
-}: BookingItemProps) => {
+}: Props) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
   const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
@@ -76,7 +83,7 @@ export const EndedBookingItem = ({
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
     shareOffer()
-    handleShowShareOfferModal(shareContent)
+    handleShowShareOfferModal && handleShowShareOfferModal(shareContent)
   }, [stock.offer.id, shareOffer, handleShowShareOfferModal, shareContent])
 
   return (
@@ -108,7 +115,7 @@ export const EndedBookingItem = ({
         booking={booking}
         nativeCategoryId={subcategory.nativeCategoryId}
         handlePressShareOffer={pressShareOffer}
-        handleShowReactionModal={() => handleShowReactionModal(booking)}
+        handleShowReactionModal={() => handleShowReactionModal && handleShowReactionModal(booking)}
       />
     </Container>
   )

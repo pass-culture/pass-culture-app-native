@@ -9,12 +9,12 @@ import {
   displayExpirationMessage,
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
-import { BookingItemProps } from 'features/bookings/types'
+import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
-import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -22,9 +22,14 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: BookingItemProps) => {
+type Props = {
+  booking: Booking
+  eligibleBookingsForArchive?: Booking[]
+}
+
+export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Props) => {
   const daysLeft = daysCountdown(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
