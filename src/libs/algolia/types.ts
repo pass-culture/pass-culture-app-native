@@ -16,7 +16,6 @@ import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
@@ -139,8 +138,6 @@ export type SearchQueryParameters = {
   distinct?: boolean
   objectIds?: string[]
 }
-
-export const transformHit = transformOfferHit
 
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
 export type IncompleteSearchHit = BaseAlgoliaHit
