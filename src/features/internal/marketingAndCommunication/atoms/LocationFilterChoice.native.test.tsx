@@ -9,7 +9,7 @@ describe('<LocationFilterChoice />', () => {
     const onChange = jest.fn()
     render(<LocationFilterChoice onChange={onChange} />)
 
-    fireEvent.press(screen.getByText('Partout'))
+    fireEvent.press(screen.getByText('France entière'))
 
     expect(onChange).toHaveBeenNthCalledWith(1, {
       locationType: LocationMode.EVERYWHERE,

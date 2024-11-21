@@ -6,11 +6,11 @@ export const getLocationTitle = (place: SuggestedPlace | null, locationMode: Loc
     case LocationMode.AROUND_PLACE:
       return place?.label ?? ''
     case LocationMode.EVERYWHERE:
-      return 'Me localiser'
+      return 'France entière'
     case LocationMode.AROUND_ME:
       return 'Ma position'
 
     default:
-      return 'Me localiser'
+      return 'France entière'
   }
 }

@@ -136,7 +136,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           onPress={selectLocationMode(LocationMode.EVERYWHERE)}
           icon={WorldPosition}
           color={everywhereLocationModeColor}
-          title="Partout"
+          title="France entière"
         />
       </StyledScrollView>
     </AppModal>

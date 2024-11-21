@@ -61,7 +61,7 @@ describe('SearchWrapper', () => {
     expect(screen.getByText(LocationMode.AROUND_ME)).toBeOnTheScreen()
   })
 
-  it('should update locationType with type Everywhere when Location Context is switched to "Partout"', async () => {
+  it('should update locationType with type Everywhere when Location Context is switched to "France Entière"', async () => {
     renderDummyComponent()
 
     await act(async () => {

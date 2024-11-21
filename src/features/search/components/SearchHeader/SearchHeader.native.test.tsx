@@ -68,7 +68,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.getByText('Me localiser')).toBeOnTheScreen()
+      expect(insideLocationWidget.getByText('France entière')).toBeOnTheScreen()
     })
   })
 
@@ -78,7 +78,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(insideLocationWidget.queryByText('France entière')).not.toBeOnTheScreen()
     })
   })
 
@@ -88,7 +88,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(searchHeaderTitleContainer.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(searchHeaderTitleContainer.queryByText('France entière')).not.toBeOnTheScreen()
     })
   })
 
@@ -98,7 +98,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(insideLocationWidget.queryByText('France entière')).not.toBeOnTheScreen()
     })
   })
 
@@ -108,7 +108,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(searchHeaderTitleContainer.getByText('Me localiser')).toBeOnTheScreen()
+      expect(searchHeaderTitleContainer.getByText('France entière')).toBeOnTheScreen()
     })
   })
 })

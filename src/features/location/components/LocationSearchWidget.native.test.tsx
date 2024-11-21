@@ -64,7 +64,7 @@ describe('LocationSearchWidget', () => {
     ${false}          | ${null}
     ${false}          | ${undefined}
   `(
-    "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
+    "should render a location pointer(not filled ) and the text 'France entière' if the user is not geolocated and has not selected a custom position",
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -76,7 +76,7 @@ describe('LocationSearchWidget', () => {
       render(<LocationSearchWidget />)
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
-      expect(screen.getByText('Me localiser')).toBeOnTheScreen()
+      expect(screen.getByText('France entière')).toBeOnTheScreen()
     }
   )
 

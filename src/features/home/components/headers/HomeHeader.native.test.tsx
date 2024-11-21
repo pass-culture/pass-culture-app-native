@@ -96,7 +96,7 @@ describe('HomeHeader', () => {
 
     await screen.findByTestId('Ouvrir la modale de localisation depuis le widget')
 
-    expect(screen.getByText('Me localiser')).toBeTruthy()
+    expect(screen.getByText('France entière')).toBeTruthy()
   })
 
   it('should not show LocationWidget isDesktopViewport is true', async () => {

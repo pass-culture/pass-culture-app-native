@@ -67,7 +67,7 @@ describe('LocationWidgetDesktop', () => {
     ${false}          | ${null}
     ${false}          | ${undefined}
   `(
-    "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
+    "should render a location pointer(not filled ) and the text 'France entière' if the user is not geolocated and has not selected a custom position",
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -80,7 +80,7 @@ describe('LocationWidgetDesktop', () => {
       renderLocationWidgetDesktop()
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
-      expect(screen.getByText('Me localiser')).toBeOnTheScreen()
+      expect(screen.getByText('France entière')).toBeOnTheScreen()
     }
   )
 
@@ -167,7 +167,7 @@ describe('LocationWidgetDesktop', () => {
       ).not.toBeOnTheScreen()
     })
 
-    it('should hide tooltip when taping “Me localiser”', async () => {
+    it('should hide tooltip when taping “France entière”', async () => {
       jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
@@ -179,7 +179,7 @@ describe('LocationWidgetDesktop', () => {
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
       )
 
-      const locationButton = screen.getByText('Me localiser')
+      const locationButton = screen.getByText('France entière')
       fireEvent.press(locationButton)
 
       expect(

@@ -553,7 +553,7 @@ describe('SearchBox component', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('Me localiser')).toBeOnTheScreen()
+    expect(screen.getByText('France entière')).toBeOnTheScreen()
   })
 })
 
