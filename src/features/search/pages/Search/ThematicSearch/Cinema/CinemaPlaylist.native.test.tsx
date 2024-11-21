@@ -1,62 +1,54 @@
 import React from 'react'
 
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { CinemaPlaylistData } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
+import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import * as useCinemaOffersAPI from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
 import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
-import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
-import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode, Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { render, screen } from 'tests/utils'
+
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
+jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/firebase/analytics/analytics')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx
 
-jest.mock('@shopify/flash-list', () => {
-  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
-  class MockFlashList extends ActualFlashList {
-    componentDidMount() {
-      super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
-        nativeEvent: { layout: { height: 250, width: 800 } },
-      })
-    }
-  }
-  return {
-    ...jest.requireActual('@shopify/flash-list'),
-    FlashList: MockFlashList,
-  }
+const mockLocationMode = LocationMode.AROUND_ME
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockUserLocation,
+    selectedLocationMode: mockLocationMode,
+  }),
+}))
+
+const DEFAULT_CINEMA_OFFER = searchResponseOfferBuilder().build()
+const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
+
+const useCinemaOffersSpy = jest.spyOn(useCinemaOffersAPI, 'useCinemaOffers').mockReturnValue({
+  offers: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
+  isLoading: false,
 })
 
-const playlist = cinemaPlaylistAlgoliaSnapshot[0] as CinemaPlaylistData
+describe('Cinema', () => {
+  it('should render playlist when algolia returns offers', async () => {
+    renderCinema()
 
-describe('CinemaPlaylist', () => {
-  describe('on ThematicSearch page', () => {
-    it('should log ConsultOffer when pressing an item', async () => {
-      renderCinemaPlaylist(playlist, 'thematicsearch', 'ThematicSearch')
+    await screen.findByTestId('playlistsThematicSearchCinema')
 
-      const offer = await screen.findByText('Harry potter à l’école des sorciers')
+    expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
+  })
 
-      await act(async () => {
-        fireEvent.press(offer)
-      })
+  it('should not render playlist when algolia does not return offers', async () => {
+    useCinemaOffersSpy.mockReturnValueOnce({ offers: [], isLoading: false })
+    renderCinema()
 
-      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        from: 'thematicsearch',
-        index: 0,
-        offerId: 1,
-      })
-    })
+    await screen.findByTestId('playlistsThematicSearchCinema')
+
+    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-function renderCinemaPlaylist(
-  cinemaPlaylist: CinemaPlaylistData,
-  analyticsFrom: Referrals,
-  route: Extract<ScreenNames, 'ThematicSearch'>
-) {
-  return render(
-    reactQueryProviderHOC(
-      <CinemaPlaylist playlist={cinemaPlaylist} analyticsFrom={analyticsFrom} route={route} />
-    )
-  )
-}
+const renderCinema = () => render(reactQueryProviderHOC(<CinemaPlaylist />))
