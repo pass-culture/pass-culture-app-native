@@ -1,5 +1,5 @@
 import { BookingReponse, NativeCategoryIdEnumv2 } from 'api/gen'
-import { TWENTY_FOUR_HOURS } from 'features/home/constants'
+import { THIRTY_ONE_DAYS, TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 
 export function filterBookingsWithoutReaction(
@@ -17,6 +17,10 @@ export function filterBookingsWithoutReaction(
     return false
   }
 
+  const isCinemaCategory = subcategory.nativeCategoryId === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA
+
   const elapsedTime = now.getTime() - new Date(dateUsed).getTime()
-  return elapsedTime > TWENTY_FOUR_HOURS
+  const timeThreshold = isCinemaCategory ? TWENTY_FOUR_HOURS : THIRTY_ONE_DAYS
+
+  return elapsedTime > timeThreshold
 }
