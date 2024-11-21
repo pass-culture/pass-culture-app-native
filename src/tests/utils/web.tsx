@@ -27,9 +27,10 @@ type PropsWithTheme = {
 }
 
 const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
+  const innerTheme = deepmerge(computedTheme, theme || {})
   return (
-    <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
-      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
+    <ThemeProviderWeb theme={innerTheme}>
+      <ThemeProvider theme={innerTheme}>
         <IconFactoryProvider>{children}</IconFactoryProvider>
       </ThemeProvider>
     </ThemeProviderWeb>
@@ -58,6 +59,7 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
 
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react'
+export { userEvent } from '@testing-library/user-event'
 
 export { axe as checkAccessibilityFor } from 'jest-axe'
 

@@ -13,7 +13,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
+import { render, screen, waitFor, userEvent } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
@@ -85,34 +85,41 @@ function renderOfferContent({
 }
 
 describe('<OfferContent />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
-    jest.useRealTimers()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
   })
 
   it('should not display sticky booking button on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
+    const { unmount } = renderOfferContent({ isDesktopViewport: true })
 
     await screen.findByText('Réserver l’offre')
 
     expect(screen.queryByTestId('sticky-booking-button')).not.toBeInTheDocument()
+
+    unmount()
   })
 
   it('should display sticky booking button on mobile', async () => {
-    renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false })
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('sticky-booking-button')).toBeInTheDocument()
+
+    unmount()
   })
 
   it('should not display mobile body on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
+    const { unmount } = renderOfferContent({ isDesktopViewport: true })
 
     await screen.findByText('Réserver l’offre')
 
     expect(screen.queryByTestId('offer-body-mobile')).not.toBeInTheDocument()
+
+    unmount()
   })
 
   it('should display mobile body on mobile', async () => {
@@ -145,15 +152,17 @@ describe('<OfferContent />', () => {
   })
 
   it('should display linear gradient on offer image', async () => {
-    renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false })
 
     expect(await screen.findByTestId('imageGradient')).toBeInTheDocument()
+
+    unmount()
   })
 
   it('should not display tag on offer image when enableOfferPreview feature flag activated', async () => {
     const { unmount } = renderOfferContent({ isDesktopViewport: false })
 
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(screen.queryByTestId('imageTag')).not.toBeInTheDocument()
     })
     unmount()
@@ -166,7 +175,7 @@ describe('<OfferContent />', () => {
     }
     const { unmount } = renderOfferContent({ offer })
 
-    fireEvent.click(await screen.findByLabelText('Carousel image 1'))
+    user.click(await screen.findByLabelText('Carousel image 1'))
 
     await waitFor(() => expect(mockShowModal).toHaveBeenCalledTimes(1))
     unmount()

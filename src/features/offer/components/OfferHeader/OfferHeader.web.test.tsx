@@ -7,7 +7,7 @@ import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerRes
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils/web'
+import { act, render, screen, userEvent } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -51,6 +51,7 @@ describe('<OfferHeader />', () => {
   })
 
   it('should display the share modal when clicking on the share button', async () => {
+    const user = userEvent.setup()
     const animatedValue = new Animated.Value(0)
 
     render(
@@ -64,10 +65,11 @@ describe('<OfferHeader />', () => {
     )
 
     const shareButton = screen.getByLabelText('Partager')
+
     await act(async () => {
-      fireEvent.click(shareButton)
+      await user.click(shareButton)
     })
 
-    expect(screen.getByText('Partager l’offre')).toBeInTheDocument()
+    expect(await screen.findByText('Partager l’offre')).toBeInTheDocument()
   })
 })
