@@ -79,8 +79,9 @@ export const OffersModule = (props: OffersModuleProps) => {
     hitsPerPage: 20,
   }
   const searchTabConfig = getSearchStackConfig('SearchResults', searchParams)
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const moduleName = displayParameters.title ?? parameters.title
+
+  const moduleName = displayParameters.title ?? parameters?.title
+
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen({
       moduleName,
@@ -92,8 +93,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const showSeeMore =
     nbPlaylistResults &&
     playlistItems.length < nbPlaylistResults &&
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
+    !(parameters?.tags ?? parameters?.beginningDatetime ?? parameters?.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore
@@ -127,8 +127,16 @@ export const OffersModule = (props: OffersModuleProps) => {
         />
       )
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [user?.isBeneficiary, labelMapping, mapping]
+
+    [
+      labelMapping,
+      mapping,
+      user?.isBeneficiary,
+      moduleName,
+      moduleId,
+      homeEntryId,
+      isNewOfferTileDisplayed,
+    ]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
