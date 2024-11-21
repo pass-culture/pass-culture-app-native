@@ -64,7 +64,7 @@ describe('filterBookingsWithoutReaction', () => {
         ...baseBooking.stock,
         offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE },
       },
-      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // Plus de 24 heures
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1).toISOString(), // More than 24 hours
       userReaction: null,
     }
     const result = filterBookingsWithoutReaction(
