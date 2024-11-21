@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import { fetchFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
 import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -15,11 +16,13 @@ type FilmsOffersData = {
   isLoading: boolean
 }
 export function useFilmsOffers(): FilmsOffersData {
+  const transformHits = useTransformOfferHits()
+
   const netInfo = useNetInfoContext()
 
   const { userLocation } = useLocation()
   const { data, isLoading } = useQuery({
-    queryKey: [QueryKeys.FILMS_OFFERS],
+    queryKey: [QueryKeys.FILMS_OFFERS, userLocation],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchFilmsOffers({ userLocation })
     },
@@ -29,10 +32,12 @@ export function useFilmsOffers(): FilmsOffersData {
 
   if (!data || data.length === 0) return { offers: [], isLoading }
 
+  const transformedOffers = data.map((items) => items.hits.map(transformHits))
+
   return {
     offers: data.map((item, index) => ({
       title: FILMS_PLAYLIST_TITLES[index] ?? '',
-      offers: data[index] ?? { hits: [] },
+      offers: { hits: transformedOffers[index] ?? [] },
     })),
     isLoading,
   }

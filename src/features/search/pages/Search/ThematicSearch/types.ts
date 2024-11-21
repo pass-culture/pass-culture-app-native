@@ -1,9 +1,9 @@
+import { AlgoliaHit } from 'libs/algolia/types'
 import { Position } from 'libs/location'
-import { Offer } from 'shared/offer/types'
 
 export type ThematicSearchPlaylistData = {
   title: string
-  offers: { hits: Offer[] }
+  offers: { hits: AlgoliaHit[] }
 }
 
 export type FetchThematicSearchOffers = {

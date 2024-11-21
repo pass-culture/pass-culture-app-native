@@ -28,7 +28,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('ThematicSearchPlaylistList', () => {
