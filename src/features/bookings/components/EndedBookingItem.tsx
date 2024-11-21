@@ -1,45 +1,37 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
 import { BookingItemProps } from 'features/bookings/types'
-import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
-import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
+export const EndedBookingItem = ({
+  booking,
+  handleShowReactionModal,
+  handleShowShareOfferModal,
+}: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
   const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-
-  const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
-    booking.userReaction
-  )
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
@@ -76,35 +68,16 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       })
     }
   }
-
-  const {
-    visible: reactionModalVisible,
-    showModal: showReactionModal,
-    hideModal: hideReactionModal,
-  } = useModal(false)
-
-  const {
-    visible: shareOfferModalVisible,
-    showModal: showShareOfferModal,
-    hideModal: hideShareOfferModal,
-  } = useModal(false)
-
   const { share: shareOffer, shareContent } = getShareOffer({
     offer: stock.offer,
     utmMedium: 'ended_booking',
   })
 
-  const handleSaveReaction = async ({ offerId, reactionType }: PostOneReactionRequest) => {
-    await onSaveReaction?.({ offerId, reactionType })
-    setUserReaction(reactionType)
-    hideReactionModal()
-  }
-
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
     shareOffer()
-    showShareOfferModal()
-  }, [stock.offer.id, shareOffer, showShareOfferModal])
+    handleShowShareOfferModal(shareContent)
+  }, [stock.offer.id, shareOffer, handleShowShareOfferModal, shareContent])
 
   return (
     <Container>
@@ -135,29 +108,8 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         booking={booking}
         nativeCategoryId={subcategory.nativeCategoryId}
         handlePressShareOffer={pressShareOffer}
-        handleShowReactionModal={showReactionModal}
-        userReaction={userReaction}
+        handleShowReactionModal={() => handleShowReactionModal(booking)}
       />
-      {shareContent ? (
-        <WebShareModal
-          visible={shareOfferModalVisible}
-          headerTitle="Partager l’offre"
-          shareContent={shareContent}
-          dismissModal={hideShareOfferModal}
-        />
-      ) : null}
-      {shouldDisplayReactionFeature ? (
-        <ReactionChoiceModal
-          offer={booking.stock.offer}
-          dateUsed={endedBookingDateLabel ?? ''}
-          closeModal={hideReactionModal}
-          visible={reactionModalVisible}
-          defaultReaction={userReaction}
-          onSave={handleSaveReaction}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      ) : null}
     </Container>
   )
 }

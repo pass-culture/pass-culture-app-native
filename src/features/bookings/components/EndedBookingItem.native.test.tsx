@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
@@ -60,6 +60,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockHandleShowReactionModal = jest.fn()
+const mockHandleShowShareOfferModal = jest.fn()
+
+const user = userEvent.setup()
+
 describe('EndedBookingItem', () => {
   jest.useFakeTimers()
 
@@ -80,9 +85,7 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation annulée')
-    userEvent.press(item)
-
-    await screen.findByText('Avez-vous déjà vu ?')
+    await user.press(item)
 
     expect(mockNavigate).toHaveBeenCalledWith('Offer', {
       id: 147874,
@@ -101,9 +104,7 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation annulée')
-    userEvent.press(item)
-
-    await screen.findByText('Avez-vous déjà vu ?')
+    await userEvent.press(item)
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: 147874,
@@ -119,12 +120,10 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation archivée')
-    fireEvent.press(item)
+    await user.press(item)
 
-    await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('BookingDetails', {
-        id: 321,
-      })
+    expect(mockNavigate).toHaveBeenCalledWith('BookingDetails', {
+      id: 321,
     })
   })
 
@@ -138,9 +137,24 @@ describe('EndedBookingItem', () => {
     const shareButton = await screen.findByLabelText(
       `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
     )
-    fireEvent.press(shareButton)
+    await user.press(shareButton)
 
     expect(mockNativeShare).toHaveBeenCalledTimes(1)
+  })
+
+  it('should handle share offer modal opening when pressing share icon', async () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
+
+    const shareButton = await screen.findByLabelText(
+      `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
+    )
+    await user.press(shareButton)
+
+    expect(mockHandleShowShareOfferModal).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when press share icon', async () => {
@@ -153,7 +167,7 @@ describe('EndedBookingItem', () => {
     const shareButton = await screen.findByLabelText(
       `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
     )
-    fireEvent.press(shareButton)
+    await user.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
@@ -171,12 +185,12 @@ describe('EndedBookingItem', () => {
       })
     })
 
-    it('should open reaction modal on press', async () => {
+    it('should handle reaction modal opening when pressing reaction button', async () => {
       renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
 
-      fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
+      await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
-      expect(await screen.findByLabelText('Valider la réaction')).toBeOnTheScreen()
+      expect(mockHandleShowReactionModal).toHaveBeenCalledTimes(1)
     })
   })
 })
@@ -185,5 +199,15 @@ function renderEndedBookingItem(
   booking: Booking,
   Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
 ) {
-  return render(<Wrapper>{reactQueryProviderHOC(<EndedBookingItem booking={booking} />)}</Wrapper>)
+  return render(
+    <Wrapper>
+      {reactQueryProviderHOC(
+        <EndedBookingItem
+          booking={booking}
+          handleShowReactionModal={mockHandleShowReactionModal}
+          handleShowShareOfferModal={mockHandleShowShareOfferModal}
+        />
+      )}
+    </Wrapper>
+  )
 }

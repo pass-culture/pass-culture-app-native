@@ -15,7 +15,6 @@ type Props = {
   nativeCategoryId: NativeCategoryIdEnumv2
   handlePressShareOffer: VoidFunction
   handleShowReactionModal: VoidFunction
-  userReaction?: ReactionTypeEnum | null
 }
 
 export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
@@ -23,11 +22,10 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
   nativeCategoryId,
   handlePressShareOffer,
   handleShowReactionModal,
-  userReaction,
 }) => {
   const { reactionCategories } = useRemoteConfigContext()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { cancellationDate, stock } = booking
+  const { cancellationDate, stock, userReaction } = booking
 
   const ReactionIcon = useReactionIcon(userReaction)
 
