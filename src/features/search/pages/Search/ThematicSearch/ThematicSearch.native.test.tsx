@@ -234,7 +234,7 @@ describe('<ThematicSearch/>', () => {
         offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES],
       })
       render(reactQueryProviderHOC(<ThematicSearch />))
-      await screen.findByText('Films, documentaires et séries')
+      await screen.findByText('Films, séries et documentaires')
 
       expect(await screen.findByText('DVD, Blu-Ray')).toBeOnTheScreen()
     })
