@@ -54,8 +54,8 @@ const RandomText = (props: ButtonInsideTexteProps) => {
   )
 }
 
-const Template: VariantsStory<typeof RandomText> = () => (
-  <VariantsTemplate variants={variantConfig} Component={RandomText} />
+const Template: VariantsStory<typeof RandomText> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

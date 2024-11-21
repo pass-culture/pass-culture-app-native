@@ -22,8 +22,12 @@ const variantConfig: Variants<typeof EmailAttemptsLeft> = [
   },
 ]
 
-const Template: VariantsStory<typeof EmailAttemptsLeft> = () => (
-  <VariantsTemplate variants={variantConfig} Component={EmailAttemptsLeft} />
+const Template: VariantsStory<typeof EmailAttemptsLeft> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={EmailAttemptsLeft}
+    defaultProps={{ ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

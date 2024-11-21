@@ -38,8 +38,8 @@ const variantConfig: Variants<typeof PasswordInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof PasswordInput> = () => (
-  <VariantsTemplate variants={variantConfig} Component={PasswordInput} />
+const Template: VariantsStory<typeof PasswordInput> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={PasswordInput} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

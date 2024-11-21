@@ -30,8 +30,8 @@ const variantConfig: Variants<typeof OfferVenueButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferVenueButton> = () => (
-  <VariantsTemplate variants={variantConfig} Component={OfferVenueButton} />
+const Template: VariantsStory<typeof OfferVenueButton> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={OfferVenueButton} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

@@ -25,8 +25,8 @@ const variantConfig: Variants<typeof PlaylistArrowButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof PlaylistArrowButton> = () => (
-  <VariantsTemplate variants={variantConfig} Component={PlaylistArrowButton} />
+const Template: VariantsStory<typeof PlaylistArrowButton> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={PlaylistArrowButton} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

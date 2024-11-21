@@ -29,8 +29,12 @@ const variantConfig: Variants<typeof AnimatedProgressBar> = [
   },
 ]
 
-const Template: VariantsStory<typeof AnimatedProgressBar> = () => (
-  <VariantsTemplate variants={variantConfig} Component={AnimatedProgressBar} />
+const Template: VariantsStory<typeof AnimatedProgressBar> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={AnimatedProgressBar}
+    defaultProps={{ ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

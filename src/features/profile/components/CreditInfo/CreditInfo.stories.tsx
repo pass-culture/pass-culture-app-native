@@ -20,8 +20,8 @@ const variantConfig: Variants<typeof CreditInfo> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditInfo> = () => (
-  <VariantsTemplate variants={variantConfig} Component={CreditInfo} />
+const Template: VariantsStory<typeof CreditInfo> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={CreditInfo} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

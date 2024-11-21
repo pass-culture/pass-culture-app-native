@@ -43,8 +43,8 @@ const variantConfig: Variants<typeof FilterRow> = [
   },
 ]
 
-const Template: VariantsStory<typeof FilterRow> = () => (
-  <VariantsTemplate variants={variantConfig} Component={FilterRow} />
+const Template: VariantsStory<typeof FilterRow> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={FilterRow} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

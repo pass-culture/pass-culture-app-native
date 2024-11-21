@@ -1,5 +1,5 @@
 import { ComponentMeta } from '@storybook/react'
-import React from 'react'
+import React, { type ComponentProps } from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { theme } from 'theme'
@@ -14,7 +14,7 @@ const meta: ComponentMeta<typeof AttachedCardDisplay> = {
 }
 export default meta
 
-const baseProps = {
+const baseProps: ComponentProps<typeof AttachedCardDisplay> = {
   title: 'La Joconde',
   subtitle: 'Arts visuels',
   details: ['Du 12/06 au 24/06'],
@@ -24,12 +24,10 @@ const baseProps = {
 const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
     label: 'AttachedCardDisplay default',
-    props: baseProps,
   },
   {
     label: 'AttachedCardDisplay with image',
     props: {
-      ...baseProps,
       LeftImageComponent: () => (
         <OfferImage
           imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
@@ -43,7 +41,6 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
     label: 'AttachedCardDisplay with multiple details',
     props: {
-      ...baseProps,
       details: ['Du 12/06 au 24/06', 'Duo'],
       LeftImageComponent: () => (
         <OfferImage
@@ -58,7 +55,6 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
     label: 'AttachedCardDisplay with right element',
     props: {
-      ...baseProps,
       bottomRightElement: (
         // eslint-disable-next-line react-native/no-inline-styles
         <ArrowRight style={{ flexShrink: 0 }} size={theme.icons.sizes.extraSmall} />
@@ -67,8 +63,12 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   },
 ]
 
-const Template: VariantsStory<typeof AttachedCardDisplay> = () => (
-  <VariantsTemplate variants={variantConfig} Component={AttachedCardDisplay} />
+const Template: VariantsStory<typeof AttachedCardDisplay> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={AttachedCardDisplay}
+    defaultProps={{ ...baseProps, ...args }}
+  />
 )
 
 export const AllVariants = Template.bind({})

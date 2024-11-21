@@ -47,8 +47,8 @@ const variantConfig: Variants<typeof Accordion> = [
   },
 ]
 
-const Template: VariantsStory<typeof Accordion> = () => (
-  <VariantsTemplate variants={variantConfig} Component={Accordion} />
+const Template: VariantsStory<typeof Accordion> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={Accordion} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

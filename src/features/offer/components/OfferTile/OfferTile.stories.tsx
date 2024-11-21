@@ -42,8 +42,8 @@ const variantConfig: Variants<typeof OfferTile> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferTile> = () => (
-  <VariantsTemplate variants={variantConfig} Component={OfferTile} />
+const Template: VariantsStory<typeof OfferTile> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={OfferTile} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

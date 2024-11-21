@@ -30,8 +30,12 @@ const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueTypeLocationIcon> = () => (
-  <VariantsTemplate variants={variantConfig} Component={VenueTypeLocationIcon} />
+const Template: VariantsStory<typeof VenueTypeLocationIcon> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={VenueTypeLocationIcon}
+    defaultProps={args}
+  />
 )
 
 export const AllVariants = Template.bind({})

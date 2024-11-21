@@ -32,8 +32,8 @@ const variantConfig: Variants<typeof DropDown> = [
   },
 ]
 
-const Template: VariantsStory<typeof DropDown> = () => (
-  <VariantsTemplate variants={variantConfig} Component={DropDown} />
+const Template: VariantsStory<typeof DropDown> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={DropDown} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

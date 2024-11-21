@@ -64,8 +64,12 @@ const variantConfig: Variants<typeof MarketingBlockHighlight> = [
   },
 ]
 
-const Template: VariantsStory<typeof MarketingBlockHighlight> = () => (
-  <VariantsTemplate variants={variantConfig} Component={MarketingBlockHighlight} />
+const Template: VariantsStory<typeof MarketingBlockHighlight> = (args) => (
+  <VariantsTemplate
+    variants={variantConfig}
+    Component={MarketingBlockHighlight}
+    defaultProps={args}
+  />
 )
 
 export const AllVariants = Template.bind({})

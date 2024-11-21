@@ -21,8 +21,8 @@ const variantConfig: Variants<typeof Loader> = [
   },
 ]
 
-const Template: VariantsStory<typeof Loader> = () => (
-  <VariantsTemplate variants={variantConfig} Component={Loader} />
+const Template: VariantsStory<typeof Loader> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={Loader} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

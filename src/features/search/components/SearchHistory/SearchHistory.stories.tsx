@@ -59,8 +59,8 @@ const variantConfig: Variants<typeof SearchHistory> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchHistory> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SearchHistory} />
+const Template: VariantsStory<typeof SearchHistory> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={SearchHistory} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})

@@ -38,8 +38,8 @@ const variantConfig: Variants<typeof FilterSwitch> = [
   },
 ]
 
-const Template: VariantsStory<typeof FilterSwitch> = () => (
-  <VariantsTemplate variants={variantConfig} Component={FilterSwitch} />
+const Template: VariantsStory<typeof FilterSwitch> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={FilterSwitch} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})

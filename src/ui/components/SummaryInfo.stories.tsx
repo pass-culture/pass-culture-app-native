@@ -30,8 +30,8 @@ const variantConfig: Variants<typeof SummaryInfo> = [
   },
 ]
 
-const Template: VariantsStory<typeof SummaryInfo> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SummaryInfo} />
+const Template: VariantsStory<typeof SummaryInfo> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={SummaryInfo} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
