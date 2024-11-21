@@ -146,6 +146,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     },
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
+
   const hybridPlaylistItems = useMemo(
     () => [...playlistItems, ...recommandationOffers],
     [recommandationOffers, playlistItems]
@@ -162,19 +163,35 @@ export const OffersModule = (props: OffersModuleProps) => {
   const shouldModuleBeDisplayed =
     offersToDisplay.length > 0 && offersToDisplay.length >= displayParameters.minOffers
 
+  const hybridModuleOffsetIndex = playlistItems.length === 0 ? 1 : playlistItems.length
+
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       analytics.logModuleDisplayedOnHomepage({
-        call_id: props.recommendationParameters ? recommendationApiParams?.call_id : undefined,
         moduleId,
-        moduleType: ContentTypes.ALGOLIA,
+        moduleType: props.recommendationParameters ? ContentTypes.HYBRID : ContentTypes.ALGOLIA,
         index,
         homeEntryId,
-        offers: (playlistItems as Offer[]).map((item) => item.objectID),
+        hybridModuleOffsetIndex: props.recommendationParameters
+          ? hybridModuleOffsetIndex
+          : undefined,
+        call_id: props.recommendationParameters ? recommendationApiParams?.call_id : undefined,
+        offers: props.recommendationParameters
+          ? (hybridPlaylistItems as Offer[]).map((item) => item.objectID)
+          : (playlistItems as Offer[]).map((item) => item.objectID),
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+  }, [
+    homeEntryId,
+    hybridModuleOffsetIndex,
+    hybridPlaylistItems,
+    index,
+    moduleId,
+    playlistItems,
+    props.recommendationParameters,
+    recommendationApiParams?.call_id,
+    shouldModuleBeDisplayed,
+  ])
 
   if (!shouldModuleBeDisplayed) return null
 
