@@ -1,11 +1,13 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
-import { render, screen, fireEvent } from 'tests/utils/web'
+import { render, screen, userEvent, act } from 'tests/utils/web'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
 
 describe('OfferImageCarousel', () => {
+  const user = userEvent.setup({ delay: 50 })
+
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation()
   })
@@ -59,7 +61,9 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await fireEvent.click(screen.getByLabelText('Carousel image 3'))
+    await act(async () => {
+      await user.click(screen.getByLabelText('Carousel image 3'))
+    })
 
     expect(mockOnItemPress).toHaveBeenCalledWith(2)
   })
