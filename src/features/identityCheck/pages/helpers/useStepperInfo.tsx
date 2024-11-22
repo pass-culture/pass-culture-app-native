@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SubscriptionStepCompletionState } from 'api/gen'
+import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
@@ -36,6 +36,8 @@ export const useStepperInfo = (): StepperInfo => {
   )
 
   const { user } = useAuthContext()
+  const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { data } = useGetStepperInfo()
   const { data: settings } = useSettingsContext()
@@ -88,7 +90,10 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      firstScreen: computeIdentificationMethod(allowedIdentityCheckMethods),
+      firstScreen: computeIdentificationMethod(
+        isUserRegisteredInPacificFrancRegion,
+        allowedIdentityCheckMethods
+      ),
     },
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
