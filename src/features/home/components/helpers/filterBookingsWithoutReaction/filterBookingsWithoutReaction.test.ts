@@ -1,4 +1,5 @@
 import mockdate from 'mockdate'
+import { createMock } from 'ts-auto-mock'
 
 import {
   BookingReponse,
@@ -39,15 +40,10 @@ describe('filterBookingsWithoutReaction', () => {
     subcategoriesMappingSnap as SubcategoriesMapping
 
   it('should return false if dateUsed is missing', () => {
-    const bookingWithoutDateUsed = {
-      ...baseBooking,
-      stock: {
-        ...baseBooking.stock,
-        offer: { ...baseBooking.stock.offer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
-      },
-      dateUsed: null,
+    const bookingWithoutDateUsed = createMock<BookingReponse>({
       userReaction: null,
-    }
+    })
+
     const result = filterBookingsWithoutReaction(
       bookingWithoutDateUsed,
       subcategoriesMapping,

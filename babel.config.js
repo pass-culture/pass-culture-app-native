@@ -1,3 +1,5 @@
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
@@ -23,7 +25,7 @@ module.exports = {
         },
       },
     ],
-    "@babel/plugin-transform-numeric-separator",
+    '@babel/plugin-transform-numeric-separator',
     '@babel/plugin-proposal-unicode-property-regex',
     '@babel/plugin-proposal-export-namespace-from',
     'react-native-reanimated/plugin',

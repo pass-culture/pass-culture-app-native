@@ -4,12 +4,18 @@
     "paths": {
       "*": ["src/*", "*"]
     },
+    "plugins": [
+      {
+        "transform": "ts-auto-mock/transformer",
+        "cacheBetweenTests": false
+      }
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es2022","dom", "dom.iterable", "esnext"],
+    "lib": ["es2022", "dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -20,7 +26,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
-    "target": "es5",
+    "target": "es6",
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
