@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { defaultCinemaPlaylistOffer } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
-import { ThematicSearchPlaylist } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylist'
-import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+import { defaultCinemaPlaylistOffer } from 'features/search/pages/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
+import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

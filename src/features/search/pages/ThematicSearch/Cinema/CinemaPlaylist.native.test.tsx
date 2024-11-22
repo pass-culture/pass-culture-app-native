@@ -1,7 +1,7 @@
 import React from 'react'
 
-import * as useCinemaOffersAPI from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
-import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
+import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
+import { CinemaPlaylist } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylist'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -27,10 +27,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
 const DEFAULT_CINEMA_OFFER = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 
-const useCinemaOffersSpy = jest.spyOn(useCinemaOffersAPI, 'useCinemaOffers').mockReturnValue({
-  playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
-  isLoading: false,
-})
+const useThematicSearchPlaylistsSpy = jest
+  .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
+  .mockReturnValue({
+    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
+    isLoading: false,
+  })
 
 describe('Cinema', () => {
   it('should render playlist when algolia returns offers', async () => {
@@ -40,7 +42,7 @@ describe('Cinema', () => {
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useCinemaOffersSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderCinema()
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()

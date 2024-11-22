@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { fetchFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
-import { filmsPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Films/fixtures/filmsPlaylistAlgoliaSnapshot'
+import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
+import { filmsPlaylistAlgoliaSnapshot } from 'features/search/pages/ThematicSearch/Films/fixtures/filmsPlaylistAlgoliaSnapshot'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Offer } from 'shared/offer/types'
@@ -77,13 +77,13 @@ describe('fetchFilmsOffers', () => {
   ]
 
   it('should execute `multipleQueries` to fetch films offers', async () => {
-    fetchFilmsOffers({ userLocation })
+    fetchFilmsOffers(userLocation)
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, filmsQueries)
   })
 
   it('should execute `multipleQueries` to fetch films offers even when no UserLocation', async () => {
-    fetchFilmsOffers({ userLocation: undefined })
+    fetchFilmsOffers(undefined)
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, filmsQueriesWithoutUserLocation)
   })

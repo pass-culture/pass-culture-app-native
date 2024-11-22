@@ -3,9 +3,9 @@ import React from 'react'
 import {
   cinemaPlaylistAlgoliaSnapshot,
   cinemaPlaylistAlgoliaSnapshotWithoutHits,
-} from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
-import { ThematicSearchPlaylistList } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylistList'
-import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+} from 'features/search/pages/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
+import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, cleanup } from 'tests/utils'

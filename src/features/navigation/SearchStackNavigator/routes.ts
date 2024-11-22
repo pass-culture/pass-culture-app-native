@@ -4,9 +4,9 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { ThematicSearch } from 'features/search/pages/Search/ThematicSearch/ThematicSearch'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 

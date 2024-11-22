@@ -1,19 +1,59 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 
-export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
+export const defaultCinemaPlaylistOffer: ThematicSearchPlaylistData = {
+  title: 'Films à l’affiche',
+  offers: {
+    hits: [
+      {
+        offer: {
+          name: 'Harry potter à l’école des sorciers',
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        },
+        venue: venueDataTest,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '1',
+      },
+      {
+        offer: {
+          name: 'Harry potter et le prisonnier d’Azkhaban',
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        },
+        venue: venueDataTest,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '2',
+      },
+    ],
+    page: 0,
+    nbPages: 1,
+    nbHits: 2,
+    hitsPerPage: 20,
+    processingTimeMS: 1,
+    exhaustiveNbHits: true,
+    query: '',
+    params: '',
+  } as SearchResponse<Offer>,
+}
+
+export const cinemaPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
   {
-    title: 'Vidéos et documentaires',
+    title: 'Films à l’affiche',
     offers: {
       hits: [
         {
           offer: {
             name: 'Harry potter à l’école des sorciers',
-            subcategoryId: SubcategoryIdEnum.VOD,
+            subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -25,7 +65,7 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
         {
           offer: {
             name: 'Harry potter et le prisonnier d’Azkhaban',
-            subcategoryId: SubcategoryIdEnum.VOD,
+            subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -46,13 +86,13 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
     } as SearchResponse<Offer>,
   },
   {
-    title: 'DVD et Blu-ray',
+    title: 'Films de la semaine',
     offers: {
       hits: [
         {
           offer: {
             name: 'Harry potter et la coupe de feu',
-            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM,
+            subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -64,7 +104,7 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
         {
           offer: {
             name: 'Harry potter et le prince de sang-mêlé',
-            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM,
+            subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -85,13 +125,13 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
     } as SearchResponse<Offer>,
   },
   {
-    title: 'Abonnements streaming',
+    title: 'Carté ciné',
     offers: {
       hits: [
         {
           offer: {
-            name: 'CANAL+',
-            subcategoryId: SubcategoryIdEnum.ABO_PLATEFORME_VIDEO,
+            name: 'Carte ciné - distance',
+            subcategoryId: SubcategoryIdEnum.CINE_VENTE_DISTANCE,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -102,8 +142,8 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
         },
         {
           offer: {
-            name: 'Netflix',
-            subcategoryId: SubcategoryIdEnum.ABO_PLATEFORME_VIDEO,
+            name: 'Carte ciné - multi',
+            subcategoryId: SubcategoryIdEnum.CARTE_CINE_MULTISEANCES,
           },
           venue: venueDataTest,
           _geoloc: {
@@ -116,7 +156,7 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
       page: 0,
       nbPages: 1,
       nbHits: 2,
-      hitsPerPage: 20,
+      hitsPerPage: 30,
       processingTimeMS: 1,
       exhaustiveNbHits: true,
       query: '',
@@ -125,9 +165,9 @@ export const filmsPlaylistAlgoliaSnapshot: ThematicSearchPlaylistData[] = [
   },
 ]
 
-export const filmsPlaylistAlgoliaSnapshotWithoutHits: ThematicSearchPlaylistData[] = [
+export const cinemaPlaylistAlgoliaSnapshotWithoutHits: ThematicSearchPlaylistData[] = [
   {
-    title: 'Vidéos et documentaires',
+    title: 'Films à l’affiche',
     offers: {
       hits: [],
       page: 0,
@@ -141,13 +181,13 @@ export const filmsPlaylistAlgoliaSnapshotWithoutHits: ThematicSearchPlaylistData
     } as SearchResponse<Offer>,
   },
   {
-    title: 'DVD et Blu-ray',
+    title: 'Films de la semaine',
     offers: {
       hits: [],
       page: 0,
       nbPages: 1,
       nbHits: 0,
-      hitsPerPage: 20,
+      hitsPerPage: 30,
       processingTimeMS: 1,
       exhaustiveNbHits: true,
       query: '',
@@ -155,13 +195,13 @@ export const filmsPlaylistAlgoliaSnapshotWithoutHits: ThematicSearchPlaylistData
     } as SearchResponse<Offer>,
   },
   {
-    title: 'Abonnements streaming',
+    title: 'Carté ciné',
     offers: {
       hits: [],
       page: 0,
       nbPages: 1,
       nbHits: 2,
-      hitsPerPage: 20,
+      hitsPerPage: 30,
       processingTimeMS: 1,
       exhaustiveNbHits: true,
       query: '',

@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import algoliasearch from '__mocks__/algoliasearch'
-import { fetchCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
+import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 
 describe('fetchCinemaOffers', () => {
@@ -13,7 +13,7 @@ describe('fetchCinemaOffers', () => {
 
   it('should execute `multipleQueries` to fetch cinema offers', async () => {
     const userLocation = { latitude: 1, longitude: 2 }
-    await fetchCinemaOffers({ userLocation })
+    await fetchCinemaOffers(userLocation)
 
     expect(multipleQueries).toHaveBeenNthCalledWith(1, [
       {
@@ -59,7 +59,7 @@ describe('fetchCinemaOffers', () => {
 
   it('should execute `multipleQueries` to fetch cinema offers even when no UserLocation', async () => {
     const userLocation = undefined
-    await fetchCinemaOffers({ userLocation })
+    await fetchCinemaOffers(userLocation)
 
     expect(multipleQueries).toHaveBeenNthCalledWith(1, [
       {
@@ -103,7 +103,7 @@ describe('fetchCinemaOffers', () => {
   it('should return empty array if there is an error with multiplqueries', async () => {
     multipleQueries.mockRejectedValueOnce(new Error('Async error'))
     const userLocation = { latitude: 1, longitude: 2 }
-    const result = await fetchCinemaOffers({ userLocation })
+    const result = await fetchCinemaOffers(userLocation)
 
     expect(result).toStrictEqual([])
   })

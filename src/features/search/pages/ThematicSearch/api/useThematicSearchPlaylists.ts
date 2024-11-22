@@ -2,26 +2,32 @@ import { SearchResponse } from 'instantsearch.js'
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { fetchFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
-import { ThematicSearchPlaylistListProps } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylistList'
+import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-const FILMS_PLAYLIST_TITLES = ['Vidéos et documentaires', 'DVD et Blu-ray', 'Abonnements streaming']
+type ThematicSearchPlaylists = {
+  playlistTitles: string[]
+  fetchMethod: (userLocation: Position) => Promise<SearchResponse<Offer>[]>
+  queryKey: string
+}
 
-export function useFilmsOffers(): ThematicSearchPlaylistListProps {
+export function useThematicSearchPlaylists({
+  playlistTitles,
+  fetchMethod,
+  queryKey,
+}: ThematicSearchPlaylists): ThematicSearchPlaylistListProps {
   const transformHits = useTransformOfferHits()
 
   const netInfo = useNetInfoContext()
 
   const { userLocation } = useLocation()
   const { data, refetch, isLoading } = useQuery({
-    queryKey: [QueryKeys.FILMS_OFFERS],
+    queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
-      return fetchFilmsOffers({ userLocation })
+      return fetchMethod(userLocation)
     },
     enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000,
@@ -43,7 +49,7 @@ export function useFilmsOffers(): ThematicSearchPlaylistListProps {
       data.length > 0
         ? data
             .map((item, index) => ({
-              title: FILMS_PLAYLIST_TITLES[index] || '',
+              title: playlistTitles[index] || '',
               offers: { hits: item.hits.map(transformHits) },
             }))
             .filter((playlist) => playlist.offers.hits.length > 0)

@@ -1,63 +1,53 @@
 import { MultipleQueriesQuery } from '@algolia/client-search'
-import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
-import { FetchThematicSearchOffers } from 'features/search/pages/Search/ThematicSearch/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { env } from 'libs/environment'
+import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 
-export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOffers) => {
-  const queryIndex = {
-    indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
-    query: '',
-  }
+export const fetchFilmsOffers = async (userLocation?: Position) => {
   const queryParams = {
-    hitsPerPage: 30,
+    hitsPerPage: 20,
     attributesToRetrieve: offerAttributesToRetrieve,
     attributesToHighlight: [],
     ...(userLocation
       ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
       : {}),
-    distinct: true,
   }
-
-  // We need the timestamps in seconds format for Algolia search
-  const today = Math.floor(new Date().getTime() / 1000)
-  const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
 
   const queries: MultipleQueriesQuery[] = [
     {
-      ...queryIndex,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      query: '',
       params: {
         ...queryParams,
-        hitsPerPage: 20,
-        filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
+        filters: `offer.subcategoryId:"${SubcategoryIdEnum.VOD}"`,
       },
     },
     {
-      ...queryIndex,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+      query: '',
       params: {
         ...queryParams,
-        filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
-        numericFilters: `offer.releaseDate: ${sevenDaysAgo} TO ${today}`,
+        filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.DVD_BLU_RAY}" AND offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}" AND NOT offer.last30DaysBookingsRange:"low"`,
       },
     },
     {
-      ...queryIndex,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      query: '',
       params: {
         ...queryParams,
-        filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.CARTES_CINEMA}" AND (offer.subcategoryId:"${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}" OR offer.subcategoryId:"${SubcategoryIdEnum.CINE_VENTE_DISTANCE}")`,
+        filters: `offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}"`,
       },
     },
   ]
 
   try {
     const allQueries = await multipleQueries<Offer>(queries)
-
     return allQueries.filter(searchResponsePredicate)
   } catch (error) {
     captureAlgoliaError(error)

@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { ThematicSearchPlaylist } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylist'
-import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
+import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { Spacer } from 'ui/theme'
 
