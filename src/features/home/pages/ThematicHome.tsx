@@ -18,15 +18,12 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
-import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
-import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -100,12 +97,6 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
 )
 
 export const ThematicHome: FunctionComponent = () => {
-  const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
-  const startPerfHomeCreationOnce = useFunctionOnce(() =>
-    startTransaction(PERFORMANCE_HOME_CREATION)
-  )
-  startPerfHomeCreationOnce()
-  startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
