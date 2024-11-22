@@ -10,14 +10,10 @@ import {
 } from 'api/gen'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
-import {
-  offerResponseBuilder,
-  stockBuilder,
-  dateBuilder,
-} from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { render, screen } from 'tests/utils'
 
 import { OfferEventCardList } from './OfferEventCardList'
@@ -62,14 +58,14 @@ describe('OfferEventCardList', () => {
     typeof useSubcategoriesMapping
   >
 
-  const stock = stockBuilder()
-    .withBeginningDatetime(dateBuilder().withDay(1).withMonth(0).withYear(2024).toString())
-    .build()
+  const stock = mockBuilder.offerStockResponse({
+    beginningDatetime: dateBuilder().withDay(1).withMonth(0).withYear(2024).toString(),
+  })
   const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
-  const defaultOffer = offerResponseBuilder()
-    .withSubcategoryId(subcategoryId)
-    .withStocks([stock])
-    .build()
+  const defaultOffer = mockBuilder.offerResponseV2({
+    subcategoryId,
+    stocks: [stock],
+  })
 
   beforeEach(() => {
     mockUseMovieScreeningCalendar.mockReturnValue({

@@ -3,11 +3,8 @@ import React from 'react'
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
-import {
-  offerResponseBuilder,
-  venueBuilder,
-} from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
+import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -29,8 +26,12 @@ jest.mock('libs/subcategories/mappings', () => ({
 const mockUseOfferCTAButton = useOfferCTAButton as jest.MockedFunction<typeof useOfferCTAButton>
 
 const mockOfferTitle = 'CINEMA DE LA RUE'
-const mockOfferVenue = venueBuilder().withName(mockOfferTitle).build()
-const mockOffer = offerResponseBuilder().withVenue(mockOfferVenue).build()
+const mockOfferVenue = mockBuilder.offerVenueResponse({
+  name: mockOfferTitle,
+})
+const mockOffer = mockBuilder.offerResponseV2({
+  venue: mockOfferVenue,
+})
 
 const mockSelectedDate = new Date('2023-05-01')
 const mockGoToDate = jest.fn()

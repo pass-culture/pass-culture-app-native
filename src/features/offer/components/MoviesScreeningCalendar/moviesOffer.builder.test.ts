@@ -1,8 +1,9 @@
 import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
 
+import { mockBuilder } from 'tests/mockBuilder'
+
 import { moviesOfferBuilder } from './moviesOffer.builder'
-import { offerResponseBuilder, stockBuilder } from './offersStockResponse.builder'
 
 describe('moviesOfferBuilder', () => {
   const now = new Date('2023-05-01T12:00:00Z')
@@ -13,14 +14,16 @@ describe('moviesOfferBuilder', () => {
 
   describe('withMoviesOnDay', () => {
     it('should keep only movies on the selected day', () => {
-      const offer1 = offerResponseBuilder()
-        .withStocks([stockBuilder().withBeginningDatetime(selectedDate.toString()).build()])
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withStocks([
-          stockBuilder().withBeginningDatetime(addDays(selectedDate, 1).toString()).build(),
-        ])
-        .build()
+      const offer1 = mockBuilder.offerResponseV2({
+        stocks: [mockBuilder.offerStockResponse({ beginningDatetime: selectedDate.toString() })],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 1).toString(),
+          }),
+        ],
+      })
 
       const result = moviesOfferBuilder([offer1, offer2])
         .withScreeningsOnDay(selectedDate)
@@ -33,9 +36,9 @@ describe('moviesOfferBuilder', () => {
 
   describe('sortedByLast30DaysBooking', () => {
     it('should sort offers by last 30 days bookings', () => {
-      const offer1 = offerResponseBuilder().withLast30DaysBookings(10).build()
-      const offer2 = offerResponseBuilder().withLast30DaysBookings(20).build()
-      const offer3 = offerResponseBuilder().withLast30DaysBookings(15).build()
+      const offer1 = mockBuilder.offerResponseV2({ last30DaysBookings: 10 })
+      const offer2 = mockBuilder.offerResponseV2({ last30DaysBookings: 20 })
+      const offer3 = mockBuilder.offerResponseV2({ last30DaysBookings: 15 })
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
         .sortedByLast30DaysBooking()
@@ -47,36 +50,36 @@ describe('moviesOfferBuilder', () => {
 
   describe('sortedByDistance', () => {
     it('should sort offers by distance from given location', () => {
-      const offer1 = offerResponseBuilder()
-        .withVenue({
+      const offer1 = mockBuilder.offerResponseV2({
+        venue: {
           id: 1,
           isPermanent: true,
           name: 'Venue 1',
           offerer: { name: 'Offerer 1' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: 48.8584, longitude: 2.2945 },
-        })
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withVenue({
+        },
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        venue: {
           id: 2,
           isPermanent: true,
           name: 'Venue 2',
           offerer: { name: 'Offerer 2' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: 48.8566, longitude: 2.3522 },
-        })
-        .build()
-      const offer3 = offerResponseBuilder()
-        .withVenue({
+        },
+      })
+      const offer3 = mockBuilder.offerResponseV2({
+        venue: {
           id: 3,
           isPermanent: true,
           name: 'Venue 3',
           offerer: { name: 'Offerer 3' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: 48.8738, longitude: 2.295 },
-        })
-        .build()
+        },
+      })
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
         .sortedByDistance(location)
@@ -86,36 +89,36 @@ describe('moviesOfferBuilder', () => {
     })
 
     it('should handle offers without venue coordinates', () => {
-      const offer1 = offerResponseBuilder()
-        .withVenue({
+      const offer1 = mockBuilder.offerResponseV2({
+        venue: {
           id: 1,
           isPermanent: true,
           name: 'Venue 1',
           offerer: { name: 'Offerer 1' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: 48.8584, longitude: 2.2945 },
-        })
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withVenue({
+        },
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        venue: {
           id: 2,
           isPermanent: true,
           name: 'Venue 2',
           offerer: { name: 'Offerer 2' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: null, longitude: null },
-        })
-        .build()
-      const offer3 = offerResponseBuilder()
-        .withVenue({
+        },
+      })
+      const offer3 = mockBuilder.offerResponseV2({
+        venue: {
           id: 3,
           isPermanent: true,
           name: 'Venue 3',
           offerer: { name: 'Offerer 3' },
           timezone: 'Europe/Paris',
           coordinates: { latitude: 48.8738, longitude: 2.295 },
-        })
-        .build()
+        },
+      })
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
         .sortedByDistance(location)
@@ -127,18 +130,30 @@ describe('moviesOfferBuilder', () => {
 
   describe('withoutMoviesAfterNbDays', () => {
     it('should filter out movies within the specified range of days', () => {
-      const offer1 = offerResponseBuilder()
-        .withId(1)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 5).toString()).build()])
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withId(2)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 10).toString()).build()])
-        .build()
-      const offer3 = offerResponseBuilder()
-        .withId(3)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 20).toString()).build()])
-        .build()
+      const offer1 = mockBuilder.offerResponseV2({
+        id: 1,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(now, 5).toString(),
+          }),
+        ],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        id: 2,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(now, 10).toString(),
+          }),
+        ],
+      })
+      const offer3 = mockBuilder.offerResponseV2({
+        id: 3,
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(now, 20).toString(),
+          }),
+        ],
+      })
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
         .withoutScreeningsAfterNbDays(15)
@@ -150,16 +165,20 @@ describe('moviesOfferBuilder', () => {
 
   describe('withNextScreeningFromDate', () => {
     it('should set the next screening date for each offer', () => {
-      const offer1 = offerResponseBuilder()
-        .withStocks([
-          stockBuilder().withBeginningDatetime(addDays(selectedDate, 1).toString()).build(),
-        ])
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withStocks([
-          stockBuilder().withBeginningDatetime(addDays(selectedDate, 2).toString()).build(),
-        ])
-        .build()
+      const offer1 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 1).toString(),
+          }),
+        ],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 2).toString(),
+          }),
+        ],
+      })
 
       const result = moviesOfferBuilder([offer1, offer2])
         .withNextScreeningFromDate(selectedDate)
@@ -173,18 +192,18 @@ describe('moviesOfferBuilder', () => {
 
   describe('withMoviesAfterNbDays', () => {
     it('should only return movies after the specified number of days from now', () => {
-      const offer1 = offerResponseBuilder()
-        .withId(1)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 5).toString()).build()])
-        .build()
-      const offer2 = offerResponseBuilder()
-        .withId(2)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 10).toString()).build()])
-        .build()
-      const offer3 = offerResponseBuilder()
-        .withId(3)
-        .withStocks([stockBuilder().withBeginningDatetime(addDays(now, 20).toString()).build()])
-        .build()
+      const offer1 = mockBuilder.offerResponseV2({
+        id: 1,
+        stocks: [{ beginningDatetime: addDays(now, 5).toString() }],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        id: 2,
+        stocks: [{ beginningDatetime: addDays(now, 10).toString() }],
+      })
+      const offer3 = mockBuilder.offerResponseV2({
+        id: 3,
+        stocks: [{ beginningDatetime: addDays(now, 20).toString() }],
+      })
 
       const result = moviesOfferBuilder([offer1, offer2, offer3])
         .withScreeningsAfterNbDays(15)
@@ -197,8 +216,8 @@ describe('moviesOfferBuilder', () => {
 
   describe('buildOfferResponse', () => {
     it('should return an array of OfferResponseV2', () => {
-      const offer1 = offerResponseBuilder().build()
-      const offer2 = offerResponseBuilder().build()
+      const offer1 = mockBuilder.offerResponseV2({})
+      const offer2 = mockBuilder.offerResponseV2({})
 
       const result = moviesOfferBuilder([offer1, offer2]).buildOfferResponse()
 

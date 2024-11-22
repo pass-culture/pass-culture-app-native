@@ -1,10 +1,10 @@
 import React from 'react'
 
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { offerResponseBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import * as useGetVenuesByDayModule from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
+import { mockBuilder } from 'tests/mockBuilder'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
@@ -31,7 +31,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const mockOffer = offerResponseBuilder().build()
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+const mockOffer = mockBuilder.offerResponseV2({})
 
 const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGetVenuesByDay']> = {
   items: [],
@@ -47,7 +49,7 @@ const mockSelectedDate = new Date('2023-05-01')
 const mockGoToDate = jest.fn()
 const mockDisplayCalendar = jest.fn()
 
-describe('OfferNewXPCineContent', () => {
+describe('OfferCineContent', () => {
   beforeEach(() => {
     jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
       selectedDate: mockSelectedDate,
