@@ -2,7 +2,7 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 
 enum Currency {
@@ -16,25 +16,29 @@ type CurrencyDisplayFormat = 'short' | 'full'
 export const useGetCurrencyToDisplay = (
   displayFormat: CurrencyDisplayFormat = 'short'
 ): Currency => {
-  const enablePacificFrancCurrency = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY
-  )
+  const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
+  const disablePacificFrancCurrency = !enablePacificFrancCurrency
 
   const { user } = useAuthContext()
-  const isUserInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
-  const isUserInEuroRegion = user?.currency === CurrencyEnum.EUR
+  const isUserRegisteredInEuroRegion = user?.currency === CurrencyEnum.EUR
+  const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
 
   const { selectedPlace } = useLocation()
   const isNewCaledonianLocationSelected = selectedPlace?.info === 'Nouvelle-Calédonie'
+  const isNotNewCaledonianLocationSelected = !isNewCaledonianLocationSelected
 
-  if (isUserInEuroRegion) {
-    return Currency.EURO
+  const pacificFrancCurrency =
+    displayFormat === 'full' ? Currency.PACIFIC_FRANC_FULL : Currency.PACIFIC_FRANC_SHORT
+
+  switch (true) {
+    case disablePacificFrancCurrency:
+    case isUserRegisteredInEuroRegion:
+    case isNotNewCaledonianLocationSelected:
+      return Currency.EURO
+    case enablePacificFrancCurrency &&
+      (isUserRegisteredInPacificFrancRegion || isNewCaledonianLocationSelected):
+      return pacificFrancCurrency
+    default:
+      return Currency.EURO
   }
-
-  const showPacificFrancCurrency = isUserInPacificFrancRegion || isNewCaledonianLocationSelected
-  if (enablePacificFrancCurrency && showPacificFrancCurrency) {
-    return displayFormat === 'full' ? Currency.PACIFIC_FRANC_FULL : Currency.PACIFIC_FRANC_SHORT
-  }
-
-  return Currency.EURO
 }
