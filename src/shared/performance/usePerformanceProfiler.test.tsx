@@ -4,6 +4,40 @@ import { act, renderHook } from '@testing-library/react-native'
 import { PerformanceService, InteractionService } from './types'
 import { usePerformanceProfiler } from './usePerformanceProfiler'
 
+test('Ne fait rien si on ne veut pas profiler', async () => {
+  const mockStartTrace = jest.fn(() =>
+    Promise.resolve({
+      putMetric: jest.fn(),
+      stop: jest.fn(),
+    })
+  )
+  const mockPerformanceService: PerformanceService = {
+    startTrace: mockStartTrace,
+    sanitizeMetricName: jest.fn((t) => t),
+    sanitizeTraceName: jest.fn((t) => t),
+  }
+  const mockInteractionService: InteractionService = {
+    runAfterInteractions: jest.fn((callback) => {
+      callback()
+      return { cancel: jest.fn() }
+    }),
+  }
+  const appStartTime = Date.now()
+
+  renderHook(() =>
+    usePerformanceProfiler('TestTrace', {
+      performanceService: mockPerformanceService,
+      interactionService: mockInteractionService,
+      appStartTime,
+      shouldProfile: false,
+    })
+  )
+
+  await act(async () => {})
+
+  expect(mockStartTrace).not.toHaveBeenCalled()
+})
+
 test('Démarre correctement la trace', async () => {
   const mockStartTrace = jest.fn(() =>
     Promise.resolve({

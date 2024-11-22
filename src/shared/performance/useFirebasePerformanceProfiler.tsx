@@ -10,7 +10,7 @@ function sanitizeName(name: string, length: number): string {
   // Supprimer les espaces en début et fin
   let sanitized = name.trim()
   // Supprimer les underscores au début et à la fin
-  sanitized = sanitized.replace(/^_+|_+$/g, '')
+  sanitized = sanitized.replace(/(^_+)|(_+$)/g, '')
   // Tronquer à 32 caractères maximum
   if (sanitized.length > length) {
     sanitized = sanitized.substring(0, length)

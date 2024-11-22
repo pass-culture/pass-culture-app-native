@@ -8,7 +8,7 @@ import {
   Metric,
 } from 'shared/performance/types'
 
-interface usePerformanceProfilerProps {
+interface UsePerformanceProfilerProps {
   performanceService: PerformanceService
   interactionService: InteractionService
   appStartTime: number
@@ -24,7 +24,7 @@ export const usePerformanceProfiler = (
     appStartTime,
     route,
     shouldProfile = true,
-  }: usePerformanceProfilerProps
+  }: UsePerformanceProfilerProps
 ) => {
   const mountStartTime = useRef<number>(Date.now())
   const isFirstMount = useRef<boolean>(true)
