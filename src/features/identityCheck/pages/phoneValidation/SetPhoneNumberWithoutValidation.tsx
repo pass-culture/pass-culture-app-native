@@ -29,9 +29,16 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
 
 import { formatPhoneNumberWithPrefix } from './helpers/formatPhoneNumber'
+import { isPhoneNumberValid } from './helpers/isPhoneNumberValid' // Assure-toi que l'import est correct
 
 const schema = yup.object({
-  phoneNumber: yup.string().required('Le numéro de téléphone est requis'),
+  phoneNumber: yup
+    .string()
+    .required('Le numéro de téléphone est requis')
+    .test('is-valid-phone', '', (value, { parent }) => {
+      const country = findCountry(parent.countryId)
+      return country ? isPhoneNumberValid(value ?? '', country.callingCode) : false
+    }),
   countryId: yup.string().required(),
 })
 
@@ -50,8 +57,6 @@ export const SetPhoneNumberWithoutValidation = () => {
     },
     mode: 'onChange',
   })
-
-  const disableSubmit = !formState.isValid
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
@@ -117,7 +122,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                   <TextInput
                     autoComplete="off" // disable autofill on android
                     autoCapitalize="none"
-                    isError={false}
+                    isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
                     value={field.value}
@@ -157,7 +162,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
-          disabled={disableSubmit}
+          disabled={!formState.isValid}
           type="submit"
           wording="Continuer"
           onPress={submit}
