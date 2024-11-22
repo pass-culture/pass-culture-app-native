@@ -28,7 +28,7 @@ const DEFAULT_CINEMA_OFFER = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 
 const useCinemaOffersSpy = jest.spyOn(useCinemaOffersAPI, 'useCinemaOffers').mockReturnValue({
-  offers: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
+  playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
   isLoading: false,
 })
 
@@ -36,16 +36,12 @@ describe('Cinema', () => {
   it('should render playlist when algolia returns offers', async () => {
     renderCinema()
 
-    await screen.findByTestId('playlistsThematicSearchCinema')
-
     expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useCinemaOffersSpy.mockReturnValueOnce({ offers: [], isLoading: false })
+    useCinemaOffersSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderCinema()
-
-    await screen.findByTestId('playlistsThematicSearchCinema')
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })

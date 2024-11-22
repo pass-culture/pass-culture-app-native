@@ -27,7 +27,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 const DEFAULT_PLAYLIST_TITLE = 'Vidéos et documentaires'
 const DEFAULT_PLAYLIST_OFFERS = filmsPlaylistAlgoliaSnapshot
 const useFilmsOffersSpy = jest.spyOn(useFilmsOffersAPI, 'useFilmsOffers').mockReturnValue({
-  offers: DEFAULT_PLAYLIST_OFFERS,
+  playlists: DEFAULT_PLAYLIST_OFFERS,
   isLoading: false,
 })
 
@@ -35,16 +35,12 @@ describe('Films', () => {
   it('should render playlist when algolia returns offers', async () => {
     renderCinema()
 
-    await screen.findByTestId('playlistsThematicSearchFilms')
-
     expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useFilmsOffersSpy.mockReturnValueOnce({ offers: [], isLoading: false })
+    useFilmsOffersSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderCinema()
-
-    await screen.findByTestId('playlistsThematicSearchFilms')
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })

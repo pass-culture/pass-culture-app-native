@@ -1,8 +1,9 @@
 import { SearchResponse } from 'instantsearch.js'
+import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { fetchFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
-import { ThematicSearchPlaylistData } from 'features/search/pages/Search/ThematicSearch/types'
+import { ThematicSearchPlaylistListProps } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylistList'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -11,18 +12,14 @@ import { Offer } from 'shared/offer/types'
 
 const FILMS_PLAYLIST_TITLES = ['Vidéos et documentaires', 'DVD et Blu-ray', 'Abonnements streaming']
 
-type FilmsOffersData = {
-  offers: ThematicSearchPlaylistData[]
-  isLoading: boolean
-}
-export function useFilmsOffers(): FilmsOffersData {
+export function useFilmsOffers(): ThematicSearchPlaylistListProps {
   const transformHits = useTransformOfferHits()
 
   const netInfo = useNetInfoContext()
 
   const { userLocation } = useLocation()
-  const { data, isLoading } = useQuery({
-    queryKey: [QueryKeys.FILMS_OFFERS, userLocation],
+  const { data, refetch, isLoading } = useQuery({
+    queryKey: [QueryKeys.FILMS_OFFERS],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchFilmsOffers({ userLocation })
     },
@@ -30,15 +27,27 @@ export function useFilmsOffers(): FilmsOffersData {
     staleTime: 5 * 60 * 1000,
   })
 
-  if (!data || data.length === 0) return { offers: [], isLoading }
+  useEffect(() => {
+    // When we enable, disable or change the location, we want to refetch the playlists
+    refetch().catch(() => {
+      return
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLocation?.latitude, userLocation?.longitude])
 
-  const transformedOffers = data.map((items) => items.hits.map(transformHits))
+  if (!data || data.length === 0)
+    return { playlists: [{ title: '', offers: { hits: [] } }], isLoading }
 
   return {
-    offers: data.map((item, index) => ({
-      title: FILMS_PLAYLIST_TITLES[index] ?? '',
-      offers: { hits: transformedOffers[index] ?? [] },
-    })),
+    playlists:
+      data.length > 0
+        ? data
+            .map((item, index) => ({
+              title: FILMS_PLAYLIST_TITLES[index] || '',
+              offers: { hits: item.hits.map(transformHits) },
+            }))
+            .filter((playlist) => playlist.offers.hits.length > 0)
+        : [{ title: '', offers: { hits: [] } }],
     isLoading,
   }
 }

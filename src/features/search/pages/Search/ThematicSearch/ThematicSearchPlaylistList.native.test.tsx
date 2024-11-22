@@ -34,11 +34,7 @@ describe('ThematicSearchPlaylistList', () => {
   afterEach(cleanup)
 
   it('should render playlist properly', async () => {
-    renderThematicSearchPlaylistList(
-      cinemaPlaylistAlgoliaSnapshot,
-      false,
-      'playlistsThematicSearchCinema'
-    )
+    renderThematicSearchPlaylistList(cinemaPlaylistAlgoliaSnapshot, false)
 
     await screen.findByText('Films à l’affiche')
 
@@ -46,21 +42,13 @@ describe('ThematicSearchPlaylistList', () => {
   })
 
   it('should render OfferPlaylistSkeleton when playlists are loading', async () => {
-    renderThematicSearchPlaylistList(
-      cinemaPlaylistAlgoliaSnapshot,
-      true,
-      'playlistsThematicSearchCinema'
-    )
+    renderThematicSearchPlaylistList(cinemaPlaylistAlgoliaSnapshot, true)
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should not return a playlist without offers', async () => {
-    renderThematicSearchPlaylistList(
-      cinemaPlaylistAlgoliaSnapshotWithoutHits,
-      false,
-      'playlistsThematicSearchCinema'
-    )
+    renderThematicSearchPlaylistList(cinemaPlaylistAlgoliaSnapshotWithoutHits, false)
 
     expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
   })
@@ -68,16 +56,11 @@ describe('ThematicSearchPlaylistList', () => {
 
 function renderThematicSearchPlaylistList(
   playlists: ThematicSearchPlaylistData[],
-  arePlaylistsLoading: boolean,
-  testId: string
+  arePlaylistsLoading: boolean
 ) {
   return render(
     reactQueryProviderHOC(
-      <ThematicSearchPlaylistList
-        playlists={playlists}
-        arePlaylistsLoading={arePlaylistsLoading}
-        testId={testId}
-      />
+      <ThematicSearchPlaylistList playlists={playlists} isLoading={arePlaylistsLoading} />
     )
   )
 }

@@ -6,23 +6,21 @@ import { ThematicSearchPlaylistData } from 'features/search/pages/Search/Themati
 import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { Spacer } from 'ui/theme'
 
-type ThematicSearchPlaylistListProps = {
+export type ThematicSearchPlaylistListProps = {
   playlists: ThematicSearchPlaylistData[]
-  testId: string
-  arePlaylistsLoading: boolean
+  isLoading: boolean
 }
 
 export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProps> = ({
   playlists,
-  testId,
-  arePlaylistsLoading,
+  isLoading: arePlaylistsLoading,
 }) => {
   if (arePlaylistsLoading) {
     return <LoadingState />
   }
 
   return (
-    <View testID={testId}>
+    <React.Fragment>
       {playlists?.map((playlist) => {
         if (playlist.offers.hits.length > 0) {
           return (
@@ -39,6 +37,6 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
         return null
       })}
       <Spacer.Column numberOfSpaces={6} />
-    </View>
+    </React.Fragment>
   )
 }

@@ -57,6 +57,7 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
 
   try {
     const allQueries = await multipleQueries<Offer>(queries)
+
     return allQueries.filter(searchResponsePredicate)
   } catch (error) {
     captureAlgoliaError(error)

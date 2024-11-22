@@ -4,13 +4,7 @@ import { useCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cin
 import { ThematicSearchPlaylistList } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylistList'
 
 export const CinemaPlaylist: React.FC = () => {
-  const { offers: cinemaPlaylists, isLoading } = useCinemaOffers()
+  const { playlists: cinemaPlaylists, isLoading } = useCinemaOffers()
 
-  return (
-    <ThematicSearchPlaylistList
-      playlists={cinemaPlaylists}
-      arePlaylistsLoading={isLoading}
-      testId="playlistsThematicSearchCinema"
-    />
-  )
+  return <ThematicSearchPlaylistList playlists={cinemaPlaylists} isLoading={isLoading} />
 }

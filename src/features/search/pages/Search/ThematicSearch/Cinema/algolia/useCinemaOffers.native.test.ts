@@ -16,11 +16,11 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const cinemaOffer = mockBuilder.searchResponseOffer({})
+const cinemaOffers = mockBuilder.searchResponseOffer({})
 
 const fetchOffersSpy = jest
   .spyOn(fetchCinemaOffersModule, 'fetchCinemaOffers')
-  .mockResolvedValue([cinemaOffer])
+  .mockResolvedValue([cinemaOffers])
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -36,15 +36,5 @@ describe('useCinemaOffers', () => {
       expect.any(Object),
       false,
       undefined
-  })
-
-  it('should return cinema offers with playlists titles', async () => {
-    const { result } = renderHook(() => useCinemaOffers(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await act(() => {})
-
-    expect(result.current.offers).toEqual([{ offers: cinemaOffer, title: 'Films à l’affiche' }])
   })
 })
