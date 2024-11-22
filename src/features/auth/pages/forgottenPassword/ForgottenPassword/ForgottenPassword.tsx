@@ -216,3 +216,5 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
     ]
   )
 }
+
+export default ForgottenPassword

@@ -37,3 +37,5 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))
+
+export default NotYetUnderageEligibility

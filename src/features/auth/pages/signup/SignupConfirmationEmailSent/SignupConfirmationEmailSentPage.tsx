@@ -14,3 +14,5 @@ export const SignupConfirmationEmailSentPage: FunctionComponent<Props> = ({ rout
     </SecondaryPageWithBlurHeader>
   )
 }
+
+export default SignupConfirmationEmailSentPage

@@ -270,3 +270,5 @@ const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
 const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))``
+
+export default Login

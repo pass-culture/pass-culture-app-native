@@ -34,3 +34,5 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
     </SecondaryPageWithBlurHeader>
   )
 }
+
+export default ResetPasswordEmailSent

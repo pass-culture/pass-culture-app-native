@@ -59,3 +59,5 @@ export function SignupConfirmationExpiredLink(props: Props) {
     />
   )
 }
+
+export default SignupConfirmationExpiredLink

@@ -58,3 +58,5 @@ export function ResetPasswordExpiredLink(props: Props) {
     />
   )
 }
+
+export default ResetPasswordExpiredLink

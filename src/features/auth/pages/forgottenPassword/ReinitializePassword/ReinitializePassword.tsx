@@ -153,3 +153,5 @@ export const ReinitializePassword = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
+
+export default ReinitializePassword

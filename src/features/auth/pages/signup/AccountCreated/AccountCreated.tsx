@@ -58,3 +58,5 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))
+
+export default AccountCreated

@@ -64,3 +64,5 @@ export function AfterSignupEmailValidationBuffer() {
 
   return <LoadingPage />
 }
+
+export default AfterSignupEmailValidationBuffer

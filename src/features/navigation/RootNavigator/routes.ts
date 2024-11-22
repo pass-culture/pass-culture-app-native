@@ -1,95 +1,225 @@
-import { Artist } from 'features/artist/pages/Artist'
-import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
-import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
-import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
-import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
-import { Login } from 'features/auth/pages/login/Login'
-import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
-import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
-import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
-import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
-import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
-import { SignupForm } from 'features/auth/pages/signup/SignupForm'
-import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
-import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
-import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
-import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
-import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
-import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
-import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
-import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
-import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
-import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { AccesLibre } from 'features/internal/cheatcodes/pages/AccesLibre'
-import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
-import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
-import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
-import { MarketingBlocks } from 'features/internal/cheatcodes/pages/MarketingBlocks'
-import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
-import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
-import { NavigationAchievements } from 'features/internal/cheatcodes/pages/NavigationAchievements'
-import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
-import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
-import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
-import { NavigationSubscription } from 'features/internal/cheatcodes/pages/NavigationSubscription/NavigationSubscription'
-import { NewCaledonia } from 'features/internal/cheatcodes/pages/NewCaledonia'
-import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
-import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
-import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
-import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
-import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
-import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
-import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
-import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
-import { tutorialRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
-import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
-import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
+import { lazy } from 'react'
+
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
-import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { Offer } from 'features/offer/pages/Offer/Offer'
-import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
-import { Achievements } from 'features/profile/pages/Achievements/Achievements'
-import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
-import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
-import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
-import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
-import { ChangePassword } from 'features/profile/pages/ChangePassword'
-import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
-import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
-import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
-import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
-import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
-import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
-import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
-import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
-import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
-import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
-import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
-import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
-import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
-import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
-import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
-import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
-import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
-import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
-import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
-import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
-import { Venue } from 'features/venue/pages/Venue/Venue'
-import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
-import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
+import { accessibilityRoutes } from './accessibilityRoutes'
+import { culturalSurveyRoutes } from './culturalSurveyRoutes'
+import { tutorialRoutes } from './onboardingRoutes'
+import { subscriptionRoutes } from './subscriptionRoutes'
+import { trustedDeviceRoutes } from './trustedDeviceRoutes'
 import { RootRoute } from './types'
+
+// Lazy imports
+const Artist = lazy(() => import('features/artist/pages/Artist'))
+const ForgottenPassword = lazy(
+  () => import('features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword')
+)
+const ReinitializePassword = lazy(
+  () => import('features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword')
+)
+const ResetPasswordEmailSent = lazy(
+  () =>
+    import('features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent')
+)
+const ResetPasswordExpiredLink = lazy(
+  () =>
+    import(
+      'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
+    )
+)
+const Login = lazy(() => import('features/auth/pages/login/Login'))
+const AccountCreated = lazy(
+  () => import('features/auth/pages/signup/AccountCreated/AccountCreated')
+)
+const AfterSignupEmailValidationBuffer = lazy(
+  () =>
+    import(
+      'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
+    )
+)
+const NotYetUnderageEligibility = lazy(
+  () => import('features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility')
+)
+const SignupConfirmationEmailSentPage = lazy(
+  () =>
+    import('features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage')
+)
+const SignupConfirmationExpiredLink = lazy(
+  () =>
+    import('features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink')
+)
+const SignupForm = lazy(() => import('features/auth/pages/signup/SignupForm'))
+const VerifyEligibility = lazy(
+  () => import('features/auth/pages/signup/VerifyEligiblity/VerifyEligibility')
+)
+const AccountReactivationSuccess = lazy(
+  () =>
+    import(
+      'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
+    )
+)
+const AccountStatusScreenHandler = lazy(
+  () =>
+    import(
+      'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
+    )
+)
+const FraudulentSuspendedAccount = lazy(
+  () =>
+    import(
+      'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
+    )
+)
+const SuspendedAccountUponUserRequest = lazy(
+  () =>
+    import(
+      'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
+    )
+)
+const EighteenBirthday = lazy(() => import('features/birthdayNotifications/pages/EighteenBirthday'))
+const RecreditBirthdayNotification = lazy(
+  () => import('features/birthdayNotifications/pages/RecreditBirthdayNotification')
+)
+const BookingDetails = lazy(() => import('features/bookings/pages/BookingDetails/BookingDetails'))
+const EndedBookings = lazy(() => import('features/bookings/pages/EndedBookings/EndedBookings'))
+const BookingConfirmation = lazy(() => import('features/bookOffer/pages/BookingConfirmation'))
+const withAsyncErrorBoundary = lazy(() => import('features/errors/hocs/withAsyncErrorBoundary'))
+const BannedCountryError = lazy(() => import('features/errors/pages/BannedCountryError'))
+const FavoritesSorts = lazy(() => import('features/favorites/pages/FavoritesSorts'))
+const ThematicHome = lazy(() => import('features/home/pages/ThematicHome'))
+const AccesLibre = lazy(() => import('features/internal/cheatcodes/pages/AccesLibre'))
+const AppComponents = lazy(
+  () => import('features/internal/cheatcodes/pages/AppComponents/AppComponents')
+)
+const CheatCodes = lazy(() => import('features/internal/cheatcodes/pages/CheatCodes/CheatCodes'))
+const CheatMenu = lazy(() => import('features/internal/cheatcodes/pages/CheatMenu'))
+const MarketingBlocks = lazy(() => import('features/internal/cheatcodes/pages/MarketingBlocks'))
+const Navigation = lazy(() => import('features/internal/cheatcodes/pages/Navigation'))
+const NavigationAccountSuspension = lazy(
+  () => import('features/internal/cheatcodes/pages/NavigationAccountSuspension')
+)
+const NavigationAchievements = lazy(
+  () => import('features/internal/cheatcodes/pages/NavigationAchievements')
+)
+const NavigationNotScreensPages = lazy(
+  () => import('features/internal/cheatcodes/pages/NavigationNotScreensPages')
+)
+const NavigationProfile = lazy(() => import('features/internal/cheatcodes/pages/NavigationProfile'))
+const NavigationShareApp = lazy(
+  () => import('features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp')
+)
+const NavigationSubscription = lazy(
+  () => import('features/internal/cheatcodes/pages/NavigationSubscription/NavigationSubscription')
+)
+const NewCaledonia = lazy(() => import('features/internal/cheatcodes/pages/NewCaledonia'))
+const CategoryThematicHomeHeaderCheatcode = lazy(
+  () =>
+    import(
+      'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
+    )
+)
+const DefaultThematicHomeHeaderCheatcode = lazy(
+  () =>
+    import(
+      'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
+    )
+)
+const HighlightThematicHomeHeaderCheatcode = lazy(
+  () =>
+    import(
+      'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
+    )
+)
+const ThematicHeaders = lazy(
+  () => import('features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders')
+)
+const DeeplinksGenerator = lazy(
+  () => import('features/internal/marketingAndCommunication/pages/DeeplinksGenerator')
+)
+const UTMParameters = lazy(
+  () => import('features/internal/marketingAndCommunication/pages/UTMParameters')
+)
+const PageNotFound = lazy(() => import('features/navigation/pages/PageNotFound'))
+const Offer = lazy(() => import('features/offer/pages/Offer/Offer'))
+const OfferPreview = lazy(() => import('features/offer/pages/OfferPreview/OfferPreview'))
+const Achievements = lazy(() => import('features/profile/pages/Achievements/Achievements'))
+const ChangeCity = lazy(() => import('features/profile/pages/ChangeCity/ChangeCity'))
+const ChangeEmail = lazy(() => import('features/profile/pages/ChangeEmail/ChangeEmail'))
+const ChangeEmailExpiredLink = lazy(
+  () => import('features/profile/pages/ChangeEmail/ChangeEmailExpiredLink')
+)
+const ChangeEmailSetPassword = lazy(
+  () => import('features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword')
+)
+const ChangePassword = lazy(() => import('features/profile/pages/ChangePassword'))
+const ChangeStatus = lazy(() => import('features/profile/pages/ChangeStatus/ChangeStatus'))
+const ConfirmChangeEmail = lazy(
+  () => import('features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail')
+)
+const ConsentSettings = lazy(() => import('features/profile/pages/ConsentSettings/ConsentSettings'))
+const ConfirmDeleteProfile = lazy(
+  () => import('features/profile/pages/DeleteProfile/ConfirmDeleteProfile')
+)
+const DeactivateProfileSuccess = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeactivateProfileSuccess')
+)
+const DeleteProfileAccountHacked = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileAccountHacked')
+)
+const DeleteProfileAccountNotDeletable = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable')
+)
+const DeleteProfileConfirmation = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileConfirmation')
+)
+const DeleteProfileContactSupport = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileContactSupport')
+)
+const DeleteProfileEmailHacked = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileEmailHacked')
+)
+const DeleteProfileSuccess = lazy(
+  () => import('features/profile/pages/DeleteProfile/DeleteProfileSuccess')
+)
+const SuspendAccountConfirmationWithoutAuthentication = lazy(
+  () =>
+    import('features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication')
+)
+const DeleteProfileReason = lazy(
+  () => import('features/profile/pages/DeleteProfileReason/DeleteProfileReason')
+)
+const FeedbackInApp = lazy(() => import('features/profile/pages/FeedbackInApp/FeedbackInApp'))
+const LegalNotices = lazy(() => import('features/profile/pages/LegalNotices/LegalNotices'))
+const NewEmailSelection = lazy(
+  () => import('features/profile/pages/NewEmailSelection/NewEmailSelection')
+)
+const NotificationsSettings = lazy(
+  () => import('features/profile/pages/NotificationSettings/NotificationsSettings')
+)
+const PersonalData = lazy(() => import('features/profile/pages/PersonalData/PersonalData'))
+const SuspendAccountConfirmation = lazy(
+  () => import('features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation')
+)
+const TrackEmailChange = lazy(
+  () => import('features/profile/pages/TrackEmailChange/TrackEmailChange')
+)
+const ValidateEmailChange = lazy(
+  () => import('features/profile/pages/ValidateEmailChange/ValidateEmailChange')
+)
+const SearchFilter = lazy(() => import('features/search/pages/SearchFilter/SearchFilter'))
+const OnboardingSubscription = lazy(
+  () => import('features/subscription/page/OnboardingSubscription')
+)
+const ProfileTutorialAgeInformation = lazy(
+  () => import('features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation')
+)
+const Venue = lazy(() => import('features/venue/pages/Venue/Venue'))
+const VenuePreviewCarousel = lazy(
+  () => import('features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel')
+)
+const VenueMap = lazy(() => import('features/venueMap/pages/VenueMap/VenueMap'))
+const ABTestingPOC = lazy(() => import('libs/firebase/remoteConfig/ABTestingPOC'))
 
 export const routes: RootRoute[] = [
   ...accessibilityRoutes,
