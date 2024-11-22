@@ -16,8 +16,6 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
@@ -25,15 +23,12 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
-import { theme } from 'theme'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { useDebounce } from 'ui/hooks/useDebounce'
@@ -48,7 +43,6 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
-import { BicolorTrophy } from 'ui/svg/icons/Trophy'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -65,8 +59,6 @@ const OnlineProfile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
-  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
-  const shouldShowBadgesBanner = enableAchievements && user?.isBeneficiary
   const { displayInAppFeedback } = useRemoteConfigContext()
   const {
     geolocPositionError,
@@ -160,7 +152,6 @@ const OnlineProfile: React.FC = () => {
             <ProfileHeader user={user} />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
-              <BadgeBanner shouldShow={!!shouldShowBadgesBanner} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
                 <VerticalUl>
                   {isLoggedIn ? (
@@ -335,25 +326,6 @@ export function Profile() {
   return <OfflinePage />
 }
 
-const BadgeBanner: React.FC<{ shouldShow: boolean }> = ({ shouldShow = false }) => {
-  if (!shouldShow) return null
-  return (
-    <React.Fragment>
-      <InternalTouchableLink
-        navigateTo={{
-          screen: 'Achievements',
-        }}>
-        <GenericBanner LeftIcon={<BicolorTrophy size={theme.icons.sizes.standard} />}>
-          <Typo.ButtonText>Mes badges</Typo.ButtonText>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body numberOfLines={2}>Consulte tes prouesses</Typo.Body>
-        </GenericBanner>
-      </InternalTouchableLink>
-      <Spacer.Column numberOfSpaces={4} />
-    </React.Fragment>
-  )
-}
-
 const Container = styled.View({ flex: 1 })
 
 const ProfileContainer = styled.View(({ theme }) => ({
@@ -367,10 +339,8 @@ const ScrollViewContentContainer = styled.View({
   flexDirection: 'column',
 })
 
-const paddingVertical = getSpacing(4)
-
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
-  paddingVertical,
+  paddingVertical: getSpacing(4),
 })
 
 const ShareAppContainer = styled.View(({ theme }) => ({

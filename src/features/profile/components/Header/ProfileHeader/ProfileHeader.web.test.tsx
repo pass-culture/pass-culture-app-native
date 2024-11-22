@@ -4,7 +4,10 @@ import React from 'react'
 import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils/web'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
