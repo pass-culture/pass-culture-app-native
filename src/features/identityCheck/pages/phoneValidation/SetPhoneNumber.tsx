@@ -46,7 +46,7 @@ export const SetPhoneNumber = () => {
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
-  const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber)
+  const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber, country.callingCode)
   const saveStep = useSaveStep()
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
