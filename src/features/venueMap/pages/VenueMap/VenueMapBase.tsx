@@ -19,6 +19,7 @@ import {
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { Ul } from 'ui/components/Ul'
+import { Check } from 'ui/svg/icons/Check'
 import { getSpacing } from 'ui/theme'
 
 const MAX_VENUE_CHARACTERS = 20
@@ -57,6 +58,7 @@ export const VenueMapBase: FunctionComponent<PropsWithChildren> = ({ children })
                 label={ellipseString(venueTypeLabel, MAX_VENUE_CHARACTERS)}
                 isSelected={venueTypeCode !== null}
                 onPress={showVenueTypeModal}
+                icon={venueTypeCode ? <FilterSelectedIcon /> : undefined}
               />
             </StyledLi>
           </StyledUl>
@@ -99,3 +101,9 @@ const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
   marginVertical: getSpacing(1),
 })
+
+const FilterSelectedIcon = styled(Check).attrs<{ testID?: string }>(({ theme, testID }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.colors.black,
+  testID: testID ? `${testID}Icon` : 'filterButtonIcon',
+}))``

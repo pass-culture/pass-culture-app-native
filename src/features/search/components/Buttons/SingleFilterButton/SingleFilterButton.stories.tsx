@@ -1,5 +1,7 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
+import LinearGradient from 'react-native-linear-gradient'
+import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
@@ -11,10 +13,26 @@ const meta: ComponentMeta<typeof SingleFilterButton> = {
 }
 export default meta
 
+const GradientBullet = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.primary, theme.colors.primaryDark],
+}))({
+  width: 10,
+  height: 10,
+  borderRadius: 5,
+})
+
 const variantConfig: Variants<typeof SingleFilterButton> = [
   {
     label: 'SingleFilterButton selected',
     props: { label: 'CD, vinyles, musique en ligne', isSelected: true },
+  },
+  {
+    label: 'SingleFilterButton selected with custom icon',
+    props: {
+      label: 'CD, vinyles, musique en ligne',
+      isSelected: true,
+      icon: <GradientBullet />,
+    },
   },
   {
     label: 'SingleFilterButton not selected',
