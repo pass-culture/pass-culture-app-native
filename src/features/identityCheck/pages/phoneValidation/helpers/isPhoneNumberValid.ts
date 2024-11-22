@@ -15,9 +15,13 @@ export function isPhoneNumberValid(number: string, countryCallingCode: Country['
   const startsWithZero = cleanedNumber.startsWith('0')
   const startsWithOneToNine = /^[1-9]/.test(cleanedNumber)
 
+  const sixDigitRegex = /^\d{6}$/
+  const nineDigitRegex = /^[1-9]\d{8}$/
+  const tenDigitRegex = /^0\d{9}$/
+
   switch (cleanedNumber.length) {
     case 6:
-      return isCountryWithSixDigitsAfterCallingCode && Boolean(cleanedNumber.match(/^\d{6}$/))
+      return isCountryWithSixDigitsAfterCallingCode && !!sixDigitRegex.exec(cleanedNumber)
     case 7:
     case 8:
       return false
@@ -25,13 +29,13 @@ export function isPhoneNumberValid(number: string, countryCallingCode: Country['
       return (
         isNotCountryWithSixDigitsAfterCallingCode &&
         startsWithOneToNine &&
-        Boolean(cleanedNumber.match(/^[1-9]\d{8}$/))
+        !!nineDigitRegex.exec(cleanedNumber)
       )
     case 10:
       return (
         isNotCountryWithSixDigitsAfterCallingCode &&
         startsWithZero &&
-        Boolean(cleanedNumber.match(/^0\d{9}$/))
+        !!tenDigitRegex.exec(cleanedNumber)
       )
     default:
       return false
