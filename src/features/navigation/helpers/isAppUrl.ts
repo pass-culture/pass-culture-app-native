@@ -1,7 +1,7 @@
-import { linking } from 'features/navigation/RootNavigator/linking'
+import { linkingPrefixes } from 'features/navigation/RootNavigator/linking/linkingPrefixes'
 
 export const isAppUrl = (url: string) => {
-  for (const prefix of linking.prefixes) {
+  for (const prefix of linkingPrefixes) {
     if (url.match('^' + prefix)) {
       return true
     }

@@ -39,3 +39,5 @@ export const Artist: FunctionComponent = () => {
     <PageNotFound />
   )
 }
+
+export default Artist

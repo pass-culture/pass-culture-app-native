@@ -1,6 +1,5 @@
 import { Alert, Linking, NativeModules, Platform } from 'react-native'
 
-import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsData } from 'libs/analytics/logEventAnalytics'
@@ -8,7 +7,9 @@ import { OfferAnalyticsData } from 'libs/analytics/logEventAnalytics'
 import { isAppUrl } from './isAppUrl'
 import { navigateToHome } from './navigateToHome'
 
-const openAppUrl = (url: string) => {
+const openAppUrl = async (url: string) => {
+  const { getScreenFromDeeplink } = await import('features/deeplinks/helpers')
+
   try {
     const { screen, params } = getScreenFromDeeplink(url)
     return navigateFromRef(screen, params)
