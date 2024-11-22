@@ -22,6 +22,8 @@ import { MovieScreeningBookingData } from 'features/offer/components/MovieScreen
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -205,6 +207,8 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     step,
     showBookingCloseInformationModal,
   ])
+
+  useFirebasePerformanceProfiler('BookingOfferModal', { route } as UsePerformanceProfilerOptions)
 
   return (
     <AppModal

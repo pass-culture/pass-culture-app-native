@@ -1,4 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -24,6 +25,8 @@ import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -329,6 +332,8 @@ const OnlineProfile: React.FC = () => {
 
 export function Profile() {
   const netInfo = useNetInfoContext()
+  const route = useRoute<UseRouteType<'Profile'>>()
+  useFirebasePerformanceProfiler('Profile', { route } as UsePerformanceProfilerOptions)
   if (netInfo.isConnected) {
     return <OnlineProfile />
   }

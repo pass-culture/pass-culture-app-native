@@ -11,6 +11,8 @@ import { analytics } from 'libs/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -23,7 +25,8 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export function BookingConfirmation() {
-  const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
+  const route = useRoute<UseRouteType<'BookingConfirmation'>>()
+  const { params } = route
   const { data: offer } = useOffer({ offerId: params.offerId })
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
@@ -75,6 +78,8 @@ export function BookingConfirmation() {
   const amountLeftText = `Il te reste encore ${parseCurrencyFromCents(
     amountLeft
   )} à dépenser sur le pass Culture.`
+
+  useFirebasePerformanceProfiler('BookingConfirmation', { route } as UsePerformanceProfilerOptions)
 
   return (
     <React.Fragment>

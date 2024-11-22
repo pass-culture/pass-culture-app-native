@@ -14,11 +14,14 @@ import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export function Bookings() {
-  const { params } = useRoute<UseRouteType<'Bookings'>>()
+  const route = useRoute<UseRouteType<'Bookings'>>()
+  const { params } = route
   const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
@@ -67,6 +70,8 @@ export function Bookings() {
   }
 
   const shouldDisplayPastille = enableReactionFeature && bookingsAwaitingReaction > 0
+
+  useFirebasePerformanceProfiler('Bookings', { route } as UsePerformanceProfilerOptions)
 
   return (
     <React.Fragment>

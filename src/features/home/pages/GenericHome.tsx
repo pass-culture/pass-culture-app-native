@@ -40,6 +40,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -268,6 +269,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     ),
     [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
   )
+
+  useFirebasePerformanceProfiler('OnlineHome')
 
   return (
     <Container>

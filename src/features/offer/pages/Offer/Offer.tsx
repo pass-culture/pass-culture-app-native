@@ -8,6 +8,8 @@ import { OfferContentPlaceholder } from 'features/offer/components/OfferContentP
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 
 const ANIMATION_DURATION = 700
 
@@ -19,6 +21,8 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
+
+  useFirebasePerformanceProfiler('Offer', { route } as UsePerformanceProfilerOptions)
 
   if (!offer || !subcategories) return null
 

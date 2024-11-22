@@ -1,7 +1,9 @@
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
@@ -10,9 +12,12 @@ import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
 import { useInitialVenues } from 'features/venueMap/store/initialVenuesStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMap: FunctionComponent = () => {
+  const route = useRoute<UseRouteType<'Offer'>>()
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
   const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
@@ -29,6 +34,8 @@ export const VenueMap: FunctionComponent = () => {
     setLastRegionSearched,
     venuesMap,
   } = useVenuesMapData(initialVenues)
+
+  useFirebasePerformanceProfiler('VenueMap', { route } as UsePerformanceProfilerOptions)
 
   return (
     <VenueMapBase>
