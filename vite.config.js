@@ -104,7 +104,7 @@ export default ({ mode }) => {
           deploy: {
             env: isDevMode ? 'development' : env.ENV,
             name: isDevMode ? 'development' : env.ENV,
-            url: env.API_BASE_URL,
+            url: env.APP_PUBLIC_URL,
           },
         },
       }),
@@ -129,7 +129,7 @@ export default ({ mode }) => {
         },
       ],
     },
-    server: {...proxyConfig, open:true},
+    server: { ...proxyConfig, open: true },
     preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],

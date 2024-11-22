@@ -1,8 +1,6 @@
 import * as SentryModule from '@sentry/react'
-import { Platform } from 'react-native'
 
 import { env } from 'libs/environment'
-import { getAppBuildVersion, getAppVersion } from 'libs/packageJson'
 
 import { eventMonitoring } from './services'
 
@@ -14,8 +12,6 @@ describe('eventMonitoring', () => {
       expect(SentryModule.init).toHaveBeenCalledWith({
         dsn: env.SENTRY_DSN,
         environment: 'development',
-        release: `${getAppVersion()}-${Platform.OS}`,
-        dist: `${getAppBuildVersion()}-web-13371337`,
         integrations: [expect.anything()],
         tracesSampleRate: '1.0',
         sampleRate: '1.0',
