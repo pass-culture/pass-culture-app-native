@@ -21,11 +21,11 @@ export default meta
 
 const variantConfig: Variants<typeof AuthenticationButton> = [
   {
-    label: 'AuthenticationButton round price',
+    label: 'AuthenticationButton login',
     props: { type: 'login' },
   },
   {
-    label: 'AuthenticationButton decimal price',
+    label: 'AuthenticationButton signup',
     props: { type: 'signup' },
   },
 ]

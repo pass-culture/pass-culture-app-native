@@ -4,6 +4,7 @@ import React from 'react'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { getSpacing } from 'ui/theme'
 
 import { IconWithCaption } from './IconWithCaption'
 
@@ -26,10 +27,12 @@ const variantConfig: Variants<typeof IconWithCaption> = [
   {
     label: 'IconWithCaption default',
     props: baseProps,
+    minHeight: getSpacing(20),
   },
   {
     label: 'IconWithCaption disabled',
     props: { ...baseProps, isDisabled: true },
+    minHeight: getSpacing(20),
   },
 ]
 
