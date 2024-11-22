@@ -25,6 +25,7 @@ type MappedNativeCategory = {
   nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
+  position?: number
   gtls?: GTL[]
 }
 export type MappedNativeCategories = Record<string, MappedNativeCategory>
@@ -168,6 +169,7 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
                   (facetsData as NativeCategoryFacetData)?.[
                     FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
                   ]?.[nativeCategory.name] ?? 0,
+                position: nativeCategory.position ?? undefined,
                 ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
               }
 

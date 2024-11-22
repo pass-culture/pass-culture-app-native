@@ -71,17 +71,22 @@ export function CategoriesSection<
         />
       </ListItem>
       {data
-        ? Object.entries(data).map(([k, item]) => (
-            <CategoriesSectionItem
-              key={k}
-              value={value}
-              k={k}
-              item={item}
-              descriptionContext={descriptionContext}
-              handleSelect={handleSelect}
-              handleGetIcon={handleGetIcon}
-            />
-          ))
+        ? Object.entries(data)
+            .sort((a, b) => {
+              if (a[1].position && b[1].position) return a[1].position - b[1].position
+              return a[0].localeCompare(b[0])
+            })
+            .map(([k, item]) => (
+              <CategoriesSectionItem
+                key={k}
+                value={value}
+                k={k}
+                item={item}
+                descriptionContext={descriptionContext}
+                handleSelect={handleSelect}
+                handleGetIcon={handleGetIcon}
+              />
+            ))
         : null}
     </VerticalUl>
   )

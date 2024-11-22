@@ -11,16 +11,16 @@ NO_COLOR='\033[0m'
 # https://github.com/swagger-api/swagger-codegen/pull/11772
 
 docker run \
-    --network="host" \
-    --rm \
-    --volume "${PWD}:/local" \
-    --volume "$JAVA_HOME/lib/security/cacerts:/opt/java/openjdk/lib/security/cacerts" \
-    "parsertongue/swagger-codegen-cli:latest" generate \
-        --input-spec https://backend.testing.passculture.team/native/openapi.json `# schema location` \
-        --lang typescript-fetch `# client type` \
-        --config /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
-        --template-dir /local/swagger_codegen/gen_templates `# templates directory` \
-        --output /local/src/api/gen `# output directory`
+  --network="host" \
+  --rm \
+  --volume "${PWD}:/local" \
+  --volume "$JAVA_HOME/lib/security/cacerts:/opt/java/openjdk/lib/security/cacerts" \
+  "parsertongue/swagger-codegen-cli:latest" generate \
+  --input-spec http://localhost:5001/native/openapi.json `# schema location` \
+  --lang typescript-fetch `# client type` \
+  --config /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
+  --template-dir /local/swagger_codegen/gen_templates `# templates directory` \
+  --output /local/src/api/gen `# output directory`
 
 success() {
   echo -e "✅  ${GREEN}$1${NO_COLOR}"
