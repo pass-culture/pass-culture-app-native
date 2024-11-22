@@ -5,8 +5,8 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { Marker as MapMarker, MapMarkerProps } from 'libs/maps/maps'
 
+import { MARKER_SIZE } from '../../../constant'
 import { VenueMapLabel } from '../../VenueMapLabel/VenueMapLabel'
-import { MARKER_SIZE } from '../constant'
 
 const PIN_MAX_Z_INDEX = 10_000
 

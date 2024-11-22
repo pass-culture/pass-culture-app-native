@@ -1,10 +1,7 @@
 import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
-import {
-  MARKER_LABEL_MARGIN_TOP,
-  MARKER_SIZE,
-} from 'features/venueMap/components/VenueMapView/constant'
+import { MARKER_LABEL_MARGIN_TOP, MARKER_SIZE } from 'features/venueMap/constant'
 import { Size } from 'features/venueMap/types'
 import { getSpacing } from 'ui/theme'
 

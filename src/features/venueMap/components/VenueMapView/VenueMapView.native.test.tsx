@@ -17,7 +17,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
-import * as constants from './constant'
+import * as constants from '../../constant'
 
 const mockSetInitialVenues = jest.fn()
 jest.mock('features/venueMap/store/initialVenuesStore', () => ({

@@ -1,4 +1,4 @@
-import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/components/VenueMapView/constant'
+import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/constant'
 import { getClusterImage } from 'features/venueMap/helpers/venueMapCluster/getClusterImage'
 
 describe('getClusterImage', () => {

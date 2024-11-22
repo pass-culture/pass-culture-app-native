@@ -1,5 +1,5 @@
-import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/components/VenueMapView/constant'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
+import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/constant'
 
 export const getClusterImage = (
   points: number,

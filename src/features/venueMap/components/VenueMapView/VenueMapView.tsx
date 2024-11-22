@@ -33,7 +33,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { MARKER_LABEL_VISIBILITY_LIMIT } from './constant'
+import { MARKER_LABEL_VISIBILITY_LIMIT } from '../../constant'
+
 import { Marker } from './Marker/Marker'
 
 interface Props {
