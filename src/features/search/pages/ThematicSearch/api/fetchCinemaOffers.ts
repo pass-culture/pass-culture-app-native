@@ -2,6 +2,7 @@ import { MultipleQueriesQuery } from '@algolia/client-search'
 import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -20,7 +21,10 @@ export const fetchCinemaOffers = async (userLocation?: Position) => {
     attributesToRetrieve: offerAttributesToRetrieve,
     attributesToHighlight: [],
     ...(userLocation
-      ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
+      ? {
+          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: DEFAULT_RADIUS * 1000,
+        }
       : {}),
     distinct: true,
   }

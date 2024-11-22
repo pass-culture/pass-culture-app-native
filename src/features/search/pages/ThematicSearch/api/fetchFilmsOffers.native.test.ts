@@ -22,7 +22,6 @@ describe('fetchFilmsOffers', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         filters: 'offer.subcategoryId:"VOD"',
-        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
         hitsPerPage: 20,
       },
       query: '',
@@ -35,6 +34,7 @@ describe('fetchFilmsOffers', () => {
         filters:
           'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"low"',
         aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+        aroundRadius: 50000,
         hitsPerPage: 20,
       },
       query: '',
@@ -45,7 +45,6 @@ describe('fetchFilmsOffers', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
-        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
         hitsPerPage: 20,
       },
       query: '',
@@ -57,21 +56,22 @@ describe('fetchFilmsOffers', () => {
       ...filmsQueries[0],
       params: {
         ...filmsQueries[0]?.params,
-        aroundLatLng: undefined,
       },
     },
     {
       ...filmsQueries[1],
       params: {
-        ...filmsQueries[1]?.params,
-        aroundLatLng: undefined,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        filters:
+          'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"low"',
+        hitsPerPage: 20,
       },
     },
     {
       ...filmsQueries[2],
       params: {
         ...filmsQueries[2]?.params,
-        aroundLatLng: undefined,
       },
     },
   ]
