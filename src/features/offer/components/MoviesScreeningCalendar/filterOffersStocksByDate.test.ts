@@ -2,11 +2,7 @@ import mockdate from 'mockdate'
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
-import {
-  dateBuilder,
-  offerResponseBuilder,
-  stockBuilder,
-} from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
+import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 
 import { filterOffersStocksByDate } from './filterOffersStocksByDate'
 
@@ -15,10 +11,18 @@ const DATE_WITH_NO_STOCK = dateBuilder().withDay(5).toString()
 const AVAILABLE_STOCK_ID = 11
 
 const STOCKS = [
-  stockBuilder().withId(AVAILABLE_STOCK_ID).withBeginningDatetime(DATE_WITH_STOCK).build(),
+  mockBuilder.offerStockResponse({
+    id: AVAILABLE_STOCK_ID,
+    beginningDatetime: DATE_WITH_STOCK,
+  }),
 ]
 
-const offers: OfferResponseV2[] = [offerResponseBuilder().withId(1).withStocks(STOCKS).build()]
+const offers: OfferResponseV2[] = [
+  mockBuilder.offerResponseV2({
+    id: 1,
+    stocks: STOCKS,
+  }),
+]
 
 describe('filterOffersStocksByDate', () => {
   it('should return all movies with a stock available at a specific date', () => {
@@ -41,10 +45,26 @@ describe('filterOffersStocksByDate', () => {
 
   it('should sort the stocks by descending last30DaysBookings order', () => {
     const offers: OfferResponseV2[] = [
-      offerResponseBuilder().withId(1).withLast30DaysBookings(100).withStocks(STOCKS).build(),
-      offerResponseBuilder().withId(3).withLast30DaysBookings(300).withStocks(STOCKS).build(),
-      offerResponseBuilder().withId(2).withLast30DaysBookings(200).withStocks(STOCKS).build(),
-      offerResponseBuilder().withId(4).withLast30DaysBookings(400).withStocks(STOCKS).build(),
+      mockBuilder.offerResponseV2({
+        id: 1,
+        last30DaysBookings: 100,
+        stocks: STOCKS,
+      }),
+      mockBuilder.offerResponseV2({
+        id: 3,
+        last30DaysBookings: 300,
+        stocks: STOCKS,
+      }),
+      mockBuilder.offerResponseV2({
+        id: 2,
+        last30DaysBookings: 200,
+        stocks: STOCKS,
+      }),
+      mockBuilder.offerResponseV2({
+        id: 4,
+        last30DaysBookings: 400,
+        stocks: STOCKS,
+      }),
     ]
 
     const filteredOffersStocksByDate = filterOffersStocksByDate(offers, new Date(DATE_WITH_STOCK))
@@ -63,18 +83,22 @@ it('should not return movies when there is no more screening until the end of th
   const BEFORE_NOW = dateBuilder().withHours(14).toString()
   const AFTER_NOW = dateBuilder().withHours(18).toString()
 
-  const STOCK_BEFORE_NOW = stockBuilder().withBeginningDatetime(BEFORE_NOW).build()
-  const STOCK_AFTER_NOW = stockBuilder().withBeginningDatetime(AFTER_NOW).build()
+  const STOCK_BEFORE_NOW = mockBuilder.offerStockResponse({
+    beginningDatetime: BEFORE_NOW,
+  })
+  const STOCK_AFTER_NOW = mockBuilder.offerStockResponse({
+    beginningDatetime: AFTER_NOW,
+  })
 
   const offersContainingAnOfferAfterNow = filterOffersStocksByDate(
-    [offerResponseBuilder().withStocks([STOCK_BEFORE_NOW, STOCK_AFTER_NOW]).build()],
+    [mockBuilder.offerResponseV2({ stocks: [STOCK_BEFORE_NOW, STOCK_AFTER_NOW] })],
     NOW
   )
 
   expect(offersContainingAnOfferAfterNow).toHaveLength(1)
 
   const offersContainingNoOfferAfterNow = filterOffersStocksByDate(
-    [offerResponseBuilder().withStocks([STOCK_BEFORE_NOW]).build()],
+    [mockBuilder.offerResponseV2({ stocks: [STOCK_BEFORE_NOW] })],
     NOW
   )
 

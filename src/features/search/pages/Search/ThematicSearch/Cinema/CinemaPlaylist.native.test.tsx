@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { searchResponseOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/offersStockResponse.builder'
 import * as useCinemaOffersAPI from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
 import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode, Position } from 'libs/location/types'
+import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -24,7 +24,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const DEFAULT_CINEMA_OFFER = searchResponseOfferBuilder().build()
+const DEFAULT_CINEMA_OFFER = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 
 const useCinemaOffersSpy = jest.spyOn(useCinemaOffersAPI, 'useCinemaOffers').mockReturnValue({
