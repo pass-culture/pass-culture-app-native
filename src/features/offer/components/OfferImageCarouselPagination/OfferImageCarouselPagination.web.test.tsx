@@ -1,11 +1,13 @@
 import React from 'react'
 
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination.web'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { render, screen, userEvent } from 'tests/utils/web'
 
 const mockHandlePressButton = jest.fn()
 
 describe('<OfferImageCarouselPagination />', () => {
+  const user = userEvent.setup()
+
   it('should display pagination with dots and buttons', () => {
     render(
       <OfferImageCarouselPagination
@@ -30,7 +32,7 @@ describe('<OfferImageCarouselPagination />', () => {
     expect(screen.queryByTestId('onlyDotsContainer')).not.toBeInTheDocument()
   })
 
-  it('should handle previous button clicking', () => {
+  it('should handle previous button clicking', async () => {
     render(
       <OfferImageCarouselPagination
         progressValue={{ value: 0 }}
@@ -40,12 +42,12 @@ describe('<OfferImageCarouselPagination />', () => {
     )
 
     const previousButton = screen.getByTestId('Image précédente')
-    fireEvent.click(previousButton)
+    await user.click(previousButton)
 
     expect(mockHandlePressButton).toHaveBeenNthCalledWith(1, -1)
   })
 
-  it('should handle next button clicking', () => {
+  it('should handle next button clicking', async () => {
     render(
       <OfferImageCarouselPagination
         progressValue={{ value: 0 }}
@@ -55,7 +57,7 @@ describe('<OfferImageCarouselPagination />', () => {
     )
 
     const nextButton = screen.getByTestId('Image suivante')
-    fireEvent.click(nextButton)
+    await user.click(nextButton)
 
     expect(mockHandlePressButton).toHaveBeenNthCalledWith(1, 1)
   })
