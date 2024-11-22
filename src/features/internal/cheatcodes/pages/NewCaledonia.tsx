@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import {
   DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
@@ -28,6 +29,7 @@ export const NewCaledonia = () => {
   const priceInEuro = parseFloat(inputEuro) || 0
 
   const { selectedPlace } = useLocation()
+  const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
 
   return (
@@ -46,8 +48,14 @@ export const NewCaledonia = () => {
         <StyledSeparator />
         <TypoDS.Body>Localisation de l’utilisateur&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</TypoDS.Title3>
+        <TypoDS.Body>Code postal renseigné par l’utilisateur&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>
+          {user ? (user.postalCode ? `${user.postalCode}` : 'Non renseigné') : 'Non connecté'}
+        </TypoDS.Title3>
+        <TypoDS.Body>Devise renvoyé par l’API&nbsp;:</TypoDS.Body>
+        <TypoDS.Title3>{user ? `${user.currency}` : 'Non connecté'}</TypoDS.Title3>
         <StyledSeparator />
-        <TypoDS.Body>Devise affichée&nbsp;:</TypoDS.Body>
+        <TypoDS.Body>Devise affichée à l’utilisateur&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>{currency}</TypoDS.Title3>
         <StyledSeparator />
         <TypoDS.Body>Taux de change sur Firestore&nbsp;:</TypoDS.Body>
