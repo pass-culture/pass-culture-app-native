@@ -24,6 +24,8 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { UsePerformanceProfilerOptions } from 'shared/performance/types'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -97,7 +99,8 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
 )
 
 export const ThematicHome: FunctionComponent = () => {
-  const { params } = useRoute<UseRouteType<'ThematicHome'>>()
+  const route = useRoute<UseRouteType<'ThematicHome'>>()
+  const { params } = route
   const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const {
@@ -148,6 +151,8 @@ export const ThematicHome: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
+
+  useFirebasePerformanceProfiler('ThematicHome', { route } as UsePerformanceProfilerOptions)
 
   return (
     <Container>
