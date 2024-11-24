@@ -11,7 +11,6 @@ import {
   init,
   setExtras,
   setUser,
-  startTransaction,
   withProfiler,
   wrap,
 } from './sentry'
@@ -23,7 +22,6 @@ type EventMonitoring = {
   init: ({ enabled }: { enabled: boolean }) => Promise<void>
   setUser: (user: User | Record<string, unknown> | null) => void
   setExtras: typeof setExtras
-  startTransaction: typeof startTransaction
   withProfiler: typeof withProfiler
   wrap: typeof wrap
 }
@@ -34,7 +32,6 @@ export const eventMonitoring: EventMonitoring = {
   configureScope: configureScope,
   setUser: setUser,
   setExtras: setExtras,
-  startTransaction: startTransaction,
   withProfiler: withProfiler,
   wrap: wrap,
   async init({ enabled } = { enabled: true }) {
