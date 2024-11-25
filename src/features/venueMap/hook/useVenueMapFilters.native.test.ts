@@ -15,7 +15,6 @@ const mockRemoveVenuesFilters = jest.fn()
 
 describe('useVenueMapFilters', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockUseVenuesFilter.mockReturnValue([])
     mockUseVenuesFilterActions.mockReturnValue({
       setVenuesFilters: mockSetVenuesFilters,
@@ -67,7 +66,7 @@ describe('useVenueMapFilters', () => {
     ])
 
     const { result } = renderHook(() => useVenueMapFilters())
-    const selectedMacros = result.current.getSelectedMacros()
+    const selectedMacros = result.current.getSelectedMacroFilters()
 
     expect(selectedMacros).toEqual(['OUTINGS', 'SHOPS'])
   })

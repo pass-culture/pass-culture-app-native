@@ -1,7 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import {
-  getActiveMacros,
+  getActiveMacroFilters,
   getFiltersByMacro,
 } from 'features/venueMap/helpers/filtersVenueType/filtersVenueType'
 import { useVenuesFilter, useVenuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
@@ -23,12 +23,12 @@ export const useVenueMapFilters = () => {
     }
   }
 
-  const getSelectedMacros = () => getActiveMacros(activeFilters)
+  const getSelectedMacroFilters = () => getActiveMacroFilters(activeFilters)
 
   return {
     activeFilters,
     applyMacroFilters,
     toggleFilter,
-    getSelectedMacros,
+    getSelectedMacroFilters,
   }
 }

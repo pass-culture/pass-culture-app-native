@@ -13,7 +13,7 @@ export const getFiltersByMacro = (
 /**
  * Determines which macros are enabled based on active filters.
  */
-export const getActiveMacros = (activeFilters: VenueTypeCodeKey[]) => {
+export const getActiveMacroFilters = (activeFilters: VenueTypeCodeKey[]) => {
   return Object.entries(FILTERS_VENUE_TYPE_MAPPING)
     .filter(([_, filters]) => filters.some((filter) => activeFilters.includes(filter)))
     .map(([macro]) => macro)

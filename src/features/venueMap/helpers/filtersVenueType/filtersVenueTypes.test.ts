@@ -1,7 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import {
-  getActiveMacros,
+  getActiveMacroFilters,
   getFiltersByMacro,
 } from 'features/venueMap/helpers/filtersVenueType/filtersVenueType'
 
@@ -19,27 +19,27 @@ describe('getFiltersByMacro', () => {
   })
 })
 
-describe('getActiveMacros', () => {
+describe('getActiveMacroFilters', () => {
   it('should return macros matching active filters', () => {
     const activeFilters: VenueTypeCodeKey[] = [
         ...(FILTERS_VENUE_TYPE_MAPPING.OUTINGS),
         ...(FILTERS_VENUE_TYPE_MAPPING.SHOPS?.slice(0, 1)),
       ].filter((item): item is VenueTypeCodeKey => Boolean(item))
       
-    const activeMacros = getActiveMacros(activeFilters)
+    const activeMacros = getActiveMacroFilters(activeFilters)
 
     expect(activeMacros).toEqual(['OUTINGS', 'SHOPS'])
   })
 
   it('should return all macros when all filters are active', () => {
     const activeFilters = Object.values(FILTERS_VENUE_TYPE_MAPPING).flat()
-    const activeMacros = getActiveMacros(activeFilters)
+    const activeMacros = getActiveMacroFilters(activeFilters)
 
     expect(activeMacros).toEqual(Object.keys(FILTERS_VENUE_TYPE_MAPPING))
   })
 
   it('should handle empty active filters', () => {
-    const activeMacros = getActiveMacros([])
+    const activeMacros = getActiveMacroFilters([])
 
     expect(activeMacros).toEqual([])
   })
