@@ -6,7 +6,7 @@ import {
 } from 'features/profile/pages/Achievements/AchievementData'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-type Badges = {
+type Categories = {
   id: AchievementCategory
   remainingAchievementsText: string
   progress: number
@@ -28,7 +28,7 @@ export type UseAchivementsProps = {
 export const useAchievements = ({
   achievements,
   completedAchievements,
-}: UseAchivementsProps): Badges =>
+}: UseAchivementsProps): Categories =>
   getAchievementsCategories(achievements).map(createCategory(achievements, completedAchievements))
 
 const getAchievementsCategories = (achievements: Achievement[]) =>

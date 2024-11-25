@@ -39,9 +39,8 @@ export const Achievements = () => {
       <ViewGap gap={4}>
         <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
         {categories.map((category) => {
-          let badges = category.badges
-          const oddAchievements = badges.length % 2 !== 0
-          if (oddAchievements) badges = [...badges, emptyBadge]
+          const isOddBadges = category.badges.length % 2 !== 0
+          const badges = isOddBadges ? [...category.badges, emptyBadge] : category.badges
 
           return (
             <ViewGap gap={4} key={category.id}>
