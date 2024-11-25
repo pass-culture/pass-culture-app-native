@@ -8,6 +8,7 @@ import { MovieCalendarProvider } from 'features/offer/components/MoviesScreening
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
+import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
@@ -30,6 +31,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
       scrollToAnchor('offer-cine-availabilities')
     })
   }, [scrollToAnchor, setButton])
+  const next15Dates = getDates(new Date(), 15)
 
   return (
     <Container testID="offer-new-xp-cine-block">
@@ -44,7 +46,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
         </InView>
       </Anchor>
       <Spacer.Column numberOfSpaces={4} />
-      <MovieCalendarProvider nbOfDays={15} containerStyle={getCalendarStyle(theme)}>
+      <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
         <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>

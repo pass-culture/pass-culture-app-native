@@ -55,6 +55,8 @@ describe('OfferCineContent', () => {
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
       displayCalendar: mockDisplayCalendar,
+      disableDates: jest.fn(),
+      displayDates: jest.fn(),
     })
   })
 

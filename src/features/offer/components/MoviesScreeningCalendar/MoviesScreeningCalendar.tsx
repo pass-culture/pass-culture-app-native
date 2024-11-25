@@ -15,6 +15,7 @@ import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { getDates } from 'shared/date/getDates'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -39,6 +40,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     (offer) => offer.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
   )
 
+  const next15Dates = getDates(new Date(), 15)
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -69,7 +71,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <MovieCalendarProvider nbOfDays={15}>
+      <MovieCalendarProvider initialDates={next15Dates}>
         <VenueCalendar venueOffers={venueOffers} offerIds={offerIds} />
       </MovieCalendarProvider>
       {nonScreeningOffers.length > 0 ? (

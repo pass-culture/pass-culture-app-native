@@ -1,12 +1,10 @@
 import { isSameDay, startOfDay } from 'date-fns'
 import { useCallback, useState } from 'react'
 
-import { getDates } from 'shared/date/getDates'
-
-export const useNextDays = <T extends Readonly<number>>(nbOfDays: T) => {
-  const dates = getDates(new Date(), nbOfDays)
+export const useDaysSelector = (dates: Date[]) => {
+  const [internalDates, setInternalDates] = useState<Date[]>(dates)
   const [selectedInternalDate, setSelectedInternalDate] = useState<Date>(
-    (dates as Date[])[0] as Date
+    dates?.[0] || startOfDay(new Date())
   )
 
   const setSelectedDate = useCallback(
@@ -18,5 +16,10 @@ export const useNextDays = <T extends Readonly<number>>(nbOfDays: T) => {
     [selectedInternalDate]
   )
 
-  return { selectedDate: selectedInternalDate, setSelectedDate, dates }
+  return {
+    selectedDate: selectedInternalDate,
+    dates: internalDates,
+    setSelectedDate,
+    setDates: setInternalDates,
+  }
 }
