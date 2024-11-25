@@ -41,6 +41,7 @@ const errorCodeToMessage: Record<string, string> = {
   ALREADY_BOOKED: 'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!',
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
   PROVIDER_STOCK_SOLD_OUT: 'Oups, cette offre n’est plus disponible\u00a0!',
+  PROVIDER_BOOKING_TIMEOUT: 'Nous t’invitons à réessayer un peu plus tard',
 }
 
 export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProps> = ({
@@ -117,9 +118,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
-        const errorCode = errorCodeToMessage[content?.code]
-        if (errorCode) {
-          message = errorCode
+        const errorMessage = errorCodeToMessage[content?.code]
+        if (errorMessage) {
+          message = errorMessage
           if (typeof offerId === 'number') {
             analytics.logBookingError(offerId, content.code)
           }
