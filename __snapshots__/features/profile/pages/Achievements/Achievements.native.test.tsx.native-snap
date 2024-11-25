@@ -380,7 +380,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
             data={
               [
                 {
-                  "description": "Tu as réservé ta première séance de cinéma",
                   "id": "FIRST_MOVIE_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -402,7 +401,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Cinéphile en herbe",
                 },
                 {
-                  "description": "Tu as réservé ton premier livre",
                   "id": "FIRST_BOOK_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -424,7 +422,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Rat de bibliothèque",
                 },
                 {
-                  "description": "Tu as réservé ton premier atelier ou cours artistique",
                   "id": "FIRST_ART_LESSON_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -446,7 +443,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Se mettre à la pratique",
                 },
                 {
-                  "description": "Réserve ton premier CD ou vinyle",
                   "id": "FIRST_RECORDED_MUSIC_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -468,7 +464,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Badge non débloqué",
                 },
                 {
-                  "description": "Réserve ton premier spectacle",
                   "id": "FIRST_SHOW_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -490,7 +485,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Badge non débloqué",
                 },
                 {
-                  "description": "Réserve ta première visite",
                   "id": "FIRST_MUSEUM_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -512,7 +506,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Badge non débloqué",
                 },
                 {
-                  "description": "Réserve ton premier concert ou festival",
                   "id": "FIRST_LIVE_MUSIC_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -534,7 +527,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Badge non débloqué",
                 },
                 {
-                  "description": "Abonne-toi à un média",
                   "id": "FIRST_NEWS_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
@@ -556,7 +548,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   "name": "Badge non débloqué",
                 },
                 {
-                  "description": "Réserve du matériel créatif",
                   "id": "FIRST_INSTRUMENT_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),

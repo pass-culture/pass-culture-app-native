@@ -14,7 +14,6 @@ type Categories = {
   badges: {
     id: AchievementId
     name: string
-    description: string
     illustration: React.FC<AccessibleIcon>
     isCompleted: boolean
   }[]
@@ -85,7 +84,6 @@ const createBadge = (completedAchievements: UserAchievement[]) => (achievement: 
   return {
     id: achievement.id,
     name: isCompleted ? achievement.name : LOCKED_BADGE_NAME,
-    description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
     illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
     isCompleted,
   }
