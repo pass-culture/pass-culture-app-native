@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AchievementDetailsModal } from 'features/profile/components/Modals/AchievementDetailsModal'
-import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -12,11 +11,11 @@ import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 type BadgeProps = {
   id: AchievementId
   Illustration: React.FC<AccessibleIcon>
+  name: string
   isCompleted?: boolean
 }
 
-export const Badge: FC<BadgeProps> = ({ Illustration, id, isCompleted }) => {
-  const achievement = useAchievementDetails(id)
+export const Badge: FC<BadgeProps> = ({ Illustration, id, name, isCompleted }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const theme = useTheme()
 
@@ -29,7 +28,7 @@ export const Badge: FC<BadgeProps> = ({ Illustration, id, isCompleted }) => {
           </IllustrationContainer>
           <Spacer.Column numberOfSpaces={2} />
           <TypoBadgeName numberOfLines={2} isCompleted={!!isCompleted}>
-            {achievement?.name}
+            {name}
           </TypoBadgeName>
         </BadgeContainer>
       </StyledTouchableOpacity>

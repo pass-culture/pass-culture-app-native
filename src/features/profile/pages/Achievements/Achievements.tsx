@@ -92,6 +92,7 @@ export const Achievements = () => {
                   item.illustration ? (
                     <Badge
                       id={item.id}
+                      name={item.name}
                       Illustration={item.illustration}
                       isCompleted={item.isCompleted}
                     />
