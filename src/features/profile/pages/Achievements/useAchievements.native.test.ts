@@ -136,6 +136,60 @@ describe('useAchievements', () => {
     ])
   })
 
+  it('achievement name is "Badge non débloqué" when achievement is not completed', () => {
+    const { result } = renderHook(() =>
+      useAchievements({
+        achievements: [firstArtLessonBooking, firstBookBooking],
+        completedAchievements: [],
+      })
+    )
+
+    const { badges } = result.current
+
+    expect(badges).toEqual([
+      expect.objectContaining({
+        category: CombinedAchievementCategory.FIRST_BOOKINGS,
+        achievements: [
+          expect.objectContaining({
+            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: 'Badge non débloqué',
+          }),
+          expect.objectContaining({
+            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: 'Badge non débloqué',
+          }),
+        ],
+      }),
+    ])
+  })
+
+  it('achievement completed name is the achievement name', () => {
+    const { result } = renderHook(() =>
+      useAchievements({
+        achievements: [firstArtLessonBooking, firstBookBooking],
+        completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
+      })
+    )
+
+    const { badges } = result.current
+
+    expect(badges).toEqual([
+      expect.objectContaining({
+        category: CombinedAchievementCategory.FIRST_BOOKINGS,
+        achievements: [
+          expect.objectContaining({
+            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: firstArtLessonBooking.name,
+          }),
+          expect.objectContaining({
+            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: firstBookBooking.name,
+          }),
+        ],
+      }),
+    ])
+  })
+
   describe('Category Achievements completion', () => {
     describe('Remaining achievements to complete', () => {
       it('should return 2 when there are 2 achievements and no one is completed', () => {

@@ -30,16 +30,16 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
     const category = acc.find((badge) => badge.category === achievement.category)
     const isCompleted = completedAchievements.some((u) => u.id === achievement.id)
 
+    const badge = {
+      id: achievement.id,
+      name: isCompleted ? achievement.name : 'Badge non débloqué',
+      description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
+      illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
+      isCompleted,
+    }
+
     if (category) {
-      category.achievements.push({
-        id: achievement.id,
-        name: achievement.name,
-        description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
-        illustration: isCompleted
-          ? achievement.illustrationUnlocked
-          : achievement.illustrationLocked,
-        isCompleted,
-      })
+      category.achievements.push(badge)
 
       if (!isCompleted) {
         category.remainingAchievements++
@@ -57,18 +57,9 @@ export const useAchievements = ({ achievements, completedAchievements }: Props) 
       progressText: isCompleted ? '100%' : '0%',
       remainingAchievements: isCompleted ? 0 : 1,
 
-      achievements: [
-        {
-          id: achievement.id,
-          name: achievement.name,
-          description: achievement.descriptionLocked,
-          illustration: isCompleted
-            ? achievement.illustrationUnlocked
-            : achievement.illustrationLocked,
-          isCompleted,
-        },
-      ],
+      achievements: [badge],
     })
+
     return acc
   }, [] as Badges)
 
