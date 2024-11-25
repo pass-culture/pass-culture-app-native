@@ -4,6 +4,7 @@ import algoliasearch from '__mocks__/algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
@@ -63,19 +64,7 @@ describe('useSearchResults', () => {
             indexName: 'algoliaOffersIndexName',
             params: {
               attributesToHighlight: [],
-              attributesToRetrieve: [
-                'offer.dates',
-                'offer.isDigital',
-                'offer.isDuo',
-                'offer.isEducational',
-                'offer.name',
-                'offer.prices',
-                'offer.subcategoryId',
-                'offer.thumbUrl',
-                'objectID',
-                '_geoloc',
-                'venue',
-              ],
+              attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
               clickAnalytics: true,
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 20,
@@ -110,19 +99,7 @@ describe('useSearchResults', () => {
             indexName: 'algoliaOffersIndexName',
             params: {
               attributesToHighlight: [],
-              attributesToRetrieve: [
-                'offer.dates',
-                'offer.isDigital',
-                'offer.isDuo',
-                'offer.isEducational',
-                'offer.name',
-                'offer.prices',
-                'offer.subcategoryId',
-                'offer.thumbUrl',
-                'objectID',
-                '_geoloc',
-                'venue',
-              ],
+              attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
               clickAnalytics: true,
               distinct: false,
               facetFilters: [['offer.isEducational:false']],
