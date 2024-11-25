@@ -12,8 +12,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install --force
       - name: Run performance testing script
-        run: ./scripts/reassure_test.sh
+        run: yarn test:perf
       - name: Run Danger.js to publish scores in PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

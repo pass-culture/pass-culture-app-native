@@ -68,8 +68,10 @@ coverage/
 /dist
 *.back
 
-# Reassure
-.reassure/
+# Reassure: Ignore everything in the .reassure/ directory
+.reassure/*
+# Except for the baseline.perf file
+!.reassure/baseline.perf
 
 # ESLint
 .eslintcache

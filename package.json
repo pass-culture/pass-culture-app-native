@@ -82,6 +82,7 @@
     "test:e2e:ios:testing:cloud": "./scripts/run_e2e_tests.sh cloud ios testing",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:perf": "NODE_ENV=performance NODE_OPTIONS='--no-experimental-fetch' TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
+    "test:perf:update": "yarn test:perf --baseline",
     "test:sw": "node scripts/service-worker-test.mjs",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
