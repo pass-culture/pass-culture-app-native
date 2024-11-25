@@ -16,6 +16,7 @@ type Props = {
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
   flatListRef: React.MutableRefObject<FlatList | null>
+  disabledDates?: Date[]
   flatListWidth?: number
   onFlatListLayout?: (event: LayoutChangeEvent) => void
   itemWidth?: number
@@ -33,6 +34,7 @@ export const MovieCalendar: React.FC<Props> = ({
   onFlatListLayout,
   itemWidth,
   onItemLayout,
+  disabledDates,
 }) => {
   const { isDesktopViewport } = useTheme()
   const {
@@ -94,6 +96,7 @@ export const MovieCalendar: React.FC<Props> = ({
               date={date}
               selectedDate={selectedDate}
               onTabChange={onInternalTabChange}
+              disabled={disabledDates?.includes(date)}
             />
           )}
         />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -13,6 +13,7 @@ type Props = {
   onTabChange: (date: Date) => void
   selectedDate?: Date
   onLayout?: ViewProps['onLayout']
+  disabled?: boolean
 }
 
 export const MovieCalendarDay: React.FC<Props> = ({
@@ -20,15 +21,29 @@ export const MovieCalendarDay: React.FC<Props> = ({
   selectedDate,
   onTabChange,
   onLayout,
+  disabled,
 }) => {
   const { weekDay, dayDate, month, accessibilityLabel, isSelected } = useMovieCalendarDay(
     date,
     selectedDate
   )
-  const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
+
+  const CalendarText = useMemo(() => {
+    if (disabled) {
+      return DisabledCalendarText
+    }
+    if (selectedDate) {
+      return SelectedCalendarText
+    }
+    return DefaultCalendarText
+  }, [disabled, selectedDate])
 
   return (
-    <CalendarCell onLayout={onLayout} testID="movie-calendar-day" onPress={() => onTabChange(date)}>
+    <CalendarCell
+      disabled={disabled}
+      onLayout={onLayout}
+      testID="movie-calendar-day"
+      onPress={() => onTabChange(date)}>
       <CalendarTextView accessibilityLabel={accessibilityLabel}>
         <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
@@ -65,11 +80,6 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
   color: theme.colors.primary,
 }))
 
-const StatusPattern = {
-  default: {
-    CalendarText: DefaultCalendarText,
-  },
-  selected: {
-    CalendarText: SelectedCalendarText,
-  },
-}
+const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))

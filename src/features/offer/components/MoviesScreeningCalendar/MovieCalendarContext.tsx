@@ -146,6 +146,7 @@ export const MovieCalendarProvider: React.FC<{
             <MovieCalendar
               dates={dates}
               selectedDate={selectedDate}
+              disabledDates={[]}
               onTabChange={setSelectedDate}
               flatListRef={flatListRef}
               flatListWidth={flatListWidth}
