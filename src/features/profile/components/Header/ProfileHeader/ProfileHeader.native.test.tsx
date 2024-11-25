@@ -68,7 +68,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
 
