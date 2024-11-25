@@ -25,45 +25,70 @@ type Props = {
   completedAchievements: UserAchievement[]
 }
 
-export const useAchievements = ({ achievements, completedAchievements }: Props) => {
-  const badges: Badges = achievements.reduce((acc, achievement) => {
-    const category = acc.find((badge) => badge.category === achievement.category)
-    const isCompleted = completedAchievements.some((u) => u.id === achievement.id)
+type UseAchievements = {
+  badges: Badges
+}
 
-    const badge = {
+export const useAchievements = ({
+  achievements,
+  completedAchievements,
+}: Props): UseAchievements => {
+  return {
+    badges: getAchievementsCategories(achievements).map(
+      createCategory(achievements, completedAchievements)
+    ),
+  }
+}
+
+const isAchievementCompleted = (
+  achievement: Achievement,
+  completedAchievements: UserAchievement[]
+) => completedAchievements.some((u) => u.id === achievement.id)
+
+const getCompletedAchievements = (
+  achievements: Achievement[],
+  completedAchievements: UserAchievement[]
+) =>
+  achievements.filter((achievement) => isAchievementCompleted(achievement, completedAchievements))
+
+const getAchievementsByCategory = (achievements: Achievement[], category: AchievementCategory) =>
+  achievements.filter((achievement) => achievement.category === category)
+
+const createCategory =
+  (achievements: Achievement[], completedAchievements: UserAchievement[]) =>
+  (category: AchievementCategory) => {
+    const categoryAchievements = getAchievementsByCategory(achievements, category)
+
+    const completedCategoryAchievements = getCompletedAchievements(
+      categoryAchievements,
+      completedAchievements
+    )
+
+    const progress = completedCategoryAchievements.length / categoryAchievements.length
+    const progressText = `${completedCategoryAchievements.length}/${categoryAchievements.length}`
+    const remainingAchievements = categoryAchievements.length - completedCategoryAchievements.length
+
+    return {
+      category,
+      progress,
+      progressText,
+      remainingAchievements,
+      achievements: categoryAchievements.map(createAchievement(completedAchievements)),
+    }
+  }
+
+const createAchievement =
+  (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
+    const isCompleted = isAchievementCompleted(achievement, completedAchievements)
+
+    return {
       id: achievement.id,
       name: isCompleted ? achievement.name : 'Badge non débloqué',
       description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
       illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
       isCompleted,
     }
-
-    if (category) {
-      category.achievements.push(badge)
-
-      if (!isCompleted) {
-        category.remainingAchievements++
-      }
-
-      const actualAchievements = category.achievements.length - category.remainingAchievements
-      category.progress = actualAchievements / category.achievements.length
-      category.progressText = `${actualAchievements}/${category.achievements.length}`
-      return acc
-    }
-
-    acc.push({
-      category: achievement.category,
-      progress: isCompleted ? 1 : 0,
-      progressText: isCompleted ? '100%' : '0%',
-      remainingAchievements: isCompleted ? 0 : 1,
-
-      achievements: [badge],
-    })
-
-    return acc
-  }, [] as Badges)
-
-  return {
-    badges,
   }
-}
+
+const getAchievementsCategories = (achievements: Achievement[]) =>
+  Array.from(new Set(achievements.map((achievement) => achievement.category)))
