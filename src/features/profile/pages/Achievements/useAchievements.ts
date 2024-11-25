@@ -8,7 +8,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Badges = {
   category: AchievementCategory
-  remainingAchievements: number
+  remainingAchievementsText: string
   progress: number
   progressText: string
   achievements: {
@@ -72,7 +72,7 @@ const createCategory =
       category,
       progress,
       progressText,
-      remainingAchievements,
+      remainingAchievementsText: `${remainingAchievements} badge${remainingAchievements > 1 ? 's' : ''} restant`,
       achievements: categoryAchievements.map(createAchievement(completedAchievements)),
     }
   }

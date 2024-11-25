@@ -39,8 +39,6 @@ export const Achievements = () => {
       <ViewGap gap={4}>
         <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
-          const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
-
           const completedAchievements = badge.achievements.filter((item) => item.isCompleted)
           const incompleteAchievements = badge.achievements.filter((item) => !item.isCompleted)
 
@@ -63,7 +61,7 @@ export const Achievements = () => {
                   <TypoDS.Title4 {...getHeadingAttrs(2)}>
                     {achievementCategoryDisplayNames[badge.category]}
                   </TypoDS.Title4>
-                  <StyledBody>{remainingAchievementsText}</StyledBody>
+                  <StyledBody>{badge.remainingAchievementsText}</StyledBody>
                 </View>
                 <CompletionContainer>
                   <ProgressBarContainer>

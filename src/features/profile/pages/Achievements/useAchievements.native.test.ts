@@ -192,41 +192,7 @@ describe('useAchievements', () => {
 
   describe('Category Achievements completion', () => {
     describe('Remaining achievements to complete', () => {
-      it('should return 2 when there are 2 achievements and no one is completed', () => {
-        const { result } = renderHook(() =>
-          useAchievements({
-            achievements: [firstArtLessonBooking, firstBookBooking],
-            completedAchievements: [],
-          })
-        )
-        const { badges } = result.current
-
-        expect(badges).toEqual([
-          expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
-            remainingAchievements: 2,
-          }),
-        ])
-      })
-
-      it('should return 1 when only 1 achievement is remaining', () => {
-        const { result } = renderHook(() =>
-          useAchievements({
-            achievements: [firstArtLessonBooking, firstBookBooking],
-            completedAchievements: [userCompletedArtLessonBooking],
-          })
-        )
-        const { badges } = result.current
-
-        expect(badges).toEqual([
-          expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
-            remainingAchievements: 1,
-          }),
-        ])
-      })
-
-      it('should return 0 when all achievement is completed', () => {
+      it('should return "0 badge restant" when all achievements of category are completed', () => {
         const { result } = renderHook(() =>
           useAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
@@ -238,7 +204,41 @@ describe('useAchievements', () => {
         expect(badges).toEqual([
           expect.objectContaining({
             category: CombinedAchievementCategory.FIRST_BOOKINGS,
-            remainingAchievements: 0,
+            remainingAchievementsText: '0 badge restant',
+          }),
+        ])
+      })
+
+      it('should return "1 badge restants" when 1 achievement are not completed', () => {
+        const { result } = renderHook(() =>
+          useAchievements({
+            achievements: [firstArtLessonBooking, firstBookBooking],
+            completedAchievements: [userCompletedArtLessonBooking],
+          })
+        )
+        const { badges } = result.current
+
+        expect(badges).toEqual([
+          expect.objectContaining({
+            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            remainingAchievementsText: '1 badge restant',
+          }),
+        ])
+      })
+
+      it('should return "2 badges restants" when 2 achievement are not completed', () => {
+        const { result } = renderHook(() =>
+          useAchievements({
+            achievements: [firstArtLessonBooking, firstBookBooking],
+            completedAchievements: [],
+          })
+        )
+        const { badges } = result.current
+
+        expect(badges).toEqual([
+          expect.objectContaining({
+            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            remainingAchievementsText: '2 badges restant',
           }),
         ])
       })
@@ -357,7 +357,7 @@ describe('useAchievements', () => {
           ])
         })
 
-        it('should return 50% when 1 achievement of 2 are completed', () => {
+        it('should return 1/2 when 1 achievement of 2 are completed', () => {
           const { result } = renderHook(() =>
             useAchievements({
               achievements: [firstArtLessonBooking, firstBookBooking],
