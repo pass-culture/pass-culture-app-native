@@ -1,76 +1,49 @@
-import React, { ComponentProps, FunctionComponent, useCallback, useMemo, useState } from 'react'
-import { View } from 'react-native'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
+import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
+import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
-import { BookingItemProps } from 'features/bookings/types'
-import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
-import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
+import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
+import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { ShareContent } from 'libs/share/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { useIconFactory } from 'ui/components/icons/useIconFactory'
-import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Pastille } from 'ui/svg/icons/Pastille'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Valid } from 'ui/svg/icons/Valid'
-import { Wrong } from 'ui/svg/icons/Wrong'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
-function withSmallBadge<P extends object>(Component: FunctionComponent<P>) {
-  return function ComponentWithSmallBadge(props: P) {
-    return (
-      <View>
-        <Component {...props} />
-        <SmallBadge />
-      </View>
-    )
-  }
+type Props = {
+  booking: Booking
+  handleShowReactionModal: (booking: Booking) => void
+  handleShowShareOfferModal: (shareContent: ShareContent | null) => void
 }
 
-const SmallBadgedButton = withSmallBadge<ComponentProps<typeof RoundedButton>>(RoundedButton)
-
-export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
+export const EndedBookingItem = ({
+  booking,
+  handleShowReactionModal,
+  handleShowShareOfferModal,
+}: Props) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
-  const subCategory = subcategoriesMapping[stock.offer.subcategoryId]
+  const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const iconFactory = useIconFactory()
-  const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { reactionCategories } = useRemoteConfigContext()
-
-  const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
-    booking.userReaction
-  )
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
   const shouldRedirectToBooking = isEligibleBookingsForArchiveValue && !cancellationReason
 
-  const endedBookingReason = getEndedBookingReason(
-    cancellationReason,
-    dateUsed,
-    isEligibleBookingsForArchiveValue
-  )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
@@ -78,36 +51,6 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
     dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
-
-  const ReactionLikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('like-filled')).attrs(({ theme }) => ({
-        color: theme.colors.primary,
-      }))``,
-    [iconFactory]
-  )
-
-  const ReactionDislikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
-        color: theme.colors.black,
-      }))``,
-    [iconFactory]
-  )
-
-  const getCustomReactionIcon = useCallback(
-    (reaction?: ReactionTypeEnum | null): React.FC<AccessibleIcon> => {
-      switch (reaction) {
-        case ReactionTypeEnum.LIKE:
-          return ReactionLikeIcon
-        case ReactionTypeEnum.DISLIKE:
-          return ReactionDislikeIcon
-        default:
-          return iconFactory.getIcon('like')
-      }
-    },
-    [iconFactory, ReactionLikeIcon, ReactionDislikeIcon]
-  )
 
   function handlePressOffer() {
     const { offer } = stock
@@ -117,7 +60,7 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       prePopulateOffer({
         ...offer,
-        categoryId: subCategory.categoryId,
+        categoryId: subcategory.categoryId,
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
@@ -132,54 +75,16 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
       })
     }
   }
-
-  const {
-    visible: reactionModalVisible,
-    showModal: showReactionModal,
-    hideModal: hideReactionModal,
-  } = useModal(false)
-
-  const {
-    visible: shareOfferModalVisible,
-    showModal: showShareOfferModal,
-    hideModal: hideShareOfferModal,
-  } = useModal(false)
-
   const { share: shareOffer, shareContent } = getShareOffer({
     offer: stock.offer,
     utmMedium: 'ended_booking',
   })
 
-  const handleSaveReaction = async ({ offerId, reactionType }: PostOneReactionRequest) => {
-    await onSaveReaction?.({ offerId, reactionType })
-    setUserReaction(reactionType)
-    hideReactionModal()
-  }
-
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
     shareOffer()
-    showShareOfferModal()
-  }, [stock.offer.id, shareOffer, showShareOfferModal])
-
-  const getReactionButtonAccessibilityLabel = (reaction?: ReactionTypeEnum | null) => {
-    const additionalInfoMap: Record<ReactionTypeEnum, string> = {
-      LIKE: '(tu as liké)',
-      DISLIKE: '(tu as disliké)',
-      NO_REACTION: '(tu n’as pas souhaité réagir)',
-    }
-
-    return ['Réagis à ta réservation']
-      .concat(reaction ? [additionalInfoMap[reaction]] : [])
-      .join(' ')
-  }
-
-  const canReact =
-    shouldDisplayReactionFeature &&
-    reactionCategories.categories.includes(subCategory.nativeCategoryId) &&
-    !cancellationDate
-
-  const ReactionButton = userReaction === null ? SmallBadgedButton : RoundedButton
+    handleShowShareOfferModal && handleShowShareOfferModal(shareContent)
+  }, [stock.offer.id, shareOffer, handleShowShareOfferModal, shareContent])
 
   return (
     <Container>
@@ -192,56 +97,26 @@ export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) 
         }
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={subCategory.categoryId} />
-        <Spacer.Row numberOfSpaces={4} />
-        <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          <EndedReasonAndDate>
-            {endedBookingReason}
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
-          </EndedReasonAndDate>
-        </AttributesView>
+        <ContentContainerGap gap={4}>
+          <OfferImage imageUrl={stock.offer.image?.url} categoryId={subcategory.categoryId} />
+          <AttributesView>
+            <BookingItemTitle title={stock.offer.name} />
+            <EndedReasonAndDate gap={1}>
+              <EndedBookingReason
+                booking={booking}
+                isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
+              />
+              <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
+            </EndedReasonAndDate>
+          </AttributesView>
+        </ContentContainerGap>
       </ContentContainer>
-      <ViewGap gap={4}>
-        <ShareContainer>
-          <RoundedButton
-            iconName="share"
-            onPress={pressShareOffer}
-            accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
-          />
-        </ShareContainer>
-        {canReact ? (
-          <ReactionContainer>
-            <ReactionButton
-              iconName="like"
-              Icon={getCustomReactionIcon(userReaction)}
-              onPress={showReactionModal}
-              accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
-            />
-          </ReactionContainer>
-        ) : null}
-      </ViewGap>
-      {shareContent ? (
-        <WebShareModal
-          visible={shareOfferModalVisible}
-          headerTitle="Partager l’offre"
-          shareContent={shareContent}
-          dismissModal={hideShareOfferModal}
-        />
-      ) : null}
-      {shouldDisplayReactionFeature ? (
-        <ReactionChoiceModal
-          offer={booking.stock.offer}
-          dateUsed={endedBookingDateLabel ?? ''}
-          closeModal={hideReactionModal}
-          visible={reactionModalVisible}
-          defaultReaction={userReaction}
-          onSave={handleSaveReaction}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      ) : null}
+      <EndedBookingInteractionButtons
+        booking={booking}
+        nativeCategoryId={subcategory.nativeCategoryId}
+        handlePressShareOffer={pressShareOffer}
+        handleShowReactionModal={() => handleShowReactionModal && handleShowReactionModal(booking)}
+      />
     </Container>
   )
 }
@@ -257,62 +132,18 @@ const ContentContainer = styled(InternalTouchableLink)(({ theme }) => ({
   flex: 1,
 }))
 
+const ContentContainerGap = styled(ViewGap)({
+  flexDirection: 'row',
+  flex: 1,
+})
+
 const AttributesView = styled.View({
   flex: 1,
   paddingRight: getSpacing(1),
 })
 
-const EndedReasonAndDate = styled.View({
+const EndedReasonAndDate = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
   flexWrap: 'wrap',
-})
-
-function getEndedBookingReason(
-  cancellationReason?: BookingCancellationReasons | null,
-  dateUsed?: string | null,
-  isEligibleBookingsForArchiveValue?: boolean
-) {
-  if (dateUsed) {
-    return <StyledInputRule title="Réservation utilisée" icon={Valid} type="Valid" noFullWidth />
-  }
-
-  if (cancellationReason === BookingCancellationReasons.OFFERER) {
-    return <StyledInputRule title="Annulée" icon={Wrong} type="Error" noFullWidth />
-  }
-
-  if (!!isEligibleBookingsForArchiveValue && !cancellationReason) {
-    return <StyledInputRule title="Réservation archivée" icon={Valid} type="Valid" noFullWidth />
-  }
-
-  return <StyledInputRule title="Réservation annulée" icon={Wrong} type="Error" noFullWidth />
-}
-
-function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
-  const endDate = dateUsed ?? cancellationDate
-  if (endDate) return `le ${formatToSlashedFrenchDate(endDate)}`
-  return null
-}
-
-const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
-  iconSize: theme.icons.sizes.smaller,
-}))``
-
-const ShareContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
-}))
-
-const ReactionContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
-}))
-
-const SmallBadge = styled(Pastille).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  width: 8,
-  height: 8,
-  testID: 'smallBadge',
-}))({
-  position: 'absolute',
-  top: 2,
-  right: 2,
 })

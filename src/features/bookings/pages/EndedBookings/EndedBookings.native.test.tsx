@@ -10,7 +10,7 @@ import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigPro
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
@@ -62,6 +62,10 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('EndedBookings', () => {
   beforeEach(() => {
     mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
@@ -88,12 +92,12 @@ describe('EndedBookings', () => {
 
     await screen.findAllByText('Avez-vous déjà vu\u00a0?')
 
-    fireEvent.press(screen.getByTestId('Revenir en arrière'))
+    await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  describe('with feature flag activated', () => {
+  describe('with reaction feature flag activated', () => {
     beforeEach(() => {
       activateFeatureFlags([
         RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
@@ -104,14 +108,12 @@ describe('EndedBookings', () => {
     it('should send reaction from cinema offer', async () => {
       renderEndedBookings(RemoteConfigProvider)
 
-      fireEvent.press(await screen.findByLabelText('Réagis à ta réservation'))
+      await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
-      fireEvent.press(await screen.findByText('J’aime'))
-      fireEvent.press(screen.getByText('Valider la réaction'))
+      await user.press(await screen.findByText('J’aime'))
+      await user.press(screen.getByText('Valider la réaction'))
 
-      await waitFor(() => {
-        expect(mockMutate).toHaveBeenCalledTimes(1)
-      })
+      expect(mockMutate).toHaveBeenCalledTimes(1)
     })
   })
 })

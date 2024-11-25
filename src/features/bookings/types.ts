@@ -1,4 +1,4 @@
-import { BookingReponse, PostOneReactionRequest } from 'api/gen'
+import { BookingReponse } from 'api/gen'
 
 export type BookingProperties = {
   isDuo?: boolean
@@ -10,9 +10,3 @@ export type BookingProperties = {
 }
 
 export type Booking = BookingReponse
-
-export interface BookingItemProps {
-  booking: Booking
-  eligibleBookingsForArchive?: Booking[]
-  onSaveReaction?: (reactionParams: PostOneReactionRequest) => Promise<boolean>
-}

@@ -293,7 +293,7 @@ const Container = styled.View(({ theme }) => ({
 
 const StyledScrollView = styled.ScrollView.attrs({
   contentContainerStyle: {
-    marginBottom: getSpacing(5),
+    paddingBottom: getSpacing(5),
   },
 })``
 
