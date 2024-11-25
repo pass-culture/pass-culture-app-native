@@ -12,6 +12,8 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -64,6 +66,8 @@ jest.mock('react-native-intersection-observer', () => {
     mockInView,
   }
 })
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 const defaultSearchParams = {
   beginningDatetime: undefined,
@@ -181,6 +185,13 @@ describe('<VenueContent />', () => {
   })
 
   describe('movie screening access button', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: true,
+      })
+    })
+
     const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
     mockFFValue = true
 
@@ -227,6 +238,26 @@ describe('<VenueContent />', () => {
       await userEvent.press(button)
 
       expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
+    })
+
+    it('should not display the button if the remote config flag is deactivated', async () => {
+      useRemoteConfigContextSpy.mockReturnValueOnce({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: false,
+      })
+
+      await act(async () => {
+        mockInView(true)
+      })
+
+      renderVenueContent({
+        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
+        venueOffers: venueMoviesOffersMock,
+      })
+
+      await screen.findByText('Les films à l’affiche')
+
+      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
     })
   })
 })

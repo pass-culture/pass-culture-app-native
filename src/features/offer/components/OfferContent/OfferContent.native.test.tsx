@@ -21,6 +21,8 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
@@ -108,6 +110,7 @@ jest.mock('react-native-intersection-observer', () => {
 })
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({
@@ -534,6 +537,13 @@ describe('<OfferContent />', () => {
   })
 
   describe('movie screening access button', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: true,
+      })
+    })
+
     it('should show button', async () => {
       renderOfferContent({
         offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
@@ -576,6 +586,24 @@ describe('<OfferContent />', () => {
       await userEvent.press(button)
 
       expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
+    })
+
+    it('should not display the button if the remote config flag is deactivated', async () => {
+      useRemoteConfigContextSpy.mockReturnValueOnce({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: false,
+      })
+      renderOfferContent({
+        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+      })
+
+      await act(async () => {
+        mockInView(true)
+      })
+
+      await screen.findByText('Trouve ta séance')
+
+      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
     })
   })
 })

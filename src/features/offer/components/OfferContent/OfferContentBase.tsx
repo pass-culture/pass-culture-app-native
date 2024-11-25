@@ -29,6 +29,7 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
@@ -62,6 +63,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
   const { isButtonVisible } = useOfferCTA()
+  const { showAccessScreeningButton } = useRemoteConfigContext()
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
@@ -155,7 +157,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           />
         </ScrollViewContainer>
-        {isButtonVisible ? <CineContentCTA /> : footer}
+        {showAccessScreeningButton && isButtonVisible ? <CineContentCTA /> : footer}
       </AnchorProvider>
     </Container>
   )

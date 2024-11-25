@@ -17,6 +17,7 @@ import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader
 import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { VENUE_VIDEO_FAKEDOOR_DATA } from 'features/venue/constants'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -48,6 +49,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
+  const { showAccessScreeningButton } = useRemoteConfigContext()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -106,11 +108,11 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
 
   const renderVenueCTA = useCallback(() => {
-    if (wording.length) {
+    if (showAccessScreeningButton && wording.length) {
       return isButtonVisible ? <CineContentCTA /> : null
     }
     return shouldDisplayCTA ? <VenueCTA venue={venue} /> : null
-  }, [isButtonVisible, shouldDisplayCTA, venue, wording.length])
+  }, [isButtonVisible, shouldDisplayCTA, showAccessScreeningButton, venue, wording.length])
 
   return (
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
