@@ -69,13 +69,15 @@ const createCategory =
     }
   }
 
+const LOCKED_BADGE_NAME = 'Badge non débloqué'
+
 const createAchievement =
   (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
     const isCompleted = isAchievementCompleted(achievement, completedAchievements)
 
     return {
       id: achievement.id,
-      name: isCompleted ? achievement.name : 'Badge non débloqué',
+      name: isCompleted ? achievement.name : LOCKED_BADGE_NAME,
       description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
       illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
       isCompleted,
