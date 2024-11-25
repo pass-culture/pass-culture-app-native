@@ -20,25 +20,19 @@ type Badges = {
   }[]
 }[]
 
-type Props = {
+export type UseAchivementsProps = {
   achievements: Achievement[]
   completedAchievements: UserAchievement[]
-}
-
-type UseAchievements = {
-  badges: Badges
 }
 
 export const useAchievements = ({
   achievements,
   completedAchievements,
-}: Props): UseAchievements => {
-  return {
-    badges: getAchievementsCategories(achievements).map(
-      createCategory(achievements, completedAchievements)
-    ),
-  }
-}
+}: UseAchivementsProps): Badges =>
+  getAchievementsCategories(achievements).map(createCategory(achievements, completedAchievements))
+
+const getAchievementsCategories = (achievements: Achievement[]) =>
+  Array.from(new Set(achievements.map((achievement) => achievement.category)))
 
 const isAchievementCompleted = (
   achievement: Achievement,
@@ -87,6 +81,3 @@ const createAchievement =
       isCompleted,
     }
   }
-
-const getAchievementsCategories = (achievements: Achievement[]) =>
-  Array.from(new Set(achievements.map((achievement) => achievement.category)))
