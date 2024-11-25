@@ -1,15 +1,17 @@
 import { MultipleQueriesQuery } from '@algolia/client-search'
+import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
-import { FetchThematicSearchOffers } from 'features/search/pages/Search/ThematicSearch/types'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { env } from 'libs/environment'
+import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 
-export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOffers) => {
+export const fetchCinemaOffers = async (userLocation?: Position) => {
   const queryIndex = {
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
     query: '',
@@ -19,10 +21,17 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
     attributesToRetrieve: offerAttributesToRetrieve,
     attributesToHighlight: [],
     ...(userLocation
-      ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
+      ? {
+          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: DEFAULT_RADIUS * 1000,
+        }
       : {}),
     distinct: true,
   }
+
+  // We need the timestamps in seconds format for Algolia search
+  const today = Math.floor(new Date().getTime() / 1000)
+  const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
 
   const queries: MultipleQueriesQuery[] = [
     {
@@ -38,7 +47,7 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
       params: {
         ...queryParams,
         filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+        numericFilters: `offer.releaseDate: ${sevenDaysAgo} TO ${today}`,
       },
     },
     {
@@ -52,6 +61,7 @@ export const fetchCinemaOffers = async ({ userLocation }: FetchThematicSearchOff
 
   try {
     const allQueries = await multipleQueries<Offer>(queries)
+
     return allQueries.filter(searchResponsePredicate)
   } catch (error) {
     captureAlgoliaError(error)

@@ -5,7 +5,7 @@ import { VenueResponse } from 'api/gen'
 import { GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
-import { CinemaPlaylistProps } from 'features/search/pages/Search/ThematicSearch/ThematicSearchPlaylist'
+import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -15,7 +15,7 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { Offer } from 'shared/offer/types'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
-type CinemaPlaylistPropsContainingVenue = CinemaPlaylistProps & {
+type CinemaPlaylistPropsContainingVenue = ThematicSearchPlaylist & {
   venue?: VenueResponse
 }
 

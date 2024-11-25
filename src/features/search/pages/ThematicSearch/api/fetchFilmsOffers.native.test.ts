@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { fetchFilmsOffers } from 'features/search/pages/Search/ThematicSearch/Films/algolia/fetchFilmsOffers'
-import { filmsPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Films/fixtures/filmsPlaylistAlgoliaSnapshot'
+import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
+import { filmsPlaylistAlgoliaSnapshot } from 'features/search/pages/ThematicSearch/Films/fixtures/filmsPlaylistAlgoliaSnapshot'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Offer } from 'shared/offer/types'
@@ -22,7 +22,6 @@ describe('fetchFilmsOffers', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         filters: 'offer.subcategoryId:"VOD"',
-        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
         hitsPerPage: 20,
       },
       query: '',
@@ -35,6 +34,7 @@ describe('fetchFilmsOffers', () => {
         filters:
           'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"low"',
         aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+        aroundRadius: 50000,
         hitsPerPage: 20,
       },
       query: '',
@@ -45,7 +45,6 @@ describe('fetchFilmsOffers', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
-        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
         hitsPerPage: 20,
       },
       query: '',
@@ -57,33 +56,34 @@ describe('fetchFilmsOffers', () => {
       ...filmsQueries[0],
       params: {
         ...filmsQueries[0]?.params,
-        aroundLatLng: undefined,
       },
     },
     {
       ...filmsQueries[1],
       params: {
-        ...filmsQueries[1]?.params,
-        aroundLatLng: undefined,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        filters:
+          'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"low"',
+        hitsPerPage: 20,
       },
     },
     {
       ...filmsQueries[2],
       params: {
         ...filmsQueries[2]?.params,
-        aroundLatLng: undefined,
       },
     },
   ]
 
   it('should execute `multipleQueries` to fetch films offers', async () => {
-    fetchFilmsOffers({ userLocation })
+    fetchFilmsOffers(userLocation)
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, filmsQueries)
   })
 
   it('should execute `multipleQueries` to fetch films offers even when no UserLocation', async () => {
-    fetchFilmsOffers({ userLocation: undefined })
+    fetchFilmsOffers(undefined)
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, filmsQueriesWithoutUserLocation)
   })

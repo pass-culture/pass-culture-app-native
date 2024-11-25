@@ -1,10 +1,10 @@
 import React from 'react'
 
-import * as useCinemaOffersAPI from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/useCinemaOffers'
-import { CinemaPlaylist } from 'features/search/pages/Search/ThematicSearch/Cinema/CinemaPlaylist'
+import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
+import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
+import { filmsPlaylistAlgoliaSnapshot } from 'features/search/pages/ThematicSearch/Films/fixtures/filmsPlaylistAlgoliaSnapshot'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode, Position } from 'libs/location/types'
-import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -24,31 +24,28 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const DEFAULT_CINEMA_OFFER = mockBuilder.searchResponseOffer({})
-const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
+const DEFAULT_PLAYLIST_TITLE = 'Vidéos et documentaires'
+const DEFAULT_PLAYLIST_OFFERS = filmsPlaylistAlgoliaSnapshot
+const useThematicSearchPlaylistsSpy = jest
+  .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
+  .mockReturnValue({
+    playlists: DEFAULT_PLAYLIST_OFFERS,
+    isLoading: false,
+  })
 
-const useCinemaOffersSpy = jest.spyOn(useCinemaOffersAPI, 'useCinemaOffers').mockReturnValue({
-  offers: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
-  isLoading: false,
-})
-
-describe('Cinema', () => {
+describe('Films', () => {
   it('should render playlist when algolia returns offers', async () => {
     renderCinema()
-
-    await screen.findByTestId('playlistsThematicSearchCinema')
 
     expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useCinemaOffersSpy.mockReturnValueOnce({ offers: [], isLoading: false })
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderCinema()
-
-    await screen.findByTestId('playlistsThematicSearchCinema')
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-const renderCinema = () => render(reactQueryProviderHOC(<CinemaPlaylist />))
+const renderCinema = () => render(reactQueryProviderHOC(<FilmsPlaylist />))
