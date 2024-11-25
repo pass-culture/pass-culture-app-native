@@ -1,0 +1,9 @@
+{"metadata":{"branch":"BSR-perf-test-baseline","commitHash":"02c935e9ab425f5c2115e69ffeadc4101da77be4"}}
+{"name":"<Offer /> Performance test for Offer page","runs":10,"meanDuration":37.5,"stdevDuration":2.3213980461973533,"durations":[41,41,39,38,37,37,37,36,35,34],"meanCount":3,"stdevCount":0,"counts":[3,3,3,3,3,3,3,3,3,3]}
+{"name":"<Favorites /> Performance test for Favorites page","runs":10,"meanDuration":29.6,"stdevDuration":1.6465452046971292,"durations":[32,31,31,31,30,29,29,28,28,27],"meanCount":6,"stdevCount":0,"counts":[6,6,6,6,6,6,6,6,6,6]}
+{"name":"<Bookings /> Performance test for Bookings page","runs":10,"meanDuration":46.7,"stdevDuration":1.4181364924121764,"durations":[49,48,47,47,47,47,47,46,45,44],"meanCount":11,"stdevCount":0,"counts":[11,11,11,11,11,11,11,11,11,11]}
+{"name":"<EndedBookings /> Performance test for EndedBookings page","runs":10,"meanDuration":15.8,"stdevDuration":1.0327955589886446,"durations":[18,17,16,16,16,15,15,15,15,15],"meanCount":7,"stdevCount":0,"counts":[7,7,7,7,7,7,7,7,7,7]}
+{"name":"<Venue /> Performance test for Venue page","runs":10,"meanDuration":1.2,"stdevDuration":0.42163702135578396,"durations":[2,2,1,1,1,1,1,1,1,1],"meanCount":2,"stdevCount":0,"counts":[2,2,2,2,2,2,2,2,2,2]}
+{"name":"<SearchLanding /> Search Landing Page - Performance test for Search Landing page","runs":10,"meanDuration":6.9,"stdevDuration":0.9944289260117531,"durations":[8,8,8,7,7,7,7,6,6,5],"meanCount":5,"stdevCount":0,"counts":[5,5,5,5,5,5,5,5,5,5]}
+{"name":"<SearchResults /> Search Results - Performance test for Search Results page","runs":10,"meanDuration":6.9,"stdevDuration":0.7378647873726218,"durations":[8,8,7,7,7,7,7,6,6,6],"meanCount":5,"stdevCount":0,"counts":[5,5,5,5,5,5,5,5,5,5]}
+{"name":"<Profile /> Performance test for Profile page","runs":10,"meanDuration":3.1,"stdevDuration":0.737864787372622,"durations":[4,4,4,3,3,3,3,3,2,2],"meanCount":5,"stdevCount":0,"counts":[5,5,5,5,5,5,5,5,5,5]}
