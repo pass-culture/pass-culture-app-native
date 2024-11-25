@@ -39,18 +39,7 @@ export const Achievements = () => {
       <ViewGap gap={4}>
         <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
         {badges.map((badge) => {
-          const completedAchievements = badge.achievements.filter((item) => item.isCompleted)
-          const incompleteAchievements = badge.achievements.filter((item) => !item.isCompleted)
-
-          const sortedCompletedAchievements = [...completedAchievements].sort((a, b) =>
-            a.name.localeCompare(b.name)
-          )
-
-          const sortedIncompleteAchievements = [...incompleteAchievements].sort((a, b) =>
-            a.name.localeCompare(b.name)
-          )
-
-          let sortedAchievements = [...sortedCompletedAchievements, ...sortedIncompleteAchievements]
+          let sortedAchievements = badge.achievements
           const oddAchievements = sortedAchievements.length % 2 !== 0
           if (oddAchievements) sortedAchievements = [...sortedAchievements, emptyBadge]
 

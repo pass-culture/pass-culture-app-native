@@ -60,12 +60,20 @@ const createCategory =
 
     const remainingAchievements = categoryAchievements.length - completedCategoryAchievements.length
 
+    const badges = categoryAchievements.map(createAchievement(completedAchievements))
+
+    const completedBadges = badges
+      .filter((a) => a.isCompleted)
+      .sort((a, b) => a.name.localeCompare(b.name))
+
+    const uncompletedBadges = badges.filter((a) => !a.isCompleted)
+
     return {
       category,
       progress: completedCategoryAchievements.length / categoryAchievements.length,
       progressText: `${completedCategoryAchievements.length}/${categoryAchievements.length}`,
       remainingAchievementsText: `${remainingAchievements} badge${remainingAchievements > 1 ? 's' : ''} restant`,
-      achievements: categoryAchievements.map(createAchievement(completedAchievements)),
+      achievements: [...completedBadges, ...uncompletedBadges],
     }
   }
 
