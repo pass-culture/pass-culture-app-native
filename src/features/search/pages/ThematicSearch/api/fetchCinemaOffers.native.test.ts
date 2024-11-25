@@ -1,23 +1,21 @@
-import { SearchResponse } from '@algolia/client-search'
+import mockdate from 'mockdate'
 
-import { fetchCinemaOffers } from 'features/search/pages/Search/ThematicSearch/Cinema/algolia/fetchCinemaOffers'
-import { cinemaPlaylistAlgoliaSnapshot } from 'features/search/pages/Search/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
+import algoliasearch from '__mocks__/algoliasearch'
+import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
-import { Offer } from 'shared/offer/types'
 
 describe('fetchCinemaOffers', () => {
-  const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries').mockResolvedValue([
-    {
-      hits: cinemaPlaylistAlgoliaSnapshot,
-    } as unknown as SearchResponse<Offer>,
-  ])
+  beforeAll(() => {
+    mockdate.set(new Date('2025-04-14T00:00:00.000Z'))
+  })
+
+  const { multipleQueries } = algoliasearch()
 
   it('should execute `multipleQueries` to fetch cinema offers', async () => {
     const userLocation = { latitude: 1, longitude: 2 }
-    await fetchCinemaOffers({ userLocation })
+    await fetchCinemaOffers(userLocation)
 
-    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+    expect(multipleQueries).toHaveBeenNthCalledWith(1, [
       {
         indexName: 'algoliaOffersIndexNameB',
         params: {
@@ -26,6 +24,7 @@ describe('fetchCinemaOffers', () => {
           filters: 'offer.subcategoryId:"SEANCE_CINE"',
           distinct: true,
           aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: 50000,
           hitsPerPage: 20,
         },
         query: '',
@@ -34,11 +33,13 @@ describe('fetchCinemaOffers', () => {
         indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+          attributesToRetrieve: offerAttributesToRetrieve,
           filters: 'offer.subcategoryId:"SEANCE_CINE"',
           distinct: true,
           aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: 50000,
           hitsPerPage: 30,
+          numericFilters: 'offer.releaseDate: 1743984000 TO 1744588800',
         },
         query: '',
       },
@@ -51,6 +52,7 @@ describe('fetchCinemaOffers', () => {
             'offer.nativeCategoryId:"CARTES_CINEMA" AND (offer.subcategoryId:"CARTE_CINE_MULTISEANCES" OR offer.subcategoryId:"CINE_VENTE_DISTANCE")',
           distinct: true,
           aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: 50000,
           hitsPerPage: 30,
         },
         query: '',
@@ -60,9 +62,9 @@ describe('fetchCinemaOffers', () => {
 
   it('should execute `multipleQueries` to fetch cinema offers even when no UserLocation', async () => {
     const userLocation = undefined
-    await fetchCinemaOffers({ userLocation })
+    await fetchCinemaOffers(userLocation)
 
-    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+    expect(multipleQueries).toHaveBeenNthCalledWith(1, [
       {
         indexName: 'algoliaOffersIndexNameB',
         params: {
@@ -78,10 +80,11 @@ describe('fetchCinemaOffers', () => {
         indexName: 'algoliaOffersIndexNameB',
         params: {
           attributesToHighlight: [],
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+          attributesToRetrieve: offerAttributesToRetrieve,
           filters: 'offer.subcategoryId:"SEANCE_CINE"',
           distinct: true,
           hitsPerPage: 30,
+          numericFilters: 'offer.releaseDate: 1743984000 TO 1744588800',
         },
         query: '',
       },
@@ -101,9 +104,9 @@ describe('fetchCinemaOffers', () => {
   })
 
   it('should return empty array if there is an error with multiplqueries', async () => {
-    mockMultipleQueries.mockRejectedValueOnce(new Error('Async error'))
+    multipleQueries.mockRejectedValueOnce(new Error('Async error'))
     const userLocation = { latitude: 1, longitude: 2 }
-    const result = await fetchCinemaOffers({ userLocation })
+    const result = await fetchCinemaOffers(userLocation)
 
     expect(result).toStrictEqual([])
   })
