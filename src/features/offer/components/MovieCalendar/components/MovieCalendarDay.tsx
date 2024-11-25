@@ -32,11 +32,11 @@ export const MovieCalendarDay: React.FC<Props> = ({
     if (disabled) {
       return DisabledCalendarText
     }
-    if (selectedDate) {
+    if (isSelected) {
       return SelectedCalendarText
     }
     return DefaultCalendarText
-  }, [disabled, selectedDate])
+  }, [disabled, isSelected])
 
   return (
     <CalendarCell
@@ -49,15 +49,17 @@ export const MovieCalendarDay: React.FC<Props> = ({
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
         <CalendarText numberOfLines={1}>{month}</CalendarText>
       </CalendarTextView>
-      {isSelected ? <SelectedBottomBar /> : null}
+      {isSelected ? <SelectedBottomBar disabled={disabled} /> : null}
     </CalendarCell>
   )
 }
 
-const SelectedBottomBar = styled(MovieCalendarBottomBar)(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
-  borderRadius: getSpacing(1),
-}))
+const SelectedBottomBar = styled(MovieCalendarBottomBar)<{ disabled?: boolean }>(
+  ({ theme, disabled }) => ({
+    backgroundColor: disabled ? theme.colors.greyMedium : theme.colors.primary,
+    borderRadius: getSpacing(1),
+  })
+)
 
 const CalendarTextView = styled(View)({
   marginHorizontal: getSpacing(4),

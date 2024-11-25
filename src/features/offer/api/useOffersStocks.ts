@@ -13,6 +13,8 @@ export const useOffersStocks = ({ offerIds }: { offerIds: number[] }) => {
   return useQuery<OffersStocksResponseV2>(
     [QueryKeys.OFFER, offerIds],
     () => getStocksByOfferIds(offerIds, logType),
-    { enabled: !!netInfo.isConnected }
+    {
+      enabled: !!netInfo.isConnected,
+    }
   )
 }

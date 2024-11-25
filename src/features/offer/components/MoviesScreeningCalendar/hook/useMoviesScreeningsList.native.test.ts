@@ -20,6 +20,9 @@ describe('useMoviesScreeningsList', () => {
       selectedDate: mockSelectedDate,
       goToDate: jest.fn(),
       displayCalendar: jest.fn(),
+      dates: [],
+      disableDates: jest.fn(),
+      displayDates: jest.fn(),
     })
   })
 

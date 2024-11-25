@@ -26,6 +26,7 @@ type MovieCalendarContextType = {
   displayCalendar: (shouldDisplayCalendar: boolean) => void
   displayDates: (dates: Date[]) => void
   disableDates: (dates: Date[]) => void
+  dates: Date[]
 }
 
 const MovieCalendarContext = createContext<MovieCalendarContextType | undefined>(undefined)
@@ -79,7 +80,7 @@ export const MovieCalendarProvider: React.FC<{
   initialDates?: Date[]
 }> = ({ containerStyle, children, initialDates = [] }) => {
   const { dates, selectedDate, setSelectedDate, setDates } = useDaysSelector(initialDates)
-  const [_disabledDates, setDisabledDates] = useState<Date[]>([])
+  const [disabledDates, setDisabledDates] = useState<Date[]>([])
   const flatListRef = useRef<FlatList | null>(null)
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
@@ -129,13 +130,14 @@ export const MovieCalendarProvider: React.FC<{
 
   const value = useMemo(
     () => ({
+      dates,
       selectedDate,
       goToDate,
       displayCalendar: setIsVisible,
       displayDates,
       disableDates: setDisabledDates,
     }),
-    [selectedDate, goToDate, displayDates]
+    [dates, selectedDate, goToDate, displayDates]
   )
 
   return (
@@ -146,7 +148,7 @@ export const MovieCalendarProvider: React.FC<{
             <MovieCalendar
               dates={dates}
               selectedDate={selectedDate}
-              disabledDates={[]}
+              disabledDates={disabledDates}
               onTabChange={setSelectedDate}
               flatListRef={flatListRef}
               flatListWidth={flatListWidth}
@@ -171,4 +173,26 @@ export const useMovieCalendar = (): MovieCalendarContextType => {
     throw new Error('useMovieCalendar must be used within a MovieCalendarProvider')
   }
   return context
+}
+
+export const useDisableCalendarDates = (dates: Date[]) => {
+  const context = useContext(MovieCalendarContext)
+  if (context === undefined) {
+    throw new Error('useDisableCalendarDates must be used within a MovieCalendarProvider')
+  }
+
+  useEffect(() => {
+    context.disableDates(dates)
+  }, [context, dates])
+}
+
+export const useDisplayCalendar = (shouldDisplayCalendar: boolean) => {
+  const context = useContext(MovieCalendarContext)
+  if (context === undefined) {
+    throw new Error('useDisplayCalendar must be used within a MovieCalendarProvider')
+  }
+
+  useEffect(() => {
+    context.displayCalendar(shouldDisplayCalendar)
+  }, [context, shouldDisplayCalendar])
 }

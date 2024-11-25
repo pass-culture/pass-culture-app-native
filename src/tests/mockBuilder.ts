@@ -6,18 +6,15 @@ import { createDateBuilder } from 'features/offer/components/MoviesScreeningCale
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { Offer } from 'shared/offer/types'
 
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<DeepPartial<U>>
-    : T[P] extends ReadonlyArray<infer V>
-      ? ReadonlyArray<DeepPartial<V>>
-      : T[P] extends object
-        ? DeepPartial<T[P]>
-        : T[P]
-}
+type PartialDeepWithArrays<T> =
+  T extends Array<infer U>
+    ? Array<PartialDeepWithArrays<U>>
+    : T extends object
+      ? { [K in keyof T]?: PartialDeepWithArrays<T[K]> }
+      : T
 
 const createMockBuilder = <T>(defaultMock: T) => {
-  return (param: DeepPartial<T>) => {
+  return (param: PartialDeepWithArrays<T>) => {
     const mergedObj = mergeWith({}, defaultMock, param, customizer)
     return mergedObj as T
   }

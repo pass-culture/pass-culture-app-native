@@ -1,10 +1,10 @@
 import React from 'react'
 
-import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
-import * as useGetVenuesByDayModule from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
@@ -13,6 +13,7 @@ jest.mock('libs/network/NetInfoWrapper')
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
+
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userLocation: mockUserLocation,
@@ -25,6 +26,25 @@ jest.mock('ui/components/anchor/AnchorContext', () => ({
   useRegisterAnchor: jest.fn,
 }))
 
+let mockIsloading = false
+
+jest.mock(
+  'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery',
+  () => ({
+    useOffersStocksFromOfferQuery: () => ({
+      isLoading: mockIsloading,
+      data: mockBuilder.offerResponseV2({}),
+    }),
+  })
+)
+
+jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay', () => ({
+  useGetVenuesByDay: () => ({
+    movieOffers: [],
+  }),
+  getDaysWithNoScreenings: jest.fn(),
+}))
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -35,46 +55,31 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 const mockOffer = mockBuilder.offerResponseV2({})
 
-const useGetVenueByDayReturn: ReturnType<(typeof useGetVenuesByDayModule)['useGetVenuesByDay']> = {
-  items: [],
-  isLoading: true,
-  increaseCount: jest.fn(),
-  isEnd: false,
-  hasStocksOnlyAfter15Days: false,
-}
-
-const spyUseGetVenuesByDay = jest.spyOn(useGetVenuesByDayModule, 'useGetVenuesByDay')
-
-const mockSelectedDate = new Date('2023-05-01')
-const mockGoToDate = jest.fn()
-const mockDisplayCalendar = jest.fn()
-
 describe('OfferCineContent', () => {
-  beforeEach(() => {
-    jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
-      selectedDate: mockSelectedDate,
-      goToDate: mockGoToDate,
-      displayCalendar: mockDisplayCalendar,
-      disableDates: jest.fn(),
-      displayDates: jest.fn(),
-    })
-  })
+  it('should display skeleton when data is loading', async () => {
+    mockIsloading = true
 
-  it('should display skeleton when data is loading', () => {
-    spyUseGetVenuesByDay.mockReturnValueOnce({
-      ...useGetVenueByDayReturn,
-      isLoading: true,
-    })
+    render(
+      reactQueryProviderHOC(
+        <MovieCalendarProvider>
+          <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
+        </MovieCalendarProvider>
+      )
+    )
 
-    render(<OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
-
-    expect(screen.getByTestId('cine-block-skeleton')).toBeOnTheScreen()
+    expect(await screen.findAllByTestId('cine-block-skeleton')).toBeDefined()
   })
 
   it('should not display skeleton when data is loaded', async () => {
-    spyUseGetVenuesByDay.mockReturnValueOnce({ ...useGetVenueByDayReturn, isLoading: false })
+    mockIsloading = false
 
-    render(<OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />)
+    render(
+      reactQueryProviderHOC(
+        <MovieCalendarProvider>
+          <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
+        </MovieCalendarProvider>
+      )
+    )
 
     expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
   })

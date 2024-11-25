@@ -1,58 +1,63 @@
-import React, { FC, useRef, useCallback, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
-import Animated, { useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/ExpandingFlatList'
+import {
+  useDisableCalendarDates,
+  useDisplayCalendar,
+  useMovieCalendar,
+} from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { CineBlock } from 'features/offer/components/OfferCine/CineBlock'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
-import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
+import {
+  getDaysWithNoScreenings,
+  useGetVenuesByDay,
+} from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
+import { useListExpander } from 'features/offer/helpers/useListExpander/useListExpander'
+import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Spacer, TypoDS } from 'ui/theme'
-
-const ANIMATION_DURATION = 300
 
 export const OfferCineContent: FC<{
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
 }> = ({ offer, onSeeVenuePress }) => {
   const theme = useTheme()
-  const { animatedStyle, onContentSizeChange } = useAnimatedHeight()
-  const { selectedDate, displayCalendar } = useMovieCalendar()
-  const {
-    increaseCount,
-    isEnd: hasReachedVenueListEnd,
-    items,
-    isLoading,
-    hasStocksOnlyAfter15Days,
-  } = useGetVenuesByDay(selectedDate, offer, { initialCount: 6, nextCount: 3, radiusKm: 50 })
 
-  useEffect(() => {
-    displayCalendar(!hasStocksOnlyAfter15Days)
-  }, [displayCalendar, hasStocksOnlyAfter15Days])
+  const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
+  const { selectedDate, dates } = useMovieCalendar()
+  const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
+
+  const { items, hasReachedEnd, showMore } = useListExpander(movieOffers, {
+    initialCount: 6,
+    nextCount: 3,
+  })
+
+  const disabledDates = getDaysWithNoScreenings(offers.offers, dates)
+
+  useDisplayCalendar(!hasStocksOnlyAfter15Days)
+  useDisableCalendarDates(disabledDates)
 
   return (
     <View>
-      {isLoading ? <CineBlockSkeleton /> : null}
-      <Animated.FlatList
+      <ExpandingFlatList
         data={items}
-        style={animatedStyle}
-        onContentSizeChange={onContentSizeChange}
+        isLoading={isLoading}
+        skeletonListLength={3}
+        renderSkeleton={() => <CineBlockSkeleton />}
         renderItem={({ item }) => (
-          <React.Fragment>
-            <CineBlock
-              offer={item.offer}
-              onSeeVenuePress={onSeeVenuePress}
-              nextDate={item.nextDate}
-            />
-            <Spacer.Column numberOfSpaces={theme.isDesktopViewport ? 6 : 4} />
-            <Divider />
-          </React.Fragment>
+          <CineBlock
+            offer={item.offer}
+            onSeeVenuePress={onSeeVenuePress}
+            nextDate={item.nextDate}
+            withDivider
+          />
         )}
       />
-      {hasReachedVenueListEnd ? null : (
+      {hasReachedEnd ? null : (
         <SeeMoreContainer>
           <Spacer.Column numberOfSpaces={6} />
           <Text>Aucune séance ne te correspond&nbsp;?</Text>
@@ -61,7 +66,7 @@ export const OfferCineContent: FC<{
             mediumWidth
             icon={PlainMore}
             wording="Afficher plus de cinémas"
-            onPress={increaseCount}
+            onPress={showMore}
             color={theme.colors.black}
           />
         </SeeMoreContainer>
@@ -69,37 +74,6 @@ export const OfferCineContent: FC<{
     </View>
   )
 }
-
-const useAnimatedHeight = () => {
-  const [contentHeight, setContentHeight] = useState(0)
-  const isFirstRender = useRef(true)
-
-  const animatedStyle = useAnimatedStyle(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return { height: contentHeight }
-    }
-
-    return {
-      height: withTiming(contentHeight, {
-        duration: ANIMATION_DURATION,
-        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-      }),
-    }
-  }, [contentHeight])
-
-  const onContentSizeChange = useCallback((_width: number, height: number) => {
-    setContentHeight(height)
-  }, [])
-
-  return { animatedStyle, onContentSizeChange }
-}
-
-const Divider = styled.View(({ theme }) => ({
-  height: 1,
-  backgroundColor: theme.colors.greyMedium,
-  marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
-}))
 
 const SeeMoreContainer = styled.View(({ theme }) => ({
   alignItems: theme.isMobileViewport ? 'center' : undefined,
