@@ -45,6 +45,7 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
 
   useEffect(() => {
     if (venues) {
+      // TODO(PC-33101) maybe store venues by venue type codes ?
       setVenues(venues)
     }
   }, [venues, setVenues, initialVenues])

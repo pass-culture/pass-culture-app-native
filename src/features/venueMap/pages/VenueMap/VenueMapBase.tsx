@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
+import { FILTER_BANNER_HEIGHT } from 'features/venueMap/constant'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import {

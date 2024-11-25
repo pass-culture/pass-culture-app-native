@@ -7,7 +7,7 @@ import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIcon
 import { Marker as MarkerOriginal, MapMarkerProps, MapMarker } from 'libs/maps/maps'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 
-import { MARKER_SIZE } from '../constant'
+import { MARKER_SIZE } from '../../../constant'
 
 const PIN_MAX_Z_INDEX = 10_000
 

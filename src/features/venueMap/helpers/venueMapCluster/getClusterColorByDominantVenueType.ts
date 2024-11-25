@@ -1,6 +1,6 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/components/VenueMapView/constant'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
+import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/constant'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 
 const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageColorName => {
