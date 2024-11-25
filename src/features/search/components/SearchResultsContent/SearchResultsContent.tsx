@@ -393,7 +393,10 @@ export const SearchResultsContent: React.FC = () => {
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
             <StyledLi>
-              <FilterButton activeFilters={activeFiltersCount} />
+              <FilterButton
+                activeFilters={activeFiltersCount}
+                navigateTo={{ screen: 'SearchFilter' }}
+              />
             </StyledLi>
 
             <StyledLi>
