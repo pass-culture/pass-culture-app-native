@@ -22,10 +22,10 @@ describe('getFiltersByMacro', () => {
 describe('getActiveMacros', () => {
   it('should return macros matching active filters', () => {
     const activeFilters: VenueTypeCodeKey[] = [
-      ...FILTERS_VENUE_TYPE_MAPPING.OUTINGS,
-      FILTERS_VENUE_TYPE_MAPPING.SHOPS?.[0],
-    ] as VenueTypeCodeKey[]
-
+        ...(FILTERS_VENUE_TYPE_MAPPING.OUTINGS),
+        ...(FILTERS_VENUE_TYPE_MAPPING.SHOPS?.slice(0, 1)),
+      ].filter((item): item is VenueTypeCodeKey => Boolean(item))
+      
     const activeMacros = getActiveMacros(activeFilters)
 
     expect(activeMacros).toEqual(['OUTINGS', 'SHOPS'])
