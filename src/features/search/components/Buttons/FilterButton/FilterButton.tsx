@@ -8,11 +8,11 @@ import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  activeFilters: number
+  activeFilters?: number
   children?: never
 }
 
-export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
+export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0 }) => {
   const accessibilityLabel =
     activeFilters > 0
       ? plural(activeFilters, {

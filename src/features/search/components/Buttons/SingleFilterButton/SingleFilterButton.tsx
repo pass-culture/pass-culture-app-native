@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactElement } from 'react'
+import { AccessibilityProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -8,16 +9,17 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type IsSelectedProps = {
-  isSelected: boolean
+  isSelected?: boolean
 }
 
-type SingleFilterButtonProps = IsSelectedProps & {
-  label: string
-  testID?: string
-  icon?: ReactElement
-  onPress: () => void
-  children?: never
-}
+type SingleFilterButtonProps = IsSelectedProps &
+  Partial<AccessibilityProps> & {
+    label: string
+    testID?: string
+    icon?: ReactElement
+    onPress: () => void
+    children?: never
+  }
 
 export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   label,
@@ -25,6 +27,7 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   onPress,
   icon,
   testID,
+  ...accessibilityProps
 }) => {
   const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
 
@@ -33,7 +36,8 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
     <TouchableContainer
       isSelected={isSelected}
       onPress={onPress}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      {...accessibilityProps}>
       <Label testID={filterButtonLabel}>{label}</Label>
       {icon}
     </TouchableContainer>
