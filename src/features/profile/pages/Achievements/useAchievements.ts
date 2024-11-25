@@ -64,14 +64,12 @@ const createCategory =
       completedAchievements
     )
 
-    const progress = completedCategoryAchievements.length / categoryAchievements.length
-    const progressText = `${completedCategoryAchievements.length}/${categoryAchievements.length}`
     const remainingAchievements = categoryAchievements.length - completedCategoryAchievements.length
 
     return {
       category,
-      progress,
-      progressText,
+      progress: completedCategoryAchievements.length / categoryAchievements.length,
+      progressText: `${completedCategoryAchievements.length}/${categoryAchievements.length}`,
       remainingAchievementsText: `${remainingAchievements} badge${remainingAchievements > 1 ? 's' : ''} restant`,
       achievements: categoryAchievements.map(createAchievement(completedAchievements)),
     }
