@@ -1,11 +1,12 @@
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { linkingPrefixes } from 'features/navigation/RootNavigator/linking/linkingPrefixes'
 import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
 import { DeeplinkParts } from '../types'
 
 export function getScreenFromDeeplink(url: string): DeeplinkParts {
   let pathWithQueryString = url
-  for (const prefix of linking.prefixes) {
+  for (const prefix of linkingPrefixes) {
     pathWithQueryString = pathWithQueryString.replace(prefix, '')
   }
   const navigationState = linking.getStateFromPath(pathWithQueryString, linking.config)

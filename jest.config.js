@@ -1,8 +1,28 @@
 const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFrom.config')
 
+const { createJsWithBabelPreset } = require('ts-jest')
+
+const jsWithBabelPreset = createJsWithBabelPreset({
+  tsconfig: 'tsconfig.spec.json',
+  babelConfig: true,
+})
+
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+
 module.exports = {
   preset: 'react-native',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node','android.tsx','android.ts','android.jsx','android.js'],
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js',
+    'jsx',
+    'json',
+    'node',
+    'android.tsx',
+    'android.ts',
+    'android.jsx',
+    'android.js',
+  ],
   testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
     '^api(.*)$': '<rootDir>/src/api$1',
@@ -23,9 +43,7 @@ module.exports = {
     '@react-native-google-signin/google-signin/jest/build/setup.js',
   ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
-  transform: {
-    '^.+\\.[jt]sx?$': 'babel-jest',
-  },
+  transform: jsWithBabelPreset.transform,
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +
       '|@react-navigation' +

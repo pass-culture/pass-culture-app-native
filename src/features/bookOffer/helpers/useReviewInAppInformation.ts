@@ -13,7 +13,6 @@ export const useReviewInAppInformation = () => {
   useEffect(() => {
     storage
       .readMultiString(['times_review_has_been_requested', 'first_time_review_has_been_requested'])
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       .then(([[, reviewsRequested], [, firstReview]]) => {
         const timesReviewsRequested = parseInt(reviewsRequested ?? '0')
         setTimesReviewHasBeenRequested(timesReviewsRequested)

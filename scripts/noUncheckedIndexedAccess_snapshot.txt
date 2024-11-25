@@ -15,7 +15,6 @@
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:74
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:85
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:87
-./src/features/bookOffer/helpers/useReviewInAppInformation.ts:16
 ./src/features/bookOffer/helpers/useRotatingText.ts:44
 ./src/features/bookOffer/helpers/useRotatingText.ts:47
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
