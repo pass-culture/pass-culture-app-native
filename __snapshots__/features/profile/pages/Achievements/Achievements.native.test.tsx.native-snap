@@ -250,6 +250,9 @@ exports[`<Achievements/> should match snapshot 1`] = `
                   [
                     {
                       "color": "#90949D",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
