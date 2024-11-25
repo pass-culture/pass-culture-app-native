@@ -522,6 +522,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "borderRadius": 24,
                       "borderWidth": 2,
                       "boxSizing": "border-box",
+                      "columnGap": 4,
                       "flexDirection": "row-reverse",
                       "height": 32,
                       "justifyContent": "center",
@@ -552,17 +553,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 Le Petit Rintintin 1
               </Text>
               <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Filtre sélectionné"
                 height={16}
                 testID="venueButtonIcon"
                 width={16}
@@ -628,6 +618,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "borderRadius": 24,
                       "borderWidth": 2,
                       "boxSizing": "border-box",
+                      "columnGap": 4,
                       "flexDirection": "row-reverse",
                       "height": 32,
                       "justifyContent": "center",
@@ -658,17 +649,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 Catégories
               </Text>
               <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Filtre sélectionné"
                 height={16}
                 testID="categoryButtonIcon"
                 width={16}
@@ -734,6 +714,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "borderRadius": 24,
                       "borderWidth": 2,
                       "boxSizing": "border-box",
+                      "columnGap": 4,
                       "flexDirection": "row-reverse",
                       "height": 32,
                       "justifyContent": "center",
@@ -764,17 +745,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 Prix
               </Text>
               <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Filtre sélectionné"
                 height={16}
                 testID="priceButtonIcon"
                 width={16}
@@ -840,6 +810,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "boxSizing": "border-box",
+                      "columnGap": 4,
                       "flexDirection": "row-reverse",
                       "height": 32,
                       "justifyContent": "center",
@@ -927,6 +898,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "boxSizing": "border-box",
+                      "columnGap": 4,
                       "flexDirection": "row-reverse",
                       "height": 32,
                       "justifyContent": "center",

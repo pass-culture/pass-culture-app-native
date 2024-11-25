@@ -51,6 +51,7 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
+import { Check } from 'ui/svg/icons/Check'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -220,9 +221,7 @@ export const SearchResultsContent: React.FC = () => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      if (lastPage.offers.page > 0) {
-        // @ts-expect-error: because of noUncheckedIndexedAccess
+      if (lastPage && lastPage.offers.page > 0) {
         analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
       }
       fetchNextPage()
@@ -398,7 +397,7 @@ export const SearchResultsContent: React.FC = () => {
             </StyledLi>
 
             <StyledLi>
-              <SingleFilterButton
+              <StyledSingleFilterButton
                 label={
                   searchState.venue
                     ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
@@ -410,7 +409,7 @@ export const SearchResultsContent: React.FC = () => {
               />
             </StyledLi>
             <StyledLi>
-              <SingleFilterButton
+              <StyledSingleFilterButton
                 label="Catégories"
                 testID="categoryButton"
                 onPress={showCategoriesModal}
@@ -419,7 +418,7 @@ export const SearchResultsContent: React.FC = () => {
             </StyledLi>
 
             <StyledLi>
-              <SingleFilterButton
+              <StyledSingleFilterButton
                 label="Prix"
                 testID="priceButton"
                 onPress={showSearchPriceModal}
@@ -429,7 +428,7 @@ export const SearchResultsContent: React.FC = () => {
 
             {hasDuoOfferToggle ? (
               <StyledLi>
-                <SingleFilterButton
+                <StyledSingleFilterButton
                   label="Duo"
                   testID="DuoButton"
                   onPress={showOfferDuoModal}
@@ -438,7 +437,7 @@ export const SearchResultsContent: React.FC = () => {
               </StyledLi>
             ) : null}
             <StyledLi>
-              <SingleFilterButton
+              <StyledSingleFilterButton
                 label="Dates & heures"
                 testID="datesHoursButton"
                 onPress={showDatesHoursModal}
@@ -446,7 +445,7 @@ export const SearchResultsContent: React.FC = () => {
               />
             </StyledLi>
             <StyledLastLi>
-              <SingleFilterButton
+              <StyledSingleFilterButton
                 label="Accessibilité"
                 testID="lieuxAccessiblesButton"
                 onPress={showAccessibilityModal}
@@ -550,6 +549,17 @@ const StyledLi = styled(Li)({
 const StyledLastLi = styled(StyledLi)({
   marginRight: getSpacing(1),
 })
+
+const FilterSelectedIcon = styled(Check).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.colors.black,
+}))``
+
+const StyledSingleFilterButton = styled(SingleFilterButton).attrs((props) => ({
+  icon: props.isSelected ? (
+    <FilterSelectedIcon testID={props.testID ? `${props.testID}Icon` : 'filterButtonIcon'} />
+  ) : undefined,
+}))``
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',

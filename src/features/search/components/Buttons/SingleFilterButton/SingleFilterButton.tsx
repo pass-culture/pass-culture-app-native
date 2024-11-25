@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Check } from 'ui/svg/icons/Check'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -15,6 +14,7 @@ type IsSelectedProps = {
 type SingleFilterButtonProps = IsSelectedProps & {
   label: string
   testID?: string
+  icon?: ReactElement
   onPress: () => void
   children?: never
 }
@@ -23,9 +23,9 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   label,
   isSelected,
   onPress,
+  icon,
   testID,
 }) => {
-  const filterButtonIcon = testID ? `${testID}Icon` : 'filterButtonIcon'
   const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
 
   const accessibilityLabel = isSelected ? `${label}\u00a0: Filtre sélectionné` : label
@@ -35,12 +35,7 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
       <Label testID={filterButtonLabel}>{label}</Label>
-      {isSelected ? (
-        <React.Fragment>
-          <Spacer.Row numberOfSpaces={1} />
-          <StyledIcon testID={filterButtonIcon} accessibilityLabel="Filtre sélectionné" />
-        </React.Fragment>
-      ) : null}
+      {icon}
     </TouchableContainer>
   )
 }
@@ -52,6 +47,7 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   alignItems: 'center',
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(4),
+  columnGap: getSpacing(1),
   height: getSpacing(8),
   backgroundColor: isSelected ? theme.colors.greyLight : theme.colors.white,
   borderColor: theme.colors.black,
@@ -60,11 +56,6 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   ...customFocusOutline({ color: theme.colors.accent }),
   ...getHoverStyle(theme.colors.black),
 }))
-
-const StyledIcon = styled(Check).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.colors.black,
-}))``
 
 const Label = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
