@@ -436,6 +436,7 @@ export const logEventAnalytics = {
     moduleType: ContentTypes
     index: number
     homeEntryId: string | undefined
+    hybridModuleOffsetIndex?: number | string
     call_id?: string | null
     offers?: string[]
     venues?: string[]
@@ -445,6 +446,7 @@ export const logEventAnalytics = {
       {
         call_id: params.call_id,
         homeEntryId: params.homeEntryId,
+        hybridModuleOffsetIndex: params.hybridModuleOffsetIndex,
         index: params.index,
         moduleId: params.moduleId,
         moduleType: params.moduleType,

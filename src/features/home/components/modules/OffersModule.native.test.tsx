@@ -3,9 +3,9 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
+import * as useAlgoliaRecommendedOffers from 'features/home/api/useAlgoliaRecommendedOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -19,8 +19,14 @@ import { OffersModule, OffersModuleProps } from './OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
 
-const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as Offer[]
-const mockNbHits = mockedAlgoliaResponse.nbHits
+const mockHitsItems: Offer[] = [mockedAlgoliaResponse.hits[0], mockedAlgoliaResponse.hits[1]]
+const mockRecommendationOffers: Offer[] = [mockedAlgoliaResponse.hits[2]]
+const mockNbHits = mockHitsItems.length
+const mockData = {
+  playlistItems: mockHitsItems,
+  nbPlaylistResults: mockNbHits,
+  moduleId: 'fakeModuleId',
+}
 
 const props = {
   offersModuleParameters: [{} as OffersModuleParameters],
@@ -33,8 +39,12 @@ const props = {
   position: null,
   homeEntryId: 'fakeEntryId',
   index: 1,
-  data: { playlistItems: mockHits, nbPlaylistResults: mockNbHits, moduleId: 'fakeModuleId' },
+  data: mockData,
 }
+
+const mockUseAlgoliaRecommendedOffers = jest
+  .spyOn(useAlgoliaRecommendedOffers, 'useAlgoliaRecommendedOffers')
+  .mockReturnValue(mockRecommendationOffers)
 
 const nativeEventEnd = {
   layoutMeasurement: { width: 1000 },
@@ -70,9 +80,25 @@ describe('OffersModule', () => {
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
+  it('should render hybrid playlist if recommended parameters', async () => {
+    mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+    renderOffersModule({
+      recommendationParameters: { categories: ['Cinéma'] },
+    })
+
+    expect(await screen.findByText('Un lit sous une rivière')).toBeOnTheScreen()
+  })
+
+  it('should not render hybrid playlist if no recommended parameters', async () => {
+    renderOffersModule({ recommendationParameters: undefined })
+
+    expect(screen.queryByText('Un lit sous une rivière')).not.toBeOnTheScreen()
+  })
+
   it('should trigger navigate with correct params when we click on See More', async () => {
-    const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
-    renderOffersModule({ data: mockData })
+    renderOffersModule({
+      data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+    })
 
     await act(() => {
       fireEvent.press(screen.getByText('En voir plus'))
@@ -119,6 +145,7 @@ describe('OffersModule', () => {
       })
 
       expect(analytics.logAllTilesSeen).toHaveBeenCalledWith({
+        apiRecoParams: undefined,
         moduleName: props.displayParameters.title,
         numberOfTiles: mockNbHits,
       })
@@ -135,15 +162,19 @@ describe('OffersModule', () => {
       renderOffersModule()
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        call_id: undefined,
+        hybridModuleOffsetIndex: undefined,
         moduleId: props.moduleId,
         moduleType: ContentTypes.ALGOLIA,
         index: props.index,
         homeEntryId: props.homeEntryId,
-        offers: ['102280', '102272', '102249', '102310'],
+        offers: ['102280', '102272'],
       })
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+    it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+
       renderOffersModule({
         offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
         displayParameters: { ...props.displayParameters, minOffers: mockNbHits + 1 },
@@ -152,17 +183,52 @@ describe('OffersModule', () => {
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
     })
 
-    it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
-      const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
-      renderOffersModule({ data: mockData })
+    it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
+      renderOffersModule({
+        data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+      })
 
-      act(() => {
+      await act(() => {
         fireEvent.press(screen.getByText('En voir plus'))
       })
 
       expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
         moduleId: 'fakeModuleId',
         moduleName: 'Module title',
+      })
+    })
+
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybrid module type', () => {
+      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+
+      renderOffersModule({ recommendationParameters: { categories: ['Cinéma'] } })
+
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        call_id: undefined,
+        moduleId: props.moduleId,
+        moduleType: ContentTypes.HYBRID,
+        index: props.index,
+        homeEntryId: props.homeEntryId,
+        hybridModuleOffsetIndex: 2,
+        offers: ['102280', '102272', '102249'],
+      })
+    })
+
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybridModuleOffsetIndex equal to one when playlist is only recommendedOffers', () => {
+      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+      renderOffersModule({
+        data: { playlistItems: [], nbPlaylistResults: mockNbHits, moduleId: 'fakeModuleId' },
+        recommendationParameters: { categories: ['Cinéma'] },
+      })
+
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        call_id: undefined,
+        moduleId: props.moduleId,
+        moduleType: ContentTypes.HYBRID,
+        index: props.index,
+        homeEntryId: props.homeEntryId,
+        hybridModuleOffsetIndex: 1,
+        offers: ['102249'],
       })
     })
   })

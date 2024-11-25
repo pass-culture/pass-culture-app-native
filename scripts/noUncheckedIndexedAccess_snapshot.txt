@@ -31,8 +31,6 @@
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
 ./src/features/home/components/modules/OffersModule.tsx:74
-./src/features/home/components/modules/OffersModule.tsx:82
-./src/features/home/components/modules/OffersModule.tsx:95
 ./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
