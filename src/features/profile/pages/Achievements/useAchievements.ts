@@ -7,11 +7,11 @@ import {
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Badges = {
-  category: AchievementCategory
+  id: AchievementCategory
   remainingAchievementsText: string
   progress: number
   progressText: string
-  achievements: {
+  badges: {
     id: AchievementId
     name: string
     description: string
@@ -60,7 +60,7 @@ const createCategory =
 
     const remainingAchievements = categoryAchievements.length - completedCategoryAchievements.length
 
-    const badges = categoryAchievements.map(createAchievement(completedAchievements))
+    const badges = categoryAchievements.map(createBadge(completedAchievements))
 
     const completedBadges = badges
       .filter((a) => a.isCompleted)
@@ -69,25 +69,24 @@ const createCategory =
     const uncompletedBadges = badges.filter((a) => !a.isCompleted)
 
     return {
-      category,
+      id: category,
       progress: completedCategoryAchievements.length / categoryAchievements.length,
       progressText: `${completedCategoryAchievements.length}/${categoryAchievements.length}`,
       remainingAchievementsText: `${remainingAchievements} badge${remainingAchievements > 1 ? 's' : ''} restant`,
-      achievements: [...completedBadges, ...uncompletedBadges],
+      badges: [...completedBadges, ...uncompletedBadges],
     }
   }
 
 const LOCKED_BADGE_NAME = 'Badge non débloqué'
 
-const createAchievement =
-  (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
-    const isCompleted = isAchievementCompleted(achievement, completedAchievements)
+const createBadge = (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
+  const isCompleted = isAchievementCompleted(achievement, completedAchievements)
 
-    return {
-      id: achievement.id,
-      name: isCompleted ? achievement.name : LOCKED_BADGE_NAME,
-      description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
-      illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
-      isCompleted,
-    }
+  return {
+    id: achievement.id,
+    name: isCompleted ? achievement.name : LOCKED_BADGE_NAME,
+    description: isCompleted ? achievement.descriptionUnlocked : achievement.descriptionLocked,
+    illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
+    isCompleted,
   }
+}

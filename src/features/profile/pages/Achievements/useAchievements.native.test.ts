@@ -69,16 +69,16 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
           }),
         ],
       }),
       expect.objectContaining({
-        category: CombinedAchievementCategory.TEST,
-        achievements: [
+        id: CombinedAchievementCategory.TEST,
+        badges: [
           expect.objectContaining({
             id: 'TEST',
           }),
@@ -94,8 +94,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
             isCompleted: false,
@@ -117,8 +117,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_BOOK_BOOKING,
             isCompleted: true,
@@ -140,8 +140,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
             name: 'Badge non débloqué',
@@ -163,8 +163,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_BOOK_BOOKING,
             name: firstBookBooking.name,
@@ -186,8 +186,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_BOOK_BOOKING,
           }),
@@ -207,8 +207,8 @@ describe('useAchievements', () => {
 
     expect(badges).toEqual([
       expect.objectContaining({
-        category: CombinedAchievementCategory.FIRST_BOOKINGS,
-        achievements: [
+        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        badges: [
           expect.objectContaining({
             id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
           }),
@@ -230,7 +230,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '0 badge restant',
           }),
         ])
@@ -244,7 +244,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '1 badge restant',
           }),
         ])
@@ -257,7 +257,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '2 badges restant',
           }),
         ])
@@ -273,7 +273,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 1,
           }),
         ])
@@ -286,7 +286,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0,
           }),
         ])
@@ -300,7 +300,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.5,
           }),
         ])
@@ -323,7 +323,7 @@ describe('useAchievements', () => {
 
         expect(badges).toEqual([
           expect.objectContaining({
-            category: CombinedAchievementCategory.FIRST_BOOKINGS,
+            id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.75,
           }),
         ])
@@ -337,7 +337,7 @@ describe('useAchievements', () => {
 
           expect(badges).toEqual([
             expect.objectContaining({
-              category: CombinedAchievementCategory.FIRST_BOOKINGS,
+              id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '0/2',
             }),
           ])
@@ -351,7 +351,7 @@ describe('useAchievements', () => {
 
           expect(badges).toEqual([
             expect.objectContaining({
-              category: CombinedAchievementCategory.FIRST_BOOKINGS,
+              id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '2/2',
             }),
           ])
@@ -365,7 +365,7 @@ describe('useAchievements', () => {
 
           expect(badges).toEqual([
             expect.objectContaining({
-              category: CombinedAchievementCategory.FIRST_BOOKINGS,
+              id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '1/2',
             }),
           ])
