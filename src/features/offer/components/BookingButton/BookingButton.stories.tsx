@@ -45,7 +45,7 @@ const variantConfig: Variants<typeof BookingButton> = [
     },
   },
   {
-    label: 'BookingButton disabled and with bottom banner',
+    label: 'BookingButton disabled with bottom banner',
     props: {
       ctaWordingAndAction: {
         wording: 'Réserver l’offre',

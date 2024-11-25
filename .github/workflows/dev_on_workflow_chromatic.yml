@@ -30,7 +30,7 @@ jobs:
       - name: Build Storybook 🔧
         run: yarn build-storybook --webpack-stats-json --output-dir $BUILD_DIR
       - name: Publish to Chromatic 🚀
-        uses: chromaui/action@v10
+        uses: chromaui/action@latest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
