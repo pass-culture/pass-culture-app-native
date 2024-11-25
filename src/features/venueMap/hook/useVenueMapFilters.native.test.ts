@@ -1,71 +1,88 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
-import { useVenuesFilter, useVenuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-import { renderHook } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { useVenueMapFilters } from './useVenueMapFilters'
 
-jest.mock('features/venueMap/store/venuesFilterStore')
-
-const mockUseVenuesFilter = useVenuesFilter as jest.Mock
-const mockUseVenuesFilterActions = useVenuesFilterActions as jest.Mock
-const mockSetVenuesFilters = jest.fn()
-const mockAddVenuesFilters = jest.fn()
-const mockRemoveVenuesFilters = jest.fn()
-
 describe('useVenueMapFilters', () => {
-  beforeEach(() => {
-    mockUseVenuesFilter.mockReturnValue([])
-    mockUseVenuesFilterActions.mockReturnValue({
-      setVenuesFilters: mockSetVenuesFilters,
-      addVenuesFilters: mockAddVenuesFilters,
-      removeVenuesFilters: mockRemoveVenuesFilters,
-    })
-  })
-
   it('should initialize with no active filters', () => {
     const { result } = renderHook(() => useVenueMapFilters())
 
     expect(result.current.activeFilters).toEqual([])
   })
 
-  it('should apply macro filters correctly', () => {
+  it('should add macro filters correctly', () => {
     const { result } = renderHook(() => useVenueMapFilters())
 
-    result.current.applyMacroFilters('OUTINGS')
+    act(() => {
+      result.current.addMacroFilter('OUTINGS')
+    })
 
-    expect(mockSetVenuesFilters).toHaveBeenCalledWith(FILTERS_VENUE_TYPE_MAPPING.OUTINGS)
+    act(() => {
+      result.current.addMacroFilter('SHOPS')
+    })
+
+    expect(result.current.activeFilters).toMatchObject([
+      ...FILTERS_VENUE_TYPE_MAPPING.OUTINGS,
+      ...FILTERS_VENUE_TYPE_MAPPING.SHOPS,
+    ])
+  })
+
+  it('should remove macro filters correctly', () => {
+    const { result } = renderHook(() => useVenueMapFilters())
+
+    act(() => {
+      result.current.addMacroFilter('OUTINGS')
+    })
+
+    act(() => {
+      result.current.addMacroFilter('SHOPS')
+    })
+
+    act(() => {
+      result.current.removeMacroFilter('SHOPS')
+    })
+
+    expect(result.current.activeFilters).toMatchObject(FILTERS_VENUE_TYPE_MAPPING.OUTINGS)
   })
 
   it('should toggle a filter correctly (add filter)', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([])
-
     const { result } = renderHook(() => useVenueMapFilters())
     const filterToAdd = VenueTypeCodeKey.CONCERT_HALL
 
-    result.current.toggleFilter(filterToAdd)
+    act(() => {
+      result.current.toggleFilter(filterToAdd)
+    })
 
-    expect(mockAddVenuesFilters).toHaveBeenCalledWith([filterToAdd])
+    expect(result.current.activeFilters).toMatchObject([filterToAdd])
   })
 
   it('should toggle a filter correctly (remove filter)', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.CONCERT_HALL])
-
     const { result } = renderHook(() => useVenueMapFilters())
     const filterToRemove = VenueTypeCodeKey.CONCERT_HALL
 
-    result.current.toggleFilter(filterToRemove)
+    act(() => {
+      result.current.toggleFilter(filterToRemove)
+    })
 
-    expect(mockRemoveVenuesFilters).toHaveBeenCalledWith([filterToRemove])
+    act(() => {
+      result.current.toggleFilter(filterToRemove)
+    })
+
+    expect(result.current.activeFilters).toHaveLength(0)
   })
 
   it('should return selected macros correctly', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([
-      VenueTypeCodeKey.CONCERT_HALL,
-      VenueTypeCodeKey.BOOKSTORE,
-    ])
-
     const { result } = renderHook(() => useVenueMapFilters())
+
+    act(() => {
+      result.current.toggleFilter(VenueTypeCodeKey.CONCERT_HALL)
+    })
+
+    act(() => {
+      result.current.toggleFilter(VenueTypeCodeKey.BOOKSTORE)
+    })
+
     const selectedMacros = result.current.getSelectedMacroFilters()
 
     expect(selectedMacros).toEqual(['OUTINGS', 'SHOPS'])

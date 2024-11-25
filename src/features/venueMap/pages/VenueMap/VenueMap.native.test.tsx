@@ -2,16 +2,15 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import {
   useVenueTypeCodeActions,
   useVenueTypeCode,
 } from 'features/venueMap/store/venueTypeCodeStore'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { parseType } from 'libs/parsers/venueType'
-import { ellipseString } from 'shared/string/ellipseString'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -60,22 +59,13 @@ describe('<VenueMap />', () => {
   it('Should display venue map header', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    await waitFor(() => {
-      expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
-      expect(screen.getByText(ellipseString(parseType(VENUE_TYPE), 20))).toBeOnTheScreen()
+    await screen.findAllByTestId(/[A-Z]+Label/)
+
+    Object.keys(FILTERS_VENUE_TYPE_MAPPING).forEach((id) => {
+      expect(screen.getByTestId(`${id}Label`)).toBeOnTheScreen()
     })
-  })
 
-  it('Should display venue map header with no venueCode', async () => {
-    mockUseVenueTypeCode.mockReturnValueOnce(null)
-    mockUseVenueTypeCode.mockReturnValueOnce(null)
-
-    render(reactQueryProviderHOC(<VenueMap />))
-
-    await waitFor(() => {
-      expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
-      expect(screen.getByText('Tous les lieux')).toBeOnTheScreen()
-    })
+    expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
   })
 
   it('Should handle go back action when pressing go back button', async () => {
