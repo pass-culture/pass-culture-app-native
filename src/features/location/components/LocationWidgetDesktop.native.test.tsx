@@ -4,7 +4,7 @@ import React from 'react'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useLocation } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -46,7 +46,7 @@ describe('LocationWidgetDesktop', () => {
     ${true}           | ${null}
     ${true}           | ${undefined}
   `(
-    "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
+    `should render a filled location pointer and the text ${LocationLabel.aroundMeLabel} if the user is geolocated`,
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -58,7 +58,7 @@ describe('LocationWidgetDesktop', () => {
       renderLocationWidgetDesktop()
 
       expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
-      expect(screen.getByText('Ma position')).toBeOnTheScreen()
+      expect(screen.getByText(LocationLabel.aroundMeLabel)).toBeOnTheScreen()
     }
   )
 
@@ -67,7 +67,7 @@ describe('LocationWidgetDesktop', () => {
     ${false}          | ${null}
     ${false}          | ${undefined}
   `(
-    "should render a location pointer(not filled ) and the text 'France entière' if the user is not geolocated and has not selected a custom position",
+    'should render a location pointer(not filled ) and the text LocationLabel.everywhereLabel if the user is not geolocated and has not selected a custom position',
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -80,7 +80,7 @@ describe('LocationWidgetDesktop', () => {
       renderLocationWidgetDesktop()
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
-      expect(screen.getByText('France entière')).toBeOnTheScreen()
+      expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     }
   )
 
@@ -167,7 +167,7 @@ describe('LocationWidgetDesktop', () => {
       ).not.toBeOnTheScreen()
     })
 
-    it('should hide tooltip when taping “France entière”', async () => {
+    it(`should hide tooltip when taping ${LocationLabel.everywhereLabel}`, async () => {
       jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
@@ -179,7 +179,7 @@ describe('LocationWidgetDesktop', () => {
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
       )
 
-      const locationButton = screen.getByText('France entière')
+      const locationButton = screen.getByText(LocationLabel.everywhereLabel)
       fireEvent.press(locationButton)
 
       expect(

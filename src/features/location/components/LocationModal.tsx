@@ -6,7 +6,7 @@ import { LocationModalFooter } from 'features/location/components/LocationModalF
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
 import { Action } from 'features/search/context/reducer'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -168,7 +168,7 @@ export const LocationModal = ({
           onPress={selectLocationMode(LocationMode.EVERYWHERE)}
           icon={WorldPosition}
           color={everywhereLocationModeColor}
-          title="France entière"
+          title={LocationLabel.everywhereLabel}
         />
       </StyledScrollView>
     </AppModal>

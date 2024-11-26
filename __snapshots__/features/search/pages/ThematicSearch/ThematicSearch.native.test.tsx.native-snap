@@ -468,7 +468,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         ]
                       }
                     >
-                      Me localiser
+                      France entière
                     </Text>
                   </View>
                   <Modal
