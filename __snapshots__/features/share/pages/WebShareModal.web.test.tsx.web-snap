@@ -201,12 +201,12 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   background-color: #F1F1F4;
 }
 
-.c3 {
-  background-color: transparent;
-}
-
 .c1 {
   padding: 4px;
+}
+
+.c3 {
+  background-color: transparent;
 }
 
 <body
@@ -276,7 +276,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="c0 c1 sc-kAyceB c1"
+                      class="c0 c1 sc-gsFSXq c1"
                       data-testid="Fermer la modale"
                       tabindex="0"
                       title="Fermer la modale"
