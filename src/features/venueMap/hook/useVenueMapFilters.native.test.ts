@@ -48,25 +48,33 @@ describe('useVenueMapFilters', () => {
 
   it('should toggle a filter correctly (add filter)', () => {
     const { result } = renderHook(() => useVenueMapFilters())
-    const filterToAdd = VenueTypeCodeKey.CONCERT_HALL
 
     act(() => {
-      result.current.toggleFilter(filterToAdd)
+      result.current.toggleMacroFilter('OUTINGS')
     })
 
-    expect(result.current.activeFilters).toMatchObject([filterToAdd])
+    expect(result.current.activeFilters).toMatchObject([
+      VenueTypeCodeKey.CONCERT_HALL,
+      VenueTypeCodeKey.FESTIVAL,
+      VenueTypeCodeKey.GAMES,
+      VenueTypeCodeKey.LIBRARY,
+      VenueTypeCodeKey.MOVIE,
+      VenueTypeCodeKey.MUSEUM,
+      VenueTypeCodeKey.PERFORMING_ARTS,
+      VenueTypeCodeKey.TRAVELING_CINEMA,
+      VenueTypeCodeKey.VISUAL_ARTS,
+    ])
   })
 
   it('should toggle a filter correctly (remove filter)', () => {
     const { result } = renderHook(() => useVenueMapFilters())
-    const filterToRemove = VenueTypeCodeKey.CONCERT_HALL
 
     act(() => {
-      result.current.toggleFilter(filterToRemove)
+      result.current.toggleMacroFilter('OUTINGS')
     })
 
     act(() => {
-      result.current.toggleFilter(filterToRemove)
+      result.current.toggleMacroFilter('OUTINGS')
     })
 
     expect(result.current.activeFilters).toHaveLength(0)
@@ -76,11 +84,11 @@ describe('useVenueMapFilters', () => {
     const { result } = renderHook(() => useVenueMapFilters())
 
     act(() => {
-      result.current.toggleFilter(VenueTypeCodeKey.CONCERT_HALL)
+      result.current.toggleMacroFilter('OUTINGS')
     })
 
     act(() => {
-      result.current.toggleFilter(VenueTypeCodeKey.BOOKSTORE)
+      result.current.toggleMacroFilter('SHOPS')
     })
 
     const selectedMacros = result.current.getSelectedMacroFilters()

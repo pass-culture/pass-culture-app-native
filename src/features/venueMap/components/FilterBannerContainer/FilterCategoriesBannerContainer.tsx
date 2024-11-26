@@ -28,16 +28,12 @@ const filterGroups: FilterGroupData[] = [
 ]
 
 export const FilterCategoriesBannerContainer = () => {
-  const { getSelectedMacroFilters, addMacroFilter, removeMacroFilter } = useVenueMapFilters()
+  const { getSelectedMacroFilters, toggleMacroFilter } = useVenueMapFilters()
 
   const selectedGroups = getSelectedMacroFilters()
 
   const handleCategoryPress = (categoryId: FilterGroupKey) => {
-    if (selectedGroups.includes(categoryId)) {
-      removeMacroFilter(categoryId)
-    } else {
-      addMacroFilter(categoryId)
-    }
+    toggleMacroFilter(categoryId)
   }
 
   return (

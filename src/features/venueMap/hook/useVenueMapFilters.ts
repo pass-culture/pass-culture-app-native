@@ -1,4 +1,3 @@
-import { VenueTypeCodeKey } from 'api/gen'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import {
   getActiveMacroFilters,
@@ -20,11 +19,14 @@ export const useVenueMapFilters = () => {
     setVenuesFilters(activeFilters.filter((filter) => !filters.includes(filter)))
   }
 
-  const toggleFilter = (filter: VenueTypeCodeKey) => {
-    if (activeFilters.includes(filter)) {
-      removeVenuesFilters([filter])
+  const toggleMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+    const filters = getFiltersByMacro(macro)
+    const isMacroActive = filters?.every((filter) => activeFilters.includes(filter))
+
+    if (isMacroActive) {
+      removeVenuesFilters(filters)
     } else {
-      addVenuesFilters([filter])
+      addVenuesFilters(filters)
     }
   }
 
@@ -34,7 +36,7 @@ export const useVenueMapFilters = () => {
     activeFilters,
     addMacroFilter,
     removeMacroFilter,
-    toggleFilter,
+    toggleMacroFilter,
     getSelectedMacroFilters,
   }
 }
