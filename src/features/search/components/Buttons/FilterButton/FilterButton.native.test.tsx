@@ -7,7 +7,7 @@ import { FilterButton } from './FilterButton'
 
 describe('FilterButton', () => {
   it('should contains the number of active filters', async () => {
-    render(<FilterButton activeFilters={2} />)
+    render(<FilterButton activeFilters={2} navigateTo={{ screen: 'SearchFilter' }} />)
 
     await waitFor(() => {
       expect(screen.getByText('2')).toBeOnTheScreen()
@@ -15,7 +15,7 @@ describe('FilterButton', () => {
   })
 
   it('should not display badge when there are no active filters', async () => {
-    render(<FilterButton activeFilters={0} />)
+    render(<FilterButton activeFilters={0} navigateTo={{ screen: 'SearchFilter' }} />)
 
     await waitFor(() => {
       expect(screen.queryByTestId('searchFilterBadge')).not.toBeOnTheScreen()
@@ -23,7 +23,7 @@ describe('FilterButton', () => {
   })
 
   it('should navigate with undefined params when pressing filter button', async () => {
-    render(<FilterButton activeFilters={1} />)
+    render(<FilterButton activeFilters={1} navigateTo={{ screen: 'SearchFilter' }} />)
 
     const filterButton = screen.getByTestId('searchFilterBadge')
     fireEvent.press(filterButton)
@@ -35,7 +35,7 @@ describe('FilterButton', () => {
 
   describe('Accessibility', () => {
     it('should have an accessible label with the number of active filters', async () => {
-      render(<FilterButton activeFilters={2} />)
+      render(<FilterButton activeFilters={2} navigateTo={{ screen: 'SearchFilter' }} />)
 
       await waitFor(() => {
         expect(
@@ -45,7 +45,7 @@ describe('FilterButton', () => {
     })
 
     it('should have an accessible label with one active filter', async () => {
-      render(<FilterButton activeFilters={1} />)
+      render(<FilterButton activeFilters={1} navigateTo={{ screen: 'SearchFilter' }} />)
 
       await waitFor(() => {
         expect(
@@ -55,7 +55,7 @@ describe('FilterButton', () => {
     })
 
     it('should have an accessible label without active filter', async () => {
-      render(<FilterButton activeFilters={0} />)
+      render(<FilterButton activeFilters={0} navigateTo={{ screen: 'SearchFilter' }} />)
 
       await waitFor(() => {
         expect(screen.getByLabelText('Voir tous les filtres')).toBeOnTheScreen()

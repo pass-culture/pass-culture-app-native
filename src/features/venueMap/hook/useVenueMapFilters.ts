@@ -10,9 +10,14 @@ export const useVenueMapFilters = () => {
   const activeFilters = useVenuesFilter()
   const { setVenuesFilters, addVenuesFilters, removeVenuesFilters } = useVenuesFilterActions()
 
-  const applyMacroFilters = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+  const addMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
     const filters = getFiltersByMacro(macro)
-    setVenuesFilters(filters)
+    setVenuesFilters([...activeFilters, ...filters])
+  }
+
+  const removeMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+    const filters = getFiltersByMacro(macro)
+    setVenuesFilters(activeFilters.filter((filter) => !filters.includes(filter)))
   }
 
   const toggleFilter = (filter: VenueTypeCodeKey) => {
@@ -27,7 +32,8 @@ export const useVenueMapFilters = () => {
 
   return {
     activeFilters,
-    applyMacroFilters,
+    addMacroFilter,
+    removeMacroFilter,
     toggleFilter,
     getSelectedMacroFilters,
   }

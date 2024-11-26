@@ -4,15 +4,17 @@ import styled from 'styled-components/native'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  activeFilters: number
+  activeFilters?: number
   children?: never
+  navigateTo?: InternalTouchableLinkProps['navigateTo']
 }
 
-export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
+export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0, navigateTo }) => {
   const accessibilityLabel =
     activeFilters > 0
       ? plural(activeFilters, {
@@ -23,7 +25,7 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
 
   return (
     <StyledTouchableLink
-      navigateTo={{ screen: 'SearchFilter' }}
+      navigateTo={navigateTo}
       title={accessibilityLabel}
       accessibilityLabel={accessibilityLabel}>
       <RoundContainer>
