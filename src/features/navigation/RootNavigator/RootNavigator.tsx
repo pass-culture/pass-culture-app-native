@@ -33,12 +33,11 @@ const RootStackNavigator = withWebWrapper(
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
           {RootScreens}
-          <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-            <RootStack.Screen
-              name="VenueMapFiltersStackNavigator"
-              component={VenueMapFiltersStackNavigator}
-            />
-          </RootStack.Group>
+          <RootStack.Screen
+            name="VenueMapFiltersStackNavigator"
+            component={VenueMapFiltersStackNavigator}
+            options={{ presentation: 'modal' }}
+          />
         </RootStack.Navigator>
       </IconFactoryProvider>
     )
