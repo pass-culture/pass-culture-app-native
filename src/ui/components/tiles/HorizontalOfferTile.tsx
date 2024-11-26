@@ -8,7 +8,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates, formatReleaseDate } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -55,7 +55,7 @@ export const HorizontalOfferTile = ({
     ? formatReleaseDate(releaseDate * 1000)
     : formatDates(timestampsInMillis)
 
-  const formattedPrice = getDisplayPrice(prices)
+  const formattedPrice = useGetDisplayPrice(prices)
   const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
