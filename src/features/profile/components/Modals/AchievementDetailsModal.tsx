@@ -44,8 +44,12 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
           )}
         </BodyWrapper>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
-        <Spacer.Column numberOfSpaces={4} />
+        {achievement.completed ? (
+          <React.Fragment>
+            <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        ) : null}
         <StyledDescrption>
           {achievement.completed ? achievement.descriptionUnlocked : achievement.descriptionLocked}
         </StyledDescrption>

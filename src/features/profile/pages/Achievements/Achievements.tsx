@@ -29,7 +29,7 @@ const emptyBadge = {
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
-  const { badges } = useAchievements({
+  const categories = useAchievements({
     achievements: mockAchievements,
     completedAchievements: mockCompletedAchievements,
   })
@@ -38,46 +38,32 @@ export const Achievements = () => {
     <SecondaryPageWithBlurHeader title="">
       <ViewGap gap={4}>
         <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
-        {badges.map((badge) => {
-          const remainingAchievementsText = `${badge.remainingAchievements} badge${badge.remainingAchievements > 1 ? 's' : ''} restant`
-
-          const completedAchievements = badge.achievements.filter((item) => item.isCompleted)
-          const incompleteAchievements = badge.achievements.filter((item) => !item.isCompleted)
-
-          const sortedCompletedAchievements = [...completedAchievements].sort((a, b) =>
-            a.name.localeCompare(b.name)
-          )
-
-          const sortedIncompleteAchievements = [...incompleteAchievements].sort((a, b) =>
-            a.name.localeCompare(b.name)
-          )
-
-          let sortedAchievements = [...sortedCompletedAchievements, ...sortedIncompleteAchievements]
-          const oddAchievements = sortedAchievements.length % 2 !== 0
-          if (oddAchievements) sortedAchievements = [...sortedAchievements, emptyBadge]
+        {categories.map((category) => {
+          const isOddBadges = category.badges.length % 2 !== 0
+          const badges = isOddBadges ? [...category.badges, emptyBadge] : category.badges
 
           return (
-            <ViewGap gap={4} key={badge.category}>
+            <ViewGap gap={4} key={category.id}>
               <AchievementsGroupeHeader>
                 <View>
                   <TypoDS.Title4 {...getHeadingAttrs(2)}>
-                    {achievementCategoryDisplayNames[badge.category]}
+                    {achievementCategoryDisplayNames[category.id]}
                   </TypoDS.Title4>
-                  <StyledBody>{remainingAchievementsText}</StyledBody>
+                  <StyledBody>{category.remainingAchievementsText}</StyledBody>
                 </View>
                 <CompletionContainer>
                   <ProgressBarContainer>
                     <ProgressBar
-                      progress={badge.progress}
+                      progress={category.progress}
                       colors={[uniqueColors.brand]}
                       height={2.5}
                     />
                   </ProgressBarContainer>
-                  <TypoDS.BodyS>{badge.progressText}</TypoDS.BodyS>
+                  <TypoDS.BodyS>{category.progressText}</TypoDS.BodyS>
                 </CompletionContainer>
               </AchievementsGroupeHeader>
               <FlatList
-                data={sortedAchievements}
+                data={badges}
                 numColumns={2}
                 keyExtractor={(item) => item.id}
                 contentContainerStyle={{
@@ -92,6 +78,7 @@ export const Achievements = () => {
                   item.illustration ? (
                     <Badge
                       id={item.id}
+                      name={item.name}
                       Illustration={item.illustration}
                       isCompleted={item.isCompleted}
                     />
