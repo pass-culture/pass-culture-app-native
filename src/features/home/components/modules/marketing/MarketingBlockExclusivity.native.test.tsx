@@ -2,12 +2,16 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const props = {
   moduleId: '1',
@@ -29,6 +33,11 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('MarketingBlockExclusivity', () => {
+  beforeEach(() => {
+    // activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    activateFeatureFlags()
+  })
+
   it('navigate to offer when pressing', async () => {
     render(<MarketingBlockExclusivity {...props} />)
 
@@ -55,3 +64,7 @@ describe('MarketingBlockExclusivity', () => {
     })
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

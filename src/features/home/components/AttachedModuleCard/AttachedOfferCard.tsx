@@ -4,7 +4,7 @@ import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -24,7 +24,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) =
 
   const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const date = formatDates(timestampsInMillis)
-  const price = getDisplayPrice(attachedOffer.prices)
+  const price = useGetDisplayPrice(attachedOffer.prices)
   const distance = useDistance(offer._geoloc)
   const distanceLabel = distance ? `à ${distance}` : undefined
 

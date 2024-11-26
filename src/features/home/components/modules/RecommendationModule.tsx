@@ -7,6 +7,7 @@ import { RecommendedOffersModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -14,6 +15,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -29,6 +31,8 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
@@ -79,7 +83,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices)}
+          price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}
@@ -92,7 +96,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [profile?.isBeneficiary, labelMapping, mapping, recommendationApiParams]
+    [
+      profile?.isBeneficiary,
+      labelMapping,
+      mapping,
+      recommendationApiParams,
+      currency,
+      euroToPacificFrancRate,
+    ]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

@@ -6,7 +6,9 @@ import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -16,6 +18,8 @@ export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport } = useTheme()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   const Header = useMemo(() => {
     const welcomeTitle =
@@ -29,7 +33,11 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
-        const credit = parseCurrencyFromCents(availableCredit.amount)
+        const credit = parseCurrencyFromCents(
+          availableCredit.amount,
+          currency,
+          euroToPacificFrancRate
+        )
         return `Tu as ${credit} sur ton pass`
       }
       return 'Ton crédit est expiré'
@@ -59,7 +67,7 @@ export const HomeHeader: FunctionComponent = function () {
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [user, isLoggedIn, isDesktopViewport, availableCredit])
+  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency, euroToPacificFrancRate])
 
   return Header
 }

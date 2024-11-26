@@ -10,7 +10,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -37,7 +37,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const mapping = useCategoryIdMapping()
   const { user } = useAuthContext()
 
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
+  const displayPrice = useGetDisplayPrice(offer?.offer?.prices)
 
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
