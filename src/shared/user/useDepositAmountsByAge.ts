@@ -1,5 +1,5 @@
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
 
 export function useDepositAmountsByAge() {
   const { data: settings } = useSettingsContext()
@@ -9,10 +9,10 @@ export function useDepositAmountsByAge() {
   const eighteenYearsOldAmount = settings?.depositAmountsByAge?.age_18 ?? 30000
 
   const amountsByAge = {
-    fifteenYearsOldDeposit: parseCurrencyFromCents(fifteenYearsOldAmount),
-    sixteenYearsOldDeposit: parseCurrencyFromCents(sixteenYearsOldAmount),
-    seventeenYearsOldDeposit: parseCurrencyFromCents(seventeenYearsOldAmount),
-    eighteenYearsOldDeposit: parseCurrencyFromCents(eighteenYearsOldAmount),
+    fifteenYearsOldDeposit: useParseCurrencyFromCents(fifteenYearsOldAmount),
+    sixteenYearsOldDeposit: useParseCurrencyFromCents(sixteenYearsOldAmount),
+    seventeenYearsOldDeposit: useParseCurrencyFromCents(seventeenYearsOldAmount),
+    eighteenYearsOldDeposit: useParseCurrencyFromCents(eighteenYearsOldAmount),
   }
   return { ...amountsByAge }
 }

@@ -5,11 +5,15 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { DepositType } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -36,6 +40,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<FinishSubscriptionModal />', () => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
   it('should render correctly with undefined deposit amount', () => {
     mockDepositAmounts.mockReturnValueOnce(undefined)
 
@@ -83,3 +91,7 @@ describe('<FinishSubscriptionModal />', () => {
     expect(hideModal).toHaveBeenCalledTimes(1)
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
