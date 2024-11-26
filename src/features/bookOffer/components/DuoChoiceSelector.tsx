@@ -6,7 +6,9 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -16,13 +18,19 @@ export const DuoChoiceSelector: React.FC = () => {
   const { isDuo } = useBookingOffer() ?? {}
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false
     return {
       price:
         enoughCredit && stock
-          ? parseCurrencyFromCents(quantity * stock.price).replace(' ', '')
+          ? parseCurrencyFromCents(
+              quantity * stock.price,
+              currency,
+              euroToPacificFrancRate
+            ).replace(/\u00A0/g, '')
           : 'crédit insuffisant',
       title: quantity === 1 ? 'Solo' : 'Duo',
       selected: bookingState.quantity === quantity,

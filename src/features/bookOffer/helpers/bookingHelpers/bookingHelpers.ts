@@ -2,7 +2,8 @@ import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export function getButtonState(bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState
@@ -44,11 +45,18 @@ export function getHourWording(
   price: number,
   isBookable: boolean,
   enoughCredit: boolean,
+  currency: Currency,
+  euroToPacificFrancRate: number,
   hasSeveralPrices?: boolean
 ) {
+  const parsePrice = parseCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
+    /\u00A0/g,
+    ''
+  )
+
   if (!enoughCredit) return 'crédit insuffisant'
-  if (hasSeveralPrices && isBookable) return `dès ${parseCurrencyFromCents(price).replace(' ', '')}`
-  if (isBookable) return parseCurrencyFromCents(price).replace(' ', '')
+  if (hasSeveralPrices && isBookable) return `dès ${parsePrice}`
+  if (isBookable) return parsePrice
   return 'épuisé'
 }
 

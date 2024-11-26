@@ -1,7 +1,10 @@
 import React from 'react'
 
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 

@@ -6,10 +6,13 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const randomDatetime = '2020-12-01T00:00:00Z'
 

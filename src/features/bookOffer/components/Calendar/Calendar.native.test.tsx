@@ -1,4 +1,6 @@
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { getDayDescription, getMinAvailableDate } from './Calendar'
 import { Marking } from './useMarkedDates'
@@ -38,13 +40,22 @@ describe('getMinAvailableDate', () => {
 describe('getDayDescription', () => {
   describe('when price = 20', () => {
     it('should return 20\u00a0€ when has not several prices', () => {
-      const dayDescription = getDayDescription(2000)
+      const dayDescription = getDayDescription(
+        2000,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      )
 
       expect(dayDescription).toEqual('20€')
     })
 
     it('should return dès 20\u00a0€ when has several prices', () => {
-      const dayDescription = getDayDescription(2000, true)
+      const dayDescription = getDayDescription(
+        2000,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+        true
+      )
 
       expect(dayDescription).toEqual('dès 20€')
     })

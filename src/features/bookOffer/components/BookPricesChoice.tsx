@@ -10,7 +10,9 @@ import {
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
@@ -25,6 +27,8 @@ type Props = {
 export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const offerCredit = useCreditForOffer(bookingState.offerId)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const titleID = uuidv4()
   const selectedHour = bookingState.hour ?? ''
 
@@ -54,7 +58,11 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 checked={stock.id === bookingState.stockId}
                 disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                rightText={parseCurrencyFromCents(stock.price).replace(' ', '')}
+                rightText={parseCurrencyFromCents(
+                  stock.price,
+                  currency,
+                  euroToPacificFrancRate
+                ).replace(/\u00A0/g, '')}
               />
               <Spacer.Column numberOfSpaces={2} />
             </Li>
