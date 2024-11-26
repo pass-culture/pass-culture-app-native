@@ -5,8 +5,8 @@ import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
-import { VenueMapFiltersModalStackParamList } from 'features/venueMap/types'
 
 type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapTypeFilter'>
 

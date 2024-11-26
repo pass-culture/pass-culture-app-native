@@ -1,8 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapFiltersList } from 'features/venueMap/components/VenueMapFiltersList/VenueMapFiltersList'
-import { VenueMapFiltersModalStackParamList } from 'features/venueMap/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockNavigate = jest.fn()
