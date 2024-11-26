@@ -1,7 +1,8 @@
+import { CategoryCriteria } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
-export const useAvailableCategories = () => {
+export const useAvailableCategories = (): CategoryCriteria[] => {
   const { data } = useSubcategories()
   const searchGroupsEnum = data?.searchGroups.map((searchGroup) => searchGroup.name) ?? []
   const categories = Object.values(availableCategories).filter((category) =>
