@@ -7,13 +7,17 @@ import {
   MovieScreeningBookingData,
   MovieScreeningUserData,
 } from 'features/offer/components/MovieScreeningCalendar/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 const mapScreeningsToEventCardProps = (
   screening: OfferStockResponse,
   offerVenueId: number,
   setBookingData: Dispatch<SetStateAction<MovieScreeningBookingData | undefined>>,
+  currency: Currency,
+  euroToPacificFrancRate: number,
   onPressOfferCTA?: () => void,
   movieScreeningUserData?: MovieScreeningUserData,
   isExternalBookingsDisabled = false
@@ -34,7 +38,10 @@ const mapScreeningsToEventCardProps = (
     isUserLoggedIn,
   } = movieScreeningUserData ?? {}
 
-  const price = parseCurrencyFromCents(screening.price).replace(' ', '')
+  const price = parseCurrencyFromCents(screening.price, currency, euroToPacificFrancRate).replace(
+    /\u00A0/g,
+    ''
+  )
   const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
   const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 
@@ -104,6 +111,8 @@ export const useSelectedDateScreening = (
   selectedScreeningStock: OfferStockResponse[] | undefined,
   isExternalBookingsDisabled = false
 ) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
   const selectedDateScreenings = useCallback(
     (
@@ -121,6 +130,8 @@ export const useSelectedDateScreening = (
             screening,
             offerVenueId,
             setBookingData,
+            currency,
+            euroToPacificFrancRate,
             onPressOfferCTA,
             movieScreeningUserData,
             isExternalBookingsDisabled
@@ -135,7 +146,7 @@ export const useSelectedDateScreening = (
           return convertToMinutes(a.title) - convertToMinutes(b.title)
         })
     },
-    [selectedScreeningStock, isExternalBookingsDisabled]
+    [selectedScreeningStock, currency, euroToPacificFrancRate, isExternalBookingsDisabled]
   )
 
   return {

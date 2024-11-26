@@ -6,6 +6,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -17,6 +18,9 @@ import { render, screen, waitFor, userEvent } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -49,8 +53,6 @@ const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 useQueryClientSpy.mockReturnValue({
   getQueryData: () => ({ images: { recto: { url: 'image.jpeg' } } }),
 } as unknown as ReactQueryAPI.QueryClient)
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
@@ -88,6 +90,7 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -181,3 +184,7 @@ describe('<OfferContent />', () => {
     unmount()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}
