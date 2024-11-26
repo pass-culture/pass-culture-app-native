@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
@@ -18,7 +18,7 @@ type Props = {
 
 export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCredit = false }) => {
   const { isLoggedIn, user } = useAuthContext()
-  const oneHundredEuros = parseCurrencyFromCents(100_00)
+  const oneHundredEuros = useParseCurrencyFromCents(100_00)
 
   const defaultItems = [
     <BlockDescriptionItem

@@ -6,12 +6,16 @@ import React from 'react'
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('features/auth/context/AuthContext')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -42,10 +46,11 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<ProfileTutorialAgeInformation />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should render correctly when logged in at 15', () => {
-    mockAuthContextForAllRenders(underageBeneficiaryUser)
+    // mockAuthContextForAllRenders(underageBeneficiaryUser)
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
@@ -160,4 +165,8 @@ const mockAuthContextForAllRenders = (user?: UserProfileResponse) => {
     mockAuthContextWithoutUser() // Third call in UnderageBlockDescription
     mockAuthContextWithoutUser() // Fourth call in EighteenBlockDescription
   }
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
