@@ -23,6 +23,7 @@ import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackMapSessionDuration'
+import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -98,9 +99,26 @@ export const VenueMapView: FunctionComponent<Props> = ({
 
   const superClusterRef = useRef<Supercluster>()
 
-  const filteredVenues = venueTypeCode
-    ? venues.filter((venue) => venue.venue_type === venueTypeCode)
-    : venues
+  const filterCategoriesActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2
+  )
+
+  const { activeFilters } = useVenueMapFilters()
+
+  const filteredVenues = useMemo(() => {
+    const safeVenues = venues || []
+
+    if (filterCategoriesActive) {
+      if (activeFilters.length === 0) return safeVenues
+      return safeVenues.filter(
+        (venue) => venue.venue_type && activeFilters.includes(venue.venue_type)
+      )
+    } else {
+      return venueTypeCode
+        ? safeVenues.filter((venue) => venue.venue_type === venueTypeCode)
+        : safeVenues
+    }
+  }, [venues, activeFilters, filterCategoriesActive, venueTypeCode])
 
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
