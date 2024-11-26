@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -9,32 +9,14 @@ import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
-interface Props {
+type Props = {
   onChange: (selection: SearchGroupNameEnumv2[]) => void
+  selection: SearchGroupNameEnumv2[] | undefined
 }
 
-export const OfferCategoryChoices = (props: Props) => {
-  const [selection, setSelection] = useState<SearchGroupNameEnumv2[]>([] as SearchGroupNameEnumv2[])
+export const OfferCategoryChoices = ({ onChange, selection }: Props) => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categories = useAvailableCategories()
-
-  const { onChange } = props
-
-  const onPress = useCallback(
-    (facetFilter: SearchGroupNameEnumv2) => {
-      setSelection((prevSelection) => {
-        let nextSelection = [...prevSelection]
-        if (nextSelection.includes(facetFilter)) {
-          nextSelection = []
-        } else {
-          nextSelection = [facetFilter]
-        }
-        onChange(nextSelection)
-        return nextSelection
-      })
-    },
-    [onChange]
-  )
 
   if (categories.length === 0) {
     return null
@@ -47,8 +29,8 @@ export const OfferCategoryChoices = (props: Props) => {
           <Li key={category.facetFilter}>
             <SelectionLabel
               label={searchGroupLabelMapping[category.facetFilter]}
-              selected={selection.includes(category.facetFilter)}
-              onPress={() => onPress(category.facetFilter)}
+              selected={!!selection?.includes(category.facetFilter)}
+              onPress={() => onChange([category.facetFilter])}
             />
           </Li>
         ))}

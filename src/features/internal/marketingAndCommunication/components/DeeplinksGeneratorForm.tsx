@@ -235,7 +235,10 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           </PaddingContainer>
         ) : null}
         {config.type === 'offerCategories' ? (
-          <OfferCategoryChoices onChange={onChangeOfferCategories} />
+          <OfferCategoryChoices
+            onChange={onChangeOfferCategories}
+            selection={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+          />
         ) : null}
         {config.type === 'offerNativeCategories' && screenParams.offerCategories ? (
           <OfferNativeCategoryChoices
