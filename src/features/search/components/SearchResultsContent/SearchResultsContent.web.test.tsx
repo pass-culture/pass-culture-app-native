@@ -8,12 +8,16 @@ import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 import { SearchResultsContent } from './SearchResultsContent'
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
@@ -49,8 +53,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -94,7 +96,8 @@ jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlayli
 }))
 
 describe('SearchResultsContent component', () => {
-  beforeAll(() => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
@@ -109,3 +112,7 @@ describe('SearchResultsContent component', () => {
     expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

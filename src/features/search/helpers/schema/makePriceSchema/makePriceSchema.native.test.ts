@@ -2,13 +2,17 @@ import { ValidationError } from 'yup'
 
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { makePriceSchema } from 'features/search/helpers/schema/makePriceSchema/makePriceSchema'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 describe('price schema', () => {
   describe('should match', () => {
     it('a valid integer price', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('123')
 
       expect(result).toEqual('123')
@@ -16,7 +20,9 @@ describe('price schema', () => {
 
     it('a valid price with a dot', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('123.45')
 
       expect(result).toEqual('123.45')
@@ -24,7 +30,9 @@ describe('price schema', () => {
 
     it('a valid price with a comma', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('123,45')
 
       expect(result).toEqual('123,45')
@@ -32,7 +40,9 @@ describe('price schema', () => {
 
     it('a valid price with only one decimal', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('123,4')
 
       expect(result).toEqual('123,4')
@@ -40,7 +50,9 @@ describe('price schema', () => {
 
     it('a valid price between spaces', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('   123,4  ')
 
       expect(result).toEqual('123,4')
@@ -48,7 +60,9 @@ describe('price schema', () => {
 
     it('a valid price with a dot but no decimal', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('123.')
 
       expect(result).toEqual('123.')
@@ -56,7 +70,9 @@ describe('price schema', () => {
 
     it('when input less than the initial credit', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate('200')
 
       expect(result).toEqual('200')
@@ -64,7 +80,9 @@ describe('price schema', () => {
 
     it('when input equal to the initial credit', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString())
 
       expect(result).toEqual(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString())
@@ -72,7 +90,9 @@ describe('price schema', () => {
 
     it('when input is undefined', async () => {
       const result = await makePriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(undefined)
 
       expect(result).toEqual(undefined)
@@ -84,49 +104,61 @@ describe('price schema', () => {
     const maxPriceErrorMessage = `Le prix indiqué ne doit pas dépasser ${convertCentsToEuros(MAX_PRICE_IN_CENTS)}\u00a0€`
 
     it('that is not a number', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        'azerty'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('azerty')
 
       await expect(result).rejects.toEqual(new ValidationError(formatErrorMessage))
     })
 
     it('that is a number with more than 2 decimals', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        '123.456'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('123.456')
 
       await expect(result).rejects.toEqual(new ValidationError(formatErrorMessage))
     })
 
     it('that is a number with more than 2 comma or dot', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        '1,23.45'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('1,23.45')
 
       await expect(result).rejects.toEqual(new ValidationError(formatErrorMessage))
     })
 
     it('that is a number with negative number', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        '-123.45'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('-123.45')
 
       await expect(result).rejects.toEqual(new ValidationError(formatErrorMessage))
     })
 
     it('with euro symbol', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        '123.45€'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('123.45€')
 
       await expect(result).rejects.toEqual(new ValidationError(formatErrorMessage))
     })
 
     it('when input higher than the initial credit', async () => {
-      const result = makePriceSchema(convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()).validate(
-        '400'
-      )
+      const result = makePriceSchema(
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+      ).validate('400')
 
       await expect(result).rejects.toEqual(new ValidationError(maxPriceErrorMessage))
     })
