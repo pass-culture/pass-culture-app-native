@@ -190,58 +190,62 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  SignupForm:
-    | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
-    | undefined
-  Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
+  AccountStatusScreenHandler: undefined
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   AppComponents: undefined
+  Artist: {
+    fromOfferId: number
+  }
   BannedCountryError: undefined
+  BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
+  BookingDetails: { id: number }
+  Bookings: { activeTab?: BookingsTab } | undefined
   ChangeCity: undefined
-  ChangePassword: undefined
   ChangeEmail: { showModal: boolean } | undefined
-  ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
-  ChangeStatus: undefined
-  FeedbackInApp: undefined
-  TrackEmailChange: undefined
-  NewEmailSelection: { token: string }
   ChangeEmailExpiredLink: undefined
+  ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
+  ChangePassword: undefined
+  ChangeStatus: undefined
   CheatCodes: undefined
   CheatMenu: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
-  DeleteProfileReason: undefined
-  DeleteProfileContactSupport: undefined
-  DeleteProfileEmailHacked: undefined
-  DeleteProfileAccountHacked: undefined
-  DeleteProfileAccountNotDeletable: undefined
   ConfirmDeleteProfile: undefined
-  SuspendAccountConfirmationWithoutAuthentication: undefined
-  BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
-  BookingDetails: { id: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
-  DeleteProfileConfirmation: undefined
-  DeleteProfileSuccess: undefined
   DeactivateProfileSuccess: undefined
-  Bookings: { activeTab?: BookingsTab } | undefined
+  DeeplinksGenerator: undefined
+  DeleteProfileAccountHacked: undefined
+  DeleteProfileAccountNotDeletable: undefined
+  DeleteProfileConfirmation: undefined
+  DeleteProfileContactSupport: undefined
+  DeleteProfileEmailHacked: undefined
+  DeleteProfileReason: undefined
+  DeleteProfileSuccess: undefined
+  EighteenBirthday: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined
+  FeedbackInApp: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
+  LegalNotices: undefined
+  LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
+  LocationPicker: undefined
   Login?: {
     displayForcedLoginHelpMessage?: boolean
     offerId?: number
     from?: StepperOrigin
   }
+  Maintenance: undefined
   Navigation: undefined
   NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
   NavigationProfile: undefined
   NavigationAchievements: undefined
   NavigationSubscription: undefined
+  NewEmailSelection: { token: string }
   NotificationsSettings: undefined
   Offer: {
     id: number
@@ -258,8 +262,10 @@ export type RootStackParamList = {
   OfferDescription: { id: number }
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
-  SuspendAccountConfirmation: { token: string }
-  AccountStatusScreenHandler: undefined
+  NotYetUnderageEligibility: { eligibilityStartDatetime: string }
+  PageNotFound: undefined
+  PersonalData: undefined
+  RecreditBirthdayNotification: undefined
   ReinitializePassword: {
     email: string
     token: string
@@ -268,39 +274,33 @@ export type RootStackParamList = {
   }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
-  LegalNotices: undefined
-  LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
-  LocationPicker: undefined
-  PersonalData: undefined
   SearchFilter: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
+  SignupForm:
+    | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
+    | undefined
+  SuspendAccountConfirmation: { token: string }
+  SuspendAccountConfirmationWithoutAuthentication: undefined
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  VerifyEligibility: undefined
-  NotYetUnderageEligibility: { eligibilityStartDatetime: string }
+  ThematicHome: ThematicHomeParams
+  TrackEmailChange: undefined
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  EighteenBirthday: undefined
-  RecreditBirthdayNotification: undefined
-  PageNotFound: undefined
+  UTMParameters: undefined
   ValidateEmailChange: { token: string }
   Venue: {
     id: number
     from?: Referrals
     searchId?: string
   }
-  VenuePreviewCarousel: { id: number; defaultIndex?: number }
-  Artist: {
-    fromOfferId: number
-  }
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
-  DeeplinksGenerator: undefined
-  UTMParameters: undefined
-  ThematicHome: ThematicHomeParams
+  VenuePreviewCarousel: { id: number; defaultIndex?: number }
+  VerifyEligibility: undefined
   // cheatcodes
   AccesLibre: undefined
   NewCaledonia: undefined
