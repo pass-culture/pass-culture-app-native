@@ -2,9 +2,11 @@ import React from 'react'
 
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('ArtistPlaylist', () => {
