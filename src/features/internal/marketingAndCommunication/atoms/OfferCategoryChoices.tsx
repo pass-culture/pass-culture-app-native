@@ -11,9 +11,8 @@ import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  onChange: (selection: SearchGroupNameEnumv2[]) => void
-  selection: SearchGroupNameEnumv2[] | undefined
-  categories: CategoryCriteria[]
+  onChange: (selection: SearchGroupNameEnumv2 | undefined) => void
+  selection: SearchGroupNameEnumv2 | undefined
 }
 
 export const OfferCategoryChoices = (props: Props) => {
@@ -21,7 +20,11 @@ export const OfferCategoryChoices = (props: Props) => {
   return <CategoryChoices {...props} categories={categories} />
 }
 
-export const CategoryChoices = ({ onChange, selection, categories }: Props) => {
+export const CategoryChoices = ({
+  onChange,
+  selection,
+  categories,
+}: Props & { categories: CategoryCriteria[] }) => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   if (categories.length === 0) {
@@ -35,8 +38,10 @@ export const CategoryChoices = ({ onChange, selection, categories }: Props) => {
           <Li key={category.facetFilter}>
             <SelectionLabel
               label={searchGroupLabelMapping[category.facetFilter]}
-              selected={!!selection?.includes(category.facetFilter)}
-              onPress={() => onChange([category.facetFilter])}
+              selected={selection === category.facetFilter}
+              onPress={() =>
+                onChange(selection === category.facetFilter ? undefined : category.facetFilter)
+              }
             />
           </Li>
         ))}

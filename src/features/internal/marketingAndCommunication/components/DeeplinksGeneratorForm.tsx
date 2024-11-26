@@ -155,11 +155,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    function onChangeOfferCategories(categories: SearchGroupNameEnumv2[]) {
+    function onChangeOfferCategories(category: SearchGroupNameEnumv2) {
       setScreenParams((prevPageParams) => {
         return {
           ...prevPageParams,
-          [name]: categories.length ? categories : undefined,
+          [name]: category,
           offerNativeCategories: undefined,
         }
       })
@@ -237,12 +237,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         {config.type === 'offerCategories' ? (
           <OfferCategoryChoices
             onChange={onChangeOfferCategories}
-            selection={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+            selection={screenParams.offerCategories as SearchGroupNameEnumv2}
           />
         ) : null}
         {config.type === 'offerNativeCategories' && screenParams.offerCategories ? (
           <OfferNativeCategoryChoices
-            categories={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+            categories={screenParams.offerCategories as SearchGroupNameEnumv2}
             onChange={onChangeOfferNativeCategories}
           />
         ) : null}

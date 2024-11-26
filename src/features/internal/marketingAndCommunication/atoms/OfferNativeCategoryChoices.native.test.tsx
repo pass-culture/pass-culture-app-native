@@ -14,7 +14,7 @@ describe('<OfferNativeCategoryChoices />', () => {
     render(
       <OfferNativeCategoryChoices
         onChange={onChange}
-        categories={[SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]}
+        categories={SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
       />
     )
 

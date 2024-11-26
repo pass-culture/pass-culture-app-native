@@ -14,7 +14,7 @@ import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
 interface Props {
-  categories: SearchGroupNameEnumv2[]
+  categories: SearchGroupNameEnumv2
   onChange: (selection: NativeCategoryIdEnumv2[]) => void
 }
 
@@ -27,10 +27,10 @@ export const OfferNativeCategoryChoices = (props: Props) => {
   const { categories, onChange } = props
 
   const nativeCategories = useMemo(() => {
-    let nativeCategories: NativeCategoryResponseModelv2[] = []
-    categories.forEach((categoryEnum) => {
-      nativeCategories = [...nativeCategories, ...getNativeCategories(data, categoryEnum)]
-    })
+    const nativeCategories: NativeCategoryResponseModelv2[] = [
+      ...getNativeCategories(data, categories),
+    ]
+
     return nativeCategories.sort((a, b) => (a?.value ?? '').localeCompare(b?.value ?? ''))
   }, [data, categories])
 
