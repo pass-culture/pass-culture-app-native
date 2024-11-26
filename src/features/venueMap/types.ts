@@ -14,8 +14,3 @@ export type VenueTypeMapping = {
 export type VenuesCountByType = {
   [key in VenueTypeCode]: number
 }
-
-export type VenueMapFiltersModalStackParamList = {
-  VenueMapFiltersList: undefined
-  VenueMapTypeFilter: undefined
-}

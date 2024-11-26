@@ -297,6 +297,7 @@ export type RootStackParamList = {
     fromOfferId: number
   }
   VenueMap: undefined
+  VenueMapFiltersStackNavigator: undefined
   DeeplinksGenerator: undefined
   UTMParameters: undefined
   ThematicHome: ThematicHomeParams
