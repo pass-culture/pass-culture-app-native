@@ -614,23 +614,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -758,23 +758,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -902,23 +902,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1046,23 +1046,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1350,23 +1350,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1494,23 +1494,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1638,23 +1638,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1782,23 +1782,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -1926,23 +1926,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -2230,23 +2230,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [
@@ -2374,23 +2374,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="FilterRow"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "marginRight": 16,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       [

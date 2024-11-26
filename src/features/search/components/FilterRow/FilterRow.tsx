@@ -5,7 +5,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, getSpacing, TypoDS } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   icon?: React.FunctionComponent<AccessibleIcon>
@@ -37,10 +37,9 @@ export const FilterRow = ({
   return (
     <TouchableRow testID="FilterRow" onPress={onPress} accessibilityDescribedBy={captionId}>
       {StyledIcon ? (
-        <React.Fragment>
+        <IconContainer>
           <StyledIcon />
-          <Spacer.Row numberOfSpaces={2} />
-        </React.Fragment>
+        </IconContainer>
       ) : null}
       <TextContainer>
         <TitleAndComplement>
@@ -61,6 +60,10 @@ export const FilterRow = ({
 const TouchableRow = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const IconContainer = styled.View({
+  marginRight: getSpacing(4),
 })
 
 const TitleAndComplement = styled.View({
