@@ -6,7 +6,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
 import { storage } from 'libs/storage'
 import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -28,8 +28,8 @@ export const RecreditBirthdayNotification = () => {
 
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
-  const creditedAmount = parseCurrencyFromCents(user?.recreditAmountToShow ?? 3000)
-  const remainingCredit = parseCurrencyFromCents(credit?.amount ?? 3000)
+  const creditedAmount = useParseCurrencyFromCents(user?.recreditAmountToShow ?? 3000)
+  const remainingCredit = useParseCurrencyFromCents(credit?.amount ?? 3000)
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
