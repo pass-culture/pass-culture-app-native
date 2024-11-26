@@ -1,43 +1,46 @@
-import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
-type FormatPriceOptions = {
+export type FormatPriceOptions = {
   fractionDigits?: number
 }
 
-/**
- * Takes a price in cents (ex: 5.5€ = 550 cents) and returns a string with the
- * price in euros in the French format, ex: "5,50 €"
- * @param {number} priceInCents
- */
-export const parseCurrencyFromCents = (priceInCents: number, options?: FormatPriceOptions) => {
-  const euros = priceInCents / CENTS_IN_EURO
-  const fractionDigits = options?.fractionDigits ?? (euros === Math.floor(euros) ? 0 : 2)
-
-  const formatter = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: fractionDigits,
-  })
-
-  return formatter.format(euros)
-}
-
-const getPricePerPlace = (prices: number[], options?: FormatPriceOptions): string => {
+const getPricePerPlace = (
+  prices: number[],
+  currency: Currency,
+  euroToPacificFrancRate: number,
+  options?: FormatPriceOptions
+): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  if (uniquePrices.length === 1) return `${parseCurrencyFromCents(uniquePrices[0], options)}`
+  if (uniquePrices.length === 1)
+    // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
+    return `${parseCurrencyFromCents(uniquePrices[0], currency, euroToPacificFrancRate, options)}`
 
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  return `Dès ${parseCurrencyFromCents(sortedPrices[0], options)}`
+  // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
+  return `Dès ${parseCurrencyFromCents(sortedPrices[0], currency, euroToPacificFrancRate, options)}`
 }
 
 export const getDisplayPrice = (
   prices: number[] | undefined,
+  currency: Currency,
+  euroToPacificFrancRate: number,
   options?: FormatPriceOptions
 ): string => {
   if (!prices || prices.length === 0) return ''
   if (prices.includes(0)) return 'Gratuit'
-  return getPricePerPlace(prices, options)
+  return getPricePerPlace(prices, currency, euroToPacificFrancRate, options)
+}
+
+export const useGetDisplayPrice = (
+  prices: number[] | undefined,
+  options?: FormatPriceOptions
+): string => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  if (!prices || prices.length === 0) return ''
+  if (prices.includes(0)) return 'Gratuit'
+  return getPricePerPlace(prices, currency, euroToPacificFrancRate, options)
 }
