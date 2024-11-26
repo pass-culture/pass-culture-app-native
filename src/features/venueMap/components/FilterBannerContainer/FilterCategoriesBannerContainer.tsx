@@ -42,7 +42,7 @@ export const FilterCategoriesBannerContainer = () => {
 
   return (
     <Container accessibilityRole={AccessibilityRole.LIST}>
-      <FilterButton />
+      <FilterButton navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }} />
       {filterGroups.map(({ color, id, label }) => (
         <SingleFilterButton
           key={id}

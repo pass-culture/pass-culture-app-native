@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -42,6 +43,17 @@ describe('FilterCategoriesBannerContainer', () => {
     await user.press(await screen.findByLabelText('Sorties : Filtre sélectionné'))
 
     expect(screen.queryByLabelText('Sorties : Filtre sélectionné')).not.toBeOnTheScreen()
+
+    jest.useRealTimers()
+  })
+
+  it('should open venue map filters when pressing filter button', async () => {
+    jest.useFakeTimers()
+    render(<FilterCategoriesBannerContainer />)
+
+    await user.press(screen.getByLabelText('Voir tous les filtres'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMapFiltersStackNavigator', undefined)
 
     jest.useRealTimers()
   })
