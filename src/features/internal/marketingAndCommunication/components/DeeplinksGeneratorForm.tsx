@@ -25,7 +25,6 @@ import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
@@ -227,7 +226,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               showValues
               max={convertCentsToEuros(MAX_PRICE_IN_CENTS)}
               sliderLength={sliderLength}
-              formatValues={parseCurrencyFromCents}
               onValuesChangeFinish={onChangePriceRange}
               minLabel="Prix minimum&nbsp;:"
               maxLabel="Prix maximum&nbsp;:"
