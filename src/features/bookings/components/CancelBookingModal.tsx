@@ -12,9 +12,11 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -36,7 +38,9 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 }) => {
   const netInfo = useNetInfoContext()
   const { user } = useAuthContext()
-  const refundRule = getRefundRule(booking, user)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const refundRule = getRefundRule(booking, currency, euroToPacificFrancRate, user)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -117,10 +121,15 @@ const Refund = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-function getRefundRule(booking: Booking, user?: UserProfileResponse) {
+function getRefundRule(
+  booking: Booking,
+  currency: Currency,
+  euroToPacificFrancRate: number,
+  user?: UserProfileResponse
+) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
-    const price = parseCurrencyFromCents(booking.totalAmount)
+    const price = parseCurrencyFromCents(booking.totalAmount, currency, euroToPacificFrancRate)
     if (isUserExBeneficiary(user)) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }

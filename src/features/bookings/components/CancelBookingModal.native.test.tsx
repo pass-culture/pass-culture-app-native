@@ -5,6 +5,7 @@ import { CancelBookingModal } from 'features/bookings/components/CancelBookingMo
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -13,6 +14,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDismissModal = jest.fn()
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
