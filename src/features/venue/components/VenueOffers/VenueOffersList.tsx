@@ -9,12 +9,14 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
@@ -25,6 +27,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 const keyExtractor = (item: Offer) => item.objectID
 
 export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers, playlists }) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -64,7 +68,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         venueId={venue?.id}
         width={width}
         height={height}
