@@ -25,7 +25,7 @@ export const buildOffersModulesQueries = ({
         ...buildHitsPerPage(params.offerParams.hitsPerPage),
         ...buildOfferSearchParameters(params.offerParams, params.locationParams, isUserUnderage),
         attributesToHighlight: [], // We disable highlighting because we don't need it
-        attributesToRetrieve: offerAttributesToRetrieve,
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
       },
     }
     return query
