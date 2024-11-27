@@ -2,6 +2,7 @@ import React from 'react'
 
 import { dispatch } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
+import { ApiError } from 'api/ApiError'
 import { UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState } from 'features/identityCheck/context/reducer'
 import * as SubscriptionContextProvider from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -143,7 +144,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
   }
 
   function updatePhoneNumberWillFail() {
-    patchProfile.mockRejectedValueOnce(new Error('Une erreur est survenue'))
+    patchProfile.mockRejectedValueOnce(new ApiError(500, undefined, 'Une erreur est survenue'))
   }
 
   async function fillPhoneNumberInput(phoneNumber: string) {
