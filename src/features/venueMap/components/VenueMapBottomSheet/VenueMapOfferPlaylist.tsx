@@ -54,7 +54,9 @@ export const VenueMapOfferPlaylist = ({
         playlistType={playlistType}
       />
     ),
-    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType]
+    // euroToPacificFrancRate cause multiple render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [currency, labelMapping, mapping, playlistType]
   )
 
   return (

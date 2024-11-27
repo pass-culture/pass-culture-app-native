@@ -257,8 +257,8 @@ describe('HorizontalOfferTile component', () => {
 
 function renderHorizontalOfferTile(props: { offer: Offer; analyticsParams: OfferAnalyticsParams }) {
   return render(reactQueryProviderHOC(<HorizontalOfferTile {...props} />))
+}
 
-
-  const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-    useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-  }
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

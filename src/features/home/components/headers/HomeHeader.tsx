@@ -67,7 +67,9 @@ export const HomeHeader: FunctionComponent = function () {
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency, euroToPacificFrancRate])
+    // euroToPacificFrancRate cause multiple render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency])
 
   return Header
 }

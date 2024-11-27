@@ -67,13 +67,14 @@ export const useRenderPassPlaylist = ({
         />
       )
     },
+    // euroToPacificFrancRate cause multiple render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       transformOfferHits,
       analyticsFrom,
       labelMapping,
       mapping,
       currency,
-      euroToPacificFrancRate,
       currentRoute.params?.searchId,
       venue?.id,
       entryId,
