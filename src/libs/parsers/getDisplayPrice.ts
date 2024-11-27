@@ -13,14 +13,20 @@ const getPricePerPlace = (
   options?: FormatPriceOptions
 ): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
-
-  if (uniquePrices.length === 1)
-    // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
-    return `${formatCurrencyFromCents(uniquePrices[0], currency, euroToPacificFrancRate, options)}`
+  if (uniquePrices.length === 1) {
+    const uniquePrice = uniquePrices[0]
+    if (uniquePrice !== undefined) {
+      return `${formatCurrencyFromCents(uniquePrice, currency, euroToPacificFrancRate, options)}`
+    }
+  }
 
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
-  // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
-  return `Dès ${formatCurrencyFromCents(sortedPrices[0], currency, euroToPacificFrancRate, options)}`
+  const firstPrice = sortedPrices[0]
+  if (firstPrice !== undefined) {
+    return `Dès ${formatCurrencyFromCents(firstPrice, currency, euroToPacificFrancRate, options)}`
+  }
+
+  return ''
 }
 
 export const getDisplayPrice = (
@@ -40,7 +46,5 @@ export const useGetDisplayPrice = (
 ): string => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return 'Gratuit'
-  return getPricePerPlace(prices, currency, euroToPacificFrancRate, options)
+  return getDisplayPrice(prices, currency, euroToPacificFrancRate, options)
 }
