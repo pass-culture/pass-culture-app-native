@@ -551,6 +551,19 @@ export const theme = {
   home: {
     spaceBetweenModules: getSpacing(6),
   },
+  checkbox: {
+    border: {
+      color: {
+        default: ColorsEnum.GREY_DARK,
+        selected: ColorsEnum.PRIMARY,
+      },
+      size: 1,
+    },
+    backgroundColor: {
+      default: ColorsEnum.WHITE,
+      selected: ColorsEnum.PRIMARY,
+    },
+  },
 } as const
 
 export type BaseAppThemeType = typeof theme
