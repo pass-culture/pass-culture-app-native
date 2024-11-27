@@ -23,14 +23,12 @@ export const VenueMapBase: FunctionComponent<PropsWithChildren> = ({ children })
   }
 
   return (
-    <React.Fragment>
-      <Container>
-        <StyledHeader title="Carte des lieux" onGoBack={handleGoBack} />
-        <PlaceHolder headerHeight={headerHeight + FILTER_BANNER_HEIGHT} />
-        <FilterBannerContainer />
-        {children}
-      </Container>
-    </React.Fragment>
+    <Container>
+      <StyledHeader title="Carte des lieux" onGoBack={handleGoBack} />
+      <PlaceHolder headerHeight={headerHeight + FILTER_BANNER_HEIGHT} />
+      <FilterBannerContainer />
+      {children}
+    </Container>
   )
 }
 
