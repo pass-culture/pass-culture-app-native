@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+import { ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -17,6 +18,7 @@ type Props = ColorMessageProps & {
   testID?: string
   backgroundColor?: ColorsEnum
   children?: React.ReactNode
+  messageContainerStyle?: ViewStyle
 }
 
 export const InfoBanner: FunctionComponent<Props> = ({
@@ -26,6 +28,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
   testID,
   backgroundColor,
   children,
+  messageContainerStyle,
 }) => {
   const theme = useTheme()
   const Icon =
@@ -39,6 +42,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
   const textColor = withLightColorMessage ? theme.colors.greyDark : theme.colors.black
   return (
     <GenericColoredBanner
+      messageContainerStyle={messageContainerStyle}
       message={message}
       Icon={Icon}
       backgroundColor={backgroundColor ?? theme.colors.secondaryLight100}
