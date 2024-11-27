@@ -6,20 +6,13 @@ import styled from 'styled-components/native'
 
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
+import { FilterGroupData, FilterGroupKey } from 'features/venueMap/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
 const BULLET_SIZE = 12
 
-type FilterGroupKey = keyof typeof FILTERS_VENUE_TYPE_MAPPING
-
-type FilterGroupData = {
-  id: FilterGroupKey
-  label: string
-  color: string
-}
 const filterGroups: FilterGroupData[] = [
   { id: 'OUTINGS', label: 'Sorties', color: theme.colors.coral },
   { id: 'SHOPS', label: 'Boutiques', color: theme.colors.primary },

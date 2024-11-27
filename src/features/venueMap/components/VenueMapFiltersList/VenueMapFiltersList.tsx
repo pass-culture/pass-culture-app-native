@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
+import { FilterItem } from 'features/venueMap/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Store } from 'ui/svg/icons/bicolor/Store'
@@ -15,17 +16,17 @@ import { getSpacing } from 'ui/theme'
 
 type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapFiltersList'>
 
-const filterItems = [
-  { icon: Show, title: 'Sorties', description: 'Tout' },
-  { icon: Store, title: 'Boutiques', description: 'Tout' },
-  { icon: Sort, title: 'Autres', description: 'Tout' },
+const filterItems: FilterItem[] = [
+  { icon: Show, title: 'Sorties', description: 'Tout', filterGroup: 'OUTINGS' },
+  { icon: Store, title: 'Boutiques', description: 'Tout', filterGroup: 'SHOPS' },
+  { icon: Sort, title: 'Autres', description: 'Tout', filterGroup: 'OTHERS' },
 ]
 
 const titleId = uuidv4()
 
 export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) => {
-  const onPress = () => {
-    navigation.navigate('VenueMapTypeFilter')
+  const onPress = (item: FilterItem) => {
+    navigation.navigate('VenueMapTypeFilter', { title: item.title, filterGroup: item.filterGroup })
   }
 
   const onClose = () => {
@@ -46,7 +47,7 @@ export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) =>
             <FilterRow
               icon={item.icon}
               title={item.title}
-              onPress={onPress}
+              onPress={() => onPress(item)}
               description={item.description}
             />
           </StyledLi>

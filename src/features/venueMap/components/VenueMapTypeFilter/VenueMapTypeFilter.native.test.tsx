@@ -40,7 +40,11 @@ describe('VenueMapTypeFilter', () => {
     render(
       <VenueMapTypeFilter
         navigation={mockNavigation}
-        route={{ key: 'VenueMapTypeFilter', name: 'VenueMapTypeFilter' }}
+        route={{
+          key: 'VenueMapTypeFilter',
+          name: 'VenueMapTypeFilter',
+          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
+        }}
       />
     )
 
@@ -53,12 +57,49 @@ describe('VenueMapTypeFilter', () => {
     render(
       <VenueMapTypeFilter
         navigation={mockNavigation}
-        route={{ key: 'VenueMapTypeFilter', name: 'VenueMapTypeFilter' }}
+        route={{
+          key: 'VenueMapTypeFilter',
+          name: 'VenueMapTypeFilter',
+          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
+        }}
       />
     )
 
     await user.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display venue type filter title', () => {
+    render(
+      <VenueMapTypeFilter
+        navigation={mockNavigation}
+        route={{
+          key: 'VenueMapTypeFilter',
+          name: 'VenueMapTypeFilter',
+          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
+        }}
+      />
+    )
+
+    expect(screen.getByText('Sorties')).toBeOnTheScreen()
+  })
+
+  it('should display checkboxes associated to venue type filter', () => {
+    render(
+      <VenueMapTypeFilter
+        navigation={mockNavigation}
+        route={{
+          key: 'VenueMapTypeFilter',
+          name: 'VenueMapTypeFilter',
+          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
+        }}
+      />
+    )
+
+    expect(screen.getByText('Tout afficher')).toBeOnTheScreen()
+    expect(screen.getByText('Musique - Salle de concerts')).toBeOnTheScreen()
+    expect(screen.getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
+    expect(screen.getByText('Musée')).toBeOnTheScreen()
   })
 })

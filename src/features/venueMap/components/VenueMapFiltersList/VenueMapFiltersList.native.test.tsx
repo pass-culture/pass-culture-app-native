@@ -49,7 +49,7 @@ describe('VenueMapFiltersList', () => {
     expect(screen.getByText('Autres')).toBeTruthy()
   })
 
-  it('should navigate to venue map type filter when pressing a row', async () => {
+  it('should navigate to venue map type filter when pressing a row with filter group information', async () => {
     render(
       <VenueMapFiltersList
         navigation={mockNavigation}
@@ -59,7 +59,10 @@ describe('VenueMapFiltersList', () => {
 
     await user.press(screen.getByText('Sorties'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('VenueMapTypeFilter')
+    expect(mockNavigate).toHaveBeenCalledWith('VenueMapTypeFilter', {
+      filterGroup: 'OUTINGS',
+      title: 'Sorties',
+    })
   })
 
   it('should trigger goBack when pressing modal close button', async () => {
