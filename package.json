@@ -364,25 +364,26 @@
     "workbox-streams": "^6.1.5"
   },
   "resolutions": {
+    "@react-navigation/core": "6.2.2",
     "@sentry/cli": "^2.33.1",
+    "@sentry/core": "7.62.0",
     "@sentry/hub": "7.8.*",
     "@sentry/utils": "7.62.0",
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
     "ansi-regex": "^5.0.1",
     "browserslist": "^4.16.5",
     "color-name": "1.1.*",
     "glob-parent": "^5.1.2",
+    "loader-utils": "^2.0.0",
     "json-schema": "^0.4.0",
     "nth-check": "^2.0.1",
     "prop-types": "15.7.*",
     "query-string": "^7.1.*",
     "react-devtools-core": "4.27.4",
-    "recyclerlistview": "4.1.2",
-    "tslib": "2.3.*",
-    "@react-navigation/core": "6.2.2",
-    "react-side-effect": "2.1.2",
     "react-is": "^16.13.1",
-    "@sentry/core": "7.62.0",
-    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+    "react-side-effect": "2.1.2",
+    "recyclerlistview": "4.1.2",
+    "tslib": "2.3.*"
   },
   "exports": {
     ".": "./index.js",
