@@ -15,6 +15,7 @@ import {
   GroupResult,
   formatGroupedDates,
   capitalizeFirstLetter,
+  formatReleaseDate,
 } from '../formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -484,5 +485,34 @@ describe('capitalizeFirstLetter', () => {
     const result = capitalizeFirstLetter('x')
 
     expect(result).toEqual('X')
+  })
+})
+
+describe('formatReleaseDate', () => {
+  beforeAll(() => {
+    mockdate.set(NOVEMBER_1_2020)
+  })
+
+  it('should format date properly when given date is today', () => {
+    const TODAY = NOVEMBER_1_2020.valueOf()
+    const result = formatReleaseDate(TODAY)
+
+    expect(result).toEqual(`Sorti le 1er novembre 2020`)
+  })
+
+  it('should format date properly when given date is before today', () => {
+    const BEFORE_TODAY = OCTOBER_5_2020.valueOf()
+
+    const result = formatReleaseDate(BEFORE_TODAY)
+
+    expect(result).toEqual(`Sorti le 5 octobre 2020`)
+  })
+
+  it('should format date properly when given date is after today', () => {
+    const AFTER_TODAY = NOVEMBER_12_2020.valueOf()
+
+    const result = formatReleaseDate(AFTER_TODAY)
+
+    expect(result).toEqual(`Dès le 12 novembre 2020`)
   })
 })

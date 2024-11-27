@@ -1,3 +1,4 @@
+import { isAfter, isFirstDayOfMonth } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 
 import { DAYS } from 'shared/date/days'
@@ -31,11 +32,15 @@ export const decomposeDate = (timestamp: number) => {
 
 // a-t-on encore besoin du type Date ?
 export const formatToFrenchDate = (
-  date: Date | number | string | { day: number; month: string; year: number }
+  date: Date | number | string | { day: number; month: string; year: number },
+  shouldFormatFirstDayOfTheMonth?: boolean
 ) => {
   const formatedDate = typeof date === 'string' ? new Date(date) : date
   const timestamp = formatedDate instanceof Date ? formatedDate.getTime() : formatedDate
   const { day, month, year } = typeof timestamp === 'number' ? decomposeDate(timestamp) : timestamp
+
+  if (shouldFormatFirstDayOfTheMonth) return `${day}er ${month} ${year}`
+
   return `${day} ${month} ${year}`
 }
 
@@ -59,6 +64,19 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   if (uniques.length === 1) return formatToFrenchDate(uniques[0])
   // @ts-expect-error: because of noUncheckedIndexedAccess
   return `Dès le ${formatToFrenchDate(uniques[0])}`
+}
+
+/**
+ * @param releaseDate: A timestamp in millisecond
+ */
+export const formatReleaseDate = (releaseDate: number): string => {
+  const formattedDate = formatToFrenchDate(releaseDate, isFirstDayOfMonth(releaseDate))
+
+  if (isAfter(releaseDate, new Date())) {
+    return `Dès le ${formattedDate}`
+  }
+
+  return `Sorti le ${formattedDate}`
 }
 
 type MonthDays = number[]

@@ -1,5 +1,4 @@
 vite.config.js:32 - default
-src/tests/mockBuilder.ts:19 - createMockBuilder (used in module)
 src/features/venueMap/constant.ts:17 - satisfies
 src/features/venueMap/constant.ts:17 - Record
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM

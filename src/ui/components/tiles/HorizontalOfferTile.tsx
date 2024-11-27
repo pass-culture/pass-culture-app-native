@@ -2,11 +2,12 @@ import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { formatDates } from 'libs/parsers/formatDates'
+import { formatDates, formatReleaseDate } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -37,17 +38,25 @@ export const HorizontalOfferTile = ({
   ...horizontalTileProps
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
-  const { subcategoryId, dates, prices, thumbUrl, name } = offerDetails
+  const { subcategoryId, dates, prices, thumbUrl, name, releaseDate } = offerDetails
   const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
 
+  const isOfferAMovieScreeningWithAReleaseDate =
+    subcategoryId === SubcategoryIdEnum.SEANCE_CINE &&
+    releaseDate &&
+    typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
+
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = Number(objectID)
 
-  const formattedDate = formatDates(timestampsInMillis)
+  const formattedDate = isOfferAMovieScreeningWithAReleaseDate
+    ? formatReleaseDate(releaseDate * 1000)
+    : formatDates(timestampsInMillis)
+
   const formattedPrice = getDisplayPrice(prices)
   const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 

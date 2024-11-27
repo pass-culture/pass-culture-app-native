@@ -16,7 +16,7 @@ type DeepPartial<T> = {
         : T[P]
 }
 
-export const createMockBuilder = <T>(defaultMock: T) => {
+const createMockBuilder = <T>(defaultMock: T) => {
   return (param: DeepPartial<T>) => {
     const mergedObj = mergeWith({}, defaultMock, param, customizer)
     return mergedObj as T
@@ -27,6 +27,7 @@ const customizer = <T>(objValue: T, srcValue: unknown) => {
   if (Array.isArray(objValue)) {
     return srcValue
   }
+  return
 }
 
 const defaultOfferResponse = offersStocksResponseSnap.offers[0]
