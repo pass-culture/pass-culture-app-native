@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { storage } from 'libs/storage'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -42,7 +42,7 @@ export function EighteenBirthday() {
       <StyledTitle>{pageWording.text}</StyledTitle>
       <Spacer.Column numberOfSpaces={4} />
       <StyledCaptionNeutralInfo>
-        Ton crédit précédent a été remis à {useParseCurrencyFromCents(0)}.
+        Ton crédit précédent a été remis à {useFormatCurrencyFromCents(0)}.
       </StyledCaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
       <InternalTouchableLink

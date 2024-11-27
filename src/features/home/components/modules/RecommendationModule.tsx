@@ -95,15 +95,9 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         />
       )
     },
+    // euroToPacificFrancRate cause multiple render
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      profile?.isBeneficiary,
-      labelMapping,
-      mapping,
-      recommendationApiParams,
-      currency,
-      euroToPacificFrancRate,
-    ]
+    [profile?.isBeneficiary, labelMapping, mapping, recommendationApiParams, currency]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

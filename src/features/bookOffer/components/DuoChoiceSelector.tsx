@@ -7,7 +7,7 @@ import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -26,7 +26,7 @@ export const DuoChoiceSelector: React.FC = () => {
     return {
       price:
         enoughCredit && stock
-          ? parseCurrencyFromCents(
+          ? formatCurrencyFromCents(
               quantity * stock.price,
               currency,
               euroToPacificFrancRate

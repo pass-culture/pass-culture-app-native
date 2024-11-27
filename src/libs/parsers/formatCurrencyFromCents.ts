@@ -10,7 +10,7 @@ const getFractionDigits = (princeInEuro: number, options?: FormatPriceOptions): 
   return princeInEuro === Math.floor(princeInEuro) ? 0 : 2
 }
 
-export const parseCurrencyFromCents = (
+export const formatCurrencyFromCents = (
   priceInCents: number,
   currency: Currency,
   euroToPacificFrancRate: number,
@@ -41,8 +41,8 @@ export const parseCurrencyFromCents = (
   }
 }
 
-export const useParseCurrencyFromCents = (priceInCents: number, options?: FormatPriceOptions) => {
+export const useFormatCurrencyFromCents = (priceInCents: number, options?: FormatPriceOptions) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  return parseCurrencyFromCents(priceInCents, currency, euroToPacificFrancRate, options)
+  return formatCurrencyFromCents(priceInCents, currency, euroToPacificFrancRate, options)
 }

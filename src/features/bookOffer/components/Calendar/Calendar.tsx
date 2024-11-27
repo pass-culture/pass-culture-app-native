@@ -19,7 +19,7 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { eventMonitoring } from 'libs/monitoring'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
@@ -93,7 +93,7 @@ export const getDayDescription = (
   hasSeveralPrices?: boolean
 ) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += parseCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
+  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
     /\u00A0/g,
     ''
   )

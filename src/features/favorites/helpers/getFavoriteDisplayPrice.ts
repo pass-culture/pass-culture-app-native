@@ -1,4 +1,4 @@
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export const getFavoriteDisplayPrice = ({
@@ -13,9 +13,9 @@ export const getFavoriteDisplayPrice = ({
   price?: number | null
 }): string | undefined => {
   if (price === 0) return 'Gratuit'
-  if (price && price > 0) return parseCurrencyFromCents(price, currency, euroToPacificFrancRate)
+  if (price && price > 0) return formatCurrencyFromCents(price, currency, euroToPacificFrancRate)
   if (startPrice === 0 || (startPrice && startPrice > 0)) {
-    return `Dès ${parseCurrencyFromCents(startPrice, currency, euroToPacificFrancRate)}`
+    return `Dès ${formatCurrencyFromCents(startPrice, currency, euroToPacificFrancRate)}`
   }
   return undefined
 }

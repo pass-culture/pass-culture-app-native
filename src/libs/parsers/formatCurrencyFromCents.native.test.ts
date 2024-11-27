@@ -1,9 +1,9 @@
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
-import { parseCurrencyFromCents } from './parseCurrencyFromCents'
+import { formatCurrencyFromCents } from './formatCurrencyFromCents'
 
-describe('parseCurrencyFromCents()', () => {
+describe('formatCurrencyFromCents()', () => {
   it.each`
     priceInCents | currency                        | expected
     ${0}         | ${Currency.EURO}                | ${'0\u00a0€'}
@@ -22,10 +22,10 @@ describe('parseCurrencyFromCents()', () => {
     ${-1199.6}   | ${Currency.EURO}                | ${'-12,00\u00a0€'}
     ${100}       | ${Currency.PACIFIC_FRANC_SHORT} | ${'120\u00a0F'}
   `(
-    'parseCurrencyFromCents($priceInCents) \t= $expected without format price options',
+    'formatCurrencyFromCents($priceInCents) \t= $expected without format price options',
     ({ priceInCents, currency, expected }) => {
       expect(
-        parseCurrencyFromCents(priceInCents, currency, DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
+        formatCurrencyFromCents(priceInCents, currency, DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
       ).toBe(expected)
     }
   )
@@ -48,10 +48,10 @@ describe('parseCurrencyFromCents()', () => {
     ${-1199.6}   | ${Currency.EURO}                | ${'-12,00\u00a0€'}
     ${100}       | ${Currency.PACIFIC_FRANC_SHORT} | ${'120\u00a0F'}
   `(
-    'parseCurrencyFromCents($priceInCents) \t= $expected with format price options',
+    'formatCurrencyFromCents($priceInCents) \t= $expected with format price options',
     ({ priceInCents, currency, expected }) => {
       expect(
-        parseCurrencyFromCents(priceInCents, currency, DEFAULT_PACIFIC_FRANC_TO_EURO_RATE, {
+        formatCurrencyFromCents(priceInCents, currency, DEFAULT_PACIFIC_FRANC_TO_EURO_RATE, {
           fractionDigits: 2,
         })
       ).toBe(expected)

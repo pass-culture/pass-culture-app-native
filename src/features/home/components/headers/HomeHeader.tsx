@@ -7,7 +7,7 @@ import { LocationWidgetDesktop } from 'features/location/components/LocationWidg
 import { ScreenOrigin } from 'features/location/enums'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -33,7 +33,7 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
-        const credit = parseCurrencyFromCents(
+        const credit = formatCurrencyFromCents(
           availableCredit.amount,
           currency,
           euroToPacificFrancRate

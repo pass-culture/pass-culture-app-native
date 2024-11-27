@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -28,7 +28,7 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
             dont
             {SPACE}
             <BodySecondary>
-              {parseCurrencyFromCents(
+              {formatCurrencyFromCents(
                 domainsCredit.digital.remaining,
                 currency,
                 euroToPacificFrancRate
@@ -44,7 +44,7 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
           dont
           {SPACE}
           <BodySecondary>
-            {parseCurrencyFromCents(
+            {formatCurrencyFromCents(
               domainsCredit.physical.remaining,
               currency,
               euroToPacificFrancRate

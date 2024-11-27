@@ -1,6 +1,6 @@
 import { string } from 'yup'
 
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
@@ -14,7 +14,7 @@ const maxPriceError = (
   euroToPacificFrancRate: number
 ) => {
   const initialCreditInCents = convertEuroToCents(Number(initialCreditInEuro))
-  const maxPrice = parseCurrencyFromCents(initialCreditInCents, currency, euroToPacificFrancRate)
+  const maxPrice = formatCurrencyFromCents(initialCreditInCents, currency, euroToPacificFrancRate)
   return `Le prix indiqué ne doit pas dépasser ${maxPrice}`
 }
 

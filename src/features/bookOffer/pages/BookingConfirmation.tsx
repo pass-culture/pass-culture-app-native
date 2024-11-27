@@ -9,7 +9,7 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
-import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -72,7 +72,7 @@ export function BookingConfirmation() {
 
   useShowReview()
 
-  const amountLeftText = `Il te reste encore ${useParseCurrencyFromCents(
+  const amountLeftText = `Il te reste encore ${useFormatCurrencyFromCents(
     amountLeft
   )} à dépenser sur le pass Culture.`
 

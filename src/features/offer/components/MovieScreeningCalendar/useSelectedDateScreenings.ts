@@ -8,7 +8,7 @@ import {
   MovieScreeningUserData,
 } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
@@ -38,7 +38,7 @@ const mapScreeningsToEventCardProps = (
     isUserLoggedIn,
   } = movieScreeningUserData ?? {}
 
-  const price = parseCurrencyFromCents(screening.price, currency, euroToPacificFrancRate).replace(
+  const price = formatCurrencyFromCents(screening.price, currency, euroToPacificFrancRate).replace(
     /\u00A0/g,
     ''
   )

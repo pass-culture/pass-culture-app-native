@@ -25,7 +25,7 @@ import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFul
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -178,7 +178,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   if (!selectedStock || typeof quantity !== 'number') return null
 
   const priceInCents = quantity * selectedStock.price
-  const formattedPriceWithEuro = parseCurrencyFromCents(
+  const formattedPriceWithEuro = formatCurrencyFromCents(
     priceInCents,
     currency,
     euroToPacificFrancRate

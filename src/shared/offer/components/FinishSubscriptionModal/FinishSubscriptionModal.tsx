@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { getAge } from 'shared/user/getAge'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,7 +24,7 @@ type Props = {
 export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal, from }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
-  const zero = useParseCurrencyFromCents(0)
+  const zero = useFormatCurrencyFromCents(0)
 
   const navigateToStepper = useCallback(() => {
     hideModal()

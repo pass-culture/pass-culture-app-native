@@ -2,7 +2,7 @@ import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export function getButtonState(bookingState: BookingState) {
@@ -49,7 +49,7 @@ export function getHourWording(
   euroToPacificFrancRate: number,
   hasSeveralPrices?: boolean
 ) {
-  const parsePrice = parseCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
+  const parsePrice = formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
     /\u00A0/g,
     ''
   )

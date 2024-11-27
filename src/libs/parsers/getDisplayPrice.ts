@@ -1,5 +1,5 @@
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type FormatPriceOptions = {
@@ -16,11 +16,11 @@ const getPricePerPlace = (
 
   if (uniquePrices.length === 1)
     // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
-    return `${parseCurrencyFromCents(uniquePrices[0], currency, euroToPacificFrancRate, options)}`
+    return `${formatCurrencyFromCents(uniquePrices[0], currency, euroToPacificFrancRate, options)}`
 
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
   // @ts-expect-error: because of noUncheckedIndexedAccess => SUPPRIMER CE COMMENTAIRE
-  return `Dès ${parseCurrencyFromCents(sortedPrices[0], currency, euroToPacificFrancRate, options)}`
+  return `Dès ${formatCurrencyFromCents(sortedPrices[0], currency, euroToPacificFrancRate, options)}`
 }
 
 export const getDisplayPrice = (

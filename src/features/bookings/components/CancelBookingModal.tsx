@@ -14,7 +14,7 @@ import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiar
 import { analytics } from 'libs/analytics'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -129,7 +129,7 @@ function getRefundRule(
 ) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
-    const price = parseCurrencyFromCents(booking.totalAmount, currency, euroToPacificFrancRate)
+    const price = formatCurrencyFromCents(booking.totalAmount, currency, euroToPacificFrancRate)
     if (isUserExBeneficiary(user)) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }

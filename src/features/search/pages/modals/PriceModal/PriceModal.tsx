@@ -15,7 +15,7 @@ import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState } from 'features/search/types'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { convertCentsToEuros, RoundingMode } from 'libs/parsers/pricesConversion'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -67,12 +67,12 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
   const formatAvailableCredit = convertCentsToEuros(availableCredit, RoundingMode.FLOORED)
-  const formatAvailableCreditWithCurrency = useParseCurrencyFromCents(availableCredit)
+  const formatAvailableCreditWithCurrency = useFormatCurrencyFromCents(availableCredit)
   const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
   const formatInitialCredit = convertCentsToEuros(initialCredit, RoundingMode.FLOORED)
-  const formatInitialCreditWithCurrency = useParseCurrencyFromCents(initialCredit)
+  const formatInitialCreditWithCurrency = useFormatCurrencyFromCents(initialCredit)
 
   const searchPriceSchema = makeSearchPriceSchema(
     String(formatInitialCredit),

@@ -11,7 +11,7 @@ import {
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { parseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
@@ -58,7 +58,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 checked={stock.id === bookingState.stockId}
                 disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                rightText={parseCurrencyFromCents(
+                rightText={formatCurrencyFromCents(
                   stock.price,
                   currency,
                   euroToPacificFrancRate

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { useParseCurrencyFromCents } from 'libs/parsers/parseCurrencyFromCents'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { Typo } from 'ui/theme'
 
 interface PriceLineProps {
@@ -45,8 +45,8 @@ export function PriceLine({
   shouldDisabledStyles = false,
   attributes,
 }: PriceLineProps) {
-  const totalPrice = useParseCurrencyFromCents(quantity * unitPrice)
-  const price = useParseCurrencyFromCents(unitPrice)
+  const totalPrice = useFormatCurrencyFromCents(quantity * unitPrice)
+  const price = useFormatCurrencyFromCents(unitPrice)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
