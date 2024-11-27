@@ -65,8 +65,8 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
-    () => {
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+    onSuccess: () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
         message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
@@ -74,13 +74,13 @@ export const OnboardingSubscription = () => {
       })
       replace(...homeNavConfig)
     },
-    () => {
+    onError: () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue, tu peux réessayer plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-    }
-  )
+    },
+  })
 
   const isThemeChecked = (theme: SubscriptionTheme) => subscribedThemes.includes(theme)
 

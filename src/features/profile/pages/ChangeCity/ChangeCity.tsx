@@ -31,8 +31,8 @@ export const ChangeCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-  const { mutate: updateProfile } = useUpdateProfileMutation(
-    (_, variables) => {
+  const { mutate: updateProfile } = useUpdateProfileMutation({
+    onSuccess: (_, variables) => {
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
         oldCity: user?.city ?? '',
@@ -44,13 +44,13 @@ export const ChangeCity = () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
-    () => {
+    onError: () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
         timeout: SNACK_BAR_TIME_OUT,
       })
-    }
-  )
+    },
+  })
 
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)

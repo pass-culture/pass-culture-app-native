@@ -60,8 +60,8 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
-  const { mutate: updateProfile } = useUpdateProfileMutation(
-    () => {
+  const { mutate: updateProfile } = useUpdateProfileMutation({
+    onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)
       if (!country) {
@@ -81,12 +81,10 @@ export const SetPhoneNumberWithoutValidation = () => {
       invalidateStepperInfoQuery()
       navigateForwardToStepper()
     },
-    (e) => {
-      if (e instanceof Error) {
-        setError('phoneNumber', { message: e.message })
-      }
-    }
-  )
+    onError: (error) => {
+      if (error instanceof Error) setError('phoneNumber', { message: error.message })
+    },
+  })
 
   const onSubmit = async ({ phoneNumber, countryId }: FormValues) => {
     const country = findCountry(countryId)
