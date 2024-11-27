@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -14,6 +15,7 @@ type Props = ColorMessageProps & {
   children?: React.ReactNode
   Icon?: FunctionComponent<AccessibleIcon>
   testID?: string
+  messageContainerStyle?: ViewStyle
 }
 
 export const GenericColoredBanner: FunctionComponent<Props> = ({
@@ -23,6 +25,7 @@ export const GenericColoredBanner: FunctionComponent<Props> = ({
   testID,
   children,
   backgroundColor,
+  messageContainerStyle,
 }) => {
   return (
     <Container testID={testID} backgroundColor={backgroundColor}>
@@ -31,7 +34,7 @@ export const GenericColoredBanner: FunctionComponent<Props> = ({
           <Icon />
         </IconContainer>
       ) : null}
-      <TextContainer>
+      <TextContainer style={messageContainerStyle}>
         <Caption textColor={textColor}>{message}</Caption>
         {children}
       </TextContainer>
