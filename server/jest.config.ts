@@ -14,5 +14,6 @@ export default async (): Promise<Config.InitialOptions> => {
     testRegex: '.(?:test|spec).(?:tsx?|js)$',
     testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/build/'],
     testEnvironment: '@happy-dom/jest-environment',
+    testEnvironmentOptions: { settings: { fetch: { disableSameOriginPolicy: true } } },
   }
 }
