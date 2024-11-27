@@ -5,32 +5,40 @@ export const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof u
 
 interface MockOptions {
   persist?: boolean
+  refetchUser?: jest.Mock
 }
 
-export const mockAuthContextWithUser = (user: UserProfileResponse, options?: MockOptions) => {
+export const mockAuthContextWithUser = (
+  user: UserProfileResponse,
+  { persist = false, refetchUser = jest.fn() }: MockOptions = {}
+) => {
   const contextFixture = {
     isLoggedIn: true,
     user,
     setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
+    refetchUser,
     isUserLoading: false,
   }
-  if (options?.persist) {
+  if (persist) {
     mockUseAuthContext.mockReturnValue(contextFixture)
   } else {
     mockUseAuthContext.mockReturnValueOnce(contextFixture)
   }
 }
 
-export const mockAuthContextWithoutUser = (options?: MockOptions) => {
+export const mockAuthContextWithoutUser = ({
+  persist = false,
+  refetchUser = jest.fn(),
+}: MockOptions = {}) => {
   const contextFixture = {
     isLoggedIn: false,
     user: undefined,
     setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
+    refetchUser,
     isUserLoading: false,
   }
-  if (options?.persist) {
+
+  if (persist) {
     mockUseAuthContext.mockReturnValue(contextFixture)
   } else {
     mockUseAuthContext.mockReturnValueOnce(contextFixture)
