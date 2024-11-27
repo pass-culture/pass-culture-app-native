@@ -1,4 +1,5 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -33,7 +34,7 @@ export const VenueMapFiltersModal: FunctionComponent<Props> = ({
           shouldDisplayCloseButton={shouldDisplayCloseButton}
         />
       </HeaderContainer>
-      <StyledView>{children}</StyledView>
+      <StyledScrollView>{children}</StyledScrollView>
     </React.Fragment>
   )
 }
@@ -43,7 +44,7 @@ const HeaderContainer = styled.View({
   width: '100%',
 })
 
-const StyledView = styled.View(({ theme }) => ({
+const StyledScrollView = styled(ScrollView)(({ theme }) => ({
   width: '100%',
   flex: 1,
   paddingHorizontal: theme.modal.spacing.MD,
