@@ -6,6 +6,7 @@ import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -25,6 +26,7 @@ export function useGTLPlaylists({
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const transformOfferHit = useTransformOfferHits()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
     queryKey: [gtlPlaylistsQueryKey, venue?.id, userLocation, selectedLocationMode],
@@ -60,7 +62,7 @@ export function useGTLPlaylists({
 
       return gtlPlaylistsConfig.map((item, index) => ({
         title: item.displayParameters.title,
-        offers: offers[index] ?? { hits: [] },
+        offers: { hits: offers[index]?.hits.map(transformOfferHit) ?? [] },
         layout: item.displayParameters.layout,
         minNumberOfOffers: item.displayParameters.minOffers,
         entryId: item.id,

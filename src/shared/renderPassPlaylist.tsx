@@ -6,7 +6,6 @@ import { GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
-import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -31,7 +30,6 @@ export const useRenderPassPlaylist = ({
 >): CustomListRenderItem<Offer> => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const currentRoute = useRoute<UseRouteType<typeof route>>()
@@ -41,7 +39,6 @@ export const useRenderPassPlaylist = ({
 
   return useCallback(
     ({ item, width, height, index }) => {
-      const hit = transformOfferHits(item)
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
 
       return (
@@ -51,12 +48,12 @@ export const useRenderPassPlaylist = ({
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
-          offerId={+hit.objectID}
-          name={hit.offer.name}
+          offerId={+item.objectID}
+          name={item.offer.name}
           date={formatDates(timestampsInMillis)}
-          isDuo={hit.offer.isDuo}
-          thumbUrl={hit.offer.thumbUrl}
-          price={getDisplayPrice(hit.offer.prices, currency, euroToPacificFrancRate)}
+          isDuo={item.offer.isDuo}
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           width={width}
           height={height}
           searchId={currentRoute.params?.searchId}
@@ -68,7 +65,6 @@ export const useRenderPassPlaylist = ({
       )
     },
     [
-      transformOfferHits,
       analyticsFrom,
       labelMapping,
       mapping,
