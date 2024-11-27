@@ -26,5 +26,8 @@ module.exports = {
     node: true,
     jest: true,
   },
-  rules,
+  rules: {
+    ...rules,
+    'local-rules/no-currency-symbols': 'off',
+  },
 }
