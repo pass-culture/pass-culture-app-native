@@ -3376,7 +3376,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "borderColor": "#696A6F",
                         "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderWidth": 2,
+                        "borderWidth": 1,
                         "height": 24,
                         "justifyContent": "center",
                         "width": 24,
@@ -3390,9 +3390,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       {
                         "alignSelf": "center",
                         "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
