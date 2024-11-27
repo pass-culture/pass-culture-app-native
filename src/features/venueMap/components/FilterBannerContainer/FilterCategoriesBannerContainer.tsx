@@ -8,7 +8,6 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
@@ -37,7 +36,7 @@ export const FilterCategoriesBannerContainer = () => {
   }
 
   return (
-    <Container accessibilityRole={AccessibilityRole.LIST}>
+    <Container>
       <FilterButton navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }} />
       {filterGroups.map(({ color, id, label }) => (
         <SingleFilterButton
@@ -47,7 +46,6 @@ export const FilterCategoriesBannerContainer = () => {
           label={label}
           isSelected={selectedGroups.includes(id)}
           onPress={() => handleCategoryPress(id)}
-          accessibilityRole={AccessibilityRole.LISTITEM}
         />
       ))}
     </Container>

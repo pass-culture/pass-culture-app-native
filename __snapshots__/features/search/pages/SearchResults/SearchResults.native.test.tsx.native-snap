@@ -529,7 +529,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "paddingLeft": 16,
                       "paddingRight": 16,
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -626,7 +625,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "paddingLeft": 16,
                       "paddingRight": 16,
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -723,7 +721,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "paddingLeft": 16,
                       "paddingRight": 16,
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -820,7 +817,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "paddingLeft": 16,
                       "paddingRight": 16,
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
@@ -909,7 +905,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       "paddingLeft": 16,
                       "paddingRight": 16,
                     },
-                    {},
                   ],
                   {
                     "opacity": 1,
