@@ -1,10 +1,14 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
+import { beneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 import { usePatchProfile } from './usePatchProfile'
+
+jest.mock('features/auth/context/AuthContext')
 
 const profile = {
   address: 'address',
@@ -27,6 +31,10 @@ const postSubscriptionProfileSpy = jest
   .mockImplementation()
 
 describe('usePatchProfile', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
+  })
+
   it('should call api when profile is complete', async () => {
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -71,5 +79,22 @@ describe('usePatchProfile', () => {
         state: { address: null },
       })
     })
+  })
+
+  it('should call refetchUser when query succeeds', async () => {
+    const refetchUserSpy = jest.fn()
+    mockAuthContextWithUser(beneficiaryUser, { refetchUser: refetchUserSpy })
+
+    const { result } = renderHook(() => usePatchProfile(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    const { mutateAsync: patchProfile } = result.current
+
+    await act(async () => {
+      await patchProfile(profile)
+    })
+
+    expect(refetchUserSpy).toHaveBeenCalledWith()
   })
 })
