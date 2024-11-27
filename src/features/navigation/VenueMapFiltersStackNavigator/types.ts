@@ -1,4 +1,6 @@
+import { FilterGroupKey } from 'features/venueMap/types'
+
 export type VenueMapFiltersModalStackParamList = {
   VenueMapFiltersList: undefined
-  VenueMapTypeFilter: undefined
+  VenueMapTypeFilter: { title: string; filterGroup: FilterGroupKey }
 }
