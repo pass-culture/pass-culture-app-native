@@ -47,6 +47,15 @@ export function App() {
     initAlgoliaAnalytics()
   }, [])
 
+  // Unregister service workers (to make sure all sw cache is removed)
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => registration.unregister())
+      })
+    }
+  }, [])
+
   return (
     <RemoteConfigProvider>
       <ReactQueryClientProvider>
