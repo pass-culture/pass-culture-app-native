@@ -81,8 +81,10 @@ export const SetPhoneNumberWithoutValidation = () => {
       invalidateStepperInfoQuery()
       navigateForwardToStepper()
     },
-    () => {
-      setError('phoneNumber', { message: 'Une erreur est survenue' })
+    (e) => {
+      if (e instanceof Error) {
+        setError('phoneNumber', { message: e.message })
+      }
     }
   )
 
