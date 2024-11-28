@@ -13,6 +13,7 @@ export type ScreensUsedByMarketing = Extract<
   | 'SignupForm'
   | 'ThematicHome'
   | 'Stepper'
+  | 'ThematicSearch'
 >
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
@@ -27,6 +28,7 @@ export type ParamConfig = {
     | 'offerNativeCategories'
     | 'date'
     | 'locationFilter'
+    | 'thematicSearchCategories'
   required?: boolean
   description: string
   serverValidator?: (value: unknown) => Promise<unknown>
@@ -132,6 +134,13 @@ export const SCREENS_CONFIG: {
   Profile: {},
   SignupForm: {},
   Stepper: {},
+  ThematicSearch: {
+    offerCategories: {
+      type: 'thematicSearchCategories',
+      required: true,
+      description: 'Categories',
+    },
+  },
 }
 
 type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content' | 'utm_gen'

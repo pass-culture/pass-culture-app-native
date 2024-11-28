@@ -2,14 +2,17 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferNativeCategoryChoices'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
+const user = userEvent.setup()
 
 describe('<OfferNativeCategoryChoices />', () => {
-  it('should call onChange with proper subcategory when toggling', () => {
+  jest.useFakeTimers()
+
+  it('should call onChange with proper subcategory when toggling', async () => {
     const onChange = jest.fn()
     render(
       <OfferNativeCategoryChoices
@@ -18,15 +21,15 @@ describe('<OfferNativeCategoryChoices />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Arts visuels'))
+    await user.press(screen.getByText('Arts visuels'))
 
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_VISUELS'])
 
-    fireEvent.press(screen.getByText('Matériels créatifs'))
+    await user.press(screen.getByText('Matériels créatifs'))
 
     expect(onChange).toHaveBeenNthCalledWith(2, ['MATERIELS_CREATIFS'])
 
-    fireEvent.press(screen.getByText('Matériels créatifs'))
+    await user.press(screen.getByText('Matériels créatifs'))
 
     expect(onChange).toHaveBeenNthCalledWith(3, [])
   })

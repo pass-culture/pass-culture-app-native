@@ -53,22 +53,37 @@ export const SearchCategoriesIllustrations = {
 
 export type Gradient = Array<ColorsEnum>
 
-type CategoryCriteria = {
-  [category in SearchGroupNameEnumv2]: {
-    icon: React.FC<AccessibleBicolorIcon>
-    illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
-    facetFilter: SearchGroupNameEnumv2
-    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
-    gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Gradient
-    position: category extends SearchGroupNameEnumv2.NONE ? undefined : number
-    // v2 App Design
-    fillColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
-    borderColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
-    textColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
-  }
+export type CategoryCriteria = {
+  icon: React.FC<AccessibleBicolorIcon>
+  illustration: React.FC<AccessibleIcon>
+  facetFilter: SearchGroupNameEnumv2
+  baseColor: ColorsEnum
+  gradients: Gradient
+  position: number
+  // v2 App Design
+  fillColor: ColorsEnum
+  borderColor: ColorsEnum
+  textColor: ColorsEnum
 }
 
-export const CATEGORY_CRITERIA: CategoryCriteria = {
+type CategoryCriteriaWithNone = {
+  [category in SearchGroupNameEnumv2]: category extends SearchGroupNameEnumv2.NONE
+    ? {
+        icon: React.FC<AccessibleBicolorIcon>
+        illustration: undefined
+        facetFilter: SearchGroupNameEnumv2
+        baseColor: undefined
+        gradients: undefined
+        position: undefined
+        // v2 App Design
+        fillColor: undefined
+        borderColor: undefined
+        textColor: undefined
+      }
+    : CategoryCriteria
+}
+
+export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
     illustration: undefined,

@@ -7,7 +7,7 @@ import {
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { LocationMode } from 'libs/location/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent, fireEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -22,17 +22,21 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
 describe('<DeeplinksGeneratorForm />', () => {
-  it('should render deeplink generator form with marketing as default utm_gen', () => {
+  jest.useFakeTimers()
+
+  it('should render deeplink generator form with marketing as default utm_gen', async () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
     const generateButton = screen.getByTestId('Générer le lien')
     const home = screen.getByText('Home')
     const profile = screen.getByText('Profile')
 
-    fireEvent.press(home)
+    await user.press(home)
 
-    fireEvent.press(generateButton)
+    await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
@@ -40,9 +44,9 @@ describe('<DeeplinksGeneratorForm />', () => {
       universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=marketing',
     })
 
-    fireEvent.press(profile)
+    await user.press(profile)
 
-    fireEvent.press(generateButton)
+    await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
@@ -51,7 +55,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     })
   })
 
-  it('should create url with utm params', () => {
+  it('should create url with utm params', async () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
 
@@ -59,7 +63,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     fireEvent.changeText(screen.getByPlaceholderText('utm_campaign'), 'campaign')
     fireEvent.changeText(screen.getByPlaceholderText('utm_source'), 'source')
     fireEvent.changeText(screen.getByPlaceholderText('utm_medium'), 'medium')
-    fireEvent.press(screen.getByText('Générer le lien'))
+    await user.press(screen.getByText('Générer le lien'))
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
@@ -69,15 +73,15 @@ describe('<DeeplinksGeneratorForm />', () => {
     })
   })
 
-  it('should add showResults param when the user generate a search link', () => {
+  it('should add showResults param when the user generate a search link', async () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
     const generateButton = screen.getByTestId('Générer le lien')
     const search = screen.getByText('SearchResults')
 
-    fireEvent.press(search)
+    await user.press(search)
 
-    fireEvent.press(generateButton)
+    await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
@@ -87,21 +91,21 @@ describe('<DeeplinksGeneratorForm />', () => {
     })
   })
 
-  it('should remove subcategory param when the user change the category and generate a search link', () => {
+  it('should remove subcategory param when the user change the category and generate a search link', async () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
 
     const search = screen.getByText('SearchResults')
-    fireEvent.press(search)
+    await user.press(search)
 
     let categoryButton = screen.getByText('Arts & loisirs créatifs')
-    fireEvent.press(categoryButton)
+    await user.press(categoryButton)
 
     const subcategoryButton = screen.getByText('Arts visuels')
-    fireEvent.press(subcategoryButton)
+    await user.press(subcategoryButton)
 
     let generateButton = screen.getByText('Générer le lien')
-    fireEvent.press(generateButton)
+    await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
@@ -111,16 +115,48 @@ describe('<DeeplinksGeneratorForm />', () => {
     })
 
     categoryButton = screen.getByText('Concerts & festivals')
-    fireEvent.press(categoryButton)
+    await user.press(categoryButton)
 
     generateButton = screen.getByText('Générer le lien')
-    fireEvent.press(generateButton)
+    await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
         'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%255Bobject%2520Object%255D%26from%3Ddeeplink%26offerCategories%3DCONCERTS_FESTIVALS%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/recherche/resultats?locationFilter=%5Bobject%20Object%5D&from=deeplink&offerCategories=CONCERTS_FESTIVALS&utm_gen=marketing',
+    })
+  })
+
+  it("should have disabled button when a category isn't selected in ThematicSearch", async () => {
+    const onCreate = jest.fn()
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+
+    const thematicSearch = screen.getByText('ThematicSearch')
+    await user.press(thematicSearch)
+    const generateButton = screen.getByText('Générer le lien')
+
+    expect(generateButton).toBeDisabled()
+  })
+
+  it('should generate link when a category is selected in ThematicSearch', async () => {
+    const onCreate = jest.fn()
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+
+    const thematicSearch = screen.getByText('ThematicSearch')
+    await user.press(thematicSearch)
+
+    const categoryButton = screen.getByText('Cinéma')
+    await user.press(categoryButton)
+
+    const generateButton = screen.getByText('Générer le lien')
+    await user.press(generateButton)
+
+    expect(onCreate).toHaveBeenNthCalledWith(1, {
+      firebaseLink:
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2FThematicSearch%3Ffrom%3Ddeeplink%26offerCategories%3DCINEMA%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink:
+        'https://webapp-v2.example.com/ThematicSearch?from=deeplink&offerCategories=CINEMA&utm_gen=marketing',
     })
   })
 })
@@ -137,7 +173,7 @@ describe('getDefaultScreenParams', () => {
     })
   })
 
-  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome'])(
+  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome', 'ThematicSearch'])(
     'should return an object with from param set to "deeplink" when screen is %s',
     (screen) => {
       const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
