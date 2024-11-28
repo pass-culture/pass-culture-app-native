@@ -40,10 +40,12 @@ mockUseVenuesFilter.mockReturnValue([])
 
 const mockAddVenuesFilters = jest.fn()
 const mockRemoveVenuesFilters = jest.fn()
+const mockSetVenuesFilters = jest.fn()
 const mockUseVenuesFilterActions = useVenuesFilterActions as jest.Mock
 mockUseVenuesFilterActions.mockReturnValue({
   addVenuesFilters: mockAddVenuesFilters,
   removeVenuesFilters: mockRemoveVenuesFilters,
+  setVenuesFilters: mockSetVenuesFilters,
 })
 
 const user = userEvent.setup()
@@ -298,5 +300,27 @@ describe('VenueMapTypeFilter', () => {
     await user.press(concertHallCheckbox)
 
     expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
+  })
+
+  it('should add only the current selection in venue type filter when pressing venue type checkbox (not checked) and all venue type group filtered', async () => {
+    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
+    render(
+      <VenueMapTypeFilter
+        navigation={mockNavigation}
+        route={{
+          key: 'VenueMapTypeFilter',
+          name: 'VenueMapTypeFilter',
+          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
+        }}
+      />
+    )
+
+    const concertHallCheckbox = screen.getByRole('checkbox', {
+      name: 'Musique - Salle de concerts',
+    })
+
+    await user.press(concertHallCheckbox)
+
+    expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
   })
 })

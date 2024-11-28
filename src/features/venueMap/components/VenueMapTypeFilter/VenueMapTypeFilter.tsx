@@ -23,7 +23,7 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
   const { title, filterGroup } = route.params
   const { navigate } = useNavigation<UseNavigationType>()
   const venueFilters = useVenuesFilter()
-  const { addVenuesFilters, removeVenuesFilters } = useVenuesFilterActions()
+  const { addVenuesFilters, removeVenuesFilters, setVenuesFilters } = useVenuesFilterActions()
 
   const onGoBack = () => {
     navigation.goBack()
@@ -35,6 +35,11 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
 
   const toggleFilters = (isChecked: boolean, filters: VenueTypeCodeKey[]) => {
     if (isChecked) {
+      if (hasAllFilters) {
+        // Only the current selection is filtered
+        setVenuesFilters(filters)
+        return
+      }
       addVenuesFilters(filters)
       return
     }
