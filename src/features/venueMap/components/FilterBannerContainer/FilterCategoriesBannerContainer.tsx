@@ -46,7 +46,9 @@ export const FilterCategoriesBannerContainer = () => {
 }
 
 const Container = styled(View)({
+  flex: 1,
   flexDirection: 'row',
+  alignItems: 'center',
   columnGap: getSpacing(1),
 })
 
