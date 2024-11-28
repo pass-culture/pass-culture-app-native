@@ -11,6 +11,10 @@ const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Hilarant » Vanity Fair 
 Voir plus de critiques en suivant le lien suivant :`
 
+const descriptionWithoutSpaceAfterDot = `Lorem ipsum dolor sit amet consectetur adipiscing elit.Sed non risus.`
+
+const descriptionWitUppercaseLink = `Lorem ipsum dolor sit amet consectetur adipiscing Elit.sed non risus.`
+
 const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
 
 const description2 = `https://www.google.com/ Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -31,8 +35,7 @@ describe('customFindUrlChunks', () => {
     })
 
     expect(highlightedChunks1).toHaveLength(1)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(description1.slice(0, highlightedChunks1[0].start)).toBe(description1WithoutUrl)
+    expect(description1.slice(0, highlightedChunks1[0]?.start)).toBe(description1WithoutUrl)
   })
 
   it('finds url chunks and mark them as highlited', () => {
@@ -55,7 +58,7 @@ describe('highlightLinks', () => {
           const parsedDescription = highlightLinks('perdu.com')
 
           expect(parsedDescription).toEqual([
-            <ExternalLink key="external-link-0" url="http://perdu.com" />,
+            <ExternalLink key="external-link-0" url="perdu.com" />,
           ])
         })
 
@@ -80,7 +83,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('www.penofchaos.com')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://www.penofchaos.com" />,
+          <ExternalLink key="external-link-0" url="www.penofchaos.com" />,
         ])
       })
 
@@ -88,7 +91,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us/418')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us/418" />,
+          <ExternalLink key="external-link-0" url="httpstat.us/418" />,
         ])
       })
 
@@ -96,7 +99,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us/200?sleep=500')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us/200?sleep=500" />,
+          <ExternalLink key="external-link-0" url="httpstat.us/200?sleep=500" />,
         ])
       })
 
@@ -104,7 +107,7 @@ describe('highlightLinks', () => {
         const parsedDescription = highlightLinks('httpstat.us#anchor')
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://httpstat.us#anchor" />,
+          <ExternalLink key="external-link-0" url="httpstat.us#anchor" />,
         ])
       })
     })
@@ -118,10 +121,7 @@ describe('highlightLinks', () => {
 
           expect(parsedDescription).toEqual([
             `${description1WithoutUrl} `,
-            <ExternalLink
-              key="external-link-1"
-              url="http://www.penofchaos.com/warham/donjon.htm"
-            />,
+            <ExternalLink key="external-link-1" url="www.penofchaos.com/warham/donjon.htm" />,
           ])
         })
 
@@ -139,12 +139,9 @@ describe('highlightLinks', () => {
           const parsedDescription = highlightLinks(description)
 
           expect(parsedDescription).toEqual([
-            <ExternalLink
-              key="external-link-0"
-              url="http://www.penofchaos.com/warham/donjon.htm"
-            />,
+            <ExternalLink key="external-link-0" url="www.penofchaos.com/warham/donjon.htm" />,
             '\n',
-            <ExternalLink key="external-link-2" url="http://perdu.com" />,
+            <ExternalLink key="external-link-2" url="perdu.com" />,
           ])
         })
       })
@@ -171,7 +168,7 @@ describe('highlightLinks', () => {
         )
 
         expect(parsedDescription).toEqual([
-          <ExternalLink key="external-link-0" url="http://www.penofchaos.com/warham/donjon.htm" />,
+          <ExternalLink key="external-link-0" url="www.penofchaos.com/warham/donjon.htm" />,
           ` ${description1WithoutUrl}`,
         ])
       })
@@ -181,6 +178,18 @@ describe('highlightLinks', () => {
       const parsedDescription = highlightLinks('test@passculture.app')
 
       expect(parsedDescription).toEqual(['test@passculture.app'])
+    })
+
+    it('exclude uppercase after dot', () => {
+      const parsedDescription = highlightLinks(descriptionWithoutSpaceAfterDot)
+
+      expect(parsedDescription).toEqual([descriptionWithoutSpaceAfterDot])
+    })
+
+    it('exclude uppercase at link start', () => {
+      const parsedDescription = highlightLinks(descriptionWitUppercaseLink)
+
+      expect(parsedDescription).toEqual([descriptionWitUppercaseLink])
     })
   })
 })

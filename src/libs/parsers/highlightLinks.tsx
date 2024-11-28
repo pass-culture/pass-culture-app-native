@@ -7,7 +7,7 @@ type ParsedDescription = Array<string | React.ReactNode>
 
 const externalNavRegex = new RegExp(
   /((^|\s)|https?:\/\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(\s|$)/,
-  'gmi'
+  'gm'
 )
 
 export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[] => {
@@ -15,12 +15,10 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   const chunks = []
   let match: RegExpExecArray | null
   while ((match = externalNavRegex.exec(textToHighlight))) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const startWithSpace = /\s/.test(textToHighlight[match.index])
+    const startWithSpace = /\s/.test(textToHighlight[match.index] || '')
     const startIndexSpaceAdjustment = startWithSpace ? 1 : 0
     const start = match.index + startIndexSpaceAdjustment
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1])
+    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1] || '')
     const endIndexSpaceAdjustment = endWithSpace ? 1 : 0
     const end = externalNavRegex.lastIndex - endIndexSpaceAdjustment
     // We do not return zero-length matches
@@ -40,7 +38,7 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
 const normalizeURL = (partialURL: string): string => {
   if (partialURL.startsWith('http://')) return partialURL
   if (partialURL.startsWith('https://')) return partialURL
-  return `http://${partialURL}`
+  return `${partialURL}`
 }
 
 export const highlightLinks = (description: string): ParsedDescription => {
