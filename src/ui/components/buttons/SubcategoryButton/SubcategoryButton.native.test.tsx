@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
@@ -26,7 +25,7 @@ describe('<SubcategoryButton/>', () => {
           label="Mangas"
           backgroundColor={theme.colors.deepPink}
           borderColor={theme.colors.deepPinkDark}
-          nativeCategory={BooksNativeCategoriesEnum.MANGAS}
+          onPress={jest.fn()}
         />
       )
     )

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FlatList, ScrollView, ScrollViewProps, StyleSheet, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { NativeCategoryEnum } from 'features/search/types'
 import {
   SubcategoryButton,
   SubcategoryButtonProps,
@@ -13,25 +14,31 @@ import { getSpacing, Spacer } from 'ui/theme'
 type StyledScrollViewProps = ScrollViewProps & {
   contentContainerStyle?: ViewStyle
 }
-
-type Props = {
-  subcategoryButtonContent: SubcategoryButtonProps[]
-  scrollViewProps?: StyledScrollViewProps
+export type SubcategoryButtonItem = Omit<SubcategoryButtonProps, 'onPress'> & {
+  nativeCategory: NativeCategoryEnum
 }
 
-export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonContent }) => {
+type SubcategoryButtonListProps = {
+  subcategoryButtonContent: SubcategoryButtonItem[]
+  onPress: (nativeCategory: NativeCategoryEnum) => void
+}
+
+export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
+  subcategoryButtonContent,
+  onPress,
+}) => {
   const [webViewWidth, setWebViewWidth] = useState<number>(0)
 
   const { isDesktopViewport } = useTheme()
   const numColumns = Math.max(Math.floor(webViewWidth / SUBCATEGORY_BUTTON_WIDTH), 1)
 
-  const renderItem = ({ item }: { item: SubcategoryButtonProps; index: number }) => (
+  const renderItem = ({ item }: { item: SubcategoryButtonItem; index: number }) => (
     <React.Fragment>
       <SubcategoryButton
         label={item.label}
         backgroundColor={item.backgroundColor}
         borderColor={item.borderColor}
-        nativeCategory={item.nativeCategory}
+        onPress={() => onPress(item.nativeCategory)}
       />
       <Spacer.Row numberOfSpaces={4} />
     </React.Fragment>
@@ -44,7 +51,7 @@ export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonConten
           const { width } = event.nativeEvent.layout
           setWebViewWidth(width)
         }}>
-        <FlatList<SubcategoryButtonProps>
+        <FlatList
           listAs="ul"
           itemAs="li"
           key={numColumns}
@@ -69,11 +76,19 @@ export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonConten
           <React.Fragment key={JSON.stringify([topContent, bottomContent])}>
             <View>
               <Spacer.Row numberOfSpaces={4} />
-              {topContent ? <SubcategoryButton {...topContent} /> : null}
+              {topContent ? (
+                <SubcategoryButton
+                  {...topContent}
+                  onPress={() => onPress(topContent.nativeCategory)}
+                />
+              ) : null}
               {bottomContent ? (
                 <React.Fragment>
                   <Spacer.Column numberOfSpaces={4} />
-                  <SubcategoryButton {...bottomContent} />
+                  <SubcategoryButton
+                    {...bottomContent}
+                    onPress={() => onPress(bottomContent.nativeCategory)}
+                  />
                 </React.Fragment>
               ) : null}
             </View>
