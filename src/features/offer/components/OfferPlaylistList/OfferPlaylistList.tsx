@@ -10,9 +10,11 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -41,6 +43,9 @@ export function OfferPlaylistList({
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
+
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
     useLogPlaylist({
@@ -113,6 +118,8 @@ export function OfferPlaylistList({
                 offer,
                 categoryMapping,
                 labelMapping,
+                currency,
+                euroToPacificFrancRate,
                 apiRecoParams: playlist.apiRecoParams,
                 variant: isNewOfferTileDisplayed ? 'new' : 'default',
               })}

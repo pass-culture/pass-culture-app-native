@@ -5,7 +5,6 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import {
@@ -13,7 +12,7 @@ import {
   CategoryIdMapping,
   SubcategoryOfferLabelMapping,
 } from 'libs/subcategories/types'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistItemProps = {
@@ -21,6 +20,8 @@ type OfferPlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   variant: OfferTileProps['variant']
+  currency: Currency
+  euroToPacificFrancRate: number
   artistName?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
@@ -38,13 +39,12 @@ export const OfferPlaylistItem = ({
   categoryMapping,
   labelMapping,
   variant,
+  currency,
+  euroToPacificFrancRate,
   artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
 }: OfferPlaylistItemProps) => {
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
     return (
