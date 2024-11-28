@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -11,7 +12,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
@@ -38,7 +39,11 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+
 describe('HorizontalOfferTile component', () => {
+  jest.useFakeTimers()
+
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
@@ -49,7 +54,7 @@ describe('HorizontalOfferTile component', () => {
       analyticsParams: mockAnalyticsParams,
     })
 
-    fireEvent.press(screen.getByRole('link'))
+    user.press(screen.getByRole('link'))
 
     await screen.findByText(mockOffer.offer.name)
 
@@ -66,7 +71,7 @@ describe('HorizontalOfferTile component', () => {
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
-    fireEvent.press(screen.getByRole('link'))
+    user.press(screen.getByRole('link'))
 
     await screen.findByText(mockOffer.offer.name)
 
@@ -87,7 +92,7 @@ describe('HorizontalOfferTile component', () => {
     })
 
     const hitComponent = screen.getByRole('link')
-    fireEvent.press(hitComponent)
+    user.press(hitComponent)
 
     await screen.findByText(mockOffer.offer.name)
 
@@ -129,7 +134,7 @@ describe('HorizontalOfferTile component', () => {
         analyticsParams: mockAnalyticsParams,
       })
 
-      fireEvent.press(screen.getByRole('link'))
+      user.press(screen.getByRole('link'))
 
       await screen.findByText(mockOffer.offer.name)
 
@@ -142,7 +147,7 @@ describe('HorizontalOfferTile component', () => {
         analyticsParams: mockAnalyticsParams,
       })
 
-      fireEvent.press(screen.getByRole('link'))
+      user.press(screen.getByRole('link'))
 
       await screen.findByText(mockOffer.offer.name)
 
@@ -151,6 +156,10 @@ describe('HorizontalOfferTile component', () => {
   })
 
   describe('When offer is a `SEANCE_CINE`', () => {
+    const OCTOBER_5_2020 = 1601856000
+    const NOVEMBER_1_2020 = new Date(2020, 10, 1) // This date is used as now
+    const NOVEMBER_12_2020 = 1605139200
+
     const defaultMovieName = 'La petite sirène'
     const defaultMovieScreeningOffer = {
       ...mockOffer.offer,
@@ -158,14 +167,16 @@ describe('HorizontalOfferTile component', () => {
       name: defaultMovieName,
     }
 
-    it('should format releaseDate when a valid one is given', async () => {
-      const validReleaseDate = 1722988800 // 7 août 2024
+    beforeEach(() => {
+      mockdate.set(NOVEMBER_1_2020)
+    })
 
+    it('should format releaseDate when release date is before now', async () => {
       const movieScreeningOfferWithValidReleaseDate = {
         ...mockOffer,
         offer: {
           ...defaultMovieScreeningOffer,
-          releaseDate: validReleaseDate,
+          releaseDate: OCTOBER_5_2020,
         },
       }
 
@@ -176,11 +187,30 @@ describe('HorizontalOfferTile component', () => {
 
       await screen.findByText(defaultMovieName)
 
-      expect(await screen.findByText('Sorti le 7 août 2024')).toBeOnTheScreen()
+      expect(await screen.findByText('Sorti le 5 octobre 2020')).toBeOnTheScreen()
+    })
+
+    it('should format releaseDate when release date is after now', async () => {
+      const movieScreeningOfferWithValidReleaseDate = {
+        ...mockOffer,
+        offer: {
+          ...defaultMovieScreeningOffer,
+          releaseDate: NOVEMBER_12_2020,
+        },
+      }
+
+      renderHorizontalOfferTile({
+        offer: movieScreeningOfferWithValidReleaseDate,
+        analyticsParams: mockAnalyticsParams,
+      })
+
+      await screen.findByText(defaultMovieName)
+
+      expect(await screen.findByText('Dès le 12 novembre 2020')).toBeOnTheScreen()
     })
 
     it('should not format releaseDate when an invalid one is given', async () => {
-      const invalidReleaseDate = '1722988800'
+      const invalidReleaseDate = '1601856000'
       const movieScreeningOfferWithInvalidReleaseDate = {
         ...mockOffer,
         offer: {
@@ -196,7 +226,7 @@ describe('HorizontalOfferTile component', () => {
 
       await screen.findByText(defaultMovieName)
 
-      expect(screen.queryByText('Sorti le 7 août 2024')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Sorti le 5 octobre 2020')).not.toBeOnTheScreen()
     })
 
     it('should format dates when no releaseDate is given', async () => {
@@ -204,7 +234,7 @@ describe('HorizontalOfferTile component', () => {
         ...mockOffer,
         offer: {
           ...defaultMovieScreeningOffer,
-          dates: [1732721400], // 27 novembre 2024
+          dates: [NOVEMBER_12_2020],
         },
       }
 
@@ -215,7 +245,7 @@ describe('HorizontalOfferTile component', () => {
 
       await screen.findByText(defaultMovieName)
 
-      expect(await screen.findByText('27 novembre 2024')).toBeOnTheScreen()
+      expect(await screen.findByText('12 novembre 2020')).toBeOnTheScreen()
     })
   })
 })
