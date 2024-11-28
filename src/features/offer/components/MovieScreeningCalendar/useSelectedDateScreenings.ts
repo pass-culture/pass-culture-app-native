@@ -146,9 +146,7 @@ export const useSelectedDateScreening = (
           return convertToMinutes(a.title) - convertToMinutes(b.title)
         })
     },
-    // euroToPacificFrancRate cause multiple render
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedScreeningStock, currency, isExternalBookingsDisabled]
+    [selectedScreeningStock, currency, euroToPacificFrancRate, isExternalBookingsDisabled]
   )
 
   return {

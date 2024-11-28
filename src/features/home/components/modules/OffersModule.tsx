@@ -131,12 +131,11 @@ export const OffersModule = (props: OffersModuleProps) => {
         />
       )
     },
-    // euroToPacificFrancRate cause multiple render
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       labelMapping,
       mapping,
       currency,
+      euroToPacificFrancRate,
       user?.isBeneficiary,
       moduleName,
       moduleId,
