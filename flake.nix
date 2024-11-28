@@ -14,7 +14,6 @@
         in
         pkgs.mkShellNoCC {
           packages = [
-            pkgs.nix # ensure to have always the same version
             pkgs.devbox
           ];
         };
