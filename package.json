@@ -83,7 +83,6 @@
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:perf": "NODE_ENV=performance NODE_OPTIONS='--no-experimental-fetch' TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
     "test:perf:update": "yarn test:perf --baseline",
-    "test:sw": "node scripts/service-worker-test.mjs",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:types:noUncheckedIndexedAccess": "grep --recursive --line-number ./src --regexp '// @ts-expect-error: because of noUncheckedIndexedAccess' | awk -F: '{print $1\":\"$2}' | sort",
@@ -349,19 +348,7 @@
     "typescript": "5.0.4",
     "url-loader": "^4.1.1",
     "vite": "^5.3.1",
-    "vite-plugin-html": "^3.2.2",
-    "workbox-background-sync": "^6.1.5",
-    "workbox-broadcast-update": "^6.1.5",
-    "workbox-cacheable-response": "^6.1.5",
-    "workbox-core": "^6.1.5",
-    "workbox-expiration": "^6.1.5",
-    "workbox-google-analytics": "^6.1.5",
-    "workbox-navigation-preload": "^7.1.0",
-    "workbox-precaching": "^6.1.5",
-    "workbox-range-requests": "^6.1.5",
-    "workbox-routing": "^6.1.5",
-    "workbox-strategies": "^6.1.5",
-    "workbox-streams": "^6.1.5"
+    "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
     "@react-navigation/core": "6.2.2",
