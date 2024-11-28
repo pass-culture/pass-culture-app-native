@@ -4,6 +4,7 @@ import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
+import { Provider } from 'react-redux'
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
@@ -41,6 +42,7 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { initStore } from 'libs/reduxStore/store'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { theme } from 'theme'
@@ -105,7 +107,9 @@ const App: FunctionComponent = function () {
                                             <OnboardingWrapper>
                                               <OfflineModeContainer>
                                                 <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
+                                                  <Provider store={initStore({})}>
+                                                    <AppNavigationContainer />
+                                                  </Provider>
                                                 </ScreenErrorProvider>
                                               </OfflineModeContainer>
                                             </OnboardingWrapper>
