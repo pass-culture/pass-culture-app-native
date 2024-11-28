@@ -3,7 +3,9 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -13,6 +15,8 @@ type BeneficiaryCeilingsProps = {
 
 export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null
   return (
@@ -23,7 +27,13 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
           <Typo.Body testID="domains-credit-digital">
             dont
             {SPACE}
-            <BodySecondary>{parseCurrencyFromCents(domainsCredit.digital.remaining)}</BodySecondary>
+            <BodySecondary>
+              {formatCurrencyFromCents(
+                domainsCredit.digital.remaining,
+                currency,
+                euroToPacificFrancRate
+              )}
+            </BodySecondary>
             {SPACE}
             en offres numériques.
           </Typo.Body>
@@ -33,7 +43,13 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
         <Typo.Body testID="domains-credit-physical">
           dont
           {SPACE}
-          <BodySecondary>{parseCurrencyFromCents(domainsCredit.physical.remaining)}</BodySecondary>
+          <BodySecondary>
+            {formatCurrencyFromCents(
+              domainsCredit.physical.remaining,
+              currency,
+              euroToPacificFrancRate
+            )}
+          </BodySecondary>
           {SPACE}
           en offres physiques.
         </Typo.Body>

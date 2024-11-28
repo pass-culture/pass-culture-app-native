@@ -11,7 +11,19 @@ const firebase = {
   }),
   firestore: () => ({
     settings: () => {},
-    enablePersistence: () => true
+    enablePersistence: () => true,
+    collection: () => ({
+      doc: () => ({
+        get: () => {},
+        set: () => {},
+        update: () => {},
+        delete: () => {},
+        onSnapshot: (callback) => {
+          callback({ data: () => {}, get: () => {} })
+          return () => {}
+        },
+      }),
+    }),
   }),
 }
 

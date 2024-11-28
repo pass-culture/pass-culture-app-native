@@ -5,15 +5,17 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+
 jest.setTimeout(20000) // to avoid exceeded timeout
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
 jest.mock('features/offer/api/useOffer', () => ({
@@ -64,6 +66,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
         params: {},
         results: [],
@@ -86,3 +89,7 @@ describe('<Offer/>', () => {
     })
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

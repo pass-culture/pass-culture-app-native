@@ -12,9 +12,11 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -47,7 +49,15 @@ export const Favorite: React.FC<Props> = (props) => {
     lat: offer.coordinates?.latitude,
     lng: offer.coordinates?.longitude,
   })
-  const displayPrice = getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+
+  const displayPrice = getFavoriteDisplayPrice({
+    currency,
+    euroToPacificFrancRate,
+    startPrice: offer.startPrice,
+    price: offer.price,
+  })
   const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)

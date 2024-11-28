@@ -8,8 +8,12 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -25,6 +29,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('OnboardingAgeInformation', () => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
   it.each(AGES)('should render correctly for %s-year-old', (age) => {
     renderOnboardingAgeInformation({ age })
 
@@ -127,4 +135,8 @@ const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
     'OnboardingAgeInformation'
   >
   return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

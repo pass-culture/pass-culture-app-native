@@ -4,11 +4,15 @@ import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/g
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { CineBlock, CineBlockProps } from './CineBlock'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('features/offer/components/MoviesScreeningCalendar/MovieCalendarContext', () => ({
   useMovieCalendar: jest.fn(),
@@ -41,6 +45,7 @@ const mockOnPressOfferCTA = jest.fn()
 
 describe('CineBlock', () => {
   beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
@@ -134,4 +139,8 @@ const renderCineBlock = (props: Partial<CineBlockProps>) => {
   return render(<CineBlock {...props} offer={mockOffer} />, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
+}
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

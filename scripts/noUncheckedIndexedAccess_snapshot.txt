@@ -30,7 +30,7 @@
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:24
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
-./src/features/home/components/modules/OffersModule.tsx:74
+./src/features/home/components/modules/OffersModule.tsx:78
 ./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
@@ -91,12 +91,10 @@
 ./src/libs/parsers/formatDates.ts:183
 ./src/libs/parsers/formatDates.ts:63
 ./src/libs/parsers/formatDates.ts:65
-./src/libs/parsers/getDisplayPrice.ts:28
-./src/libs/parsers/getDisplayPrice.ts:32
+./src/libs/parsers/highlightLinks.native.test.tsx:34
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
-./src/libs/parsers/tests/highlightLinks.test.tsx:34
 ./src/libs/place/fetchPlaces.ts:8
 ./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6

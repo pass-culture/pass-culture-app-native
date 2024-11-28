@@ -53,7 +53,7 @@ export const NewCaledonia = () => {
           {user ? (user.postalCode ? `${user.postalCode}` : 'Non renseigné') : 'Non connecté'}
         </TypoDS.Title3>
         <TypoDS.Body>Devise renvoyé par l’API&nbsp;:</TypoDS.Body>
-        <TypoDS.Title3>{user ? `${user.currency}` : 'Non connecté'}</TypoDS.Title3>
+        <TypoDS.Title3>{user?.currency ? `${user.currency}` : 'Non connecté'}</TypoDS.Title3>
         <StyledSeparator />
         <TypoDS.Body>Devise affichée à l’utilisateur&nbsp;:</TypoDS.Body>
         <TypoDS.Title3>{currency}</TypoDS.Title3>

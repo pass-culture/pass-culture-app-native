@@ -4,8 +4,10 @@ import styled from 'styled-components/native'
 
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
@@ -28,6 +30,8 @@ export const VenueMapOfferPlaylist = ({
   onPressMore,
   playlistType,
 }: VenueMapOfferPlaylistProps) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -42,7 +46,7 @@ export const VenueMapOfferPlaylist = ({
         offerLocation={item._geoloc}
         analyticsFrom="venueMap"
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}
         variant="new"
@@ -50,7 +54,7 @@ export const VenueMapOfferPlaylist = ({
         playlistType={playlistType}
       />
     ),
-    [labelMapping, mapping, playlistType]
+    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType]
   )
 
   return (

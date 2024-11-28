@@ -13,6 +13,8 @@ import {
   getStockWithCategory,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 describe('bookingHelpers', () => {
   describe('getButtonState', () => {
@@ -147,25 +149,53 @@ describe('bookingHelpers', () => {
 
   describe('getHourWording', () => {
     it('should return "crédit insuffisant" when user has not enough credit', () => {
-      const hourWording = getHourWording(2000, true, false, true)
+      const hourWording = getHourWording(
+        2000,
+        true,
+        false,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+        true
+      )
 
       expect(hourWording).toEqual('crédit insuffisant')
     })
 
-    it('should return "dès 20\u00a0€" when offer is bookable, its price is 20 and has several prices', () => {
-      const hourWording = getHourWording(2000, true, true, true)
+    it('should return "dès 20€" when offer is bookable, its price is 20 and has several prices', () => {
+      const hourWording = getHourWording(
+        2000,
+        true,
+        true,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+        true
+      )
 
-      expect(hourWording).toEqual('dès 20\u00a0€')
+      expect(hourWording).toEqual('dès 20€')
     })
 
-    it('should return "20\u00a0€" when offer is bookable, its price is 20 and has not several prices', () => {
-      const hourWording = getHourWording(2000, true, true, false)
+    it('should return "20€" when offer is bookable, its price is 20 and has not several prices', () => {
+      const hourWording = getHourWording(
+        2000,
+        true,
+        true,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+        false
+      )
 
-      expect(hourWording).toEqual('20\u00a0€')
+      expect(hourWording).toEqual('20€')
     })
 
     it('should return "épuisé" when offer is not bookable', () => {
-      const hourWording = getHourWording(2000, false, true, false)
+      const hourWording = getHourWording(
+        2000,
+        false,
+        true,
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+        false
+      )
 
       expect(hourWording).toEqual('épuisé')
     })

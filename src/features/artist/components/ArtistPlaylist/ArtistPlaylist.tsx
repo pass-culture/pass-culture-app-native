@@ -5,8 +5,10 @@ import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
@@ -23,6 +25,8 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   artistName,
   items,
 }) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
@@ -36,6 +40,8 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
         offer,
         categoryMapping,
         labelMapping,
+        currency,
+        euroToPacificFrancRate,
         variant: 'new',
         analyticsFrom: 'artist',
         artistName,

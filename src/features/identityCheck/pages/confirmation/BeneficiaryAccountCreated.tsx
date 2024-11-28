@@ -8,7 +8,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
@@ -31,7 +31,7 @@ export function BeneficiaryAccountCreated() {
   const { showShareAppModal } = useShareAppContext()
   const { actions } = useCreditStore()
 
-  const subtitle = `${parseCurrencyFromCents(maxPriceInCents)} viennent d’être crédités sur ton compte pass Culture`
+  const subtitle = `${useFormatCurrencyFromCents(maxPriceInCents)} viennent d’être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.'
     : 'Tu as deux ans pour profiter de ton budget.'
@@ -56,7 +56,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount>{parseCurrencyFromCents(maxPriceInCents)}</Amount>
+        <Amount>{useFormatCurrencyFromCents(maxPriceInCents)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>

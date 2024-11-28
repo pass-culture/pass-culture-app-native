@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { getAge } from 'shared/user/getAge'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,6 +24,7 @@ type Props = {
 export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal, from }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
+  const zero = useFormatCurrencyFromCents(0)
 
   const navigateToStepper = useCallback(() => {
     hideModal()
@@ -64,7 +65,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
       {isUserTransitioningTo18 ? (
         <React.Fragment>
           <Typo.CaptionNeutralInfo>
-            Ton crédit précédent a été remis à {parseCurrencyFromCents(0)}.
+            Ton crédit précédent a été remis à {zero}.
           </Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>

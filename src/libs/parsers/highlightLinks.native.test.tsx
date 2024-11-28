@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
-import { customFindUrlChunks, highlightLinks } from '../highlightLinks'
+import { customFindUrlChunks, highlightLinks } from './highlightLinks'
 
 const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération

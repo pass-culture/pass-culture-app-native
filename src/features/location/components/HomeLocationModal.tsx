@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
+import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics'
@@ -23,8 +24,6 @@ interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
 }
-
-const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const locationStateProps = useLocationState({
@@ -57,11 +56,10 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
   } = locationStateProps
   const { selectLocationMode } = useLocationMode({
     dismissModal,
-    ...locationStateProps,
     onSubmit: onSubmitPlace,
     onClose,
     shouldDirectlyValidate: true,
-    setPlaceGlobally,
+    ...locationStateProps,
   })
 
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target

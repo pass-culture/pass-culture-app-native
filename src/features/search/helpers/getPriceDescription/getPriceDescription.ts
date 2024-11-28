@@ -1,7 +1,13 @@
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
-export const getPriceDescription = (minPriceInEuro?: number, maxPriceInEuro?: number) => {
+export const getPriceDescription = (
+  currency: Currency,
+  euroToPacificFrancRate: number,
+  minPriceInEuro?: number,
+  maxPriceInEuro?: number
+) => {
   if (
     (minPriceInEuro === 0 && maxPriceInEuro === 0) ||
     (minPriceInEuro === undefined && maxPriceInEuro === 0)
@@ -10,15 +16,15 @@ export const getPriceDescription = (minPriceInEuro?: number, maxPriceInEuro?: nu
   }
 
   if (minPriceInEuro && minPriceInEuro > 0 && maxPriceInEuro && maxPriceInEuro > 0) {
-    return `de ${parseCurrencyFromCents(convertEuroToCents(minPriceInEuro))} à ${parseCurrencyFromCents(convertEuroToCents(maxPriceInEuro))}`
+    return `de ${formatCurrencyFromCents(convertEuroToCents(minPriceInEuro), currency, euroToPacificFrancRate)} à ${formatCurrencyFromCents(convertEuroToCents(maxPriceInEuro), currency, euroToPacificFrancRate)}`
   }
 
   if (minPriceInEuro && minPriceInEuro >= 0) {
-    return `${parseCurrencyFromCents(convertEuroToCents(minPriceInEuro))} et plus`
+    return `${formatCurrencyFromCents(convertEuroToCents(minPriceInEuro), currency, euroToPacificFrancRate)} et plus`
   }
 
   if (maxPriceInEuro && maxPriceInEuro >= 0) {
-    return `${parseCurrencyFromCents(convertEuroToCents(maxPriceInEuro))} et moins`
+    return `${formatCurrencyFromCents(convertEuroToCents(maxPriceInEuro), currency, euroToPacificFrancRate)} et moins`
   }
 
   return ''

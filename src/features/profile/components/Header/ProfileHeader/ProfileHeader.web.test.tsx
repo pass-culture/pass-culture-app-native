@@ -4,10 +4,12 @@ import React from 'react'
 import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils/web'
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -50,6 +52,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockdate.set('2021-07-01T00:00:00Z')
   })
 
@@ -65,3 +68,7 @@ describe('ProfileHeader', () => {
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

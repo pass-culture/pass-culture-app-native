@@ -1,6 +1,6 @@
 import { EiffelTourCoordinates } from 'libs/location/geolocation/getGeolocPosition/tests.utils'
 
-import { getHumanizeRelativeDistance, formatDistance } from '../formatDistance'
+import { getHumanizeRelativeDistance, formatDistance } from './formatDistance'
 
 // Distance using https://www.sunearthtools.com/fr/tools/distance.php
 // Center (EiffelTourCoordinates): {latitude: 48.85, longitude: 2.29 }

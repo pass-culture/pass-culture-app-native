@@ -8,11 +8,13 @@ import { MovieCalendarProvider } from 'features/offer/components/MoviesScreening
 import { VenueCalendar } from 'features/offer/components/MoviesScreeningCalendar/VenueCalendar'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -27,6 +29,8 @@ type Props = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
@@ -52,7 +56,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         venueId={item.venue?.id}
         width={width}
         height={height}

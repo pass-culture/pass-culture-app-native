@@ -6,6 +6,8 @@ import { FilterBehaviour } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useModal } from 'ui/components/modals/useModal'
 import { Code } from 'ui/svg/icons/Code'
 
@@ -14,6 +16,9 @@ type Props = {
 }
 
 export const Price = ({ onClose }: Props) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+
   const { searchState } = useSearch()
   const {
     visible: searchPriceModalVisible,
@@ -33,7 +38,7 @@ export const Price = ({ onClose }: Props) => {
       <FilterRow
         icon={Code}
         title="Prix"
-        description={getPriceDescription(minPrice, maxPrice)}
+        description={getPriceDescription(currency, euroToPacificFrancRate, minPrice, maxPrice)}
         onPress={onPress}
       />
       <PriceModal

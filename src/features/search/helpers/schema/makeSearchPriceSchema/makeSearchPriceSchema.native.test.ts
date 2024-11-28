@@ -5,7 +5,9 @@ import {
   minPriceError,
   makeSearchPriceSchema,
 } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 describe('search price schema', () => {
   const initialValues = {
@@ -17,7 +19,9 @@ describe('search price schema', () => {
     it('when input less than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '10' }
       const result = await makeSearchPriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(values)
 
       expect(result).toEqual(values)
@@ -26,7 +30,9 @@ describe('search price schema', () => {
     it('when input equal than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '20' }
       const result = await makeSearchPriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(values)
 
       expect(result).toEqual(values)
@@ -35,7 +41,9 @@ describe('search price schema', () => {
     it('when input less than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '10' }
       const result = await makeSearchPriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(values)
 
       expect(result).toEqual(values)
@@ -44,7 +52,9 @@ describe('search price schema', () => {
     it('when input equal than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '20,15' }
       const result = await makeSearchPriceSchema(
-        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+        convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+        Currency.EURO,
+        DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
       ).validate(values)
 
       expect(result).toEqual(values)
@@ -54,7 +64,9 @@ describe('search price schema', () => {
   it('should match decimal minimum price when input less than maximum price input', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '10,50' }
     const result = await makeSearchPriceSchema(
-      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+      Currency.EURO,
+      DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
     ).validate(values)
 
     expect(result).toEqual(values)
@@ -63,7 +75,9 @@ describe('search price schema', () => {
   it('should invalidate minimum price when input higher than maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '21' }
     const result = makeSearchPriceSchema(
-      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+      Currency.EURO,
+      DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
     ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))
@@ -72,7 +86,9 @@ describe('search price schema', () => {
   it('should invalidate minimum price when input higher than decimal maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20,15', minPrice: '21' }
     const result = makeSearchPriceSchema(
-      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+      Currency.EURO,
+      DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
     ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))
@@ -81,7 +97,9 @@ describe('search price schema', () => {
   it('should invalidate decimal minimum price when input higher than maximum price', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '21,15' }
     const result = makeSearchPriceSchema(
-      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString()
+      convertCentsToEuros(MAX_PRICE_IN_CENTS).toString(),
+      Currency.EURO,
+      DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
     ).validate(values)
 
     await expect(result).rejects.toEqual(new ValidationError(minPriceError))

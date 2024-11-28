@@ -1,9 +1,17 @@
 import React from 'react'
 
 import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+
 describe('<OfferPrice />', () => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
   it('should display correctly round price', () => {
     render(<OfferPrice prices={[1000]} />)
 
@@ -28,3 +36,7 @@ describe('<OfferPrice />', () => {
     expect(screen.getByText('Dès 5,00\u00a0€')).toBeOnTheScreen()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

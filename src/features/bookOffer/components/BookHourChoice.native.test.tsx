@@ -5,9 +5,12 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
@@ -115,7 +118,7 @@ describe('BookHourChoice', () => {
     const firstPrice = screen.getByTestId('HourChoice148409-right-text')
 
     expect(firstHour.props.children).toBe('21h00')
-    expect(firstPrice.props.children).toBe('24\u00a0€')
+    expect(firstPrice.props.children).toBe('24€')
 
     const secondHour = screen.getByTestId('HourChoice148411-label')
     const secondPrice = screen.getByTestId('HourChoice148411-right-text')
@@ -152,13 +155,13 @@ describe('BookHourChoice when there are several stocks', () => {
   it('should render only one hour choice with "dès" and the minimum price available when has several prices for an hour', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByText(`dès 190\u00a0€`)).toBeOnTheScreen()
+    expect(screen.getByText(`dès 190€`)).toBeOnTheScreen()
   })
 
   it('should render only one hour choice without "dès" and the minimum price when has only one price for an hour', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
+    expect(screen.getByText(`210€`)).toBeOnTheScreen()
   })
 
   it('should display hour items with stock selection', () => {
@@ -278,8 +281,8 @@ describe('BookHourChoice when there is only one stock', () => {
   it('should render only one hour choice with the minimum price', () => {
     render(<BookHourChoice />)
 
-    expect(screen.queryByText(`dès 210\u00a0€`)).not.toBeOnTheScreen()
-    expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
+    expect(screen.queryByText(`dès 210€`)).not.toBeOnTheScreen()
+    expect(screen.getByText(`210€`)).toBeOnTheScreen()
   })
 
   it('should display hour item with stock selection', () => {

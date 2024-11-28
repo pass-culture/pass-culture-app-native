@@ -17,8 +17,10 @@ import {
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { eventMonitoring } from 'libs/monitoring'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -84,9 +86,17 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
-export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
+export const getDayDescription = (
+  price: number,
+  currency: Currency,
+  euroToPacificFrancRate: number,
+  hasSeveralPrices?: boolean
+) => {
   let dayDescription = hasSeveralPrices ? 'dès ' : ''
-  dayDescription += parseCurrencyFromCents(price).replace(/\u00A0/g, '')
+  dayDescription += formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
+    /\u00A0/g,
+    ''
+  )
 
   return dayDescription
 }
@@ -104,6 +114,8 @@ export const Calendar: React.FC<Props> = ({
   offerId,
   hasSeveralPrices,
 }) => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
@@ -135,7 +147,9 @@ export const Calendar: React.FC<Props> = ({
       <Container onPress={onPress} disabled={!onPress}>
         <DayComponent status={status} selected={selected} date={date} />
         {typeof price === 'number' ? (
-          <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
+          <Caption status={status}>
+            {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
+          </Caption>
         ) : (
           <Spacer.Column numberOfSpaces={getSpacing(1)} />
         )}

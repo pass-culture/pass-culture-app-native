@@ -10,7 +10,7 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -45,7 +45,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
 
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
+  const displayPrice = useGetDisplayPrice(offer?.offer?.prices)
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 

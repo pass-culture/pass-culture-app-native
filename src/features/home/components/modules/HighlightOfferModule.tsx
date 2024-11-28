@@ -10,11 +10,13 @@ import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { ContentTypes } from 'libs/contentful/types'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { theme } from 'theme'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -50,6 +52,8 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     aroundRadius,
   })
 
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
   const categoryLabelMapping = useCategoryHomeLabelMapping()
   const categoryIdMapping = useCategoryIdMapping()
@@ -77,7 +81,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
-  const formattedPrice = getDisplayPrice(offer?.prices)
+  const formattedPrice = getDisplayPrice(offer?.prices, currency, euroToPacificFrancRate)
   const venueName = publicName?.length ? publicName : name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]

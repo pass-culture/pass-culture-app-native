@@ -4,23 +4,22 @@ import { UseQueryResult } from 'react-query'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import { ILocationContext, LocationMode, Position } from 'libs/location/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useDistance } from 'libs/location/hooks/useDistance'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen } from 'tests/utils'
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+
 const offer = offersFixture[2]
 
-const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-const mockUserSelectedLocation: LocationMode = LocationMode.AROUND_ME
 const userNotLocated = {
   userLocation: undefined,
   selectedLocationMode: LocationMode.EVERYWHERE,
-}
-const userLocated = {
-  userLocation: mockUserLocation,
-  selectedLocationMode: mockUserSelectedLocation,
 }
 
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => userNotLocated)
@@ -39,7 +38,15 @@ mockUseSubcategories.mockReturnValue({
 
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
+jest.mock('libs/location/hooks/useDistance')
+const mockUseDistance = useDistance as jest.Mock
+mockUseDistance.mockReturnValue('10 km')
+
 describe('AttachedOfferCard', () => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
   it('should display date if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
 
@@ -49,11 +56,9 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should display distance if offer and user has location', () => {
-    mockUseLocation.mockReturnValueOnce(userLocated)
-
     render(<AttachedOfferCard offer={offer} />)
 
-    const distance = screen.getByText(`à 900+ km`)
+    const distance = screen.getByText(`à 10 km`)
 
     expect(distance).toBeOnTheScreen()
   })
@@ -68,9 +73,13 @@ describe('AttachedOfferCard', () => {
   it('should have accessibility label', () => {
     render(<AttachedOfferCard offer={offer} />)
     const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €.'
+      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €. Distance : à 10 km.'
     )
 
     expect(accessibilityLabel).toBeOnTheScreen()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

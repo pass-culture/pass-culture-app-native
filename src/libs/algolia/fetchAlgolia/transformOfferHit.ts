@@ -15,7 +15,7 @@ type Offer = AlgoliaHit['offer']
 // and when we display the prices to the user, we format the price knowing that there are cents.
 const convertAlgoliaOfferToCents = <T extends Offer>(offer: T): T => ({
   ...offer,
-  prices: offer.prices ? offer.prices.map(convertEuroToCents) : undefined,
+  prices: offer.prices ? offer.prices.map((price) => convertEuroToCents(price)) : undefined,
 })
 
 // (PC-8526): due to the migration to GCP, we extract the path to the image

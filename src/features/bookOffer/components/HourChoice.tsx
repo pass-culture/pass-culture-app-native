@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { getSpacing } from 'ui/theme'
 
@@ -30,9 +32,19 @@ export function HourChoice({
   features,
   index,
 }: Props) {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const priceWording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)
+  const priceWording = getHourWording(
+    price,
+    isBookable,
+    enoughCredit,
+    currency,
+    euroToPacificFrancRate,
+    hasSeveralPrices
+  )
 
   const accessibilityLabel = `${hour} ${priceWording}`
 

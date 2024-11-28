@@ -1,4 +1,4 @@
-import { snakeCaseToUppercaseFirstLetter } from '../snakeCaseToUppercaseFirstLetter'
+import { snakeCaseToUppercaseFirstLetter } from './snakeCaseToUppercaseFirstLetter'
 
 describe('formatSnakeCase', () => {
   it.each`

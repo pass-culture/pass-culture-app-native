@@ -1,3 +1,6 @@
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+
 import { getFavoriteDisplayPrice } from './getFavoriteDisplayPrice'
 
 describe('getFavoriteDisplayPrice', () => {
@@ -14,6 +17,8 @@ describe('getFavoriteDisplayPrice', () => {
     ({ price, startPrice, expected }) => {
       expect(
         getFavoriteDisplayPrice({
+          currency: Currency.EURO,
+          euroToPacificFrancRate: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
           price,
           startPrice,
         })

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { SuggestedPlace } from 'libs/place/types'
 import { theme } from 'theme'
@@ -17,8 +18,6 @@ interface LocationSearchInputProps {
   onResetPlace: () => void
   onSetSelectedPlace: (place: SuggestedPlace) => void
 }
-
-const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const LocationSearchInput = ({
   selectedPlace,

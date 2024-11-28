@@ -12,6 +12,7 @@ import {
   CategoryIdMapping,
   SubcategoryOfferLabelMapping,
 } from 'libs/subcategories/types'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistItemProps = {
@@ -19,6 +20,8 @@ type OfferPlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   variant: OfferTileProps['variant']
+  currency: Currency
+  euroToPacificFrancRate: number
   artistName?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
@@ -36,13 +39,14 @@ export const OfferPlaylistItem = ({
   categoryMapping,
   labelMapping,
   variant,
+  currency,
+  euroToPacificFrancRate,
   artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-
     return (
       <OfferTile
         offerLocation={item._geoloc}
@@ -54,7 +58,7 @@ export const OfferPlaylistItem = ({
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         width={width}
         height={height}
         analyticsFrom={analyticsFrom}

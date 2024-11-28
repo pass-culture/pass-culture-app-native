@@ -1,7 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
 import { Color, Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
-import { parseCurrencyFromCents } from 'libs/parsers/getDisplayPrice'
 import { toMutable } from 'shared/types/toMutable'
 
 export const homepageList = toMutable([
@@ -102,7 +101,8 @@ export const homepageList = toMutable([
         image:
           'https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
         shouldTargetNotConnectedUsers: false,
-        subtitle: `Si tu as 18 ans, bénéficie de ${parseCurrencyFromCents(300_00)}.`,
+        // eslint-disable-next-line local-rules/no-currency-symbols
+        subtitle: 'Si tu as 18 ans, bénéficie de 300\u00a0€.',
         title: 'Crée un compte\u00a0!',
         type: HomepageModuleType.BusinessModule,
         url: 'https://passculture.zendesk.com/hc/fr/',

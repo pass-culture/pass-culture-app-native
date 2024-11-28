@@ -2,11 +2,15 @@ import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, render, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockBookingOfferModal = <Text>BookingOfferModal</Text>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
@@ -35,6 +39,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('useOfferModal', () => {
+  beforeEach(() => {
+    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
   it('do not display anything when there is no modal to display', () => {
     const { result } = renderHook(() =>
       useBookOfferModal({ offerId: 1000, from: StepperOrigin.OFFER })
@@ -115,3 +123,7 @@ describe('useOfferModal', () => {
     ).toBeOnTheScreen()
   })
 })
+
+const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
+  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+}

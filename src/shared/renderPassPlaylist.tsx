@@ -7,11 +7,13 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
@@ -27,6 +29,8 @@ export const useRenderPassPlaylist = ({
 }: Readonly<
   CinemaPlaylistPropsContainingVenue | GtlPlaylistProps
 >): CustomListRenderItem<Offer> => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -52,7 +56,7 @@ export const useRenderPassPlaylist = ({
           date={formatDates(timestampsInMillis)}
           isDuo={hit.offer.isDuo}
           thumbUrl={hit.offer.thumbUrl}
-          price={getDisplayPrice(hit.offer.prices)}
+          price={getDisplayPrice(hit.offer.prices, currency, euroToPacificFrancRate)}
           width={width}
           height={height}
           searchId={currentRoute.params?.searchId}
@@ -68,6 +72,8 @@ export const useRenderPassPlaylist = ({
       analyticsFrom,
       labelMapping,
       mapping,
+      currency,
+      euroToPacificFrancRate,
       currentRoute.params?.searchId,
       venue?.id,
       entryId,

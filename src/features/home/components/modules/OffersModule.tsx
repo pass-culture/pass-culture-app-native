@@ -13,6 +13,7 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -20,6 +21,7 @@ import { useLocation } from 'libs/location'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -48,6 +50,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     data,
     recommendationParameters,
   } = props
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -116,7 +120,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices)}
+          price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           isBeneficiary={user?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}
@@ -127,10 +131,11 @@ export const OffersModule = (props: OffersModuleProps) => {
         />
       )
     },
-
     [
       labelMapping,
       mapping,
+      currency,
+      euroToPacificFrancRate,
       user?.isBeneficiary,
       moduleName,
       moduleId,
