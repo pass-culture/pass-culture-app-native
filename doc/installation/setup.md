@@ -12,7 +12,7 @@ In that case, you will need to install Nix as follows :
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install  --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
 ```
 
-_If you want more information or if you have a problem you can consult [`nix` package manager installation](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)._
+_If you want more information or if you have a problem you can consult [`nix` package manager installation](https://docs.determinate.systems/getting-started/)._
 
 #### Install DirEnv
 
