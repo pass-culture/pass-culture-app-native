@@ -2,7 +2,7 @@ import React from 'react'
 
 import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 let mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -10,8 +10,11 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockData,
   }),
 }))
+const user = userEvent.setup()
 
 describe('<OfferCategoryChoices />', () => {
+  jest.useFakeTimers()
+
   afterEach(() => {
     mockData = PLACEHOLDER_DATA
   })
@@ -20,15 +23,15 @@ describe('<OfferCategoryChoices />', () => {
     const onChange = jest.fn()
     render(<OfferCategoryChoices onChange={onChange} selection={[]} />)
 
-    fireEvent.press(screen.getByText('Arts & loisirs créatifs'))
+    await user.press(screen.getByText('Arts & loisirs créatifs'))
 
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_LOISIRS_CREATIFS'])
 
-    fireEvent.press(screen.getByText('Conférences & rencontres'))
+    await user.press(screen.getByText('Conférences & rencontres'))
 
     expect(onChange).toHaveBeenNthCalledWith(2, ['RENCONTRES_CONFERENCES'])
 
-    fireEvent.press(screen.getByText('Conférences & rencontres'))
+    await user.press(screen.getByText('Conférences & rencontres'))
 
     expect(onChange).toHaveBeenNthCalledWith(3, [])
   })
