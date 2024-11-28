@@ -33,4 +33,5 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
     [SubscriptionTheme.ACTIVITES]: '',
   },
   shareAppModalVersion: 'default',
+  showAccessScreeningButton: false,
 }

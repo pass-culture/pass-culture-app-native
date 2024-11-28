@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useRef, RefObject, useMemo, useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useTheme } from 'styled-components/native'
 
 import { AnchorName } from 'ui/components/anchor/anchor-name'
 
@@ -25,12 +26,15 @@ export const AnchorProvider = ({
   children,
 }: AnchorProviderProps) => {
   const { top } = useSafeAreaInsets()
+  const { appBarHeight, isDesktopViewport, navTopHeight, isTabletViewport } = useTheme()
 
   const anchors = useRef<Partial<Record<AnchorName, RefObject<View>>>>({})
 
   const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View>) => {
     anchors.current[name] = ref
   }, [])
+
+  const headerHeight = isTabletViewport || isDesktopViewport ? navTopHeight : 0
 
   const scrollToAnchor = useCallback(
     (name: AnchorName) => {
@@ -41,20 +45,20 @@ export const AnchorProvider = ({
             _x: number,
             _y: number,
             _width: number,
-            height: number,
+            _height: number,
             _pageX: number,
             pageY: number
           ) => {
             const currentPageScroll = handleCheckScrollY()
             scrollViewRef.current?.scrollTo({
-              y: pageY + currentPageScroll - height - top - offset,
+              y: pageY + currentPageScroll - appBarHeight - headerHeight - top - offset,
               animated: true,
             })
           }
         )
       }
     },
-    [handleCheckScrollY, offset, scrollViewRef, top]
+    [appBarHeight, handleCheckScrollY, headerHeight, offset, scrollViewRef, top]
   )
 
   const value = useMemo(

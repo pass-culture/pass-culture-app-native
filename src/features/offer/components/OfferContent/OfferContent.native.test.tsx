@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
-import { InViewProps } from 'react-native-intersection-observer'
 
 import {
   OfferResponseV2,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -14,12 +14,15 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
@@ -28,6 +31,7 @@ import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 import { OfferContent } from './OfferContent'
 
@@ -85,22 +89,28 @@ jest.spyOn(useArtistResults, 'useArtistResults').mockReturnValue({
   artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })
 
-/**
- * This mock permit to simulate the visibility of the playlist
- * it is an alternative solution which allows you to replace the scroll simulation
- * it's not optimal, if you have better idea don't hesitate to update
- */
 const mockInView = jest.fn()
+const InViewMock = ({
+  onChange,
+  children,
+}: {
+  onChange: VoidFunction
+  children: React.ReactNode
+}) => {
+  mockInView.mockImplementation(onChange)
+  return <React.Fragment>{children}</React.Fragment>
+}
+
 jest.mock('react-native-intersection-observer', () => {
-  const InView = (props: InViewProps) => {
-    mockInView.mockImplementation(props.onChange)
-    return null
-  }
   return {
     ...jest.requireActual('react-native-intersection-observer'),
-    InView,
+    InView: InViewMock,
+    mockInView,
   }
 })
+
+const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({
@@ -524,6 +534,77 @@ describe('<OfferContent />', () => {
     await screen.findByText('Réserver l’offre')
 
     expect(screen.queryByTestId('booking-button')).not.toBeOnTheScreen()
+  })
+
+  describe('movie screening access button', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: true,
+      })
+    })
+
+    it('should show button', async () => {
+      renderOfferContent({
+        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+      })
+
+      await act(async () => {
+        mockInView(false)
+      })
+
+      await screen.findByText('Trouve ta séance')
+
+      expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
+    })
+
+    it('should not show button', async () => {
+      renderOfferContent({
+        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+      })
+
+      await act(async () => {
+        mockInView(true)
+      })
+
+      await screen.findByText('Trouve ta séance')
+
+      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+    })
+
+    it('should scroll to anchor', async () => {
+      renderOfferContent({
+        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+      })
+
+      await act(async () => {
+        mockInView(false)
+      })
+
+      const button = await screen.findByText(cinemaCTAButtonName)
+
+      await userEvent.press(button)
+
+      expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
+    })
+
+    it('should not display the button if the remote config flag is deactivated', async () => {
+      useRemoteConfigContextSpy.mockReturnValueOnce({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: false,
+      })
+      renderOfferContent({
+        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+      })
+
+      await act(async () => {
+        mockInView(true)
+      })
+
+      await screen.findByText('Trouve ta séance')
+
+      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+    })
   })
 })
 

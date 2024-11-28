@@ -8,6 +8,7 @@ import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -240,7 +241,9 @@ const renderVenueOffers = ({
   return render(
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+        <OfferCTAProvider>
+          <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+        </OfferCTAProvider>
       </AnchorProvider>
     )
   )

@@ -4,6 +4,7 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { analytics } from 'libs/analytics'
@@ -633,7 +634,14 @@ const renderOfferPlace = ({
   subcategory = mockSubcategory,
   isDesktopViewport,
 }: RenderOfferPlaceType) =>
-  render(reactQueryProviderHOC(<OfferPlace offer={offer} subcategory={subcategory} />), {
-    theme: { isDesktopViewport: isDesktopViewport ?? false },
-    wrapper: AnchorProvider,
-  })
+  render(
+    reactQueryProviderHOC(
+      <OfferCTAProvider>
+        <OfferPlace offer={offer} subcategory={subcategory} />
+      </OfferCTAProvider>
+    ),
+    {
+      theme: { isDesktopViewport: isDesktopViewport ?? false },
+      wrapper: AnchorProvider,
+    }
+  )

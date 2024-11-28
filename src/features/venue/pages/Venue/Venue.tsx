@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
@@ -43,12 +44,14 @@ export const Venue: FunctionComponent = () => {
   if (!venue) return null
 
   return videoAlreadySeen === undefined ? null : (
-    <VenueContent
-      venue={venue}
-      gtlPlaylists={gtlPlaylists}
-      venueOffers={venueOffers}
-      videoSectionVisible={isVideoFeatureFlagActive && !videoAlreadySeen}
-      onCloseVideoFakeDoor={handleVideoFakeDoorClose}
-    />
+    <OfferCTAProvider>
+      <VenueContent
+        venue={venue}
+        gtlPlaylists={gtlPlaylists}
+        venueOffers={venueOffers}
+        videoSectionVisible={isVideoFeatureFlagActive && !videoAlreadySeen}
+        onCloseVideoFakeDoor={handleVideoFakeDoorClose}
+      />
+    </OfferCTAProvider>
   )
 }
