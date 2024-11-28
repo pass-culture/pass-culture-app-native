@@ -5,13 +5,16 @@ import { SearchState } from 'features/search/types'
 
 export type SearchStackRouteName = keyof SearchStackParamList
 
-type HasAThematicSearch =
-  | SearchGroupNameEnumv2.CINEMA
-  | SearchGroupNameEnumv2.LIVRES
-  | SearchGroupNameEnumv2.MUSIQUE
-  | SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
+export const hasAThematicSearch = [
+  SearchGroupNameEnumv2.CINEMA,
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.MUSIQUE,
+  SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+] as const
 
-type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch>
+type HasAThematicSearch = typeof hasAThematicSearch
+
+type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>

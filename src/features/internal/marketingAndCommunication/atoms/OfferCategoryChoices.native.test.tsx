@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { userEvent, render, screen } from 'tests/utils'
@@ -30,10 +31,20 @@ describe('<OfferCategoryChoices />', () => {
     await user.press(screen.getByText('Conférences & rencontres'))
 
     expect(onChange).toHaveBeenNthCalledWith(2, ['RENCONTRES_CONFERENCES'])
+  })
+
+  it('should deleselect category when toggling again a selected category', async () => {
+    const onChange = jest.fn()
+    render(
+      <OfferCategoryChoices
+        onChange={onChange}
+        selection={[SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]}
+      />
+    )
 
     await user.press(screen.getByText('Conférences & rencontres'))
 
-    expect(onChange).toHaveBeenNthCalledWith(3, [])
+    expect(onChange).toHaveBeenNthCalledWith(1, [])
   })
 
   it('should not return labels when no categories sent by backend', () => {

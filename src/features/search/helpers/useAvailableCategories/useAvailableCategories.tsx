@@ -1,3 +1,4 @@
+import { hasAThematicSearch } from 'features/navigation/SearchStackNavigator/types'
 import { CategoryCriteria } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -10,4 +11,10 @@ export const useAvailableCategories = (): CategoryCriteria[] => {
   )
 
   return categories
+}
+
+export const useAvailableThematicSearchCategories = (): CategoryCriteria[] => {
+  return Object.values(availableCategories).filter((category) =>
+    hasAThematicSearch.find((thematicSearch) => thematicSearch === category.facetFilter)
+  )
 }

@@ -4,24 +4,39 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { CategoryCriteria } from 'features/search/enums'
-import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
+import {
+  useAvailableCategories,
+  useAvailableThematicSearchCategories,
+} from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
-type Props = {
+type CategoryChoicesProps = {
   onChange: (selection: SearchGroupNameEnumv2[]) => void
-  selection: SearchGroupNameEnumv2[] | undefined
-  categories: CategoryCriteria[]
+  selection: SearchGroupNameEnumv2[]
 }
 
-export const OfferCategoryChoices = (props: Props) => {
+type CategoryChoicesWithCategoryCriteria = CategoryChoicesProps & {
+  categories: ReadonlyArray<CategoryCriteria>
+}
+
+export const OfferCategoryChoices = (props: CategoryChoicesProps) => {
   const categories = useAvailableCategories()
   return <CategoryChoices {...props} categories={categories} />
 }
 
-export const CategoryChoices = ({ onChange, selection, categories }: Props) => {
+export const ThematicSearchCategoryChoices = (props: CategoryChoicesProps) => {
+  const categories = useAvailableThematicSearchCategories()
+  return <CategoryChoices {...props} categories={categories} />
+}
+
+const CategoryChoices = ({
+  onChange,
+  selection,
+  categories,
+}: CategoryChoicesWithCategoryCriteria) => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   if (categories.length === 0) {

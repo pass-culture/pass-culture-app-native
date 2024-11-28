@@ -127,6 +127,38 @@ describe('<DeeplinksGeneratorForm />', () => {
         'https://webapp-v2.example.com/recherche/resultats?locationFilter=%5Bobject%20Object%5D&from=deeplink&offerCategories=CONCERTS_FESTIVALS&utm_gen=marketing',
     })
   })
+
+  it("should have disabled button when a category isn't selected in ThematicSearch", async () => {
+    const onCreate = jest.fn()
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+
+    const thematicSearch = screen.getByText('ThematicSearch')
+    await user.press(thematicSearch)
+    const generateButton = screen.getByText('Générer le lien')
+
+    expect(generateButton).toBeDisabled()
+  })
+
+  it('should generate link when a category is selected in ThematicSearch', async () => {
+    const onCreate = jest.fn()
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+
+    const thematicSearch = screen.getByText('ThematicSearch')
+    await user.press(thematicSearch)
+
+    const categoryButton = screen.getByText('Cinéma')
+    await user.press(categoryButton)
+
+    const generateButton = screen.getByText('Générer le lien')
+    await user.press(generateButton)
+
+    expect(onCreate).toHaveBeenNthCalledWith(1, {
+      firebaseLink:
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2FThematicSearch%3Ffrom%3Ddeeplink%26offerCategories%3DCINEMA%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink:
+        'https://webapp-v2.example.com/ThematicSearch?from=deeplink&offerCategories=CINEMA&utm_gen=marketing',
+    })
+  })
 })
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -141,7 +173,7 @@ describe('getDefaultScreenParams', () => {
     })
   })
 
-  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome'])(
+  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome', 'ThematicSearch'])(
     'should return an object with from param set to "deeplink" when screen is %s',
     (screen) => {
       const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)

@@ -7,7 +7,10 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { ControlledFilterSwitch } from 'features/internal/marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/internal/marketingAndCommunication/atoms/LocationFilterChoice'
-import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
+import {
+  OfferCategoryChoices,
+  ThematicSearchCategoryChoices,
+} from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
 import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferNativeCategoryChoices'
 import {
   FDL_CONFIG,
@@ -244,6 +247,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <OfferNativeCategoryChoices
             categories={screenParams.offerCategories as SearchGroupNameEnumv2[]}
             onChange={onChangeOfferNativeCategories}
+          />
+        ) : null}
+        {config.type === 'thematicSearchCategories' ? (
+          <ThematicSearchCategoryChoices
+            onChange={onChangeOfferCategories}
+            selection={screenParams.offerCategories as SearchGroupNameEnumv2[]}
           />
         ) : null}
         {config.type === 'date' ? (
