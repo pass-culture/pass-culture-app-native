@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics'
@@ -46,7 +45,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
     onSubmit,
     onClose,
     shouldDirectlyValidate: true,
-    setPlaceGlobally,
+    ...locationStateProps,
   })
 
   return (
@@ -66,6 +65,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider={false}
       isSubmitDisabled={!selectedPlace}
+      shouldDisplayEverywhereSection
     />
   )
 }

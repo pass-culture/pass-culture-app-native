@@ -57,7 +57,6 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
   return (
     <LocationModal
       visible={visible}
-      dispatch={dispatch}
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={tempLocationMode}
@@ -76,6 +75,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
       tempAroundMeRadius={tempAroundMeRadius}
       isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
+      shouldDisplayEverywhereSection
     />
   )
 }

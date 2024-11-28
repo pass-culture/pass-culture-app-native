@@ -5,7 +5,6 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
-import { Action } from 'features/search/context/reducer'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -19,6 +18,30 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { getSpacing } from 'ui/theme'
+
+type LocationModalProps = {
+  visible: boolean
+  onSubmit: () => void
+  onClose: () => void
+  onModalHideRef: LocationState['onModalHideRef']
+  selectLocationMode: (mode: LocationMode) => () => void
+  tempLocationMode: LocationState['tempLocationMode']
+  hasGeolocPosition: LocationState['hasGeolocPosition']
+  selectedPlace: LocationState['selectedPlace']
+  setSelectedPlace: LocationState['setSelectedPlace']
+  placeQuery: LocationState['placeQuery']
+  setPlaceQuery: LocationState['setPlaceQuery']
+  onSetSelectedPlace: (place: SuggestedPlace) => void
+  onResetPlace: LocationState['onResetPlace']
+  shouldDisplayEverywhereSection: boolean
+  isSubmitDisabled: boolean
+  shouldShowRadiusSlider: boolean
+  buttonWording?: string
+  tempAroundMeRadius?: LocationState['tempAroundMeRadius']
+  onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
+  tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
+  onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
+}
 
 export const LocationModal = ({
   visible,
@@ -39,29 +62,10 @@ export const LocationModal = ({
   tempAroundPlaceRadius,
   onTempAroundPlaceRadiusValueChange,
   shouldShowRadiusSlider,
+  buttonWording,
   isSubmitDisabled,
-}: {
-  visible: boolean
-  onSubmit: () => void
-  onClose: () => void
-  onModalHideRef: LocationState['onModalHideRef']
-  selectLocationMode: (mode: LocationMode) => () => void
-  tempLocationMode: LocationState['tempLocationMode']
-  hasGeolocPosition: LocationState['hasGeolocPosition']
-  selectedPlace: LocationState['selectedPlace']
-  setSelectedPlace: LocationState['setSelectedPlace']
-  placeQuery: LocationState['placeQuery']
-  setPlaceQuery: LocationState['setPlaceQuery']
-  onSetSelectedPlace: (place: SuggestedPlace) => void
-  onResetPlace: LocationState['onResetPlace']
-  isSubmitDisabled: boolean
-  shouldShowRadiusSlider: boolean
-  tempAroundMeRadius?: LocationState['tempAroundMeRadius']
-  onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
-  tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
-  onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
-  dispatch?: React.Dispatch<Action>
-}) => {
+  shouldDisplayEverywhereSection,
+}: LocationModalProps) => {
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
   const theme = useTheme()
@@ -110,7 +114,11 @@ export const LocationModal = ({
         </HeaderContainer>
       }
       fixedModalBottom={
-        <LocationModalFooter onSubmit={() => onSubmit()} isSubmitDisabled={isSubmitDisabled} />
+        <LocationModalFooter
+          onSubmit={() => onSubmit()}
+          isSubmitDisabled={isSubmitDisabled}
+          buttonWording={buttonWording}
+        />
       }>
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
@@ -161,15 +169,19 @@ export const LocationModal = ({
             ) : null}
           </React.Fragment>
         ) : null}
-        <Spacer.Column numberOfSpaces={6} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={6} />
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-          icon={WorldPosition}
-          color={everywhereLocationModeColor}
-          title={LocationLabel.everywhereLabel}
-        />
+        {shouldDisplayEverywhereSection ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={6} />
+            <Separator.Horizontal />
+            <Spacer.Column numberOfSpaces={6} />
+            <LocationModalButton
+              onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+              icon={WorldPosition}
+              color={everywhereLocationModeColor}
+              title={LocationLabel.everywhereLabel}
+            />
+          </React.Fragment>
+        ) : null}
       </StyledScrollView>
     </AppModal>
   )
