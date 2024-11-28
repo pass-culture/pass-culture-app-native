@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
+import { isApiError } from 'api/apiHelpers'
 import {
   COUNTRIES,
   METROPOLITAN_FRANCE,
@@ -29,9 +30,16 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
 
 import { formatPhoneNumberWithPrefix } from './helpers/formatPhoneNumber'
+import { isPhoneNumberValid } from './helpers/isPhoneNumberValid'
 
 const schema = yup.object({
-  phoneNumber: yup.string().required('Le numéro de téléphone est requis'),
+  phoneNumber: yup
+    .string()
+    .required('Le numéro de téléphone est requis')
+    .test('is-valid-phone', '', (value, { parent }) => {
+      const country = findCountry(parent.countryId)
+      return country ? isPhoneNumberValid(value ?? '', country.id) : false
+    }),
   countryId: yup.string().required(),
 })
 
@@ -51,12 +59,10 @@ export const SetPhoneNumberWithoutValidation = () => {
     mode: 'onChange',
   })
 
-  const disableSubmit = !formState.isValid
-
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
-  const { mutate: updateProfile } = useUpdateProfileMutation(
-    () => {
+  const { mutate: updateProfile } = useUpdateProfileMutation({
+    onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)
       if (!country) {
@@ -76,10 +82,10 @@ export const SetPhoneNumberWithoutValidation = () => {
       invalidateStepperInfoQuery()
       navigateForwardToStepper()
     },
-    () => {
-      setError('phoneNumber', { message: 'Une erreur est survenue' })
-    }
-  )
+    onError: (error) => {
+      isApiError(error) && setError('phoneNumber', { message: error.message })
+    },
+  })
 
   const onSubmit = async ({ phoneNumber, countryId }: FormValues) => {
     const country = findCountry(countryId)
@@ -117,7 +123,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                   <TextInput
                     autoComplete="off" // disable autofill on android
                     autoCapitalize="none"
-                    isError={false}
+                    isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
                     value={field.value}
@@ -157,7 +163,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
-          disabled={disableSubmit}
+          disabled={!formState.isValid}
           type="submit"
           wording="Continuer"
           onPress={submit}

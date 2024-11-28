@@ -53,8 +53,8 @@ export const useThematicSubscription = ({
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
-    async () => {
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+    onSuccess: async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId
         ? { from: 'thematicHome', entryId: homeId }
@@ -72,14 +72,14 @@ export const useThematicSubscription = ({
         } as SubscriptionAnalyticsParams)
       }
     },
-    () => {
+    onError: () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue, veuillez réessayer',
         timeout: SNACK_BAR_TIME_OUT,
       })
       setState(initialState)
-    }
-  )
+    },
+  })
 
   if (!thematic) {
     return {

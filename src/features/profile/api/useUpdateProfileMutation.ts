@@ -4,10 +4,12 @@ import { api } from 'api/api'
 import { UserProfileResponse, UserProfilePatchRequest } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useUpdateProfileMutation(
-  onSuccessCallback: (data: UserProfileResponse, body: UserProfilePatchRequest) => void,
-  onErrorCallback: (error: unknown) => void
-) {
+type Options = {
+  onSuccess?: (data: UserProfileResponse, body: UserProfilePatchRequest) => void
+  onError?: (error: unknown) => void
+}
+
+export function useUpdateProfileMutation({ onError, onSuccess }: Options) {
   const client = useQueryClient()
   return useMutation((body: UserProfilePatchRequest) => api.patchNativeV1Profile(body), {
     onSuccess(response: UserProfileResponse, variables) {
@@ -15,8 +17,8 @@ export function useUpdateProfileMutation(
         ...(old ?? {}),
         ...response,
       }))
-      onSuccessCallback(response, variables)
+      onSuccess?.(response, variables)
     },
-    onError: onErrorCallback,
+    onError,
   })
 }

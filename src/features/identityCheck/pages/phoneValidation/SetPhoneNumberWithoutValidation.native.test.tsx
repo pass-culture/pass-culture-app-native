@@ -2,11 +2,12 @@ import React from 'react'
 
 import { dispatch } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
+import { ApiError } from 'api/ApiError'
 import { UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState } from 'features/identityCheck/context/reducer'
 import * as SubscriptionContextProvider from 'features/identityCheck/context/SubscriptionContextProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
 
@@ -28,8 +29,36 @@ describe('SetPhoneNumberWithoutValidation', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  describe('when form validation', () => {
+    it('should disable the button when phone number is invalid', async () => {
+      givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
+
+      renderSetPhoneNumberWithoutValidation()
+
+      await fillPhoneNumberInput('123')
+
+      const button = screen.getByText('Continuer')
+      await act(() => {
+        expect(button).toBeDisabled()
+      })
+    })
+
+    it('should enable the button when phone number is valid', async () => {
+      givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
+
+      renderSetPhoneNumberWithoutValidation()
+
+      await fillPhoneNumberInput('0612345678')
+
+      const button = screen.getByText('Continuer')
+      await act(() => {
+        expect(button).toBeEnabled()
+      })
+    })
+  })
+
   describe('when user already given his phone number', () => {
-    test('Use the phone number already given', () => {
+    it('should use the phone number already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '33', countryCode: 'FR' })
 
       const { unmount } = renderSetPhoneNumberWithoutValidation()
@@ -41,7 +70,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
       unmount() // to avoid act warning https://github.com/orgs/react-hook-form/discussions/3108#discussioncomment-8514714
     })
 
-    test('Use the country already given', () => {
+    it('should use the country already given', () => {
       givenStoredPhoneNumber('0612345678', { callingCode: '596', countryCode: 'MQ' })
 
       const { unmount } = renderSetPhoneNumberWithoutValidation()
@@ -60,12 +89,12 @@ describe('SetPhoneNumberWithoutValidation', () => {
         updatePhoneNumberWillSucceed()
       })
 
-      test('Redirect to steppers when update phone number is succeed', async () => {
+      it('should redirect to steppers when update phone number is succeed', async () => {
         const { unmount } = renderSetPhoneNumberWithoutValidation()
 
         await submitWithPhoneNumber('0612345678')
 
-        await waitFor(() => {
+        await act(() => {
           expect(dispatch).toHaveBeenCalledWith({
             payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
             type: 'RESET',
@@ -75,7 +104,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
         unmount()
       })
 
-      test('Store phone number', async () => {
+      it('should store phone number', async () => {
         const { unmount } = renderSetPhoneNumberWithoutValidation()
 
         await submitWithPhoneNumber('0612345678')
@@ -93,7 +122,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
     })
 
     describe('When failure', () => {
-      test('Show error message when update phone number is failed', async () => {
+      it('should show error message when update phone number is failed', async () => {
         updatePhoneNumberWillFail()
         const { unmount } = renderSetPhoneNumberWithoutValidation()
 
@@ -106,16 +135,6 @@ describe('SetPhoneNumberWithoutValidation', () => {
     })
   })
 
-  test('User can NOT send form when form is invalid', async () => {
-    renderSetPhoneNumberWithoutValidation()
-
-    await fillPhoneNumberInput('')
-
-    const button = screen.getByText('Continuer')
-
-    expect(button).toBeDisabled()
-  })
-
   function renderSetPhoneNumberWithoutValidation() {
     return render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
   }
@@ -125,7 +144,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
   }
 
   function updatePhoneNumberWillFail() {
-    patchProfile.mockRejectedValueOnce(new Error('Une erreur est survenue'))
+    patchProfile.mockRejectedValueOnce(new ApiError(500, undefined, 'Une erreur est survenue'))
   }
 
   async function fillPhoneNumberInput(phoneNumber: string) {

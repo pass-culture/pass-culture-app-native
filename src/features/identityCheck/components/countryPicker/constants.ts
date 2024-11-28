@@ -53,4 +53,9 @@ export const COUNTRIES: Country[] = [
     name: 'Wallis-et-Futuna',
     callingCode: '681',
   },
+  {
+    id: 'NC',
+    name: 'Nouvelle-Calédonie',
+    callingCode: '687',
+  },
 ]

@@ -1,4 +1,13 @@
-export function isPhoneNumberValid(number: string) {
-  // 9 digits, 10 if the first is a "0" that can be separated by whitespace, "." or "-".
-  return Boolean(number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/))
+import parsePhoneNumberFromString, { CountryCode, getCountries } from 'libphonenumber-js'
+
+function isCountryCode(code: string): code is CountryCode {
+  const countries: string[] = getCountries()
+  return countries.includes(code)
+}
+
+export function isPhoneNumberValid(number: string, country: string) {
+  if (!isCountryCode(country)) return false
+
+  const phoneNumber = parsePhoneNumberFromString(number, country)
+  return phoneNumber?.isValid() ?? false
 }

@@ -64,22 +64,23 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
-    () => {
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+    onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
     },
-    () => {
+
+    onError: () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
         timeout: SNACK_BAR_TIME_OUT,
       })
       dispatch({ type: 'reset', initialState })
-    }
-  )
+    },
+  })
 
   const areNotificationsEnabled =
     Platform.OS === 'web' ? state.allowEmails : state.allowEmails || state.allowPush

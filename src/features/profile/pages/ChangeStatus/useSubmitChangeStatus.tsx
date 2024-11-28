@@ -19,8 +19,8 @@ export const useSubmitChangeStatus = () => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const { mutate: patchProfile, isLoading } = useUpdateProfileMutation(
-    (_, variables) => {
+  const { mutate: patchProfile, isLoading } = useUpdateProfileMutation({
+    onSuccess: (_, variables) => {
       analytics.logUpdateStatus({
         oldStatus: user?.activityId ?? '',
         newStatus: variables.activityId ?? '',
@@ -30,13 +30,14 @@ export const useSubmitChangeStatus = () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
-    () => {
+
+    onError: () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
         timeout: SNACK_BAR_TIME_OUT,
       })
-    }
-  )
+    },
+  })
   const {
     control,
     handleSubmit,
