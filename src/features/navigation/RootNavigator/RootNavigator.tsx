@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -27,6 +28,8 @@ import { RootStack } from './Stack'
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
+    const { top } = useSafeAreaInsets()
+
     return (
       <IconFactoryProvider>
         <RootStack.Navigator
@@ -36,7 +39,15 @@ const RootStackNavigator = withWebWrapper(
           <RootStack.Screen
             name="VenueMapFiltersStackNavigator"
             component={VenueMapFiltersStackNavigator}
-            options={{ presentation: 'modal' }}
+            options={{
+              presentation: 'modal',
+              cardStyle:
+                Platform.OS === 'android'
+                  ? {
+                      marginTop: top,
+                    }
+                  : undefined,
+            }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>
