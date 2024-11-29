@@ -4,14 +4,13 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
@@ -50,7 +49,7 @@ const props: SearchListProps = {
 
 describe('<SearchList />', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should display search list header when number of offer results > 0', async () => {
@@ -70,7 +69,3 @@ describe('<SearchList />', () => {
     expect(screen.queryByTestId('searchListHeader')).not.toBeInTheDocument()
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

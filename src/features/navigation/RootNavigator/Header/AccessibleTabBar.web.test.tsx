@@ -6,7 +6,7 @@ import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBa
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
@@ -32,12 +32,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
-
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -52,11 +46,11 @@ describe('AccessibleTabBar', () => {
   })
 
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   it('renders correclty when FF is enabled', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
     ])

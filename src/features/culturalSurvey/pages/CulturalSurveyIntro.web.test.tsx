@@ -3,11 +3,9 @@ import React from 'react'
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
@@ -20,7 +18,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('CulturalSurveyIntro page', () => {
   describe('When FF is disabled', () => {
     beforeEach(() => {
-      activateFeatureFlags()
+      setFeatureFlags()
     })
 
     it('should not have basic accessibility issues', async () => {
@@ -43,7 +41,7 @@ describe('CulturalSurveyIntro page', () => {
 
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     })
 
     it('should not have basic accessibility issues', async () => {
@@ -55,7 +53,3 @@ describe('CulturalSurveyIntro page', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
