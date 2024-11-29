@@ -30,7 +30,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type NotificationsSettingsState = {
@@ -164,9 +164,9 @@ export const NotificationsSettings = () => {
         )}
         <TypoDS.Title4 {...getHeadingAttrs(2)}>Type d’alerte</TypoDS.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
+        <TypoDS.Body>
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-        </Typo.Body>
+        </TypoDS.Body>
         <Spacer.Column numberOfSpaces={2} />
         <Form.Flex>
           <SectionWithSwitchContainer>
@@ -178,10 +178,10 @@ export const NotificationsSettings = () => {
             />
           </SectionWithSwitchContainer>
           {!state.allowEmails && isLoggedIn ? (
-            <Typo.Caption>
+            <TypoDS.BodyAccentXs>
               Tu continueras à recevoir par e-mail des informations essentielles concernant ton
               compte.
-            </Typo.Caption>
+            </TypoDS.BodyAccentXs>
           ) : null}
           {Platform.OS === 'web' ? null : (
             <SectionWithSwitchContainer>

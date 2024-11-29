@@ -1,7 +1,12 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export function RequiredLabel() {
-  return <Typo.CaptionNeutralInfo>Obligatoire</Typo.CaptionNeutralInfo>
+  return <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
 }
+
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

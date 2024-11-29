@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -57,7 +57,7 @@ const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme 
   ...(noFullWidth ? {} : { width: '100%' }),
 }))
 
-const StyledCaption = styled(Typo.Caption)<{
+const StyledCaption = styled(TypoDS.BodyAccentXs)<{
   color: ColorsEnum
   noFullWidth?: boolean
 }>(({ color, noFullWidth }) => ({

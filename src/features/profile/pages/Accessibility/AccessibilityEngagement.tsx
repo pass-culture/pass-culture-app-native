@@ -14,9 +14,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export function AccessibilityEngagement() {
   return (
     <SecondaryPageWithBlurHeader title="Les engagements du pass Culture" scrollable>
-      <StyledBody>Date de publication&nbsp;: 19 mai 2022</StyledBody>
+      <TypoDS.BodyItalic>Date de publication&nbsp;: 19 mai 2022</TypoDS.BodyItalic>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Au pass Culture, notre mission est de renforcer et de diversifier les pratiques culturelles
         de tous les jeunes de 15 à 25 ans. En d’autres termes, le pass Culture a pour vocation de
         rendre accessible la culture à une population qui est souvent empêchée par de multiples
@@ -35,11 +35,11 @@ export function AccessibilityEngagement() {
         {LINE_BREAK}À cet égard et afin de pérenniser la démarche, un groupe de travail transversal
         a été créé en interne. Il est composé d’une personne en lien avec les publics, d’ingénieurs
         en informatique, d’une designeuse, et d’une personne dédiée à la conception du produit.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
       <TitleText>L’inclusion au coeur de la stratégie technique</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Deux audits évaluant l’accessibilité de la version web du pass Culture ont déjà été conduits
         en 2020 et 2022 pour permettre de rendre compte et d’évaluer le travail effectué. Le dernier
         sera disponible dans les prochaines semaines.
@@ -54,11 +54,11 @@ export function AccessibilityEngagement() {
         socle pour construire un environnement numérique inclusif et ainsi initier des échanges
         dédiés avec les acteurs du monde de l’accessibilité et utilisateurs en situation de
         handicap.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
       <TitleText>Collaboration et sensibilisation</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Au-delà de la technologie utilisée, les acteurs culturels avec lesquels nous travaillons
         sont sensibilisés à la question de l’accessibilité. Ils ont l’obligation d’indiquer si leur
         lieu et leurs offres sont accessibles selon une nomenclature faisant référence aux
@@ -80,7 +80,7 @@ export function AccessibilityEngagement() {
         chantiers sur lesquels nous travaillons à ce niveau.
         {DOUBLE_LINE_BREAK}
         Si vous avez des retours au sujet de notre traitement, n’hésitez pas à écrire à
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <ContactSupportButton />
       <Spacer.Column numberOfSpaces={6} />
@@ -101,7 +101,3 @@ export function AccessibilityEngagement() {
 }
 
 const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  fontFamily: theme.fontFamily.italic,
-}))

@@ -1485,9 +1485,9 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3140,7 +3140,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingLeft": 4,
                   },
                 ]
@@ -3211,7 +3211,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingLeft": 4,
                   },
                 ]
@@ -3282,7 +3282,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingLeft": 4,
                   },
                 ]
@@ -3353,7 +3353,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingLeft": 4,
                   },
                 ]
@@ -3424,7 +3424,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingLeft": 4,
                   },
                 ]

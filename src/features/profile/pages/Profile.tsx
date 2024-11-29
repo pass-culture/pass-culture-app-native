@@ -44,7 +44,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -292,7 +292,7 @@ const OnlineProfile: React.FC = () => {
               ) : null}
               <Section>
                 <Spacer.Column numberOfSpaces={4} />
-                <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
+                <Version>{version}</Version>
                 <Spacer.Column numberOfSpaces={4} />
                 {isWeb ? null : (
                   <React.Fragment>
@@ -347,12 +347,16 @@ const ShareAppContainer = styled.View(({ theme }) => ({
   paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
+}))
+
+const Version = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const LogoMinistereContainer = styled.View({

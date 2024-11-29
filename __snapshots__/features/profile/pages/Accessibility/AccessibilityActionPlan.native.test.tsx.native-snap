@@ -213,9 +213,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Italic",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-MediumItalic",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -237,9 +237,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -287,9 +287,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -311,9 +311,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -391,9 +391,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -453,9 +453,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -515,9 +515,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -577,9 +577,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -605,9 +605,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -661,9 +661,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -752,9 +752,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -814,9 +814,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -876,9 +876,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -938,9 +938,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1000,9 +1000,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1054,9 +1054,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1104,9 +1104,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1184,9 +1184,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1246,9 +1246,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1308,9 +1308,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1370,9 +1370,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1398,9 +1398,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1422,9 +1422,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1438,9 +1438,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1466,9 +1466,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1546,9 +1546,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1608,9 +1608,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -1636,9 +1636,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1652,9 +1652,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1677,9 +1677,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1693,9 +1693,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1727,9 +1727,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1743,9 +1743,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1771,9 +1771,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1787,9 +1787,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1815,9 +1815,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1831,9 +1831,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -1856,9 +1856,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -1872,9 +1872,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2031,9 +2031,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2047,9 +2047,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2101,9 +2101,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2117,9 +2117,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2145,9 +2145,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2161,9 +2161,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2232,9 +2232,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -2294,9 +2294,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -2356,9 +2356,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -2418,9 +2418,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -2480,9 +2480,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -2508,9 +2508,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2535,9 +2535,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2551,9 +2551,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2576,9 +2576,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2592,9 +2592,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -2643,9 +2643,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2779,9 +2779,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -2911,9 +2911,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -3135,9 +3135,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3150,9 +3150,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3213,9 +3213,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3226,9 +3226,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3337,9 +3337,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -3401,9 +3401,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3416,9 +3416,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3479,9 +3479,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3494,9 +3494,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3557,9 +3557,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3570,9 +3570,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3681,9 +3681,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -3745,9 +3745,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3758,9 +3758,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -3869,9 +3869,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -3933,9 +3933,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -3948,9 +3948,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4011,9 +4011,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4024,9 +4024,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4093,9 +4093,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
+                        height={20}
                         testID="button-icon"
-                        width={16}
+                        width={20}
                       >
                         <Text>
                           button-icon-SVG-Mock
@@ -4116,13 +4116,13 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="ButtonText"
                       >
                         https://passculture.app/
                       </Text>
@@ -4137,9 +4137,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -4201,9 +4201,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4216,9 +4216,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4279,9 +4279,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4294,9 +4294,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4405,9 +4405,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4420,9 +4420,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4483,9 +4483,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4498,9 +4498,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4561,9 +4561,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4672,9 +4672,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4735,9 +4735,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4846,9 +4846,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4909,9 +4909,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -4924,9 +4924,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -4987,9 +4987,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5000,9 +5000,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5113,9 +5113,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     [
                       {
                         "color": "#15884f",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -5177,9 +5177,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5192,9 +5192,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5303,9 +5303,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5318,9 +5318,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5381,9 +5381,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5396,9 +5396,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5459,9 +5459,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5474,9 +5474,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5537,9 +5537,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5552,9 +5552,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5615,9 +5615,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5630,9 +5630,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5693,9 +5693,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5708,9 +5708,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5771,9 +5771,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5786,9 +5786,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -5849,9 +5849,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                     "marginLeft": 12,
                   },
                 ]
@@ -5864,9 +5864,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   [
                     {
                       "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
