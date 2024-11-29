@@ -114,28 +114,10 @@ describe('VenueMapTypeFilter', () => {
       />
     )
 
-    expect(screen.getByText('Tout afficher')).toBeOnTheScreen()
+    expect(screen.getByText('Tout sélectionner')).toBeOnTheScreen()
     expect(screen.getByText('Musique - Salle de concerts')).toBeOnTheScreen()
     expect(screen.getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
     expect(screen.getByText('Musée')).toBeOnTheScreen()
-  })
-
-  it('should toggle show all checkbox when venue filter is empty', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([])
-    render(
-      <VenueMapTypeFilter
-        navigation={mockNavigation}
-        route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
-          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
-        }}
-      />
-    )
-
-    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout afficher' })
-
-    expect(showAllCheckbox).toHaveAccessibilityState({ checked: true })
   })
 
   it('should toggle show all checkbox when complete venue type group selected', () => {
@@ -151,47 +133,9 @@ describe('VenueMapTypeFilter', () => {
       />
     )
 
-    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout afficher' })
+    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout sélectionner' })
 
     expect(showAllCheckbox).toHaveAccessibilityState({ checked: true })
-  })
-
-  it('should not toggle show all checkbox when venue type are selected in an other group than the one consulted', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.BOOKSTORE])
-    render(
-      <VenueMapTypeFilter
-        navigation={mockNavigation}
-        route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
-          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
-        }}
-      />
-    )
-
-    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout afficher' })
-
-    expect(showAllCheckbox).toHaveAccessibilityState({ checked: false })
-  })
-
-  it('should not toggle venue type checkbox when complete venue type group selected', () => {
-    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
-    render(
-      <VenueMapTypeFilter
-        navigation={mockNavigation}
-        route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
-          params: { title: 'Sorties', filterGroup: 'OUTINGS' },
-        }}
-      />
-    )
-
-    const concertHallCheckbox = screen.getByRole('checkbox', {
-      name: 'Musique - Salle de concerts',
-    })
-
-    expect(concertHallCheckbox).toHaveAccessibilityState({ checked: false })
   })
 
   it('should toggle venue type checkbox when it is included in venue filters', () => {
@@ -228,7 +172,7 @@ describe('VenueMapTypeFilter', () => {
       />
     )
 
-    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout afficher' })
+    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout sélectionner' })
 
     await user.press(showAllCheckbox)
 
@@ -251,7 +195,7 @@ describe('VenueMapTypeFilter', () => {
       />
     )
 
-    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout afficher' })
+    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout sélectionner' })
 
     await user.press(showAllCheckbox)
 
@@ -302,8 +246,8 @@ describe('VenueMapTypeFilter', () => {
     expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
   })
 
-  it('should add only the current selection in venue type filter when pressing venue type checkbox (not checked) and all venue type group filtered', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
+  it('should complete selection when some checkboxes are checked and pressing select all', async () => {
+    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.FESTIVAL])
     render(
       <VenueMapTypeFilter
         navigation={mockNavigation}
@@ -315,12 +259,12 @@ describe('VenueMapTypeFilter', () => {
       />
     )
 
-    const concertHallCheckbox = screen.getByRole('checkbox', {
-      name: 'Musique - Salle de concerts',
-    })
+    const showAllCheckbox = screen.getByRole('checkbox', { name: 'Tout sélectionner' })
 
-    await user.press(concertHallCheckbox)
+    await user.press(showAllCheckbox)
 
-    expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
+    expect(screen.getAllByRole('checkbox')).toHaveLength(
+      FILTERS_VENUE_TYPE_MAPPING.OUTINGS.length + 1
+    )
   })
 })

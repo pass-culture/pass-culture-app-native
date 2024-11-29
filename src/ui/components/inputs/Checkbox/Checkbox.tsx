@@ -44,7 +44,7 @@ export const Checkbox: FunctionComponent<Props> = ({
       onFocus={onFocus}
       style={style}
       onBlur={onBlur}>
-      <Box isChecked={isChecked}>{isChecked ? <CheckboxMark /> : null}</Box>
+      <Box isChecked={isChecked}>{isChecked ? <CheckboxMark width="80%" /> : null}</Box>
       {label ? (
         <LabelComponent>
           {label}
@@ -60,11 +60,12 @@ const CheckboxContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   cursor: 'pointer',
+  columnGap: getSpacing(4),
 })
 
-const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
-  width: getSpacing(6),
-  height: getSpacing(6),
+const Box = styled.View<IsCheckedProps & { size: number }>(({ isChecked, theme }) => ({
+  width: theme.checkbox.size,
+  height: theme.checkbox.size,
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: theme.borderRadius.checkbox,
@@ -79,6 +80,5 @@ const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
 
 const StyledBody = styled(TypoDS.Body)({
   alignSelf: 'center',
-  paddingLeft: getSpacing(4),
   flex: 1,
 })

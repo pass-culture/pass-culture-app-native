@@ -80,6 +80,19 @@ describe('useVenueMapFilters', () => {
     expect(result.current.activeFilters).toHaveLength(0)
   })
 
+  it('should toggle a filter correctly (complete mode)', () => {
+    const { result } = renderHook(() => useVenueMapFilters())
+
+    act(() => {
+      result.current.toggleMacroFilter('OUTINGS', true)
+    })
+
+    const selectedMacros = result.current.getSelectedMacroFilters()
+
+    expect(selectedMacros).toEqual(['OUTINGS'])
+    expect(result.current.activeFilters).toMatchObject([...FILTERS_VENUE_TYPE_MAPPING.OUTINGS])
+  })
+
   it('should return selected macros correctly', () => {
     const { result } = renderHook(() => useVenueMapFilters())
 

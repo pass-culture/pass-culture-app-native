@@ -552,6 +552,7 @@ export const theme = {
     spaceBetweenModules: getSpacing(6),
   },
   checkbox: {
+    size: getSpacing(6),
     border: {
       color: {
         default: ColorsEnum.GREY_DARK,
