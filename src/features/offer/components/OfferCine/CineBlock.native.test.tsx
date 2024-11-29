@@ -50,6 +50,9 @@ describe('CineBlock', () => {
       selectedDate: mockSelectedDate,
       goToDate: mockGoToDate,
       displayCalendar: mockDisplayCalendar,
+      dates: [],
+      disableDates: jest.fn(),
+      displayDates: jest.fn(),
     })
 
     mockUseSubcategoriesMapping.mockReturnValue({

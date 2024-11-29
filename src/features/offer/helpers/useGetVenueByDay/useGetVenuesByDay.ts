@@ -1,96 +1,36 @@
-import { Hit } from '@algolia/client-search'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { isToday } from 'date-fns'
+import { useMemo } from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { useFetchOffers } from 'features/offer/api/useFetchOffers'
-import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
-import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { initialSearchState } from 'features/search/context/reducer'
-import { SearchQueryParameters } from 'libs/algolia/types'
-import { useLocation } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
-import { Offer } from 'shared/offer/types'
+import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
 
-const DEFAULT_RADIUS_KM = 50
-
-type Options = Partial<{
-  radiusKm: number
-  initialCount: number
-  nextCount: number
-}>
-
-export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?: Options) => {
-  const { radiusKm = DEFAULT_RADIUS_KM, initialCount = 6, nextCount = 3 } = options || {}
-  const [count, setCount] = useState<number>(initialCount)
-  const { userLocation } = useLocation()
-  const isUserUnderage = useIsUserUnderage()
-
-  const location = useMemo(
-    () =>
-      userLocation ?? {
-        latitude: offer?.venue.coordinates.latitude ?? 0,
-        longitude: offer?.venue.coordinates.longitude ?? 0,
-      },
-    [offer?.venue.coordinates.latitude, offer?.venue.coordinates.longitude, userLocation]
-  )
-
-  let searchQueryParameters: SearchQueryParameters = {
-    ...initialSearchState,
-    distinct: false,
-  }
-
-  const allocineId = offer?.extraData?.allocineId ?? undefined
-  if (allocineId) {
-    searchQueryParameters = { ...searchQueryParameters, allocineId }
-  } else if (offer?.id) {
-    searchQueryParameters = { ...searchQueryParameters, objectIds: [offer.id.toString()] }
-  }
-
-  const { data } = useFetchOffers({
-    parameters: searchQueryParameters,
-    buildLocationParameterParams: {
-      userLocation: location,
-      selectedLocationMode: LocationMode.AROUND_ME,
-      aroundMeRadius: radiusKm,
-      aroundPlaceRadius: 'all',
-    },
-    isUserUnderage,
-  })
-
-  const offerIds = extractOfferIdsFromHits(data?.hits)
-  const { data: offersWithStocks, isLoading } = useOffersStocks({ offerIds })
-
-  useEffect(() => {
-    setCount(initialCount)
-  }, [date, initialCount])
+export const useGetVenuesByDay = (date: Date, offers: OfferResponseV2[]) => {
+  const location = useUserLocation()
 
   const dayOffers = useMemo(
     () =>
-      moviesOfferBuilder(offersWithStocks?.offers)
-        .withoutScreeningsAfterNbDays(15)
+      moviesOfferBuilder(offers)
         .sortedByDistance(location)
         .withScreeningsOnDay(date)
+        .withoutScreeningsAfterNbDays(15)
         .build(),
-    [date, location, offersWithStocks?.offers]
+    [date, location, offers]
   )
 
   const nextOffers = useMemo(() => {
-    return moviesOfferBuilder(offersWithStocks?.offers)
+    return moviesOfferBuilder(offers)
       .withoutScreeningsAfterNbDays(15)
-      .sortedByDistance(location)
       .withoutScreeningsOnDay(date)
       .withNextScreeningFromDate(date)
+      .sortedByDistance(location)
       .build()
-  }, [date, location, offersWithStocks?.offers])
+  }, [date, location, offers])
 
   const after15DaysOffers = useMemo(
     () =>
-      moviesOfferBuilder(offersWithStocks?.offers)
-        .withScreeningsAfterNbDays(15)
-        .sortedByDistance(location)
-        .build(),
-    [location, offersWithStocks?.offers]
+      moviesOfferBuilder(offers).sortedByDistance(location).withScreeningsAfterNbDays(15).build(),
+    [location, offers]
   )
 
   const movieOffers = useMemo(
@@ -98,43 +38,19 @@ export const useGetVenuesByDay = (date: Date, offer?: OfferResponseV2, options?:
     [dayOffers, nextOffers, after15DaysOffers]
   )
 
-  const displayedOffers = useMemo(
-    () => (count === movieOffers.length ? movieOffers : movieOffers.slice(0, count)),
-    [count, movieOffers]
-  )
-
-  const increaseCount = useCallback(
-    () =>
-      setCount((count) => {
-        const newCount = count + nextCount
-        return Math.max(newCount, displayedOffers.length)
-      }),
-    [displayedOffers.length, nextCount]
-  )
-
-  const isEnd = useMemo(() => {
-    return (
-      displayedOffers.length === dayOffers.length + nextOffers.length + after15DaysOffers.length
-    )
-  }, [displayedOffers.length, dayOffers.length, nextOffers.length, after15DaysOffers.length])
-
   const hasStocksOnlyAfter15Days = useMemo(
     () => !dayOffers.length && !nextOffers.length && after15DaysOffers.length > 0,
     [after15DaysOffers.length, dayOffers.length, nextOffers.length]
   )
 
   return {
-    items: displayedOffers,
-    isLoading,
-    increaseCount,
-    isEnd,
+    movieOffers,
     hasStocksOnlyAfter15Days,
   }
 }
 
-const extractOfferIdsFromHits = (hits: Hit<Offer>[] | undefined) => {
-  if (!hits) {
-    return []
-  }
-  return hits.reduce<number[]>((previous, current) => [...previous, +current.objectID], [])
+export const getDaysWithNoScreenings = (offers: OfferResponseV2[], dates: Date[]) => {
+  return dates.filter((date) =>
+    isToday(date) ? false : !moviesOfferBuilder(offers).withScreeningsOnDay(date).build().length
+  )
 }

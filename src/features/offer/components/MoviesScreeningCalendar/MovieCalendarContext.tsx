@@ -15,7 +15,7 @@ import styled from 'styled-components/native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
-import { useNextDays } from 'features/offer/helpers/useNextDays/useNextDays'
+import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { useLayout } from 'ui/hooks/useLayout'
@@ -24,6 +24,9 @@ type MovieCalendarContextType = {
   selectedDate: Date
   goToDate: (date: Date) => void
   displayCalendar: (shouldDisplayCalendar: boolean) => void
+  displayDates: (dates: Date[]) => void
+  disableDates: (dates: Date[]) => void
+  dates: Date[]
 }
 
 const MovieCalendarContext = createContext<MovieCalendarContextType | undefined>(undefined)
@@ -72,11 +75,12 @@ const AnimatedCalendarView: React.FC<PropsWithChildren<{ selectedDate: Date }>> 
 }
 
 export const MovieCalendarProvider: React.FC<{
-  nbOfDays: number
   children: React.ReactNode
   containerStyle?: ViewStyle
-}> = ({ nbOfDays, containerStyle, children }) => {
-  const { dates, selectedDate, setSelectedDate } = useNextDays(nbOfDays)
+  initialDates?: Date[]
+}> = ({ containerStyle, children, initialDates = [] }) => {
+  const { dates, selectedDate, setSelectedDate, setDates } = useDaysSelector(initialDates)
+  const [disabledDates, setDisabledDates] = useState<Date[]>([])
   const flatListRef = useRef<FlatList | null>(null)
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
@@ -117,9 +121,23 @@ export const MovieCalendarProvider: React.FC<{
     [scrollToAnchor, setSelectedDate]
   )
 
+  const displayDates = useCallback(
+    (dates: Date[]) => {
+      setDates(dates)
+    },
+    [setDates]
+  )
+
   const value = useMemo(
-    () => ({ selectedDate, goToDate, displayCalendar: setIsVisible }),
-    [selectedDate, goToDate]
+    () => ({
+      dates,
+      selectedDate,
+      goToDate,
+      displayCalendar: setIsVisible,
+      displayDates,
+      disableDates: setDisabledDates,
+    }),
+    [dates, selectedDate, goToDate, displayDates]
   )
 
   return (
@@ -130,6 +148,7 @@ export const MovieCalendarProvider: React.FC<{
             <MovieCalendar
               dates={dates}
               selectedDate={selectedDate}
+              disabledDates={disabledDates}
               onTabChange={setSelectedDate}
               flatListRef={flatListRef}
               flatListWidth={flatListWidth}
@@ -154,4 +173,26 @@ export const useMovieCalendar = (): MovieCalendarContextType => {
     throw new Error('useMovieCalendar must be used within a MovieCalendarProvider')
   }
   return context
+}
+
+export const useDisableCalendarDates = (dates: Date[]) => {
+  const context = useContext(MovieCalendarContext)
+  if (context === undefined) {
+    throw new Error('useDisableCalendarDates must be used within a MovieCalendarProvider')
+  }
+
+  useEffect(() => {
+    context.disableDates(dates)
+  }, [context, dates])
+}
+
+export const useDisplayCalendar = (shouldDisplayCalendar: boolean) => {
+  const context = useContext(MovieCalendarContext)
+  if (context === undefined) {
+    throw new Error('useDisplayCalendar must be used within a MovieCalendarProvider')
+  }
+
+  useEffect(() => {
+    context.displayCalendar(shouldDisplayCalendar)
+  }, [context, shouldDisplayCalendar])
 }

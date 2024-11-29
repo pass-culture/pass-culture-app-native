@@ -3,11 +3,11 @@ import { isSameDay, startOfDay } from 'date-fns'
 import { getDates } from 'shared/date/getDates'
 import { renderHook, act } from 'tests/utils'
 
-import { useNextDays } from './useNextDays'
+import { useDaysSelector } from './useDaysSelector'
 
 jest.mock('shared/date/getDates')
 
-describe('useNextDays', () => {
+describe('useDaysSelector', () => {
   const mockDates = [new Date('2023-01-01'), new Date('2023-01-02'), new Date('2023-01-03')]
 
   beforeEach(() => {
@@ -15,14 +15,14 @@ describe('useNextDays', () => {
   })
 
   it('should initialize with the first date', () => {
-    const { result } = renderHook(() => useNextDays(3))
+    const { result } = renderHook(() => useDaysSelector(mockDates))
 
     expect(result.current.selectedDate).toEqual(mockDates[0])
     expect(result.current.dates).toEqual(mockDates)
   })
 
   it('should update selectedDate when setSelectedDate is called with a new date', () => {
-    const { result } = renderHook(() => useNextDays(3))
+    const { result } = renderHook(() => useDaysSelector(mockDates))
 
     act(() => {
       result.current.setSelectedDate(new Date('2023-01-02'))
@@ -32,7 +32,7 @@ describe('useNextDays', () => {
   })
 
   it('should not update selectedDate when setSelectedDate is called with the same date', () => {
-    const { result } = renderHook(() => useNextDays(3))
+    const { result } = renderHook(() => useDaysSelector(mockDates))
 
     const initialSelectedDate = result.current.selectedDate
 
@@ -44,7 +44,7 @@ describe('useNextDays', () => {
   })
 
   it('should set selectedDate to start of day', () => {
-    const { result } = renderHook(() => useNextDays(3))
+    const { result } = renderHook(() => useDaysSelector(mockDates))
 
     const dateWithTime = new Date('2023-01-02T12:34:56')
     act(() => {
@@ -52,11 +52,5 @@ describe('useNextDays', () => {
     })
 
     expect(result.current.selectedDate).toEqual(startOfDay(dateWithTime))
-  })
-
-  it('should call getDates with correct arguments', () => {
-    renderHook(() => useNextDays(5))
-
-    expect(getDates).toHaveBeenCalledWith(expect.any(Date), 5)
   })
 })
