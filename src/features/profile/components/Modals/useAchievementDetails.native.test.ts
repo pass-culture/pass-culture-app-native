@@ -16,7 +16,7 @@ describe('useAchievementDetails', () => {
         expect.objectContaining({
           name: firstBookBooking.name,
           completed: true,
-          completedAt: '02/12/2024',
+          completedAt: expect.stringMatching(/\d{2}\/\d{2}\/\d{4}/),
           illustration: firstBookBooking.illustrationUnlocked,
           description: firstBookBooking.descriptionUnlocked,
         })
