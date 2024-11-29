@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
@@ -29,8 +28,6 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
   shouldDisplayCloseButton,
   onClose,
 }) => {
-  useWhiteStatusBar()
-
   const { top } = useCustomSafeInsets()
   const { isDesktopViewport } = useTheme()
   const headerHeight = getSpacing(18) + (isDesktopViewport ? top : 0)

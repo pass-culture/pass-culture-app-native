@@ -8,7 +8,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
-import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
@@ -22,33 +21,39 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { determineAccessibilityRole } from './determineAccessibilityRole'
+import { FILTERS_MODAL_NAV_OPTIONS } from './filtersModalNavOptions'
 import { Header } from './Header/Header'
+import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from './navigationOptions'
 import { RootScreens } from './screens'
 import { RootStack } from './Stack'
+
+const isWeb = Platform.OS === 'web'
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
-
     return (
       <IconFactoryProvider>
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+          {isWeb ? null : (
+            <RootStack.Screen
+              name="VenueMapFiltersStackNavigator"
+              component={VenueMapFiltersStackNavigator}
+              options={{
+                presentation: 'modal',
+                ...FILTERS_MODAL_NAV_OPTIONS,
+                cardStyle: {
+                  marginTop: top,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                },
+              }}
+            />
+          )}
+
           {RootScreens}
-          <RootStack.Screen
-            name="VenueMapFiltersStackNavigator"
-            component={VenueMapFiltersStackNavigator}
-            options={{
-              presentation: 'modal',
-              cardStyle:
-                Platform.OS === 'android'
-                  ? {
-                      marginTop: top,
-                    }
-                  : undefined,
-            }}
-          />
         </RootStack.Navigator>
       </IconFactoryProvider>
     )
