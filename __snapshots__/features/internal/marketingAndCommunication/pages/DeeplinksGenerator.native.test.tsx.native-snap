@@ -1215,6 +1215,138 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 />
                 <View
+                  accessibilityLabel="ThematicSearch"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="ThematicSearch"
+                >
+                  <View
+                    flex={0.9}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 0.9,
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        ThematicSearch
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                          "flexBasis": 0,
+                          "flexGrow": 0.1,
+                          "flexShrink": 1,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Non sélectionné"
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#F1F1F4",
+                        "height": 1,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                />
+                <View
                   accessibilityLabel="Profile"
                   accessibilityRole="radio"
                   accessibilityState={
@@ -1570,138 +1702,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         Stepper
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityLabel="ThematicSearch"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="ThematicSearch"
-                >
-                  <View
-                    flex={0.9}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        isSelected={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
-                        }
-                      >
-                        ThematicSearch
                       </Text>
                     </View>
                   </View>

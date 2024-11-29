@@ -131,9 +131,6 @@ export const SCREENS_CONFIG: {
       description: 'Date de fin',
     },
   },
-  Profile: {},
-  SignupForm: {},
-  Stepper: {},
   ThematicSearch: {
     offerCategories: {
       type: 'thematicSearchCategories',
@@ -141,6 +138,9 @@ export const SCREENS_CONFIG: {
       description: 'Categories',
     },
   },
+  Profile: {},
+  SignupForm: {},
+  Stepper: {},
 }
 
 type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content' | 'utm_gen'
