@@ -33,7 +33,7 @@ export const fetchOffersByArtist = async ({
   const queries: MultipleQueriesQuery[] = [
     // Playlist
     {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       query: '',
       params: {
         page: 0,
@@ -49,7 +49,7 @@ export const fetchOffersByArtist = async ({
     },
     // Offers top 4
     {
-      indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       query: '',
       params: {
         page: 0,

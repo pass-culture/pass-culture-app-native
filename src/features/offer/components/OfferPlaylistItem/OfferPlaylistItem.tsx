@@ -47,11 +47,14 @@ export const OfferPlaylistItem = ({
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+    const categoryLabel = item.offer.bookFormat || labelMapping[offer.subcategoryId] || ''
+    const categoryId = categoryMapping[offer.subcategoryId]
+
     return (
       <OfferTile
         offerLocation={item._geoloc}
-        categoryLabel={labelMapping[item.offer.subcategoryId]}
-        categoryId={categoryMapping[item.offer.subcategoryId]}
+        categoryLabel={categoryLabel}
+        categoryId={categoryId}
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
         name={item.offer.name}

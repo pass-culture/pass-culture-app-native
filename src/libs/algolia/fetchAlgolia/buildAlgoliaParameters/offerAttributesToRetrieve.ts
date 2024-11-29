@@ -10,6 +10,7 @@ export const offerAttributesToRetrieve = [
   'offer.releaseDate',
   'offer.subcategoryId',
   'offer.thumbUrl',
+  'offer.bookFormat',
   'objectID',
   '_geoloc',
   'venue',

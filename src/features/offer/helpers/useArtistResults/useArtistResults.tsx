@@ -68,7 +68,7 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
     if (!data?.topOffersHits) return []
     return getSortedHits(data.topOffersHits)
   }, [data?.topOffersHits, getSortedHits])
-
+  // console.log({ artistTopOffers, artistPlaylist })
   return { artistPlaylist, artistTopOffers }
 }
 

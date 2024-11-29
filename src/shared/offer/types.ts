@@ -16,6 +16,7 @@ export type HitOffer = {
   subcategoryId: SubcategoryIdEnum
   thumbUrl?: string
   releaseDate?: number | string
+  bookFormat?: string | null
 }
 
 export interface Offer {

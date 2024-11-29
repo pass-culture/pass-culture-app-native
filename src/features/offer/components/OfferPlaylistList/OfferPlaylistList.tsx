@@ -116,8 +116,8 @@ export function OfferPlaylistList({
               itemHeight={itemHeight}
               renderItem={OfferPlaylistItem({
                 offer,
-                categoryMapping,
                 labelMapping,
+                categoryMapping,
                 currency,
                 euroToPacificFrancRate,
                 apiRecoParams: playlist.apiRecoParams,
