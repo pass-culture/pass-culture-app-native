@@ -25,20 +25,22 @@ export const useGetCurrencyToDisplay = (
 
   const { selectedPlace } = useLocation()
   const isNewCaledonianLocationSelected = selectedPlace?.info === 'Nouvelle-Calédonie'
-  const isNotNewCaledonianLocationSelected = !isNewCaledonianLocationSelected
+  const isNotNewCaledonianLocationSelected = selectedPlace?.info !== 'Nouvelle-Calédonie'
 
   const pacificFrancCurrency =
     displayFormat === 'full' ? Currency.PACIFIC_FRANC_FULL : Currency.PACIFIC_FRANC_SHORT
 
-  switch (true) {
-    case disablePacificFrancCurrency:
-    case isUserRegisteredInEuroRegion:
-    case isNotNewCaledonianLocationSelected:
-      return Currency.EURO
-    case enablePacificFrancCurrency &&
-      (isUserRegisteredInPacificFrancRegion || isNewCaledonianLocationSelected):
-      return pacificFrancCurrency
-    default:
-      return Currency.EURO
+  if (disablePacificFrancCurrency) return Currency.EURO
+
+  if (selectedPlace) {
+    if (isNotNewCaledonianLocationSelected) return Currency.EURO
+    if (isNewCaledonianLocationSelected) return pacificFrancCurrency
   }
+
+  if (user) {
+    if (isUserRegisteredInEuroRegion) return Currency.EURO
+    if (isUserRegisteredInPacificFrancRegion) return pacificFrancCurrency
+  }
+
+  return Currency.EURO
 }

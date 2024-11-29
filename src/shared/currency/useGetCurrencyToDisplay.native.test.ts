@@ -23,6 +23,7 @@ const mockUseAuthContext = jest.mocked(useAuthContext)
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
     activateFeatureFlags()
+    mockUseGeolocation.mockReturnValue({ userLocation: null } as ILocationContext)
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       user: undefined,
@@ -33,13 +34,12 @@ describe('useGetCurrencyToDisplay', () => {
   })
 
   it('should return Euro by default when location and user are not provided', () => {
-    mockUseGeolocation.mockReturnValueOnce({ userLocation: null } as ILocationContext)
     const { result } = renderHook(() => useGetCurrencyToDisplay())
 
     expect(result.current).toBe('€')
   })
 
-  describe('when location is outside New Caledonia', () => {
+  describe('when user is not connected and location is outside New Caledonia', () => {
     beforeEach(() => {
       mockUseGeolocation.mockReturnValue({
         userLocation: PARIS_DEFAULT_POSITION,
@@ -66,7 +66,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
   })
 
-  describe('when location is in New Caledonia', () => {
+  describe('when user is not connected and location is in New Caledonia', () => {
     beforeEach(() => {
       mockUseGeolocation.mockReturnValue({
         userLocation: NOUMEA_DEFAULT_POSITION,
@@ -117,7 +117,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
   })
 
-  describe('when user is in Euro region', () => {
+  describe('when user is registered in Euro region', () => {
     beforeEach(() => {
       mockUseAuthContext.mockReturnValue({
         isLoggedIn: true,
@@ -147,9 +147,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
 
     describe('and the feature flag is disabled', () => {
-      beforeEach(() => {
-        activateFeatureFlags()
-      })
+      beforeEach(() => activateFeatureFlags())
 
       it('should return Euro when displayFormat is "short"', () => {
         const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
@@ -165,7 +163,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
   })
 
-  describe('when user is in Pacific Franc region', () => {
+  describe('when user is registered in Pacific Franc region', () => {
     beforeEach(() => {
       mockUseAuthContext.mockReturnValue({
         isLoggedIn: true,
@@ -195,9 +193,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
 
     describe('and the feature flag is disabled', () => {
-      beforeEach(() => {
-        activateFeatureFlags()
-      })
+      beforeEach(() => activateFeatureFlags())
 
       it('should return Euro when displayFormat is "short"', () => {
         const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
