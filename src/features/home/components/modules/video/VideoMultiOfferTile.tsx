@@ -9,9 +9,9 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { formatDates } from 'libs/parsers/formatDates'
 import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -39,8 +39,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
 
   const displayPrice = useGetDisplayPrice(offer?.offer?.prices)
 
-  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const displayDate = formatDates(timestampsInMillis)
+  const displayDate = useOfferDates(offer)
 
   const displayDistance = useDistance(offer._geoloc)
 

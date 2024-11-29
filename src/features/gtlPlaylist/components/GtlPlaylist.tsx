@@ -5,7 +5,6 @@ import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
-import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFunctionOnce } from 'libs/hooks'
@@ -22,7 +21,6 @@ export interface GtlPlaylistProps {
 }
 
 export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<GtlPlaylistProps>) {
-  const transformOfferHits = useTransformOfferHits()
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
@@ -57,7 +55,7 @@ export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<
         itemWidth={itemWidth}
         itemHeight={itemHeight}
         renderItem={renderPassPlaylist}
-        keyExtractor={(item: Hit<Offer>) => transformOfferHits(item).objectID}
+        keyExtractor={(item: Hit<Offer>) => item.objectID}
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
       />

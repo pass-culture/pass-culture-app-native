@@ -3,7 +3,6 @@ import React from 'react'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Offer } from 'shared/offer/types'
 import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -23,14 +22,13 @@ export function ThematicSearchPlaylist({
   route,
 }: Readonly<ThematicSearchPlaylist>) {
   const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist })
-  const transformOfferHits = useTransformOfferHits()
   return (
     <PassPlaylist
       data={playlist.offers.hits}
       itemWidth={PLAYLIST_ITEM_WIDTH}
       itemHeight={PLAYLIST_ITEM_HEIGHT}
       renderItem={renderPassPlaylist}
-      keyExtractor={(item: Hit<Offer>) => transformOfferHits(item).objectID}
+      keyExtractor={(item: Hit<Offer>) => item.objectID}
       title={playlist.title}
     />
   )

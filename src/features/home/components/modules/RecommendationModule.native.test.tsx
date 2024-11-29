@@ -43,11 +43,11 @@ describe('RecommendationModule', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should display V2 playlist when FF activated', () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+  it('should display V2 playlist when FF activated', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     renderRecommendationModule()
 
-    expect(screen.getAllByTestId('playlist-card-offer-v2')).toBeTruthy()
+    expect(await screen.findByTestId('playlist-card-offer-v2')).toBeOnTheScreen()
   })
 
   it('should NOT display V2 playlist when FF deactivated', () => {

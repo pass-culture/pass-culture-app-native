@@ -7,6 +7,7 @@ export const offerAttributesToRetrieve = [
   'offer.isEducational',
   'offer.name',
   'offer.prices',
+  'offer.releaseDate',
   'offer.subcategoryId',
   'offer.thumbUrl',
   'objectID',

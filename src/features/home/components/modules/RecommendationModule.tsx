@@ -2,20 +2,15 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
-import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { RecommendedOffersModule } from 'features/home/types'
+import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -31,14 +26,10 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
-  const mapping = useCategoryIdMapping()
-  const labelMapping = useCategoryHomeLabelMapping()
 
   const { offers, recommendationApiParams } = useHomeRecommendedOffers(
     position,
@@ -69,41 +60,19 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   }, [shouldModuleBeDisplayed])
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
-    ({ item, width, height }) => {
-      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-
-      return (
-        <HomeOfferTile
-          categoryLabel={labelMapping[item.offer.subcategoryId]}
-          categoryId={mapping[item.offer.subcategoryId]}
-          subcategoryId={item.offer.subcategoryId}
-          offerId={+item.objectID}
-          offerLocation={item._geoloc}
-          name={item.offer.name}
-          date={formatDates(timestampsInMillis)}
-          isDuo={item.offer.isDuo}
-          thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
-          isBeneficiary={profile?.isBeneficiary}
-          moduleName={moduleName}
-          moduleId={moduleId}
-          width={width}
-          height={height}
-          homeEntryId={homeEntryId}
-          apiRecoParams={recommendationApiParams}
-          variant={isNewOfferTileDisplayed ? 'new' : 'default'}
-        />
-      )
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      profile?.isBeneficiary,
-      labelMapping,
-      mapping,
-      recommendationApiParams,
-      currency,
-      euroToPacificFrancRate,
-    ]
+    ({ item, width, height }) => (
+      <OfferTileWrapper
+        item={item}
+        width={width}
+        height={height}
+        moduleId={moduleId}
+        moduleName={moduleName}
+        apiRecoParams={recommendationApiParams}
+        analyticsFrom="home"
+        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
+      />
+    ),
+    [isNewOfferTileDisplayed, moduleId, moduleName, recommendationApiParams]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

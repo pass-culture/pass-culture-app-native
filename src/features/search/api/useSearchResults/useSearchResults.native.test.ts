@@ -64,7 +64,7 @@ describe('useSearchResults', () => {
             indexName: 'algoliaOffersIndexName',
             params: {
               attributesToHighlight: [],
-              attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+              attributesToRetrieve: offerAttributesToRetrieve,
               clickAnalytics: true,
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 20,
@@ -99,7 +99,7 @@ describe('useSearchResults', () => {
             indexName: 'algoliaOffersIndexName',
             params: {
               attributesToHighlight: [],
-              attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+              attributesToRetrieve: offerAttributesToRetrieve,
               clickAnalytics: true,
               distinct: false,
               facetFilters: [['offer.isEducational:false']],
