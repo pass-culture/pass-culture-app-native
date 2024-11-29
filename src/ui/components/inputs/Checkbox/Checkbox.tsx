@@ -80,4 +80,5 @@ const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
 const StyledBody = styled(TypoDS.Body)({
   alignSelf: 'center',
   paddingLeft: getSpacing(4),
+  flex: 1,
 })

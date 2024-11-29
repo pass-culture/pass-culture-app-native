@@ -441,6 +441,9 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                 {
                   "alignSelf": "center",
                   "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -536,6 +539,9 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                 {
                   "alignSelf": "center",
                   "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -2241,6 +2247,9 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
                 {
                   "alignSelf": "center",
                   "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,

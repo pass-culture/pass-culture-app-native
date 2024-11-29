@@ -3522,6 +3522,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       {
                         "alignSelf": "center",
                         "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
