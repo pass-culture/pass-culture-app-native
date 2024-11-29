@@ -40,9 +40,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
 
-  const distanceFromOffer = useDistance(props.offerLocation)
+  const { offerId, name, date, price, isDuo, categoryId, thumbUrl, offerLocation } = props
 
-  const { offerId, name, date, price, isDuo, categoryId, thumbUrl } = offer
+  const distanceFromOffer = useDistance(offerLocation)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,

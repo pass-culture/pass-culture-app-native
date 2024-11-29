@@ -7,9 +7,7 @@ export const useOfferDates = (offer: Offer): string | undefined => {
   const { subcategoryId, dates, releaseDate } = offerDetails
 
   const isOfferAMovieScreeningWithAReleaseDate =
-    subcategoryId === SubcategoryIdEnum.SEANCE_CINE &&
-    releaseDate &&
-    typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
+    subcategoryId === SubcategoryIdEnum.SEANCE_CINE && typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
 

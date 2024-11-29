@@ -9,9 +9,14 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+<<<<<<< HEAD
 import { formatDates } from 'libs/parsers/formatDates'
 import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
+=======
+import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+>>>>>>> 54c757a09 (feat: use new hook and new component to render properly formatted dates)
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -42,8 +47,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const prePopulateOffer = usePrePopulateOffer()
   const theme = useTheme()
 
-  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const displayDate = formatDates(timestampsInMillis)
+  const displayDate = useOfferDates(offer)
 
   const displayPrice = useGetDisplayPrice(offer?.offer?.prices)
 

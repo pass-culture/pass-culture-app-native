@@ -2,16 +2,15 @@ import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubcategoryIdEnum } from 'api/gen'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { formatDates, formatReleaseDate } from 'libs/parsers/formatDates'
 import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
@@ -38,22 +37,16 @@ export const HorizontalOfferTile = ({
   ...horizontalTileProps
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
-  const { subcategoryId, dates, prices, thumbUrl, name, releaseDate } = offerDetails
+  const { subcategoryId, prices, thumbUrl, name } = offerDetails
   const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
 
-  const isOfferAMovieScreeningWithAReleaseDate =
-    subcategoryId === SubcategoryIdEnum.SEANCE_CINE && typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
-
-  const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = Number(objectID)
 
-  const formattedDate = isOfferAMovieScreeningWithAReleaseDate
-    ? formatReleaseDate(releaseDate * 1000)
-    : formatDates(timestampsInMillis)
+  const formattedDate = useOfferDates(offer)
 
   const formattedPrice = useGetDisplayPrice(prices)
   const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })

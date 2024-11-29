@@ -11,7 +11,7 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -60,24 +60,29 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+jest.useFakeTimers()
+
+const user = userEvent.setup()
+
 describe('GtlPlaylist', () => {
   describe('on venue page', () => {
-    it('should log ConsultOffer when pressing an item', () => {
+    it('should log ConsultOffer when pressing an item', async () => {
       renderGtlPlaylistOnVenuePage()
 
-      const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
+      const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      if (result) {
-        fireEvent.press(result)
-      }
+      await act(async () => user.press(item))
 
-      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        from: 'venue',
-        index: 0,
-        moduleId: '2xUlLBRfxdk6jeYyJszunX',
-        offerId: 12,
-        venueId: 5543,
-      })
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          from: 'venue',
+          index: 0,
+          moduleId: '2xUlLBRfxdk6jeYyJszunX',
+          offerId: 12,
+          venueId: 5543,
+        })
+      )
     })
 
     it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
@@ -125,21 +130,22 @@ describe('GtlPlaylist', () => {
   })
 
   describe('on ThematicSearch page', () => {
-    it('should log ConsultOffer when pressing an item', () => {
+    it('should log ConsultOffer when pressing an item', async () => {
       renderGtlPlaylistOnThematicSearch()
 
-      const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
+      const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      if (result) {
-        fireEvent.press(result)
-      }
+      await act(async () => user.press(item))
 
-      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        from: 'thematicsearch',
-        index: 0,
-        moduleId: '2xUlLBRfxdk6jeYyJszunX',
-        offerId: 12,
-      })
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          from: 'thematicsearch',
+          index: 0,
+          moduleId: '2xUlLBRfxdk6jeYyJszunX',
+          offerId: 12,
+        })
+      )
     })
 
     it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {

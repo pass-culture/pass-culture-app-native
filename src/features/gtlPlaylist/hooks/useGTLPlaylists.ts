@@ -6,6 +6,7 @@ import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -25,6 +26,7 @@ export function useGTLPlaylists({
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const transformHits = useTransformOfferHits()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
     queryKey: [gtlPlaylistsQueryKey, venue?.id, userLocation, selectedLocationMode],
@@ -58,13 +60,15 @@ export function useGTLPlaylists({
         searchIndex
       )
 
-      return gtlPlaylistsConfig.map((item, index) => ({
-        title: item.displayParameters.title,
-        offers: offers[index] ?? { hits: [] },
-        layout: item.displayParameters.layout,
-        minNumberOfOffers: item.displayParameters.minOffers,
-        entryId: item.id,
-      }))
+      return gtlPlaylistsConfig.map((item, index) => {
+        return {
+          title: item.displayParameters.title,
+          offers: { hits: offers[index]?.hits.map(transformHits) ?? [] },
+          layout: item.displayParameters.layout,
+          minNumberOfOffers: item.displayParameters.minOffers,
+          entryId: item.id,
+        }
+      })
     },
     enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000, // 5 minutes, as the GTL playlists are not often updated
@@ -76,7 +80,7 @@ export function useGTLPlaylists({
 
   return {
     gtlPlaylists: gtlPlaylists.filter(
-      (playlist) => playlist.offers.hits.length >= Math.max(playlist.minNumberOfOffers, 1)
+      (playlist) => playlist?.offers?.hits.length >= Math.max(playlist.minNumberOfOffers, 1)
     ),
     isLoading,
   }
