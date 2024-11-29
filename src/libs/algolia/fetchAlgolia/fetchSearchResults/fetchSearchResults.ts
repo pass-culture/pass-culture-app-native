@@ -52,7 +52,7 @@ export const fetchSearchResults = async ({
           isUserUnderage,
           disabilitiesProperties
         ),
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+        attributesToRetrieve: offerAttributesToRetrieve,
         attributesToHighlight: [], // We disable highlighting because we don't need it
         /* Is needed to get a queryID, in order to send analytics events
          https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
@@ -115,7 +115,7 @@ export const fetchSearchResults = async ({
           isUserUnderage,
           disabilitiesProperties
         ),
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+        attributesToRetrieve: offerAttributesToRetrieve,
         attributesToHighlight: [], // We disable highlighting because we don't need it
         /* Is needed to get a queryID, in order to send analytics events
              https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */

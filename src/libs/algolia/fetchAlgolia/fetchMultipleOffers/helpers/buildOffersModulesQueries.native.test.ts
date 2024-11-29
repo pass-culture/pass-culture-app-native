@@ -28,7 +28,7 @@ describe('buildOffersModulesQueries', () => {
       numericFilters: [['offer.prices: 0 TO 300']],
       hitsPerPage: 20,
       attributesToHighlight: [],
-      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.releaseDate'],
+      attributesToRetrieve: offerAttributesToRetrieve,
     },
     query: '',
   }
