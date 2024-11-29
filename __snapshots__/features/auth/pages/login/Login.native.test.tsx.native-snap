@@ -299,7 +299,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -442,7 +442,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
@@ -873,7 +873,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
-                  "lineHeight": 16,
+                  "lineHeight": 19.2,
                   "marginHorizontal": 10,
                 },
               ]

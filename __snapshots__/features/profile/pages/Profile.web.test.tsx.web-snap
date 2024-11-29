@@ -379,7 +379,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Notifications
@@ -434,7 +434,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           for="testUuidV4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Activer ma géolocalisation
@@ -548,7 +548,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Comment ça marche ?
@@ -604,7 +604,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Centre d’aide
@@ -667,7 +667,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Accessibilité
@@ -722,7 +722,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Informations légales
@@ -777,7 +777,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Confidentialité
@@ -999,7 +999,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                 >
                   Version 1.10.5
@@ -1549,7 +1549,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Notifications
@@ -1604,7 +1604,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           for="testUuidV4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Activer ma géolocalisation
@@ -1718,7 +1718,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Comment ça marche ?
@@ -1774,7 +1774,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Centre d’aide
@@ -1837,7 +1837,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Accessibilité
@@ -1892,7 +1892,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Informations légales
@@ -1947,7 +1947,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Confidentialité
@@ -2169,7 +2169,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                 >
                   Version 1.10.5

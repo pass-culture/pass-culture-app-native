@@ -11,7 +11,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { LINE_BREAK, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -20,7 +20,7 @@ export function LegalNotices() {
     <SecondaryPageWithBlurHeader title="Informations légales" scrollable>
       <TitleText>Mentions légales</TitleText>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
+      <TypoDS.Body>
         ÉDITEUR SAS pass Culture
         {LINE_BREAK}
         éditeur du site&nbsp;:
@@ -54,7 +54,7 @@ export function LegalNotices() {
           externalNav={contactSupport.forGenericQuestion}
           icon={EmailFilled}
         />
-      </Typo.Body>
+      </TypoDS.Body>
 
       <StyledSeparator />
 

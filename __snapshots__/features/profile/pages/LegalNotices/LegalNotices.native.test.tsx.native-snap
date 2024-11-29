@@ -237,9 +237,9 @@ exports[`LegalNotices should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -573,8 +573,8 @@ exports[`LegalNotices should render correctly 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   },
                 ]
               }
@@ -690,8 +690,8 @@ exports[`LegalNotices should render correctly 1`] = `
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   },
                 ]
               }

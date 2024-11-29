@@ -17,7 +17,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
@@ -48,7 +48,7 @@ export function ConfirmDeleteProfile() {
       titleComponent={TypoDS.Title2}
       title="Veux-tu vraiment supprimer ton compte&nbsp;?">
       <Content>
-        <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
+        <TypoDS.BodyAccent>Les conséquences&nbsp;:</TypoDS.BodyAccent>
         <VerticalUl>
           <BulletListItem text="tes réservations sont annulées sauf pour certains cas précisés dans les ">
             {LINE_BREAK}
@@ -65,11 +65,11 @@ export function ConfirmDeleteProfile() {
 
         <Spacer.Column numberOfSpaces={5} />
 
-        <Typo.ButtonText>Les données que nous conservons&nbsp;:</Typo.ButtonText>
-        <Typo.Body>
+        <TypoDS.BodyAccent>Les données que nous conservons&nbsp;:</TypoDS.BodyAccent>
+        <TypoDS.Body>
           Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
           vérification de ton identité.
-        </Typo.Body>
+        </TypoDS.Body>
 
         <Spacer.Column numberOfSpaces={14} />
         <ButtonContainer>

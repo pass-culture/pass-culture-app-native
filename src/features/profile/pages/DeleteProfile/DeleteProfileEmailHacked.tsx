@@ -34,11 +34,11 @@ export const DeleteProfileEmailHacked: FC = () => {
       <ViewGap gap={8}>
         <ViewGap gap={6}>
           <TypoDS.BodyS>
-            Tu as indiqué <StyledBoldText>que ta boite mail a été piratée</StyledBoldText>.
+            Tu as indiqué <TypoDS.BodyAccentS>que ta boite mail a été piratée</TypoDS.BodyAccentS>.
           </TypoDS.BodyS>
           <TypoDS.BodyS>
-            Pour des raisons de <StyledBoldText>sécurité</StyledBoldText>, nous te conseillons de
-            modifier ton mot de passe ou suspendre ton compte temporairement.
+            Pour des raisons de <TypoDS.BodyAccentS>sécurité</TypoDS.BodyAccentS>, nous te
+            conseillons de modifier ton mot de passe ou suspendre ton compte temporairement.
           </TypoDS.BodyS>
         </ViewGap>
 
@@ -55,10 +55,6 @@ export const DeleteProfileEmailHacked: FC = () => {
     </GenericInfoPageWhite>
   )
 }
-
-const StyledBoldText = styled(TypoDS.BodyS)({
-  fontWeight: 'bold',
-})
 
 const ContentBottom = styled(ViewGap).attrs({
   gap: 6,
