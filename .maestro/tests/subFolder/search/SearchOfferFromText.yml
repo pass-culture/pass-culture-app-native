@@ -7,37 +7,36 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Partout'
+      - tapOn: 'France entière'
 
-- tapOn: "Offre, artiste, lieu culturel..."
+- tapOn: 'Offre, artiste, lieu culturel...'
 
-- inputText: "Les coulisses du Stade de France"
+- inputText: 'Les coulisses du Stade de France'
 - pressKey: Enter
 
 - tapOn:
-    id: "Voir tous les filtres"
-- tapOn: "Prix"
-- tapOn: "300"
-- inputText: "50"
+    id: 'Voir tous les filtres'
+- tapOn: 'Prix'
+- tapOn: '300'
+- inputText: '50'
 - pressKey: Enter
-- tapOn: "Appliquer le filtre"
+- tapOn: 'Appliquer le filtre'
 
-- tapOn: "Accessibilité"
+- tapOn: 'Accessibilité'
 
-- tapOn: "Appliquer le filtre"
+- tapOn: 'Appliquer le filtre'
 
-- tapOn: "Rechercher"
+- tapOn: 'Rechercher'
 
 - runFlow:
     when:
-      notVisible: "Les coulisses du Stade de France"
+      notVisible: 'Les coulisses du Stade de France'
     commands:
-    - swipe: 
-        from:
-          text: Les offres
-        direction: UP
+      - swipe:
+          from:
+            text: Les offres
+          direction: UP
 
 - tapOn:
-    text: "Les coulisses du Stade de France"
+    text: 'Les coulisses du Stade de France'
     index: 1
-

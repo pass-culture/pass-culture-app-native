@@ -10,7 +10,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -553,7 +553,7 @@ describe('SearchBox component', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('Me localiser')).toBeOnTheScreen()
+    expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
   })
 })
 

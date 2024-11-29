@@ -5,6 +5,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationLabel } from 'libs/location/types'
 import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -68,7 +69,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.getByText('Me localiser')).toBeOnTheScreen()
+      expect(insideLocationWidget.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     })
   })
 
@@ -78,7 +79,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(insideLocationWidget.queryByText(LocationLabel.everywhereLabel)).not.toBeOnTheScreen()
     })
   })
 
@@ -88,7 +89,9 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(searchHeaderTitleContainer.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(
+        searchHeaderTitleContainer.queryByText(LocationLabel.everywhereLabel)
+      ).not.toBeOnTheScreen()
     })
   })
 
@@ -98,7 +101,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(insideLocationWidget.queryByText(LocationLabel.everywhereLabel)).not.toBeOnTheScreen()
     })
   })
 
@@ -108,7 +111,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(searchHeaderTitleContainer.getByText('Me localiser')).toBeOnTheScreen()
+      expect(searchHeaderTitleContainer.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     })
   })
 })

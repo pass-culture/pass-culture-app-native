@@ -12,6 +12,7 @@ import {
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationLabel } from 'libs/location/types'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -96,7 +97,7 @@ describe('HomeHeader', () => {
 
     await screen.findByTestId('Ouvrir la modale de localisation depuis le widget')
 
-    expect(screen.getByText('Me localiser')).toBeTruthy()
+    expect(screen.getByText(LocationLabel.everywhereLabel)).toBeTruthy()
   })
 
   it('should not show LocationWidget isDesktopViewport is true', async () => {

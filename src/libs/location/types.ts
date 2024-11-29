@@ -10,6 +10,11 @@ export enum LocationMode {
   EVERYWHERE = 'EVERYWHERE',
 }
 
+export const enum LocationLabel {
+  everywhereLabel = 'France entière',
+  aroundMeLabel = 'Ma position',
+}
+
 export type GeolocationError = {
   type: GeolocPositionError
   message: string

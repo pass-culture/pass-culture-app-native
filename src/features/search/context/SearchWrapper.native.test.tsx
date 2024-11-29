@@ -9,7 +9,7 @@ import {
   useLocation,
 } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -61,7 +61,7 @@ describe('SearchWrapper', () => {
     expect(screen.getByText(LocationMode.AROUND_ME)).toBeOnTheScreen()
   })
 
-  it('should update locationType with type Everywhere when Location Context is switched to "Partout"', async () => {
+  it(`should update locationType with type Everywhere when Location Context is switched to ${LocationLabel.everywhereLabel}`, async () => {
     renderDummyComponent()
 
     await act(async () => {

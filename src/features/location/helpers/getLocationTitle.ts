@@ -1,4 +1,4 @@
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 
 export const getLocationTitle = (place: SuggestedPlace | null, locationMode: LocationMode) => {
@@ -6,11 +6,11 @@ export const getLocationTitle = (place: SuggestedPlace | null, locationMode: Loc
     case LocationMode.AROUND_PLACE:
       return place?.label ?? ''
     case LocationMode.EVERYWHERE:
-      return 'Me localiser'
+      return LocationLabel.everywhereLabel
     case LocationMode.AROUND_ME:
-      return 'Ma position'
+      return LocationLabel.aroundMeLabel
 
     default:
-      return 'Me localiser'
+      return LocationLabel.everywhereLabel
   }
 }

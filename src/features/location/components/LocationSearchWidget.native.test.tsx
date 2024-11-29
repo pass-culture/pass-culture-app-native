@@ -3,7 +3,7 @@ import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { useLocation } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -44,7 +44,7 @@ describe('LocationSearchWidget', () => {
     ${true}           | ${null}
     ${true}           | ${undefined}
   `(
-    "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
+    `should render a filled location pointer and the text ${LocationLabel.aroundMeLabel} if the user is geolocated`,
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -55,7 +55,7 @@ describe('LocationSearchWidget', () => {
       render(<LocationSearchWidget />)
 
       expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
-      expect(screen.getByText('Ma position')).toBeOnTheScreen()
+      expect(screen.getByText(LocationLabel.aroundMeLabel)).toBeOnTheScreen()
     }
   )
 
@@ -64,7 +64,7 @@ describe('LocationSearchWidget', () => {
     ${false}          | ${null}
     ${false}          | ${undefined}
   `(
-    "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
+    `should render a location pointer(not filled ) and the text ${LocationLabel.everywhereLabel} if the user is not geolocated and has not selected a custom position`,
     async ({ hasGeolocPosition, place }) => {
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
@@ -76,7 +76,7 @@ describe('LocationSearchWidget', () => {
       render(<LocationSearchWidget />)
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
-      expect(screen.getByText('Me localiser')).toBeOnTheScreen()
+      expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     }
   )
 

@@ -712,7 +712,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       ]
                     }
                   >
-                    Partout
+                    France entière
                   </Text>
                 </View>
               </View>

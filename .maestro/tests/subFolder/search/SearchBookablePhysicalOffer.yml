@@ -3,14 +3,14 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Rechercher'
 - tapOn: 'Livres'
 
-- tapOn: "Romans & littérature"
+- tapOn: 'Romans & littérature'
 
 - runFlow:
     when:
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Partout'
+      - tapOn: 'France entière'
 
 - tapOn: 'Catégories'
 

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationFilter } from 'features/search/types'
-import { LocationMode } from 'libs/location/types'
+import { LocationLabel, LocationMode } from 'libs/location/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -25,7 +25,7 @@ export const LocationFilterChoice = ({ onChange }: Props) => {
       <Li>
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
-          label="Partout"
+          label={LocationLabel.everywhereLabel}
           Icon={Everywhere}
           onPress={onPressEverywhere}
           isSelected={LocationMode.EVERYWHERE === selected}
