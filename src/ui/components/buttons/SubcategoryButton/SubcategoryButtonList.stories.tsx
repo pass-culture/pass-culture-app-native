@@ -1,24 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { BooksNativeCategoriesEnum } from 'features/search/types'
-import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 const meta: ComponentMeta<typeof SubcategoryButtonList> = {
   title: 'ui/buttons/SubcategoryButtonList',
   component: SubcategoryButtonList,
-  decorators: [
-    (Story) => (
-      <ReactQueryClientProvider>
-        <NavigationContainer>
-          <Story />
-        </NavigationContainer>
-      </ReactQueryClientProvider>
-    ),
-  ],
 }
 export default meta
 
@@ -30,8 +19,7 @@ const colors = {
   backgroundColor: theme.colors.aquamarine,
   borderColor: theme.colors.aquamarineDark,
 }
-// TODO(PC-28526): Fix this stories
-const Default = Template.bind({})
+export const Default = Template.bind({})
 Default.args = {
   subcategoryButtonContent: [
     {
@@ -81,3 +69,4 @@ Default.args = {
     },
   ],
 }
+Default.storyName = 'SubcategoryButtonList'

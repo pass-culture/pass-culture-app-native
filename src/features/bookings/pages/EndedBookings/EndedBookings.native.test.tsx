@@ -78,6 +78,8 @@ describe('EndedBookings', () => {
 
     await screen.findAllByText('Avez-vous déjà vu\u00a0?')
 
+    await screen.findByText('Réservations terminées')
+
     expect(screen).toMatchSnapshot()
   })
 

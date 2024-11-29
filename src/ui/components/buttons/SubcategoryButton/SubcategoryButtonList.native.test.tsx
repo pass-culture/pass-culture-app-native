@@ -5,10 +5,13 @@ import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
-import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
+import {
+  SubcategoryButtonItem,
+  SubcategoryButtonList,
+} from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 const colors = { backgroundColor: theme.colors.deepPink, borderColor: theme.colors.deepPinkDark }
-const subcategoryButtonContent = [
+const subcategoryButtonContent: SubcategoryButtonItem[] = [
   {
     label: 'Romans et littérature',
     ...colors,
@@ -41,7 +44,10 @@ describe('<SubcategoryButtonList/>', () => {
   it('should render SubcategoryButtonList', async () => {
     render(
       reactQueryProviderHOC(
-        <SubcategoryButtonList subcategoryButtonContent={subcategoryButtonContent} />
+        <SubcategoryButtonList
+          onPress={jest.fn()}
+          subcategoryButtonContent={subcategoryButtonContent}
+        />
       )
     )
 
