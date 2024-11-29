@@ -2,6 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { PlaylistOffersParams } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { LocationMode } from 'libs/algolia/types'
@@ -66,19 +67,7 @@ describe('fetchOffersByGTL', () => {
         indexName: 'algoliaTopOffersIndexName',
         params: {
           attributesToHighlight: [],
-          attributesToRetrieve: [
-            'offer.dates',
-            'offer.isDigital',
-            'offer.isDuo',
-            'offer.isEducational',
-            'offer.name',
-            'offer.prices',
-            'offer.subcategoryId',
-            'offer.thumbUrl',
-            'objectID',
-            '_geoloc',
-            'venue',
-          ],
+          attributesToRetrieve: offerAttributesToRetrieve,
           facetFilters: [
             ['offer.isEducational:false'],
             ['offer.gtl_level3:Romance'],
@@ -110,19 +99,7 @@ describe('fetchOffersByGTL', () => {
         indexName: 'algoliaTopOffersIndexNameB',
         params: {
           attributesToHighlight: [],
-          attributesToRetrieve: [
-            'offer.dates',
-            'offer.isDigital',
-            'offer.isDuo',
-            'offer.isEducational',
-            'offer.name',
-            'offer.prices',
-            'offer.subcategoryId',
-            'offer.thumbUrl',
-            'objectID',
-            '_geoloc',
-            'venue',
-          ],
+          attributesToRetrieve: offerAttributesToRetrieve,
           facetFilters: [
             ['offer.isEducational:false'],
             ['offer.gtl_level3:Romance'],
