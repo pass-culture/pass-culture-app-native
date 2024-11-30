@@ -67,7 +67,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
         <InternalTouchableLink
           as={ButtonPrimary}
           wording="Accéder à mes succès"
-          navigateTo={{ screen: 'Achievements' }}
+          navigateTo={{ screen: 'Achievements', params: { from: 'success' } }}
           onBeforeNavigate={() => {
             hideModal()
           }}

@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { FC, useEffect } from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { Badge } from 'features/profile/components/Achievements/Badge'
 import {
   achievementCategoryDisplayNames,
@@ -28,11 +30,18 @@ const emptyBadge = {
 }
 
 export const Achievements = () => {
+  const {
+    params: { from },
+  } = useRoute<UseRouteType<'Achievements'>>()
   const { uniqueColors } = useTheme()
-  const { categories } = useAchievements({
+  const { categories, track } = useAchievements({
     achievements: mockAchievements,
     completedAchievements: mockCompletedAchievements,
   })
+
+  useEffect(() => {
+    track(from)
+  }, [from, track])
 
   return (
     <SecondaryPageWithBlurHeader title="">

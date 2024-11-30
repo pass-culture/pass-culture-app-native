@@ -11,6 +11,7 @@ export const BadgeBanner: React.FC = () => {
     <InternalTouchableLink
       navigateTo={{
         screen: 'Achievements',
+        params: { from: 'profile' },
       }}>
       <GenericBanner LeftIcon={<BicolorTrophy size={theme.icons.sizes.standard} />}>
         <Typo.ButtonText>Mes badges</Typo.ButtonText>
