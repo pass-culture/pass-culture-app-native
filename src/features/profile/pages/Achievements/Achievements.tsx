@@ -29,7 +29,7 @@ const emptyBadge = {
 
 export const Achievements = () => {
   const { uniqueColors } = useTheme()
-  const categories = useAchievements({
+  const { categories } = useAchievements({
     achievements: mockAchievements,
     completedAchievements: mockCompletedAchievements,
   })

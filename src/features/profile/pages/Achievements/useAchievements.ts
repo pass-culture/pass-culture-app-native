@@ -4,6 +4,7 @@ import {
   AchievementId,
   UserAchievement,
 } from 'features/profile/pages/Achievements/AchievementData'
+import { analytics } from 'libs/analytics'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Categories = {
@@ -19,6 +20,11 @@ type Categories = {
   }[]
 }[]
 
+type UseAchivements = {
+  categories: Categories
+  track: (from: 'profile' | 'success') => void
+}
+
 export type UseAchivementsProps = {
   achievements: Achievement[]
   completedAchievements: UserAchievement[]
@@ -27,8 +33,20 @@ export type UseAchivementsProps = {
 export const useAchievements = ({
   achievements,
   completedAchievements,
-}: UseAchivementsProps): Categories =>
-  getAchievementsCategories(achievements).map(createCategory(achievements, completedAchievements))
+}: UseAchivementsProps): UseAchivements => {
+  const categories = getAchievementsCategories(achievements).map(
+    createCategory(achievements, completedAchievements)
+  )
+
+  const track = (from: 'profile' | 'success') => {
+    analytics.logDisplayAchievements({ from, numberUnlocked: completedAchievements.length })
+  }
+
+  return {
+    categories,
+    track,
+  }
+}
 
 const getAchievementsCategories = (achievements: Achievement[]) =>
   Array.from(new Set(achievements.map((achievement) => achievement.category)))
