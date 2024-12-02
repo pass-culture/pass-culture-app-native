@@ -272,6 +272,16 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
     },
     {
+      id: SubcategoryIdEnumv2.CONCERT,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
+      appLabel: 'Concert',
+      searchGroupName: SearchGroupNameEnumv2.MUSIQUE,
+      homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
+      isEvent: true,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
+    },
+    {
       id: SubcategoryIdEnumv2.CONCOURS,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Concours - jeux',
@@ -386,6 +396,16 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: 'Festival de musique',
       searchGroupName: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+      homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
+      isEvent: true,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
+    },
+    {
+      id: SubcategoryIdEnumv2.FESTIVAL_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
+      appLabel: 'Festival de musique',
+      searchGroupName: SearchGroupNameEnumv2.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
@@ -843,6 +863,12 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
     },
     {
+      name: NativeCategoryIdEnumv2.CD,
+      value: 'CD',
+      genreType: GenreType.MUSIC,
+      parents: [SearchGroupNameEnumv2.MUSIQUE],
+    },
+    {
       name: NativeCategoryIdEnumv2.CONCERTS_EN_LIGNE,
       value: 'Concerts en ligne',
       genreType: GenreType.MUSIC,
@@ -853,6 +879,12 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: 'Concerts, \u00e9v\u00e8nements',
       genreType: GenreType.MUSIC,
       parents: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+    },
+    {
+      name: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
+      value: 'Concerts, \u00e9v\u00e8nements',
+      genreType: GenreType.MUSIC,
+      parents: [SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.CONCOURS,
@@ -1048,6 +1080,12 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: 'Vinyles et autres supports',
       genreType: GenreType.MUSIC,
       parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+    },
+    {
+      name: NativeCategoryIdEnumv2.VINYLES,
+      value: 'Vinyles et autres supports',
+      genreType: GenreType.MUSIC,
+      parents: [SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
