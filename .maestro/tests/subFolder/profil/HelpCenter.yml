@@ -12,6 +12,5 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: "Non, merci"
       - pressKey: back
 
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml

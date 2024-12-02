@@ -1,5 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- runFlow:
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    commands:
+      - scroll
 - tapOn:
     text: 'Confidentialité'
     index: 1
