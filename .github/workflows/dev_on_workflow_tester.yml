@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Tester yaml"
+name: '4 [on_workflow] Tester yaml'
 
 on:
   workflow_call:
@@ -98,14 +98,15 @@ jobs:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             coverage/${{ matrix.shard }}.json
-          restore-keys:
+          restore-keys: |
+            v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
   report-coverage:
     runs-on: ubuntu-22.04
     needs: yarn_test_native
     steps:
       - uses: actions/checkout@v4
-      - name: "OpenID Connect Authentication"
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
