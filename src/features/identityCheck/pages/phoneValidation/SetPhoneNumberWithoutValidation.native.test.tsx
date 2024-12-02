@@ -33,7 +33,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
     it('should disable the button when phone number is invalid', async () => {
       givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
 
-      renderSetPhoneNumberWithoutValidation()
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
 
       await fillPhoneNumberInput('123')
 
@@ -41,12 +41,14 @@ describe('SetPhoneNumberWithoutValidation', () => {
       await act(() => {
         expect(button).toBeDisabled()
       })
+
+      unmount() // to avoid act warning https://github.com/orgs/react-hook-form/discussions/3108#discussioncomment-8514714
     })
 
     it('should enable the button when phone number is valid', async () => {
       givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
 
-      renderSetPhoneNumberWithoutValidation()
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
 
       await fillPhoneNumberInput('0612345678')
 
@@ -54,6 +56,8 @@ describe('SetPhoneNumberWithoutValidation', () => {
       await act(() => {
         expect(button).toBeEnabled()
       })
+
+      unmount()
     })
   })
 
@@ -67,7 +71,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
         '0612345678'
       )
 
-      unmount() // to avoid act warning https://github.com/orgs/react-hook-form/discussions/3108#discussioncomment-8514714
+      unmount()
     })
 
     it('should use the country already given', () => {
