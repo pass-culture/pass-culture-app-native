@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
+import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,9 +28,12 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
 
   useEffect(() => {
     if (visible) {
+      analytics.logConsultAchievementsSuccessModal(ids)
       confettiRef.current?.play(0)
       logoRef.current?.play(0, 62)
     }
+    // The effect should only run when `visible` changes because`ids` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
   if (ids.length <= 0) return null
