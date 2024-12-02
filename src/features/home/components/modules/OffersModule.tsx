@@ -17,7 +17,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
-import { formatDates } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -100,11 +99,9 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
-      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTileWrapper
           item={item}
-          date={formatDates(timestampsInMillis)}
           moduleName={moduleName}
           moduleId={moduleId}
           homeEntryId={homeEntryId}
