@@ -5,13 +5,7 @@ import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const MUSIC_PLAYLIST_TITLES = [
-  'Concerts',
-  'Festivals',
-  'Instruments de musique',
-  'CDs',
-  'Vinyles',
-]
+const MUSIC_PLAYLIST_TITLES = ['Concerts', 'Festivals', 'Instruments de musique', 'CDs', 'Vinyles']
 
 export const MusicPlaylist: React.FC = () => {
   const { playlists: musicPlaylists, isLoading } = useThematicSearchPlaylists({
