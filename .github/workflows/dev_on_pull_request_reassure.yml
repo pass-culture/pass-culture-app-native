@@ -8,6 +8,8 @@ jobs:
   test-performance:
     runs-on: ubuntu-22.04
     steps:
+      - name: Enable CorePack
+        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
