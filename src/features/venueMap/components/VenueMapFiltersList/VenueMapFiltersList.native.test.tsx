@@ -1,8 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapFiltersList } from 'features/venueMap/components/VenueMapFiltersList/VenueMapFiltersList'
+import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockNavigate = jest.fn()
@@ -30,6 +32,10 @@ const mockNavigation: StackScreenProps<
   pop: jest.fn(),
   popToTop: jest.fn(),
 }
+
+jest.mock('features/venueMap/store/venuesFilterStore')
+const mockUseVenuesFilter = useVenuesFilter as jest.Mock
+mockUseVenuesFilter.mockReturnValue([])
 
 const user = userEvent.setup()
 
@@ -76,5 +82,38 @@ describe('VenueMapFiltersList', () => {
     await user.press(screen.getByLabelText('Fermer'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should return "Tout" in each filters when venue filter is empty', () => {
+    mockUseVenuesFilter.mockReturnValueOnce([])
+    render(
+      <VenueMapFiltersList
+        navigation={mockNavigation}
+        route={{ key: 'VenueMapFiltersList', name: 'VenueMapFiltersList' }}
+      />
+    )
+
+    const allDescriptions = screen.getAllByText('Tout')
+
+    expect(allDescriptions).toHaveLength(3)
+  })
+
+  it('should return venue types in filter descriptions', () => {
+    mockUseVenuesFilter.mockReturnValueOnce([
+      VenueTypeCodeKey.FESTIVAL,
+      VenueTypeCodeKey.BOOKSTORE,
+      VenueTypeCodeKey.CULTURAL_CENTRE,
+    ])
+
+    render(
+      <VenueMapFiltersList
+        navigation={mockNavigation}
+        route={{ key: 'VenueMapFiltersList', name: 'VenueMapFiltersList' }}
+      />
+    )
+
+    expect(screen.getByText('Festival')).toBeOnTheScreen()
+    expect(screen.getByText('Librairie')).toBeOnTheScreen()
+    expect(screen.getByText('Centre culturel')).toBeOnTheScreen()
   })
 })

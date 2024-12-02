@@ -30,6 +30,5 @@ export type FilterGroupKey = keyof typeof FILTERS_VENUE_TYPE_MAPPING
 export type FilterItem = {
   icon: FunctionComponent<AccessibleIcon>
   title: string
-  description: string
   filterGroup: FilterGroupKey
 }

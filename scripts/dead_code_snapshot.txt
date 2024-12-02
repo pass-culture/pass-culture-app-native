@@ -1,6 +1,6 @@
 vite.config.js:32 - default
-src/features/venueMap/constant.ts:17 - satisfies
-src/features/venueMap/constant.ts:17 - Record
+src/features/venueMap/constant.ts:21 - satisfies
+src/features/venueMap/constant.ts:21 - Record
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
