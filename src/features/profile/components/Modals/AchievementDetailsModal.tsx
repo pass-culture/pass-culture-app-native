@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
@@ -15,6 +15,11 @@ interface Props {
 export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
   const achievement = useAchievementDetails(id)
   const theme = useTheme()
+
+  useEffect(() => {
+    if (!visible) return
+    achievement?.track()
+  }, [achievement, visible])
 
   if (!achievement) return null
 
