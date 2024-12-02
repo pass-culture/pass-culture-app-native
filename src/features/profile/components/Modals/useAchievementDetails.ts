@@ -12,13 +12,13 @@ export const useAchievementDetails = (id: AchievementId) => {
 
   if (!achievement) return
 
+  const completed = !!completedAchievement
+
   return {
     name: achievement.name,
-    descriptionLocked: achievement.descriptionLocked,
-    descriptionUnlocked: achievement.descriptionUnlocked,
-    illustrationUnlocked: achievement.illustrationUnlocked,
-    illustrationLocked: achievement.illustrationLocked,
+    description: completed ? achievement.descriptionUnlocked : achievement.descriptionLocked,
+    illustration: completed ? achievement.illustrationUnlocked : achievement.illustrationLocked,
     completedAt: completedAchievement?.completedAt.toLocaleDateString(),
-    completed: !!completedAchievement,
+    completed,
   }
 }

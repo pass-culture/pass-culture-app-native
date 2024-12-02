@@ -92,7 +92,7 @@ const firstLiveMusicBooking = {
   category: AchievementCategory.FIRST_BOOKINGS,
 }
 
-const firstNewsBooking = {
+export const firstNewsBooking = {
   id: AchievementId.FIRST_NEWS_BOOKING,
   name: 'Futur Hugo Décrypte',
   descriptionLocked: 'Abonne-toi à un média',

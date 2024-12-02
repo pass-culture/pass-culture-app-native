@@ -18,8 +18,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
 
   if (!achievement) return null
 
-  const IllustrationUnlocked = achievement.illustrationUnlocked
-  const IllustrationLocked = achievement.illustrationLocked
+  const Illustration = achievement.illustration
 
   return (
     <AppInformationModal
@@ -29,11 +28,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
       testIdSuffix="achievement-details">
       <Container>
         <IconsWrapper>
-          {achievement.completed ? (
-            <IllustrationUnlocked size={theme.illustrations.sizes.fullPage} />
-          ) : (
-            <IllustrationLocked size={theme.illustrations.sizes.fullPage} />
-          )}
+          <Illustration size={theme.illustrations.sizes.fullPage} />
         </IconsWrapper>
         <Spacer.Column numberOfSpaces={6} />
         <BodyWrapper isCompleted={achievement.completed}>
@@ -50,9 +45,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
             <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
         ) : null}
-        <StyledDescrption>
-          {achievement.completed ? achievement.descriptionUnlocked : achievement.descriptionLocked}
-        </StyledDescrption>
+        <StyledDescrption>{achievement.description}</StyledDescrption>
       </Container>
     </AppInformationModal>
   )
