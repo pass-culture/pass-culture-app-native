@@ -6,28 +6,28 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
-      visible: "Accepter et continuer"
+      visible: 'Accepter et continuer'
     commands:
-      - tapOn: "Accepter et continuer"
+      - tapOn: 'Accepter et continuer'
 
 - assertVisible:
     id: 'com.android.chrome:id/url_bar'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn: 'X'
 - waitForAnimationToEnd
 - assertVisible:
     id: 'com.android.chrome:id/url_bar'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn: 'Tiktok'
 - waitForAnimationToEnd
 - assertVisible:
     id: 'com.android.chrome:id/url_bar'
-- doubleTapOn:
-    id: 'com.android.systemui:id/back'
+- pressKey: back
+- pressKey: back
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -39,8 +39,9 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Facebook'
 - waitForAnimationToEnd
 - assertVisible: 'Facebook from Meta'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+  optional: true
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - scrollUntilVisible:
     element:
