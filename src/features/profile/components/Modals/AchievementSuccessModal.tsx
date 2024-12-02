@@ -36,7 +36,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  if (ids.length <= 0) return null
+  if (!visible || ids.length <= 0) return null
 
   const severalBadgesUnlocked = ids.length >= 2
 
