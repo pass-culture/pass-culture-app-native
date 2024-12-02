@@ -11,6 +11,7 @@ export const convertEuroToPacificFranc = (
   let result = priceInEuro / pacificFrancToEuroRate
   result = Math.floor(result * 100) / 100
 
-  if (rounding === RoundUnit.UNITS) result = Math.ceil(result)
+  if (rounding === RoundUnit.UNITS) result = Math.round(result / 5) * 5
+
   return result
 }
