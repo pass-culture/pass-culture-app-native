@@ -14,6 +14,7 @@ import {
   UseAchivementsProps,
   useAchievements,
 } from 'features/profile/pages/Achievements/useAchievements'
+import { analytics } from 'libs/analytics/__mocks__/provider'
 import { renderHook } from 'tests/utils'
 import { BicolorTrophy, Trophy } from 'ui/svg/icons/Trophy'
 
@@ -57,17 +58,17 @@ const testUseAchievements = ({
 
 describe('useAchievements', () => {
   it('should return empty array when there are no achievements', () => {
-    const badges = testUseAchievements()
+    const { categories } = testUseAchievements()
 
-    expect(badges).toEqual([])
+    expect(categories).toEqual([])
   })
 
   it('should return achievements grouped by category', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, testAchievement as unknown as Achievement],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -88,11 +89,11 @@ describe('useAchievements', () => {
   })
 
   it('achievement is NOT completed when user has not already completed it', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -110,12 +111,12 @@ describe('useAchievements', () => {
   })
 
   it('achievement is completed when user has already completed it', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -133,12 +134,12 @@ describe('useAchievements', () => {
   })
 
   it('achievement name is "Badge non débloqué" when achievement is not completed', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -156,12 +157,12 @@ describe('useAchievements', () => {
   })
 
   it('achievement completed name is the achievement name', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -179,12 +180,12 @@ describe('useAchievements', () => {
   })
 
   it('achivements are sorted by name', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -200,12 +201,12 @@ describe('useAchievements', () => {
   })
 
   it('achievement completed is sorted before achievement not completed', () => {
-    const badges = testUseAchievements({
+    const { categories } = testUseAchievements({
       achievements: [firstBookBooking, firstArtLessonBooking],
       completedAchievements: [userCompletedArtLessonBooking],
     })
 
-    expect(badges).toEqual([
+    expect(categories).toEqual([
       expect.objectContaining({
         id: CombinedAchievementCategory.FIRST_BOOKINGS,
         badges: [
@@ -223,12 +224,12 @@ describe('useAchievements', () => {
   describe('Category Achievements completion', () => {
     describe('Remaining achievements to complete', () => {
       it('should return "0 badge restant" when all achievements of category are completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '0 badge restant',
@@ -237,12 +238,12 @@ describe('useAchievements', () => {
       })
 
       it('should return "1 badge restants" when 1 achievement are not completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '1 badge restant',
@@ -251,11 +252,11 @@ describe('useAchievements', () => {
       })
 
       it('should return "2 badges restants" when 2 achievement are not completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '2 badges restant',
@@ -266,12 +267,12 @@ describe('useAchievements', () => {
 
     describe('Achievements progression', () => {
       it('should be 1 when all achievements are completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 1,
@@ -280,11 +281,11 @@ describe('useAchievements', () => {
       })
 
       it('should be 0 when no achievements are completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0,
@@ -293,12 +294,12 @@ describe('useAchievements', () => {
       })
 
       it('should be 0.5 when 1 achievement of 2 are completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.5,
@@ -307,7 +308,7 @@ describe('useAchievements', () => {
       })
 
       it('should be 0.75 when 3 achievement of 4 are completed', () => {
-        const badges = testUseAchievements({
+        const { categories } = testUseAchievements({
           achievements: [
             firstArtLessonBooking,
             firstBookBooking,
@@ -321,7 +322,7 @@ describe('useAchievements', () => {
           ],
         })
 
-        expect(badges).toEqual([
+        expect(categories).toEqual([
           expect.objectContaining({
             id: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.75,
@@ -331,11 +332,11 @@ describe('useAchievements', () => {
 
       describe('text', () => {
         it('should return 0/2 when no achievements are completed', () => {
-          const badges = testUseAchievements({
+          const { categories } = testUseAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
           })
 
-          expect(badges).toEqual([
+          expect(categories).toEqual([
             expect.objectContaining({
               id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '0/2',
@@ -344,12 +345,12 @@ describe('useAchievements', () => {
         })
 
         it('should return 2/2 when all achievements are completed', () => {
-          const badges = testUseAchievements({
+          const { categories } = testUseAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
             completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
           })
 
-          expect(badges).toEqual([
+          expect(categories).toEqual([
             expect.objectContaining({
               id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '2/2',
@@ -358,12 +359,12 @@ describe('useAchievements', () => {
         })
 
         it('should return 1/2 when 1 achievement of 2 are completed', () => {
-          const badges = testUseAchievements({
+          const { categories } = testUseAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
             completedAchievements: [userCompletedArtLessonBooking],
           })
 
-          expect(badges).toEqual([
+          expect(categories).toEqual([
             expect.objectContaining({
               id: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '1/2',
@@ -371,6 +372,49 @@ describe('useAchievements', () => {
           ])
         })
       })
+    })
+  })
+
+  describe('Tracking', () => {
+    describe('From', () => {
+      it.each`
+        from
+        ${'profile'}
+        ${'success'}
+      `('send DisplayAchievements event with from $from when track from $from', ({ from }) => {
+        const { track } = testUseAchievements()
+
+        track(from)
+
+        expect(analytics.logDisplayAchievements).toHaveBeenCalledWith(
+          expect.objectContaining({ from })
+        )
+      })
+    })
+  })
+
+  describe('Number unlocked', () => {
+    it('send 0 when no achievements are completed', () => {
+      const { track } = testUseAchievements()
+
+      track('profile')
+
+      expect(analytics.logDisplayAchievements).toHaveBeenCalledWith(
+        expect.objectContaining({ numberUnlocked: 0 })
+      )
+    })
+
+    it('send 2 when 2 achievement are completed', () => {
+      const { track } = testUseAchievements({
+        achievements: [firstArtLessonBooking, firstBookBooking],
+        completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
+      })
+
+      track('profile')
+
+      expect(analytics.logDisplayAchievements).toHaveBeenCalledWith(
+        expect.objectContaining({ numberUnlocked: 2 })
+      )
     })
   })
 })

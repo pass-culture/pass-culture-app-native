@@ -177,6 +177,7 @@ export enum AnalyticsEvent {
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
   VIDEO_PAUSED = 'VideoPaused',
+  DISPLAY_ACHIEVEMENTS = 'DisplayAchievements',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

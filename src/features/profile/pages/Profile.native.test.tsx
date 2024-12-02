@@ -191,7 +191,7 @@ describe('Profile component', () => {
 
       fireEvent.press(badgeBanner)
 
-      expect(navigate).toHaveBeenCalledWith('Achievements', undefined)
+      expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
     })
   })
 
