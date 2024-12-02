@@ -3,6 +3,7 @@ import {
   firstBookBooking,
   firstNewsBooking,
 } from 'features/profile/pages/Achievements/AchievementData'
+import { analytics } from 'libs/analytics/__mocks__/provider'
 
 import { useAchievementDetails } from './useAchievementDetails'
 
@@ -43,5 +44,27 @@ describe('useAchievementDetails', () => {
     const details = useAchievementDetails('unknown' as unknown as AchievementId)
 
     expect(details).toBeUndefined()
+  })
+
+  describe('tracking', () => {
+    it('should track the achievement details', () => {
+      const details = useAchievementDetails(firstBookBooking.id)
+      details?.track()
+
+      expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
+        name: firstBookBooking.id,
+        state: 'unlocked',
+      })
+    })
+
+    it('tracking state is "locked" if the achievement is not completed', () => {
+      const details = useAchievementDetails(firstNewsBooking.id)
+      details?.track()
+
+      expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
+        name: firstNewsBooking.id,
+        state: 'locked',
+      })
+    })
   })
 })
