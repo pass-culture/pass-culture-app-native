@@ -86,6 +86,7 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
 const TextContainer = styled.View({
   flex: 1,
   alignItems: 'flex-start',
+  marginRight: getSpacing(4),
 })
 
 const ComplementContainer = styled.View({

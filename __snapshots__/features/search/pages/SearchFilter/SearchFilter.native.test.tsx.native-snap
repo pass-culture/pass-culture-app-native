@@ -321,6 +321,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "marginRight": 16,
                   },
                 ]
               }
@@ -507,6 +508,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "marginRight": 16,
                   },
                 ]
               }
@@ -693,6 +695,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "marginRight": 16,
                   },
                 ]
               }
@@ -879,6 +882,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "marginRight": 16,
                   },
                 ]
               }
@@ -1064,6 +1068,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "marginRight": 16,
                   },
                 ]
               }
