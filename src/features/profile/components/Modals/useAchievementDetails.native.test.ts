@@ -52,7 +52,7 @@ describe('useAchievementDetails', () => {
       details?.track()
 
       expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
-        name: firstBookBooking.id,
+        achievementName: firstBookBooking.id,
         state: 'unlocked',
       })
     })
@@ -62,7 +62,7 @@ describe('useAchievementDetails', () => {
       details?.track()
 
       expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
-        name: firstNewsBooking.id,
+        achievementName: firstNewsBooking.id,
         state: 'locked',
       })
     })

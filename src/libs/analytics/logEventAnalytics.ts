@@ -206,7 +206,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONNECTION_INFO }, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
-  logConsultAchievementModal: (params: { name: string; state: 'unlocked' | 'locked' }) =>
+  logConsultAchievementModal: (params: { achievementName: string; state: 'unlocked' | 'locked' }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENT_MODAL }, params),
   logConsultAchievementsSuccessModal: (name: AchievementId[]) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL }, { name }),

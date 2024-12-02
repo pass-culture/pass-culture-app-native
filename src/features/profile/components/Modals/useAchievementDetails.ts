@@ -16,7 +16,10 @@ export const useAchievementDetails = (id: AchievementId) => {
   const completed = !!completedAchievement
 
   const track = () => {
-    analytics.logConsultAchievementModal({ name: id, state: completed ? 'unlocked' : 'locked' })
+    analytics.logConsultAchievementModal({
+      achievementName: id,
+      state: completed ? 'unlocked' : 'locked',
+    })
   }
 
   return {
