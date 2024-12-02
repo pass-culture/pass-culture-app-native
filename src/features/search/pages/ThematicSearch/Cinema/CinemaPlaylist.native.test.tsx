@@ -24,13 +24,13 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const DEFAULT_CINEMA_OFFER = mockBuilder.searchResponseOffer({})
+const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_CINEMA_OFFER }],
+    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
     isLoading: false,
   })
 
