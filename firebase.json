@@ -2,10 +2,10 @@
   "functions": {
     "source": "server"
   },
-  "hosting":
-  [{
+  "hosting": [
+    {
       "target": "testing",
-      "public": "build",
+      "public": "dist",
       "ignore": [
         "firebase.json",
         "babel.config.js",
@@ -27,5 +27,6 @@
           "function": "serverTesting"
         }
       ]
-  }]
     }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "act":true,
+    "inputs":{
+       "ENV":"testing",
+       "PUSH_RELEASE_TO_SENTRY":"false",
+       "CHANNEL":"pr-testing-foo",
+       "REF":"master"
+    }
+}
