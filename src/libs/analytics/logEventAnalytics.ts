@@ -19,6 +19,7 @@ import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identit
 import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
@@ -205,6 +206,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONNECTION_INFO }, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
+  logConsultAchievementsSuccessModal: (name: AchievementId[]) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL }, { name }),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL },

@@ -32,6 +32,7 @@ export enum AnalyticsEvent {
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONNECTION_INFO = 'ConnectionInfo',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
+  CONSULT_ACHIEVEMENTS_SUCCESS_MODAL = 'ConsultAchievementsSuccessModal',
   CONSULT_APPLICATION_PROCESSING_MODAL = 'ConsultApplicationProcessingModal',
   CONSULT_ARTICLE_ACCOUNT_DELETION = 'ConsultArticleAccountDeletion',
   CONSULT_ARTIST = 'ConsultArtist',

@@ -33,26 +33,22 @@ export function NavigationAchievements(): React.JSX.Element {
             wording="AchievementSuccessModal (1 unlocked)"
             onPress={showModalOneAchievement}
           />
-          {visibleOneAchievement ? (
-            <AchievementSuccessModal
-              ids={[AchievementId.FIRST_BOOK_BOOKING]}
-              visible={visibleOneAchievement}
-              hideModal={hideModalOneAchievement}
-            />
-          ) : null}
+          <AchievementSuccessModal
+            ids={[AchievementId.FIRST_BOOK_BOOKING]}
+            visible={visibleOneAchievement}
+            hideModal={hideModalOneAchievement}
+          />
         </Row>
         <Row>
           <ButtonPrimary
             wording="AchievementSuccessModal (2+ unlocked)"
             onPress={showModalSeveralAchievements}
           />
-          {visibleSeveralAchievements ? (
-            <AchievementSuccessModal
-              ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_BOOK_BOOKING]}
-              visible={visibleSeveralAchievements}
-              hideModal={hideModalSeveralAchievements}
-            />
-          ) : null}
+          <AchievementSuccessModal
+            ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_BOOK_BOOKING]}
+            visible={visibleSeveralAchievements}
+            hideModal={hideModalSeveralAchievements}
+          />
         </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
