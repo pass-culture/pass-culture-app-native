@@ -38,5 +38,5 @@ appId: ${MAESTRO_APP_ID}
           direction: UP
 
 - tapOn:
-    text: 'Les coulisses du Stade de France'
+    text: 'Les coulisses du Stade.*'
     index: 1

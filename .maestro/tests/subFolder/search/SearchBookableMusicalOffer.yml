@@ -1,12 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- tapOn: 'CD, vinyles, musique en ligne'
+- tapOn: "MUSIQUE"
 
-# TODO(e2e): Attendre que "Catégories soit check"
-- tapOn: 'Catégories'
+- tapOn: 'CDs'
 
-- assertVisible: 'CD, vinyles, musique en ligne'
-- tapOn: 'CD'
-
-- tapOn: 'Rechercher'

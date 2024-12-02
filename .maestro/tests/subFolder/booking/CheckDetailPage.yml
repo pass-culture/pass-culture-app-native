@@ -1,6 +1,12 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Partout'
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
     below:
