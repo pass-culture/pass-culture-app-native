@@ -10,11 +10,11 @@ import {
 } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
+import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
-import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -547,6 +547,20 @@ describe('<OfferContent />', () => {
         })
       })
 
+      it('should not appear if the movie is not a cine', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE },
+        })
+
+        await act(async () => {
+          mockInView(false)
+        })
+
+        await screen.findAllByText(offerResponseSnap.name)
+
+        expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
+      })
+
       it('should show button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
@@ -558,7 +572,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Trouve ta séance')
 
-        expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
+        expect(await screen.findByTestId(CineContentCTAID)).toBeOnTheScreen()
       })
 
       it('should scroll to anchor', async () => {
@@ -570,7 +584,7 @@ describe('<OfferContent />', () => {
           mockInView(false)
         })
 
-        const button = await screen.findByText(cinemaCTAButtonName)
+        const button = await screen.findByTestId(CineContentCTAID)
 
         await userEvent.press(button)
 
@@ -597,7 +611,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Trouve ta séance')
 
-        expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+        expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
       })
     })
   })

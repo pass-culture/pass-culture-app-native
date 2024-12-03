@@ -26,7 +26,7 @@ export interface VenueOffersProps {
   playlists?: GtlPlaylistData[]
 }
 
-export const cinemaCTAButtonName = 'Accéder aux séances'
+const cinemaCTAButtonName = 'Accéder aux séances'
 
 export const LoadingState: React.FC = () => (
   <React.Fragment>

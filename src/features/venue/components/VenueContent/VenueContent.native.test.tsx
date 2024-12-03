@@ -4,9 +4,9 @@ import { ScrollView } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
+import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
-import { cinemaCTAButtonName } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -206,7 +206,7 @@ describe('<VenueContent />', () => {
 
       await screen.findByText('Les films à l’affiche')
 
-      expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
+      expect(await screen.findByTestId(CineContentCTAID)).toBeOnTheScreen()
     })
 
     it('should not show button', async () => {
@@ -220,7 +220,7 @@ describe('<VenueContent />', () => {
 
       await screen.findByText('Les films à l’affiche')
 
-      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+      expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
     })
 
     it('should scroll to anchor', async () => {
@@ -233,7 +233,7 @@ describe('<VenueContent />', () => {
         mockInView(false)
       })
 
-      const button = await screen.findByText(cinemaCTAButtonName)
+      const button = await screen.findByTestId(CineContentCTAID)
 
       await userEvent.press(button)
 
@@ -260,7 +260,7 @@ describe('<VenueContent />', () => {
 
         await screen.findByText('Les films à l’affiche')
 
-        expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
+        expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
       })
     })
   })
