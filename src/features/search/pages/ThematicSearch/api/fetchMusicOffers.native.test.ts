@@ -47,5 +47,11 @@ function buildQueries(userLocation: Position) {
       filters:
         'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_VINYLE" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
+    buildQuery({
+      ...commonQueryParams,
+      userLocation: undefined,
+      filters:
+        '(offer.subcategoryId:"ABO_PLATEFORME_MUSIQUE" OR offer.subcategoryId:"LIVESTREAM_MUSIQUE" OR offer.subcategoryId:"TELECHARGEMENT_MUSIQUE") AND NOT offer.last30DaysBookingsRange:"very-low"',
+    }),
   ]
 }

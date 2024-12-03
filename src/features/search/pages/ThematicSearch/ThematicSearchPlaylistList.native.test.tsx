@@ -32,7 +32,7 @@ const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
 const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
 const DEFAULT_PLAYLIST_WITHOUT_HITS = {
   title: DEFAULT_PLAYLIST_TITLE,
-  offers: { ...DEFAULT_PLAYLIST_OFFERS, hits: [] },
+  offers: { hits: [] },
 }
 
 describe('ThematicSearchPlaylistList', () => {

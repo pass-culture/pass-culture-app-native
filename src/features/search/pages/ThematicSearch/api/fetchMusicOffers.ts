@@ -34,6 +34,11 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
+    buildQuery({
+      ...commonQueryParams,
+      userLocation: undefined,
+      filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.LIVESTREAM_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
+    }),
   ]
 
   return fetchThematicSearchPlaylists(queries)
