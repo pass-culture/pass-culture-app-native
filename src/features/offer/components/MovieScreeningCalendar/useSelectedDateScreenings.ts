@@ -38,10 +38,7 @@ const mapScreeningsToEventCardProps = (
     isUserLoggedIn,
   } = movieScreeningUserData ?? {}
 
-  const price = formatCurrencyFromCents(screening.price, currency, euroToPacificFrancRate).replace(
-    /\u00A0/g,
-    ''
-  )
+  const price = formatCurrencyFromCents(screening.price, currency, euroToPacificFrancRate)
   const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
   const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 

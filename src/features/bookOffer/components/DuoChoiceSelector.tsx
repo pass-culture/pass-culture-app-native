@@ -26,11 +26,7 @@ export const DuoChoiceSelector: React.FC = () => {
     return {
       price:
         enoughCredit && stock
-          ? formatCurrencyFromCents(
-              quantity * stock.price,
-              currency,
-              euroToPacificFrancRate
-            ).replace(/\u00A0/g, '')
+          ? formatCurrencyFromCents(quantity * stock.price, currency, euroToPacificFrancRate)
           : 'crédit insuffisant',
       title: quantity === 1 ? 'Solo' : 'Duo',
       selected: bookingState.quantity === quantity,

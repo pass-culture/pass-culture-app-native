@@ -161,7 +161,7 @@ describe('bookingHelpers', () => {
       expect(hourWording).toEqual('crédit insuffisant')
     })
 
-    it('should return "dès 20€" when offer is bookable, its price is 20 and has several prices', () => {
+    it('should return "dès 20 €" when offer is bookable, its price is 20 and has several prices', () => {
       const hourWording = getHourWording(
         2000,
         true,
@@ -171,10 +171,10 @@ describe('bookingHelpers', () => {
         true
       )
 
-      expect(hourWording).toEqual('dès 20€')
+      expect(hourWording).toEqual('dès 20\u00a0€')
     })
 
-    it('should return "20€" when offer is bookable, its price is 20 and has not several prices', () => {
+    it('should return "20 €" when offer is bookable, its price is 20 and has not several prices', () => {
       const hourWording = getHourWording(
         2000,
         true,
@@ -184,7 +184,7 @@ describe('bookingHelpers', () => {
         false
       )
 
-      expect(hourWording).toEqual('20€')
+      expect(hourWording).toEqual('20\u00a0€')
     })
 
     it('should return "épuisé" when offer is not bookable', () => {
