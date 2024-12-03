@@ -1,6 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
-import { FilterItem } from 'features/venueMap/types'
+import { FilterGroupData } from 'features/venueMap/types'
+import { theme } from 'theme'
 import { Store } from 'ui/svg/icons/bicolor/Store'
 import { Show } from 'ui/svg/icons/Show'
 import { Sort } from 'ui/svg/icons/Sort'
@@ -49,8 +50,8 @@ export const FILTERS_VENUE_TYPE_MAPPING = {
   ],
 }
 
-export const filterItems: FilterItem[] = [
-  { icon: Show, title: 'Sorties', filterGroup: 'OUTINGS' },
-  { icon: Store, title: 'Boutiques', filterGroup: 'SHOPS' },
-  { icon: Sort, title: 'Autres', filterGroup: 'OTHERS' },
+export const filterGroups: FilterGroupData[] = [
+  { id: 'OUTINGS', label: 'Sorties', color: theme.colors.coral, icon: Show },
+  { id: 'SHOPS', label: 'Boutiques', color: theme.colors.primary, icon: Store },
+  { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue, icon: Sort },
 ]

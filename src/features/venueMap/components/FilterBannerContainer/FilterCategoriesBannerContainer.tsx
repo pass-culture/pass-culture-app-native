@@ -6,18 +6,12 @@ import styled from 'styled-components/native'
 
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
+import { filterGroups } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
-import { FilterGroupData, FilterGroupKey } from 'features/venueMap/types'
-import { theme } from 'theme'
+import { FilterGroupKey } from 'features/venueMap/types'
 import { getSpacing } from 'ui/theme'
 
 const BULLET_SIZE = 12
-
-const filterGroups: FilterGroupData[] = [
-  { id: 'OUTINGS', label: 'Sorties', color: theme.colors.coral },
-  { id: 'SHOPS', label: 'Boutiques', color: theme.colors.primary },
-  { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue },
-]
 
 export const FilterCategoriesBannerContainer = () => {
   const { getSelectedMacroFilters, toggleMacroFilter } = useVenueMapFilters()
