@@ -27,7 +27,11 @@ export function NavigationAchievements(): React.JSX.Element {
     <ScrollView>
       <CheatcodesHeader title="Achievements 🏆" />
       <StyledContainer>
-        <LinkToComponent name="Achievements" half={false} />
+        <LinkToComponent
+          name="Achievements"
+          navigationParams={{ from: 'cheatcodes' }}
+          half={false}
+        />
         <Row>
           <ButtonPrimary
             wording="AchievementSuccessModal (1 unlocked)"

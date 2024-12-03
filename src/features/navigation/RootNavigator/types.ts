@@ -310,7 +310,7 @@ export type RootStackParamList = {
   ThematicHeaders: undefined
   MarketingBlocks: undefined
   MovieCalendar: undefined
-  Achievements: { from: 'profile' | 'success' }
+  Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &

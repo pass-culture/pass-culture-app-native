@@ -54,7 +54,7 @@ export const IconsContainer: ComponentStory<
               {isBicolor ? <IconComponentBicolor /> : <IconComponent />}
               {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
               <Spacer.Column numberOfSpaces={2} />
-              <TypoDS.BodyS>{name}</TypoDS.BodyS>
+              <TypoDS.BodyS numberOfLines={2}>{name}</TypoDS.BodyS>
             </IconWrapper>
           )
         })}

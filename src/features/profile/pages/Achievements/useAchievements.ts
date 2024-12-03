@@ -22,7 +22,7 @@ type Categories = {
 
 type UseAchievements = {
   categories: Categories
-  track: (from: 'profile' | 'success') => void
+  track: (from: 'profile' | 'success' | 'cheatcodes') => void
 }
 
 export type UseAchivementsProps = {
@@ -38,7 +38,7 @@ export const useAchievements = ({
     createCategory(achievements, completedAchievements)
   )
 
-  const track = (from: 'profile' | 'success') => {
+  const track = (from: 'profile' | 'success' | 'cheatcodes') => {
     analytics.logDisplayAchievements({ from, numberUnlocked: completedAchievements.length })
   }
 

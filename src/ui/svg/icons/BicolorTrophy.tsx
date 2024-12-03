@@ -44,11 +44,6 @@ const TrophySVG: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const Trophy = styled(TrophySVG).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
-
 export const BicolorTrophy = styled(TrophySVG).attrs(({ color, color2, size, theme }) => ({
   color: color ?? theme.colors.secondary,
   color2: color2 ?? theme.colors.primary,

@@ -3,7 +3,7 @@ import React from 'react'
 import { theme } from 'theme'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorTrophy } from 'ui/svg/icons/Trophy'
+import { BicolorTrophy } from 'ui/svg/icons/BicolorTrophy'
 import { Spacer, Typo } from 'ui/theme'
 
 export const BadgeBanner: React.FC = () => {
