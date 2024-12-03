@@ -73,7 +73,7 @@ const CalendarCell = styled(TouchableOpacity)({
 })
 
 const DefaultCalendarText = styled(TypoDS.BodyAccent)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.colors.black,
   textAlign: 'center',
   width: getSpacing(theme.isDesktopViewport ? 22 : 10),
 }))
@@ -83,5 +83,5 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
 }))
 
 const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.colors.greySemiDark,
 }))
