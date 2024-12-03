@@ -55,7 +55,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
         indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
-      enabled: !!(netInfo.isConnected && venue),
+      enabled: !!(netInfo.isConnected && netInfo.isInternetReachable && venue),
       select: ({ hits, nbHits }) => ({
         hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as Offer[],
         nbHits,

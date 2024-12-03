@@ -17,7 +17,7 @@ export const useSubcategories = () => {
     {
       staleTime: STALE_TIME_SUBCATEGORIES,
       placeholderData: PLACEHOLDER_DATA,
-      enabled: !!netInfo.isConnected,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     }
   )
 }

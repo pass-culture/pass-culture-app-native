@@ -26,7 +26,7 @@ export const useCities = (postalCode: string, options?: Options) => {
   const netInfo = useNetInfoContext()
   return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
     staleTime: STALE_TIME_CITIES,
-    enabled: !!netInfo.isConnected && postalCode.length >= 5,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && postalCode.length >= 5,
     select: (data: CitiesResponse) =>
       data.map(({ nom, code }) => ({
         name: nom,

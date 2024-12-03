@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useMemo, useState, useEffect } from 'react'
-import { useQuery, UseQueryOptions, UseQueryResult, QueryKey } from 'react-query'
+import { useEffect, useMemo, useState } from 'react'
+import { QueryKey, UseQueryOptions, UseQueryResult, useQuery } from 'react-query'
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring'
@@ -61,8 +61,8 @@ export function usePersistQuery<
     ...options,
     enabled:
       options?.enabled === undefined
-        ? !!netInfo.isConnected
-        : options.enabled && !!netInfo.isConnected,
+        ? !!netInfo.isConnected && !!netInfo.isInternetReachable
+        : options.enabled && !!netInfo.isConnected && !!netInfo.isInternetReachable,
   })
 
   const persistQuery = useMemo<UsePersistQueryResult<TData, TError>>(

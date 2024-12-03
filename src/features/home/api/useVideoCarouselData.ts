@@ -83,7 +83,8 @@ export const useVideoCarouselData = (
   const offersResultList = useQuery({
     queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, moduleId],
     queryFn: offersQuery,
-    enabled: !!netInfo.isConnected && queriesWithoutUndefined.length > 0,
+    enabled:
+      !!netInfo.isConnected && !!netInfo.isInternetReachable && queriesWithoutUndefined.length > 0,
   })
 
   useEffect(() => {

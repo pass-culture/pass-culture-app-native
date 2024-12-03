@@ -13,7 +13,7 @@ export const useEmailUpdateStatus = () => {
     [QueryKeys.EMAIL_UPDATE_STATUS_V2],
     () => api.getNativeV2ProfileEmailUpdateStatus(),
     {
-      enabled: !!netInfo.isConnected && isLoggedIn,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,
     }
   )
 }

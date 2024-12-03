@@ -7,6 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/network/NetInfoWrapper')
 
 const getSimilarOffersInOrderSpy = jest.spyOn(
   getSimilarOrRecoOffersInOrder,

@@ -20,7 +20,11 @@ export function useCulturalSurveyQuestions() {
     () => api.getNativeV1CulturalSurveyQuestions(),
     {
       staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,
-      enabled: !!netInfo.isConnected && isLoggedIn && shouldRequestCulturalSurveyQuestions,
+      enabled:
+        !!netInfo.isConnected &&
+        !!netInfo.isInternetReachable &&
+        isLoggedIn &&
+        shouldRequestCulturalSurveyQuestions,
     }
   )
 }

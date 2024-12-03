@@ -26,7 +26,7 @@ export const useVenues = (query: string) => {
       }),
     {
       staleTime: STALE_TIME_VENUES,
-      enabled: !!netInfo.isConnected && query.length > 0,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && query.length > 0,
     }
   )
 }
