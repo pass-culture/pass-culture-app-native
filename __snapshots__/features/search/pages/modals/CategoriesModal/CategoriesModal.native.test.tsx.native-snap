@@ -1134,12 +1134,21 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Musique"
-                  accessibilityRole="radio"
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
-                      "checked": false,
+                      "checked": undefined,
                       "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
@@ -1153,7 +1162,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={true}
+                  accessible={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -1171,9 +1180,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "minHeight": 24,
-                          "paddingVertical": 12,
                         },
                       ],
                       {
@@ -1181,18 +1187,34 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Musique"
+                  testID="FilterRow"
                 >
                   <View
-                    flex={0.9}
                     style={
                       [
                         {
-                          "alignItems": "center",
+                          "marginRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-start",
                           "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
@@ -1201,49 +1223,17 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       style={
                         [
                           {
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={24}
-                        width={24}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "width": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "flexDirection": "row",
                           },
                         ]
                       }
                     >
                       <Text
-                        isSelected={false}
                         numberOfLines={2}
                         style={
                           [
                             {
                               "color": "#161617",
-                              "flexGrow": 1,
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1257,31 +1247,25 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
-                    }
+                    accessibilityLabel="Affiner la recherche"
+                    height={20}
+                    width={20}
                   >
-                    <View
-                      accessibilityLabel="Non sélectionné"
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
                   </View>
                 </View>
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessibilityRole="none"

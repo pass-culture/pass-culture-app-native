@@ -256,7 +256,7 @@ describe('<ThematicSearch/>', () => {
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Musique')
 
-      expect(await screen.findByText('Concerts, évènements')).toBeOnTheScreen()
+      expect(await screen.findByText('Achat & location d‘instrument')).toBeOnTheScreen()
     })
 
     it('should not render music playlists when offerCategory is not `MUSIQUE`', async () => {
@@ -264,7 +264,7 @@ describe('<ThematicSearch/>', () => {
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Livres')
 
-      expect(screen.queryByText('Concerts, évènements')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
     })
   })
 })

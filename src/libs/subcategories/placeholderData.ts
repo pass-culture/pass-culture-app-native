@@ -810,7 +810,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
       value: 'Achat & location d‘instrument',
       genreType: null,
-      parents: [SearchGroupNameEnumv2.INSTRUMENTS],
+      parents: [SearchGroupNameEnumv2.INSTRUMENTS, SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.ARTS_VISUELS,
@@ -840,13 +840,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: NativeCategoryIdEnumv2.CD,
       value: 'CD',
       genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
-    },
-    {
-      name: NativeCategoryIdEnumv2.CD,
-      value: 'CD',
-      genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.MUSIQUE],
+      parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE, SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.CONCERTS_EN_LIGNE,
@@ -859,12 +853,6 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       value: 'Concerts, \u00e9v\u00e8nements',
       genreType: GenreType.MUSIC,
       parents: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
-    },
-    {
-      name: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
-      value: 'Concerts, \u00e9v\u00e8nements',
-      genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.CONCOURS,
@@ -915,7 +903,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: NativeCategoryIdEnumv2.FESTIVALS,
       value: 'Festivals',
       genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+      parents: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS, SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.FESTIVAL_DU_LIVRE,
@@ -1059,13 +1047,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: NativeCategoryIdEnumv2.VINYLES,
       value: 'Vinyles et autres supports',
       genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
-    },
-    {
-      name: NativeCategoryIdEnumv2.VINYLES,
-      value: 'Vinyles et autres supports',
-      genreType: GenreType.MUSIC,
-      parents: [SearchGroupNameEnumv2.MUSIQUE],
+      parents: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE, SearchGroupNameEnumv2.MUSIQUE],
     },
     {
       name: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
