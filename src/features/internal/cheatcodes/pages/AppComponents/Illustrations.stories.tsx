@@ -1,9 +1,11 @@
 import { ComponentStory } from '@storybook/react'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { IconsContainer as Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   BicolorIllustrations,
+  DetailedAchievementIllustrations,
+  SimpleAchievementIllustrations,
   UniqueColorIllustrations,
 } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
@@ -18,7 +20,7 @@ export default {
   },
 }
 
-const illustrationSets = [
+const illustrationSets: ComponentProps<typeof Illustrations>[] = [
   {
     title: 'BicolorIllustrations',
     icons: BicolorIllustrations,
@@ -30,6 +32,14 @@ const illustrationSets = [
   {
     title: 'SearchCategoriesIllustrations',
     icons: SearchCategoriesIllustrations,
+  },
+  {
+    title: 'Simple Achievement Illustrations',
+    icons: SimpleAchievementIllustrations,
+  },
+  {
+    title: 'Detailed Achievement Illustrations',
+    icons: DetailedAchievementIllustrations,
   },
 ]
 

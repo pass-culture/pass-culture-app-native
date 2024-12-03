@@ -16,7 +16,8 @@ import {
 } from 'features/profile/pages/Achievements/useAchievements'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { renderHook } from 'tests/utils'
-import { BicolorTrophy, Trophy } from 'ui/svg/icons/Trophy'
+import { FirstArtLessonBookingLocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingLocked'
+import { FirstArtLessonBookingUnlocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingUnlocked'
 
 enum TestAchievementCategory {
   TEST = 'TEST',
@@ -40,8 +41,8 @@ const testAchievement = {
   name: 'Test',
   descriptionLocked: 'Test',
   descriptionUnlocked: 'Test',
-  illustrationLocked: Trophy,
-  illustrationUnlocked: BicolorTrophy,
+  illustrationLocked: FirstArtLessonBookingLocked,
+  illustrationUnlocked: FirstArtLessonBookingUnlocked,
   category: CombinedAchievementCategory.TEST,
 }
 
