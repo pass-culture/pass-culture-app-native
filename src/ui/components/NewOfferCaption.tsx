@@ -15,6 +15,8 @@ type Props = {
   isBeneficiary?: boolean
 }
 
+// IF we increase the height of the component (e.g., numberOfLines / number of items),
+// we also need to update the OFFER_TILE_MAX_LINES variable in useComputedTheme.
 export const NewOfferCaption: FC<Props> = ({
   name,
   date,
