@@ -14,6 +14,7 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 const ids = ['102280', '102272', '102249', '102310']
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/network/NetInfoWrapper')
 
 describe('useAlgoliaRecommendedOffers', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)

@@ -11,6 +11,6 @@ export function useOAuthState() {
   const netInfo = useNetInfoContext()
 
   return useQuery([QueryKeys.OAUTH_STATE], () => api.getNativeV1OauthState(), {
-    enabled: !!(netInfo.isConnected && enableGoogleSSO),
+    enabled: !!(netInfo.isConnected && netInfo.isInternetReachable && enableGoogleSSO),
   })
 }

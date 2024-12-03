@@ -6,6 +6,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -14,8 +15,11 @@ const appBuildVersion = getAppBuildVersion()
 // firestore feature flag documentation:
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
 export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean => {
+  const netInfo = useNetInfoContext()
+
   const { data: docSnapshot } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
     staleTime: 1000 * 30, // 30 seconds
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
   })
   const { logType } = useLogTypeFromRemoteConfig()
 

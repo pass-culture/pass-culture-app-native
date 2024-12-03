@@ -15,6 +15,6 @@ export function useAccountSuspensionDate() {
         return null
       }
     },
-    { enabled: !!netInfo.isConnected }
+    { enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable }
   )
 }

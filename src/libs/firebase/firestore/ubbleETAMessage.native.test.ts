@@ -5,6 +5,7 @@ import { act, renderHook } from 'tests/utils'
 import { getUbbleETAMessage, useUbbleETAMessage } from './ubbleETAMessage'
 
 jest.mock('@react-native-firebase/firestore')
+jest.mock('libs/network/NetInfoWrapper')
 
 describe('[method] ubbleETAMessage', () => {
   it('should call the right path: ubble > testing', () => {

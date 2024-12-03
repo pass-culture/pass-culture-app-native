@@ -19,7 +19,8 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
   const { setVenues } = useVenuesActions()
 
-  const shouldFetchVenues = !!netInfo.isConnected && !initialVenues?.length
+  const shouldFetchVenues =
+    !!netInfo.isConnected && !!netInfo.isInternetReachable && !initialVenues?.length
 
   const { data: fetchedVenues } = useQuery<Venue[]>(
     [QueryKeys.VENUES, region],

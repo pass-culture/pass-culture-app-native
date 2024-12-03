@@ -25,7 +25,7 @@ const queryFn: QueryFunction<TestData[]> = async () => onlineData
 const additionalData: TestData[] = [{ id: 3, description: 'sierra' }]
 const onlineData: TestData[] = [...offlineData, ...additionalData]
 
-mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
 describe('usePersistQuery', () => {
   beforeEach(async () => AsyncStorage.removeItem(queryKey))

@@ -8,6 +8,7 @@ import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifCon
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
@@ -25,11 +26,14 @@ const getHomepageNatifContent = async (logType: LogTypeEnum) => {
 }
 const useGetHomepageList = () => {
   const { logType } = useLogTypeFromRemoteConfig()
+  const netInfo = useNetInfoContext()
+
   const { data: homepages } = useQuery<Homepage[]>(
     [QueryKeys.HOMEPAGE_MODULES],
     () => getHomepageNatifContent(logType),
     {
       staleTime: STALE_TIME_CONTENTFUL,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     }
   )
   return homepages

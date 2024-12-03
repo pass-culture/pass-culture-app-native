@@ -70,7 +70,7 @@ export function useGTLPlaylists({
         }
       })
     },
-    enabled: !!netInfo.isConnected,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     staleTime: 5 * 60 * 1000, // 5 minutes, as the GTL playlists are not often updated
   })
 

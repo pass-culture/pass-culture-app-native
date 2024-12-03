@@ -28,7 +28,8 @@ export const useVenue = (venueId: number | null) => {
     [QueryKeys.VENUE, venueId],
     () => getVenueById(venueId, logType),
     {
-      enabled: !!netInfo.isConnected && typeof venueId === 'number',
+      enabled:
+        !!netInfo.isConnected && !!netInfo.isInternetReachable && typeof venueId === 'number',
     }
   )
 }

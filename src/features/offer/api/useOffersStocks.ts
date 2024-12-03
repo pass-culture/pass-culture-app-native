@@ -14,7 +14,7 @@ export const useOffersStocks = ({ offerIds }: { offerIds: number[] }) => {
     [QueryKeys.OFFER, offerIds],
     () => getStocksByOfferIds(offerIds, logType),
     {
-      enabled: !!netInfo.isConnected,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     }
   )
 }

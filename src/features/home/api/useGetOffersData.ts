@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
-import { OffersModule, OfferModuleParamsInfo, PlaylistOffersParams } from 'features/home/types'
+import { OfferModuleParamsInfo, OffersModule, PlaylistOffersParams } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
@@ -57,7 +57,10 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersResultList = useQuery({
     queryKey: [QueryKeys.HOME_MODULE, offersModuleIds],
     queryFn: offersQuery,
-    enabled: !!netInfo.isConnected && offersAdaptedPlaylistParametersWithoutUndefined.length > 0,
+    enabled:
+      !!netInfo.isConnected &&
+      !!netInfo.isInternetReachable &&
+      offersAdaptedPlaylistParametersWithoutUndefined.length > 0,
   })
 
   useEffect(() => {

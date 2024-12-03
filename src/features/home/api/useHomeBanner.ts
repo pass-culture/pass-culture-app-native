@@ -13,7 +13,7 @@ export function useHomeBanner(hasGeolocPosition: boolean) {
     [QueryKeys.HOME_BANNER, hasGeolocPosition],
     () => api.getNativeV1Banner(hasGeolocPosition),
     {
-      enabled: !!netInfo.isConnected && isLoggedIn,
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,
     }
   )
 }

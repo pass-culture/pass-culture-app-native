@@ -16,6 +16,6 @@ export function useAccountSuspensionStatus() {
         return null
       }
     },
-    { enabled: !!netInfo.isConnected }
+    { enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable }
   )
 }
