@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { defaultCinemaPlaylistOffer } from 'features/search/pages/ThematicSearch/Cinema/fixtures/cinemaPlaylistAlgoliaSnapshot'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
@@ -26,12 +26,13 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
-
-const playlist = defaultCinemaPlaylistOffer
+const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
+const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
+const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
 
 describe('ThematicSearchPlaylist', () => {
   it('should log ConsultOffer when pressing an item', async () => {
-    renderCinemaPlaylist(playlist, 'thematicsearch', 'ThematicSearch')
+    renderThematicSearchPlaylist(DEFAULT_PLAYLIST, 'thematicsearch', 'ThematicSearch')
 
     const offer = await screen.findByText('Harry potter à l’école des sorciers')
 
@@ -47,7 +48,7 @@ describe('ThematicSearchPlaylist', () => {
   })
 })
 
-function renderCinemaPlaylist(
+function renderThematicSearchPlaylist(
   cinemaPlaylist: ThematicSearchPlaylistData,
   analyticsFrom: Referrals,
   route: Extract<ScreenNames, 'ThematicSearch'>

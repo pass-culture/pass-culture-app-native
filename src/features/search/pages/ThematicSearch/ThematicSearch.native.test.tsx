@@ -247,6 +247,26 @@ describe('<ThematicSearch/>', () => {
       expect(screen.queryByText('DVD, Blu-Ray')).not.toBeOnTheScreen()
     })
   })
+
+  describe('music playlists', () => {
+    it('should render music playlists when offerCategory is `MUSIQUE`', async () => {
+      MockOfferCategoriesParams({
+        offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
+      })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Musique')
+
+      expect(await screen.findByText('Achat & location d‘instrument')).toBeOnTheScreen()
+    })
+
+    it('should not render music playlists when offerCategory is not `MUSIQUE`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 function MockOfferCategoriesParams(offerCategoriesParams: {

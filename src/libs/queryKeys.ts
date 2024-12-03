@@ -22,6 +22,7 @@ export enum QueryKeys {
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
   HOMEPAGE_MODULES = 'homepageModules',
+  MUSIC_OFFERS = 'musicOffers',
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OAUTH_STATE = 'oauthState',
   OFFER = 'offer',
