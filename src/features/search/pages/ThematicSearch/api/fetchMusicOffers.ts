@@ -16,23 +16,23 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
   const queries: MultipleQueriesQuery[] = [
     buildQuery({
       ...commonQueryParams,
-      filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
       ...commonQueryParams,
-      filters: `offer.subcategoryId:"${SubcategoryIdEnum.FESTIVAL_MUSIQUE}" AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `offer.subcategoryId:"${SubcategoryIdEnum.FESTIVAL_MUSIQUE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
       ...commonQueryParams,
-      filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ACHAT_INSTRUMENT}" OR offer.subcategoryId:"${SubcategoryIdEnum.LOCATION_INSTRUMENT}") AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ACHAT_INSTRUMENT}" OR offer.subcategoryId:"${SubcategoryIdEnum.LOCATION_INSTRUMENT}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
       ...commonQueryParams,
-      filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD}" AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
       ...commonQueryParams,
-      filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}" AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
   ]
 

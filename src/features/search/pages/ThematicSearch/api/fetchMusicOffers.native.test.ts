@@ -25,26 +25,27 @@ function buildQueries(userLocation: Position) {
   return [
     buildQuery({
       ...commonQueryParams,
-      filters: 'offer.subcategoryId:"CONCERT" AND NOT offer.last30DaysBookingsRange:"low"',
-    }),
-    buildQuery({
-      ...commonQueryParams,
-      filters: 'offer.subcategoryId:"FESTIVAL_MUSIQUE" AND NOT offer.last30DaysBookingsRange:"low"',
+      filters: 'offer.subcategoryId:"CONCERT" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
     buildQuery({
       ...commonQueryParams,
       filters:
-        '(offer.subcategoryId:"ACHAT_INSTRUMENT" OR offer.subcategoryId:"LOCATION_INSTRUMENT") AND NOT offer.last30DaysBookingsRange:"low"',
+        'offer.subcategoryId:"FESTIVAL_MUSIQUE" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
     buildQuery({
       ...commonQueryParams,
       filters:
-        'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_CD" AND NOT offer.last30DaysBookingsRange:"low"',
+        '(offer.subcategoryId:"ACHAT_INSTRUMENT" OR offer.subcategoryId:"LOCATION_INSTRUMENT") AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
     buildQuery({
       ...commonQueryParams,
       filters:
-        'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_VINYLE" AND NOT offer.last30DaysBookingsRange:"low"',
+        'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_CD" AND NOT offer.last30DaysBookingsRange:"very-low"',
+    }),
+    buildQuery({
+      ...commonQueryParams,
+      filters:
+        'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_VINYLE" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
   ]
 }

@@ -31,7 +31,7 @@ function buildQueries(userLocation: Position) {
       ...commonQueryParams,
       indexName: 'algoliaOffersIndexName',
       filters:
-        'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"low"',
+        'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"very-low"',
       userLocation,
     }),
     buildQuery({

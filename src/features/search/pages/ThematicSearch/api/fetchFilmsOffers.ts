@@ -24,7 +24,7 @@ export const fetchFilmsOffers = async (userLocation?: Position) => {
       ...commonQueryParams,
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       userLocation,
-      filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.DVD_BLU_RAY}" AND offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}" AND NOT offer.last30DaysBookingsRange:"low"`,
+      filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.DVD_BLU_RAY}" AND offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
       ...commonQueryParams,
