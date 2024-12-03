@@ -304,8 +304,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_SHARE_APP }, { type }),
-  logDisplayAchievements: (params: { from: 'profile' | 'success'; numberUnlocked: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.DISPLAY_ACHIEVEMENTS }, params),
+  logDisplayAchievements: (params: {
+    from: 'profile' | 'success' | 'cheatcodes'
+    numberUnlocked: number
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.DISPLAY_ACHIEVEMENTS }, params),
   logDisplayForcedLoginHelpMessage: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISPLAY_FORCED_LOGIN_HELP_MESSAGE }),
   logEduconnectExplanationClicked: () =>
