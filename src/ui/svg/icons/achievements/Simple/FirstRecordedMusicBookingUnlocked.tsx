@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import * as React from 'react'
-import { G, Path, Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
+import { G, Path, Defs, LinearGradient, Stop, Rect, RadialGradient } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -179,7 +179,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             <Stop stopColor="#EEE1E0" />
             <Stop offset="1" stopColor="#C6BAB9" />
           </LinearGradient>
-          <radialGradient
+          <RadialGradient
             id="paint3_radial_8631_20659"
             cx="0"
             cy="0"
@@ -188,8 +188,8 @@ function FirstRecordedMusicBookingUnlockedSvg({
             gradientTransform="translate(50.4641 45.7447) rotate(-90) scale(38.3688)">
             <Stop offset="0.79" stopColor="#E3EAFF" />
             <Stop offset="1" stopColor="#9E82EA" />
-          </radialGradient>
-          <radialGradient
+          </RadialGradient>
+          <RadialGradient
             id="paint4_radial_8631_20659"
             cx="0"
             cy="0"
@@ -198,7 +198,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             gradientTransform="translate(50.3764 45.7446) rotate(-89.58) scale(48.3701)">
             <Stop stopColor="#E3EAFF" />
             <Stop offset="1" stopColor="#7E9FF8" />
-          </radialGradient>
+          </RadialGradient>
           <LinearGradient
             id="paint5_linear_8631_20659"
             x1="23.2137"
@@ -209,7 +209,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             <Stop stopColor="#96B1F9" />
             <Stop offset="1" stopColor="#5776C9" />
           </LinearGradient>
-          <radialGradient
+          <RadialGradient
             id="paint6_radial_8631_20659"
             cx="0"
             cy="0"
@@ -218,7 +218,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             gradientTransform="translate(49.1711 45.6028) rotate(179.21) scale(30.854 25.246)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#B57FE8" />
-          </radialGradient>
+          </RadialGradient>
           <LinearGradient
             id="paint7_linear_8631_20659"
             x1="73.8146"
@@ -229,7 +229,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             <Stop stopColor="#91CDFF" />
             <Stop offset="1" stopColor="#CEEBFF" />
           </LinearGradient>
-          <radialGradient
+          <RadialGradient
             id="paint8_radial_8631_20659"
             cx="0"
             cy="0"
@@ -238,7 +238,7 @@ function FirstRecordedMusicBookingUnlockedSvg({
             gradientTransform="translate(49.4549 45.6028) rotate(-3.45335) scale(24.7255 21.4827)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#5B7EDD" />
-          </radialGradient>
+          </RadialGradient>
           <LinearGradient
             id="paint9_linear_8631_20659"
             x1="58.6175"

@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import * as React from 'react'
-import { G, Path, Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
+import { G, Path, Defs, LinearGradient, Stop, Rect, RadialGradient } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -382,7 +382,7 @@ function FirstArtLessonBookingUnlockedDetailedSvg({
             <Stop stopColor="#EAD8FC" />
             <Stop offset="1" stopColor="#AE89D3" />
           </LinearGradient>
-          <radialGradient
+          <RadialGradient
             id="paint6_radial_8631_22739"
             cx="0"
             cy="0"
@@ -391,8 +391,8 @@ function FirstArtLessonBookingUnlockedDetailedSvg({
             gradientTransform="translate(168.78 138.761) rotate(180) scale(16.5509 18.4771)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#B57FE8" />
-          </radialGradient>
-          <radialGradient
+          </RadialGradient>
+          <RadialGradient
             id="paint7_radial_8631_22739"
             cx="0"
             cy="0"
@@ -401,8 +401,8 @@ function FirstArtLessonBookingUnlockedDetailedSvg({
             gradientTransform="translate(116.832 112.183) rotate(-180) scale(18.8463 17.7194)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#7F9EF8" />
-          </radialGradient>
-          <radialGradient
+          </RadialGradient>
+          <RadialGradient
             id="paint8_radial_8631_22739"
             cx="0"
             cy="0"
@@ -411,7 +411,7 @@ function FirstArtLessonBookingUnlockedDetailedSvg({
             gradientTransform="translate(113 108.5) rotate(56.3099) scale(7.2111 7.8049)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#B57FE8" />
-          </radialGradient>
+          </RadialGradient>
           <LinearGradient
             id="paint9_linear_8631_22739"
             x1="129.847"
