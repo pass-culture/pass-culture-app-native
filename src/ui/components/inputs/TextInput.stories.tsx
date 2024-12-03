@@ -17,10 +17,6 @@ const baseProps = { placeholder: 'Placeholder...', label: 'Label' }
 const variantConfig: Variants<typeof TextInput> = [
   {
     label: 'TextInput',
-    props: { placeholder: 'Placeholder...' },
-  },
-  {
-    label: 'TextInput with label',
     props: { ...baseProps },
   },
   {

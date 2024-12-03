@@ -48,10 +48,6 @@ const variantConfig: Variants<typeof SearchInput> = [
     props: { LeftIcon: () => <MagnifyingGlass /> },
   },
   {
-    label: 'SearchInput with label',
-    props: { label: 'Label' },
-  },
-  {
     label: 'SearchInput with value',
     props: { value: 'Value' },
   },
@@ -61,7 +57,7 @@ const Template: VariantsStory<typeof SearchInput> = (args) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SearchInput}
-    defaultProps={{ placeholder: 'Placeholder...', ...args }}
+    defaultProps={{ placeholder: 'Placeholder...', ...args, label: 'Label' }}
   />
 )
 

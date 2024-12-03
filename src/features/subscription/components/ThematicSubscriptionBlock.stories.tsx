@@ -27,7 +27,7 @@ const variantConfig: Variants<typeof ThematicSubscriptionBlock> = [
   },
   {
     label: 'ThematicSubscriptionBlock active',
-    props: { thematic: SubscriptionTheme.CINEMA, isSubscribeButtonActive: true },
+    props: { thematic: SubscriptionTheme.MUSIQUE, isSubscribeButtonActive: true },
   },
 ]
 
@@ -41,3 +41,5 @@ const Template: VariantsStory<typeof ThematicSubscriptionBlock> = (args) => (
 
 export const AllVariants = Template.bind({})
 AllVariants.storyName = 'ThematicSubscriptionBlock'
+AllVariants.parameters = { axe: { disabledRules: ['duplicate-id'] } }
+// duplicate-id on bell icon (SVG) on CTA, we disable this rule for these stories since we never have more than one ThematicSubscriptionBlock on a page.

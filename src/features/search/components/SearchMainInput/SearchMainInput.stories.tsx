@@ -16,10 +16,9 @@ const baseProps = {
   setQuery: action('setQuery'),
   onSubmitQuery: action('onSubmitQuery'),
   resetQuery: action('resetQuery'),
-
   onFocusState: action('onFocusState'),
-
   onPressLocationButton: action('onPressLocationButton'),
+  label: 'Label',
 }
 
 export const Home = Template.bind({})
