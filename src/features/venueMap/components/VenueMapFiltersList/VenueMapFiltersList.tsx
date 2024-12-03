@@ -5,28 +5,24 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
+import { filterGroups } from 'features/venueMap/constant'
+import { getFilterDescription } from 'features/venueMap/helpers/getFilterDescription/getFilterDescription'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
-import { FilterItem } from 'features/venueMap/types'
+import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
+import { FilterGroupData } from 'features/venueMap/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { Store } from 'ui/svg/icons/bicolor/Store'
-import { Show } from 'ui/svg/icons/Show'
-import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing } from 'ui/theme'
 
 type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapFiltersList'>
 
-const filterItems: FilterItem[] = [
-  { icon: Show, title: 'Sorties', description: 'Tout', filterGroup: 'OUTINGS' },
-  { icon: Store, title: 'Boutiques', description: 'Tout', filterGroup: 'SHOPS' },
-  { icon: Sort, title: 'Autres', description: 'Tout', filterGroup: 'OTHERS' },
-]
-
 const titleId = uuidv4()
 
 export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) => {
-  const onPress = (item: FilterItem) => {
-    navigation.navigate('VenueMapTypeFilter', { title: item.title, filterGroup: item.filterGroup })
+  const venueFilters = useVenuesFilter()
+
+  const onPress = (item: FilterGroupData) => {
+    navigation.navigate('VenueMapTypeFilter', { title: item.label, filterGroup: item.id })
   }
 
   const onClose = () => {
@@ -41,14 +37,16 @@ export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) =>
       shouldDisplayBackButton={false}
       shouldDisplayCloseButton>
       <StyledUl>
-        {filterItems.map((item, index) => (
-          <StyledLi key={item.title}>
+        {filterGroups.map((item, index) => (
+          <StyledLi key={item.label}>
             {index === 0 ? null : <Separator />}
             <FilterRow
               icon={item.icon}
-              title={item.title}
+              title={item.label}
               onPress={() => onPress(item)}
-              description={item.description}
+              description={
+                venueFilters.length > 0 ? getFilterDescription(item.id, venueFilters) : 'Tout'
+              }
             />
           </StyledLi>
         ))}
@@ -69,5 +67,5 @@ const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
   backgroundColor: theme.colors.greyLight,
-  marginVertical: getSpacing(4),
+  marginVertical: getSpacing(6),
 }))

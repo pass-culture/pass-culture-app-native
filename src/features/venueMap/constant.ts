@@ -1,5 +1,10 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
+import { FilterGroupData } from 'features/venueMap/types'
+import { theme } from 'theme'
+import { Store } from 'ui/svg/icons/bicolor/Store'
+import { Show } from 'ui/svg/icons/Show'
+import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing } from 'ui/theme'
 
 export const FILTER_BANNER_HEIGHT = getSpacing(12)
@@ -44,3 +49,9 @@ export const FILTERS_VENUE_TYPE_MAPPING = {
     VenueTypeCodeKey.SCIENTIFIC_CULTURE,
   ],
 }
+
+export const filterGroups: FilterGroupData[] = [
+  { id: 'OUTINGS', label: 'Sorties', color: theme.colors.coral, icon: Show },
+  { id: 'SHOPS', label: 'Boutiques', color: theme.colors.primary, icon: Store },
+  { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue, icon: Sort },
+]

@@ -639,6 +639,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -783,6 +784,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -927,6 +929,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1071,6 +1074,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1375,6 +1379,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1519,6 +1524,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1663,6 +1669,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1807,6 +1814,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -1951,6 +1959,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -2255,6 +2264,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
@@ -2399,6 +2409,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "marginRight": 16,
                         },
                       ]
                     }
