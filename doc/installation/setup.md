@@ -9,7 +9,7 @@ If you have a pass Culture's computer, which has a proxy that adds a custom cert
 In that case, you will need to install Nix as follows :
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install  --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
 ```
 
 _If you want more information or if you have a problem you can consult [`nix` package manager installation](https://docs.determinate.systems/getting-started/)._
@@ -37,7 +37,55 @@ direnv allow
 
 The last step can take several tens of minutes, especially the first time.
 
-🚨 If you got an error when executing `direnv allow` run it twice 🚨
+#### Troubleshooting
+
+🚨 If you got this error when executing `direnv allow` 🚨
+
+```txt
+/nix/store/559pz0w6zlvw8yyxah9s10fhaz400vaj-stdenv-darwin/setup: line 138: pop_var_context: head of shell_variables not a function context
+```
+
+Try to upgrade bash
+
+```sh
+brew install bash
+```
+
+If still doesn't work, run it twice
+
+```sh
+direnv allow
+```
+
+#### Something is wrong
+
+Try to reload environment
+
+```sh
+direnv reload
+```
+
+Still wrong ?
+
+```sh
+direnv deny
+direnv allow
+```
+
+Still wrong ?
+
+```sh
+direnv deny
+git clean -dxf .direnv .devbox .venv
+npx rn-game-over --all
+direnv allow
+```
+
+Still wrong ?
+
+Save the content of the terminal to be able to understand what did wrong
+
+Ask for help
 
 ### IOS and Android setup
 
