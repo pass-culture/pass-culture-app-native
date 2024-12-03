@@ -11,8 +11,8 @@ export type Achievement = {
   descriptionUnlocked: string
   illustrationUnlocked: React.FC<AccessibleIcon>
   illustrationLocked: React.FC<AccessibleIcon>
-  illustrationUnlockedDetailed?: React.FC<AccessibleIcon>
-  illustrationLockedDetailed?: React.FC<AccessibleIcon>
+  illustrationUnlockedDetailed: React.FC<AccessibleIcon>
+  illustrationLockedDetailed: React.FC<AccessibleIcon>
   category: AchievementCategory
 }
 

@@ -25,7 +25,9 @@ export const useAchievementDetails = (id: AchievementId) => {
   return {
     name: achievement.name,
     description: completed ? achievement.descriptionUnlocked : achievement.descriptionLocked,
-    illustration: completed ? achievement.illustrationUnlocked : achievement.illustrationLocked,
+    illustration: completed
+      ? achievement.illustrationUnlockedDetailed
+      : achievement.illustrationLockedDetailed,
     completedAt: completedAchievement?.completedAt.toLocaleDateString('fr-FR'),
     completed,
     track,
