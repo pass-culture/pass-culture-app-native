@@ -16,7 +16,7 @@ interface OfferCTAProviderProps {
 
 export const OfferCTAProvider: React.FC<OfferCTAProviderProps> = ({ children }) => {
   const [wording, setWording] = useState<string>('')
-  const [isVisible, setIsVisible] = useState<boolean>(false)
+  const [isVisible, setIsVisible] = useState<boolean>(true)
   const [onPress, setOnPress] = useState<() => void>(() => () => {
     return
   })

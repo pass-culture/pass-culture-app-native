@@ -240,24 +240,28 @@ describe('<VenueContent />', () => {
       expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
     })
 
-    it('should not display the button if the remote config flag is deactivated', async () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: false,
+    describe('remote config flag is deactivated', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: false,
+        })
       })
 
-      await act(async () => {
-        mockInView(true)
+      it('should not display the button if the remote config flag is deactivated', async () => {
+        renderVenueContent({
+          venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
+          venueOffers: venueMoviesOffersMock,
+        })
+
+        await act(async () => {
+          mockInView(false)
+        })
+
+        await screen.findByText('Les films à l’affiche')
+
+        expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
       })
-
-      renderVenueContent({
-        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-        venueOffers: venueMoviesOffersMock,
-      })
-
-      await screen.findByText('Les films à l’affiche')
-
-      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
     })
   })
 })

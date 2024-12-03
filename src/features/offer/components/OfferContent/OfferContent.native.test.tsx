@@ -30,7 +30,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 import { OfferContent } from './OfferContent'
@@ -170,6 +170,8 @@ describe('<OfferContent />', () => {
 
     jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
   })
+
+  afterEach(cleanup)
 
   it('should display offer header', async () => {
     renderOfferContent({})
@@ -537,73 +539,66 @@ describe('<OfferContent />', () => {
   })
 
   describe('movie screening access button', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: true,
+    describe('with remote config activated', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: true,
+        })
+      })
+
+      it('should show button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+        })
+
+        await act(async () => {
+          mockInView(false)
+        })
+
+        await screen.findByText('Trouve ta séance')
+
+        expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
+      })
+
+      it('should scroll to anchor', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+        })
+
+        await act(async () => {
+          mockInView(false)
+        })
+
+        const button = await screen.findByText(cinemaCTAButtonName)
+
+        await userEvent.press(button)
+
+        expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
       })
     })
 
-    it('should show button', async () => {
-      renderOfferContent({
-        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+    describe('with remote config deactivated', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: false,
+        })
       })
 
-      await act(async () => {
-        mockInView(false)
+      it('should not display the button if the remote config flag is deactivated', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+        })
+
+        await act(async () => {
+          mockInView(false)
+        })
+
+        await screen.findByText('Trouve ta séance')
+
+        expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
       })
-
-      await screen.findByText('Trouve ta séance')
-
-      expect(await screen.findByText(cinemaCTAButtonName)).toBeOnTheScreen()
-    })
-
-    it('should not show button', async () => {
-      renderOfferContent({
-        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
-      })
-
-      await act(async () => {
-        mockInView(true)
-      })
-
-      await screen.findByText('Trouve ta séance')
-
-      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
-    })
-
-    it('should scroll to anchor', async () => {
-      renderOfferContent({
-        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
-      })
-
-      await act(async () => {
-        mockInView(false)
-      })
-
-      const button = await screen.findByText(cinemaCTAButtonName)
-
-      await userEvent.press(button)
-
-      expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
-    })
-
-    it('should not display the button if the remote config flag is deactivated', async () => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: false,
-      })
-      renderOfferContent({
-        offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
-      })
-
-      await act(async () => {
-        mockInView(true)
-      })
-
-      await screen.findByText('Trouve ta séance')
-
-      expect(screen.queryByText(cinemaCTAButtonName)).not.toBeOnTheScreen()
     })
   })
 })
