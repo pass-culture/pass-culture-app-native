@@ -85,7 +85,11 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
         <IconContainer isActive={isWidgetHighlighted}>
           {shouldDisplayLocationWidgetAppV2 ? locationIconAppV2 : locationIcon}
         </IconContainer>
-        <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
+        {selectedLocationMode == LocationMode.EVERYWHERE ? (
+          <StyledCaption numberOfLines={2}>{locationTitle}</StyledCaption>
+        ) : (
+          <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
+        )}
       </StyledTouchable>
       {shouldShowHomeLocationModal ? (
         <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
