@@ -5,6 +5,8 @@ SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>
 
 WAIT_BOOT_COMPLETED="${WAIT_BOOT_COMPLETED:-15}"
 
+SCRIPT_FOLDER="$(dirname "$(realpath "$0")")"
+
 choose_an_emulator() {
 	emulator -list-avds |
 		grep -v 'INFO' |
@@ -27,7 +29,7 @@ add_certificate_to_this_session() {
 	adb unroot
 }
 
-if ./is_proxy_enabled.sh; then
+if "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 	if [ -z "${ANDROID_SERIAL+x}" ]; then
 		echo "You didn't set the ANDROID_SERIAL environment variable"
 		echo "Choosing one for you :"
