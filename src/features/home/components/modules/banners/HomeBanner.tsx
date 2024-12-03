@@ -3,7 +3,7 @@ import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'r
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
-import { useHomeBanner } from 'features/home/api/useHomeBanner'
+import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -54,11 +54,10 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ hasGeolocPosition, isLoggedIn }: HomeBannerProps) => {
-  const { data } = useHomeBanner(hasGeolocPosition)
+  const { data: homeBanner } = useActivationBanner(hasGeolocPosition)
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
-  const homeBanner = data?.banner
   const shouldRenderSystemBanner = homeBanner ? bannersToRender.includes(homeBanner.name) : false
   const systemBannerAnalyticsType =
     homeBanner?.name === BannerName.geolocation_banner ? 'location' : 'credit'
