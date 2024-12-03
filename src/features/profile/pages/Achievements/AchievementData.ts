@@ -136,17 +136,17 @@ export const mockAchievements: Achievement[] = [
 
 export const userCompletedMovieBooking = {
   id: AchievementId.FIRST_MOVIE_BOOKING,
-  completedAt: new Date(),
+  completedAt: new Date('2024-12-01'),
 }
 
 export const userCompletedBookBooking = {
   id: AchievementId.FIRST_BOOK_BOOKING,
-  completedAt: new Date(),
+  completedAt: new Date('2024-12-02'),
 }
 
 export const userCompletedArtLessonBooking = {
   id: AchievementId.FIRST_ART_LESSON_BOOKING,
-  completedAt: new Date(),
+  completedAt: new Date('2024-12-03'),
 }
 
 export const mockCompletedAchievements: UserAchievement[] = [
