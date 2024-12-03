@@ -7,6 +7,14 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
 import { getSpacing } from 'ui/theme'
 
+const OFFER_TILE_MAX_LINES =
+  1 + // category
+  2 + // title
+  1 + // date
+  1 // price
+
+const OFFER_TILE_GAP = getSpacing(1)
+
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
   const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
@@ -25,7 +33,8 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
   const offerMaxCaptionHeight = enableNewOfferTile
-    ? getSpacing(26)
+    ? Number(theme.designSystem.typography.bodyAccentXs.lineHeight) * OFFER_TILE_MAX_LINES +
+      OFFER_TILE_GAP
     : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
