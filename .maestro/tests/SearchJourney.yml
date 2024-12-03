@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - cloud
+  - new
   - local
 ---
 - runFlow: subFolder/LaunchApp.yml
@@ -9,5 +9,9 @@ tags:
 
 - runFlow: subFolder/GoToProfileFromTabBar.yml
 - assertNotVisible: 'Informations personnelles'
+
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/search/SearchForNoResult.yml
+- runFlow: subFolder/search/ResetSearchFilters.yml
 
 - runFlow: subFolder/StopApp.yml
