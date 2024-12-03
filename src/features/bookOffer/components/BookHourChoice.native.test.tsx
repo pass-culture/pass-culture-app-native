@@ -118,7 +118,7 @@ describe('BookHourChoice', () => {
     const firstPrice = screen.getByTestId('HourChoice148409-right-text')
 
     expect(firstHour.props.children).toBe('21h00')
-    expect(firstPrice.props.children).toBe('24€')
+    expect(firstPrice.props.children).toBe('24\u00a0€')
 
     const secondHour = screen.getByTestId('HourChoice148411-label')
     const secondPrice = screen.getByTestId('HourChoice148411-right-text')
@@ -155,13 +155,13 @@ describe('BookHourChoice when there are several stocks', () => {
   it('should render only one hour choice with "dès" and the minimum price available when has several prices for an hour', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByText(`dès 190€`)).toBeOnTheScreen()
+    expect(screen.getByText(`dès 190\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should render only one hour choice without "dès" and the minimum price when has only one price for an hour', () => {
     render(<BookHourChoice />)
 
-    expect(screen.getByText(`210€`)).toBeOnTheScreen()
+    expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should display hour items with stock selection', () => {
@@ -281,8 +281,8 @@ describe('BookHourChoice when there is only one stock', () => {
   it('should render only one hour choice with the minimum price', () => {
     render(<BookHourChoice />)
 
-    expect(screen.queryByText(`dès 210€`)).not.toBeOnTheScreen()
-    expect(screen.getByText(`210€`)).toBeOnTheScreen()
+    expect(screen.queryByText(`dès 210\u00a0€`)).not.toBeOnTheScreen()
+    expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should display hour item with stock selection', () => {

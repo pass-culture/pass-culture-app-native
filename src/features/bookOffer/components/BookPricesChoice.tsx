@@ -58,11 +58,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
                 checked={stock.id === bookingState.stockId}
                 disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                rightText={formatCurrencyFromCents(
-                  stock.price,
-                  currency,
-                  euroToPacificFrancRate
-                ).replace(/\u00A0/g, '')}
+                rightText={formatCurrencyFromCents(stock.price, currency, euroToPacificFrancRate)}
               />
               <Spacer.Column numberOfSpaces={2} />
             </Li>

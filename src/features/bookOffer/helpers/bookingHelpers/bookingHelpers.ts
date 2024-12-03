@@ -49,10 +49,7 @@ export function getHourWording(
   euroToPacificFrancRate: number,
   hasSeveralPrices?: boolean
 ) {
-  const parsePrice = formatCurrencyFromCents(price, currency, euroToPacificFrancRate).replace(
-    /\u00A0/g,
-    ''
-  )
+  const parsePrice = formatCurrencyFromCents(price, currency, euroToPacificFrancRate)
 
   if (!enoughCredit) return 'crédit insuffisant'
   if (hasSeveralPrices && isBookable) return `dès ${parsePrice}`
