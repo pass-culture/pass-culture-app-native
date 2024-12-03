@@ -3486,6 +3486,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       },
                       {
                         "alignItems": "center",
+                        "columnGap": 16,
                         "cursor": "pointer",
                         "display": "flex",
                         "flexDirection": "row",
@@ -3528,7 +3529,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
-                        "paddingLeft": 16,
                       },
                     ]
                   }

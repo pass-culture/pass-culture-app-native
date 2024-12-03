@@ -405,6 +405,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "columnGap": 16,
                   "cursor": "pointer",
                   "display": "flex",
                   "flexDirection": "row",
@@ -447,7 +448,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
-                  "paddingLeft": 16,
                 },
               ]
             }
@@ -503,6 +503,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "columnGap": 16,
                   "cursor": "pointer",
                   "display": "flex",
                   "flexDirection": "row",
@@ -545,7 +546,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
-                  "paddingLeft": 16,
                 },
               ]
             }
@@ -2211,6 +2211,7 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
                 },
                 {
                   "alignItems": "center",
+                  "columnGap": 16,
                   "cursor": "pointer",
                   "display": "flex",
                   "flexDirection": "row",
@@ -2253,7 +2254,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
-                  "paddingLeft": 16,
                 },
               ]
             }

@@ -19,9 +19,21 @@ export const useVenueMapFilters = () => {
     setVenuesFilters(activeFilters.filter((filter) => !filters.includes(filter)))
   }
 
-  const toggleMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+  /**
+   *
+   * @param macro
+   * group id
+   * @param completeMode
+   * when true, activate all inactive values from the group
+   */
+  const toggleMacroFilter = (
+    macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING,
+    completeMode = false
+  ) => {
     const filters = getFiltersByMacro(macro)
-    const isMacroActive = filters?.every((filter) => activeFilters.includes(filter))
+    const isMacroActive = completeMode
+      ? filters?.every((filter) => activeFilters.includes(filter))
+      : filters?.some((filter) => activeFilters.includes(filter))
 
     if (isMacroActive) {
       removeVenuesFilters(filters)
