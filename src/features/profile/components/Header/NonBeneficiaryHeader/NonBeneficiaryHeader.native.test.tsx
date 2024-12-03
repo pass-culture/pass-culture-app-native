@@ -7,9 +7,13 @@ import {
   SubscriptionMessage,
   SubscriptionStepperResponseV2,
 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ILocationContext, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -34,7 +38,30 @@ mockdate.set(new Date(today))
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('libs/location')
+const mockUseGeolocation = jest.mocked(useLocation)
+
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = jest.mocked(useAuthContext)
+
+jest.mock('shared/user/useGetDepositAmountsByAge')
+const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
+
 describe('<NonBeneficiaryHeader/>', () => {
+  beforeEach(() => {
+    mockDepositAmounts.mockReturnValue(undefined)
+    mockUseGeolocation.mockReturnValue({
+      selectedLocationMode: LocationMode.EVERYWHERE,
+    } as ILocationContext)
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: undefined,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+  })
+
   afterAll(mockdate.reset)
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {

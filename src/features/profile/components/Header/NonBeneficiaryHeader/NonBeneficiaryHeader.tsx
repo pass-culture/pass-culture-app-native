@@ -3,7 +3,7 @@ import React, { ComponentType, FunctionComponent, memo, PropsWithChildren } from
 import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
-import { useHomeBanner } from 'features/home/api/useHomeBanner'
+import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -121,8 +121,7 @@ function NonBeneficiaryBanner({
 
   const { permissionState } = useLocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useHomeBanner(isGeolocated)
-  const homeBanner = data?.banner
+  const { data: homeBanner } = useActivationBanner(isGeolocated)
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
     ? new Date(eligibilityStartDatetime)
