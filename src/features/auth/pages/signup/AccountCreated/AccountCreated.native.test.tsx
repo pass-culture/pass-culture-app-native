@@ -8,7 +8,7 @@ import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchUser } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -16,8 +16,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -36,7 +36,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<AccountCreated />', () => {
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {
@@ -59,7 +59,7 @@ describe('<AccountCreated />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     renderAccountCreated()
     fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
     await waitFor(() => {
@@ -116,6 +116,3 @@ const renderAccountCreated = () =>
   render(<AccountCreated />, {
     wrapper: ShareAppWrapper,
   })
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

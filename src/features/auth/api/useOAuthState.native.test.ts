@@ -1,18 +1,19 @@
 import * as API from 'api/api'
 import { OauthStateResponse } from 'api/gen'
 import { useOAuthState } from 'features/auth/api/useOAuthState'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const apiOAuthStateSpy = jest.spyOn(API.api, 'getNativeV1OauthState')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/network/NetInfoWrapper')
 
 describe('useOAuthState', () => {
   it('should not fetch oauth state when FF is disabled', async () => {
+    setFeatureFlags()
     const { result } = renderOAuthState()
 
     expect(apiOAuthStateSpy).not.toHaveBeenCalled()
@@ -23,8 +24,8 @@ describe('useOAuthState', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
-    useFeatureFlagSpy.mockReturnValueOnce(true)
 
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     const { result } = renderOAuthState()
 
     await act(async () => {})

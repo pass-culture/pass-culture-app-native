@@ -8,7 +8,7 @@ import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,7 +17,6 @@ import { render, screen } from 'tests/utils/web'
 import { SearchResultsContent } from './SearchResultsContent'
 
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
@@ -97,13 +96,15 @@ jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlayli
 
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
 
   it('should not render tabs on web when feature flag map in search activated', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
+      RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
+    ])
     render(reactQueryProviderHOC(<SearchResultsContent />))
 
     await screen.findByTestId('searchResultsList')
@@ -112,7 +113,3 @@ describe('SearchResultsContent component', () => {
     expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

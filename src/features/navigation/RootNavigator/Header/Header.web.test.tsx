@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -41,11 +41,6 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
   ],
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
-
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -58,7 +53,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('Header', () => {
   beforeEach(() => {
     mockServer.getApi<FavoritesCountResponse>(`/v1/me/favorites/count`, { count: 2 })
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   beforeAll(() => {
@@ -74,7 +69,7 @@ describe('Header', () => {
   })
 
   it('should render correctly when FF is enabled', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
     ])

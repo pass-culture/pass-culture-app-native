@@ -3,14 +3,13 @@ import React from 'react'
 import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
@@ -52,7 +51,7 @@ jest.mock('features/navigation/TabBar/routes')
 
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   describe('Accessibility', () => {
@@ -92,7 +91,3 @@ const renderSearchFilter = () =>
   render(reactQueryProviderHOC(<SearchFilter />), {
     theme: { isDesktopViewport: true, isMobileViewport: false },
   })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

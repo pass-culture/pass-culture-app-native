@@ -6,7 +6,8 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -24,8 +25,6 @@ const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -53,7 +52,7 @@ jest.mock('features/location/helpers/useLocationState', () => ({
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
     it('should not display see map button when user location mode is around me and there is a venues playlist', () => {

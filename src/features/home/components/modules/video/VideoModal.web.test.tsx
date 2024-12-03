@@ -5,7 +5,7 @@ import { VideoModal } from 'features/home/components/modules/video/VideoModal.we
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -13,7 +13,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,7 +24,7 @@ const mockOffers = mockedAlgoliaResponse.hits
 
 describe('VideoModal', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -36,7 +35,7 @@ describe('VideoModal', () => {
   })
 
   it('should render correctly with FF on', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
 
     renderVideoModal()
 
@@ -75,8 +74,4 @@ function renderVideoModal() {
       />
     )
   )
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

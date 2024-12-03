@@ -5,12 +5,11 @@ import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { Artist } from 'features/artist/pages/Artist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
@@ -54,7 +53,7 @@ describe('<Artist />', () => {
 
   describe('When enablePageArtist feature flag activated', () => {
     beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
     })
 
     it('should display artist page content', () => {
@@ -87,7 +86,7 @@ describe('<Artist />', () => {
 
   describe('When enablePageArtist feature flag deactivated', () => {
     beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+      setFeatureFlags()
     })
 
     it('should page not found', () => {

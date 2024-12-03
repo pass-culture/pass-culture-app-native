@@ -26,7 +26,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
@@ -39,7 +39,6 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -87,7 +86,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -244,8 +243,8 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to NATIVE Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-    activateFeatureFlags() // disabled ENABLE_CULTURAL_SURVEY_MANDATORY feature flag
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+    setFeatureFlags() // disabled ENABLE_CULTURAL_SURVEY_MANDATORY feature flag
 
     mockMeApiCall({
       ...beneficiaryUser,
@@ -261,8 +260,10 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home WHEN signin is successful and ENABLE_CULTURAL_SURVEY_MANDATORY enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
+      RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY,
+    ])
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
@@ -891,8 +892,4 @@ function simulateSigninNetworkFailure() {
 
 function simulateAddToFavorites() {
   mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }
