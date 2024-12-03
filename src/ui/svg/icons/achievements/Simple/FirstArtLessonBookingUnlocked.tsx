@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import * as React from 'react'
-import { G, Path, Defs, Rect, LinearGradient, Stop } from 'react-native-svg'
+import { G, Path, Defs, Rect, LinearGradient, Stop, RadialGradient } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -314,7 +314,7 @@ function FirstArtLessonBookingUnlockedSvg({ size, accessibilityLabel, testID }: 
             <Stop stopColor="#EAD8FC" />
             <Stop offset="1" stopColor="#AE89D3" />
           </LinearGradient>
-          <radialGradient
+          <RadialGradient
             id="paint6_radial_8631_21039"
             cx="0"
             cy="0"
@@ -323,8 +323,8 @@ function FirstArtLessonBookingUnlockedSvg({ size, accessibilityLabel, testID }: 
             gradientTransform="translate(67.3101 49.0442) rotate(180) scale(7.39066 8.25081)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#B57FE8" />
-          </radialGradient>
-          <radialGradient
+          </RadialGradient>
+          <RadialGradient
             id="paint7_radial_8631_21039"
             cx="0"
             cy="0"
@@ -333,8 +333,8 @@ function FirstArtLessonBookingUnlockedSvg({ size, accessibilityLabel, testID }: 
             gradientTransform="translate(44.1131 37.176) rotate(-180) scale(8.41564 7.91244)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#7F9EF8" />
-          </radialGradient>
-          <radialGradient
+          </RadialGradient>
+          <RadialGradient
             id="paint8_radial_8631_21039"
             cx="0"
             cy="0"
@@ -343,7 +343,7 @@ function FirstArtLessonBookingUnlockedSvg({ size, accessibilityLabel, testID }: 
             gradientTransform="translate(42.4019 35.5315) rotate(56.3099) scale(3.22006 3.48522)">
             <Stop stopColor="white" />
             <Stop offset="1" stopColor="#B57FE8" />
-          </radialGradient>
+          </RadialGradient>
           <LinearGradient
             id="paint9_linear_8631_21039"
             x1="49.9247"
