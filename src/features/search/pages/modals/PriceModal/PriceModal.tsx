@@ -12,11 +12,12 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
-import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { makePriceSchema } from 'features/search/helpers/schema/makePriceSchema'
 import { SearchState } from 'features/search/types'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { convertCentsToEuros, RoundingMode } from 'libs/parsers/pricesConversion'
+import {
+  useFormatCurrencyFromCents,
+  useFormatCurrencyFromCentsWithoutCurrenySymbol,
+} from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -58,27 +59,22 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const currency = useGetCurrencyToDisplay()
   const currencyFull = useGetCurrencyToDisplay('full')
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const currency = useGetCurrencyToDisplay()
 
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
-  const formatAvailableCredit = convertCentsToEuros(availableCredit, RoundingMode.FLOORED)
+  const formatAvailableCredit = useFormatCurrencyFromCentsWithoutCurrenySymbol(availableCredit)
   const formatAvailableCreditWithCurrency = useFormatCurrencyFromCents(availableCredit)
   const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
-  const formatInitialCredit = convertCentsToEuros(initialCredit, RoundingMode.FLOORED)
+  const formatInitialCredit = useFormatCurrencyFromCentsWithoutCurrenySymbol(initialCredit)
   const formatInitialCreditWithCurrency = useFormatCurrencyFromCents(initialCredit)
 
-  const searchPriceSchema = makeSearchPriceSchema(
-    String(formatInitialCredit),
-    currency,
-    euroToPacificFrancRate
-  )
+  const searchPriceSchema = makePriceSchema({ initialCredit: formatInitialCredit, currency })
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -94,6 +90,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     const offerIsFree =
       values.isOnlyFreeOffersSearch ||
       (values.maxPrice === '0' && (values.minPrice === '' || values.minPrice === '0'))
+
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
@@ -105,6 +102,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     if (values.minPrice) {
       additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
     }
+
     if (values.maxPrice) {
       additionalSearchState = {
         ...additionalSearchState,

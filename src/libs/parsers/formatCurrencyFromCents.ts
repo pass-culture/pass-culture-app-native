@@ -46,3 +46,27 @@ export const useFormatCurrencyFromCents = (priceInCents: number, options?: Forma
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   return formatCurrencyFromCents(priceInCents, currency, euroToPacificFrancRate, options)
 }
+
+export const formatCurrencyFromCentsWithoutCurrenySymbol = (
+  priceInCents: number,
+  currency: Currency,
+  euroToPacificFrancRate: number
+): number => {
+  const priceInEuro = convertCentsToEuros(priceInCents)
+
+  if (currency === Currency.PACIFIC_FRANC_SHORT || currency === Currency.PACIFIC_FRANC_FULL) {
+    return convertEuroToPacificFranc(priceInEuro, euroToPacificFrancRate, RoundUnit.UNITS)
+  }
+  return priceInEuro
+}
+
+export const useFormatCurrencyFromCentsWithoutCurrenySymbol = (priceInCents: number): number => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const priceInEuro = convertCentsToEuros(priceInCents)
+
+  if (currency === Currency.PACIFIC_FRANC_SHORT || currency === Currency.PACIFIC_FRANC_FULL) {
+    return convertEuroToPacificFranc(priceInEuro, euroToPacificFrancRate, RoundUnit.UNITS)
+  }
+  return priceInEuro
+}
