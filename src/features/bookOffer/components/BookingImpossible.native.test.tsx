@@ -41,6 +41,9 @@ const mockPostNativeV1SendOfferLinkByPushofferId = jest.spyOn(
   'postNativeV1SendOfferLinkByPushofferId'
 )
 
+const generalConditionText =
+  'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
+
 describe('<BookingImpossible />', () => {
   describe('When offer is already favorite', () => {
     beforeEach(() => {
@@ -58,7 +61,7 @@ describe('<BookingImpossible />', () => {
     it('should render without CTAs', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      await screen.findByLabelText('Voir le détail de l’offre')
+      await screen.findByText(generalConditionText)
 
       expect(screen.queryByText('Mettre en favoris')).not.toBeOnTheScreen()
     })
@@ -66,7 +69,7 @@ describe('<BookingImpossible />', () => {
     it("should log 'BookingImpossibleiOS' on mount", async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      await screen.findByLabelText('Voir le détail de l’offre')
+      await screen.findByText(generalConditionText)
 
       expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
     })
@@ -102,9 +105,7 @@ describe('<BookingImpossible />', () => {
     it('should render with CTAs', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      await screen.findByText(
-        'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
-      )
+      await screen.findByText(generalConditionText)
 
       expect(screen.getByText('Mettre en favoris')).toBeOnTheScreen()
     })
@@ -128,8 +129,7 @@ describe('<BookingImpossible />', () => {
       fireEvent.press(screen.getByText('Mettre en favoris'))
 
       await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(1, {
           from: 'bookingimpossible',
           offerId: mockOfferId,
         })
@@ -139,7 +139,7 @@ describe('<BookingImpossible />', () => {
 
     it('should change booking step from date to confirmation', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
-      await act(async () => {})
+      await screen.findByText(generalConditionText)
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'CHANGE_STEP',
@@ -149,7 +149,7 @@ describe('<BookingImpossible />', () => {
 
     it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
-      await act(async () => {})
+      await screen.findByText(generalConditionText)
 
       fireEvent.press(await screen.findByText('Retourner à l’offre'))
 
