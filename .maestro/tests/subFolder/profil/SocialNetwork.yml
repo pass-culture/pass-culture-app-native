@@ -39,7 +39,6 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Facebook'
 - waitForAnimationToEnd
 - assertVisible: 'Facebook from Meta'
-  optional: true
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 

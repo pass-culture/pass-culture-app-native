@@ -1,0 +1,21 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: "Livres papier"
+
+- tapOn:
+    id: offerBodyImage
+
+- assertVisible:
+    text: 1/2
+    index: 1
+- swipe:
+    direction: LEFT
+
+- assertVisible:
+    text: 2/2
+    index: 1
+- swipe:
+    direction: RIGHT
+
+- tapOn: Revenir en arrière
+- tapOn: Revenir en arrière

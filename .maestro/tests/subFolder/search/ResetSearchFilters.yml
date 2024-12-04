@@ -1,0 +1,5 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: "Prix"
+- tapOn: "Réinitialiser"
+- tapOn: 'Rechercher'

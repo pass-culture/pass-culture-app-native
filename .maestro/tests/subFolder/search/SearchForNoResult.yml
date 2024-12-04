@@ -1,0 +1,32 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Partout'
+
+- tapOn: 'Offre, artiste, lieu culturel...'
+
+- inputText: 'totototototo'
+- pressKey: Enter
+
+- assertVisible: "Pas de résultat"
+- assertVisible: "pour \"totototototo\""
+
+- tapOn:
+    id: 'Voir tous les filtres'
+- tapOn: 'Prix'
+- tapOn: '300'
+- inputText: '50'
+- pressKey: Enter
+- tapOn: 'Appliquer le filtre'
+
+- tapOn: 'Accessibilité'
+
+- tapOn: 'Appliquer le filtre'
+
+- tapOn: 'Rechercher'

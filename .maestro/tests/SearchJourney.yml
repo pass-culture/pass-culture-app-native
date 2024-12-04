@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
+  - local
+---
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- assertNotVisible: 'Informations personnelles'
+
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/search/SearchForNoResult.yml
+- runFlow: subFolder/search/ResetSearchFilters.yml
+
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
+- runFlow: subFolder/venue/AccessPreviewModule.yml
+
+- runFlow: subFolder/StopApp.yml
