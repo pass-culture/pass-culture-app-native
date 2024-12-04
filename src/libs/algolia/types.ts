@@ -37,6 +37,7 @@ export interface AlgoliaHit {
     subcategoryId?: SubcategoryIdEnum
     thumbUrl?: string
     searchGroupName?: SearchGroupNameEnumv2
+    bookFormat?: string | null
   }
   _geoloc: Geoloc
   objectID: string

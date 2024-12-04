@@ -51,4 +51,32 @@ describe('ArtistPlaylist', () => {
     expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     expect(screen.queryByText('Manga Série "One piece" - Tome 5')).not.toBeOnTheScreen()
   })
+
+  it('should use bookFormat if available in playlist item', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          offer={mockOffer}
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    expect(screen.getByText('Poche')).toBeOnTheScreen()
+  })
+
+  it('should not use bookFormat if is not in playlist item', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          offer={mockOffer}
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    expect(screen.getAllByText('Évènement et atelier patrimoine')[1]).toBeOnTheScreen()
+  })
 })

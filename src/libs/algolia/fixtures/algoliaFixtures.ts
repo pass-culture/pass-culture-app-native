@@ -274,6 +274,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       prices: [6.99],
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/998Q',
+      bookFormat: 'Poche',
     },
     venue: {
       address: '19 RUE JOSEPH LE BRIX',

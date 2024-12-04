@@ -22,15 +22,19 @@ const renderItem = ({
 }: {
   item: HitOfferWithArtistAndEan
   artistName: string
-}) => (
-  <HorizontalOfferTile
-    offer={item}
-    analyticsParams={{
-      from: 'artist',
-      artistName,
-    }}
-  />
-)
+}) => {
+  const subtitles = item.offer.bookFormat ? [item.offer.bookFormat] : undefined
+  return (
+    <HorizontalOfferTile
+      offer={item}
+      analyticsParams={{
+        from: 'artist',
+        artistName,
+      }}
+      subtitles={subtitles}
+    />
+  )
+}
 
 export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
   return items.length > 0 ? (

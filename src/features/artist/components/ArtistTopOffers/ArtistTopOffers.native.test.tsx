@@ -28,4 +28,30 @@ describe('ArtistPlaylist', () => {
 
     expect(screen.queryByText('Ses offres populaires')).not.toBeOnTheScreen()
   })
+
+  it('should display subtitles when bookFormat is defined', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Eiichiro Oda"
+          items={[mockedAlgoliaOffersWithSameArtistResponse[0]]}
+        />
+      )
+    )
+
+    expect(screen.getByText('Poche')).toBeOnTheScreen()
+  })
+
+  it('should not display subtitles when bookFormat is not defined', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Eiichiro Oda"
+          items={[mockedAlgoliaOffersWithSameArtistResponse[1]]}
+        />
+      )
+    )
+
+    expect(screen.queryByText('Broché')).not.toBeOnTheScreen()
+  })
 })
