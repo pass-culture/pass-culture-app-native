@@ -43,12 +43,15 @@ If you consider correcting the issue is too time consuming/complex: create a tic
 - Remove all `@ts-expect-error` and `@eslint-disable`.
 - Remove all warnings, and errors that we are used to ignore (`yarn test:lint`, `yarn test:types`, `yarn start:web`...).
 - Use `gap` (`ViewGap`) instead of `<Spacer.Column />`, `<Spacer.Row />` or `<Spacer.Flex />`.
+- Don't add new "alias hooks" (hooks created to group other hooks together). When adding new logic, this hook will progressively become more complex and harder to maintain.
+- Remove logic from components that should be dumb.
 
 Test specific:
 
 - Avoid mocking internal parts of our code. Ideally, mock only external calls.
 - When you see a local variable that is over-written in every test, mock it.
 - Prefer `user` to `fireEvent`.
+- When mocking feature flags, use `setFeatureFlags`. If not possible, mention which one(s) you want to mock in a comment (example: `jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx` )
 - In component tests, replace `await act(async () => {})` and `await waitFor(/* ... */)` by `await screen.findBySomething()`.
 - In hooks tests, use `act` by default and `waitFor` as a last resort.
 - Make a snapshot test for pages and modals ONLY.
