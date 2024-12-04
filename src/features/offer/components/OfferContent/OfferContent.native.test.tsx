@@ -547,7 +547,7 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should not appear if the movie is not a cine', async () => {
+      it('should not appear if the offer is not a movie screening', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE },
         })
