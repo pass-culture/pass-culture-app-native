@@ -1,18 +1,30 @@
+import React from 'react'
+
 import { BookingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
+import { DependenciesProvider } from 'libs/dependencies/DependenciesContext'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useHomepageData } from './useHomepageData'
+import { GetHomeData, useHomepageData } from './useHomepageData'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
+
+const createWrapper =
+  (getHomeData: GetHomeData) =>
+  // eslint-disable-next-line react/display-name
+  ({ children }: { children: React.ReactNode }) => (
+    <DependenciesProvider getHomeData={getHomeData}>
+      {reactQueryProviderHOC(children)}
+    </DependenciesProvider>
+  )
 
 const homepageEntryIds = [
   homepageEntriesAPIResponse.items[0].sys.id,
@@ -27,7 +39,7 @@ describe('useHomepageModules', () => {
 
   it('calls the API and returns the data', async () => {
     const { result } = renderHook(useHomepageData, {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
+      wrapper: createWrapper(() => Promise.resolve(homepageList)),
     })
 
     const expectedResult = homepageList[0]
@@ -40,7 +52,7 @@ describe('useHomepageModules', () => {
   it('calls the API and returns the data of a thematic home page', async () => {
     const entryId = homepageEntryIds[1]
     const { result } = renderHook(() => useHomepageData(entryId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
+      wrapper: createWrapper(() => Promise.resolve(homepageList)),
     })
 
     const expectedResult = homepageList[1]
