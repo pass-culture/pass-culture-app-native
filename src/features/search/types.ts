@@ -54,6 +54,8 @@ export interface SearchState {
   query: string
   minPrice?: string
   maxPrice?: string
+  defaultMinPrice?: string
+  defaultMaxPrice?: string
   searchId?: string
   maxPossiblePrice?: string
   isAutocomplete?: boolean
