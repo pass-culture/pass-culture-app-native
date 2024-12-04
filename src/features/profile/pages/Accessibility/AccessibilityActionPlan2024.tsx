@@ -26,7 +26,7 @@ export const AccessibilityActionPlan2024 = () => (
           Publier la déclaration d’accessibilité du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="Caption"
+            typography="BodyAccentXs"
             wording="https://passculture.pro/"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://passculture.pro/' }}
@@ -48,7 +48,7 @@ export const AccessibilityActionPlan2024 = () => (
           Publier la déclaration d’accessibilité du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="Caption"
+            typography="BodyAccentXs"
             wording="https://pass.culture.fr/"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://pass.culture.fr/' }}
@@ -62,7 +62,7 @@ export const AccessibilityActionPlan2024 = () => (
           Formation des Product Manager du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="Caption"
+            typography="BodyAccentXs"
             wording="https://passculture.pro/"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://passculture.pro/' }}
@@ -80,7 +80,7 @@ export const AccessibilityActionPlan2024 = () => (
           Rendre le site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            TypoDSgraphy="Caption"
+            typography="BodyAccentXs"
             wording="https://passculture.app/"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://passculture.app/' }}

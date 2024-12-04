@@ -10,7 +10,7 @@ import { getSpacing } from 'ui/theme'
 
 export function ButtonInsideText({
   wording,
-  typography = 'ButtonText',
+  typography = 'Button',
   onPress,
   onLongPress,
   icon: Icon,

@@ -384,7 +384,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -522,7 +522,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -961,7 +961,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -1100,7 +1100,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -1277,7 +1277,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -1415,7 +1415,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -1553,7 +1553,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -1691,7 +1691,7 @@ exports[`Profile component should render correctly 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
+                                "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,
                               },
@@ -2639,7 +2639,7 @@ exports[`Profile component should render correctly 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
+                            "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
                           },

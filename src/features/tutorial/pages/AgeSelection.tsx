@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
@@ -66,9 +66,9 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
         <Title4Text>Autre</Title4Text>
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.CaptionNeutralInfo numberOfLines={2}>
+          <StyledBodyAccentXs numberOfLines={2}>
             {startButtonTitle} moins de 15 ans ou plus de 18 ans
-          </Typo.CaptionNeutralInfo>
+          </StyledBodyAccentXs>
         </React.Fragment>
       </AgeButton>
     )
@@ -106,4 +106,8 @@ const Title3Text = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) =>
 
 const Title4Text = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
+}))
+
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

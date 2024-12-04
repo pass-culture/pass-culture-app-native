@@ -9,7 +9,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   wording: string
-  typography?: 'ButtonText' | 'Caption'
+  typography?: 'Button' | 'BodyAccentXs'
   icon?: FunctionComponent<AccessibleIcon>
   color?: ColorsEnum
   disablePadding?: boolean
@@ -17,7 +17,7 @@ type Props = {
 
 export function ButtonInsideTextInner({
   wording,
-  typography = 'ButtonText',
+  typography = 'Button',
   icon: Icon,
   color,
   disablePadding,
@@ -25,12 +25,13 @@ export function ButtonInsideTextInner({
   const StyledIcon =
     Icon &&
     styled(Icon).attrs(({ theme }) => ({
-      size: typography === 'Caption' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller,
+      size:
+        typography === 'BodyAccentXs' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller,
       color: color ?? theme.colors.primary,
     }))``
 
   const hasIcon = !!Icon
-  const paddingIcon = typography === 'Caption' ? getSpacing(1) : getSpacing(1.25)
+  const paddingIcon = typography === 'BodyAccentXs' ? getSpacing(1) : getSpacing(1.25)
   const hasPadding = hasIcon && Platform.OS === 'web' && !disablePadding
   const paddingForIcon = hasPadding ? paddingIcon : 0
 
@@ -60,6 +61,8 @@ const StyledText = styled.Text<{
   typography?: string
   color?: ColorsEnum
 }>(({ theme, typography, color }) => ({
-  ...(typography === 'Caption' ? theme.typography.caption : theme.typography.buttonText),
+  ...(typography === 'BodyAccentXs'
+    ? theme.designSystem.typography.bodyAccentXs
+    : theme.designSystem.typography.button),
   color: color ?? theme.colors.primary,
 }))

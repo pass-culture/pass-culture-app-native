@@ -70,7 +70,7 @@ const NestedBullet = styled(Dot).attrs(({ theme }) => ({
 }))``
 
 const BulletContainer = styled.View(({ theme }) => ({
-  height: theme.typography.body.lineHeight,
+  height: theme.designSystem.typography.body.lineHeight,
   justifyContent: 'center',
 }))
 

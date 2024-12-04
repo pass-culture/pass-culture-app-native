@@ -149,9 +149,9 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -268,7 +268,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -397,11 +397,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Schéma pluriannuel d’accessibilité 2022 - 2024
                       </Text>
@@ -437,7 +437,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -566,11 +566,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Actions réalisées en 2022 et 2023
                       </Text>
@@ -606,7 +606,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -735,11 +735,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Plan d’actions 2024
                       </Text>
@@ -860,11 +860,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       "color": "#eb0055",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     },
                   ]
                 }
-                typography="Caption"
+                typography="BodyAccentXs"
               >
                 https://passculture.app/
               </Text>
@@ -890,7 +890,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
             },
           ]
@@ -1009,7 +1009,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1071,7 +1071,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1127,7 +1127,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
             },
           ]
@@ -1229,7 +1229,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1291,7 +1291,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1353,7 +1353,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1415,7 +1415,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1488,7 +1488,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                   style={
                     [
                       {
-                        "height": 20,
+                        "height": 25.6,
                         "justifyContent": "center",
                       },
                     ]
@@ -1552,7 +1552,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1625,7 +1625,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                   style={
                     [
                       {
-                        "height": 20,
+                        "height": 25.6,
                         "justifyContent": "center",
                       },
                     ]
@@ -1689,7 +1689,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1751,7 +1751,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1813,7 +1813,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1921,7 +1921,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -1983,7 +1983,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2045,7 +2045,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2153,7 +2153,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2209,7 +2209,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
             },
           ]
@@ -2311,7 +2311,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2373,7 +2373,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2435,7 +2435,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2560,7 +2560,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2622,7 +2622,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2684,7 +2684,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2792,7 +2792,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2854,7 +2854,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2916,7 +2916,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -2978,7 +2978,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3040,7 +3040,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3102,7 +3102,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3210,7 +3210,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3340,11 +3340,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Accueil
                       </Text>
@@ -3380,7 +3380,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3510,11 +3510,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Connexion
                       </Text>
@@ -3550,7 +3550,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3680,11 +3680,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Inscription - Date de naissance
                       </Text>
@@ -3720,7 +3720,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -3850,11 +3850,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Vérification d’identité
                       </Text>
@@ -3890,7 +3890,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4020,11 +4020,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Profil
                       </Text>
@@ -4060,7 +4060,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4190,11 +4190,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Modification de mot de passe
                       </Text>
@@ -4230,7 +4230,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4360,11 +4360,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Recherche
                       </Text>
@@ -4400,7 +4400,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4530,11 +4530,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Filtres
                       </Text>
@@ -4570,7 +4570,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4700,11 +4700,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Résultats de recherche
                       </Text>
@@ -4740,7 +4740,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -4870,11 +4870,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Favoris
                       </Text>
@@ -4910,7 +4910,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -5040,11 +5040,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Détails d’une offre
                       </Text>
@@ -5080,7 +5080,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -5210,11 +5210,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Déclaration d’accessibilité
                       </Text>
@@ -5313,7 +5313,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -5443,11 +5443,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         support@passculture.app
                       </Text>
@@ -5477,7 +5477,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
             },
           ]
@@ -5559,7 +5559,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -5691,11 +5691,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Défenseur des droits
                       </Text>
@@ -5731,7 +5731,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -5863,11 +5863,11 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 19.2,
                             },
                           ]
                         }
-                        typography="Caption"
+                        typography="BodyAccentXs"
                       >
                         Défenseur des droits dans votre région
                       </Text>
@@ -5903,7 +5903,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
