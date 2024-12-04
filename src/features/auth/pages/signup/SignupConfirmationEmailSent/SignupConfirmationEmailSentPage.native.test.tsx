@@ -7,7 +7,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, act } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
@@ -32,7 +32,7 @@ describe('<SignupConfirmationEmailSentPage />', () => {
       }
     )
     render(reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />))
-    await act(async () => {})
+    await screen.findByText('Inscription')
 
     expect(screen).toMatchSnapshot()
   })

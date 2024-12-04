@@ -160,7 +160,6 @@ describe('Profile component', () => {
 
     it('should show banner when FF is enabled and user is a beneficiary', () => {
       mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
-
       renderProfile()
 
       expect(screen.getByText('Mes succès')).toBeOnTheScreen()
@@ -168,16 +167,14 @@ describe('Profile component', () => {
 
     it('should not show banner if user is not a beneficiary', async () => {
       renderProfile()
-
-      await act(async () => {})
+      await screen.findByText('Mon profil')
 
       expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })
 
     it('should not show banner when FF is disabled', async () => {
       renderProfile()
-
-      await act(async () => {})
+      await screen.findByText('Mon profil')
 
       expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })

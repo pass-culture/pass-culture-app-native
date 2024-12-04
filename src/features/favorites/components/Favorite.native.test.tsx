@@ -91,7 +91,7 @@ describe('<Favorite /> component', () => {
   it('should show distance if geolocation enabled', async () => {
     mockDistance = '10 km'
     renderFavorite()
-    await act(async () => {})
+    await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
 
     expect(await screen.findByText('10 km')).toBeOnTheScreen()
   })
