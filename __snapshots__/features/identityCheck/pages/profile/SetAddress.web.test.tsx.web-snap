@@ -233,7 +233,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Entre ton adresse

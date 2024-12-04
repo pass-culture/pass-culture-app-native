@@ -1090,7 +1090,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "marginBottom": 8,
                   "marginTop": 16,

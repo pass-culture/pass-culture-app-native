@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -30,7 +30,7 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const StyledLabel = styled(Typo.Caption)({
+const StyledLabel = styled(TypoDS.BodyAccentXs)({
   marginHorizontal: getSpacing(2.5),
 })
 

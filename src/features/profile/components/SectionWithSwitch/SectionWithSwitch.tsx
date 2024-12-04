@@ -6,7 +6,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   accessibilityDescribedBy?: string
@@ -45,7 +45,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           </React.Fragment>
         ) : null}
         <InputLabel htmlFor={checkboxID}>
-          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
         </InputLabel>
       </TitleContainer>
       <Spacer.Row numberOfSpaces={4} />
