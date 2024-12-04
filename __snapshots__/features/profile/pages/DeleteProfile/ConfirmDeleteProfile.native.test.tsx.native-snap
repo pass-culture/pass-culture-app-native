@@ -196,7 +196,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -317,12 +317,12 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
-                      typography="ButtonText"
+                      typography="Button"
                     >
                       conditions générales d’utilisation
                     </Text>
@@ -357,7 +357,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -419,7 +419,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]

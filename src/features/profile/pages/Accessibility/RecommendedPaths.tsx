@@ -27,7 +27,7 @@ export function RecommendedPaths() {
         <BulletListItem text="en remplissant un formulaire sur ">
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="Caption"
+            typography="BodyAccentXs"
             wording="Démarches simplifiées"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}

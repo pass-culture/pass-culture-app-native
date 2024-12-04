@@ -28,14 +28,14 @@ describe('ButtonInsideText Component', () => {
       render(<ButtonInsideText wording={wording} />)
       const buttonFontFamily = screen.getByText(wording).props.style[0].fontFamily
 
-      expect(buttonFontFamily).toBe(theme.typography.buttonText.fontFamily)
+      expect(buttonFontFamily).toBe(theme.designSystem.typography.button.fontFamily)
     })
 
     it('should display Caption font family when Caption provided', () => {
-      render(<ButtonInsideText wording={wording} typography="Caption" />)
+      render(<ButtonInsideText wording={wording} typography="BodyAccentXs" />)
       const buttonFontFamily = screen.getByText(wording).props.style[0].fontFamily
 
-      expect(buttonFontFamily).toBe(theme.typography.caption.fontFamily)
+      expect(buttonFontFamily).toBe(theme.designSystem.typography.bodyAccentXs.fontFamily)
     })
   })
 

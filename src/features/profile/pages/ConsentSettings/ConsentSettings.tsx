@@ -84,7 +84,7 @@ export const ConsentSettings = () => {
           wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           icon={ExternalSiteFilled}
-          typography="Caption"
+          typography="BodyAccentXs"
         />
       </StyledBodyAccentXs>
       <Spacer.Column numberOfSpaces={8} />

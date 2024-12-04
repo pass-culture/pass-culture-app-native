@@ -79,7 +79,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
           "textAlign": "center",
         },
@@ -317,7 +317,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
           "textAlign": "center",
         },

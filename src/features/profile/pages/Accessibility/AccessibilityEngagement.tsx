@@ -7,7 +7,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -84,20 +84,24 @@ export function AccessibilityEngagement() {
       <Spacer.Column numberOfSpaces={4} />
       <ContactSupportButton />
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.CaptionNeutralInfo>
+      <StyledBodyAccentXs>
         Vous pouvez retrouver également toutes nos fiches d’aide pour vous inscrire sur le pass
         Culture directement dans{' '}
         <ExternalTouchableLink
           as={ButtonInsideText}
           wording="notre centre d’aide"
-          typography="Caption"
+          typography="BodyAccentXs"
           icon={ExternalSiteFilled}
           externalNav={{ url: env.FAQ_LINK }}
         />
-      </Typo.CaptionNeutralInfo>
+      </StyledBodyAccentXs>
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>
   )
 }
 
 const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
+
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

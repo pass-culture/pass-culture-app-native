@@ -8,7 +8,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 export type ButtonInsideTexteProps = {
   wording: string
-  typography?: 'ButtonText' | 'Caption'
+  typography?: 'Button' | 'BodyAccentXs'
   icon?: FunctionComponent<AccessibleIcon>
   buttonColor?: ColorsEnum
   onLongPress?: AppButtonEventWeb | AppButtonEventNative

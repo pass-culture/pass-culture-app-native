@@ -149,9 +149,9 @@ exports[`RecommendedPaths should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -272,7 +272,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -334,7 +334,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -396,7 +396,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 20,
+                    "height": 25.6,
                     "justifyContent": "center",
                   },
                 ]
@@ -515,11 +515,11 @@ exports[`RecommendedPaths should render correctly 1`] = `
                             "color": "#eb0055",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
-                      typography="Caption"
+                      typography="BodyAccentXs"
                     >
                       Démarches simplifiées
                     </Text>

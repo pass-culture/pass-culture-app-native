@@ -52,7 +52,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Schéma pluriannuel d’accessibilité 2022 - 2024"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
@@ -63,7 +63,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Actions réalisées en 2022 et 2023"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
@@ -74,7 +74,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Plan d’actions 2024"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
@@ -87,7 +87,7 @@ export function AccessibilityDeclaration() {
         Cette déclaration d’accessibilité s’applique au site internet{' '}
         <ExternalTouchableLink
           as={ButtonInsideText}
-          typography="Caption"
+          typography="BodyAccentXs"
           wording="https://passculture.app/"
           icon={ExternalSiteFilled}
           externalNav={webappUrl}
@@ -210,7 +210,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Accueil"
               icon={ExternalSiteFilled}
               externalNav={homeUrl}
@@ -221,7 +221,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Connexion"
               icon={ExternalSiteFilled}
               externalNav={loginUrl}
@@ -232,7 +232,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Inscription - Date de naissance"
               icon={ExternalSiteFilled}
               externalNav={signupUrl}
@@ -243,7 +243,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Vérification d’identité"
               icon={ExternalSiteFilled}
               externalNav={identityCheckUrl}
@@ -254,7 +254,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Profil"
               icon={ExternalSiteFilled}
               externalNav={profileUrl}
@@ -265,7 +265,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Modification de mot de passe"
               icon={ExternalSiteFilled}
               externalNav={changePasswordUrl}
@@ -276,7 +276,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Recherche"
               icon={ExternalSiteFilled}
               externalNav={searchUrl}
@@ -287,7 +287,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Filtres"
               icon={ExternalSiteFilled}
               externalNav={filterUrl}
@@ -298,7 +298,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Résultats de recherche"
               icon={ExternalSiteFilled}
               externalNav={searchResultsUrl}
@@ -309,7 +309,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Favoris"
               icon={ExternalSiteFilled}
               externalNav={favoritesUrl}
@@ -320,7 +320,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Détails d’une offre"
               icon={ExternalSiteFilled}
               externalNav={offerUrl}
@@ -331,7 +331,7 @@ export function AccessibilityDeclaration() {
           <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Déclaration d’accessibilité"
               icon={ExternalSiteFilled}
               externalNav={accessibilityUrl}
@@ -356,7 +356,7 @@ export function AccessibilityDeclaration() {
             <ExternalTouchableLink
               as={ButtonInsideText}
               wording="support@passculture.app"
-              typography="Caption"
+              typography="BodyAccentXs"
               accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
               justifyContent="flex-start"
               externalNav={contactSupport.forGenericQuestion}
@@ -382,7 +382,7 @@ export function AccessibilityDeclaration() {
             Écrire un message au{' '}
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Défenseur des droits"
               icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
@@ -394,7 +394,7 @@ export function AccessibilityDeclaration() {
             Contacter le délégué du{' '}
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Défenseur des droits dans votre région"
               icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}

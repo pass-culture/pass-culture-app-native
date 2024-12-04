@@ -38,7 +38,7 @@ export const SectionRowContent = ({
   const Title = renderTitle ? (
     renderTitle(title)
   ) : (
-    <TypoDS.Button numberOfLines={numberOfLines}>{title}</TypoDS.Button>
+    <TypoDS.BodyAccent numberOfLines={numberOfLines}>{title}</TypoDS.BodyAccent>
   )
 
   return (

@@ -127,7 +127,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
@@ -252,12 +252,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                         {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
-                    typography="ButtonText"
+                    typography="Button"
                   >
                     conditions générales d’utilisation
                   </Text>
@@ -293,7 +293,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
@@ -355,7 +355,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
