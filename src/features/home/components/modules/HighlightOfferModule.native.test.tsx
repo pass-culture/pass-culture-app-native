@@ -125,8 +125,8 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('34 € - Duo')).toBeOnTheScreen()
-      expect(screen.queryByText('34 €')).not.toBeOnTheScreen()
+      expect(screen.getByText('Dès 34 € - Duo')).toBeOnTheScreen()
+      expect(screen.queryByText('Dès 34 €')).not.toBeOnTheScreen()
     })
   })
 
@@ -136,8 +136,8 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('28 €')).toBeOnTheScreen()
-      expect(screen.queryByText('28 € - Duo')).not.toBeOnTheScreen()
+      expect(screen.getByText('Dès 28 €')).toBeOnTheScreen()
+      expect(screen.queryByText('Dès 28 € - Duo')).not.toBeOnTheScreen()
     })
   })
 

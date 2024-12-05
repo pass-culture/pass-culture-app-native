@@ -22,7 +22,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     height,
     moduleName,
     moduleId,
-    isBeneficiary,
     categoryLabel,
     venueId,
     homeEntryId,
@@ -40,7 +39,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
 
-  const { offerId, name, date, price, isDuo, categoryId, thumbUrl, offerLocation } = props
+  const { offerId, name, date, price, categoryId, thumbUrl, offerLocation } = props
 
   const distanceFromOffer = useDistance(offerLocation)
 
@@ -111,8 +110,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             categoryLabel={categoryLabel}
             width={width}
             height={height}
-            isBeneficiary={isBeneficiary}
-            isDuo={isDuo}
           />
         ) : (
           <OldPlaylistCardOffer
@@ -120,13 +117,11 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             date={date}
             categoryId={categoryId}
             distance={distanceFromOffer}
-            isDuo={isDuo}
             thumbnailUrl={thumbUrl}
             width={width}
             height={height}
             categoryLabel={categoryLabel}
             price={price}
-            isBeneficiary={isBeneficiary}
           />
         )}
       </StyledTouchableLink>

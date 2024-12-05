@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
-import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 
@@ -16,15 +19,23 @@ type Props = {
 
 export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) => {
   const { offer: attachedOffer } = offer
+  const { user } = useAuthContext()
   const mapping = useCategoryIdMapping()
   const categoryId = mapping[attachedOffer.subcategoryId]
   const labelMapping = useCategoryHomeLabelMapping()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
   const details = []
 
   const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const date = formatDates(timestampsInMillis)
-  const price = useGetDisplayPrice(attachedOffer.prices)
+  const price = getDisplayedPrice(
+    attachedOffer.prices,
+    currency,
+    euroToPacificFrancRate,
+    attachedOffer.isDuo && user?.isBeneficiary
+  )
   const distance = useDistance(offer._geoloc)
   const distanceLabel = distance ? `à ${distance}` : undefined
 

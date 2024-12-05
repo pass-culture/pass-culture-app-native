@@ -6,6 +6,7 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { PlaylistType } from 'features/offer/enums'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -45,6 +46,8 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
         variant: 'new',
         analyticsFrom: 'artist',
         artistName,
+        priceDisplay: (item: Offer) =>
+          getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
       })}
       itemWidth={itemWidth}
       itemHeight={itemHeight}

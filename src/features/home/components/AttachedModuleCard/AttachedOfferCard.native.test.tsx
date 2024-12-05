@@ -65,7 +65,7 @@ describe('AttachedOfferCard', () => {
 
   it('should display price if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
-    const price = screen.getByText('34 €')
+    const price = screen.getByText('Dès 34 €')
 
     expect(price).toBeOnTheScreen()
   })
@@ -73,7 +73,7 @@ describe('AttachedOfferCard', () => {
   it('should have accessibility label', () => {
     render(<AttachedOfferCard offer={offer} />)
     const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €. Distance : à 10 km.'
+      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: Dès 34 €. Distance : à 10 km.'
     )
 
     expect(accessibilityLabel).toBeOnTheScreen()
