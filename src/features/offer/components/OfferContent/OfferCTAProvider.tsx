@@ -32,7 +32,13 @@ export const OfferCTAProvider: React.FC<OfferCTAProviderProps> = ({ children }) 
   )
 
   const value = useMemo(
-    () => ({ wording, onPress, setButton, showButton: setIsVisible, isButtonVisible: isVisible }),
+    () => ({
+      wording,
+      onPress,
+      setButton,
+      showButton: setIsVisible,
+      isButtonVisible: isVisible && !!wording.length,
+    }),
     [isVisible, onPress, setButton, wording]
   )
 

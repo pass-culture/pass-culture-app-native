@@ -6,12 +6,14 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer } from 'ui/theme'
 
+export const CineContentCTAID = 'cine-content-cta'
+
 export const CineContentCTA: FC = () => {
   const { onPress, wording } = useOfferCTA()
 
   return (
     <StickyBottomWrapper>
-      <CallToActionContainer>
+      <CallToActionContainer testID={CineContentCTAID}>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonWithLinearGradient wording={wording} onPress={onPress} />
         <Spacer.Column numberOfSpaces={6} />
