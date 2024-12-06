@@ -39,7 +39,7 @@ export enum AchievementCategory {
 
 export const firstMovieBooking = {
   id: AchievementId.FIRST_MOVIE_BOOKING,
-  name: 'Cinéphile en herbe',
+  name: 'Mangeur de popcorns',
   descriptionLocked: 'Réserve ta première place de cinéma',
   descriptionUnlocked: 'Tu as réservé ta première séance de cinéma',
   illustrationLocked: SimpleAchievementIllustrations.FirstMovieBookingLocked,
@@ -63,7 +63,7 @@ export const firstBookBooking = {
 
 const firstRecordedMusicBooking = {
   id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
-  name: 'Premier tour de platine',
+  name: 'DJ de salon',
   descriptionLocked: 'Réserve ton premier CD ou vinyle',
   descriptionUnlocked: 'Tu as réservé ton CD ou vinyle',
   illustrationLocked: SimpleAchievementIllustrations.FirstRecordedMusicBookingLocked,
@@ -77,7 +77,7 @@ const firstRecordedMusicBooking = {
 
 const firstShowBooking = {
   id: AchievementId.FIRST_SHOW_BOOKING,
-  name: 'Rideau rouge levé',
+  name: 'Molière, c’est toi\u00a0?',
   descriptionLocked: 'Réserve ton premier spectacle',
   descriptionUnlocked: 'Tu as réservé ton premier spectacle',
   illustrationLocked: SimpleAchievementIllustrations.FirstShowBookingLocked,
@@ -89,7 +89,7 @@ const firstShowBooking = {
 
 const firstMuseumBooking = {
   id: AchievementId.FIRST_MUSEUM_BOOKING,
-  name: 'Explorateur culturel',
+  name: 'Visiteur curieux',
   descriptionLocked: 'Réserve ta première visite',
   descriptionUnlocked: 'Tu as réservé ta première visite ',
   illustrationLocked: SimpleAchievementIllustrations.FirstMuseumBookingLocked,
@@ -101,7 +101,7 @@ const firstMuseumBooking = {
 
 const firstLiveMusicBooking = {
   id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
-  name: 'Premier Beat',
+  name: 'Pro du pogo',
   descriptionLocked: 'Réserve ton premier concert ou festival',
   descriptionUnlocked: 'Tu as réservé ton premier concert ou festival',
   illustrationLocked: SimpleAchievementIllustrations.FirstLiveMusicBookingLocked,
@@ -126,7 +126,7 @@ export const firstNewsBooking = {
 
 export const firstInstrumentBooking = {
   id: AchievementId.FIRST_INSTRUMENT_BOOKING,
-  name: 'Artiste en devenir',
+  name: 'Van Gogh en devenir',
   descriptionLocked: 'Réserve du matériel créatif',
   descriptionUnlocked: 'Tu as réservé du matériel créatif',
   illustrationLocked: SimpleAchievementIllustrations.FirstInstrumentBookingLocked,
@@ -139,7 +139,7 @@ export const firstInstrumentBooking = {
 
 export const firstArtLessonBooking = {
   id: AchievementId.FIRST_ART_LESSON_BOOKING,
-  name: 'Se mettre à la pratique',
+  name: 'Apprenti artiste',
   descriptionLocked: 'Réserve ton premier atelier ou cours artistique',
   descriptionUnlocked: 'Tu as réservé ton premier atelier ou cours artistique',
   illustrationLocked: SimpleAchievementIllustrations.FirstArtLessonBookingLocked,

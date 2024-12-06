@@ -12,7 +12,7 @@ type Categories = {
   remainingAchievementsText: string
   progress: number
   progressText: string
-  badges: {
+  achievements: {
     id: AchievementId
     name: string
     illustration: React.FC<AccessibleIcon>
@@ -66,43 +66,44 @@ const getAchievementsByCategory = (achievements: Achievement[], category: Achiev
   achievements.filter((achievement) => achievement.category === category)
 
 const createCategory =
-  (achievements: Achievement[], completedAchievements: UserAchievement[]) =>
+  (achievements: Achievement[], completedUserAchievements: UserAchievement[]) =>
   (category: AchievementCategory) => {
     const categoryAchievements = getAchievementsByCategory(achievements, category)
 
     const completedCategoryAchievements = getCompletedAchievements(
       categoryAchievements,
-      completedAchievements
+      completedUserAchievements
     )
 
     const remainingAchievements = categoryAchievements.length - completedCategoryAchievements.length
 
-    const badges = categoryAchievements.map(createBadge(completedAchievements))
+    const userAchievements = categoryAchievements.map(createAchievement(completedUserAchievements))
 
-    const completedBadges = badges
+    const sortedCompletedUserAchievements = userAchievements
       .filter((a) => a.isCompleted)
       .sort((a, b) => a.name.localeCompare(b.name))
 
-    const uncompletedBadges = badges.filter((a) => !a.isCompleted)
+    const uncompletedUserAchievements = userAchievements.filter((a) => !a.isCompleted)
 
     return {
       id: category,
       progress: completedCategoryAchievements.length / categoryAchievements.length,
       progressText: `${completedCategoryAchievements.length}/${categoryAchievements.length}`,
-      remainingAchievementsText: `${remainingAchievements} badge${remainingAchievements > 1 ? 's' : ''} restant`,
-      badges: [...completedBadges, ...uncompletedBadges],
+      remainingAchievementsText: `${remainingAchievements} succès restant${remainingAchievements > 1 ? 's' : ''}`,
+      achievements: [...sortedCompletedUserAchievements, ...uncompletedUserAchievements],
     }
   }
 
-const LOCKED_BADGE_NAME = 'Badge non débloqué'
+const LOCKED_ACHIEVEMENT_NAME = 'Succès non débloqué'
 
-const createBadge = (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
-  const isCompleted = isAchievementCompleted(achievement, completedAchievements)
+const createAchievement =
+  (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
+    const isCompleted = isAchievementCompleted(achievement, completedAchievements)
 
-  return {
-    id: achievement.id,
-    name: isCompleted ? achievement.name : LOCKED_BADGE_NAME,
-    illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
-    isCompleted,
+    return {
+      id: achievement.id,
+      name: isCompleted ? achievement.name : LOCKED_ACHIEVEMENT_NAME,
+      illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
+      isCompleted,
+    }
   }
-}

@@ -38,7 +38,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
 
   if (!visible || ids.length <= 0) return null
 
-  const severalBadgesUnlocked = ids.length >= 2
+  const severalAchievementsUnlocked = ids.length >= 2
 
   return (
     <AppInformationModal
@@ -54,7 +54,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
           resizeMode="cover"
         />
 
-        <BadgeView
+        <AchievementView
           ref={logoRef}
           source={TutorialPassLogo}
           autoPlay={false}
@@ -62,8 +62,8 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
           resizeMode="cover"
         />
         <TypoDS.Title3>
-          {severalBadgesUnlocked
-            ? 'Tu as débloqué des succès\u00a0!'
+          {severalAchievementsUnlocked
+            ? 'Tu as débloqué plusieurs succès\u00a0!'
             : 'Tu as débloqué un succès\u00a0!'}
         </TypoDS.Title3>
         <Spacer.Column numberOfSpaces={6} />
@@ -105,6 +105,6 @@ const ConfettiView = styled(LottieView)({
   pointerEvents: 'none',
 })
 
-const BadgeView = styled(LottieView)({
+const AchievementView = styled(LottieView)({
   height: getSpacing(60),
 })

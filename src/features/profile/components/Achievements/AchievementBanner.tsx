@@ -6,7 +6,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { BicolorTrophy } from 'ui/svg/icons/BicolorTrophy'
 import { Spacer, Typo } from 'ui/theme'
 
-export const BadgeBanner: React.FC = () => {
+export const AchievementBanner: React.FC = () => {
   return (
     <InternalTouchableLink
       navigateTo={{
@@ -14,9 +14,9 @@ export const BadgeBanner: React.FC = () => {
         params: { from: 'profile' },
       }}>
       <GenericBanner LeftIcon={<BicolorTrophy size={theme.icons.sizes.standard} />}>
-        <Typo.ButtonText>Mes badges</Typo.ButtonText>
+        <Typo.ButtonText>Mes succès</Typo.ButtonText>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Body numberOfLines={2}>Consulte tes prouesses</Typo.Body>
+        <Typo.Body numberOfLines={2}>Consulte tes exploits</Typo.Body>
       </GenericBanner>
     </InternalTouchableLink>
   )

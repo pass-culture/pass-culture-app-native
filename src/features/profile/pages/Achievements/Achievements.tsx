@@ -6,7 +6,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { Badge } from 'features/profile/components/Achievements/Badge'
+import { Achievement } from 'features/profile/components/Achievements/Achievement'
 import {
   achievementCategoryDisplayNames,
   AchievementId,
@@ -21,7 +21,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const emptyBadge = {
+const emptyAchievement = {
   id: 'empty' as AchievementId,
   isCompleted: false,
   illustration: null as unknown as FC<AccessibleIcon>,
@@ -46,10 +46,12 @@ export const Achievements = () => {
   return (
     <SecondaryPageWithBlurHeader title="">
       <ViewGap gap={4}>
-        <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes Succès</TypoDS.Title2>
+        <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes succès</TypoDS.Title2>
         {categories.map((category) => {
-          const isOddBadges = category.badges.length % 2 !== 0
-          const badges = isOddBadges ? [...category.badges, emptyBadge] : category.badges
+          const isOddAchievements = category.achievements.length % 2 !== 0
+          const achievements = isOddAchievements
+            ? [...category.achievements, emptyAchievement]
+            : category.achievements
 
           return (
             <ViewGap gap={4} key={category.id}>
@@ -72,7 +74,7 @@ export const Achievements = () => {
                 </CompletionContainer>
               </AchievementsGroupeHeader>
               <FlatList
-                data={badges}
+                data={achievements}
                 numColumns={2}
                 keyExtractor={(item) => item.id}
                 contentContainerStyle={{
@@ -85,14 +87,14 @@ export const Achievements = () => {
                 }}
                 renderItem={({ item }) =>
                   item.illustration ? (
-                    <Badge
+                    <Achievement
                       id={item.id}
                       name={item.name}
                       Illustration={item.illustration}
                       isCompleted={item.isCompleted}
                     />
                   ) : (
-                    <EmptyBadge accessible={false} />
+                    <EmptyAchievement accessible={false} />
                   )
                 }
               />
@@ -104,7 +106,7 @@ export const Achievements = () => {
   )
 }
 
-const EmptyBadge = styled.View({
+const EmptyAchievement = styled.View({
   flex: 0.5,
 })
 
