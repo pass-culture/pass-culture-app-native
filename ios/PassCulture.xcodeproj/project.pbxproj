@@ -12,8 +12,10 @@
 		1B9CDB3328FDA0E60060BC63 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9CDB3228FDA0E60060BC63 /* SplashScreen.storyboard */; };
 		1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB62F9228DDAB680045698F /* Dynamic.swift */; };
 		1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */; };
+		3A5E8B032CD8FEAB00F2826A /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5E8B012CD8FEAB00F2826A /* GoogleService-Info-staging.plist */; };
+		3A5E8B062CD90C0200F2826A /* GoogleService-Info-testing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5E8B052CD90C0200F2826A /* GoogleService-Info-testing.plist */; };
+		3A5E8B082CD90D1D00F2826A /* GoogleService-Info-production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5E8B072CD90D1D00F2826A /* GoogleService-Info-production.plist */; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
-		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
 		82A443CD2AC3693F004BD838 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */; };
 		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
@@ -38,11 +40,12 @@
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
 		39A88C70253F4B6000BACBFA /* PassCulture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PassCulture.entitlements; path = PassCulture/PassCulture.entitlements; sourceTree = "<group>"; };
+		3A5E8B012CD8FEAB00F2826A /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
+		3A5E8B052CD90C0200F2826A /* GoogleService-Info-testing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-testing.plist"; sourceTree = "<group>"; };
+		3A5E8B072CD90D1D00F2826A /* GoogleService-Info-production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-production.plist"; sourceTree = "<group>"; };
 		4C7D886722584EDD87A2BB44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PassCulture/main.m; sourceTree = "<group>"; };
 		4CAEF50B8632400B8EEB6469 /* PassCulture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassCulture.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F350A4B89F548B599D643BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PassCulture/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65C1955A99E745B9B354F57A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = PassCulture/AppDelegate.mm; sourceTree = "<group>"; };
-		6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
 		82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BoldItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -81,13 +84,23 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		3A5E8B022CD8FEAB00F2826A /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E8B072CD90D1D00F2826A /* GoogleService-Info-production.plist */,
+				3A5E8B052CD90C0200F2826A /* GoogleService-Info-testing.plist */,
+				3A5E8B012CD8FEAB00F2826A /* GoogleService-Info-staging.plist */,
+			);
+			name = Firebase;
+			path = PassCulture/Firebase;
+			sourceTree = "<group>";
+		};
 		4A62C898BE944215BF1A5561 = {
 			isa = PBXGroup;
 			children = (
 				82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */,
 				1BB62F9228DDAB680045698F /* Dynamic.swift */,
 				D554C847268F69C300C16018 /* File.swift */,
-				6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */,
 				4F80AFA8A04449E4B81411BE /* PassCulture */,
 				2F09B5F584694FA397052BFB /* Libraries */,
 				EB02EDD0A6CC42B28A408830 /* Products */,
@@ -103,6 +116,7 @@
 		4F80AFA8A04449E4B81411BE /* PassCulture */ = {
 			isa = PBXGroup;
 			children = (
+				3A5E8B022CD8FEAB00F2826A /* Firebase */,
 				39A88C70253F4B6000BACBFA /* PassCulture.entitlements */,
 				1B1270E628F945AD00A01C30 /* splashscreen.json */,
 				866FC5E348B2460296FB5F7B /* main.jsbundle */,
@@ -111,7 +125,6 @@
 				A8881E10DAB84DAA99A29F65 /* Images.xcassets */,
 				3746B404099846C48BD4E3A3 /* Info.plist */,
 				4C7D886722584EDD87A2BB44 /* main.m */,
-				5F350A4B89F548B599D643BB /* GoogleService-Info.plist */,
 				A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */,
 				ED0101357B234447B64D029A /* PassCulture-Bridging-Header.h */,
 				7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */,
@@ -173,6 +186,7 @@
 				E92F681689E943388A4606BA /* Start Packager */,
 				4CD2851957C741289489E339 /* Sources */,
 				FF9265DAA24E49F5A7E5EDBC /* Frameworks */,
+				3A5E8B042CD9051900F2826A /* Copy Firebase Config file */,
 				E9A16669FD424A8AA0F84376 /* Resources */,
 				9603618410A54CC49C747AE9 /* Bundle React Native code and images */,
 				260533F25B7E4D4284853996 /* Upload Debug Symbols to Sentry */,
@@ -229,12 +243,14 @@
 			files = (
 				C34C4A972C9AFC9100A354D3 /* Montserrat-MediumItalic.ttf in Resources */,
 				C34C4A962C9AFC8A00A354D3 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				3A5E8B032CD8FEAB00F2826A /* GoogleService-Info-staging.plist in Resources */,
 				CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */,
 				DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */,
 				98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */,
 				F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */,
+				3A5E8B062CD90C0200F2826A /* GoogleService-Info-testing.plist in Resources */,
+				3A5E8B082CD90D1D00F2826A /* GoogleService-Info-production.plist in Resources */,
 				1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */,
-				6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */,
 				94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */,
 				3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */,
 				1B1270E728F945AD00A01C30 /* splashscreen.json in Resources */,
@@ -260,6 +276,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../node_modules/@sentry/cli/bin/sentry-cli debug-files upload \"$DWARF_DSYM_FOLDER_PATH\"\n";
+		};
+		3A5E8B042CD9051900F2826A /* Copy Firebase Config file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Firebase/GoogleService-Info-${ENV}.plist",
+			);
+			name = "Copy Firebase Config file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nGOOGLE_SERVICE_INFO_PLIST_SOURCE=\"${PROJECT_DIR}/${TARGET_NAME}/Firebase/GoogleService-Info-${ENV}.plist\"\n\nif [ ! -f $GOOGLE_SERVICE_INFO_PLIST_SOURCE ]\nthen\n    echo \"${GOOGLE_SERVICE_INFO_PLIST_SOURCE} not found.\"\n    exit 1\nfi\n\nGOOGLE_SERVICE_INFO_PLIST_DESTINATION=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\ncp \"${GOOGLE_SERVICE_INFO_PLIST_SOURCE}\" \"${GOOGLE_SERVICE_INFO_PLIST_DESTINATION}\"\n";
 		};
 		62B05EC9D758E294D517745E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
