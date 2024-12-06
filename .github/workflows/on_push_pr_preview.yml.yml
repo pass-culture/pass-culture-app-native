@@ -1,9 +1,6 @@
-name: '1 [on_push] Deploy PR version to Firebase for'
+name: '1 [on_pull_request] Deploy PR version to Firebase for preview'
 
 on:
-  push:
-    branches:
-      - ops/prs-preview
   pull_request:
     branches:
       - PC-*
@@ -19,9 +16,9 @@ jobs:
     with:
       ENV: 'testing'
       PUSH_RELEASE_TO_SENTRY: false
-      CHANNEL: 'preview'
-      EXPIRES: '3d'
-      REF: 'refs/heads/ops/prs-preview'
+      CHANNEL: "preview"
+      EXPIRES: "3d"
+      REF: "${{ github.ref }}"
       CACHE_BUCKET_NAME: 'passculture-metier-ehp'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
