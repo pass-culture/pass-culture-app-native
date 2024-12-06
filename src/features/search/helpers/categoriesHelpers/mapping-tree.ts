@@ -153,11 +153,9 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
     })
     .reduce<MappingTree>((result, searchGroup) => {
       let mappedNativeCategories: MappedNativeCategories | undefined = undefined
-      let mappedNativeCategoriesBooks: MappedNativeCategories | undefined = undefined
+      const mappedNativeCategoriesBooks: MappedNativeCategories | undefined =
+        searchGroup.name === SearchGroupNameEnumv2.LIVRES ? mapBookCategories(data) : undefined
 
-      if (searchGroup.name === SearchGroupNameEnumv2.LIVRES) {
-        mappedNativeCategoriesBooks = mapBookCategories(data)
-      }
       const nativeCategories = getNativeCategories(data, searchGroup.name)
       mappedNativeCategories = nativeCategories.length
         ? nativeCategories.reduce<MappedNativeCategories>(
