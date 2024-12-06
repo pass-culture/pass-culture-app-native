@@ -6,21 +6,18 @@ import { Typo, GUTTER_DP } from 'ui/theme'
 
 interface OfferCaptionProps {
   imageWidth: number
+  price: string
   name?: string
   date?: string
-  isDuo?: boolean
-  isBeneficiary?: boolean
-  price: string
 }
 
 export const OfferCaption = (props: OfferCaptionProps) => {
-  const { imageWidth, name, date, isDuo, isBeneficiary, price } = props
-  const priceText = isDuo && isBeneficiary ? `${price} - Duo` : price
+  const { imageWidth, name, date, price } = props
   return (
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       {date ? <Typo.CaptionNeutralInfo numberOfLines={1}>{date}</Typo.CaptionNeutralInfo> : null}
-      <Typo.CaptionNeutralInfo testID="priceIsDuo">{priceText}</Typo.CaptionNeutralInfo>
+      <Typo.CaptionNeutralInfo testID="priceIsDuo">{price}</Typo.CaptionNeutralInfo>
     </CaptionContainer>
   )
 }

@@ -3,8 +3,10 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
-import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 
@@ -17,12 +19,19 @@ type Props = Omit<
 
 export const OfferTileWrapper = (props: Props) => {
   const { item } = props
-  const { user } = useAuthContext()
 
+  const { user } = useAuthContext()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const formattedDate = useOfferDates(item)
-  const formattedPrice = useGetDisplayPrice(item.offer.prices)
+  const formattedPrice = getDisplayedPrice(
+    item.offer?.prices,
+    currency,
+    euroToPacificFrancRate,
+    item.offer.isDuo && user?.isBeneficiary
+  )
 
   return (
     <OfferTile
@@ -33,10 +42,8 @@ export const OfferTileWrapper = (props: Props) => {
       offerId={+item.objectID}
       name={item.offer.name}
       date={formattedDate}
-      isDuo={item.offer.isDuo}
       thumbUrl={item.offer.thumbUrl}
       price={formattedPrice}
-      isBeneficiary={user?.isBeneficiary}
       {...props}
     />
   )

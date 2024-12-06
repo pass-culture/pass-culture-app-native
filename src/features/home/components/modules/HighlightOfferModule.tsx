@@ -4,6 +4,7 @@ import { LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
@@ -14,7 +15,7 @@ import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRa
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -52,10 +53,11 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     aroundRadius,
   })
 
+  const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
+  const { user } = useAuthContext()
+  const categoryLabelMapping = useCategoryHomeLabelMapping()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
-  const categoryLabelMapping = useCategoryHomeLabelMapping()
   const categoryIdMapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
@@ -81,11 +83,15 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
-  const formattedPrice = getDisplayPrice(offer?.prices, currency, euroToPacificFrancRate)
+  const formattedPrice = getDisplayedPrice(
+    offer.prices,
+    currency,
+    euroToPacificFrancRate,
+    offer.isDuo && user?.isBeneficiary
+  )
   const venueName = publicName?.length ? publicName : name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]
-  const priceText = offer.isDuo ? `${formattedPrice} - Duo` : formattedPrice
 
   return (
     <Container>
@@ -145,7 +151,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
                 <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
                 {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
                 {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
-                {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
+                {formattedPrice ? <AdditionalDetail>{formattedPrice}</AdditionalDetail> : null}
               </OfferDetails>
               <ArrowOffer>
                 <PlainArrowNext size={theme.icons.sizes.small} />

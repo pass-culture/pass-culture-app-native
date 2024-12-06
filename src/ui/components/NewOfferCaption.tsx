@@ -11,28 +11,16 @@ type Props = {
   date?: string
   price: string
   categoryLabel: string | null
-  isDuo?: boolean
-  isBeneficiary?: boolean
 }
 
-// IF we increase the height of the component (e.g., numberOfLines / number of items),
-// we also need to update the OFFER_TILE_MAX_LINES variable in useComputedTheme.
-export const NewOfferCaption: FC<Props> = ({
-  name,
-  date,
-  price,
-  categoryLabel,
-  isDuo,
-  isBeneficiary,
-}: Props) => {
-  const priceText = isDuo && isBeneficiary ? `${price} - Duo` : price
+export const NewOfferCaption: FC<Props> = ({ name, date, price, categoryLabel }: Props) => {
   return (
     <ViewGap gap={1}>
       <CategoryLabel>{categoryLabel}</CategoryLabel>
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
-        <TypoDS.BodyAccentXs testID="priceIsDuo">{priceText}</TypoDS.BodyAccentXs>
+        <TypoDS.BodyAccentXs testID="priceIsDuo">{price}</TypoDS.BodyAccentXs>
       </View>
     </ViewGap>
   )

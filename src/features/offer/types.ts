@@ -24,7 +24,6 @@ export interface OfferTileProps {
   venueId?: number
   price: string
   thumbUrl?: string
-  isBeneficiary?: boolean
   analyticsFrom: Referrals
   moduleName?: string
   moduleId?: string

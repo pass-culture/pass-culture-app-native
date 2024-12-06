@@ -13,6 +13,7 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
@@ -122,6 +123,8 @@ export function OfferPlaylistList({
                 euroToPacificFrancRate,
                 apiRecoParams: playlist.apiRecoParams,
                 variant: isNewOfferTileDisplayed ? 'new' : 'default',
+                priceDisplay: (item: Offer) =>
+                  getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
               })}
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}

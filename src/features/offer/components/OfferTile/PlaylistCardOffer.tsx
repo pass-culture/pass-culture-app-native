@@ -18,8 +18,6 @@ type Props = {
   width: number
   height: number
   distance?: string
-  isDuo?: boolean
-  isBeneficiary?: boolean
 }
 
 export const PlaylistCardOffer: FC<Props> = ({
@@ -32,19 +30,10 @@ export const PlaylistCardOffer: FC<Props> = ({
   width,
   height,
   distance,
-  isBeneficiary,
-  isDuo,
 }) => {
   return (
     <Container maxWidth={width} testID="playlist-card-offer-v2">
-      <NewOfferCaption
-        name={name}
-        date={date}
-        price={price}
-        categoryLabel={categoryLabel}
-        isDuo={isDuo}
-        isBeneficiary={isBeneficiary}
-      />
+      <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
       <ImageContainer>
         {distance ? <DistanceTag label={`à ${distance}`} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />

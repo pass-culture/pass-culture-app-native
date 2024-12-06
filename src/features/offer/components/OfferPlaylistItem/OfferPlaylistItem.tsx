@@ -6,7 +6,6 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
 import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
@@ -25,6 +24,7 @@ type OfferPlaylistItemProps = {
   artistName?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
+  priceDisplay: (item: Offer) => string
 }
 
 type RenderOfferPlaylistItemProps = {
@@ -39,11 +39,10 @@ export const OfferPlaylistItem = ({
   categoryMapping,
   labelMapping,
   variant,
-  currency,
-  euroToPacificFrancRate,
   artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
+  priceDisplay,
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -59,9 +58,8 @@ export const OfferPlaylistItem = ({
         offerId={+item.objectID}
         name={item.offer.name}
         date={formatDates(timestampsInMillis)}
-        isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
+        price={priceDisplay(item)}
         width={width}
         height={height}
         analyticsFrom={analyticsFrom}

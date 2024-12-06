@@ -11,8 +11,6 @@ import { MARGIN_DP } from 'ui/theme'
 type Props = {
   name?: string
   date?: string
-  isDuo?: boolean
-  isBeneficiary?: boolean
   price: string
   width: number
   height: number
@@ -24,8 +22,6 @@ type Props = {
 export const OldPlaylistCardOffer: FC<Props> = ({
   name,
   date,
-  isDuo,
-  isBeneficiary,
   price,
   width,
   height,
@@ -36,14 +32,7 @@ export const OldPlaylistCardOffer: FC<Props> = ({
 }) => {
   return (
     <Container>
-      <OfferCaption
-        imageWidth={width}
-        name={name}
-        date={date}
-        isDuo={isDuo}
-        isBeneficiary={isBeneficiary}
-        price={price}
-      />
+      <OfferCaption imageWidth={width} name={name} date={date} price={price} />
       <View>
         <ImageTile
           width={width}
