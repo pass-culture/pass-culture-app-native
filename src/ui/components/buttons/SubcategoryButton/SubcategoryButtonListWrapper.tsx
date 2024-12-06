@@ -47,15 +47,11 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
   const { dispatch, searchState } = useSearch()
-
   const subcategoryButtonContent = useMemo(
     () =>
       nativeCategories.map(
         (nativeCategory): SubcategoryButtonItem => ({
-          label:
-            nativeCategory[1].label === 'Séances de cinéma'
-              ? 'Films à l’affiche'
-              : nativeCategory[1].label,
+          label: nativeCategory[1].label,
           backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
           borderColor: offerCategoryTheme.borderColor || colors.black,
           nativeCategory: nativeCategory[0] as NativeCategoryEnum,
