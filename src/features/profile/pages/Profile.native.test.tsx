@@ -163,7 +163,7 @@ describe('Profile component', () => {
 
       renderProfile()
 
-      expect(screen.getByText('Mes badges')).toBeOnTheScreen()
+      expect(screen.getByText('Mes succès')).toBeOnTheScreen()
     })
 
     it('should not show banner if user is not a beneficiary', async () => {
@@ -171,7 +171,7 @@ describe('Profile component', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByText('Mes badges')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })
 
     it('should not show banner when FF is disabled', async () => {
@@ -179,7 +179,7 @@ describe('Profile component', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByText('Mes badges')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })
 
     it('should go to achievements when user clicks the banner', async () => {
@@ -187,9 +187,9 @@ describe('Profile component', () => {
 
       renderProfile()
 
-      const badgeBanner = await screen.findByText('Mes badges')
+      const achievementBanner = await screen.findByText('Mes succès')
 
-      fireEvent.press(badgeBanner)
+      fireEvent.press(achievementBanner)
 
       expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
     })

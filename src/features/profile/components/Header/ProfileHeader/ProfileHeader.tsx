@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CheatMenuButton } from 'features/internal/cheatcodes/components/CheatMenuButton'
-import { BadgeBanner } from 'features/profile/components/Achievements/BadgeBanner'
+import { AchievementBanner } from 'features/profile/components/Achievements/AchievementBanner'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -22,7 +22,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { isLoggedIn } = useAuthContext()
 
   const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
-  const shouldShowBadgesBanner = enableAchievements && user?.isBeneficiary
+  const shouldShowAchievementsBanner = enableAchievements && user?.isBeneficiary
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
@@ -48,14 +48,14 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           depositExpirationDate={user.depositExpirationDate ?? undefined}
         />
         <Spacer.Column numberOfSpaces={4} />
-        {shouldShowBadgesBanner ? (
-          <BadgeBannerContainer>
-            <BadgeBanner />
-          </BadgeBannerContainer>
+        {shouldShowAchievementsBanner ? (
+          <AchievementBannerContainer>
+            <AchievementBanner />
+          </AchievementBannerContainer>
         ) : null}
       </React.Fragment>
     )
-  }, [isLoggedIn, shouldShowBadgesBanner, user])
+  }, [isLoggedIn, shouldShowAchievementsBanner, user])
 
   return (
     <React.Fragment>
@@ -65,7 +65,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   )
 }
 
-const BadgeBannerContainer = styled.View(({ theme }) => ({
+const AchievementBannerContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(4),
 }))

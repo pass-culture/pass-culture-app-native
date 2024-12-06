@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import { render, screen } from 'tests/utils'
 
 describe('AchievementSuccessModal', () => {
-  it('should show right text when one achievement is unlocked', () => {
+  it('should show "Tu as débloqué un succès !" when one achievement is unlocked', () => {
     render(
       <AchievementSuccessModal
         visible
@@ -20,7 +20,7 @@ describe('AchievementSuccessModal', () => {
     expect(wording).toBeTruthy()
   })
 
-  it('should show right text when several achievements are unlocked', () => {
+  it('should show "Tu as débloqué plusieurs succès !" when several achievements are unlocked', () => {
     render(
       <AchievementSuccessModal
         visible
@@ -29,7 +29,7 @@ describe('AchievementSuccessModal', () => {
       />
     )
 
-    const wording = screen.getByText('Tu as débloqué des succès !')
+    const wording = screen.getByText('Tu as débloqué plusieurs succès !')
 
     expect(wording).toBeTruthy()
   })

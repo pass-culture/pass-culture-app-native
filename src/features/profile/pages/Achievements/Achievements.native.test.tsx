@@ -16,11 +16,11 @@ describe('<Achievements/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open modale when press a badge', async () => {
+  it('should open modale when press an achievement', async () => {
     render(<Achievements />)
 
-    const firstMovieBookingBadge = screen.getByText('Cinéphile en herbe')
-    fireEvent.press(firstMovieBookingBadge)
+    const firstMovieBookingAchievement = screen.getByText('Mangeur de popcorns')
+    fireEvent.press(firstMovieBookingAchievement)
 
     expect(await screen.findByText('Tu as réservé ta première séance de cinéma')).toBeOnTheScreen()
   })
