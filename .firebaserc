@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "passculture-native"
+    "default": "pc-native-testing"
   },
   "targets": {
-    "passculture-native": {
+    "pc-native-testing": {
       "hosting": {
         "testing": [
-          "passculture-native-testing"
+          "pc-native-testing"
         ]
       }
     }
