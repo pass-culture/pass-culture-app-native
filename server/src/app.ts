@@ -2,6 +2,7 @@ import { dirname, join } from 'path'
 
 import express from 'express'
 
+import { universalLinksMiddleware } from './middlewares/universalLinksMiddleware'
 import { webAppProxyMiddleware } from './middlewares/webAppProxyMiddleware'
 import { getVersion } from './routes/version'
 
@@ -19,4 +20,5 @@ const rootFolder = dirname(__dirname)
 app.use(express.static(join(rootFolder, 'public'), options))
 
 app.get('/version.txt', getVersion)
+app.use('*', universalLinksMiddleware)
 app.use('*', webAppProxyMiddleware)
