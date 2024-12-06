@@ -355,20 +355,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       {
                         "flexDirection": "row",
                         "height": 32,
+                        "marginLeft": 4,
                       },
                     ]
                   }
                 >
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       [
@@ -376,16 +367,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "backgroundColor": "#90949D",
                           "height": "100%",
                           "width": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
                         },
                       ]
                     }
@@ -426,6 +407,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "marginLeft": 4,
                           },
                         ],
                         {
@@ -444,16 +426,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         location pointer not filled-SVG-Mock
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
                     <Text
                       numberOfLines={1}
                       style={
@@ -463,6 +435,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
+                            "marginLeft": 4,
                             "maxWidth": 100,
                           },
                         ]

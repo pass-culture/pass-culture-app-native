@@ -11,7 +11,7 @@ import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
   const { place, selectedLocationMode } = useLocation()
@@ -28,9 +28,8 @@ export const LocationSearchWidget = () => {
 
   return (
     <Container>
-      <Spacer.Row numberOfSpaces={1} />
       <Separator.Vertical />
-      <Spacer.Row numberOfSpaces={1} />
+
       <LocationButton
         onPress={showLocationModal}
         testID="Ouvrir la modale de localisation depuis la recherche">
@@ -39,7 +38,6 @@ export const LocationSearchWidget = () => {
         ) : (
           <SmallLocationPointerNotFilled testID="location pointer not filled" />
         )}
-        <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
       <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
@@ -49,6 +47,7 @@ export const LocationSearchWidget = () => {
 const Container = styled.View({
   flexDirection: 'row',
   height: getSpacing(8),
+  marginLeft: getSpacing(1),
 })
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
@@ -63,10 +62,12 @@ const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ 
 const LocationTitle = styled(Typo.Caption).attrs({
   numberOfLines: 1,
 })({
+  marginLeft: getSpacing(1),
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
 })
 
 const LocationButton = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
+  marginLeft: getSpacing(1),
 })
