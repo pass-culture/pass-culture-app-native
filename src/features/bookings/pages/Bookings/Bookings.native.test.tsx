@@ -17,7 +17,7 @@ import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfig
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -77,15 +77,15 @@ describe('Bookings', () => {
 
   it('should always execute the query (in cache or in network)', async () => {
     renderBookings()
-    await act(async () => {})
+    await screen.findByText('Mes réservations')
 
-    //Due to multiple renders useBookings is called nine times
-    expect(useBookingsSpy).toHaveBeenCalledTimes(9)
+    //Due to multiple renders useBookings is called seven times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(7)
   })
 
   it('should display the right number of ongoing bookings', async () => {
     renderBookings()
-    await act(async () => {})
+    await screen.findByText('Mes réservations')
 
     expect(screen.getByText('2 réservations en cours')).toBeOnTheScreen()
   })
@@ -108,14 +108,14 @@ describe('Bookings', () => {
       .mockReturnValueOnce(useBookingsResultMock)
     renderBookings()
 
-    await act(async () => {})
+    await screen.findByText('Mes réservations')
 
     expect(await screen.findByText('Découvrir le catalogue')).toBeOnTheScreen()
   })
 
   it('should display ended bookings CTA with the right number', async () => {
     renderBookings()
-    await act(async () => {})
+    await screen.findByText('Mes réservations')
 
     expect(screen.getByText('2')).toBeOnTheScreen()
     expect(screen.getByText('Réservations terminées')).toBeOnTheScreen()
@@ -188,7 +188,7 @@ describe('Bookings', () => {
       ])
       renderBookings()
 
-      await act(async () => {})
+      await screen.findByText('Mes réservations')
 
       expect(screen.getByTestId('pastille')).toBeOnTheScreen()
     })
@@ -196,7 +196,7 @@ describe('Bookings', () => {
     it('should not display a pastille when there are bookings without user reaction if wipReactionFeature FF deactivated', async () => {
       renderBookings()
 
-      await act(async () => {})
+      await screen.findByText('Mes réservations')
 
       expect(screen.queryByTestId('pastille')).toBeNull()
     })
@@ -225,7 +225,7 @@ describe('Bookings', () => {
         .mockReturnValueOnce(useBookingsResultMock)
       renderBookings()
 
-      await act(async () => {})
+      await screen.findByText('Mes réservations')
 
       expect(screen.queryByTestId('pastille')).toBeNull()
     })

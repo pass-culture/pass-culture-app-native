@@ -43,6 +43,7 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should open faq webpage when clicking on consult help support', async () => {
     renderSignupConfirmationEmailSent()
+    await screen.findByText('Confirme ton adresse e-mail')
 
     const consultHelpSupportButton = screen.getByText('Consulter notre centre d’aide')
     await act(async () => fireEvent.press(consultHelpSupportButton))
@@ -57,6 +58,7 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should open mail app when clicking on check email button', async () => {
     renderSignupConfirmationEmailSent()
+    await screen.findByText('Confirme ton adresse e-mail')
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => {
@@ -69,7 +71,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should not show the button to open mail if no mail app is available', async () => {
     mockIsMailAppAvailable = false
     renderSignupConfirmationEmailSent()
-    await act(async () => {})
+    await screen.findByText('Confirme ton adresse e-mail')
 
     const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
 
@@ -78,6 +80,8 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should log analytics when clicking on check email button', async () => {
     renderSignupConfirmationEmailSent()
+    await screen.findByText('Confirme ton adresse e-mail')
+
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => fireEvent.press(checkEmailsButton))
 
@@ -86,17 +90,16 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should display resend button', async () => {
     renderSignupConfirmationEmailSent()
-    await act(async () => {})
+    await screen.findByText('Confirme ton adresse e-mail')
 
     expect(screen.getByText('Recevoir un nouveau lien')).toBeOnTheScreen()
   })
 
   it('should show modal when resend button is pressed', async () => {
     renderSignupConfirmationEmailSent()
+    await screen.findByText('Confirme ton adresse e-mail')
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
-    })
+    fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
 
     expect(screen.getByText('Demander un nouveau lien')).toBeOnTheScreen()
   })
