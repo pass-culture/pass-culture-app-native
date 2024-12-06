@@ -352,6 +352,8 @@ export const logEventAnalytics = {
         type: sortBy,
       }
     ),
+  logHasBookedCineScreeningOffer: (params: { offerId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_BOOKED_CINE_SCREENING_OFFER }, params),
   logHasChangedPassword: ({
     from,
     reason,
