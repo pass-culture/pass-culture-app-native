@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
-import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -15,6 +14,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
 
 import confetti from './confetti.json'
+import success from './success.json'
 
 interface Props {
   visible: boolean
@@ -56,7 +56,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
 
         <AchievementView
           ref={logoRef}
-          source={TutorialPassLogo}
+          source={success}
           autoPlay={false}
           loop={false}
           resizeMode="cover"
