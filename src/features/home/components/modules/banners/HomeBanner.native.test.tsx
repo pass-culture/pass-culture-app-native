@@ -3,6 +3,9 @@ import React from 'react'
 import { BannerName, BannerResponse } from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ILocationContext, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,10 +18,23 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+jest.mock('libs/location')
+const mockUseGeolocation = jest.mocked(useLocation)
+
+jest.mock('shared/user/useGetDepositAmountsByAge')
+const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<HomeBanner/>', () => {
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
+    beforeEach(() => {
+      mockDepositAmounts.mockReturnValue(undefined)
+      mockUseGeolocation.mockReturnValue({
+        selectedLocationMode: LocationMode.EVERYWHERE,
+      } as ILocationContext)
+    })
+
     beforeAll(() => {
       useFeatureFlagSpy.mockReturnValue(false)
     })
