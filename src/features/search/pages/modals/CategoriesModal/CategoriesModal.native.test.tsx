@@ -193,7 +193,7 @@ describe('<CategoriesModal/>', () => {
     it('should render native categories', () => {
       renderCategories()
 
-      expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
+      expect(screen.getByText('Films à l’affiche')).toBeOnTheScreen()
     })
 
     it('should go back to categories view', () => {
@@ -209,7 +209,7 @@ describe('<CategoriesModal/>', () => {
     it('should set search state when search button is pressed', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Séances de cinéma')
+      const someCategoryFilterCheckbox = screen.getByText('Films à l’affiche')
       fireEvent.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
