@@ -1027,7 +1027,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      value: 'S\u00e9ances de cin\u00e9ma',
+      value: 'Films à l’affiche',
       genreType: GenreType.MOVIE,
       parents: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, SearchGroupNameEnumv2.CINEMA],
     },

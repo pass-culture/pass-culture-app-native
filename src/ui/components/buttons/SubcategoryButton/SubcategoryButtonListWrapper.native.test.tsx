@@ -3,7 +3,7 @@ import React from 'react'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 
 const mockSearchState = initialSearchState
@@ -18,7 +18,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 describe('<SubcategoryButtonListWrapper/>', () => {
-  it('should display "Films à l’affiche" instead of "Séances de cinéma" if offerCategory is "Cinema"', async () => {
+  it('should display "Films à l’affiche" instead of "Séances de cinéma" when offerCategory is "Cinema"', async () => {
     render(
       reactQueryProviderHOC(
         <SubcategoryButtonListWrapper offerCategory={SearchGroupNameEnumv2.CINEMA} />
@@ -26,6 +26,18 @@ describe('<SubcategoryButtonListWrapper/>', () => {
     )
 
     expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
+  })
+
+  it('should not display "Séances de cinéma" when offerCategory is "Cinema"', async () => {
+    render(
+      reactQueryProviderHOC(
+        <SubcategoryButtonListWrapper offerCategory={SearchGroupNameEnumv2.CINEMA} />
+      )
+    )
+
+    await waitFor(() => {
+      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
+    })
   })
 
   it('should display "Romans et littérature" if offerCategory is "Livres"', async () => {
