@@ -463,7 +463,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
-                            "maxWidth": 80,
+                            "maxWidth": 100,
                           },
                         ]
                       }

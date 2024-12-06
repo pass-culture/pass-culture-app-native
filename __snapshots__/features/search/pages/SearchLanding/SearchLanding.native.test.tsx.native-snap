@@ -237,7 +237,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "maxWidth": 80,
+                      "maxWidth": 100,
                       "paddingTop": 4,
                     },
                   ]
@@ -2743,7 +2743,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 16,
-                    "maxWidth": 80,
+                    "maxWidth": 100,
                     "paddingTop": 4,
                   },
                 ]

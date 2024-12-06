@@ -299,7 +299,7 @@ exports[`Home page should render correctly 1`] = `
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
-                            "maxWidth": 80,
+                            "maxWidth": 100,
                             "paddingTop": 4,
                           },
                         ]
