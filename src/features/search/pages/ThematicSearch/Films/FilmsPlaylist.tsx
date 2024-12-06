@@ -6,9 +6,9 @@ import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch
 import { QueryKeys } from 'libs/queryKeys'
 
 export const FILMS_PLAYLIST_TITLES = [
+  'Abonnements streaming',
   'Vidéos et documentaires',
   'DVD et Blu-ray',
-  'Abonnements streaming',
 ]
 
 export const FilmsPlaylist: React.FC = () => {

@@ -6,12 +6,12 @@ import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch
 import { QueryKeys } from 'libs/queryKeys'
 
 const MUSIC_PLAYLIST_TITLES = [
+  'Musique en ligne',
   'Concerts',
   'Festivals',
   'Instruments de musique',
   'CDs',
   'Vinyles',
-  'Musique en ligne',
 ]
 
 export const MusicPlaylist: React.FC = () => {
