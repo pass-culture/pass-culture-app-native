@@ -27,3 +27,7 @@ jest.mock('libs/environment/env')
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 jest.unmock('react-native-modal')
+
+jest.mock('shared/performance/useFirebasePerformanceProfiler', () => ({
+  useFirebasePerformanceProfiler: jest.fn(),
+}))
