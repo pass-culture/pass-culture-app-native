@@ -2740,70 +2740,83 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
       name: GenreType.MUSIC,
       values: [
         {
-          name: 'Autre',
+          name: 'ALTERNATIF',
+          value: 'Alternatif',
+        },
+        {
+          name: 'AMBIANCE',
+          value: 'Ambiance',
+        },
+        {
+          name: 'AUTRES',
           value: 'Autre',
         },
         {
-          name: 'Blues',
-          value: 'Blues',
+          name: 'BANDES_ORIGINALES',
+          value: 'Bandes originales',
         },
         {
-          name: 'Chansons / Variétés',
-          value: 'Chansons / Variétés',
+          name: 'COMPILATIONS',
+          value: 'Compilations',
         },
         {
-          name: 'Classique',
-          value: 'Classique',
+          name: 'COUNTRY-FOLK',
+          value: 'Country / Folk',
         },
         {
-          name: 'Country',
-          value: 'Country',
-        },
-        {
-          name: 'Electro',
+          name: 'ELECTRO',
           value: 'Electro',
         },
         {
-          name: 'Folk',
-          value: 'Folk',
+          name: 'ENFANTS',
+          value: 'Enfants',
         },
         {
-          name: 'Gospel',
-          value: 'Gospel',
+          name: 'FUNK-SOUL-RNB-DISCO',
+          value: 'Funk / Soul / RnB / Disco',
         },
         {
-          name: 'Hip-Hop/Rap',
-          value: 'Hip-Hop/Rap',
+          name: 'JAZZ-BLUES',
+          value: 'Jazz / Blues',
         },
         {
-          name: 'Jazz',
-          value: 'Jazz',
-        },
-        {
-          name: 'Metal',
+          name: 'METAL',
           value: 'Metal',
         },
         {
-          name: 'Musique du Monde',
-          value: 'Musique du Monde',
+          name: 'MUSIQUE_CLASSIQUE',
+          value: 'Musique Classique',
         },
         {
-          name: 'Pop',
+          name: 'MUSIQUE_DU_MONDE',
+          value: 'Musique du monde',
+        },
+        {
+          name: 'POP',
           value: 'Pop',
         },
         {
-          name: 'Punk',
-          value: 'Punk',
+          name: 'RAP-HIP HOP',
+          value: 'Rap / Hip Hop',
         },
         {
-          name: 'Reggae',
-          value: 'Reggae',
+          name: 'REGGAE-RAGGA',
+          value: 'Reggae / Ragga',
         },
         {
-          name: 'Rock',
+          name: 'ROCK',
           value: 'Rock',
         },
+        {
+          name: 'VARIETES',
+          value: 'Variétés',
+        },
+        {
+          name: 'VIDEOS_MUSICALES',
+          value: 'Vidéos musicales',
+        },
       ],
+
       trees: [
         {
           code: 501,

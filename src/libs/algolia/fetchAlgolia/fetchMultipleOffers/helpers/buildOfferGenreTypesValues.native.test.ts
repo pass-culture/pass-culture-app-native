@@ -13,7 +13,7 @@ describe('buildOfferGenreTypesValues', () => {
     const result = buildOfferGenreTypesValues(
       {
         bookTypes: ['Informatique'],
-        movieGenres: ['BOLLYWOOD'],
+        movieGenres: ['Bollywood'],
         musicTypes: ['Gospel'],
         showTypes: ['Opéra'],
       },

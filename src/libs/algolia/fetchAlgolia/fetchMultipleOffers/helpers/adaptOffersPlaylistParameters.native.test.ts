@@ -185,8 +185,8 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return algolia parameters when a movieGenres and a musicTypes lists are provided', () => {
     const parameters = {
-      movieGenres: ['BOLLYWOOD'],
-      musicTypes: ['Gospel'],
+      movieGenres: ['Bollywood'],
+      musicTypes: ['Rock'],
     } as OffersModuleParameters
 
     const result = adaptOffersPlaylistParameters(
@@ -199,7 +199,7 @@ describe('adaptOffersPlaylistParameters', () => {
       ...defaultSearchParameters,
       offerGenreTypes: [
         { key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' },
-        { key: 'MUSIC', name: 'Gospel', value: 'Gospel' },
+        { key: 'MUSIC', name: 'ROCK', value: 'Rock' },
       ],
     })
   })

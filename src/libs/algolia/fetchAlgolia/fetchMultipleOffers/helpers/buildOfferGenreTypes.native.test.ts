@@ -13,7 +13,7 @@ describe('buildOfferGenreTypes', () => {
   it('should return correct offerGenreType list with known subtypes', () => {
     const offerGenreTypes = buildOfferGenreTypes(
       GenreType.MOVIE,
-      ['BOLLYWOOD', 'ACTION', 'KOREAN_DRAMA'],
+      ['Bollywood', 'Action', 'Drame coréen'],
       genreTypeMapping
     )
 
@@ -26,10 +26,22 @@ describe('buildOfferGenreTypes', () => {
     expect(offerGenreTypes).toEqual(expectedResult)
   })
 
+  it('should return correct offerGenreType list with known music subtypes', () => {
+    const offerGenreTypes = buildOfferGenreTypes(
+      GenreType.MUSIC,
+      ['Rap / Hip Hop'],
+      genreTypeMapping
+    )
+
+    const expectedResult = [{ key: GenreType.MUSIC, name: 'RAP-HIP HOP', value: 'Rap / Hip Hop' }]
+
+    expect(offerGenreTypes).toEqual(expectedResult)
+  })
+
   it('should return only known offerGenreTypes items', () => {
     const offerGenreTypes = buildOfferGenreTypes(
       GenreType.MOVIE,
-      ['GROS_NAVET', 'ACTION'],
+      ['Gros navet', 'Action'],
       genreTypeMapping
     )
 
@@ -45,7 +57,7 @@ describe('buildOfferGenreTypes', () => {
   })
 
   it('should return undefined offerGenreType list when subtype list is not recognized', () => {
-    const offerGenreTypes = buildOfferGenreTypes(GenreType.MOVIE, ['GROS_NAVET'], genreTypeMapping)
+    const offerGenreTypes = buildOfferGenreTypes(GenreType.MOVIE, ['Gros navet'], genreTypeMapping)
 
     expect(offerGenreTypes).toEqual(undefined)
   })
