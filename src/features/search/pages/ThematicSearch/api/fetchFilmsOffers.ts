@@ -18,6 +18,11 @@ export const fetchFilmsOffers = async (userLocation?: Position) => {
     buildQuery({
       ...commonQueryParams,
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      filters: `offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}"`,
+    }),
+    buildQuery({
+      ...commonQueryParams,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.VOD}"`,
     }),
     buildQuery({
@@ -25,11 +30,6 @@ export const fetchFilmsOffers = async (userLocation?: Position) => {
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       userLocation,
       filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.DVD_BLU_RAY}" AND offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
-    }),
-    buildQuery({
-      ...commonQueryParams,
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
-      filters: `offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}"`,
     }),
   ]
 

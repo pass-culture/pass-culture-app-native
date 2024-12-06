@@ -25,6 +25,11 @@ function buildQueries(userLocation: Position) {
     buildQuery({
       ...commonQueryParams,
       indexName: 'algoliaOffersIndexNameB',
+      filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
+    }),
+    buildQuery({
+      ...commonQueryParams,
+      indexName: 'algoliaOffersIndexNameB',
       filters: 'offer.subcategoryId:"VOD"',
     }),
     buildQuery({
@@ -33,11 +38,6 @@ function buildQueries(userLocation: Position) {
       filters:
         'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"very-low"',
       userLocation,
-    }),
-    buildQuery({
-      ...commonQueryParams,
-      indexName: 'algoliaOffersIndexNameB',
-      filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
     }),
   ]
 }

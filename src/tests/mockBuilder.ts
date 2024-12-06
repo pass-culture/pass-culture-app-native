@@ -47,6 +47,7 @@ const searchResponseOffer = {
       offer: {
         name: 'Harry potter et le prisonnier d’Azkhaban',
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        thumbUrl: 'image',
       },
       venue: {},
       _geoloc: {

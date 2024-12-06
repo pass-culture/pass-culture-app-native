@@ -16,6 +16,11 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
   const queries: MultipleQueriesQuery[] = [
     buildQuery({
       ...commonQueryParams,
+      userLocation: undefined,
+      filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.LIVESTREAM_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
+    }),
+    buildQuery({
+      ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
     buildQuery({
@@ -33,11 +38,6 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
     buildQuery({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
-    }),
-    buildQuery({
-      ...commonQueryParams,
-      userLocation: undefined,
-      filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.LIVESTREAM_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
   ]
 
