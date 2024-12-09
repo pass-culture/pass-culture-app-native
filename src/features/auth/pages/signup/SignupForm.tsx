@@ -1,4 +1,4 @@
-import { useRoute, useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -7,10 +7,10 @@ import { useSignUp } from 'features/auth/api/useSignUp'
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
-import { SSO_STEP_CONFIG, DEFAULT_STEP_CONFIG } from 'features/auth/stepConfig'
+import { DEFAULT_STEP_CONFIG, SSO_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
@@ -42,13 +42,12 @@ export const SignupForm: FunctionComponent = () => {
   const isFirstStep = stepIndex === 0
   const isSecondStep = stepIndex === 1
   const isConfirmationEmailSentStep =
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    signupStepConfig[stepIndex].name === PreValidationSignupStep.ConfirmationEmailSent
+    signupStepConfig[stepIndex]?.name === PreValidationSignupStep.ConfirmationEmailSent
   const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
+  const nextStep = signupStepConfig[stepIndex + 1]
   const accessibilityLabelForNextStep =
-    stepIndex < numberOfSteps - 1
-      ? // @ts-expect-error: because of noUncheckedIndexedAccess
-        `Continuer vers l’étape ${signupStepConfig[stepIndex + 1].accessibilityTitle}`
+    stepIndex < numberOfSteps - 1 && nextStep?.accessibilityTitle
+      ? `Continuer vers l’étape ${nextStep.accessibilityTitle}`
       : undefined
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
@@ -80,14 +79,12 @@ export const SignupForm: FunctionComponent = () => {
   }, [accountCreationToken, goToNextStep])
 
   useEffect(() => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    if (params?.from && stepConfig.name) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
+    if (params?.from && stepConfig?.name) {
       analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
     }
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+    // stepperAnalyticsType is not in the useEffect dependencies to avoid multiple re-render
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.from, stepConfig.name])
+  }, [params?.from, stepConfig?.name])
 
   const headerHeight = useGetHeaderHeight()
 
@@ -98,8 +95,9 @@ export const SignupForm: FunctionComponent = () => {
   } = useModal(false)
 
   function showQuitSignupModal() {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    analytics.logQuitSignup(stepConfig.Component.name)
+    if (stepConfig?.Component.name) {
+      analytics.logQuitSignup(stepConfig.Component.name)
+    }
     Keyboard.dismiss()
     showFullPageModal()
   }
@@ -161,24 +159,27 @@ export const SignupForm: FunctionComponent = () => {
       <StyledScrollView>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={8} />
-        {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-        <stepConfig.Component
-          email={signupData.email}
-          accessibilityLabelForNextStep={accessibilityLabelForNextStep}
-          previousSignupData={signupData}
-          isSSOSubscription={isSSOSubscription}
-          goToNextStep={goToNextStep}
-          signUp={signUp}
-          onSSOEmailNotFoundError={onSSOEmailNotFoundError}
-          onDefaultEmailSignup={onDefaultEmailSignup}
-        />
+        {stepConfig ? (
+          <React.Fragment>
+            <stepConfig.Component
+              email={signupData.email}
+              accessibilityLabelForNextStep={accessibilityLabelForNextStep}
+              previousSignupData={signupData}
+              isSSOSubscription={isSSOSubscription}
+              goToNextStep={goToNextStep}
+              signUp={signUp}
+              onSSOEmailNotFoundError={onSSOEmailNotFoundError}
+              onDefaultEmailSignup={onDefaultEmailSignup}
+            />
+            <QuitSignupModal
+              visible={fullPageModalVisible}
+              resume={hideFullPageModal}
+              signupStep={stepConfig.name}
+            />
+          </React.Fragment>
+        ) : null}
       </StyledScrollView>
-      <QuitSignupModal
-        visible={fullPageModalVisible}
-        resume={hideFullPageModal}
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        signupStep={stepConfig.name}
-      />
+
       <BlurHeader height={headerHeight} />
     </React.Fragment>
   )

@@ -1,13 +1,13 @@
 import isEqual from 'lodash/isEqual'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import {
-  useAccessibilityFiltersContext,
   defaultDisabilitiesProperties,
+  useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
+import { DisplayedDisabilitiesEnum, HandicapEnum } from 'features/accessibility/enums'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -63,10 +63,9 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const handleOnPress = (disability: string) => {
+  const handleOnPress = (disability: DisplayedDisabilitiesEnum) => {
     setDisplayedDisabilities({
       ...displayedDisabilities,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       [disability]: !displayedDisabilities[disability],
     })
   }

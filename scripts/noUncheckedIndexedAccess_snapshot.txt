@@ -1,11 +1,3 @@
-./src/features/accessibility/components/AccessibilityFiltersModal.tsx:69
-./src/features/auth/pages/signup/SignupForm.tsx:101
-./src/features/auth/pages/signup/SignupForm.tsx:179
-./src/features/auth/pages/signup/SignupForm.tsx:45
-./src/features/auth/pages/signup/SignupForm.tsx:50
-./src/features/auth/pages/signup/SignupForm.tsx:83
-./src/features/auth/pages/signup/SignupForm.tsx:85
-./src/features/auth/pages/signup/SignupForm.tsx:88
 ./src/features/bookOffer/components/BookHourChoice.tsx:122
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:35
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:41
