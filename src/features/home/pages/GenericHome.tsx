@@ -22,7 +22,6 @@ import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
-import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
   HomepageModule,
@@ -41,7 +40,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { finishTransaction } from 'shared/performance/transactions'
+import { useFirebasePerformanceProfiler } from 'shared/performance/useFirebasePerformanceProfiler'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -150,12 +149,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const theme = useTheme()
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
-  const finishPerfHomeLoadingOnce = useFunctionOnce(() =>
-    finishTransaction(PERFORMANCE_HOME_LOADING)
-  )
-  const finishPerfHomeCreationOnce = useFunctionOnce(() =>
-    finishTransaction(PERFORMANCE_HOME_CREATION)
-  )
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
@@ -227,17 +220,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
-    finishPerfHomeCreationOnce()
-    return () => clearInterval(modulesIntervalId.current)
-  }, [finishPerfHomeCreationOnce])
-
-  useEffect(() => {
-    if (!showSkeleton) {
-      finishPerfHomeLoadingOnce()
-    }
-  }, [showSkeleton, finishPerfHomeLoadingOnce])
-
-  useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
     modulesIntervalId.current = setInterval(() => {
       if (maxIndex < modules.length && isLoading) {
@@ -287,6 +269,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     ),
     [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
   )
+
+  useFirebasePerformanceProfiler('OnlineHome')
 
   return (
     <Container>

@@ -43,6 +43,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
+import { useAppStartTimeStore } from 'shared/performance/appStartTimeStore'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -56,6 +57,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  useAppStartTimeStore()
+
   useEffect(() => {
     StatusBar.setBarStyle('dark-content')
     if (Platform.OS === 'android') {
