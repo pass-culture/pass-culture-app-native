@@ -70,7 +70,6 @@ it('should only return offers with images', async () => {
           },
         },
       ],
-      isLoading: false,
     },
   })
 })

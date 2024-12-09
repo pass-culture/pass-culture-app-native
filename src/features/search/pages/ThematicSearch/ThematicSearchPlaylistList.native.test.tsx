@@ -39,33 +39,20 @@ describe('ThematicSearchPlaylistList', () => {
   afterEach(cleanup)
 
   it('should render playlist properly', async () => {
-    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST], false)
+    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST])
 
     await screen.findByText(DEFAULT_PLAYLIST_TITLE)
 
     expect(await screen.findByText('Harry potter à l’école des sorciers')).toBeOnTheScreen()
   })
 
-  it('should render OfferPlaylistSkeleton when playlists are loading', async () => {
-    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST], true)
-
-    expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
-  })
-
   it('should not return a playlist without offers', async () => {
-    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST_WITHOUT_HITS], false)
+    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST_WITHOUT_HITS])
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-function renderThematicSearchPlaylistList(
-  playlists: ThematicSearchPlaylistData[],
-  arePlaylistsLoading: boolean
-) {
-  return render(
-    reactQueryProviderHOC(
-      <ThematicSearchPlaylistList playlists={playlists} isLoading={arePlaylistsLoading} />
-    )
-  )
+function renderThematicSearchPlaylistList(playlists: ThematicSearchPlaylistData[]) {
+  return render(reactQueryProviderHOC(<ThematicSearchPlaylistList playlists={playlists} />))
 }
