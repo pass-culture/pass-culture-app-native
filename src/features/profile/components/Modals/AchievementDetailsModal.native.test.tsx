@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
+import { AchievementEnum } from 'api/gen'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AchievementDetailsModal } from './AchievementDetailsModal'
@@ -11,7 +11,7 @@ describe('<AchievementDetailsModal/>', () => {
   it('should call hideModal function when clicking on Close icon', () => {
     render(
       <AchievementDetailsModal
-        id={AchievementId.FIRST_ART_LESSON_BOOKING}
+        name={AchievementEnum.FIRST_ART_LESSON_BOOKING}
         visible
         hideModal={hideModalMock}
       />

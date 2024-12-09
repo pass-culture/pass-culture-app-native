@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
+import { AchievementEnum } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -19,26 +19,26 @@ import confetti from './confetti.json'
 interface Props {
   visible: boolean
   hideModal: () => void
-  ids: AchievementId[]
+  names: AchievementEnum[]
 }
 
-export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
+export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) => {
   const confettiRef = useRef<LottieView>(null)
   const logoRef = useRef<LottieView>(null)
 
   useEffect(() => {
     if (visible) {
-      analytics.logConsultAchievementsSuccessModal(ids)
+      analytics.logConsultAchievementsSuccessModal(names)
       confettiRef.current?.play(0)
       logoRef.current?.play(0, 62)
     }
-    // The effect should only run when `visible` changes because`ids` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
+    // The effect should only run when `visible` changes because`names` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  if (!visible || ids.length <= 0) return null
+  if (!visible || names.length <= 0) return null
 
-  const severalAchievementsUnlocked = ids.length >= 2
+  const severalAchievementsUnlocked = names.length >= 2
 
   return (
     <AppInformationModal

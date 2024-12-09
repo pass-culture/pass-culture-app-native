@@ -1,3 +1,4 @@
+import { AchievementEnum } from 'api/gen'
 import {
   DetailedAchievementIllustrations,
   SimpleAchievementIllustrations,
@@ -5,8 +6,8 @@ import {
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type Achievement = {
-  id: AchievementId
-  name: string
+  name: AchievementEnum
+  title: string
   descriptionLocked: string
   descriptionUnlocked: string
   illustrationUnlocked: React.FC<AccessibleIcon>
@@ -17,20 +18,9 @@ export type Achievement = {
 }
 
 export type UserAchievement = {
-  id: AchievementId
-  completedAt: Date
-}
-
-export enum AchievementId {
-  FIRST_MOVIE_BOOKING = 'FIRST_MOVIE_BOOKING',
-  FIRST_BOOK_BOOKING = 'FIRST_BOOK_BOOKING',
-  FIRST_RECORDED_MUSIC_BOOKING = 'FIRST_RECORDED_MUSIC_BOOKING',
-  FIRST_SHOW_BOOKING = 'FIRST_SHOW_BOOKING',
-  FIRST_MUSEUM_BOOKING = 'FIRST_MUSEUM_BOOKING',
-  FIRST_LIVE_MUSIC_BOOKING = 'FIRST_LIVE_MUSIC_BOOKING',
-  FIRST_NEWS_BOOKING = 'FIRST_NEWS_BOOKING',
-  FIRST_INSTRUMENT_BOOKING = 'FIRST_INSTRUMENT_BOOKING',
-  FIRST_ART_LESSON_BOOKING = 'FIRST_ART_LESSON_BOOKING',
+  name: AchievementEnum
+  unlockedDate: Date
+  seenDate?: Date
 }
 
 export enum AchievementCategory {
@@ -38,8 +28,8 @@ export enum AchievementCategory {
 }
 
 export const firstMovieBooking = {
-  id: AchievementId.FIRST_MOVIE_BOOKING,
-  name: 'Mangeur de popcorns',
+  name: AchievementEnum.FIRST_MOVIE_BOOKING,
+  title: 'Mangeur de popcorns',
   descriptionLocked: 'Réserve ta première place de cinéma',
   descriptionUnlocked: 'Tu as réservé ta première séance de cinéma',
   illustrationLocked: SimpleAchievementIllustrations.FirstMovieBookingLocked,
@@ -50,8 +40,8 @@ export const firstMovieBooking = {
 }
 
 export const firstBookBooking = {
-  id: AchievementId.FIRST_BOOK_BOOKING,
-  name: 'Rat de bibliothèque',
+  name: AchievementEnum.FIRST_BOOK_BOOKING,
+  title: 'Rat de bibliothèque',
   descriptionLocked: 'Réserve ton premier livre',
   descriptionUnlocked: 'Tu as réservé ton premier livre',
   illustrationLocked: SimpleAchievementIllustrations.FirstBookBookingLocked,
@@ -62,8 +52,8 @@ export const firstBookBooking = {
 }
 
 const firstRecordedMusicBooking = {
-  id: AchievementId.FIRST_RECORDED_MUSIC_BOOKING,
-  name: 'DJ de salon',
+  name: AchievementEnum.FIRST_RECORDED_MUSIC_BOOKING,
+  title: 'DJ de salon',
   descriptionLocked: 'Réserve ton premier CD ou vinyle',
   descriptionUnlocked: 'Tu as réservé ton CD ou vinyle',
   illustrationLocked: SimpleAchievementIllustrations.FirstRecordedMusicBookingLocked,
@@ -76,8 +66,8 @@ const firstRecordedMusicBooking = {
 }
 
 const firstShowBooking = {
-  id: AchievementId.FIRST_SHOW_BOOKING,
-  name: 'Molière, c’est toi\u00a0?',
+  name: AchievementEnum.FIRST_SHOW_BOOKING,
+  title: 'Molière, c’est toi\u00a0?',
   descriptionLocked: 'Réserve ton premier spectacle',
   descriptionUnlocked: 'Tu as réservé ton premier spectacle',
   illustrationLocked: SimpleAchievementIllustrations.FirstShowBookingLocked,
@@ -88,8 +78,8 @@ const firstShowBooking = {
 }
 
 const firstMuseumBooking = {
-  id: AchievementId.FIRST_MUSEUM_BOOKING,
-  name: 'Visiteur curieux',
+  name: AchievementEnum.FIRST_MUSEUM_BOOKING,
+  title: 'Visiteur curieux',
   descriptionLocked: 'Réserve ta première visite',
   descriptionUnlocked: 'Tu as réservé ta première visite ',
   illustrationLocked: SimpleAchievementIllustrations.FirstMuseumBookingLocked,
@@ -100,8 +90,8 @@ const firstMuseumBooking = {
 }
 
 const firstLiveMusicBooking = {
-  id: AchievementId.FIRST_LIVE_MUSIC_BOOKING,
-  name: 'Pro du pogo',
+  name: AchievementEnum.FIRST_LIVE_MUSIC_BOOKING,
+  title: 'Pro du pogo',
   descriptionLocked: 'Réserve ton premier concert ou festival',
   descriptionUnlocked: 'Tu as réservé ton premier concert ou festival',
   illustrationLocked: SimpleAchievementIllustrations.FirstLiveMusicBookingLocked,
@@ -113,8 +103,8 @@ const firstLiveMusicBooking = {
 }
 
 export const firstNewsBooking = {
-  id: AchievementId.FIRST_NEWS_BOOKING,
-  name: 'Futur Hugo Décrypte',
+  name: AchievementEnum.FIRST_NEWS_BOOKING,
+  title: 'Futur Hugo Décrypte',
   descriptionLocked: 'Abonne-toi à un média',
   descriptionUnlocked: 'Tu t’es abonné à ton premier média',
   illustrationLocked: SimpleAchievementIllustrations.FirstNewsBookingLocked,
@@ -125,8 +115,8 @@ export const firstNewsBooking = {
 }
 
 export const firstInstrumentBooking = {
-  id: AchievementId.FIRST_INSTRUMENT_BOOKING,
-  name: 'Van Gogh en devenir',
+  name: AchievementEnum.FIRST_INSTRUMENT_BOOKING,
+  title: 'Van Gogh en devenir',
   descriptionLocked: 'Réserve du matériel créatif',
   descriptionUnlocked: 'Tu as réservé du matériel créatif',
   illustrationLocked: SimpleAchievementIllustrations.FirstInstrumentBookingLocked,
@@ -138,8 +128,8 @@ export const firstInstrumentBooking = {
 }
 
 export const firstArtLessonBooking = {
-  id: AchievementId.FIRST_ART_LESSON_BOOKING,
-  name: 'Apprenti artiste',
+  name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
+  title: 'Apprenti artiste',
   descriptionLocked: 'Réserve ton premier atelier ou cours artistique',
   descriptionUnlocked: 'Tu as réservé ton premier atelier ou cours artistique',
   illustrationLocked: SimpleAchievementIllustrations.FirstArtLessonBookingLocked,
@@ -163,18 +153,18 @@ export const mockAchievements: Achievement[] = [
 ]
 
 export const userCompletedMovieBooking = {
-  id: AchievementId.FIRST_MOVIE_BOOKING,
-  completedAt: new Date('2024-12-01'),
+  name: AchievementEnum.FIRST_MOVIE_BOOKING,
+  unlockedDate: new Date('2024-12-01'),
 }
 
 export const userCompletedBookBooking = {
-  id: AchievementId.FIRST_BOOK_BOOKING,
-  completedAt: new Date('2024-12-02'),
+  name: AchievementEnum.FIRST_BOOK_BOOKING,
+  unlockedDate: new Date('2024-12-02'),
 }
 
 export const userCompletedArtLessonBooking = {
-  id: AchievementId.FIRST_ART_LESSON_BOOKING,
-  completedAt: new Date('2024-12-03'),
+  name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
+  unlockedDate: new Date('2024-12-03'),
 }
 
 export const mockCompletedAchievements: UserAchievement[] = [
@@ -183,6 +173,6 @@ export const mockCompletedAchievements: UserAchievement[] = [
   userCompletedArtLessonBooking,
 ]
 
-export const achievementCategoryDisplayNames: Record<AchievementCategory, string> = {
+export const achievementCategoryDisplayTitles: Record<AchievementCategory, string> = {
   [AchievementCategory.FIRST_BOOKINGS]: 'Premières réservations',
 }

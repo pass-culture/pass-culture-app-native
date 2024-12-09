@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AchievementEnum } from 'api/gen'
 import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, TypoDS, Spacer } from 'ui/theme'
 
 interface Props {
   visible: boolean
   hideModal: () => void
-  id: AchievementId
+  name: AchievementEnum
 }
 
-export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
-  const achievement = useAchievementDetails(id)
+export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => {
+  const achievement = useAchievementDetails(name)
   const theme = useTheme()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, id }: Props) => {
         <Spacer.Column numberOfSpaces={4} />
         {achievement.completed ? (
           <React.Fragment>
-            <TypoDS.Title3>{achievement.name}</TypoDS.Title3>
+            <TypoDS.Title3>{achievement.title}</TypoDS.Title3>
             <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
         ) : null}
