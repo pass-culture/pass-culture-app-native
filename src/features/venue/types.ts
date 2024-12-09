@@ -59,3 +59,9 @@ export type VenueOffers = {
   nbHits: number
 }
 
+export type Artist = {
+  name: string
+  imageUrl?: string
+}
+
+export type VenueOffersArtists = { artists: Artist[]; nbArtists: number }
