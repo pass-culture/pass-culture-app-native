@@ -11,6 +11,7 @@ import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { VenueOffers } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Network } from 'libs/share/types'
@@ -31,7 +32,7 @@ jest
 jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
+} as unknown as UseQueryResult<VenueOffers, unknown>)
 
 jest.mock('libs/location')
 

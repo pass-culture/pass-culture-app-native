@@ -17,6 +17,7 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
+import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
@@ -36,7 +37,7 @@ const useGTLPlaylistsSpy = jest
 jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
+} as unknown as UseQueryResult<VenueOffersType, unknown>)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -104,7 +105,7 @@ describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
-    } as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
+    } as UseQueryResult<VenueOffersType, unknown>)
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
@@ -235,7 +236,7 @@ const renderVenueOffers = ({
   playlists,
 }: {
   venue: VenueResponse
-  venueOffers: useVenueOffers.VenueOffers
+  venueOffers: VenueOffersType
   playlists?: GtlPlaylistData[]
 }) => {
   return render(
