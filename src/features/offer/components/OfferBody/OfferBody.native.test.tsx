@@ -176,7 +176,7 @@ describe('<OfferBody />', () => {
   it('should display prices', async () => {
     renderOfferBody({})
 
-    expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
+    expect(await screen.findByText('Dès 5,00 €')).toBeOnTheScreen()
   })
 
   it('should not display prices when the offer is free', async () => {

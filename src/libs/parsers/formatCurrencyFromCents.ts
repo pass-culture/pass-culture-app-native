@@ -3,7 +3,7 @@ import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
-import { FormatPriceOptions } from './getDisplayPrice'
+import { FormatPriceOptions } from './getDisplayedPrice'
 
 const getFractionDigits = (princeInEuro: number, options?: FormatPriceOptions): number => {
   if (options?.fractionDigits) return options.fractionDigits

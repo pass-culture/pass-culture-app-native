@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
@@ -46,11 +46,10 @@ export const VenueMapOfferPlaylist = ({
         offerLocation={item._geoloc}
         analyticsFrom="venueMap"
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices, currency, euroToPacificFrancRate)}
+        price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}
         variant="new"
-        isDuo={false}
         playlistType={playlistType}
       />
     ),

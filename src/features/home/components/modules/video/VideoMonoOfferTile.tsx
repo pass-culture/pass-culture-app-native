@@ -3,14 +3,17 @@ import { StyleProp, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -37,6 +40,9 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+  const { user } = useAuthContext()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
@@ -44,7 +50,12 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 
   const displayDate = useOfferDates(offer)
 
-  const displayPrice = useGetDisplayPrice(offer?.offer?.prices)
+  const displayPrice = getDisplayedPrice(
+    offer?.offer?.prices,
+    currency,
+    euroToPacificFrancRate,
+    offer.offer.isDuo && user?.isBeneficiary
+  )
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 

@@ -4,13 +4,13 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
-import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
@@ -29,9 +29,12 @@ import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,7 +43,8 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   offer: OfferResponseV2
@@ -61,6 +65,10 @@ export const OfferBody: FunctionComponent<Props> = ({
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
+  const { user } = useAuthContext()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
 
@@ -68,6 +76,15 @@ export const OfferBody: FunctionComponent<Props> = ({
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+
+  const displayedPrice = getDisplayedPrice(
+    prices,
+    currency,
+    euroToPacificFrancRate,
+    offer.isDuo && user?.isBeneficiary,
+    { fractionDigits: 2 }
+  )
+
   const { artistPlaylist: artistOffers } = useArtistResults({
     artists,
     searchGroupName: subcategory.searchGroupName,
@@ -129,7 +146,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             </ViewGap>
           </GroupWithoutGap>
 
-          {prices ? <OfferPrice prices={prices} /> : null}
+          {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
 
           <OfferReactionSection offer={offer} subcategory={subcategory} />
 

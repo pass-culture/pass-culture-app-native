@@ -2,14 +2,17 @@ import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { useGetDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOfferDates } from 'shared/hook/useOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -38,6 +41,9 @@ export const HorizontalOfferTile = ({
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, prices, thumbUrl, name } = offerDetails
+  const { user } = useAuthContext()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
@@ -48,7 +54,12 @@ export const HorizontalOfferTile = ({
 
   const formattedDate = useOfferDates(offer)
 
-  const formattedPrice = useGetDisplayPrice(prices)
+  const formattedPrice = getDisplayedPrice(
+    prices,
+    currency,
+    euroToPacificFrancRate,
+    offerDetails.isDuo && user?.isBeneficiary
+  )
   const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
