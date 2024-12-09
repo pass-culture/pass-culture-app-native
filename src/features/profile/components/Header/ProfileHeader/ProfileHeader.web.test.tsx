@@ -34,6 +34,7 @@ const user: UserProfileResponse = {
   },
   status: { statusType: YoungStatusType.beneficiary },
   currency: CurrencyEnum.EUR,
+  achievements: [],
 }
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
