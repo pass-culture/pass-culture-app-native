@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { RecommendationApiParams } from 'api/gen'
+import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
@@ -29,7 +29,7 @@ const mockDispatch = jest.fn()
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-const mockOffer = baseOffer
+const mockOffer = { ...baseOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
   bookingState: { offerId: mockOffer.id, step: Step.DATE } as BookingState,
@@ -481,6 +481,28 @@ describe('<BookingOfferModalComponent />', () => {
           type: 'SELECT_DATE',
           payload: bookingDataMovieScreening.date,
         })
+      })
+
+      it('should log HAS_BOOKED_CINE_SCREENING_OFFER', async () => {
+        render(
+          reactQueryProviderHOC(
+            <BookingOfferModalComponent
+              visible
+              offerId={20}
+              bookingDataMovieScreening={bookingDataMovieScreening}
+            />
+          )
+        )
+
+        fireEvent.press(
+          await screen.findByRole('checkbox', {
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+          })
+        )
+
+        fireEvent.press(screen.getByText('Confirmer la réservation'))
+
+        expect(analytics.logHasBookedCineScreeningOffer).toHaveBeenCalledTimes(1)
       })
     })
   })
