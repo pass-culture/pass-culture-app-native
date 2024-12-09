@@ -8,11 +8,11 @@ import { QueryKeys } from 'libs/queryKeys'
 const FILMS_PLAYLIST_TITLES = ['Abonnements streaming', 'Vidéos et documentaires', 'DVD et Blu-ray']
 
 export const FilmsPlaylist: React.FC = () => {
-  const { playlists: filmsPlaylists, isLoading } = useThematicSearchPlaylists({
+  const { playlists: filmsPlaylists } = useThematicSearchPlaylists({
     playlistTitles: FILMS_PLAYLIST_TITLES,
     fetchMethod: fetchFilmsOffers,
     queryKey: QueryKeys.FILMS_OFFERS,
   })
 
-  return <ThematicSearchPlaylistList playlists={filmsPlaylists} isLoading={isLoading} />
+  return <ThematicSearchPlaylistList playlists={filmsPlaylists} />
 }

@@ -31,7 +31,6 @@ const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
   .mockReturnValue({
     playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
-    isLoading: false,
   })
 
 describe('Music', () => {
@@ -42,7 +41,7 @@ describe('Music', () => {
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [] })
     renderMusic()
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()

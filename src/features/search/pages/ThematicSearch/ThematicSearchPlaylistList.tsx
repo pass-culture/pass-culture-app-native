@@ -3,22 +3,15 @@ import { View } from 'react-native'
 
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
 import { Spacer } from 'ui/theme'
 
 export type ThematicSearchPlaylistListProps = {
   playlists: ThematicSearchPlaylistData[]
-  isLoading: boolean
 }
 
 export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProps> = ({
   playlists,
-  isLoading: arePlaylistsLoading,
 }) => {
-  if (arePlaylistsLoading) {
-    return <LoadingState />
-  }
-
   return (
     <React.Fragment>
       {playlists?.map((playlist) => {
