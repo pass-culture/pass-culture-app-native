@@ -15,7 +15,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: yarn install --force
+        run: yarn install
       - name: Run performance testing script
         run: yarn test:perf
       - name: Run Danger.js to publish scores in PR
