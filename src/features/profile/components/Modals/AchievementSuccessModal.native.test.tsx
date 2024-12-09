@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { AchievementEnum } from 'api/gen'
 import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 import { render, screen } from 'tests/utils'
 
@@ -11,7 +11,7 @@ describe('AchievementSuccessModal', () => {
       <AchievementSuccessModal
         visible
         hideModal={jest.fn()}
-        ids={[AchievementId.FIRST_ART_LESSON_BOOKING]}
+        names={[AchievementEnum.FIRST_ART_LESSON_BOOKING]}
       />
     )
 
@@ -25,7 +25,7 @@ describe('AchievementSuccessModal', () => {
       <AchievementSuccessModal
         visible
         hideModal={jest.fn()}
-        ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_INSTRUMENT_BOOKING]}
+        names={[AchievementEnum.FIRST_ART_LESSON_BOOKING, AchievementEnum.FIRST_INSTRUMENT_BOOKING]}
       />
     )
 
@@ -39,12 +39,12 @@ describe('AchievementSuccessModal', () => {
       <AchievementSuccessModal
         visible
         hideModal={jest.fn()}
-        ids={[AchievementId.FIRST_ART_LESSON_BOOKING]}
+        names={[AchievementEnum.FIRST_ART_LESSON_BOOKING]}
       />
     )
 
     expect(analytics.logConsultAchievementsSuccessModal).toHaveBeenCalledWith([
-      AchievementId.FIRST_ART_LESSON_BOOKING,
+      AchievementEnum.FIRST_ART_LESSON_BOOKING,
     ])
   })
 
@@ -53,13 +53,13 @@ describe('AchievementSuccessModal', () => {
       <AchievementSuccessModal
         visible
         hideModal={jest.fn()}
-        ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_INSTRUMENT_BOOKING]}
+        names={[AchievementEnum.FIRST_ART_LESSON_BOOKING, AchievementEnum.FIRST_INSTRUMENT_BOOKING]}
       />
     )
 
     expect(analytics.logConsultAchievementsSuccessModal).toHaveBeenCalledWith([
-      AchievementId.FIRST_ART_LESSON_BOOKING,
-      AchievementId.FIRST_INSTRUMENT_BOOKING,
+      AchievementEnum.FIRST_ART_LESSON_BOOKING,
+      AchievementEnum.FIRST_INSTRUMENT_BOOKING,
     ])
   })
 })

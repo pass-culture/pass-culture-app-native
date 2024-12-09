@@ -1,14 +1,14 @@
+import { AchievementEnum } from 'api/gen'
 import {
-  AchievementId,
   mockAchievements,
   mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 
-export const useAchievementDetails = (id: AchievementId) => {
-  const achievement = mockAchievements.find((achievement) => achievement.id === id)
+export const useAchievementDetails = (name: AchievementEnum) => {
+  const achievement = mockAchievements.find((achievement) => achievement.name === name)
   const completedAchievement = mockCompletedAchievements.find(
-    (userAchievement) => userAchievement.id === id
+    (userAchievement) => userAchievement.name === name
   )
 
   if (!achievement) return
@@ -17,18 +17,18 @@ export const useAchievementDetails = (id: AchievementId) => {
 
   const track = () => {
     analytics.logConsultAchievementModal({
-      achievementName: id,
+      achievementName: name,
       state: completed ? 'unlocked' : 'locked',
     })
   }
 
   return {
-    name: achievement.name,
+    title: achievement.title,
     description: completed ? achievement.descriptionUnlocked : achievement.descriptionLocked,
     illustration: completed
       ? achievement.illustrationUnlockedDetailed
       : achievement.illustrationLockedDetailed,
-    completedAt: completedAchievement?.completedAt.toLocaleDateString('fr-FR'),
+    completedAt: completedAchievement?.unlockedDate.toLocaleDateString('fr-FR'),
     completed,
     track,
   }

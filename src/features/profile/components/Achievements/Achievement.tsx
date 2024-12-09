@@ -1,21 +1,21 @@
 import React, { FC } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AchievementEnum } from 'api/gen'
 import { AchievementDetailsModal } from 'features/profile/components/Modals/AchievementDetailsModal'
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type AchievementProps = {
-  id: AchievementId
+  name: AchievementEnum
   Illustration: React.FC<AccessibleIcon>
-  name: string
+  title: string
   isCompleted?: boolean
 }
 
-export const Achievement: FC<AchievementProps> = ({ Illustration, id, name, isCompleted }) => {
+export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, isCompleted }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const theme = useTheme()
 
@@ -28,11 +28,11 @@ export const Achievement: FC<AchievementProps> = ({ Illustration, id, name, isCo
           </IllustrationContainer>
           <Spacer.Column numberOfSpaces={2} />
           <TypoAchievementName numberOfLines={2} isCompleted={!!isCompleted}>
-            {name}
+            {title}
           </TypoAchievementName>
         </AchievementContainer>
       </StyledTouchableOpacity>
-      <AchievementDetailsModal visible={visible} hideModal={hideModal} id={id} />
+      <AchievementDetailsModal visible={visible} hideModal={hideModal} name={name} />
     </React.Fragment>
   )
 }

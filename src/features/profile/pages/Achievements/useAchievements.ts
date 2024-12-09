@@ -1,20 +1,20 @@
+import { AchievementEnum } from 'api/gen'
 import {
   Achievement,
   AchievementCategory,
-  AchievementId,
   UserAchievement,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Categories = {
-  id: AchievementCategory
+  name: AchievementCategory
   remainingAchievementsText: string
   progress: number
   progressText: string
   achievements: {
-    id: AchievementId
-    name: string
+    name: AchievementEnum
+    title: string
     illustration: React.FC<AccessibleIcon>
     isCompleted: boolean
   }[]
@@ -54,7 +54,7 @@ const getAchievementsCategories = (achievements: Achievement[]) =>
 const isAchievementCompleted = (
   achievement: Achievement,
   completedAchievements: UserAchievement[]
-) => completedAchievements.some((u) => u.id === achievement.id)
+) => completedAchievements.some((u) => u.name === achievement.name)
 
 const getCompletedAchievements = (
   achievements: Achievement[],
@@ -86,7 +86,7 @@ const createCategory =
     const uncompletedUserAchievements = userAchievements.filter((a) => !a.isCompleted)
 
     return {
-      id: category,
+      name: category,
       progress: completedCategoryAchievements.length / categoryAchievements.length,
       progressText: `${completedCategoryAchievements.length}/${categoryAchievements.length}`,
       remainingAchievementsText: `${remainingAchievements} succès restant${remainingAchievements > 1 ? 's' : ''}`,
@@ -94,15 +94,15 @@ const createCategory =
     }
   }
 
-const LOCKED_ACHIEVEMENT_NAME = 'Succès non débloqué'
+const LOCKED_ACHIEVEMENT_TITLE = 'Succès non débloqué'
 
 const createAchievement =
   (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
     const isCompleted = isAchievementCompleted(achievement, completedAchievements)
 
     return {
-      id: achievement.id,
-      name: isCompleted ? achievement.name : LOCKED_ACHIEVEMENT_NAME,
+      name: achievement.name,
+      title: isCompleted ? achievement.title : LOCKED_ACHIEVEMENT_TITLE,
       illustration: isCompleted ? achievement.illustrationUnlocked : achievement.illustrationLocked,
       isCompleted,
     }
