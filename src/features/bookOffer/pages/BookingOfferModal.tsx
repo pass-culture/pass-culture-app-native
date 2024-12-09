@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
-import { RecommendationApiParams } from 'api/gen'
+import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingCloseInformation } from 'features/bookOffer/components/BookingCloseInformation'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
@@ -83,7 +83,11 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         if (isFromSearch && algoliaOfferId) {
           logOfferConversion(algoliaOfferId)
         }
-
+        if (offer?.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) {
+          analytics.logHasBookedCineScreeningOffer({
+            offerId,
+          })
+        }
         if (!!selectedStock && !!offer?.subcategoryId) {
           campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
             af_offer_id: offerId,
