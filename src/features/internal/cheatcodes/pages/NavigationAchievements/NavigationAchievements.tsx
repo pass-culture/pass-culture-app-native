@@ -2,11 +2,11 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AchievementEnum } from 'api/gen'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
-import { AchievementId } from 'features/profile/pages/Achievements/AchievementData'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
@@ -38,7 +38,7 @@ export function NavigationAchievements(): React.JSX.Element {
             onPress={showModalOneAchievement}
           />
           <AchievementSuccessModal
-            ids={[AchievementId.FIRST_BOOK_BOOKING]}
+            names={[AchievementEnum.FIRST_BOOK_BOOKING]}
             visible={visibleOneAchievement}
             hideModal={hideModalOneAchievement}
           />
@@ -49,7 +49,7 @@ export function NavigationAchievements(): React.JSX.Element {
             onPress={showModalSeveralAchievements}
           />
           <AchievementSuccessModal
-            ids={[AchievementId.FIRST_ART_LESSON_BOOKING, AchievementId.FIRST_BOOK_BOOKING]}
+            names={[AchievementEnum.FIRST_ART_LESSON_BOOKING, AchievementEnum.FIRST_BOOK_BOOKING]}
             visible={visibleSeveralAchievements}
             hideModal={hideModalSeveralAchievements}
           />
