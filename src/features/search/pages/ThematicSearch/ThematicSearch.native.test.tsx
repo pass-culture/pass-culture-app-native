@@ -115,6 +115,19 @@ describe('<ThematicSearch/>', () => {
       expect(screen).toMatchSnapshot()
     })
 
+    it('should render skeleton when playlists are loading', async () => {
+      mockUseGtlPlaylist.mockReturnValueOnce({
+        gtlPlaylists: [],
+        isLoading: true,
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      await screen.findByText('Livres')
+
+      expect(screen.getByTestId('ThematicSearchSkeleton')).toBeOnTheScreen()
+    })
+
     describe('Search bar', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
