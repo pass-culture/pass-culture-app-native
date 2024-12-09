@@ -323,7 +323,7 @@ export const subcategoriesMappingSnap = {
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
     isEvent: false,
-    nativeCategoryId: 'SEANCES_DE_CINEMA',
+    nativeCategoryId: 'CARTES_CINEMA',
     onlineOfflinePlatform: 'ONLINE',
     searchGroupName: 'CINEMA',
   },
