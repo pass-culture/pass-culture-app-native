@@ -5,7 +5,7 @@ import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const CINEMA_PLAYLIST_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']
+const CINEMA_PLAYLIST_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']
 
 export const CinemaPlaylist: React.FC = () => {
   const { playlists: cinemaPlaylists, isLoading } = useThematicSearchPlaylists({
