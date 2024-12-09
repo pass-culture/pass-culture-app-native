@@ -16,6 +16,9 @@ export function useFavorites() {
   return useQuery<PaginatedFavoritesResponse>(
     [QueryKeys.FAVORITES],
     () => api.getNativeV1MeFavorites(),
-    { enabled: !!netInfo.isConnected && isLoggedIn, staleTime: STALE_TIME_FAVORITES }
+    {
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,
+      staleTime: STALE_TIME_FAVORITES,
+    }
   )
 }

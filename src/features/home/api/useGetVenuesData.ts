@@ -37,7 +37,7 @@ export const useGetVenuesData = (modules: (VenuesModule | AppV2VenuesModule)[]) 
   const venuesResultList = useQuery({
     queryKey: [QueryKeys.HOME_VENUES_MODULE, venuesModuleIds],
     queryFn: venuesQuery,
-    enabled: !!netInfo.isConnected && venuesParameters.length > 0,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && venuesParameters.length > 0,
   })
 
   useEffect(() => {

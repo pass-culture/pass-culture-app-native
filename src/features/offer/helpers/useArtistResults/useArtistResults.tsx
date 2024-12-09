@@ -33,7 +33,10 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
       })
       return { playlistHits, topOffersHits }
     },
-    { enabled: !!netInfo.isConnected, initialData: { playlistHits: [], topOffersHits: [] } }
+    {
+      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
+      initialData: { playlistHits: [], topOffersHits: [] },
+    }
   )
 
   const getSortedHits = useCallback(

@@ -15,7 +15,8 @@ export const usePlaces = ({ query }: { query: string }) => {
     () => fetchPlaces({ query, limit: 20 }),
     {
       staleTime: STALE_TIME_PLACES,
-      enabled: !!netInfo.isConnected && query.length >= MIN_QUERY_LENGTH,
+      enabled:
+        !!netInfo.isConnected && !!netInfo.isInternetReachable && query.length >= MIN_QUERY_LENGTH,
     }
   )
 }

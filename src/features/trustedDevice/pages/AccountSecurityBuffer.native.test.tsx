@@ -14,6 +14,7 @@ import { AccountSecurityBuffer } from './AccountSecurityBuffer'
 
 jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers/navigateToHome')
+jest.mock('libs/network/NetInfoWrapper')
 
 const consoleError = console.error
 const catchErrorSilently = async (fn: () => Promise<unknown>) => {

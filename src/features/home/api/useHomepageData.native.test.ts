@@ -10,6 +10,7 @@ import { renderHook, waitFor } from 'tests/utils'
 import { useHomepageData } from './useHomepageData'
 
 jest.mock('libs/jwt/jwt')
+jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))

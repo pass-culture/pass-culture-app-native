@@ -90,7 +90,7 @@ export const useHighlightOffer = ({
   const { data } = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
     queryFn: queryByQueryMode[queryMode],
-    enabled: !!netInfo.isConnected,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
   })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]

@@ -87,7 +87,7 @@ export const useVideoOffers = (
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
     queryFn: queryByQueryMode[queryMode],
-    enabled: !!netInfo.isConnected,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
   })
 
   useEffect(() => {

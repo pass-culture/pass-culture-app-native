@@ -29,7 +29,7 @@ export function useThematicSearchPlaylists({
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)
     },
-    enabled: !!netInfo.isConnected,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     staleTime: 5 * 60 * 1000,
   })
 
