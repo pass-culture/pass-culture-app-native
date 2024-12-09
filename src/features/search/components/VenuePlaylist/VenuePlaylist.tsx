@@ -23,8 +23,8 @@ import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
 import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, TypoDS } from 'ui/theme'
 
-const VENUE_ITEM_HEIGHT = LENGTH_XXS
-const VENUE_ITEM_WIDTH = LENGTH_XS
+export const VENUE_ITEM_HEIGHT = LENGTH_XXS
+export const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
 type Props = {
