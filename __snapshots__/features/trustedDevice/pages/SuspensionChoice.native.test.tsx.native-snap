@@ -187,7 +187,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 20,
+                  "height": 25.6,
                   "justifyContent": "center",
                 },
               ]
@@ -212,9 +212,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 },
               ]
@@ -319,12 +319,12 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
-                      typography="ButtonText"
+                      typography="Button"
                     >
                       conditions générales d’utilisation
                     </Text>
@@ -360,7 +360,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 20,
+                  "height": 25.6,
                   "justifyContent": "center",
                 },
               ]
@@ -385,9 +385,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 },
               ]
@@ -422,7 +422,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 20,
+                  "height": 25.6,
                   "justifyContent": "center",
                 },
               ]
@@ -447,9 +447,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 },
               ]

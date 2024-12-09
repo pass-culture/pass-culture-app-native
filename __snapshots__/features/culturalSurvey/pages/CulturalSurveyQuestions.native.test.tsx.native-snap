@@ -260,7 +260,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               "flexGrow": 1,
               "flexShrink": 1,
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
               "marginRight": 24,
               "textAlign": "right",

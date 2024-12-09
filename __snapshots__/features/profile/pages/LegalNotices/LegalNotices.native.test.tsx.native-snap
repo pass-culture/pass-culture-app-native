@@ -149,9 +149,9 @@ exports[`LegalNotices should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -214,7 +214,7 @@ exports[`LegalNotices should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
+              "fontSize": 17,
               "lineHeight": 27.2,
             },
           ]
@@ -237,9 +237,9 @@ exports[`LegalNotices should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
@@ -334,12 +334,12 @@ exports[`LegalNotices should render correctly 1`] = `
                     {
                       "color": "#eb0055",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
-                typography="ButtonText"
+                typography="Button"
               >
                 https://passculture.app/accueil
               </Text>
@@ -454,12 +454,12 @@ exports[`LegalNotices should render correctly 1`] = `
                     {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
-                typography="ButtonText"
+                typography="Button"
               >
                 support@passculture.fr
               </Text>
@@ -572,9 +572,9 @@ exports[`LegalNotices should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   },
                 ]
               }
@@ -689,9 +689,9 @@ exports[`LegalNotices should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   },
                 ]
               }

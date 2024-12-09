@@ -94,7 +94,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                   "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                 },
               ]
@@ -214,7 +214,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
         },
       ]
@@ -632,7 +632,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
+                "fontSize": 17,
                 "lineHeight": 27.2,
               },
             ]
@@ -1018,7 +1018,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
+                "fontSize": 17,
                 "lineHeight": 27.2,
               },
             ]
@@ -1404,7 +1404,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
+                "fontSize": 17,
                 "lineHeight": 27.2,
               },
             ]
@@ -1793,7 +1793,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
+                "fontSize": 17,
                 "lineHeight": 27.2,
               },
             ]
@@ -1977,7 +1977,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
         },
       ]
@@ -2151,11 +2151,11 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
-                  "lineHeight": 16,
+                  "lineHeight": 19.2,
                 },
               ]
             }
-            typography="Caption"
+            typography="BodyAccentXs"
           >
             Politique de gestion des cookies
           </Text>

@@ -56,7 +56,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
           "marginBottom": 16,
           "textAlign": "center",
@@ -319,12 +319,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
                 {
                   "color": "#320096",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
-            typography="ButtonText"
+            typography="Button"
           >
             Se connecter
           </Text>

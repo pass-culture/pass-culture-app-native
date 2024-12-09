@@ -262,7 +262,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <h1
                       aria-level="1"
-                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-1ln193j r-textAlign-q4m81j"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                       data-testid="modalHeaderTitle"
                       dir="ltr"
                       id="testUuidV4"

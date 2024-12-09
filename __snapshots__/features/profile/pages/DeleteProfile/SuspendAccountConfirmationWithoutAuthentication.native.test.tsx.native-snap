@@ -82,9 +82,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -127,7 +127,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
@@ -152,9 +152,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "marginLeft": 12,
               },
             ]
@@ -165,9 +165,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -252,12 +252,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                         {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
-                    typography="ButtonText"
+                    typography="Button"
                   >
                     conditions générales d’utilisation
                   </Text>
@@ -293,7 +293,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
@@ -318,9 +318,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "marginLeft": 12,
               },
             ]
@@ -355,7 +355,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "height": 20,
+                "height": 25.6,
                 "justifyContent": "center",
               },
             ]
@@ -380,9 +380,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "marginLeft": 12,
               },
             ]
@@ -408,9 +408,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -422,9 +422,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }

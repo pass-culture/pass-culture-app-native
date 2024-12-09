@@ -115,9 +115,8 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 14,
-                "fontWeight": "bold",
                 "lineHeight": 22.4,
               },
             ]
@@ -145,9 +144,8 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 14,
-                "fontWeight": "bold",
                 "lineHeight": 22.4,
               },
             ]

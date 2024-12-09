@@ -224,7 +224,7 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -618,12 +618,12 @@ retrouver tes favoris
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
-                      typography="ButtonText"
+                      typography="Button"
                     >
                       Se connecter
                     </Text>

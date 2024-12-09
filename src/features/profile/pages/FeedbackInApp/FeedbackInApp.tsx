@@ -16,7 +16,7 @@ import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInp
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValue = {
@@ -97,7 +97,7 @@ export const FeedbackInApp = () => {
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

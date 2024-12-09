@@ -149,9 +149,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -301,7 +301,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
+                      "fontSize": 17,
                       "lineHeight": 27.2,
                       "textAlign": "center",
                     },
@@ -533,7 +533,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                         "marginHorizontal": 10,
                       },
                     ]

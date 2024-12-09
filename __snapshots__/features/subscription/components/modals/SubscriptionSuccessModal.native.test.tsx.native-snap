@@ -224,7 +224,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -886,7 +886,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -1548,7 +1548,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -2210,7 +2210,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -2872,7 +2872,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },
@@ -3534,7 +3534,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
+                  "fontSize": 17,
                   "lineHeight": 27.2,
                   "textAlign": "center",
                 },

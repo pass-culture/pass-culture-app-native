@@ -179,7 +179,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
         </div>
         <h1
           aria-level="1"
-          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
         >
@@ -238,7 +238,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
         />
         <h2
           aria-level="2"
-          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-1ln193j"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
           dir="ltr"
           role="heading"
         >
@@ -248,7 +248,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
           dir="ltr"
         >
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -273,7 +273,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="1"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Autoriser l’envoi d’e-mails
@@ -349,7 +349,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           />
           <h2
             aria-level="2"
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-1ln193j"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
             dir="ltr"
             role="heading"
           >
@@ -372,7 +372,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="3"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Suivre tous les thèmes
@@ -454,7 +454,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="5"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Cinéma
@@ -533,7 +533,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="7"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Lecture
@@ -612,7 +612,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="9"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Musique
@@ -691,7 +691,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="11"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Spectacles
@@ -770,7 +770,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="13"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Activités créatives
@@ -849,7 +849,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   for="15"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                     dir="ltr"
                   >
                     Visites et sorties

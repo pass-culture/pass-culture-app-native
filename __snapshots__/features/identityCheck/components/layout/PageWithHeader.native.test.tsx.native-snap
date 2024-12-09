@@ -149,9 +149,9 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
@@ -483,9 +483,9 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
                 "textAlign": "center",
               },
             ]
