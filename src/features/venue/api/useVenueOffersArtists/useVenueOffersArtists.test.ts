@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueResponse from 'fixtures/venueResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
@@ -134,9 +134,9 @@ const EXPECTED_CALL_PARAM = {
   ],
 }
 
-describe('useVenueOffers', () => {
+describe('useVenueOffersArtists', () => {
   it('should call multiple fetch offers algolia request', async () => {
-    renderHook(() => useVenueOffers(mockVenueResponse), {
+    renderHook(() => useVenueOffersArtists(mockVenueResponse), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
@@ -148,12 +148,12 @@ describe('useVenueOffers', () => {
       nbHits: 0,
     })
 
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
+    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
     await waitFor(async () => {
-      expect(result.current.data).toEqual({ hits: [], nbHits: 0 })
+      expect(result.current.data).toEqual({ artists: [], nbArtists: 0 })
     })
   })
 
@@ -187,38 +187,20 @@ describe('useVenueOffers', () => {
       nbHits: 1,
     })
 
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
+    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({
-        hits: [
+        artists: [
           {
-            offer: {
-              dates: [],
-              isDigital: false,
-              isDuo: false,
-              name: 'I want something more',
-              prices: [2800],
-              subcategoryId: SubcategoryIdEnum.CONCERT,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              artist: 'Céline Dion',
-            },
-            _geoloc: { lat: 4.90339, lng: -52.31663 },
-            objectID: '102310',
-            venue: {
-              id: 4,
-              name: 'Lieu 4',
-              publicName: 'Lieu 4',
-              address: '4 rue de la paix',
-              postalCode: '75000',
-              city: 'Paris',
-            },
+            imageUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            name: 'Céline Dion',
           },
         ],
-        nbHits: 1,
+        nbArtists: 1,
       })
     })
   })

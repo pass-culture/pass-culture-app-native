@@ -1,7 +1,7 @@
 import flatten from 'lodash/flatten'
 
 import { PlaylistOffersParams } from 'features/home/types'
-import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import { VenueOffers } from 'features/venue/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'

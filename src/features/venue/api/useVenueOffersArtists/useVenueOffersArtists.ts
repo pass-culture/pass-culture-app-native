@@ -1,4 +1,4 @@
-import uniqBy from 'lodash/uniqBy'
+import { uniqBy } from 'lodash'
 import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
@@ -7,7 +7,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { VenueOffers } from 'features/venue/types'
+import { Artist, VenueOffersArtists } from 'features/venue/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -17,7 +17,9 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffers> => {
+export const useVenueOffersArtists = (
+  venue?: VenueResponse
+): UseQueryResult<VenueOffersArtists> => {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
@@ -39,7 +41,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
   )
 
   return useQuery(
-    [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
+    [QueryKeys.VENUE_OFFERS_ARTISTS, venue?.id, userLocation, selectedLocationMode],
     () =>
       fetchMultipleOffers({
         paramsList: [
@@ -54,15 +56,28 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
         indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
-      enabled: !!(netInfo.isConnected && venue),
-      select: ({ hits, nbHits }) => {
+      enabled: !!(netInfo.isConnected && netInfo.isInternetReachable && venue),
+      select: ({ hits }) => {
         const filteredHits = hits.filter(filterOfferHit).map(transformHits)
 
         const offers = filteredHits.filter((hit): hit is Offer => hit !== null)
 
+        const artists: Artist[] = uniqBy(
+          offers
+            .map((offer) => {
+              if (!offer.offer.artist) return null
+
+              const artist: Artist = { name: offer.offer.artist, imageUrl: offer.offer.thumbUrl }
+
+              return artist
+            })
+            .filter((item): item is Artist => item !== null),
+          'name'
+        )
+
         return {
-          hits: uniqBy(offers, 'objectID'),
-          nbHits,
+          artists,
+          nbArtists: artists.length,
         }
       },
     }
