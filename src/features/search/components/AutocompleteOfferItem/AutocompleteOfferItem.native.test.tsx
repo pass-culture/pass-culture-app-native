@@ -73,7 +73,7 @@ describe('AutocompleteOfferItem component', () => {
       }
     )
 
-    await screen.findByText('Séances de cinéma')
+    await screen.findByText('Films à l’affiche')
 
     expect(screen.queryByText('Cinéma')).not.toBeOnTheScreen()
   })
@@ -174,7 +174,7 @@ describe('AutocompleteOfferItem component', () => {
 
       await screen.findByText('cinéma')
 
-      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
     })
 
     it('should not display the most popular native category of the query suggestion', async () => {
@@ -191,7 +191,7 @@ describe('AutocompleteOfferItem component', () => {
 
       await screen.findByText('cinéma')
 
-      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
     })
 
     it('should not execute the search with the category, native category and genre of the previous search on hit click', async () => {
@@ -496,7 +496,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        expect(await screen.findByText('Séances de cinéma')).toBeOnTheScreen()
+        expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
       })
 
       it('when it associated to the most popular category', async () => {
@@ -746,7 +746,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      expect(await screen.findByText('Séances de cinéma')).toBeOnTheScreen()
+      expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
     })
   })
 })

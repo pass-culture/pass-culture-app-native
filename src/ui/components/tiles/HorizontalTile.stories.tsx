@@ -27,7 +27,7 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 const Template: ComponentStory<typeof HorizontalTile> = (props) => (
   <Container>
     <HorizontalTile {...props}>
-      {['Séances de cinéma', '14 avril 2024'].map((subtitle, index) => (
+      {['Films à l’affiche', '14 avril 2024'].map((subtitle, index) => (
         <Body
           ellipsizeMode="tail"
           numberOfLines={1}
