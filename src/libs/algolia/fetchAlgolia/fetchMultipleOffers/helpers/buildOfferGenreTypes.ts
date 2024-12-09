@@ -13,7 +13,7 @@ export const buildOfferGenreTypes = (
   const offerGenreTypes = genreSubtypeNames.map((genreSubtypeName: string) => {
     if (!genreTypeValues) return undefined
     const genreSubtypeItem = genreTypeValues.find(
-      (genreTypeValue: GenreTypeContentModel) => genreTypeValue.name === genreSubtypeName
+      (genreTypeValue: GenreTypeContentModel) => genreTypeValue.value === genreSubtypeName
     )
     if (!genreSubtypeItem) return undefined
     return { key: genreType, ...genreSubtypeItem }
