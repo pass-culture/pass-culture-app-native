@@ -1,12 +1,13 @@
 import React, { ComponentPropsWithRef } from 'react'
 import { State } from 'react-native-gesture-handler'
-import { getByGestureTestId, fireGestureHandler } from 'react-native-gesture-handler/jest-utils'
+import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
 import { UseQueryResult } from 'react-query'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { VenueOffers } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -74,7 +75,7 @@ const mockUseVenueOffers = (emptyResponse = false) => {
   useVenueOffersSpy.mockReturnValue({
     isLoading: false,
     data: { hits: emptyResponse ? [] : VenueOffersResponseSnap, nbHits: emptyResponse ? 0 : 10 },
-  } as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
+  } as unknown as UseQueryResult<VenueOffers, unknown>)
 }
 
 const pressVenueMarker = (venue: GeolocatedVenue) => {
