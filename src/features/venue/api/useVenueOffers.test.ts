@@ -1,3 +1,4 @@
+import { SubcategoryIdEnum } from 'api/gen'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -59,8 +60,12 @@ jest
 jest.mock('features/profile/helpers/useIsUserUnderage')
 jest.spyOn(UnderageUserAPI, 'useIsUserUnderage').mockReturnValue(false)
 
-jest.mock('libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers')
-const mockFetchMultipleOffers = fetchMultipleOffers as jest.Mock
+jest.mock('libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers', () => ({
+  fetchMultipleOffers: jest.fn(),
+}))
+const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
+  typeof fetchMultipleOffers
+>
 
 const mockUseAuthContext = jest.fn().mockReturnValue({
   user: undefined,
@@ -135,5 +140,86 @@ describe('useVenueOffers', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
+  })
+
+  it('should return empty artists when there are no offers', async () => {
+    mockFetchMultipleOffers.mockResolvedValueOnce({
+      hits: [],
+      nbHits: 0,
+    })
+
+    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(async () => {
+      expect(result.current.data).toEqual({ hits: [], nbHits: 0 })
+    })
+  })
+
+  it('should return artists after filtering and transforming hits', async () => {
+    mockFetchMultipleOffers.mockResolvedValueOnce({
+      hits: [
+        {
+          offer: {
+            dates: [],
+            isDigital: false,
+            isDuo: false,
+            name: 'I want something more',
+            prices: [28.0],
+            subcategoryId: SubcategoryIdEnum.CONCERT,
+            thumbUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            artist: 'Céline Dion',
+          },
+          _geoloc: { lat: 4.90339, lng: -52.31663 },
+          objectID: '102310',
+          venue: {
+            id: 4,
+            name: 'Lieu 4',
+            publicName: 'Lieu 4',
+            address: '4 rue de la paix',
+            postalCode: '75000',
+            city: 'Paris',
+          },
+        },
+      ],
+      nbHits: 1,
+    })
+
+    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(async () => {
+      expect(result.current.data).toEqual({
+        hits: [
+          {
+            offer: {
+              dates: [],
+              isDigital: false,
+              isDuo: false,
+              name: 'I want something more',
+              prices: [2800],
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+              thumbUrl:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              artist: 'Céline Dion',
+            },
+            _geoloc: { lat: 4.90339, lng: -52.31663 },
+            objectID: '102310',
+            venue: {
+              id: 4,
+              name: 'Lieu 4',
+              publicName: 'Lieu 4',
+              address: '4 rue de la paix',
+              postalCode: '75000',
+              city: 'Paris',
+            },
+          },
+        ],
+        nbHits: 1,
+      })
+    })
   })
 })
