@@ -8,7 +8,7 @@ import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffe
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
@@ -152,9 +152,9 @@ describe('useVenueOffersArtists', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-
-    expect(result.current.data).toEqual({ artists: [], nbArtists: 0 })
+    await waitFor(async () => {
+      expect(result.current.data).toEqual({ artists: [], nbArtists: 0 })
+    })
   })
 
   it('should return artists after filtering and transforming hits', async () => {
@@ -191,17 +191,17 @@ describe('useVenueOffersArtists', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-
-    expect(result.current.data).toEqual({
-      artists: [
-        {
-          imageUrl:
-            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-          name: 'Céline Dion',
-        },
-      ],
-      nbArtists: 1,
+    await waitFor(async () => {
+      expect(result.current.data).toEqual({
+        artists: [
+          {
+            imageUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            name: 'Céline Dion',
+          },
+        ],
+        nbArtists: 1,
+      })
     })
   })
 })
