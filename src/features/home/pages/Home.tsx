@@ -12,6 +12,8 @@ import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
+import { useShouldShowAchievementSuccessModal } from 'features/profile/components/Modals/useShouldShowAchievementSuccessModal'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
@@ -45,6 +47,7 @@ export const Home: FunctionComponent = () => {
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
   const { isLoggedIn, user } = useAuthContext()
+
   const {
     visible: onboardingSubscriptionModalVisible,
     showModal: showOnboardingSubscriptionModal,
@@ -55,6 +58,19 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
+  const { shouldShowAchievementSuccessModal, achievementsToShow } =
+    useShouldShowAchievementSuccessModal()
+  const {
+    visible: visibleAchievementModal,
+    showModal: showAchievementModal,
+    hideModal: hideAchievementModal,
+  } = useModal(false)
+
+  useEffect(() => {
+    if (shouldShowAchievementSuccessModal) {
+      showAchievementModal()
+    }
+  }, [shouldShowAchievementSuccessModal, showAchievementModal])
 
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
@@ -124,6 +140,11 @@ export const Home: FunctionComponent = () => {
         dismissModal={hideOnboardingSubscriptionModal}
       />
       {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
+      <AchievementSuccessModal
+        names={achievementsToShow}
+        visible={visibleAchievementModal}
+        hideModal={hideAchievementModal}
+      />
     </React.Fragment>
   )
 }
