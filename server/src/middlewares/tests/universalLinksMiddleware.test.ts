@@ -20,7 +20,7 @@ describe('universalLinksMiddleware', () => {
         const res = getMockResponse()
 
         universalLinksMiddleware(req, res, mockNext)
-        expect(mockNext).toHaveBeenCalled()
+        expect(mockNext).toHaveBeenCalledTimes(1)
     })
 
     it('should pass to next middleware if user agent is not iOS', () => {
@@ -28,7 +28,7 @@ describe('universalLinksMiddleware', () => {
         const res = getMockResponse()
 
         universalLinksMiddleware(req, res, mockNext)
-        expect(mockNext).toHaveBeenCalled()
+        expect(mockNext).toHaveBeenCalledTimes(1)
     })
 
     it('should pass to next middleware if request is not coming from Instagram', () => {
@@ -36,7 +36,7 @@ describe('universalLinksMiddleware', () => {
         const res = getMockResponse()
 
         universalLinksMiddleware(req, res, mockNext)
-        expect(mockNext).toHaveBeenCalled()
+        expect(mockNext).toHaveBeenCalledTimes(1)
     })
 
     it('should redirect with URL scheme if coming from Instagram / iOS', () => {
@@ -44,6 +44,6 @@ describe('universalLinksMiddleware', () => {
         const res = getMockResponse()
 
         universalLinksMiddleware(req, res, mockNext)
-        expect(mockRedirect).toHaveBeenCalledWith('app.passculture://offre/986?deeplink=true')
+        expect(mockRedirect).toHaveBeenCalledWith('app.passculture.test://offre/986?deeplink=true')
     })
 })
