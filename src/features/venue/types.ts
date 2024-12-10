@@ -60,8 +60,9 @@ export type VenueOffers = {
 }
 
 export type Artist = {
+  id: number
   name: string
   imageUrl?: string
 }
 
-export type VenueOffersArtists = { artists: Artist[]; nbArtists: number }
+export type VenueOffersArtists = { artists: Artist[] }

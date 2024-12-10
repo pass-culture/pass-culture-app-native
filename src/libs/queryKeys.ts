@@ -46,7 +46,6 @@ export enum QueryKeys {
   VENUES = 'venues',
   VENUE_GTL_PLAYLISTS = 'venueGtlPlaylists',
   VENUE_OFFERS = 'venueOffers',
-  VENUE_OFFERS_ARTISTS = 'venueOffersArtists',
   VIDEO_OFFER = 'video_offer',
   SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
   EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
