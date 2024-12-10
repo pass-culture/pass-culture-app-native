@@ -2,7 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { analytics } from 'libs/analytics'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { TouchableLink } from './TouchableLink'
@@ -13,6 +13,16 @@ const linkText = 'linkText'
 const TouchableLinkContent = () => <Text>{linkText}</Text>
 
 describe('<TouchableLink />', () => {
+  const user = userEvent.setup()
+
+  beforeAll(() => {
+    jest.useFakeTimers()
+  })
+
+  afterAll(() => {
+    jest.useRealTimers()
+  })
+
   describe('Internal Navigation', () => {
     it('should fire onBeforeNavigate if given, before navigation', async () => {
       render(
@@ -23,14 +33,11 @@ describe('<TouchableLink />', () => {
         </TouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       expect(analytics.logConsultTutorial).toHaveBeenCalledWith({ from: 'profile' })
-      expect(handleNavigationMock).not.toHaveBeenCalled()
 
-      await waitFor(() => {
-        expect(handleNavigationMock).toHaveBeenCalledTimes(1)
-      })
+      expect(handleNavigationMock).toHaveBeenCalledTimes(1)
     })
 
     it('should fire onAfterNavigate after navigate', async () => {
@@ -43,13 +50,11 @@ describe('<TouchableLink />', () => {
         </TouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       expect(handleNavigationMock).toHaveBeenCalledTimes(1)
 
-      await waitFor(() => {
-        expect(mockedOnAfterNavigate).toHaveBeenCalledTimes(1)
-      })
+      expect(mockedOnAfterNavigate).toHaveBeenCalledTimes(1)
     })
 
     it('should render with correct style if component tag is given', () => {
@@ -68,23 +73,43 @@ describe('<TouchableLink />', () => {
       expect(link.props.style).toEqual(expectedStyle)
     })
 
-    it('should trigger handleNavigation only once in case of press spamming', async () => {
+    it('should trigger handleNavigation only once in case of press spamming with correct cooldown delay', async () => {
       render(
-        <TouchableLink handleNavigation={handleNavigationMock}>
+        <TouchableLink handleNavigation={handleNavigationMock} pressCooldownDelay={300}>
           <TouchableLinkContent />
         </TouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
-      fireEvent.press(screen.getByText(linkText))
-      fireEvent.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
-      await waitFor(() => {
-        expect(handleNavigationMock).toHaveBeenCalledTimes(1)
-      })
+      expect(handleNavigationMock).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger handleNavigation with multiple press respecting cooldown delay', async () => {
+    it('should trigger handleNavigation multiple time if cooldown delay is respected', async () => {
+      render(
+        <TouchableLink handleNavigation={handleNavigationMock} pressCooldownDelay={300}>
+          <TouchableLinkContent />
+        </TouchableLink>
+      )
+
+      await act(async () => {
+        await user.press(screen.getByText(linkText))
+
+        jest.advanceTimersByTime(300)
+
+        await user.press(screen.getByText(linkText))
+
+        jest.advanceTimersByTime(300)
+
+        await user.press(screen.getByText(linkText))
+      })
+
+      expect(handleNavigationMock).toHaveBeenCalledTimes(3)
+    })
+
+    it('should trigger handleNavigation with multiple press when no cooldown delay is set', async () => {
       jest.useFakeTimers()
       render(
         <TouchableLink handleNavigation={handleNavigationMock}>
@@ -92,30 +117,23 @@ describe('<TouchableLink />', () => {
         </TouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
-      jest.advanceTimersByTime(400)
-      fireEvent.press(screen.getByText(linkText))
-      jest.advanceTimersByTime(400)
-      fireEvent.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
-      await waitFor(() => {
-        expect(handleNavigationMock).toHaveBeenCalledTimes(3)
-      })
+      expect(handleNavigationMock).toHaveBeenCalledTimes(3)
     })
 
     it('should not trigger handleNavigation when Link is disabled', async () => {
-      jest.useFakeTimers()
       render(
         <TouchableLink handleNavigation={handleNavigationMock} disabled>
           <TouchableLinkContent />
         </TouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
-      await waitFor(() => {
-        expect(handleNavigationMock).not.toHaveBeenCalledTimes(3)
-      })
+      expect(handleNavigationMock).not.toHaveBeenCalledTimes(3)
     })
   })
 })

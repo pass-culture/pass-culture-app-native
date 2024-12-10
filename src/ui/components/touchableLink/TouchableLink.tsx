@@ -1,5 +1,5 @@
-import { debounce } from 'lodash'
-import React, { createRef, ElementType, useCallback, useEffect } from 'react'
+import { throttle } from 'lodash'
+import React, { createRef, ElementType, useCallback, useEffect, useMemo } from 'react'
 import { NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -13,8 +13,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ColorsEnum } from 'ui/theme/colors'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
-
-const PRESS_DEBOUNCE_WAIT = 300
 
 export function TouchableLink({
   onBeforeNavigate,
@@ -30,7 +28,7 @@ export function TouchableLink({
   hoverUnderlineColor,
   accessibilityLabel,
   testID,
-  pressCooldownDelay = PRESS_DEBOUNCE_WAIT,
+  pressCooldownDelay = 0,
   ...rest
 }: TouchableLinkProps) {
   const TouchableComponent = (
@@ -75,14 +73,20 @@ export function TouchableLink({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onClick = disabled
-    ? undefined
-    : handleNavigationWrapper({ onBeforeNavigate, onAfterNavigate, handleNavigation })
+  const pressFn = useMemo(
+    () =>
+      handleNavigationWrapper({
+        onBeforeNavigate,
+        onAfterNavigate,
+        handleNavigation,
+      }),
+    [onBeforeNavigate, onAfterNavigate, handleNavigation]
+  )
 
-  const debouncedPress =
-    onClick && pressCooldownDelay
-      ? debounce(onClick, pressCooldownDelay, { leading: true, trailing: false })
-      : onClick
+  const throttledPressFn = useMemo(
+    () => throttle(pressFn, pressCooldownDelay, { leading: true, trailing: false }),
+    [pressCooldownDelay, pressFn]
+  )
 
   return (
     <TouchableLinkComponent
@@ -96,7 +100,7 @@ export function TouchableLink({
       onBlur={onLinkBlur}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onPress={debouncedPress}
+      onPress={disabled ? undefined : throttledPressFn}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
     </TouchableLinkComponent>
