@@ -13,7 +13,7 @@ import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -85,7 +85,11 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResults(),
 }))
 
+const user = userEvent.setup()
+
 describe('<ThematicSearch/>', () => {
+  jest.useFakeTimers()
+
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
@@ -146,7 +150,7 @@ describe('<ThematicSearch/>', () => {
       it('should update SearchState with correct data', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
-        fireEvent.press(subcategoryButton)
+        await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
 
         expect(mockDispatch).toHaveBeenCalledWith(
@@ -163,8 +167,7 @@ describe('<ThematicSearch/>', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
-
-        fireEvent.press(subcategoryButton)
+        await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
 
         expect(navigate).toHaveBeenCalledWith(
