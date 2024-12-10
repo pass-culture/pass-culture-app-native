@@ -76,7 +76,7 @@ Still wrong ?
 
 ```sh
 direnv deny
-git clean -dxf .direnv .devbox .venv
+git clean -dxf .direnv .devbox .venv ios/Pods
 npx rn-game-over --all
 direnv allow
 ```
