@@ -13,7 +13,7 @@ import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -129,7 +129,7 @@ describe('<ThematicSearch/>', () => {
         const searchInput = screen.getByPlaceholderText('Livres...')
         fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
-        await act(async () => {})
+        await screen.findByText('Romans et littérature')
 
         expect(navigate).toHaveBeenCalledWith(
           'TabNavigator',
