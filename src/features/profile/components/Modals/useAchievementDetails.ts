@@ -1,14 +1,13 @@
-import {
-  AchievementId,
-  mockAchievements,
-  mockCompletedAchievements,
-} from 'features/profile/pages/Achievements/AchievementData'
+import { AchievementEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { achievementData } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 
-export const useAchievementDetails = (id: AchievementId) => {
-  const achievement = mockAchievements.find((achievement) => achievement.id === id)
-  const completedAchievement = mockCompletedAchievements.find(
-    (userAchievement) => userAchievement.id === id
+export const useAchievementDetails = (name: AchievementEnum) => {
+  const { user } = useAuthContext()
+  const achievement = achievementData.find((achievement) => achievement.name === name)
+  const completedAchievement = user?.achievements.find(
+    (userAchievement) => userAchievement.name === name
   )
 
   if (!achievement) return
@@ -17,18 +16,20 @@ export const useAchievementDetails = (id: AchievementId) => {
 
   const track = () => {
     analytics.logConsultAchievementModal({
-      achievementName: id,
+      achievementName: name,
       state: completed ? 'unlocked' : 'locked',
     })
   }
 
+  const unlockedDate = completedAchievement?.unlockedDate
+
   return {
-    name: achievement.name,
+    title: achievement.title,
     description: completed ? achievement.descriptionUnlocked : achievement.descriptionLocked,
     illustration: completed
       ? achievement.illustrationUnlockedDetailed
       : achievement.illustrationLockedDetailed,
-    completedAt: completedAchievement?.completedAt.toLocaleDateString('fr-FR'),
+    completedAt: unlockedDate ? new Date(unlockedDate).toLocaleDateString('fr-FR') : undefined,
     completed,
     track,
   }

@@ -1,11 +1,12 @@
+import { AchievementEnum } from 'api/gen'
 import {
   Achievement,
   AchievementCategory,
-  AchievementId,
   firstArtLessonBooking,
   firstBookBooking,
   firstInstrumentBooking,
   firstMovieBooking,
+  mockCompletedAchievements,
   userCompletedArtLessonBooking,
   userCompletedBookBooking,
   userCompletedMovieBooking,
@@ -14,21 +15,25 @@ import {
   UseAchivementsProps,
   useAchievements,
 } from 'features/profile/pages/Achievements/useAchievements'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 import { FirstArtLessonBookingLocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingLocked'
 import { FirstArtLessonBookingUnlocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingUnlocked'
 
+jest.mock('features/auth/context/AuthContext')
+
 enum TestAchievementCategory {
   TEST = 'TEST',
 }
-enum TestAchievementId {
+enum TestAchievementName {
   TEST = 'TEST',
 }
 
-const CombinedAchievementId = {
-  ...AchievementId,
-  ...TestAchievementId,
+const CombinedAchievementName = {
+  ...AchievementEnum,
+  ...TestAchievementName,
 } as const
 
 const CombinedAchievementCategory = {
@@ -37,7 +42,7 @@ const CombinedAchievementCategory = {
 } as const
 
 const testAchievement = {
-  id: CombinedAchievementId.TEST,
+  id: CombinedAchievementName.TEST,
   name: 'Test',
   descriptionLocked: 'Test',
   descriptionUnlocked: 'Test',
@@ -58,6 +63,13 @@ const testUseAchievements = ({
   ).result.current
 
 describe('useAchievements', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      achievements: mockCompletedAchievements,
+    })
+  })
+
   it('should return empty array when there are no achievements', () => {
     const { categories } = testUseAchievements()
 
@@ -71,20 +83,20 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
           }),
         ],
       }),
       expect.objectContaining({
-        id: CombinedAchievementCategory.TEST,
+        name: CombinedAchievementCategory.TEST,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: 'TEST',
+            name: 'Test',
           }),
         ],
       }),
@@ -98,15 +110,15 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
             isCompleted: false,
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
             isCompleted: false,
           }),
         ],
@@ -122,15 +134,15 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
             isCompleted: true,
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
             isCompleted: true,
           }),
         ],
@@ -146,16 +158,16 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
-            name: 'Succès non débloqué',
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
+            title: 'Succès non débloqué',
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
-            name: 'Succès non débloqué',
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
+            title: 'Succès non débloqué',
           }),
         ],
       }),
@@ -170,16 +182,16 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
-            name: firstArtLessonBooking.name,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
+            title: firstArtLessonBooking.title,
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
-            name: firstBookBooking.name,
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
+            title: firstBookBooking.title,
           }),
         ],
       }),
@@ -194,14 +206,14 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
           }),
         ],
       }),
@@ -216,14 +228,14 @@ describe('useAchievements', () => {
 
     expect(categories).toEqual([
       expect.objectContaining({
-        id: CombinedAchievementCategory.FIRST_BOOKINGS,
+        name: CombinedAchievementCategory.FIRST_BOOKINGS,
         achievements: [
           // Make sure you expected achievements are sorted alphabetically
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_ART_LESSON_BOOKING,
+            name: CombinedAchievementName.FIRST_ART_LESSON_BOOKING,
           }),
           expect.objectContaining({
-            id: CombinedAchievementId.FIRST_BOOK_BOOKING,
+            name: CombinedAchievementName.FIRST_BOOK_BOOKING,
           }),
         ],
       }),
@@ -240,7 +252,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '0 succès restant',
           }),
         ])
@@ -254,7 +266,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '1 succès restant',
           }),
         ])
@@ -267,7 +279,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             remainingAchievementsText: '2 succès restants',
           }),
         ])
@@ -283,7 +295,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 1,
           }),
         ])
@@ -296,7 +308,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0,
           }),
         ])
@@ -310,7 +322,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.5,
           }),
         ])
@@ -333,7 +345,7 @@ describe('useAchievements', () => {
 
         expect(categories).toEqual([
           expect.objectContaining({
-            id: CombinedAchievementCategory.FIRST_BOOKINGS,
+            name: CombinedAchievementCategory.FIRST_BOOKINGS,
             progress: 0.75,
           }),
         ])
@@ -347,7 +359,7 @@ describe('useAchievements', () => {
 
           expect(categories).toEqual([
             expect.objectContaining({
-              id: CombinedAchievementCategory.FIRST_BOOKINGS,
+              name: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '0/2',
             }),
           ])
@@ -361,7 +373,7 @@ describe('useAchievements', () => {
 
           expect(categories).toEqual([
             expect.objectContaining({
-              id: CombinedAchievementCategory.FIRST_BOOKINGS,
+              name: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '2/2',
             }),
           ])
@@ -375,7 +387,7 @@ describe('useAchievements', () => {
 
           expect(categories).toEqual([
             expect.objectContaining({
-              id: CombinedAchievementCategory.FIRST_BOOKINGS,
+              name: CombinedAchievementCategory.FIRST_BOOKINGS,
               progressText: '1/2',
             }),
           ])

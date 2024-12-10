@@ -383,7 +383,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
             data={
               [
                 {
-                  "id": "FIRST_ART_LESSON_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -401,10 +400,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": true,
-                  "name": "Apprenti artiste",
+                  "name": "FIRST_ART_LESSON_BOOKING",
+                  "title": "Apprenti artiste",
                 },
                 {
-                  "id": "FIRST_MOVIE_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -422,10 +421,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": true,
-                  "name": "Mangeur de popcorns",
+                  "name": "FIRST_BOOK_BOOKING",
+                  "title": "Rat de bibliothèque",
                 },
                 {
-                  "id": "FIRST_BOOK_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -443,10 +442,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": true,
-                  "name": "Rat de bibliothèque",
+                  "name": "FIRST_MOVIE_BOOKING",
+                  "title": "Mangeur de popcorns",
                 },
                 {
-                  "id": "FIRST_RECORDED_MUSIC_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -464,10 +463,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_RECORDED_MUSIC_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
-                  "id": "FIRST_SHOW_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -485,10 +484,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_SHOW_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
-                  "id": "FIRST_MUSEUM_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -506,10 +505,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_MUSEUM_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
-                  "id": "FIRST_LIVE_MUSIC_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -527,10 +526,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_LIVE_MUSIC_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
-                  "id": "FIRST_NEWS_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -548,10 +547,10 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_NEWS_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
-                  "id": "FIRST_INSTRUMENT_BOOKING",
                   "illustration": {
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": [
@@ -569,14 +568,15 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "withComponent": [Function],
                   },
                   "isCompleted": false,
-                  "name": "Succès non débloqué",
+                  "name": "FIRST_INSTRUMENT_BOOKING",
+                  "title": "Succès non débloqué",
                 },
                 {
                   "description": "",
-                  "id": "empty",
                   "illustration": null,
                   "isCompleted": false,
-                  "name": "",
+                  "name": "empty",
+                  "title": "",
                 },
               ]
             }
@@ -850,7 +850,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                           ]
                         }
                       >
-                        Mangeur de popcorns
+                        Rat de bibliothèque
                       </Text>
                     </View>
                   </View>
@@ -986,7 +986,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                           ]
                         }
                       >
-                        Rat de bibliothèque
+                        Mangeur de popcorns
                       </Text>
                     </View>
                   </View>

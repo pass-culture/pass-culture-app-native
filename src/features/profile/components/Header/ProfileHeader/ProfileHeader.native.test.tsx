@@ -42,6 +42,7 @@ const user: UserProfileResponse = {
   },
   status: { statusType: YoungStatusType.beneficiary },
   currency: CurrencyEnum.EUR,
+  achievements: [],
 }
 
 const exBeneficiaryUser: UserProfileResponse = {

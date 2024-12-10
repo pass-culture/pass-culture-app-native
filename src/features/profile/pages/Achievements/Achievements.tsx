@@ -5,13 +5,13 @@ import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { AchievementEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { Achievement } from 'features/profile/components/Achievements/Achievement'
 import {
-  achievementCategoryDisplayNames,
-  AchievementId,
-  mockAchievements,
-  mockCompletedAchievements,
+  achievementCategoryDisplayTitles,
+  achievementData,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -22,10 +22,10 @@ import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const emptyAchievement = {
-  id: 'empty' as AchievementId,
+  name: 'empty' as AchievementEnum,
   isCompleted: false,
   illustration: null as unknown as FC<AccessibleIcon>,
-  name: '',
+  title: '',
   description: '',
 }
 
@@ -33,10 +33,11 @@ export const Achievements = () => {
   const {
     params: { from },
   } = useRoute<UseRouteType<'Achievements'>>()
+  const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
   const { categories, track } = useAchievements({
-    achievements: mockAchievements,
-    completedAchievements: mockCompletedAchievements,
+    achievements: achievementData,
+    completedAchievements: user?.achievements || [],
   })
 
   useEffect(() => {
@@ -54,11 +55,11 @@ export const Achievements = () => {
             : category.achievements
 
           return (
-            <ViewGap gap={4} key={category.id}>
+            <ViewGap gap={4} key={category.name}>
               <AchievementsGroupeHeader>
                 <View>
                   <TypoDS.Title4 {...getHeadingAttrs(2)}>
-                    {achievementCategoryDisplayNames[category.id]}
+                    {achievementCategoryDisplayTitles[category.name]}
                   </TypoDS.Title4>
                   <StyledBody>{category.remainingAchievementsText}</StyledBody>
                 </View>
@@ -76,7 +77,7 @@ export const Achievements = () => {
               <FlatList
                 data={achievements}
                 numColumns={2}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.name}
                 contentContainerStyle={{
                   gap: getSpacing(6),
                   rowGap: getSpacing(6),
@@ -88,8 +89,8 @@ export const Achievements = () => {
                 renderItem={({ item }) =>
                   item.illustration ? (
                     <Achievement
-                      id={item.id}
                       name={item.name}
+                      title={item.title}
                       Illustration={item.illustration}
                       isCompleted={item.isCompleted}
                     />
