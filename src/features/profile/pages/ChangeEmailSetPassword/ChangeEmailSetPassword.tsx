@@ -14,7 +14,7 @@ import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -67,13 +67,13 @@ export const ChangeEmailSetPassword = () => {
       <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
         <TypoDS.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
+        <TypoDS.Body>
           Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
-        </Typo.Body>
+        </TypoDS.Body>
         <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
+        <TypoDS.Body>
           Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
-        </Typo.Body>
+        </TypoDS.Body>
         <Spacer.Column numberOfSpaces={10} />
         <Form.MaxWidth flex={1}>
           <PasswordInputController

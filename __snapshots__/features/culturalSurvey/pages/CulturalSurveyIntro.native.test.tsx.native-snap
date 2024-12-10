@@ -85,7 +85,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
-          "fontSize": 16,
+          "fontSize": 17,
           "lineHeight": 27.2,
           "textAlign": "center",
         },

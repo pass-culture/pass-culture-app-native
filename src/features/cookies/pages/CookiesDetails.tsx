@@ -44,7 +44,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           icon={ExternalSiteFilled}
-          typography="Caption"
+          typography="BodyAccentXs"
         />
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />

@@ -14,7 +14,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -41,73 +41,73 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 export function AccessibilityDeclaration() {
   return (
     <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité">
-      <Typo.Body>
+      <TypoDS.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
         actions suivantes&nbsp;:
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Schéma pluriannuel d’accessibilité 2022 - 2024"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Actions réalisées en 2022 et 2023"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <InternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Plan d’actions 2024"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Cette déclaration d’accessibilité s’applique au site internet{' '}
         <ExternalTouchableLink
           as={ButtonInsideText}
-          typography="Caption"
+          typography="BodyAccentXs"
           wording="https://passculture.app/"
           icon={ExternalSiteFilled}
           externalNav={webappUrl}
         />
-      </Typo.Body>
+      </TypoDS.Body>
       <StyledSeparator />
       <TitleText>État de conformité</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration
         de l’accessibilité.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
+      <TypoDS.BodyAccent>
         Résultats des tests
         {DOUBLE_LINE_BREAK}
-        <Typo.Body>
+        <TypoDS.Body>
           L’audit de conformité réalisé par la société Tanaguru révèle que&nbsp;:
-        </Typo.Body>
-      </Typo.ButtonText>
+        </TypoDS.Body>
+      </TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="85&nbsp;% des critères RGAA version 4.1 sont respectés." />
@@ -116,11 +116,11 @@ export function AccessibilityDeclaration() {
       <StyledSeparator />
       <TitleText>Contenus non accessibles</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>Non conformité</Typo.ButtonText>
+      <TypoDS.BodyAccent>Non conformité</TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Certains intitulés de lien ne sont pas pertinents." />
@@ -143,7 +143,7 @@ export function AccessibilityDeclaration() {
         <BulletListItem text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>Dérogations pour charge disproportionnée</Typo.ButtonText>
+      <TypoDS.BodyAccent>Dérogations pour charge disproportionnée</TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
@@ -151,7 +151,7 @@ export function AccessibilityDeclaration() {
         <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>Contenus non soumis à l’obligation d’accessibilité</Typo.ButtonText>
+      <TypoDS.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Aucun" />
@@ -159,14 +159,14 @@ export function AccessibilityDeclaration() {
       <StyledSeparator />
       <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <StyledBody>
+      <TypoDS.BodyItalic>
         Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février
         2023.
-      </StyledBody>
+      </TypoDS.BodyItalic>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
+      <TypoDS.BodyAccent>
         Technologies utilisées pour la réalisation du site pass Culture
-      </Typo.ButtonText>
+      </TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="HTML5" />
@@ -174,15 +174,15 @@ export function AccessibilityDeclaration() {
         <BulletListItem text="JavaScript" />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
+      <TypoDS.BodyAccent>
         Environnement de test
         {DOUBLE_LINE_BREAK}
-        <Typo.Body>
+        <TypoDS.Body>
           Les vérifications de restitution de contenus ont été réalisées sur la base de la
           combinaison fournie par la base de référence du RGAA 4.1, avec les versions
           suivantes&nbsp;:
-        </Typo.Body>
-      </Typo.ButtonText>
+        </TypoDS.Body>
+      </TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Firefox et NVDA" />
@@ -190,7 +190,7 @@ export function AccessibilityDeclaration() {
         <BulletListItem text="Safari et VoiceOver" />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>Les outils utilisés lors de l’évaluation</Typo.ButtonText>
+      <TypoDS.BodyAccent>Les outils utilisés lors de l’évaluation</TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Extension HeadingsMap" />
@@ -201,211 +201,211 @@ export function AccessibilityDeclaration() {
         <BulletListItem text="Outils de développement (navigateur)" />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
+      <TypoDS.BodyAccent>
         Pages du site ayant fait l’objet de la vérification de conformité
-      </Typo.ButtonText>
+      </TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Accueil"
               icon={ExternalSiteFilled}
               externalNav={homeUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Connexion"
               icon={ExternalSiteFilled}
               externalNav={loginUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Inscription - Date de naissance"
               icon={ExternalSiteFilled}
               externalNav={signupUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Vérification d’identité"
               icon={ExternalSiteFilled}
               externalNav={identityCheckUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Profil"
               icon={ExternalSiteFilled}
               externalNav={profileUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Modification de mot de passe"
               icon={ExternalSiteFilled}
               externalNav={changePasswordUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Recherche"
               icon={ExternalSiteFilled}
               externalNav={searchUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Filtres"
               icon={ExternalSiteFilled}
               externalNav={filterUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Résultats de recherche"
               icon={ExternalSiteFilled}
               externalNav={searchResultsUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Favoris"
               icon={ExternalSiteFilled}
               externalNav={favoritesUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Détails d’une offre"
               icon={ExternalSiteFilled}
               externalNav={offerUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Déclaration d’accessibilité"
               icon={ExternalSiteFilled}
               externalNav={accessibilityUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
       </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
+      <TypoDS.BodyAccent>
         Retour d’information et contact
         {DOUBLE_LINE_BREAK}
-        <Typo.Body>
+        <TypoDS.Body>
           Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
           responsable de l’application pour être orienté vers une alternative accessible ou obtenir
           le contenu sous une autre forme.
-        </Typo.Body>
-      </Typo.ButtonText>
+        </TypoDS.Body>
+      </TypoDS.BodyAccent>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
         <BulletListItem text="Contacter l’équipe support à l’adresse ">
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             <ExternalTouchableLink
               as={ButtonInsideText}
               wording="support@passculture.app"
-              typography="Caption"
+              typography="BodyAccentXs"
               accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
               justifyContent="flex-start"
               externalNav={contactSupport.forGenericQuestion}
               icon={EmailFilled}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
       </VerticalUl>
       <StyledSeparator />
       <TitleText>Voie de recours</TitleText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <TypoDS.Body>
         Cette procédure est à utiliser dans le cas suivant&nbsp;:
         {DOUBLE_LINE_BREAK}
         Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche
         d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse
         satisfaisante.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
       <VerticalUl>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             Écrire un message au{' '}
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Défenseur des droits"
               icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             Contacter le délégué du{' '}
             <ExternalTouchableLink
               as={ButtonInsideText}
-              typography="Caption"
+              typography="BodyAccentXs"
               wording="Défenseur des droits dans votre région"
               icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}
             />
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
         <BulletListItem>
-          <Typo.Caption>
+          <TypoDS.BodyXs>
             Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits
             Libre réponse 71120 75342 Paris CEDEX 07
-          </Typo.Caption>
+          </TypoDS.BodyXs>
         </BulletListItem>
       </VerticalUl>
       <Spacer.BottomScreen />
@@ -414,10 +414,6 @@ export function AccessibilityDeclaration() {
 }
 
 const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  fontFamily: theme.fontFamily.italic,
-}))
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),

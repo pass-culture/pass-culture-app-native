@@ -4,7 +4,7 @@ import React from 'react'
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { ButtonInsideText } from './ButtonInsideText'
 
@@ -27,14 +27,14 @@ const variantConfig: Variants<typeof RandomText> = [
     label: 'ButtonInsideText active',
     props: {
       wording: 'wording',
-      typography: 'Caption',
+      typography: 'BodyAccentXs',
     },
   },
   {
     label: 'ButtonInsideText active disabled',
     props: {
       wording: 'wording',
-      typography: 'Caption',
+      typography: 'BodyAccentXs',
       icon: ExternalSiteFilled,
     },
   },
@@ -43,7 +43,7 @@ const variantConfig: Variants<typeof RandomText> = [
 const RandomText = (props: ButtonInsideTexteProps) => {
   const startText = 'Lorem ipsum dolor '
   const endText = ' sit amet consectetur adipisicing elit.'
-  const TypoComponent = props.typography ? Typo[props.typography] : Typo.Body
+  const TypoComponent = props.typography ? TypoDS[props.typography] : TypoDS.Body
 
   return (
     <TypoComponent>

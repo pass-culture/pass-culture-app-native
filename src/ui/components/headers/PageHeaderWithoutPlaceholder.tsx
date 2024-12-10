@@ -86,7 +86,7 @@ const Title = styled.Text.attrs(() => ({
   numberOfLines: 1,
   ...getHeadingAttrs(1),
 }))(({ theme }) => ({
-  ...theme.designSystem.typography.body,
+  ...theme.designSystem.typography.title4,
   textAlign: 'center',
 }))
 

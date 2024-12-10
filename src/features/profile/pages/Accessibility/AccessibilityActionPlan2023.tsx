@@ -6,7 +6,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccessibilityActionPlan2023 = () => (
@@ -25,7 +25,7 @@ export const AccessibilityActionPlan2023 = () => (
       <BulletListItem text="Formation des développeurs du site ">
         <ExternalTouchableLink
           as={ButtonInsideText}
-          typography="Caption"
+          typography="BodyAccentXs"
           wording="https://passculture.pro/"
           icon={ExternalSiteFilled}
           externalNav={{ url: 'https://passculture.pro/' }}
@@ -36,7 +36,7 @@ export const AccessibilityActionPlan2023 = () => (
       <BulletListItem text="Réalisation d’un audit d’accessibilité du site ">
         <ExternalTouchableLink
           as={ButtonInsideText}
-          typography="Caption"
+          typography="BodyAccentXs"
           wording="https://passculture.pro/"
           icon={ExternalSiteFilled}
           externalNav={{ url: 'https://passculture.pro/' }}
@@ -49,18 +49,18 @@ export const AccessibilityActionPlan2023 = () => (
       </BulletListItem>
 
       <BulletListItem>
-        <Typo.Body>
+        <TypoDS.Body>
           Maquettage d’un nouveau site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="Caption"
+            typography="BodyAccentXs"
             wording="https://pass.culture.fr/"
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://pass.culture.fr/' }}
           />{' '}
           100% accessible
           <ActionPlanTag />
-        </Typo.Body>
+        </TypoDS.Body>
       </BulletListItem>
 
       <BulletListItem text="Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels">

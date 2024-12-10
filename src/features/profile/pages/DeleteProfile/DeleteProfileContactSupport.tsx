@@ -12,7 +12,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
@@ -35,12 +35,12 @@ export const DeleteProfileContactSupport: FC = () => {
       title="Contacte le support">
       <ViewGap gap={8}>
         <ViewGap gap={6}>
-          <Typo.Body>
+          <TypoDS.Body>
             Pour traiter ta demande, nous te conseillons d’écrire à notre équipe support.
-          </Typo.Body>
-          <Typo.Body>
+          </TypoDS.Body>
+          <TypoDS.Body>
             Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
-          </Typo.Body>
+          </TypoDS.Body>
         </ViewGap>
 
         <ContentBottom>

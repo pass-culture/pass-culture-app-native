@@ -17,7 +17,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -45,11 +45,11 @@ export const DeleteProfileConfirmation = () => {
       separateIconFromTitle={false}
       title="Ta demande de suppression de compte"
       titleComponent={TypoDS.Title2}>
-      <Typo.Body>
+      <TypoDS.Body>
         Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données
         personnelles seront supprimées (anonymisées).
-      </Typo.Body>
-      <Typo.Body>Tes réservations en cours seront également annulées et supprimées.</Typo.Body>
+      </TypoDS.Body>
+      <TypoDS.Body>Tes réservations en cours seront également annulées et supprimées.</TypoDS.Body>
       <Spacer.Column numberOfSpaces={6} />
       <InfoBanner message="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.">
         <Spacer.Column numberOfSpaces={2} />

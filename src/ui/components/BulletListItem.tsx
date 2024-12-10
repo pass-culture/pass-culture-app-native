@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Dot } from 'ui/svg/icons/Dot'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 // Use with Ul or VerticalUl to be accessible in web
 export const BulletListItem: React.FC<{
@@ -70,11 +70,11 @@ const NestedBullet = styled(Dot).attrs(({ theme }) => ({
 }))``
 
 const BulletContainer = styled.View(({ theme }) => ({
-  height: theme.typography.body.lineHeight,
+  height: theme.designSystem.typography.body.lineHeight,
   justifyContent: 'center',
 }))
 
-const ListText = styled(Typo.Body)({
+const ListText = styled(TypoDS.Body)({
   marginLeft: getSpacing(3),
   flex: 1,
 })
