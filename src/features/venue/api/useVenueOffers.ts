@@ -18,6 +18,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
 export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffers> => {
+  // TODO(PC-33493): hook refacto
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
