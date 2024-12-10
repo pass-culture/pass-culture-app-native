@@ -494,8 +494,7 @@ describe('Signup Form', () => {
       mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
       renderSignupForm()
-
-      await act(async () => {})
+      await screen.findByText('Inscription')
 
       await pressSSOButton()
 
@@ -519,8 +518,7 @@ describe('Signup Form', () => {
       })
 
       renderSignupForm()
-
-      await act(async () => {})
+      await screen.findByText('Inscription')
 
       await pressSSOButton()
 
@@ -552,8 +550,7 @@ describe('Signup Form', () => {
       })
 
       renderSignupForm()
-
-      await act(async () => {})
+      await screen.findByText('Inscription')
 
       await pressSSOButton()
 
@@ -611,8 +608,7 @@ describe('Signup Form', () => {
       })
 
       renderSignupForm()
-
-      await act(async () => {})
+      await screen.findByText('Inscription')
 
       await pressSSOButton()
 
