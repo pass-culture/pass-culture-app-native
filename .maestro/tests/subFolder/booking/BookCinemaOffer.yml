@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- runFlow: ../../subFolder/cloud/commands/SetLocalizationToParis.yml
+- runFlow: ../../subFolder/cloud/commands/SetLocalizationFromEverywhereToParis.yml
 - swipe:
     from:
       text: 'Les offres'

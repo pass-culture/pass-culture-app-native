@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Partout'
+      - tapOn: 'France entière'
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
     below:
@@ -15,7 +15,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Réserver l’offre'
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
 - scrollUntilVisible:
     element: 'Confirmer la réservation'
 - tapOn: 'Confirmer la réservation'

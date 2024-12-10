@@ -7,15 +7,15 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Partout'
+      - tapOn: 'France entière'
 
 - tapOn: 'Offre, artiste, lieu culturel...'
 
 - inputText: 'totototototo'
 - pressKey: Enter
 
-- assertVisible: "Pas de résultat"
-- assertVisible: "pour \"totototototo\""
+- assertVisible: 'Pas de résultat'
+- assertVisible: 'pour "totototototo"'
 
 - tapOn:
     id: 'Voir tous les filtres'
