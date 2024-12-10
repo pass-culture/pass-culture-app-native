@@ -2,33 +2,39 @@ import { AchievementEnum } from 'api/gen'
 import {
   firstBookBooking,
   firstNewsBooking,
+  mockCompletedAchievements,
 } from 'features/profile/pages/Achievements/AchievementData'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { renderHook } from 'tests/utils'
 
 import { useAchievementDetails } from './useAchievementDetails'
 
+jest.mock('features/auth/context/AuthContext')
+
 describe('useAchievementDetails', () => {
   describe('Achievement is completed', () => {
-    it('should return the achievement details', () => {
-      const details = useAchievementDetails(firstBookBooking.name)
+    it('should return the achievement result.current', () => {
+      const { result } = renderHook(() => useAchievementDetails(firstBookBooking.name))
 
-      expect(details).toEqual(
+      expect(result.current).toEqual(
         expect.objectContaining({
           title: firstBookBooking.title,
-          completed: true,
-          completedAt: '02/12/2024',
-          illustration: firstBookBooking.illustrationUnlockedDetailed,
-          description: firstBookBooking.descriptionUnlocked,
+          completed: false,
+          completedAt: undefined,
+          illustration: firstBookBooking.illustrationLockedDetailed,
+          description: firstBookBooking.descriptionLocked,
         })
       )
     })
   })
 
   describe('Achievement is NOT completed', () => {
-    it('should return the achievement details', () => {
-      const details = useAchievementDetails(firstNewsBooking.name)
+    it('should return the achievement result.current', () => {
+      const { result } = renderHook(() => useAchievementDetails(firstNewsBooking.name))
 
-      expect(details).toEqual(
+      expect(result.current).toEqual(
         expect.objectContaining({
           title: firstNewsBooking.title,
           completed: false,
@@ -41,15 +47,24 @@ describe('useAchievementDetails', () => {
   })
 
   it('should return undefined if the achievement is not found', () => {
-    const details = useAchievementDetails('unknown' as unknown as AchievementEnum)
+    const { result } = renderHook(() =>
+      useAchievementDetails('unknown' as unknown as AchievementEnum)
+    )
 
-    expect(details).toBeUndefined()
+    expect(result.current).toBeUndefined()
   })
 
   describe('tracking', () => {
-    it('should track the achievement details', () => {
-      const details = useAchievementDetails(firstBookBooking.name)
-      details?.track()
+    beforeEach(() => {
+      mockAuthContextWithUser({
+        ...beneficiaryUser,
+        achievements: mockCompletedAchievements,
+      })
+    })
+
+    it('should track the achievement result.current', () => {
+      const { result } = renderHook(() => useAchievementDetails(firstBookBooking.name))
+      result.current?.track()
 
       expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
         achievementName: firstBookBooking.name,
@@ -58,8 +73,8 @@ describe('useAchievementDetails', () => {
     })
 
     it('tracking state is "locked" if the achievement is not completed', () => {
-      const details = useAchievementDetails(firstNewsBooking.name)
-      details?.track()
+      const { result } = renderHook(() => useAchievementDetails(firstNewsBooking.name))
+      result.current?.track()
 
       expect(analytics.logConsultAchievementModal).toHaveBeenCalledWith({
         achievementName: firstNewsBooking.name,

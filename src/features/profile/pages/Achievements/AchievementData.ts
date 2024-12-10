@@ -1,4 +1,4 @@
-import { AchievementEnum } from 'api/gen'
+import { AchievementEnum, AchievementResponse } from 'api/gen'
 import {
   DetailedAchievementIllustrations,
   SimpleAchievementIllustrations,
@@ -15,12 +15,6 @@ export type Achievement = {
   illustrationUnlockedDetailed: React.FC<AccessibleIcon>
   illustrationLockedDetailed: React.FC<AccessibleIcon>
   category: AchievementCategory
-}
-
-export type UserAchievement = {
-  name: AchievementEnum
-  unlockedDate: Date
-  seenDate?: Date
 }
 
 export enum AchievementCategory {
@@ -140,7 +134,7 @@ export const firstArtLessonBooking = {
   category: AchievementCategory.FIRST_BOOKINGS,
 }
 
-export const mockAchievements: Achievement[] = [
+export const achievementData: Achievement[] = [
   firstMovieBooking,
   firstBookBooking,
   firstRecordedMusicBooking,
@@ -154,20 +148,20 @@ export const mockAchievements: Achievement[] = [
 
 export const userCompletedMovieBooking = {
   name: AchievementEnum.FIRST_MOVIE_BOOKING,
-  unlockedDate: new Date('2024-12-01'),
+  unlockedDate: new Date('2024-12-01').toLocaleDateString('fr-FR'),
 }
 
 export const userCompletedBookBooking = {
   name: AchievementEnum.FIRST_BOOK_BOOKING,
-  unlockedDate: new Date('2024-12-02'),
+  unlockedDate: new Date('2024-12-02').toLocaleDateString('fr-FR'),
 }
 
 export const userCompletedArtLessonBooking = {
   name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
-  unlockedDate: new Date('2024-12-03'),
+  unlockedDate: new Date('2024-12-03').toLocaleDateString('fr-FR'),
 }
 
-export const mockCompletedAchievements: UserAchievement[] = [
+export const mockCompletedAchievements: AchievementResponse[] = [
   userCompletedMovieBooking,
   userCompletedBookBooking,
   userCompletedArtLessonBooking,

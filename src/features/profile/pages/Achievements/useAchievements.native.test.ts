@@ -6,6 +6,7 @@ import {
   firstBookBooking,
   firstInstrumentBooking,
   firstMovieBooking,
+  mockCompletedAchievements,
   userCompletedArtLessonBooking,
   userCompletedBookBooking,
   userCompletedMovieBooking,
@@ -14,10 +15,14 @@ import {
   UseAchivementsProps,
   useAchievements,
 } from 'features/profile/pages/Achievements/useAchievements'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 import { FirstArtLessonBookingLocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingLocked'
 import { FirstArtLessonBookingUnlocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingUnlocked'
+
+jest.mock('features/auth/context/AuthContext')
 
 enum TestAchievementCategory {
   TEST = 'TEST',
@@ -58,6 +63,13 @@ const testUseAchievements = ({
   ).result.current
 
 describe('useAchievements', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      achievements: mockCompletedAchievements,
+    })
+  })
+
   it('should return empty array when there are no achievements', () => {
     const { categories } = testUseAchievements()
 

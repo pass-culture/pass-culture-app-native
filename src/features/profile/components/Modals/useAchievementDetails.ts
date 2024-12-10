@@ -1,13 +1,12 @@
 import { AchievementEnum } from 'api/gen'
-import {
-  mockAchievements,
-  mockCompletedAchievements,
-} from 'features/profile/pages/Achievements/AchievementData'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { achievementData } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 
 export const useAchievementDetails = (name: AchievementEnum) => {
-  const achievement = mockAchievements.find((achievement) => achievement.name === name)
-  const completedAchievement = mockCompletedAchievements.find(
+  const { user } = useAuthContext()
+  const achievement = achievementData.find((achievement) => achievement.name === name)
+  const completedAchievement = user?.achievements.find(
     (userAchievement) => userAchievement.name === name
   )
 
@@ -22,13 +21,15 @@ export const useAchievementDetails = (name: AchievementEnum) => {
     })
   }
 
+  const unlockedDate = completedAchievement?.unlockedDate
+
   return {
     title: achievement.title,
     description: completed ? achievement.descriptionUnlocked : achievement.descriptionLocked,
     illustration: completed
       ? achievement.illustrationUnlockedDetailed
       : achievement.illustrationLockedDetailed,
-    completedAt: completedAchievement?.unlockedDate.toLocaleDateString('fr-FR'),
+    completedAt: unlockedDate ? new Date(unlockedDate).toLocaleDateString('fr-FR') : undefined,
     completed,
     track,
   }

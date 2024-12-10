@@ -1,8 +1,7 @@
-import { AchievementEnum } from 'api/gen'
+import { AchievementEnum, AchievementResponse } from 'api/gen'
 import {
   Achievement,
   AchievementCategory,
-  UserAchievement,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { analytics } from 'libs/analytics'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -27,7 +26,7 @@ type UseAchievements = {
 
 export type UseAchivementsProps = {
   achievements: Achievement[]
-  completedAchievements: UserAchievement[]
+  completedAchievements: AchievementResponse[]
 }
 
 export const useAchievements = ({
@@ -53,12 +52,12 @@ const getAchievementsCategories = (achievements: Achievement[]) =>
 
 const isAchievementCompleted = (
   achievement: Achievement,
-  completedAchievements: UserAchievement[]
+  completedAchievements: AchievementResponse[]
 ) => completedAchievements.some((u) => u.name === achievement.name)
 
 const getCompletedAchievements = (
   achievements: Achievement[],
-  completedAchievements: UserAchievement[]
+  completedAchievements: AchievementResponse[]
 ) =>
   achievements.filter((achievement) => isAchievementCompleted(achievement, completedAchievements))
 
@@ -66,7 +65,7 @@ const getAchievementsByCategory = (achievements: Achievement[], category: Achiev
   achievements.filter((achievement) => achievement.category === category)
 
 const createCategory =
-  (achievements: Achievement[], completedUserAchievements: UserAchievement[]) =>
+  (achievements: Achievement[], completedUserAchievements: AchievementResponse[]) =>
   (category: AchievementCategory) => {
     const categoryAchievements = getAchievementsByCategory(achievements, category)
 
@@ -97,7 +96,7 @@ const createCategory =
 const LOCKED_ACHIEVEMENT_TITLE = 'Succès non débloqué'
 
 const createAchievement =
-  (completedAchievements: UserAchievement[]) => (achievement: Achievement) => {
+  (completedAchievements: AchievementResponse[]) => (achievement: Achievement) => {
     const isCompleted = isAchievementCompleted(achievement, completedAchievements)
 
     return {

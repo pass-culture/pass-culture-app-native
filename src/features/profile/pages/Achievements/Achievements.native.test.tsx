@@ -1,8 +1,13 @@
 import React from 'react'
 
+import { mockCompletedAchievements } from 'features/profile/pages/Achievements/AchievementData'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { Achievements } from './Achievements'
+
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
@@ -10,13 +15,23 @@ jest.mock('react-native-safe-area-context', () => ({
 }))
 
 describe('<Achievements/>', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser(
+      {
+        ...beneficiaryUser,
+        achievements: mockCompletedAchievements,
+      },
+      { persist: true } // in "should open modal when press an achievement" we useAuthContext in the Achievements page and in the hook useAchievementDetails
+    )
+  })
+
   it('should match snapshot', () => {
     render(<Achievements />)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open modale when press an achievement', async () => {
+  it('should open modal when press an achievement', async () => {
     render(<Achievements />)
 
     const firstMovieBookingAchievement = screen.getByText('Mangeur de popcorns')

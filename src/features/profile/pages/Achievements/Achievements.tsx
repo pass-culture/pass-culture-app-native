@@ -6,12 +6,12 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { Achievement } from 'features/profile/components/Achievements/Achievement'
 import {
   achievementCategoryDisplayTitles,
-  mockAchievements,
-  mockCompletedAchievements,
+  achievementData,
 } from 'features/profile/pages/Achievements/AchievementData'
 import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -33,10 +33,11 @@ export const Achievements = () => {
   const {
     params: { from },
   } = useRoute<UseRouteType<'Achievements'>>()
+  const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
   const { categories, track } = useAchievements({
-    achievements: mockAchievements,
-    completedAchievements: mockCompletedAchievements,
+    achievements: achievementData,
+    completedAchievements: user?.achievements || [],
   })
 
   useEffect(() => {
