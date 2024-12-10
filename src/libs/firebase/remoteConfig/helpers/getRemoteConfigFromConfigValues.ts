@@ -8,6 +8,7 @@ import { getConfigValue } from './getConfigValue'
 export const getRemoteConfigFromConfigValues = (
   parameters: FirebaseRemoteConfigTypes.ConfigValues
 ): CustomRemoteConfig => ({
+  aroundPrecision: JSON.parse(getConfigValue(parameters.aroundPrecision).asString()),
   test_param: getConfigValue(parameters.test_param).asString(),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),
   homeEntryIdNotConnected: getConfigValue(parameters.homeEntryIdNotConnected).asString(),

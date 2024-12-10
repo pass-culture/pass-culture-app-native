@@ -2,6 +2,7 @@ import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
+  aroundPrecision: Record<'from' | 'value', number>[]
   test_param: string
   homeEntryIdFreeOffers: string
   homeEntryIdNotConnected: string

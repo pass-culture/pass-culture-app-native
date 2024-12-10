@@ -3,6 +3,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
+  aroundPrecision: [],
   test_param: 'A',
   homeEntryIdFreeOffers: '',
   homeEntryIdNotConnected: '',
