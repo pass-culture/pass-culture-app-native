@@ -18,9 +18,9 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/TabBar/routes')
 
 const mockDispatch = jest.fn()
-const mockSearchState = initialSearchState
+
 jest.spyOn(useSearch, 'useSearch').mockReturnValue({
-  searchState: mockSearchState,
+  searchState: initialSearchState,
   dispatch: mockDispatch,
   resetSearch: jest.fn(),
   isFocusOnSuggestions: false,
@@ -28,28 +28,27 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   hideSuggestions: jest.fn(),
 })
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-let mockHits = {}
+const defaultUseSearchResults = {
+  data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
+  hits: {},
+  nbHits: 0,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: true,
+  fetchNextPage: jest.fn(),
+  isFetchingNextPage: false,
+}
+const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: mockHits,
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-  }),
+  useSearchResults: () => mockUseSearchResults(),
 }))
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
-const mockUseLocation = jest.fn(() => ({
-  selectedLocationMode: mockSelectedLocationMode,
+
+const defaultUseLocation = {
+  selectedLocationMode: LocationMode.EVERYWHERE,
   onModalHideRef: jest.fn(),
-}))
-jest.mock('libs/location', () => ({
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
@@ -65,8 +64,8 @@ describe('<ThematicSearch/>', () => {
     )
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-    mockHits = {}
-    mockSelectedLocationMode = LocationMode.EVERYWHERE
+    mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+    mockUseLocation.mockReturnValue(defaultUseLocation)
   })
 
   it('should dispatch action with offerCategories when params change', async () => {

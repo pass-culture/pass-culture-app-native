@@ -9,7 +9,7 @@ import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode, Position } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -18,13 +18,13 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 
-const mockLocationMode = LocationMode.AROUND_ME
-const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+const defaultUseLocation = {
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  onModalHideRef: jest.fn(),
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -69,30 +69,20 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
-const mockUseLocation = jest.fn(() => ({
-  selectedLocationMode: mockSelectedLocationMode,
-  onModalHideRef: jest.fn(),
-}))
-jest.mock('libs/location', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-let mockHits = {}
+const defaultUseSearchResults = {
+  data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
+  hits: {},
+  nbHits: 0,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: true,
+  fetchNextPage: jest.fn(),
+  isFetchingNextPage: false,
+}
+const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: mockHits,
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-  }),
+  useSearchResults: () => mockUseSearchResults(),
 }))
 
 describe('<ThematicSearch/>', () => {
@@ -103,8 +93,8 @@ describe('<ThematicSearch/>', () => {
   describe('book offerCategory', () => {
     beforeEach(() => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockHits = {}
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      mockUseLocation.mockReturnValue(defaultUseLocation)
+      mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
     })
 
     it('should render <ThematicSearch />', async () => {
