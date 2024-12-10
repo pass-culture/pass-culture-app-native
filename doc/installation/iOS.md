@@ -38,7 +38,7 @@ In your password manager application, go to the `Tech/Firebase` folder, download
 - `GoogleService-Info-staging.plist`
 - `GoogleService-Info-production.plist`
 
-Add these files into the `ios/Firebase` folder
+Add these files into the `ios/Passculture/Firebase` folder
 
 ### 🔨Setup Xcode
 
