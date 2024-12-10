@@ -14,20 +14,21 @@ export const useVenueOffersArtists = (
     return { data: { artists: [] } }
   }
 
+  // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artist object if the artist exists,
+  // and flattening the results into a single array. If no artist is found, it returns an empty array, effectively filtering out
+  // offers without an artist in a single step.
   const artists: Artist[] = uniqBy(
-    venueOffers.hits
-      .map((offer) => {
-        if (!offer.offer.artist) return null
-
-        const artist: Artist = {
-          id: Number(offer.objectID),
-          name: offer.offer.artist,
-          imageUrl: offer.offer.thumbUrl,
-        }
-
-        return artist
-      })
-      .filter((item): item is Artist => item !== null),
+    venueOffers.hits.flatMap((offer) =>
+      offer.offer.artist
+        ? [
+            {
+              id: Number(offer.objectID),
+              name: offer.offer.artist,
+              imageUrl: offer.offer.thumbUrl,
+            },
+          ]
+        : []
+    ),
     'name'
   ).slice(0, 30)
 
