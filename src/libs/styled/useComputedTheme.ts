@@ -32,9 +32,12 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
+  const maxCaptionHeightOfferTile =
+    parseFloat(theme.designSystem.typography.bodyAccentXs.lineHeight) * OFFER_TILE_MAX_LINES +
+    OFFER_TILE_GAP
+
   const offerMaxCaptionHeight = enableNewOfferTile
-    ? Number(theme.designSystem.typography.bodyAccentXs.lineHeight) * OFFER_TILE_MAX_LINES +
-      OFFER_TILE_GAP
+    ? maxCaptionHeightOfferTile
     : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
