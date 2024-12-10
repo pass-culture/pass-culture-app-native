@@ -16,7 +16,7 @@ import { LocationLabel } from 'libs/location/types'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
@@ -84,7 +84,6 @@ describe('HomeHeader', () => {
       mockGeolocBannerFromBackend()
 
       renderHomeHeader()
-      await act(async () => {})
 
       expect(await screen.findByText(subtitle)).toBeOnTheScreen()
     }
