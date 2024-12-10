@@ -38,9 +38,12 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'Facebook'
 - waitForAnimationToEnd
-- assertVisible: 'Facebook from Meta'
+- tapOn: "Fermer"
+- assertVisible:
+    text: "Pass Culture"
+    index: 1
 - runFlow:
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
+    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
 
 - scrollUntilVisible:
     element:

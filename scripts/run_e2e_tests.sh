@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 if [ "$#" -lt 3 ]; then
-  echo "Not enough arguments supplied. Please provide platform ('ios', 'android', or 'web) and environment ('testing' or 'staging')."
+  echo "Not enough arguments supplied. Please provide platform ('ios', 'android', or 'web') and environment ('testing' or 'staging')."
   exit 1
 else
   target=$1
@@ -24,29 +24,6 @@ else
   fi
 fi
 
-case "$target" in
-  "test")
-    TAGS="--include-tags local"
-    run_tracking_tests=true
-    run_cloud_commands=false
-    ;;
-
-  "cloud")
-    TAGS="--include-tags cloud"
-    run_tracking_tests=false
-    run_cloud_commands=true
-    ;;
-esac
-
-if [ "$#" -eq 3 ]; then
-  rest_of_arguments=".maestro/tests"
-else
-  shift
-  shift
-  shift
-  rest_of_arguments="$*"
-fi
-
 parse_env_variable () {
   test line
   line=$(grep -E "$1=" "$2")
@@ -59,6 +36,33 @@ parse_env_variable () {
     exit 1
   fi
 }
+
+case "$target" in
+  "test")
+    TAGS="--include-tags local"
+    run_tracking_tests=true
+    run_cloud_commands=false
+    cloud_arguments=""
+    ;;
+
+  "cloud")
+    TAGS="--include-tags cloud"
+    run_tracking_tests=false
+    run_cloud_commands=true
+    api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
+    project_id=$(parse_env_variable ROBIN_PROJECT_ID .maestro/.env.secret)
+    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/tests/ --device-locale fr_FR --android-api-level 34 --timeout 120"
+    ;;
+esac
+
+if [ "$#" -eq 3 ]; then
+  rest_of_arguments=""
+else
+  shift
+  shift
+  shift
+  rest_of_arguments="$*"
+fi
 
 METRO_SERVER_PORT=8081
 MOCK_ANALYTICS_SERVER_PORT=4001
@@ -81,7 +85,6 @@ fi
 if adb shell pm list packages | grep "app.passculture.webapp"; then
   echo "Prod app is installed."
   app_installed="true"
-  
 else
   echo "Prod app isn't installed."
   app_installed="false"
@@ -124,6 +127,7 @@ maestro "$target" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
   --env MAESTRO_APP_INSTALLED="$app_installed" \
   $TAGS \
+  $cloud_arguments \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 if [ "$target" == "test" ]; then

@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Partout'
+      - tapOn: 'France entière'
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
     below:
@@ -16,10 +16,10 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Réserver l’offre'
 
 - assertVisible: 'Détails de la réservation'
-- assertVisible: "Informations"
-- assertVisible: "Lieu de retrait"
-- assertVisible: "Conditions d’annulation"
-- assertVisible: "Conditions d’utilisation"
-- assertVisible: "Nos conditions générales d’utilisation"
+- assertVisible: 'Informations'
+- assertVisible: 'Lieu de retrait'
+- assertVisible: 'Conditions d’annulation'
+- assertVisible: 'Conditions d’utilisation'
+- assertVisible: 'Nos conditions générales d’utilisation'
 
-- tapOn: "Fermer la modale"
+- tapOn: 'Fermer la modale'

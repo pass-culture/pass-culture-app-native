@@ -39,3 +39,4 @@ appId: ${MAESTRO_APP_ID}
     id: 'animated-icon-favorite'
 - tapOn:
     id: 'animated-icon-back'
+    retryTapIfNoChange: false
