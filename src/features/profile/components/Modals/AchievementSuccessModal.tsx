@@ -13,7 +13,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
 
-import confetti from './confetti.json'
 import success from './success.json'
 
 interface Props {
@@ -23,13 +22,11 @@ interface Props {
 }
 
 export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
-  const confettiRef = useRef<LottieView>(null)
   const logoRef = useRef<LottieView>(null)
 
   useEffect(() => {
     if (visible) {
       analytics.logConsultAchievementsSuccessModal(ids)
-      confettiRef.current?.play(0)
       logoRef.current?.play(0, 62)
     }
     // The effect should only run when `visible` changes because`ids` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
@@ -46,14 +43,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, ids }: Props) => {
       onCloseIconPress={hideModal}
       visible={visible}>
       <StyledViewGap gap={2}>
-        <ConfettiView
-          ref={confettiRef}
-          source={confetti}
-          autoPlay={false}
-          loop={false}
-          resizeMode="cover"
-        />
-
         <AchievementView
           ref={logoRef}
           source={success}
@@ -94,16 +83,6 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
-
-const ConfettiView = styled(LottieView)({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 1000,
-  pointerEvents: 'none',
-})
 
 const AchievementView = styled(LottieView)({
   height: getSpacing(60),
