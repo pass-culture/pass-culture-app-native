@@ -39,7 +39,7 @@ export const fetchOffersByArtist = async ({
         page: 0,
         filters: buildAlgoliaFilter({ artists }),
         hitsPerPage: 100,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean'],
         attributesToHighlight: [], // We disable highlighting because we don't need it
         aroundRadius: 'all',
         ...(userLocation
@@ -55,7 +55,7 @@ export const fetchOffersByArtist = async ({
         page: 0,
         filters: buildAlgoliaFilter({ artists }),
         hitsPerPage: 4,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean'],
         attributesToHighlight: [], // We disable highlighting because we don't need it
         aroundRadius: 'all',
         ...(userLocation
