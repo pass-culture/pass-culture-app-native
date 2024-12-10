@@ -17,6 +17,7 @@ export type HitOffer = {
   thumbUrl?: string
   releaseDate?: number | string
   bookFormat?: string | null
+  artist?: string
 }
 
 export interface Offer {

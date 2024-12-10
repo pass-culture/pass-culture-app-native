@@ -9,20 +9,20 @@ import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
-import type { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
+import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface VenueOffersProps {
   venue: VenueResponse
-  venueOffers?: VenueOffers
+  venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
 }
 
@@ -35,7 +35,7 @@ export const LoadingState: React.FC = () => (
   </React.Fragment>
 )
 
-const MovieScreening: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffers }) => {
+const MovieScreening: React.FC<{ venueOffers: VenueOffersType }> = ({ venueOffers }) => {
   const { isDesktopViewport } = useTheme()
   const { setButton, showButton } = useOfferCTA()
   const scrollToAnchor = useScrollToAnchor()

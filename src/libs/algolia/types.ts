@@ -38,6 +38,7 @@ export interface AlgoliaHit {
     thumbUrl?: string
     searchGroupName?: SearchGroupNameEnumv2
     bookFormat?: string | null
+    artist?: string
   }
   _geoloc: Geoloc
   objectID: string

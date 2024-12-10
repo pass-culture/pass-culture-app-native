@@ -1,5 +1,6 @@
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
+import { Offer } from 'shared/offer/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface Venue {
@@ -52,3 +53,16 @@ export type TabType<TabKeyType extends string> = {
   Icon?: React.FC<AccessibleIcon>
   pastille?: PastilleType
 }
+
+export type VenueOffers = {
+  hits: Offer[]
+  nbHits: number
+}
+
+export type Artist = {
+  id: number
+  name: string
+  imageUrl?: string
+}
+
+export type VenueOffersArtists = { artists: Artist[] }

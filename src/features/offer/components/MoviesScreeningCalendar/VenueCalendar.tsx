@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useMoviesScreeningsList } from 'features/offer/components/MoviesScreeningCalendar/hook/useMoviesScreeningsList'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
-import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import { VenueOffers } from 'features/venue/types'
 import { Spacer } from 'ui/theme'
 
 type Props = {

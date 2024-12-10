@@ -13,7 +13,7 @@ import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalen
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
-import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import { VenueOffers } from 'features/venue/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
