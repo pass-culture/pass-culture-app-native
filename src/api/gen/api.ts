@@ -834,10 +834,10 @@ export interface CategoryResponseModel {
    */
   parents: Array<string>
   /**
-   * @type {number}
+   * @type {{ [key: string]: number; }}
    * @memberof CategoryResponseModel
    */
-  position?: number | null
+  positions?: { [key: string]: number; } | null
   /**
    * @type {string}
    * @memberof CategoryResponseModel
@@ -1901,6 +1901,11 @@ export interface NativeCategoryResponseModelv2 {
    * @memberof NativeCategoryResponseModelv2
    */
   parents: Array<SearchGroupNameEnumv2>
+  /**
+   * @type {{ [key: string]: number; }}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  positions?: { [key: string]: number; } | null
   /**
    * @type {string}
    * @memberof NativeCategoryResponseModelv2

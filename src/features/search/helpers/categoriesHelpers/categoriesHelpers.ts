@@ -14,6 +14,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { EVERY_CATEGORIES } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
+  BaseCategory,
   MappingTree,
   createMappingTree,
   getBooksGenreTypes,
@@ -604,3 +605,6 @@ export const handleCategoriesSearchPress = (
 
   return { payload, isFullyDigitalOffersCategory }
 }
+
+export const sortCategoriesPredicate = (a: BaseCategory, b: BaseCategory) =>
+  (a.position ?? Infinity) - (b.position ?? Infinity) || a.label.localeCompare(b.label)

@@ -115,8 +115,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey].children) {
+      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },
@@ -211,7 +210,7 @@ export const CategoriesModal = ({
     if (category === SearchGroupNameEnumv2.LIVRES) {
       return (
         <BookCategoriesSection
-          data={nativeCategories}
+          itemsMapping={nativeCategories}
           onSelect={handleNativeCategorySelect}
           allValue={null}
           allLabel="Tout"
@@ -222,7 +221,7 @@ export const CategoriesModal = ({
     }
     return (
       <CategoriesSection
-        data={nativeCategories}
+        itemsMapping={nativeCategories}
         onSelect={handleNativeCategorySelect}
         allValue={null}
         allLabel="Tout"
@@ -267,19 +266,20 @@ export const CategoriesModal = ({
       <Form.MaxWidth>
         {currentView === CategoriesModalView.CATEGORIES ? (
           <CategoriesSection
-            data={tree}
+            itemsMapping={tree}
             onSelect={handleCategorySelect}
             allValue={SearchGroupNameEnumv2.NONE}
             allLabel="Toutes les catégories"
             value={category}
             descriptionContext={descriptionContext}
             getIcon={getIcon}
+            shouldSortItems={false} // sorting on positions is not supported yet for search groups, but they're already sorted in `createMappingTree`
           />
         ) : null}
         {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
         {currentView === CategoriesModalView.GENRES ? (
           <CategoriesSection
-            data={genreTypes}
+            itemsMapping={genreTypes}
             onSelect={handleGenreTypeSelect}
             allValue={null}
             allLabel="Tout"

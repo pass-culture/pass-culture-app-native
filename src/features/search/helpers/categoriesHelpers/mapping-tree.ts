@@ -14,23 +14,23 @@ import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
-type MappedGenreType = {
+export type BaseCategory = {
   label: string
-  nbResultsFacet?: never
-  gtls?: GTL[]
   position?: number
 }
+type MappedGenreType = BaseCategory & {
+  nbResultsFacet?: never
+  gtls?: GTL[]
+}
 export type MappedGenreTypes = Record<string, MappedGenreType>
-type MappedNativeCategory = {
-  label: string
+type MappedNativeCategory = BaseCategory & {
   nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
   gtls?: GTL[]
 }
 export type MappedNativeCategories = Record<string, MappedNativeCategory>
-type MappedCategory = {
-  label: string
+type MappedCategory = BaseCategory & {
   children?: MappedNativeCategories
 }
 export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
@@ -94,6 +94,7 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
         nbResultsFacet: 0,
         genreTypeKey: GenreType.BOOK,
         gtls: nativeCategory.gtls,
+        position: nativeCategory.position,
         children: nativeCategory.children.reduce<MappedGenreTypes>(
           (genreTypeChildren, genreType) => {
             const genreKey = getKeyFromStringLabel(genreType.label)
@@ -167,6 +168,7 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
                   (facetsData as NativeCategoryFacetData)?.[
                     FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
                   ]?.[nativeCategory.name] ?? 0,
+                position: nativeCategory.positions?.[searchGroup.name],
                 ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
               }
 

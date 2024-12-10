@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
+import { sortCategoriesPredicate } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
   MappedGenreTypes,
   MappedNativeCategories,
@@ -22,13 +23,14 @@ export interface CategoriesSectionProps<
 > {
   allLabel: string
   allValue: N
-  data?: T
   descriptionContext: DescriptionContext
   getIcon?: T extends MappingTree
     ? (categoryName: SearchGroupNameEnumv2) => FC<AccessibleBicolorIcon> | undefined
     : undefined
+  itemsMapping: T
   onSelect: (item: N) => void
   onSubmit?: () => void
+  shouldSortItems?: boolean
   value: N
 }
 
@@ -38,13 +40,14 @@ export function CategoriesSection<
 >({
   allLabel,
   allValue,
-  data,
   descriptionContext,
   getIcon,
+  itemsMapping,
   onSelect,
   onSubmit,
+  shouldSortItems = true,
   value,
-}: CategoriesSectionProps<T, N>) {
+}: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)
@@ -60,6 +63,9 @@ export function CategoriesSection<
     }
   }
 
+  const entries = Object.entries(itemsMapping)
+  if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
+
   return (
     <VerticalUl>
       <ListItem>
@@ -70,19 +76,17 @@ export function CategoriesSection<
           icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
-      {data
-        ? Object.entries(data).map(([k, item]) => (
-            <CategoriesSectionItem
-              key={k}
-              value={value}
-              k={k}
-              item={item}
-              descriptionContext={descriptionContext}
-              handleSelect={handleSelect}
-              handleGetIcon={handleGetIcon}
-            />
-          ))
-        : null}
+      {entries.map(([k, item]) => (
+        <CategoriesSectionItem
+          key={k}
+          value={value}
+          k={k}
+          item={item}
+          descriptionContext={descriptionContext}
+          handleSelect={handleSelect}
+          handleGetIcon={handleGetIcon}
+        />
+      ))}
     </VerticalUl>
   )
 }
