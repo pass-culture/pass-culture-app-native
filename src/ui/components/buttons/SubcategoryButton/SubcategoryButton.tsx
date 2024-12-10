@@ -15,6 +15,7 @@ export type SubcategoryButtonProps = {
   backgroundColor: ColorsEnum
   borderColor: ColorsEnum
   onPress: VoidFunction
+  position?: number
 }
 
 export const SUBCATEGORY_BUTTON_HEIGHT = getSpacing(14)

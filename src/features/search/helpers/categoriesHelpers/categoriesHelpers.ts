@@ -13,6 +13,7 @@ import {
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
+  BaseCategory,
   MappingTree,
   createMappingTree,
   getBooksGenreTypes,
@@ -602,4 +603,11 @@ export const handleCategoriesSearchPress = (
   }
 
   return { payload, isFullyDigitalOffersCategory }
+}
+
+export const sortCategoriesPredicate = (a: BaseCategory, b: BaseCategory) => {
+  if (a.position !== undefined && b.position !== undefined) return a.position - b.position
+  if (a.position !== undefined && b.position === undefined) return -1
+  if (a.position === undefined && b.position !== undefined) return 1
+  return a.label.localeCompare(b.label)
 }
