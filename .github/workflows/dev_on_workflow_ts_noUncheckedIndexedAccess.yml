@@ -16,8 +16,6 @@ jobs:
   yarn-ts-noUncheckedIndexedAccess:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:

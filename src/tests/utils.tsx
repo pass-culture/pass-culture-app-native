@@ -7,7 +7,7 @@ import { render } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
 import React, { PropsWithChildren, ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
-import { measureRenders, MeasureRendersOptions } from 'reassure'
+import { measurePerformance } from 'reassure'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
@@ -65,18 +65,20 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
   })
 }
 
+type MeasureOptions = Parameters<typeof measurePerformance>[1]
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureRendersOptions) {
+function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureOptions) {
   const { wrapper, ...restOfOptions } = options || {}
   const Wrapper = wrapper as React.ComponentType<PropsWithChildren>
-  return measureRenders(ui, {
+  return measurePerformance(ui, {
     wrapper: Wrapper
-      ? ({ children }) => (
+      ? (children) => (
           <DefaultWrapper>
             <Wrapper>{children}</Wrapper>
           </DefaultWrapper>
         )
-      : ({ children }) => <DefaultWrapper>{children}</DefaultWrapper>,
+      : (children) => <DefaultWrapper>{children}</DefaultWrapper>,
     ...restOfOptions,
   })
 }

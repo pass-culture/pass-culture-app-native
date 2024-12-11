@@ -13,8 +13,6 @@ jobs:
   yarn_test_and_publish_storybook_with_chromatic:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - uses: actions/checkout@v4
         with:
           # by default, it only retrieves the last commit
