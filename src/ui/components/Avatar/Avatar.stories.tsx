@@ -1,9 +1,8 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
@@ -16,12 +15,6 @@ const meta: ComponentMeta<typeof Avatar> = {
   title: 'ui/Avatar',
   component: Avatar,
 }
-
-const DefaultAvatar = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.secondary, theme.colors.primary],
-  useAngle: true,
-  angle: -30,
-}))({ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' })
 
 export default meta
 

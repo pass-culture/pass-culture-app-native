@@ -1,10 +1,8 @@
 import React, { ReactNode } from 'react'
-import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
 
 import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
 import { Avatar } from 'ui/components/Avatar/Avatar'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { TypoDS } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
@@ -23,10 +21,3 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
     </ArtistHeaderWrapper>
   )
 }
-
-const DefaultAvatar = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.secondary, theme.colors.primary],
-  useAngle: true,
-  angle: -30,
-  children: <BicolorProfile color={theme.colors.white} color2={theme.colors.white} size={50} />,
-}))({ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' })

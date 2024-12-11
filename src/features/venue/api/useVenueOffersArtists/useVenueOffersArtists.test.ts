@@ -100,7 +100,7 @@ describe('useVenueOffersArtists', () => {
         artists: [
           {
             id: 102310,
-            imageUrl:
+            image:
               'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
             name: 'Céline Dion',
           },
@@ -133,7 +133,7 @@ describe('useVenueOffersArtists', () => {
       expect(result.current.data).toEqual({
         artists: Array.from({ length: 30 }, (_, index) => ({
           id: index + 1,
-          imageUrl:
+          image:
             'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
           name: `Artist ${index + 1}`,
         })),

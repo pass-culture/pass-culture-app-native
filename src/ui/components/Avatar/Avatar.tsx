@@ -13,7 +13,7 @@ const SHADOW = getShadow({
   shadowOpacity: 0.3,
 })
 
-interface AvatarProps {
+export type AvatarProps = {
   size?: number
   backgroundColor?: string
   borderColor?: string
