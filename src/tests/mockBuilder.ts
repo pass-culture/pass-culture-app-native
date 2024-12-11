@@ -1,9 +1,17 @@
 import { SearchResponse } from '@algolia/client-search'
 import { mergeWith } from 'lodash'
 
-import { OfferResponseV2, OfferStockResponse, OfferVenueResponse, SubcategoryIdEnum } from 'api/gen'
+import {
+  BookingOfferResponse,
+  BookingVenueResponse,
+  OfferResponseV2,
+  OfferStockResponse,
+  OfferVenueResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { createDateBuilder } from 'features/offer/components/MoviesScreeningCalendar/createBuilder'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
+import { mockedBookingOfferResponse } from 'fixtures/booking'
 import { Offer } from 'shared/offer/types'
 
 type PartialDeepWithArrays<T> =
@@ -14,7 +22,7 @@ type PartialDeepWithArrays<T> =
       : T
 
 const createMockBuilder = <T>(defaultMock: T) => {
-  return (param: PartialDeepWithArrays<T>) => {
+  return (param: PartialDeepWithArrays<T> = {} as PartialDeepWithArrays<T>) => {
     const mergedObj = mergeWith({}, defaultMock, param, customizer)
     return mergedObj as T
   }
@@ -72,6 +80,8 @@ export const mockBuilder = {
   offerVenueResponse: createMockBuilder<OfferVenueResponse>(defaultOfferResponse.venue),
   offerStockResponse: createMockBuilder<OfferStockResponse>(defaultStock),
   searchResponseOffer: createMockBuilder<SearchResponse<Offer>>(searchResponseOffer),
+  bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),
+  bookingOfferResponse: createMockBuilder<BookingOfferResponse>(mockedBookingOfferResponse),
 }
 
 export const dateBuilder = createDateBuilder()
