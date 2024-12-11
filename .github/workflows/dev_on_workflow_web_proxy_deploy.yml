@@ -21,6 +21,8 @@ jobs:
   web_proxy_deploy:
     runs-on: ubuntu-22.04
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v2'
