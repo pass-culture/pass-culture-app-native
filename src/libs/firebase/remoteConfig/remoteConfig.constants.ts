@@ -23,6 +23,7 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   sameAuthorPlaylist: '',
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
+  displayAchievements: false,
   displayInAppFeedback: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',

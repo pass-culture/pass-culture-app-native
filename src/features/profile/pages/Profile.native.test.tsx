@@ -113,6 +113,7 @@ describe('Profile component', () => {
     useRemoteConfigContextSpy.mockReturnValue({
       ...DEFAULT_REMOTE_CONFIG,
       displayInAppFeedback: true,
+      displayAchievements: true,
     })
   })
 
