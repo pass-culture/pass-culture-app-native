@@ -67,7 +67,7 @@
     "start:web:testing": "yarn start:web --mode=testing",
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' TZ=UTC start-storybook --static-dir ./public -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
-    "test:deadcode": "yarn ts-prune",
+    "test:deadcode": "yarn --silent ts-prune",
     "test:deadcode:count": "yarn test:deadcode | wc -l",
     "test:deadcode:update": "yarn test:deadcode > scripts/dead_code_snapshot.txt",
     "test:e2e:android:staging": "./scripts/run_e2e_tests.sh test android staging",
@@ -336,7 +336,7 @@
     "react-native-web-linear-gradient": "^1.1.2",
     "react-query-native-devtools": "^3.0.1",
     "react-test-renderer": "18.2.0",
-    "reassure": "1.1.0",
+    "reassure": "^0.7.2",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
@@ -379,6 +379,5 @@
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
-  },
-  "packageManager": "yarn@3.6.4"
+  }
 }

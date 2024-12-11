@@ -8,14 +8,12 @@ jobs:
   test-performance:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --force
       - name: Run performance testing script
         run: yarn test:perf
       - name: Run Danger.js to publish scores in PR

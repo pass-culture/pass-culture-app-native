@@ -20,8 +20,6 @@ jobs:
   yarn_lint:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -43,8 +41,6 @@ jobs:
   yarn_typescript:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
