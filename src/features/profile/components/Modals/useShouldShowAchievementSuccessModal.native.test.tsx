@@ -56,6 +56,17 @@ describe('useShouldShowAchievementSuccessModal', () => {
       expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
     })
 
+    it('should return false if the achievements are undefined', () => {
+      mockAuthContextWithUser({
+        ...beneficiaryUser,
+        achievements: undefined as unknown as AchievementResponse[],
+      })
+
+      const { result } = renderHook(useShouldShowAchievementSuccessModal)
+
+      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+    })
+
     it('should return an empty array if there are no achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,

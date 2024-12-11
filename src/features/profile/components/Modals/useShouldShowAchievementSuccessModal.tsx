@@ -9,7 +9,7 @@ export const useShouldShowAchievementSuccessModal = () => {
 
   let shouldShowAchievementSuccessModal = false
   let achievementsToShow: AchievementEnum[] = []
-  if (!areAchievementsEnabled || (user?.achievements && user?.achievements.length === 0))
+  if (!areAchievementsEnabled || !user?.achievements || user?.achievements.length === 0)
     return { shouldShowAchievementSuccessModal, achievementsToShow }
 
   const isThereAtLeastOneUnseenAchievement = user?.achievements.some(
