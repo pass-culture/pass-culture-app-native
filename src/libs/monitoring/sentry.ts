@@ -5,7 +5,6 @@ export {
   init,
   setUser,
   setExtras,
-  startTransaction,
   withProfiler,
   wrap,
   getCurrentHub,

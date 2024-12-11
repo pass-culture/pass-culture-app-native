@@ -9,7 +9,6 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
-import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
@@ -19,12 +18,10 @@ import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/us
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchUser } from 'libs/react-native-batch'
-import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -35,13 +32,6 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
-  const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
-  const startPerfHomeCreationOnce = useFunctionOnce(() =>
-    startTransaction(PERFORMANCE_HOME_CREATION)
-  )
-  startPerfHomeCreationOnce()
-  startPerfHomeLoadingOnce()
-
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
