@@ -24,7 +24,7 @@ export const useVenueOffersArtists = (
             {
               id: Number(offer.objectID),
               name: offer.offer.artist,
-              imageUrl: offer.offer.thumbUrl,
+              image: offer.offer.thumbUrl,
             },
           ]
         : []

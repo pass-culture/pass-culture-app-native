@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'
@@ -62,7 +64,7 @@ export type VenueOffers = {
 export type Artist = {
   id: number
   name: string
-  imageUrl?: string
+  image?: ReactNode
 }
 
 export type VenueOffersArtists = { artists: Artist[] }
