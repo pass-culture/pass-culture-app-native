@@ -50,11 +50,11 @@ export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) =>
           loop={false}
           resizeMode="cover"
         />
-        <TypoDS.Title3>
+        <StyledTitle>
           {severalAchievementsUnlocked
             ? 'Tu as débloqué plusieurs succès\u00a0!'
             : 'Tu as débloqué un succès\u00a0!'}
-        </TypoDS.Title3>
+        </StyledTitle>
         <Spacer.Column numberOfSpaces={6} />
 
         <InternalTouchableLink
@@ -83,6 +83,10 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
+
+const StyledTitle = styled(TypoDS.Title3)({
+  textAlign: 'center',
+})
 
 const AchievementView = styled(LottieView)({
   height: getSpacing(60),
