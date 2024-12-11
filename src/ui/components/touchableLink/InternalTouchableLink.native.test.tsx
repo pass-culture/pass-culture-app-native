@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 
 import { navigate, push } from '__mocks__/@react-navigation/native'
 import { navigateFromRef, pushFromRef } from 'features/navigation/navigationRef'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 
 jest.mock('features/navigation/navigationRef')
@@ -20,6 +20,16 @@ const linkText = 'linkText'
 const InternalTouchableLinkContent = () => <Text>{linkText}</Text>
 
 describe('<InternalTouchableLink />', () => {
+  const user = userEvent.setup()
+
+  beforeAll(() => {
+    jest.useFakeTimers()
+  })
+
+  afterAll(() => {
+    jest.useRealTimers()
+  })
+
   it('should navigate to right screen with expected params (nominal case)', async () => {
     render(
       <InternalTouchableLink navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}>
@@ -27,11 +37,9 @@ describe('<InternalTouchableLink />', () => {
       </InternalTouchableLink>
     )
 
-    fireEvent.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home', params: undefined })
-    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home', params: undefined })
   })
 
   it('should push right screen with expected params if withPush={true}', async () => {
@@ -42,13 +50,29 @@ describe('<InternalTouchableLink />', () => {
       </InternalTouchableLink>
     )
 
-    fireEvent.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
 
-    await waitFor(() => {
-      expect(push).toHaveBeenCalledWith('TabNavigator', {
-        screen: 'Home',
-        params: undefined,
-      })
+    expect(push).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'Home',
+      params: undefined,
+    })
+  })
+
+  it('should push screen only once in case of press spamming when withPush={true}', async () => {
+    render(
+      <InternalTouchableLink
+        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' }, withPush: true }}>
+        <InternalTouchableLinkContent />
+      </InternalTouchableLink>
+    )
+
+    await user.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
+
+    expect(push).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      screen: 'Home',
+      params: undefined,
     })
   })
 
@@ -60,13 +84,11 @@ describe('<InternalTouchableLink />', () => {
       </InternalTouchableLink>
     )
 
-    fireEvent.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
 
-    await waitFor(() => {
-      expect(navigateFromRef).toHaveBeenCalledWith('TabNavigator', {
-        screen: 'Home',
-        params: undefined,
-      })
+    expect(navigateFromRef).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'Home',
+      params: undefined,
     })
   })
 
@@ -83,13 +105,11 @@ describe('<InternalTouchableLink />', () => {
       </InternalTouchableLink>
     )
 
-    fireEvent.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
 
-    await waitFor(() => {
-      expect(pushFromRef).toHaveBeenCalledWith('TabNavigator', {
-        screen: 'Home',
-        params: undefined,
-      })
+    expect(pushFromRef).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'Home',
+      params: undefined,
     })
   })
 
@@ -107,13 +127,11 @@ describe('<InternalTouchableLink />', () => {
       </InternalTouchableLink>
     )
 
-    fireEvent.press(screen.getByText(linkText))
+    await user.press(screen.getByText(linkText))
 
-    await waitFor(() => {
-      expect(navigate).not.toHaveBeenCalledWith('TabNavigator', {
-        screen: 'Home',
-        params: undefined,
-      })
+    expect(navigate).not.toHaveBeenCalledWith('TabNavigator', {
+      screen: 'Home',
+      params: undefined,
     })
   })
 })
