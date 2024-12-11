@@ -33,7 +33,7 @@
   },
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "react-native run-android",
+    "android": "yarn preandroid && react-native run-android",
     "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
