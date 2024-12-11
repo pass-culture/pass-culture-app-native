@@ -2,14 +2,10 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location/types'
-import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import * as fetchOffersByArtist from '../../api/fetchOffersByArtist/fetchOffersByArtist'
-
-const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
-mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -31,7 +27,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 describe('useArtistResults', () => {
   it('should fetch same artist playlist when user has Internet connection', async () => {
-    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true, isInternetReachable: true })
     renderHook(
       () =>
         useArtistResults({
@@ -49,24 +44,6 @@ describe('useArtistResults', () => {
         searchGroupName: SearchGroupNameEnumv2.LIVRES,
         userLocation: mockUserLocation,
       })
-    })
-  })
-
-  it('should not fetch artist playlist and top offers when user has not Internet connection', async () => {
-    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
-    renderHook(
-      () =>
-        useArtistResults({
-          artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
     })
   })
 

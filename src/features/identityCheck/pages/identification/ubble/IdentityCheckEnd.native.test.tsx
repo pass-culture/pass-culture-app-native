@@ -13,7 +13,6 @@ import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('libs/jwt/jwt')
-jest.mock('libs/network/NetInfoWrapper')
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

@@ -33,7 +33,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<Favorites/>', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
     mockServer.getApi<PaginatedFavoritesResponse>(

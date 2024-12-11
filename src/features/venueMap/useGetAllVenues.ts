@@ -6,7 +6,6 @@ import { useVenuesActions } from 'features/venueMap/store/venuesStore'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { LocationMode } from 'libs/location/types'
 import { Region } from 'libs/maps/maps'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type Props = {
@@ -16,11 +15,7 @@ type Props = {
 }
 
 export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
-  const netInfo = useNetInfoContext()
   const { setVenues } = useVenuesActions()
-
-  const shouldFetchVenues =
-    !!netInfo.isConnected && !!netInfo.isInternetReachable && !initialVenues?.length
 
   const { data: fetchedVenues } = useQuery<Venue[]>(
     [QueryKeys.VENUES, region],
@@ -38,7 +33,7 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
         },
       }),
     {
-      enabled: shouldFetchVenues,
+      enabled: !initialVenues?.length,
     }
   )
 

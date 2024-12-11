@@ -19,7 +19,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useAddresses } from 'libs/place/useAddresses'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -47,7 +46,6 @@ export const SetAddress = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
   const addressInputErrorId = uuidv4()
-  const netInfo = useNetInfoContext()
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
@@ -59,11 +57,7 @@ export const SetAddress = () => {
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',
-    enabled:
-      !!netInfo.isConnected &&
-      !!netInfo.isInternetReachable &&
-      idCheckAddressAutocompletion &&
-      debouncedQuery.length > 0,
+    enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
 

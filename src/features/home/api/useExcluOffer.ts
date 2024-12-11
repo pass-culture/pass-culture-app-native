@@ -1,12 +1,9 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useExcluOffer = (id: number) => {
-  const netInfo = useNetInfoContext()
-
   return useQuery(
     [QueryKeys.OFFER, id],
     async () => {
@@ -17,6 +14,6 @@ export const useExcluOffer = (id: number) => {
         return null
       }
     },
-    { enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && typeof id === 'number' }
+    { enabled: typeof id === 'number' }
   )
 }

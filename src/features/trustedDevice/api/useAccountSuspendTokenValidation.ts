@@ -2,7 +2,6 @@ import { UseQueryResult, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export enum AccountSecurityStatus {
@@ -14,8 +13,6 @@ export enum AccountSecurityStatus {
 export const useAccountSuspendTokenValidation = (
   token: string
 ): UseQueryResult<AccountSecurityStatus, ApiError> => {
-  const netInfo = useNetInfoContext()
-
   return useQuery(
     [QueryKeys.ACCOUNT_SUSPEND_TOKEN_VALIDATION, token],
     async () => {
@@ -35,7 +32,6 @@ export const useAccountSuspendTokenValidation = (
     {
       useErrorBoundary: true,
       retry: false,
-      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     }
   )
 }

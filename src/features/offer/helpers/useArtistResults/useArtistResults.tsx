@@ -9,7 +9,6 @@ import {
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -19,7 +18,6 @@ type UseArtistResultsProps = {
 }
 
 export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsProps) => {
-  const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
@@ -34,7 +32,6 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
       return { playlistHits, topOffersHits }
     },
     {
-      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
       initialData: { playlistHits: [], topOffersHits: [] },
     }
   )

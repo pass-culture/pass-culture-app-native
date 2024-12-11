@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { Venue } from 'features/venue/types'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_VENUES = 5 * 60 * 1000
@@ -16,7 +15,7 @@ export const useVenues = (query: string) => {
     aroundMeRadius,
     aroundPlaceRadius,
   }
-  const netInfo = useNetInfoContext()
+
   return useQuery<Venue[]>(
     [QueryKeys.VENUES, query, buildLocationParameterParams],
     () =>
@@ -26,7 +25,7 @@ export const useVenues = (query: string) => {
       }),
     {
       staleTime: STALE_TIME_VENUES,
-      enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && query.length > 0,
+      enabled: query.length > 0,
     }
   )
 }

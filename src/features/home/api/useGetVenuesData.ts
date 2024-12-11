@@ -5,13 +5,10 @@ import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesData
 import { AppV2VenuesModule, VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useGetVenuesData = (modules: (VenuesModule | AppV2VenuesModule)[]) => {
   const { userLocation, selectedLocationMode } = useLocation()
-
-  const netInfo = useNetInfoContext()
 
   const venuesParameters: VenuesModuleParameters[] = []
   const venuesModuleIds: string[] = []
@@ -37,7 +34,7 @@ export const useGetVenuesData = (modules: (VenuesModule | AppV2VenuesModule)[]) 
   const venuesResultList = useQuery({
     queryKey: [QueryKeys.HOME_VENUES_MODULE, venuesModuleIds],
     queryFn: venuesQuery,
-    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && venuesParameters.length > 0,
+    enabled: venuesParameters.length > 0,
   })
 
   useEffect(() => {

@@ -30,7 +30,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<Favorites/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
+      mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     })
 
     it('should not have basic accessibility issues when user is logged in', async () => {

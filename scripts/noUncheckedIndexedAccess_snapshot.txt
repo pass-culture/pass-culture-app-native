@@ -27,7 +27,7 @@
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
 ./src/features/home/components/modules/video/VideoModuleMobile.tsx:70
-./src/features/identityCheck/api/useProfileInfo.ts:26
+./src/features/identityCheck/api/useProfileInfo.ts:21
 ./src/features/identityCheck/pages/helpers/parseUrlParams.ts:8
 ./src/features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep.ts:41
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:18
@@ -88,7 +88,7 @@
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
 ./src/libs/place/fetchPlaces.ts:8
-./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
+./src/libs/react-query/tests/usePersistQuery.native.test.tsx:113
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6
 ./src/libs/subcategories/__mocks__/useSubcategory.ts:7
 ./src/libs/utm/storeUtmParams.test.ts:55

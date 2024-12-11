@@ -9,7 +9,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
-jest.mock('libs/network/NetInfoWrapper')
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {

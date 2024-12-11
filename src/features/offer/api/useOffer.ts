@@ -7,7 +7,6 @@ import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 async function getOfferById(offerId: number, logType: LogTypeEnum) {
@@ -33,12 +32,9 @@ async function getOfferById(offerId: number, logType: LogTypeEnum) {
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) => {
-  const netInfo = useNetInfoContext()
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<OfferResponseV2 | undefined>(
-    [QueryKeys.OFFER, offerId],
-    () => (offerId ? getOfferById(offerId, logType) : undefined),
-    { enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable }
+  return useQuery<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], () =>
+    offerId ? getOfferById(offerId, logType) : undefined
   )
 }

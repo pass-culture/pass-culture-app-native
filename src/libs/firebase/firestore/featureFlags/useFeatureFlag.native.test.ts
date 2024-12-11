@@ -16,7 +16,6 @@ const buildVersion = getAppBuildVersion()
 
 jest.mock('libs/monitoring')
 jest.mock('@react-native-firebase/firestore')
-jest.mock('libs/network/NetInfoWrapper')
 
 const { collection } = firestore()
 

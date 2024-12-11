@@ -2,7 +2,6 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { RehydrationProfile } from 'features/identityCheck/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 async function getProfileInfo() {
@@ -16,11 +15,7 @@ async function getProfileInfo() {
 export const useProfileInfo = (): {
   profileInfo: RehydrationProfile | null
 } => {
-  const netInfo = useNetInfoContext()
-
-  const { data } = useQuery([QueryKeys.SUBSCRIPTION_PROFILE_INFO], () => getProfileInfo(), {
-    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
-  })
+  const { data } = useQuery([QueryKeys.SUBSCRIPTION_PROFILE_INFO], () => getProfileInfo())
 
   if (data) {
     // @ts-expect-error: because of noUncheckedIndexedAccess

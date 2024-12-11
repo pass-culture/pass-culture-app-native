@@ -13,7 +13,6 @@ import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -24,7 +23,6 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfoContext()
 
   const buildPlaylistOfferParams = useCallback(
     (offerParams: SearchQueryParameters) => ({
@@ -55,7 +53,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
         indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
-      enabled: !!(netInfo.isConnected && venue),
+      enabled: !!venue,
       select: ({ hits, nbHits }) => {
         const filteredHits = hits.filter(filterOfferHit).map(transformHits)
 

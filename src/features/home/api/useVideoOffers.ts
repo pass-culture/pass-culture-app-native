@@ -10,7 +10,6 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -40,7 +39,6 @@ export const useVideoOffers = (
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { userLocation } = useLocation()
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
 
   const adaptedPlaylistParameters = offersModuleParameters
@@ -87,7 +85,6 @@ export const useVideoOffers = (
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
     queryFn: queryByQueryMode[queryMode],
-    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
   })
 
   useEffect(() => {
