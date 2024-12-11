@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es2022","dom", "dom.iterable", "esnext"],
+    "lib": ["es2022", "dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -25,7 +25,7 @@
     "sourceMap": true,
     "removeComments": true,
     "downlevelIteration": true,
-    "types": ["@types/styled-components-react-native"]
+    "types": ["@types/react-native", "@types/styled-components-react-native"]
   },
   "exclude": [
     "build/**",
