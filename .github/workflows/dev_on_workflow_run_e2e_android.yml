@@ -18,6 +18,8 @@ jobs:
     outputs:
       app: android/app/build/outputs/apk/debug
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
