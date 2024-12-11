@@ -43,7 +43,6 @@
   [Batch setAssociatedDomains:@[AssociatedDomain]];
   [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
   [RNBatch start];
-  [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
 
   // react-native-lottie-splash-screen

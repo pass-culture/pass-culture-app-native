@@ -5,7 +5,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
@@ -49,7 +49,10 @@ describe('ExpiredOrLostID', () => {
     render(<ExpiredOrLostID />)
 
     await waitFor(() =>
-      expect(BatchUser.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewExpiredOrLostId)
+      expect(BatchProfile.trackEvent).toHaveBeenNthCalledWith(
+        1,
+        BatchEvent.screenViewExpiredOrLostId
+      )
     )
   })
 })

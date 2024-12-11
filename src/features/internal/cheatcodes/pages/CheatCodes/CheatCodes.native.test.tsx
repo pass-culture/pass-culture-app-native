@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchProfile, BatchUser } from '__mocks__/@batch.com/react-native-plugin'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -11,7 +11,7 @@ const installationID = 'installationID'
 
 beforeAll(() => {
   BatchUser.getInstallationID.mockImplementation(() => Promise.resolve(installationID))
-  BatchUser.editor.mockImplementation(() => ({
+  BatchProfile.identify.mockImplementation(() => ({
     setIdentifier: () => ({
       save: jest.fn(),
     }),

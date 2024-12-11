@@ -1,4 +1,4 @@
-import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { AccountState } from 'api/gen'
 import * as RefreshAccessTokenAPI from 'api/refreshAccessToken'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
@@ -90,7 +90,7 @@ describe('useLoginRoutine', () => {
     it('should set batch identifier', async () => {
       await renderUseLoginRoutine()
 
-      expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
+      expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
     })
 
     it('should log set user id analytics', async () => {

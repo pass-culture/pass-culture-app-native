@@ -9,7 +9,7 @@ import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
@@ -37,7 +37,7 @@ export function BeneficiaryAccountCreated() {
     : 'Tu as deux ans pour profiter de ton budget.'
 
   const onBeforeNavigate = useCallback(() => {
-    BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
+    BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
     actions.setActivationDate(new Date())
   }, [showShareAppModal, user?.needsToFillCulturalSurvey, actions])

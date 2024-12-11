@@ -39,7 +39,7 @@ import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
@@ -133,11 +133,14 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   )
 
   const trackEventHasSeenAllModules = useFunctionOnce(() => {
-    const data = new BatchEventData()
-    data.put('home_id', homeId)
-    data.put('home_type', thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome')
-    thematicHeader && data.put('home_name', thematicHeader.title)
-    BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage, undefined, data)
+    const attributes = new BatchEventAttributes()
+    attributes.put('home_id', homeId)
+    attributes.put(
+      'home_type',
+      thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
+    )
+    thematicHeader && attributes.put('home_name', thematicHeader.title)
+    BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
   })
 
   const showSkeleton = useShowSkeleton()
@@ -197,13 +200,16 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
 
   const triggerBatchAttrakdiffModal = async (screenSeenCount: ScreenSeenCount) => {
-    const data = new BatchEventData()
-    data.put('screen_seen_count', screenSeenCount)
-    data.put('home_id', homeId)
-    data.put('home_type', thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome')
-    data.put('home_name', thematicHeader ? thematicHeader.title : 'mainHome')
+    const attributes = new BatchEventAttributes()
+    attributes.put('screen_seen_count', screenSeenCount)
+    attributes.put('home_id', homeId)
+    attributes.put(
+      'home_type',
+      thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
+    )
+    attributes.put('home_name', thematicHeader ? thematicHeader.title : 'mainHome')
 
-    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent, undefined, data)
+    BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
   const { checkTrigger } = useScreenSeenCount({
