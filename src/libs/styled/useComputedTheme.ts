@@ -5,15 +5,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
-import { getSpacing } from 'ui/theme'
-
-const OFFER_TILE_MAX_LINES =
-  1 + // category
-  2 + // title
-  1 + // date
-  1 // price
-
-const OFFER_TILE_GAP = getSpacing(1)
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
@@ -32,13 +23,6 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
-  const maxCaptionHeightOfferTile =
-    parseFloat(theme.designSystem.typography.bodyAccentXs.lineHeight) * OFFER_TILE_MAX_LINES +
-    OFFER_TILE_GAP
-
-  const offerMaxCaptionHeight = enableNewOfferTile
-    ? maxCaptionHeightOfferTile
-    : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
     () => ({
@@ -47,10 +31,6 @@ export function useComputedTheme(theme: BaseAppThemeType) {
         ...theme.tabBar,
         showLabels,
         height: tabBarHeight,
-      },
-      tiles: {
-        ...theme.tiles,
-        maxCaptionHeight: { ...theme.tiles.maxCaptionHeight, offer: offerMaxCaptionHeight },
       },
       isMobileViewport,
       isTabletViewport,
