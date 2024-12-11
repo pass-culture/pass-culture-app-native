@@ -10,6 +10,7 @@ import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHea
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { getAge } from 'shared/user/getAge'
 import { Spacer, getSpacing } from 'ui/theme'
 
@@ -22,7 +23,9 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { isLoggedIn } = useAuthContext()
 
   const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
-  const shouldShowAchievementsBanner = enableAchievements && user?.isBeneficiary
+  const { displayAchievements } = useRemoteConfigContext()
+  const shouldShowAchievementsBanner =
+    enableAchievements && displayAchievements && user?.isBeneficiary
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
