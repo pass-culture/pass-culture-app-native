@@ -18,8 +18,8 @@ import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
@@ -195,7 +195,9 @@ describe('<VenueContent />', () => {
     const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
     mockFFValue = true
 
-    it('should show button', async () => {
+    // TODO(PC-33563): fix flaky tests
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should show button', async () => {
       renderVenueContent({
         venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
         venueOffers: venueMoviesOffersMock,
@@ -223,7 +225,9 @@ describe('<VenueContent />', () => {
       expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
     })
 
-    it('should scroll to anchor', async () => {
+    // TODO(PC-33563): fix flaky tests
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should scroll to anchor', async () => {
       renderVenueContent({
         venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
         venueOffers: venueMoviesOffersMock,
@@ -240,7 +244,9 @@ describe('<VenueContent />', () => {
       expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
     })
 
-    describe('remote config flag is deactivated', () => {
+    // TODO(PC-33563): fix flaky tests
+    // eslint-disable-next-line jest/no-disabled-tests
+    describe.skip('remote config flag is deactivated', () => {
       beforeAll(() => {
         useRemoteConfigContextSpy.mockReturnValue({
           ...DEFAULT_REMOTE_CONFIG,

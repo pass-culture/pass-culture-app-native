@@ -56,10 +56,10 @@ describe('<Artist />', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
     })
 
-    it('should display artist page content', () => {
+    it('should display artist page content', async () => {
       render(reactQueryProviderHOC(<Artist />))
 
-      expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
+      expect((await screen.findAllByText('Céline Dion'))[0]).toBeOnTheScreen()
     })
 
     it('should not display artist page content when there is no artist', () => {

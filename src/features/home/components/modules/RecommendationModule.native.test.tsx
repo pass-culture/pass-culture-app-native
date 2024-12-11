@@ -9,7 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 
@@ -50,9 +50,11 @@ describe('RecommendationModule', () => {
     expect(await screen.findByTestId('playlist-card-offer-v2')).toBeOnTheScreen()
   })
 
-  it('should NOT display V2 playlist when FF deactivated', () => {
+  it('should NOT display V2 playlist when FF deactivated', async () => {
     activateFeatureFlags()
     renderRecommendationModule()
+
+    await act(async () => {})
 
     expect(screen.queryByTestId('playlist-card-offer-v2')).not.toBeTruthy()
   })
