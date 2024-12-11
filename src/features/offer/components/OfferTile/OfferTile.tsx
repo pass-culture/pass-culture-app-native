@@ -4,6 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -35,6 +37,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     ...offer
   } = props
 
+  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const theme = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
@@ -56,7 +59,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     }
   }, [offer, prePopulateOffer])
 
-  const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
+  const MAX_OFFER_CAPTION_HEIGHT = enableNewOfferTile
+    ? theme.tiles.maxCaptionHeight.newOfferTile
+    : theme.tiles.maxCaptionHeight.offer
 
   function handlePressOffer() {
     triggerConsultOfferLog({
