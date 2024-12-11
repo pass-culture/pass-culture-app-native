@@ -74,10 +74,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     )
 
   return (
-    <CarouselContainer
-      style={[style, isSticky ? imageStyle : undefined]}
-      headerHeight={headerHeight}
-      isSticky={isSticky}>
+    <CarouselContainer style={style} headerHeight={headerHeight} isSticky={isSticky}>
       <Carousel
         ref={carouselRef}
         testID="offerImageContainerCarousel"
