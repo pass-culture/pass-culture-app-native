@@ -17,7 +17,7 @@ const avatarsData = [
 
 const GAP = getSpacing(2)
 const PLAYLIST_ITEM_HEIGHT =
-  AVATAR_LARGE + Number(theme.designSystem.typography.title4.fontSize) + GAP
+  AVATAR_LARGE + parseFloat(theme.designSystem.typography.title4.fontSize) + GAP
 const PLAYLIST_ITEM_WIDTH = AVATAR_LARGE
 
 export const AvatarsList = () => {
