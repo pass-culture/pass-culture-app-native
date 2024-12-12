@@ -39,8 +39,8 @@
   }
 
   // Setup Batch
-  NSString* AssociatedDomain = [ReactNativeConfig envFor:@"WEBAPP_V2_DOMAIN"];
-  [Batch setAssociatedDomains:@[AssociatedDomain]];
+  // NSString* AssociatedDomain = [ReactNativeConfig envFor:@"WEBAPP_V2_DOMAIN"];
+  // [Batch setAssociatedDomains:@[AssociatedDomain]];
   [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
   [RNBatch start];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;

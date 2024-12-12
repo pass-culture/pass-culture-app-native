@@ -824,6 +824,7 @@ PODS:
 
 DEPENDENCIES:
   - "amplitude-react-native (from `../node_modules/@amplitude/analytics-react-native`)"
+  - Batch (~> 2.0.0)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
@@ -1290,6 +1291,6 @@ SPEC CHECKSUMS:
   Yoga: 87e59f6d458e5061d2421086c5de994b3f7cd151
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: fb9aa3b1d9f56f5501791881165bf1360aed4e1e
+PODFILE CHECKSUM: b3da96260bcfae89a7740f4bbf1e532a3f7a71a6
 
 COCOAPODS: 1.12.1
