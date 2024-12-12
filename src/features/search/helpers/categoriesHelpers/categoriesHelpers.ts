@@ -525,7 +525,7 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
   const nativeCategories = category?.children
   const nativeCategory =
     offerNativeCategories?.[0] && nativeCategories
-      ? nativeCategories[offerNativeCategories[0] as keyof typeof nativeCategories]
+      ? nativeCategories[offerNativeCategories[0]]
       : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
