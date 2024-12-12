@@ -187,12 +187,11 @@ export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
 }
 
 export function getCategoriesModalTitle(
-  data: SubcategoriesResponseModelv2 | undefined,
+  data: SubcategoriesResponseModelv2,
   currentView: CategoriesModalView,
   categoryId: SearchGroupNameEnumv2,
   nativeCategoryId: NativeCategoryEnum | null
 ) {
-  if (!data) return 'Catégories'
   switch (currentView) {
     case CategoriesModalView.CATEGORIES:
       return 'Catégories'
@@ -536,17 +535,9 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
 }
 
 export function getDefaultFormValues(
-  tree: MappingTree | undefined,
+  tree: MappingTree,
   searchState: SearchState
 ): CategoriesModalFormProps {
-  if (!tree)
-    return {
-      category: SearchGroupNameEnumv2.NONE,
-      nativeCategory: null,
-      genreType: null,
-      currentView: CategoriesModalView.CATEGORIES,
-    }
-
   return {
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
@@ -583,10 +574,6 @@ export const handleCategoriesSearchPress = (
   form: CategoriesModalFormProps,
   data: SubcategoriesResponseModelv2
 ) => {
-  if (!data) {
-    return
-  }
-
   const payload = buildSearchPayloadValues(data, form)
   if (!payload) return
 
