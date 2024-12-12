@@ -5,7 +5,6 @@ import { useQuery } from 'react-query'
 import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position, useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { Offer } from 'shared/offer/types'
 
 type ThematicSearchPlaylists = {
@@ -21,15 +20,13 @@ export function useThematicSearchPlaylists({
 }: ThematicSearchPlaylists): ThematicSearchPlaylistListProps {
   const transformHits = useTransformOfferHits()
 
-  const netInfo = useNetInfoContext()
-
   const { userLocation } = useLocation()
   const { data, refetch } = useQuery({
     queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)
     },
-    enabled: !!netInfo.isConnected,
+
     staleTime: 5 * 60 * 1000,
   })
 

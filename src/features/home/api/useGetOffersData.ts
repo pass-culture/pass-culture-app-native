@@ -2,14 +2,13 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
-import { OffersModule, OfferModuleParamsInfo, PlaylistOffersParams } from 'features/home/types'
+import { OfferModuleParamsInfo, OffersModule, PlaylistOffersParams } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const isPlaylistOffersParameters = (parameter: unknown): parameter is PlaylistOffersParams =>
@@ -25,7 +24,6 @@ export const useGetOffersData = (modules: OffersModule[]) => {
 
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfoContext()
 
   const offersModuleIds: string[] = []
 
@@ -57,7 +55,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersResultList = useQuery({
     queryKey: [QueryKeys.HOME_MODULE, offersModuleIds],
     queryFn: offersQuery,
-    enabled: !!netInfo.isConnected && offersAdaptedPlaylistParametersWithoutUndefined.length > 0,
+    enabled: offersAdaptedPlaylistParametersWithoutUndefined.length > 0,
   })
 
   useEffect(() => {

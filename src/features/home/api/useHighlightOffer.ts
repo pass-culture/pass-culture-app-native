@@ -7,7 +7,6 @@ import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer, OfferLocation } from 'shared/offer/types'
@@ -42,7 +41,7 @@ export const useHighlightOffer = ({
   aroundRadius,
 }: UseHightlightOfferParams) => {
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfoContext()
+
   const transformOfferHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
@@ -90,7 +89,6 @@ export const useHighlightOffer = ({
   const { data } = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
     queryFn: queryByQueryMode[queryMode],
-    enabled: !!netInfo.isConnected,
   })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]

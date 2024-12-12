@@ -11,7 +11,6 @@ import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchRespons
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit, OfferModuleQuery } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -52,7 +51,6 @@ export const useVideoCarouselData = (
   moduleId: string
 ): EnrichedVideoCarouselItem[] => {
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfoContext()
   const transformOfferHits = useTransformOfferHits()
   const { userLocation, selectedLocationMode } = useLocation()
 
@@ -83,7 +81,7 @@ export const useVideoCarouselData = (
   const offersResultList = useQuery({
     queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, moduleId],
     queryFn: offersQuery,
-    enabled: !!netInfo.isConnected && queriesWithoutUndefined.length > 0,
+    enabled: queriesWithoutUndefined.length > 0,
   })
 
   useEffect(() => {

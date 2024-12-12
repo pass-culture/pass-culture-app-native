@@ -10,7 +10,9 @@ function useActivityTypesResponse() {
   return useQuery<ActivityTypesResponse>(
     [QueryKeys.ACTIVITY_TYPES],
     () => api.getNativeV1SubscriptionActivityTypes(),
-    { staleTime: STALE_TIME_ACTIVITY_TYPES }
+    {
+      staleTime: STALE_TIME_ACTIVITY_TYPES,
+    }
   )
 }
 

@@ -88,7 +88,7 @@
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
 ./src/libs/place/fetchPlaces.ts:8
-./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
+./src/libs/react-query/tests/usePersistQuery.native.test.tsx:113
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6
 ./src/libs/subcategories/__mocks__/useSubcategory.ts:7
 ./src/libs/utm/storeUtmParams.test.ts:55

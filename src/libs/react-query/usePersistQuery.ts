@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useMemo, useState, useEffect } from 'react'
-import { useQuery, UseQueryOptions, UseQueryResult, QueryKey } from 'react-query'
+import { useEffect, useMemo, useState } from 'react'
+import { QueryKey, UseQueryOptions, UseQueryResult, useQuery } from 'react-query'
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 
 function useGetPersistData<TData, TQueryKey>(queryKey: TQueryKey) {
   const [persistData, setPersistData] = useState<TData | undefined>()
@@ -54,15 +53,11 @@ export function usePersistQuery<
     'queryKey' | 'initialData'
   >
 ): UsePersistQueryResult<TData, TError> {
-  const netInfo = useNetInfoContext()
   const persistData = useGetPersistData(queryKey)
 
   const query = useQuery(queryKey, queryFn, {
     ...options,
-    enabled:
-      options?.enabled === undefined
-        ? !!netInfo.isConnected
-        : options.enabled && !!netInfo.isConnected,
+    enabled: options?.enabled,
   })
 
   const persistQuery = useMemo<UsePersistQueryResult<TData, TError>>(

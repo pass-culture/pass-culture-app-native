@@ -16,6 +16,7 @@ import { EmailResendModal } from './EmailResendModal'
 jest.useFakeTimers()
 
 jest.mock('libs/monitoring')
+
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')

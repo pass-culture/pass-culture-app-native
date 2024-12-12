@@ -59,7 +59,7 @@ describe('<Favorites/>', () => {
     })
 
     it('should not have basic accessibility issues when user is logged in but offline', async () => {
-      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
       const { container } = renderFavorites()
 
       const results = await checkAccessibilityFor(container)

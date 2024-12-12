@@ -2,13 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring'
-import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
-
-const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 type TestData = {
   id: number
@@ -24,8 +21,6 @@ const queryKey = 'TestData'
 const queryFn: QueryFunction<TestData[]> = async () => onlineData
 const additionalData: TestData[] = [{ id: 3, description: 'sierra' }]
 const onlineData: TestData[] = [...offlineData, ...additionalData]
-
-mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
 describe('usePersistQuery', () => {
   beforeEach(async () => AsyncStorage.removeItem(queryKey))

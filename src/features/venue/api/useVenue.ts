@@ -5,7 +5,6 @@ import { VenueResponse } from 'api/gen'
 import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum, VenueNotFoundError } from 'libs/monitoring/errors'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const getVenueById = async (venueId: number | null, logType: LogTypeEnum) => {
@@ -21,14 +20,13 @@ const getVenueById = async (venueId: number | null, logType: LogTypeEnum) => {
 }
 
 export const useVenue = (venueId: number | null) => {
-  const netInfo = useNetInfoContext()
   const { logType } = useLogTypeFromRemoteConfig()
 
   return useQuery<VenueResponse | undefined>(
     [QueryKeys.VENUE, venueId],
     () => getVenueById(venueId, logType),
     {
-      enabled: !!netInfo.isConnected && typeof venueId === 'number',
+      enabled: typeof venueId === 'number',
     }
   )
 }

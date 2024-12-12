@@ -2,6 +2,7 @@
 import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
 import React, { createContext, memo, useContext, useEffect } from 'react'
 import { Platform } from 'react-native'
+import { onlineManager } from 'react-query'
 
 import { analytics } from 'libs/analytics'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -16,14 +17,16 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
   const { showInfoSnackBar } = useSnackBarContext()
 
   useEffect(() => {
-    if (networkInfo.isConnected === false) {
+    const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
+    onlineManager.setOnline(isConnected)
+    if (isConnected === false) {
       showInfoSnackBar({
         message: 'Aucune connexion internet. Réessaie plus tard',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [networkInfo.isConnected])
+  }, [networkInfo.isConnected, networkInfo.isInternetReachable])
 
   useEffect(() => {
     const connectionType = networkInfo.type

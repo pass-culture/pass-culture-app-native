@@ -9,8 +9,6 @@ import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),
 }))

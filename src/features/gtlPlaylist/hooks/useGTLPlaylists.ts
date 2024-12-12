@@ -8,7 +8,6 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
@@ -22,7 +21,6 @@ export function useGTLPlaylists({
   venue,
   searchIndex,
 }: UseGTLPlaylistsProps) {
-  const netInfo = useNetInfoContext()
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -70,7 +68,6 @@ export function useGTLPlaylists({
         }
       })
     },
-    enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000, // 5 minutes, as the GTL playlists are not often updated
   })
 

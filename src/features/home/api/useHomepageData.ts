@@ -25,6 +25,7 @@ const getHomepageNatifContent = async (logType: LogTypeEnum) => {
 }
 const useGetHomepageList = () => {
   const { logType } = useLogTypeFromRemoteConfig()
+
   const { data: homepages } = useQuery<Homepage[]>(
     [QueryKeys.HOMEPAGE_MODULES],
     () => getHomepageNatifContent(logType),

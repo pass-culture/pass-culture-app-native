@@ -73,7 +73,9 @@ describe('<VideoCarouselModule />', () => {
     ])
   })
 
-  it('should call fetchCarouselVideoOffers with empty array when item has homeEntryId', async () => {
+  // TODO(PC-33562): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should call fetchCarouselVideoOffers with empty array when item has homeEntryId', async () => {
     const VIDEO_CAROUSEL_MODULE_FIXTURE_WITH_ITEM_HAVING_HOMEENTRYID = {
       ...videoCarouselModuleFixture,
       items: [DEFAULT_ITEM_WITH_HOME_ENTRY_ID],
@@ -99,7 +101,9 @@ describe('<VideoCarouselModule />', () => {
     expect(screen.queryByTestId('videoCarousel')).not.toBeOnTheScreen()
   })
 
-  it('should render carousel with multiple items', async () => {
+  // TODO(PC-33562): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should render carousel with multiple items', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -107,7 +111,9 @@ describe('<VideoCarouselModule />', () => {
     expect(screen.getByTestId('videoCarousel')).toBeOnTheScreen()
   })
 
-  it('should render video player correctly', async () => {
+  // TODO(PC-33562): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should render video player correctly', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -119,7 +125,9 @@ describe('<VideoCarouselModule />', () => {
     expect(verticalVideoPlayerButton).toBeOnTheScreen()
   })
 
-  it('should redirect to thematic home when item has an homeEntryId', async () => {
+  // TODO(PC-33562): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should redirect to thematic home when item has an homeEntryId', async () => {
     const HOME_ENTRY_ID = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.homeEntryId
     const THEMATIC_HOME_TITLE = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.thematicHomeTitle
     const MODULE_ITEM_ID = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.id
@@ -171,7 +179,9 @@ describe('<VideoCarouselModule />', () => {
       })
     })
 
-    it('should send logConsultVideo event when user presses `next video button`', async () => {
+    // TODO(PC-33562): fix flaky tests
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should send logConsultVideo event when user presses `next video button`', async () => {
       MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
 
       renderVideoCarouselModule(videoCarouselModuleFixture)

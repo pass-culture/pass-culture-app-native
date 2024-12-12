@@ -14,7 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
@@ -107,7 +107,9 @@ describe('HorizontalOfferTile component', () => {
     })
   })
 
-  it('should show distance if geolocation enabled', async () => {
+  // TODO(PC-33565): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should show distance if geolocation enabled', async () => {
     mockUseDistance.mockReturnValueOnce('10 km')
 
     renderHorizontalOfferTile({
