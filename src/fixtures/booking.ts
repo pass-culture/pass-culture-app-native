@@ -1,6 +1,6 @@
 import { BookingOfferResponse, BookingReponse, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
 
-const mockedBookingOfferResponse: BookingOfferResponse = {
+export const mockedBookingOfferResponse: BookingOfferResponse = {
   id: 32871,
   isDigital: true,
   isPermanent: true,

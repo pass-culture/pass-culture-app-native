@@ -33,6 +33,7 @@ export function BookingDetailsTicketContent({
     extraData,
     withdrawalType,
     withdrawalDelay,
+    venue,
   } = offer
 
   const { isEvent } = useSubcategory(offerSubcategory)
@@ -70,6 +71,7 @@ export function BookingDetailsTicketContent({
       subcategoryId={offerSubcategory}
       qrCodeData={booking.qrCodeData ?? undefined}
       externalBookings={externalBookings}
+      venue={venue}
     />
   )
 
