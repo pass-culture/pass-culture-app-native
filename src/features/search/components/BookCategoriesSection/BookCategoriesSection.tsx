@@ -26,7 +26,7 @@ export function BookCategoriesSection<
   onSelect,
   onSubmit,
   value,
-}: CategoriesSectionProps<T, N>) {
+}: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)

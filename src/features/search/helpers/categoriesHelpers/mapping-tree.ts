@@ -115,7 +115,7 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
   }, {} as MappedNativeCategories)
 }
 
-export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
+export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   /**
    * We want to create a mapping tree that looks like this:
    * {
@@ -138,8 +138,6 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
    *   }
    * }
    */
-
-  if (!data) return {} as MappingTree
 
   return data.searchGroups
     .filter(

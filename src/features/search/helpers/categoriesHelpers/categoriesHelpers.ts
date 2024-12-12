@@ -535,17 +535,9 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
 }
 
 export function getDefaultFormValues(
-  tree: MappingTree | undefined,
+  tree: MappingTree,
   searchState: SearchState
 ): CategoriesModalFormProps {
-  if (!tree)
-    return {
-      category: SearchGroupNameEnumv2.NONE,
-      nativeCategory: null,
-      genreType: null,
-      currentView: CategoriesModalView.CATEGORIES,
-    }
-
   return {
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
