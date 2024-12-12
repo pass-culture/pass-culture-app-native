@@ -2,14 +2,11 @@ name: '1 [on_pr] Deploy PR version to Firebase for preview'
 
 on:
   pull_request:
-    branches:
-      - 'PC-*'
-  label:
+    branches: [master]
     types:
-      - created
+      - opened
       - edited
-      - deleted
-
+      - synchronize
 permissions:
   contents: read
   id-token: write
