@@ -31,6 +31,10 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
     setButton(cinemaCTAButtonName, () => {
       scrollToAnchor('offer-cine-availabilities')
     })
+
+    return () => {
+      setButton('', () => null)
+    }
   }, [scrollToAnchor, setButton])
   const next15Dates = getDates(new Date(), 15)
 
