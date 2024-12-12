@@ -241,7 +241,7 @@ describe('GenericHome page - Analytics', () => {
     scrollView.props.onScroll(scrollEventBottom)
 
     await waitFor(() => {
-      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'mainHome',
       })
@@ -259,7 +259,7 @@ describe('GenericHome page - Analytics', () => {
     scrollView.props.onScroll(scrollEventBottom)
 
     await waitFor(() => {
-      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'thematicHome - Highlight',
         home_name: 'Bloc temps fort',

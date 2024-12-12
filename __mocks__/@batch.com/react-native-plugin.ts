@@ -7,7 +7,10 @@ export const Batch = {
 }
 
 export const BatchProfile = {
-  editor: jest.fn().mockReturnThis(),
+  editor: jest.fn(() => ({
+    setAttribute: jest.fn(),
+    save: jest.fn(),
+  })),
   identify: jest.fn().mockReturnThis(),
   trackEvent: jest.fn(),
   trackLocation: jest.fn(),
