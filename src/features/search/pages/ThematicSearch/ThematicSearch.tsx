@@ -107,6 +107,7 @@ export const ThematicSearch: React.FC = () => {
               isLocated={isLocated}
               currentView={currentView}
               offerCategory={offerCategory}
+              shouldDisplaySeparator={false}
             />
           ) : null}
           <PlaylistContainer>
