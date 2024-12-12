@@ -1,0 +1,11 @@
+diff --git a/index.js b/index.js
+index 14ca1ec18e84109bcef290a0f620bb4e1aed523b..7c175d41c07221cbf8a5ba86b1fd46dd8da5c63e 100644
+--- a/index.js
++++ b/index.js
+@@ -1,5 +1,5 @@
+ /* eslint-disable functional/immutable-data, import/no-commonjs */
+-const algoliasearch = require('./dist/algoliasearch.cjs.js');
++const algoliasearch = require("./dist/algoliasearch-lite.esm.browser.js");
+ 
+ /**
+  * The Common JS build is the default entry point for the Node environment. Keep in
