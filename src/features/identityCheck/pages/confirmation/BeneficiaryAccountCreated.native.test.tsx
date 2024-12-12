@@ -8,7 +8,7 @@ import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
@@ -54,7 +54,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
     renderBeneficiaryAccountCreated()
     fireEvent.press(await screen.findByLabelText('C’est parti !'))
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
   })
 
   it('should show beneficiary share app modal when button is clicked', async () => {

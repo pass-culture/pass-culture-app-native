@@ -6,13 +6,18 @@ export const Batch = {
   optOut: jest.fn(),
 }
 
+export const BatchProfile = {
+  editor: jest.fn(() => ({
+    setAttribute: jest.fn(),
+    save: jest.fn(),
+  })),
+  identify: jest.fn().mockReturnThis(),
+  trackEvent: jest.fn(),
+  trackLocation: jest.fn(),
+}
+
 export const BatchUser = {
   getInstallationID: jest.fn(),
-  editor: jest.fn().mockReturnThis(),
-  setIdentifier: jest.fn().mockReturnThis(),
-  setAttribute: jest.fn().mockReturnThis(),
-  trackEvent: jest.fn(),
-  save: jest.fn(),
 }
 
 export const BatchPush = {
@@ -23,16 +28,7 @@ export const BatchMessaging = {
   setFontOverride: jest.fn(),
 }
 
-export class BatchEventData {
-  addTag() {
-    return this
-  }
-  putDate() {
-    return this
-  }
-  putURL() {
-    return this
-  }
+export class BatchEventAttributes {
   put(key: string, value: string) {
     return Object.assign(this, { [key]: value })
   }

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -14,7 +14,7 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
-    BatchUser.trackEvent(BatchEvent.screenViewExpiredOrLostId)
+    BatchProfile.trackEvent(BatchEvent.screenViewExpiredOrLostId)
     analytics.logScreenViewExpiredOrLostId()
   }, [])
 

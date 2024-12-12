@@ -11,7 +11,7 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -236,12 +236,12 @@ describe('GenericHome page - Analytics', () => {
 
     scrollView.props.onScroll(scrollEventMiddle)
 
-    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+    expect(BatchProfile.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll(scrollEventBottom)
 
     await waitFor(() => {
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'mainHome',
       })
@@ -254,12 +254,12 @@ describe('GenericHome page - Analytics', () => {
 
     scrollView.props.onScroll(scrollEventMiddle)
 
-    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+    expect(BatchProfile.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll(scrollEventBottom)
 
     await waitFor(() => {
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'thematicHome - Highlight',
         home_name: 'Bloc temps fort',

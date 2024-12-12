@@ -2,10 +2,11 @@ import { useCallback } from 'react'
 
 import { SubcategoryIdEnumv2 } from 'api/gen'
 import { useFunctionOnce } from 'libs/hooks'
-import { BatchUser, BatchEvent } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 
-const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
-const trackEventHasSeenOfferForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenOfferForSurvey)
+const trackEventHasSeenOffer = () => BatchProfile.trackEvent(BatchEvent.hasSeenOffer)
+const trackEventHasSeenOfferForSurvey = () =>
+  BatchProfile.trackEvent(BatchEvent.hasSeenOfferForSurvey)
 
 type UseOfferBatchTrackingType = {
   trackEventHasSeenOfferOnce: VoidFunction
@@ -35,7 +36,7 @@ export const useOfferBatchTracking = (
   const trackBatchEventForNativeCategoryOnce = useFunctionOnce(() => {
     const batchEvent = batchEventForSubcategory[offerSubcategoryId]
     if (batchEvent) {
-      BatchUser.trackEvent(batchEvent)
+      BatchProfile.trackEvent(batchEvent)
     }
   })
 

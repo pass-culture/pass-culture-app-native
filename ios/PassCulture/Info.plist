@@ -4,6 +4,10 @@
 <dict>
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_PUBLIC_KEY_IOS)</string>
+	<key>BatchProfileCustomDataMigrationEnabled</key>
+    <true/>
+    <key>BatchProfileCustomIdMigrationEnabled</key>
+    <true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr</string>
 	<key>CFBundleDisplayName</key>
