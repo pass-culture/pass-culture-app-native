@@ -9,7 +9,10 @@ export const Batch = {
 
 export const BatchProfile = {
   editor() {
-    return this
+    return {
+      setAttribute: () => {},
+      save: () => {},
+    }
   },
   identify() {
     return this
