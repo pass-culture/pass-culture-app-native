@@ -16,7 +16,7 @@ In this guide, you will find explanations of the main aspects of the vite config
 There are 2 main files that contain the configuration for the web app:
 
 - `vite.config.js`
-- `public/index.html`
+- `src/index.html`
 
 Let's start by breaking down the `vite.config.js` file.
 
@@ -46,7 +46,7 @@ We of course use the `@vitejs/plugin-react` plugin. It enables fast refresh in d
 
 Then we wrote a custom plugin to handle libraries with files with a `.js` extension that actually contained `jsx` components. This plugin is only necessary during builds, so we set `apply: 'build'` in the plugin's configuration.
 
-There is also `vite-plugin-html` that allows us to easily pass variables to the entrypoint of our app: `index.html`. These variables are then used to set meta tags. In this plugin's configuration, if we set `entry: '/src/index.tsx'` and `template: 'public/index.html'` we don't need to add `<script type="module" src="/src/index.tsx"></script>` to `public/index.html`.
+There is also `vite-plugin-html` that allows us to easily pass variables to the entrypoint of our app: `index.html`. These variables are then used to set meta tags. In this plugin's configuration, if we set `entry: '/src/index.tsx'` and `template: 'src/index.html'` we don't need to add `<script type="module" src="/src/index.tsx"></script>` to `src/index.html`.
 
 `@sentry/vite-plugin` is another important plugin that allows us to upload sourcemaps to sentry. The `uploadLegacySourcemaps` option is currently needed since our self-hosted Sentry is using an older version of Sentry. Atm, our self-hosted Sentry is at `23.6.1` and if we trust [the information in this thread](https://github.com/getsentry/sentry-javascript-bundler-plugins/issues/360), we can remove the `uploadLegacySourcemaps` once it is upgraded to `23.6.2` (or newer).
 
@@ -100,7 +100,7 @@ We specify a few options :
   Uncaught (in promise) FirebaseError: Failed to obtain exclusive access to the persistence layer...
   ```
 
-## `public/index.html`
+## `src/index.html`
 
 In this file, we receive variables from `vite.config.js`.
 The template engine used by our plugin `vite-plugin-html` is EJS (Embedded JavaScript).
@@ -109,7 +109,7 @@ For example, we set the page's title this way:
 
 `<meta name="title" content="<%- TITLE %>" />`
 
-It is in this `public/index.html` file that we also set several meta tags.
+It is in this `src/index.html` file that we also set several meta tags.
 
 ## Building locally
 
