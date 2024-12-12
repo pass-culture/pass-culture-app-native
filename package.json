@@ -378,7 +378,8 @@
     "lottie-web@^5.7.1": "patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch",
     "@ptomasroos/react-native-multi-slider@^2.2.2": "patch:@ptomasroos/react-native-multi-slider@npm%3A2.2.2#./.yarn/patches/@ptomasroos-react-native-multi-slider-npm-2.2.2-25e4cce063.patch",
     "@react-navigation/core@6.2.2": "patch:@react-navigation/core@npm%3A6.2.2#./.yarn/patches/@react-navigation-core-npm-6.2.2-730adad334.patch",
-    "@react-navigation/core@^6.3.0": "patch:@react-navigation/core@npm%3A6.2.2#./.yarn/patches/@react-navigation-core-npm-6.2.2-730adad334.patch"
+    "@react-navigation/core@^6.3.0": "patch:@react-navigation/core@npm%3A6.2.2#./.yarn/patches/@react-navigation-core-npm-6.2.2-730adad334.patch",
+    "@react-navigation/native@6.0.12": "patch:@react-navigation/native@npm%3A6.0.12#./.yarn/patches/@react-navigation-native-npm-6.0.12-e0221bc254.patch"
   },
   "exports": {
     ".": "./index.js",
