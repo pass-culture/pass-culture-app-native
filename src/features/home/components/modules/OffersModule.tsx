@@ -159,9 +159,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           ? hybridModuleOffsetIndex
           : undefined,
         call_id: props.recommendationParameters ? recommendationApiParams?.call_id : undefined,
-        offers: props.recommendationParameters
-          ? (hybridPlaylistItems as Offer[]).map((item) => item.objectID)
-          : (playlistItems as Offer[]).map((item) => item.objectID),
+        offers: (offersToDisplay as Offer[]).map((item) => item.objectID),
       })
     }
   }, [
@@ -170,6 +168,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     hybridPlaylistItems,
     index,
     moduleId,
+    offersToDisplay,
     playlistItems,
     props.recommendationParameters,
     recommendationApiParams?.call_id,
