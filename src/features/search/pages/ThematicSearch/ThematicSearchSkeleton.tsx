@@ -19,7 +19,6 @@ import {
   TileSize,
 } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
-import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
@@ -93,7 +92,6 @@ export const ThematicSearchSkeleton = () => {
         renderPlaceholder={() => renderVenuePlaylistSkeleton(theme)}
         paddingBottom={getSpacing(6)}
       />
-      <StyledSeparator />
       <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
     </View>
   )
@@ -112,13 +110,6 @@ const VenuePlaylistTitlesContainer = styled.View({
   flexDirection: 'column',
   marginLeft: getSpacing(6),
   gap: getSpacing(5),
-})
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  width: 'auto',
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(6),
-  marginBottom: getSpacing(6),
 })
 
 const SkeletonTileContainer = styled.View({

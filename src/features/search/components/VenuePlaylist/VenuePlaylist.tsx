@@ -31,6 +31,7 @@ type Props = {
   venuePlaylistTitle: string
   venues: AlgoliaVenue[]
   isLocated?: boolean
+  shouldDisplaySeparator?: boolean
   currentView?: keyof SearchStackParamList
   offerCategory?: SearchGroupNameEnumv2
 }
@@ -56,6 +57,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   isLocated = false,
   currentView = 'SearchResults',
   offerCategory,
+  shouldDisplaySeparator = true,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { setVenueTypeCode } = useVenueTypeCodeActions()
@@ -132,8 +134,12 @@ export const VenuePlaylist: React.FC<Props> = ({
           onEndReached={logAllTilesSeenOnce}
         />
       </View>
-      <Spacer.Column numberOfSpaces={3} />
-      <StyledSeparator />
+      {shouldDisplaySeparator ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={3} />
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={hideVenueMapLocationModal}
