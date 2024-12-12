@@ -15,7 +15,7 @@ jobs:
   deploy_on_firebase:
     if: ${{ github.event.label.name == 'preview' }}
     name: Deploy PR version to Firebase
-    uses: ./.github/workflows/on_workflow_pr_preview.yml
+    uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
     with:
       ENV: 'testing'
       PUSH_RELEASE_TO_SENTRY: false
