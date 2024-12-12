@@ -9,7 +9,7 @@ import { getVersion } from './routes/version'
 export const app = express()
 
 const options = {
-  // We set the index option at false because `public/index.html` is displayed instead of the homepage
+  // We set the index option at false because `src/index.html` is displayed instead of the homepage
   index: false,
 }
 
