@@ -68,7 +68,7 @@ export default ({ mode }) => {
       createHtmlPlugin({
         minify: true,
         entry: '/src/index.tsx',
-        template: 'public/index.html',
+        template: 'src/index.html',
         inject: {
           data: {
             TITLE: packageJson.author.name,
