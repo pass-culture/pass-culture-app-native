@@ -351,28 +351,22 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
+  if (!searchGroup || !subcategories) return []
 
   const tree = createMappingTree(subcategories, facets)
+  if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
 
-  const mappedNativeCategories =
-    searchGroup && searchGroup !== SearchGroupNameEnumv2.NONE && tree[searchGroup].children
+  const nativeCategories = typedEntries(tree[searchGroup].children)
+  if (searchGroup !== SearchGroupNameEnumv2.LIVRES) return nativeCategories
 
-  const nativeCategories = mappedNativeCategories ? typedEntries(mappedNativeCategories) : []
+  const bookNativeCategories = nativeCategories.filter(
+    ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
+  )
+  const additionalBookNativeCategories = nativeCategories.filter(
+    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
+  )
 
-  if (searchGroup === SearchGroupNameEnumv2.LIVRES) {
-    const bookNativeCategories = nativeCategories.filter(
-      ([_k, item]) => item.genreTypeKey === GenreType.BOOK
-    )
-    const additionalBookNativeCategories = nativeCategories.filter(
-      ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
-    )
-
-    return [...bookNativeCategories, ...additionalBookNativeCategories].filter(
-      ([_k, item]) => item.label !== 'Livres papier'
-    )
-  }
-
-  return nativeCategories
+  return [...bookNativeCategories, ...additionalBookNativeCategories]
 }
 
 export const useSubcategoryIdsFromSearchGroups = (
@@ -536,7 +530,7 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
       : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
-  if (offerNativeCategories?.length || nativeCategories)
+  if (offerNativeCategories?.length || Object.keys(nativeCategories).length)
     return CategoriesModalView.NATIVE_CATEGORIES
   return CategoriesModalView.CATEGORIES
 }
