@@ -375,7 +375,8 @@
     "semver": "^7.5.2",
     "tslib": "2.3.*",
     "algoliasearch@^4.24.0": "patch:algoliasearch@npm%3A4.24.0#./.yarn/patches/algoliasearch-npm-4.24.0-538aab24e1.patch",
-    "lottie-web@^5.7.1": "patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch"
+    "lottie-web@^5.7.1": "patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch",
+    "@ptomasroos/react-native-multi-slider@^2.2.2": "patch:@ptomasroos/react-native-multi-slider@npm%3A2.2.2#./.yarn/patches/@ptomasroos-react-native-multi-slider-npm-2.2.2-25e4cce063.patch"
   },
   "exports": {
     ".": "./index.js",
