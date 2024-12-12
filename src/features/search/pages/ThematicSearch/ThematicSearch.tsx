@@ -1,7 +1,8 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useMemo } from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -17,7 +18,7 @@ import { CinemaPlaylist } from 'features/search/pages/ThematicSearch/Cinema/Cine
 import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
 import { MusicPlaylist } from 'features/search/pages/ThematicSearch/Music/MusicPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
-import { LoadingState } from 'features/venue/components/VenueOffers/VenueOffers'
+import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -25,7 +26,7 @@ import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
@@ -89,45 +90,48 @@ export const ThematicSearch: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isWeb, params?.offerCategories])
 
-  if (arePlaylistsLoading) {
-    return <LoadingState />
-  }
-
   return (
     <ThematicSearchBar
       offerCategories={offerCategories}
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
-      <ScrollView>
-        <SubcategoryButtonListWrapper offerCategory={offerCategory} />
-        {shouldDisplayVenuesPlaylist ? (
-          <VenuePlaylist
-            venuePlaylistTitle={venuePlaylistTitle}
-            venues={venues}
-            isLocated={isLocated}
-            currentView={currentView}
-            offerCategory={offerCategory}
-          />
-        ) : null}
-        <Spacer.Column numberOfSpaces={6} />
-        {isBookCategory && gtlPlaylists.length > 0 ? (
-          <React.Fragment>
-            {gtlPlaylists.map((playlist) => (
-              <GtlPlaylist
-                key={playlist.entryId}
-                playlist={playlist}
-                analyticsFrom="thematicsearch"
-                route="ThematicSearch"
-              />
-            ))}
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        ) : null}
-        {isCinemaCategory ? <CinemaPlaylist /> : null}
-        {isFilmsCategory ? <FilmsPlaylist /> : null}
-        {isMusicCategory ? <MusicPlaylist /> : null}
-        <Spacer.Column numberOfSpaces={6} />
-      </ScrollView>
+      {arePlaylistsLoading ? (
+        <ThematicSearchSkeleton />
+      ) : (
+        <ScrollView>
+          <SubcategoryButtonListWrapper offerCategory={offerCategory} />
+          {shouldDisplayVenuesPlaylist ? (
+            <VenuePlaylist
+              venuePlaylistTitle={venuePlaylistTitle}
+              venues={venues}
+              isLocated={isLocated}
+              currentView={currentView}
+              offerCategory={offerCategory}
+            />
+          ) : null}
+          <PlaylistContainer>
+            {isBookCategory && gtlPlaylists.length > 0 ? (
+              <GtlPlaylistContainer>
+                {gtlPlaylists.map((playlist) => (
+                  <GtlPlaylist
+                    key={playlist.entryId}
+                    playlist={playlist}
+                    analyticsFrom="thematicsearch"
+                    route="ThematicSearch"
+                  />
+                ))}
+                <Spacer.Column numberOfSpaces={6} />
+              </GtlPlaylistContainer>
+            ) : null}
+            {isCinemaCategory ? <CinemaPlaylist /> : null}
+            {isFilmsCategory ? <FilmsPlaylist /> : null}
+            {isMusicCategory ? <MusicPlaylist /> : null}
+          </PlaylistContainer>
+        </ScrollView>
+      )}
     </ThematicSearchBar>
   )
 }
+
+const GtlPlaylistContainer = styled(View)({ paddingBottom: getSpacing(6) })
+const PlaylistContainer = styled(View)({ paddingTop: getSpacing(6) })

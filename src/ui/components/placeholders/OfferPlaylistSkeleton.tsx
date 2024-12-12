@@ -52,7 +52,7 @@ export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: nu
   )
 }
 
-const ModuleTitlePlaceholder = () => (
+export const ModuleTitlePlaceholder = () => (
   <SkeletonTile width={getSpacing(50)} height={getSpacing(4)} borderRadius={2} />
 )
 
@@ -74,7 +74,7 @@ const BasePlaceholder = ({ height, width }: { height: number; width: number }) =
   <SkeletonTile borderRadius={BorderRadiusEnum.BORDER_RADIUS} height={height} width={width} />
 )
 
-const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
+export const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
   <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
 )
 

@@ -15,11 +15,11 @@ const MUSIC_PLAYLIST_TITLES = [
 ]
 
 export const MusicPlaylist: React.FC = () => {
-  const { playlists: musicPlaylists, isLoading } = useThematicSearchPlaylists({
+  const { playlists: musicPlaylists } = useThematicSearchPlaylists({
     playlistTitles: MUSIC_PLAYLIST_TITLES,
     fetchMethod: fetchMusicOffers,
     queryKey: QueryKeys.MUSIC_OFFERS,
   })
 
-  return <ThematicSearchPlaylistList playlists={musicPlaylists} isLoading={isLoading} />
+  return <ThematicSearchPlaylistList playlists={musicPlaylists} />
 }

@@ -28,7 +28,7 @@ export interface VenueOffersProps {
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 
-export const LoadingState: React.FC = () => (
+const LoadingState: React.FC = () => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={6} />
     <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />

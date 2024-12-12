@@ -8,30 +8,28 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode, Position } from 'libs/location/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 
-const mockLocationMode = LocationMode.AROUND_ME
-const mockUserLocation: Position = { latitude: 2, longitude: 2 }
+const defaultUseLocation = {
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  onModalHideRef: jest.fn(),
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-useFeatureFlagSpy.mockReturnValue(false)
 
 const mockUseGtlPlaylist = jest.spyOn(useGTLPlaylists, 'useGTLPlaylists')
 mockUseGtlPlaylist.mockReturnValue({
@@ -69,42 +67,37 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
-const mockUseLocation = jest.fn(() => ({
-  selectedLocationMode: mockSelectedLocationMode,
-  onModalHideRef: jest.fn(),
-}))
-jest.mock('libs/location', () => ({
-  useLocation: () => mockUseLocation(),
+
+const defaultUseSearchResults = {
+  data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
+  hits: {},
+  nbHits: 0,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: true,
+  fetchNextPage: jest.fn(),
+  isFetchingNextPage: false,
+}
+const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
+  useSearchResults: () => mockUseSearchResults(),
 }))
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-let mockHits = {}
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: mockHits,
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-  }),
-}))
+const user = userEvent.setup()
 
 describe('<ThematicSearch/>', () => {
+  jest.useFakeTimers()
+
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    setFeatureFlags()
   })
 
   describe('book offerCategory', () => {
     beforeEach(() => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockHits = {}
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      mockUseLocation.mockReturnValue(defaultUseLocation)
+      mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
     })
 
     it('should render <ThematicSearch />', async () => {
@@ -115,6 +108,19 @@ describe('<ThematicSearch/>', () => {
       expect(screen).toMatchSnapshot()
     })
 
+    it('should render skeleton when playlists are loading', async () => {
+      mockUseGtlPlaylist.mockReturnValueOnce({
+        gtlPlaylists: [],
+        isLoading: true,
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      await screen.findByText('Livres')
+
+      expect(screen.getByTestId('ThematicSearchSkeleton')).toBeOnTheScreen()
+    })
+
     describe('Search bar', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
@@ -122,7 +128,7 @@ describe('<ThematicSearch/>', () => {
         const searchInput = screen.getByPlaceholderText('Livres...')
         fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
-        await act(async () => {})
+        await screen.findByText('Romans et littérature')
 
         expect(navigate).toHaveBeenCalledWith(
           'TabNavigator',
@@ -143,7 +149,7 @@ describe('<ThematicSearch/>', () => {
       it('should update SearchState with correct data', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
-        fireEvent.press(subcategoryButton)
+        await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
 
         expect(mockDispatch).toHaveBeenCalledWith(
@@ -160,8 +166,7 @@ describe('<ThematicSearch/>', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         const subcategoryButton = await screen.findByText('Romans et littérature')
-
-        fireEvent.press(subcategoryButton)
+        await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
 
         expect(navigate).toHaveBeenCalledWith(
@@ -188,7 +193,7 @@ describe('<ThematicSearch/>', () => {
       })
 
       it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
-        jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValueOnce(true)
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX])
         render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
 
