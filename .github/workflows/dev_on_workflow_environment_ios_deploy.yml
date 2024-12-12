@@ -82,7 +82,7 @@ jobs:
           sed '$d' .sentryclirc
           echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
       - name: Setup iOS Google services config
-        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/PassCulture/Firebase/GoogleService-Info-${{ inputs.ENV }}.plist
+        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
       - name: Add ssh key needed
         uses: webfactory/ssh-agent@v0.8.0
         with:
