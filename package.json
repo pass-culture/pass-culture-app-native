@@ -386,7 +386,8 @@
     "react-native-calendars@^1.1284.0": "patch:react-native-calendars@npm%3A1.1284.0#./.yarn/patches/react-native-calendars-npm-1.1284.0-4ce5431d18.patch",
     "react-native-detector@^0.2.3": "patch:react-native-detector@npm%3A0.2.3#./.yarn/patches/react-native-detector-npm-0.2.3-ac5c8c3a72.patch",
     "react-native-web@^0.18.10": "patch:react-native-web@npm%3A0.18.10#./.yarn/patches/react-native-web-npm-0.18.10-f9d1f2dee1.patch",
-    "react-native-web-lottie@^1.4.4": "patch:react-native-web-lottie@npm%3A1.4.4#./.yarn/patches/react-native-web-lottie-npm-1.4.4-98cf000f2d.patch"
+    "react-native-web-lottie@^1.4.4": "patch:react-native-web-lottie@npm%3A1.4.4#./.yarn/patches/react-native-web-lottie-npm-1.4.4-98cf000f2d.patch",
+    "react-native-web-swiper@2.2.4": "patch:react-native-web-swiper@npm%3A2.2.4#./.yarn/patches/react-native-web-swiper-npm-2.2.4-990ec1a345.patch"
   },
   "exports": {
     ".": "./index.js",
