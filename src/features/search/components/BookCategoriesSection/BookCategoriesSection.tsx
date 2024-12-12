@@ -20,13 +20,13 @@ export function BookCategoriesSection<
 >({
   allLabel,
   allValue,
-  data,
+  itemsMapping,
   descriptionContext,
   getIcon,
   onSelect,
   onSubmit,
   value,
-}: CategoriesSectionProps<T, N>) {
+}: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)
@@ -42,7 +42,7 @@ export function BookCategoriesSection<
     }
   }
 
-  const categories = data ? Object.entries(data) : []
+  const categories = itemsMapping ? Object.entries(itemsMapping) : []
   const bookCategoriesWithGenre = categories.filter(
     ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
   )

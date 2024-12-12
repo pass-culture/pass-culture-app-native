@@ -11,6 +11,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
 import {
   handleCategoriesSearchPress,
+  sortCategoriesPredicate,
   useNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -49,14 +50,17 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { dispatch, searchState } = useSearch()
   const subcategoryButtonContent = useMemo(
     () =>
-      nativeCategories.map(
-        (nativeCategory): SubcategoryButtonItem => ({
-          label: nativeCategory[1].label,
-          backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
-          borderColor: offerCategoryTheme.borderColor || colors.black,
-          nativeCategory: nativeCategory[0] as NativeCategoryEnum,
-        })
-      ),
+      nativeCategories
+        .map(
+          (nativeCategory): SubcategoryButtonItem => ({
+            label: nativeCategory[1].label,
+            backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
+            borderColor: offerCategoryTheme.borderColor || colors.black,
+            nativeCategory: nativeCategory[0] as NativeCategoryEnum,
+            position: nativeCategory[1].position,
+          })
+        )
+        .sort((a, b) => sortCategoriesPredicate(a, b)),
     [
       colors.black,
       colors.white,

@@ -7,18 +7,14 @@ export const bookTreeResultFixture = {
       },
       FESTIVAL_DU_LIVRE: {
         label: 'Évènements autour du livre',
-        nbResultsFacet: 0,
       },
       LIVRES_AUDIO_PHYSIQUES: {
         label: 'Livres audio',
-        nbResultsFacet: 0,
       },
       LIVRES_NUMERIQUE_ET_AUDIO: {
         label: 'E-books',
-        nbResultsFacet: 0,
       },
       ROMANS_ET_LITTERATURE: {
-        nbResultsFacet: 0,
         label: 'Romans et littérature',
         genreTypeKey: 'BOOK',
         gtls: [

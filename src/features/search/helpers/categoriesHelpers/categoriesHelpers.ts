@@ -13,6 +13,7 @@ import {
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
+  BaseCategory,
   MappingTree,
   createMappingTree,
   getBooksGenreTypes,
@@ -349,28 +350,22 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
+  if (!searchGroup || !subcategories) return []
 
   const tree = createMappingTree(subcategories, facets)
+  if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
 
-  const mappedNativeCategories =
-    searchGroup && searchGroup !== SearchGroupNameEnumv2.NONE && tree[searchGroup].children
+  const nativeCategories = typedEntries(tree[searchGroup].children)
+  if (searchGroup !== SearchGroupNameEnumv2.LIVRES) return nativeCategories
 
-  const nativeCategories = mappedNativeCategories ? typedEntries(mappedNativeCategories) : []
+  const bookNativeCategories = nativeCategories.filter(
+    ([_k, item]) => item.genreTypeKey === GenreType.BOOK
+  )
+  const additionalBookNativeCategories = nativeCategories.filter(
+    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK && item.label !== 'Livres papier'
+  )
 
-  if (searchGroup === SearchGroupNameEnumv2.LIVRES) {
-    const bookNativeCategories = nativeCategories.filter(
-      ([_k, item]) => item.genreTypeKey === GenreType.BOOK
-    )
-    const additionalBookNativeCategories = nativeCategories.filter(
-      ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
-    )
-
-    return [...bookNativeCategories, ...additionalBookNativeCategories].filter(
-      ([_k, item]) => item.label !== 'Livres papier'
-    )
-  }
-
-  return nativeCategories
+  return [...bookNativeCategories, ...additionalBookNativeCategories]
 }
 
 export const useSubcategoryIdsFromSearchGroups = (
@@ -530,7 +525,7 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
   const nativeCategories = category?.children
   const nativeCategory =
     offerNativeCategories?.[0] && nativeCategories
-      ? nativeCategories[offerNativeCategories[0] as keyof typeof nativeCategories]
+      ? nativeCategories[offerNativeCategories[0]]
       : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
@@ -540,19 +535,11 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
 }
 
 export function getDefaultFormValues(
-  tree: MappingTree | undefined,
+  tree: MappingTree,
   searchState: SearchState
 ): CategoriesModalFormProps {
-  if (!tree)
-    return {
-      category: SearchGroupNameEnumv2.NONE,
-      nativeCategory: null,
-      genreType: null,
-      currentView: CategoriesModalView.CATEGORIES,
-    }
-
   return {
-    category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
+    category: searchState.offerCategories[0] ?? SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
     genreType: searchState.offerGenreTypes?.[0]?.name ?? null,
     currentView: getDefaultFormView(tree, searchState),
@@ -602,4 +589,11 @@ export const handleCategoriesSearchPress = (
   }
 
   return { payload, isFullyDigitalOffersCategory }
+}
+
+export const sortCategoriesPredicate = (a: BaseCategory, b: BaseCategory) => {
+  if (a.position !== undefined && b.position !== undefined) return a.position - b.position
+  if (a.position !== undefined && b.position === undefined) return -1
+  if (a.position === undefined && b.position !== undefined) return 1
+  return a.label.localeCompare(b.label)
 }
