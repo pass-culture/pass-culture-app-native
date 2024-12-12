@@ -146,8 +146,8 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
         Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
     )
     .sort((a, b) => {
-      const positionA: number = CATEGORY_CRITERIA[a.name]?.position || 0
-      const positionB: number = CATEGORY_CRITERIA[b.name]?.position || 0
+      const positionA: number = CATEGORY_CRITERIA[a.name]?.position ?? 0
+      const positionB: number = CATEGORY_CRITERIA[b.name]?.position ?? 0
       return positionA - positionB
     })
     .reduce<MappingTree>((result, searchGroup) => {
@@ -176,7 +176,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
         : undefined
 
       result[searchGroup.name] = {
-        label: searchGroup.value || 'Toutes les catégories',
+        label: searchGroup.value ?? 'Toutes les catégories',
         children: mappedNativeCategoriesBooks
           ? {
               ...mappedNativeCategories,
