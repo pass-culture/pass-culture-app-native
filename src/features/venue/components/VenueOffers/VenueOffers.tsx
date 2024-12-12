@@ -44,6 +44,10 @@ const MovieScreening: React.FC<{ venueOffers: VenueOffersType }> = ({ venueOffer
     setButton(cinemaCTAButtonName, () => {
       scrollToAnchor('venue-cine-availabilities')
     })
+
+    return () => {
+      setButton('', () => null)
+    }
   }, [scrollToAnchor, setButton])
 
   return (
