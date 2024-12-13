@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
+import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

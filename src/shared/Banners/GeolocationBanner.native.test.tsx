@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { requestGeolocPermission, showGeolocPermissionModal } from 'libs/location/__mocks__'
+import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
