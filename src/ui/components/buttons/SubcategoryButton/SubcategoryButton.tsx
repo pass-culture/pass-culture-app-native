@@ -47,15 +47,14 @@ const StyledTouchable = styledButton(Touchable)<{
   backgroundColor: ColorsEnum
   borderColor: ColorsEnum
 }>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
-  flexDirection: 'row',
-  backgroundColor,
-  height: SUBCATEGORY_BUTTON_HEIGHT,
   ...(theme.isMobileViewport
     ? {
         width: windowWidth / 2 - getSpacing(8),
-        maxWidth: SUBCATEGORY_BUTTON_WIDTH,
       }
-    : { width: SUBCATEGORY_BUTTON_WIDTH }),
+    : {}),
+  flexDirection: 'row',
+  backgroundColor,
+  height: SUBCATEGORY_BUTTON_HEIGHT,
   borderColor,
   borderWidth: 1.6,
   borderStyle: 'solid',
