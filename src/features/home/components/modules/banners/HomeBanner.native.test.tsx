@@ -41,7 +41,6 @@ describe('<HomeBanner/>', () => {
 
     it('should display SignupBanner when user is not logged in', async () => {
       mockSubscriptionStepper()
-      mockBannerFromBackend({})
       mockBannerFromBackend({
         banner: {
           name: BannerName.geolocation_banner,

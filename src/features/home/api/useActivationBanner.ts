@@ -30,7 +30,7 @@ export function useActivationBanner() {
     if (isActivationProcessEnable || isUserInRelevantLocation) {
       return {
         banner: {
-          title: amount ? `Débloque tes ${amount}` : 'Débloque ton crédit X',
+          title: amount ? `Débloque tes ${amount}` : 'Débloque ton crédit',
           text: data?.banner?.text,
           name: data?.banner?.name,
         },
