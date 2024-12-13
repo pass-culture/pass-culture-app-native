@@ -225,7 +225,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 15 ans"
+              accessibilityLabel="J’ai 15 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -266,7 +266,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 15 ans"
+              testID="J’ai 15 ans"
             >
               <View
                 style={
@@ -332,7 +332,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -385,7 +385,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 16 ans"
+              accessibilityLabel="J’ai 16 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -426,7 +426,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 16 ans"
+              testID="J’ai 16 ans"
             >
               <View
                 style={
@@ -492,7 +492,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -545,7 +545,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 17 ans"
+              accessibilityLabel="J’ai 17 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -586,7 +586,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 17 ans"
+              testID="J’ai 17 ans"
             >
               <View
                 style={
@@ -652,7 +652,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -705,7 +705,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 18 ans"
+              accessibilityLabel="J’ai 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -746,7 +746,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 18 ans"
+              testID="J’ai 18 ans"
             >
               <View
                 style={
@@ -812,7 +812,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -865,7 +865,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai moins de 15 ans ou plus de 18 ans"
+              accessibilityLabel="J’ai moins de 15 ans ou plus de 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -906,7 +906,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai moins de 15 ans ou plus de 18 ans"
+              testID="J’ai moins de 15 ans ou plus de 18 ans"
             >
               <View
                 style={
@@ -978,7 +978,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                      moins de 15 ans ou plus de 18 ans
                   </Text>
                 </View>

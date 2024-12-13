@@ -40,7 +40,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
 
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     const isOnboarding = type === TutorialTypes.ONBOARDING
-    const startButtonTitle = isOnboarding ? 'j’ai' : 'à'
+    const startButtonTitle = isOnboarding ? 'J’ai' : 'à'
     const AgeInformationScreen = isOnboarding
       ? 'OnboardingAgeInformation'
       : 'ProfileTutorialAgeInformation'
