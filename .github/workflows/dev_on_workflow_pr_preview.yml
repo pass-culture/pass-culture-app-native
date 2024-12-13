@@ -98,7 +98,7 @@ jobs:
           expires: ${{ inputs.EXPIRES }}
           projectId: pc-native-${{ inputs.ENV }}
           entryPoint: .
-          channelId: ''
+          channelId: ${{ inputs.CHANNEL }}
       - name: 'Firebase Deployment URL'
         run: |
           echo "::notice:: Firebase deployment is available at : ${{ steps.firebase-deploy.outputs.details_url }}"
