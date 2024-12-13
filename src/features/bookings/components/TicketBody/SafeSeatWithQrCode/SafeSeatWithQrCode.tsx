@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
@@ -10,7 +10,7 @@ import {
 } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import genericQrCode from 'ui/images/generic-qr-code.png'
 import { BarCode } from 'ui/svg/icons/BarCode'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 type SafeSeatWithQrCodeProps = SeatWithQrCodeProps & {
   subcategoryId: SubcategoryIdEnum
@@ -60,15 +60,16 @@ const BlurredQrCodeContainer = styled.View({
   position: 'relative',
 })
 
-const BlurredQrCode = styled.ImageBackground.attrs({ blurRadius: 4, source: genericQrCode })(
-  ({ theme }) => ({
-    width: theme.ticket.qrCodeSize,
-    height: theme.ticket.qrCodeSize,
-    opacity: 0.1,
-  })
-)
+const BlurredQrCode = styled.ImageBackground.attrs({
+  blurRadius: Platform.OS === 'android' ? 15 : 4,
+  source: genericQrCode,
+})(({ theme }) => ({
+  width: theme.ticket.qrCodeSize,
+  height: theme.ticket.qrCodeSize,
+  opacity: 0.1,
+}))
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

@@ -26,7 +26,6 @@ const notQrCodeSubcategories = [
   SubcategoryIdEnum.EVENEMENT_MUSIQUE,
   SubcategoryIdEnum.FESTIVAL_SPECTACLE,
   SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
-  SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
 ]
 
 export const TicketBody: FunctionComponent<Props> = ({
