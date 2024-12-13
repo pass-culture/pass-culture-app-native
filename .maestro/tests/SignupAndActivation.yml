@@ -9,6 +9,12 @@ tags:
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
 - runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/AgeStepInfoLoss.yml
+
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/PasswordStepInfoLoss.yml
+
+- runFlow: subFolder/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/SignupFromProfile.yml
 
 - runFlow: subFolder/GoToProfileFromTabBar.yml
