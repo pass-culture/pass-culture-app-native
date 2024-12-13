@@ -6,6 +6,7 @@ import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/ty
 import * as useGoBack from 'features/navigation/useGoBack'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -29,6 +30,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('AgeSelection', () => {
   beforeEach(async () => {
     await storage.clear('user_age')
+    setFeatureFlags()
   })
 
   describe('onboarding', () => {
