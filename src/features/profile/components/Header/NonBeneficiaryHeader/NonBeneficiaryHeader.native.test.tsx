@@ -10,7 +10,9 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
@@ -30,8 +32,6 @@ const mockedSubscriptionMessage = {
   updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 const today = '2021-03-30T00:00:00Z'
 mockdate.set(new Date(today))
@@ -66,7 +66,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {
     beforeAll(() => {
-      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
@@ -127,7 +127,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await waitFor(() => {
         expect(screen.queryByTestId('eligibility-system-banner-container')).not.toBeOnTheScreen()
-        expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
+        expect(screen.getByTestId('identity-check-pending-badge')).toBeOnTheScreen()
       })
     })
   })
@@ -195,7 +195,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await waitFor(() => {
         expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-        expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
+        expect(screen.getByTestId('identity-check-pending-badge')).toBeOnTheScreen()
       })
     })
   })
@@ -245,9 +245,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     await waitFor(() => {
       expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-      expect(
-        screen.queryByText('Ton inscription est en cours de traitement.')
-      ).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('identity-check-pending-badge')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
     })
   })

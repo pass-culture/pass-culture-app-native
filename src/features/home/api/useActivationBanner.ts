@@ -1,46 +1,41 @@
-import { UseQueryResult, useQuery } from 'react-query'
-
-import { api } from 'api/api'
-import { Banner, CurrencyEnum } from 'api/gen'
+import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useBanner } from 'features/home/api/useBanner'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 
-export function useActivationBanner(hasGeolocPosition: boolean): UseQueryResult<Banner> {
+export function useActivationBanner() {
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
-  const { isLoggedIn, user } = useAuthContext()
-  const { selectedLocationMode } = useLocation()
-  const netInfo = useNetInfoContext()
+  const { user } = useAuthContext()
+  const { selectedLocationMode, permissionState } = useLocation()
   const amount = useGetDepositAmountsByAge(user?.birthDate)
-  const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
-  const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const { data: subscription } = useGetStepperInfo()
 
-  const activationBannerTitle = (activationBannerTitleFromAPI?: string) => {
-    if (enablePacificFrancCurrency) {
-      if (isUserRegisteredInPacificFrancRegion || isLocated) {
-        return amount ? `Débloque tes ${amount}` : 'Débloque ton crédit'
+  const nextSubscriptionStepEnable = !!subscription?.nextSubscriptionStep
+  const isEligibleForBeneficiaryUpgrade = !!user?.isEligibleForBeneficiaryUpgrade
+  const isActivationProcessEnable = nextSubscriptionStepEnable || isEligibleForBeneficiaryUpgrade
+
+  const isUserLocated = selectedLocationMode !== LocationMode.EVERYWHERE
+  const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const isUserInRelevantLocation = isUserLocated || isUserRegisteredInPacificFrancRegion
+
+  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
+  const { data } = useBanner(isGeolocated)
+
+  if (enablePacificFrancCurrency) {
+    if (isActivationProcessEnable || isUserInRelevantLocation) {
+      return {
+        banner: {
+          title: amount ? `Débloque tes ${amount}` : 'Débloque ton crédit X',
+          text: data?.banner?.text,
+          name: data?.banner?.name,
+        },
       }
     }
-    return activationBannerTitleFromAPI
   }
-
-  return useQuery(
-    [
-      QueryKeys.HOME_BANNER,
-      hasGeolocPosition,
-      isLocated,
-      amount,
-      isUserRegisteredInPacificFrancRegion,
-    ],
-    async () => {
-      const data = await api.getNativeV1Banner(hasGeolocPosition)
-      return { ...data.banner, title: activationBannerTitle(data.banner?.title) }
-    },
-    { enabled: !!netInfo.isConnected && isLoggedIn }
-  )
+  return { banner: { ...data?.banner } }
 }
