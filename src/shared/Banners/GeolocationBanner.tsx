@@ -7,8 +7,9 @@ import { GeolocPermissionState, useLocation } from 'libs/location'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -50,9 +51,10 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
       onPress={onPress ?? onPressGeolocationBanner}
       accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={<LocationIcon />} testID="genericBanner">
-        <Typo.ButtonText>{title}</Typo.ButtonText>
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>
+        <ViewGap gap={1}>
+          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>
+        </ViewGap>
       </GenericBanner>
     </Touchable>
   )
