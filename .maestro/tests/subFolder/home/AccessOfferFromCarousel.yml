@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      visible: "Playlist hybride 3"
+    commands:
+    - swipe:
+        from:
+          childOf:  
+              id: 'playlist-card-offer-v2'
+              index: 1
+        direction: LEFT
+    - tapOn: "En voir plus"
+    - assertVisible: "Rechercher"
+    - tapOn: "Revenir en arrière"
