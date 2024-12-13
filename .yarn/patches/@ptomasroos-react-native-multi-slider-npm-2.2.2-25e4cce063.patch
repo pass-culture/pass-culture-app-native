@@ -1,0 +1,13 @@
+diff --git a/DefaultMarker.js b/DefaultMarker.js
+index aeb46ff781381ed26856c196d331c1e24cd2478c..cbd8591776dafb8247e12e0bf10f2a75cb7ab640 100644
+--- a/DefaultMarker.js
++++ b/DefaultMarker.js
+@@ -4,7 +4,7 @@ import { View, StyleSheet, Platform, TouchableHighlight } from 'react-native';
+ class DefaultMarker extends React.Component {
+   render() {
+     return (
+-      <TouchableHighlight>
++      <TouchableHighlight testID="slider-control">
+         <View
+           style={
+             this.props.enabled

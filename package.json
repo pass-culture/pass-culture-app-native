@@ -373,7 +373,21 @@
     "react-side-effect": "2.1.2",
     "recyclerlistview": "4.1.2",
     "semver": "^7.5.2",
-    "tslib": "2.3.*"
+    "tslib": "2.3.*",
+    "algoliasearch@^4.24.0": "patch:algoliasearch@npm%3A4.24.0#./.yarn/patches/algoliasearch-npm-4.24.0-538aab24e1.patch",
+    "lottie-web@^5.7.1": "patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch",
+    "@ptomasroos/react-native-multi-slider@^2.2.2": "patch:@ptomasroos/react-native-multi-slider@npm%3A2.2.2#./.yarn/patches/@ptomasroos-react-native-multi-slider-npm-2.2.2-25e4cce063.patch",
+    "@react-navigation/core@6.2.2": "patch:@react-navigation/core@npm%3A6.2.2#./.yarn/patches/@react-navigation-core-npm-6.2.2-730adad334.patch",
+    "@react-navigation/core@^6.3.0": "patch:@react-navigation/core@npm%3A6.2.2#./.yarn/patches/@react-navigation-core-npm-6.2.2-730adad334.patch",
+    "@react-navigation/native@6.0.12": "patch:@react-navigation/native@npm%3A6.0.12#./.yarn/patches/@react-navigation-native-npm-6.0.12-e0221bc254.patch",
+    "eslint-plugin-import@^2.22.1": "patch:eslint-plugin-import@npm%3A2.25.3#./.yarn/patches/eslint-plugin-import-npm-2.25.3-f5faefaae3.patch",
+    "react-native-animatable@^1.3.3": "patch:react-native-animatable@npm%3A1.3.3#./.yarn/patches/react-native-animatable-npm-1.3.3-faaca7e1fa.patch",
+    "react-native-animatable@1.3.3": "patch:react-native-animatable@npm%3A1.3.3#./.yarn/patches/react-native-animatable-npm-1.3.3-faaca7e1fa.patch",
+    "react-native-calendars@^1.1284.0": "patch:react-native-calendars@npm%3A1.1284.0#./.yarn/patches/react-native-calendars-npm-1.1284.0-4ce5431d18.patch",
+    "react-native-detector@^0.2.3": "patch:react-native-detector@npm%3A0.2.3#./.yarn/patches/react-native-detector-npm-0.2.3-ac5c8c3a72.patch",
+    "react-native-web@^0.18.10": "patch:react-native-web@npm%3A0.18.10#./.yarn/patches/react-native-web-npm-0.18.10-f9d1f2dee1.patch",
+    "react-native-web-lottie@^1.4.4": "patch:react-native-web-lottie@npm%3A1.4.4#./.yarn/patches/react-native-web-lottie-npm-1.4.4-98cf000f2d.patch",
+    "react-native-web-swiper@2.2.4": "patch:react-native-web-swiper@npm%3A2.2.4#./.yarn/patches/react-native-web-swiper-npm-2.2.4-990ec1a345.patch"
   },
   "exports": {
     ".": "./index.js",

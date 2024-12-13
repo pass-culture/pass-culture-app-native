@@ -1,0 +1,560 @@
+diff --git a/lib/module/getPathFromState.js b/lib/module/getPathFromState.js
+index d6a18ae65eeb173d3da395383e8cd4265dd755ff..e3c90dfbee7edfdc80b3009b1af11c1c174ebc96 100644
+--- a/lib/module/getPathFromState.js
++++ b/lib/module/getPathFromState.js
+@@ -1,9 +1,12 @@
+-import * as queryString from 'query-string';
+-import fromEntries from './fromEntries';
+-import validatePathConfig from './validatePathConfig';
++import * as queryString from "query-string";
++import fromEntries from "./fromEntries";
++import validatePathConfig from "./validatePathConfig";
+ 
+-const getActiveRoute = state => {
+-  const route = typeof state.index === 'number' ? state.routes[state.index] : state.routes[state.routes.length - 1];
++const getActiveRoute = (state) => {
++  const route =
++    typeof state.index === "number"
++      ? state.routes[state.index]
++      : state.routes[state.routes.length - 1];
+ 
+   if (route.state) {
+     return getActiveRoute(route.state);
+@@ -38,33 +41,43 @@ const getActiveRoute = state => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+ 
+-
+-export default function getPathFromState(state, options) {
++export default function getPathFromState(state, options, isTabScreen) {
+   if (state == null) {
+-    throw Error("Got 'undefined' for the navigation state. You must pass a valid state object.");
++    throw Error(
++      "Got 'undefined' for the navigation state. You must pass a valid state object."
++    );
+   }
+ 
+   if (options) {
+     validatePathConfig(options);
+   } // Create a normalized configs object which will be easier to use
+ 
+-
+-  const configs = options !== null && options !== void 0 && options.screens ? createNormalizedConfigs(options === null || options === void 0 ? void 0 : options.screens) : {};
+-  let path = '/';
++  const configs =
++    options !== null && options !== void 0 && options.screens
++      ? createNormalizedConfigs(
++          options === null || options === void 0 ? void 0 : options.screens
++        )
++      : {};
++  let path = "/";
+   let current = state;
+   const allParams = {};
+ 
+   while (current) {
+-    let index = typeof current.index === 'number' ? current.index : 0;
++    let index = typeof current.index === "number" ? current.index : 0;
+     let route = current.routes[index];
+     let pattern;
+     let focusedParams;
+     let focusedRoute = getActiveRoute(state);
+     let currentOptions = configs; // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+ 
++    if (isTabScreen && isTabScreen(route.name)) {
++      currentOptions = configs?.TabNavigator?.screens || configs;
++    }
++
+     let nestedRouteNames = [];
+     let hasNext = true;
+ 
+@@ -75,11 +88,22 @@ export default function getPathFromState(state, options) {
+       if (route.params) {
+         var _currentOptions$route;
+ 
+-        const stringify = (_currentOptions$route = currentOptions[route.name]) === null || _currentOptions$route === void 0 ? void 0 : _currentOptions$route.stringify;
+-        const currentParams = fromEntries(Object.entries(route.params).map(_ref => {
+-          let [key, value] = _ref;
+-          return [key, stringify !== null && stringify !== void 0 && stringify[key] ? stringify[key](value) : String(value)];
+-        }));
++        const stringify =
++          (_currentOptions$route = currentOptions[route.name]) === null ||
++          _currentOptions$route === void 0
++            ? void 0
++            : _currentOptions$route.stringify;
++        const currentParams = fromEntries(
++          Object.entries(route.params).map((_ref) => {
++            let [key, value] = _ref;
++            return [
++              key,
++              stringify !== null && stringify !== void 0 && stringify[key]
++                ? stringify[key](value)
++                : String(value),
++            ];
++          })
++        );
+ 
+         if (pattern) {
+           Object.assign(allParams, currentParams);
+@@ -90,25 +114,30 @@ export default function getPathFromState(state, options) {
+ 
+           // If this is the focused route, keep the params for later use
+           // We save it here since it's been stringified already
+-          focusedParams = { ...currentParams
+-          };
+-          (_pattern = pattern) === null || _pattern === void 0 ? void 0 : _pattern.split('/').filter(p => p.startsWith(':')) // eslint-disable-next-line no-loop-func
+-          .forEach(p => {
+-            const name = getParamName(p); // Remove the params present in the pattern since we'll only use the rest for query string
+-
+-            if (focusedParams) {
+-              // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+-              delete focusedParams[name];
+-            }
+-          });
++          focusedParams = { ...currentParams };
++          (_pattern = pattern) === null || _pattern === void 0
++            ? void 0
++            : _pattern
++                .split("/")
++                .filter((p) => p.startsWith(":")) // eslint-disable-next-line no-loop-func
++                .forEach((p) => {
++                  const name = getParamName(p); // Remove the params present in the pattern since we'll only use the rest for query string
++
++                  if (focusedParams) {
++                    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
++                    delete focusedParams[name];
++                  }
++                });
+         }
+       } // If there is no `screens` property or no nested state, we return pattern
+ 
+-
+       if (!currentOptions[route.name].screens || route.state === undefined) {
+         hasNext = false;
+       } else {
+-        index = typeof route.state.index === 'number' ? route.state.index : route.state.routes.length - 1;
++        index =
++          typeof route.state.index === "number"
++            ? route.state.index
++            : route.state.routes.length - 1;
+         const nextRoute = route.state.routes[index];
+         const nestedConfig = currentOptions[route.name].screens; // if there is config for next route name, we go deeper
+ 
+@@ -123,33 +152,35 @@ export default function getPathFromState(state, options) {
+     }
+ 
+     if (pattern === undefined) {
+-      pattern = nestedRouteNames.join('/');
++      pattern = nestedRouteNames.join("/");
+     }
+ 
+     if (currentOptions[route.name] !== undefined) {
+-      path += pattern.split('/').map(p => {
+-        const name = getParamName(p); // We don't know what to show for wildcard patterns
+-        // Showing the route name seems ok, though whatever we show here will be incorrect
+-        // Since the page doesn't actually exist
+-
+-        if (p === '*') {
+-          return route.name;
+-        } // If the path has a pattern for a param, put the param in the path
+-
+-
+-        if (p.startsWith(':')) {
+-          const value = allParams[name];
++      path += pattern
++        .split("/")
++        .map((p) => {
++          const name = getParamName(p); // We don't know what to show for wildcard patterns
++          // Showing the route name seems ok, though whatever we show here will be incorrect
++          // Since the page doesn't actually exist
++
++          if (p === "*") {
++            return route.name;
++          } // If the path has a pattern for a param, put the param in the path
++
++          if (p.startsWith(":")) {
++            const value = allParams[name];
++
++            if (value === undefined && p.endsWith("?")) {
++              // Optional params without value assigned in route.params should be ignored
++              return "";
++            }
+ 
+-          if (value === undefined && p.endsWith('?')) {
+-            // Optional params without value assigned in route.params should be ignored
+-            return '';
++            return encodeURIComponent(value);
+           }
+ 
+-          return encodeURIComponent(value);
+-        }
+-
+-        return encodeURIComponent(p);
+-      }).join('/');
++          return encodeURIComponent(p);
++        })
++        .join("/");
+     } else {
+       path += encodeURIComponent(route.name);
+     }
+@@ -159,17 +190,17 @@ export default function getPathFromState(state, options) {
+     }
+ 
+     if (route.state) {
+-      path += '/';
++      path += "/";
+     } else if (focusedParams) {
+       for (let param in focusedParams) {
+-        if (focusedParams[param] === 'undefined') {
++        if (focusedParams[param] === "undefined") {
+           // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+           delete focusedParams[param];
+         }
+       }
+ 
+       const query = queryString.stringify(focusedParams, {
+-        sort: false
++        sort: false,
+       });
+ 
+       if (query) {
+@@ -180,54 +211,72 @@ export default function getPathFromState(state, options) {
+     current = route.state;
+   } // Remove multiple as well as trailing slashes
+ 
+-
+-  path = path.replace(/\/+/g, '/');
+-  path = path.length > 1 ? path.replace(/\/$/, '') : path;
++  path = path.replace(/\/+/g, "/");
++  path = path.length > 1 ? path.replace(/\/$/, "") : path;
+   return path;
+ }
+ 
+-const getParamName = pattern => pattern.replace(/^:/, '').replace(/\?$/, '');
++const getParamName = (pattern) => pattern.replace(/^:/, "").replace(/\?$/, "");
+ 
+ const joinPaths = function () {
+-  for (var _len = arguments.length, paths = new Array(_len), _key = 0; _key < _len; _key++) {
++  for (
++    var _len = arguments.length, paths = new Array(_len), _key = 0;
++    _key < _len;
++    _key++
++  ) {
+     paths[_key] = arguments[_key];
+   }
+ 
+-  return [].concat(...paths.map(p => p.split('/'))).filter(Boolean).join('/');
++  return []
++    .concat(...paths.map((p) => p.split("/")))
++    .filter(Boolean)
++    .join("/");
+ };
+ 
+ const createConfigItem = (config, parentPattern) => {
+   var _pattern2;
+ 
+-  if (typeof config === 'string') {
++  if (typeof config === "string") {
+     // If a string is specified as the value of the key(e.g. Foo: '/path'), use it as the pattern
+     const pattern = parentPattern ? joinPaths(parentPattern, config) : config;
+     return {
+-      pattern
++      pattern,
+     };
+   } // If an object is specified as the value (e.g. Foo: { ... }),
+   // It can have `path` property and `screens` prop which has nested configs
+ 
+-
+   let pattern;
+ 
+   if (config.exact && config.path === undefined) {
+-    throw new Error("A 'path' needs to be specified when specifying 'exact: true'. If you don't want this screen in the URL, specify it as empty string, e.g. `path: ''`.");
++    throw new Error(
++      "A 'path' needs to be specified when specifying 'exact: true'. If you don't want this screen in the URL, specify it as empty string, e.g. `path: ''`."
++    );
+   }
+ 
+-  pattern = config.exact !== true ? joinPaths(parentPattern || '', config.path || '') : config.path || '';
+-  const screens = config.screens ? createNormalizedConfigs(config.screens, pattern) : undefined;
++  pattern =
++    config.exact !== true
++      ? joinPaths(parentPattern || "", config.path || "")
++      : config.path || "";
++  const screens = config.screens
++    ? createNormalizedConfigs(config.screens, pattern)
++    : undefined;
+   return {
+     // Normalize pattern to remove any leading, trailing slashes, duplicate slashes etc.
+-    pattern: (_pattern2 = pattern) === null || _pattern2 === void 0 ? void 0 : _pattern2.split('/').filter(Boolean).join('/'),
++    pattern:
++      (_pattern2 = pattern) === null || _pattern2 === void 0
++        ? void 0
++        : _pattern2.split("/").filter(Boolean).join("/"),
+     stringify: config.stringify,
+-    screens
++    screens,
+   };
+ };
+ 
+-const createNormalizedConfigs = (options, pattern) => fromEntries(Object.entries(options).map(_ref2 => {
+-  let [name, c] = _ref2;
+-  const result = createConfigItem(c, pattern);
+-  return [name, result];
+-}));
++const createNormalizedConfigs = (options, pattern) =>
++  fromEntries(
++    Object.entries(options).map((_ref2) => {
++      let [name, c] = _ref2;
++      const result = createConfigItem(c, pattern);
++      return [name, result];
++    })
++  );
+ //# sourceMappingURL=getPathFromState.js.map
+diff --git a/lib/typescript/src/getPathFromState.d.ts b/lib/typescript/src/getPathFromState.d.ts
+index c490438b831c038df310347fb57e104a6a9c62ce..feb61d63b0ff0719a253b620c9aba23605c703a3 100644
+--- a/lib/typescript/src/getPathFromState.d.ts
++++ b/lib/typescript/src/getPathFromState.d.ts
+@@ -1,10 +1,12 @@
+-import type { NavigationState, PartialState } from '@react-navigation/routers';
+-import type { PathConfigMap } from './types';
++import type { NavigationState, PartialState } from "@react-navigation/routers";
++import type { PathConfigMap } from "./types";
+ declare type Options<ParamList> = {
+-    initialRouteName?: string;
+-    screens: PathConfigMap<ParamList>;
++  initialRouteName?: string;
++  screens: PathConfigMap<ParamList>;
+ };
+-declare type State = NavigationState | Omit<PartialState<NavigationState>, 'stale'>;
++declare type State =
++  | NavigationState
++  | Omit<PartialState<NavigationState>, "stale">;
+ /**
+  * Utility to serialize a navigation state object to a path string.
+  *
+@@ -34,5 +36,10 @@ declare type State = NavigationState | Omit<PartialState<NavigationState>, 'stal
+  * @param options Extra options to fine-tune how to serialize the path.
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+-export default function getPathFromState<ParamList extends {}>(state: State, options?: Options<ParamList>): string;
++export default function getPathFromState<ParamList extends {}>(
++  state: State,
++  options?: Options<ParamList>,
++  getTabScreen?: (name: string) => boolean
++): string;
++
+ export {};
+diff --git a/src/getPathFromState.tsx b/src/getPathFromState.tsx
+index f3e30de46099604ba2db6e63220d9bb7f88dfe8d..0821d46c23284ae907b1a3cac7a86080969f91a0 100644
+--- a/src/getPathFromState.tsx
++++ b/src/getPathFromState.tsx
+@@ -2,19 +2,19 @@ import type {
+   NavigationState,
+   PartialState,
+   Route,
+-} from '@react-navigation/routers';
+-import * as queryString from 'query-string';
++} from "@react-navigation/routers";
++import * as queryString from "query-string";
+ 
+-import fromEntries from './fromEntries';
+-import type { PathConfig, PathConfigMap } from './types';
+-import validatePathConfig from './validatePathConfig';
++import fromEntries from "./fromEntries";
++import type { PathConfig, PathConfigMap } from "./types";
++import validatePathConfig from "./validatePathConfig";
+ 
+ type Options<ParamList> = {
+   initialRouteName?: string;
+   screens: PathConfigMap<ParamList>;
+ };
+ 
+-type State = NavigationState | Omit<PartialState<NavigationState>, 'stale'>;
++type State = NavigationState | Omit<PartialState<NavigationState>, "stale">;
+ 
+ type StringifyConfig = Record<string, (value: any) => string>;
+ 
+@@ -26,7 +26,7 @@ type ConfigItem = {
+ 
+ const getActiveRoute = (state: State): { name: string; params?: object } => {
+   const route =
+-    typeof state.index === 'number'
++    typeof state.index === "number"
+       ? state.routes[state.index]
+       : state.routes[state.routes.length - 1];
+ 
+@@ -64,11 +64,13 @@ const getActiveRoute = (state: State): { name: string; params?: object } => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+ export default function getPathFromState<ParamList extends {}>(
+   state: State,
+-  options?: Options<ParamList>
++  options?: Options<ParamList>,
++  isTabScreen?: (name: string) => boolean
+ ): string {
+   if (state == null) {
+     throw Error(
+@@ -85,13 +87,13 @@ export default function getPathFromState<ParamList extends {}>(
+     ? createNormalizedConfigs(options?.screens)
+     : {};
+ 
+-  let path = '/';
++  let path = "/";
+   let current: State | undefined = state;
+ 
+   const allParams: Record<string, any> = {};
+ 
+   while (current) {
+-    let index = typeof current.index === 'number' ? current.index : 0;
++    let index = typeof current.index === "number" ? current.index : 0;
+     let route = current.routes[index] as Route<string> & {
+       state?: State;
+     };
+@@ -102,6 +104,9 @@ export default function getPathFromState<ParamList extends {}>(
+     let focusedRoute = getActiveRoute(state);
+     let currentOptions = configs;
+ 
++    if (isTabScreen && isTabScreen(route.name as any)) {
++      currentOptions = (configs?.TabNavigator?.screens as any) || configs;
++    }
+     // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+     let nestedRouteNames = [];
+ 
+@@ -132,8 +137,8 @@ export default function getPathFromState<ParamList extends {}>(
+           focusedParams = { ...currentParams };
+ 
+           pattern
+-            ?.split('/')
+-            .filter((p) => p.startsWith(':'))
++            ?.split("/")
++            .filter((p) => p.startsWith(":"))
+             // eslint-disable-next-line no-loop-func
+             .forEach((p) => {
+               const name = getParamName(p);
+@@ -152,7 +157,7 @@ export default function getPathFromState<ParamList extends {}>(
+         hasNext = false;
+       } else {
+         index =
+-          typeof route.state.index === 'number'
++          typeof route.state.index === "number"
+             ? route.state.index
+             : route.state.routes.length - 1;
+ 
+@@ -171,29 +176,29 @@ export default function getPathFromState<ParamList extends {}>(
+     }
+ 
+     if (pattern === undefined) {
+-      pattern = nestedRouteNames.join('/');
++      pattern = nestedRouteNames.join("/");
+     }
+ 
+     if (currentOptions[route.name] !== undefined) {
+       path += pattern
+-        .split('/')
++        .split("/")
+         .map((p) => {
+           const name = getParamName(p);
+ 
+           // We don't know what to show for wildcard patterns
+           // Showing the route name seems ok, though whatever we show here will be incorrect
+           // Since the page doesn't actually exist
+-          if (p === '*') {
++          if (p === "*") {
+             return route.name;
+           }
+ 
+           // If the path has a pattern for a param, put the param in the path
+-          if (p.startsWith(':')) {
++          if (p.startsWith(":")) {
+             const value = allParams[name];
+ 
+-            if (value === undefined && p.endsWith('?')) {
++            if (value === undefined && p.endsWith("?")) {
+               // Optional params without value assigned in route.params should be ignored
+-              return '';
++              return "";
+             }
+ 
+             return encodeURIComponent(value);
+@@ -201,7 +206,7 @@ export default function getPathFromState<ParamList extends {}>(
+ 
+           return encodeURIComponent(p);
+         })
+-        .join('/');
++        .join("/");
+     } else {
+       path += encodeURIComponent(route.name);
+     }
+@@ -211,10 +216,10 @@ export default function getPathFromState<ParamList extends {}>(
+     }
+ 
+     if (route.state) {
+-      path += '/';
++      path += "/";
+     } else if (focusedParams) {
+       for (let param in focusedParams) {
+-        if (focusedParams[param] === 'undefined') {
++        if (focusedParams[param] === "undefined") {
+           // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+           delete focusedParams[param];
+         }
+@@ -231,26 +236,26 @@ export default function getPathFromState<ParamList extends {}>(
+   }
+ 
+   // Remove multiple as well as trailing slashes
+-  path = path.replace(/\/+/g, '/');
+-  path = path.length > 1 ? path.replace(/\/$/, '') : path;
++  path = path.replace(/\/+/g, "/");
++  path = path.length > 1 ? path.replace(/\/$/, "") : path;
+ 
+   return path;
+ }
+ 
+ const getParamName = (pattern: string) =>
+-  pattern.replace(/^:/, '').replace(/\?$/, '');
++  pattern.replace(/^:/, "").replace(/\?$/, "");
+ 
+ const joinPaths = (...paths: string[]): string =>
+   ([] as string[])
+-    .concat(...paths.map((p) => p.split('/')))
++    .concat(...paths.map((p) => p.split("/")))
+     .filter(Boolean)
+-    .join('/');
++    .join("/");
+ 
+ const createConfigItem = (
+   config: PathConfig<object> | string,
+   parentPattern?: string
+ ): ConfigItem => {
+-  if (typeof config === 'string') {
++  if (typeof config === "string") {
+     // If a string is specified as the value of the key(e.g. Foo: '/path'), use it as the pattern
+     const pattern = parentPattern ? joinPaths(parentPattern, config) : config;
+ 
+@@ -269,8 +274,8 @@ const createConfigItem = (
+ 
+   pattern =
+     config.exact !== true
+-      ? joinPaths(parentPattern || '', config.path || '')
+-      : config.path || '';
++      ? joinPaths(parentPattern || "", config.path || "")
++      : config.path || "";
+ 
+   const screens = config.screens
+     ? createNormalizedConfigs(config.screens, pattern)
+@@ -278,7 +283,7 @@ const createConfigItem = (
+ 
+   return {
+     // Normalize pattern to remove any leading, trailing slashes, duplicate slashes etc.
+-    pattern: pattern?.split('/').filter(Boolean).join('/'),
++    pattern: pattern?.split("/").filter(Boolean).join("/"),
+     stringify: config.stringify,
+     screens,
+   };

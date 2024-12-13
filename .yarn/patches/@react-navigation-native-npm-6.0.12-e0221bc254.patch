@@ -1,0 +1,572 @@
+diff --git a/lib/commonjs/createMemoryHistory.js b/lib/commonjs/createMemoryHistory.js
+index dfdec7faf3ae0c3fbe7bc53aa162257bb21d8c19..ff0bd18ee45acfeaaf544fad5d04115d497d9a60 100644
+--- a/lib/commonjs/createMemoryHistory.js
++++ b/lib/commonjs/createMemoryHistory.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ 
+ Object.defineProperty(exports, "__esModule", {
+-  value: true
++  value: true,
+ });
+ exports.default = createMemoryHistory;
+ 
+@@ -18,7 +18,7 @@ function createMemoryHistory() {
+     // If another history operation was performed we need to interrupt existing ones
+     // This makes sure that calls such as `history.replace` after `history.go` don't happen
+     // Since otherwise it won't be correct if something else has changed
+-    pending.forEach(it => {
++    pending.forEach((it) => {
+       const cb = it.cb;
+ 
+       it.cb = () => cb(true);
+@@ -31,10 +31,14 @@ function createMemoryHistory() {
+ 
+       // We store an id in the state instead of an index
+       // Index could get out of sync with in-memory values if page reloads
+-      const id = (_window$history$state = window.history.state) === null || _window$history$state === void 0 ? void 0 : _window$history$state.id;
++      const id =
++        (_window$history$state = window.history.state) === null ||
++        _window$history$state === void 0
++          ? void 0
++          : _window$history$state.id;
+ 
+       if (id) {
+-        const index = items.findIndex(item => item.id === id);
++        const index = items.findIndex((item) => item?.id === id);
+         return index > -1 ? index : 0;
+       }
+ 
+@@ -46,9 +50,7 @@ function createMemoryHistory() {
+     },
+ 
+     backIndex(_ref) {
+-      let {
+-        path
+-      } = _ref;
++      let { path } = _ref;
+ 
+       // We need to find the index from the element before current to get closest path to go back to
+       for (let i = index - 1; i >= 0; i--) {
+@@ -63,10 +65,7 @@ function createMemoryHistory() {
+     },
+ 
+     push(_ref2) {
+-      let {
+-        path,
+-        state
+-      } = _ref2;
++      let { path, state } = _ref2;
+       interrupt();
+       const id = (0, _nonSecure.nanoid)(); // When a new entry is pushed, all the existing entries after index will be inaccessible
+       // So we remove any existing entries after the current index to clean them up
+@@ -75,52 +74,67 @@ function createMemoryHistory() {
+       items.push({
+         path,
+         state,
+-        id
++        id,
+       });
+       index = items.length - 1; // We pass empty string for title because it's ignored in all browsers except safari
+       // We don't store state object in history.state because:
+       // - browsers have limits on how big it can be, and we don't control the size
+       // - while not recommended, there could be non-serializable data in state
+ 
+-      window.history.pushState({
+-        id
+-      }, '', path);
++      window.history.pushState(
++        {
++          id,
++        },
++        "",
++        path
++      );
+     },
+ 
+     replace(_ref3) {
+       var _window$history$state2, _window$history$state3;
+ 
+-      let {
+-        path,
+-        state
+-      } = _ref3;
++      let { path, state } = _ref3;
+       interrupt();
+-      const id = (_window$history$state2 = (_window$history$state3 = window.history.state) === null || _window$history$state3 === void 0 ? void 0 : _window$history$state3.id) !== null && _window$history$state2 !== void 0 ? _window$history$state2 : (0, _nonSecure.nanoid)();
+-
+-      if (!items.length || items.findIndex(item => item.id === id) < 0) {
++      const id =
++        (_window$history$state2 =
++          (_window$history$state3 = window.history.state) === null ||
++          _window$history$state3 === void 0
++            ? void 0
++            : _window$history$state3.id) !== null &&
++        _window$history$state2 !== void 0
++          ? _window$history$state2
++          : (0, _nonSecure.nanoid)();
++
++      if (!items.length || items.findIndex((item) => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+         //   the page when navigating forward in history.
+         // - This is the first time any state modifications are done
+         //   So we need to push the entry as there's nothing to replace
+-        items = [{
+-          path,
+-          state,
+-          id
+-        }];
++        items = [
++          {
++            path,
++            state,
++            id,
++          },
++        ];
+         index = 0;
+       } else {
+         items[index] = {
+           path,
+           state,
+-          id
++          id,
+         };
+       }
+ 
+-      window.history.replaceState({
+-        id
+-      }, '', path);
++      window.history.replaceState(
++        {
++          id,
++        },
++        "",
++        path
++      );
+     },
+ 
+     // `history.go(n)` is asynchronous, there are couple of things to keep in mind:
+@@ -155,13 +169,12 @@ function createMemoryHistory() {
+       // - `history.go` is called multiple times, we need to resolve on respective `popstate`
+       // - No history to go back, but `history.go` was called, browser has no API to detect it
+ 
+-
+       return new Promise((resolve, reject) => {
+-        const done = interrupted => {
++        const done = (interrupted) => {
+           clearTimeout(timer);
+ 
+           if (interrupted) {
+-            reject(new Error('History was changed during navigation.'));
++            reject(new Error("History was changed during navigation."));
+             return;
+           } // There seems to be a bug in Chrome regarding updating the title
+           // If we set a title just before calling `history.go`, the title gets lost
+@@ -172,18 +185,15 @@ function createMemoryHistory() {
+           // It won't work without setting it to empty string coz otherwise title isn't changing
+           // Which means that the browser won't do anything after setting the title
+ 
+-
+-          const {
+-            title
+-          } = window.document;
+-          window.document.title = '';
++          const { title } = window.document;
++          window.document.title = "";
+           window.document.title = title;
+           resolve();
+         };
+ 
+         pending.push({
+           ref: done,
+-          cb: done
++          cb: done,
+         }); // If navigation didn't happen within 100ms, assume that it won't happen
+         // This may not be accurate, but hopefully it won't take so much time
+         // In Chrome, navigation seems to happen instantly in next microtask
+@@ -191,7 +201,7 @@ function createMemoryHistory() {
+         // We're using a hacky timeout since there doesn't seem to be way to know for sure
+ 
+         const timer = setTimeout(() => {
+-          const index = pending.findIndex(it => it.ref === done);
++          const index = pending.findIndex((it) => it.ref === done);
+ 
+           if (index > -1) {
+             pending[index].cb();
+@@ -202,17 +212,21 @@ function createMemoryHistory() {
+         const onPopState = () => {
+           var _window$history$state4;
+ 
+-          const id = (_window$history$state4 = window.history.state) === null || _window$history$state4 === void 0 ? void 0 : _window$history$state4.id;
+-          const currentIndex = items.findIndex(item => item.id === id); // Fix createMemoryHistory.index variable's value
++          const id =
++            (_window$history$state4 = window.history.state) === null ||
++            _window$history$state4 === void 0
++              ? void 0
++              : _window$history$state4.id;
++          const currentIndex = items.findIndex((item) => item?.id === id); // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
+ 
+           index = Math.max(currentIndex, 0);
+           const last = pending.pop();
+-          window.removeEventListener('popstate', onPopState);
++          window.removeEventListener("popstate", onPopState);
+           last === null || last === void 0 ? void 0 : last.cb();
+         };
+ 
+-        window.addEventListener('popstate', onPopState);
++        window.addEventListener("popstate", onPopState);
+         window.history.go(n);
+       });
+     },
+@@ -230,10 +244,9 @@ function createMemoryHistory() {
+         listener();
+       };
+ 
+-      window.addEventListener('popstate', onPopState);
+-      return () => window.removeEventListener('popstate', onPopState);
+-    }
+-
++      window.addEventListener("popstate", onPopState);
++      return () => window.removeEventListener("popstate", onPopState);
++    },
+   };
+   return history;
+ }
+diff --git a/lib/module/createMemoryHistory.js b/lib/module/createMemoryHistory.js
+index 2b024a6e02cc3757e4ddc899cc6062e336e2f3c8..37c25f05552ffa940502626a723fc9d13cc339b7 100644
+--- a/lib/module/createMemoryHistory.js
++++ b/lib/module/createMemoryHistory.js
+@@ -1,4 +1,4 @@
+-import { nanoid } from 'nanoid/non-secure';
++import { nanoid } from "nanoid/non-secure";
+ export default function createMemoryHistory() {
+   let index = 0;
+   let items = []; // Pending callbacks for `history.go(n)`
+@@ -10,7 +10,7 @@ export default function createMemoryHistory() {
+     // If another history operation was performed we need to interrupt existing ones
+     // This makes sure that calls such as `history.replace` after `history.go` don't happen
+     // Since otherwise it won't be correct if something else has changed
+-    pending.forEach(it => {
++    pending.forEach((it) => {
+       const cb = it.cb;
+ 
+       it.cb = () => cb(true);
+@@ -23,10 +23,14 @@ export default function createMemoryHistory() {
+ 
+       // We store an id in the state instead of an index
+       // Index could get out of sync with in-memory values if page reloads
+-      const id = (_window$history$state = window.history.state) === null || _window$history$state === void 0 ? void 0 : _window$history$state.id;
++      const id =
++        (_window$history$state = window.history.state) === null ||
++        _window$history$state === void 0
++          ? void 0
++          : _window$history$state.id;
+ 
+       if (id) {
+-        const index = items.findIndex(item => item.id === id);
++        const index = items.findIndex((item) => item?.id === id);
+         return index > -1 ? index : 0;
+       }
+ 
+@@ -38,9 +42,7 @@ export default function createMemoryHistory() {
+     },
+ 
+     backIndex(_ref) {
+-      let {
+-        path
+-      } = _ref;
++      let { path } = _ref;
+ 
+       // We need to find the index from the element before current to get closest path to go back to
+       for (let i = index - 1; i >= 0; i--) {
+@@ -55,10 +57,7 @@ export default function createMemoryHistory() {
+     },
+ 
+     push(_ref2) {
+-      let {
+-        path,
+-        state
+-      } = _ref2;
++      let { path, state } = _ref2;
+       interrupt();
+       const id = nanoid(); // When a new entry is pushed, all the existing entries after index will be inaccessible
+       // So we remove any existing entries after the current index to clean them up
+@@ -67,52 +66,67 @@ export default function createMemoryHistory() {
+       items.push({
+         path,
+         state,
+-        id
++        id,
+       });
+       index = items.length - 1; // We pass empty string for title because it's ignored in all browsers except safari
+       // We don't store state object in history.state because:
+       // - browsers have limits on how big it can be, and we don't control the size
+       // - while not recommended, there could be non-serializable data in state
+ 
+-      window.history.pushState({
+-        id
+-      }, '', path);
++      window.history.pushState(
++        {
++          id,
++        },
++        "",
++        path
++      );
+     },
+ 
+     replace(_ref3) {
+       var _window$history$state2, _window$history$state3;
+ 
+-      let {
+-        path,
+-        state
+-      } = _ref3;
++      let { path, state } = _ref3;
+       interrupt();
+-      const id = (_window$history$state2 = (_window$history$state3 = window.history.state) === null || _window$history$state3 === void 0 ? void 0 : _window$history$state3.id) !== null && _window$history$state2 !== void 0 ? _window$history$state2 : nanoid();
+-
+-      if (!items.length || items.findIndex(item => item.id === id) < 0) {
++      const id =
++        (_window$history$state2 =
++          (_window$history$state3 = window.history.state) === null ||
++          _window$history$state3 === void 0
++            ? void 0
++            : _window$history$state3.id) !== null &&
++        _window$history$state2 !== void 0
++          ? _window$history$state2
++          : nanoid();
++
++      if (!items.length || items.findIndex((item) => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+         //   the page when navigating forward in history.
+         // - This is the first time any state modifications are done
+         //   So we need to push the entry as there's nothing to replace
+-        items = [{
+-          path,
+-          state,
+-          id
+-        }];
++        items = [
++          {
++            path,
++            state,
++            id,
++          },
++        ];
+         index = 0;
+       } else {
+         items[index] = {
+           path,
+           state,
+-          id
++          id,
+         };
+       }
+ 
+-      window.history.replaceState({
+-        id
+-      }, '', path);
++      window.history.replaceState(
++        {
++          id,
++        },
++        "",
++        path
++      );
+     },
+ 
+     // `history.go(n)` is asynchronous, there are couple of things to keep in mind:
+@@ -147,13 +161,12 @@ export default function createMemoryHistory() {
+       // - `history.go` is called multiple times, we need to resolve on respective `popstate`
+       // - No history to go back, but `history.go` was called, browser has no API to detect it
+ 
+-
+       return new Promise((resolve, reject) => {
+-        const done = interrupted => {
++        const done = (interrupted) => {
+           clearTimeout(timer);
+ 
+           if (interrupted) {
+-            reject(new Error('History was changed during navigation.'));
++            reject(new Error("History was changed during navigation."));
+             return;
+           } // There seems to be a bug in Chrome regarding updating the title
+           // If we set a title just before calling `history.go`, the title gets lost
+@@ -164,18 +177,15 @@ export default function createMemoryHistory() {
+           // It won't work without setting it to empty string coz otherwise title isn't changing
+           // Which means that the browser won't do anything after setting the title
+ 
+-
+-          const {
+-            title
+-          } = window.document;
+-          window.document.title = '';
++          const { title } = window.document;
++          window.document.title = "";
+           window.document.title = title;
+           resolve();
+         };
+ 
+         pending.push({
+           ref: done,
+-          cb: done
++          cb: done,
+         }); // If navigation didn't happen within 100ms, assume that it won't happen
+         // This may not be accurate, but hopefully it won't take so much time
+         // In Chrome, navigation seems to happen instantly in next microtask
+@@ -183,7 +193,7 @@ export default function createMemoryHistory() {
+         // We're using a hacky timeout since there doesn't seem to be way to know for sure
+ 
+         const timer = setTimeout(() => {
+-          const index = pending.findIndex(it => it.ref === done);
++          const index = pending.findIndex((it) => it.ref === done);
+ 
+           if (index > -1) {
+             pending[index].cb();
+@@ -194,17 +204,21 @@ export default function createMemoryHistory() {
+         const onPopState = () => {
+           var _window$history$state4;
+ 
+-          const id = (_window$history$state4 = window.history.state) === null || _window$history$state4 === void 0 ? void 0 : _window$history$state4.id;
+-          const currentIndex = items.findIndex(item => item.id === id); // Fix createMemoryHistory.index variable's value
++          const id =
++            (_window$history$state4 = window.history.state) === null ||
++            _window$history$state4 === void 0
++              ? void 0
++              : _window$history$state4.id;
++          const currentIndex = items.findIndex((item) => item?.id === id); // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
+ 
+           index = Math.max(currentIndex, 0);
+           const last = pending.pop();
+-          window.removeEventListener('popstate', onPopState);
++          window.removeEventListener("popstate", onPopState);
+           last === null || last === void 0 ? void 0 : last.cb();
+         };
+ 
+-        window.addEventListener('popstate', onPopState);
++        window.addEventListener("popstate", onPopState);
+         window.history.go(n);
+       });
+     },
+@@ -222,10 +236,9 @@ export default function createMemoryHistory() {
+         listener();
+       };
+ 
+-      window.addEventListener('popstate', onPopState);
+-      return () => window.removeEventListener('popstate', onPopState);
+-    }
+-
++      window.addEventListener("popstate", onPopState);
++      return () => window.removeEventListener("popstate", onPopState);
++    },
+   };
+   return history;
+ }
+diff --git a/src/createMemoryHistory.tsx b/src/createMemoryHistory.tsx
+index 515b0dadd6604d2509cb469e8e2af1e6204fde4f..50c1787935f1c1c6d07b67bfac1d838bb61b12e7 100644
+--- a/src/createMemoryHistory.tsx
++++ b/src/createMemoryHistory.tsx
+@@ -1,5 +1,5 @@
+-import type { NavigationState } from '@react-navigation/core';
+-import { nanoid } from 'nanoid/non-secure';
++import type { NavigationState } from "@react-navigation/core";
++import { nanoid } from "nanoid/non-secure";
+ 
+ type HistoryRecord = {
+   // Unique identifier for this record to match it with window.history.state
+@@ -35,7 +35,7 @@ export default function createMemoryHistory() {
+       const id = window.history.state?.id;
+ 
+       if (id) {
+-        const index = items.findIndex((item) => item.id === id);
++        const index = items.findIndex((item) => item?.id === id);
+ 
+         return index > -1 ? index : 0;
+       }
+@@ -76,7 +76,7 @@ export default function createMemoryHistory() {
+       // We don't store state object in history.state because:
+       // - browsers have limits on how big it can be, and we don't control the size
+       // - while not recommended, there could be non-serializable data in state
+-      window.history.pushState({ id }, '', path);
++      window.history.pushState({ id }, "", path);
+     },
+ 
+     replace({ path, state }: { path: string; state: NavigationState }) {
+@@ -84,7 +84,7 @@ export default function createMemoryHistory() {
+ 
+       const id = window.history.state?.id ?? nanoid();
+ 
+-      if (!items.length || items.findIndex((item) => item.id === id) < 0) {
++      if (!items.length || items.findIndex((item) => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+@@ -97,7 +97,7 @@ export default function createMemoryHistory() {
+         items[index] = { path, state, id };
+       }
+ 
+-      window.history.replaceState({ id }, '', path);
++      window.history.replaceState({ id }, "", path);
+     },
+ 
+     // `history.go(n)` is asynchronous, there are couple of things to keep in mind:
+@@ -138,7 +138,7 @@ export default function createMemoryHistory() {
+           clearTimeout(timer);
+ 
+           if (interrupted) {
+-            reject(new Error('History was changed during navigation.'));
++            reject(new Error("History was changed during navigation."));
+             return;
+           }
+ 
+@@ -152,7 +152,7 @@ export default function createMemoryHistory() {
+           // Which means that the browser won't do anything after setting the title
+           const { title } = window.document;
+ 
+-          window.document.title = '';
++          window.document.title = "";
+           window.document.title = title;
+ 
+           resolve();
+@@ -176,7 +176,7 @@ export default function createMemoryHistory() {
+ 
+         const onPopState = () => {
+           const id = window.history.state?.id;
+-          const currentIndex = items.findIndex((item) => item.id === id);
++          const currentIndex = items.findIndex((item) => item?.id === id);
+ 
+           // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
+@@ -184,11 +184,11 @@ export default function createMemoryHistory() {
+ 
+           const last = pending.pop();
+ 
+-          window.removeEventListener('popstate', onPopState);
++          window.removeEventListener("popstate", onPopState);
+           last?.cb();
+         };
+ 
+-        window.addEventListener('popstate', onPopState);
++        window.addEventListener("popstate", onPopState);
+         window.history.go(n);
+       });
+     },
+@@ -206,9 +206,9 @@ export default function createMemoryHistory() {
+         listener();
+       };
+ 
+-      window.addEventListener('popstate', onPopState);
++      window.addEventListener("popstate", onPopState);
+ 
+-      return () => window.removeEventListener('popstate', onPopState);
++      return () => window.removeEventListener("popstate", onPopState);
+     },
+   };
+ 
