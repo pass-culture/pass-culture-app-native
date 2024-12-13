@@ -86,7 +86,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
     type === TutorialTypes.ONBOARDING
       ? 'Pour commencer, peux-tu nous dire ton âge\u00a0?'
       : 'Comment ça marche\u00a0?'
-  const titleForAll = 'C’est noté! Maintenant, quel est ton âge précis?'
+  const titleForAll = 'C’est noté\u00a0! Maintenant, quel est ton âge précis\u00a0?'
 
   const subtitle =
     type === TutorialTypes.ONBOARDING
