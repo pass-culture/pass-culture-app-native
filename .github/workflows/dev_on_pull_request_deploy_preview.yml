@@ -7,9 +7,8 @@ on:
       - opened
       - edited
       - synchronize
-permissions:
-  contents: read
-  id-token: write
+
+permissions: write-all
 
 jobs:
   deploy_on_firebase:
