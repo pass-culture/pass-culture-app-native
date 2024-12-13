@@ -1,14 +1,12 @@
 import { addDays, isSameDay } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 
-import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import { BookingVenueResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
 import { NoTicket } from 'features/bookings/components/TicketBody/NoTicket/NoTicket'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
-import {
-  SeatWithQrCode,
-  SeatWithQrCodeProps,
-} from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
+import { SafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/SafeSeatWithQrCode'
+import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
 
 type Props = {
@@ -19,6 +17,7 @@ type Props = {
   beginningDatetime?: string
   qrCodeData?: string
   externalBookings?: SeatWithQrCodeProps
+  venue: BookingVenueResponse
 }
 
 const notQrCodeSubcategories = [
@@ -36,10 +35,21 @@ export const TicketBody: FunctionComponent<Props> = ({
   beginningDatetime,
   qrCodeData,
   externalBookings,
+  venue,
 }) => {
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryId)
 
-  if (externalBookings) return <SeatWithQrCode {...externalBookings} />
+  if (externalBookings)
+    return (
+      <SafeSeatWithQrCode
+        subcategoryId={subcategoryId}
+        beginningDatetime={beginningDatetime}
+        venue={venue}
+        categoriesToHide={[SubcategoryIdEnum.CONCERT, SubcategoryIdEnum.FESTIVAL_MUSIQUE]}
+        qrCodeVisibilityHoursBeforeEvent={48}
+        {...externalBookings}
+      />
+    )
 
   if (qrCodeData && subcategoryShouldHaveQrCode) return <QrCode qrCode={qrCodeData} />
 
