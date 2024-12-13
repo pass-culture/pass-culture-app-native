@@ -3,10 +3,6 @@ name: '1 [on_pr] Deploy PR version to Firebase for preview'
 on:
   pull_request:
     branches: [master]
-    types:
-      - opened
-      - edited
-      - synchronize
 
 permissions: write-all
 
