@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { Color } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
+import { CategoryButtonV2 } from 'shared/Buttons/CategoryButtonV2'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'

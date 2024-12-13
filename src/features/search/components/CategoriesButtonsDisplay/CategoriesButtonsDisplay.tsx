@@ -7,13 +7,13 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
-import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
+import { CategoryButtonV2 } from 'shared/Buttons/CategoryButtonV2'
 import { theme } from 'theme'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
