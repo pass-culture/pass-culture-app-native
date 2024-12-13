@@ -8,7 +8,7 @@ on:
       - edited
       - synchronize
 
-permissions: read-all
+permissions: write-all
 
 jobs:
   deploy_on_firebase:
