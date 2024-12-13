@@ -18,7 +18,7 @@ jobs:
     with:
       ENV: 'testing'
       PUSH_RELEASE_TO_SENTRY: false
-      CHANNEL: 'preview'
+      CHANNEL: ''
       REF: '${{ github.ref }}'
       CACHE_BUCKET_NAME: 'passculture-metier-ehp'
     secrets:
