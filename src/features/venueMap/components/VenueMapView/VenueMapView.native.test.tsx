@@ -328,7 +328,6 @@ function getVenueMapViewComponent({
 }: RenderVenueMapViewType) {
   return reactQueryProviderHOC(
     <VenueMapView
-      height={700}
       from="venueMap"
       venues={venues}
       selectedVenue={selectedVenue}
