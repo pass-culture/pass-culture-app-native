@@ -12,7 +12,7 @@ permissions: write-all
 
 jobs:
   deploy_on_firebase:
-    if: ${{ github.event.label.name == 'preview' }}
+    if: contains(github.event.pull_request.labels.*.name, 'preview')
     name: Deploy PR version to Firebase
     uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
     with:
