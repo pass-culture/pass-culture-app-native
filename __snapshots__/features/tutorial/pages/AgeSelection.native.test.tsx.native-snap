@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AgeSelection onboarding should render correctly 1`] = `
+exports[`AgeSelection with passForAll feature flag off onboarding should render correctly 1`] = `
 [
   <View
     style={
@@ -225,7 +225,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 15 ans"
+              accessibilityLabel="J’ai 15 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -266,7 +266,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 15 ans"
+              testID="J’ai 15 ans"
             >
               <View
                 style={
@@ -332,7 +332,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -385,7 +385,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 16 ans"
+              accessibilityLabel="J’ai 16 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -426,7 +426,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 16 ans"
+              testID="J’ai 16 ans"
             >
               <View
                 style={
@@ -492,7 +492,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -545,7 +545,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 17 ans"
+              accessibilityLabel="J’ai 17 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -586,7 +586,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 17 ans"
+              testID="J’ai 17 ans"
             >
               <View
                 style={
@@ -652,7 +652,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -705,7 +705,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 18 ans"
+              accessibilityLabel="J’ai 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -746,7 +746,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai 18 ans"
+              testID="J’ai 18 ans"
             >
               <View
                 style={
@@ -812,7 +812,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                     <Text
                       style={
                         [
@@ -865,7 +865,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai moins de 15 ans ou plus de 18 ans"
+              accessibilityLabel="J’ai moins de 15 ans ou plus de 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -906,7 +906,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   },
                 ]
               }
-              testID="j’ai moins de 15 ans ou plus de 18 ans"
+              testID="J’ai moins de 15 ans ou plus de 18 ans"
             >
               <View
                 style={
@@ -978,7 +978,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai
+                    J’ai
                      moins de 15 ans ou plus de 18 ans
                   </Text>
                 </View>
@@ -1023,7 +1023,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
 ]
 `;
 
-exports[`AgeSelection profileTutorial should render correctly 1`] = `
+exports[`AgeSelection with passForAll feature flag off profileTutorial should render correctly 1`] = `
 [
   <View
     style={
@@ -2018,6 +2018,798 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               </View>
             </View>
           </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      [
+        {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+]
+`;
+
+exports[`AgeSelection with passForAll feature flag on onboarding should render correctly 1`] = `
+[
+  <View
+    style={
+      [
+        {
+          "height": 64,
+        },
+      ]
+    }
+    top={16}
+  />,
+  <View
+    style={
+      [
+        {
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "height": 48,
+            "justifyContent": "center",
+            "paddingHorizontal": 12,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          height={24}
+          testID="icon-back"
+          width={24}
+        >
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "display": "none",
+              },
+            ]
+          }
+        >
+          Retour
+        </Text>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          [
+            {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={3}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
+              },
+            ]
+          }
+        >
+          C’est noté ! Maintenant, quel est ton âge précis ?
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityRole="list"
+          style={
+            [
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="J’ai 15 ans"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="J’ai 15 ans"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
+                    },
+                    [
+                      {
+                        "paddingVertical": 24,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        },
+                      ]
+                    }
+                  >
+                    J’ai
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          },
+                        ]
+                      }
+                    >
+                       
+                      15
+                       ans
+                    </Text>
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="J’ai 16 ans"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="J’ai 16 ans"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
+                    },
+                    [
+                      {
+                        "paddingVertical": 24,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        },
+                      ]
+                    }
+                  >
+                    J’ai
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          },
+                        ]
+                      }
+                    >
+                       
+                      16
+                       ans
+                    </Text>
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="J’ai 17 ans"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="J’ai 17 ans"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
+                    },
+                    [
+                      {
+                        "paddingVertical": 24,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        },
+                      ]
+                    }
+                  >
+                    J’ai
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          },
+                        ]
+                      }
+                    >
+                       
+                      17
+                       ans
+                    </Text>
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="J’ai 18 ans"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="J’ai 18 ans"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
+                    },
+                    [
+                      {
+                        "paddingVertical": 24,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        },
+                      ]
+                    }
+                  >
+                    J’ai
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          },
+                        ]
+                      }
+                    >
+                       
+                      18
+                       ans
+                    </Text>
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          />
         </View>
       </View>
       <View

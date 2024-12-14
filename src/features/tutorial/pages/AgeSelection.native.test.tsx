@@ -6,6 +6,8 @@ import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/ty
 import * as useGoBack from 'features/navigation/useGoBack'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -27,116 +29,140 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('AgeSelection', () => {
-  beforeEach(async () => {
-    await storage.clear('user_age')
-  })
-
-  describe('onboarding', () => {
-    it('should render correctly', () => {
-      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-      expect(screen).toMatchSnapshot()
+  describe('with passForAll feature flag off', () => {
+    beforeEach(async () => {
+      await storage.clear('user_age')
+      setFeatureFlags()
     })
 
-    it.each(AGES)(
-      'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
-      async (age) => {
+    describe('onboarding', () => {
+      it('should render correctly', () => {
         renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
-        const button = screen.getByText(`${age} ans`)
+        expect(screen).toMatchSnapshot()
+      })
+
+      it.each(AGES)(
+        'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
+        async (age) => {
+          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+
+          const button = screen.getByText(`${age} ans`)
+          fireEvent.press(button)
+
+          await waitFor(() => {
+            expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
+          })
+        }
+      )
+
+      it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
+        useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByText('Autre')
         fireEvent.press(button)
 
         await waitFor(() => {
-          expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
-        })
-      }
-    )
-
-    it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
-      useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
-      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText('Autre')
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
-          type: TutorialTypes.ONBOARDING,
-        })
-      })
-    })
-
-    it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText(`${age} ans`)
-      fireEvent.press(button)
-
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: age,
-        from: TutorialTypes.ONBOARDING,
-      })
-    })
-
-    it('should log analytics when pressing "Autre"', () => {
-      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText('Autre')
-      fireEvent.press(button)
-
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: 'other',
-        from: TutorialTypes.ONBOARDING,
-      })
-    })
-
-    it.each(AGES)(
-      'should set user age to %s in local storage  when pressing "j’ai %s ans"',
-      async (age) => {
-        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByText(`${age} ans`)
-        fireEvent.press(button)
-
-        const userAge = await storage.readObject('user_age')
-
-        expect(userAge).toBe(age)
-      }
-    )
-  })
-
-  describe('profileTutorial', () => {
-    it('should render correctly', () => {
-      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it.each(AGES)(
-      'should navigate to ProfileTutorialAgeInformation page with params age=%s when pressing "à %s ans"',
-      async (age) => {
-        renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-        const button = screen.getByText(`à ${age} ans`)
-        fireEvent.press(button)
-
-        await waitFor(() => {
-          expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
-            age,
+          expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
+            type: TutorialTypes.ONBOARDING,
           })
         })
-      }
-    )
+      })
 
-    it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+      it.each(AGES)(
+        'should log analytics with params age=%s when pressing "j’ai %s ans"',
+        (age) => {
+          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText(`${age} ans`)
-      fireEvent.press(button)
+          const button = screen.getByText(`${age} ans`)
+          fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: age,
-        from: TutorialTypes.PROFILE_TUTORIAL,
+          expect(analytics.logSelectAge).toHaveBeenCalledWith({
+            age: age,
+            from: TutorialTypes.ONBOARDING,
+          })
+        }
+      )
+
+      it('should log analytics when pressing "Autre"', () => {
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByText('Autre')
+        fireEvent.press(button)
+
+        expect(analytics.logSelectAge).toHaveBeenCalledWith({
+          age: 'other',
+          from: TutorialTypes.ONBOARDING,
+        })
+      })
+
+      it.each(AGES)(
+        'should set user age to %s in local storage  when pressing "j’ai %s ans"',
+        async (age) => {
+          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+
+          const button = screen.getByText(`${age} ans`)
+          fireEvent.press(button)
+
+          const userAge = await storage.readObject('user_age')
+
+          expect(userAge).toBe(age)
+        }
+      )
+    })
+
+    describe('profileTutorial', () => {
+      it('should render correctly', () => {
+        renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+
+        expect(screen).toMatchSnapshot()
+      })
+
+      it.each(AGES)(
+        'should navigate to ProfileTutorialAgeInformation page with params age=%s when pressing "à %s ans"',
+        async (age) => {
+          renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+
+          const button = screen.getByText(`à ${age} ans`)
+          fireEvent.press(button)
+
+          await waitFor(() => {
+            expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
+              age,
+            })
+          })
+        }
+      )
+
+      it.each(AGES)(
+        'should log analytics with params age=%s when pressing "j’ai %s ans"',
+        (age) => {
+          renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+
+          const button = screen.getByText(`${age} ans`)
+          fireEvent.press(button)
+
+          expect(analytics.logSelectAge).toHaveBeenCalledWith({
+            age: age,
+            from: TutorialTypes.PROFILE_TUTORIAL,
+          })
+        }
+      )
+    })
+  })
+
+  describe('with passForAll feature flag on', () => {
+    beforeEach(async () => {
+      await storage.clear('user_age')
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+    })
+
+    describe('onboarding', () => {
+      it('should render correctly', () => {
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+
+        expect(screen).toMatchSnapshot()
       })
     })
   })
