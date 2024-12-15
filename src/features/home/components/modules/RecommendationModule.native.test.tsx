@@ -4,6 +4,7 @@ import { RecommendationApiParams, SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -39,7 +40,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('RecommendationModule', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -51,7 +52,7 @@ describe('RecommendationModule', () => {
   })
 
   it('should NOT display V2 playlist when FF deactivated', async () => {
-    activateFeatureFlags()
+    setFeatureFlags()
     renderRecommendationModule()
 
     await act(async () => {})
@@ -60,7 +61,7 @@ describe('RecommendationModule', () => {
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
-    activateFeatureFlags()
+    setFeatureFlags()
     renderRecommendationModule()
 
     await waitFor(() => {
@@ -87,7 +88,7 @@ describe('RecommendationModule', () => {
   })
 
   it('should not display RecommendationModule if no offer', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
     mockUseHomeRecommendedOffers.mockReturnValueOnce({
       offers: [],
       recommendationApiParams: defaultRecommendationApiParams,
@@ -111,7 +112,3 @@ const renderRecommendationModule = (additionalDisplayParams?: DisplayParametersF
       />
     )
   )
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

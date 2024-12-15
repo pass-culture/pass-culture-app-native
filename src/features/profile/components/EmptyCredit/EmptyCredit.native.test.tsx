@@ -2,11 +2,9 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest
@@ -16,7 +14,7 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 describe('<EmptyCredit />', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it.each([15, 16, 17])('should render correctly for %s yo', (age) => {
@@ -42,7 +40,3 @@ describe('<EmptyCredit />', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

@@ -14,6 +14,7 @@ import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -35,10 +36,6 @@ jest.mock('@react-navigation/native', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
@@ -245,7 +242,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
 
     render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
@@ -255,7 +252,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display offers in bottom-sheet if wipOffersInBottomSheet FF disabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     await pressVenueMarker(venuesFixture[0])
@@ -300,7 +297,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should display venue label when wipVenueMapPinV2 FF is activated', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
     ])
@@ -310,7 +307,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display venue label when wipVenueMapPinV2 FF is activated and zoom is too low', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
     ])
@@ -344,7 +341,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display venue label wipVenueMapPinV2 when FF is disabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     render(getVenueMapViewComponent({}))
     await screen.findByTestId('venue-map-view')
 

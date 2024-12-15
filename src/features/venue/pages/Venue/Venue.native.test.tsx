@@ -10,7 +10,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -18,12 +18,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 jest.useFakeTimers()
 
@@ -92,7 +86,7 @@ jest.mock('@shopify/flash-list', () => {
 
 describe('<Venue />', () => {
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
     getItemSpy.mockReset()
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
   })
@@ -114,7 +108,7 @@ describe('<Venue />', () => {
   })
 
   it('should display video section with FF on', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
     renderVenue(venueId)
 
     expect(await screen.findByText('Vidéo de ce lieu')).toBeOnTheScreen()
@@ -122,14 +116,14 @@ describe('<Venue />', () => {
 
   it('should not display video player if video has already been seen', async () => {
     getItemSpy.mockResolvedValueOnce('true')
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
     renderVenue(venueId)
 
     await waitFor(() => expect(screen.queryByText('Vidéo de ce lieu')).not.toBeOnTheScreen())
   })
 
   it('should hide video block once survey modal is closed', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
     renderVenue(venueId)
 
     fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
@@ -170,7 +164,7 @@ describe('<Venue />', () => {
     })
 
     it('should log ConsultVenueVideoFakeDoor when fake video is pressed', async () => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
       renderVenue(venueId)
 
       fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))

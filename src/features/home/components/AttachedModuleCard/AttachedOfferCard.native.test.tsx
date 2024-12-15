@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { ILocationContext, LocationMode } from 'libs/location/types'
@@ -12,8 +12,6 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const offer = offersFixture[2]
 
@@ -44,7 +42,7 @@ mockUseDistance.mockReturnValue('10 km')
 
 describe('AttachedOfferCard', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should display date if offer has one', () => {
@@ -79,7 +77,3 @@ describe('AttachedOfferCard', () => {
     expect(accessibilityLabel).toBeOnTheScreen()
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

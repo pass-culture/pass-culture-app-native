@@ -1,19 +1,17 @@
 import mockdate from 'mockdate'
 
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
 import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const TODAY = '2022-10-24'
 mockdate.set(new Date(TODAY))
 
 describe('useGetDepositAmountsByAge', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should return nothing when birthDate is not defined', () => {
@@ -64,7 +62,3 @@ describe('useGetDepositAmountsByAge', () => {
     expect(result.current).toBeUndefined()
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

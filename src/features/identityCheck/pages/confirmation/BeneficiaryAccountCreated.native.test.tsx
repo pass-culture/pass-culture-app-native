@@ -6,12 +6,12 @@ import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext')
@@ -29,7 +29,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
     mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })
   })
 
@@ -91,7 +91,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
 
   it('should redirect to home page when "C’est parti !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     renderBeneficiaryAccountCreated()
     fireEvent.press(await screen.findByLabelText('C’est parti !'))
     await waitFor(() => {
@@ -102,6 +102,3 @@ describe('<BeneficiaryAccountCreated/>', () => {
 
 const renderBeneficiaryAccountCreated = () =>
   render(<BeneficiaryAccountCreated />, { wrapper: ShareAppWrapper })
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

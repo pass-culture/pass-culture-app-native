@@ -11,7 +11,7 @@ import {
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter } from 'features/search/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'
@@ -117,12 +117,6 @@ jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -144,7 +138,7 @@ describe('TabBar', () => {
       ...initialSearchState,
       locationFilter: mockDefaultLocationFilter,
     }
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   beforeAll(() => {
@@ -154,7 +148,7 @@ describe('TabBar', () => {
   })
 
   it('render correctly when FF is enabled', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
     ])

@@ -1,7 +1,7 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
@@ -10,7 +10,6 @@ import { renderHook } from 'tests/utils'
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('libs/location')
 const mockUseGeolocation = jest.mocked(useLocation)
@@ -22,7 +21,7 @@ const mockUseAuthContext = jest.mocked(useAuthContext)
 
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
     mockUseGeolocation.mockReturnValue({ userLocation: null } as ILocationContext)
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
@@ -179,7 +178,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is enabled', () => {
       beforeEach(() => {
-        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       })
 
       it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
@@ -197,7 +196,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is disabled', () => {
       beforeEach(() => {
-        activateFeatureFlags()
+        setFeatureFlags()
       })
 
       it('should return Euro when displayFormat is "short"', () => {
@@ -227,7 +226,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is enabled', () => {
       beforeEach(() => {
-        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       })
 
       it('should return Euro when displayFormat is "short"', async () => {
@@ -244,7 +243,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
 
     describe('and the feature flag is disabled', () => {
-      beforeEach(() => activateFeatureFlags())
+      beforeEach(() => setFeatureFlags())
 
       it('should return Euro when displayFormat is "short"', () => {
         const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
@@ -273,7 +272,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is enabled', () => {
       beforeEach(() => {
-        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       })
 
       it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
@@ -290,7 +289,7 @@ describe('useGetCurrencyToDisplay', () => {
     })
 
     describe('and the feature flag is disabled', () => {
-      beforeEach(() => activateFeatureFlags())
+      beforeEach(() => setFeatureFlags())
 
       it('should return Euro when displayFormat is "short"', () => {
         const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
@@ -306,7 +305,3 @@ describe('useGetCurrencyToDisplay', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

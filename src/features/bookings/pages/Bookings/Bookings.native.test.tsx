@@ -10,7 +10,7 @@ import {
 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -39,8 +39,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -64,7 +62,7 @@ describe('Bookings', () => {
 
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {
@@ -132,7 +130,7 @@ describe('Bookings', () => {
 
   describe('when feature flag is activated', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
     })
 
     it('should display the 2 tabs "Terminées" and "En cours"', async () => {
@@ -182,7 +180,7 @@ describe('Bookings', () => {
     })
 
     it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {
-      activateFeatureFlags([
+      setFeatureFlags([
         RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
         RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       ])
@@ -202,7 +200,7 @@ describe('Bookings', () => {
     })
 
     it('should not display a pastille when there are not bookings without user reaction if wipReactionFeature FF activated', async () => {
-      activateFeatureFlags([
+      setFeatureFlags([
         RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
         RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       ])
@@ -234,8 +232,4 @@ describe('Bookings', () => {
 
 const renderBookings = () => {
   return render(reactQueryProviderHOC(<Bookings />))
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

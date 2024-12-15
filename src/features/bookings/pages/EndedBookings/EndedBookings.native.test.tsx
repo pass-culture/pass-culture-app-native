@@ -4,7 +4,7 @@ import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } f
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -23,10 +23,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 const mockMutate = jest.fn()
 jest.mock('features/reactions/api/useReactionMutation', () => ({
@@ -68,6 +64,7 @@ jest.useFakeTimers()
 
 describe('EndedBookings', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -101,7 +98,7 @@ describe('EndedBookings', () => {
 
   describe('with reaction feature flag activated', () => {
     beforeEach(() => {
-      activateFeatureFlags([
+      setFeatureFlags([
         RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
         RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       ])
