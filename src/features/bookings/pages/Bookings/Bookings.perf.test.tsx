@@ -6,7 +6,7 @@ import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -30,10 +30,9 @@ const TEST_TIMEOUT_IN_MS = 30000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 jest.useFakeTimers()
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 describe('<Bookings />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)

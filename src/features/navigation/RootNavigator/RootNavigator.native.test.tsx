@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -36,8 +36,6 @@ jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
 }))
 jest.mock('libs/splashscreen')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -47,6 +45,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<RootNavigator />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   beforeEach(() => {
     mockedUseMustUpdateApp.mockReturnValue(true)
     storage.clear('logged_in_session_count')

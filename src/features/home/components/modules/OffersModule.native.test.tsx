@@ -8,7 +8,7 @@ import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { ThemeProvider } from 'libs/styled'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
@@ -56,7 +56,6 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/subcategories/useSubcategories')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {
@@ -74,6 +73,10 @@ jest.mock('@shopify/flash-list', () => {
 })
 
 describe('OffersModule', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should not render if data is undefined', () => {
     renderOffersModule({ data: undefined })
 

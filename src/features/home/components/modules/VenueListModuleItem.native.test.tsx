@@ -4,12 +4,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 describe('<VenueListModule />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should redirect to target venue when pressing on it', async () => {
     render(
       <VenueListModule

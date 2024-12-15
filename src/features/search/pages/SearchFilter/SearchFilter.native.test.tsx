@@ -6,7 +6,7 @@ import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -16,8 +16,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
@@ -70,6 +68,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {

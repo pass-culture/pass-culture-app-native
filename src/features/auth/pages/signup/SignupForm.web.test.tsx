@@ -5,7 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { EmailValidationRemainingResendsResponse, OauthStateResponse } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/fixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -26,8 +26,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
 
@@ -42,6 +40,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SignupForm/>', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/email%40gmail.com',
       {

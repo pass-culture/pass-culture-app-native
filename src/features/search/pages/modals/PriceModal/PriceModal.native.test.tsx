@@ -7,14 +7,13 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const searchState: SearchState = { ...initialSearchState, searchId }
@@ -50,6 +49,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<PriceModal/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   beforeAll(() => {
     mockSearchState = { ...searchState, searchId }
   })

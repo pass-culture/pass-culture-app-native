@@ -3,15 +3,13 @@ import React from 'react'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { Category } from './Category'
 
 let mockSearchState = initialSearchState
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -50,6 +48,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('Category component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display the category when selected', () => {
     mockSearchState = {
       ...initialSearchState,

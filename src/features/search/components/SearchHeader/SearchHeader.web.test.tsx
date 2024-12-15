@@ -4,12 +4,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-instantsearch-core', () => ({
   useSearchBox: () => ({
@@ -41,6 +39,10 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/TabBar/routes')
 
 describe('SearchHeader component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   afterEach(() => {
     mockSearchState = initialSearchState
     mockIsFocusOnSuggestions = false

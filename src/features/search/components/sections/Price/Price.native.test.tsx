@@ -2,13 +2,12 @@ import React from 'react'
 
 import { Price } from 'features/search/components/sections/Price/Price'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -28,6 +27,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('Price component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }
     render(<Price />)
