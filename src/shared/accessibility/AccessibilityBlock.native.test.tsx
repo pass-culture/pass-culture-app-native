@@ -1,17 +1,21 @@
 import React from 'react'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 
 import { AccessibilityBlock } from './AccessibilityBlock'
 
 jest.mock('libs/firebase/analytics/analytics')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('AccessibilityBlock', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display AccesLibre banner when url is provided and enableAccesLibre FF activated', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
 
     render(
       <AccessibilityBlock

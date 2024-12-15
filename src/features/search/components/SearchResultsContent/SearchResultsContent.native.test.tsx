@@ -15,7 +15,8 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -25,8 +26,6 @@ import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthC
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const mockSearchState: SearchState = { ...initialSearchState, searchId }
@@ -230,6 +229,10 @@ jest.mock('@gorhom/bottom-sheet', () => {
 })
 
 describe('SearchResultsContent component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   const user = userEvent.setup()
 
   beforeAll(() => {
@@ -957,7 +960,6 @@ describe('SearchResultsContent component', () => {
         hits: mockedAlgoliaResponse.hits,
         nbHits: mockedAlgoliaResponse.nbHits,
       })
-      useFeatureFlagSpy.mockReturnValue(false)
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 
@@ -978,7 +980,7 @@ describe('SearchResultsContent component', () => {
         hits: mockedAlgoliaResponse.hits,
         nbHits: mockedAlgoliaResponse.nbHits,
       })
-      useFeatureFlagSpy.mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 

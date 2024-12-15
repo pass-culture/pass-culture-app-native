@@ -7,7 +7,8 @@ import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePla
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -24,13 +25,15 @@ jest.mock('features/venueMap/store/venueTypeCodeStore', () => ({
   useVenueTypeCodeActions: () => ({ setVenueTypeCode: mockSetVenueTypeCode }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()
 
 describe('<VenuePlaylist />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render the title and venues playlist', () => {
     render(<VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockAlgoliaVenues} />)
 
@@ -52,7 +55,7 @@ describe('<VenuePlaylist />', () => {
 
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
     it('should display Voir sur la carte button when current view is ThematicSearch', () => {

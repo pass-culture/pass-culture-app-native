@@ -6,7 +6,8 @@ import { VideoMultiOfferTile } from 'features/home/components/modules/video/Vide
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,7 +16,6 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockAnalyticsParams: OfferAnalyticsParams = {
   from: 'home',
@@ -34,6 +34,7 @@ jest.useFakeTimers()
 
 describe('VideoMultiOfferTile', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -57,8 +58,8 @@ describe('VideoMultiOfferTile', () => {
   })
 
   describe('With FF on', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE])
     })
 
     it('should render properly', async () => {
