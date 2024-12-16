@@ -23,6 +23,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES} | ${'Musées & visites culturelles'}
     ${SearchGroupNameEnumv2.SPECTACLES}                 | ${'Spectacles'}
     ${SearchGroupNameEnumv2.NONE}                       | ${EVERY_CATEGORIES}
+    ${undefined}                                        | ${EVERY_CATEGORIES}
   `(
     'useSearchGroupLabel($SearchGroupName) = $SearchGroupLabel',
     ({ SearchGroupName, SearchGroupLabel }) => {
