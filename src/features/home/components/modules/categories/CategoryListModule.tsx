@@ -91,10 +91,7 @@ export const CategoryListModule = ({
   return (
     <React.Fragment>
       <HeaderContainer>
-        <TypoDS.Title3 numberOfLines={2}>{title}</TypoDS.Title3>
-        <Spacer.Column
-          numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
-        />
+        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       </HeaderContainer>
       <FlatListContainer onLayout={onContainerLayout}>
         <StyledFlatList
@@ -144,4 +141,8 @@ const Footer = styled.View(({ theme }) => ({
   height: getSpacing(
     theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
   ),
+}))
+
+const StyledTitle = styled(TypoDS.Title3)(({ theme }) => ({
+  marginBottom: getSpacing(theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN),
 }))
