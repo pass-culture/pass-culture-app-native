@@ -6,6 +6,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { VIDEO_SEEN_STORAGE_KEY } from 'features/venue/constants'
 import { analytics } from 'libs/analytics'
@@ -18,6 +19,7 @@ export const Venue: FunctionComponent = () => {
   const { data: venue } = useVenue(params.id)
   const { gtlPlaylists } = useGTLPlaylists({ venue, queryKey: 'VENUE_GTL_PLAYLISTS' })
   const { data: venueOffers } = useVenueOffers(venue)
+  const { data: venueArtists } = useVenueOffersArtists(venue)
   const isVideoFeatureFlagActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE)
 
   const [videoAlreadySeen, setVideoAlreadySeen] = useState<boolean>()
@@ -48,6 +50,7 @@ export const Venue: FunctionComponent = () => {
       <VenueContent
         venue={venue}
         gtlPlaylists={gtlPlaylists}
+        venueArtists={venueArtists}
         venueOffers={venueOffers}
         videoSectionVisible={isVideoFeatureFlagActive && !videoAlreadySeen}
         onCloseVideoFakeDoor={handleVideoFakeDoorClose}

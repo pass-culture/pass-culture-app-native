@@ -10,7 +10,7 @@ import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/V
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
-import type { VenueOffers as VenueOffersType } from 'features/venue/types'
+import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { Tab } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -18,6 +18,7 @@ import { Spacer } from 'ui/theme'
 
 interface Props {
   venue: VenueResponse
+  venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
   shouldDisplayCTA?: boolean
@@ -25,6 +26,7 @@ interface Props {
 
 export const VenueBody: FunctionComponent<Props> = ({
   venue,
+  venueArtists,
   venueOffers,
   playlists,
   shouldDisplayCTA,
@@ -35,7 +37,14 @@ export const VenueBody: FunctionComponent<Props> = ({
   const FirstSectionContainer = isLargeScreen ? View : SectionWithDivider
 
   const tabPanels = {
-    [Tab.OFFERS]: <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />,
+    [Tab.OFFERS]: (
+      <VenueOffers
+        venue={venue}
+        venueArtists={venueArtists}
+        venueOffers={venueOffers}
+        playlists={playlists}
+      />
+    ),
     [Tab.INFOS]: <PracticalInformation venue={venue} />,
   }
 
