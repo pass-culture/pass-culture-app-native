@@ -9,6 +9,8 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -133,6 +135,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 jest.useFakeTimers()
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -384,6 +387,7 @@ describe('SearchBox component', () => {
               isVisualDisabilityCompliant: undefined,
             },
             priceRange: mockSearchState.priceRange,
+            shouldRedirect: false,
           },
           screen: 'ThematicSearch',
         },
@@ -700,6 +704,51 @@ describe('SearchBox component with ThematicSearch previous route on search resul
         priceRange: mockSearchState.priceRange,
         searchId,
       },
+    })
+  })
+
+  describe('shouldRedirectToThematicSearch remote config', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValueOnce({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldRedirectToThematicSearch: true,
+      })
+    })
+
+    it('should update searchState with remote config when current route is searchLanding', async () => {
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+
+      renderSearchBox()
+
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'Harry potter' } })
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: expect.objectContaining({
+          shouldRedirect: true,
+        }),
+      })
+    })
+
+    it('should not update searchState with remote config when current route is not searchLanding', async () => {
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
+      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+
+      renderSearchBox()
+
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'Harry potter' } })
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: expect.not.objectContaining({
+          shouldRedirect: expect.anything(),
+        }),
+      })
     })
   })
 })

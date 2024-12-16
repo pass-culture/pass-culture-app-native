@@ -23,6 +23,7 @@ export type CustomRemoteConfig = {
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
   shareAppModalVersion: 'default' | 'A' | 'B'
   showAccessScreeningButton: boolean
+  shouldRedirectToThematicSearch: boolean
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.

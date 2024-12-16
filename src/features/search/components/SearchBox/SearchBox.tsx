@@ -25,6 +25,7 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { getSpacing } from 'ui/theme'
@@ -58,13 +59,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
   const { goBack } = useGoBack(...homeNavConfig)
+
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const enableWipPageThematicSearch = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
-
+  const { shouldRedirectToThematicSearch } = useRemoteConfigContext()
   const currentView = route.name
 
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
@@ -96,6 +98,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
         ...partialSearchState,
+        ...(currentView === SearchView.Landing
+          ? { shouldRedirect: shouldRedirectToThematicSearch }
+          : undefined),
       }
 
       dispatch({
@@ -111,7 +116,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
     },
-    [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
+    [
+      dispatch,
+      navigateToThematicSearch,
+      navigateToSearchResults,
+      searchState,
+      currentView,
+      shouldRedirectToThematicSearch,
+    ]
   )
 
   const hasEditableSearchInput =
@@ -184,11 +196,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     goBack,
     hideSuggestions,
     isFocusOnSuggestions,
-    searchState.locationFilter,
-    searchState.query,
     setQuery,
-    searchState.offerCategories,
     offerCategories,
+    searchState,
   ])
 
   const onSubmitQuery = useCallback(
