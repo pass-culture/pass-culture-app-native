@@ -11,8 +11,9 @@ import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type BookingDetailsTicketContentProps = {
@@ -77,21 +78,22 @@ export function BookingDetailsTicketContent({
 
   return (
     <Container>
-      <Title>{offerName}</Title>
-      <Spacer.Column numberOfSpaces={3} />
-      <TicketContent>
-        {properties.hasActivationCode ? (
-          <React.Fragment>
-            {activationCode}
-            {accessExternalOfferButton}
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            {ticketToken}
-            {ticketContent}
-          </React.Fragment>
-        )}
-      </TicketContent>
+      <ViewGap gap={3}>
+        <Title>{offerName}</Title>
+        <TicketContent>
+          {properties.hasActivationCode ? (
+            <React.Fragment>
+              {activationCode}
+              {accessExternalOfferButton}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {ticketToken}
+              {ticketContent}
+            </React.Fragment>
+          )}
+        </TicketContent>
+      </ViewGap>
       {ean}
     </Container>
   )

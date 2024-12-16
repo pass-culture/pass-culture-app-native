@@ -31,6 +31,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -151,7 +152,6 @@ const OnlineProfile: React.FC = () => {
           <View accessibilityRole={AccessibilityRole.MAIN}>
             <ProfileHeader user={user} />
             <ProfileContainer>
-              <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
                 <VerticalUl>
                   {isLoggedIn ? (
@@ -172,9 +172,7 @@ const OnlineProfile: React.FC = () => {
                       navigateTo={{ screen: 'NotificationsSettings' }}
                     />
                   </Li>
-                  <Li>
-                    <Spacer.Column numberOfSpaces={4} />
-
+                  <StyledLi>
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}
@@ -193,8 +191,7 @@ const OnlineProfile: React.FC = () => {
                       numberOfSpacesTop={1}
                       relatedInputId={locationActivationErrorId}
                     />
-                    <Spacer.Column numberOfSpaces={4} />
-                  </Li>
+                  </StyledLi>
                 </VerticalUl>
               </Section>
               <Section title="Aides">
@@ -261,26 +258,24 @@ const OnlineProfile: React.FC = () => {
                 </VerticalUl>
               </Section>
               {isWeb ? null : (
-                <Section title="Partager le pass Culture">
-                  <Spacer.Column numberOfSpaces={4} />
+                <StyledSection title="Partager le pass Culture">
                   <BannerWithBackground
                     backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
                     onPress={onShareBannerPress}>
                     <ShareAppContainer>
-                      <StyledButtonText>Partage le pass Culture</StyledButtonText>
-                      <Spacer.Column numberOfSpaces={1} />
-                      <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
+                      <ViewGap gap={1}>
+                        <StyledButtonText>Partage le pass Culture</StyledButtonText>
+                        <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
+                      </ViewGap>
                     </ShareAppContainer>
                   </BannerWithBackground>
-                  <Spacer.Column numberOfSpaces={4} />
-                </Section>
+                </StyledSection>
               )}
               <Section title="Suivre le pass Culture">
                 <SocialNetwork />
               </Section>
               {isLoggedIn ? (
-                <Section>
-                  <Spacer.Column numberOfSpaces={4} />
+                <StyledSectionMarginTop>
                   <SectionRow
                     title="Déconnexion"
                     onPress={signOut}
@@ -288,19 +283,14 @@ const OnlineProfile: React.FC = () => {
                     icon={SignOut}
                     iconSize={SECTION_ROW_ICON_SIZE}
                   />
-                </Section>
+                </StyledSectionMarginTop>
               ) : null}
               <Section>
-                <Spacer.Column numberOfSpaces={4} />
                 <Version>{version}</Version>
-                <Spacer.Column numberOfSpaces={4} />
                 {isWeb ? null : (
-                  <React.Fragment>
-                    <LogoMinistereContainer>
-                      <LogoMinistere />
-                    </LogoMinistereContainer>
-                    <Spacer.Column numberOfSpaces={4} />
-                  </React.Fragment>
+                  <LogoMinistereContainer>
+                    <LogoMinistere />
+                  </LogoMinistereContainer>
                 )}
               </Section>
               {isWeb ? null : <Spacer.TabBar />}
@@ -332,6 +322,7 @@ const ProfileContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingTop: getSpacing(4),
 }))
 
 const ScrollViewContentContainer = styled.View({
@@ -356,10 +347,24 @@ const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
 }))
 
 const Version = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  marginVertical: getSpacing(4),
   color: theme.colors.greyDark,
 }))
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
   height: getSpacing(28),
+  marginBottom: getSpacing(4),
+})
+
+const StyledLi = styled(Li)({
+  marginVertical: getSpacing(4),
+})
+
+const StyledSection = styled(Section)({
+  marginVertical: getSpacing(4),
+})
+
+const StyledSectionMarginTop = styled(Section)({
+  marginTop: getSpacing(4),
 })

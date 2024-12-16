@@ -4,7 +4,6 @@ import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import {
   AnimatedCategoryThematicHomeHeader,
   MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
@@ -26,6 +25,7 @@ import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'

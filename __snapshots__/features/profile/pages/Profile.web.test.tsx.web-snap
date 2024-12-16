@@ -322,11 +322,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk r-paddingTop-95jzfe"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
@@ -404,12 +401,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-marginVertical-1r5su4o"
                     role="listitem"
                   >
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
-                    />
                     <div
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
                     >
@@ -489,9 +483,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     <div
                       id="testUuidV4"
                       role="alert"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
                     />
                   </li>
                 </ul>
@@ -996,17 +987,11 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
                 />
                 <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginVertical-1r5su4o"
                   dir="ltr"
                 >
                   Version 1.10.5
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
               </div>
             </div>
           </main>
@@ -1492,11 +1477,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk r-paddingTop-95jzfe"
             >
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
               <div
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
@@ -1574,12 +1556,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-marginVertical-1r5su4o"
                     role="listitem"
                   >
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
-                    />
                     <div
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
                     >
@@ -1659,9 +1638,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     <div
                       id="testUuidV4"
                       role="alert"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
                     />
                   </li>
                 </ul>
@@ -2166,17 +2142,11 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
                 />
                 <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginVertical-1r5su4o"
                   dir="ltr"
                 >
                   Version 1.10.5
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
               </div>
             </div>
           </main>

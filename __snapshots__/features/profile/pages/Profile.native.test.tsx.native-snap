@@ -207,20 +207,11 @@ exports[`Profile component should render correctly 1`] = `
                   "backgroundColor": "#ffffff",
                   "flexDirection": "column",
                   "paddingHorizontal": 24,
+                  "paddingTop": 16,
                 },
               ]
             }
           >
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -560,20 +551,11 @@ exports[`Profile component should render correctly 1`] = `
                     [
                       {
                         "display": "flex",
+                        "marginVertical": 16,
                       },
                     ]
                   }
                 >
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       [
@@ -787,16 +769,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -1770,16 +1742,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               />
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1903,44 +1865,45 @@ exports[`Profile component should render correctly 1`] = `
                             ]
                           }
                         >
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                },
-                              ]
-                            }
-                          >
-                            Partage le pass Culture
-                          </Text>
                           <View
-                            numberOfSpaces={1}
+                            gap={1}
                             style={
                               [
                                 {
-                                  "height": 4,
-                                },
-                              ]
-                            }
-                          />
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
+                                  "gap": 4,
                                 },
                               ]
                             }
                           >
-                            Recommande le bon plan à tes amis !
-                          </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  },
+                                ]
+                              }
+                            >
+                              Partage le pass Culture
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  },
+                                ]
+                              }
+                            >
+                              Recommande le bon plan à tes amis !
+                            </Text>
+                          </View>
                         </View>
                       </View>
                       <View>
@@ -1957,16 +1920,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
             </View>
             <View
               style={
@@ -2539,16 +2492,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               />
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Déconnexion"
                 accessibilityRole="button"
                 accessibilityState={
@@ -2682,16 +2625,6 @@ exports[`Profile component should render correctly 1`] = `
                   ]
                 }
               />
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -2700,6 +2633,7 @@ exports[`Profile component should render correctly 1`] = `
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
+                      "marginVertical": 16,
                     },
                   ]
                 }
@@ -2707,20 +2641,11 @@ exports[`Profile component should render correctly 1`] = `
                 Version 1.10.5
               </Text>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "height": 112,
+                      "marginBottom": 16,
                       "width": 160,
                     },
                   ]
@@ -2737,16 +2662,6 @@ exports[`Profile component should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
             </View>
             <View
               customHeight={72}

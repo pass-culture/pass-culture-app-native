@@ -69,13 +69,16 @@ const SnackBars = () => {
   return (
     <React.Fragment>
       {snackbars.map(({ title, showSnackBar, ...settings }) => (
-        <React.Fragment key={title}>
+        <StyledView key={title}>
           <TouchableOpacity onPress={() => showSnackBar(settings)}>
             <TypoDS.Title4>{title}</TypoDS.Title4>
           </TouchableOpacity>
-          <Spacer.Column numberOfSpaces={1} />
-        </React.Fragment>
+        </StyledView>
       ))}
     </React.Fragment>
   )
 }
+
+const StyledView = styled.View({
+  marginBottom: getSpacing(1),
+})

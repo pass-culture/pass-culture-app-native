@@ -14,7 +14,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Spacer, Typo, getSpacing } from 'ui/theme'
+import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -93,7 +93,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   return (
     <MainContainer>
-      <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableHighlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
         onPress={onPress}
@@ -124,7 +123,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
           </StyledImageBackground>
         </ImageContainer>
       </StyledTouchableHighlight>
-      <Spacer.Row numberOfSpaces={6} />
     </MainContainer>
   )
 }
@@ -134,6 +132,7 @@ export const OldBusinessModule = memo(UnmemoizedBusinessModule)
 const MainContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   paddingBottom: theme.home.spaceBetweenModules,
+  paddingHorizontal: getSpacing(6),
 }))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({

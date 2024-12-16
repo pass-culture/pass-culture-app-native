@@ -259,191 +259,192 @@ exports[`BookingDetails should render correctly 1`] = `
                       ]
                     }
                   >
-                    <Text
+                    <View
+                      gap={3}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                            "maxWidth": "100%",
-                            "paddingHorizontal": 8,
-                            "textAlign": "center",
+                            "gap": 12,
                           },
                         ]
                       }
                     >
-                      Avez-vous déjà vu ?
-                    </Text>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 12,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": true,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={false}
-                        collapsable={false}
-                        focusable={false}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                      <Text
                         style={
-                          {
-                            "alignSelf": "center",
-                            "marginBottom": 16,
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                              "maxWidth": "100%",
+                              "paddingHorizontal": 8,
+                              "textAlign": "center",
+                            },
+                          ]
                         }
                       >
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 21,
-                                "lineHeight": 33.6,
-                              },
-                            ]
-                          }
-                        >
-                          352UW4
-                        </Text>
-                      </View>
+                        Avez-vous déjà vu ?
+                      </Text>
                       <View
-                        accessibilityLabel="Accéder à l’offre en ligne"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": false,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
                         style={
-                          {
-                            "alignItems": "center",
-                            "borderRadius": 24,
-                            "justifyContent": "center",
-                            "opacity": 1,
-                            "overflow": "hidden",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "userSelect": "auto",
-                          }
+                          [
+                            {
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 12,
+                            },
+                          ]
                         }
-                        testID="Accéder à l’offre en ligne"
                       >
                         <View
-                          height={48}
-                          width="100%"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": true,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={false}
+                          collapsable={false}
+                          focusable={false}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignSelf": "center",
+                              "marginBottom": 16,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
                         >
-                          <Text>
-                            undefined-SVG-Mock
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#eb0055",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 21,
+                                  "lineHeight": 33.6,
+                                },
+                              ]
+                            }
+                          >
+                            352UW4
                           </Text>
                         </View>
                         <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "position": "absolute",
-                              },
-                            ]
+                          accessibilityLabel="Accéder à l’offre en ligne"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
                           }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "borderRadius": 24,
+                              "justifyContent": "center",
+                              "opacity": 1,
+                              "overflow": "hidden",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Accéder à l’offre en ligne"
                         >
                           <View
-                            accessibilityLabel="Nouvelle fenêtre"
-                            height={24}
-                            width={24}
+                            height={48}
+                            width="100%"
                           >
                             <Text>
                               undefined-SVG-Mock
                             </Text>
                           </View>
-                          <Text
-                            adjustsFontSizeToFit={true}
-                            isDisabled={false}
-                            numberOfLines={1}
+                          <View
                             style={
                               [
                                 {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                  "paddingBottom": 8,
-                                  "paddingLeft": 8,
-                                  "paddingRight": 8,
-                                  "paddingTop": 8,
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "position": "absolute",
                                 },
                               ]
                             }
                           >
-                            Accéder à l’offre en ligne
-                          </Text>
+                            <View
+                              accessibilityLabel="Nouvelle fenêtre"
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <Text
+                              adjustsFontSizeToFit={true}
+                              isDisabled={false}
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                    "paddingBottom": 8,
+                                    "paddingLeft": 8,
+                                    "paddingRight": 8,
+                                    "paddingTop": 8,
+                                  },
+                                ]
+                              }
+                            >
+                              Accéder à l’offre en ligne
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
