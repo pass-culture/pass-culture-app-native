@@ -1,22 +1,20 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { RefreshResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { Home } from './Home'
 
 jest.mock('libs/network/NetInfoWrapper')
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockShouldShowSkeleton = false
 
@@ -60,15 +58,17 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+useRoute.mockReturnValue({ params: undefined })
+
+mockUseHomepageData.mockReturnValue({
+  modules: [formattedVenuesModule],
+  homeEntryId: 'fakeEntryId',
+})
+
 describe('Home page', () => {
-  useRoute.mockReturnValue({ params: undefined })
-
-  mockUseHomepageData.mockReturnValue({
-    modules: [formattedVenuesModule],
-    homeEntryId: 'fakeEntryId',
-  })
-
   beforeEach(() => {
+    setFeatureFlags()
+    mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     storage.clear('logged_in_session_count')
     storage.clear('has_seen_onboarding_subscription')
@@ -81,7 +81,6 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-
     await screen.findByText('Bienvenue !')
 
     expect(screen).toMatchSnapshot()
@@ -94,8 +93,7 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-    await act(async () => {})
-    await act(async () => {})
+    await screen.findByText('Bienvenue !')
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
@@ -108,8 +106,7 @@ describe('Home page', () => {
     })
 
     renderHome()
-    await act(async () => {})
-    await act(async () => {})
+    await screen.findByText('Bienvenue !')
 
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')

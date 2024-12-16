@@ -3,7 +3,7 @@ import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'r
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
-import { useHomeBanner } from 'features/home/api/useHomeBanner'
+import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -53,15 +53,15 @@ const bannersToRender = [
   BannerName.transition_17_18_banner,
 ]
 
-export const HomeBanner = ({ hasGeolocPosition, isLoggedIn }: HomeBannerProps) => {
-  const { data } = useHomeBanner(hasGeolocPosition)
+export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
+  const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
-  const homeBanner = data?.banner
-  const shouldRenderSystemBanner = homeBanner ? bannersToRender.includes(homeBanner.name) : false
+  const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
+
   const systemBannerAnalyticsType =
-    homeBanner?.name === BannerName.geolocation_banner ? 'location' : 'credit'
+    banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
 
   const onPressSystemBanner = useCallback(
     (from: StepperOrigin) => {
@@ -89,14 +89,16 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn }: HomeBannerProps) =
 
     if (
       shouldRenderSystemBanner &&
-      homeBanner?.name &&
-      homeBanner.name !== BannerName.geolocation_banner
+      banner.name &&
+      banner.name !== BannerName.geolocation_banner &&
+      banner.title &&
+      banner.text
     ) {
-      return renderBanner(bannerIcons[homeBanner.name], homeBanner.title, homeBanner.text)
+      return renderBanner(bannerIcons[banner.name], banner.title, banner.text)
     }
 
     return null
-  }, [isLoggedIn, homeBanner, shouldRenderSystemBanner, renderBanner, enableSystemBanner])
+  }, [isLoggedIn, banner, shouldRenderSystemBanner, renderBanner, enableSystemBanner])
 
   const renderSystemBanner = useCallback(
     (Icon: ComponentType, title: string, subtitle: string) => (
@@ -124,21 +126,20 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn }: HomeBannerProps) =
 
     if (
       shouldRenderSystemBanner &&
-      homeBanner?.name &&
-      homeBanner.name !== BannerName.geolocation_banner
+      banner.name &&
+      banner.name !== BannerName.geolocation_banner &&
+      banner.title &&
+      banner.text
     ) {
-      return renderSystemBanner(
-        systemBannerIcons[homeBanner.name],
-        homeBanner.title,
-        homeBanner.text
-      )
+      return renderSystemBanner(systemBannerIcons[banner.name], banner.title, banner.text)
     }
 
     return null
-  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, homeBanner, enableSystemBanner])
+  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, enableSystemBanner])
 
   return enableSystemBanner ? SystemBanner : Banner
 }
+
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
 })

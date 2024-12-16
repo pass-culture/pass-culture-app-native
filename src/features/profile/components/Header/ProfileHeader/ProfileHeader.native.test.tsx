@@ -13,7 +13,8 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -69,12 +70,11 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
-
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     mockdate.set('2021-07-01T00:00:00Z')
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',

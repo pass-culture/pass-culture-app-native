@@ -3,7 +3,7 @@ import React, { ComponentType, FunctionComponent, memo, PropsWithChildren } from
 import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
-import { useHomeBanner } from 'features/home/api/useHomeBanner'
+import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -14,7 +14,6 @@ import { EligibilityMessage } from 'features/profile/components/Header/NonBenefi
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GeolocPermissionState, useLocation } from 'libs/location'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
@@ -118,11 +117,7 @@ function NonBeneficiaryBanner({
   const today = new Date()
   const { data: subscription } = useGetStepperInfo()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
-
-  const { permissionState } = useLocation()
-  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useHomeBanner(isGeolocated)
-  const homeBanner = data?.banner
+  const { banner } = useActivationBanner()
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
     ? new Date(eligibilityStartDatetime)
@@ -153,18 +148,18 @@ function NonBeneficiaryBanner({
   }
 
   if (
-    homeBanner?.name === BannerName.activation_banner ||
-    homeBanner?.name === BannerName.transition_17_18_banner
+    banner.name === BannerName.activation_banner ||
+    banner.name === BannerName.transition_17_18_banner
   ) {
     const BannerComponent = enableSystemBanner ? SystemBanner : BannerWithBackground
     const Icon = enableSystemBanner
-      ? (systemBannerIcons[homeBanner?.name] as FunctionComponent<AccessibleIcon>)
-      : bannerIcons[homeBanner?.name]
+      ? (systemBannerIcons[banner?.name] as FunctionComponent<AccessibleIcon>)
+      : bannerIcons[banner?.name]
 
     return (
       <BannerComponent
         Icon={Icon}
-        homeBanner={homeBanner}
+        homeBanner={banner as Banner} // Use this as because API typing return Banner | null but it's never null
         formattedEligibilityEndDatetime={formattedEligibilityEndDatetime}
       />
     )
