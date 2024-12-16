@@ -23,7 +23,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -103,6 +103,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
@@ -146,9 +150,7 @@ describe('<VenueOffers />', () => {
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
-    fireEvent.press(screen.getByText('En voir plus'))
-
-    await act(() => {})
+    await user.press(screen.getByText('En voir plus'))
 
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
@@ -167,9 +169,10 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it(`should log analytics event when clicking "En voir plus" button`, () => {
+  it(`should log analytics event when clicking "En voir plus" button`, async () => {
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
-    fireEvent.press(screen.getByText('En voir plus'))
+
+    await user.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
