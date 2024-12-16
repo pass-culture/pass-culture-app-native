@@ -1,9 +1,12 @@
 import { Hit } from '@algolia/client-search'
+import { Dispatch } from 'react'
 
 import algoliasearch from '__mocks__/algoliasearch'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
-import { initialSearchState } from 'features/search/context/reducer'
+import { Action, initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
+import * as doAlgoliaRedirect from 'libs/algolia/doAlgoliaRedirect'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
@@ -15,7 +18,7 @@ import {
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const { multipleQueries } = algoliasearch()
 
@@ -50,13 +53,30 @@ jest.mock('features/venueMap/store/selectedVenueStore', () => ({
   }),
 }))
 
+const mockDispatch = jest.fn()
+const mockFetchSearchResultsResponse = {
+  offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+  venuesResponse: mockedAlgoliaVenueResponse,
+  facetsResponse: algoliaFacets,
+  duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+  redirectUrl: undefined,
+}
+
+const fetchSearchResultsSpy = jest.spyOn(fetchSearchResults, 'fetchSearchResults')
+const doAlgoliaRedirectSpy = jest.spyOn(doAlgoliaRedirect, 'doAlgoliaRedirect')
+
+const mockReplaceToSearch = jest.fn()
+jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () => ({
+  useNavigateToSearch: () => ({
+    navigateToSearch: jest.fn(),
+    replaceToSearch: mockReplaceToSearch,
+  }),
+}))
+
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and all facets', async () => {
-      renderHook(useSearchInfiniteQuery, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-        initialProps: initialSearchState,
-      })
+      renderUseSearchResults()
 
       await waitFor(() => {
         expect(multipleQueries).toHaveBeenNthCalledWith(1, [
@@ -115,14 +135,9 @@ describe('useSearchResults', () => {
     })
 
     it('should not fetch again when focus on suggestion changes', async () => {
-      const { rerender } = renderHook(
-        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
-      )
+      const { rerender } = renderUseSearchResults()
 
-      rerender({ ...initialSearchState })
+      rerender({ searchState: initialSearchState, dispatch: mockDispatch })
       await waitFor(() => {
         expect(multipleQueries).toHaveBeenCalledTimes(1)
       })
@@ -130,19 +145,9 @@ describe('useSearchResults', () => {
 
     // because of an Algolia issue, sometimes nbHits is at 0 even when there is some hits, cf PC-28287
     it('should show hit numbers even if nbHits is at 0 but hits are not null', async () => {
-      jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValueOnce({
-        offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-        venuesResponse: mockedAlgoliaVenueResponse,
-        facetsResponse: algoliaFacets,
-        duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-      })
+      fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
 
-      const { result } = renderHook(
-        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
-      )
+      const { result } = renderUseSearchResults()
 
       await waitFor(() => {
         const hitNumber = result.current.nbHits
@@ -152,12 +157,7 @@ describe('useSearchResults', () => {
     })
 
     it('should reset selected venue in store', async () => {
-      renderHook(
-        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
-      )
+      renderUseSearchResults()
 
       await waitFor(() => {
         expect(mockRemoveSelectedVenue).toHaveBeenCalledWith()
@@ -166,22 +166,12 @@ describe('useSearchResults', () => {
 
     describe('When user share his location and received venues from Algolia', () => {
       beforeAll(() => {
-        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
-          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-          venuesResponse: mockedAlgoliaVenueResponse,
-          facetsResponse: algoliaFacets,
-          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-        })
+        fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
         mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
       })
 
       it('should set initial venues', async () => {
-        renderHook(
-          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-          {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
-          }
-        )
+        renderUseSearchResults()
 
         await waitFor(() => {
           expect(mockSetInitialVenues).toHaveBeenCalledWith(
@@ -193,8 +183,8 @@ describe('useSearchResults', () => {
 
     describe('When user share his location and not received venues from Algolia', () => {
       beforeAll(() => {
-        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
-          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+        fetchSearchResultsSpy.mockResolvedValueOnce({
+          ...mockFetchSearchResultsResponse,
           venuesResponse: {
             hits: [] as Hit<AlgoliaVenue>[],
             nbHits: 0,
@@ -202,19 +192,12 @@ describe('useSearchResults', () => {
             nbPages: 0,
             userData: null,
           },
-          facetsResponse: algoliaFacets,
-          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
         })
         mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
       })
 
       it('should set initial venues as empty array', async () => {
-        renderHook(
-          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-          {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
-          }
-        )
+        renderUseSearchResults()
 
         await waitFor(() => {
           expect(mockSetInitialVenues).toHaveBeenCalledWith([])
@@ -224,22 +207,12 @@ describe('useSearchResults', () => {
 
     describe('When user not share his location and received venues from Algolia', () => {
       beforeAll(() => {
-        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
-          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-          venuesResponse: mockedAlgoliaVenueResponse,
-          facetsResponse: algoliaFacets,
-          duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
-        })
+        fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
         mockUseLocation.mockReturnValue({ ...defaultUseLocation })
       })
 
       it('should set initial venues as empty array', async () => {
-        renderHook(
-          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
-          {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
-          }
-        )
+        renderUseSearchResults()
 
         await waitFor(() => {
           expect(mockSetInitialVenues).toHaveBeenCalledWith([])
@@ -247,4 +220,41 @@ describe('useSearchResults', () => {
       })
     })
   })
+
+  describe('When a redirect url is configured', () => {
+    const mockRedirectUrl =
+      'http://passculture.app/recherche/resultats?offerCategories=%5B%22CINEMA%22%5D&query=%22%22'
+
+    beforeAll(() => {
+      fetchSearchResultsSpy.mockResolvedValueOnce({
+        ...mockFetchSearchResultsResponse,
+        redirectUrl: mockRedirectUrl,
+      })
+    })
+
+    it('should redirect to thematicSearch', async () => {
+      const mockSearchstate = { ...initialSearchState, shouldRedirect: true }
+      renderUseSearchResults(mockSearchstate)
+
+      await act(async () => {})
+
+      expect(doAlgoliaRedirectSpy).toHaveBeenCalledWith(
+        new URL(mockRedirectUrl),
+        mockSearchstate,
+        defaultDisabilitiesProperties,
+        mockDispatch,
+        mockReplaceToSearch
+      )
+    })
+  })
 })
+
+const renderUseSearchResults = (newSearchState?: SearchState) =>
+  renderHook(
+    ({ searchState, dispatch }: { searchState: SearchState; dispatch: Dispatch<Action> }) =>
+      useSearchInfiniteQuery(searchState, dispatch),
+    {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },
+    }
+  )

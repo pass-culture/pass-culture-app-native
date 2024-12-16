@@ -28,7 +28,7 @@ describe('doAlgoliaRedirect', () => {
       }),
     })
 
-    expect(navigate).toHaveBeenCalledWith(
+    expect(mockNavigateToThematicSearch).toHaveBeenCalledWith(
       expect.objectContaining({
         shouldRedirect: false,
         offerCategories: [SearchGroupNameEnumv2.CINEMA],

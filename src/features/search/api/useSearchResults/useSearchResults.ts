@@ -1,16 +1,19 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { Dispatch, useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { Action } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
+import { doAlgoliaRedirect } from 'libs/algolia/doAlgoliaRedirect'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -32,7 +35,7 @@ export type SearchOfferHits = {
   duplicatedOffers: Offer[]
 }
 
-export const useSearchInfiniteQuery = (searchState: SearchState) => {
+export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispatch<Action>) => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
@@ -41,6 +44,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const previousPageObjectIds = useRef<string[]>([])
   const { setInitialVenues } = useInitialVenuesActions()
   const { removeSelectedVenue } = useSelectedVenueActions()
+  const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [
@@ -53,22 +57,38 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       disabilities,
     ],
     async ({ pageParam: page = 0 }) => {
-      const { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse } =
-        await fetchSearchResults({
-          parameters: { page, ...searchState },
-          buildLocationParameterParams: {
-            userLocation,
-            selectedLocationMode,
-            aroundPlaceRadius,
-            aroundMeRadius,
-          },
-          isUserUnderage,
-          storeQueryID: setCurrentQueryID,
-          excludedObjectIds: previousPageObjectIds.current,
-          disabilitiesProperties: disabilities,
-        })
+      const {
+        offersResponse,
+        venuesResponse,
+        facetsResponse,
+        duplicatedOffersResponse,
+        redirectUrl,
+      } = await fetchSearchResults({
+        parameters: { page, ...searchState },
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundPlaceRadius,
+          aroundMeRadius,
+        },
+        isUserUnderage,
+        storeQueryID: setCurrentQueryID,
+        excludedObjectIds: previousPageObjectIds.current,
+        disabilitiesProperties: disabilities,
+      })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
+
+      if (redirectUrl && searchState.shouldRedirect) {
+        doAlgoliaRedirect(
+          new URL(redirectUrl),
+          searchState,
+          disabilities,
+          dispatch,
+          navigateToThematicSearch
+        )
+      }
+
       return {
         offers: offersResponse,
         venues: venuesResponse,
@@ -103,8 +123,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     }
   }, [data?.pages, removeSelectedVenue, setInitialVenues, transformHits, userLocation])
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }
+  const offersData = data?.pages[0]?.offers
+  const { nbHits, userData } = offersData ?? { nbHits: 0, userData: [] }
   const venuesUserData = data?.pages?.[0]?.venues?.userData
   const facets = data?.pages?.[0]?.facets.facets as FacetData
 
@@ -139,6 +159,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 }
 
 export const useSearchResults = () => {
-  const { searchState } = useSearch()
-  return useSearchInfiniteQuery(searchState)
+  const { searchState, dispatch } = useSearch()
+
+  return useSearchInfiniteQuery(searchState, dispatch)
 }
