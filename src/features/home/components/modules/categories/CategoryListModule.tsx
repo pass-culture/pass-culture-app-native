@@ -1,16 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 import { FlatList, FlatListProps, Platform, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type CategoryListProps = {
   id: string
@@ -24,17 +21,13 @@ type StyledFlatListProps = FlatListProps<null> & {
   contentContainerStyle?: ViewStyle
 }
 
-const DESKTOP_COLUMNS = 4
 const DESKTOP_TITLE_MARGIN = 2
 const DESKTOP_CATEGORY_LIST_MARGIN = 4
 const DESKTOP_CATEGORY_BLOCK_MARGIN = 2
-const DESKTOP_CATEGORY_BLOCK_FLEX_BASIS = `${100 / DESKTOP_COLUMNS}%` // 25%
 
-const MOBILE_COLUMNS = 2
 const MOBILE_TITLE_MARGIN = 3
 const MOBILE_CATEGORY_LIST_MARGIN = 5
 const MOBILE_CATEGORY_BLOCK_MARGIN = 1
-const MOBILE_CATEGORY_BLOCK_FLEX_BASIS = `${100 / MOBILE_COLUMNS}%` // 50%
 
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
@@ -48,20 +41,10 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
-
   const flatListRef = useRef<FlatList<null>>(null)
-  const {
-    handleScrollPrevious,
-    handleScrollNext,
-    onScroll,
-    onContentSizeChange,
-    onContainerLayout,
-    isEnd,
-    isStart,
-  } = useHorizontalFlatListScroll({
+  const { onScroll, onContentSizeChange, onContainerLayout } = useHorizontalFlatListScroll({
     ref: flatListRef,
-    isActive: enableAppV2CategoryBlock && isWeb,
+    isActive: isWeb,
   })
 
   useEffect(() => {
@@ -73,11 +56,8 @@ export const CategoryListModule = ({
     })
   }, [id, homeEntryId, index])
 
-  const theme = useTheme()
-  const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
-
   const renderItem = ({ item }: { item: CategoryBlockData; index: number }) => (
-    <CategoryBlockContainer enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
+    <CategoryBlockContainer>
       <CategoryBlock
         {...item}
         onBeforePress={() => {
@@ -97,7 +77,6 @@ export const CategoryListModule = ({
             moduleListId: id,
           },
         }}
-        hasGraphicRedesign={enableAppV2CategoryBlock}
       />
     </CategoryBlockContainer>
   )
@@ -109,13 +88,6 @@ export const CategoryListModule = ({
     showsHorizontalScrollIndicator: false,
   }
 
-  const oldCategoryBlockProps = {
-    key: numColumns,
-    numColumns,
-    horizontal: false,
-    scrollEnabled: false,
-  }
-
   return (
     <React.Fragment>
       <HeaderContainer>
@@ -124,12 +96,7 @@ export const CategoryListModule = ({
           numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
         />
       </HeaderContainer>
-      <FlatListContainer
-        enableAppV2CategoryBlock={enableAppV2CategoryBlock}
-        onLayout={onContainerLayout}>
-        {enableAppV2CategoryBlock && !isStart && isWeb ? (
-          <PlaylistArrowButton direction="left" onPress={handleScrollPrevious} />
-        ) : null}
+      <FlatListContainer onLayout={onContainerLayout}>
         <StyledFlatList
           ListFooterComponent={ListFooterComponent}
           onContentSizeChange={onContentSizeChange}
@@ -138,11 +105,8 @@ export const CategoryListModule = ({
           keyExtractor={keyExtractor}
           onScroll={onScroll}
           ref={flatListRef}
-          {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
+          {...newCategoryBlockProps}
         />
-        {enableAppV2CategoryBlock && !isEnd && isWeb ? (
-          <PlaylistArrowButton direction="right" onPress={handleScrollNext} />
-        ) : null}
       </FlatListContainer>
     </React.Fragment>
   )
@@ -156,43 +120,25 @@ const StyledFlatList = styled.FlatList.attrs<StyledFlatListProps>(({ theme }) =>
   },
 }))<StyledFlatListProps>``
 
-const FlatListContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
-  ({ theme, enableAppV2CategoryBlock }) =>
-    enableAppV2CategoryBlock
-      ? {
+const FlatListContainer = styled.View(({ theme }) => ({
+  display: 'flex',
+  width: '100%',
+  flexDirection: 'row',
           marginBottom: theme.isDesktopViewport
             ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
             : getSpacing(MOBILE_CATEGORY_LIST_MARGIN),
-        }
-      : {
-          marginHorizontal: getSpacing(
-            theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
-          ),
-        }
-)
+}))
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const CategoryBlockContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
-  ({ theme, enableAppV2CategoryBlock }) =>
-    enableAppV2CategoryBlock
-      ? {
+const CategoryBlockContainer = styled.View(({ theme }) => ({
           paddingVertical: getSpacing(
             theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
           ),
           paddingHorizontal: getSpacing(MOBILE_CATEGORY_BLOCK_MARGIN),
-        }
-      : {
-          flexBasis: theme.isDesktopViewport
-            ? DESKTOP_CATEGORY_BLOCK_FLEX_BASIS
-            : MOBILE_CATEGORY_BLOCK_FLEX_BASIS,
-          padding: getSpacing(
-            theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
-          ),
-        }
-)
+}))
 
 const Footer = styled.View(({ theme }) => ({
   height: getSpacing(
