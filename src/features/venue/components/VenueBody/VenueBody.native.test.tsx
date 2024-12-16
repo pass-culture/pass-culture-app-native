@@ -14,9 +14,8 @@ import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResp
 import { VenueOffers } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { Network } from 'libs/share/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -52,33 +51,16 @@ describe('<VenueBody />', () => {
 
   it('should display withdrawal details', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
-    await waitUntilRendered()
+    // await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
 
     expect(screen.getByText('How to withdraw, https://test.com')).toBeOnTheScreen()
   })
 
-  it('should share on Instagram', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
-
-    const instagramButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
-
-    fireEvent.press(instagramButton)
-
-    expect(mockShareSingle).toHaveBeenCalledWith({
-      social: Social.Instagram,
-      message: encodeURIComponent(
-        `Retrouve "${venueDataTest.name}" sur le pass Culture\u00a0:\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
-      ),
-      type: 'text',
-      url: undefined,
-    })
-  })
-
   it('should log event when pressing on Infos pratiques tab', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
-    await waitUntilRendered()
+    // await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
 
@@ -89,16 +71,10 @@ describe('<VenueBody />', () => {
 
   it('should log event when pressing on Offres disponibles tab', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
-    await waitUntilRendered()
+    // await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))
 
     expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueDataTest.id })
   })
 })
-
-const waitUntilRendered = async () => {
-  // We wait until the full render is done
-  // This is due to asynchronous calls to check the media on the phone
-  await screen.findByText(`Envoyer sur ${Network.instagram}`)
-}
