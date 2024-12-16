@@ -136,7 +136,6 @@ export const VenuePlaylist: React.FC<Props> = ({
       </View>
       {shouldDisplaySeparator ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={3} />
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -157,6 +156,7 @@ const StyledSeparator = styled(Separator.Horizontal)({
   width: 'auto',
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),
+  marginTop: getSpacing(3),
 })
 
 const ButtonContainer = styled.View({
