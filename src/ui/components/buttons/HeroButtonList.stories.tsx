@@ -50,11 +50,16 @@ const caption = (
 const variantConfig: Variants<typeof HeroButtonList> = [
   {
     label: 'HeroButtonList default',
-    props: { Title: description, Icon: <BicolorSmartphone /> },
+    props: { Title: description, Icon: <BicolorSmartphone />, navigateTo: { screen: 'Login' } },
   },
   {
     label: 'HeroButtonList with caption',
-    props: { Title: description2, Subtitle: caption, Icon: <BicolorSmartphone /> },
+    props: {
+      Title: description2,
+      Subtitle: caption,
+      Icon: <BicolorSmartphone />,
+      navigateTo: { screen: 'Login' },
+    },
   },
   {
     label: 'HeroButtonList with custom icon',
@@ -67,6 +72,7 @@ const variantConfig: Variants<typeof HeroButtonList> = [
           size={iconSizes.small}
         />
       ),
+      navigateTo: { screen: 'Login' },
     },
   },
 ]

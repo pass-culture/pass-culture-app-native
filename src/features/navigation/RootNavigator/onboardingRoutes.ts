@@ -5,6 +5,7 @@ import { TutorialRootStackParamList, GenericRoute } from 'features/navigation/Ro
 import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
+import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -33,6 +34,12 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
     component: OnboardingGeolocation,
     path: 'geolocalisation',
     options: { title: 'Active ta géolocalisation' },
+  },
+  {
+    name: 'OnboardingGeneralPublicWelcome',
+    component: OnboardingGeneralPublicWelcome,
+    path: 'bienvenue-grand-public',
+    options: { title: 'Bienvenue' },
   },
   {
     name: 'OnboardingWelcome',

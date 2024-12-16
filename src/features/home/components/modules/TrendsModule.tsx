@@ -62,7 +62,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
   const getNavigationProps = (props: TrendBlock): TrendNavigationProps => {
     if (props.type === ContentTypes.VENUE_MAP_BLOCK && !isWeb) {
       return {
-        navigateTo: shouldOpenMapDirectly ? { screen: 'VenueMap' } : undefined,
+        navigateTo: shouldOpenMapDirectly ? { screen: 'VenueMap' } : { screen: undefined },
         enableNavigate: shouldOpenMapDirectly,
         onBeforeNavigate: () => {
           removeSelectedVenue()

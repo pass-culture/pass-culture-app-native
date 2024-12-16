@@ -12,6 +12,7 @@ export type InternalNavigationProps = {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
     withPush?: boolean // If true, uses push instead of navigate
+    withReset?: boolean // If true, use reset instead of navigate
     fromRef?: boolean // If true, uses navigateFromRef/pushFromRef instead of navigate/push
   }
   externalNav?: never

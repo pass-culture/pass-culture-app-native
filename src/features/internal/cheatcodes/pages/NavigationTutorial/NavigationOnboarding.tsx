@@ -20,6 +20,7 @@ export function NavigationOnboarding(): React.JSX.Element {
     <ScrollView>
       <CheatcodesHeader title="Onboarding 🛶" />
       <StyledContainer>
+        <LinkToComponent name="OnboardingGeneralPublicWelcome" />
         <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="OnboardingGeolocation" />
         <LinkToComponent
