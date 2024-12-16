@@ -134,11 +134,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           onEndReached={logAllTilesSeenOnce}
         />
       </View>
-      {shouldDisplaySeparator ? (
-        <React.Fragment>
-          <StyledSeparator testID="venue-playlist-separator" />
-        </React.Fragment>
-      ) : null}
+      {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={hideVenueMapLocationModal}
