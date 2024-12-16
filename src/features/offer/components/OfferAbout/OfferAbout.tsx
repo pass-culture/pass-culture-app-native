@@ -35,7 +35,7 @@ export const OfferAbout: FunctionComponent<Props> = ({
           {offer.description ? (
             <View>
               <TypoDS.BodyAccent>Description&nbsp;:</TypoDS.BodyAccent>
-              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION} isMarkdown>
                 {offer.description}
               </CollapsibleText>
             </View>
