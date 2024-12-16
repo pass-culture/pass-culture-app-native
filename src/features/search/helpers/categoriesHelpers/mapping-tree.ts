@@ -6,6 +6,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { EVERY_CATEGORIES } from 'features/search/constants'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
@@ -176,7 +177,7 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
         : undefined
 
       result[searchGroup.name] = {
-        label: searchGroup.value || 'Toutes les catégories',
+        label: searchGroup.value || EVERY_CATEGORIES,
         children: mappedNativeCategoriesBooks
           ? {
               ...mappedNativeCategories,

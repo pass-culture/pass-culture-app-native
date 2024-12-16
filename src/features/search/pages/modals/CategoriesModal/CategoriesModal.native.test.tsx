@@ -2,6 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { EVERY_CATEGORIES } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
@@ -66,7 +67,7 @@ describe('<CategoriesModal/>', () => {
     it('should show all categories', () => {
       renderCategories()
 
-      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
+      expect(screen.getByText(EVERY_CATEGORIES)).toBeOnTheScreen()
       expect(screen.getByText('Cinéma')).toBeOnTheScreen()
       expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
       expect(screen.getByText('Jeux & jeux vidéos')).toBeOnTheScreen()
@@ -76,7 +77,7 @@ describe('<CategoriesModal/>', () => {
       mockData = { ...mockData, searchGroups: [] }
       renderCategories()
 
-      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
+      expect(screen.getByText(EVERY_CATEGORIES)).toBeOnTheScreen()
       expect(screen.queryByText('Cinéma')).not.toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
@@ -89,7 +90,7 @@ describe('<CategoriesModal/>', () => {
       }
       renderCategories()
 
-      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
+      expect(screen.getByText(EVERY_CATEGORIES)).toBeOnTheScreen()
       expect(screen.getByText('Cinéma')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
@@ -122,7 +123,7 @@ describe('<CategoriesModal/>', () => {
     it('should set the selected category filter when search button is pressed and no category was already set', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+      const someCategoryFilterCheckbox = screen.getByText(EVERY_CATEGORIES)
       fireEvent.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
@@ -145,14 +146,12 @@ describe('<CategoriesModal/>', () => {
     it('should select default filter when pressing the reset button', async () => {
       renderCategories()
 
-      const button = screen.getByText('Réinitialiser')
+      const button = await screen.findByText('Réinitialiser')
       fireEvent.press(button)
 
-      await waitFor(() => {
-        const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+      const defaultCategoryFilterCheckbox = await screen.findByText(EVERY_CATEGORIES)
 
-        expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
-      })
+      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
     })
 
     describe('should close the modal', () => {
@@ -260,7 +259,7 @@ describe('<CategoriesModal/>', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+        const defaultCategoryFilterCheckbox = screen.getByText(EVERY_CATEGORIES)
 
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
       })
@@ -397,7 +396,7 @@ describe('<CategoriesModal/>', () => {
 
       fireEvent.press(screen.getByText('Réinitialiser'))
 
-      const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+      const defaultCategoryFilterCheckbox = await screen.findByText(EVERY_CATEGORIES)
 
       expect(defaultCategoryFilterCheckbox).toBeEnabled()
     })
