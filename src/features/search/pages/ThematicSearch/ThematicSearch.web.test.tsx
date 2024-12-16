@@ -8,10 +8,11 @@ import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -27,6 +28,7 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   showSuggestions: jest.fn(),
   hideSuggestions: jest.fn(),
 })
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 const defaultUseSearchResults = {
   data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
@@ -68,6 +70,14 @@ describe('<ThematicSearch/>', () => {
     mockUseLocation.mockReturnValue(defaultUseLocation)
   })
 
+  it('should render', async () => {
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Romans et littérature')
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should dispatch action with offerCategories when params change', async () => {
     render(reactQueryProviderHOC(<ThematicSearch />))
 
@@ -79,6 +89,30 @@ describe('<ThematicSearch/>', () => {
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
       }),
     })
+  })
+
+  it('should not have basic accessibility issues', async () => {
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
+
+    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Romans et littérature')
+
+    const results = await checkAccessibilityFor(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
+  it('should not have basic accessibility issues when offline', async () => {
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+
+    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Romans et littérature')
+
+    const results = await checkAccessibilityFor(container)
+
+    expect(results).toHaveNoViolations()
   })
 })
 

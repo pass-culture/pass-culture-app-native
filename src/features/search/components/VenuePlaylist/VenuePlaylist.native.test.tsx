@@ -180,4 +180,36 @@ describe('<VenuePlaylist />', () => {
       expect(analytics.logConsultVenueMap).not.toHaveBeenCalled()
     })
   })
+
+  describe('Separator', () => {
+    it('should display Separator when shouldDisplaySeparator is true', () => {
+      render(
+        <VenuePlaylist
+          venuePlaylistTitle="Test Playlist"
+          venues={mockAlgoliaVenues}
+          currentView="ThematicSearch"
+          offerCategory={SearchGroupNameEnumv2.CINEMA}
+          isLocated={false}
+          shouldDisplaySeparator
+        />
+      )
+
+      expect(screen.getByTestId('venue-playlist-separator')).toBeOnTheScreen()
+    })
+
+    it('should not display Separator when shouldDisplaySeparator is false', () => {
+      render(
+        <VenuePlaylist
+          venuePlaylistTitle="Test Playlist"
+          venues={mockAlgoliaVenues}
+          currentView="ThematicSearch"
+          offerCategory={SearchGroupNameEnumv2.CINEMA}
+          isLocated={false}
+          shouldDisplaySeparator={false}
+        />
+      )
+
+      expect(screen.queryByTestId('venue-playlist-separator')).not.toBeOnTheScreen()
+    })
+  })
 })
