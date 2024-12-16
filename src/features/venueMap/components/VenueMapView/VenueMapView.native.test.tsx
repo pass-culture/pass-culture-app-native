@@ -11,6 +11,7 @@ import { VenueOffers } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
+import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -48,6 +49,15 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers')
 
+const useVenueMapFiltersSpy = jest.spyOn(useVenueMapFilters, 'useVenueMapFilters')
+useVenueMapFiltersSpy.mockReturnValue({
+  activeFilters: constants.FILTERS_VENUE_TYPE_MAPPING.OUTINGS,
+  addMacroFilter: jest.fn(),
+  getSelectedMacroFilters: jest.fn(),
+  removeMacroFilter: jest.fn(),
+  toggleMacroFilter: jest.fn(),
+})
+
 jest.mock('@gorhom/bottom-sheet', () => {
   const { View } = jest.requireActual('react-native')
   class MockBottomSheet extends View {
@@ -79,15 +89,17 @@ const mockUseVenueOffers = (emptyResponse = false) => {
 }
 
 const pressVenueMarker = (venue: GeolocatedVenue) => {
-  fireEvent.press(screen.getByTestId(`marker-${venue.venueId}`), {
-    stopPropagation: () => false,
-    nativeEvent: {
-      id: venue.venueId.toString(),
-      coordinate: {
-        latitude: venue._geoloc.lat,
-        longitude: venue._geoloc.lng,
+  return act(() => {
+    fireEvent.press(screen.getByTestId(`marker-${venue.venueId}`), {
+      stopPropagation: () => false,
+      nativeEvent: {
+        id: venue.venueId.toString(),
+        coordinate: {
+          latitude: venue._geoloc.lat,
+          longitude: venue._geoloc.lng,
+        },
       },
-    },
+    })
   })
 }
 
@@ -95,6 +107,7 @@ describe('<VenueMapView />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    jest.useFakeTimers()
     mockUseVenueOffers()
 
     useFeatureFlagSpy.mockReturnValue(true)
@@ -105,17 +118,24 @@ describe('<VenueMapView />', () => {
   })
 
   beforeAll(() => {
-    jest.useFakeTimers()
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
 
-  afterAll(() => {
+  afterEach(() => {
     jest.useRealTimers()
   })
 
   it('should render map', async () => {
     render(getVenueMapViewComponent({}))
+    const mapView = await screen.findByTestId('venue-map-view')
+
+    expect(mapView).toBeOnTheScreen()
+    expect(screen.getAllByTestId(/marker-/)).toHaveLength(venuesFixture.length)
+  })
+
+  it('should render map coming from other screen than venueMap', async () => {
+    render(getVenueMapViewComponent({ from: 'other' }))
     const mapView = await screen.findByTestId('venue-map-view')
 
     expect(mapView).toBeOnTheScreen()
@@ -162,7 +182,9 @@ describe('<VenueMapView />', () => {
       await user.press(await screen.findByText('Rechercher dans cette zone'))
     })
 
-    expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
+    await waitFor(() =>
+      expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
+    )
   })
 
   it('should reset initial venues store when pressing search button', async () => {
@@ -187,11 +209,11 @@ describe('<VenueMapView />', () => {
     render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
 
-    expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen()
-    expect(screen.getByTestId('venueOfferPlaylist')).toBeOnTheScreen()
-    expect(screen.getByText('Voir les offres du lieu')).toBeOnTheScreen()
+    expect(await screen.findByTestId('venueMapPreview')).toBeOnTheScreen()
+    expect(await screen.findByTestId('venueOfferPlaylist')).toBeOnTheScreen()
+    expect(await screen.findByText('Voir les offres du lieu')).toBeOnTheScreen()
   })
 
   it('should navigate to Venue page when bottom sheet is open and fling gesture detected', async () => {
@@ -200,7 +222,7 @@ describe('<VenueMapView />', () => {
     render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
     await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
 
     fireGestureHandler(getByGestureTestId('flingGesture'), [
@@ -214,12 +236,12 @@ describe('<VenueMapView />', () => {
 
   // TODO(PC-33564): fix flaky tests
   // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not display preview is marker id has not been found in venue list', async () => {
+  it.skip('should not display preview if marker id has not been found in venue list', async () => {
     render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
 
-    await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
+    expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen()
   })
 
   it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
@@ -227,7 +249,7 @@ describe('<VenueMapView />', () => {
 
     render(getVenueMapViewComponent({}))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
 
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
   })
@@ -236,7 +258,7 @@ describe('<VenueMapView />', () => {
     activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
 
     await screen.findByTestId('venueMapPreview')
 
@@ -250,7 +272,7 @@ describe('<VenueMapView />', () => {
   it.skip('should hide bottom sheet when a marker is selected and map is pressed', async () => {
     const { rerender } = render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    pressVenueMarker(venuesFixture[0])
+    await pressVenueMarker(venuesFixture[0])
 
     await user.press(screen.getByTestId('venue-map-view'))
     await act(async () => {
@@ -268,11 +290,13 @@ describe('<VenueMapView />', () => {
 
     await act(async () => {
       await user.press(screen.getByTestId('venue-map-view'))
-
-      pressVenueMarker(venuesFixture[0])
     })
 
-    expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object))
+    await act(async () => {
+      await pressVenueMarker(venuesFixture[0])
+    })
+
+    await waitFor(() => expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object)))
   })
 
   it('should display venue label when wipVenueMapPinV2 FF is activated', async () => {
@@ -302,6 +326,23 @@ describe('<VenueMapView />', () => {
     expect(screen.queryByText('Cinéma de la fin')).not.toBeOnTheScreen()
   })
 
+  it('should show venues matching selected category', async () => {
+    activateFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
+    ])
+    render(getVenueMapViewComponent({}))
+
+    await waitFor(() =>
+      expect(screen.getAllByTestId(/marker-/)).toHaveLength(
+        venuesFixture.filter((venue) =>
+          constants.FILTERS_VENUE_TYPE_MAPPING.OUTINGS.includes(venue.venue_type)
+        ).length
+      )
+    )
+  })
+
   it('should not display venue label wipVenueMapPinV2 when FF is disabled', async () => {
     activateFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     render(getVenueMapViewComponent({}))
@@ -321,6 +362,7 @@ const mockCurrentRegion = {
 type RenderVenueMapViewType = Partial<ComponentPropsWithRef<typeof VenueMapView>>
 
 function getVenueMapViewComponent({
+  from = 'venueMap',
   selectedVenue = null,
   venues = venuesFixture,
   venueTypeCode = VenueTypeCodeKey.VISUAL_ARTS,
@@ -328,7 +370,7 @@ function getVenueMapViewComponent({
 }: RenderVenueMapViewType) {
   return reactQueryProviderHOC(
     <VenueMapView
-      from="venueMap"
+      from={from}
       venues={venues}
       selectedVenue={selectedVenue}
       venueTypeCode={venueTypeCode}
