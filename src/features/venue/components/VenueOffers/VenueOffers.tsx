@@ -11,7 +11,7 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
-import type { VenueOffers as VenueOffersType } from 'features/venue/types'
+import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
@@ -22,6 +22,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface VenueOffersProps {
   venue: VenueResponse
+  venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
 }
@@ -67,7 +68,12 @@ const MovieScreening: React.FC<{ venueOffers: VenueOffersType }> = ({ venueOffer
   )
 }
 
-export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOffersProps>) {
+export function VenueOffers({
+  venue,
+  venueArtists,
+  venueOffers,
+  playlists,
+}: Readonly<VenueOffersProps>) {
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
   const { isLoading: arePlaylistsLoading } = useGTLPlaylists({
     venue,
@@ -90,7 +96,14 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
     return <MovieScreening venueOffers={venueOffers} />
   }
 
-  return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
+  return (
+    <VenueOffersList
+      venue={venue}
+      venueArtists={venueArtists}
+      venueOffers={venueOffers}
+      playlists={playlists}
+    />
+  )
 }
 
 const MoviesTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))({

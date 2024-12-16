@@ -13,16 +13,17 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
+import { VenueOffersArtistsResponseSnap } from 'features/venue/fixtures/venueOffersArtistsResponseSnap'
 import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
-import type { VenueOffers as VenueOffersType } from 'features/venue/types'
+import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -62,6 +63,7 @@ const defaultParams = {
 
 const venueOffersMock = { hits: VenueOffersResponseSnap, nbHits: 4 }
 const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
+const venueOffersArtistsMock = { artists: VenueOffersArtistsResponseSnap }
 
 const distributionStoreVenue = {
   ...mockVenue,
@@ -100,6 +102,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
@@ -144,9 +150,7 @@ describe('<VenueOffers />', () => {
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
-    fireEvent.press(screen.getByText('En voir plus'))
-
-    await act(() => {})
+    await user.press(screen.getByText('En voir plus'))
 
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
@@ -165,9 +169,10 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it(`should log analytics event when clicking "En voir plus" button`, () => {
+  it(`should log analytics event when clicking "En voir plus" button`, async () => {
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
-    fireEvent.press(screen.getByText('En voir plus'))
+
+    await user.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
@@ -228,22 +233,72 @@ describe('<VenueOffers />', () => {
       expect(await screen.findByText('Les films à l’affiche')).toBeOnTheScreen()
     })
   })
+
+  describe('Artist playlist', () => {
+    describe('When wipVenueArtistsPlaylist feature flag activated', () => {
+      beforeAll(() => {
+        mockFeatureFlag.mockReturnValue(true)
+      })
+
+      it('should display artists playlist when venue offers have artists', () => {
+        renderVenueOffers({
+          venue: venueDataTest,
+          venueOffers: venueOffersMock,
+          venueArtists: venueOffersArtistsMock,
+        })
+
+        expect(screen.getByText('Les artistes disponibles dans ce lieu')).toBeOnTheScreen()
+      })
+
+      it('should not display artists playlist when venue offers have artists', () => {
+        renderVenueOffers({
+          venue: venueDataTest,
+          venueOffers: venueOffersMock,
+        })
+
+        expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('When wipVenueArtistsPlaylist feature flag deactivated', () => {
+      beforeAll(() => {
+        mockFeatureFlag.mockReturnValue(false)
+      })
+
+      it('should not display artists playlist when venue offers have artists', () => {
+        renderVenueOffers({
+          venue: venueDataTest,
+          venueOffers: venueOffersMock,
+          venueArtists: venueOffersArtistsMock,
+        })
+
+        expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
+      })
+    })
+  })
 })
 
 const renderVenueOffers = ({
   venue,
   venueOffers,
+  venueArtists,
   playlists,
 }: {
   venue: VenueResponse
   venueOffers: VenueOffersType
+  venueArtists?: VenueOffersArtists
   playlists?: GtlPlaylistData[]
 }) => {
   return render(
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
         <OfferCTAProvider>
-          <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+          <VenueOffers
+            venue={venue}
+            venueOffers={venueOffers}
+            venueArtists={venueArtists}
+            playlists={playlists}
+          />
         </OfferCTAProvider>
       </AnchorProvider>
     )

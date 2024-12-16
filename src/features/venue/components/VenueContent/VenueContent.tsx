@@ -15,7 +15,7 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
 import { VENUE_VIDEO_FAKEDOOR_DATA } from 'features/venue/constants'
-import { VenueOffers } from 'features/venue/types'
+import { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -31,6 +31,7 @@ import { Spacer } from 'ui/theme'
 type Props = {
   venue: VenueResponse
   gtlPlaylists?: GtlPlaylistData[]
+  venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
   videoSectionVisible?: boolean
   onCloseVideoFakeDoor?: () => void
@@ -42,6 +43,7 @@ const isWeb = Platform.OS === 'web'
 export const VenueContent: React.FunctionComponent<Props> = ({
   venue,
   gtlPlaylists,
+  venueArtists,
   venueOffers,
   videoSectionVisible,
   onCloseVideoFakeDoor,
@@ -145,6 +147,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             <VenueBody
               venue={venue}
               playlists={gtlPlaylists}
+              venueArtists={venueArtists}
               venueOffers={venueOffers}
               shouldDisplayCTA={shouldDisplayCTA}
             />

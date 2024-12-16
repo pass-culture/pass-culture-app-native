@@ -16,26 +16,36 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
-import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
+import { AvatarsList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers, playlists }) => {
+export const VenueOffersList: React.FC<VenueOffersProps> = ({
+  venue,
+  venueArtists,
+  venueOffers,
+  playlists,
+}) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const { user } = useAuthContext()
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
+  const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
+  const { artists = [] } = venueArtists ?? {}
+  const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
 
   const shouldDisplayGtlPlaylist =
     [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
@@ -114,8 +124,18 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
           ))}
         </React.Fragment>
       ) : null}
+      {shouldDisplayArtistsPlaylist ? (
+        <ViewGap gap={4}>
+          <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
+          <AvatarsList data={artists} />
+        </ViewGap>
+      ) : null}
     </React.Fragment>
   )
 }
 
 const PlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
+
+const ArtistsPlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))({
+  marginHorizontal: getSpacing(6),
+})
