@@ -5,6 +5,9 @@ import { VenueResponse } from 'api/gen'
 import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { analytics } from 'libs/analytics'
+import styled from 'styled-components/native'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { getSpacing } from 'ui/theme'
 
 type MessagingAppsProps = {
   venue: VenueResponse
@@ -23,10 +26,18 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   if (!shareContent?.url) return null
 
   return (
-    <MessagingApps
-      shareContent={shareContent}
-      share={share}
-      messagingAppAnalytics={messagingAppAnalytics}
-    />
+    <SectionWithDivider visible margin gap={6}>
+      <Container>
+        <MessagingApps
+          shareContent={shareContent}
+          share={share}
+          messagingAppAnalytics={messagingAppAnalytics}
+        />
+      </Container>
+    </SectionWithDivider>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  marginBottom: getSpacing(4),
+}))
