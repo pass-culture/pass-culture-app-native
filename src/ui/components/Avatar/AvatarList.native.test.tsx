@@ -26,7 +26,8 @@ describe('<AvatarsList />', () => {
   it('should display custom images for avatars', () => {
     render(<AvatarsList data={avatarsData} />)
 
-    expect(screen.getAllByLabelText('Avatar de lʼartiste')).toHaveLength(2)
+    expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Avatar de lʼartiste MMMM')).toBeOnTheScreen()
   })
 
   it('should handle missing images gracefully', () => {

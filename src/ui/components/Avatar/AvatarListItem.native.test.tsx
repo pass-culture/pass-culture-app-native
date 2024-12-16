@@ -13,7 +13,7 @@ describe('<AvatarListItem />', () => {
   it('should display image avatar', () => {
     render(<AvatarListItem id={1} name="Oda" image="url" width={100} />)
 
-    expect(screen.getByLabelText('Avatar de lʼartiste')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
   })
 
   it('should display default image avatar', () => {

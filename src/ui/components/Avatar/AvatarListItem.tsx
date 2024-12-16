@@ -39,7 +39,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
             <StyledImage
               url={image}
               accessibilityRole={AccessibilityRole.IMAGE}
-              accessibilityLabel="Avatar de lʼartiste"
+              accessibilityLabel={`Avatar de lʼartiste ${name}`}
             />
           ) : (
             <DefaultAvatar />
