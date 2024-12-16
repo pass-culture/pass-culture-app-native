@@ -19,7 +19,7 @@ const PLAYLIST_ITEM_WIDTH = AVATAR_LARGE
 
 export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data }) => {
   const renderAvatar = ({ item }: { item: AvatarListItemProps }) => (
-    <AvatarListItem id={item.id} image={item.image} name={item.name} />
+    <AvatarListItem id={item.id} image={item.image} name={item.name} width={PLAYLIST_ITEM_WIDTH} />
   )
   return (
     <Playlist
