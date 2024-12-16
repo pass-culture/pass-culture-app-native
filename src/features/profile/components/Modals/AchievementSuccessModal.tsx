@@ -33,7 +33,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) =>
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  if (!visible || names.length <= 0) return null
+  if (!visible) return null
 
   const severalAchievementsUnlocked = names.length >= 2
 

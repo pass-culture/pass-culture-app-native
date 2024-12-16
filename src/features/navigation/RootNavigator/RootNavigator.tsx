@@ -13,7 +13,12 @@ import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialSc
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
+import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ModalRenderer } from 'libs/modals/modal.renderer'
+import { achievementsModal } from 'libs/modals/modals'
+import { createModalFactory } from 'libs/modals/modals.factory'
+import { closeModal } from 'libs/modals/usecases/close-modal'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
@@ -28,6 +33,11 @@ import { RootScreens } from './screens'
 import { RootStack } from './Stack'
 
 const isWeb = Platform.OS === 'web'
+
+const modalFactory = createModalFactory()
+modalFactory.add(achievementsModal, ({ params: { names } }) => (
+  <AchievementSuccessModal visible hideModal={closeModal} names={names} />
+))
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -108,6 +118,7 @@ export const RootNavigator: React.ComponentType = () => {
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
+      <ModalRenderer modalFactory={modalFactory} />
     </TabNavigationStateProvider>
   )
 }

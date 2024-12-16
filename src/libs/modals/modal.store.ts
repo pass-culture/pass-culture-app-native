@@ -47,3 +47,5 @@ export const modalStore = createStore<State, ReturnType<typeof setActions>>(
   defaultStore,
   setActions
 )
+
+export const useModalStore = modalStore

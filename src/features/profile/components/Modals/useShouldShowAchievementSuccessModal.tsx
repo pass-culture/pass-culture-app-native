@@ -31,5 +31,5 @@ export const useShouldShowAchievementSuccessModal = () => {
 
   if (unseenAchievements && unseenAchievements?.length > 0) achievementsToShow = unseenAchievements
 
-  return { shouldShowAchievementSuccessModal, achievementsToShow }
+  return { shouldShowAchievementSuccessModal: true, achievementsToShow }
 }
