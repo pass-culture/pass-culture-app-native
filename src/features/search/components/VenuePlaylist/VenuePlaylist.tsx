@@ -136,7 +136,7 @@ export const VenuePlaylist: React.FC<Props> = ({
       </View>
       {shouldDisplaySeparator ? (
         <React.Fragment>
-          <StyledSeparator />
+          <StyledSeparator testID="venue-playlist-separator" />
         </React.Fragment>
       ) : null}
       <VenueMapLocationModal
