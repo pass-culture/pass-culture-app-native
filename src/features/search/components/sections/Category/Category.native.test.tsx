@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { EVERY_CATEGORIES } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
@@ -99,5 +100,15 @@ describe('Category component', () => {
     })
 
     expect(fullscreenModalScrollView).toBeOnTheScreen()
+  })
+
+  it('should display `Toutes les catégories` when none is selected', async () => {
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [],
+    }
+    render(<Category />)
+
+    expect(await screen.findByText(EVERY_CATEGORIES)).toBeOnTheScreen()
   })
 })
