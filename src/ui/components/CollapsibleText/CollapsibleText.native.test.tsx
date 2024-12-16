@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 
 const mockOnLayoutWithButton = {
@@ -29,6 +29,10 @@ const NUMBER_OF_LINES = 5
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<CollapsibleText />', () => {
   it('should not display all text', () => {
@@ -94,7 +98,7 @@ describe('<CollapsibleText />', () => {
       text.props.onTextLayout(mockOnTextLayoutWhenEllipsis)
     })
 
-    fireEvent.press(screen.getByText('Voir plus'))
+    await user.press(screen.getByText('Voir plus'))
 
     expect(screen.getByText('Voir moins')).toBeOnTheScreen()
   })
@@ -108,7 +112,7 @@ describe('<CollapsibleText />', () => {
       text.props.onTextLayout(mockOnTextLayoutWhenEllipsis)
     })
 
-    fireEvent.press(screen.getByText('Voir plus'))
+    await user.press(screen.getByText('Voir plus'))
 
     expect(screen.getByText(TEXT).props.numberOfLines).toBeUndefined()
   })
@@ -122,8 +126,24 @@ describe('<CollapsibleText />', () => {
       text.props.onTextLayout(mockOnTextLayoutWhenEllipsis)
     })
 
-    fireEvent.press(screen.getByText('Voir plus'))
+    await user.press(screen.getByText('Voir plus'))
 
     expect(screen.getByLabelText('Réduire le texte')).toBeOnTheScreen()
+  })
+
+  it('should use styled typo when text is markdown', () => {
+    render(
+      <CollapsibleText numberOfLines={NUMBER_OF_LINES} isMarkdown>
+        {TEXT}
+      </CollapsibleText>
+    )
+
+    expect(screen.getByTestId('styledTypo')).toBeOnTheScreen()
+  })
+
+  it('should not use styled typo when text is not markdown', () => {
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
+
+    expect(screen.queryByTestId('styledTypo')).not.toBeOnTheScreen()
   })
 })

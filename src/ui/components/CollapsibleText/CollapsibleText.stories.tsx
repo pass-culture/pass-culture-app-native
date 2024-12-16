@@ -26,6 +26,15 @@ const variantConfig: Variants<typeof CollapsibleText> = [
       numberOfLines: 5,
     },
   },
+  {
+    label: 'CollapsibleText is markdown',
+    props: {
+      children:
+        'Lorem ipsum ~dolor sit amet~, consectetur adipiscing elit. **Maecenas nec tellus** in magna convallis egestas eget id justo. _Donec lorem ante_, tempor eu diam quis, laoreet rhoncus tortor.',
+      numberOfLines: 5,
+      isMarkdown: true,
+    },
+  },
 ]
 
 const Template: VariantsStory<typeof CollapsibleText> = (args) => (
