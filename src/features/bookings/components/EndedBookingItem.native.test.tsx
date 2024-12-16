@@ -1,12 +1,10 @@
-import React, { Fragment, FunctionComponent } from 'react'
+import React, { ComponentProps } from 'react'
 import { Share } from 'react-native'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -69,18 +67,20 @@ describe('EndedBookingItem', () => {
   jest.useFakeTimers()
 
   it('should display offer title', () => {
-    renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+    renderEndedBookingItem({ booking: bookingsSnap.ended_bookings[0] })
 
     expect(screen.getByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
   it('should navigate to offer page when offer is not digital without expiration date', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        stock: {
+          ...bookingsSnap.ended_bookings[0].stock,
 
-        offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+          offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+        },
       },
     })
 
@@ -95,11 +95,13 @@ describe('EndedBookingItem', () => {
 
   it('should call analytics logConsultOffer when offer is not digital without expiration date', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        stock: {
+          ...bookingsSnap.ended_bookings[0].stock,
 
-        offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+          offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+        },
       },
     })
 
@@ -114,9 +116,11 @@ describe('EndedBookingItem', () => {
 
   it('should navigate to the booking details page when offer is digital without expiration date and not cancelled', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        cancellationDate: null,
+        cancellationReason: null,
+      },
     })
 
     const item = screen.getByText('Réservation archivée')
@@ -145,9 +149,11 @@ describe('EndedBookingItem', () => {
 
   it('should call share when press share icon', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        cancellationDate: null,
+        cancellationReason: null,
+      },
     })
 
     const shareButton = await screen.findByLabelText(
@@ -160,9 +166,11 @@ describe('EndedBookingItem', () => {
 
   it('should handle share offer modal opening when pressing share icon', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        cancellationDate: null,
+        cancellationReason: null,
+      },
     })
 
     const shareButton = await screen.findByLabelText(
@@ -175,9 +183,11 @@ describe('EndedBookingItem', () => {
 
   it('should log analytics when press share icon', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        cancellationDate: null,
+        cancellationReason: null,
+      },
     })
 
     const shareButton = await screen.findByLabelText(
@@ -196,13 +206,10 @@ describe('EndedBookingItem', () => {
   describe('when reaction feature flag is activated', () => {
     beforeAll(() => {
       useFeatureFlagSpy.mockReturnValue(true)
-      mockGetConfigValues.mockReturnValue({
-        reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
-      })
     })
 
     it('should handle reaction modal opening when pressing reaction button', async () => {
-      renderEndedBookingItem(bookingsSnap.ended_bookings[1], RemoteConfigProvider)
+      renderEndedBookingItem({ booking: bookingsSnap.ended_bookings[0], canReact: true })
 
       await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
@@ -211,19 +218,20 @@ describe('EndedBookingItem', () => {
   })
 })
 
-function renderEndedBookingItem(
-  booking: Booking,
-  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
-) {
+type RenderEndedBookingItemType = Partial<ComponentProps<typeof EndedBookingItem>>
+
+function renderEndedBookingItem({
+  booking = bookingsSnap.ended_bookings[0],
+  canReact,
+}: RenderEndedBookingItemType) {
   return render(
-    <Wrapper>
-      {reactQueryProviderHOC(
-        <EndedBookingItem
-          booking={booking}
-          handleShowReactionModal={mockHandleShowReactionModal}
-          handleShowShareOfferModal={mockHandleShowShareOfferModal}
-        />
-      )}
-    </Wrapper>
+    reactQueryProviderHOC(
+      <EndedBookingItem
+        booking={booking}
+        handleShowReactionModal={mockHandleShowReactionModal}
+        handleShowShareOfferModal={mockHandleShowShareOfferModal}
+        canReact={canReact}
+      />
+    )
   )
 }

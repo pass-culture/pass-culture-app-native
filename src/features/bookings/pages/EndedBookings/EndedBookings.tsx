@@ -127,6 +127,7 @@ export const EndedBookings: FunctionComponent = () => {
           booking={item}
           handleShowReactionModal={openReactionModal}
           handleShowShareOfferModal={openShareModal}
+          canReact={item.canReact}
         />
       )
     },
