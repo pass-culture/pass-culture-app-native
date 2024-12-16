@@ -22,6 +22,8 @@ export const bookingsSnap = toMutable({
       token: '352UW5',
       quantity: 10,
       userReaction: null,
+      canReact: true,
+      enablePopUpReaction: true,
       stock: {
         id: 150230,
         price: 400,
@@ -74,6 +76,8 @@ export const bookingsSnap = toMutable({
       token: '352UW5',
       quantity: 10,
       userReaction: null,
+      canReact: false,
+      enablePopUpReaction: false,
       stock: {
         id: 150230,
         price: 400,
@@ -81,7 +85,7 @@ export const bookingsSnap = toMutable({
         beginningDatetime: '2021-03-14T20:00:00',
         features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
-          id: 147874,
+          id: 147875,
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           address: {
@@ -130,6 +134,8 @@ export const bookingsSnap = toMutable({
       token: '352UW4',
       quantity: 10,
       qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
+      canReact: false,
+      enablePopUpReaction: false,
       stock: {
         id: 150230,
         beginningDatetime: '2021-03-15T20:00:00',
@@ -185,6 +191,8 @@ export const bookingsSnap = toMutable({
       token: '352UW4',
       quantity: 10,
       qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
+      canReact: false,
+      enablePopUpReaction: false,
       stock: {
         id: 150230,
         beginningDatetime: '2021-03-15T20:00:00',
