@@ -15,7 +15,7 @@ import {
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationMode } from 'libs/location/types'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
@@ -150,7 +150,7 @@ describe('<VenueContent />', () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
       })
 
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
     })
 
     it('should not trigger event before 5 seconds have elapsed', async () => {
@@ -160,7 +160,7 @@ describe('<VenueContent />', () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 100)
       })
 
-      expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+      expect(BatchProfile.trackEvent).not.toHaveBeenCalled()
     })
   })
 

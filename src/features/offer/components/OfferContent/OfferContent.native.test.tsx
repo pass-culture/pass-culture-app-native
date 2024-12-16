@@ -25,7 +25,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -419,7 +419,7 @@ describe('<OfferContent />', () => {
 
       await screen.findByText('Réserver l’offre')
 
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
 
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
@@ -431,7 +431,7 @@ describe('<OfferContent />', () => {
 
       await screen.findByText('Réserver l’offre')
 
-      expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchProfile.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
 
     it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
@@ -439,7 +439,7 @@ describe('<OfferContent />', () => {
 
       fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventBottom)
 
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
 
     it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
@@ -447,7 +447,7 @@ describe('<OfferContent />', () => {
 
       fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventMiddle)
 
-      expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchProfile.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
 
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
@@ -461,10 +461,10 @@ describe('<OfferContent />', () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
       })
 
-      expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
     })
 
     it.each([
@@ -483,7 +483,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+        expect(BatchProfile.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
       }
     )
 
@@ -504,8 +504,8 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
-        expect(BatchUser.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)
+        expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+        expect(BatchProfile.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)
       }
     )
   })

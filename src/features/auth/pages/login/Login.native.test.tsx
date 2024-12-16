@@ -2,7 +2,7 @@
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
-import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import {
@@ -235,7 +235,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
+    expect(BatchProfile.identify).toHaveBeenCalledWith(FAKE_USER_ID.toString())
     expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
     expect(navigateToHome).toHaveBeenCalledTimes(1)
     expect(mockResetSearch).toHaveBeenCalledTimes(1)

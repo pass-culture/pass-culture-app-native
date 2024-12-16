@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchProfile } from 'libs/react-native-batch'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { storage } from 'libs/storage'
 
@@ -17,7 +17,7 @@ export function useLogoutRoutine(): () => Promise<void> {
 
   return useCallback(async () => {
     try {
-      BatchUser.editor().setIdentifier(null).save()
+      BatchProfile.identify(null)
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries([queryKey])
       })

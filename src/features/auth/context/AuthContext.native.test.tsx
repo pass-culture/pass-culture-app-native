@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
@@ -263,7 +263,7 @@ describe('AuthContext', () => {
       storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
       const error = new Error('Batch error')
-      BatchUser.editor.mockImplementationOnce(() => {
+      BatchProfile.identify.mockImplementationOnce(() => {
         throw error
       })
 

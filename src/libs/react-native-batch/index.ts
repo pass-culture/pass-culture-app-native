@@ -2,7 +2,8 @@ export {
   Batch,
   BatchMessaging,
   BatchPush,
+  BatchProfile,
   BatchUser,
-  BatchEventData,
+  BatchEventAttributes,
 } from '@batch.com/react-native-plugin'
 export { BatchEvent } from 'libs/react-native-batch/enums'

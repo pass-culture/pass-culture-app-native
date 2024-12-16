@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -54,7 +54,7 @@ describe('ComeBackLater', () => {
     render(<ComeBackLater />)
 
     await waitFor(() =>
-      expect(BatchUser.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewComeBackLater)
+      expect(BatchProfile.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewComeBackLater)
     )
   })
 

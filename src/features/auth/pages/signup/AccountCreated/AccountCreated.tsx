@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -22,7 +22,7 @@ export function AccountCreated() {
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   const onBeforeNavigate = useCallback(() => {
-    BatchUser.trackEvent(BatchEvent.hasValidatedAccount)
+    BatchProfile.trackEvent(BatchEvent.hasValidatedAccount)
     showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)
     analytics.logAccountCreatedStartClicked()
   }, [showShareAppModal])

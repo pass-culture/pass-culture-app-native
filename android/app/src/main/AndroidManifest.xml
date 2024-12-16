@@ -39,9 +39,9 @@
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     <meta-data android:name="asset_statements" android:resource="@string/asset_statements" />
-     <meta-data
-     android:name="com.google.android.geo.API_KEY"
-     android:value="${GOOGLE_MAPS_API_PUBLIC_KEY}"/>
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="${GOOGLE_MAPS_API_PUBLIC_KEY}"/>
+    <meta-data android:name="batch.profile_custom_id_migration_enabled" android:value="true"/>
+    <meta-data android:name="batch.profile_custom_data_migration_enabled" android:value="true"/>
   </application>
     <queries>
       <package android:name="com.instagram.android" />
