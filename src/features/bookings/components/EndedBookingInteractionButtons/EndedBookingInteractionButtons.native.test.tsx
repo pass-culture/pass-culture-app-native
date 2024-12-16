@@ -1,10 +1,9 @@
-import React, { Fragment, FunctionComponent } from 'react'
+import React from 'react'
 
 import { BookingReponse, NativeCategoryIdEnumv2, ReactionTypeEnum } from 'api/gen'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -31,8 +30,7 @@ describe('EndedBookingInteractionButtons', () => {
   it('should not display reaction button when reaction feature flag deactivated', async () => {
     renderEndedBookingInteractionButtons(
       bookingsSnap.ended_bookings[1],
-      NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      RemoteConfigProvider
+      NativeCategoryIdEnumv2.SEANCES_DE_CINEMA
     )
 
     await screen.findByLabelText('Partager l’offre Avez-vous déjà vu ?')
@@ -45,11 +43,11 @@ describe('EndedBookingInteractionButtons', () => {
       useFeatureFlagSpy.mockReturnValue(true)
     })
 
-    it('should not display reaction button when native category id not included in reactionCategories remote config', async () => {
+    it('should not display reaction button when native category id not included', async () => {
       renderEndedBookingInteractionButtons(
         bookingsSnap.ended_bookings[1],
         NativeCategoryIdEnumv2.CARTES_CINEMA,
-        RemoteConfigProvider
+        false
       )
 
       await screen.findByLabelText('Partager l’offre Avez-vous déjà vu ?')
@@ -61,7 +59,7 @@ describe('EndedBookingInteractionButtons', () => {
       renderEndedBookingInteractionButtons(
         bookingsSnap.ended_bookings[1],
         NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-        RemoteConfigProvider
+        true
       )
 
       expect(await screen.findByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
@@ -80,7 +78,7 @@ describe('EndedBookingInteractionButtons', () => {
             userReaction,
           },
           NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-          RemoteConfigProvider
+          true
         )
 
         expect(await screen.findByLabelText(labelRegex)).toBeOnTheScreen()
@@ -94,7 +92,7 @@ describe('EndedBookingInteractionButtons', () => {
           userReaction: null,
         },
         NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-        RemoteConfigProvider
+        true
       )
 
       expect(await screen.findByTestId('smallBadge')).toBeOnTheScreen()
@@ -105,18 +103,17 @@ describe('EndedBookingInteractionButtons', () => {
 function renderEndedBookingInteractionButtons(
   booking: BookingReponse,
   nativeCategoryId: NativeCategoryIdEnumv2,
-  Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment
+  canReact?: boolean
 ) {
   return render(
-    <Wrapper>
-      {reactQueryProviderHOC(
-        <EndedBookingInteractionButtons
-          booking={booking}
-          nativeCategoryId={nativeCategoryId}
-          handlePressShareOffer={jest.fn()}
-          handleShowReactionModal={jest.fn()}
-        />
-      )}
-    </Wrapper>
+    reactQueryProviderHOC(
+      <EndedBookingInteractionButtons
+        booking={booking}
+        nativeCategoryId={nativeCategoryId}
+        handlePressShareOffer={jest.fn()}
+        handleShowReactionModal={jest.fn()}
+        canReact={canReact}
+      />
+    )
   )
 }
