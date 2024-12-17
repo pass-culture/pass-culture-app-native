@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { Dimensions, FlatList, ListRenderItem, Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { CategoriesListHeader } from 'features/search/components/categories/CategoriesListHeader'
 import { Gradient } from 'features/search/enums'
-import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
+
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
@@ -12,7 +12,7 @@ import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { theme } from 'theme'
 import { useModal } from 'ui/components/modals/useModal'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -69,42 +69,18 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
       keyExtractor={(item) => item.label}
       numColumns={numColumns}
       key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
-      ListHeaderComponent={
-        <React.Fragment>
-          {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
-            <ContainerVenueMapBlock>
-              <VenueMapBlock
-                onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
-                from="searchLanding"
-              />
-            </ContainerVenueMapBlock>
-          ) : null}
-          <CategoriesTitleV2 />
-          <VenueMapLocationModal
-            visible={venueMapLocationModalVisible}
-            dismissModal={hideVenueMapLocationModal}
-            openedFrom="searchLanding"
-          />
-        </React.Fragment>
-      }
+      ListHeaderComponent={CategoriesListHeader({
+        shouldDisplayVenueMap,
+        showVenueMapLocationModal,
+        venueMapLocationModalVisible,
+        hideVenueMapLocationModal,
+        isMapWithoutPositionAndNotLocated,
+      })}
       contentContainerStyle={contentContainerStyle}
       testID="categoriesButtons"
     />
   )
 }
-const ContainerVenueMapBlock = styled.View({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(2),
-})
-
-const CategoriesTitleV2 = styled(TypoDS.Title4).attrs({
-  children: 'Parcours les catégories',
-  ...getHeadingAttrs(2),
-})(({ theme }) => ({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
-  paddingHorizontal: getSpacing(2),
-}))
 
 const tabletMinWidth = theme.breakpoints.md
 // eslint-disable-next-line no-restricted-properties
