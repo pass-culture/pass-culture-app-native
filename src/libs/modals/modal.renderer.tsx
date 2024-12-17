@@ -6,7 +6,10 @@ import { ModalFactory } from './modals.factory'
 type Props = { modalFactory: ModalFactory }
 
 export const ModalRenderer: FC<Props> = ({ modalFactory }) => {
-  const modalOpened = useModalStore((state) => state.modalOpened)
+  const { modalOpened, closeModal } = useModalStore((state) => ({
+    modalOpened: state.modalOpened,
+    closeModal: state.actions.closeModal,
+  }))
 
   if (!modalOpened) {
     return null
@@ -14,5 +17,5 @@ export const ModalRenderer: FC<Props> = ({ modalFactory }) => {
 
   const ModalRenderer = modalFactory.get(modalOpened)
 
-  return <ModalRenderer params={modalOpened.params} />
+  return <ModalRenderer params={modalOpened.params} close={closeModal} />
 }

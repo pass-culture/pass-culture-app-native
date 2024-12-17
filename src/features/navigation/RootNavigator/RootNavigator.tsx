@@ -18,7 +18,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ModalRenderer } from 'libs/modals/modal.renderer'
 import { achievementsModal } from 'libs/modals/modals'
 import { createModalFactory } from 'libs/modals/modals.factory'
-import { closeModal } from 'libs/modals/usecases/close-modal'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
@@ -35,9 +34,9 @@ import { RootStack } from './Stack'
 const isWeb = Platform.OS === 'web'
 
 const modalFactory = createModalFactory()
-modalFactory.add(achievementsModal, ({ params: { names } }) => (
-  <AchievementSuccessModal visible hideModal={closeModal} names={names} />
-))
+modalFactory.add(achievementsModal, ({ params: { names }, close }) => {
+  return <AchievementSuccessModal visible hideModal={close} names={names} />
+})
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {

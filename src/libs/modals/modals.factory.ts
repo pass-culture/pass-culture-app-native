@@ -6,10 +6,13 @@ import { Modal } from './modal.store'
 export type ModalFactory = ReturnType<typeof createModalFactory>
 
 export const createModalFactory = () => {
-  const modals: Map<string, React.FC<{ params: unknown }>> = new Map()
+  const modals: Map<string, React.FC<{ params: unknown; close: () => void }>> = new Map()
 
   return {
-    add: <T>(modalCreator: ModalCreator<T>, element: React.FC<{ params: T }>) => {
+    add: <T>(
+      modalCreator: ModalCreator<T>,
+      element: React.FC<{ params: T; close: () => void }>
+    ) => {
       if (modals.has(modalCreator.key)) {
         throw new Error(`Modal with key\u00a0: ${modalCreator.key} Already exist`)
       }

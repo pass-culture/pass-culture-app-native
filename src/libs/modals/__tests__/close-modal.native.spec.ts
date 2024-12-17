@@ -1,13 +1,11 @@
 import { modalStore } from '../modal.store'
 
-import { closeModal } from './close-modal'
-
 describe('Feature: Close modal', () => {
   test('Modal is closed', () => {
     const modal = { key: 'modal-key', params: { text: 'Hello world!' } }
     modalStore.setState({ modalOpened: modal })
 
-    closeModal()
+    modalStore.getState().actions.closeModal()
 
     expect(modalStore.getState().modalOpened).toBeUndefined()
   })
@@ -17,7 +15,7 @@ describe('Feature: Close modal', () => {
     const queuedModal = { key: 'queued-modal-key', params: { text: 'Hello world!' } }
     modalStore.setState({ modalOpened: modal, queue: [queuedModal] })
 
-    closeModal()
+    modalStore.getState().actions.closeModal()
 
     expect(modalStore.getState().modalOpened).toEqual(queuedModal)
   })

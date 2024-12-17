@@ -17,10 +17,26 @@ const defaultStore: State = {
 
 const setActions = (set: (payload: (state: State) => State) => void) => ({
   openModal: (modal: Modal<unknown>) => {
-    set((state) => ({
-      ...state,
-      modalOpened: modal,
-    }))
+    set((state) => {
+      const hasModalOpened = state.modalOpened !== undefined
+
+      return {
+        ...state,
+        modalOpened: modal,
+        queue: hasModalOpened ? [...state.queue, modal] : state.queue,
+      }
+    })
+  },
+  closeModal: () => {
+    set((state) => {
+      const [nextModal] = state.queue
+
+      return {
+        ...state,
+        modalOpened: nextModal,
+        queue: state.queue.filter((queuedModal) => queuedModal !== nextModal),
+      }
+    })
   },
   queueModal: (modal: Modal<unknown>) => {
     set((state) => ({
@@ -49,3 +65,4 @@ export const modalStore = createStore<State, ReturnType<typeof setActions>>(
 )
 
 export const useModalStore = modalStore
+export const useModalActions = () => modalStore((state) => state.actions)

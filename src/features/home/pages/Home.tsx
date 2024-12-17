@@ -21,8 +21,8 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { useModalActions } from 'libs/modals/modal.store'
 import { achievementsModal } from 'libs/modals/modals'
-import { openModal } from 'libs/modals/usecases/open-modal'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
@@ -36,6 +36,7 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
+  const { openModal } = useModalActions()
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
   const startPerfHomeCreationOnce = useFunctionOnce(() =>
     startTransaction(PERFORMANCE_HOME_CREATION)
@@ -66,7 +67,7 @@ export const Home: FunctionComponent = () => {
     if (shouldShowAchievementSuccessModal) {
       openModal(achievementsModal({ names: achievementsToShow }))
     }
-  }, [shouldShowAchievementSuccessModal, achievementsToShow])
+  }, [shouldShowAchievementSuccessModal, achievementsToShow, openModal])
 
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
