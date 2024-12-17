@@ -13,5 +13,9 @@ tags:
 - runFlow: subFolder/cookies/SelectThreeCookies.yml
 
 - runFlow: subFolder/tutorial/onboarding/Onboard16AndLocalization.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/profil/CheckCreditAmount.yml
 
 - runFlow: subFolder/StopApp.yml
