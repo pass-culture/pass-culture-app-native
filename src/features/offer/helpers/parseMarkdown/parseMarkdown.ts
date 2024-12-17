@@ -1,11 +1,11 @@
-import { MarkdownPart } from 'features/offer/types'
+import { MarkdownPartProps } from 'features/offer/types'
 
 // Regular expression to detect bold, italic and underline
 const STYLES_REGEXP = /\*\*(.*?)\*\*|_(.*?)_|~(.*?)~/g
 
 export function parseMarkdown(markdown: string) {
   function parse(markdown: string, styles: Record<string, boolean> = {}) {
-    const parts: MarkdownPart[] = []
+    const parts: MarkdownPartProps[] = []
     let lastIndex = 0
 
     markdown.replace(STYLES_REGEXP, (match, isBold, isItalic, isUnderline, offset) => {
