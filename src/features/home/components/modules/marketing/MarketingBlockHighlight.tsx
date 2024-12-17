@@ -11,6 +11,7 @@ export type MarketingBlockHighlightProps = {
   moduleId: string
   backgroundImageUrl?: string
   subtitle?: string
+  onBeforeNavigate?: () => void
 }
 
 const UnmemoizedMarketingBlockHighlight = ({
@@ -20,6 +21,7 @@ const UnmemoizedMarketingBlockHighlight = ({
   moduleId,
   backgroundImageUrl,
   subtitle,
+  onBeforeNavigate,
 }: MarketingBlockHighlightProps) => {
   return (
     <MarketingBlock
@@ -27,6 +29,7 @@ const UnmemoizedMarketingBlockHighlight = ({
         screen: 'ThematicHome',
         params: { homeId, from: 'highlight_thematic_block', moduleId },
       }}
+      onBeforeNavigate={onBeforeNavigate}
       backgroundImageUrl={backgroundImageUrl}
       AttachedCardComponent={
         <ShadowWrapper>

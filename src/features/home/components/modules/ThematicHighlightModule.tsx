@@ -18,7 +18,7 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 const TILE_HEIGHT = 244
 
-type Props = {
+export type ThematicHighlightModuleProps = {
   id: string
   title: string
   subtitle?: string
@@ -30,7 +30,7 @@ type Props = {
   homeEntryId: string
 }
 
-export const ThematicHighlightModule: FunctionComponent<Props> = ({
+export const ThematicHighlightModule: FunctionComponent<ThematicHighlightModuleProps> = ({
   id,
   title,
   subtitle,
@@ -86,6 +86,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
             title={title}
             subtitle={dateRange}
             label={subtitle}
+            onBeforeNavigate={sendAnalyticsOnPress}
           />
         </Container>
       ) : (
