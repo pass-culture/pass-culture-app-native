@@ -55,6 +55,7 @@ const Container = styled.View<{
 }>(({ paddingForIcon }) => ({
   flexDirection: 'row',
   top: paddingForIcon,
+  alignItems: 'center',
 }))
 
 const StyledText = styled.Text<{

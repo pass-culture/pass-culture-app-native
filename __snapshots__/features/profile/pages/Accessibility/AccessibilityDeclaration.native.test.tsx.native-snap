@@ -365,6 +365,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -534,6 +535,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -703,6 +705,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -827,6 +830,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               style={
                 [
                   {
+                    "alignItems": "center",
                     "flexDirection": "row",
                     "top": 0,
                   },
@@ -3307,6 +3311,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -3477,6 +3482,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -3647,6 +3653,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -3817,6 +3824,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -3987,6 +3995,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -4157,6 +4166,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -4327,6 +4337,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -4497,6 +4508,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -4667,6 +4679,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -4837,6 +4850,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -5007,6 +5021,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -5177,6 +5192,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -5411,6 +5427,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -5658,6 +5675,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
@@ -5830,6 +5848,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
                             "top": 0,
                           },
