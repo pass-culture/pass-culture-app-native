@@ -16,17 +16,18 @@ type CategoryButtonV2Props = {
   textColor: ColorsEnum
   fillColor: ColorsEnum
   borderColor: ColorsEnum
+  height: number
   style?: TouchableOpacityProps['style']
   onPress?: () => void
   children?: never
 }
-
 export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
   label,
   fillColor,
   borderColor,
   style,
   onPress,
+  height,
 }) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
@@ -40,7 +41,8 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
       accessibilityLabel={`Catégorie ${label}`}
       baseColor={fillColor}
       borderColor={borderColor}
-      style={style}>
+      style={style}
+      height={height}>
       <LabelContainer>
         <Label>{label.toUpperCase()}</Label>
       </LabelContainer>
@@ -54,8 +56,9 @@ const TouchableContainer = styled(TouchableOpacity)<{
   isHover: boolean
   baseColor: ColorsEnum
   borderColor: ColorsEnum
-}>(({ theme, isFocus, isHover, baseColor, borderColor }) => ({
-  height: getSpacing(24.25),
+  height: number
+}>(({ theme, isFocus, isHover, baseColor, borderColor, height }) => ({
+  height,
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),

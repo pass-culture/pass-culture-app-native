@@ -10,6 +10,9 @@ import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
+const BLOCK_HEIGHT = getSpacing(24)
+const DESKTOP_MAX_WIDTH = getSpacing(37.33)
+
 interface CategoryBlockProps {
   title: string
   navigateTo: InternalNavigationProps['navigateTo']
@@ -57,7 +60,6 @@ export function CategoryBlock({
   title,
   navigateTo,
   color,
-
   onBeforePress,
 }: Readonly<CategoryBlockProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -65,6 +67,7 @@ export function CategoryBlock({
   return (
     <StyledCategoryButtonV2
       label={title}
+      height={BLOCK_HEIGHT}
       textColor={newColorMapping[color].text}
       fillColor={newColorMapping[color].fill}
       borderColor={newColorMapping[color].border}
@@ -75,8 +78,8 @@ export function CategoryBlock({
     />
   )
 }
-
-const StyledCategoryButtonV2 = styled(CategoryButtonV2)({
-  width: getSpacing(44.5),
-  height: getSpacing(41),
-})
+const StyledCategoryButtonV2 = styled(CategoryButtonV2)(({ theme }) => ({
+  flex: '1 0 0',
+  minWidth: theme.isMobileViewport ? '35%' : 'none',
+  maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
+}))

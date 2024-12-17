@@ -29,7 +29,6 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
-      hasGraphicRedesign={false}
     />
     <CategoryBlock
       title="Le plein de cinéma"
@@ -37,7 +36,6 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
-      hasGraphicRedesign={false}
     />
   </Container>
 )

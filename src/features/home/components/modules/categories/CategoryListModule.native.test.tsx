@@ -42,7 +42,7 @@ describe('CategoryListModule', () => {
         />
       )
 
-      const bloc = screen.getByText('Toto au cinéma')
+      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
       fireEvent.press(bloc)
 
@@ -65,7 +65,7 @@ describe('CategoryListModule', () => {
         />
       )
 
-      const bloc = screen.getByText('Toto au cinéma')
+      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
       await act(async () => {
         fireEvent.press(bloc)

@@ -31,9 +31,12 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
     <CategoryButton {...item} />
   </CategoryButtonContainer>
 )
+
+const CATEGORY_BUTTON_HEIGHT_SEARCH = getSpacing(24.25)
+
 const CategoryButtonItemV2: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   <CategoryButtonContainer>
-    <CategoryButtonV2 {...item} />
+    <CategoryButtonV2 {...item} height={CATEGORY_BUTTON_HEIGHT_SEARCH} />
   </CategoryButtonContainer>
 )
 
