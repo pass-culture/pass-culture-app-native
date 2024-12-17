@@ -4,14 +4,9 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesMapping } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import {
-  getDescription,
-  getNbResultsFacetLabel,
-} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { DescriptionContext } from 'features/search/types'
+import { getNbResultsFacetLabel } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
@@ -27,7 +22,6 @@ interface CategoriesSectionItemProps<N> {
   value: N
   k: string
   item: CategoriesMappingItem
-  descriptionContext: DescriptionContext
   handleSelect: (key: N) => void
   handleGetIcon: (category: SearchGroupNameEnumv2) => React.FC<AccessibleBicolorIcon> | undefined
 }
@@ -36,11 +30,9 @@ export const CategoriesSectionItem = <N,>({
   value,
   k,
   item,
-  descriptionContext,
   handleSelect,
   handleGetIcon,
 }: CategoriesSectionItemProps<N>) => {
-  const { data: subcategoriesData } = useSubcategories()
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
   )
@@ -66,7 +58,7 @@ export const CategoriesSectionItem = <N,>({
             icon={handleGetIcon(k as SearchGroupNameEnumv2)}
             shouldColorIcon
             title={item.label}
-            description={getDescription(subcategoriesData, descriptionContext, k)}
+            description={undefined}
             onPress={() => handleSelect(itemKey)}
             captionId={k}
             complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}

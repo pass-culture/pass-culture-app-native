@@ -3,25 +3,18 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
-import { BookCategoriesSection } from 'features/search/components/BookCategoriesSection/BookCategoriesSection'
 import { CategoriesSection } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
-  getCategoriesModalTitle,
   getDefaultFormValues,
   getIcon,
   handleCategoriesSearchPress,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import {
-  createMappingTree,
-  MappedGenreTypes,
-  MappedNativeCategories,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { NativeCategoryEnum, SearchState } from 'features/search/types'
+import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -43,10 +36,8 @@ export interface CategoriesModalProps {
 }
 
 export type CategoriesModalFormProps = {
-  category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryEnum | null
-  currentView: CategoriesModalView
-  genreType: string | null
+  categories: string[]
+  currentView: number // index of category to show in `categories`
 }
 
 export const CategoriesModal = ({
@@ -74,61 +65,11 @@ export const CategoriesModal = ({
   } = useForm<CategoriesModalFormProps>({
     defaultValues: getDefaultFormValues(tree, searchState),
   })
-  const { category, currentView, nativeCategory, genreType } = watch()
+  const { categories, currentView } = watch()
 
   useEffect(() => {
     reset(getDefaultFormValues(tree, searchState))
   }, [reset, searchState, tree])
-
-  const nativeCategories = useMemo(() => {
-    return (category &&
-      category !== SearchGroupNameEnumv2.NONE &&
-      tree[category]?.children) as MappedNativeCategories
-  }, [category, tree])
-
-  const genreTypes = useMemo(() => {
-    return (nativeCategory && nativeCategories?.[nativeCategory]?.children) as MappedGenreTypes
-  }, [nativeCategory, nativeCategories])
-
-  const handleCategorySelect = useCallback(
-    (categoryKey: SearchGroupNameEnumv2) => {
-      setValue('category', categoryKey)
-
-      if (categoryKey !== category) {
-        setValue('nativeCategory', null)
-        setValue('genreType', null)
-      }
-
-      if (tree[categoryKey]?.children) {
-        setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
-      }
-    },
-    [category, setValue, tree]
-  )
-
-  const handleNativeCategorySelect = useCallback(
-    (nativeCategoryKey: NativeCategoryEnum | null) => {
-      if (!nativeCategories) return
-
-      setValue('nativeCategory', nativeCategoryKey)
-
-      if (nativeCategoryKey !== nativeCategory) {
-        setValue('genreType', null)
-      }
-
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
-        setValue('currentView', CategoriesModalView.GENRES)
-      }
-    },
-    [nativeCategories, nativeCategory, setValue]
-  )
-
-  const handleGenreTypeSelect = useCallback(
-    (genreTypeKey: string | null) => {
-      setValue('genreType', genreTypeKey)
-    },
-    [setValue]
-  )
 
   const handleModalClose = useCallback(() => {
     reset(getDefaultFormValues(tree, searchState))
@@ -142,21 +83,10 @@ export const CategoriesModal = ({
     }
   }, [handleModalClose, onClose])
 
-  const handleGoBack = useCallback(() => {
-    switch (currentView) {
-      case CategoriesModalView.CATEGORIES:
-        handleModalClose()
-        break
-      case CategoriesModalView.NATIVE_CATEGORIES:
-        setValue('currentView', CategoriesModalView.CATEGORIES)
-        break
-      case CategoriesModalView.GENRES:
-        setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
-        break
-      default:
-        throw new Error('Unknown current view')
-    }
-  }, [currentView, handleModalClose, setValue])
+  const handleGoBack = useCallback(
+    () => setValue('currentView', currentView - 1),
+    [currentView, setValue]
+  )
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
@@ -174,59 +104,24 @@ export const CategoriesModal = ({
     [data, dispatch, hideModal, searchState]
   )
 
+  const handleCategorySelect = useCallback(
+    (category: string) => {
+      setValue('categories', [...categories, category])
+      setValue('currentView', currentView + 1)
+    },
+    [categories, currentView, setValue]
+  )
+
   const handleReset = useCallback(() => {
     reset({
-      category: SearchGroupNameEnumv2.NONE,
-      nativeCategory: null,
-      genreType: null,
-      currentView: CategoriesModalView.CATEGORIES,
+      categories: [],
+      currentView: -1,
     })
   }, [reset])
 
-  const descriptionContext = useMemo(
-    () => ({
-      category,
-      nativeCategory,
-      genreType,
-    }),
-    [category, genreType, nativeCategory]
-  )
-
-  const modalTitle = useMemo(() => {
-    return getCategoriesModalTitle(data, currentView, category, nativeCategory)
-  }, [category, currentView, data, nativeCategory])
-
-  const shouldDisplayBackButton = useMemo(
-    () =>
-      currentView !== CategoriesModalView.CATEGORIES ||
-      filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-    [currentView, filterBehaviour]
-  )
-
-  const getNativeCategoriesSection = () => {
-    if (category === SearchGroupNameEnumv2.LIVRES) {
-      return (
-        <BookCategoriesSection
-          itemsMapping={nativeCategories}
-          onSelect={handleNativeCategorySelect}
-          allValue={null}
-          allLabel="Tout"
-          value={nativeCategory}
-          descriptionContext={descriptionContext}
-        />
-      )
-    }
-    return (
-      <CategoriesSection
-        itemsMapping={nativeCategories}
-        onSelect={handleNativeCategorySelect}
-        allValue={null}
-        allLabel="Tout"
-        value={nativeCategory}
-        descriptionContext={descriptionContext}
-      />
-    )
-  }
+  const modalTitle = categories[currentView] ?? 'Catégories'
+  const shouldDisplayBackButton =
+    currentView > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
@@ -261,28 +156,15 @@ export const CategoriesModal = ({
       }>
       <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
-        {currentView === CategoriesModalView.CATEGORIES ? (
+        {categories[currentView] ? (
           <CategoriesSection
             itemsMapping={tree}
             onSelect={handleCategorySelect}
-            allValue={SearchGroupNameEnumv2.NONE}
             allLabel="Toutes les catégories"
-            value={category}
-            descriptionContext={descriptionContext}
+            allValue="Tout"
+            value={categories[currentView]}
             getIcon={getIcon}
             shouldSortItems={false} // sorting on positions is not supported yet for search groups, but they're already sorted in `createMappingTree`
-          />
-        ) : null}
-        {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
-        {currentView === CategoriesModalView.GENRES ? (
-          <CategoriesSection
-            itemsMapping={genreTypes}
-            onSelect={handleGenreTypeSelect}
-            allValue={null}
-            allLabel="Tout"
-            value={genreType}
-            descriptionContext={descriptionContext}
-            onSubmit={handleSubmit(handleSearchPress)}
           />
         ) : null}
       </Form.MaxWidth>

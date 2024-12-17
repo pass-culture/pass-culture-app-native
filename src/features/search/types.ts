@@ -41,9 +41,8 @@ export interface SearchState {
   endingDatetime?: string
   hitsPerPage: number | null
   locationFilter: LocationFilter
-  offerCategories: SearchGroupNameEnumv2[]
+  offerCategories: string[]
   offerGenreTypes?: OfferGenreType[]
-  offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   offerIsFree?: boolean
@@ -70,9 +69,7 @@ export type UserData = {
 }
 
 export type DescriptionContext = {
-  category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
-  genreType: string | null
+  categories: string[]
 }
 
 type VenueUserTitleRule = { venue_playlist_title: string }

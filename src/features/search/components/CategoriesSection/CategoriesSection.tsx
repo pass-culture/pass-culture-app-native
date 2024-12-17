@@ -9,7 +9,6 @@ import {
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
@@ -23,7 +22,6 @@ export interface CategoriesSectionProps<
 > {
   allLabel: string
   allValue: N
-  descriptionContext: DescriptionContext
   getIcon?: T extends MappingTree
     ? (categoryName: SearchGroupNameEnumv2) => FC<AccessibleBicolorIcon> | undefined
     : undefined
@@ -40,7 +38,6 @@ export function CategoriesSection<
 >({
   allLabel,
   allValue,
-  descriptionContext,
   getIcon,
   itemsMapping,
   onSelect,
@@ -82,7 +79,6 @@ export function CategoriesSection<
           value={value}
           k={k}
           item={item}
-          descriptionContext={descriptionContext}
           handleSelect={handleSelect}
           handleGetIcon={handleGetIcon}
         />

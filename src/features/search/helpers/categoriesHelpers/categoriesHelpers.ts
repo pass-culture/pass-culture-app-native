@@ -31,7 +31,7 @@ import {
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
-type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
+type Item = string | null
 
 function isBookNativeCategory(
   category: NativeCategoryEnum | null
@@ -184,28 +184,6 @@ function getCategoryFromEnum(
  */
 export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
   return CATEGORY_CRITERIA[item]?.icon
-}
-
-export function getCategoriesModalTitle(
-  data: SubcategoriesResponseModelv2,
-  currentView: CategoriesModalView,
-  categoryId: SearchGroupNameEnumv2,
-  nativeCategoryId: NativeCategoryEnum | null
-) {
-  switch (currentView) {
-    case CategoriesModalView.CATEGORIES:
-      return 'Catégories'
-    case CategoriesModalView.NATIVE_CATEGORIES: {
-      const category = getCategoryFromEnum(data, categoryId)
-      return category?.value ?? 'Sous-catégories'
-    }
-    case CategoriesModalView.GENRES: {
-      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId ?? undefined)
-      return nativeCategory?.value ?? 'Genres'
-    }
-    default:
-      return 'Catégories'
-  }
 }
 
 /**
@@ -388,161 +366,17 @@ export const useSubcategoryIdsFromSearchGroups = (
     .map((filteredSubcategory) => filteredSubcategory.id)
 }
 
-function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {
-  return Object.values(SearchGroupNameEnumv2).includes(item as SearchGroupNameEnumv2)
-}
-
-function getIsNativeCategory(
-  item: Item
-): item is NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum {
-  return (
-    Object.values(NativeCategoryIdEnumv2).includes(item as NativeCategoryIdEnumv2) ||
-    Object.values(BooksNativeCategoriesEnum).includes(item as BooksNativeCategoriesEnum)
-  )
-}
-
-function getFilterRowDescriptionFromNativeCategoryAndGenre(
-  data: SubcategoriesResponseModelv2,
-  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null,
-  genreTypeId: string
-) {
-  if (genreTypeId && nativeCategoryId) {
-    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-    const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    if (!nativeCategory || !genreType || !nativeCategory.value) return undefined
-    return `${nativeCategory.value} - ${genreType.value}`
-  }
-
-  return undefined
-}
-
-function getFilterRowDescriptionFromNativeCategory(
-  data: SubcategoriesResponseModelv2,
-  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
-) {
-  if (nativeCategoryId) {
-    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-    if (!nativeCategory) return undefined
-    return nativeCategory.value ?? undefined
-  }
-
-  return undefined
-}
-
-function getFilterRowDescriptionFromCategory(
-  data: SubcategoriesResponseModelv2,
-  categoryId: SearchGroupNameEnumv2
-) {
-  if (categoryId === SearchGroupNameEnumv2.NONE) return ALL_CATEGORIES_LABEL
-
-  const category = getCategoryFromEnum(data, categoryId)
-  if (!category) return undefined
-  return category.value ?? undefined
-}
-
-function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
-  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
-
-  if (genreTypeId && nativeCategoryId) {
-    return getFilterRowDescriptionFromNativeCategoryAndGenre(data, nativeCategoryId, genreTypeId)
-  }
-  if (nativeCategoryId) {
-    return getFilterRowDescriptionFromNativeCategory(data, nativeCategoryId)
-  }
-
-  if (categoryId) {
-    return getFilterRowDescriptionFromCategory(data, categoryId)
-  }
-  return undefined
-}
-
-function getCategoryDescription(
-  data: SubcategoriesResponseModelv2,
-  ctx: DescriptionContext,
-  item: SearchGroupNameEnumv2
-) {
-  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
-
-  if (item === SearchGroupNameEnumv2.NONE) return undefined
-  if (item !== categoryId) return undefined
-  if (!nativeCategoryId) return 'Tout'
-
-  const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-  if (!nativeCategory) return undefined
-  if (!nativeCategory.value) return undefined
-
-  if (!genreTypeId) return nativeCategory.value
-  const genreType = getGenreTypeFromEnum(data, genreTypeId)
-
-  if (!genreType) return nativeCategory.value
-  return `${nativeCategory.value} - ${genreType.value}`
-}
-
-function getNativeCategoryDescription(
-  data: SubcategoriesResponseModelv2,
-  ctx: DescriptionContext,
-  item: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
-) {
-  const { nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
-
-  if (!nativeCategoryId) return undefined
-  if (nativeCategoryId !== item) return undefined
-  if (!genreTypeId) return 'Tout'
-
-  const genreType = getGenreTypeFromEnum(data, genreTypeId)
-  return genreType?.value
-}
-
-export function getDescription(
-  data: SubcategoriesResponseModelv2 | undefined,
-  ctx: DescriptionContext,
-  item?: Item
-) {
-  const { category: categoryId } = ctx
-  if (!categoryId) return undefined
-  if (!data) return undefined
-
-  if (!item) {
-    return getFilterRowDescription(data, ctx)
-  }
-
-  if (getIsCategory(item)) {
-    return getCategoryDescription(data, ctx, item)
-  }
-
-  if (getIsNativeCategory(item)) {
-    return getNativeCategoryDescription(data, ctx, item)
-  }
-
-  return undefined
-}
-
-export function getDefaultFormView(tree: MappingTree, searchState: SearchState) {
-  const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
-
-  if (!offerCategories?.[0]) return CategoriesModalView.CATEGORIES
-  const category = tree[offerCategories[0]]
-  const nativeCategories = category?.children
-  const nativeCategory =
-    offerNativeCategories?.[0] && nativeCategories
-      ? nativeCategories[offerNativeCategories[0]]
-      : undefined
-
-  if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
-  if (offerNativeCategories?.length || Object.keys(nativeCategories ?? {}).length)
-    return CategoriesModalView.NATIVE_CATEGORIES
-  return CategoriesModalView.CATEGORIES
-}
-
 export function getDefaultFormValues(
   tree: MappingTree,
   searchState: SearchState
 ): CategoriesModalFormProps {
+  const categories = [
+    ...searchState.offerCategories,
+    ...(searchState.offerGenreTypes ?? []).map((genreType) => genreType.key),
+  ]
   return {
-    category: searchState.offerCategories[0] ?? SearchGroupNameEnumv2.NONE,
-    nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
-    genreType: searchState.offerGenreTypes?.[0]?.name ?? null,
-    currentView: getDefaultFormView(tree, searchState),
+    categories,
+    currentView: categories.length - 1,
   }
 }
 
