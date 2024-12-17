@@ -49,7 +49,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is enabled', () => {
       beforeEach(() => {
-        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       })
 
       it('should return Euro when displayFormat is "short"', () => {
@@ -67,7 +67,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is disabled', () => {
       beforeEach(() => {
-        activateFeatureFlags()
+        setFeatureFlags()
       })
 
       it('should return Euro when displayFormat is "short"', () => {
@@ -100,7 +100,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is enabled', () => {
       beforeEach(() => {
-        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       })
 
       it('should return Euro when displayFormat is "short"', () => {
@@ -118,7 +118,7 @@ describe('useGetCurrencyToDisplay', () => {
 
     describe('and the feature flag is disabled', () => {
       beforeEach(() => {
-        activateFeatureFlags()
+        setFeatureFlags()
       })
 
       it('should return Euro when displayFormat is "short"', () => {

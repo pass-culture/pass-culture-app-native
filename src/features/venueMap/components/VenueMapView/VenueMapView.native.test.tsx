@@ -324,7 +324,7 @@ describe('<VenueMapView />', () => {
   })
 
   it('should show venues matching selected category', async () => {
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
