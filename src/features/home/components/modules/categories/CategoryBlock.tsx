@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Color } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { CategoryButtonV2 } from 'shared/Buttons/CategoryButtonV2'
+import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -65,7 +65,7 @@ export function CategoryBlock({
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (
-    <StyledCategoryButtonV2
+    <StyledCategoryButton
       label={title}
       height={BLOCK_HEIGHT}
       textColor={newColorMapping[color].text}
@@ -78,7 +78,7 @@ export function CategoryBlock({
     />
   )
 }
-const StyledCategoryButtonV2 = styled(CategoryButtonV2)(({ theme }) => ({
+const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
   flex: '1 0 0',
   minWidth: theme.isMobileViewport ? '35%' : 'none',
   maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
