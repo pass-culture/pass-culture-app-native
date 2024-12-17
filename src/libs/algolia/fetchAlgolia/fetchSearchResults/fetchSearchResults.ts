@@ -12,6 +12,7 @@ import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferAndVenuesArgs = {
@@ -23,6 +24,7 @@ type FetchOfferAndVenuesArgs = {
   offersIndex?: string
   venuesIndex?: string
   disabilitiesProperties: DisabilitiesProperties
+  aroundPrecision?: CustomRemoteConfig['aroundPrecision']
 }
 
 type RenderingContent = {
@@ -38,6 +40,7 @@ export const fetchSearchResults = async ({
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
   disabilitiesProperties,
+  aroundPrecision,
 }: FetchOfferAndVenuesArgs) => {
   const currentVenuesIndex = getCurrentVenuesIndex({
     selectedLocationMode: buildLocationParameterParams.selectedLocationMode,
@@ -63,6 +66,7 @@ export const fetchSearchResults = async ({
         /* Is needed to get a queryID, in order to send analytics events
          https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
         clickAnalytics: true,
+        ...(aroundPrecision && aroundPrecision !== 0 && { aroundPrecision }),
       },
     },
     // Venues
