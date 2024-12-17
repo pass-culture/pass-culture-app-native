@@ -11,6 +11,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { EVERY_CATEGORIES } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
   MappingTree,
@@ -438,12 +439,11 @@ function getFilterRowDescriptionFromCategory(
   data: SubcategoriesResponseModelv2,
   categoryId: SearchGroupNameEnumv2
 ) {
-  if (categoryId) {
-    const category = getCategoryFromEnum(data, categoryId)
-    if (!category) return undefined
-    return category.value ?? undefined
-  }
-  return undefined
+  if (categoryId === SearchGroupNameEnumv2.NONE) return EVERY_CATEGORIES
+
+  const category = getCategoryFromEnum(data, categoryId)
+  if (!category) return undefined
+  return category.value ?? undefined
 }
 
 function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
@@ -455,6 +455,7 @@ function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: Descri
   if (nativeCategoryId) {
     return getFilterRowDescriptionFromNativeCategory(data, nativeCategoryId)
   }
+
   if (categoryId) {
     return getFilterRowDescriptionFromCategory(data, categoryId)
   }
