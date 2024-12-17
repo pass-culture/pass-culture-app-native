@@ -84,6 +84,7 @@ export type TutorialRootStackParamList = {
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
+  OnboardingGeneralPublicWelcome: undefined
   ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
 }
 
@@ -143,6 +144,7 @@ export type SubscriptionRootStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
+  SetEmail: undefined
   SetName: undefined
   SetCity: undefined
   SetAddress: undefined

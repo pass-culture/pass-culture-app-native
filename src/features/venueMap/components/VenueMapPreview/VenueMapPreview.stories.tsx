@@ -28,6 +28,7 @@ const variantConfig: Variants<typeof VenueMapPreview> = [
       bannerUrl:
         'https://www.gamewallpapers.com/wallpapers_slechte_compressie/wallpaper_magic_the_gathering_arena_01_1920x1080.jpg',
       tags: ['à 500m', 'Cinéma'],
+      navigateTo: { screen: 'Login' },
     },
   },
 ]

@@ -1,4 +1,4 @@
-import { createNavigationContainerRef, StackActions } from '@react-navigation/native'
+import { createNavigationContainerRef, StackActions, CommonActions } from '@react-navigation/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 
@@ -21,6 +21,17 @@ export const pushFromRef = <RouteName extends keyof RootStackParamList>(
 ) => {
   if (navigationRef.isReady()) {
     navigationRef.dispatch(StackActions.push.apply(null, args))
+  }
+}
+
+export const resetFromRef = <RouteName extends keyof RootStackParamList>(
+  ...args: undefined extends RootStackParamList[RouteName]
+    ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
+    : [RouteName, RootStackParamList[RouteName]]
+) => {
+  if (navigationRef.isReady()) {
+    const [name, params] = args
+    navigationRef.dispatch(CommonActions.reset({ index: 0, routes: [{ name, params }] }))
   }
 }
 

@@ -188,7 +188,7 @@ export const Favorite: React.FC<Props> = (props) => {
             navigateTo={
               offer.id
                 ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } }
-                : undefined
+                : { screen: undefined }
             }
             onBeforeNavigate={handlePressOffer}
             accessibilityLabel={accessibilityLabel}>
