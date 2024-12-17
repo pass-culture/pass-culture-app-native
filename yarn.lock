@@ -8474,13 +8474,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ptomasroos/react-native-multi-slider@npm:^2.2.2":
+"@ptomasroos/react-native-multi-slider@npm:2.2.2":
   version: 2.2.2
   resolution: "@ptomasroos/react-native-multi-slider@npm:2.2.2"
   peerDependencies:
     react: "*"
     react-native: "*"
   checksum: f9e2263b4283cdd0011ad3c2e1ea6d70afe2c2f865a52c35e0f6c4fd948114762105a11f364e68da87de782490bfa1473540c6227e2e0033555e84827086464c
+  languageName: node
+  linkType: hard
+
+"@ptomasroos/react-native-multi-slider@patch:@ptomasroos/react-native-multi-slider@npm%3A2.2.2#./.yarn/patches/@ptomasroos-react-native-multi-slider-npm-2.2.2-25e4cce063.patch::locator=PassCulture%40workspace%3A.":
+  version: 2.2.2
+  resolution: "@ptomasroos/react-native-multi-slider@patch:@ptomasroos/react-native-multi-slider@npm%3A2.2.2#./.yarn/patches/@ptomasroos-react-native-multi-slider-npm-2.2.2-25e4cce063.patch::version=2.2.2&hash=ba5d76&locator=PassCulture%40workspace%3A."
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: e918ce2d20e22585e608f4d0f72d2a7ab0487373f2908e1b96a04b27a90d1fe203a5cdfcc4b8683d0803baf96d2d10d491b2bb8c8c604d23eb10bec66cf4f78e
   languageName: node
   linkType: hard
 
@@ -9064,6 +9074,21 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 7b5a83fb3167b74a0e9956297910abe793cfb965c0db411473ffc73ff7e5f3bd5b554a883fff17c9ad9ee7566fa20458428e17f34e46a6c8ee02fde16e142c19
+  languageName: node
+  linkType: hard
+
+"@react-navigation/native@patch:@react-navigation/native@npm%3A6.0.12#./.yarn/patches/@react-navigation-native-npm-6.0.12-e0221bc254.patch::locator=PassCulture%40workspace%3A.":
+  version: 6.0.12
+  resolution: "@react-navigation/native@patch:@react-navigation/native@npm%3A6.0.12#./.yarn/patches/@react-navigation-native-npm-6.0.12-e0221bc254.patch::version=6.0.12&hash=bc0d45&locator=PassCulture%40workspace%3A."
+  dependencies:
+    "@react-navigation/core": ^6.3.0
+    escape-string-regexp: ^4.0.0
+    fast-deep-equal: ^3.1.3
+    nanoid: ^3.1.23
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: b96546e4dee337419a68872db5b5f46dea3bd164707487b3a787c1ecca7b9829dc7389e37146fdd453ce8151da70deca91ae8ccd046df784a94068bbc146b3a6
   languageName: node
   linkType: hard
 
@@ -13370,7 +13395,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"algoliasearch@npm:^4.24.0":
+"algoliasearch@npm:4.24.0":
   version: 4.24.0
   resolution: "algoliasearch@npm:4.24.0"
   dependencies:
@@ -13390,6 +13415,29 @@ __metadata:
     "@algolia/requester-node-http": 4.24.0
     "@algolia/transporter": 4.24.0
   checksum: 13cae6ea7ff05e068906dcb101b940bcf1a4ea41008757554c16a7951cdaa3af3094e547e3e51f9e751f68906b5654506e1dd4a1debb1b9d54cbb227ca83e8db
+  languageName: node
+  linkType: hard
+
+"algoliasearch@patch:algoliasearch@npm%3A4.24.0#./.yarn/patches/algoliasearch-npm-4.24.0-538aab24e1.patch::locator=PassCulture%40workspace%3A.":
+  version: 4.24.0
+  resolution: "algoliasearch@patch:algoliasearch@npm%3A4.24.0#./.yarn/patches/algoliasearch-npm-4.24.0-538aab24e1.patch::version=4.24.0&hash=60eb02&locator=PassCulture%40workspace%3A."
+  dependencies:
+    "@algolia/cache-browser-local-storage": 4.24.0
+    "@algolia/cache-common": 4.24.0
+    "@algolia/cache-in-memory": 4.24.0
+    "@algolia/client-account": 4.24.0
+    "@algolia/client-analytics": 4.24.0
+    "@algolia/client-common": 4.24.0
+    "@algolia/client-personalization": 4.24.0
+    "@algolia/client-search": 4.24.0
+    "@algolia/logger-common": 4.24.0
+    "@algolia/logger-console": 4.24.0
+    "@algolia/recommend": 4.24.0
+    "@algolia/requester-browser-xhr": 4.24.0
+    "@algolia/requester-common": 4.24.0
+    "@algolia/requester-node-http": 4.24.0
+    "@algolia/transporter": 4.24.0
+  checksum: 6e8e560feff5387b7a6ac8bffcb46f26a1303a5c25d4a861fb300df8154de353539dcd79b59e6f6d5018d4f822f74256a72d12b7e69abf8d12908e8c6e64f9dd
   languageName: node
   linkType: hard
 
@@ -18527,7 +18575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:^2.22.1":
+"eslint-plugin-import@npm:2.25.3":
   version: 2.25.3
   resolution: "eslint-plugin-import@npm:2.25.3"
   dependencies:
@@ -18547,6 +18595,29 @@ __metadata:
   peerDependencies:
     eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
   checksum: 8bdf4b1fafb0e5c8f57a1673f72d84307d32c06a23942990d198c8b32a85a5ae0098872d1ef5bf80d7dfe8ec542f6a671e3c5e706731a80b493c9015f7a147f5
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-import@patch:eslint-plugin-import@npm%3A2.25.3#./.yarn/patches/eslint-plugin-import-npm-2.25.3-f5faefaae3.patch::locator=PassCulture%40workspace%3A.":
+  version: 2.25.3
+  resolution: "eslint-plugin-import@patch:eslint-plugin-import@npm%3A2.25.3#./.yarn/patches/eslint-plugin-import-npm-2.25.3-f5faefaae3.patch::version=2.25.3&hash=0ebd4c&locator=PassCulture%40workspace%3A."
+  dependencies:
+    array-includes: ^3.1.4
+    array.prototype.flat: ^1.2.5
+    debug: ^2.6.9
+    doctrine: ^2.1.0
+    eslint-import-resolver-node: ^0.3.6
+    eslint-module-utils: ^2.7.1
+    has: ^1.0.3
+    is-core-module: ^2.8.0
+    is-glob: ^4.0.3
+    minimatch: ^3.0.4
+    object.values: ^1.1.5
+    resolve: ^1.20.0
+    tsconfig-paths: ^3.11.0
+  peerDependencies:
+    eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+  checksum: cf16eb795c4a97123955b7f9f579071f1c81189d62ce94cbf563895464305b3e1dadf20e722d45bf0cb39a7c1205f4c6824e7b5e4c60d535bb7294586f51222f
   languageName: node
   linkType: hard
 
@@ -24756,10 +24827,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.1":
+"lottie-web@npm:5.8.1":
   version: 5.8.1
   resolution: "lottie-web@npm:5.8.1"
   checksum: 48c19ea7863310150dc9e46855b0f85179f3768ac0c0cf4f3ffb18944819079d3046c31ca04f2748291f3c413a855329a12ce9c3faae056a1a869776b6ed12a9
+  languageName: node
+  linkType: hard
+
+"lottie-web@patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch::locator=PassCulture%40workspace%3A.":
+  version: 5.8.1
+  resolution: "lottie-web@patch:lottie-web@npm%3A5.8.1#./.yarn/patches/lottie-web-npm-5.8.1-04482d1a86.patch::version=5.8.1&hash=95d68c&locator=PassCulture%40workspace%3A."
+  checksum: 3ed807739d6796c55d04b0d25ad2b298f2aab83005011a4940c46a2186a1559c6850b6c077ab8cf441fa5992234010e89225bc5e007bb2d3ae57c9242f217719
   languageName: node
   linkType: hard
 
@@ -29078,12 +29156,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-animatable@npm:1.3.3, react-native-animatable@npm:^1.3.3":
+"react-native-animatable@npm:1.3.3":
   version: 1.3.3
   resolution: "react-native-animatable@npm:1.3.3"
   dependencies:
     prop-types: ^15.7.2
   checksum: eb35821de36ae4eb00f97d99fc22ed79bd017248092ff1299f9d46a7ab946de16d2e6d6bfbf4cab5ef77d0d3bf47684aec761a7670ec7d36aae8d77ab8ddd171
+  languageName: node
+  linkType: hard
+
+"react-native-animatable@patch:react-native-animatable@npm%3A1.3.3#./.yarn/patches/react-native-animatable-npm-1.3.3-faaca7e1fa.patch::locator=PassCulture%40workspace%3A.":
+  version: 1.3.3
+  resolution: "react-native-animatable@patch:react-native-animatable@npm%3A1.3.3#./.yarn/patches/react-native-animatable-npm-1.3.3-faaca7e1fa.patch::version=1.3.3&hash=f8eae1&locator=PassCulture%40workspace%3A."
+  dependencies:
+    prop-types: ^15.7.2
+  checksum: 8010ccebed5acfb6d5df097835fac80c902f312ff94cd616323010aec7c83b608f4362337021e00ea540c6704511bd5ad947222a9ae0f08971a27bd5ef9bd2cc
   languageName: node
   linkType: hard
 
@@ -29094,7 +29181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-calendars@npm:^1.1284.0":
+"react-native-calendars@npm:1.1284.0":
   version: 1.1284.0
   resolution: "react-native-calendars@npm:1.1284.0"
   dependencies:
@@ -29112,6 +29199,27 @@ __metadata:
     moment:
       optional: true
   checksum: f2e0168ccdca8be4299d200ae28c513ed34204a6b0147ef4c44f4b775a3dd8b9eb12b40184510651685457a08d3ad34173e1c20672b72413d48b376ced8f0e4f
+  languageName: node
+  linkType: hard
+
+"react-native-calendars@patch:react-native-calendars@npm%3A1.1284.0#./.yarn/patches/react-native-calendars-npm-1.1284.0-4ce5431d18.patch::locator=PassCulture%40workspace%3A.":
+  version: 1.1284.0
+  resolution: "react-native-calendars@patch:react-native-calendars@npm%3A1.1284.0#./.yarn/patches/react-native-calendars-npm-1.1284.0-4ce5431d18.patch::version=1.1284.0&hash=8d1021&locator=PassCulture%40workspace%3A."
+  dependencies:
+    fs: ^0.0.1-security
+    hoist-non-react-statics: ^3.3.1
+    immutable: ^4.0.0-rc.12
+    lodash: ^4.17.15
+    memoize-one: ^5.2.1
+    moment: ^2.24.0
+    prop-types: ^15.5.10
+    react-native-swipe-gestures: ^1.0.5
+    recyclerlistview: ^3.0.5
+    xdate: ^0.8.0
+  dependenciesMeta:
+    moment:
+      optional: true
+  checksum: bb6e1ff6942a299c618c5ab024e38673f54da851d1dde675ec51e698efbad7496140e08f497b424bf7ff513b9a69109f93505e6105cc0af00e48b3c89779490e
   languageName: node
   linkType: hard
 
@@ -29140,13 +29248,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-detector@npm:^0.2.3":
+"react-native-detector@npm:0.2.3":
   version: 0.2.3
   resolution: "react-native-detector@npm:0.2.3"
   peerDependencies:
     react: "*"
     react-native: "*"
   checksum: ac8e8f3932c5f986c3445e2ba865184eb5e6eae551c55a1611f02eaafc8cfa68f8671b3eee3c2665cd9eab8b378b69f2abb9dc99004dda7aa3c5cb2058789054
+  languageName: node
+  linkType: hard
+
+"react-native-detector@patch:react-native-detector@npm%3A0.2.3#./.yarn/patches/react-native-detector-npm-0.2.3-ac5c8c3a72.patch::locator=PassCulture%40workspace%3A.":
+  version: 0.2.3
+  resolution: "react-native-detector@patch:react-native-detector@npm%3A0.2.3#./.yarn/patches/react-native-detector-npm-0.2.3-ac5c8c3a72.patch::version=0.2.3&hash=9afdb8&locator=PassCulture%40workspace%3A."
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 1e8b92e834828d102847e68e1882984b838f6d57cb708d1e2784476486324d6c8e5e6a2d6d08aec784ddf564dd631f1163f561e387e4c3e6a8335c20fe088d05
   languageName: node
   linkType: hard
 
@@ -29499,7 +29617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web-lottie@npm:^1.4.4":
+"react-native-web-lottie@npm:1.4.4":
   version: 1.4.4
   resolution: "react-native-web-lottie@npm:1.4.4"
   dependencies:
@@ -29507,6 +29625,17 @@ __metadata:
   peerDependencies:
     react-native-web: "*"
   checksum: a9a55c5f0af2b16a278f5a6fd78067a6c4556dd8200747f958a896f5e2635a21b418902837b549f1338bef34abf942ff24aa50fc7cce88b96095cc8aa6a6bb29
+  languageName: node
+  linkType: hard
+
+"react-native-web-lottie@patch:react-native-web-lottie@npm%3A1.4.4#./.yarn/patches/react-native-web-lottie-npm-1.4.4-98cf000f2d.patch::locator=PassCulture%40workspace%3A.":
+  version: 1.4.4
+  resolution: "react-native-web-lottie@patch:react-native-web-lottie@npm%3A1.4.4#./.yarn/patches/react-native-web-lottie-npm-1.4.4-98cf000f2d.patch::version=1.4.4&hash=b66ece&locator=PassCulture%40workspace%3A."
+  dependencies:
+    lottie-web: ^5.7.1
+  peerDependencies:
+    react-native-web: "*"
+  checksum: 4e9665cdb182ec4c3d9b91a1c8e4b3022a8aa5944634529446ca728d5b680603c20fdc587deee11158e295013d5f2a2d2f81ac069c01e0a40bbf1e3a953871ce
   languageName: node
   linkType: hard
 
@@ -29521,7 +29650,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web@npm:^0.18.10":
+"react-native-web-swiper@patch:react-native-web-swiper@npm%3A2.2.4#./.yarn/patches/react-native-web-swiper-npm-2.2.4-990ec1a345.patch::locator=PassCulture%40workspace%3A.":
+  version: 2.2.4
+  resolution: "react-native-web-swiper@patch:react-native-web-swiper@npm%3A2.2.4#./.yarn/patches/react-native-web-swiper-npm-2.2.4-990ec1a345.patch::version=2.2.4&hash=bc8b35&locator=PassCulture%40workspace%3A."
+  dependencies:
+    prop-types: ^15.6.2
+  peerDependencies:
+    react-native: "*"
+  checksum: d4910db443da80361a14eb0a0e1de18610af29c48e55c099829d44e1baa062d587fa1dd4b0b3713247e2b4124629b6770b05af6cad686149603e804e1359e252
+  languageName: node
+  linkType: hard
+
+"react-native-web@npm:0.18.10":
   version: 0.18.10
   resolution: "react-native-web@npm:0.18.10"
   dependencies:
@@ -29536,6 +29676,24 @@ __metadata:
     react: ^17.0.2 || ^18.0.0
     react-dom: ^17.0.2 || ^18.0.0
   checksum: 2549a7e316e5e6ac2b59eac0c500bc8e021f32854bd852d4bf719eebad9ef9fbccbeb6fd3f4654d3d3f971c7af43240139affc8b3f36ad288908e7aeea32c43e
+  languageName: node
+  linkType: hard
+
+"react-native-web@patch:react-native-web@npm%3A0.18.10#./.yarn/patches/react-native-web-npm-0.18.10-f9d1f2dee1.patch::locator=PassCulture%40workspace%3A.":
+  version: 0.18.10
+  resolution: "react-native-web@patch:react-native-web@npm%3A0.18.10#./.yarn/patches/react-native-web-npm-0.18.10-f9d1f2dee1.patch::version=0.18.10&hash=39423b&locator=PassCulture%40workspace%3A."
+  dependencies:
+    "@babel/runtime": ^7.18.6
+    create-react-class: ^15.7.0
+    fbjs: ^3.0.4
+    inline-style-prefixer: ^6.0.1
+    normalize-css-color: ^1.0.2
+    postcss-value-parser: ^4.2.0
+    styleq: ^0.1.2
+  peerDependencies:
+    react: ^17.0.2 || ^18.0.0
+    react-dom: ^17.0.2 || ^18.0.0
+  checksum: 761001e9ea5d030fb05fa6b37ead5ba975e8948f575e3edc31906be828a1f5ad24400f8a8d1adc0eff1e226384771962beeffd9e91c33d14958f9e05b83856f0
   languageName: node
   linkType: hard
 
