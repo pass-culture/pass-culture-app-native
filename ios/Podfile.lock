@@ -763,7 +763,7 @@ PODS:
     - React-Core
   - RNKeychain (8.0.0):
     - React-Core
-  - RNLaunchNavigator (1.0.8):
+  - RNLaunchNavigator (1.0.9):
     - React
   - RNPermissions (3.8.0):
     - React-Core
@@ -1275,7 +1275,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a27409374c9e172cfc9d8115e138df6de33afe2d
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
-  RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
+  RNLaunchNavigator: d855643e1f842f13c6cc65575e0755975667032c
   RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
   RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
   RNScreens: ad1c105ac9107cf1a613bf80889485458eb20bd7
