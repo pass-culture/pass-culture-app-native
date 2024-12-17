@@ -21,6 +21,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+            config.allowUnfree = true;
             overlays = [
               brew-nix.overlays.default
             ];
@@ -33,6 +34,7 @@
           ]
           ++
           (lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+            pkgs.brewCasks.android-studio
             pkgs.brewCasks.firefox
           ]);
         };
