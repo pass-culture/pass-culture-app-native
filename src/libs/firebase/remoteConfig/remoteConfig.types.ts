@@ -3,6 +3,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
   test_param: string
+  aroundPrecision: Record<'from' | 'value', number>[] | number
   homeEntryIdFreeOffers: string
   homeEntryIdNotConnected: string
   homeEntryIdGeneral: string
