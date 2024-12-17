@@ -152,6 +152,7 @@ const OnlineProfile: React.FC = () => {
           <View accessibilityRole={AccessibilityRole.MAIN}>
             <ProfileHeader user={user} />
             <ProfileContainer>
+              <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
                 <VerticalUl>
                   {isLoggedIn ? (
@@ -172,7 +173,7 @@ const OnlineProfile: React.FC = () => {
                       navigateTo={{ screen: 'NotificationsSettings' }}
                     />
                   </Li>
-                  <StyledLi>
+                  <LiWithMarginVertical>
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}
@@ -191,7 +192,7 @@ const OnlineProfile: React.FC = () => {
                       numberOfSpacesTop={1}
                       relatedInputId={locationActivationErrorId}
                     />
-                  </StyledLi>
+                  </LiWithMarginVertical>
                 </VerticalUl>
               </Section>
               <Section title="Aides">
@@ -258,24 +259,25 @@ const OnlineProfile: React.FC = () => {
                 </VerticalUl>
               </Section>
               {isWeb ? null : (
-                <StyledSection title="Partager le pass Culture">
+                <Section title="Partager le pass Culture">
+                  <Spacer.Column numberOfSpaces={4} />
                   <BannerWithBackground
                     backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
                     onPress={onShareBannerPress}>
-                    <ShareAppContainer>
-                      <ViewGap gap={1}>
-                        <StyledButtonText>Partage le pass Culture</StyledButtonText>
-                        <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
-                      </ViewGap>
+                    <ShareAppContainer gap={1}>
+                      <StyledButtonText>Partage le pass Culture</StyledButtonText>
+                      <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
                     </ShareAppContainer>
                   </BannerWithBackground>
-                </StyledSection>
+                  <Spacer.Column numberOfSpaces={4} />
+                </Section>
               )}
               <Section title="Suivre le pass Culture">
                 <SocialNetwork />
               </Section>
               {isLoggedIn ? (
-                <StyledSectionMarginTop>
+                <Section>
+                  <Spacer.Column numberOfSpaces={4} />
                   <SectionRow
                     title="Déconnexion"
                     onPress={signOut}
@@ -283,7 +285,7 @@ const OnlineProfile: React.FC = () => {
                     icon={SignOut}
                     iconSize={SECTION_ROW_ICON_SIZE}
                   />
-                </StyledSectionMarginTop>
+                </Section>
               ) : null}
               <Section>
                 <Version>{version}</Version>
@@ -322,7 +324,6 @@ const ProfileContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingTop: getSpacing(4),
 }))
 
 const ScrollViewContentContainer = styled.View({
@@ -334,7 +335,7 @@ const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical: getSpacing(4),
 })
 
-const ShareAppContainer = styled.View(({ theme }) => ({
+const ShareAppContainer = styled(ViewGap)(({ theme }) => ({
   paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),
 }))
 
@@ -347,8 +348,8 @@ const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
 }))
 
 const Version = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  marginVertical: getSpacing(4),
   color: theme.colors.greyDark,
+  marginVertical: getSpacing(4),
 }))
 
 const LogoMinistereContainer = styled.View({
@@ -357,14 +358,6 @@ const LogoMinistereContainer = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const StyledLi = styled(Li)({
+const LiWithMarginVertical = styled(Li)({
   marginVertical: getSpacing(4),
-})
-
-const StyledSection = styled(Section)({
-  marginVertical: getSpacing(4),
-})
-
-const StyledSectionMarginTop = styled(Section)({
-  marginTop: getSpacing(4),
 })

@@ -207,11 +207,20 @@ exports[`Profile component should render correctly 1`] = `
                   "backgroundColor": "#ffffff",
                   "flexDirection": "column",
                   "paddingHorizontal": 24,
-                  "paddingTop": 16,
                 },
               ]
             }
           >
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
             <View
               style={
                 [
@@ -1742,6 +1751,16 @@ exports[`Profile component should render correctly 1`] = `
                 }
               />
               <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1857,53 +1876,44 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
+                                "gap": 4,
                                 "paddingRight": 32,
                               },
                             ]
                           }
                         >
-                          <View
-                            gap={1}
+                          <Text
                             style={
                               [
                                 {
-                                  "gap": 4,
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
                                 },
                               ]
                             }
                           >
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 16,
-                                    "lineHeight": 25.6,
-                                  },
-                                ]
-                              }
-                            >
-                              Partage le pass Culture
-                            </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 16,
-                                    "lineHeight": 25.6,
-                                  },
-                                ]
-                              }
-                            >
-                              Recommande le bon plan à tes amis !
-                            </Text>
-                          </View>
+                            Partage le pass Culture
+                          </Text>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                },
+                              ]
+                            }
+                          >
+                            Recommande le bon plan à tes amis !
+                          </Text>
                         </View>
                       </View>
                       <View>
@@ -1920,6 +1930,16 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
               </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
             </View>
             <View
               style={
@@ -2487,6 +2507,16 @@ exports[`Profile component should render correctly 1`] = `
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
                       "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
                     },
                   ]
                 }
