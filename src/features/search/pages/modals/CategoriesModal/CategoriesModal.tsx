@@ -23,6 +23,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -56,7 +57,7 @@ export const CategoriesModal = ({
   onClose,
   facets,
 }: CategoriesModalProps) => {
-  const { data } = useSubcategories()
+  const { data = PLACEHOLDER_DATA } = useSubcategories()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
@@ -115,8 +116,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      if (nativeCategoryKey && nativeCategories[nativeCategoryKey].children) {
+      if (nativeCategoryKey && nativeCategories[nativeCategoryKey]?.children) {
         setValue('currentView', CategoriesModalView.GENRES)
       }
     },
@@ -160,10 +160,6 @@ export const CategoriesModal = ({
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
-      if (!data) {
-        return
-      }
-
       const searchPressData = handleCategoriesSearchPress(form, data)
 
       let additionalSearchState: SearchState = { ...searchState, ...searchPressData?.payload }
@@ -211,7 +207,7 @@ export const CategoriesModal = ({
     if (category === SearchGroupNameEnumv2.LIVRES) {
       return (
         <BookCategoriesSection
-          data={nativeCategories}
+          itemsMapping={nativeCategories}
           onSelect={handleNativeCategorySelect}
           allValue={null}
           allLabel="Tout"
@@ -222,7 +218,7 @@ export const CategoriesModal = ({
     }
     return (
       <CategoriesSection
-        data={nativeCategories}
+        itemsMapping={nativeCategories}
         onSelect={handleNativeCategorySelect}
         allValue={null}
         allLabel="Tout"
@@ -267,19 +263,20 @@ export const CategoriesModal = ({
       <Form.MaxWidth>
         {currentView === CategoriesModalView.CATEGORIES ? (
           <CategoriesSection
-            data={tree}
+            itemsMapping={tree}
             onSelect={handleCategorySelect}
             allValue={SearchGroupNameEnumv2.NONE}
             allLabel="Toutes les catégories"
             value={category}
             descriptionContext={descriptionContext}
             getIcon={getIcon}
+            shouldSortItems={false} // sorting on positions is not supported yet for search groups, but they're already sorted in `createMappingTree`
           />
         ) : null}
         {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
         {currentView === CategoriesModalView.GENRES ? (
           <CategoriesSection
-            data={genreTypes}
+            itemsMapping={genreTypes}
             onSelect={handleGenreTypeSelect}
             allValue={null}
             allLabel="Tout"

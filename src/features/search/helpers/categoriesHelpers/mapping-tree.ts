@@ -6,7 +6,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { EVERY_CATEGORIES } from 'features/search/constants'
+import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
@@ -14,24 +14,24 @@ import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
-type MappedGenreType = {
+export type BaseCategory = {
   label: string
-  nbResultsFacet?: never
-  gtls?: GTL[]
   position?: number
 }
+type MappedGenreType = BaseCategory & {
+  nbResultsFacet?: never
+  gtls?: GTL[]
+}
 export type MappedGenreTypes = Record<string, MappedGenreType>
-type MappedNativeCategory = {
-  label: string
+type MappedNativeCategory = BaseCategory & {
   nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
   gtls?: GTL[]
 }
 export type MappedNativeCategories = Record<string, MappedNativeCategory>
-type MappedCategory = {
-  label: string
-  children?: MappedNativeCategories
+type MappedCategory = BaseCategory & {
+  children: MappedNativeCategories
 }
 export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
 
@@ -44,13 +44,10 @@ function getNativeCategoryGenreTypes(
 
   return {
     genreTypeKey: genreType.name,
-    children: genreType.values.reduce<MappedGenreTypes>((res, genreTypeValue) => {
-      res[genreTypeValue.name] = {
-        label: genreTypeValue.value,
-      }
-
+    children: genreType.values.reduce<MappedGenreTypes>((res, genre) => {
+      res[genre.name] = { label: genre.value }
       return res
-    }, {} as MappedGenreTypes),
+    }, {}),
   }
 }
 
@@ -80,42 +77,30 @@ export function getBooksGenreTypes(data: SubcategoriesResponseModelv2): OfferGen
 }
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
+  /* 
+  Here we make fake native categories out of the book genres
+  The purpose is to be able to display them at the native category level in the `CategoriesModal`.
+  */
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
-  bookTree.sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
 
-  return bookTree.reduce<MappedNativeCategories>((nativeCategoriesResult, nativeCategory) => {
-    const categorieKey = getKeyFromStringLabel(nativeCategory.label)
-    nativeCategory.children.sort(
-      ({ position: positionA }, { position: positionB }) => positionA - positionB
-    )
-    if (categorieKey) {
-      nativeCategoriesResult[categorieKey] = {
-        label: nativeCategory.label,
-        nbResultsFacet: 0,
-        genreTypeKey: GenreType.BOOK,
-        gtls: nativeCategory.gtls,
-        children: nativeCategory.children.reduce<MappedGenreTypes>(
-          (genreTypeChildren, genreType) => {
-            const genreKey = getKeyFromStringLabel(genreType.label)
-            if (genreKey) {
-              genreTypeChildren[genreKey] = {
-                label: genreType.label,
-                gtls: genreType.gtls,
-                position: genreType.position,
-              }
-              return genreTypeChildren
-            }
-            return {}
-          },
-          {} as MappedGenreTypes
-        ),
-      }
+  return bookTree.reduce<MappedNativeCategories>((genresMapping, bookGenre) => {
+    const genreKey = getKeyFromStringLabel(bookGenre.label)
+    if (!genreKey) return genresMapping
+
+    genresMapping[genreKey] = {
+      ...bookGenre,
+      genreTypeKey: GenreType.BOOK,
+      children: bookGenre.children.reduce<MappedGenreTypes>((childrenMapping, child) => {
+        const childKey = getKeyFromStringLabel(child.label)
+        if (childKey) childrenMapping[childKey] = child
+        return childrenMapping
+      }, {}),
     }
-    return nativeCategoriesResult
-  }, {} as MappedNativeCategories)
+    return genresMapping
+  }, {})
 }
 
-export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
+export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   /**
    * We want to create a mapping tree that looks like this:
    * {
@@ -139,8 +124,6 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
    * }
    */
 
-  if (!data) return {} as MappingTree
-
   return data.searchGroups
     .filter(
       (searchGroup) =>
@@ -148,17 +131,13 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
         Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
     )
     .sort((a, b) => {
-      const positionA: number = CATEGORY_CRITERIA[a.name]?.position || 0
-      const positionB: number = CATEGORY_CRITERIA[b.name]?.position || 0
+      const positionA: number = CATEGORY_CRITERIA[a.name]?.position ?? 0
+      const positionB: number = CATEGORY_CRITERIA[b.name]?.position ?? 0
       return positionA - positionB
     })
     .reduce<MappingTree>((result, searchGroup) => {
-      let mappedNativeCategories: MappedNativeCategories | undefined = undefined
-      const mappedNativeCategoriesBooks: MappedNativeCategories | undefined =
-        searchGroup.name === SearchGroupNameEnumv2.LIVRES ? mapBookCategories(data) : undefined
-
       const nativeCategories = getNativeCategories(data, searchGroup.name)
-      mappedNativeCategories = nativeCategories.length
+      const mappedNativeCategories = nativeCategories.length
         ? nativeCategories.reduce<MappedNativeCategories>(
             (nativeCategoriesResult, nativeCategory) => {
               nativeCategoriesResult[nativeCategory.name] = {
@@ -167,23 +146,25 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
                   (facetsData as NativeCategoryFacetData)?.[
                     FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
                   ]?.[nativeCategory.name] ?? 0,
+                position: nativeCategory.positions?.[searchGroup.name],
                 ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
               }
 
               return nativeCategoriesResult
             },
-            {} as MappedNativeCategories
+            {}
           )
-        : undefined
+        : {}
 
       result[searchGroup.name] = {
-        label: searchGroup.value || EVERY_CATEGORIES,
-        children: mappedNativeCategoriesBooks
-          ? {
-              ...mappedNativeCategories,
-              ...mappedNativeCategoriesBooks,
-            }
-          : mappedNativeCategories,
+        label: searchGroup.value || ALL_CATEGORIES_LABEL,
+        children:
+          searchGroup.name === SearchGroupNameEnumv2.LIVRES
+            ? {
+                ...mappedNativeCategories,
+                ...mapBookCategories(data),
+              }
+            : mappedNativeCategories,
       }
 
       return Object.entries(result).reduce((res, [key, value]) => {

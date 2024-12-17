@@ -57,7 +57,6 @@
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:43
-./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:118
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:20
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:31

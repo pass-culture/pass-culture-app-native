@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { EVERY_CATEGORIES } from 'features/search/constants'
+import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
@@ -109,6 +109,6 @@ describe('Category component', () => {
     }
     render(<Category />)
 
-    expect(await screen.findByText(EVERY_CATEGORIES)).toBeOnTheScreen()
+    expect(await screen.findByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
   })
 })

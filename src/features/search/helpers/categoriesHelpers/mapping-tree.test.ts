@@ -12,10 +12,8 @@ describe('MappingTree', () => {
   it('should return a mapping tree for book category ROMANS_ET_LITTERATURE', () => {
     const result = createMappingTree(mockedSubcateroriesV2Response, mockedUndefinedFacets)
 
-    expect(result.LIVRES.children).toEqual(
-      expect.objectContaining({
-        ROMANS_ET_LITTERATURE: bookTreeResultFixture.SearchGroup.children.ROMANS_ET_LITTERATURE,
-      })
+    expect(result.LIVRES.children?.ROMANS_ET_LITTERATURE).toEqual(
+      expect.objectContaining(bookTreeResultFixture.SearchGroup.children.ROMANS_ET_LITTERATURE)
     )
   })
 })

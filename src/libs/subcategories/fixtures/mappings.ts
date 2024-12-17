@@ -1,5 +1,5 @@
 import { GenreType } from 'api/gen'
-import { EVERY_CATEGORIES } from 'features/search/constants'
+import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 
 export const categoryIdMappingSnap = {
   ABO_BIBLIOTHEQUE: 'LIVRE',
@@ -825,7 +825,7 @@ export const useSearchGroupLabelMappingSnap = {
   MEDIA_PRESSE: 'Médias & presse',
   MUSEES_VISITES_CULTURELLES: 'Musées & visites culturelles',
   MUSIQUE: 'Musique',
-  NONE: EVERY_CATEGORIES,
+  NONE: ALL_CATEGORIES_LABEL,
   SPECTACLES: 'Spectacles',
 }
 

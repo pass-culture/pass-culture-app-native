@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { CategoriesMapping } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import {
   getDescription,
@@ -19,7 +20,7 @@ import { Spacer } from 'ui/theme'
 type CategoriesMappingItem = {
   label: string
   nbResultsFacet?: number
-  children?: CategoriesMappingItem[]
+  children?: CategoriesMapping
 }
 
 interface CategoriesSectionItemProps<N> {
@@ -44,7 +45,7 @@ export const CategoriesSectionItem = <N,>({
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
   )
 
-  const shouldHideArrow = !item.children
+  const shouldHideArrow = !Object.keys(item.children ?? {})?.length
   const itemKey = k as N
   const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
 
