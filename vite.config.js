@@ -91,7 +91,7 @@ export default ({ mode }) => {
         url: 'https://sentry.passculture.team/',
         org: 'sentry',
         project: 'application-native',
-        authToken: env.SENTRY_AUTH_TOKEN, // locally from .env.local, otherwise will come from CI
+        authToken: process.env.SENTRY_AUTH_TOKEN, // locally from .env.local, otherwise will come from CI
         release: {
           uploadLegacySourcemaps: {
             paths: ['./dist'],
@@ -142,7 +142,7 @@ export default ({ mode }) => {
       },
     },
     build: {
-      sourcemap: true,
+      sourcemap: process.env.UPLOAD_SOURCEMAPS_TO_SENTRY, // Only set to true in CI
       commonjsOptions: {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:
