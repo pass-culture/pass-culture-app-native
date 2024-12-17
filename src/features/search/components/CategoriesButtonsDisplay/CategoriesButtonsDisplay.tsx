@@ -12,7 +12,7 @@ import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { theme } from 'theme'
 import { useModal } from 'ui/components/modals/useModal'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -72,16 +72,13 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
       ListHeaderComponent={
         <React.Fragment>
           {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
+            <ContainerVenueMapBlock>
               <VenueMapBlock
                 onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
                 from="searchLanding"
               />
-              <Spacer.Column numberOfSpaces={2} />
-            </React.Fragment>
+            </ContainerVenueMapBlock>
           ) : null}
-
           <CategoriesTitleV2 />
           <VenueMapLocationModal
             visible={venueMapLocationModalVisible}
@@ -95,6 +92,10 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
     />
   )
 }
+const ContainerVenueMapBlock = styled.View({
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(2),
+})
 
 const CategoriesTitleV2 = styled(TypoDS.Title4).attrs({
   children: 'Parcours les catégories',
