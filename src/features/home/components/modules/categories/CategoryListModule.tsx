@@ -68,24 +68,21 @@ export const CategoryListModule = ({
   )
 }
 
-const StyledView = styled.View(({ theme }) =>
-  theme.isMobileViewport
+const StyledView = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  width: '100%',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  ...(theme.isMobileViewport
     ? {
-        flexDirection: 'row',
         flexWrap: 'wrap',
         gap: MOBILE_GAPS_AND_PADDINGS,
-        width: '100%',
-        paddingHorizontal: theme.contentPage.marginHorizontal,
         paddingVertical: MOBILE_GAPS_AND_PADDINGS,
       }
     : {
-        flexDirection: 'row',
         gap: DESKTOP_GAPS_AND_PADDINGS,
-        width: '100%',
-        paddingHorizontal: theme.contentPage.marginHorizontal,
         paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
-      }
-)
+      }),
+}))
 
 const StyledTitle = styled(TypoDS.Title3)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
