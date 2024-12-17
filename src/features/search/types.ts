@@ -17,6 +17,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { BaseCategory, CategoryKey } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -41,9 +42,8 @@ export interface SearchState {
   endingDatetime?: string
   hitsPerPage: number | null
   locationFilter: LocationFilter
-  offerCategories: SearchGroupNameEnumv2[]
+  offerCategories: CategoryKey[]
   offerGenreTypes?: OfferGenreType[]
-  offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   offerIsFree?: boolean
@@ -72,9 +72,7 @@ export type UserData = {
 }
 
 export type DescriptionContext = {
-  category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
-  genreType: string | null
+  categories: string[]
 }
 
 type VenueUserTitleRule = { venue_playlist_title: string }
