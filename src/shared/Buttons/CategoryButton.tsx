@@ -11,7 +11,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-type CategoryButtonV2Props = {
+type CategoryButtonProps = {
   label: string
   textColor: ColorsEnum
   fillColor: ColorsEnum
@@ -21,7 +21,7 @@ type CategoryButtonV2Props = {
   onPress?: () => void
   children?: never
 }
-export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
+export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   fillColor,
   borderColor,
