@@ -5,5 +5,4 @@ export const LIST_ITEM_HEIGHT = 130
 export const SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START = { x: 0, y: 0 }
 export const SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END = { x: 0, y: 1 }
 export const DEFAULT_RADIUS = 50
-export const HEADER_SEARCH_VENUE_MAP = 212
 export const EVERY_CATEGORIES = 'Toutes les catégories'

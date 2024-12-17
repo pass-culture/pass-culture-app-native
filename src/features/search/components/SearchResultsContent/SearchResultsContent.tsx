@@ -2,7 +2,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, useWindowDimensions, View } from 'react-native'
+import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -16,7 +16,6 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
-import { HEADER_SEARCH_VENUE_MAP } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
@@ -55,7 +54,6 @@ import { Check } from 'ui/svg/icons/Check'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -100,9 +98,7 @@ export const SearchResultsContent: React.FC = () => {
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
   const venueMapHiddenPOI = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
-  const { height } = useWindowDimensions()
-  const { top, tabBarHeight } = useCustomSafeInsets()
-  const venueMapHeight = height - top - tabBarHeight - HEADER_SEARCH_VENUE_MAP
+
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
@@ -336,7 +332,6 @@ export const SearchResultsContent: React.FC = () => {
     [Tab.MAP]:
       selectedLocationMode === LocationMode.EVERYWHERE ? null : (
         <VenueMapView
-          height={venueMapHeight}
           from="searchResults"
           venues={venuesMap}
           selectedVenue={selectedVenue}

@@ -1,7 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Platform, View } from 'react-native'
+import { LayoutChangeEvent, LayoutRectangle, Platform, View } from 'react-native'
 import { Directions, FlingGesture, Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -39,7 +39,6 @@ import { MARKER_LABEL_VISIBILITY_LIMIT } from '../../constant'
 import { Marker } from './Marker/Marker'
 
 interface Props {
-  height: number
   from: string
   venues: GeolocatedVenue[]
   selectedVenue: GeolocatedVenue | null
@@ -59,7 +58,6 @@ const FLING_GESTURE = Gesture.Fling()
   .direction(Directions.UP)
 
 export const VenueMapView: FunctionComponent<Props> = ({
-  height,
   from,
   venues,
   selectedVenue,
@@ -86,6 +84,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
   )
   const mapViewRef = useRef<Map>(null)
+  const [mapLayout, setMapLayout] = useState<LayoutRectangle>()
 
   const defaultRegion = useGetDefaultRegion()
 
@@ -134,13 +133,29 @@ export const VenueMapView: FunctionComponent<Props> = ({
       min: hasOffers ? 160 : 130,
       max: hasOffers ? 160 + LENGTH_L : 130,
     }
-    const bottomInset = from === 'venueMap' ? bottom : tabBarHeight
+    const bottomInset = from === 'venueMap' ? bottom : tabBarHeight + bottom
     const points = Object.entries(contentViewHeight).map(([_key, value]) => bottomInset + value)
 
     return Array.from(new Set(points))
   }, [from, bottom, hasOffers, tabBarHeight])
 
-  const centerOnLocation = useCenterOnLocation({ currentRegion, mapViewRef, mapHeight: height })
+  const mapHeight = useMemo(() => {
+    if (!mapLayout) {
+      return 0
+    }
+    const { height } = mapLayout
+
+    if (from === 'venueMap') {
+      return height
+    }
+    return height - tabBarHeight - bottom
+  }, [from, mapLayout, tabBarHeight, bottom])
+
+  const centerOnLocation = useCenterOnLocation({
+    currentRegion,
+    mapViewRef,
+    mapHeight,
+  })
 
   const checkLabelVisibility = () => {
     if (!mapViewRef.current) {
@@ -154,6 +169,10 @@ export const VenueMapView: FunctionComponent<Props> = ({
           : Number(camera.zoom) >= MARKER_LABEL_VISIBILITY_LIMIT.zoom
       )
     })
+  }
+
+  const handleMapLayout = ({ nativeEvent }: LayoutChangeEvent) => {
+    setMapLayout(nativeEvent.layout)
   }
 
   const handleRegionChangeComplete = (region: Region) => {
@@ -174,8 +193,8 @@ export const VenueMapView: FunctionComponent<Props> = ({
 
   const calculatePreviewHeight = useCallback(
     (bottomSheetSnapPoint = 0) =>
-      Math.max(0, bottomSheetSnapPoint - (from === 'venueMap' ? 0 : tabBarHeight)),
-    [from, tabBarHeight]
+      Math.max(0, bottomSheetSnapPoint - (from === 'venueMap' ? 0 : tabBarHeight + bottom)),
+    [from, tabBarHeight, bottom]
   )
 
   const handleMarkerPress = (event: MarkerPressEvent) => {
@@ -193,7 +212,6 @@ export const VenueMapView: FunctionComponent<Props> = ({
     analytics.logPinMapPressed({ venueType: foundVenue.venue_type, venueId: foundVenue.venueId })
     if (isPreviewEnabled) {
       setSelectedVenue(foundVenue)
-
       centerOnLocation(
         event.nativeEvent.coordinate.latitude,
         event.nativeEvent.coordinate.longitude,
@@ -339,6 +357,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
         initialRegion={defaultRegion}
         rotateEnabled={false}
         pitchEnabled={false}
+        onLayout={mapLayout ? undefined : handleMapLayout}
         onMapReady={handleMapReady}
         moveOnMarkerPress={false}
         onRegionChange={checkLabelVisibility}
@@ -349,7 +368,6 @@ export const VenueMapView: FunctionComponent<Props> = ({
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         radius={50}
         animationEnabled={false}
-        height={height}
         testID="venue-map-view"
         {...pointsOfInterestProps}>
         {filteredVenues.map((venue) => (
@@ -376,10 +394,10 @@ export const VenueMapView: FunctionComponent<Props> = ({
   )
 }
 
-const StyledMapView = styled(MapView)<{ height?: number }>(({ height }) => ({
-  height: height ?? '100%',
+const StyledMapView = styled(MapView)<{ height?: number }>({
+  flex: 1,
   width: '100%',
-}))
+})
 
 const ButtonContainer = styled.View({
   position: 'absolute',

@@ -30,11 +30,7 @@ export const FilterBannerContainer = () => {
 
 const Container = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   height: FILTER_BANNER_HEIGHT,
-  position: 'absolute',
-  zIndex: 1,
-  top: headerHeight,
-  left: 0,
-  right: 0,
+  marginTop: headerHeight,
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(1),
 }))
