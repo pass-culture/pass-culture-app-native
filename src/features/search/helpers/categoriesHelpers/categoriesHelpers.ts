@@ -11,7 +11,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
-import { EVERY_CATEGORIES } from 'features/search/constants'
+import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
   BaseCategory,
@@ -433,7 +433,7 @@ function getFilterRowDescriptionFromCategory(
   data: SubcategoriesResponseModelv2,
   categoryId: SearchGroupNameEnumv2
 ) {
-  if (categoryId === SearchGroupNameEnumv2.NONE) return EVERY_CATEGORIES
+  if (categoryId === SearchGroupNameEnumv2.NONE) return ALL_CATEGORIES_LABEL
 
   const category = getCategoryFromEnum(data, categoryId)
   if (!category) return undefined
@@ -529,7 +529,7 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
       : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
-  if (offerNativeCategories?.length || Object.keys(nativeCategories).length)
+  if (offerNativeCategories?.length || Object.keys(nativeCategories ?? {}).length)
     return CategoriesModalView.NATIVE_CATEGORIES
   return CategoriesModalView.CATEGORIES
 }

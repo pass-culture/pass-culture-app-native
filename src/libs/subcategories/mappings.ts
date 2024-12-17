@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { EVERY_CATEGORIES } from 'features/search/constants'
+import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
@@ -99,7 +99,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
   return useMemo(() => {
     const mapping = <SearchGroupLabelMapping>{}
     searchGroups.forEach((curr) => {
-      mapping[curr.name] = curr.value || EVERY_CATEGORIES
+      mapping[curr.name] = curr.value || ALL_CATEGORIES_LABEL
     })
     return mapping
   }, [searchGroups])
