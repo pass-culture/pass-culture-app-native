@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -9,6 +9,7 @@ import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -40,6 +41,8 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
+  const [userAge, setUserAge] = useState<number | string | null>(null)
+
   const {
     control,
     formState: { isValid },
@@ -52,16 +55,16 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   })
 
   useEffect(() => {
-    const setDate = async () => {
-      const userAge = await storage.readObject<number | string>('user_age')
-      if (!previousBirthdateProvided && typeof userAge === 'number') {
-        const userAgeDate = new Date(new Date().setFullYear(currentYear - userAge))
+    const fetchUserAge = async () => {
+      const age = await storage.readObject<number | string>('user_age')
+      setUserAge(age)
+      if (!previousBirthdateProvided && typeof age === 'number') {
+        const userAgeDate = new Date(new Date().setFullYear(currentYear - age))
         setValue('birthdate', userAgeDate)
       }
     }
-
     if (isNative) {
-      setDate()
+      fetchUserAge()
     }
   }, [currentYear, previousBirthdateProvided, setValue, isNative])
 
@@ -75,6 +78,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   )
 
   const pageTitle = isSSOSubscriptionFromLogin ? 'Termine ton inscription' : 'Renseigne ton âge'
+
+  const bannerMessage =
+    userAge === NonEligible.OVER_18
+      ? 'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
+      : 'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
 
   return (
     <Form.MaxWidth>
@@ -90,10 +98,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
-        <InfoBanner
-          message="Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations."
-          icon={BicolorIdCard}
-        />
+        <InfoBanner message={bannerMessage} icon={BicolorIdCard} />
         <Spacer.Column numberOfSpaces={10} />
         <Controller
           control={control}
@@ -113,7 +118,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
             />
           )}
         />
-
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
