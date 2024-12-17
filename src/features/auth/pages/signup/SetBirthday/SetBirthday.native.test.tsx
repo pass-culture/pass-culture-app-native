@@ -40,10 +40,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const USER_AGE_KEY = 'user_age'
+
 describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
-    await storage.clear('user_age')
+    await storage.clear(USER_AGE_KEY)
   })
 
   it('should render correctly', () => {
@@ -117,5 +119,55 @@ describe('<SetBirthday />', () => {
     const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
     expect(datePicker.props.date).toBe(new Date('1994-12-11').getTime())
+  })
+
+  describe('banner', () => {
+    beforeEach(async () => {
+      await storage.clear('access_token')
+    })
+
+    it('should display the general public message when userAge is  NonEligible.OVER_18', async () => {
+      storage.saveObject('user_age', NonEligible.OVER_18)
+      render(<SetBirthday {...props} />)
+
+      const bannerMessage = await screen.findByText(
+        'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
+      )
+
+      expect(bannerMessage).toBeTruthy()
+    })
+
+    it('should display the eligible message when userAge is set in number', async () => {
+      storage.saveObject('user_age', 16)
+      render(<SetBirthday {...props} />)
+
+      const bannerMessage = await screen.findByText(
+        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
+      )
+
+      expect(bannerMessage).toBeTruthy()
+    })
+
+    it('should display the eligible message when userAge is UNDER_15', async () => {
+      storage.saveObject('user_age', NonEligible.UNDER_15)
+      render(<SetBirthday {...props} />)
+
+      const bannerMessage = await screen.findByText(
+        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
+      )
+
+      expect(bannerMessage).toBeTruthy()
+    })
+
+    it('should display the eligible message when userAge is null', async () => {
+      storage.saveObject('user_age', null)
+      render(<SetBirthday {...props} />)
+
+      const bannerMessage = await screen.findByText(
+        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
+      )
+
+      expect(bannerMessage).toBeTruthy()
+    })
   })
 })
