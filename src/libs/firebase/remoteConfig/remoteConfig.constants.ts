@@ -35,4 +35,5 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   },
   shareAppModalVersion: 'default',
   showAccessScreeningButton: false,
+  shouldRedirectToThematicSearch: false,
 }

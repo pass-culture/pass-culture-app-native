@@ -63,6 +63,7 @@ const searchParamsParser = {
   venue: JSON.parse,
   accessibilityFilter: JSON.parse,
   gtls: JSON.parse,
+  shouldRedirect: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -226,6 +227,7 @@ const searchParamsStringifier = {
   venue: JSON.stringify,
   accessibilityFilter: JSON.stringify,
   gtls: JSON.stringify,
+  shouldRedirect: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {

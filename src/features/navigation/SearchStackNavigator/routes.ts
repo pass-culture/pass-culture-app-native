@@ -10,7 +10,7 @@ import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSea
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
-export const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
+const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
 
 const routes: SearchStackRoute[] = [
   {

@@ -25,6 +25,12 @@ type FetchOfferAndVenuesArgs = {
   disabilitiesProperties: DisabilitiesProperties
 }
 
+type RenderingContent = {
+  redirect?: {
+    url?: string
+  }
+}
+
 export const fetchSearchResults = async ({
   parameters,
   buildLocationParameterParams,
@@ -137,8 +143,16 @@ export const fetchSearchResults = async ({
       ]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
+    const { renderingContent } = offersResponse
+    const redirectUrl = (renderingContent as RenderingContent)?.redirect?.url
 
-    return { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse }
+    return {
+      offersResponse,
+      venuesResponse,
+      facetsResponse,
+      duplicatedOffersResponse,
+      redirectUrl,
+    }
   } catch (error) {
     captureAlgoliaError(error)
     return {
@@ -158,6 +172,7 @@ export const fetchSearchResults = async ({
         nbPages: 0,
         userData: null,
       },
+      redirectUrl: undefined,
     }
   }
 }
