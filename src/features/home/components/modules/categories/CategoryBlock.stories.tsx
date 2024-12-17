@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Color } from 'features/home/types'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 import { CategoryBlock } from './CategoryBlock'
 
@@ -29,16 +29,13 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
-      hasGraphicRedesign={false}
     />
-    <Spacer.Column numberOfSpaces={10} />
     <CategoryBlock
       title="Le plein de cinéma"
       color={Color.Aquamarine}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
-      hasGraphicRedesign={false}
     />
   </Container>
 )
@@ -47,4 +44,5 @@ CategoryBlockWithoutImage.storyName = 'CategoryBlock'
 const Container = styled.View({
   height: 100,
   flexDirection: 'row',
+  gap: getSpacing(2),
 })

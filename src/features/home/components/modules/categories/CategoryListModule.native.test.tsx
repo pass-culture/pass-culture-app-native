@@ -5,14 +5,12 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, fireEvent, render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('CategoryListModule', () => {
   describe('with FF enableAppV2CategoryBlock false', () => {
-    beforeEach(() => useFeatureFlagSpy.mockReturnValue(false))
+    beforeEach(() => setFeatureFlags())
 
     it('should call analytics when the module is displayed', () => {
       render(
@@ -44,7 +42,7 @@ describe('CategoryListModule', () => {
         />
       )
 
-      const bloc = screen.getByText('Toto au cinéma')
+      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
       fireEvent.press(bloc)
 
@@ -67,7 +65,7 @@ describe('CategoryListModule', () => {
         />
       )
 
-      const bloc = screen.getByText('Toto au cinéma')
+      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
       await act(async () => {
         fireEvent.press(bloc)
