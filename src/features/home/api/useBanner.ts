@@ -2,9 +2,10 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useHomeBanner(hasGeolocPosition: boolean) {
+export function useBanner(hasGeolocPosition: boolean) {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(
@@ -12,6 +13,9 @@ export function useHomeBanner(hasGeolocPosition: boolean) {
     () => api.getNativeV1Banner(hasGeolocPosition),
     {
       enabled: isLoggedIn,
+      onError: (error: string) => {
+        eventMonitoring.captureException(error)
+      },
     }
   )
 }

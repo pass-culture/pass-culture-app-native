@@ -39,6 +39,103 @@ describe('useGetCurrencyToDisplay', () => {
     expect(result.current).toBe('€')
   })
 
+  describe('when location mode is EVERYWHERE', () => {
+    beforeEach(() => {
+      mockUseGeolocation.mockReturnValue({
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        selectedPlace: null,
+      } as ILocationContext)
+    })
+
+    describe('and the feature flag is enabled', () => {
+      beforeEach(() => {
+        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+      })
+
+      it('should return Euro when displayFormat is "short"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+        expect(result.current).toBe('€')
+      })
+
+      it('should return Euro when displayFormat is "full"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+
+        expect(result.current).toBe('€')
+      })
+    })
+
+    describe('and the feature flag is disabled', () => {
+      beforeEach(() => {
+        activateFeatureFlags()
+      })
+
+      it('should return Euro when displayFormat is "short"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+        expect(result.current).toBe('€')
+      })
+
+      it('should return Euro when displayFormat is "full"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+
+        expect(result.current).toBe('€')
+      })
+    })
+  })
+
+  describe('when selectedPlace is defined in New Caledonia and location mode is EVERYWHERE', () => {
+    beforeEach(() => {
+      mockUseGeolocation.mockReturnValue({
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        selectedPlace: {
+          type: 'municipality',
+          label: 'Nouméa',
+          info: 'Nouvelle-Calédonie',
+          geolocation: NOUMEA_DEFAULT_POSITION,
+        },
+      } as ILocationContext)
+    })
+
+    describe('and the feature flag is enabled', () => {
+      beforeEach(() => {
+        activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+      })
+
+      it('should return Euro when displayFormat is "short"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+        expect(result.current).toBe('€')
+      })
+
+      it('should return Euro when displayFormat is "full"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+
+        expect(result.current).toBe('€')
+      })
+    })
+
+    describe('and the feature flag is disabled', () => {
+      beforeEach(() => {
+        activateFeatureFlags()
+      })
+
+      it('should return Euro when displayFormat is "short"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+        expect(result.current).toBe('€')
+      })
+
+      it('should return Euro when displayFormat is "full"', () => {
+        const { result } = renderHook(() => useGetCurrencyToDisplay('full'))
+
+        expect(result.current).toBe('€')
+      })
+    })
+  })
+
   describe('when user is not connected and location is outside New Caledonia', () => {
     beforeEach(() => {
       mockUseGeolocation.mockReturnValue({
