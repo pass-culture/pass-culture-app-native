@@ -10,7 +10,7 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -33,7 +33,7 @@ export function BookingConfirmation() {
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
-  const trackBooking = useCallback(() => BatchUser.trackEvent(BatchEvent.hasBooked), [])
+  const trackBooking = useCallback(() => BatchProfile.trackEvent(BatchEvent.hasBooked), [])
 
   const displayBookingDetails = useCallback(() => {
     analytics.logSeeMyBooking(params.offerId)

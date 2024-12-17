@@ -7,39 +7,30 @@ export const Batch = {
   optOut() {},
 }
 
+export const BatchProfile = {
+  editor() {
+    return {
+      setAttribute: () => {},
+      save: () => {},
+    }
+  },
+  identify() {
+    return this
+  },
+  trackEvent() {},
+  trackLocation() {},
+}
+
 export const BatchUser = {
   getInstallationID() {
     return Promise.resolve()
   },
-  editor() {
-    return this
-  },
-  setIdentifier() {
-    return this
-  },
-  setAttribute() {
-    return this
-  },
-  trackEvent() {},
-  save() {},
 }
 
 export const BatchPush = {
   requestNotificationAuthorization() {},
 }
-export class BatchEventData {
-  addTag() {
-    return this
-  }
-
-  putDate() {
-    return this
-  }
-
-  putURL() {
-    return this
-  }
-
+export class BatchEventAttributes {
   put() {
     return this
   }

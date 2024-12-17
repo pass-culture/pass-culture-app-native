@@ -1,3 +1,4 @@
+import { BatchProfile } from '@batch.com/react-native-plugin'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -10,7 +11,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { BatchUser } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -92,7 +92,7 @@ describe('<AccountCreated />', () => {
 
     fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_account')
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_account')
   })
 
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {

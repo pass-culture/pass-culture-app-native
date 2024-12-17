@@ -19,7 +19,7 @@ import { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -37,7 +37,8 @@ type Props = {
   onCloseVideoFakeDoor?: () => void
 }
 
-const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
+const trackEventHasSeenVenueForSurvey = () =>
+  BatchProfile.trackEvent(BatchEvent.hasSeenVenueForSurvey)
 const isWeb = Platform.OS === 'web'
 
 export const VenueContent: React.FunctionComponent<Props> = ({

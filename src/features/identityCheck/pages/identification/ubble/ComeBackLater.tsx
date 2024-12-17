@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -13,7 +13,7 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
-    BatchUser.trackEvent(BatchEvent.screenViewComeBackLater)
+    BatchProfile.trackEvent(BatchEvent.screenViewComeBackLater)
     analytics.logScreenViewComeBackLater()
   }, [])
 

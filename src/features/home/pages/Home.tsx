@@ -23,7 +23,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchProfile } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
@@ -110,7 +110,7 @@ export const Home: FunctionComponent = () => {
   const { data: bookings } = useBookings()
 
   useEffect(() => {
-    const editor = BatchUser.editor()
+    const editor = BatchProfile.editor()
     editor.setAttribute('app_version', getAppVersion())
 
     const allBookings = [...(bookings?.ongoing_bookings || []), ...(bookings?.ended_bookings || [])]

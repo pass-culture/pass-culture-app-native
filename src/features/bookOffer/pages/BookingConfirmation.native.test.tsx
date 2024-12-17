@@ -6,7 +6,7 @@ import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchProfile } from 'libs/react-native-batch'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
@@ -159,7 +159,7 @@ describe('<BookingConfirmation />', () => {
 
         fireEvent.press(screen.getByText(buttonWording))
 
-        expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_booked')
+        expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_booked')
       }
     )
   })

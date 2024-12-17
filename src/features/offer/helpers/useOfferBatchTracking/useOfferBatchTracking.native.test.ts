@@ -1,6 +1,6 @@
 import { SubcategoryIdEnumv2 } from 'api/gen'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { renderHook } from 'tests/utils'
 
 describe('useOfferBatchTracking', () => {
@@ -27,7 +27,7 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
   })
 
   it('shoyld call trackEventHasSeenOfferForSurveyOnce only once', () => {
@@ -35,11 +35,11 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(1)
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(1)
   })
 
   it('should call trackBookOfferForSurveyOnce when subcategory is LIVRE_PAPIER', () => {
@@ -47,7 +47,7 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenBookOfferForSurvey)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenBookOfferForSurvey)
   })
 
   it('should call trackBookOfferForSurveyOnce only once', () => {
@@ -56,11 +56,11 @@ describe('useOfferBatchTracking', () => {
     result.current?.trackBatchEvent()
 
     // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
   })
 
   it('should call trackCulturalVisitOfferForSurveyOnce when subcategory is VISITES_CULTURELLES', () => {
@@ -68,7 +68,7 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCulturalVisitForSurvey)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCulturalVisitForSurvey)
   })
 
   it('shoyld call trackCulturalVisitOfferForSurveyOnce only once', () => {
@@ -77,11 +77,11 @@ describe('useOfferBatchTracking', () => {
     result.current?.trackBatchEvent()
 
     // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
   })
 
   it('should call trackConcertOfferForSurveyOnce when subcategory is CONCERT', () => {
@@ -89,7 +89,7 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenConcertForSurvey)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenConcertForSurvey)
   })
 
   it('shoyld call trackConcertOfferForSurveyOnce only once', () => {
@@ -98,11 +98,11 @@ describe('useOfferBatchTracking', () => {
     result.current?.trackBatchEvent()
 
     // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
   })
 
   it('should call trackCinemaOfferForSurveyOnce when subcategory is SEANCES_DE_CINEMA', () => {
@@ -110,7 +110,7 @@ describe('useOfferBatchTracking', () => {
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
   })
 
   it('shoyld call trackCinemaOfferForSurveyOnce only once', () => {
@@ -119,10 +119,10 @@ describe('useOfferBatchTracking', () => {
     result.current?.trackBatchEvent()
 
     // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
 
     result.current?.trackBatchEvent()
 
-    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(2)
   })
 })

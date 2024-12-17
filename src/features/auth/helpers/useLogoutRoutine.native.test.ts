@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as ReactQueryAPI from 'react-query'
 
-import { BatchUser } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -21,7 +21,7 @@ describe('useLogoutRoutine', () => {
   it('should remove batch identifier', async () => {
     await renderUseLogoutRoutine()
 
-    expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, null)
+    expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, null)
   })
 
   it('should log analytics', async () => {
