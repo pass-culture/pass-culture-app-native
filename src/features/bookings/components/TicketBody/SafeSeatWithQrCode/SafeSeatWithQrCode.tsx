@@ -47,7 +47,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
         <ContentContainer>
           <BarCode />
           <View>
-            <StyledBody>Ton billet sera disponible d’ici le</StyledBody>
+            <StyledBody>Ton billet sera disponible ici le</StyledBody>
             <StyledBody>{day}</StyledBody>
           </View>
         </ContentContainer>
@@ -69,7 +69,7 @@ const BlurredQrCode = styled.ImageBackground.attrs({
   opacity: 0.1,
 }))
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(TypoDS.BodyAccentS)({
   textAlign: 'center',
 })
 
