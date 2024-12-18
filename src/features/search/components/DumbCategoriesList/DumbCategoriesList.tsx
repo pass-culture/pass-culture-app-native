@@ -4,13 +4,9 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CategoriesListHeader } from 'features/search/components/categories/CategoriesListHeader'
 import { Gradient } from 'features/search/enums'
-
-import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { theme } from 'theme'
-import { useModal } from 'ui/components/modals/useModal'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -33,6 +29,11 @@ export type ListCategoryButtonProps = CategoryButtonProps[]
 
 type Props = {
   sortedCategories: ListCategoryButtonProps
+  shouldDisplayVenueMap: boolean
+  isMapWithoutPositionAndNotLocated: boolean
+  showVenueMapLocationModal: () => void
+  venueMapLocationModalVisible: boolean
+  hideVenueMapLocationModal: () => void
   children?: never
 }
 
@@ -44,21 +45,14 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   </CategoryButtonContainer>
 )
 
-const isWeb = Platform.OS === 'web'
-
-export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
-  const { shouldDisplayVenueMap, selectedLocationMode } = useShouldDisplayVenueMap()
-
-  const {
-    showModal: showVenueMapLocationModal,
-    visible: venueMapLocationModalVisible,
-    hideModal: hideVenueMapLocationModal,
-  } = useModal()
-
-  const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
-
-  const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
-
+export const DumbCategoriesList: FunctionComponent<Props> = ({
+  sortedCategories,
+  shouldDisplayVenueMap,
+  isMapWithoutPositionAndNotLocated,
+  showVenueMapLocationModal,
+  venueMapLocationModalVisible,
+  hideVenueMapLocationModal,
+}) => {
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
 
