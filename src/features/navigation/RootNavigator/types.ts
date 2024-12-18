@@ -40,6 +40,8 @@ export type Referrals =
 type BaseThematicHome = {
   homeId: string
   videoModuleId?: string
+}
+type OtherThematicBlockHome = BaseThematicHome & {
   from?: never
   moduleId?: never
   moduleListId?: never
@@ -55,7 +57,7 @@ type HighlightThematicBlockThematicHome = BaseThematicHome & {
   moduleListId?: never
 }
 type ThematicHomeParams =
-  | BaseThematicHome
+  | OtherThematicBlockHome
   | CategoryBlockThematicHome
   | HighlightThematicBlockThematicHome
 
