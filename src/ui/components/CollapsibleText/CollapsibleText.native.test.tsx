@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as parseMarkdown from 'features/offer/helpers/parseMarkdown/parseMarkdown'
 import { render, screen } from 'tests/utils'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 
@@ -11,7 +12,25 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+const parseMarkdownSpy = jest.spyOn(parseMarkdown, 'parseMarkdown')
+
 describe('<CollapsibleText />', () => {
+  it('should not parse text when collapsible text not use markdown', () => {
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
+
+    expect(parseMarkdownSpy).not.toHaveBeenCalled()
+  })
+
+  it('should parse text when collapsible text use markdown', () => {
+    render(
+      <CollapsibleText numberOfLines={NUMBER_OF_LINES} isMarkdown>
+        {TEXT}
+      </CollapsibleText>
+    )
+
+    expect(parseMarkdownSpy).toHaveBeenNthCalledWith(1, TEXT)
+  })
+
   it('should use styled typo when text is markdown', () => {
     render(
       <CollapsibleText numberOfLines={NUMBER_OF_LINES} isMarkdown>
