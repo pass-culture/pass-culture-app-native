@@ -99,7 +99,9 @@ const Container = styled.View({
 })
 
 const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
-  flex: '1 0 0',
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
   minWidth: theme.isMobileViewport ? '35%' : 'none',
   maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
 }))
