@@ -31,9 +31,11 @@ import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'l
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
+type ConsultHomeParams = { homeEntryId: string }
+
 type BaseThematicHome = {
   homeEntryId: string
-  from?: never
+  from?: never | 'deeplink'
   moduleId?: never
   moduleListId?: never
 }
@@ -59,7 +61,7 @@ type VideoCarouselBlockThematicHome = {
   moduleItemId: string
 }
 
-type ConsultHomeParams =
+type ConsultThematicHomeParams =
   | BaseThematicHome
   | CategoryBlockThematicHome
   | HighlightThematicBlockThematicHome
@@ -260,6 +262,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_REACTION_FAKE_DOOR }, params),
   logConsultSubscriptionModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_SUBSCRIPTION_MODAL }),
+  logConsultThematicHome: (params: ConsultThematicHomeParams) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_HOME }, params),
   logConsultTutorial: (params: { from: string; age?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {

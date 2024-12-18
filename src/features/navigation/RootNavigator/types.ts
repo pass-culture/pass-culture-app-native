@@ -42,7 +42,7 @@ type BaseThematicHome = {
   videoModuleId?: string
 }
 type OtherThematicBlockHome = BaseThematicHome & {
-  from?: never
+  from?: 'deeplink'
   moduleId?: never
   moduleListId?: never
 }
