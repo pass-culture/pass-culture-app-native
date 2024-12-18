@@ -78,7 +78,11 @@ describe('useActivationBanner', () => {
 
       await act(async () => {})
 
-      expect(result.current.banner.title).toEqual('Débloque tes 300\u00a0€')
+      expect(result.current.banner).toEqual({
+        title: 'Débloque tes 300\u00a0€',
+        text: 'API - Bénéficie de ton crédit maintenant !',
+        name: BannerName.activation_banner,
+      })
     })
 
     it('isEligibleForBeneficiaryUpgrade', async () => {
