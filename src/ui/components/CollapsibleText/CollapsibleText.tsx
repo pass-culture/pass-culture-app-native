@@ -1,48 +1,63 @@
 import React, { useState } from 'react'
+import styled from 'styled-components/native'
 
-import { parseMarkdown } from 'features/offer/helpers/parseMarkdown/parseMarkdown'
-import { MarkdownPartProps } from 'features/offer/types'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { MarkdownPart } from 'ui/components/MarkdownPart/MarkdownPart'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { ArrowDown } from 'ui/svg/icons/ArrowDown'
+import { ArrowUp } from 'ui/svg/icons/ArrowUp'
+import { TypoDS } from 'ui/theme'
 
-import { CollapsibleTextContent } from './CollapsibleTextContent/CollapsibleTextContent'
+import { useIsTextEllipsis } from './useIsTextEllipsis'
 
 type Props = {
   children: string
   // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
-  isMarkdown?: boolean
 }
 
-// TODO(PC-33655): see the possibilities for improving the component
-export function CollapsibleText({ children, numberOfLines, isMarkdown }: Readonly<Props>) {
+export function CollapsibleText({ children, numberOfLines }: Readonly<Props>) {
   const [expanded, setExpanded] = useState(false)
+  const {
+    isTextEllipsis: shouldDisplayButton,
+    onTextLayout,
+    onLayout,
+  } = useIsTextEllipsis(numberOfLines)
 
-  const onButtonPress = () => setExpanded((prevExpanded) => !prevExpanded)
+  const onPress = () => setExpanded((prevExpanded) => !prevExpanded)
 
-  const renderContent = () => {
-    if (isMarkdown) {
-      const parsedText: MarkdownPartProps[] = parseMarkdown(children)
-      return parsedText.map(({ text, isBold, isItalic, isUnderline }, index) => (
-        <MarkdownPart
-          key={`markdown-part-${index}`}
-          text={text}
-          isBold={isBold}
-          isItalic={isItalic}
-          isUnderline={isUnderline}
-        />
-      ))
-    }
-
-    return highlightLinks(children)
-  }
+  const buttonText = expanded ? 'Voir moins' : 'Voir plus'
+  const accessibilityLabel = expanded ? 'Réduire le texte' : 'Étendre le texte'
+  const icon = expanded ? ArrowUp : ArrowDown
 
   return (
-    <CollapsibleTextContent
-      expanded={expanded}
-      numberOfLines={numberOfLines}
-      renderContent={renderContent}
-      onButtonPress={onButtonPress}
-    />
+    <React.Fragment>
+      <TypoDS.Body
+        numberOfLines={expanded ? undefined : numberOfLines}
+        onLayout={onLayout}
+        onTextLayout={onTextLayout}>
+        {highlightLinks(children)}
+      </TypoDS.Body>
+      {shouldDisplayButton ? (
+        <ButtonContainer>
+          <SeeMoreButton
+            wording={buttonText}
+            onPress={onPress}
+            accessibilityLabel={accessibilityLabel}
+            icon={icon}
+            buttonHeight="extraSmall"
+          />
+        </ButtonContainer>
+      ) : null}
+    </React.Fragment>
   )
 }
+
+const ButtonContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+})
+
+const SeeMoreButton = styledButton(ButtonTertiaryBlack)({
+  maxWidth: 120,
+})
