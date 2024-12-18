@@ -734,4 +734,153 @@ describe('fetchSearchResults', () => {
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
   })
+
+  it('should execute multi query with aroundPrecision param if provided', () => {
+    const query = 'searched query'
+
+    fetchSearchResults({
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
+      isUserUnderage: false,
+      disabilitiesProperties: defaultDisabilitiesProperties,
+      aroundPrecision: [
+        { from: 0, value: 1000 },
+        { from: 1000, value: 4000 },
+        { from: 5000, value: 10000 },
+      ],
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          aroundPrecision: [
+            { from: 0, value: 1000 },
+            { from: 1000, value: 4000 },
+            { from: 5000, value: 10000 },
+          ],
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+      {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
+          distinct: false,
+          facetFilters: [['offer.isEducational:false']],
+          hitsPerPage: 1000,
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
+
+  it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
+    const query = 'searched query'
+
+    fetchSearchResults({
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
+      isUserUnderage: false,
+      disabilitiesProperties: defaultDisabilitiesProperties,
+      aroundPrecision: 0,
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+      {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
+          distinct: false,
+          facetFilters: [['offer.isEducational:false']],
+          hitsPerPage: 1000,
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
 })

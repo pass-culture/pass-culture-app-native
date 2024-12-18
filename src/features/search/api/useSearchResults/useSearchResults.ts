@@ -18,6 +18,7 @@ import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -45,6 +46,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const { setInitialVenues } = useInitialVenuesActions()
   const { removeSelectedVenue } = useSelectedVenueActions()
   const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
+  const { aroundPrecision } = useRemoteConfigContext()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [
@@ -75,6 +77,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
         disabilitiesProperties: disabilities,
+        aroundPrecision,
       })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
