@@ -91,7 +91,6 @@ export default ({ mode }) => {
         url: 'https://sentry.passculture.team/',
         org: 'sentry',
         project: 'application-native',
-        authToken: process.env.SENTRY_AUTH_TOKEN, // locally from .env.local, otherwise will come from CI
         release: {
           uploadLegacySourcemaps: {
             paths: ['./dist'],
