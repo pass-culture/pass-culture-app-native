@@ -223,8 +223,9 @@ describe('ThematicHome', () => {
   })
 
   describe('geolocation banner when wipAppV2SystemBlock disabled', () => {
+    // TODO(PC-33663): the tests of this describe block pass with and without the FF. The tests should be re-written.
     beforeAll(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
+      setFeatureFlags()
     })
 
     it('should show geolocation banner when user is not geolocated or located', async () => {
