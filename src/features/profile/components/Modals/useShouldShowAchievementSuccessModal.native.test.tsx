@@ -128,7 +128,14 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.achievementsToShow).toEqual(['FIRST_ART_LESSON_BOOKING'])
+      expect(result.current.achievementsToShow).toEqual([
+        {
+          id: 1,
+          name: 'FIRST_ART_LESSON_BOOKING',
+          seenDate: undefined,
+          unlockedDate: 'Wed Dec 18 2024',
+        },
+      ])
     })
   })
 
