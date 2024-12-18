@@ -13,6 +13,7 @@ const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteC
 
 const achievements: AchievementResponse[] = [
   {
+    id: 1,
     name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
     seenDate: undefined,
     unlockedDate: new Date().toDateString(),
@@ -120,7 +121,7 @@ describe('useShouldShowAchievementSuccessModal', () => {
       expect(result.current.shouldShowAchievementSuccessModal).toBeTruthy()
     })
 
-    it('should return an array with the names of the achievements to show to the user', () => {
+    it('should return an array with the achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: achievements,

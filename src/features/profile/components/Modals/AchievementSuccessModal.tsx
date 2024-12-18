@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { AchievementEnum } from 'api/gen'
+import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,24 +18,28 @@ import success from './success.json'
 interface Props {
   visible: boolean
   hideModal: () => void
-  names: AchievementEnum[]
+  achievementsToShow: AchievementResponse[]
 }
 
-export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) => {
+export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow }: Props) => {
   const logoRef = useRef<LottieView>(null)
+
+  const achievementNames: AchievementEnum[] = achievementsToShow.map(
+    (achievement) => achievement.name
+  )
 
   useEffect(() => {
     if (visible) {
-      analytics.logConsultAchievementsSuccessModal(names)
+      analytics.logConsultAchievementsSuccessModal(achievementNames)
       logoRef.current?.play(0, 62)
     }
     // The effect should only run when `visible` changes because`names` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  if (!visible || names.length <= 0) return null
+  if (!visible || achievementsToShow.length <= 0) return null
 
-  const severalAchievementsUnlocked = names.length >= 2
+  const severalAchievementsUnlocked = achievementsToShow.length >= 2
 
   return (
     <AppInformationModal

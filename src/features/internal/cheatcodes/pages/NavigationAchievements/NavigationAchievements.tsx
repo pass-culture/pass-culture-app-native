@@ -2,11 +2,14 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AchievementEnum } from 'api/gen'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
+import {
+  userCompletedBookBooking,
+  userCompletedMovieBooking,
+} from 'features/profile/pages/Achievements/AchievementData'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
@@ -38,7 +41,7 @@ export function NavigationAchievements(): React.JSX.Element {
             onPress={showModalOneAchievement}
           />
           <AchievementSuccessModal
-            names={[AchievementEnum.FIRST_BOOK_BOOKING]}
+            achievementsToShow={[userCompletedMovieBooking]}
             visible={visibleOneAchievement}
             hideModal={hideModalOneAchievement}
           />
@@ -49,7 +52,7 @@ export function NavigationAchievements(): React.JSX.Element {
             onPress={showModalSeveralAchievements}
           />
           <AchievementSuccessModal
-            names={[AchievementEnum.FIRST_ART_LESSON_BOOKING, AchievementEnum.FIRST_BOOK_BOOKING]}
+            achievementsToShow={[userCompletedMovieBooking, userCompletedBookBooking]}
             visible={visibleSeveralAchievements}
             hideModal={hideModalSeveralAchievements}
           />
