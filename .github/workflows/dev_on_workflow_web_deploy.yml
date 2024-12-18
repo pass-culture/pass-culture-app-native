@@ -69,6 +69,7 @@ jobs:
           export SENTRY_LOG_LEVEL="debug"
       - name: 'Build web for input env'
         run: |
+          echo $SENTRY_AUTH_TOKEN | wc -m
           NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
       - name: 'Push assets to bucket'
         run: |

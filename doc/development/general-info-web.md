@@ -52,8 +52,6 @@ There is also `vite-plugin-html` that allows us to easily pass variables to the 
 
 To send events to Sentry from local environnement we have to create a `.env.local` (loaded automatically by `vite`) containing a variable `SENTRY_AUTH_TOKEN` that is used in the sentry plugin.
 
-Note about the `authToken`: we don't define it explicitly in the Sentry plugin's configuration because it will either be loaded automatically from the local environnement (`.env.local`), or from the CI's environnement. If you specify `authToken: process.env.SENTRY_AUTH_TOKEN` in the config, it will not work because `authToken` is not defined in `process.env`. Including it `process.env` would potentially include the secret in the bundle so would be bad practice anyways.
-
 Lastly, to reset the css, we installed the `reset-css` plugin allowing us to be sure all users will see our app the same. With the webpack config, this css file was directly in our project and we had to load the css and then inject it in the `index.html` through a variable. The `reset-css` plugin makes things much easier. The plugin is imported in `App.web.tsx`.
 
 ### Resolving modules

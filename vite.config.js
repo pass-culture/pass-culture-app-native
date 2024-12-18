@@ -33,6 +33,7 @@ export default ({ mode }) => {
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
+  console.log(process.env.SENTRY_AUTH_TOKEN ? process.env.SENTRY_AUTH_TOKEN.length : 0)
   const proxyConfig = {
     host: true, // This allows VSCode live share port forwarding
     proxy: {
@@ -91,6 +92,7 @@ export default ({ mode }) => {
         url: 'https://sentry.passculture.team/',
         org: 'sentry',
         project: 'application-native',
+        authToken: process.env.SENTRY_AUTH_TOKEN,
         release: {
           uploadLegacySourcemaps: {
             paths: ['./dist'],
