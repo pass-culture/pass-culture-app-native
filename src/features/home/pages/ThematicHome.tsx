@@ -129,12 +129,41 @@ export const ThematicHome: FunctionComponent = () => {
 
   useEffect(() => {
     if (id) {
-      analytics.logConsultHome({
-        homeEntryId: id,
-        from: params.from,
-        moduleId: params.moduleId,
-        moduleListId: params.moduleListId,
-      })
+      switch (params.from) {
+        case 'category_block':
+          {
+            analytics.logConsultThematicHome({
+              homeEntryId: id,
+              from: params.from,
+              moduleId: params.moduleId,
+              moduleListId: params.moduleListId,
+            })
+          }
+          break
+        case 'highlight_thematic_block':
+          {
+            analytics.logConsultThematicHome({
+              homeEntryId: id,
+              from: params.from,
+              moduleId: params.moduleId,
+              moduleListId: params.moduleListId,
+            })
+          }
+          break
+        case 'deeplink':
+          {
+            analytics.logConsultThematicHome({
+              homeEntryId: id,
+              from: params.from,
+            })
+          }
+          break
+        default: {
+          analytics.logConsultThematicHome({
+            homeEntryId: id,
+          })
+        }
+      }
     }
   }, [id, params.from, params.moduleId, params.moduleListId])
 
