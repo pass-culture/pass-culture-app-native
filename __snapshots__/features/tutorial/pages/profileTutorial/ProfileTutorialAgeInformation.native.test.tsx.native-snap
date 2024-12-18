@@ -2552,6 +2552,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               style={
                 [
                   {
+                    "alignItems": "center",
                     "flexDirection": "row",
                     "top": 0,
                   },

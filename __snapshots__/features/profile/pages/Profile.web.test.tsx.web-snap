@@ -294,7 +294,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-flexDirection-18u37iz r-top-ipm5af"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-top-ipm5af"
                     >
                       <div
                         class="css-view-175oi2r"
@@ -1452,7 +1452,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-flexDirection-18u37iz r-top-ipm5af"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-top-ipm5af"
                     >
                       <div
                         class="css-view-175oi2r"
