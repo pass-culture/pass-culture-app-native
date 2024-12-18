@@ -6,6 +6,9 @@
     "ruby@2.7.5",
     "python3@latest",
     "git@latest",
-    "maestro@latest"
+    "maestro@latest",
+    "act@latest",
+    "gh@latest",
+    "podman@latest"
   ]
 }

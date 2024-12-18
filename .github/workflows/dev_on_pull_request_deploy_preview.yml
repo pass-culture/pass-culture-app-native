@@ -1,0 +1,26 @@
+name: '1 [on_pr] Deploy PR version to Firebase for preview'
+
+on:
+  pull_request:
+    branches: [master]
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions: write-all
+
+jobs:
+  deploy_on_firebase:
+    if: contains(github.event.pull_request.labels.*.name, 'preview')
+    name: Deploy PR version to Firebase
+    uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
+    with:
+      ENV: 'testing'
+      PUSH_RELEASE_TO_SENTRY: false
+      CHANNEL: ''
+      REF: '${{ github.ref }}'
+      CACHE_BUCKET_NAME: 'passculture-metier-ehp'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
