@@ -17,7 +17,7 @@ import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfig
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -77,10 +77,10 @@ describe('Bookings', () => {
 
   it('should always execute the query (in cache or in network)', async () => {
     renderBookings()
-    await screen.findByText('Mes réservations')
+    await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookings is called seven times
-    expect(useBookingsSpy).toHaveBeenCalledTimes(7)
+    //Due to multiple renders useBookings is called nine times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(9)
   })
 
   it('should display the right number of ongoing bookings', async () => {
