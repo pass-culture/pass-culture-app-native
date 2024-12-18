@@ -66,7 +66,7 @@ export const fetchSearchResults = async ({
         /* Is needed to get a queryID, in order to send analytics events
          https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
         clickAnalytics: true,
-        ...(aroundPrecision && aroundPrecision !== 0 && { aroundPrecision }),
+        ...(aroundPrecision && { aroundPrecision }),
       },
     },
     // Venues
