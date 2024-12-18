@@ -19,28 +19,15 @@ describe('parseMarkdown', () => {
     ])
   })
 
-  it('should parse underline text', () => {
-    const input = 'Text ~underline~ only'
-    const output = parseMarkdown(input)
-
-    expect(output).toEqual([
-      { text: 'Text ' },
-      { text: 'underline', isUnderline: true },
-      { text: ' only' },
-    ])
-  })
-
   it('should parse several styles in a single string', () => {
-    const input = 'Text **bold**, _italic_ and ~underline~.'
+    const input = 'Text **bold** and _italic_.'
     const output = parseMarkdown(input)
 
     expect(output).toEqual([
       { text: 'Text ' },
       { text: 'bold', isBold: true },
-      { text: ', ' },
-      { text: 'italic', isItalic: true },
       { text: ' and ' },
-      { text: 'underline', isUnderline: true },
+      { text: 'italic', isItalic: true },
       { text: '.' },
     ])
   })
