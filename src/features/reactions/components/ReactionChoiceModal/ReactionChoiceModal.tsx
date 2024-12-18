@@ -17,6 +17,7 @@ import { ReactionChoiceModalBodyWithValidation } from 'features/reactions/compon
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { analytics } from 'libs/analytics'
+import { modalFactory, reactionModal } from 'libs/modals/modals'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -37,6 +38,10 @@ type Props = {
   bodyType: ReactionChoiceModalBodyEnum
   offerImages?: OfferImageBasicProps[]
 }
+
+modalFactory.add(reactionModal, ({ params, close }) => {
+  return <ReactionChoiceModal visible {...params} closeModal={close} />
+})
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
   offer,
