@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AchievementEnum, AchievementResponse } from 'api/gen'
+import { useAchievementsMarkAsSeen } from 'features/achievements/api/useMarkAchievementsAsSeen'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,15 +24,18 @@ interface Props {
 
 export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow }: Props) => {
   const logoRef = useRef<LottieView>(null)
+  const { mutate: markAchievementsAsSeen } = useAchievementsMarkAsSeen()
 
   const achievementNames: AchievementEnum[] = achievementsToShow.map(
     (achievement) => achievement.name
   )
+  const achievementIds: number[] = achievementsToShow.map((achievement) => achievement.id)
 
   useEffect(() => {
     if (visible) {
       analytics.logConsultAchievementsSuccessModal(achievementNames)
       logoRef.current?.play(0, 62)
+      markAchievementsAsSeen(achievementIds)
     }
     // The effect should only run when `visible` changes because`names` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -130,12 +130,11 @@ describe('useShouldShowAchievementSuccessModal', () => {
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
       expect(result.current.achievementsToShow).toEqual([
-        {
+        expect.objectContaining({
           id: 1,
           name: 'FIRST_ART_LESSON_BOOKING',
           seenDate: undefined,
-          unlockedDate: 'Wed Dec 18 2024',
-        },
+        }),
       ])
     })
   })

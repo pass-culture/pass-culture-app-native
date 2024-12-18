@@ -4,8 +4,8 @@ import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
 export function useAchievementsMarkAsSeen(
-  onSuccess: () => void,
-  onError: (error: unknown) => void
+  onSuccess?: () => void,
+  onError?: (error: unknown) => void
 ) {
   const queryClient = useQueryClient()
 
@@ -16,7 +16,7 @@ export function useAchievementsMarkAsSeen(
         queriesToInvalidateOnMarkAsSeen.forEach((queryKey) =>
           queryClient.invalidateQueries([queryKey])
         )
-        onSuccess()
+        if (onSuccess) onSuccess()
       },
       onError,
     }
