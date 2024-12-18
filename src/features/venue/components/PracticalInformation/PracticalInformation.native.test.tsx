@@ -2,12 +2,17 @@ import React from 'react'
 
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('PracticalInformation', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display withdrawal information', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
