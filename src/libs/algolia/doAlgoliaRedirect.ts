@@ -26,5 +26,10 @@ export const doAlgoliaRedirect = (
     payload: newSearchState,
   })
 
-  return navigateToThematicSearch(newSearchState, disabilities)
+  navigateToThematicSearch(newSearchState, disabilities)
+
+  dispatch({
+    type: 'SET_STATE',
+    payload: { ...newSearchState, query: '' },
+  })
 }
