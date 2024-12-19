@@ -24,27 +24,11 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { AccesLibre } from 'features/internal/cheatcodes/pages/AccesLibre'
-import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
-import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
-import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
-import { MarketingBlocks } from 'features/internal/cheatcodes/pages/MarketingBlocks'
-import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
-import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
-import { NavigationAchievements } from 'features/internal/cheatcodes/pages/NavigationAchievements'
-import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
-import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
-import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
-import { NavigationSubscription } from 'features/internal/cheatcodes/pages/NavigationSubscription/NavigationSubscription'
-import { NewCaledonia } from 'features/internal/cheatcodes/pages/NewCaledonia'
-import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
-import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
-import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
-import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
+import { cheatcodeRoutes } from 'features/navigation/RootNavigator/cheatcodeRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
@@ -97,6 +81,7 @@ export const routes: RootRoute[] = [
   ...tutorialRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
+  ...cheatcodeRoutes,
   {
     name: 'Offer',
     component: Offer,
@@ -185,7 +170,6 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
     },
   },
-  { name: 'AppComponents', component: AppComponents, path: 'composants-app' },
   {
     name: 'BannedCountryError',
     component: BannedCountryError,
@@ -198,8 +182,6 @@ export const routes: RootRoute[] = [
     path: 'lien-modification-email-expire',
     options: { title: 'Lien de modification de l’email expiré' },
   },
-  { name: 'CheatCodes', component: CheatCodes, path: 'cheat-codes' },
-  { name: 'CheatMenu', component: CheatMenu, path: 'cheat-menu' },
   {
     name: 'ConsentSettings',
     component: ConsentSettings,
@@ -231,13 +213,6 @@ export const routes: RootRoute[] = [
     component: LegalNotices,
     path: 'notices-legales',
     options: { title: 'Informations légales' },
-  },
-  {
-    // debug route: in navigation component
-    name: 'NavigationAccountSuspension',
-    component: NavigationAccountSuspension,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-account-suspension',
   },
   {
     name: 'AccountStatusScreenHandler',
@@ -348,41 +323,10 @@ export const routes: RootRoute[] = [
     options: { title: 'Connexion' },
   },
   {
-    name: 'Navigation',
-    component: Navigation,
-    path: 'cheat-navigation',
-  },
-  {
-    name: 'NavigationNotScreensPages',
-    component: NavigationNotScreensPages,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-not-screens-pages',
-  },
-  {
-    name: 'NavigationProfile',
-    component: NavigationProfile,
-    path: 'cheat-navigation-profile',
-  },
-  {
-    name: 'NavigationAchievements',
-    component: NavigationAchievements,
-    path: 'cheat-navigation-achievements',
-  },
-  {
     name: 'NotificationsSettings',
     component: NotificationsSettings,
     path: 'profil/notifications',
     options: { title: 'Réglages de notifications' },
-  },
-  {
-    name: 'NavigationShareApp',
-    component: NavigationShareApp,
-    path: 'cheat-navigation-share-app',
-  },
-  {
-    name: 'NavigationSubscription',
-    component: NavigationSubscription,
-    path: 'cheat-navigation-subscription',
   },
   {
     name: 'PersonalData',
@@ -548,16 +492,6 @@ export const routes: RootRoute[] = [
     options: { title: 'Aperçu du lieu' },
   },
   {
-    name: 'AccesLibre',
-    component: AccesLibre,
-    path: 'acces-libre',
-  },
-  {
-    name: 'NewCaledonia',
-    component: NewCaledonia,
-    path: 'nouvelle-caledonie',
-  },
-  {
     name: 'Artist',
     component: Artist,
     path: 'artiste/:fromOfferId',
@@ -588,36 +522,6 @@ export const routes: RootRoute[] = [
       path: 'ab-testing-poc',
     },
     options: { title: 'POC A/B Testing' },
-  },
-  {
-    // debug route: in navigation component
-    name: 'DefaultThematicHomeHeaderCheatcode',
-    component: DefaultThematicHomeHeaderCheatcode,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-default-home-header',
-  },
-  {
-    // debug route: in navigation component
-    name: 'HighlightThematicHomeHeaderCheatcode',
-    component: HighlightThematicHomeHeaderCheatcode,
-    path: 'cheat-highlight-home-header',
-  },
-  {
-    // debug route: in navigation component
-    name: 'CategoryThematicHomeHeaderCheatcode',
-    component: CategoryThematicHomeHeaderCheatcode,
-    path: 'cheat-category-home-header',
-  },
-  {
-    // debug route: in navigation component
-    name: 'ThematicHeaders',
-    component: ThematicHeaders,
-    path: 'cheat-thematic-home-header',
-  },
-  {
-    name: 'MarketingBlocks',
-    component: MarketingBlocks,
-    path: 'marketing-blocks',
   },
   {
     name: 'ThematicHome',

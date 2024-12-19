@@ -1,4 +1,3 @@
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
@@ -28,10 +27,6 @@ import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
-import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
-import { NavigationSignUp } from 'features/internal/cheatcodes/pages/NavigationSignUp'
-import { NavigationIdentityCheck } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
-import { NewIdentificationFlow } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck/NewIdentificationFlow/NewIdentificationFlow'
 import {
   GenericRoute,
   SubscriptionRootStackParamList,
@@ -39,34 +34,6 @@ import {
 
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
-  {
-    // debug route: in navigation component
-    name: 'NavigationSignUp',
-    component: NavigationSignUp,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-sign-up',
-  },
-  {
-    // debug route: in navigation component
-    name: 'NavigationErrors',
-    component: NavigationErrors,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-errors',
-  },
-  {
-    // debug route: in navigation component
-    name: 'NavigationIdentityCheck',
-    component: NavigationIdentityCheck,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-identity-check',
-  },
-  {
-    // debug route: in navigation component
-    name: 'NewIdentificationFlow',
-    component: NewIdentificationFlow,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheat-navigation-new-identification-flow',
-  },
   // Stepper
   {
     name: 'Stepper',

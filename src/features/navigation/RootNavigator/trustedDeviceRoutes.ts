@@ -1,5 +1,3 @@
-import { NavigationTrustedDevice } from 'features/internal/cheatcodes/pages/NavigationTrustedDevice/NavigationTrustedDevice'
-import { TrustedDeviceInfos } from 'features/internal/cheatcodes/pages/NavigationTrustedDevice/TrustedDeviceInfos'
 import {
   TrustedDeviceRootStackParamList,
   GenericRoute,
@@ -44,17 +42,5 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     component: SuspiciousLoginSuspendedAccount,
     path: 'securisation-compte/suspension-confirmee',
     options: { title: 'Confirmation de suspension de compte' },
-  },
-  // Cheatcode
-  {
-    name: 'NavigationTrustedDevice',
-    component: NavigationTrustedDevice,
-    path: 'appareil-de-confiance-navigation',
-  },
-  {
-    name: 'TrustedDeviceInfos',
-    component: TrustedDeviceInfos,
-    path: 'appareil-de-confiance-cheatcode-informations',
-    options: { title: 'Informations de l’appareil' },
   },
 ]

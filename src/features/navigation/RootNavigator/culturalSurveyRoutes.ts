@@ -2,8 +2,6 @@ import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurve
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { NavigationCulturalSurvey } from 'features/internal/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import {
   CulturalSurveyRootStackParamList,
   GenericRoute,
@@ -11,12 +9,6 @@ import {
 
 // Try to keep those routes in the same order as the user flow
 export const culturalSurveyRoutes: GenericRoute<CulturalSurveyRootStackParamList>[] = [
-  {
-    name: 'NavigationCulturalSurvey',
-    component: NavigationCulturalSurvey,
-    hoc: withAsyncErrorBoundary,
-    path: 'questionnaire-pratiques-initiales',
-  },
   {
     name: 'CulturalSurveyIntro',
     component: CulturalSurveyIntro,
