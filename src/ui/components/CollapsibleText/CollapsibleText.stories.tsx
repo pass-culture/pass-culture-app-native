@@ -2,6 +2,7 @@ import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
+import { Markdown } from 'ui/components/Markdown/Markdown'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof CollapsibleText> = {
@@ -27,12 +28,12 @@ const variantConfig: Variants<typeof CollapsibleText> = [
     },
   },
   {
-    label: 'CollapsibleText is markdown',
+    label: 'CollapsibleText with markdown',
     props: {
-      children:
-        'Lorem ipsum **_dolor sit amet_**, consectetur adipiscing elit. **Maecenas nec tellus** in magna convallis egestas eget id justo. _Donec lorem ante_, tempor eu diam quis, laoreet rhoncus tortor.',
+      children: (
+        <Markdown text="Lorem ipsum **_dolor sit amet_**, consectetur adipiscing elit. **Maecenas nec tellus** in magna convallis egestas eget id justo. _Donec lorem ante_, tempor eu diam quis, laoreet rhoncus tortor."></Markdown>
+      ),
       numberOfLines: 5,
-      isMarkdown: true,
     },
   },
 ]
