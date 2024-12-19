@@ -9,15 +9,13 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
-  getDefaultFormValues,
   getIcon,
-  handleCategoriesSearchPress,
+  buildFormPayload as buildFormSearchData,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { BaseCategory, CategoryKey } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -36,8 +34,8 @@ export interface CategoriesModalProps {
 }
 
 export type CategoriesModalFormProps = {
-  categories: string[]
-  currentView: number // index of category to show in `categories`
+  categoryStack: CategoryKey[]
+  currentIndex: number
 }
 
 export const CategoriesModal = ({
@@ -48,13 +46,56 @@ export const CategoriesModal = ({
   onClose,
   facets,
 }: CategoriesModalProps) => {
-  const { data = PLACEHOLDER_DATA } = useSubcategories()
+  const data = PLACEHOLDER_DATA
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
-  const tree = useMemo(() => {
-    return createMappingTree(data, facets)
-  }, [data, facets])
+  const ROOT_ALL: BaseCategory = {
+    children: [],
+    label: 'Toutes les catégories',
+    key: 'ROOT_ALL',
+    position: 0,
+  }
+  const ALL: BaseCategory = {
+    children: [],
+    label: 'Tout',
+    key: 'ALL',
+    position: 0,
+  }
+  const THRILLER: BaseCategory = {
+    children: [],
+    label: 'Thriller',
+    key: 'THRILLER',
+    position: 1,
+  }
+  const SEANCE: BaseCategory = {
+    children: [ALL, THRILLER],
+    label: 'Séance de cinéma',
+    key: 'SEANCE',
+    position: 1,
+  }
+  const CINEMA: BaseCategory = {
+    children: [ALL, SEANCE],
+    label: 'Cinéma',
+    key: 'CINEMA',
+    position: 1,
+  }
+  const ROOT: BaseCategory = {
+    children: [ROOT_ALL, CINEMA],
+    label: '',
+    key: 'ROOT',
+    position: 1,
+  }
+  const tree: Record<CategoryKey, BaseCategory> = {
+    CINEMA: CINEMA,
+    ROOT: ROOT,
+    SEANCE: SEANCE,
+  }
+
+  const getDefaultFormValues = (searchState: SearchState): CategoriesModalFormProps => ({
+    categoryStack: [ROOT.key, ...searchState.offerCategories.map((category) => category)],
+    currentIndex: 0,
+  })
 
   const {
     formState: { isSubmitting },
@@ -63,18 +104,17 @@ export const CategoriesModal = ({
     setValue,
     watch,
   } = useForm<CategoriesModalFormProps>({
-    defaultValues: getDefaultFormValues(tree, searchState),
+    defaultValues: getDefaultFormValues(searchState),
   })
-  const { categories, currentView } = watch()
-
+  const { categoryStack, currentIndex } = watch()
   useEffect(() => {
-    reset(getDefaultFormValues(tree, searchState))
-  }, [reset, searchState, tree])
+    reset(getDefaultFormValues(searchState))
+  }, [reset, searchState])
 
   const handleModalClose = useCallback(() => {
-    reset(getDefaultFormValues(tree, searchState))
+    reset(getDefaultFormValues(searchState))
     hideModal()
-  }, [hideModal, reset, searchState, tree])
+  }, [hideModal, reset, searchState])
 
   const handleClose = useCallback(() => {
     handleModalClose()
@@ -83,45 +123,81 @@ export const CategoriesModal = ({
     }
   }, [handleModalClose, onClose])
 
-  const handleGoBack = useCallback(
-    () => setValue('currentView', currentView - 1),
-    [currentView, setValue]
-  )
+  const handleGoBack = useCallback(() => {
+    const newIndex = currentIndex - 1
+    console.log('GO BACK. Setting currentIndex to:', newIndex)
+    setValue('currentIndex', newIndex)
+  }, [currentIndex, setValue])
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
-      const searchPressData = handleCategoriesSearchPress(form, data)
-
-      let additionalSearchState: SearchState = { ...searchState, ...searchPressData?.payload }
-      additionalSearchState = {
-        ...additionalSearchState,
-        isFullyDigitalOffersCategory: searchPressData?.isFullyDigitalOffersCategory || undefined,
+      const formSearchData = buildFormSearchData(form, data)
+      if (!formSearchData) {
+        hideModal()
+        return
       }
 
-      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+      const newSearchState: SearchState = {
+        ...searchState,
+        ...formSearchData.payload,
+        isFullyDigitalOffersCategory: formSearchData.isFullyDigitalOffersCategory,
+      }
+
+      dispatch({ type: 'SET_STATE', payload: newSearchState })
       hideModal()
     },
     [data, dispatch, hideModal, searchState]
   )
 
-  const handleCategorySelect = useCallback(
-    (category: string) => {
-      setValue('categories', [...categories, category])
-      setValue('currentView', currentView + 1)
+  const handleSelect = useCallback(
+    (category: BaseCategory) => {
+      const hasChildren = category.children.length
+      const newIndex = hasChildren ? currentIndex + 1 : currentIndex
+
+      const previousSelection = categoryStack[currentIndex + 1]
+      const newStack =
+        category.key !== previousSelection
+          ? [...categoryStack.slice(0, currentIndex + 1), category.key]
+          : categoryStack
+
+      console.log(
+        category?.key ?? 'ALL',
+        'selected. Setting categoryStack to:',
+        newStack,
+        'and currentIndex to:',
+        newIndex
+      )
+      setValue('currentIndex', newIndex)
+      setValue('categoryStack', newStack)
+
+      handleSubmit(handleSearchPress)
     },
-    [categories, currentView, setValue]
+    [categoryStack, currentIndex, setValue]
   )
 
   const handleReset = useCallback(() => {
-    reset({
-      categories: [],
-      currentView: -1,
-    })
+    reset(getDefaultFormValues(searchState))
   }, [reset])
 
-  const modalTitle = categories[currentView] ?? 'Catégories'
+  const currentItem = useMemo(
+    () => (categoryStack[currentIndex] ? tree[categoryStack[currentIndex]] : ROOT),
+    [tree, categoryStack, currentIndex]
+  )
+
+  const selectedChild = useMemo(() => {
+    const next = currentIndex + 1
+    return categoryStack[next] ? tree[categoryStack[next]] : undefined
+  }, [tree, categoryStack, currentIndex])
+
+  const modalTitle = useMemo(
+    () =>
+      categoryStack[currentIndex]
+        ? tree[categoryStack[currentIndex]]?.label ?? 'Catégories'
+        : 'Catégories',
+    [tree, categoryStack, currentIndex]
+  )
   const shouldDisplayBackButton =
-    currentView > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+    currentIndex >= 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
@@ -156,15 +232,13 @@ export const CategoriesModal = ({
       }>
       <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
-        {categories[currentView] ? (
+        {currentItem ? (
           <CategoriesSection
-            itemsMapping={tree}
-            onSelect={handleCategorySelect}
-            allLabel="Toutes les catégories"
-            allValue="Tout"
-            value={categories[currentView]}
+            onSelect={handleSelect}
+            onSubmit={handleSubmit(handleSearchPress)}
+            category={currentItem}
+            choice={selectedChild}
             getIcon={getIcon}
-            shouldSortItems={false} // sorting on positions is not supported yet for search groups, but they're already sorted in `createMappingTree`
           />
         ) : null}
       </Form.MaxWidth>

@@ -11,27 +11,19 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
-import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
-import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import {
   BaseCategory,
-  MappingTree,
+  Category,
   createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import {
-  BooksNativeCategoriesEnum,
-  DescriptionContext,
-  NativeCategoryEnum,
-  SearchState,
-} from 'features/search/types'
+import { BooksNativeCategoriesEnum, NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-
-type Item = string | null
 
 function isBookNativeCategory(
   category: NativeCategoryEnum | null
@@ -161,29 +153,12 @@ function getUniqueBy<T>(arr: T[], key: keyof T) {
   return [...new Map(arr.map((item) => [item[key], item])).values()]
 }
 
-function getCategoryFromEnum(data: undefined, enumValue: undefined): undefined
-function getCategoryFromEnum(data: undefined, enumValue: SearchGroupNameEnumv2): undefined
-function getCategoryFromEnum(data: SubcategoriesResponseModelv2, enumValue: undefined): undefined
-function getCategoryFromEnum(
-  data: SubcategoriesResponseModelv2,
-  enumValue: SearchGroupNameEnumv2
-): SearchGroupResponseModelv2
-function getCategoryFromEnum(
-  data: SubcategoriesResponseModelv2 | undefined,
-  enumValue?: SearchGroupNameEnumv2
-) {
-  if (data && enumValue) {
-    return data.searchGroups.find((category) => category.name === enumValue)
-  }
-
-  return undefined
-}
-
 /**
  * Returns correct icon for a category.
  */
-export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
-  return CATEGORY_CRITERIA[item]?.icon
+export function getIcon(item?: BaseCategory) {
+  if (!item) return undefined
+  return CATEGORY_CRITERIA[item.key as SearchGroupNameEnumv2]?.icon
 }
 
 /**
@@ -366,20 +341,6 @@ export const useSubcategoryIdsFromSearchGroups = (
     .map((filteredSubcategory) => filteredSubcategory.id)
 }
 
-export function getDefaultFormValues(
-  tree: MappingTree,
-  searchState: SearchState
-): CategoriesModalFormProps {
-  const categories = [
-    ...searchState.offerCategories,
-    ...(searchState.offerGenreTypes ?? []).map((genreType) => genreType.key),
-  ]
-  return {
-    categories,
-    currentView: categories.length - 1,
-  }
-}
-
 export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
   switch (genreTypeKey) {
     case GenreType.BOOK:
@@ -404,7 +365,7 @@ export function getNbResultsFacetLabel(nbResultsFacet?: number) {
   }
 }
 
-export const handleCategoriesSearchPress = (
+export const buildFormPayload = (
   form: CategoriesModalFormProps,
   data: SubcategoriesResponseModelv2
 ) => {
@@ -421,5 +382,5 @@ export const handleCategoriesSearchPress = (
   return { payload, isFullyDigitalOffersCategory }
 }
 
-export const sortCategoriesPredicate = (a: BaseCategory, b: BaseCategory) =>
+export const sortCategoriesPredicate = (a: Category, b: Category) =>
   (a.position ?? Infinity) - (b.position ?? Infinity) || a.label.localeCompare(b.label)

@@ -14,9 +14,16 @@ import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
+export type CategoryKey = string
+
 export type BaseCategory = {
+  children: BaseCategory[]
   label: string
+  key: CategoryKey
   position?: number
+  searchFilter?: string
+  searchValue?: string
+  nbResultsFacet?: number | never
 }
 type MappedGenreType = BaseCategory & {
   nbResultsFacet?: never
@@ -34,6 +41,7 @@ type MappedCategory = BaseCategory & {
   children: MappedNativeCategories
 }
 export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
+export type CategoriesMapping = Record<string, BaseCategory>
 
 function getNativeCategoryGenreTypes(
   data: SubcategoriesResponseModelv2,
@@ -135,7 +143,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
       const positionB: number = CATEGORY_CRITERIA[b.name]?.position ?? 0
       return positionA - positionB
     })
-    .reduce<MappingTree>((result, searchGroup) => {
+    .reduce<CategoriesMapping>((result, searchGroup) => {
       const nativeCategories = getNativeCategories(data, searchGroup.name)
       const mappedNativeCategories = nativeCategories.length
         ? nativeCategories.reduce<MappedNativeCategories>(
@@ -156,7 +164,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
           )
         : {}
 
-      result[searchGroup.name] = {
+      result[SearchGroupNameEnumv2[searchGroup.name]] = {
         label: searchGroup.value || ALL_CATEGORIES_LABEL,
         children:
           searchGroup.name === SearchGroupNameEnumv2.LIVRES

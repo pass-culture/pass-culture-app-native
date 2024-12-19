@@ -18,14 +18,14 @@ export function BookCategoriesSection<
   T extends CategoriesMapping,
   N = T extends MappingTree ? keyof MappingTree : keyof T | null,
 >({
-  allLabel,
-  allValue,
+  noSelectionLabel: allLabel,
+  noSelectionValue: allValue,
   itemsMapping,
   descriptionContext,
   getIcon,
   onSelect,
   onSubmit,
-  value,
+  currentSelection: value,
 }: Readonly<CategoriesSectionProps<T, N>>) {
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
@@ -66,8 +66,8 @@ export function BookCategoriesSection<
       {bookCategoriesWithGenre.map(([k, item]) => (
         <CategoriesSectionItem
           key={k}
-          value={value}
-          k={k}
+          label={value}
+          key={k}
           item={item}
           descriptionContext={descriptionContext}
           handleSelect={handleSelect}
@@ -82,8 +82,8 @@ export function BookCategoriesSection<
       {otherBookCategories.map(([k, item]) => (
         <CategoriesSectionItem
           key={k}
-          value={value}
-          k={k}
+          label={value}
+          key={k}
           item={item}
           descriptionContext={descriptionContext}
           handleSelect={handleSelect}

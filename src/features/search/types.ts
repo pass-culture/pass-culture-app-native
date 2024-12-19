@@ -17,6 +17,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { BaseCategory, CategoryKey } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -41,7 +42,7 @@ export interface SearchState {
   endingDatetime?: string
   hitsPerPage: number | null
   locationFilter: LocationFilter
-  offerCategories: string[]
+  offerCategories: CategoryKey[]
   offerGenreTypes?: OfferGenreType[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean

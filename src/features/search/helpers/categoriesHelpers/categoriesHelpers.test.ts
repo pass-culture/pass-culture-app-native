@@ -20,10 +20,7 @@ import {
   sortCategoriesPredicate,
   useSubcategoryIdsFromSearchGroups,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import {
-  BaseCategory,
-  createMappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { Category, createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
@@ -611,8 +608,8 @@ describe('categoriesHelpers', () => {
 
   describe('sortCategoriesPredicate', () => {
     it('should sort following position ascending order', () => {
-      const lowestPosition: BaseCategory = { label: 'a', position: 0 }
-      const greatestPosition: BaseCategory = { label: 'b', position: 1 }
+      const lowestPosition: Category = { label: 'a', position: 0 }
+      const greatestPosition: Category = { label: 'b', position: 1 }
 
       expect(
         [greatestPosition, lowestPosition].sort((a, b) => sortCategoriesPredicate(a, b))
@@ -620,8 +617,8 @@ describe('categoriesHelpers', () => {
     })
 
     it('should prioritize position over label', () => {
-      const withoutPosition: BaseCategory = { label: 'a' }
-      const withPosition: BaseCategory = { label: 'b', position: 1 }
+      const withoutPosition: Category = { label: 'a' }
+      const withPosition: Category = { label: 'b', position: 1 }
 
       expect([withoutPosition, withPosition].sort((a, b) => sortCategoriesPredicate(a, b))).toEqual(
         [withPosition, withoutPosition]
@@ -629,8 +626,8 @@ describe('categoriesHelpers', () => {
     })
 
     it('should sort following label alphabetical ascending order if no positions', () => {
-      const firstLabel: BaseCategory = { label: 'a' }
-      const lastLabel: BaseCategory = { label: 'b' }
+      const firstLabel: Category = { label: 'a' }
+      const lastLabel: Category = { label: 'b' }
 
       expect([lastLabel, firstLabel].sort((a, b) => sortCategoriesPredicate(a, b))).toEqual([
         firstLabel,
@@ -639,8 +636,8 @@ describe('categoriesHelpers', () => {
     })
 
     it('should sort following labels if positions are equal', () => {
-      const firstLabel: BaseCategory = { label: 'a', position: 1 }
-      const lastLabel: BaseCategory = { label: 'b', position: 1 }
+      const firstLabel: Category = { label: 'a', position: 1 }
+      const lastLabel: Category = { label: 'b', position: 1 }
 
       expect([lastLabel, firstLabel].sort((a, b) => sortCategoriesPredicate(a, b))).toEqual([
         firstLabel,

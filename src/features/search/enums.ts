@@ -28,11 +28,11 @@ export enum DATE_FILTER_OPTIONS {
   USER_PICK = 'picked',
 }
 
-// export enum CategoriesModalView {
-//   CATEGORIES = 'CATEGORIES',
-//   NATIVE_CATEGORIES = 'NATIVE_CATEGORIES',
-//   GENRES = 'GENRES',
-// }
+export enum CategoriesModalView {
+  CATEGORIES = 'CATEGORIES',
+  NATIVE_CATEGORIES = 'NATIVE_CATEGORIES',
+  GENRES = 'GENRES',
+}
 
 export const SearchCategoriesIllustrations = {
   ArtsCrafts,
