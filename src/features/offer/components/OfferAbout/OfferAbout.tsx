@@ -6,6 +6,7 @@ import { OfferAccessibility } from 'features/offer/components/OfferAccessibility
 import { OfferMetadataItemProps } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
 import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/OfferMetadataList'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
+import { Markdown } from 'ui/components/Markdown/Markdown'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -35,8 +36,8 @@ export const OfferAbout: FunctionComponent<Props> = ({
           {offer.description ? (
             <View>
               <TypoDS.BodyAccent>Description&nbsp;:</TypoDS.BodyAccent>
-              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION} isMarkdown>
-                {offer.description}
+              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+                <Markdown text={offer.description} />
               </CollapsibleText>
             </View>
           ) : null}

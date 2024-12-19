@@ -11,6 +11,7 @@ type Props = {
   onButtonPress: VoidFunction
 } & PropsWithChildren
 
+// It is necessary to have ios.tsx file because the calculation to check that CollapsibleText has a button is different from web and android
 export const CollapsibleTextContent: FunctionComponent<Props> = ({
   expanded,
   numberOfLines,
