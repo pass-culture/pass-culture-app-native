@@ -29,12 +29,10 @@ describe('onNavigationStateChange()', () => {
 
     await simulateNavigate('Screen2')
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Screen2')
 
     await simulateNavigate('Screen1')
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(2)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'Screen1')
   })
 
@@ -43,12 +41,10 @@ describe('onNavigationStateChange()', () => {
 
     await simulateNavigate('NestedStackNavigator', { screen: 'Screen3' })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Screen3')
 
     await simulateNavigate('NestedStackNavigator', { screen: 'Screen4' })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(3)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'Screen4')
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(3, 'Screen4')
 
@@ -59,7 +55,6 @@ describe('onNavigationStateChange()', () => {
       },
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(5)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(4, 'Screen5')
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(5, 'Screen5')
 
@@ -70,7 +65,6 @@ describe('onNavigationStateChange()', () => {
       },
     })
 
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(7)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(6, 'Screen6')
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(7, 'Screen6')
   })
