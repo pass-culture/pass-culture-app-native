@@ -3,5 +3,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible:
     text: "Mes favoris"
     index: 0
-- assertVisible: "Découvrir le catalogue"
+- repeat:
+    while:
+      notVisible: "Découvrir le catalogue"
+    commands:
+      - tapOn: "Supprimer"
+      
 - tapOn: "Découvrir le catalogue"
