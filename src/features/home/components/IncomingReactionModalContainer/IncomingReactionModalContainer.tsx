@@ -9,9 +9,58 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { reactionModal } from 'libs/modals/modals'
 import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
+
+export const useIncomingReactionModal = () => {
+  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const { reactionCategories } = useRemoteConfigContext()
+  const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
+  const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
+  const { data: bookings } = useBookings()
+  const subcategoriesMapping = useSubcategoriesMapping()
+  const mapping = useCategoryIdMapping()
+
+  const bookingsWithoutReaction =
+    bookings?.ended_bookings?.filter((booking) =>
+      filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
+    ) ?? []
+
+  const offerImages: OfferImageBasicProps[] = bookingsWithoutReaction.map((current) => {
+    return {
+      imageUrl: current.stock.offer.image?.url ?? '',
+      categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
+    }
+  })
+
+  const firstBooking = bookingsWithoutReaction[0]
+  const reactionChoiceModalBodyType =
+    bookingsWithoutReaction.length === 1
+      ? ReactionChoiceModalBodyEnum.VALIDATION
+      : ReactionChoiceModalBodyEnum.REDIRECTION
+
+  const getModal = () => {
+    if (!firstBooking || !isCookieConsentChecked || !isReactionFeatureActive) return
+
+    const { stock, dateUsed } = firstBooking
+    const { offer } = stock
+
+    return reactionModal({
+      offer,
+      dateUsed: dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : '',
+      defaultReaction: null,
+      from: ReactionFromEnum.HOME,
+      bodyType: reactionChoiceModalBodyType,
+      offerImages,
+    })
+  }
+
+  return getModal
+}
 
 export const IncomingReactionModalContainer = () => {
   const { reactionCategories } = useRemoteConfigContext()

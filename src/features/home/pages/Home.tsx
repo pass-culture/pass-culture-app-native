@@ -7,21 +7,21 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { useIncomingReactionModal } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
 import { useShouldShowAchievementSuccessModal } from 'features/profile/components/Modals/useShouldShowAchievementSuccessModal'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { createRelativeModals } from 'libs/modals/modal.creator'
+import { useModalActions } from 'libs/modals/modal.store'
+import { achievementsModal, reactionModal } from 'libs/modals/modals'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
@@ -34,11 +34,15 @@ const Header = () => (
   </ListHeaderContainer>
 )
 
+let hasShowSessionModal = false
+
 export const Home: FunctionComponent = () => {
+  const { openModal } = useModalActions()
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
   const startPerfHomeCreationOnce = useFunctionOnce(() =>
     startTransaction(PERFORMANCE_HOME_CREATION)
   )
+
   startPerfHomeCreationOnce()
   startPerfHomeLoadingOnce()
 
@@ -53,26 +57,33 @@ export const Home: FunctionComponent = () => {
     showModal: showOnboardingSubscriptionModal,
     hideModal: hideOnboardingSubscriptionModal,
   } = useModal(false)
+
   useOnboardingSubscriptionModal({
     isLoggedIn,
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { shouldShowAchievementSuccessModal, achievementsToShow } =
-    useShouldShowAchievementSuccessModal()
-  const {
-    visible: visibleAchievementModal,
-    showModal: showAchievementModal,
-    hideModal: hideAchievementModal,
-  } = useModal(false)
+
+  const checkAchievementsModal = useShouldShowAchievementSuccessModal()
+  const checkReactionModal = useIncomingReactionModal()
 
   useEffect(() => {
-    if (shouldShowAchievementSuccessModal) {
-      showAchievementModal()
-    }
-  }, [shouldShowAchievementSuccessModal, showAchievementModal])
+    if (hasShowSessionModal) return
+    hasShowSessionModal = true
+    const modal = createRelativeModals(
+      {
+        creator: reactionModal,
+        check: checkReactionModal,
+      },
+      {
+        creator: achievementsModal,
+        check: checkAchievementsModal,
+      }
+    )
 
-  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+    if (!modal) return
+    openModal(modal)
+  }, [openModal, checkReactionModal, checkAchievementsModal])
 
   useEffect(() => {
     if (id) {
@@ -138,12 +149,6 @@ export const Home: FunctionComponent = () => {
       <OnboardingSubscriptionModal
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
-      />
-      {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
-      <AchievementSuccessModal
-        names={achievementsToShow}
-        visible={visibleAchievementModal}
-        hideModal={hideAchievementModal}
       />
     </React.Fragment>
   )

@@ -14,6 +14,8 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ModalRenderer } from 'libs/modals/modal.renderer'
+import { modalFactory } from 'libs/modals/modals'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
@@ -108,6 +110,7 @@ export const RootNavigator: React.ComponentType = () => {
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
+      <ModalRenderer modalFactory={modalFactory} />
     </TabNavigationStateProvider>
   )
 }

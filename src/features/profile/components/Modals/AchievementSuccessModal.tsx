@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { AchievementEnum } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
+import { achievementsModal, modalFactory } from 'libs/modals/modals'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -21,6 +22,10 @@ interface Props {
   names: AchievementEnum[]
 }
 
+modalFactory.add(achievementsModal, ({ params: { names }, close }) => {
+  return <AchievementSuccessModal visible hideModal={close} names={names} />
+})
+
 export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) => {
   const logoRef = useRef<LottieView>(null)
 
@@ -33,7 +38,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, names }: Props) =>
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  if (!visible || names.length <= 0) return null
+  if (!visible) return null
 
   const severalAchievementsUnlocked = names.length >= 2
 
