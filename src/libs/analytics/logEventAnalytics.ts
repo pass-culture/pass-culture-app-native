@@ -588,36 +588,6 @@ export const logEventAnalytics = {
   logResendEmailValidation: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_VALIDATION }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
-  logScreenViewComeBackLater: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
-  logScreenViewDMSIntroduction: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_DMS_INTRODUCTION }),
-  logScreenViewExpiredOrLostId: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_EXPIRED_OR_LOST_ID }),
-  logScreenViewIdentityCheckEnd: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_END }),
-  logScreenViewIdentityCheckHonor: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_HONOR }),
-  logScreenViewIdentityFork: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_FORK }),
-  logScreenViewSelectIdOrigin: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_ORIGIN }),
-  logScreenViewSelectIdStatus: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_STATUS }),
-  logScreenViewSetAddress: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
-  logScreenViewSetCity: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
-  logScreenViewSetEmail: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_EMAIL }),
-  logScreenViewSetName: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_NAME }),
-  logScreenViewSetPhoneNumber: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_NUMBER }),
-  logScreenViewSetPhoneValidationCode: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
-  logScreenViewSetStatus: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
   logScreenshot: (params: ScreenshotParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SCREENSHOT }, params),
   logSearchScrollToPage: (page: number, searchId?: string) =>

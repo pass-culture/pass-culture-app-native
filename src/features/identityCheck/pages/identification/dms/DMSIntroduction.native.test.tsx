@@ -24,12 +24,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('DMSIntroduction', () => {
-  it('should log screen view when the screen is mounted', async () => {
-    render(<DMSIntroduction />)
-
-    await waitFor(() => expect(analytics.logScreenViewDMSIntroduction).toHaveBeenCalledTimes(1))
-  })
-
   describe('french version', () => {
     beforeEach(() => {
       useRoute.mockReturnValueOnce({

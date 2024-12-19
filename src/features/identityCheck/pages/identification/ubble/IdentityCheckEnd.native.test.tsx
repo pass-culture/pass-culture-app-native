@@ -6,7 +6,6 @@ import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -79,13 +78,6 @@ describe('<IdentityCheckEnd/>', () => {
     jest.advanceTimersByTime(3000)
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log screen view when the screen is mounted', async () => {
-    renderGetStepperInfo()
-    await act(async () => {})
-
-    await waitFor(() => expect(analytics.logScreenViewIdentityCheckEnd).toHaveBeenCalledTimes(1))
   })
 })
 

@@ -124,12 +124,6 @@ describe('<SetStatus/>', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetStatus()
-
-    await waitFor(() => expect(analytics.logScreenViewSetStatus).toHaveBeenCalledTimes(1))
-  })
-
   it('should log analytics on press Continuer', async () => {
     renderSetStatus()
 

@@ -26,8 +26,7 @@ describe('useInitialScreen()', () => {
     const { result } = renderHook(useInitialScreen, { wrapper })
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
-      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-      expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
+      expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
     })
   })
 })

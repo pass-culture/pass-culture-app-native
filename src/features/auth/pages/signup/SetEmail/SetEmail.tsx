@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { useTheme } from 'styled-components/native'
@@ -62,10 +62,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const onLogHasCorrectedEmail = useCallback(() => {
     analytics.logHasCorrectedEmail({ from: 'setemail' })
-  }, [])
-
-  useEffect(() => {
-    analytics.logScreenViewSetEmail()
   }, [])
 
   const onSSOSignInFailure = useCallback(

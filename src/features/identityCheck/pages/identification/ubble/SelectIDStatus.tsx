@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -24,12 +24,9 @@ const logEventSelectIdStatusClicked = (type: IDStatus) => {
   analytics.logSelectIdStatusClicked(type)
 }
 
-export const SelectIDStatus: FunctionComponent = () => {
-  useEffect(() => {
-    analytics.logScreenViewSelectIdStatus()
-  }, [])
-  return <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
-}
+export const SelectIDStatus: FunctionComponent = () => (
+  <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
+)
 
 const MainOptionButton = (
   <HeroButtonList

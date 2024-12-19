@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -18,12 +18,9 @@ export enum IDOrigin {
   'FOREIGN' = 'Foreign',
 }
 
-export const SelectIDOrigin: FunctionComponent = () => {
-  useEffect(() => {
-    analytics.logScreenViewSelectIdOrigin()
-  }, [])
-  return <PageWithHeader title="Identification" scrollChildren={<SelectIDOriginContent />} />
-}
+export const SelectIDOrigin: FunctionComponent = () => (
+  <PageWithHeader title="Identification" scrollChildren={<SelectIDOriginContent />} />
+)
 
 const SelectIDOriginContent: FunctionComponent = () => {
   return (

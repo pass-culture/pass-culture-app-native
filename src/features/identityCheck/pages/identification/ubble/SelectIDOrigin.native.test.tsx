@@ -55,12 +55,6 @@ describe('SelectIDOrigin', () => {
     )
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    render(<SelectIDOrigin />)
-
-    await waitFor(() => expect(analytics.logScreenViewSelectIdOrigin).toHaveBeenCalledTimes(1))
-  })
-
   it('should log analytics with french type on press french HeroButtonList', async () => {
     render(<SelectIDOrigin />)
 

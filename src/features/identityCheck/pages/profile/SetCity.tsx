@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
@@ -39,10 +39,6 @@ export const SetCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-
-  useEffect(() => {
-    analytics.logScreenViewSetCity()
-  }, [])
 
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)

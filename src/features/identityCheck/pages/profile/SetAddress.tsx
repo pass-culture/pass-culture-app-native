@@ -62,10 +62,6 @@ export const SetAddress = () => {
   })
 
   useEffect(() => {
-    analytics.logScreenViewSetAddress()
-  }, [])
-
-  useEffect(() => {
     if (!isError) return
     showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
     eventMonitoring.captureException(new IdentityCheckError(exception))

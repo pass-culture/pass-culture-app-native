@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -21,9 +21,6 @@ import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
-  useEffect(() => {
-    analytics.logScreenViewDMSIntroduction()
-  }, [])
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
 
   const timeLabel = '10 minutes de ton temps'
