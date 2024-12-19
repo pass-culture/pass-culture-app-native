@@ -24,11 +24,6 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
-let mockFFValue = false
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag', () => ({
-  useFeatureFlag: () => mockFFValue,
-}))
-
 jest.useFakeTimers()
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -170,20 +165,6 @@ describe('<VenueContent />', () => {
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
-  it('should display fake video player', async () => {
-    renderVenueContent({ videoSectionVisible: true })
-
-    expect(await screen.findByLabelText('Faux lecteur vidéo')).toBeOnTheScreen()
-  })
-
-  it('should open survey modal when fake video player is pressed', async () => {
-    renderVenueContent({ videoSectionVisible: true })
-
-    fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
-
-    expect(mockShowModal).toHaveBeenCalledWith()
-  })
-
   describe('movie screening access button', () => {
     beforeAll(() => {
       useRemoteConfigContextSpy.mockReturnValue({
@@ -193,7 +174,6 @@ describe('<VenueContent />', () => {
     })
 
     const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
-    mockFFValue = true
 
     // TODO(PC-33563): fix flaky tests
     // eslint-disable-next-line jest/no-disabled-tests

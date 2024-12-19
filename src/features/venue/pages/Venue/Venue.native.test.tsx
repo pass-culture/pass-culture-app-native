@@ -11,7 +11,6 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -107,31 +106,6 @@ describe('<Venue />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display video section with FF on', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
-    renderVenue(venueId)
-
-    expect(await screen.findByText('Vidéo de ce lieu')).toBeOnTheScreen()
-  })
-
-  it('should not display video player if video has already been seen', async () => {
-    getItemSpy.mockResolvedValueOnce('true')
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
-    renderVenue(venueId)
-
-    await waitFor(() => expect(screen.queryByText('Vidéo de ce lieu')).not.toBeOnTheScreen())
-  })
-
-  it('should hide video block once survey modal is closed', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
-    renderVenue(venueId)
-
-    fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
-    fireEvent.press(await screen.findByLabelText('Fermer la modale'))
-
-    await waitFor(() => expect(screen.queryByText('Vidéo de ce lieu')).not.toBeOnTheScreen())
-  })
-
   describe('analytics', () => {
     it.each([['deeplink'], ['venueMap']])(
       'should log consult venue when URL from param equal to %s',
@@ -161,17 +135,6 @@ describe('<Venue />', () => {
       await screen.findByText('Infos pratiques')
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
-    })
-
-    it('should log ConsultVenueVideoFakeDoor when fake video is pressed', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAKEDOOR_VIDEO_VENUE])
-      renderVenue(venueId)
-
-      fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
-
-      expect(analytics.logConsultVenueVideoFakeDoor).toHaveBeenCalledWith({
-        venueType: 'BOOKSTORE',
-      })
     })
   })
 })
