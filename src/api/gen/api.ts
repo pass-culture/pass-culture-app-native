@@ -160,6 +160,11 @@ export enum AchievementEnum {
  */
 export interface AchievementResponse {
   /**
+   * @type {number}
+   * @memberof AchievementResponse
+   */
+  id: number
+  /**
    * @type {AchievementEnum}
    * @memberof AchievementResponse
    */
@@ -175,6 +180,11 @@ export interface AchievementResponse {
    */
   unlockedDate: string
 }
+/**
+ * @export
+ * @interface AchievementsResponse
+ */
+export interface AchievementsResponse extends Array<AchievementResponse> {}
 /**
  * An enumeration.
  * @export
@@ -837,7 +847,7 @@ export interface CategoryResponseModel {
    * @type {{ [key: string]: number; }}
    * @memberof CategoryResponseModel
    */
-  positions?: { [key: string]: number; } | null
+  positions?: { [key: string]: number } | null
   /**
    * @type {string}
    * @memberof CategoryResponseModel
@@ -1762,6 +1772,17 @@ export enum MaintenancePageType {
 }
 /**
  * @export
+ * @interface MarkAchievementsAsSeenRequest
+ */
+export interface MarkAchievementsAsSeenRequest {
+  /**
+   * @type {Array<number>}
+   * @memberof MarkAchievementsAsSeenRequest
+   */
+  achievementIds: Array<number>
+}
+/**
+ * @export
  * @interface MentalDisabilityModel
  */
 export interface MentalDisabilityModel {
@@ -1905,7 +1926,7 @@ export interface NativeCategoryResponseModelv2 {
    * @type {{ [key: string]: number; }}
    * @memberof NativeCategoryResponseModelv2
    */
-  positions?: { [key: string]: number; } | null
+  positions?: { [key: string]: number } | null
   /**
    * @type {string}
    * @memberof NativeCategoryResponseModelv2
@@ -5271,6 +5292,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary mark_achievements_as_seen <POST>
+     * @param {MarkAchievementsAsSeenRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1AchievementsMarkAsSeen(
+      body?: MarkAchievementsAsSeenRequest,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      let pathname = `/native/v1/achievements/mark_as_seen`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization =
+        <any>'MarkAchievementsAsSeenRequest' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary book_offer <POST>
      * @param {BookOfferRequest} [body]
      * @param {*} [options] Override http request option.
@@ -6974,6 +7022,27 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
+     * @summary mark_achievements_as_seen <POST>
+     * @param {MarkAchievementsAsSeenRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1AchievementsMarkAsSeen(
+      body?: MarkAchievementsAsSeenRequest,
+      options?: any
+    ): Promise<AchievementsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1AchievementsMarkAsSeen(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary book_offer <POST>
      * @param {BookOfferRequest} [body]
      * @param {*} [options] Override http request option.
@@ -8230,6 +8299,21 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1AccountUnsuspend(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountUnsuspend(options)
+  }
+  /**
+   *
+   * @summary mark_achievements_as_seen <POST>
+   * @param {MarkAchievementsAsSeenRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1AchievementsMarkAsSeen(
+    body?: MarkAchievementsAsSeenRequest,
+    options?: any
+  ) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1AchievementsMarkAsSeen(body, options)
   }
   /**
    *

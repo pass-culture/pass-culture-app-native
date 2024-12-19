@@ -147,16 +147,19 @@ export const achievementData: Achievement[] = [
 ]
 
 export const userCompletedMovieBooking = {
+  id: 1,
   name: AchievementEnum.FIRST_MOVIE_BOOKING,
   unlockedDate: new Date('2024-12-01').toLocaleDateString('fr-FR'),
 }
 
 export const userCompletedBookBooking = {
+  id: 2,
   name: AchievementEnum.FIRST_BOOK_BOOKING,
   unlockedDate: new Date('2024-12-02').toLocaleDateString('fr-FR'),
 }
 
 export const userCompletedArtLessonBooking = {
+  id: 3,
   name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
   unlockedDate: new Date('2024-12-03').toLocaleDateString('fr-FR'),
 }

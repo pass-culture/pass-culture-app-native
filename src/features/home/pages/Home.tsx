@@ -141,7 +141,7 @@ export const Home: FunctionComponent = () => {
       />
       {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
       <AchievementSuccessModal
-        names={achievementsToShow}
+        achievementsToShow={achievementsToShow}
         visible={visibleAchievementModal}
         hideModal={hideAchievementModal}
       />

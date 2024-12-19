@@ -1,4 +1,4 @@
-import { AchievementEnum } from 'api/gen'
+import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -10,7 +10,7 @@ export const useShouldShowAchievementSuccessModal = () => {
   const { user } = useAuthContext()
 
   let shouldShowAchievementSuccessModal = false
-  let achievementsToShow: AchievementEnum[] = []
+  let achievementsToShow: AchievementResponse[] = []
   if (
     !areAchievementsEnabled ||
     !displayAchievements ||
@@ -25,9 +25,7 @@ export const useShouldShowAchievementSuccessModal = () => {
   if (isThereAtLeastOneUnseenAchievement) shouldShowAchievementSuccessModal = true
   else return { shouldShowAchievementSuccessModal, achievementsToShow }
 
-  const unseenAchievements = user?.achievements
-    .filter((achievement) => !achievement.seenDate)
-    .map((achievement) => achievement.name)
+  const unseenAchievements = user?.achievements.filter((achievement) => !achievement.seenDate)
 
   if (unseenAchievements && unseenAchievements?.length > 0) achievementsToShow = unseenAchievements
 
