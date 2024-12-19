@@ -6,18 +6,12 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
@@ -83,7 +77,7 @@ describe('<OfferReactionSection />', () => {
 
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
       mockIsSuccess = true
     })
 
@@ -189,7 +183,7 @@ describe('<OfferReactionSection />', () => {
 
   describe('When FF is disabled', () => {
     beforeEach(() => {
-      activateFeatureFlags()
+      setFeatureFlags()
     })
 
     it("should not display 'J'aime' or 'Je n'aime pas' button when user booked the offer", () => {

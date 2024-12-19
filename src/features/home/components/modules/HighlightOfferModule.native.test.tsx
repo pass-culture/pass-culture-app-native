@@ -8,15 +8,13 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const offerFixture = offersFixture[0]
 const duoOfferFixture = offersFixture[2]
@@ -38,7 +36,7 @@ jest.useFakeTimers()
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
       page: 1,
       nbFavorites: 0,
@@ -181,7 +179,7 @@ describe('HighlightOfferModule', () => {
   })
 
   it('should render new design when feature flag is enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
     mockUseHighlightOffer.mockReturnValueOnce({
       ...offerFixture,
     })
@@ -212,8 +210,4 @@ const renderHighlightModule = (homeEntryId = 'entryId') => {
       <HighlightOfferModule {...highlightOfferModuleFixture} index={0} homeEntryId={homeEntryId} />
     )
   )
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

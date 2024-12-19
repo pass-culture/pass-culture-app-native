@@ -9,7 +9,7 @@ import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, userEvent, render, screen } from 'tests/utils'
 
@@ -42,8 +42,6 @@ jest.mock('react-native-intersection-observer', () => {
   }
 })
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {
@@ -65,6 +63,10 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('GtlPlaylist', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('on venue page', () => {
     it('should log ConsultOffer when pressing an item', async () => {
       renderGtlPlaylistOnVenuePage()

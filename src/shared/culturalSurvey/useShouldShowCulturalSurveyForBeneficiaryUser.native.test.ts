@@ -1,23 +1,18 @@
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { renderHook, act } from 'tests/utils'
 
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from './useShouldShowCulturalSurveyForBeneficiaryUser'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_requested'
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 describe('useShouldShowCulturalSurveyForBeneficiaryUser()', () => {
   beforeEach(() => {
     storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   it('should return true when feature flag is disabled and user has never seen cultural survey', async () => {
@@ -29,7 +24,7 @@ describe('useShouldShowCulturalSurveyForBeneficiaryUser()', () => {
   })
 
   it('should return false when cultural survey feature flag is enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     const { result } = renderHook(useShouldShowCulturalSurveyForBeneficiaryUser)
     await act(() => {})
     const shouldShowCulturalSurvey = result.current(beneficiaryUser)

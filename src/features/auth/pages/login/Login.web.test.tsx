@@ -5,7 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { env } from 'libs/environment/fixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,8 +23,6 @@ jest.mock('uuid', () => {
   }
 })
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
@@ -41,6 +39,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<Login/>', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })

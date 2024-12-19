@@ -13,11 +13,9 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
@@ -39,7 +37,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('CreditHeader', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   describe('Beneficiary is not underage', () => {
@@ -228,8 +226,4 @@ const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
       {...props}
     />
   )
-}
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
 }

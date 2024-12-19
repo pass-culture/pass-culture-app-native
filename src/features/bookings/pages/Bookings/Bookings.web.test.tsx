@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
@@ -32,8 +32,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/subcategories/useSubcategory')
 
@@ -61,6 +59,10 @@ mockUseCategoryIdMapping.mockReturnValue({
 })
 
 describe('Bookings', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderBookings(bookingsSnap)

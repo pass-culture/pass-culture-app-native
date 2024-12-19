@@ -17,7 +17,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -48,12 +48,6 @@ const mockNavigate = jest.fn()
 jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
   navigate: mockNavigate,
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest.fn().mockReturnValue({
@@ -108,7 +102,7 @@ describe('<OfferBody />', () => {
 
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
-    activateFeatureFlags([
+    setFeatureFlags([
       RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST,
       RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
@@ -629,7 +623,7 @@ describe('<OfferBody />', () => {
       extraData: { author: 'Stephen King', ean: '123456' },
     }
 
-    activateFeatureFlags()
+    setFeatureFlags()
 
     renderOfferBody({
       offer,

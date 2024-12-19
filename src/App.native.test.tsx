@@ -21,7 +21,7 @@ jest.mock('libs/e2e/getIsMaestro', () => ({
 jest.mock('libs/campaign')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false) // Can't replace by setFeatureFlags (TypeError: A dynamic import callback was invoked without --experimental-vm-modules)
 
 jest.mock('libs/firebase/analytics/analytics')
 

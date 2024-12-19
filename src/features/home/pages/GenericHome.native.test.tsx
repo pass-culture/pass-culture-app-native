@@ -9,7 +9,8 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -18,7 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor, within } from 'tests/utils'
 import { Typo } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
@@ -58,6 +58,7 @@ describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -130,7 +131,7 @@ describe('GenericHome', () => {
 
   describe('VideoCarouselModule', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
     })
 
     describe('Home N-1', () => {
@@ -212,6 +213,7 @@ describe('GenericHome page - Analytics', () => {
   }
 
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

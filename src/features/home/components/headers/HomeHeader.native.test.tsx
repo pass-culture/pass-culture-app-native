@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
@@ -19,8 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.unmock('@react-navigation/native')
 
@@ -50,6 +48,10 @@ mockUseAuthContext.mockReturnValue({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('HomeHeader', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it.each`
     usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle
     ${'ex beneficiary'}          | ${{ ...mockedUser, isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 0, isExpired: true }}     | ${'Ton crédit est expiré'}

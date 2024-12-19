@@ -13,7 +13,8 @@ import { Color, ThematicHeaderType } from 'features/home/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, ILocationContext } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -62,7 +63,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const modules = [formattedVenuesModule]
@@ -86,6 +86,7 @@ describe('ThematicHome', () => {
   })
 
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -222,8 +223,9 @@ describe('ThematicHome', () => {
   })
 
   describe('geolocation banner when wipAppV2SystemBlock disabled', () => {
+    // TODO(PC-33663): the tests of this describe block pass with and without the FF. The tests should be re-written.
     beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+      setFeatureFlags()
     })
 
     it('should show geolocation banner when user is not geolocated or located', async () => {
@@ -249,8 +251,8 @@ describe('ThematicHome', () => {
   })
 
   describe('system banner when wipAppV2SystemBlock enabled', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
     it('should show system banner when user is not geolocated or located', async () => {
@@ -276,6 +278,10 @@ describe('ThematicHome', () => {
   })
 
   describe('localization', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
+    })
+
     it.each`
       hasGeolocPosition | from                | selectedLocationMode         | expectedLocationMode
       ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
@@ -301,8 +307,6 @@ describe('ThematicHome', () => {
         selectedLocationMode: LocationMode
         expectedLocationMode: LocationMode
       }) => {
-        useFeatureFlagSpy.mockReturnValueOnce(true)
-
         useRoute.mockReturnValueOnce({ params: { entryId: 'fakeEntryId', from } })
 
         mockUseLocation.mockReturnValueOnce({

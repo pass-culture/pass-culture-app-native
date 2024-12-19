@@ -2,11 +2,9 @@ import React from 'react'
 
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: false, user: undefined })
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -15,7 +13,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('<EighteenBlockDescription />', () => {
   beforeEach(() => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should display activation text when user is not logged in', () => {
@@ -47,7 +45,3 @@ describe('<EighteenBlockDescription />', () => {
     ).not.toBeOnTheScreen()
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

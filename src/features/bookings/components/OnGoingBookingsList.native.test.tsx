@@ -5,7 +5,7 @@ import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { act, render, screen } from 'tests/utils'
@@ -42,8 +42,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -51,6 +49,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   const nativeEventMiddle = {

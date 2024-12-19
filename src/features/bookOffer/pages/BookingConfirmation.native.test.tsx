@@ -5,7 +5,7 @@ import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -25,9 +25,6 @@ jest.mock('features/bookOffer/helpers/useReviewInAppInformation', () => ({
     updateInformationWhenReviewHasBeenRequested: jest.fn(),
   })),
 }))
-
-// Mock for WIP_DISABLE_STORE_REVIEW feature flag
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const share = jest
   .spyOn(Share, 'share')
@@ -52,6 +49,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     useRoute.mockReturnValue({
       params: {
         offerId: mockOfferId,

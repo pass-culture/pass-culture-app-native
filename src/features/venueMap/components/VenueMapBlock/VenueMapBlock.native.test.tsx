@@ -3,10 +3,9 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockRemoveSelectedVenue = jest.fn()
 jest.mock('features/venueMap/store/selectedVenueStore', () => ({
@@ -24,7 +23,7 @@ jest.mock('features/venueMap/store/initialVenuesStore', () => ({
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK])
     })
 
     it('should not display title venue map', () => {
@@ -47,6 +46,10 @@ describe('<VenueMapBlock />', () => {
   })
 
   describe('When wipAppV2VenueMapBlock feature flag deactivated', () => {
+    beforeEach(() => {
+      setFeatureFlags()
+    })
+
     it('should display title venue map', () => {
       render(<VenueMapBlock from="searchLanding" />)
 

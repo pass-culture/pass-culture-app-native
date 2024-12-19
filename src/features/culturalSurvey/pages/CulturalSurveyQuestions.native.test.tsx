@@ -14,7 +14,7 @@ import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalS
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   render,
@@ -25,7 +25,6 @@ import {
   waitFor,
 } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -80,7 +79,7 @@ const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
 
 describe('CulturalSurveyQuestions page', () => {
   beforeEach(() => {
-    activateFeatureFlags()
+    setFeatureFlags()
   })
 
   it('should render the page with correct layout', () => {
@@ -149,7 +148,7 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is enabled', async () => {
-    activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     mockUseGetNextQuestionReturnValue = {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
@@ -259,7 +258,3 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

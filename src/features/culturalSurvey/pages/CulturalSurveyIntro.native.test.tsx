@@ -6,12 +6,11 @@ import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockGoBack = jest.fn()
@@ -42,7 +41,7 @@ describe('CulturalSurveyIntro page', () => {
 
   describe('When FF is disabled', () => {
     beforeEach(() => {
-      activateFeatureFlags()
+      setFeatureFlags()
     })
 
     it('should render the page with correct layout and content', () => {
@@ -124,7 +123,7 @@ describe('CulturalSurveyIntro page', () => {
 
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     })
 
     it('should render the page with correct layout and content', () => {
@@ -143,7 +142,3 @@ describe('CulturalSurveyIntro page', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}

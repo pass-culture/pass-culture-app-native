@@ -5,7 +5,7 @@ import { FavoritesCountResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -36,8 +36,6 @@ jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -50,6 +48,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<RootNavigator />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
     mockServer.getApi<FavoritesCountResponse>('/v1/me/favorites/count', { count: 2 })

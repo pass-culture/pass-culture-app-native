@@ -1,16 +1,19 @@
 import React from 'react'
 
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccountCreated } from './AccountCreated'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AccountCreated/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<AccountCreated />)

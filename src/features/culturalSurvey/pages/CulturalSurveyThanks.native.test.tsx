@@ -2,11 +2,10 @@ import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, fireEvent, screen } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -20,7 +19,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('CulturalSurveyThanksPage page', () => {
   describe('When FF is disabled', () => {
     beforeEach(() => {
-      activateFeatureFlags()
+      setFeatureFlags()
     })
 
     it('should render the page with correct layout and content', () => {
@@ -44,7 +43,7 @@ describe('CulturalSurveyThanksPage page', () => {
 
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      activateFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     })
 
     it('should render the page with correct layout and content', () => {
@@ -66,7 +65,3 @@ describe('CulturalSurveyThanksPage page', () => {
     })
   })
 })
-
-const activateFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
-}
