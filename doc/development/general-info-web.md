@@ -121,14 +121,15 @@ yarn vite preview
 
 Keep in mind to [do the following change to not run into CORS errors](./general-info-web.md#requests-blocked-by-cors-policy).
 
+## Browser compatibility
+
+We currently tested/support the browsers specified in `src/web/SupportedBrowsersGate.tsx`.
+
+If needed, increase compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work)
+
 ## TODO list
 
 There are certain number of optimizations/improvements and things that were done in webpack that we didn't think were immediately necessary:
-
-MUST HAVE:
-
-- Test older browsers
-- If needed, increase compatibility with `@vitejs/plugin-legacy` (you will need to install `terser` for the plugin to work)
 
 SHOULD HAVE:
 
