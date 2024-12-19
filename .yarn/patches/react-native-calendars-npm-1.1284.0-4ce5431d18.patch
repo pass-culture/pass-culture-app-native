@@ -1,7 +1,7 @@
-diff --git a/node_modules/react-native-calendars/src/calendar/day/basic/index.js b/node_modules/react-native-calendars/src/calendar/day/basic/index.js
-index dbb6832..20ca65b 100644
---- a/node_modules/react-native-calendars/src/calendar/day/basic/index.js
-+++ b/node_modules/react-native-calendars/src/calendar/day/basic/index.js
+diff --git a/src/calendar/day/basic/index.js b/src/calendar/day/basic/index.js
+index dbb68324fd45a431dce9b35c345c37a334c4bd84..48e106aab39d8f0c52fdfb1172b0bfa75202efd2 100644
+--- a/src/calendar/day/basic/index.js
++++ b/src/calendar/day/basic/index.js
 @@ -88,7 +88,7 @@ const BasicDay = (props) => {
          return (<Marking type={markingType} theme={theme} marked={isMultiDot ? true : marked} selected={isSelected} disabled={isDisabled} inactive={isInactive} today={isToday} dotColor={dotColor} dots={dots} periods={periods}/>);
      };
@@ -11,20 +11,21 @@ index dbb6832..20ca65b 100644
          {String(children)}
        </Text>);
      };
-@@ -100,7 +100,7 @@ const BasicDay = (props) => {
+@@ -100,8 +100,7 @@ const BasicDay = (props) => {
      };
      const renderContainer = () => {
          const { activeOpacity } = _marking;
 -        return (<TouchableOpacity testID={testID} style={getContainerStyle()} disabled={shouldDisableTouchEvent()} activeOpacity={activeOpacity} onPress={!shouldDisableTouchEvent() ? _onPress : undefined} onLongPress={!shouldDisableTouchEvent() ? _onLongPress : undefined} accessible accessibilityRole={isDisabled ? undefined : 'button'} accessibilityLabel={accessibilityLabel}>
-+        return (<TouchableOpacity testID={testID} style={getContainerStyle()} disabled={shouldDisableTouchEvent()} activeOpacity={activeOpacity} onPress={!shouldDisableTouchEvent() ? _onPress : undefined} onLongPress={!shouldDisableTouchEvent() ? _onLongPress : undefined} accessible accessibilityRole='button' accessibilityLabel={accessibilityLabel}>
-         {isMultiPeriod ? renderText() : renderContent()}
+-        {isMultiPeriod ? renderText() : renderContent()}
++        return (<TouchableOpacity testID={testID} style={getContainerStyle()} disabled={shouldDisableTouchEvent()} activeOpacity={activeOpacity} onPress={!shouldDisableTouchEvent() ? _onPress : undefined} onLongPress={!shouldDisableTouchEvent() ? _onLongPress : undefined} accessible accessibilityRole='button' accessibilityLabel={accessibilityLabel}>        {isMultiPeriod ? renderText() : renderContent()}
        </TouchableOpacity>);
      };
-diff --git a/node_modules/react-native-calendars/src/calendar/header/index.js b/node_modules/react-native-calendars/src/calendar/header/index.js
-index ad35a94..f425a5e 100644
---- a/node_modules/react-native-calendars/src/calendar/header/index.js
-+++ b/node_modules/react-native-calendars/src/calendar/header/index.js
-@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
+     const renderPeriodsContainer = () => {
+diff --git a/src/calendar/header/index.js b/src/calendar/header/index.js
+index ad35a945250d6ca54525e9149bdc3320375879cf..7940703524f4774e2f1fca63d7166275a7b03ee6 100644
+--- a/src/calendar/header/index.js
++++ b/src/calendar/header/index.js
+@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
  import XDate from 'xdate';
  import React, { Fragment, useCallback, useMemo, forwardRef, useImperativeHandle, useRef } from 'react';
  import { ActivityIndicator, Platform, View, Text, TouchableOpacity, Image } from 'react-native';
@@ -38,10 +39,11 @@ index ad35a94..f425a5e 100644
 -    { name: 'increment', label: 'increment' },
 -    { name: 'decrement', label: 'decrement' }
 -];
++
  const CalendarHeader = forwardRef((props, ref) => {
      const { theme, style: propsStyle, addMonth: propsAddMonth, month, monthFormat, firstDay, hideDayNames, showWeekNumbers, hideArrows, renderArrow, onPressArrowLeft, onPressArrowRight, disableArrowLeft, disableArrowRight, disabledDaysIndexes, displayLoadingIndicator, customHeaderTitle, renderHeader, webAriaLevel, testID, accessibilityElementsHidden, importantForAccessibility } = props;
      const style = useRef(styleConstructor(theme));
-@@ -51,6 +47,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+@@ -51,6 +48,7 @@ const CalendarHeader = forwardRef((props, ref) => {
      };
      const renderWeekDays = useMemo(() => {
          const weekDaysNames = weekDayNames(firstDay);
@@ -49,7 +51,7 @@ index ad35a94..f425a5e 100644
          return weekDaysNames.map((day, index) => {
              const dayStyle = [style.current.dayHeader];
              if (includes(disabledDaysIndexes, index)) {
-@@ -62,7 +59,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+@@ -62,7 +60,7 @@ const CalendarHeader = forwardRef((props, ref) => {
                  // @ts-expect-error
                  dayStyle.push(style[dayTextAtIndex]);
              }
@@ -58,37 +60,41 @@ index ad35a94..f425a5e 100644
            {day}
          </Text>);
          });
-@@ -76,7 +73,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+@@ -76,8 +74,8 @@ const CalendarHeader = forwardRef((props, ref) => {
              return customHeaderTitle;
          }
          return (<Fragment>
 -        <Text allowFontScaling={false} style={style.current.monthText} testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME} {...webProps}>
-+        <Text dir="ltr" allowFontScaling={false} style={style.current.monthText} testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME} {...webProps}>
-           {formatNumbers(month?.toString(monthFormat))}
+-          {formatNumbers(month?.toString(monthFormat))}
++        <Text dir="ltr" allowFontScaling={false} style={style.current.monthText} testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME} {...webProps}>          
++            {formatNumbers(month?.toString(monthFormat))}
          </Text>
        </Fragment>);
-@@ -92,7 +89,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+     };
+@@ -92,7 +90,7 @@ const CalendarHeader = forwardRef((props, ref) => {
          const imageSource = isLeft ? require('../img/previous.png') : require('../img/next.png');
          const renderArrowDirection = isLeft ? 'left' : 'right';
          const shouldDisable = isLeft ? disableArrowLeft : disableArrowRight;
 -        return (<TouchableOpacity onPress={!shouldDisable ? onPress : undefined} disabled={shouldDisable} style={style.current.arrow} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} testID={testId}>
-+        return (<TouchableOpacity accessibilityRole="button" onPress={!shouldDisable ? onPress : undefined} disabled={shouldDisable} style={style.current.arrow} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} testID={testId}>
++        return (<TouchableOpacity accessibilityRole="button" onPress={!shouldDisable ? onPress : undefined} disabled={shouldDisable} style={style.current.arrow} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} testID={testId}>        
          {renderArrow ? (renderArrow(renderArrowDirection)) : (
              // @ts-expect-error style?: StyleProp<ImageStyle>
              <Image source={imageSource} style={shouldDisable ? style.current.disabledArrowImage : style.current.arrowImage}/>)}
-@@ -114,7 +111,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+@@ -114,8 +112,8 @@ const CalendarHeader = forwardRef((props, ref) => {
          </View>);
          }
      };
 -    return (<View testID={testID} style={propsStyle} accessible accessibilityRole={'adjustable'} accessibilityActions={accessibilityActions} onAccessibilityAction={onAccessibilityAction} accessibilityElementsHidden={accessibilityElementsHidden} // iOS
+-     importantForAccessibility={importantForAccessibility} // Android
 +    return (<View testID={testID} style={propsStyle} onAccessibilityAction={onAccessibilityAction} accessibilityElementsHidden={accessibilityElementsHidden} // iOS
-      importantForAccessibility={importantForAccessibility} // Android
++        importantForAccessibility={importantForAccessibility} // Android
      >
        <View style={style.current.header}>
-diff --git a/node_modules/react-native-calendars/src/calendar/index.js b/node_modules/react-native-calendars/src/calendar/index.js
-index dc38b65..138c80a 100644
---- a/node_modules/react-native-calendars/src/calendar/index.js
-+++ b/node_modules/react-native-calendars/src/calendar/index.js
+         {_renderArrow('left')}
+diff --git a/src/calendar/index.js b/src/calendar/index.js
+index dc38b653ad98d7055d04a713e8db9a551e521ded..3159e1b7ed933a129f1767b1e9abe58cd7f59abf 100644
+--- a/src/calendar/index.js
++++ b/src/calendar/index.js
 @@ -1,7 +1,7 @@
  import PropTypes from 'prop-types';
  import XDate from 'xdate';
@@ -119,30 +125,31 @@ index dc38b65..138c80a 100644
          {week}
        </View>);
      };
-@@ -132,7 +132,7 @@ const Calendar = (props) => {
+@@ -132,7 +132,8 @@ const Calendar = (props) => {
          while (days.length) {
              weeks.push(renderWeek(days.splice(0, 7), weeks.length));
          }
 -        return <View style={style.current.monthView}>{weeks}</View>;
 +        return <View style={style.current.monthView} accessibilityRole={Platform.OS === 'web' ? 'rowgroup' : undefined}>{weeks}</View>;
++
      };
      const renderHeader = () => {
          let indicator;
-@@ -158,7 +158,9 @@ const Calendar = (props) => {
+@@ -158,7 +159,9 @@ const Calendar = (props) => {
       importantForAccessibility={importantForAccessibility} // Android
      >
          {renderHeader()}
 -        {renderMonth()}
 +        <View accessibilityRole={Platform.OS === 'web' ? 'grid' : undefined}>
-+           {renderMonth()}
-+        </View>
+++           {renderMonth()}
+++        </View>
        </View>
      </GestureComponent>);
  };
-diff --git a/node_modules/react-native-calendars/src/commons/WeekDaysNames.js b/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
-index f57b436..a2b8009 100644
---- a/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
-+++ b/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
+diff --git a/src/commons/WeekDaysNames.js b/src/commons/WeekDaysNames.js
+index f57b436b2f1fba346ea7d5133f85267fb9264117..a2b800967d240d8654197e16105267fef78b984d 100644
+--- a/src/commons/WeekDaysNames.js
++++ b/src/commons/WeekDaysNames.js
 @@ -3,7 +3,7 @@ import { Text } from 'react-native';
  import { weekDayNames } from '../dateutils';
  const WeekDaysNames = React.memo(({ firstDay, style }) => {
@@ -152,10 +159,10 @@ index f57b436..a2b8009 100644
        {day}
      </Text>));
  });
-diff --git a/node_modules/react-native-calendars/src/dateutils.d.ts b/node_modules/react-native-calendars/src/dateutils.d.ts
-index a20e758..94c8bab 100644
---- a/node_modules/react-native-calendars/src/dateutils.d.ts
-+++ b/node_modules/react-native-calendars/src/dateutils.d.ts
+diff --git a/src/dateutils.d.ts b/src/dateutils.d.ts
+index a20e7581cd6a3d86d89279f44ddf081f362ebcd7..94c8bab9cd5e9413795b59e4e0aeea39e8c53e68 100644
+--- a/src/dateutils.d.ts
++++ b/src/dateutils.d.ts
 @@ -10,6 +10,7 @@ export declare function formatNumbers(date: any): any;
  export declare function fromTo(a: XDate, b: XDate): XDate[];
  export declare function month(date: XDate): import("xdate")[];
@@ -164,14 +171,15 @@ index a20e758..94c8bab 100644
  export declare function page(date: XDate, firstDayOfWeek?: number, showSixWeeks?: boolean): import("xdate")[];
  export declare function isDateNotInTheRange(minDate: XDate, maxDate: XDate, date: XDate): boolean;
  export declare function getWeekDates(date: string, firstDay?: number, format?: string): any[] | undefined;
-diff --git a/node_modules/react-native-calendars/src/dateutils.js b/node_modules/react-native-calendars/src/dateutils.js
-index f7ce459..20380ff 100644
---- a/node_modules/react-native-calendars/src/dateutils.js
-+++ b/node_modules/react-native-calendars/src/dateutils.js
-@@ -80,6 +80,14 @@ export function weekDayNames(firstDayOfWeek = 0) {
+diff --git a/src/dateutils.js b/src/dateutils.js
+index f7ce4593d631313249a491c4c170addcd1a0774c..2e215b12bb27b562a704e56688406682fe2c393e 100644
+--- a/src/dateutils.js
++++ b/src/dateutils.js
+@@ -80,6 +80,16 @@ export function weekDayNames(firstDayOfWeek = 0) {
      }
      return weekDaysNames;
  }
++
 +export function weekFullDayNames(firstDayOfWeek = 0) {
 +    let weekDaysNames = getDefaultLocale().dayNames;
 +    const dayShift = firstDayOfWeek % 7;
@@ -180,27 +188,30 @@ index f7ce459..20380ff 100644
 +    }
 +    return weekDaysNames;
 +}
++
  export function page(date, firstDayOfWeek = 0, showSixWeeks = false) {
      const days = month(date);
      let before = [];
-diff --git a/node_modules/react-native-calendars/src/expandableCalendar/index.js b/node_modules/react-native-calendars/src/expandableCalendar/index.js
-index d85e6a9..14505be 100644
---- a/node_modules/react-native-calendars/src/expandableCalendar/index.js
-+++ b/node_modules/react-native-calendars/src/expandableCalendar/index.js
-@@ -339,7 +339,7 @@ const ExpandableCalendar = (props) => {
+diff --git a/src/expandableCalendar/index.js b/src/expandableCalendar/index.js
+index d85e6a98b987a667a160592fa25b885c915a8c4f..95843e2cb4faf838fb8d5afe14866b7093bd358b 100644
+--- a/src/expandableCalendar/index.js
++++ b/src/expandableCalendar/index.js
+@@ -339,8 +339,8 @@ const ExpandableCalendar = (props) => {
      const renderHeader = () => {
          const monthYear = new XDate(date).toString('MMMM yyyy');
          return (<Animated.View ref={header} style={headerStyle} pointerEvents={'none'}>
 -        <Text allowFontScaling={false} style={style.current.headerTitle}>
+-          {monthYear}
 +        <Text dir="ltr" allowFontScaling={false} style={style.current.headerTitle}>
-           {monthYear}
++            {monthYear}
          </Text>
          {renderWeekDaysNames()}
-diff --git a/node_modules/react-native-calendars/src/momentResolver.js b/node_modules/react-native-calendars/src/momentResolver.js
-index ed4d962..8551a2d 100644
---- a/node_modules/react-native-calendars/src/momentResolver.js
-+++ b/node_modules/react-native-calendars/src/momentResolver.js
-@@ -1,8 +1,5 @@
+       </Animated.View>);
+diff --git a/src/momentResolver.js b/src/momentResolver.js
+index ed4d962ca5a398a63ca5f4c1aff6be0f8742d7fa..64266a4cd37a3eff5747bb3455e0b1f825d1c410 100644
+--- a/src/momentResolver.js
++++ b/src/momentResolver.js
+@@ -1,8 +1,6 @@
  let moment;
  // Moment is an optional dependency
  export const getMoment = () => {
@@ -209,4 +220,5 @@ index ed4d962..8551a2d 100644
 -    }
 -    return moment;
 +    throw new Error('react-native-calendars was patch-package to remove moment. See PC-16720')
++
  };
