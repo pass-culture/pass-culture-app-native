@@ -1,23 +1,21 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
 import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
 import { TypoDS } from 'ui/theme'
 
 type Props = {
   expanded: boolean
   numberOfLines: number
-  renderContent: () => React.JSX.Element[] | ParsedDescription
   onButtonPress: VoidFunction
-}
+} & PropsWithChildren
 
 export const CollapsibleTextContent: FunctionComponent<Props> = ({
   expanded,
   numberOfLines,
-  renderContent,
   onButtonPress,
+  children,
 }) => {
   const theme = useTheme()
 
@@ -45,7 +43,7 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
       <TypoDS.Body
         onTextLayout={handleOnTextLayout}
         numberOfLines={expanded ? undefined : currentNumberOfLines}>
-        {renderContent()}
+        {children}
       </TypoDS.Body>
 
       {shouldDisplayButton ? (
