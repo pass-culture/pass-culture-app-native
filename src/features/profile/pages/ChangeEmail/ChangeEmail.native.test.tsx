@@ -48,7 +48,7 @@ describe('<ChangeEmail/>', () => {
 
       await screen.findByText('Modifier mon e-mail')
 
-      expect(screen.getByText('Modifie ton adresse e-mail sur ce compte')).toBeOnTheScreen()
+      expect(await screen.findByText('Modifie ton adresse e-mail sur ce compte')).toBeOnTheScreen()
     })
 
     it('should not show DeleteProfileReasonNewEmailModal when showModal params is set to false', async () => {
