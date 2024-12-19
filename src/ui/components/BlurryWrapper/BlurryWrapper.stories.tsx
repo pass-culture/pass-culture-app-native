@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { BlurryWrapper } from './BlurryWrapper'
@@ -14,9 +15,9 @@ const meta: ComponentMeta<typeof BlurryWrapper> = {
 export default meta
 
 const Template: ComponentStory<typeof BlurryWrapper> = (props) => (
-  <Background>
+  <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
     <BlurryWrapper {...props} />
-  </Background>
+  </ImageBackground>
 )
 
 export const Default = Template.bind({})
@@ -25,10 +26,8 @@ Default.args = {
   children: <ButtonPrimary wording="Réserver l’offre" mediumWidth />,
 }
 
-const Background = styled.View({
+const ImageBackground = styled.ImageBackground({
   width: '100%',
   height: '400px',
-  backgroundImage:
-    'url("https://img.freepik.com/photos-gratuite/produit-beaute-explosant-couleurs-vibrantes-ia-generatrice-poudre_188544-9687.jpg?size=626&ext=jpg&ga=GA1.1.953763522.1701356022")',
   justifyContent: 'center',
 })

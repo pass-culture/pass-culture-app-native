@@ -1,8 +1,9 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
+import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof StickyBookingButton> = {
@@ -10,17 +11,6 @@ const meta: ComponentMeta<typeof StickyBookingButton> = {
   component: StickyBookingButton,
 }
 export default meta
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 200,
-    backgroundImage:
-      'url("https://img.freepik.com/photos-gratuite/peinture-lac-montagne-montagne-arriere-plan_188544-9126.jpg?w=1380&t=st=1701705399~exp=1701705999~hmac=c2bf28443a351fb39a524c2fb4603030acdca56b8d6d165a5dccaf922265f073")',
-    backgroundSize: 'cover',
-    position: 'relative',
-  },
-})
 
 const variantConfig: Variants<typeof StickyBookingButton> = [
   {
@@ -88,10 +78,16 @@ const variantConfig: Variants<typeof StickyBookingButton> = [
 ]
 
 const Template: VariantsStory<typeof StickyBookingButton> = () => (
-  <View style={styles.container}>
+  <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
     <VariantsTemplate variants={variantConfig} Component={StickyBookingButton} />
-  </View>
+  </ImageBackground>
 )
 
 export const AllVariants = Template.bind({})
 AllVariants.storyName = 'StickyBookingButton'
+
+const ImageBackground = styled.ImageBackground({
+  width: '100%',
+  height: '200px',
+  position: 'relative',
+})
