@@ -69,6 +69,15 @@ Default.args = {
       borderColor: theme.colors.coral,
       fillColor: theme.colors.coralLight,
     },
+    {
+      label: 'Concerts & festivals',
+      Illustration: SearchCategoriesIllustrations.ConcertsFestivals,
+      textColor: theme.colors.lilacDark,
+      gradients: [theme.colors.gold, theme.colors.goldDark],
+      onPress: action('Concerts & festivals'),
+      fillColor: theme.colors.goldLight100,
+      borderColor: theme.colors.goldLight200,
+    },
   ],
 }
 Default.parameters = {

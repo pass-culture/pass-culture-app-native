@@ -1,14 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import { Dimensions, FlatList, ListRenderItem, Platform, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { CategoriesListHeader } from 'features/search/components/categories/CategoriesListHeader'
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { Gradient } from 'features/search/enums'
-import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
+import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { CategoryButton } from 'shared/Buttons/CategoryButton'
-import { theme } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -37,13 +35,10 @@ type Props = {
   children?: never
 }
 
-const CATEGORY_BUTTON_HEIGHT_SEARCH = getSpacing(24.25)
-
-const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
-  <CategoryButtonContainer>
-    <CategoryButton {...item} height={CATEGORY_BUTTON_HEIGHT_SEARCH} />
-  </CategoryButtonContainer>
-)
+const DESKTOP_CATEGORY_BUTTON_HEIGHT = getSpacing(42)
+const MOBILE_CATEGORY_BUTTON_HEIGHT = getSpacing(36)
+const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
+const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 
 export const DumbCategoriesList: FunctionComponent<Props> = ({
   sortedCategories,
@@ -53,50 +48,79 @@ export const DumbCategoriesList: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
 }) => {
-  const theme = useTheme()
-  const numColumns = theme.isDesktopViewport ? 4 : 2
-
   return (
-    <FlatList
-      data={sortedCategories}
-      renderItem={CategoryButtonItem}
-      keyExtractor={(item) => item.label}
-      numColumns={numColumns}
-      key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
-      ListHeaderComponent={CategoriesListHeader({
-        shouldDisplayVenueMap,
-        showVenueMapLocationModal,
-        venueMapLocationModalVisible,
-        hideVenueMapLocationModal,
-        isMapWithoutPositionAndNotLocated,
-      })}
-      contentContainerStyle={contentContainerStyle}
-      testID="categoriesButtons"
-    />
+    <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
+      {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
+        <Container>
+          <ContainerVenueMapBlock>
+            <VenueMapBlock
+              onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
+              from="searchLanding"
+            />
+          </ContainerVenueMapBlock>
+          <VenueMapLocationModal
+            visible={venueMapLocationModalVisible}
+            dismissModal={hideVenueMapLocationModal}
+            openedFrom="searchLanding"
+          />
+        </Container>
+      ) : null}
+      <CategoriesTitleV2 />
+      <CategoriesButtonsContainer>
+        {sortedCategories.map((item) => (
+          <StyledCategoryButton key={item.label} {...item} />
+        ))}
+      </CategoriesButtonsContainer>
+    </StyledScrollView>
   )
 }
 
-const tabletMinWidth = theme.breakpoints.md
-// eslint-disable-next-line no-restricted-properties
-const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
-const isMobileViewport = getMediaQueryFromDimensions({
-  maxHeight: undefined,
-  windowHeight,
-  windowWidth,
-  maxWidth: tabletMinWidth,
-  minHeight: undefined,
-  minWidth: undefined,
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.isMobileViewport ? getSpacing(0) : getSpacing(8),
+}))
+
+const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  ...(theme.isMobileViewport
+    ? { height: MOBILE_CATEGORY_BUTTON_HEIGHT, minWidth: '40%', maxWidth: '49%' }
+    : { height: DESKTOP_CATEGORY_BUTTON_HEIGHT }),
+}))
+
+const CategoriesButtonsContainer = styled.View(({ theme }) => ({
+  width: '100%',
+  ...(theme.isMobileViewport
+    ? {
+        marginTop: MOBILE_GAPS_AND_PADDINGS,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        paddingVertical: MOBILE_GAPS_AND_PADDINGS,
+        gap: MOBILE_GAPS_AND_PADDINGS,
+      }
+    : {
+        paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
+        gap: DESKTOP_GAPS_AND_PADDINGS,
+        display: 'grid',
+        gridTemplateColumns: `repeat(5, 1fr)`,
+      }),
+}))
+
+const CategoriesTitleV2 = styled(TypoDS.Title4).attrs({
+  children: 'Parcours les catégories',
+  ...getHeadingAttrs(2),
+})({
+  width: '100%',
+  marginTop: getSpacing(4),
 })
 
-const contentContainerStyle = {
-  paddingHorizontal: getSpacing(isMobileViewport ? 4 : 3),
-  ...(Platform.OS === 'web'
-    ? { paddingBottom: getSpacing(6) }
-    : { paddingBottom: getSpacing(6) + theme.tabBar.height }),
-}
+const Container = styled.View({
+  width: '100%',
+  marginBottom: getSpacing(2),
+})
 
-// The FlatList uses numColumns which makes the list structure hard to achieve, so titles are used instead to structure the information
-const CategoryButtonContainer = styled(View).attrs(getHeadingAttrs(3))(({ theme }) => ({
-  padding: getSpacing(theme.isDesktopViewport ? 3 : 2),
-  flexBasis: theme.isDesktopViewport ? '25%' : '50%',
-}))
+const ContainerVenueMapBlock = styled.View({
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(2),
+})
