@@ -30,9 +30,9 @@ export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useSubscriptionContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
     ? formatPhoneNumberForDisplay(
-      phoneValidation?.phoneNumber,
-      phoneValidation?.country.countryCode as CountryCode
-    )
+        phoneValidation?.phoneNumber,
+        phoneValidation?.country.countryCode as CountryCode
+      )
     : ''
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()

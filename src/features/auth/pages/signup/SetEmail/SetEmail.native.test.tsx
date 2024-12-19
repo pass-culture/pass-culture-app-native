@@ -285,7 +285,7 @@ describe('<SetEmail />', () => {
 
       renderSetEmail()
 
-      await act(() => { })
+      await act(() => {})
 
       const signupButton = screen.getByText('S’inscrire avec Google')
 

@@ -39,7 +39,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should render correctly', async () => {
     renderGetStepperInfo()
-    await act(async () => { })
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
@@ -51,7 +51,7 @@ describe('<IdentityCheckEnd/>', () => {
     })
 
     renderGetStepperInfo()
-    await act(async () => { })
+    await act(async () => {})
 
     expect(navigate).not.toHaveBeenCalled()
 
@@ -71,7 +71,7 @@ describe('<IdentityCheckEnd/>', () => {
       nextSubscriptionStep: null,
     })
     renderGetStepperInfo()
-    await act(async () => { })
+    await act(async () => {})
 
     expect(navigateToHome).not.toHaveBeenCalled()
 

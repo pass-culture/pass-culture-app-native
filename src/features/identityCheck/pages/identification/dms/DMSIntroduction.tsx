@@ -33,26 +33,26 @@ export const DMSIntroduction = (): React.JSX.Element => {
   const informationListItem: { icon: FC<AccessibleBicolorIcon>; label: string }[] =
     params?.isForeignDMSInformation
       ? [
-        { icon: BicolorClock, label: timeLabel },
-        { icon: BicolorIdCard, label: IDLabel },
-        { icon: BicolorConfirmation, label: homeProofLabel },
-        { icon: BicolorProfile, label: selfieLabel },
-      ]
+          { icon: BicolorClock, label: timeLabel },
+          { icon: BicolorIdCard, label: IDLabel },
+          { icon: BicolorConfirmation, label: homeProofLabel },
+          { icon: BicolorProfile, label: selfieLabel },
+        ]
       : [
-        { icon: BicolorClock, label: timeLabel },
-        { icon: BicolorIdCard, label: IDLabel },
-        { icon: BicolorProfile, label: selfieLabel },
-      ]
+          { icon: BicolorClock, label: timeLabel },
+          { icon: BicolorIdCard, label: IDLabel },
+          { icon: BicolorProfile, label: selfieLabel },
+        ]
 
   const toDMSWebsiteButtonProps = params?.isForeignDMSInformation
     ? {
-      externalNav: { url: env.DMS_FOREIGN_CITIZEN_URL },
-      onBeforeNavigate: analytics.logOpenDMSForeignCitizenURL,
-    }
+        externalNav: { url: env.DMS_FOREIGN_CITIZEN_URL },
+        onBeforeNavigate: analytics.logOpenDMSForeignCitizenURL,
+      }
     : {
-      externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
-      onBeforeNavigate: analytics.logOpenDMSFrenchCitizenURL,
-    }
+        externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
+        onBeforeNavigate: analytics.logOpenDMSFrenchCitizenURL,
+      }
 
   return (
     <GenericInfoPageWhite

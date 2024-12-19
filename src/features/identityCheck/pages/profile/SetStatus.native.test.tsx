@@ -35,16 +35,16 @@ const profile = {
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
-  ; (useName as jest.Mock).mockReturnValue(profile.name)
-  ; (useNameActions as jest.Mock).mockReturnValue({ resetName: jest.fn() })
+;(useName as jest.Mock).mockReturnValue(profile.name)
+;(useNameActions as jest.Mock).mockReturnValue({ resetName: jest.fn() })
 
 jest.mock('features/identityCheck/pages/profile/store/cityStore')
-  ; (useCity as jest.Mock).mockReturnValue(profile.city)
-  ; (useCityActions as jest.Mock).mockReturnValue({ resetCity: jest.fn() })
+;(useCity as jest.Mock).mockReturnValue(profile.city)
+;(useCityActions as jest.Mock).mockReturnValue({ resetCity: jest.fn() })
 
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
-  ; (useAddress as jest.Mock).mockReturnValue(profile.address)
-  ; (useAddressActions as jest.Mock).mockReturnValue({ resetAddress: jest.fn() })
+;(useAddress as jest.Mock).mockReturnValue(profile.address)
+;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: jest.fn() })
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
