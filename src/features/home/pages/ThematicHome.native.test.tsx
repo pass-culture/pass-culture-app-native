@@ -172,7 +172,7 @@ describe('ThematicHome', () => {
   })
 
   describe('analytics', () => {
-    it('should log ConsultHome', async () => {
+    it('should log ConsultThematicHome', async () => {
       renderThematicHome()
 
       await screen.findByText('Suivre')
@@ -182,7 +182,7 @@ describe('ThematicHome', () => {
       })
     })
 
-    it('should log ConsultHome when coming from category block', async () => {
+    it('should log ConsultThematicHome when coming from category block', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -203,7 +203,7 @@ describe('ThematicHome', () => {
       })
     })
 
-    it('should log ConsultHome when coming from highlight thematic block', async () => {
+    it('should log ConsultThematicHome when coming from highlight thematic block', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -218,6 +218,24 @@ describe('ThematicHome', () => {
         homeEntryId: 'fakeEntryId',
         from: 'highlight_thematic_block',
         moduleId: 'moduleId',
+      })
+    })
+
+    it('should log ConsultThematicHome when coming from deeplinks', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          from: 'deeplink',
+        },
+      })
+      renderThematicHome()
+      await screen.findByText('Suivre')
+
+      expect(analytics.logConsultThematicHome).toHaveBeenNthCalledWith(1, {
+        from: 'deeplink',
+        homeEntryId: 'fakeEntryId',
+        moduleId: undefined,
+        moduleItemId: undefined,
+        moduleListId: undefined,
       })
     })
   })

@@ -12,7 +12,8 @@ import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
@@ -207,8 +208,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-
 const mockedEmptyHistory = {
   filteredHistory: [],
   queryHistory: '',
@@ -243,12 +242,13 @@ describe('<SearchLanding />', () => {
 
   describe('When wipAppV2SearchLandingHeader feature flag deactivated', () => {
     beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+      setFeatureFlags()
     })
 
     it('should render SearchLanding', async () => {
-      render(<SearchLanding />)
-
+      render(<SearchLanding />, {
+        theme: { isDesktopViewport: false, isMobileViewport: true },
+      })
       await screen.findByText('Rechercher')
 
       await act(() => {})
@@ -265,25 +265,9 @@ describe('<SearchLanding />', () => {
     })
   })
 
-  describe('When App V2 feature flag activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
-
-    it('should render V2 App Design SearchLanding', async () => {
-      render(<SearchLanding />)
-
-      await screen.findByText('Rechercher')
-
-      await act(() => {})
-
-      expect(screen).toMatchSnapshot()
-    })
-  })
-
   describe('When wipAppV2SearchLandingHeader feature flag activated', () => {
     beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_LANDING_HEADER])
     })
 
     it('should render gradient header', async () => {

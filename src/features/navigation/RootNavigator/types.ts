@@ -41,25 +41,25 @@ type BaseThematicHome = {
   homeId: string
   videoModuleId?: string
 }
-type OtherThematicBlockHome = BaseThematicHome & {
+
+type OtherThematicBlockHome = {
   from?: 'deeplink'
-  moduleId?: never
-  moduleListId?: never
+  moduleId?: string
+  moduleListId?: string
 }
-type CategoryBlockThematicHome = BaseThematicHome & {
+
+type CategoryBlockThematicHome = {
   from: 'category_block'
   moduleId: string
   moduleListId: string
 }
-type HighlightThematicBlockThematicHome = BaseThematicHome & {
+type HighlightThematicBlockThematicHome = {
   from: 'highlight_thematic_block'
   moduleId: string
   moduleListId?: never
 }
-type ThematicHomeParams =
-  | OtherThematicBlockHome
-  | CategoryBlockThematicHome
-  | HighlightThematicBlockThematicHome
+export type ThematicHomeParams = BaseThematicHome &
+  (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined

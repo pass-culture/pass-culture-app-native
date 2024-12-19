@@ -127,45 +127,22 @@ export const ThematicHome: FunctionComponent = () => {
           : getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT),
     })
 
+  const moduleItemId =
+    'moduleItemId' in params && typeof params.moduleItemId === 'string'
+      ? params.moduleItemId
+      : undefined
   useEffect(() => {
-    if (id) {
-      switch (params.from) {
-        case 'category_block':
-          {
-            analytics.logConsultThematicHome({
-              homeEntryId: id,
-              from: params.from,
-              moduleId: params.moduleId,
-              moduleListId: params.moduleListId,
-            })
-          }
-          break
-        case 'highlight_thematic_block':
-          {
-            analytics.logConsultThematicHome({
-              homeEntryId: id,
-              from: params.from,
-              moduleId: params.moduleId,
-              moduleListId: params.moduleListId,
-            })
-          }
-          break
-        case 'deeplink':
-          {
-            analytics.logConsultThematicHome({
-              homeEntryId: id,
-              from: params.from,
-            })
-          }
-          break
-        default: {
-          analytics.logConsultThematicHome({
-            homeEntryId: id,
-          })
-        }
-      }
+    if (!id) {
+      return
     }
-  }, [id, params.from, params.moduleId, params.moduleListId])
+    analytics.logConsultThematicHome({
+      homeEntryId: id,
+      from: params.from,
+      moduleId: params.moduleId,
+      moduleListId: params.moduleListId,
+      moduleItemId,
+    })
+  }, [id, params.from, params.homeId, params.moduleId, moduleItemId, params.moduleListId])
 
   useEffect(() => {
     switch (true) {
