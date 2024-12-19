@@ -62,3 +62,9 @@ export type OfferContentProps = {
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
 }
+
+export type MarkdownPartProps = {
+  text: string
+  isBold?: boolean
+  isItalic?: boolean
+}

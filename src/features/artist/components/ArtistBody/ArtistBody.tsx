@@ -16,6 +16,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -88,7 +89,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
               <Description gap={1}>
                 <Typo.ButtonText>Quelques infos à son sujet</Typo.ButtonText>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                  {bio}
+                  {highlightLinks(bio)}
                 </CollapsibleText>
               </Description>
             ) : null}
