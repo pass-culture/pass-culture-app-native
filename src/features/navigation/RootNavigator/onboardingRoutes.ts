@@ -1,6 +1,3 @@
-import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationOnboarding'
-import { NavigationProfileTutorial } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationProfileTutorial'
-import { NavigationTutorial } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationTutorial'
 import { TutorialRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
 import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
@@ -46,21 +43,6 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
     component: OnboardingWelcome,
     path: 'bienvenue',
     options: { title: 'Bienvenue' },
-  },
-  {
-    name: 'CheatcodeNavigationTutorial',
-    component: NavigationTutorial,
-    path: 'cheat-navigation-tutorial',
-  },
-  {
-    name: 'CheatcodeNavigationOnboarding',
-    component: NavigationOnboarding,
-    path: 'cheat-navigation-onboarding',
-  },
-  {
-    name: 'CheatcodeNavigationProfileTutorial',
-    component: NavigationProfileTutorial,
-    path: 'cheat-navigation-profile-tutorial',
   },
   {
     name: 'ProfileTutorialAgeInformation',

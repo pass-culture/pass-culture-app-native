@@ -67,8 +67,37 @@ export type AccessibilityRootStackParamList = {
   RecommendedPaths: undefined
 }
 
-export type CulturalSurveyRootStackParamList = {
+export type CheatcodeRootStackParamList = {
+  AppComponents: undefined
+  CheatCodes: undefined
+  CheatMenu: undefined
+  NavigationAccountSuspension: undefined
+  AccesLibre: undefined
+  MarketingBlocks: undefined
+  Navigation: undefined
+  NavigationNotScreensPages: undefined
+  NavigationProfile: undefined
+  NavigationAchievements: undefined
+  NavigationSubscription: undefined
+  NavigationShareApp: undefined
+  NewCaledonia: undefined
+  CategoryThematicHomeHeaderCheatcode: undefined
+  DefaultThematicHomeHeaderCheatcode: undefined
+  HighlightThematicHomeHeaderCheatcode: undefined
+  ThematicHeaders: undefined
+  CheatcodeNavigationTutorial: undefined
+  CheatcodeNavigationOnboarding: undefined
+  CheatcodeNavigationProfileTutorial: undefined
+  NavigationErrors: undefined
+  NavigationIdentityCheck: undefined
+  NavigationSignUp: undefined
+  NewIdentificationFlow: undefined
   NavigationCulturalSurvey: undefined
+  NavigationTrustedDevice: undefined
+  TrustedDeviceInfos: undefined
+}
+
+export type CulturalSurveyRootStackParamList = {
   CulturalSurveyIntro: undefined
   CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
@@ -78,9 +107,6 @@ export type CulturalSurveyRootStackParamList = {
 export type TutorialRootStackParamList = {
   AgeSelection: TutorialType
   AgeSelectionOther: TutorialType
-  CheatcodeNavigationTutorial: undefined
-  CheatcodeNavigationOnboarding: undefined
-  CheatcodeNavigationProfileTutorial: undefined
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
@@ -101,11 +127,9 @@ export type TrustedDeviceRootStackParamList = {
     reset_password_token: string
     reset_token_expiration_timestamp: number
   }
-  NavigationTrustedDevice: undefined
   SuspensionChoice: { token: string }
   SuspensionChoiceExpiredLink: undefined
   SuspiciousLoginSuspendedAccount: undefined
-  TrustedDeviceInfos: undefined
 }
 
 export enum StepperOrigin {
@@ -128,12 +152,6 @@ export enum StepperOrigin {
 }
 
 export type SubscriptionRootStackParamList = {
-  // Cheatcodes
-  NavigationErrors: undefined
-  NavigationIdentityCheck: undefined
-  NavigationShareApp: undefined
-  NavigationSignUp: undefined
-  NewIdentificationFlow: undefined
   // Stepper
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
@@ -197,7 +215,6 @@ export type RootStackParamList = {
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
-  AppComponents: undefined
   Artist: {
     fromOfferId: number
   }
@@ -211,8 +228,6 @@ export type RootStackParamList = {
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   ChangePassword: undefined
   ChangeStatus: undefined
-  CheatCodes: undefined
-  CheatMenu: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
@@ -241,12 +256,6 @@ export type RootStackParamList = {
     from?: StepperOrigin
   }
   Maintenance: undefined
-  Navigation: undefined
-  NavigationAccountSuspension: undefined
-  NavigationNotScreensPages: undefined
-  NavigationProfile: undefined
-  NavigationAchievements: undefined
-  NavigationSubscription: undefined
   NewEmailSelection: { token: string }
   NotificationsSettings: undefined
   Offer: {
@@ -303,17 +312,10 @@ export type RootStackParamList = {
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-  // cheatcodes
-  AccesLibre: undefined
-  NewCaledonia: undefined
-  DefaultThematicHomeHeaderCheatcode: undefined
-  HighlightThematicHomeHeaderCheatcode: undefined
-  CategoryThematicHomeHeaderCheatcode: undefined
-  ThematicHeaders: undefined
-  MarketingBlocks: undefined
   MovieCalendar: undefined
   Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
 } & AccessibilityRootStackParamList &
+  CheatcodeRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &
   SubscriptionRootStackParamList &
