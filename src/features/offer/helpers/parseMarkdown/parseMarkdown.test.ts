@@ -77,4 +77,18 @@ describe('parseMarkdown', () => {
       { text: 'éàç!', isBold: true },
     ])
   })
+
+  it('should return an empty array when style text is empty', () => {
+    const input = '****'
+    const output = parseMarkdown(input)
+
+    expect(output).toEqual([])
+  })
+
+  it('should return an empty array when style text has an empty style text', () => {
+    const input = '********'
+    const output = parseMarkdown(input)
+
+    expect(output).toEqual([])
+  })
 })
