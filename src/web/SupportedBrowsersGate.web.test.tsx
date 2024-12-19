@@ -7,16 +7,11 @@ import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 
 describe('SupportedBrowsersGate', () => {
   describe.each`
-    browserProperty       | browserName        | minimalSupportedVersion
-    ${'isChrome'}         | ${'Chrome'}        | ${50}
-    ${'isMobileSafari'}   | ${'Mobile Safari'} | ${12}
-    ${'isSafari'}         | ${'Safari'}        | ${10}
-    ${'isFirefox'}        | ${'Firefox'}       | ${55}
-    ${'isEdge'}           | ${'Edge'}          | ${79}
-    ${'isSamsungBrowser'} | ${'Samsung'}       | ${5}
-    ${'isInstagram'}      | ${'Instagram'}     | ${200}
-    ${'isBrave'}          | ${'Brave'}         | ${98}
-    ${'isChromium'}       | ${'Chromium'}      | ${0}
+    browserProperty | browserName  | minimalSupportedVersion
+    ${'isChrome'}   | ${'Chrome'}  | ${80}
+    ${'isFirefox'}  | ${'Firefox'} | ${80}
+    ${'isEdge'}     | ${'Edge'}    | ${80}
+    ${'isSafari'}   | ${'Safari'}  | ${14}
   `(
     '$browserName v$minimalSupportedVersion',
     ({ browserProperty, browserName, minimalSupportedVersion }) => {

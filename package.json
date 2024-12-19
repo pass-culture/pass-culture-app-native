@@ -14,23 +14,6 @@
     "node": ">=20.10"
   },
   "homepage": ".",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all",
-      "ie 11",
-      "ie 9",
-      "not op_mob >=1"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "ie 11",
-      "ie 9"
-    ]
-  },
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
     "android": "react-native run-android",
