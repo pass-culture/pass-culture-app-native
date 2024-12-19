@@ -12,11 +12,13 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
-import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { makePriceSchema } from 'features/search/helpers/schema/makePriceSchema'
 import { SearchState } from 'features/search/types'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { convertCentsToEuros, RoundingMode } from 'libs/parsers/pricesConversion'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import {
+  useFormatCurrencyFromCents,
+  useFormatCurrencyFromCentsWithoutCurrenySymbol,
+} from 'libs/parsers/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -58,27 +60,22 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const currency = useGetCurrencyToDisplay()
   const currencyFull = useGetCurrencyToDisplay('full')
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const currency = useGetCurrencyToDisplay()
 
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
-  const formatAvailableCredit = convertCentsToEuros(availableCredit, RoundingMode.FLOORED)
+  const formatAvailableCredit = useFormatCurrencyFromCentsWithoutCurrenySymbol(availableCredit)
   const formatAvailableCreditWithCurrency = useFormatCurrencyFromCents(availableCredit)
   const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
-  const formatInitialCredit = convertCentsToEuros(initialCredit, RoundingMode.FLOORED)
+  const formatInitialCredit = useFormatCurrencyFromCentsWithoutCurrenySymbol(initialCredit)
   const formatInitialCreditWithCurrency = useFormatCurrencyFromCents(initialCredit)
 
-  const searchPriceSchema = makeSearchPriceSchema(
-    String(formatInitialCredit),
-    currency,
-    euroToPacificFrancRate
-  )
+  const searchPriceSchema = makePriceSchema({ initialCredit: formatInitialCredit, currency })
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -91,28 +88,45 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   useForHeightKeyboardEvents(setKeyboardHeight)
 
   function search(values: PriceModalFormData) {
+    const transformedValues = {
+      ...values,
+      minPrice: values.minPrice
+        ? String(Number(values.minPrice) * DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
+        : '',
+      maxPrice: values.maxPrice
+        ? String(Number(values.maxPrice) * DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
+        : '',
+    }
+
     const offerIsFree =
-      values.isOnlyFreeOffersSearch ||
-      (values.maxPrice === '0' && (values.minPrice === '' || values.minPrice === '0'))
+      transformedValues.isOnlyFreeOffersSearch ||
+      (transformedValues.maxPrice === '0' &&
+        (transformedValues.minPrice === '' || transformedValues.minPrice === '0'))
+
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
       minPrice: undefined,
       maxPrice: undefined,
+      defaultMinPrice: values.minPrice,
+      defaultMaxPrice: values.maxPrice,
       offerIsFree,
     }
 
-    if (values.minPrice) {
-      additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
-    }
-    if (values.maxPrice) {
+    if (transformedValues.minPrice) {
       additionalSearchState = {
         ...additionalSearchState,
-        maxPrice: values.maxPrice,
+        minPrice: transformedValues.minPrice,
+      }
+    }
+
+    if (transformedValues.maxPrice) {
+      additionalSearchState = {
+        ...additionalSearchState,
+        maxPrice: transformedValues.maxPrice,
         maxPossiblePrice: undefined,
       }
     } else {
-      // Only the offers that can be reserved by the beneficiary user
       additionalSearchState = {
         ...additionalSearchState,
         maxPossiblePrice: String(formatInitialCredit),
@@ -125,17 +139,12 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const initialFormValues = useMemo(() => {
     return {
-      minPrice: searchState?.minPrice ?? '',
-      maxPrice: searchState?.maxPrice ?? '',
+      minPrice: searchState?.defaultMinPrice ?? '',
+      maxPrice: searchState?.defaultMaxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     }
-  }, [
-    isLimitCreditSearchDefaultValue,
-    isOnlyFreeOffersSearchDefaultValue,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-  ])
+  }, [isLimitCreditSearchDefaultValue, isOnlyFreeOffersSearchDefaultValue, searchState])
 
   const {
     handleSubmit,
@@ -307,7 +316,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
             <React.Fragment>
               <TextInput
-                autoComplete="off" // disable autofill on android
+                autoComplete="off"
                 autoCapitalize="none"
                 isError={error && value.length > 0}
                 keyboardType="numeric"
@@ -315,7 +324,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 value={value}
                 onChangeText={onChange}
                 onBlur={onBlur}
-                textContentType="none" // disable autofill on iOS
+                textContentType="none"
                 accessibilityDescribedBy={minPriceInputId}
                 testID="Entrée pour le prix minimum"
                 placeholder="0"

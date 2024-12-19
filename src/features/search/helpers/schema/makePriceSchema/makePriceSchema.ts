@@ -1,39 +1,23 @@
 import { string } from 'yup'
 
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 // integers separated by a dot or comma with 2 decimals max
 const PRICE_REGEX = /^\d+(?:[,.]\d{0,2})?$/
 const formatPriceError = `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
 
-const maxPriceError = (
-  initialCreditInEuro: string,
-  currency: Currency,
-  euroToPacificFrancRate: number
-) => {
-  const initialCreditInCents = convertEuroToCents(Number(initialCreditInEuro))
-  const maxPrice = formatCurrencyFromCents(initialCreditInCents, currency, euroToPacificFrancRate)
-  return `Le prix indiqué ne doit pas dépasser ${maxPrice}`
+const maxPriceError = (initialCredit: number, currency: Currency) => {
+  return `Le prix indiqué ne doit pas dépasser ${initialCredit}\u00a0${currency}`
 }
 
-export const makePriceSchema = (
-  initialCreditInEuro: string,
-  currency: Currency,
-  euroToPacificFrancRate: number
-) =>
+export const makePriceSchema = (initialCredit: number, currency: Currency) =>
   string()
     .trim()
     .test('validPrice', formatPriceError, (value) => {
       if (!value) return true
       return PRICE_REGEX.test(value.trim())
     })
-    .test(
-      'validMaxPrice',
-      maxPriceError(initialCreditInEuro, currency, euroToPacificFrancRate),
-      (value) => {
-        if (!value) return true
-        return Number(value.trim().replaceAll(',', '.')) <= Number(initialCreditInEuro)
-      }
-    )
+    .test('validMaxPrice', maxPriceError(initialCredit, currency), (value) => {
+      if (!value) return true
+      return Number(value.trim().replaceAll(',', '.')) <= Number(initialCredit)
+    })
