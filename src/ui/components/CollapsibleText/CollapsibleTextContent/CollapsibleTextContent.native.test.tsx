@@ -36,7 +36,6 @@ const mockOnTextLayoutWhenTooShort = {
 }
 
 const mockOnButtonPress = jest.fn()
-const mockRenderContent = jest.fn(() => [TEXT])
 
 // Mock needed for the file test to take into account CollapsibleTextContent.tsx rather than CollapsibleTextContent.ios.tsx
 jest.mock('./CollapsibleTextContent', () => require('./CollapsibleTextContent.tsx'))
@@ -47,9 +46,9 @@ describe('CollapsibleTextContent', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={mockOnButtonPress}
-      />
+        onButtonPress={mockOnButtonPress}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -66,9 +65,9 @@ describe('CollapsibleTextContent', () => {
       <CollapsibleTextContent
         expanded
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={mockOnButtonPress}
-      />
+        onButtonPress={mockOnButtonPress}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -85,9 +84,9 @@ describe('CollapsibleTextContent', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={mockOnButtonPress}
-      />
+        onButtonPress={mockOnButtonPress}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -104,9 +103,9 @@ describe('CollapsibleTextContent', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={mockOnButtonPress}
-      />
+        onButtonPress={mockOnButtonPress}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)

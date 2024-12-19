@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 
-import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
 import { TypoDS } from 'ui/theme'
 
@@ -9,15 +8,14 @@ import { useIsTextEllipsis } from '../useIsTextEllipsis'
 type Props = {
   expanded: boolean
   numberOfLines: number
-  renderContent: () => React.JSX.Element[] | ParsedDescription
   onButtonPress: VoidFunction
-}
+} & PropsWithChildren
 
 export const CollapsibleTextContent: FunctionComponent<Props> = ({
   expanded,
   numberOfLines,
-  renderContent,
   onButtonPress,
+  children,
 }) => {
   const {
     onTextLayout,
@@ -31,7 +29,7 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
         numberOfLines={expanded ? undefined : numberOfLines}
         onLayout={onLayout}
         onTextLayout={onTextLayout}>
-        {renderContent()}
+        {children}
       </TypoDS.Body>
 
       {shouldDisplayButton ? (

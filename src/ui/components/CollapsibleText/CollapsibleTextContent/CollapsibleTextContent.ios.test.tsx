@@ -31,8 +31,6 @@ const mockOnTextLayoutWithoutEllipsis = {
   },
 }
 
-const mockRenderContent = () => [TEXT]
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -43,9 +41,9 @@ describe('CollapsibleTextContent iOS', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={jest.fn()}
-      />
+        onButtonPress={jest.fn()}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -61,9 +59,9 @@ describe('CollapsibleTextContent iOS', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={jest.fn()}
-      />
+        onButtonPress={jest.fn()}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -79,9 +77,9 @@ describe('CollapsibleTextContent iOS', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={jest.fn()}
-      />
+        onButtonPress={jest.fn()}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -94,12 +92,9 @@ describe('CollapsibleTextContent iOS', () => {
 
   it('should not set number of lines when text expanded', async () => {
     render(
-      <CollapsibleTextContent
-        expanded
-        numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={jest.fn()}
-      />
+      <CollapsibleTextContent expanded numberOfLines={NUMBER_OF_LINES} onButtonPress={jest.fn()}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -116,9 +111,9 @@ describe('CollapsibleTextContent iOS', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={mockOnButtonPress}
-      />
+        onButtonPress={mockOnButtonPress}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)
@@ -136,9 +131,9 @@ describe('CollapsibleTextContent iOS', () => {
       <CollapsibleTextContent
         expanded={false}
         numberOfLines={NUMBER_OF_LINES}
-        renderContent={mockRenderContent}
-        onButtonPress={jest.fn()}
-      />
+        onButtonPress={jest.fn()}>
+        {[TEXT]}
+      </CollapsibleTextContent>
     )
 
     const text = screen.getByText(TEXT)

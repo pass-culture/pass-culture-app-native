@@ -37,8 +37,8 @@ export function CollapsibleText({ children, numberOfLines, isMarkdown }: Readonl
     <CollapsibleTextContent
       expanded={expanded}
       numberOfLines={numberOfLines}
-      renderContent={renderContent}
-      onButtonPress={onButtonPress}
-    />
+      onButtonPress={onButtonPress}>
+      {renderContent()}
+    </CollapsibleTextContent>
   )
 }
