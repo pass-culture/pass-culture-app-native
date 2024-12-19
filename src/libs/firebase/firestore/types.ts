@@ -63,7 +63,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
-  WIP_FAKEDOOR_VIDEO_VENUE = 'wipFakeDoorVideoVenue',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
   WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
