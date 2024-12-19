@@ -94,7 +94,6 @@ export const SearchLanding = () => {
           ) : (
             <CategoriesButtonsContainer>
               <CategoriesList />
-              <Spacer.TabBar />
             </CategoriesButtonsContainer>
           )}
         </InstantSearch>
@@ -103,7 +102,8 @@ export const SearchLanding = () => {
   )
 }
 
-const CategoriesButtonsContainer = styled.View({
+const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   flex: 1,
   overflowY: 'auto',
-})
+  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))

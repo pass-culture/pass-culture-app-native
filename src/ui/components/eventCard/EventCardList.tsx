@@ -33,10 +33,9 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
           key={numColumns}
           data={data}
           renderItem={({ item }: { item: EventCardProps }) => (
-            <React.Fragment>
+            <Container>
               <EventCard {...item} {...analyticsParams} />
-              <Spacer.Row numberOfSpaces={4} />
-            </React.Fragment>
+            </Container>
           )}
           keyExtractor={(item) => JSON.stringify(item)}
           ItemSeparatorComponent={FlatListLineSpacer}
@@ -89,3 +88,5 @@ const ScrollViewContainer = styled.ScrollView({
   paddingVertical: getSpacing(2),
 })
 const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
+
+const Container = styled(View)({ marginRight: getSpacing(4) })
