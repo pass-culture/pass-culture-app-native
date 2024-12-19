@@ -1,61 +1,21 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { MarkdownPartProps } from 'features/offer/types'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { TypoDS } from 'ui/theme'
 
-export const MarkdownPart: FunctionComponent<MarkdownPartProps> = ({
-  text,
-  isBold,
-  isItalic,
-  isUnderline,
-}) => {
+export const MarkdownPart: FunctionComponent<MarkdownPartProps> = ({ text, isBold, isItalic }) => {
   if (isBold && !isItalic) {
-    return (
-      <StyledBodyAccent isUnderline={isUnderline} testID="styledBodyAccent">
-        {highlightLinks(text)}
-      </StyledBodyAccent>
-    )
+    return <TypoDS.BodyAccent testID="styledBodyAccent">{highlightLinks(text)}</TypoDS.BodyAccent>
   } else if (isItalic && !isBold) {
-    return (
-      <StyledBodyItalic isUnderline={isUnderline} testID="styledBodyItalic">
-        {highlightLinks(text)}
-      </StyledBodyItalic>
-    )
+    return <TypoDS.BodyItalic testID="styledBodyItalic">{highlightLinks(text)}</TypoDS.BodyItalic>
   } else if (isItalic && isBold) {
     return (
-      <StyledBodyItalicAccent isUnderline={isUnderline} testID="styledBodyItalicAccent">
+      <TypoDS.BodyItalicAccent testID="styledBodyItalicAccent">
         {highlightLinks(text)}
-      </StyledBodyItalicAccent>
+      </TypoDS.BodyItalicAccent>
     )
   }
 
-  return (
-    <StyledBody isUnderline={isUnderline} testID="styledBody">
-      {highlightLinks(text)}
-    </StyledBody>
-  )
+  return <TypoDS.Body testID="styledBody">{highlightLinks(text)}</TypoDS.Body>
 }
-
-const StyledBody = styled(TypoDS.Body)<{ isUnderline?: boolean }>(({ isUnderline }) => ({
-  textDecorationLine: isUnderline ? 'underline' : 'none',
-}))
-
-const StyledBodyAccent = styled(TypoDS.BodyAccent)<{ isUnderline?: boolean }>(
-  ({ isUnderline }) => ({
-    textDecorationLine: isUnderline ? 'underline' : 'none',
-  })
-)
-
-const StyledBodyItalic = styled(TypoDS.BodyItalic)<{ isUnderline?: boolean }>(
-  ({ isUnderline }) => ({
-    textDecorationLine: isUnderline ? 'underline' : 'none',
-  })
-)
-
-const StyledBodyItalicAccent = styled(TypoDS.BodyItalicAccent)<{ isUnderline?: boolean }>(
-  ({ isUnderline }) => ({
-    textDecorationLine: isUnderline ? 'underline' : 'none',
-  })
-)
