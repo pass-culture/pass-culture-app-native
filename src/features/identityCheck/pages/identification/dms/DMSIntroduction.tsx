@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -21,9 +21,6 @@ import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
-  useEffect(() => {
-    analytics.logScreenViewDMSIntroduction()
-  }, [])
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
 
   const timeLabel = '10 minutes de ton temps'
@@ -36,26 +33,26 @@ export const DMSIntroduction = (): React.JSX.Element => {
   const informationListItem: { icon: FC<AccessibleBicolorIcon>; label: string }[] =
     params?.isForeignDMSInformation
       ? [
-          { icon: BicolorClock, label: timeLabel },
-          { icon: BicolorIdCard, label: IDLabel },
-          { icon: BicolorConfirmation, label: homeProofLabel },
-          { icon: BicolorProfile, label: selfieLabel },
-        ]
+        { icon: BicolorClock, label: timeLabel },
+        { icon: BicolorIdCard, label: IDLabel },
+        { icon: BicolorConfirmation, label: homeProofLabel },
+        { icon: BicolorProfile, label: selfieLabel },
+      ]
       : [
-          { icon: BicolorClock, label: timeLabel },
-          { icon: BicolorIdCard, label: IDLabel },
-          { icon: BicolorProfile, label: selfieLabel },
-        ]
+        { icon: BicolorClock, label: timeLabel },
+        { icon: BicolorIdCard, label: IDLabel },
+        { icon: BicolorProfile, label: selfieLabel },
+      ]
 
   const toDMSWebsiteButtonProps = params?.isForeignDMSInformation
     ? {
-        externalNav: { url: env.DMS_FOREIGN_CITIZEN_URL },
-        onBeforeNavigate: analytics.logOpenDMSForeignCitizenURL,
-      }
+      externalNav: { url: env.DMS_FOREIGN_CITIZEN_URL },
+      onBeforeNavigate: analytics.logOpenDMSForeignCitizenURL,
+    }
     : {
-        externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
-        onBeforeNavigate: analytics.logOpenDMSFrenchCitizenURL,
-      }
+      externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
+      onBeforeNavigate: analytics.logOpenDMSFrenchCitizenURL,
+    }
 
   return (
     <GenericInfoPageWhite

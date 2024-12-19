@@ -90,12 +90,6 @@ describe('SetPhoneNumber', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetPhoneNumber()
-
-    await waitFor(() => expect(analytics.logScreenViewSetPhoneNumber).toHaveBeenCalledTimes(1))
-  })
-
   describe('continue button', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
     mockFetch.mockResolvedValue(

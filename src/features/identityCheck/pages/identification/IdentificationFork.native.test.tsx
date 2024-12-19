@@ -54,12 +54,6 @@ describe('<IdentificationFork />', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    render(<IdentificationFork />)
-
-    await waitFor(() => expect(analytics.logScreenViewIdentityFork).toHaveBeenCalledTimes(1))
-  })
-
   it('should log analytics on press "Ma pièce d’identité"', async () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Ma pièce d’identité')

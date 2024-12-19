@@ -44,12 +44,6 @@ describe('ComeBackLater', () => {
     )
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    render(<ComeBackLater />)
-
-    await waitFor(() => expect(analytics.logScreenViewComeBackLater).toHaveBeenCalledTimes(1))
-  })
-
   it('should send a batch event when the screen is mounted', async () => {
     render(<ComeBackLater />)
 

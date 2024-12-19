@@ -100,14 +100,6 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetAddress()
-
-    await screen.findByText('Recherche et sélectionne ton adresse')
-
-    await waitFor(() => expect(analytics.logScreenViewSetAddress).toHaveBeenCalledTimes(1))
-  })
-
   it('should log analytics on press Continuer', async () => {
     renderSetAddress()
 

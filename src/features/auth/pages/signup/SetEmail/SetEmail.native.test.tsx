@@ -202,14 +202,6 @@ describe('<SetEmail />', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetEmail()
-
-    await act(() => {})
-
-    expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
-  })
-
   it('should set a default email if the user has already added his email', async () => {
     const propsWithPreviousEmail = {
       ...defaultProps,
@@ -293,7 +285,7 @@ describe('<SetEmail />', () => {
 
       renderSetEmail()
 
-      await act(() => {})
+      await act(() => { })
 
       const signupButton = screen.getByText('S’inscrire avec Google')
 

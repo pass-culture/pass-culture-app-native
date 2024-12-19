@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -38,10 +38,6 @@ export const SetName = () => {
   })
 
   const { firstName, lastName } = watch()
-
-  useEffect(() => {
-    analytics.logScreenViewSetName()
-  }, [])
 
   const disabled = !formState.isValid
   const firstNameInputErrorId = uuidv4()

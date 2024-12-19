@@ -53,12 +53,6 @@ describe('SelectIDStatus', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    render(<SelectIDStatus />)
-
-    await waitFor(() => expect(analytics.logScreenViewSelectIdStatus).toHaveBeenCalledTimes(1))
-  })
-
   it('should log analytics with id_ok type when pressing "J’ai ma pièce d’identité" button', async () => {
     render(<SelectIDStatus />)
 

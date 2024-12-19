@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -16,7 +16,6 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
-import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -97,10 +96,6 @@ export const SetPhoneNumberWithoutValidation = () => {
   }
 
   const submit = handleSubmit(onSubmit)
-
-  useEffect(() => {
-    analytics.logScreenViewSetPhoneNumber()
-  }, [])
 
   return (
     <PageWithHeader

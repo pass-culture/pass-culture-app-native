@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -15,7 +14,6 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
     BatchProfile.trackEvent(BatchEvent.screenViewExpiredOrLostId)
-    analytics.logScreenViewExpiredOrLostId()
   }, [])
 
   return (

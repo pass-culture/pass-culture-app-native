@@ -173,14 +173,6 @@ describe('SetPhoneValidationCode', () => {
     expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetPhoneValidationCode()
-
-    await waitFor(() =>
-      expect(analytics.logScreenViewSetPhoneValidationCode).toHaveBeenCalledTimes(1)
-    )
-  })
-
   it('should log analytics on press continue', async () => {
     renderSetPhoneValidationCode()
 

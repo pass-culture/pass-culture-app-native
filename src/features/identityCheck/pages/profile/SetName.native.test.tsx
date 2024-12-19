@@ -76,12 +76,6 @@ describe('<SetName/>', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', () => {
-    render(<SetName />)
-
-    expect(analytics.logScreenViewSetName).toHaveBeenCalledTimes(1)
-  })
-
   it('should log analytics on press Continuer', async () => {
     render(<SetName />)
 

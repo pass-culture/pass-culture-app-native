@@ -81,12 +81,6 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
-    renderSetCity()
-
-    expect(analytics.logScreenViewSetCity).toHaveBeenCalledTimes(1)
-  })
-
   it('should log analytics on press Continuer', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)

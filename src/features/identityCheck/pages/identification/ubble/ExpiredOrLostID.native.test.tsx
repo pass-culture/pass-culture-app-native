@@ -3,7 +3,6 @@ import React from 'react'
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -37,12 +36,6 @@ describe('ExpiredOrLostID', () => {
     fireEvent.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
 
     expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
-  })
-
-  it('should log screen view when the screen is mounted', async () => {
-    render(<ExpiredOrLostID />)
-
-    await waitFor(() => expect(analytics.logScreenViewExpiredOrLostId).toHaveBeenCalledTimes(1))
   })
 
   it('should send a batch event when the screen is mounted', async () => {

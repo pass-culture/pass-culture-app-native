@@ -14,7 +14,6 @@ import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
     BatchProfile.trackEvent(BatchEvent.screenViewComeBackLater)
-    analytics.logScreenViewComeBackLater()
   }, [])
 
   return (

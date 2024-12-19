@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -41,10 +41,6 @@ export const SetStatus = () => {
     resolver: yupResolver(schema),
     mode: 'onChange',
   })
-
-  useEffect(() => {
-    analytics.logScreenViewSetStatus()
-  }, [])
 
   const selectedStatus = watch('selectedStatus')
 

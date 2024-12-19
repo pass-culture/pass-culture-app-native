@@ -5,7 +5,6 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { analytics } from 'libs/analytics'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
@@ -19,10 +18,6 @@ export const IdentityCheckEnd: FC = () => {
     await saveStep(IdentityCheckStep.IDENTIFICATION)
     navigateForwardToStepper()
   }
-
-  useEffect(() => {
-    analytics.logScreenViewIdentityCheckEnd()
-  }, [])
 
   useEffect(() => {
     const timeout = setTimeout(

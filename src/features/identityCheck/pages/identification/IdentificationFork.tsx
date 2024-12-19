@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
@@ -19,10 +19,6 @@ import { Ubble } from 'ui/svg/icons/Ubble'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
-  useEffect(() => {
-    analytics.logScreenViewIdentityFork()
-  }, [])
-
   return (
     <PageWithHeader
       title="Identification"
