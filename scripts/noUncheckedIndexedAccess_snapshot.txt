@@ -1,3 +1,4 @@
+./src/cheatcodes/hooks/useSomeOfferId.ts:24
 ./src/features/bookOffer/components/BookHourChoice.tsx:122
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:35
 ./src/features/bookOffer/components/Calendar/useMarkedDates.native.test.ts:41
@@ -32,8 +33,6 @@
 ./src/features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep.ts:41
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:18
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:28
-./src/features/internal/cheatcodes/hooks/useSomeOfferId.ts:24
-./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:14
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:16
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:19

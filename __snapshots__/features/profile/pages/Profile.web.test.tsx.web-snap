@@ -189,9 +189,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingHorizontal-s1qlax r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
-                aria-label="CheatMenu"
+                aria-label="Cheatcodes"
                 class="c0 c1"
-                data-testid="CheatMenu"
+                data-testid="Cheatcodes"
                 tabindex="0"
                 type="button"
               >
@@ -202,7 +202,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
-                    CheatMenu
+                    Cheatcodes
                   </div>
                 </div>
               </button>
@@ -1347,9 +1347,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingHorizontal-s1qlax r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
-                aria-label="CheatMenu"
+                aria-label="Cheatcodes"
                 class="c0 c1"
-                data-testid="CheatMenu"
+                data-testid="Cheatcodes"
                 tabindex="0"
                 type="button"
               >
@@ -1360,7 +1360,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
-                    CheatMenu
+                    Cheatcodes
                   </div>
                 </div>
               </button>

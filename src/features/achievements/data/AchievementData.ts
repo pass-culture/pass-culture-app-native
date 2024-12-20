@@ -2,7 +2,7 @@ import { AchievementEnum, AchievementResponse } from 'api/gen'
 import {
   DetailedAchievementIllustrations,
   SimpleAchievementIllustrations,
-} from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+} from 'ui/storybook/illustrationsExports'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type Achievement = {

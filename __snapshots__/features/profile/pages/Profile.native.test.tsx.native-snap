@@ -53,7 +53,7 @@ exports[`Profile component should render correctly 1`] = `
             topSafeInsets={16}
           >
             <View
-              accessibilityLabel="CheatMenu"
+              accessibilityLabel="Cheatcodes"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -108,7 +108,7 @@ exports[`Profile component should render correctly 1`] = `
                   },
                 ]
               }
-              testID="CheatMenu"
+              testID="Cheatcodes"
             >
               <View
                 style={
@@ -135,7 +135,7 @@ exports[`Profile component should render correctly 1`] = `
                     ]
                   }
                 >
-                  CheatMenu
+                  Cheatcodes
                 </Text>
               </View>
             </View>

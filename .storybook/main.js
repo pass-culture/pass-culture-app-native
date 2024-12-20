@@ -12,17 +12,18 @@ module.exports = {
       name: '@storybook/addon-react-native-web',
       options: {
         modulesToAlias: {
+          __mocks__: './__mocks__',
           api: './src/api',
+          cheatcodes: './src/cheatcodes',
           features: './src/features',
           fixtures: './src/fixtures',
           libs: './src/libs',
           shared: './src/shared',
+          tests: './src/tests',
           theme: './src/theme',
           types: './src/types',
-          tests: './src/tests',
           ui: './src/ui',
           web: './src/web',
-          __mocks__: './__mocks__',
 
           'react-native-linear-gradient': 'react-native-web-linear-gradient',
           'react-native-fast-image': path.join(appSrc, 'libs/react-native-web-fast-image'),

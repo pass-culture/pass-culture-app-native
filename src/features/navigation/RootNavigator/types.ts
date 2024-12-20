@@ -68,33 +68,35 @@ export type AccessibilityRootStackParamList = {
 }
 
 export type CheatcodeRootStackParamList = {
-  AppComponents: undefined
-  CheatCodes: undefined
-  CheatMenu: undefined
-  NavigationAccountSuspension: undefined
-  AccesLibre: undefined
-  MarketingBlocks: undefined
-  Navigation: undefined
-  NavigationNotScreensPages: undefined
-  NavigationProfile: undefined
-  NavigationAchievements: undefined
-  NavigationSubscription: undefined
-  NavigationShareApp: undefined
-  NewCaledonia: undefined
-  CategoryThematicHomeHeaderCheatcode: undefined
-  DefaultThematicHomeHeaderCheatcode: undefined
-  HighlightThematicHomeHeaderCheatcode: undefined
-  ThematicHeaders: undefined
-  CheatcodeNavigationTutorial: undefined
-  CheatcodeNavigationOnboarding: undefined
-  CheatcodeNavigationProfileTutorial: undefined
-  NavigationErrors: undefined
-  NavigationIdentityCheck: undefined
-  NavigationSignUp: undefined
-  NewIdentificationFlow: undefined
-  NavigationCulturalSurvey: undefined
-  NavigationTrustedDevice: undefined
-  TrustedDeviceInfos: undefined
+  // Menu
+  CheatcodesMenu: undefined
+  // Features
+  CheatcodesNavigationHome: undefined
+  CheatcodesScreenCategoryThematicHomeHeader: undefined
+  CheatcodesScreenDefaultThematicHomeHeader: undefined
+  CheatcodesScreenHighlightThematicHomeHeader: undefined
+  CheatcodesNavigationProfile: undefined
+  CheatcodesNavigationIdentityCheck: undefined
+  CheatcodesNavigationNewIdentificationFlow: undefined
+  CheatcodesNavigationAchievements: undefined
+  CheatcodesNavigationShare: undefined
+  CheatcodesNavigationSubscription: undefined
+  CheatcodesNavigationCulturalSurvey: undefined
+  CheatcodesNavigationTutorial: undefined
+  CheatcodesNavigationOnboarding: undefined
+  CheatcodesNavigationProfileTutorial: undefined
+  CheatcodesNavigationTrustedDevice: undefined
+  CheatcodesScreenTrustedDeviceInfos: undefined
+  CheatcodesNavigationInternal: undefined
+  CheatcodesNavigationBookOffer: undefined
+  // Others
+  CheatcodesScreenDebugInformations: undefined
+  CheatcodesScreenNewCaledonia: undefined
+  CheatcodesNavigationErrors: undefined
+  CheatcodesNavigationNotScreensPages: undefined
+  CheatcodesScreenAccesLibre: undefined
+  CheatcodesNavigationSignUp: undefined
+  CheatcodesNavigationAccountManagement: undefined
 }
 
 export type CulturalSurveyRootStackParamList = {
