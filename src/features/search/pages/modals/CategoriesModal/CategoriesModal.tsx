@@ -82,8 +82,14 @@ export const CategoriesModal = ({
     key: 'CINEMA',
     position: 1,
   }
+  const MUSIQUE: BaseCategory = {
+    children: [ALL, SEANCE],
+    label: 'Musique',
+    key: 'MUSIQUE',
+    position: 1,
+  }
   const ROOT: BaseCategory = {
-    children: [ROOT_ALL, CINEMA],
+    children: [ROOT_ALL, CINEMA, MUSIQUE],
     label: 'Catégories',
     key: 'ROOT',
     position: 1,
@@ -91,6 +97,7 @@ export const CategoriesModal = ({
   const tree: Record<CategoryKey, BaseCategory> = {
     ALL: ALL,
     CINEMA: CINEMA,
+    MUSIQUE: MUSIQUE,
     ROOT: ROOT,
     ROOT_ALL: ROOT_ALL,
     SEANCE: SEANCE,
