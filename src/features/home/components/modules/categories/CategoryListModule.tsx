@@ -1,11 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'
+import { newColorMapping } from 'ui/theme/newColorMapping'
 
 type CategoryListProps = {
   id: string
@@ -15,10 +18,10 @@ type CategoryListProps = {
   homeEntryId: string
 }
 
+const BLOCK_HEIGHT = getSpacing(24)
+const DESKTOP_MAX_WIDTH = getSpacing(37.33)
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
-
-const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
 export const CategoryListModule = ({
   id,
@@ -27,6 +30,8 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -40,26 +45,27 @@ export const CategoryListModule = ({
     <Container>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       <StyledView>
-        {categoryBlockList.map((item, index) => (
-          <CategoryBlock
-            {...item}
-            key={keyExtractor(item, index)}
-            onBeforePress={() => {
+        {categoryBlockList.map((item) => (
+          <StyledCategoryButton
+            key={item.id}
+            label={item.title}
+            height={BLOCK_HEIGHT}
+            textColor={newColorMapping[item.color].text}
+            fillColor={newColorMapping[item.color].fill}
+            borderColor={newColorMapping[item.color].border}
+            onPress={() => {
               analytics.logCategoryBlockClicked({
                 moduleId: item.id,
                 moduleListID: id,
                 entryId: homeEntryId,
                 toEntryId: item.homeEntryId,
               })
-            }}
-            navigateTo={{
-              screen: 'ThematicHome',
-              params: {
+              navigate('ThematicHome', {
                 homeId: item.homeEntryId,
                 from: 'category_block',
                 moduleId: item.id,
                 moduleListId: id,
-              },
+              })
             }}
           />
         ))}
@@ -68,24 +74,21 @@ export const CategoryListModule = ({
   )
 }
 
-const StyledView = styled.View(({ theme }) =>
-  theme.isMobileViewport
+const StyledView = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  width: '100%',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  ...(theme.isMobileViewport
     ? {
-        flexDirection: 'row',
         flexWrap: 'wrap',
         gap: MOBILE_GAPS_AND_PADDINGS,
-        width: '100%',
-        paddingHorizontal: theme.contentPage.marginHorizontal,
         paddingVertical: MOBILE_GAPS_AND_PADDINGS,
       }
     : {
-        flexDirection: 'row',
         gap: DESKTOP_GAPS_AND_PADDINGS,
-        width: '100%',
-        paddingHorizontal: theme.contentPage.marginHorizontal,
         paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
-      }
-)
+      }),
+}))
 
 const StyledTitle = styled(TypoDS.Title3)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
@@ -94,3 +97,11 @@ const StyledTitle = styled(TypoDS.Title3)(({ theme }) => ({
 const Container = styled.View({
   marginBottom: getSpacing(6),
 })
+
+const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  minWidth: theme.isMobileViewport ? '35%' : 'none',
+  maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
+}))

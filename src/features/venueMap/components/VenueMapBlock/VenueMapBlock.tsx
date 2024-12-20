@@ -23,7 +23,7 @@ type Props = {
   onPress?: VoidFunction
 }
 
-export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...props }) => {
+export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from }) => {
   const focusProps = useHandleFocus()
   const enableAppV2VenueMapBlock = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK
@@ -44,7 +44,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
     : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
 
   return (
-    <Container {...props}>
+    <React.Fragment>
       {enableAppV2VenueMapBlock ? null : (
         <TypoDS.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</TypoDS.Title3>
       )}
@@ -61,13 +61,9 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
           </StyledImageBackground>
         )}
       </TouchableContainer>
-    </Container>
+    </React.Fragment>
   )
 }
-
-const Container = styled.View({
-  marginHorizontal: getSpacing(2),
-})
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => ({

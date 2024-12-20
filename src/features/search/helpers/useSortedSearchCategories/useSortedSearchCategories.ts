@@ -1,6 +1,8 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { ListCategoryButtonProps } from 'features/search/components/CategoriesButtonsDisplay/CategoriesButtonsDisplay'
-import { CategoryButtonProps } from 'features/search/components/CategoryButton/CategoryButton'
+import {
+  CategoryButtonProps,
+  ListCategoryButtonProps,
+} from 'features/search/components/DumbCategoriesList/DumbCategoriesList'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 

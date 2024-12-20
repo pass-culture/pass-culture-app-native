@@ -128,15 +128,17 @@ export const ThematicHome: FunctionComponent = () => {
     })
 
   useEffect(() => {
-    if (id) {
-      analytics.logConsultHome({
-        homeEntryId: id,
-        from: params.from,
-        moduleId: params.moduleId,
-        moduleListId: params.moduleListId,
-      })
+    if (!id) {
+      return
     }
-  }, [id, params.from, params.moduleId, params.moduleListId])
+    analytics.logConsultThematicHome({
+      homeEntryId: id,
+      from: params.from,
+      moduleId: params.moduleId,
+      moduleListId: params.moduleListId,
+      moduleItemId: params.moduleItemId,
+    })
+  }, [id, params.from, params.homeId, params.moduleId, params.moduleItemId, params.moduleListId])
 
   useEffect(() => {
     switch (true) {
