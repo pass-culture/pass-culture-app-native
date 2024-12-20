@@ -84,7 +84,7 @@ export const CategoriesModal = ({
   }
   const ROOT: BaseCategory = {
     children: [ROOT_ALL, CINEMA],
-    label: '',
+    label: 'Catégories',
     key: 'ROOT',
     position: 1,
   }
@@ -192,13 +192,6 @@ export const CategoriesModal = ({
     return categoryStack[next] ? tree[categoryStack[next]] : undefined
   }, [tree, categoryStack, currentIndex])
 
-  const modalTitle = useMemo(
-    () =>
-      categoryStack[currentIndex]
-        ? tree[categoryStack[currentIndex]]?.label ?? 'Catégories'
-        : 'Catégories',
-    [tree, categoryStack, currentIndex]
-  )
   const shouldDisplayBackButton =
     currentIndex >= 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
@@ -207,14 +200,14 @@ export const CategoriesModal = ({
       customModalHeader={
         <SearchCustomModalHeader
           titleId={titleId}
-          title={modalTitle}
+          title={currentItem.label}
           onGoBack={handleGoBack}
           onClose={handleClose}
           shouldDisplayBackButton={shouldDisplayBackButton}
           shouldDisplayCloseButton
         />
       }
-      title={modalTitle}
+      title={currentItem.label}
       visible={isVisible}
       isUpToStatusBar
       noPadding
