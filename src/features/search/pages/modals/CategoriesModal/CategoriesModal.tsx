@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CategoriesSection } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -11,6 +10,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import {
   getIcon,
   buildFormPayload as buildFormSearchData,
+  sortCategoriesPredicate,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { BaseCategory, CategoryKey } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { SearchState } from 'features/search/types'
@@ -21,6 +21,8 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
+import { VerticalUl } from 'ui/components/Ul'
+import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 
 const titleId = uuidv4()
 
@@ -180,9 +182,10 @@ export const CategoriesModal = ({
   }, [reset])
 
   const currentItem = useMemo(
-    () => (categoryStack[currentIndex] ? tree[categoryStack[currentIndex]] : ROOT),
+    () => (categoryStack[currentIndex] ? tree[categoryStack[currentIndex]] ?? ROOT : ROOT),
     [tree, categoryStack, currentIndex]
   )
+  currentItem.children.sort((a, b) => sortCategoriesPredicate(a, b))
 
   const selectedChild = useMemo(() => {
     const next = currentIndex + 1
@@ -232,15 +235,17 @@ export const CategoriesModal = ({
       }>
       <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
-        {currentItem ? (
-          <CategoriesSection
-            onSelect={handleSelect}
-            onSubmit={handleSubmit(handleSearchPress)}
-            category={currentItem}
-            choice={selectedChild}
-            getIcon={getIcon}
-          />
-        ) : null}
+        <VerticalUl>
+          {currentItem.children.map((item) => (
+            <CategoriesSectionItem
+              isSelected={selectedChild?.key === item.key}
+              item={item}
+              key={item.key}
+              handleSelect={handleSelect}
+              handleGetIcon={getIcon}
+            />
+          ))}
+        </VerticalUl>
       </Form.MaxWidth>
     </AppModal>
   )
