@@ -15,6 +15,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import {
   BaseCategory,
   Category,
+  createMapping,
   createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
@@ -305,10 +306,10 @@ export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { facets } = useSearchResults()
   if (!searchGroup || !subcategories) return []
 
-  const tree = createMappingTree(subcategories, facets)
-  if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
+  const tree = createMapping()
+  if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup]?.children) return []
 
-  const nativeCategories = typedEntries(tree[searchGroup].children)
+  const nativeCategories = typedEntries(tree[searchGroup]?.children ?? {})
   if (searchGroup !== SearchGroupNameEnumv2.LIVRES) return nativeCategories
 
   const bookNativeCategories = nativeCategories.filter(

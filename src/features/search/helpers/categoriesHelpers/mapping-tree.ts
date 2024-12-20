@@ -23,7 +23,7 @@ export type BaseCategory = {
   position?: number
   searchFilter?: string
   searchValue?: string
-  nbResultsFacet?: number | never
+  nbResultsFacet?: number
 }
 type MappedGenreType = BaseCategory & {
   nbResultsFacet?: never
@@ -31,9 +31,7 @@ type MappedGenreType = BaseCategory & {
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
 type MappedNativeCategory = BaseCategory & {
-  nbResultsFacet?: number
   genreTypeKey?: GenreType
-  children?: MappedGenreTypes
   gtls?: GTL[]
 }
 export type MappedNativeCategories = Record<string, MappedNativeCategory>
@@ -41,7 +39,7 @@ type MappedCategory = BaseCategory & {
   children: MappedNativeCategories
 }
 export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
-export type CategoriesMapping = Record<string, BaseCategory>
+export type CategoriesMapping = Record<CategoryKey, BaseCategory>
 
 function getNativeCategoryGenreTypes(
   data: SubcategoriesResponseModelv2,
@@ -108,6 +106,45 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
   }, {})
 }
 
+const ROOT_ALL: BaseCategory = {
+  children: [],
+  label: 'Toutes les catégories',
+  key: 'ROOT_ALL',
+  position: 0,
+}
+export const ALL: BaseCategory = {
+  children: [],
+  label: 'Tout',
+  key: 'ALL',
+  position: 0,
+}
+export const ROOT: BaseCategory = {
+  children: [ROOT_ALL],
+  label: 'Catégories',
+  key: 'ROOT',
+  position: 0,
+}
+
+export const createMapping = () => {
+  const categories = [
+    { key: 'CINEMA', label: 'Cinéma', position: 2, children: [] },
+    { key: 'LIVRES', label: 'Livres', position: 1, children: [] },
+    { key: 'MUSIQUE', label: 'Musique', position: 3, children: [] },
+  ]
+
+  const mapping = categories.reduce<CategoriesMapping>((mapping, category) => {
+    mapping[category.key] = category
+    return mapping
+  }, {} as CategoriesMapping)
+  mapping[ROOT.key] = ROOT
+  const rootCategories = categories
+    .filter((category) => !!category && !category.parents.length)
+    .map((category) => mapping[category.key])
+    .filter((category) => !!category)
+  mapping[ROOT.key]?.children.push(...rootCategories)
+  return mapping
+}
+
 export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   /**
    * We want to create a mapping tree that looks like this:
@@ -143,7 +180,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
       const positionB: number = CATEGORY_CRITERIA[b.name]?.position ?? 0
       return positionA - positionB
     })
-    .reduce<CategoriesMapping>((result, searchGroup) => {
+    .reduce<MappingTree>((result, searchGroup) => {
       const nativeCategories = getNativeCategories(data, searchGroup.name)
       const mappedNativeCategories = nativeCategories.length
         ? nativeCategories.reduce<MappedNativeCategories>(
