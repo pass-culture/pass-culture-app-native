@@ -89,9 +89,12 @@ export const CategoriesModal = ({
     position: 1,
   }
   const tree: Record<CategoryKey, BaseCategory> = {
+    ALL: ALL,
     CINEMA: CINEMA,
     ROOT: ROOT,
+    ROOT_ALL: ROOT_ALL,
     SEANCE: SEANCE,
+    THRILLER: THRILLER,
   }
 
   const getDefaultFormValues = (searchState: SearchState): CategoriesModalFormProps => ({
@@ -162,13 +165,6 @@ export const CategoriesModal = ({
           ? [...categoryStack.slice(0, currentIndex + 1), category.key]
           : categoryStack
 
-      console.log(
-        category?.key ?? 'ALL',
-        'selected. Setting categoryStack to:',
-        newStack,
-        'and currentIndex to:',
-        newIndex
-      )
       setValue('currentIndex', newIndex)
       setValue('categoryStack', newStack)
 
@@ -182,18 +178,18 @@ export const CategoriesModal = ({
   }, [reset])
 
   const currentItem = useMemo(
-    () => (categoryStack[currentIndex] ? tree[categoryStack[currentIndex]] ?? ROOT : ROOT),
+    () => (categoryStack[currentIndex] && tree[categoryStack[currentIndex]]) || ROOT,
     [tree, categoryStack, currentIndex]
   )
   currentItem.children.sort((a, b) => sortCategoriesPredicate(a, b))
 
   const selectedChild = useMemo(() => {
     const next = currentIndex + 1
-    return categoryStack[next] ? tree[categoryStack[next]] : undefined
+    return (categoryStack[next] && tree[categoryStack[next]]) || ALL
   }, [tree, categoryStack, currentIndex])
 
   const shouldDisplayBackButton =
-    currentIndex >= 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+    currentIndex > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
@@ -231,7 +227,7 @@ export const CategoriesModal = ({
         <VerticalUl>
           {currentItem.children.map((item) => (
             <CategoriesSectionItem
-              isSelected={selectedChild?.key === item.key}
+              isSelected={selectedChild === item}
               item={item}
               key={item.key}
               handleSelect={handleSelect}
