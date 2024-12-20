@@ -1,6 +1,6 @@
 import { AchievementEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { achievementData } from 'features/profile/pages/Achievements/AchievementData'
+import { achievementData } from 'features/achievements/data/AchievementData'
 import { analytics } from 'libs/analytics'
 
 export const useAchievementDetails = (name: AchievementEnum) => {

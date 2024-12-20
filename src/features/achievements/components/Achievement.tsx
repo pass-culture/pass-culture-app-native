@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
-import { AchievementDetailsModal } from 'features/profile/components/Modals/AchievementDetailsModal'
+import { AchievementDetailsModal } from 'features/achievements/pages/AchievementDetailsModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'

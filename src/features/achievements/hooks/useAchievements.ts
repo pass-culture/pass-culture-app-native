@@ -1,8 +1,5 @@
 import { AchievementEnum, AchievementResponse } from 'api/gen'
-import {
-  Achievement,
-  AchievementCategory,
-} from 'features/profile/pages/Achievements/AchievementData'
+import { Achievement, AchievementCategory } from 'features/achievements/data/AchievementData'
 import { analytics } from 'libs/analytics'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockCompletedAchievements } from 'features/profile/pages/Achievements/AchievementData'
+import { mockCompletedAchievements } from 'features/achievements/data/AchievementData'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'

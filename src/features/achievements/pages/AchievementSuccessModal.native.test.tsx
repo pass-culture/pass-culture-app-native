@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as API from 'api/api'
 import { AchievementEnum, AchievementResponse } from 'api/gen'
-import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
+import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

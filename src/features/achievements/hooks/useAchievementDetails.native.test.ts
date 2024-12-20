@@ -3,7 +3,7 @@ import {
   firstBookBooking,
   firstNewsBooking,
   mockCompletedAchievements,
-} from 'features/profile/pages/Achievements/AchievementData'
+} from 'features/achievements/data/AchievementData'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'

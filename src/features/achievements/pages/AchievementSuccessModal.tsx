@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AchievementEnum, AchievementResponse } from 'api/gen'
+import success from 'features/achievements/animations/success.json'
 import { useAchievementsMarkAsSeen } from 'features/achievements/api/useMarkAchievementsAsSeen'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
@@ -13,8 +14,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, TypoDS } from 'ui/theme'
-
-import success from './success.json'
 
 interface Props {
   visible: boolean

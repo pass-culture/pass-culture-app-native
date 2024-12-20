@@ -10,11 +10,8 @@ import {
   userCompletedArtLessonBooking,
   userCompletedBookBooking,
   userCompletedMovieBooking,
-} from 'features/profile/pages/Achievements/AchievementData'
-import {
-  UseAchivementsProps,
-  useAchievements,
-} from 'features/profile/pages/Achievements/useAchievements'
+} from 'features/achievements/data/AchievementData'
+import { UseAchivementsProps, useAchievements } from 'features/achievements/hooks/useAchievements'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'

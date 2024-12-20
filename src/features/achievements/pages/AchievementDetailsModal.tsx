@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
-import { useAchievementDetails } from 'features/profile/components/Modals/useAchievementDetails'
+import { useAchievementDetails } from 'features/achievements/hooks/useAchievementDetails'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, TypoDS, Spacer } from 'ui/theme'
 

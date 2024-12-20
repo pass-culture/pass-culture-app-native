@@ -6,14 +6,14 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { Achievement } from 'features/profile/components/Achievements/Achievement'
+import { Achievement } from 'features/achievements/components/Achievement'
 import {
   achievementCategoryDisplayTitles,
   achievementData,
-} from 'features/profile/pages/Achievements/AchievementData'
-import { useAchievements } from 'features/profile/pages/Achievements/useAchievements'
+} from 'features/achievements/data/AchievementData'
+import { useAchievements } from 'features/achievements/hooks/useAchievements'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'

@@ -5,11 +5,11 @@ import styled from 'styled-components/native'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
-import { AchievementSuccessModal } from 'features/profile/components/Modals/AchievementSuccessModal'
+import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
-} from 'features/profile/pages/Achievements/AchievementData'
+} from 'features/achievements/data/AchievementData'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
