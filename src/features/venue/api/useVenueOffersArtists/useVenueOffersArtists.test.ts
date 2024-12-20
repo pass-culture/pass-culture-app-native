@@ -111,20 +111,26 @@ describe('useVenueOffersArtists', () => {
   })
 
   it('should return 30 artists max / unique by name / with at list one offer / ordered by number of offers / ordered by names', async () => {
+    const mockedArtistList = Array.from({ length: 75 }, (_, index) => ({
+      objectID: (index % 35).toString(),
+      offer: {
+        artist: `Artist ${index % 35}`,
+        thumbUrl:
+          'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+      },
+    }))
+
+    if (mockedArtistList[0]) mockedArtistList[0].offer.artist = 'James Bond, OSS 117'
+    if (mockedArtistList[35]) mockedArtistList[35].offer.artist = 'James Bond, OSS 117'
+    if (mockedArtistList[70]) mockedArtistList[70].offer.artist = 'James Bond, OSS 117'
+    if (mockedArtistList[10]) mockedArtistList[10].offer.artist = 'collectif MI6'
+    if (mockedArtistList[45]) mockedArtistList[45].offer.artist = 'collectif MI6'
+
     useVenueOffersSpy.mockReturnValueOnce({
       isLoading: false,
       data: {
-        hits: _.shuffle(
-          Array.from({ length: 75 }, (_, index) => ({
-            objectID: (index % 35).toString(),
-            offer: {
-              artist: `Artist ${index % 35}`,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-            },
-          }))
-        ),
-        nbHits: 75,
+        hits: _.shuffle(mockedArtistList),
+        nbHits: mockedArtistList.length,
       },
     } as unknown as UseQueryResult<VenueOffers, unknown>)
 
@@ -132,25 +138,41 @@ describe('useVenueOffersArtists', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({
-        artists: Array.from({ length: 5 }, (_, index) => ({
-          id: index,
+    const expectedArtistsList = Array.from({ length: 4 }, (_, index) => ({
+      id: index + 1,
+      image:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+      name: `Artist ${index + 1}`,
+    })).concat(
+      _.orderBy(
+        Array.from({ length: 24 }, (_, index) => ({
+          id: index + 11,
           image:
             'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-          name: `Artist ${index}`,
-        })).concat(
-          _.orderBy(
-            Array.from({ length: 25 }, (_, index) => ({
-              id: index + 10,
-              image:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              name: `Artist ${index + 10}`,
-            })),
-            'name',
-            'asc'
-          )
-        ),
+          name: `Artist ${index + 11}`,
+        })),
+        'name',
+        'asc'
+      ),
+      [
+        {
+          id: 5,
+          image:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+          name: 'Artist 5',
+        },
+        {
+          id: 6,
+          image:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+          name: 'Artist 6',
+        },
+      ]
+    )
+
+    await waitFor(async () => {
+      expect(result.current.data).toEqual({
+        artists: expectedArtistsList,
       })
     })
   })
