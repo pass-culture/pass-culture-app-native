@@ -2,14 +2,14 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
-import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
-import { Row } from 'features/internal/cheatcodes/components/Row'
-import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
 } from 'features/achievements/data/AchievementData'
+import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
+import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
+import { Row } from 'features/internal/cheatcodes/components/Row'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
