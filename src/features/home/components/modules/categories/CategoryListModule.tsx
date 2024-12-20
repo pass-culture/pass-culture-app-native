@@ -1,12 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { CategoryButton } from 'features/home/components/modules/categories/CategoryButton'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { CategoryButton } from 'shared/Buttons/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { newColorMapping } from 'ui/theme/newColorMapping'
 
@@ -30,8 +28,6 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -53,19 +49,22 @@ export const CategoryListModule = ({
             textColor={newColorMapping[item.color].text}
             fillColor={newColorMapping[item.color].fill}
             borderColor={newColorMapping[item.color].border}
-            onPress={() => {
+            onBeforeNavigate={() => {
               analytics.logCategoryBlockClicked({
                 moduleId: item.id,
                 moduleListID: id,
                 entryId: homeEntryId,
                 toEntryId: item.homeEntryId,
               })
-              navigate('ThematicHome', {
+            }}
+            navigateTo={{
+              screen: 'ThematicHome',
+              params: {
                 homeId: item.homeEntryId,
                 from: 'category_block',
                 moduleId: item.id,
                 moduleListId: id,
-              })
+              },
             }}
           />
         ))}
