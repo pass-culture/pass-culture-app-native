@@ -1,4 +1,4 @@
-import { uniqBy } from 'lodash'
+import _ from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
@@ -14,23 +14,27 @@ export const useVenueOffersArtists = (
     return { data: { artists: [] } }
   }
 
-  // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artist object if the artist exists,
-  // and flattening the results into a single array. If no artist is found, it returns an empty array, effectively filtering out
-  // offers without an artist in a single step.
-  const artists: Artist[] = uniqBy(
-    venueOffers.hits.flatMap((offer) =>
+  const artists: Artist[] = _.chain(
+    venueOffers.hits.map((offer) =>
       offer.offer.artist
-        ? [
-            {
-              id: Number(offer.objectID),
-              name: offer.offer.artist,
-              image: offer.offer.thumbUrl,
-            },
-          ]
-        : []
-    ),
-    'name'
-  ).slice(0, 30)
+        ? {
+            id: Number(offer.objectID),
+            name: offer.offer.artist,
+            image: offer.offer.thumbUrl,
+          }
+        : <Artist>{}
+    )
+  )
+    .groupBy('name')
+    .pickBy((artistList) => artistList.length > 1)
+    .orderBy(
+      [(artistList) => artistList.length, (artistList) => artistList[0]?.name],
+      ['desc', 'asc']
+    )
+    .flatten()
+    .uniqBy('name')
+    .slice(0, 30)
+    .value()
 
   return {
     data: { artists },

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -109,19 +110,21 @@ describe('useVenueOffersArtists', () => {
     })
   })
 
-  it('should return 30 artists max and unique by name', async () => {
+  it('should return 30 artists max / unique by name / with at list one offer / ordered by number of offers / ordered by names', async () => {
     useVenueOffersSpy.mockReturnValueOnce({
       isLoading: false,
       data: {
-        hits: Array.from({ length: 50 }, (_, index) => ({
-          objectID: (index + 1).toString(),
-          offer: {
-            artist: `Artist ${index + 1}`,
-            thumbUrl:
-              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-          },
-        })),
-        nbHits: 50,
+        hits: _.shuffle(
+          Array.from({ length: 75 }, (_, index) => ({
+            objectID: (index % 35).toString(),
+            offer: {
+              artist: `Artist ${index % 35}`,
+              thumbUrl:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            },
+          }))
+        ),
+        nbHits: 75,
       },
     } as unknown as UseQueryResult<VenueOffers, unknown>)
 
@@ -131,12 +134,23 @@ describe('useVenueOffersArtists', () => {
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({
-        artists: Array.from({ length: 30 }, (_, index) => ({
-          id: index + 1,
+        artists: Array.from({ length: 5 }, (_, index) => ({
+          id: index,
           image:
             'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-          name: `Artist ${index + 1}`,
-        })),
+          name: `Artist ${index}`,
+        })).concat(
+          _.orderBy(
+            Array.from({ length: 25 }, (_, index) => ({
+              id: index + 10,
+              image:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              name: `Artist ${index + 10}`,
+            })),
+            'name',
+            'asc'
+          )
+        ),
       })
     })
   })
