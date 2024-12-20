@@ -25,11 +25,11 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
-import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
+import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
+import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
-import { cheatcodeRoutes } from 'features/navigation/RootNavigator/cheatcodeRoutes'
+import { cheatcodesRoutes } from 'features/navigation/RootNavigator/cheatcodesRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
@@ -77,11 +77,11 @@ import { RootRoute } from './types'
 
 export const routes: RootRoute[] = [
   ...accessibilityRoutes,
+  ...cheatcodesRoutes,
   ...culturalSurveyRoutes,
-  ...tutorialRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  ...cheatcodeRoutes,
+  ...tutorialRoutes,
   {
     name: 'Offer',
     component: Offer,

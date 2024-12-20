@@ -113,7 +113,10 @@ export default ({ mode }) => {
     resolve: {
       extensions: allExtensions,
       alias: [
-        { find: /^((api|features|fixtures|libs|shared|theme|ui|web).*)/, replacement: '/src/$1' },
+        {
+          find: /^((api|cheatcodes|features|fixtures|libs|shared|theme|ui|web).*)/,
+          replacement: '/src/$1',
+        },
         { find: 'react-native', replacement: 'react-native-web' },
         {
           find: 'react-native-email-link',
