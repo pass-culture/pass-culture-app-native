@@ -33,40 +33,12 @@ import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 type ConsultHomeParams = { homeEntryId: string }
 
-type BaseThematicHome = {
-  homeEntryId: string
-  from?: never | 'deeplink'
-  moduleId?: never
-  moduleListId?: never
-}
-
-type CategoryBlockThematicHome = {
-  homeEntryId: string
-  from: 'category_block'
+type ConsultThematicHomeParams = ConsultHomeParams & {
+  from?: 'category_block' | 'highlight_thematic_block' | 'video_carousel_block' | 'deeplink'
   moduleId: string
-  moduleListId: string
+  moduleListId?: string
+  moduleItemId?: string
 }
-
-type HighlightThematicBlockThematicHome = {
-  homeEntryId: string
-  from: 'highlight_thematic_block'
-  moduleId: string
-  moduleListId?: never
-}
-
-type VideoCarouselBlockThematicHome = {
-  homeEntryId: string
-  from: 'video_carousel_block'
-  moduleId: string
-  moduleItemId: string
-}
-
-type ConsultThematicHomeParams =
-  | BaseThematicHome
-  | CategoryBlockThematicHome
-  | HighlightThematicBlockThematicHome
-  | VideoCarouselBlockThematicHome
-
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
   | { type: 'Offer'; offerId: number }
   | { type: 'Venue'; venueId: number }
