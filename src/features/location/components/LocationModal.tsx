@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -170,17 +171,15 @@ export const LocationModal = ({
           </React.Fragment>
         ) : null}
         {shouldDisplayEverywhereSection ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={6} />
+          <StyledView>
             <Separator.Horizontal />
-            <Spacer.Column numberOfSpaces={6} />
             <LocationModalButton
               onPress={selectLocationMode(LocationMode.EVERYWHERE)}
               icon={WorldPosition}
               color={everywhereLocationModeColor}
               title={LocationLabel.everywhereLabel}
             />
-          </React.Fragment>
+          </StyledView>
         ) : null}
       </StyledScrollView>
     </AppModal>
@@ -194,4 +193,9 @@ const StyledScrollView = styled.ScrollView({
 const HeaderContainer = styled.View({
   padding: getSpacing(4),
   width: '100%',
+})
+
+const StyledView = styled(View)({
+  marginTop: getSpacing(6),
+  gap: getSpacing(6),
 })
