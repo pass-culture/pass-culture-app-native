@@ -170,20 +170,6 @@ describe('<VenueContent />', () => {
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
-  it('should display fake video player', async () => {
-    renderVenueContent({ videoSectionVisible: true })
-
-    expect(await screen.findByLabelText('Faux lecteur vidéo')).toBeOnTheScreen()
-  })
-
-  it('should open survey modal when fake video player is pressed', async () => {
-    renderVenueContent({ videoSectionVisible: true })
-
-    fireEvent.press(await screen.findByLabelText('Faux lecteur vidéo'))
-
-    expect(mockShowModal).toHaveBeenCalledWith()
-  })
-
   describe('movie screening access button', () => {
     beforeAll(() => {
       useRemoteConfigContextSpy.mockReturnValue({
