@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import Animated, { FadeOut, Layout } from 'react-native-reanimated'
+import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -13,19 +13,14 @@ import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
-import { VideoSection } from 'features/venue/components/VideoSection/VideoSection'
-import { VENUE_VIDEO_FAKEDOOR_DATA } from 'features/venue/constants'
 import { VenueOffers, VenueOffersArtists } from 'features/venue/types'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { SurveyModal } from 'ui/components/modals/SurveyModal'
-import { useModal } from 'ui/components/modals/useModal'
-import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -33,8 +28,6 @@ type Props = {
   gtlPlaylists?: GtlPlaylistData[]
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
-  videoSectionVisible?: boolean
-  onCloseVideoFakeDoor?: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
@@ -46,8 +39,6 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   gtlPlaylists,
   venueArtists,
   venueOffers,
-  videoSectionVisible,
-  onCloseVideoFakeDoor,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -85,26 +76,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
-  const { visible, hideModal, showModal } = useModal()
   const { isButtonVisible, wording } = useOfferCTA()
-  const closeModal = () => {
-    onCloseVideoFakeDoor?.()
-    hideModal()
-  }
-
-  const handlePressVideo = () => {
-    showModal()
-    analytics.logConsultVenueVideoFakeDoor({ venueType: venue.venueTypeCode })
-  }
-
-  const buildSurveyURL = () => {
-    const urlOrigin = VENUE_VIDEO_FAKEDOOR_DATA.surveyURL
-
-    if (venue.venueTypeCode) {
-      return `${urlOrigin}?VenueType=${venue.venueTypeCode}`
-    }
-    return urlOrigin
-  }
 
   const shouldDisplayCTA =
     venue.venueTypeCode !== VenueTypeCodeKey.MOVIE &&
@@ -119,14 +91,6 @@ export const VenueContent: React.FunctionComponent<Props> = ({
 
   return (
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
-      <SurveyModal
-        Icon={BicolorCircledClock}
-        hideModal={closeModal}
-        visible={visible}
-        title={VENUE_VIDEO_FAKEDOOR_DATA.title}
-        surveyDescription={VENUE_VIDEO_FAKEDOOR_DATA.description}
-        surveyUrl={buildSurveyURL()}
-      />
       <Container>
         <VenueWebMetaHeader venue={venue} />
         {/* On web VenueHeader is called before Body for accessibility navigate order */}
@@ -139,11 +103,6 @@ export const VenueContent: React.FunctionComponent<Props> = ({
           {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
           <VenueTopComponent venue={venue} />
           <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-          {videoSectionVisible ? (
-            <Animated.View exiting={FadeOut.duration(200)}>
-              <VideoSection venueType={venue.venueTypeCode} onPress={handlePressVideo} />
-            </Animated.View>
-          ) : null}
           <Animated.View layout={Layout.duration(200)}>
             <VenueBody
               venue={venue}
