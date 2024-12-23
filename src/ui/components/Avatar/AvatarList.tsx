@@ -10,6 +10,7 @@ import { AVATAR_LARGE } from 'ui/theme/constants'
 
 type AvatarsListProps = {
   data: Artist[]
+  onItemPress: (artistName: string) => void
 }
 
 const GAP = getSpacing(2)
@@ -17,9 +18,15 @@ const PLAYLIST_ITEM_HEIGHT =
   AVATAR_LARGE + parseFloat(theme.designSystem.typography.title4.fontSize) + GAP
 const PLAYLIST_ITEM_WIDTH = AVATAR_LARGE
 
-export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data }) => {
+export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data, onItemPress }) => {
   const renderAvatar = ({ item }: { item: AvatarListItemProps }) => (
-    <AvatarListItem id={item.id} image={item.image} name={item.name} width={PLAYLIST_ITEM_WIDTH} />
+    <AvatarListItem
+      id={item.id}
+      image={item.image}
+      name={item.name}
+      width={PLAYLIST_ITEM_WIDTH}
+      onItemPress={onItemPress}
+    />
   )
   return (
     <Playlist

@@ -14,6 +14,7 @@ export type AvatarListItemProps = {
   id: number
   name: string
   width: number
+  onItemPress: (artistName: string) => void
   image?: string
 } & AvatarProps
 
@@ -22,6 +23,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   image,
   name,
   width,
+  onItemPress,
   ...props
 }) => {
   return (
@@ -32,7 +34,8 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
           fromOfferId: id,
         },
         withPush: true,
-      }}>
+      }}
+      onBeforeNavigate={() => onItemPress(name)}>
       <StyledView gap={2}>
         <Avatar borderWidth={6} size={AVATAR_LARGE} {...props}>
           {image ? (

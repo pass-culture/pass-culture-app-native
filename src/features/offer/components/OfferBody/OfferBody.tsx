@@ -122,7 +122,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       showModal()
     } else {
       const mainArtistName = artists?.split(',')[0] ?? ''
-      analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName })
+      analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
       navigate('Artist', { fromOfferId: offer.id })
     }
   }
