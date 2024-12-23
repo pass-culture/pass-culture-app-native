@@ -250,6 +250,22 @@ describe('<VenueOffers />', () => {
         expect(screen.getByText('Les artistes disponibles dans ce lieu')).toBeOnTheScreen()
       })
 
+      it('should trigger ConsultArtist log when pressing artists playlist item', async () => {
+        renderVenueOffers({
+          venue: venueDataTest,
+          venueOffers: venueOffersMock,
+          venueArtists: venueOffersArtistsMock,
+        })
+
+        await user.press(screen.getByText('Freida McFadden'))
+
+        expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+          artistName: 'Freida McFadden',
+          from: 'venue',
+          venueId: venueDataTest.id,
+        })
+      })
+
       it('should not display artists playlist when venue offers have artists', () => {
         renderVenueOffers({
           venue: venueDataTest,

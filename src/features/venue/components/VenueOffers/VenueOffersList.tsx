@@ -95,6 +95,10 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
     )
   }
 
+  const handleArtistsPlaylistPress = (artistName: string) => {
+    analytics.logConsultArtist({ artistName, from: 'venue', venueId: venue.id })
+  }
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
@@ -127,7 +131,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
       {shouldDisplayArtistsPlaylist ? (
         <ViewGap gap={4}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarsList data={artists} from="venue" venueId={venue.id} />
+          <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
         </ViewGap>
       ) : null}
     </React.Fragment>

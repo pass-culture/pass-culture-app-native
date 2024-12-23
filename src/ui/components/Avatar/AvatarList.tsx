@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
 import { Artist } from 'features/venue/types'
 import { theme } from 'theme'
 import { AvatarListItem, AvatarListItemProps } from 'ui/components/Avatar/AvatarListItem'
@@ -11,8 +10,7 @@ import { AVATAR_LARGE } from 'ui/theme/constants'
 
 type AvatarsListProps = {
   data: Artist[]
-  from: Referrals
-  venueId?: number
+  onItemPress: (artistName: string) => void
 }
 
 const GAP = getSpacing(2)
@@ -20,15 +18,14 @@ const PLAYLIST_ITEM_HEIGHT =
   AVATAR_LARGE + parseFloat(theme.designSystem.typography.title4.fontSize) + GAP
 const PLAYLIST_ITEM_WIDTH = AVATAR_LARGE
 
-export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data, from, venueId }) => {
+export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data, onItemPress }) => {
   const renderAvatar = ({ item }: { item: AvatarListItemProps }) => (
     <AvatarListItem
       id={item.id}
       image={item.image}
       name={item.name}
       width={PLAYLIST_ITEM_WIDTH}
-      from={from}
-      venueId={venueId}
+      onItemPress={onItemPress}
     />
   )
   return (
