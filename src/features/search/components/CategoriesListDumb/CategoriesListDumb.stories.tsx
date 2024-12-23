@@ -9,11 +9,11 @@ import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-import { DumbCategoriesList } from './DumbCategoriesList'
+import { CategoriesListDumb } from './CategoriesListDumb'
 
-const meta: ComponentMeta<typeof DumbCategoriesList> = {
+const meta: ComponentMeta<typeof CategoriesListDumb> = {
   title: 'Features/search/CategoriesButtons',
-  component: DumbCategoriesList,
+  component: CategoriesListDumb,
 }
 export default meta
 
@@ -21,11 +21,11 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof DumbCategoriesList> = (props) => (
+export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
   <BodyWrapper>
     <NavigationContainer>
       <Container>
-        <DumbCategoriesList {...props} />
+        <CategoriesListDumb {...props} />
       </Container>
     </NavigationContainer>
   </BodyWrapper>

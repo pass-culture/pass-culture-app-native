@@ -40,7 +40,7 @@ const MOBILE_CATEGORY_BUTTON_HEIGHT = getSpacing(36)
 const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 
-export const DumbCategoriesList: FunctionComponent<Props> = ({
+export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
   shouldDisplayVenueMap,
   isMapWithoutPositionAndNotLocated,
