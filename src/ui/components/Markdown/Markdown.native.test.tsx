@@ -12,7 +12,7 @@ jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 describe('Markdown', () => {
   it('should render text with different styles', () => {
-    render(<Markdown text={TEXT} />)
+    render(<Markdown>{TEXT}</Markdown>)
 
     expect(screen.getByText('Lorem')).toHaveProp('testID', 'styledBody')
     expect(screen.getByText('ipsum dolor')).toHaveProp('testID', 'styledBodyAccent')

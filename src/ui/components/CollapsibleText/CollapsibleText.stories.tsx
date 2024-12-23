@@ -31,7 +31,11 @@ const variantConfig: Variants<typeof CollapsibleText> = [
     label: 'CollapsibleText with markdown',
     props: {
       children: (
-        <Markdown text="Lorem ipsum **_dolor sit amet_**, consectetur adipiscing elit. **Maecenas nec tellus** in magna convallis egestas eget id justo. _Donec lorem ante_, tempor eu diam quis, laoreet rhoncus tortor."></Markdown>
+        <Markdown>
+          {
+            'Lorem ipsum **_dolor sit amet_**, consectetur adipiscing elit. **Maecenas nec tellus** in magna convallis egestas eget id justo. _Donec lorem ante_, tempor eu diam quis, laoreet rhoncus tortor.'
+          }
+        </Markdown>
       ),
       numberOfLines: 5,
     },

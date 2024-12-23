@@ -5,11 +5,11 @@ import { MarkdownPart } from 'ui/components/MarkdownPart/MarkdownPart'
 import { MarkdownPartProps } from 'ui/components/types'
 
 type Props = {
-  text: string
+  children: string
 }
 
-export const Markdown: FunctionComponent<Props> = ({ text }) => {
-  const parsedText: MarkdownPartProps[] = parseMarkdown(text)
+export const Markdown: FunctionComponent<Props> = ({ children }) => {
+  const parsedText: MarkdownPartProps[] = parseMarkdown(children)
 
   return (
     <React.Fragment>
