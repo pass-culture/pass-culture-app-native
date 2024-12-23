@@ -23,6 +23,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
   if (isDesktopViewport) {
     return (
       <View
+        testID="desktop-event-card-list"
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout
           setWebViewWidth(width)
@@ -51,7 +52,10 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
   }
 
   return (
-    <ScrollViewContainer horizontal showsHorizontalScrollIndicator={false}>
+    <ScrollViewContainer
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      testID="mobile-event-card-list">
       {data.map((event, index) => {
         if (index % 2 === 1) return null
         const topEventCardData = data[index]
