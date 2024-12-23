@@ -577,6 +577,7 @@ describe('<OfferBody />', () => {
     expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
       offerId: offerResponseSnap.id,
       artistName: 'Stephen King',
+      from: 'offer',
     })
   })
 
