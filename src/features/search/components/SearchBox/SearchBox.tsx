@@ -28,6 +28,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -59,7 +60,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
   const { goBack } = useGoBack(...homeNavConfig)
-
+  const { showErrorSnackBar } = useSnackBarContext()
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
@@ -204,6 +205,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
       const queryText = event.nativeEvent.text
+      if (queryText.length > 150) {
+        showErrorSnackBar({
+          message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        return
+      }
       if (queryText.length < 1 && Platform.OS !== 'android') return
       // When we hit enter, we may have selected a category or a venue on the search landing page
       // these are the two potentially 'staged' filters that we want to commit to the global search state.
@@ -251,16 +259,17 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     },
     [
       addSearchHistory,
+      enableWipPageThematicSearch,
+      currentView,
       searchState.locationFilter,
       searchState.venue,
       searchState.offerCategories,
       searchState.offerNativeCategories,
       searchState.gtls,
       searchState.priceRange,
-      currentView,
-      enableWipPageThematicSearch,
       pushWithSearch,
       hideSuggestions,
+      showErrorSnackBar,
       offerCategories,
     ]
   )
