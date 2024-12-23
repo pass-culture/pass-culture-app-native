@@ -20,6 +20,7 @@ const mockBookingsWithoutReaction = {
   ended_bookings: [
     {
       ...bookingsSnap.ended_bookings[1],
+      canReact: true,
       stock: {
         ...bookingsSnap.ended_bookings[1].stock,
         offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
@@ -32,6 +33,7 @@ const mockBookingsWithLike = {
   ended_bookings: [
     {
       ...bookingsSnap.ended_bookings[1],
+      canReact: true,
       stock: {
         ...bookingsSnap.ended_bookings[1].stock,
         offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
@@ -45,6 +47,7 @@ const mockBookingsWithDislike = {
   ended_bookings: [
     {
       ...bookingsSnap.ended_bookings[1],
+      canReact: true,
       stock: {
         ...bookingsSnap.ended_bookings[1].stock,
         offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
