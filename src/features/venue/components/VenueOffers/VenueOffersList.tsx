@@ -125,7 +125,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
         </React.Fragment>
       ) : null}
       {shouldDisplayArtistsPlaylist ? (
-        <ViewGap gap={4}>
+        <ViewGap gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
           <AvatarsList data={artists} />
         </ViewGap>
