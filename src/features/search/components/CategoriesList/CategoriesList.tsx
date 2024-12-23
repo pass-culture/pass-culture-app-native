@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { Platform } from 'react-native'
 
-import { DumbCategoriesList } from 'features/search/components/DumbCategoriesList/DumbCategoriesList'
+import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
@@ -25,7 +25,7 @@ export const CategoriesList = memo(function CategoriesButtons() {
   } = useModal()
 
   return (
-    <DumbCategoriesList
+    <CategoriesListDumb
       sortedCategories={sortedCategories}
       shouldDisplayVenueMap={shouldDisplayVenueMap}
       isMapWithoutPositionAndNotLocated={isMapWithoutPositionAndNotLocated}

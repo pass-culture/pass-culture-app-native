@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DumbCategoriesList } from 'features/search/components/DumbCategoriesList/DumbCategoriesList'
+import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
@@ -37,7 +37,7 @@ const initialProps = {
   isMapWithoutPositionAndNotLocated: false,
 }
 
-describe('DumbCategoriesList', () => {
+describe('CategoriesListDumb', () => {
   beforeEach(() =>
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
@@ -47,7 +47,7 @@ describe('DumbCategoriesList', () => {
 
   it('should not display venue map block when shouldDisplayVenueMap and isMapWithoutPositionAndNotLocated are false', async () => {
     render(
-      <DumbCategoriesList
+      <CategoriesListDumb
         {...initialProps}
         shouldDisplayVenueMap={false}
         isMapWithoutPositionAndNotLocated={false}
@@ -62,13 +62,13 @@ describe('DumbCategoriesList', () => {
     { isMapWithoutPositionAndNotLocated: false, shouldDisplayVenueMap: true },
     { isMapWithoutPositionAndNotLocated: true, shouldDisplayVenueMap: false },
   ])('should  display venue map block', async (props) => {
-    render(<DumbCategoriesList {...initialProps} {...props} />)
+    render(<CategoriesListDumb {...initialProps} {...props} />)
 
     expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
   })
 
   it('should display categories', async () => {
-    render(<DumbCategoriesList {...initialProps} />)
+    render(<CategoriesListDumb {...initialProps} />)
 
     expect(screen.getByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
   })
