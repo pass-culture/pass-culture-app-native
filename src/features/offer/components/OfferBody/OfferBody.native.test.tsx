@@ -25,7 +25,7 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -89,6 +89,10 @@ const useArtistResultsSpy = jest
   })
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -482,7 +486,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King'))
+    await user.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
   })
@@ -499,7 +503,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King, Clive Barker'))
+    await user.press(await screen.findByText('Stephen King, Clive Barker'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -516,7 +520,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King; Clive Barker'))
+    await user.press(await screen.findByText('Stephen King; Clive Barker'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -533,7 +537,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Collectif'))
+    await user.press(await screen.findByText('Collectif'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -555,7 +559,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('J.K Rowling'))
+    await user.press(await screen.findByText('J.K Rowling'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -572,7 +576,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King'))
+    await user.press(await screen.findByText('Stephen King'))
 
     expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
       offerId: offerResponseSnap.id,
@@ -594,7 +598,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King, Robert McCammon'))
+    await user.press(await screen.findByText('Stephen King, Robert McCammon'))
 
     expect(analytics.logConsultArtist).not.toHaveBeenCalled()
   })
@@ -612,7 +616,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King; Robert McCammon'))
+    await user.press(await screen.findByText('Stephen King; Robert McCammon'))
 
     expect(analytics.logConsultArtist).not.toHaveBeenCalled()
   })
@@ -631,7 +635,7 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategoryBook,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King'))
+    await user.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -648,9 +652,9 @@ describe('<OfferBody />', () => {
       subcategory: mockSubcategory,
     })
 
-    fireEvent.press(await screen.findByText('Stephen King'))
+    await user.press(await screen.findByText('Stephen King'))
 
-    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
+    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
   })
 })
 
