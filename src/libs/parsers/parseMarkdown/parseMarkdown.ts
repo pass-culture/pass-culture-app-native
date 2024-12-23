@@ -1,12 +1,11 @@
-import { MarkdownPartProps } from 'features/offer/types'
+import { MarkdownPartProps } from 'ui/components/types'
 
 // Regular expression to detect bold and italic
 const STYLES_REGEXP = /\*\*(.*?)\*\*|_(.*?)_/g
 
-export function parseMarkdown(
-  markdown: string,
-  styles: Record<string, boolean> = {}
-): MarkdownPartProps[] {
+type TextStyle = Record<string, boolean>
+
+export function parseMarkdown(markdown: string, styles: TextStyle = {}): MarkdownPartProps[] {
   const parts: MarkdownPartProps[] = []
   let lastIndex = 0
 
@@ -19,7 +18,7 @@ export function parseMarkdown(
     }
 
     // Determine the styles for the current match
-    const newStyles: Record<string, boolean> = { ...styles }
+    const newStyles: TextStyle = { ...styles }
     if (isBold) newStyles.isBold = true
     if (isItalic) newStyles.isItalic = true
 

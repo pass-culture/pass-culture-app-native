@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
-import { MarkdownPartProps } from 'features/offer/types'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { MarkdownPartProps } from 'ui/components/types'
 import { TypoDS } from 'ui/theme'
 
 export const MarkdownPart: FunctionComponent<MarkdownPartProps> = ({ text, isBold, isItalic }) => {

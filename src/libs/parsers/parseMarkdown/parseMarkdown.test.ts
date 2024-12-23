@@ -1,4 +1,4 @@
-import { parseMarkdown } from 'features/offer/helpers/parseMarkdown/parseMarkdown'
+import { parseMarkdown } from 'libs/parsers/parseMarkdown/parseMarkdown'
 
 describe('parseMarkdown', () => {
   it('should parse bold text', () => {

@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
-import { parseMarkdown } from 'features/offer/helpers/parseMarkdown/parseMarkdown'
-import { MarkdownPartProps } from 'features/offer/types'
+import { parseMarkdown } from 'libs/parsers/parseMarkdown/parseMarkdown'
 import { MarkdownPart } from 'ui/components/MarkdownPart/MarkdownPart'
+import { MarkdownPartProps } from 'ui/components/types'
 
 type Props = {
   text: string
