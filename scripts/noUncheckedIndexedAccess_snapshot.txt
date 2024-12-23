@@ -96,7 +96,6 @@
 ./src/libs/utm/storeUtmParams.test.ts:65
 ./src/libs/utm/useUtmParams.ts:26
 ./src/shared/offer/helpers/sanitizeTitle.tsx:4
-./src/ui/components/CollapsibleText/useIsTextEllipsis.ios.ts:17
 ./src/ui/components/SocialNetworkCard.tsx:17
 ./src/ui/components/StepDots.native.test.tsx:19
 ./src/ui/components/StepDots.native.test.tsx:21
