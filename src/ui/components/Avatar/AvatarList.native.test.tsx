@@ -16,7 +16,7 @@ describe('<AvatarsList />', () => {
   jest.useFakeTimers()
 
   it('should display all items in the list', () => {
-    render(<AvatarsList data={avatarsData} />)
+    render(<AvatarsList data={avatarsData} from="venue" />)
 
     expect(screen.getByText('Oda')).toBeOnTheScreen()
     expect(screen.getByText('MMMM')).toBeOnTheScreen()
@@ -24,20 +24,20 @@ describe('<AvatarsList />', () => {
   })
 
   it('should display custom images for avatars', () => {
-    render(<AvatarsList data={avatarsData} />)
+    render(<AvatarsList data={avatarsData} from="venue" />)
 
     expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
     expect(screen.getByLabelText('Avatar de lʼartiste MMMM')).toBeOnTheScreen()
   })
 
   it('should handle missing images gracefully', () => {
-    render(<AvatarsList data={avatarsData} />)
+    render(<AvatarsList data={avatarsData} from="venue" />)
 
     expect(screen.getByTestId('BicolorProfile')).toBeOnTheScreen()
   })
 
   it('should navigate to the artist when clicking on avatar tile', async () => {
-    render(<AvatarsList data={avatarsData} />)
+    render(<AvatarsList data={avatarsData} from="venue" />)
 
     await user.press(screen.getByText('Oda'))
 
