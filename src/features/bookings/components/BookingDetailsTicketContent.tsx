@@ -45,6 +45,9 @@ export function BookingDetailsTicketContent({
     extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? (
       <BookingComplementaryInfo title="EAN" value={extraData.ean} />
     ) : null
+  const barCode = externalBookings?.barcode ? (
+    <BookingComplementaryInfo title="REF" value={externalBookings.barcode} />
+  ) : null
 
   const buttonWording = getDigitalOfferBookingWording(offerSubcategory)
 
@@ -96,7 +99,7 @@ export function BookingDetailsTicketContent({
           )}
         </TicketContent>
       </ViewGap>
-      {ean}
+      {ean || barCode}
     </Container>
   )
 }
