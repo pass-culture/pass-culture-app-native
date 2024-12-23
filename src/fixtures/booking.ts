@@ -13,6 +13,8 @@ export const mockedBookingApi: BookingReponse = {
   id: 123,
   quantity: 3,
   totalAmount: 4,
+  canReact: true,
+  enablePopUpReaction: true,
   stock: {
     id: 431,
     offer: mockedBookingOfferResponse,
