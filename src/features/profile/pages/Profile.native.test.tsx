@@ -295,7 +295,7 @@ describe('Profile component', () => {
   })
 
   describe('help section', () => {
-    it('should navigate to AgeSelection when tutorial row is clicked and user is not logged in', async () => {
+    it('should navigate to EligibleUserAgeSelection when tutorial row is clicked and user is not logged in', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       renderProfile()
 
@@ -303,7 +303,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelection', {
+        expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
           type: TutorialTypes.PROFILE_TUTORIAL,
         })
       })

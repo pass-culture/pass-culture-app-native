@@ -107,12 +107,12 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type TutorialRootStackParamList = {
-  AgeSelection: TutorialType
   AgeSelectionOther: TutorialType
+  EligibleUserAgeSelection: TutorialType
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
+  OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
-  OnboardingGeneralPublicWelcome: undefined
   ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
 }
 

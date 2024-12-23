@@ -24,13 +24,13 @@ describe('OnboardingGeolocation', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to AgeSelection when "Passer" is clicked', async () => {
+  it('should redirect to EligibleUserAgeSelection when "Passer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
     const button = screen.getByLabelText('Aller à l’écran suivant')
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('AgeSelection', {
+    expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
       type: TutorialTypes.ONBOARDING,
     })
   })

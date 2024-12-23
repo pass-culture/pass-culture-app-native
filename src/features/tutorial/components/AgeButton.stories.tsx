@@ -61,14 +61,20 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton default',
     props: {
       children: TextExample({}),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
     },
   },
   {
     label: 'AgeButton dense',
     props: {
       children: TextExample({}),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
       dense: true,
     },
   },
@@ -76,14 +82,20 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with subtitle',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
     },
   },
   {
     label: 'AgeButton dense with subtitle',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
       dense: true,
     },
   },
@@ -91,7 +103,10 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with icon',
     props: {
       children: TextExample({}),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
       Icon: <BicolorAll />,
     },
   },
@@ -99,7 +114,10 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with subtitle and icon',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
       Icon: <BicolorAll />,
     },
   },
@@ -107,7 +125,10 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton dense with subtitle and icon',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
+      navigateTo: {
+        screen: 'EligibleUserAgeSelection',
+        params: { type: TutorialTypes.ONBOARDING },
+      },
       dense: true,
       Icon: <BicolorAll />,
     },
@@ -120,11 +141,3 @@ const Template: VariantsStory<typeof AgeButton> = (args) => (
 
 export const AllVariants = Template.bind({})
 AllVariants.storyName = 'AgeButton'
-
-// export const DenseWithoutIcon = Template.bind({})
-// DenseWithoutIcon.args = {
-//   children: TextExample({}),
-//   dense: true,
-//   Icon: undefined,
-//   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
-// }

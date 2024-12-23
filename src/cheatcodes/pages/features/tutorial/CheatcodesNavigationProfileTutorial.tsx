@@ -8,7 +8,7 @@ export function CheatcodesNavigationProfileTutorial(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="ProfileTutorial 👤">
       <LinkToComponent
-        name="AgeSelection"
+        name="EligibleUserAgeSelection"
         navigationParams={{ type: TutorialTypes.PROFILE_TUTORIAL }}
       />
       <LinkToComponent

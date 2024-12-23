@@ -11,7 +11,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { AgeSelection } from './AgeSelection'
+import { EligibleUserAgeSelection } from './EligibleUserAgeSelection'
 
 const AGES = [15, 16, 17, 18]
 
@@ -28,7 +28,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-describe('AgeSelection', () => {
+describe('EligibleUserAgeSelection', () => {
   describe('with passForAll feature flag off', () => {
     beforeEach(async () => {
       await storage.clear('user_age')
@@ -37,7 +37,7 @@ describe('AgeSelection', () => {
 
     describe('onboarding', () => {
       it('should render correctly', () => {
-        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+        renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         expect(screen).toMatchSnapshot()
       })
@@ -45,7 +45,7 @@ describe('AgeSelection', () => {
       it.each(AGES)(
         'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
         async (age) => {
-          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+          renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
           fireEvent.press(button)
@@ -58,7 +58,7 @@ describe('AgeSelection', () => {
 
       it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
         useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
-        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+        renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText('Autre')
         fireEvent.press(button)
@@ -73,7 +73,7 @@ describe('AgeSelection', () => {
       it.each(AGES)(
         'should log analytics with params age=%s when pressing "j’ai %s ans"',
         (age) => {
-          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+          renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
           fireEvent.press(button)
@@ -86,7 +86,7 @@ describe('AgeSelection', () => {
       )
 
       it('should log analytics when pressing "Autre"', () => {
-        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+        renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText('Autre')
         fireEvent.press(button)
@@ -100,7 +100,7 @@ describe('AgeSelection', () => {
       it.each(AGES)(
         'should set user age to %s in local storage  when pressing "j’ai %s ans"',
         async (age) => {
-          renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+          renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
           fireEvent.press(button)
@@ -114,7 +114,7 @@ describe('AgeSelection', () => {
 
     describe('profileTutorial', () => {
       it('should render correctly', () => {
-        renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+        renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
         expect(screen).toMatchSnapshot()
       })
@@ -122,7 +122,7 @@ describe('AgeSelection', () => {
       it.each(AGES)(
         'should navigate to ProfileTutorialAgeInformation page with params age=%s when pressing "à %s ans"',
         async (age) => {
-          renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+          renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
           const button = screen.getByText(`à ${age} ans`)
           fireEvent.press(button)
@@ -138,7 +138,7 @@ describe('AgeSelection', () => {
       it.each(AGES)(
         'should log analytics with params age=%s when pressing "j’ai %s ans"',
         (age) => {
-          renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+          renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
           const button = screen.getByText(`${age} ans`)
           fireEvent.press(button)
@@ -160,7 +160,7 @@ describe('AgeSelection', () => {
 
     describe('onboarding', () => {
       it('should render correctly', () => {
-        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+        renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         expect(screen).toMatchSnapshot()
       })
@@ -168,10 +168,10 @@ describe('AgeSelection', () => {
   })
 })
 
-const renderAgeSelection = (navigationParams: { type: string }) => {
+const renderEligibleUserAgeSelection = (navigationParams: { type: string }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     TutorialRootStackParamList,
-    'AgeSelection'
+    'EligibleUserAgeSelection'
   >
-  return render(<AgeSelection {...navProps} />)
+  return render(<EligibleUserAgeSelection {...navProps} />)
 }

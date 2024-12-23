@@ -1,6 +1,6 @@
 import { TutorialRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
-import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
+import { EligibleUserAgeSelection } from 'features/tutorial/pages/EligibleUserAgeSelection'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
@@ -9,8 +9,8 @@ import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTu
 
 export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
-    name: 'AgeSelection',
-    component: AgeSelection,
+    name: 'EligibleUserAgeSelection',
+    component: EligibleUserAgeSelection,
     path: 'selection-age',
     options: { title: 'Sélection d’âge' },
   },
