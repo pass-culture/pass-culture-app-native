@@ -697,6 +697,8 @@ describe('<PriceModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
+        defaultMinPrice: '',
+        defaultMaxPrice: '50',
         maxPrice: '50',
       }
 
@@ -725,6 +727,8 @@ describe('<PriceModal/>', () => {
           ...mockSearchState,
           minPrice: '5',
           maxPrice: '20',
+          defaultMinPrice: '5',
+          defaultMaxPrice: '20',
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -749,6 +753,8 @@ describe('<PriceModal/>', () => {
           ...mockSearchState,
           minPrice: '0',
           maxPrice: '0',
+          defaultMinPrice: '0',
+          defaultMaxPrice: '0',
           offerIsFree: true,
         }
 
@@ -772,6 +778,8 @@ describe('<PriceModal/>', () => {
           offerIsFree: true,
           minPrice: '0',
           maxPrice: '0',
+          defaultMinPrice: '0',
+          defaultMaxPrice: '0',
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -793,6 +801,8 @@ describe('<PriceModal/>', () => {
           ...mockSearchState,
           offerIsFree: true,
           maxPrice: '0',
+          defaultMaxPrice: '0',
+          defaultMinPrice: '',
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -813,6 +823,10 @@ describe('<PriceModal/>', () => {
         const expectedSearchParams = {
           ...mockSearchState,
           minPrice: '1',
+          maxPrice: undefined,
+          defaultMinPrice: '1',
+          defaultMaxPrice: '',
+          maxPossiblePrice: '80',
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({

@@ -40,11 +40,9 @@ export const SearchFilter: React.FC = () => {
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const oldAccessibilityFilter = useMemo(() => disabilities, [])
+  const oldAccessibilityFilter = useMemo(() => disabilities, [disabilities])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const oldSearchState = useMemo(() => searchState, [])
+  const oldSearchState = useMemo(() => searchState, [searchState])
   const onGoBack = useCallback(() => {
     navigateToSearch(oldSearchState, oldAccessibilityFilter)
   }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
