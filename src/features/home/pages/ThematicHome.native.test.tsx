@@ -20,7 +20,7 @@ import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -172,15 +172,17 @@ describe('ThematicHome', () => {
   })
 
   describe('analytics', () => {
-    it('should log ConsultHome', async () => {
+    it('should log ConsultThematicHome', async () => {
       renderThematicHome()
 
-      await waitFor(() => {
-        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
+      await screen.findByText('Suivre')
+
+      expect(analytics.logConsultThematicHome).toHaveBeenNthCalledWith(1, {
+        homeEntryId: 'fakeEntryId',
       })
     })
 
-    it('should log ConsultHome when coming from category block', async () => {
+    it('should log ConsultThematicHome when coming from category block', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -191,17 +193,17 @@ describe('ThematicHome', () => {
       })
       renderThematicHome()
 
-      await waitFor(() => {
-        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-          homeEntryId: 'fakeEntryId',
-          from: 'category_block',
-          moduleId: 'moduleId',
-          moduleListId: 'moduleListId',
-        })
+      await screen.findByText('Suivre')
+
+      expect(analytics.logConsultThematicHome).toHaveBeenNthCalledWith(1, {
+        homeEntryId: 'fakeEntryId',
+        from: 'category_block',
+        moduleId: 'moduleId',
+        moduleListId: 'moduleListId',
       })
     })
 
-    it('should log ConsultHome when coming from highlight thematic block', async () => {
+    it('should log ConsultThematicHome when coming from highlight thematic block', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -210,14 +212,30 @@ describe('ThematicHome', () => {
         },
       })
       renderThematicHome()
-      await act(async () => {})
+      await screen.findByText('Suivre')
 
-      await waitFor(() => {
-        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-          homeEntryId: 'fakeEntryId',
-          from: 'highlight_thematic_block',
-          moduleId: 'moduleId',
-        })
+      expect(analytics.logConsultThematicHome).toHaveBeenNthCalledWith(1, {
+        homeEntryId: 'fakeEntryId',
+        from: 'highlight_thematic_block',
+        moduleId: 'moduleId',
+      })
+    })
+
+    it('should log ConsultThematicHome when coming from deeplinks', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          from: 'deeplink',
+        },
+      })
+      renderThematicHome()
+      await screen.findByText('Suivre')
+
+      expect(analytics.logConsultThematicHome).toHaveBeenNthCalledWith(1, {
+        from: 'deeplink',
+        homeEntryId: 'fakeEntryId',
+        moduleId: undefined,
+        moduleItemId: undefined,
+        moduleListId: undefined,
       })
     })
   })
@@ -235,9 +253,9 @@ describe('ThematicHome', () => {
       })
       renderThematicHome()
 
-      await waitFor(() => {
-        expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
-      })
+      await screen.findByText('Suivre')
+
+      expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
     })
 
     it('should not show geolocation banner when user is geolocated or located', async () => {
@@ -262,9 +280,9 @@ describe('ThematicHome', () => {
       })
       renderThematicHome()
 
-      await waitFor(() => {
-        expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
-      })
+      await screen.findByText('Suivre')
+
+      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
     })
 
     it('should not show system banner when user is geolocated or located', async () => {

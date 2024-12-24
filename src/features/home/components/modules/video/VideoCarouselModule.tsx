@@ -13,7 +13,6 @@ import {
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { videoSourceExtractor } from 'features/home/components/helpers/videoSourceExtractor'
-import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
@@ -26,6 +25,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, getSpacing } from 'ui/theme'
+import { newColorMapping } from 'ui/theme/newColorMapping'
 
 const CAROUSEL_HEIGHT = getSpacing(35)
 const CAROUSEL_ANIMATION_DURATION = 500
