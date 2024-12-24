@@ -26,14 +26,12 @@ type Props = {
   booking: Booking
   handleShowReactionModal: (booking: Booking) => void
   handleShowShareOfferModal: (shareContent: ShareContent | null) => void
-  canReact?: boolean
 }
 
 export const EndedBookingItem = ({
   booking,
   handleShowReactionModal,
   handleShowShareOfferModal,
-  canReact,
 }: Props) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const subcategoriesMapping = useSubcategoriesMapping()
@@ -120,10 +118,8 @@ export const EndedBookingItem = ({
       </ContentContainer>
       <EndedBookingInteractionButtons
         booking={booking}
-        nativeCategoryId={subcategory.nativeCategoryId}
         handlePressShareOffer={pressShareOffer}
         handleShowReactionModal={() => handleShowReactionModal && handleShowReactionModal(booking)}
-        canReact={canReact}
       />
     </Container>
   )

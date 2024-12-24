@@ -126,7 +126,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
 
-        <OfferReactionSection offer={offer} subcategory={subcategory} />
+        <OfferReactionSection offer={offer} />
 
         <GroupWithSeparator
           showTopComponent={offer.venue.isPermanent}

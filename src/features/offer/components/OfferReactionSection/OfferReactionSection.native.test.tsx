@@ -4,7 +4,6 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
-import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -199,9 +198,6 @@ describe('<OfferReactionSection />', () => {
 
 type RenderOfferReactionSectionType = Partial<ComponentProps<typeof OfferReactionSection>>
 
-function renderOfferReactionSection({
-  offer = offerResponseSnap,
-  subcategory = mockSubcategory,
-}: RenderOfferReactionSectionType) {
-  render(reactQueryProviderHOC(<OfferReactionSection offer={offer} subcategory={subcategory} />))
+function renderOfferReactionSection({ offer = offerResponseSnap }: RenderOfferReactionSectionType) {
+  render(reactQueryProviderHOC(<OfferReactionSection offer={offer} />))
 }

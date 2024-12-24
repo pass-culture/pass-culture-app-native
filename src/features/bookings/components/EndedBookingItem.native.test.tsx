@@ -209,7 +209,7 @@ describe('EndedBookingItem', () => {
     })
 
     it('should handle reaction modal opening when pressing reaction button', async () => {
-      renderEndedBookingItem({ booking: bookingsSnap.ended_bookings[0], canReact: true })
+      renderEndedBookingItem({ booking: { ...bookingsSnap.ended_bookings[0], canReact: true } })
 
       await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
@@ -222,7 +222,6 @@ type RenderEndedBookingItemType = Partial<ComponentProps<typeof EndedBookingItem
 
 function renderEndedBookingItem({
   booking = bookingsSnap.ended_bookings[0],
-  canReact,
 }: RenderEndedBookingItemType) {
   return render(
     reactQueryProviderHOC(
@@ -230,7 +229,6 @@ function renderEndedBookingItem({
         booking={booking}
         handleShowReactionModal={mockHandleShowReactionModal}
         handleShowShareOfferModal={mockHandleShowShareOfferModal}
-        canReact={canReact}
       />
     )
   )
