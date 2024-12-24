@@ -36,6 +36,7 @@
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "preios": "./scripts/check_xcode_version.sh",
     "ios": "react-native run-ios",
+    "postios": "./scripts/add_certificate_to_ios_simulator.sh",
     "ios:prod": "yarn ios --scheme PassCulture-Production",
     "ios:staging": "yarn ios --scheme PassCulture-Staging",
     "ios:testing": "yarn ios --scheme PassCulture-Testing",
