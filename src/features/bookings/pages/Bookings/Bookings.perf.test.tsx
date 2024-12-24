@@ -1,8 +1,14 @@
 import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
-import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
+import {
+  BookingsResponse,
+  GetAvailableReactionsResponse,
+  SubcategoriesResponseModelv2,
+  UserProfileResponse,
+} from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
@@ -36,6 +42,10 @@ describe('<Bookings />', () => {
     mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi<GetAvailableReactionsResponse>(
+      '/v1/reaction/available',
+      availableReactionsSnap
+    )
   })
 
   it('Performance test for Bookings page', async () => {
