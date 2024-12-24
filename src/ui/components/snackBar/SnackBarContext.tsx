@@ -1,5 +1,9 @@
-import React, { createContext, memo, useContext, useRef, useState } from 'react'
+import React, { createContext, memo, useContext, useEffect, useRef, useState } from 'react'
 import { useTheme } from 'styled-components/native'
+
+import { SNACKBAR_EVENTS } from 'events/eventNames'
+import { SnackBarEventPayload } from 'events/types'
+import { useEventBus } from 'events/useEventBus'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
@@ -29,6 +33,7 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
   children: React.ReactNode
 }) {
   const theme = useTheme()
+  const eventBus = useEventBus()
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
@@ -65,6 +70,28 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
         ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
       }),
   })
+
+  const handleShowSnackBarEvent = ({ message, type }: SnackBarEventPayload) => {
+    const { showErrorSnackBar, showInfoSnackBar, showSuccessSnackBar } = snackBarToolsRef.current
+    const showMessageFnMap = {
+      error: showErrorSnackBar,
+      info: showInfoSnackBar,
+      success: showSuccessSnackBar,
+    }
+
+    showMessageFnMap[type]?.({ message, timeout: SNACK_BAR_TIME_OUT })
+  }
+
+  useEffect(() => {
+    eventBus.on(SNACKBAR_EVENTS.SHOW, handleShowSnackBarEvent)
+    eventBus.on(SNACKBAR_EVENTS.HIDE, hideSnackBar)
+    return () => {
+      eventBus.off(SNACKBAR_EVENTS.SHOW, handleShowSnackBarEvent)
+      eventBus.off(SNACKBAR_EVENTS.HIDE, hideSnackBar)
+    }
+    // eventBus is not necessary in dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <SnackBarContext.Provider value={snackBarToolsRef.current}>

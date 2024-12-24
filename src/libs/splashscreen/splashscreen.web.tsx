@@ -8,7 +8,7 @@ import { SplashScreenContextInterface } from './types'
  */
 
 export function useSplashScreenContext(): SplashScreenContextInterface {
-  return { isSplashScreenHidden: true, hideSplashScreen: undefined }
+  return { isSplashScreenHidden: true }
 }
 
 export const SplashScreenProvider: React.FC<{ children: React.ReactElement }> = (props) =>
