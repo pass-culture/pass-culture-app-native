@@ -23,10 +23,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
   const { mutate: addReaction } = useReactionMutation()
 
   const userBooking = useMemo(
-    () =>
-      bookings?.ended_bookings?.find(
-        (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
-      ),
+    () => bookings?.ended_bookings?.find((booking) => booking.stock.offer.id === offer.id),
     [bookings, offer.id]
   )
 
