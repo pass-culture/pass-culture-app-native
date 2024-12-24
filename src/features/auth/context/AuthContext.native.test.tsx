@@ -64,7 +64,7 @@ describe('AuthContext', () => {
 
       await act(async () => {})
 
-      expect(result.current.user).toBeUndefined()
+      expect(result.current).toBeNull()
     })
 
     it('should return the user when logged in with internet connection', async () => {
