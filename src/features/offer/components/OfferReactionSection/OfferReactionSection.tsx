@@ -8,12 +8,10 @@ import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { Subcategory } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   offer: OfferResponseV2
-  subcategory: Subcategory
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {

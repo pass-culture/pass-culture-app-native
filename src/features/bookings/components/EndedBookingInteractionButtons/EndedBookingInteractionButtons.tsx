@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingReponse, NativeCategoryIdEnumv2, ReactionTypeEnum } from 'api/gen'
+import { BookingReponse, ReactionTypeEnum } from 'api/gen'
 import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -11,7 +11,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   booking: BookingReponse
-  nativeCategoryId: NativeCategoryIdEnumv2
   handlePressShareOffer: VoidFunction
   handleShowReactionModal: VoidFunction
   canReact?: boolean
