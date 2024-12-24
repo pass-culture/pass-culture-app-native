@@ -1,25 +1,33 @@
-import { BookingReponse, NativeCategoryIdEnumv2 } from 'api/gen'
+import { AvailableReactionBooking, BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import { THIRTY_ONE_DAYS, TWENTY_FOUR_HOURS } from 'features/home/constants'
-import { SubcategoriesMapping } from 'libs/subcategories/types'
+
+const cinemaSubcategories = [
+  SubcategoryIdEnum.SEANCE_CINE,
+  SubcategoryIdEnum.CINE_PLEIN_AIR,
+  SubcategoryIdEnum.CINE_VENTE_DISTANCE,
+]
 
 export function filterBookingsWithoutReaction(
   booking: BookingReponse,
-  subcategoriesMapping: SubcategoriesMapping,
-  reactionCategories: Record<'categories', NativeCategoryIdEnumv2[]>
+  reactableBookings?: AvailableReactionBooking[]
 ): boolean {
   const now = new Date()
-  const { stock, dateUsed, userReaction } = booking
 
-  const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
-  const isEligibleCategory = reactionCategories.categories.includes(subcategory.nativeCategoryId)
+  if (!reactableBookings) return false
 
-  if (!dateUsed || !isEligibleCategory || userReaction !== null) {
+  const bookingWithoutReaction = reactableBookings.find(
+    (availableBooking) => availableBooking.offerId === booking.stock.offer.id
+  )
+
+  if (!bookingWithoutReaction || !bookingWithoutReaction.dateUsed) {
     return false
   }
 
-  const isCinemaCategory = subcategory.nativeCategoryId === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA
-
-  const elapsedTime = now.getTime() - new Date(dateUsed).getTime()
+  // TODO(PC-33728) back need to type subcategoryId as SubcategoryIdeEnum rather than a string
+  const isCinemaCategory = cinemaSubcategories.includes(
+    bookingWithoutReaction.subcategoryId as SubcategoryIdEnum
+  )
+  const elapsedTime = now.getTime() - new Date(bookingWithoutReaction.dateUsed).getTime()
   const timeThreshold = isCinemaCategory ? TWENTY_FOUR_HOURS : THIRTY_ONE_DAYS
 
   return elapsedTime > timeThreshold

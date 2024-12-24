@@ -1,22 +1,15 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import {
-  NativeCategoryIdEnumv2,
-  ReactionTypeEnum,
-  SubcategoriesResponseModelv2,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { ReactionTypeEnum, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')
@@ -26,8 +19,6 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
 }))
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
@@ -35,18 +26,11 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const user = userEvent.setup()
+
 jest.useFakeTimers()
 
 describe('IncomingReactionModalContainer', () => {
-  beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      reactionCategories: {
-        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-      },
-    })
-  })
-
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
   })
@@ -84,18 +68,16 @@ describe('IncomingReactionModalContainer', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(await screen.findByText('J’aime'))
-    fireEvent.press(screen.getByText('Valider la réaction'))
+    await user.press(await screen.findByText('J’aime'))
+    await user.press(screen.getByText('Valider la réaction'))
 
-    await waitFor(() => {
-      expect(mockMutate).toHaveBeenNthCalledWith(1, {
-        reactions: [
-          {
-            offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
-            reactionType: ReactionTypeEnum.LIKE,
-          },
-        ],
-      })
+    expect(mockMutate).toHaveBeenNthCalledWith(1, {
+      reactions: [
+        {
+          offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+          reactionType: ReactionTypeEnum.LIKE,
+        },
+      ],
     })
   })
 
@@ -114,17 +96,15 @@ describe('IncomingReactionModalContainer', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
+    await user.press(screen.getByTestId('Fermer la modale'))
 
-    await waitFor(() => {
-      expect(mockMutate).toHaveBeenNthCalledWith(1, {
-        reactions: [
-          {
-            offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
-            reactionType: ReactionTypeEnum.NO_REACTION,
-          },
-        ],
-      })
+    expect(mockMutate).toHaveBeenNthCalledWith(1, {
+      reactions: [
+        {
+          offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+          reactionType: ReactionTypeEnum.NO_REACTION,
+        },
+      ],
     })
   })
 
@@ -139,7 +119,7 @@ describe('IncomingReactionModalContainer', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByTestId('Donner mon avis'))
+    await user.press(screen.getByTestId('Donner mon avis'))
 
     expect(mockMutate).not.toHaveBeenCalled()
   })
