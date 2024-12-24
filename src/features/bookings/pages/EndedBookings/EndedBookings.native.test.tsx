@@ -29,16 +29,6 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
 }))
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
-  remoteConfig: {
-    configure: () => Promise.resolve(true),
-    refresh: () => Promise.resolve(true),
-    getValues: () => ({
-      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
-    }),
-  },
-}))
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
