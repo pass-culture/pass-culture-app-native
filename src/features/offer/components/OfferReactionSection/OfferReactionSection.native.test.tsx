@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react'
 
-import { NativeCategoryIdEnumv2, ReactionTypeEnum } from 'api/gen'
+import { ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
@@ -8,12 +8,8 @@ import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const mockBookingsWithoutReaction = {
   ...bookingsSnap,
@@ -69,15 +65,6 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
 }))
 
 describe('<OfferReactionSection />', () => {
-  beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      reactionCategories: {
-        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-      },
-    })
-  })
-
   describe('When FF is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])

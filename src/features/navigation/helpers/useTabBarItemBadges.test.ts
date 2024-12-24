@@ -3,9 +3,11 @@ import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBa
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
+const mockAvailableReactionsSnap = availableReactionsSnap
+
 jest.mock('features/reactions/api/useAvailableReaction', () => ({
   useAvailableReaction: jest.fn(() => ({
-    data: availableReactionsSnap,
+    data: mockAvailableReactionsSnap,
   })),
 }))
 

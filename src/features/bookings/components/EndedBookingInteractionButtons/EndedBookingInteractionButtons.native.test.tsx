@@ -7,25 +7,10 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-const mockGetConfigValues = jest.fn()
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
-  remoteConfig: {
-    configure: () => Promise.resolve(true),
-    refresh: () => Promise.resolve(true),
-    getValues: () => mockGetConfigValues(),
-  },
-}))
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('EndedBookingInteractionButtons', () => {
   jest.useFakeTimers()
-
-  beforeAll(() => {
-    mockGetConfigValues.mockReturnValue({
-      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
-    })
-  })
 
   it('should not display reaction button when reaction feature flag deactivated', async () => {
     renderEndedBookingInteractionButtons(
