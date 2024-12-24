@@ -29,7 +29,7 @@ export function Bookings() {
   const { ended_bookings: endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReaction()
-  const numberOfReactableBookings = availableReactions?.numberOfReactableBookings
+  const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
 
   const { fullCountLabel, accessibilityLabel } = createLabels(
     numberOfReactableBookings,
@@ -67,7 +67,7 @@ export function Bookings() {
     [BookingsTab.COMPLETED]: <EndedBookings />,
   }
 
-  const shouldDisplayPastille = enableReactionFeature && (numberOfReactableBookings ?? 0) > 0
+  const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0
 
   return (
     <React.Fragment>
