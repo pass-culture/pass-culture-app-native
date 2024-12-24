@@ -4,28 +4,27 @@ import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'a
 import { useBookings } from 'features/bookings/api'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
+import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const IncomingReactionModalContainer = () => {
-  const { reactionCategories } = useRemoteConfigContext()
   const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
-  const subcategoriesMapping = useSubcategoriesMapping()
   const mapping = useCategoryIdMapping()
+  const { data: availableReactions } = useAvailableReaction()
 
   const bookingsWithoutReaction =
     bookings?.ended_bookings?.filter((booking) =>
-      filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
+      filterBookingsWithoutReaction(booking, availableReactions?.bookings)
     ) ?? []
 
   const offerImages: OfferImageBasicProps[] = bookingsWithoutReaction.map((current) => {
