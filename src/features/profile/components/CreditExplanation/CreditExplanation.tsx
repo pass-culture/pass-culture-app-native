@@ -23,7 +23,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     age && age < 19 && age > 14
       ? { screen: 'ProfileTutorialAgeInformation', params: { age } }
-      : { screen: 'AgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+      : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
 
   const onTutorialClick = () => analytics.logConsultTutorial({ age, from: 'CreditBlock' })
 

@@ -1,6 +1,7 @@
 import { TutorialRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
-import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
+import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
+import { EligibleUserAgeSelection } from 'features/tutorial/pages/EligibleUserAgeSelection'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
@@ -9,10 +10,16 @@ import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTu
 
 export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
-    name: 'AgeSelection',
-    component: AgeSelection,
-    path: 'selection-age',
+    name: 'AgeSelectionFork',
+    component: AgeSelectionFork,
+    path: 'selection-age/generique',
     options: { title: 'Sélection d’âge' },
+  },
+  {
+    name: 'EligibleUserAgeSelection',
+    component: EligibleUserAgeSelection,
+    path: 'selection-age/eligible',
+    options: { title: 'Sélection d’âge éligible' },
   },
   {
     name: 'AgeSelectionOther',
@@ -23,7 +30,7 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
     name: 'OnboardingAgeInformation',
     component: OnboardingAgeInformation,
-    path: 'selection-age/eligible',
+    path: 'selection-age/information',
     options: { title: 'Information d’âge' },
   },
   {

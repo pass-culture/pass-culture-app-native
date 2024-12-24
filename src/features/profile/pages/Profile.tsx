@@ -83,7 +83,7 @@ const OnlineProfile: React.FC = () => {
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     userAge && userAge < 19 && userAge > 14
       ? { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-      : { screen: 'AgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+      : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
 
   useFocusEffect(
     useCallback(() => {

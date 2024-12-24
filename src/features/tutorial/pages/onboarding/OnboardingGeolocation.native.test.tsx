@@ -4,7 +4,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen } from 'tests/utils'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockRequestGeolocPermission = jest.fn()
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -17,20 +19,39 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('OnboardingGeolocation', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<OnboardingGeolocation />)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to AgeSelection when "Passer" is clicked', async () => {
+  it('should redirect to EligibleUserAgeSelection when "Passer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
     const button = screen.getByLabelText('Aller à l’écran suivant')
-    fireEvent.press(button)
+    await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('AgeSelection', {
+    expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
+      type: TutorialTypes.ONBOARDING,
+    })
+  })
+
+  it('should redirect to AgeSelectionFork when "Passer" is clicked when feature flag passForAll is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+    render(<OnboardingGeolocation />)
+
+    const button = screen.getByLabelText('Aller à l’écran suivant')
+    await user.press(button)
+
+    expect(navigate).toHaveBeenCalledWith('AgeSelectionFork', {
       type: TutorialTypes.ONBOARDING,
     })
   })
@@ -39,7 +60,7 @@ describe('OnboardingGeolocation', () => {
     render(<OnboardingGeolocation />)
 
     const loginButton = screen.getByLabelText('Utiliser ma position')
-    fireEvent.press(loginButton)
+    await user.press(loginButton)
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
@@ -48,7 +69,7 @@ describe('OnboardingGeolocation', () => {
     render(<OnboardingGeolocation />)
 
     const loginButton = screen.getByLabelText('Utiliser ma position')
-    fireEvent.press(loginButton)
+    await user.press(loginButton)
 
     expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
       type: 'use_my_position',
@@ -59,7 +80,7 @@ describe('OnboardingGeolocation', () => {
     render(<OnboardingGeolocation />)
 
     const loginButton = screen.getByLabelText('Aller à l’écran suivant')
-    fireEvent.press(loginButton)
+    await user.press(loginButton)
 
     expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
       type: 'skipped',

@@ -35,7 +35,7 @@ import {
   middleScrollEvent,
   render,
   screen,
-  waitFor,
+  userEvent,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
@@ -105,6 +105,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -186,8 +189,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const achievementBanner = await screen.findByText('Mes succès')
-
-      fireEvent.press(achievementBanner)
+      await user.press(achievementBanner)
 
       expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
     })
@@ -198,7 +200,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const row = screen.getByText('Informations personnelles')
-      await act(async () => fireEvent.press(row))
+      await user.press(row)
 
       expect(navigate).toHaveBeenCalledWith('PersonalData', undefined)
     })
@@ -272,9 +274,7 @@ describe('Profile component', () => {
           wrapper: FavoritesWrapper,
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByTestId(GEOLOC_SWITCH))
-        })
+        await user.press(screen.getByTestId(GEOLOC_SWITCH))
 
         expect(mockFavoriteDispatch).toHaveBeenCalledWith({
           type: 'SET_SORT_BY',
@@ -288,24 +288,22 @@ describe('Profile component', () => {
       renderProfile()
 
       const notificationsButton = screen.getByText('Notifications')
-      await act(async () => fireEvent.press(notificationsButton))
+      await user.press(notificationsButton)
 
       expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
     })
   })
 
   describe('help section', () => {
-    it('should navigate to AgeSelection when tutorial row is clicked and user is not logged in', async () => {
+    it('should navigate to EligibleUserAgeSelection when tutorial row is clicked and user is not logged in', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       renderProfile()
 
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
-      fireEvent.press(howItWorkButton)
+      await user.press(howItWorkButton)
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelection', {
-          type: TutorialTypes.PROFILE_TUTORIAL,
-        })
+      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
+        type: TutorialTypes.PROFILE_TUTORIAL,
       })
     })
 
@@ -314,11 +312,9 @@ describe('Profile component', () => {
       renderProfile()
 
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
-      fireEvent.press(howItWorkButton)
+      await user.press(howItWorkButton)
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
-      })
+      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
     })
 
     it('should navigate when the faq row is clicked', async () => {
@@ -326,9 +322,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const faqButton = screen.getByText('Centre d’aide')
-      await act(async () => {
-        fireEvent.press(faqButton)
-      })
+      await user.press(faqButton)
 
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
     })
@@ -362,9 +356,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const accessibilityButton = screen.getByText('Accessibilité')
-      await act(async () => {
-        fireEvent.press(accessibilityButton)
-      })
+      await user.press(accessibilityButton)
 
       expect(navigate).toHaveBeenCalledWith('Accessibility', undefined)
     })
@@ -373,9 +365,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const legalNoticesButton = screen.getByText('Informations légales')
-      await act(async () => {
-        fireEvent.press(legalNoticesButton)
-      })
+      await user.press(legalNoticesButton)
 
       expect(navigate).toHaveBeenCalledWith('LegalNotices', undefined)
     })
@@ -384,9 +374,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const confidentialityButton = screen.getByText('Confidentialité')
-      await act(async () => {
-        fireEvent.press(confidentialityButton)
-      })
+      await user.press(confidentialityButton)
 
       expect(navigate).toHaveBeenCalledWith('ConsentSettings', undefined)
     })
@@ -405,7 +393,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const shareButton = await screen.findByText('Partage le pass Culture')
-      fireEvent.press(shareButton)
+      await user.press(shareButton)
 
       expect(shareSpy).toHaveBeenCalledTimes(1)
     })
@@ -421,8 +409,7 @@ describe('Profile component', () => {
     })
 
     it('should NOT display signout row if the user is NOT connected', () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
+      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
       renderProfile()
 
       const signoutButton = screen.queryByText('Déconnexion')
@@ -431,17 +418,14 @@ describe('Profile component', () => {
     })
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockedUseAuthContext.mockImplementation(() => ({
+      mockedUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: true,
         user: nonBeneficiaryUser,
       }))
       renderProfile()
 
       const signoutButton = screen.getByText('Déconnexion')
-      await act(async () => {
-        fireEvent.press(signoutButton)
-      })
+      await user.press(signoutButton)
 
       expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
@@ -451,9 +435,7 @@ describe('Profile component', () => {
     it('should log event ConsultTutorial when user clicks on tutorial section', async () => {
       renderProfile()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Comment ça marche\u00a0?'))
-      })
+      await user.press(screen.getByText('Comment ça marche\u00a0?'))
 
       expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, {
         age: 18,
@@ -462,8 +444,7 @@ describe('Profile component', () => {
     })
 
     it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockedUseAuthContext.mockImplementation(() => ({
+      mockedUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: true,
         user: nonBeneficiaryUser,
       }))
@@ -487,9 +468,7 @@ describe('Profile component', () => {
       renderProfile()
       const banner = screen.getByText('Partage le pass Culture')
 
-      await act(async () => {
-        fireEvent.press(banner)
-      })
+      await user.press(banner)
 
       expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
     })

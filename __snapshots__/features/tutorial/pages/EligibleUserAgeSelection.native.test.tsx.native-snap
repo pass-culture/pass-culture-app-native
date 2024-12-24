@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AgeSelection with passForAll feature flag off onboarding should render correctly 1`] = `
+exports[`EligibleUserAgeSelection with passForAll feature flag off onboarding should render correctly 1`] = `
 [
   <View
     style={
@@ -325,9 +325,9 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -339,8 +339,8 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -485,9 +485,9 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -499,8 +499,8 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -645,9 +645,9 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -659,8 +659,8 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -805,9 +805,9 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -819,8 +819,8 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -1023,7 +1023,7 @@ exports[`AgeSelection with passForAll feature flag off onboarding should render 
 ]
 `;
 
-exports[`AgeSelection with passForAll feature flag off profileTutorial should render correctly 1`] = `
+exports[`EligibleUserAgeSelection with passForAll feature flag off profileTutorial should render correctly 1`] = `
 [
   <View
     style={
@@ -1348,9 +1348,9 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1362,8 +1362,8 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -1508,9 +1508,9 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1522,8 +1522,8 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -1668,9 +1668,9 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1682,8 +1682,8 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -1828,9 +1828,9 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1842,8 +1842,8 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -2046,7 +2046,7 @@ exports[`AgeSelection with passForAll feature flag off profileTutorial should re
 ]
 `;
 
-exports[`AgeSelection with passForAll feature flag on onboarding should render correctly 1`] = `
+exports[`EligibleUserAgeSelection with passForAll feature flag on onboarding should render correctly 1`] = `
 [
   <View
     style={
@@ -2328,9 +2328,9 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2342,8 +2342,8 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -2469,9 +2469,9 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2483,8 +2483,8 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -2610,9 +2610,9 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2624,8 +2624,8 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }
@@ -2751,9 +2751,9 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2765,8 +2765,8 @@ exports[`AgeSelection with passForAll feature flag on onboarding should render c
                           {
                             "color": "#320096",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
                           },
                         ]
                       }

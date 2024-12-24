@@ -19,7 +19,14 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
       <LinkToComponent name="OnboardingGeneralPublicWelcome" />
       <LinkToComponent name="OnboardingWelcome" />
       <LinkToComponent name="OnboardingGeolocation" />
-      <LinkToComponent name="AgeSelection" navigationParams={{ type: TutorialTypes.ONBOARDING }} />
+      <LinkToComponent
+        name="AgeSelectionFork"
+        navigationParams={{ type: TutorialTypes.ONBOARDING }}
+      />
+      <LinkToComponent
+        name="EligibleUserAgeSelection"
+        navigationParams={{ type: TutorialTypes.ONBOARDING }}
+      />
       <LinkToComponent
         name="AgeSelectionOther"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}

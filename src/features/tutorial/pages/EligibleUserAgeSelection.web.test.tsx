@@ -6,18 +6,19 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { AgeSelection } from './AgeSelection'
+import { EligibleUserAgeSelection } from './EligibleUserAgeSelection'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services') // I had to add this mock after adding the usage of useFeatureFlag to the AgeSelection screen, but I have no idea why?
+// I had to add this mock after adding the usage of useFeatureFlag to the EligibleUserAgeSelection screen, but I have no idea why?
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('<AgeSelection/>', () => {
+describe('<EligibleUserAgeSelection/>', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for onboarding tutorial', async () => {
-      const { container } = renderAgeSelection({ type: TutorialTypes.ONBOARDING })
+      const { container } = renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const results = await checkAccessibilityFor(container)
 
@@ -25,7 +26,7 @@ describe('<AgeSelection/>', () => {
     })
 
     it('should not have basic accessibility issues for profile tutorial', async () => {
-      const { container } = renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+      const { container } = renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
       const results = await checkAccessibilityFor(container)
 
@@ -34,10 +35,10 @@ describe('<AgeSelection/>', () => {
   })
 })
 
-const renderAgeSelection = (navigationParams: { type: string }) => {
+const renderEligibleUserAgeSelection = (navigationParams: { type: string }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     TutorialRootStackParamList,
-    'AgeSelection'
+    'EligibleUserAgeSelection'
   >
-  return render(<AgeSelection {...navProps} />)
+  return render(<EligibleUserAgeSelection {...navProps} />)
 }

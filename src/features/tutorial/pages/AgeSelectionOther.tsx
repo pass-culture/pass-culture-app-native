@@ -18,7 +18,7 @@ import { storage } from 'libs/storage'
 import { Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
+type Props = StackScreenProps<TutorialRootStackParamList, 'EligibleUserAgeSelection'>
 
 export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) => {
   const type = route.params.type

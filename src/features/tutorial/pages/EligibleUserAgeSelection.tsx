@@ -16,7 +16,7 @@ import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
+type Props = StackScreenProps<TutorialRootStackParamList, 'EligibleUserAgeSelection'>
 
 const OTHER = 'other'
 
@@ -33,12 +33,12 @@ const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
+export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
   const type = route.params.type
 
-  const AgeSelectionButtons = ageButtons.map(({ age }) => {
+  const EligibleUserAgeSelectionButtons = ageButtons.map(({ age }) => {
     const isOnboarding = type === TutorialTypes.ONBOARDING
     const startButtonTitle = isOnboarding ? 'J’ai' : 'à'
     const AgeInformationScreen = isOnboarding
@@ -53,10 +53,10 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
           onBeforeNavigate={async () => onBeforeNavigate(type, age)}
           navigateTo={{ screen: AgeInformationScreen, params: { age } }}
           accessibilityLabel={`${startButtonTitle} ${age} ans`}>
-          <Title4Text>
+          <StyledBody>
             {startButtonTitle}
-            <Title3Text> {age} ans</Title3Text>
-          </Title4Text>
+            <StyledTitle4> {age} ans</StyledTitle4>
+          </StyledBody>
         </AgeButton>
       )
     }
@@ -70,7 +70,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
           onBeforeNavigate={async () => onBeforeNavigate(type)}
           navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
           accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
-          <Title4Text>Autre</Title4Text>
+          <StyledTitle4>Autre</StyledTitle4>
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
             <StyledBodyAccentXs numberOfLines={2}>
@@ -98,7 +98,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
       title={isPassForAllEnabled ? titleForAll : title}
       subtitle={isPassForAllEnabled ? undefined : subtitle}>
       <AccessibleUnorderedList
-        items={AgeSelectionButtons}
+        items={EligibleUserAgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}
       />
     </TutorialPage>
@@ -111,11 +111,11 @@ const BicolorAll = styled(All).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const Title3Text = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledTitle4 = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const Title4Text = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 

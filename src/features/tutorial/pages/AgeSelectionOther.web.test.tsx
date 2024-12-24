@@ -33,7 +33,7 @@ describe('<AgeSelectionOther/>', () => {
 const renderAgeSelectionOther = (navigationParams: { type: string }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     TutorialRootStackParamList,
-    'AgeSelection'
+    'EligibleUserAgeSelection'
   >
   return render(<AgeSelectionOther {...navProps} />)
 }
