@@ -82,21 +82,21 @@ const App: FunctionComponent = function () {
 
   return (
     <SplashScreenProvider>
-      <NetInfoWrapper>
-        <RemoteConfigProvider>
-          <ReactQueryClientProvider>
-            <ThemeProvider theme={theme}>
-              <SafeAreaProvider>
+      <RemoteConfigProvider>
+        <ReactQueryClientProvider>
+          <ThemeProvider theme={theme}>
+            <SafeAreaProvider>
+              <SnackBarProvider>
                 <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                  <AnalyticsInitializer>
-                    <SettingsWrapper>
-                      <AuthWrapper>
-                        <LocationWrapper>
-                          <AccessibilityFiltersWrapper>
-                            <FavoritesWrapper>
-                              <SearchAnalyticsWrapper>
-                                <SearchWrapper>
-                                  <SnackBarProvider>
+                  <NetInfoWrapper>
+                    <AnalyticsInitializer>
+                      <SettingsWrapper>
+                        <AuthWrapper>
+                          <LocationWrapper>
+                            <AccessibilityFiltersWrapper>
+                              <FavoritesWrapper>
+                                <SearchAnalyticsWrapper>
+                                  <SearchWrapper>
                                     <CulturalSurveyContextProvider>
                                       <SubscriptionContextProvider>
                                         <PushNotificationsWrapper>
@@ -112,21 +112,21 @@ const App: FunctionComponent = function () {
                                         </PushNotificationsWrapper>
                                       </SubscriptionContextProvider>
                                     </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
-                                </SearchWrapper>
-                              </SearchAnalyticsWrapper>
-                            </FavoritesWrapper>
-                          </AccessibilityFiltersWrapper>
-                        </LocationWrapper>
-                      </AuthWrapper>
-                    </SettingsWrapper>
-                  </AnalyticsInitializer>
+                                  </SearchWrapper>
+                                </SearchAnalyticsWrapper>
+                              </FavoritesWrapper>
+                            </AccessibilityFiltersWrapper>
+                          </LocationWrapper>
+                        </AuthWrapper>
+                      </SettingsWrapper>
+                    </AnalyticsInitializer>
+                  </NetInfoWrapper>
                 </ErrorBoundary>
-              </SafeAreaProvider>
-            </ThemeProvider>
-          </ReactQueryClientProvider>
-        </RemoteConfigProvider>
-      </NetInfoWrapper>
+              </SnackBarProvider>
+            </SafeAreaProvider>
+          </ThemeProvider>
+        </ReactQueryClientProvider>
+      </RemoteConfigProvider>
     </SplashScreenProvider>
   )
 }

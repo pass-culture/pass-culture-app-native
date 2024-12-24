@@ -5,8 +5,8 @@ import { Platform } from 'react-native'
 import { onlineManager } from 'react-query'
 
 import { analytics } from 'libs/analytics'
+import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { useSplashScreenContext } from 'libs/splashscreen'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const NetInfoWrapper = memo(function NetInfoWrapper({
@@ -17,7 +17,6 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
   const networkInfo = useNetInfo()
   const { showInfoSnackBar } = useSnackBarContext()
   const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
-  const { isSplashScreenHidden } = useSplashScreenContext()
 
   useEffect(() => {
     onlineManager.setOnline(isConnected)
@@ -47,7 +46,7 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
 
   return (
     <NetInfoContext.Provider value={networkInfo}>
-      {!isSplashScreenHidden && !isConnected ? null : children}
+      {isConnected ? children : <OfflinePage />}
     </NetInfoContext.Provider>
   )
 })
