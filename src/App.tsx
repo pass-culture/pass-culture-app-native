@@ -81,25 +81,24 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <RemoteConfigProvider>
-      <ReactQueryClientProvider>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AnalyticsInitializer>
-                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-                <NetInfoWrapper>
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
+    <SplashScreenProvider>
+      <RemoteConfigProvider>
+        <ReactQueryClientProvider>
+          <ThemeProvider theme={theme}>
+            <SafeAreaProvider>
+              <SnackBarProvider>
+                <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                  <NetInfoWrapper>
+                    <AnalyticsInitializer>
+                      <SettingsWrapper>
+                        <AuthWrapper>
+                          <LocationWrapper>
+                            <AccessibilityFiltersWrapper>
+                              <FavoritesWrapper>
+                                <SearchAnalyticsWrapper>
+                                  <SearchWrapper>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
                                         <PushNotificationsWrapper>
                                           <ShareAppWrapper>
                                             <OnboardingWrapper>
@@ -111,24 +110,24 @@ const App: FunctionComponent = function () {
                                             </OnboardingWrapper>
                                           </ShareAppWrapper>
                                         </PushNotificationsWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
-                </NetInfoWrapper>
-              </AnalyticsInitializer>
-            </ErrorBoundary>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </ReactQueryClientProvider>
-    </RemoteConfigProvider>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SearchWrapper>
+                                </SearchAnalyticsWrapper>
+                              </FavoritesWrapper>
+                            </AccessibilityFiltersWrapper>
+                          </LocationWrapper>
+                        </AuthWrapper>
+                      </SettingsWrapper>
+                    </AnalyticsInitializer>
+                  </NetInfoWrapper>
+                </ErrorBoundary>
+              </SnackBarProvider>
+            </SafeAreaProvider>
+          </ThemeProvider>
+        </ReactQueryClientProvider>
+      </RemoteConfigProvider>
+    </SplashScreenProvider>
   )
 }
 
