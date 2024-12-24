@@ -6,9 +6,9 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
-import { useBookingsAwaitingReaction } from 'features/bookings/helpers/useBookingsAwaitingReaction'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -28,10 +28,11 @@ export function Bookings() {
 
   const { ended_bookings: endedBookings = [] } = bookings ?? {}
 
-  const bookingsAwaitingReaction = useBookingsAwaitingReaction()
+  const { data: availableReactions } = useAvailableReaction()
+  const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
 
   const { fullCountLabel, accessibilityLabel } = createLabels(
-    bookingsAwaitingReaction,
+    numberOfReactableBookings,
     'réservations'
   )
 
@@ -66,7 +67,7 @@ export function Bookings() {
     [BookingsTab.COMPLETED]: <EndedBookings />,
   }
 
-  const shouldDisplayPastille = enableReactionFeature && bookingsAwaitingReaction > 0
+  const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0
 
   return (
     <React.Fragment>
