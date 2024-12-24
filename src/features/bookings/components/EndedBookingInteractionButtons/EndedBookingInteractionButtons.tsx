@@ -13,16 +13,14 @@ type Props = {
   booking: BookingReponse
   handlePressShareOffer: VoidFunction
   handleShowReactionModal: VoidFunction
-  canReact?: boolean
 }
 
 export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
   booking,
   handlePressShareOffer,
   handleShowReactionModal,
-  canReact,
 }) => {
-  const { stock, userReaction } = booking
+  const { stock, userReaction, canReact } = booking
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const ReactionIcon = useReactionIcon(userReaction)

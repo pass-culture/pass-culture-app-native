@@ -11,6 +11,7 @@ import {
 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -58,6 +59,12 @@ mockUseCategoryIdMapping.mockReturnValue({
   [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: CategoryIdEnum.MUSEE,
 })
 
+jest.mock('features/reactions/api/useAvailableReaction')
+const mockUseAvailableReaction = useAvailableReaction as jest.Mock
+mockUseAvailableReaction.mockReturnValue({
+  data: { numberOfReactableBookings: 0, bookings: [] },
+})
+
 describe('Bookings', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -80,7 +87,7 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toHaveBeenCalledTimes(3)
+      expect(useBookings).toHaveBeenCalledTimes(2)
     })
   })
 
