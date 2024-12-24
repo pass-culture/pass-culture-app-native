@@ -1,9 +1,6 @@
-import React from 'react'
-
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook, waitFor } from 'tests/utils'
@@ -143,9 +140,6 @@ describe('useInitialScreen()', () => {
 })
 
 async function renderUseInitialScreen() {
-  const wrapper = (props: { children: unknown }) => (
-    <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
-  )
-  const { result } = renderHook(useInitialScreen, { wrapper })
+  const { result } = renderHook(useInitialScreen)
   return result
 }

@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import 'react-native-gesture-handler' // @react-navigation
-import 'react-native-get-random-values' // required for `uuid` module to work
 import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
+import SplashScreen from 'react-native-lottie-splash-screen'
+import { onlineManager } from 'react-query'
 
+import 'react-native-get-random-values' // required for `uuid` module to work
+import 'react-native-gesture-handler' // @react-navigation
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 if (process.env.NODE_ENV === 'development') {
@@ -41,8 +43,8 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
-import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
+import { clearNotification, setAppReady, setNotification, useAppStore } from 'store/useAppStore'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -81,13 +83,13 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <SplashScreenProvider>
-      <NetInfoWrapper>
-        <RemoteConfigProvider>
-          <ReactQueryClientProvider>
-            <ThemeProvider theme={theme}>
-              <SafeAreaProvider>
-                <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+    <RemoteConfigProvider>
+      <ReactQueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <SafeAreaProvider>
+            <SnackBarProvider>
+              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                <NetInfoWrapper>
                   <AnalyticsInitializer>
                     <SettingsWrapper>
                       <AuthWrapper>
@@ -96,23 +98,21 @@ const App: FunctionComponent = function () {
                             <FavoritesWrapper>
                               <SearchAnalyticsWrapper>
                                 <SearchWrapper>
-                                  <SnackBarProvider>
-                                    <CulturalSurveyContextProvider>
-                                      <SubscriptionContextProvider>
-                                        <PushNotificationsWrapper>
-                                          <ShareAppWrapper>
-                                            <OnboardingWrapper>
-                                              <OfflineModeContainer>
-                                                <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
-                                                </ScreenErrorProvider>
-                                              </OfflineModeContainer>
-                                            </OnboardingWrapper>
-                                          </ShareAppWrapper>
-                                        </PushNotificationsWrapper>
-                                      </SubscriptionContextProvider>
-                                    </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
                                 </SearchWrapper>
                               </SearchAnalyticsWrapper>
                             </FavoritesWrapper>
@@ -121,13 +121,13 @@ const App: FunctionComponent = function () {
                       </AuthWrapper>
                     </SettingsWrapper>
                   </AnalyticsInitializer>
-                </ErrorBoundary>
-              </SafeAreaProvider>
-            </ThemeProvider>
-          </ReactQueryClientProvider>
-        </RemoteConfigProvider>
-      </NetInfoWrapper>
-    </SplashScreenProvider>
+                </NetInfoWrapper>
+              </ErrorBoundary>
+            </SnackBarProvider>
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </ReactQueryClientProvider>
+    </RemoteConfigProvider>
   )
 }
 
@@ -138,6 +138,33 @@ const AppWithMonitoring = eventMonitoring.wrap(AppWithoutMonitoring) as React.Co
   tab?: string
 }>
 const AppWithCodepush = __DEV__ ? AppWithMonitoring : CodePush(config)(AppWithMonitoring)
+
+// SIDE EFFECTS
+useAppStore.subscribe(
+  (state) => state.isNetworkAvailable,
+  (isNetworkAvailable) => {
+    if (isNetworkAvailable === true) {
+      onlineManager.setOnline(true)
+      clearNotification()
+    } else if (isNetworkAvailable === false) {
+      onlineManager.setOnline(false)
+      setAppReady(true)
+      setNotification({
+        type: 'info',
+        message: 'Aucune connexion internet. Réessaie plus tard',
+      })
+    }
+  }
+)
+
+useAppStore.subscribe(
+  (state) => state.isAppReady,
+  (isAppReady) => {
+    if (isAppReady) {
+      SplashScreen.hide()
+    }
+  }
+)
 
 /**
  * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!! :

@@ -6,19 +6,18 @@ import { View } from 'react-native'
 import { analytics } from 'libs/analytics'
 import { NetInfoWrapper, useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { setNetworkAvailable } from 'store/useAppStore'
 import { render, screen } from 'tests/utils'
 
 const mockedUseNetInfo = useNetInfo as unknown as jest.Mock<{
-  isConnected: boolean
-  isInternetReachable: boolean
+  isConnected: boolean | null
+  isInternetReachable: boolean | null
   type: NetInfoStateType
   details?: Record<string, unknown>
 }>
 
-jest.mock('libs/splashscreen')
-const mockUseSplashScreenContext = useSplashScreenContext as jest.Mock
-mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
+jest.mock('store/useAppStore')
+const mockSetNetworkAvailable = setNetworkAvailable as jest.Mock
 
 describe('NetInfoWrapper', () => {
   describe('useNetInfoContext', () => {
@@ -39,23 +38,6 @@ describe('NetInfoWrapper', () => {
       expect(onConnectionLost).not.toHaveBeenCalled()
     })
 
-    it('should call onConnectionLost', () => {
-      mockedUseNetInfo.mockReturnValueOnce({
-        isConnected: false,
-        isInternetReachable: true,
-        type: NetInfoStateType.wifi,
-      })
-      renderNetInfoWrapper({
-        onInternetConnection,
-        onInternetConnectionLost,
-        onConnection,
-        onConnectionLost,
-      })
-
-      expect(onConnection).not.toHaveBeenCalled()
-      expect(onConnectionLost).toHaveBeenCalledTimes(1)
-    })
-
     it('should call onInternetConnection', () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: true,
@@ -69,25 +51,9 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
+      expect(mockSetNetworkAvailable).toHaveBeenCalledWith(true)
       expect(onInternetConnection).toHaveBeenCalledTimes(1)
       expect(onInternetConnectionLost).not.toHaveBeenCalled()
-    })
-
-    it('should call onInternetConnectionLost', () => {
-      mockedUseNetInfo.mockReturnValueOnce({
-        isConnected: true,
-        isInternetReachable: false,
-        type: NetInfoStateType.wifi,
-      })
-      renderNetInfoWrapper({
-        onInternetConnection,
-        onInternetConnectionLost,
-        onConnection,
-        onConnectionLost,
-      })
-
-      expect(onInternetConnection).not.toHaveBeenCalled()
-      expect(onInternetConnectionLost).toHaveBeenCalledTimes(1)
     })
 
     it('should log network information when wifi is used', async () => {
@@ -103,7 +69,24 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
+      expect(mockSetNetworkAvailable).toHaveBeenCalledWith(false)
       expect(analytics.logConnectionInfo).toHaveBeenCalledWith({ type: 'wifi' })
+    })
+
+    it('should update global store if network info is null', () => {
+      mockedUseNetInfo.mockReturnValueOnce({
+        isConnected: null,
+        isInternetReachable: null,
+        type: NetInfoStateType.wifi,
+      })
+      renderNetInfoWrapper({
+        onInternetConnection,
+        onInternetConnectionLost,
+        onConnection,
+        onConnectionLost,
+      })
+
+      expect(mockSetNetworkAvailable).toHaveBeenCalledWith(null)
     })
 
     it('should log network information when cellular is used', async () => {
@@ -144,24 +127,7 @@ describe('NetInfoWrapper', () => {
       expect(analytics.logConnectionInfo).not.toHaveBeenCalled()
     })
 
-    it('should display children if splashscreen is not visible and there is no network', () => {
-      mockedUseNetInfo.mockReturnValueOnce({
-        isConnected: false,
-        isInternetReachable: false,
-        type: NetInfoStateType.unknown,
-      })
-      renderNetInfoWrapper({
-        onInternetConnection,
-        onInternetConnectionLost,
-        onConnection,
-        onConnectionLost,
-      })
-
-      expect(screen.getByTestId('dumbComponent')).toBeOnTheScreen()
-    })
-
-    it('should not display children if splashscreen is visible and there is no network', () => {
-      mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
+    it('should not display children if there is no network', () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: false,
         isInternetReachable: false,

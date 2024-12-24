@@ -3,14 +3,12 @@ import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
 
-const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 
 jest.mock('features/navigation/navigationRef')
@@ -34,7 +32,6 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
   useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
 }))
-jest.mock('libs/splashscreen')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -54,21 +51,19 @@ describe('<RootNavigator />', () => {
     storage.clear('logged_in_session_count')
   })
 
-  it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
+  it('should NOT display PrivacyPolicy', async () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
     renderRootNavigator()
 
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
 
-    expect(privacyPolicyTitle).not.toBeOnTheScreen()
+    await waitFor(() => expect(privacyPolicyTitle).not.toBeOnTheScreen())
   })
 
-  it('should display PrivacyPolicy if splash screen is hidden', async () => {
+  it('should display PrivacyPolicy', async () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
     await act(async () => {})
     const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
 
@@ -76,9 +71,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should not display quick access button in native', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
-
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
 
     await act(async () => {})
 
@@ -90,7 +83,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should increment logged in session count when user is logged in', async () => {
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
 
     await screen.findByText('Respect de ta vie privée')
 
@@ -99,7 +92,7 @@ describe('<RootNavigator />', () => {
 
   it('should not increment logged in session count when user is not logged in', async () => {
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
 
     await screen.findByText('Respect de ta vie privée')
 
@@ -107,11 +100,11 @@ describe('<RootNavigator />', () => {
   })
 })
 
-function renderRootNavigator() {
+function renderRootNavigator(props?: { showPrivacyPolicy: boolean }) {
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <RootNavigator />
+        <RootNavigator showPrivacyPolicy={props?.showPrivacyPolicy} />
       </NavigationContainer>
     )
   )

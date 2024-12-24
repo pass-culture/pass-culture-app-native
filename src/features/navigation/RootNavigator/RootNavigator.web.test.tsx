@@ -6,15 +6,13 @@ import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToD
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { useSplashScreenContext } from 'libs/splashscreen'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils/web'
+import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
 
-const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
 jest
@@ -34,7 +32,6 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 }))
 jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
-jest.mock('libs/splashscreen')
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -59,18 +56,15 @@ describe('<RootNavigator />', () => {
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
     renderRootNavigator()
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
 
-    expect(privacyPolicyTitle).not.toBeInTheDocument()
+    await waitFor(() => expect(privacyPolicyTitle).not.toBeInTheDocument())
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
-
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
 
     const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
 
@@ -78,8 +72,6 @@ describe('<RootNavigator />', () => {
   })
 
   it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
-
     renderRootNavigator()
     await act(async () => {})
 
@@ -87,10 +79,9 @@ describe('<RootNavigator />', () => {
   })
 
   it('should not display quick access button if current route is not TabNavigator', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
     mockUseCurrentRoute.mockReturnValueOnce({ name: 'Offer', key: 'key' })
 
-    renderRootNavigator()
+    renderRootNavigator({ showPrivacyPolicy: true })
 
     await screen.findByText('Respect de ta vie privée')
 
@@ -100,12 +91,15 @@ describe('<RootNavigator />', () => {
   })
 })
 
-function renderRootNavigator() {
+function renderRootNavigator(props?: { showPrivacyPolicy?: boolean }) {
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <RootNavigator />
+        <RootNavigator showPrivacyPolicy={props?.showPrivacyPolicy} />
       </NavigationContainer>
-    )
+    ),
+    {
+      theme: { showTabBar: true },
+    }
   )
 }

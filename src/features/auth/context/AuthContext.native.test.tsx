@@ -3,7 +3,7 @@ import React from 'react'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import * as jwt from '__mocks__/jwt-decode'
-import { UserProfileResponse } from 'api/gen'
+import { RefreshResponse, UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -12,8 +12,7 @@ import { amplitude } from 'libs/amplitude'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
-import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import * as PackageJson from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
@@ -24,7 +23,8 @@ import { act, renderHook } from 'tests/utils'
 import { useAuthContext } from './AuthContext'
 import { AuthWrapper } from './AuthWrapper'
 
-const mockedUseNetInfo = useNetInfo as jest.Mock
+jest.mock('libs/network/NetInfoWrapper')
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 jest.mock('libs/amplitude/amplitude')
 
@@ -54,17 +54,25 @@ describe('AuthContext', () => {
   describe('useAuthContext', () => {
     beforeEach(() => {
       mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+      mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {})
+      mockUseNetInfoContext.mockReturnValue({
+        isConnected: true,
+        isInternetReachable: true,
+      })
     })
 
     it('should not return user when logged in but no internet connection', async () => {
-      mockedUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+      mockUseNetInfoContext.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+      })
       await saveRefreshToken('token')
 
       const result = renderUseAuthContext()
 
       await act(async () => {})
 
-      expect(result.current).toBeNull()
+      expect(result.current.user).toEqual({})
     })
 
     it('should return the user when logged in with internet connection', async () => {
@@ -278,12 +286,7 @@ describe('AuthContext', () => {
 
 const renderUseAuthContext = () => {
   const { result } = renderHook(useAuthContext, {
-    wrapper: ({ children }) =>
-      reactQueryProviderHOC(
-        <NetInfoWrapper>
-          <AuthWrapper>{children}</AuthWrapper>
-        </NetInfoWrapper>
-      ),
+    wrapper: ({ children }) => reactQueryProviderHOC(<AuthWrapper>{children}</AuthWrapper>),
   })
 
   return result

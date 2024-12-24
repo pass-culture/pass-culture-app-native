@@ -1,5 +1,7 @@
-import React, { createContext, memo, useContext, useRef, useState } from 'react'
+import React, { createContext, memo, useContext, useEffect, useRef, useState } from 'react'
 import { useTheme } from 'styled-components/native'
+
+import { NotificationData, useAppStore } from 'store/useAppStore'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
@@ -29,6 +31,7 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
   children: React.ReactNode
 }) {
   const theme = useTheme()
+  const notificationData = useAppStore((state) => state.notificationData)
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
@@ -65,6 +68,25 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
         ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
       }),
   })
+
+  const handleShowSnackBarEvent = ({ message, type }: NotificationData) => {
+    const { showErrorSnackBar, showInfoSnackBar, showSuccessSnackBar } = snackBarToolsRef.current
+    const showMessageFnMap = {
+      error: showErrorSnackBar,
+      info: showInfoSnackBar,
+      success: showSuccessSnackBar,
+    }
+
+    showMessageFnMap[type]?.({ message, timeout: SNACK_BAR_TIME_OUT })
+  }
+
+  useEffect(() => {
+    if (notificationData) {
+      handleShowSnackBarEvent(notificationData)
+    } else {
+      hideSnackBar()
+    }
+  }, [notificationData])
 
   return (
     <SnackBarContext.Provider value={snackBarToolsRef.current}>
