@@ -64,6 +64,8 @@ const searchParamsParser = {
   accessibilityFilter: JSON.parse,
   gtls: JSON.parse,
   shouldRedirect: JSON.parse,
+  defaultMinPrice: JSON.stringify,
+  defaultMaxPrice: JSON.stringify,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -228,6 +230,8 @@ const searchParamsStringifier = {
   accessibilityFilter: JSON.stringify,
   gtls: JSON.stringify,
   shouldRedirect: JSON.stringify,
+  defaultMinPrice: JSON.stringify,
+  defaultMaxPrice: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {
