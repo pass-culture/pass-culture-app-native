@@ -19,9 +19,7 @@ export function filterBookingsWithoutReaction(
     (availableBooking) => availableBooking.offerId === booking.stock.offer.id
   )
 
-  if (!bookingWithoutReaction || !bookingWithoutReaction.dateUsed) {
-    return false
-  }
+  if (!bookingWithoutReaction?.dateUsed) return false
 
   // TODO(PC-33728) back need to type subcategoryId as SubcategoryIdeEnum rather than a string
   const isCinemaCategory = cinemaSubcategories.includes(
