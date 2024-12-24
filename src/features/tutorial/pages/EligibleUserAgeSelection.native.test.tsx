@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { EligibleUserAgeSelection } from './EligibleUserAgeSelection'
 
@@ -27,6 +27,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('EligibleUserAgeSelection', () => {
   describe('with passForAll feature flag off', () => {
@@ -48,11 +51,9 @@ describe('EligibleUserAgeSelection', () => {
           renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
-          fireEvent.press(button)
+          await user.press(button)
 
-          await waitFor(() => {
-            expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
-          })
+          expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
         }
       )
 
@@ -61,22 +62,20 @@ describe('EligibleUserAgeSelection', () => {
         renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText('Autre')
-        fireEvent.press(button)
+        await user.press(button)
 
-        await waitFor(() => {
-          expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
-            type: TutorialTypes.ONBOARDING,
-          })
+        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
+          type: TutorialTypes.ONBOARDING,
         })
       })
 
       it.each(AGES)(
         'should log analytics with params age=%s when pressing "j’ai %s ans"',
-        (age) => {
+        async (age) => {
           renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
-          fireEvent.press(button)
+          await user.press(button)
 
           expect(analytics.logSelectAge).toHaveBeenCalledWith({
             age: age,
@@ -85,11 +84,11 @@ describe('EligibleUserAgeSelection', () => {
         }
       )
 
-      it('should log analytics when pressing "Autre"', () => {
+      it('should log analytics when pressing "Autre"', async () => {
         renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText('Autre')
-        fireEvent.press(button)
+        await user.press(button)
 
         expect(analytics.logSelectAge).toHaveBeenCalledWith({
           age: 'other',
@@ -103,7 +102,7 @@ describe('EligibleUserAgeSelection', () => {
           renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
 
           const button = screen.getByText(`${age} ans`)
-          fireEvent.press(button)
+          await user.press(button)
 
           const userAge = await storage.readObject('user_age')
 
@@ -125,23 +124,21 @@ describe('EligibleUserAgeSelection', () => {
           renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
           const button = screen.getByText(`à ${age} ans`)
-          fireEvent.press(button)
+          await user.press(button)
 
-          await waitFor(() => {
-            expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
-              age,
-            })
+          expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
+            age,
           })
         }
       )
 
       it.each(AGES)(
         'should log analytics with params age=%s when pressing "j’ai %s ans"',
-        (age) => {
+        async (age) => {
           renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
           const button = screen.getByText(`${age} ans`)
-          fireEvent.press(button)
+          await user.press(button)
 
           expect(analytics.logSelectAge).toHaveBeenCalledWith({
             age: age,
