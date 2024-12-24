@@ -1,11 +1,13 @@
 // eslint-disable-next-line no-restricted-imports
 import { NetInfoStateType } from '@react-native-community/netinfo'
 import React from 'react'
+import { View } from 'react-native'
 
 import { analytics } from 'libs/analytics'
 import { NetInfoWrapper, useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { render } from 'tests/utils'
+import { useSplashScreenContext } from 'libs/splashscreen'
+import { render, screen } from 'tests/utils'
 
 const mockedUseNetInfo = useNetInfo as unknown as jest.Mock<{
   isConnected: boolean
@@ -13,6 +15,10 @@ const mockedUseNetInfo = useNetInfo as unknown as jest.Mock<{
   type: NetInfoStateType
   details?: Record<string, unknown>
 }>
+
+jest.mock('libs/splashscreen')
+const mockUseSplashScreenContext = useSplashScreenContext as jest.Mock
+mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
 
 describe('NetInfoWrapper', () => {
   describe('useNetInfoContext', () => {
@@ -137,6 +143,39 @@ describe('NetInfoWrapper', () => {
 
       expect(analytics.logConnectionInfo).not.toHaveBeenCalled()
     })
+
+    it('should display children if splashscreen is not visible and there is no network', () => {
+      mockedUseNetInfo.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+        type: NetInfoStateType.unknown,
+      })
+      renderNetInfoWrapper({
+        onInternetConnection,
+        onInternetConnectionLost,
+        onConnection,
+        onConnectionLost,
+      })
+
+      expect(screen.getByTestId('dumbComponent')).toBeOnTheScreen()
+    })
+
+    it('should not display children if splashscreen is visible and there is no network', () => {
+      mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
+      mockedUseNetInfo.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+        type: NetInfoStateType.unknown,
+      })
+      renderNetInfoWrapper({
+        onInternetConnection,
+        onInternetConnectionLost,
+        onConnection,
+        onConnectionLost,
+      })
+
+      expect(screen.queryByTestId('dumbComponent')).toBeNull()
+    })
   })
 })
 
@@ -160,7 +199,7 @@ const DumbComponent = ({
     onInternetConnectionLost,
   })
 
-  return null
+  return <View testID="dumbComponent" />
 }
 
 function renderNetInfoWrapper({
