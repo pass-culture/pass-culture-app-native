@@ -39,14 +39,12 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       age: '15 et 18 ans',
       endButtonTitle: '',
       navigateTo: { screen: 'EligibleUserAgeSelection' },
-      onBeforeNavigate: undefined,
     },
     {
       startButtonTitle: 'J’ai ',
       age: '19 ans',
       endButtonTitle: ' ou plus',
       navigateTo: { screen: 'OnboardingGeneralPublicWelcome' },
-      onBeforeNavigate: undefined,
     },
   ]
 
