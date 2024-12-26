@@ -2,8 +2,10 @@ import React from 'react'
 
 import { Price } from 'features/search/components/sections/Price/Price'
 import { initialSearchState } from 'features/search/context/reducer'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { fireEvent, render, screen } from 'tests/utils'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { render, screen, userEvent } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -26,6 +28,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
+const props = {
+  currency: Currency.EURO,
+  euroToPacificFrancRate: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
+}
+
 describe('Price component', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -33,7 +43,7 @@ describe('Price component', () => {
 
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }
-    render(<Price />)
+    render(<Price {...props} />)
 
     await screen.findByText('Prix')
 
@@ -42,7 +52,7 @@ describe('Price component', () => {
 
   it('should display the search price description when maximum price selected', async () => {
     mockSearchState = { ...initialSearchState, maxPrice: '10' }
-    render(<Price />)
+    render(<Price {...props} />)
 
     await screen.findByText('Prix')
 
@@ -51,7 +61,7 @@ describe('Price component', () => {
 
   it('should display the search price description when minimum and maximum prices selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5', maxPrice: '10' }
-    render(<Price />)
+    render(<Price {...props} />)
 
     await screen.findByText('Prix')
 
@@ -60,7 +70,7 @@ describe('Price component', () => {
 
   it('should display the search price description with "Gratuit" when minimum and maximum prices selected and are 0', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '0', maxPrice: '0' }
-    render(<Price />)
+    render(<Price {...props} />)
 
     await screen.findByText('Prix')
 
@@ -68,12 +78,12 @@ describe('Price component', () => {
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
-    render(<Price />, {
+    render(<Price {...props} />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
-    const searchPriceButton = await screen.findByTestId('FilterRow')
 
-    fireEvent.press(searchPriceButton)
+    const searchPriceButton = await screen.findByTestId('FilterRow')
+    await user.press(searchPriceButton)
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 

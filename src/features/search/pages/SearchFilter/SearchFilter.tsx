@@ -16,16 +16,21 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
@@ -45,17 +50,13 @@ export const SearchFilter: React.FC = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldSearchState = useMemo(() => searchState, [])
+
   const onGoBack = useCallback(() => {
     navigateToSearch(oldSearchState, oldAccessibilityFilter)
   }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
 
   const onSearchPress = useCallback(() => {
-    navigateToSearch(
-      {
-        ...searchState,
-      },
-      disabilities
-    )
+    navigateToSearch({ ...searchState }, disabilities)
   }, [navigateToSearch, searchState, disabilities])
 
   const onResetPress = useCallback(() => {
@@ -119,14 +120,7 @@ export const SearchFilter: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
-  const shouldDisplayCloseButton = isMobileViewport
-
-  const sectionItems = [Section.Category]
-  if (hasDuoOfferToggle) sectionItems.push(Section.OfferDuo)
-  sectionItems.push(Section.Venue)
-  sectionItems.push(Section.Price)
-  sectionItems.push(Section.DateHour)
-  sectionItems.push(Section.Accessibility)
+  const onClose = isMobileViewport ? onGoBack : undefined
 
   return (
     <Container>
@@ -135,13 +129,30 @@ export const SearchFilter: React.FC = () => {
         onGoBack={onGoBack}
         scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
         <VerticalUl>
-          {sectionItems.map((SectionItem, index) => {
-            return (
-              <SectionWrapper key={index} isFirstSectionItem={index === 0}>
-                <SectionItem onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-              </SectionWrapper>
-            )
-          })}
+          <SectionWrapper isFirstSectionItem>
+            <Section.Category onClose={onClose} />
+          </SectionWrapper>
+          {hasDuoOfferToggle ? (
+            <SectionWrapper>
+              <Section.OfferDuo onClose={onClose} />
+            </SectionWrapper>
+          ) : null}
+          <SectionWrapper>
+            <Section.Venue />
+          </SectionWrapper>
+          <SectionWrapper>
+            <Section.Price
+              currency={currency}
+              euroToPacificFrancRate={euroToPacificFrancRate}
+              onClose={onClose}
+            />
+          </SectionWrapper>
+          <SectionWrapper>
+            <Section.DateHour onClose={onClose} />
+          </SectionWrapper>
+          <SectionWrapper>
+            <Section.Accessibility onClose={onClose} />
+          </SectionWrapper>
         </VerticalUl>
       </SecondaryPageWithBlurHeader>
       <Spacer.Column numberOfSpaces={4} />
@@ -157,7 +168,7 @@ export const SearchFilter: React.FC = () => {
 
 const SectionWrapper: React.FunctionComponent<{
   children: React.JSX.Element
-  isFirstSectionItem: boolean
+  isFirstSectionItem?: boolean
 }> = ({ children, isFirstSectionItem = false }) => {
   return (
     <StyledLi>
