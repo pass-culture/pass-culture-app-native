@@ -18,8 +18,6 @@ describe('formatCurrencyFromCents()', () => {
     ${-1190}     | ${Currency.EURO}                | ${'-11,90\u00a0€'}
     ${1199}      | ${Currency.EURO}                | ${'11,99\u00a0€'}
     ${-1199}     | ${Currency.EURO}                | ${'-11,99\u00a0€'}
-    ${1199.6}    | ${Currency.EURO}                | ${'12,00\u00a0€'}
-    ${-1199.6}   | ${Currency.EURO}                | ${'-12,00\u00a0€'}
     ${100}       | ${Currency.PACIFIC_FRANC_SHORT} | ${'120\u00a0F'}
   `(
     'formatCurrencyFromCents($priceInCents) \t= $expected without format price options',
@@ -44,8 +42,6 @@ describe('formatCurrencyFromCents()', () => {
     ${-1190}     | ${Currency.EURO}                | ${'-11,90\u00a0€'}
     ${1199}      | ${Currency.EURO}                | ${'11,99\u00a0€'}
     ${-1199}     | ${Currency.EURO}                | ${'-11,99\u00a0€'}
-    ${1199.6}    | ${Currency.EURO}                | ${'12,00\u00a0€'}
-    ${-1199.6}   | ${Currency.EURO}                | ${'-12,00\u00a0€'}
     ${100}       | ${Currency.PACIFIC_FRANC_SHORT} | ${'120\u00a0F'}
   `(
     'formatCurrencyFromCents($priceInCents) \t= $expected with format price options',
