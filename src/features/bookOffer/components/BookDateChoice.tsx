@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react'
+import { View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
@@ -7,7 +9,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -31,8 +33,7 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   const buttonTitle = bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''
 
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={6} />
+    <StyledView>
       <TypoDS.Title3 {...getHeadingAttrs(3)} testID="DateStep">
         Date
       </TypoDS.Title3>
@@ -50,6 +51,10 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
           <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
         </TouchableOpacity>
       )}
-    </React.Fragment>
+    </StyledView>
   )
 }
+
+const StyledView = styled(View)({
+  marginTop: getSpacing(6),
+})

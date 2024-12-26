@@ -81,7 +81,6 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
               {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
                 <WithdrawContainer testID="on-site-withdrawal-container">
                   <OfferEvent />
-                  <Spacer.Row numberOfSpaces={1} />
                   <OnSiteWithdrawalCaption numberOfLines={2}>
                     {withdrawLabel}
                   </OnSiteWithdrawalCaption>
@@ -89,7 +88,6 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
               ) : (
                 <WithdrawContainer testID="withdraw-container">
                   <Clock />
-                  <Spacer.Row numberOfSpaces={1} />
                   <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
                 </WithdrawContainer>
               )}
@@ -98,7 +96,6 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
           {canDisplayExpirationMessage ? (
             <ExpirationBookingContainer testID="expiration-booking-container">
               <Clock />
-              <Spacer.Row numberOfSpaces={1} />
               <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
             </ExpirationBookingContainer>
           ) : null}
@@ -147,11 +144,13 @@ const DateLabel = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const WithdrawCaption = styled(Typo.Caption)({
+  marginTop: getSpacing(1),
   marginRight: getSpacing(4),
 })
 
 const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
   color: theme.colors.primary,
+  marginTop: getSpacing(1),
 }))
 
 const Clock = styled(DefaultClock).attrs(({ theme }) => ({
@@ -172,6 +171,7 @@ const ExpirationBookingContainer = styled.View(({ theme }) => ({
 }))
 
 const ExpirationBookingLabel = styled(Typo.CaptionPrimary)({
+  marginTop: getSpacing(1),
   marginRight: getSpacing(4),
 })
 

@@ -87,9 +87,7 @@ export function BookingConfirmation() {
         <Spacer.Flex />
         <ButtonContainer>
           <ButtonPrimary key={1} wording="Voir ma réservation" onPress={displayBookingDetails} />
-          <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondary wording="Partager l’offre" onPress={pressShareOffer} />
-          <Spacer.Column numberOfSpaces={4} />
           <InternalTouchableLink
             key={2}
             as={ButtonTertiaryPrimary}
@@ -118,4 +116,5 @@ const StyledBody = styled(Typo.Body)({
 
 const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
+  gap: getSpacing(4),
 })
