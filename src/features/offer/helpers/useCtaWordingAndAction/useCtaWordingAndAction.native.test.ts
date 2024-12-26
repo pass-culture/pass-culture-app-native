@@ -838,34 +838,42 @@ describe('getCtaWordingAndAction', () => {
       })
     })
 
-    it('should return bottomBannerText and wording if user has already booked this offer', async () => {
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer: CineScreeningOffer,
-        bookedOffers: { [baseOffer.id]: 116656 },
-        subcategory: buildSubcategory({ isEvent: true }),
-        hasEnoughCredit: true,
-      })
+    it.each<{ isEvent: boolean }>([{ isEvent: true }, { isEvent: false }])(
+      'should return bottomBannerText and wording if user has already booked this offer',
+      async (isOfferEvent) => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          bookedOffers: { [baseOffer.id]: 116656 },
+          subcategory: buildSubcategory(isOfferEvent),
+          hasEnoughCredit: true,
+        })
 
-      expect(result).toEqual({
-        wording: 'Voir ma réservation',
-        bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
-        isDisabled: false,
-        movieScreeningUserData: {
-          bookings: undefined,
-          hasBookedOffer: true,
-        },
-        navigateTo: {
-          fromRef: true,
-          params: {
-            id: 116656,
-          },
-          screen: 'BookingDetails',
-        },
-      })
-    })
+        expect(JSON.stringify(result)).toEqual(
+          JSON.stringify({
+            wording: 'Voir ma réservation',
+            isDisabled: false,
+            navigateTo: {
+              screen: 'BookingDetails',
+              params: {
+                id: 116656,
+              },
+              fromRef: true,
+            },
+            onPress: () => {
+              analytics.logViewedBookingPage({ offerId: CineScreeningOffer.id, from: 'offer' })
+            },
+            bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
+            movieScreeningUserData: {
+              bookings: undefined,
+              hasBookedOffer: true,
+            },
+          })
+        )
+      }
+    )
 
     it('should display "Réserver l’offre" wording and modal "authentication" if user is not logged in', () => {
       const result = getCtaWordingAndAction({

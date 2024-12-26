@@ -39,6 +39,7 @@ export function BookingConfirmation() {
 
   const displayBookingDetails = useCallback(() => {
     analytics.logSeeMyBooking(params.offerId)
+    analytics.logViewedBookingPage({ offerId: params.offerId, from: 'bookingconfirmation' })
     trackBooking()
     reset({
       index: 1,

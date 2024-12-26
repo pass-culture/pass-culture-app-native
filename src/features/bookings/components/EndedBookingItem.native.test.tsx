@@ -127,6 +127,22 @@ describe('EndedBookingItem', () => {
     })
   })
 
+  it('should log logViewedBookingPage when click on offer digital without expiration date and not cancelled', async () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
+
+    const item = screen.getByText('Réservation archivée')
+    await user.press(item)
+
+    expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
+      offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+      from: 'endedbookings',
+    })
+  })
+
   it('should call share when press share icon', async () => {
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],

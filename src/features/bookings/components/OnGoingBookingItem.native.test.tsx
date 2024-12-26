@@ -9,7 +9,7 @@ import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
@@ -25,13 +25,29 @@ describe('OnGoingBookingItem', () => {
 
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
 
-  it('should navigate to the booking details page', () => {
+  it('should navigate to the booking details page', async () => {
     renderOnGoingBookingItem(initialBooking)
 
     const item = screen.getByTestId(/Réservation de l’offre/)
     fireEvent.press(item)
 
-    expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
+    })
+  })
+
+  it('should log analytic logViewedBookingPage when click on CTA', async () => {
+    renderOnGoingBookingItem(initialBooking)
+
+    const item = screen.getByTestId(/Réservation de l’offre/)
+    fireEvent.press(item)
+
+    await waitFor(() => {
+      expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
+        offerId: initialBooking.stock.offer.id,
+        from: 'bookings',
+      })
+    })
   })
 
   describe('should be on site withdrawal ticket event', () => {

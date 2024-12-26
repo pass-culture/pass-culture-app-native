@@ -55,6 +55,11 @@ export const EndedBookingItem = ({
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
+    if (shouldRedirectToBooking)
+      analytics.logViewedBookingPage({
+        offerId: stock.offer.id,
+        from: 'endedbookings',
+      })
     if (isEligibleBookingsForArchiveValue) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition

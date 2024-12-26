@@ -123,12 +123,11 @@ describe('<BookingConfirmation />', () => {
       })
     })
 
-    it('should go to Bookings and log analytics event', async () => {
+    it('should go to Bookings when click on CTA', async () => {
       render(<BookingConfirmation />)
       fireEvent.press(screen.getByText('Voir ma réservation'))
 
       await waitFor(() => {
-        expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
         expect(reset).toHaveBeenCalledWith({
           index: 1,
           routes: [
@@ -146,6 +145,27 @@ describe('<BookingConfirmation />', () => {
               },
             },
           ],
+        })
+      })
+    })
+
+    it('should log analytic logSeeMyBooking when click on CTA', async () => {
+      render(<BookingConfirmation />)
+      fireEvent.press(screen.getByText('Voir ma réservation'))
+
+      await waitFor(() => {
+        expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
+      })
+    })
+
+    it('should log analytic logViewedBookingPage when click on CTA', async () => {
+      render(<BookingConfirmation />)
+      fireEvent.press(screen.getByText('Voir ma réservation'))
+
+      await waitFor(() => {
+        expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
+          offerId: mockOfferId,
+          from: 'bookingconfirmation',
         })
       })
     })

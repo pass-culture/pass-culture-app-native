@@ -69,6 +69,12 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
     <React.Fragment>
       <ContentContainer
         navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
+        onBeforeNavigate={() => {
+          analytics.logViewedBookingPage({
+            offerId: stock.offer.id,
+            from: 'bookings',
+          })
+        }}
         accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
         <AttributesView>

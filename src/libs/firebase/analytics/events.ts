@@ -32,6 +32,7 @@ export enum AnalyticsEvent {
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONNECTION_INFO = 'ConnectionInfo',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
+  CONSULT_ACHIEVEMENT_MODAL = 'ConsultAchievementModale',
   CONSULT_ACHIEVEMENTS_SUCCESS_MODAL = 'ConsultAchievementsSuccessModal',
   CONSULT_APPLICATION_PROCESSING_MODAL = 'ConsultApplicationProcessingModal',
   CONSULT_ARTICLE_ACCOUNT_DELETION = 'ConsultArticleAccountDeletion',
@@ -72,6 +73,7 @@ export enum AnalyticsEvent {
   DISMISS_ACCOUNT_SECURITY = 'DismissAccountSecurity',
   DISMISS_NOTIFICATIONS = 'DismissNotifications',
   DISMISS_SHARE_APP = 'DismissShareApp',
+  DISPLAY_ACHIEVEMENTS = 'DisplayAchievements',
   DISPLAY_FORCED_LOGIN_HELP_MESSAGE = 'DisplayForcedLoginHelpMessage',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
@@ -179,8 +181,7 @@ export enum AnalyticsEvent {
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
   VIDEO_PAUSED = 'VideoPaused',
-  DISPLAY_ACHIEVEMENTS = 'DisplayAchievements',
-  CONSULT_ACHIEVEMENT_MODAL = 'ConsultAchievementModale',
+  VIEWED_BOOKING_PAGE = 'ViewedBookingPage',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

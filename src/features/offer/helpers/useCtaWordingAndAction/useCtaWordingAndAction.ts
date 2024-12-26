@@ -210,6 +210,9 @@ export const getCtaWordingAndAction = ({
           params: { id: bookedOffers[offer.id] },
           fromRef: true,
         },
+        onPress: () => {
+          analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' })
+        },
         bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
         movieScreeningUserData: {
           hasBookedOffer: true,
@@ -225,12 +228,12 @@ export const getCtaWordingAndAction = ({
           openUrl(booking?.completedUrl ?? '')
           return
         }
-
-        bookOffer({
-          quantity: 1,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
-          stockId: offer.stocks[0].id,
-        })
+        if (offer.stocks[0]?.id) {
+          bookOffer({
+            quantity: 1,
+            stockId: offer.stocks[0].id,
+          })
+        }
       },
     }
   }
@@ -243,6 +246,9 @@ export const getCtaWordingAndAction = ({
         screen: 'BookingDetails',
         params: { id: bookedOffers[offer.id] },
         fromRef: true,
+      },
+      onPress: () => {
+        analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' })
       },
       bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
       movieScreeningUserData: {
