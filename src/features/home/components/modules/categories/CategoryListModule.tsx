@@ -6,7 +6,7 @@ import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { getSpacing, TypoDS } from 'ui/theme'
-import { newColorMapping } from 'ui/theme/newColorMapping'
+import { colorMapping } from 'ui/theme/colorMapping'
 
 type CategoryListProps = {
   id: string
@@ -46,9 +46,9 @@ export const CategoryListModule = ({
             key={item.id}
             label={item.title}
             height={BLOCK_HEIGHT}
-            textColor={newColorMapping[item.color].text}
-            fillColor={newColorMapping[item.color].fill}
-            borderColor={newColorMapping[item.color].border}
+            textColor={colorMapping[item.color].text}
+            fillColor={colorMapping[item.color].fill}
+            borderColor={colorMapping[item.color].border}
             onBeforeNavigate={() => {
               analytics.logCategoryBlockClicked({
                 moduleId: item.id,

@@ -2,7 +2,7 @@ import { Color } from 'features/home/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export const newColorMapping: Record<
+export const colorMapping: Record<
   keyof typeof Color,
   { border: ColorsEnum; text: ColorsEnum; fill: ColorsEnum }
 > = {
