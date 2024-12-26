@@ -1,34 +1,33 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { View } from 'react-native'
 import { useTheme } from 'styled-components'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
+import { PriceInputController } from 'features/search/components/PriceInputController/PriceInputController'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
-import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
+import { priceSchema } from 'features/search/helpers/schema/priceSchema/priceSchema'
 import { SearchState } from 'features/search/types'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { convertCentsToEuros, RoundingMode } from 'libs/parsers/pricesConversion'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCentsWithoutCurrenySymbol } from 'libs/parsers/formatCurrencyFromCentsWithoutCurrenySymbol'
+import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type PriceModalFormData = {
   minPrice: string
@@ -50,6 +49,10 @@ const titleId = uuidv4()
 const minPriceInputId = uuidv4()
 const maxPriceInputId = uuidv4()
 
+const getConversionRate = (currency: Currency, euroToPacificFrancRate: number) => {
+  return currency === Currency.PACIFIC_FRANC_SHORT ? euroToPacificFrancRate : 1
+}
+
 export const PriceModal: FunctionComponent<PriceModalProps> = ({
   title,
   accessibilityLabel,
@@ -58,27 +61,40 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const currency = useGetCurrencyToDisplay()
   const currencyFull = useGetCurrencyToDisplay('full')
+  const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const conversionRate = getConversionRate(currency, euroToPacificFrancRate)
 
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
-  const formatAvailableCredit = convertCentsToEuros(availableCredit, RoundingMode.FLOORED)
-  const formatAvailableCreditWithCurrency = useFormatCurrencyFromCents(availableCredit)
-  const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
-
-  const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
-  const formatInitialCredit = convertCentsToEuros(initialCredit, RoundingMode.FLOORED)
-  const formatInitialCreditWithCurrency = useFormatCurrencyFromCents(initialCredit)
-
-  const searchPriceSchema = makeSearchPriceSchema(
-    String(formatInitialCredit),
+  const formatAvailableCredit = formatCurrencyFromCentsWithoutCurrenySymbol(
+    availableCredit,
     currency,
     euroToPacificFrancRate
   )
+  const formatAvailableCreditWithCurrency = formatCurrencyFromCents(
+    availableCredit,
+    currency,
+    euroToPacificFrancRate
+  )
+  const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
+
+  const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
+  const formatInitialCredit = formatCurrencyFromCentsWithoutCurrenySymbol(
+    initialCredit,
+    currency,
+    euroToPacificFrancRate
+  )
+  const formatInitialCreditWithCurrency = formatCurrencyFromCents(
+    initialCredit,
+    currency,
+    euroToPacificFrancRate
+  )
+
+  const searchPriceSchema = priceSchema({ initialCredit: formatInitialCredit, currency })
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -91,28 +107,41 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   useForHeightKeyboardEvents(setKeyboardHeight)
 
   function search(values: PriceModalFormData) {
+    const transformedValues = {
+      ...values,
+      minPrice: values.minPrice ? String(Number(values.minPrice) * conversionRate) : '',
+      maxPrice: values.maxPrice ? String(Number(values.maxPrice) * conversionRate) : '',
+    }
+
     const offerIsFree =
-      values.isOnlyFreeOffersSearch ||
-      (values.maxPrice === '0' && (values.minPrice === '' || values.minPrice === '0'))
+      transformedValues.isOnlyFreeOffersSearch ||
+      (transformedValues.maxPrice === '0' &&
+        (transformedValues.minPrice === '' || transformedValues.minPrice === '0'))
+
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
       minPrice: undefined,
       maxPrice: undefined,
+      defaultMinPrice: values.minPrice,
+      defaultMaxPrice: values.maxPrice,
       offerIsFree,
     }
 
-    if (values.minPrice) {
-      additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
-    }
-    if (values.maxPrice) {
+    if (transformedValues.minPrice) {
       additionalSearchState = {
         ...additionalSearchState,
-        maxPrice: values.maxPrice,
+        minPrice: transformedValues.minPrice,
+      }
+    }
+
+    if (transformedValues.maxPrice) {
+      additionalSearchState = {
+        ...additionalSearchState,
+        maxPrice: transformedValues.maxPrice,
         maxPossiblePrice: undefined,
       }
     } else {
-      // Only the offers that can be reserved by the beneficiary user
       additionalSearchState = {
         ...additionalSearchState,
         maxPossiblePrice: String(formatInitialCredit),
@@ -125,17 +154,12 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const initialFormValues = useMemo(() => {
     return {
-      minPrice: searchState?.minPrice ?? '',
-      maxPrice: searchState?.maxPrice ?? '',
+      minPrice: searchState?.defaultMinPrice ?? '',
+      maxPrice: searchState?.defaultMaxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     }
-  }, [
-    isLimitCreditSearchDefaultValue,
-    isOnlyFreeOffersSearchDefaultValue,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-  ])
+  }, [isLimitCreditSearchDefaultValue, isOnlyFreeOffersSearchDefaultValue, searchState])
 
   const {
     handleSubmit,
@@ -169,6 +193,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     }
     const maxPrice = searchState?.maxPrice === '0' ? '' : searchState?.maxPrice ?? ''
     const minPrice = searchState?.minPrice === '0' ? '' : searchState?.minPrice ?? ''
+
     setValue('maxPrice', maxPrice)
     setValue('minPrice', minPrice)
     trigger(['minPrice', 'maxPrice'])
@@ -227,7 +252,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   }, [reset])
 
   const disabled = !isValid || (!isValidating && isSubmitting)
-
   const isKeyboardOpen = keyboardHeight > 0
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
@@ -262,10 +286,10 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
         {isLoggedInAndBeneficiary ? (
-          <View testID="creditBanner">
-            <InfoBanner message={bannerTitle} icon={Error} />
+          <React.Fragment>
+            <InfoBanner message={bannerTitle} icon={Error} testID="creditBanner" />
             <Spacer.Column numberOfSpaces={6} />
-          </View>
+          </React.Fragment>
         ) : null}
         <Controller
           control={control}
@@ -279,9 +303,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             />
           )}
         />
-        <Spacer.Column numberOfSpaces={6} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={6} />
+        <StyledSeparator />
         {isLoggedInAndBeneficiary ? (
           <Controller
             control={control}
@@ -294,78 +316,37 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                   label="Limiter la recherche à mon crédit"
                   testID="limitCreditSearch"
                 />
-                <Spacer.Column numberOfSpaces={6} />
-                <Separator.Horizontal />
-                <Spacer.Column numberOfSpaces={6} />
+                <StyledSeparator />
               </React.Fragment>
             )}
           />
         ) : null}
-        <Controller
+        <PriceInputController
           control={control}
           name="minPrice"
-          render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-            <React.Fragment>
-              <TextInput
-                autoComplete="off" // disable autofill on android
-                autoCapitalize="none"
-                isError={error && value.length > 0}
-                keyboardType="numeric"
-                label={`Prix minimum (en\u00a0${currencyFull})`}
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                textContentType="none" // disable autofill on iOS
-                accessibilityDescribedBy={minPriceInputId}
-                testID="Entrée pour le prix minimum"
-                placeholder="0"
-                disabled={getValues('isOnlyFreeOffersSearch')}
-              />
-              <InputError
-                visible={!!error}
-                messageId={error?.message}
-                numberOfSpacesTop={getSpacing(0.5)}
-                relatedInputId={minPriceInputId}
-              />
-            </React.Fragment>
-          )}
+          label={`Prix minimum (en\u00a0${currencyFull})`}
+          placeholder="0"
+          accessibilityId={minPriceInputId}
+          testID="Entrée pour le prix minimum"
+          isDisabled={getValues('isOnlyFreeOffersSearch')}
         />
         <Spacer.Column numberOfSpaces={6} />
-        <Controller
+        <PriceInputController
           control={control}
           name="maxPrice"
-          render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-            <React.Fragment>
-              <TextInput
-                autoComplete="off" // disable autofill on android
-                autoCapitalize="none"
-                isError={error && value.length > 0}
-                keyboardType="numeric"
-                label={`Prix maximum (en\u00a0${currencyFull})`}
-                value={value}
-                onChangeText={(value) => {
-                  onChange(value)
-                  trigger('minPrice')
-                }}
-                onBlur={onBlur}
-                textContentType="none" // disable autofill on iOS
-                accessibilityDescribedBy={maxPriceInputId}
-                testID="Entrée pour le prix maximum"
-                rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
-                placeholder={`${formatInitialCredit}`}
-                disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
-              />
-              <InputError
-                visible={!!error}
-                messageId={error?.message}
-                numberOfSpacesTop={getSpacing(0.5)}
-                relatedInputId={maxPriceInputId}
-              />
-            </React.Fragment>
-          )}
+          label={`Prix maximum (en\u00a0${currencyFull})`}
+          placeholder={`${formatInitialCredit}`}
+          rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
+          accessibilityId={maxPriceInputId}
+          testID="Entrée pour le prix maximum"
+          isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
         />
       </Form.MaxWidth>
       {isKeyboardOpen ? <Spacer.Column numberOfSpaces={8} /> : null}
     </AppModal>
   )
 }
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(6),
+})
