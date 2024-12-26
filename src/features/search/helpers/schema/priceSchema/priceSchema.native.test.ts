@@ -8,7 +8,7 @@ describe('priceSchema', () => {
   const initialCredit = 100
   const currency = Currency.EURO
 
-  test('should validate correctly when minPrice and maxPrice are within range', async () => {
+  it('should validate correctly when minPrice and maxPrice are within range', async () => {
     const validData = {
       minPrice: '10,00',
       maxPrice: '50,00',
@@ -19,7 +19,7 @@ describe('priceSchema', () => {
     await expect(priceSchema({ initialCredit, currency }).isValid(validData)).resolves.toBe(true)
   })
 
-  test('should invalidate when maxPrice exceeds initialCredit', async () => {
+  it('should invalidate when maxPrice exceeds initialCredit', async () => {
     const invalidData = {
       minPrice: '10,00',
       maxPrice: '150,00',
@@ -30,7 +30,7 @@ describe('priceSchema', () => {
     await expect(priceSchema({ initialCredit, currency }).isValid(invalidData)).resolves.toBe(false)
   })
 
-  test('should invalidate when minPrice is greater than maxPrice', async () => {
+  it('should invalidate when minPrice is greater than maxPrice', async () => {
     const invalidData = {
       minPrice: '60,00',
       maxPrice: '50,00',
@@ -41,7 +41,7 @@ describe('priceSchema', () => {
     await expect(priceSchema({ initialCredit, currency }).isValid(invalidData)).resolves.toBe(false)
   })
 
-  test('should validate when maxPrice is empty and minPrice is within range', async () => {
+  it('should validate when maxPrice is empty and minPrice is within range', async () => {
     const validData = {
       minPrice: '10,00',
       maxPrice: '',
@@ -52,7 +52,7 @@ describe('priceSchema', () => {
     await expect(priceSchema({ initialCredit, currency }).isValid(validData)).resolves.toBe(true)
   })
 
-  test('should invalidate when minPrice has incorrect format', async () => {
+  it('should invalidate when minPrice has incorrect format', async () => {
     const invalidData = {
       minPrice: '10,000',
       maxPrice: '50,00',
@@ -63,7 +63,7 @@ describe('priceSchema', () => {
     await expect(priceSchema({ initialCredit, currency }).isValid(invalidData)).resolves.toBe(false)
   })
 
-  test('should invalidate when maxPrice has incorrect format', async () => {
+  it('should invalidate when maxPrice has incorrect format', async () => {
     const invalidData = {
       minPrice: '10,00',
       maxPrice: '50.000',
