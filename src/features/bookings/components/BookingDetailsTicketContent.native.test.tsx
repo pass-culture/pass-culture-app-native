@@ -101,7 +101,7 @@ describe('BookingDetailsTicketContent', () => {
 
       render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
 
-      expect(screen.getByTestId('ean')).toBeOnTheScreen()
+      expect(screen.getByTestId('bookingComplementaryInfo')).toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is a book without an EAN', () => {
@@ -119,7 +119,7 @@ describe('BookingDetailsTicketContent', () => {
 
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
 
-      expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is not a book', () => {
@@ -136,7 +136,23 @@ describe('BookingDetailsTicketContent', () => {
 
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
 
-      expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('BarCode', () => {
+    it('should display BarCode as REF when the offer is an external booking with barCode', () => {
+      const externalBookings = { barcode: '123456' }
+
+      render(<BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />)
+
+      expect(screen.getByTestId('bookingComplementaryInfo')).toBeOnTheScreen()
+    })
+
+    it('should not display REF with barCode when the booking is not an external one', () => {
+      render(<BookingDetailsTicketContent booking={booking} />)
+
+      expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
     })
   })
 })

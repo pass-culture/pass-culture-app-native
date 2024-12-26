@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingReponse } from 'api/gen'
-import { Ean } from 'features/bookings/components/TicketBody/Ean/Ean'
+import { BookingComplementaryInfo } from 'features/bookings/components/TicketBody/BookingComplementaryInfo/BookingComplementaryInfo'
 import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCode } from 'features/bookings/components/TicketCode'
@@ -42,7 +42,12 @@ export function BookingDetailsTicketContent({
 
   const categoryId = useCategoryId(offerSubcategory)
   const ean =
-    extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? <Ean ean={extraData.ean} /> : null
+    extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? (
+      <BookingComplementaryInfo title="EAN" value={extraData.ean} />
+    ) : null
+  const barCode = externalBookings?.barcode ? (
+    <BookingComplementaryInfo title="REF" value={externalBookings.barcode} />
+  ) : null
 
   const buttonWording = getDigitalOfferBookingWording(offerSubcategory)
 
@@ -94,7 +99,7 @@ export function BookingDetailsTicketContent({
           )}
         </TicketContent>
       </ViewGap>
-      {ean}
+      {ean || barCode}
     </Container>
   )
 }
