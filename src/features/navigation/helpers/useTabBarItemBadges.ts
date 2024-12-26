@@ -1,16 +1,17 @@
 import { useMemo } from 'react'
 
-import { useBookingsAwaitingReaction } from 'features/bookings/helpers/useBookingsAwaitingReaction'
 import { TabParamList } from 'features/navigation/TabBar/types'
+import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 
 export const useTabBarItemBadges = (): Partial<Record<keyof TabParamList, number>> => {
-  const bookingsBadge = useBookingsAwaitingReaction()
+  const { data: availableReactions } = useAvailableReaction()
+  const numberOfReactableBookings = availableReactions?.numberOfReactableBookings
 
   const routeBadgeMap = useMemo(
     () => ({
-      Bookings: bookingsBadge,
+      Bookings: numberOfReactableBookings,
     }),
-    [bookingsBadge]
+    [numberOfReactableBookings]
   )
 
   return routeBadgeMap

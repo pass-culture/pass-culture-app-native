@@ -1,12 +1,12 @@
-import React, { Fragment, FunctionComponent } from 'react'
+import React from 'react'
 
 import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
+import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,16 +27,6 @@ jest.mock('libs/firebase/analytics/analytics')
 const mockMutate = jest.fn()
 jest.mock('features/reactions/api/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
-}))
-
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
-  remoteConfig: {
-    configure: () => Promise.resolve(true),
-    refresh: () => Promise.resolve(true),
-    getValues: () => ({
-      reactionCategories: { categories: ['SEANCES_DE_CINEMA'] },
-    }),
-  },
 }))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -68,6 +58,7 @@ describe('EndedBookings', () => {
     mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
   })
 
   it('should render correctly', async () => {
@@ -105,7 +96,7 @@ describe('EndedBookings', () => {
     })
 
     it('should send reaction from cinema offer', async () => {
-      renderEndedBookings(RemoteConfigProvider)
+      renderEndedBookings()
 
       await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
@@ -117,6 +108,6 @@ describe('EndedBookings', () => {
   })
 })
 
-const renderEndedBookings = (Wrapper: FunctionComponent<{ children: JSX.Element }> = Fragment) => {
-  return render(<Wrapper>{reactQueryProviderHOC(<EndedBookings />)}</Wrapper>)
+const renderEndedBookings = () => {
+  return render(reactQueryProviderHOC(<EndedBookings />))
 }
