@@ -5,9 +5,11 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import LottieView from 'libs/lottie'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { storage } from 'libs/storage'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -28,8 +30,18 @@ export const RecreditBirthdayNotification = () => {
 
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
-  const creditedAmount = useFormatCurrencyFromCents(user?.recreditAmountToShow ?? 3000)
-  const remainingCredit = useFormatCurrencyFromCents(credit?.amount ?? 3000)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const creditedAmount = formatCurrencyFromCents(
+    user?.recreditAmountToShow ?? 3000,
+    currency,
+    euroToPacificFrancRate
+  )
+  const remainingCredit = formatCurrencyFromCents(
+    credit?.amount ?? 3000,
+    currency,
+    euroToPacificFrancRate
+  )
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
