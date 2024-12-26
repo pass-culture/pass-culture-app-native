@@ -12,7 +12,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -49,6 +49,10 @@ const mockUseAvailableReaction = useAvailableReaction as jest.Mock
 mockUseAvailableReaction.mockReturnValue({
   data: { numberOfReactableBookings: 0, bookings: [] },
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('Bookings', () => {
   beforeEach(() => {
@@ -109,7 +113,7 @@ describe('Bookings', () => {
     renderBookings()
 
     const cta = await screen.findByText('Réservations terminées')
-    fireEvent.press(cta)
+    await user.press(cta)
 
     expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
   })
@@ -135,7 +139,7 @@ describe('Bookings', () => {
     it('should change on "Terminées" tab and have one ended booking', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
       expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
     })
@@ -143,9 +147,9 @@ describe('Bookings', () => {
     it('should call updateReactions when switching from COMPLETED tab', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
-      fireEvent.press(await screen.findByText('En cours'))
+      await user.press(await screen.findByText('En cours'))
 
       expect(mockMutate).toHaveBeenCalledTimes(1)
     })
@@ -153,16 +157,21 @@ describe('Bookings', () => {
     it('should update reactions for ended bookings without user reaction', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
-      fireEvent.press(await screen.findByText('En cours'))
+      await user.press(await screen.findByText('En cours'))
 
-      expect(mockMutate).toHaveBeenCalledWith({
-        reactions: [
-          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
-          { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
-        ],
-      })
+      expect(mockMutate).toHaveBeenCalledWith(
+        {
+          reactions: [
+            { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
+            { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
+          ],
+        },
+        {
+          onSuccess: expect.any(Function),
+        }
+      )
     })
 
     it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {
