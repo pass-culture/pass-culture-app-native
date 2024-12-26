@@ -7,7 +7,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CategoriesButtons } from 'features/search/components/CategoriesButtons/CategoriesButtons'
+import { CategoriesList } from 'features/search/components/CategoriesList/CategoriesList'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -93,8 +93,7 @@ export const SearchLanding = () => {
             />
           ) : (
             <CategoriesButtonsContainer>
-              <CategoriesButtons />
-              <Spacer.TabBar />
+              <CategoriesList />
             </CategoriesButtonsContainer>
           )}
         </InstantSearch>
@@ -103,7 +102,8 @@ export const SearchLanding = () => {
   )
 }
 
-const CategoriesButtonsContainer = styled.View({
+const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   flex: 1,
   overflowY: 'auto',
-})
+  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))

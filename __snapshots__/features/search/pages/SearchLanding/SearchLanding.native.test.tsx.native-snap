@@ -1,2539 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchLanding /> When App V2 feature flag activated should render V2 App Design SearchLanding 1`] = `
-<View
-  style={
-    [
-      {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
-  <View
-    accessibilityIgnoresInvertColors={true}
-  >
-    <Image
-      resizeMode="stretch"
-      source={
-        {
-          "testUri": "../../../src/features/search/images/GradientHeader.png",
-        }
-      }
-      style={
-        [
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "height": undefined,
-            "width": undefined,
-          },
-          undefined,
-        ]
-      }
-      testID="searchLandingHeader"
-    />
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "marginTop": 24,
-            "paddingHorizontal": 24,
-            "zIndex": 1,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexShrink": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="SearchHeaderTitleContainer"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexWrap": "wrap",
-                      "justifyContent": "flex-start",
-                      "maxWidth": "75%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  htmlFor="testUuidV4"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 26,
-                        "lineHeight": 34,
-                      },
-                    ]
-                  }
-                >
-                  Rechercher
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                    "marginTop": 4,
-                  },
-                ]
-              }
-            >
-              Toutes les offres à portée de main
-            </Text>
-          </View>
-          <View
-            testID="InsideLocationWidget"
-          >
-            <View
-              accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onLayout={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "marginLeft": 8,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Ouvrir la modale de localisation depuis le widget"
-            >
-              <View
-                isActive={true}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#161617",
-                      "borderRadius": 40,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "maxWidth": 100,
-                      "paddingTop": 4,
-                    },
-                  ]
-                }
-              >
-                Ma position
-              </Text>
-            </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View>
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "center",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height="regular"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949D",
-                        "borderRadius": 22,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "height": 48,
-                        "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
-                        "paddingTop": 0,
-                        "width": "100%",
-                      },
-                      {
-                        "borderRadius": 24,
-                        "outlineOffset": 0,
-                      },
-                      {
-                        "flex": 1,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      width={20}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <TextInput
-                    accessibilityDescribedBy="testUuidV4"
-                    accessibilityHidden={true}
-                    autoCorrect={false}
-                    autoFocus={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={false}
-                    isEmpty={true}
-                    multiline={false}
-                    nativeID="testUuidV4"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    onSubmitEditing={[Function]}
-                    placeholder="Offre, artiste, lieu culturel..."
-                    placeholderTextColor="#696A6F"
-                    returnKeyType="search"
-                    selectionColor="#696A6F"
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 16,
-                          "height": "100%",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="searchInput"
-                    textAlignVertical="center"
-                    value=""
-                  />
-                </View>
-              </View>
-            </View>
-          </View>
-          <Text
-            nativeID="testUuidV4"
-            style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
-            }
-          >
-            Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
-          </Text>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>
-  <View
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "overflowY": "auto",
-        },
-      ]
-    }
-  >
-    <RCTScrollView
-      ListHeaderComponent={
-        <React.Fragment>
-          <React.Fragment>
-            <Styled(View)
-              numberOfSpaces={4}
-            />
-            <VenueMapBlock
-              from="searchLanding"
-            />
-            <Styled(View)
-              numberOfSpaces={2}
-            />
-          </React.Fragment>
-          <Styled(Styled(Text)) />
-          <VenueMapLocationModal
-            dismissModal={[Function]}
-            openedFrom="searchLanding"
-            visible={false}
-          />
-        </React.Fragment>
-      }
-      contentContainerStyle={
-        {
-          "paddingBottom": 88,
-          "paddingHorizontal": 16,
-        }
-      }
-      data={
-        [
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Concerts & festivals",
-            "onPress": [Function],
-            "position": 1,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Cinéma",
-            "onPress": [Function],
-            "position": 2,
-            "textColor": "#0E78B7",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#C01371",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
-            "gradients": [
-              "#EC3478",
-              "#C01371",
-            ],
-            "label": "Films, séries et documentaires",
-            "onPress": [Function],
-            "position": 3,
-            "textColor": "#0E8474",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E78B7",
-            "borderColor": "#20C5E9",
-            "fillColor": "#D6F8FF",
-            "gradients": [
-              "#20C5E9",
-              "#0E78B7",
-            ],
-            "label": "Livres",
-            "onPress": [Function],
-            "position": 4,
-            "textColor": "#CA3F13",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#8337E9",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
-            "gradients": [
-              "#AD87FF",
-              "#8337E9",
-            ],
-            "label": "Musique",
-            "onPress": [Function],
-            "position": 5,
-            "textColor": "#C01371",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#CA3F13",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
-            "gradients": [
-              "#F8733D",
-              "#CA3F13",
-            ],
-            "label": "Arts & loisirs créatifs",
-            "onPress": [Function],
-            "position": 6,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Spectacles",
-            "onPress": [Function],
-            "position": 7,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Musées & visites culturelles",
-            "onPress": [Function],
-            "position": 8,
-            "textColor": "#0E78B7",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E78B7",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
-            "gradients": [
-              "#20C5E9",
-              "#0E78B7",
-            ],
-            "label": "Jeux & jeux vidéos",
-            "onPress": [Function],
-            "position": 9,
-            "textColor": "#0E8474",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#8337E9",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
-            "gradients": [
-              "#AD87FF",
-              "#8337E9",
-            ],
-            "label": "Médias & presse",
-            "onPress": [Function],
-            "position": 10,
-            "textColor": "#C01371",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Cartes jeunes",
-            "onPress": [Function],
-            "position": 11,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Conférences & rencontres",
-            "onPress": [Function],
-            "position": 12,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Évènements en ligne",
-            "onPress": [Function],
-            "position": 13,
-            "textColor": "#0E78B7",
-          },
-        ]
-      }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={[]}
-      testID="categoriesButtons"
-      viewabilityConfigCallbackPairs={[]}
-    >
-      <View>
-        <View
-          collapsable={false}
-          onLayout={[Function]}
-        >
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "marginHorizontal": 8,
-                },
-              ]
-            }
-          >
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 8,
-                      "borderWidth": 1,
-                      "overflow": "hidden",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityIgnoresInvertColors={true}
-                style={
-                  [
-                    {
-                      "height": 100,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Image
-                  source={
-                    {
-                      "testUri": "../../../public/images/VenueMapBackgroundAppV2.png",
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      },
-                      {
-                        "height": 100,
-                        "width": "100%",
-                      },
-                      {
-                        "borderRadius": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "bottom": 16,
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "left": 16,
-                        "lineHeight": 25.6,
-                        "position": "absolute",
-                      },
-                    ]
-                  }
-                >
-                  Explore la carte
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "marginBottom": 8,
-                  "marginTop": 16,
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
-          >
-            Parcours les catégories
-          </Text>
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Concerts & festivals"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFF5D8",
-                        "borderColor": "#FBDBAC",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Concerts & festivals"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    CONCERTS & FESTIVALS
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Cinéma"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFDECC",
-                        "borderColor": "#F8733D",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Cinéma"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    CINÉMA
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Films, séries et documentaires"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFD7E9",
-                        "borderColor": "#EC3478",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Films, séries et documentaires"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    FILMS, SÉRIES ET DOCUMENTAIRES
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Livres"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#D6F8FF",
-                        "borderColor": "#20C5E9",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Livres"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    LIVRES
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Musique"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#EAE3FF",
-                        "borderColor": "#AD87FF",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Musique"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    MUSIQUE
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Arts & loisirs créatifs"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#DBFFEA",
-                        "borderColor": "#0E8474",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Arts & loisirs créatifs"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    ARTS & LOISIRS CRÉATIFS
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Spectacles"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFF5D8",
-                        "borderColor": "#FBDBAC",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Spectacles"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    SPECTACLES
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Musées & visites culturelles"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFDECC",
-                        "borderColor": "#F8733D",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Musées & visites culturelles"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    MUSÉES & VISITES CULTURELLES
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Jeux & jeux vidéos"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFD7E9",
-                        "borderColor": "#EC3478",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Jeux & jeux vidéos"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    JEUX & JEUX VIDÉOS
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Médias & presse"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#EAE3FF",
-                        "borderColor": "#AD87FF",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Médias & presse"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    MÉDIAS & PRESSE
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Cartes jeunes"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#DBFFEA",
-                        "borderColor": "#0E8474",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Cartes jeunes"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    CARTES JEUNES
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Conférences & rencontres"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFF5D8",
-                        "borderColor": "#FBDBAC",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Conférences & rencontres"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    CONFÉRENCES & RENCONTRES
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Évènements en ligne"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "backgroundColor": "#FFDECC",
-                        "borderColor": "#F8733D",
-                        "borderRadius": 8,
-                        "borderWidth": 1.6,
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "height": 97,
-                        "justifyContent": "flex-end",
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Évènements en ligne"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={3}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 14,
-                          "lineHeight": 22.4,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    ÉVÈNEMENTS EN LIGNE
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </RCTScrollView>
-    <View
-      customHeight={72}
-      enable={true}
-      style={
-        [
-          {
-            "height": 72,
-          },
-        ]
-      }
-    />
-  </View>
-</View>
-`;
-
 exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactivated should render SearchLanding 1`] = `
 <View
   style={
@@ -2982,2672 +448,1255 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+          "marginBottom": 64,
           "overflowY": "auto",
         },
       ]
     }
   >
     <RCTScrollView
-      ListHeaderComponent={
-        <React.Fragment>
-          <Styled(Styled(Text)) />
-          <VenueMapLocationModal
-            dismissModal={[Function]}
-            openedFrom="searchLanding"
-            visible={false}
-          />
-        </React.Fragment>
-      }
-      contentContainerStyle={
-        {
-          "paddingBottom": 88,
-          "paddingHorizontal": 16,
-        }
-      }
-      data={
+      showsHorizontalScrollIndicator={false}
+      style={
         [
           {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Concerts & festivals",
-            "onPress": [Function],
-            "position": 1,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Cinéma",
-            "onPress": [Function],
-            "position": 2,
-            "textColor": "#0E78B7",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#C01371",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
-            "gradients": [
-              "#EC3478",
-              "#C01371",
-            ],
-            "label": "Films, séries et documentaires",
-            "onPress": [Function],
-            "position": 3,
-            "textColor": "#0E8474",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E78B7",
-            "borderColor": "#20C5E9",
-            "fillColor": "#D6F8FF",
-            "gradients": [
-              "#20C5E9",
-              "#0E78B7",
-            ],
-            "label": "Livres",
-            "onPress": [Function],
-            "position": 4,
-            "textColor": "#CA3F13",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#8337E9",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
-            "gradients": [
-              "#AD87FF",
-              "#8337E9",
-            ],
-            "label": "Musique",
-            "onPress": [Function],
-            "position": 5,
-            "textColor": "#C01371",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#CA3F13",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
-            "gradients": [
-              "#F8733D",
-              "#CA3F13",
-            ],
-            "label": "Arts & loisirs créatifs",
-            "onPress": [Function],
-            "position": 6,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Spectacles",
-            "onPress": [Function],
-            "position": 7,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Musées & visites culturelles",
-            "onPress": [Function],
-            "position": 8,
-            "textColor": "#0E78B7",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E78B7",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
-            "gradients": [
-              "#20C5E9",
-              "#0E78B7",
-            ],
-            "label": "Jeux & jeux vidéos",
-            "onPress": [Function],
-            "position": 9,
-            "textColor": "#0E8474",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#8337E9",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
-            "gradients": [
-              "#AD87FF",
-              "#8337E9",
-            ],
-            "label": "Médias & presse",
-            "onPress": [Function],
-            "position": 10,
-            "textColor": "#C01371",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
-            "gradients": [
-              "#FA9F16",
-              "#B85901",
-            ],
-            "label": "Cartes jeunes",
-            "onPress": [Function],
-            "position": 11,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "baseColor": "#0E8474",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Conférences & rencontres",
-            "onPress": [Function],
-            "position": 12,
-            "textColor": "#8337E9",
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
-            "gradients": [
-              "#27DCA8",
-              "#0E8474",
-            ],
-            "label": "Évènements en ligne",
-            "onPress": [Function],
-            "position": 13,
-            "textColor": "#0E78B7",
+            "marginTop": 0,
+            "paddingHorizontal": 24,
           },
         ]
       }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={[]}
       testID="categoriesButtons"
-      viewabilityConfigCallbackPairs={[]}
+      vertical={true}
     >
       <View>
-        <View
-          collapsable={false}
-          onLayout={[Function]}
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "marginTop": 16,
+                "width": "100%",
+              },
+            ]
+          }
         >
-          <Text
+          Parcours les catégories
+        </Text>
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "marginTop": 8,
+                "paddingVertical": 8,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Catégorie Concerts & festivals"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFF5D8",
+                    "borderColor": "#FBDBAC",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 19,
-                  "lineHeight": 30.4,
-                  "marginBottom": 8,
-                  "marginTop": 16,
-                  "paddingHorizontal": 8,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Catégorie Concerts & festivals"
           >
-            Explore les catégories
-          </Text>
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                CONCERTS & FESTIVALS
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Cinéma"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
               [
-                "portrait",
-                "landscape",
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#D6F8FF",
+                    "borderColor": "#20C5E9",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
               ]
             }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
+            testID="Catégorie Cinéma"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Concerts & festivals"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Concerts & festivals"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294614806,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#B85901"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#B85901",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Concerts & festivals
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Cinéma"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Cinéma"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Cinéma
-                  </Text>
-                </View>
-              </View>
+                CINÉMA
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Films, séries et documentaires"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#EAE3FF",
+                    "borderColor": "#AD87FF",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Films, séries et documentaires"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Films, séries et documentaires"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Films, séries et documentaires"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4293670008,
-                        4290777969,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#C01371"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#C01371",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Films, séries et documentaires
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Livres"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Livres"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280337897,
-                        4279138487,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E78B7"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E78B7",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Livres
-                  </Text>
-                </View>
-              </View>
+                FILMS, SÉRIES ET DOCUMENTAIRES
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Livres"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFDECC",
+                    "borderColor": "#F8733D",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Livres"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Musique"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Musique"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4289562623,
-                        4286789609,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#8337E9"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#8337E9",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Musique
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Arts & loisirs créatifs"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Arts & loisirs créatifs"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294472509,
-                        4291444499,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#CA3F13"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#CA3F13",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Arts & loisirs créatifs
-                  </Text>
-                </View>
-              </View>
+                LIVRES
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Musique"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#DBFFEA",
+                    "borderColor": "#0E8474",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Musique"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Spectacles"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Spectacles"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Spectacles
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Musées & visites culturelles"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Musées & visites culturelles"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294614806,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#B85901"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#B85901",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Musées & visites culturelles
-                  </Text>
-                </View>
-              </View>
+                MUSIQUE
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Arts & loisirs créatifs"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Arts & loisirs créatifs"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Jeux & jeux vidéos"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Jeux & jeux vidéos"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280337897,
-                        4279138487,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E78B7"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E78B7",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Jeux & jeux vidéos
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Médias & presse"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Médias & presse"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4289562623,
-                        4286789609,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#8337E9"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#8337E9",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Médias & presse
-                  </Text>
-                </View>
-              </View>
+                ARTS & LOISIRS CRÉATIFS
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Spectacles"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFF5D8",
+                    "borderColor": "#FBDBAC",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Spectacles"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Cartes jeunes"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Cartes jeunes"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294614806,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#B85901"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#B85901",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Cartes jeunes
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Conférences & rencontres"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Catégorie Conférences & rencontres"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Conférences & rencontres
-                  </Text>
-                </View>
-              </View>
+                SPECTACLES
+              </Text>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            style={
+            accessibilityLabel="Catégorie Musées & visites culturelles"
+            accessibilityState={
               {
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#D6F8FF",
+                    "borderColor": "#20C5E9",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Musées & visites culturelles"
           >
             <View
               style={
                 [
                   {
-                    "flexBasis": "50%",
+                    "alignItems": "flex-start",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityLabel="Catégorie Évènements en ligne"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
+                numberOfLines={3}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderRadius": 8,
-                        "height": 156,
-                        "overflow": "hidden",
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
                     },
                   ]
                 }
-                testID="Catégorie Évènements en ligne"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Évènements en ligne
-                  </Text>
-                </View>
-              </View>
+                MUSÉES & VISITES CULTURELLES
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Jeux & jeux vidéos"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#EAE3FF",
+                    "borderColor": "#AD87FF",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Jeux & jeux vidéos"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                JEUX & JEUX VIDÉOS
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Médias & presse"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFDECC",
+                    "borderColor": "#F8733D",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Médias & presse"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                MÉDIAS & PRESSE
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Cartes jeunes"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#DBFFEA",
+                    "borderColor": "#0E8474",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Cartes jeunes"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                CARTES JEUNES
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Conférences & rencontres"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Conférences & rencontres"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                CONFÉRENCES & RENCONTRES
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Catégorie Évènements en ligne"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#FFF5D8",
+                    "borderColor": "#FBDBAC",
+                    "borderRadius": 8,
+                    "borderWidth": 1.6,
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "height": 144,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Catégorie Évènements en ligne"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                ÉVÈNEMENTS EN LIGNE
+              </Text>
             </View>
           </View>
         </View>
       </View>
     </RCTScrollView>
-    <View
-      customHeight={72}
-      enable={true}
-      style={
-        [
-          {
-            "height": 72,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

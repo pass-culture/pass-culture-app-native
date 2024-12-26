@@ -17,7 +17,11 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
-import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import {
+  Referrals,
+  StepperOrigin,
+  ThematicHomeParams,
+} from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
@@ -31,40 +35,14 @@ import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'l
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
-type BaseThematicHome = {
-  homeEntryId: string
-  from?: never
-  moduleId?: never
-  moduleListId?: never
+type ConsultHomeParams = { homeEntryId: string }
+
+type ConsultThematicHomeParams = ConsultHomeParams & {
+  from?: ThematicHomeParams['from'] | 'video_carousel_block'
+  moduleId?: string
+  moduleListId?: string
+  moduleItemId?: string
 }
-
-type CategoryBlockThematicHome = {
-  homeEntryId: string
-  from: 'category_block'
-  moduleId: string
-  moduleListId: string
-}
-
-type HighlightThematicBlockThematicHome = {
-  homeEntryId: string
-  from: 'highlight_thematic_block'
-  moduleId: string
-  moduleListId?: never
-}
-
-type VideoCarouselBlockThematicHome = {
-  homeEntryId: string
-  from: 'video_carousel_block'
-  moduleId: string
-  moduleItemId: string
-}
-
-type ConsultHomeParams =
-  | BaseThematicHome
-  | CategoryBlockThematicHome
-  | HighlightThematicBlockThematicHome
-  | VideoCarouselBlockThematicHome
-
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
   | { type: 'Offer'; offerId: number }
   | { type: 'Venue'; venueId: number }
@@ -260,6 +238,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_REACTION_FAKE_DOOR }, params),
   logConsultSubscriptionModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_SUBSCRIPTION_MODAL }),
+  logConsultThematicHome: (params: ConsultThematicHomeParams) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_HOME }, params),
   logConsultTutorial: (params: { from: string; age?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {

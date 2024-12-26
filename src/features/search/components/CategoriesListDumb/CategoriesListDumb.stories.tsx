@@ -2,17 +2,18 @@ import { NavigationContainer } from '@react-navigation/native'
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
+import { CategoriesListDumb } from './CategoriesListDumb'
 
-const meta: ComponentMeta<typeof CategoriesButtonsDisplay> = {
+const meta: ComponentMeta<typeof CategoriesListDumb> = {
   title: 'Features/search/CategoriesButtons',
-  component: CategoriesButtonsDisplay,
+  component: CategoriesListDumb,
 }
 export default meta
 
@@ -20,10 +21,12 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
   <BodyWrapper>
     <NavigationContainer>
-      <CategoriesButtonsDisplay {...props} />
+      <Container>
+        <CategoriesListDumb {...props} />
+      </Container>
     </NavigationContainer>
   </BodyWrapper>
 )
@@ -69,6 +72,15 @@ Default.args = {
       borderColor: theme.colors.coral,
       fillColor: theme.colors.coralLight,
     },
+    {
+      label: 'Concerts & festivals',
+      Illustration: SearchCategoriesIllustrations.ConcertsFestivals,
+      textColor: theme.colors.lilacDark,
+      gradients: [theme.colors.gold, theme.colors.goldDark],
+      onPress: action('Concerts & festivals'),
+      fillColor: theme.colors.goldLight100,
+      borderColor: theme.colors.goldLight200,
+    },
   ],
 }
 Default.parameters = {
@@ -82,3 +94,7 @@ Default.parameters = {
     ],
   },
 }
+
+const Container = styled(View)({
+  maxWidth: 1024,
+})

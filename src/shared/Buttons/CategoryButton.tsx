@@ -11,17 +11,17 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-type CategoryButtonV2Props = {
+type CategoryButtonProps = {
   label: string
   textColor: ColorsEnum
   fillColor: ColorsEnum
   borderColor: ColorsEnum
-  height: number
+  height?: number
   style?: TouchableOpacityProps['style']
   onPress?: () => void
   children?: never
 }
-export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
+export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   fillColor,
   borderColor,
@@ -56,7 +56,7 @@ const TouchableContainer = styled(TouchableOpacity)<{
   isHover: boolean
   baseColor: ColorsEnum
   borderColor: ColorsEnum
-  height: number
+  height?: number
 }>(({ theme, isFocus, isHover, baseColor, borderColor, height }) => ({
   height,
   overflow: 'hidden',

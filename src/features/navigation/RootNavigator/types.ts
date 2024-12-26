@@ -40,24 +40,26 @@ export type Referrals =
 type BaseThematicHome = {
   homeId: string
   videoModuleId?: string
-  from?: never
-  moduleId?: never
-  moduleListId?: never
 }
-type CategoryBlockThematicHome = BaseThematicHome & {
+
+type OtherThematicBlockHome = {
+  from?: 'deeplink'
+  moduleId?: string
+  moduleListId?: string
+}
+
+type CategoryBlockThematicHome = {
   from: 'category_block'
   moduleId: string
   moduleListId: string
 }
-type HighlightThematicBlockThematicHome = BaseThematicHome & {
+type HighlightThematicBlockThematicHome = {
   from: 'highlight_thematic_block'
   moduleId: string
   moduleListId?: never
 }
-type ThematicHomeParams =
-  | BaseThematicHome
-  | CategoryBlockThematicHome
-  | HighlightThematicBlockThematicHome
+export type ThematicHomeParams = BaseThematicHome &
+  (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
