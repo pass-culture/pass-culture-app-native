@@ -5,7 +5,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
@@ -18,7 +20,9 @@ type Props = {
 
 export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCredit = false }) => {
   const { isLoggedIn, user } = useAuthContext()
-  const oneHundredEuros = useFormatCurrencyFromCents(100_00)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const oneHundredEuros = formatCurrencyFromCents(100_00, currency, euroToPacificFrancRate)
 
   const defaultItems = [
     <BlockDescriptionItem
