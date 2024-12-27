@@ -78,14 +78,14 @@ describe('<BookingPropertiesSection />', () => {
     renderBookingProperties(booking)
 
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
-    expect(screen.getByTestId('price-line__price-detail')).toBeOnTheScreen()
-    expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-price-detail')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-attributes')).toBeOnTheScreen()
   })
 
   it("should not show cinema's attributes when booked offer has not attributes", () => {
     renderBookingProperties({ ...booking, stock: { ...booking.stock, features: [] } })
 
-    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
   })
 })
 

@@ -115,7 +115,7 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(screen.getByTestId('price-line__label')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-label')).toBeOnTheScreen()
   })
 
   it("shouldn't display stock label when the offer hasn't any", () => {
@@ -130,7 +130,7 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(screen.queryByTestId('price-line__label')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-label')).not.toBeOnTheScreen()
   })
 
   it('should display stock attributes when the offer has it', () => {
@@ -145,7 +145,7 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-attributes')).toBeOnTheScreen()
   })
 
   it("shouldn't display stock attributes when the offer hasn't any", () => {
@@ -160,7 +160,7 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {

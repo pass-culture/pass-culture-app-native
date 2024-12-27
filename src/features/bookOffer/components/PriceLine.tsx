@@ -1,41 +1,17 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Typo } from 'ui/theme'
 
 interface PriceLineProps {
-  /**
-   * Ordered quantity.
-   * @default 1
-   */
   quantity?: number
-  /**
-   * Offer stock unit price.
-   */
   unitPrice: number
-  /**
-   * Offer stock price category label.
-   */
   label?: OfferStockResponse['priceCategoryLabel']
-  /**
-   * By default, this component displays information in `Typo` components in order to get
-   * correct styling for `<BookingInformations />` component.
-   *
-   * By setting this to `true` you can disable the styling.
-   *
-   * @default false
-   */
   shouldDisabledStyles?: boolean
-  /**
-   * Offer stock features refers to cinema's attributes
-   */
   attributes?: OfferStockResponse['features']
-}
-
-const testIDPrefix = 'price-line'
-function getTestID(str: string) {
-  return `${testIDPrefix}__${str}`
 }
 
 export function PriceLine({
@@ -45,8 +21,10 @@ export function PriceLine({
   shouldDisabledStyles = false,
   attributes,
 }: PriceLineProps) {
-  const totalPrice = useFormatCurrencyFromCents(quantity * unitPrice)
-  const price = useFormatCurrencyFromCents(unitPrice)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const totalPrice = formatCurrencyFromCents(quantity * unitPrice, currency, euroToPacificFrancRate)
+  const price = formatCurrencyFromCents(unitPrice, currency, euroToPacificFrancRate)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
@@ -58,15 +36,15 @@ export function PriceLine({
       <MainText>{totalPrice} </MainText>
 
       {quantity > 1 ? (
-        <SecondaryText testID={getTestID('price-detail')}>
+        <SecondaryText testID="price-line-price-detail">
           ({price} x {quantity} places)
         </SecondaryText>
       ) : null}
 
-      {label ? <MainText testID={getTestID('label')}> - {label}</MainText> : null}
+      {label ? <MainText testID="price-line-label"> - {label}</MainText> : null}
 
       {shouldDisplayAttributes ? (
-        <MainText testID={getTestID('attributes')}> - {attributes.join(' ')}</MainText>
+        <MainText testID="price-line-attributes"> - {attributes.join(' ')}</MainText>
       ) : null}
     </Typo.Body>
   )
