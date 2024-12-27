@@ -25,7 +25,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, getSpacing } from 'ui/theme'
-import { newColorMapping } from 'ui/theme/newColorMapping'
+import { colorMapping } from 'ui/theme/colorMapping'
 
 const CAROUSEL_HEIGHT = getSpacing(35)
 const CAROUSEL_ANIMATION_DURATION = 500
@@ -223,7 +223,7 @@ const Container = styled.View({
 const ColoredAttachedTileContainer = styled.View<{
   color: Color
 }>(({ color }) => ({
-  backgroundColor: newColorMapping[color].fill,
+  backgroundColor: colorMapping[color].fill,
 }))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({

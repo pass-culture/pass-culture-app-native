@@ -21,6 +21,7 @@ type CategoryButtonProps = {
   onPress?: () => void
   children?: never
 }
+//TODO(PC-33718): Fix A11y by using InternalTouchableLink and merge with Home's CategoryButton
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   fillColor,
