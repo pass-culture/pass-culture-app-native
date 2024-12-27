@@ -15,6 +15,8 @@ import { GeoCoordinates, Position } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SearchBox } from './SearchBox'
 
@@ -23,6 +25,17 @@ let mockSearchState: SearchState = {
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   priceRange: [0, 20],
 }
+
+const mockShowSuccessSnackBar = jest.fn()
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+}))
+const queryWithMoreThan150characters =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non aliquet quam, at ultrices purus. Morbi velit orci, tincidunt sed erat sed efficitur.'
 
 const mockDispatch = jest.fn()
 let mockIsFocusOnSuggestions = false
@@ -186,6 +199,23 @@ describe('SearchBox component', () => {
         priceRange: mockSearchState.priceRange,
         searchId,
       },
+    })
+  })
+
+  it('should display error message when query submitted is longer than 150 characters', async () => {
+    renderSearchBox()
+
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', {
+        nativeEvent: { text: queryWithMoreThan150characters },
+      })
+    })
+
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
