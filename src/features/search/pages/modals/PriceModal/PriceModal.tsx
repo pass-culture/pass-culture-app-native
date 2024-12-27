@@ -17,7 +17,7 @@ import { priceSchema } from 'features/search/helpers/schema/priceSchema/priceSch
 import { SearchState } from 'features/search/types'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
-import { formatCurrencyFromCentsWithoutCurrenySymbol } from 'libs/parsers/formatCurrencyFromCentsWithoutCurrenySymbol'
+import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'libs/parsers/formatCurrencyFromCentsWithoutCurrencySymbol'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -70,7 +70,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const { isLoggedIn, user } = useAuthContext()
 
   const availableCredit = useAvailableCredit()?.amount ?? 0
-  const formatAvailableCredit = formatCurrencyFromCentsWithoutCurrenySymbol(
+  const formatAvailableCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
     availableCredit,
     currency,
     euroToPacificFrancRate
@@ -83,7 +83,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
-  const formatInitialCredit = formatCurrencyFromCentsWithoutCurrenySymbol(
+  const formatInitialCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
     initialCredit,
     currency,
     euroToPacificFrancRate

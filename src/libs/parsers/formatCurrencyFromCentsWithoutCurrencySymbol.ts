@@ -2,7 +2,7 @@ import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
-export const formatCurrencyFromCentsWithoutCurrenySymbol = (
+export const formatCurrencyFromCentsWithoutCurrencySymbol = (
   priceInCents: number,
   currency: Currency,
   euroToPacificFrancRate: number

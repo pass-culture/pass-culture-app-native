@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
-import { formatCurrencyFromCentsWithoutCurrenySymbol } from './formatCurrencyFromCentsWithoutCurrenySymbol'
+import { formatCurrencyFromCentsWithoutCurrencySymbol } from './formatCurrencyFromCentsWithoutCurrencySymbol'
 
-describe('formatCurrencyFromCentsWithoutCurrenySymbol()', () => {
+describe('formatCurrencyFromCentsWithoutCurrencySymbol()', () => {
   it.each`
     priceInCents | currency                        | expected
     ${0}         | ${Currency.EURO}                | ${0}
@@ -21,10 +20,10 @@ describe('formatCurrencyFromCentsWithoutCurrenySymbol()', () => {
     ${-1199}     | ${Currency.EURO}                | ${-11.99}
     ${100}       | ${Currency.PACIFIC_FRANC_SHORT} | ${120}
   `(
-    'formatCurrencyFromCentsWithoutCurrenySymbol($priceInCents) = $expected without format price options',
+    'formatCurrencyFromCentsWithoutCurrencySymbol($priceInCents) = $expected without format price options',
     ({ priceInCents, currency, expected }) => {
       expect(
-        formatCurrencyFromCentsWithoutCurrenySymbol(
+        formatCurrencyFromCentsWithoutCurrencySymbol(
           priceInCents,
           currency,
           DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
