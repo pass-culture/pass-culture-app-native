@@ -6,7 +6,7 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
