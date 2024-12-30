@@ -1,4 +1,4 @@
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type FormatPriceOptions = {

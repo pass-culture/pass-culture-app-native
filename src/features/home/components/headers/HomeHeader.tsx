@@ -7,7 +7,7 @@ import { LocationWidgetDesktop } from 'features/location/components/LocationWidg
 import { ScreenOrigin } from 'features/location/enums'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'

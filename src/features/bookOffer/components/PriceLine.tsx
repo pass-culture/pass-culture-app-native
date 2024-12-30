@@ -2,7 +2,7 @@ import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Typo } from 'ui/theme'
 

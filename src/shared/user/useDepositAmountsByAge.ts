@@ -1,6 +1,6 @@
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
 export function useDepositAmountsByAge() {

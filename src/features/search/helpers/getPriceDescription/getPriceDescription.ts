@@ -1,5 +1,5 @@
-import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export const getPriceDescription = (
