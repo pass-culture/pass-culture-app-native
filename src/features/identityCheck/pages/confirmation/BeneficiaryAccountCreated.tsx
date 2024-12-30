@@ -8,9 +8,11 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -31,7 +33,11 @@ export function BeneficiaryAccountCreated() {
   const { showShareAppModal } = useShareAppContext()
   const { actions } = useCreditStore()
 
-  const subtitle = `${useFormatCurrencyFromCents(maxPriceInCents)} viennent d’être crédités sur ton compte pass Culture`
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const maxPrice = formatCurrencyFromCents(maxPriceInCents, currency, euroToPacificFrancRate)
+  const subtitle = `${maxPrice} viennent d’être crédités sur ton compte pass Culture`
+
   const text = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.'
     : 'Tu as deux ans pour profiter de ton budget.'
@@ -56,7 +62,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount>{useFormatCurrencyFromCents(maxPriceInCents)}</Amount>
+        <Amount>{maxPrice}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>

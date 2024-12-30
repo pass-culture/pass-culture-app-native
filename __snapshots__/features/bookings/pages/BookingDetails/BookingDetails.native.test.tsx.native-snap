@@ -769,7 +769,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="price-line__price-detail"
+                      testID="price-line-price-detail"
                     >
                       (
                       4 €
@@ -788,7 +788,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="price-line__label"
+                      testID="price-line-label"
                     >
                        - 
                       Cat 4
@@ -804,7 +804,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="price-line__attributes"
+                      testID="price-line-attributes"
                     >
                        - 
                       VOSTFR 3D IMAX

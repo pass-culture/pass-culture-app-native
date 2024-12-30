@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { storage } from 'libs/storage'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -32,6 +34,9 @@ const useGetPageWording = (userRequiresIdCheck?: boolean) => {
 export function EighteenBirthday() {
   const { user } = useAuthContext()
   const pageWording = useGetPageWording(user?.requiresIdCheck)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
 
   useEffect(() => {
     storage.saveObject('has_seen_eligible_card', true)
@@ -42,7 +47,7 @@ export function EighteenBirthday() {
       <StyledTitle>{pageWording.text}</StyledTitle>
       <Spacer.Column numberOfSpaces={4} />
       <StyledCaptionNeutralInfo>
-        Ton crédit précédent a été remis à {useFormatCurrencyFromCents(0)}.
+        Ton crédit précédent a été remis à {zero}.
       </StyledCaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
       <InternalTouchableLink

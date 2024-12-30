@@ -5,7 +5,9 @@ import styled from 'styled-components/native'
 import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getAge } from 'shared/user/getAge'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,7 +26,9 @@ type Props = {
 export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal, from }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
-  const zero = useFormatCurrencyFromCents(0)
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
 
   const navigateToStepper = useCallback(() => {
     hideModal()

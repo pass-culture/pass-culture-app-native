@@ -1,7 +1,6 @@
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
-import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { FormatPriceOptions } from './getDisplayedPrice'
 
@@ -39,10 +38,4 @@ export const formatCurrencyFromCents = (
     })
     return EURformatter.format(priceInEuro)
   }
-}
-
-export const useFormatCurrencyFromCents = (priceInCents: number, options?: FormatPriceOptions) => {
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  return formatCurrencyFromCents(priceInCents, currency, euroToPacificFrancRate, options)
 }

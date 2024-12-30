@@ -26,20 +26,20 @@ describe('<PriceLine />', () => {
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
-    expect(screen.getByTestId('price-line__price-detail')).toBeOnTheScreen()
-    expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-price-detail')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-attributes')).toBeOnTheScreen()
   })
 
   it("should not show cinema's attributes when offer has not attributes", () => {
     render(<PriceLine unitPrice={500} quantity={2} attributes={[]} />)
 
-    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
   })
 
   it('should set default quantity to 1', () => {
     render(<PriceLine unitPrice={500} />)
 
     expect(screen.getByText('5\u00a0€')).toBeOnTheScreen()
-    expect(screen.queryByTestId('price-line__price-detail')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-price-detail')).not.toBeOnTheScreen()
   })
 })

@@ -8,9 +8,11 @@ import { useOffer } from 'features/offer/api/useOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
+import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useShowReview } from 'libs/hooks/useShowReview'
-import { useFormatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
+import { formatCurrencyFromCents } from 'libs/parsers/formatCurrencyFromCents'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -41,19 +43,8 @@ export function BookingConfirmation() {
     reset({
       index: 1,
       routes: [
-        {
-          name: 'TabNavigator',
-          state: {
-            routes: [{ name: 'Bookings' }],
-            index: 0,
-          },
-        },
-        {
-          name: 'BookingDetails',
-          params: {
-            id: params.bookingId,
-          },
-        },
+        { name: 'TabNavigator', state: { routes: [{ name: 'Bookings' }], index: 0 } },
+        { name: 'BookingDetails', params: { id: params.bookingId } },
       ],
     })
   }, [params.bookingId, params.offerId, reset, trackBooking])
@@ -72,9 +63,14 @@ export function BookingConfirmation() {
 
   useShowReview()
 
-  const amountLeftText = `Il te reste encore ${useFormatCurrencyFromCents(
-    amountLeft
-  )} à dépenser sur le pass Culture.`
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const amountLeftWithCurrency = formatCurrencyFromCents(
+    amountLeft,
+    currency,
+    euroToPacificFrancRate
+  )
+  const amountLeftText = `Il te reste encore ${amountLeftWithCurrency} à dépenser sur le pass Culture.`
 
   return (
     <React.Fragment>
