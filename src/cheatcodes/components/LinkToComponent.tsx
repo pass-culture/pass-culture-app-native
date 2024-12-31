@@ -1,13 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import {
-  RootScreenNames,
-  RootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { RootScreenNames, RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { padding } from 'ui/theme'
 
 interface LinkToComponentProps {
@@ -19,25 +15,25 @@ interface LinkToComponentProps {
 }
 
 export const LinkToComponent = ({
-  name = 'CheatcodesNavigationSignUp',
+  name = 'CheatcodesMenu',
   onPress,
   title,
   navigationParams,
   disabled = false,
-}: LinkToComponentProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToComponent = () => navigate(name, navigationParams)
-
-  return (
-    <Row>
-      <ButtonPrimary
+}: LinkToComponentProps) => (
+  <Row>
+    {onPress ? (
+      <ButtonPrimary wording={title ?? name} onPress={onPress} disabled={disabled} />
+    ) : (
+      <InternalTouchableLink
+        as={ButtonPrimary}
         wording={title ?? name}
-        onPress={onPress ?? navigateToComponent}
+        navigateTo={{ screen: name, params: navigationParams }}
         disabled={disabled}
       />
-    </Row>
-  )
-}
+    )}
+  </Row>
+)
 
 const Row = styled.View(({ theme }) => ({
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
