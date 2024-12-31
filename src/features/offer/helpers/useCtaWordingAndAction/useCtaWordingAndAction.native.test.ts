@@ -963,8 +963,8 @@ const buildOffer = (partialOffer: Partial<OfferResponseV2>): OfferResponseV2 => 
 })
 
 const baseSubcategory = subcategoriesDataTest.subcategories[0]
-// @ts-expect-error: because of noUncheckedIndexedAccess
-const buildSubcategory = (partialSubcategory: Partial<Subcategory>): Subcategory => ({
-  ...baseSubcategory,
-  ...partialSubcategory,
-})
+const buildSubcategory = (partialSubcategory: Partial<Subcategory>): Subcategory =>
+  ({
+    ...baseSubcategory,
+    ...partialSubcategory,
+  }) as Subcategory
