@@ -19,7 +19,6 @@ function buildQueries(userLocation: Position) {
   const commonQueryParams = {
     indexName: 'algoliaOffersIndexNameB',
     userLocation,
-    hitsPerPage: 20,
   }
 
   return [
@@ -37,6 +36,7 @@ function buildQueries(userLocation: Position) {
       ...commonQueryParams,
       filters:
         'offer.subcategoryId:"FESTIVAL_MUSIQUE" AND NOT offer.last30DaysBookingsRange:"very-low"',
+      withRadius: false,
     }),
     buildQuery({
       ...commonQueryParams,

@@ -21,18 +21,15 @@ export const fetchCinemaOffers = async (userLocation?: Position) => {
   const queries: MultipleQueriesQuery[] = [
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 20,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
     }),
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 30,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
       numericFilters: `offer.releaseDate: ${sevenDaysAgo} TO ${today}`,
     }),
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 30,
       filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.CARTES_CINEMA}" AND (offer.subcategoryId:"${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}" OR offer.subcategoryId:"${SubcategoryIdEnum.CINE_VENTE_DISTANCE}")`,
     }),
   ]

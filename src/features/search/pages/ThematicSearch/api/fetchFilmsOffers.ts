@@ -10,23 +10,16 @@ import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 
 export const fetchFilmsOffers = async (userLocation?: Position) => {
-  const commonQueryParams = {
-    hitsPerPage: 20,
-  }
-
   const queries: MultipleQueriesQuery[] = [
     buildQuery({
-      ...commonQueryParams,
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}"`,
     }),
     buildQuery({
-      ...commonQueryParams,
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.VOD}"`,
     }),
     buildQuery({
-      ...commonQueryParams,
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       userLocation,
       filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.DVD_BLU_RAY}" AND offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}" AND NOT offer.last30DaysBookingsRange:"very-low"`,

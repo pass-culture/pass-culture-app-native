@@ -11,6 +11,7 @@ type ThematicSearchQueryParams = {
   numericFilters?: string
   hitsPerPage?: number
   distinct?: boolean
+  withRadius?: boolean
 }
 
 export const buildQuery = ({
@@ -20,6 +21,7 @@ export const buildQuery = ({
   numericFilters,
   hitsPerPage,
   distinct,
+  withRadius = true,
 }: ThematicSearchQueryParams): MultipleQueriesQuery => ({
   indexName,
   query: '',
@@ -29,12 +31,12 @@ export const buildQuery = ({
     ...(userLocation
       ? {
           aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          aroundRadius: DEFAULT_RADIUS * 1000,
+          aroundRadius: withRadius ? DEFAULT_RADIUS * 1000 : 'all',
         }
       : {}),
     ...(filters && { filters }),
     ...(numericFilters && { numericFilters }),
     ...(distinct && { distinct }),
-    ...(hitsPerPage && { hitsPerPage }),
+    hitsPerPage: hitsPerPage ?? 50,
   },
 })
