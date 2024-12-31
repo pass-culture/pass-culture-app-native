@@ -1,11 +1,9 @@
-import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Alert, Button, Text } from 'react-native'
 
 import { api } from 'api/api'
 import { CodePushButton } from 'cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain/keychain'
@@ -15,15 +13,6 @@ import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
-
-type CheatCodesNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'CheatcodesScreenDebugInformations'
->
-
-type Props = {
-  navigation: CheatCodesNavigationProp
-}
 
 const oldAccesstoken =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDc1OTE1MzUsIm5iZiI6MTYwNzU5MTUzNSwianRpIjoiNjM' +
@@ -42,7 +31,7 @@ const getUserId = async () => {
   return tokenContent?.user_claims?.user_id ?? null
 }
 
-export const CheatcodesScreenDebugInformations: FunctionComponent<Props> = function () {
+export const CheatcodesScreenDebugInformations: FunctionComponent = function () {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
   const [userEmail, setUserEmail] = useState('')
   const [userId, setUserId] = useState<null | number>(null)
