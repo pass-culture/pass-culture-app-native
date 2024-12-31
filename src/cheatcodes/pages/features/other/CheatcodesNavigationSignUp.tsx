@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { useSomeOfferId } from 'cheatcodes/hooks/useSomeOfferId'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
@@ -39,11 +39,11 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="SignUp 🎨">
-      <LinkToComponent
+      <LinkToScreen
         screen="SignupConfirmationExpiredLink"
         navigationParams={{ email: 'john@wick.com' }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="AfterSignupEmailValidationBuffer"
         navigationParams={{
           token: 'whichTokenDoYouWantReally',
@@ -51,37 +51,34 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
           email: 'john@wick.com',
         }}
       />
-      <LinkToComponent screen="AccountCreated" />
-      <LinkToComponent screen="BeneficiaryAccountCreated" />
-      <LinkToComponent
+      <LinkToScreen screen="AccountCreated" />
+      <LinkToScreen screen="BeneficiaryAccountCreated" />
+      <LinkToScreen
         screen="NotYetUnderageEligibility"
         navigationParams={{
           eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
         }}
       />
-      <LinkToComponent title="Finish subscription modal" onPress={showFinishSubscriptionModal} />
+      <LinkToScreen title="Finish subscription modal" onPress={showFinishSubscriptionModal} />
       <FinishSubscriptionModal
         visible={finishSubscriptionModalVisible}
         hideModal={hideFinishSubscriptionModal}
         from={StepperOrigin.OFFER}
       />
-      <LinkToComponent title="Authentication modal from offer" onPress={showAuthenticationModal} />
+      <LinkToScreen title="Authentication modal from offer" onPress={showAuthenticationModal} />
       <AuthenticationModal
         visible={authenticationModalVisible}
         hideModal={hideAuthenticationModal}
         offerId={offerId}
         from={StepperOrigin.FAVORITE}
       />
-      <LinkToComponent
-        title="Application Processing Modal"
-        onPress={showApplicationProcessingModal}
-      />
+      <LinkToScreen title="Application Processing Modal" onPress={showApplicationProcessingModal} />
       <ApplicationProcessingModal
         visible={applicationProcessingModalVisible}
         hideModal={hideApplicationProcessingModal}
         offerId={offerId}
       />
-      <LinkToComponent title="Error Application Modal" onPress={showErrorApplicationModal} />
+      <LinkToScreen title="Error Application Modal" onPress={showErrorApplicationModal} />
       <ErrorApplicationModal
         visible={errorApplicationModalVisible}
         hideModal={hideErrorApplicationModal}

@@ -6,7 +6,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { padding } from 'ui/theme'
 
-interface LinkToComponentProps {
+interface Props {
   screen?: RootScreenNames
   onPress?: () => void
   title?: string
@@ -14,13 +14,13 @@ interface LinkToComponentProps {
   disabled?: boolean
 }
 
-export const LinkToComponent = ({
+export const LinkToScreen = ({
   screen = 'CheatcodesMenu',
   onPress,
   title,
   navigationParams,
   disabled = false,
-}: LinkToComponentProps) => (
+}: Props) => (
   <Row>
     {onPress ? (
       <ButtonPrimary wording={title ?? screen} onPress={onPress} disabled={disabled} />

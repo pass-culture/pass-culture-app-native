@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -53,35 +53,32 @@ export function CheatcodesMenu(): React.JSX.Element {
         <SeparatorWithText label="FEATURES" />
       </StyledView>
 
-      <LinkToComponent title="Achievements 🏆" screen="CheatcodesNavigationAchievements" />
-      <LinkToComponent title="BookOffer 🎫" screen="CheatcodesNavigationBookOffer" />
-      <LinkToComponent title="Cultural Survey 🎨" screen="CheatcodesNavigationCulturalSurvey" />
-      <LinkToComponent title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
-      <LinkToComponent title="Home 🏠" screen="CheatcodesNavigationHome" />
-      <LinkToComponent title="IdentityCheck 🎨" screen="CheatcodesNavigationIdentityCheck" />
-      <LinkToComponent title="Internal (Maketing) 🎯" screen="CheatcodesNavigationInternal" />
-      <LinkToComponent title="Profile 👤" screen="CheatcodesNavigationProfile" />
-      <LinkToComponent title="Share 🔗" screen="CheatcodesNavigationShare" />
-      <LinkToComponent title="Subscription 🔔" screen="CheatcodesNavigationSubscription" />
-      <LinkToComponent title="Trusted device 📱" screen="CheatcodesNavigationTrustedDevice" />
-      <LinkToComponent title="Tutorial ❔" screen="CheatcodesNavigationTutorial" />
+      <LinkToScreen title="Achievements 🏆" screen="CheatcodesNavigationAchievements" />
+      <LinkToScreen title="BookOffer 🎫" screen="CheatcodesNavigationBookOffer" />
+      <LinkToScreen title="Cultural Survey 🎨" screen="CheatcodesNavigationCulturalSurvey" />
+      <LinkToScreen title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
+      <LinkToScreen title="Home 🏠" screen="CheatcodesNavigationHome" />
+      <LinkToScreen title="IdentityCheck 🎨" screen="CheatcodesNavigationIdentityCheck" />
+      <LinkToScreen title="Internal (Maketing) 🎯" screen="CheatcodesNavigationInternal" />
+      <LinkToScreen title="Profile 👤" screen="CheatcodesNavigationProfile" />
+      <LinkToScreen title="Share 🔗" screen="CheatcodesNavigationShare" />
+      <LinkToScreen title="Subscription 🔔" screen="CheatcodesNavigationSubscription" />
+      <LinkToScreen title="Trusted device 📱" screen="CheatcodesNavigationTrustedDevice" />
+      <LinkToScreen title="Tutorial ❔" screen="CheatcodesNavigationTutorial" />
 
       <StyledView>
         <SeparatorWithText label="AUTRES" />
       </StyledView>
 
-      <LinkToComponent title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
-      <LinkToComponent title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
-      <LinkToComponent title="Errors 👾" screen="CheatcodesNavigationErrors" />
-      <LinkToComponent title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />
-      <LinkToComponent title="AccesLibre 🌈" screen="CheatcodesScreenAccesLibre" />
-      <LinkToComponent title="SignUp 🎨" screen="CheatcodesNavigationSignUp" />
-      <LinkToComponent
-        title="Account Management ⚙️"
-        screen="CheatcodesNavigationAccountManagement"
-      />
-      <LinkToComponent title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
-      <LinkToComponent title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
+      <LinkToScreen title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
+      <LinkToScreen title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
+      <LinkToScreen title="Errors 👾" screen="CheatcodesNavigationErrors" />
+      <LinkToScreen title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />
+      <LinkToScreen title="AccesLibre 🌈" screen="CheatcodesScreenAccesLibre" />
+      <LinkToScreen title="SignUp 🎨" screen="CheatcodesNavigationSignUp" />
+      <LinkToScreen title="Account Management ⚙️" screen="CheatcodesNavigationAccountManagement" />
+      <LinkToScreen title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
+      <LinkToScreen title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
     </CheatcodesTemplateScreen>
   )
 }

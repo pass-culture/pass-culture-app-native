@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -49,8 +49,8 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
 
   return (
     <CheatcodesTemplateScreen title="Errors 👾">
-      <LinkToComponent screen="BannedCountryError" />
-      <LinkToComponent
+      <LinkToScreen screen="BannedCountryError" />
+      <LinkToScreen
         title={
           asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
             ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
@@ -59,7 +59,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
         disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
         onPress={() => errorAsyncQuery()}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Contentful KO error"
         onPress={() =>
           setScreenError(
@@ -70,11 +70,11 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
           )
         }
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Offre inexistante"
         onPress={() => navigate('Offer', { id: 0, from: 'searchresults' })}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Maintenance Page"
         onPress={() =>
           setScreenError(
@@ -87,7 +87,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
           )
         }
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Erreur rendering"
         onPress={() => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

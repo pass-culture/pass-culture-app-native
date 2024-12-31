@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,11 +20,11 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Trusted device 📱">
-      <LinkToComponent screen="CheatcodesScreenTrustedDeviceInfos" />
-      <LinkToComponent screen="SuspensionChoice" />
-      <LinkToComponent screen="SuspensionChoiceExpiredLink" />
-      <LinkToComponent screen="SuspiciousLoginSuspendedAccount" />
-      <LinkToComponent screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
+      <LinkToScreen screen="CheatcodesScreenTrustedDeviceInfos" />
+      <LinkToScreen screen="SuspensionChoice" />
+      <LinkToScreen screen="SuspensionChoiceExpiredLink" />
+      <LinkToScreen screen="SuspiciousLoginSuspendedAccount" />
+      <LinkToScreen screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
       <BufferContainer>
         <ButtonPrimary
           wording="AccountSecurityBuffer"

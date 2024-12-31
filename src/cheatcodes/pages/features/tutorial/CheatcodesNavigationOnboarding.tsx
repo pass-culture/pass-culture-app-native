@@ -3,7 +3,7 @@ import React from 'react'
 import { StatusBar } from 'react-native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { TutorialTypes } from 'features/tutorial/enums'
 
 export function CheatcodesNavigationOnboarding(): React.JSX.Element {
@@ -16,37 +16,37 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Onboarding 🛶">
-      <LinkToComponent screen="OnboardingGeneralPublicWelcome" />
-      <LinkToComponent screen="OnboardingWelcome" />
-      <LinkToComponent screen="OnboardingGeolocation" />
-      <LinkToComponent
+      <LinkToScreen screen="OnboardingGeneralPublicWelcome" />
+      <LinkToScreen screen="OnboardingWelcome" />
+      <LinkToScreen screen="OnboardingGeolocation" />
+      <LinkToScreen
         screen="AgeSelectionFork"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="EligibleUserAgeSelection"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="AgeSelectionOther"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="OnboardingAgeInformation"
         title="AgeInfo - 15 ans"
         navigationParams={{ age: 15 }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="OnboardingAgeInformation"
         title="AgeInfo - 16 ans"
         navigationParams={{ age: 16 }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="OnboardingAgeInformation"
         title="AgeInfo - 17 ans"
         navigationParams={{ age: 17 }}
       />
-      <LinkToComponent
+      <LinkToScreen
         screen="OnboardingAgeInformation"
         title="AgeInfo - 18 ans"
         navigationParams={{ age: 18 }}

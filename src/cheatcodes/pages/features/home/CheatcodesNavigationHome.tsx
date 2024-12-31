@@ -2,22 +2,22 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 export const CheatcodesNavigationHome = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <CheatcodesTemplateScreen title="Home 🏠">
-      <LinkToComponent
+      <LinkToScreen
         title="HighlightThematicHomeHeader"
         onPress={() => navigate('CheatcodesScreenHighlightThematicHomeHeader')}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="DefaultThematicHomeHeader"
         onPress={() => navigate('CheatcodesScreenDefaultThematicHomeHeader')}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="CategoryThematicHomeHeader"
         onPress={() => navigate('CheatcodesScreenCategoryThematicHomeHeader')}
       />

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
@@ -30,31 +30,31 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="IdentityCheck 🎨">
-      <LinkToComponent
+      <LinkToScreen
         title="NewIdentificationFlow 🎨"
         screen="CheatcodesNavigationNewIdentificationFlow"
       />
-      <LinkToComponent screen="Stepper" />
-      <LinkToComponent screen="PhoneValidationTooManyAttempts" />
-      <LinkToComponent screen="PhoneValidationTooManySMSSent" />
-      <LinkToComponent screen="SetPhoneNumber" />
-      <LinkToComponent screen="SetPhoneNumberWithoutValidation" />
-      <LinkToComponent
+      <LinkToScreen screen="Stepper" />
+      <LinkToScreen screen="PhoneValidationTooManyAttempts" />
+      <LinkToScreen screen="PhoneValidationTooManySMSSent" />
+      <LinkToScreen screen="SetPhoneNumber" />
+      <LinkToScreen screen="SetPhoneNumberWithoutValidation" />
+      <LinkToScreen
         title="PhoneValidation tips Modal"
         onPress={() => setPhoneValidationTipsModalVisible(true)}
       />
-      <LinkToComponent screen="SetPhoneValidationCode" />
-      <LinkToComponent screen="SetStatus" />
-      <LinkToComponent screen="IdentityCheckUnavailable" />
-      <LinkToComponent screen="IdentityCheckPending" />
-      <LinkToComponent screen="SetName" />
-      <LinkToComponent screen="SetAddress" />
-      <LinkToComponent screen="SetCity" />
-      <LinkToComponent screen="IdentityCheckEnd" />
-      <LinkToComponent screen="IdentityCheckHonor" />
-      <LinkToComponent screen="EduConnectForm" />
-      <LinkToComponent screen="IdentityCheckDMS" />
-      <LinkToComponent
+      <LinkToScreen screen="SetPhoneValidationCode" />
+      <LinkToScreen screen="SetStatus" />
+      <LinkToScreen screen="IdentityCheckUnavailable" />
+      <LinkToScreen screen="IdentityCheckPending" />
+      <LinkToScreen screen="SetName" />
+      <LinkToScreen screen="SetAddress" />
+      <LinkToScreen screen="SetCity" />
+      <LinkToScreen screen="IdentityCheckEnd" />
+      <LinkToScreen screen="IdentityCheckHonor" />
+      <LinkToScreen screen="EduConnectForm" />
+      <LinkToScreen screen="IdentityCheckDMS" />
+      <LinkToScreen
         screen="EduConnectValidation"
         navigationParams={{
           firstName: 'firstName',
@@ -62,29 +62,29 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
           dateOfBirth: '2021-12-01',
         }}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserAgeNotValid Educonnect Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserAgeNotValid18YearsOld Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserTypeNotStudent Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="DuplicateUser Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.DuplicateUser)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />
-      <LinkToComponent screen="VerifyEligibility" />
-      <LinkToComponent screen="BeneficiaryRequestSent" />
-      <LinkToComponent screen="IdentificationFork" />
+      <LinkToScreen screen="VerifyEligibility" />
+      <LinkToScreen screen="BeneficiaryRequestSent" />
+      <LinkToScreen screen="IdentificationFork" />
       <Spacer.BottomScreen />
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}
