@@ -25,6 +25,13 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
   keyPassword=
   ```
 
+### Install
+
+```sh
+./scripts/install_certificate_java.sh # this script ask root password
+direnv reload
+```
+
 ### 🔥 Firebase setup
 
 Download the `google-services.json` file from Keeper and place it inside the `android/app` directory. You can also download this file from the Firebase console.
