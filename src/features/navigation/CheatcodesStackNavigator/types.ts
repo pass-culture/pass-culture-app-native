@@ -24,6 +24,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationBookOffer: undefined
   // Others
   CheatcodesScreenDebugInformations: undefined
+  CheatcodesScreenFeatureFlags: undefined
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesNavigationErrors: undefined
   CheatcodesNavigationNotScreensPages: undefined
