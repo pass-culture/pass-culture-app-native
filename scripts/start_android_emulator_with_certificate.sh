@@ -3,8 +3,6 @@ set -o errexit -o nounset -o pipefail
 
 SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || true)"
 
-WAIT_BOOT_COMPLETED="${WAIT_BOOT_COMPLETED:-15}"
-
 SCRIPT_FOLDER="$(dirname "$(realpath "$0")")"
 
 choose_an_emulator() {
@@ -45,7 +43,7 @@ if "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 
 	start_android_emulator >/dev/null &
 
-	sleep "$WAIT_BOOT_COMPLETED"
+	adb wait-for-device
 
 	add_certificate_to_this_session
 fi
