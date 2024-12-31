@@ -1,23 +1,22 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const CheatMenuButton: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
   return env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
     <CheatMenuButtonContainer topSafeInsets={top}>
-      <ButtonTertiaryNeutralInfo
+      <InternalTouchableLink
+        as={ButtonTertiaryNeutralInfo}
         buttonHeight="extraSmall"
         wording="Cheatcodes"
-        onPress={() => navigate('CheatcodesMenu')}
+        navigateTo={{ screen: 'CheatcodesStackNavigator' }}
       />
     </CheatMenuButtonContainer>
   ) : null
