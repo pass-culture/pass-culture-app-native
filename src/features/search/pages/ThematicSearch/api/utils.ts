@@ -31,7 +31,7 @@ export const buildQuery = ({
     ...(userLocation
       ? {
           aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          ...(withRadius && { aroundRadius: DEFAULT_RADIUS * 1000 }),
+          aroundRadius: withRadius ? DEFAULT_RADIUS * 1000 : 'all',
         }
       : {}),
     ...(filters && { filters }),
