@@ -58,6 +58,60 @@ This will also start the metro server. If not, run in another tab :
 yarn start
 ```
 
+### Emulator
+
+#### Download Android image
+
+1. Open Android Studio
+1. Open settings
+1. Open Android SDK
+1. Check "Show Package Details"
+1. Unfold some image versions (any [version supported](../../android/build.gradle))
+1. Check "Google APIs `*` System Image"
+
+   Where `*` match you CPU architecture that you can know using
+
+   ```sh
+   uname -m
+   ```
+
+   This type of image is known to work unlike to "Google APIs ATD" which is known to have issues
+
+1. Click on "OK", this will download stuff
+
+#### Create an emulator
+
+1. Open Android Studio
+1. Open Device Manager
+1. Click on "Add a new device"
+1. Click on "Create Virtual Device"
+1. Choose any hardware
+1. Choose [a "Google APIs" image that have been previously downloaded](#download-android-image), you may have to go to the "Other Images" tab
+
+If you have a pass Culture's computer, which has a proxy that adds a custom certificate.
+
+1. Start your emulator at least once
+1. Stop your emulator
+1. Run in a terminal
+
+   ```sh
+   yarn android:testing
+   ```
+
+#### Select emulator
+
+List emulators
+
+```sh
+emulator -list-avds
+```
+
+Select your preferred
+
+```sh
+echo "ANDROID_SERIAL=Pixel_Fold_API_35" >>.env.local
+```
+
 ### Troubleshooting
 
 <details>
