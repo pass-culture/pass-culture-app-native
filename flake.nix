@@ -16,7 +16,9 @@
         pkgs.mkShellNoCC {
           packages = [
             pkgs.devbox
-            pkgs.jdk17 # needed by Android
+            pkgs.jdk17 # needed to build Android app from the CLI
+            pkgs.sdkmanager # needed by ours Android's scripts
+            pkgs.toybox # needed to build Android app from the CLI
             pkgs.ios-deploy # needed to run the app on real iPhone
             pkgs.jq # needed by some scripts run in the pipeline
             pkgs.python3 # needed by scripts/add_tracker.py
