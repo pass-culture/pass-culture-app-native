@@ -72,6 +72,7 @@ export function CheatcodesMenu(): React.JSX.Element {
 
       <LinkToScreen title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
       <LinkToScreen title="Features flags 🏳️" screen="CheatcodesScreenFeatureFlags" />
+      <LinkToScreen title="Remote config 📊" screen="CheatcodesScreenRemoteConfig" />
       <LinkToScreen title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
       <LinkToScreen title="Errors 👾" screen="CheatcodesNavigationErrors" />
       <LinkToScreen title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />

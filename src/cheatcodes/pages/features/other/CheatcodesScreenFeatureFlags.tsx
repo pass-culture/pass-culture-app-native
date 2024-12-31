@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
@@ -8,20 +9,21 @@ import { TypoDS, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
   const featureFlags = useFeatureFlagAll()
+  const featureFlagsArray = Object.entries(featureFlags)
 
   return (
     <CheatcodesTemplateScreen title="Feature Flags 🏳️" flexDirection="column">
-      {Object.entries(featureFlags).map(([featureFlag, isActive]) => {
-        return (
-          <React.Fragment key={featureFlag}>
-            <StyledFeatureFlag>
-              <TypoDS.Body numberOfLines={1}>{featureFlag}</TypoDS.Body>
-              <StyledTitle4 active={!!isActive}>{isActive ? 'Actif' : 'Inactif'}</StyledTitle4>
-            </StyledFeatureFlag>
-            <StyledSeparator />
-          </React.Fragment>
-        )
-      })}
+      <FlatList
+        data={featureFlagsArray}
+        keyExtractor={([featureFlag]) => featureFlag}
+        renderItem={({ item: [featureFlag, isActive] }) => (
+          <StyledFeatureFlag>
+            <TypoDS.Body numberOfLines={1}>{featureFlag}</TypoDS.Body>
+            <StyledTitle4 active={!!isActive}>{isActive ? 'Actif' : 'Inactif'}</StyledTitle4>
+          </StyledFeatureFlag>
+        )}
+        ItemSeparatorComponent={() => <StyledSeparator />}
+      />
     </CheatcodesTemplateScreen>
   )
 }

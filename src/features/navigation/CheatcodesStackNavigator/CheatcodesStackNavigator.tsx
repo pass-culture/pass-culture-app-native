@@ -20,6 +20,7 @@ import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/features/other/Chea
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/features/other/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/features/other/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/features/other/CheatcodesScreenNewCaledonia'
+import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/features/other/CheatcodesScreenRemoteConfig'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
@@ -122,6 +123,10 @@ const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: Compone
   {
     name: 'CheatcodesScreenFeatureFlags',
     component: CheatcodesScreenFeatureFlags,
+  },
+  {
+    name: 'CheatcodesScreenRemoteConfig',
+    component: CheatcodesScreenRemoteConfig,
   },
   {
     name: 'CheatcodesScreenNewCaledonia',
