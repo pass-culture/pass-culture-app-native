@@ -35,6 +35,7 @@ KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper se
 
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
+./scripts/setup_android.sh
 direnv reload
 ```
 
