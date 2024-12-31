@@ -17,23 +17,16 @@ describe('fetchFilmsOffers', () => {
 })
 
 function buildQueries(userLocation: Position) {
-  const commonQueryParams = {
-    hitsPerPage: 20,
-  }
-
   return [
     buildQuery({
-      ...commonQueryParams,
       indexName: 'algoliaOffersIndexNameB',
       filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
     }),
     buildQuery({
-      ...commonQueryParams,
       indexName: 'algoliaOffersIndexNameB',
       filters: 'offer.subcategoryId:"VOD"',
     }),
     buildQuery({
-      ...commonQueryParams,
       indexName: 'algoliaOffersIndexName',
       filters:
         'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"very-low"',

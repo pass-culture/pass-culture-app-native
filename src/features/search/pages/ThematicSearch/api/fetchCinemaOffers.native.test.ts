@@ -32,18 +32,15 @@ function buildQueries(userLocation: Position) {
   return [
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 20,
       filters: 'offer.subcategoryId:"SEANCE_CINE"',
     }),
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 30,
       filters: 'offer.subcategoryId:"SEANCE_CINE"',
       numericFilters: 'offer.releaseDate: 1743984000 TO 1744588800',
     }),
     buildQuery({
       ...commonQueryParams,
-      hitsPerPage: 30,
       filters:
         'offer.nativeCategoryId:"CARTES_CINEMA" AND (offer.subcategoryId:"CARTE_CINE_MULTISEANCES" OR offer.subcategoryId:"CINE_VENTE_DISTANCE")',
     }),

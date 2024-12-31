@@ -10,7 +10,6 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
   const commonQueryParams = {
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
     userLocation,
-    hitsPerPage: 20,
   }
 
   const queries: MultipleQueriesQuery[] = [
@@ -26,6 +25,7 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
     buildQuery({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.FESTIVAL_MUSIQUE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
+      withRadius: false,
     }),
     buildQuery({
       ...commonQueryParams,
