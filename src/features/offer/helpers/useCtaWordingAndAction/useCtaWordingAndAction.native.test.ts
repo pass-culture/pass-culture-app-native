@@ -13,6 +13,7 @@ import { analytics } from 'libs/analytics'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
+import { mockBuilder } from 'tests/mockBuilder'
 
 import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
@@ -646,6 +647,36 @@ describe('getCtaWordingAndAction', () => {
         offerId: baseOffer.id,
         ...defaultApiRecoParams,
         playlistType: defaultPlaylistType,
+      })
+    })
+
+    it('logs event logViewedBookingPage when we click CTA "Réserver l’offre" on free digital event already booked', () => {
+      const offer = baseOffer
+      const subcategory = buildSubcategory({ isEvent: true })
+      const booking = mockBuilder.bookingResponse({ id: offer.id })
+
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCredit: true,
+          bookedOffers: { [offer.id]: offer.id },
+          isUnderageBeneficiary: false,
+          bookOffer: jest.fn(),
+          isBookingLoading: false,
+          booking,
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
+        }) || {}
+
+      onPress?.()
+
+      expect(analytics.logViewedBookingPage).toHaveBeenNthCalledWith(1, {
+        from: 'offer',
+        offerId: offer.id,
       })
     })
 
