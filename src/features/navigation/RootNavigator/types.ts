@@ -5,6 +5,7 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
@@ -67,38 +68,6 @@ export type AccessibilityRootStackParamList = {
   AccessibilityDeclaration: undefined
   AccessibilityEngagement: undefined
   RecommendedPaths: undefined
-}
-
-export type CheatcodeRootStackParamList = {
-  // Menu
-  CheatcodesMenu: undefined
-  // Features
-  CheatcodesNavigationHome: undefined
-  CheatcodesScreenCategoryThematicHomeHeader: undefined
-  CheatcodesScreenDefaultThematicHomeHeader: undefined
-  CheatcodesScreenHighlightThematicHomeHeader: undefined
-  CheatcodesNavigationProfile: undefined
-  CheatcodesNavigationIdentityCheck: undefined
-  CheatcodesNavigationNewIdentificationFlow: undefined
-  CheatcodesNavigationAchievements: undefined
-  CheatcodesNavigationShare: undefined
-  CheatcodesNavigationSubscription: undefined
-  CheatcodesNavigationCulturalSurvey: undefined
-  CheatcodesNavigationTutorial: undefined
-  CheatcodesNavigationOnboarding: undefined
-  CheatcodesNavigationProfileTutorial: undefined
-  CheatcodesNavigationTrustedDevice: undefined
-  CheatcodesScreenTrustedDeviceInfos: undefined
-  CheatcodesNavigationInternal: undefined
-  CheatcodesNavigationBookOffer: undefined
-  // Others
-  CheatcodesScreenDebugInformations: undefined
-  CheatcodesScreenNewCaledonia: undefined
-  CheatcodesNavigationErrors: undefined
-  CheatcodesNavigationNotScreensPages: undefined
-  CheatcodesScreenAccesLibre: undefined
-  CheatcodesNavigationSignUp: undefined
-  CheatcodesNavigationAccountManagement: undefined
 }
 
 export type CulturalSurveyRootStackParamList = {
@@ -219,10 +188,9 @@ export type RootStackParamList = {
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
+  Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
-  Artist: {
-    fromOfferId: number
-  }
+  Artist: { fromOfferId: number }
   BannedCountryError: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
@@ -233,6 +201,7 @@ export type RootStackParamList = {
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   ChangePassword: undefined
   ChangeStatus: undefined
+  CheatcodesStackNavigator: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
@@ -261,8 +230,10 @@ export type RootStackParamList = {
     from?: StepperOrigin
   }
   Maintenance: undefined
+  MovieCalendar: undefined
   NewEmailSelection: { token: string }
   NotificationsSettings: undefined
+  NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: {
     id: number
     from?: Referrals
@@ -278,7 +249,6 @@ export type RootStackParamList = {
   OfferDescription: { id: number }
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
-  NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   PageNotFound: undefined
   PersonalData: undefined
   RecreditBirthdayNotification: undefined
@@ -299,32 +269,23 @@ export type RootStackParamList = {
   SuspendAccountConfirmation: { token: string }
   SuspendAccountConfirmationWithoutAuthentication: undefined
   SuspendedAccountUponUserRequest: undefined
-  TabNavigator: {
-    screen: TabRouteName
-    params: TabParamList[TabRouteName]
-  }
+  TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams
   TrackEmailChange: undefined
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
-  Venue: {
-    id: number
-    from?: Referrals
-    searchId?: string
-  }
+  Venue: { id: number; from?: Referrals; searchId?: string }
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-  MovieCalendar: undefined
-  Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
 } & AccessibilityRootStackParamList &
-  CheatcodeRootStackParamList &
+  CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
-  TutorialRootStackParamList &
   SubscriptionRootStackParamList &
-  TrustedDeviceRootStackParamList
+  TrustedDeviceRootStackParamList &
+  TutorialRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList & SearchStackParamList
 

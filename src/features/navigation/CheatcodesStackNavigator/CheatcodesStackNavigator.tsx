@@ -1,3 +1,6 @@
+import { createStackNavigator } from '@react-navigation/stack'
+import React, { ComponentType } from 'react'
+
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
@@ -25,148 +28,128 @@ import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/tutori
 import { CheatcodesNavigationProfileTutorial } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationProfileTutorial'
 import { CheatcodesNavigationTutorial } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { CheatcodeRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
+import {
+  CheatcodesStackParamList,
+  CheatcodesStackRouteName,
+} from 'features/navigation/CheatcodesStackNavigator/types'
+import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 
-export const cheatcodesRoutes: GenericRoute<CheatcodeRootStackParamList>[] = [
-  // *** MENU ***
+const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: ComponentType }> = [
+  /**** MENU ****/
   {
     name: 'CheatcodesMenu',
     component: CheatcodesMenu,
-    path: 'cheatcodes',
   },
-  // *** FEATURES ***
+  /**** FEATURES ****/
   {
     name: 'CheatcodesNavigationHome',
     component: CheatcodesNavigationHome,
-    path: 'cheatcodes/home',
   },
   {
     name: 'CheatcodesScreenCategoryThematicHomeHeader',
     component: CheatcodesScreenCategoryThematicHomeHeader,
-    path: 'cheatcodes/home/category-thematic-home-header',
   },
   {
     name: 'CheatcodesScreenDefaultThematicHomeHeader',
-    component: CheatcodesScreenDefaultThematicHomeHeader,
-    path: 'cheatcodes/home/default-thematic-home-header',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
   },
   {
     name: 'CheatcodesScreenHighlightThematicHomeHeader',
     component: CheatcodesScreenHighlightThematicHomeHeader,
-    path: 'cheatcodes/home/highlight-thematic-home-header',
   },
   {
     name: 'CheatcodesNavigationProfile',
     component: CheatcodesNavigationProfile,
-    path: 'cheatcodes/profile',
   },
   {
     name: 'CheatcodesNavigationAchievements',
     component: CheatcodesNavigationAchievements,
-    path: 'cheatcodes/achievements',
   },
   {
     name: 'CheatcodesNavigationShare',
     component: CheatcodesNavigationShare,
-    path: 'cheatcodes/share',
   },
   {
     name: 'CheatcodesNavigationSubscription',
     component: CheatcodesNavigationSubscription,
-    path: 'cheatcodes/subscription',
   },
   {
     name: 'CheatcodesNavigationCulturalSurvey',
-    component: CheatcodesNavigationCulturalSurvey,
-    path: 'cheatcodes/cultural-survey',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesNavigationCulturalSurvey),
   },
   {
     name: 'CheatcodesNavigationTutorial',
     component: CheatcodesNavigationTutorial,
-    path: 'cheatcodes/tutorial',
   },
   {
     name: 'CheatcodesNavigationOnboarding',
     component: CheatcodesNavigationOnboarding,
-    path: 'cheatcodes/tutorial/onboarding',
   },
   {
     name: 'CheatcodesNavigationProfileTutorial',
     component: CheatcodesNavigationProfileTutorial,
-    path: 'cheatcodes/tutorial/profile-tutorial',
   },
   {
     name: 'CheatcodesNavigationTrustedDevice',
     component: CheatcodesNavigationTrustedDevice,
-    path: 'cheatcodes/trusted-device',
   },
   {
     name: 'CheatcodesScreenTrustedDeviceInfos',
     component: CheatcodesScreenTrustedDeviceInfos,
-    path: 'cheatcodes/trusted-device/trusted-device-infos',
   },
   {
     name: 'CheatcodesNavigationIdentityCheck',
-    component: CheatcodesNavigationIdentityCheck,
-    path: 'cheatcodes/identity-check',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesNavigationIdentityCheck),
   },
   {
     name: 'CheatcodesNavigationNewIdentificationFlow',
-    component: CheatcodesNavigationNewIdentificationFlow,
-    path: 'cheatcodes/identity-check/new-identification-flow',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesNavigationNewIdentificationFlow),
   },
   {
     name: 'CheatcodesNavigationInternal',
     component: CheatcodesNavigationInternal,
-    path: 'cheatcodes/internal',
   },
   {
     name: 'CheatcodesNavigationBookOffer',
     component: CheatcodesNavigationBookOffer,
-    path: 'cheatcodes/book-offer',
   },
-  // *** OTHER ***
+  /**** OTHER ****/
   {
     name: 'CheatcodesScreenDebugInformations',
     component: CheatcodesScreenDebugInformations,
-    path: 'cheatcodes/other/debug-informations',
   },
   {
     name: 'CheatcodesScreenNewCaledonia',
     component: CheatcodesScreenNewCaledonia,
-    path: 'cheatcodes/other/new-caledonia',
   },
   {
     name: 'CheatcodesNavigationErrors',
-    component: CheatcodesNavigationErrors,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheatcodes/other/errors',
+    component: withAsyncErrorBoundary(CheatcodesNavigationErrors),
   },
   {
     name: 'CheatcodesNavigationNotScreensPages',
-    component: CheatcodesNavigationNotScreensPages,
-    path: 'cheatcodes/other/not-screens-pages',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesNavigationNotScreensPages),
   },
   {
     name: 'CheatcodesScreenAccesLibre',
     component: CheatcodesScreenAccesLibre,
-    path: 'cheatcodes/other/acces-libre',
   },
   {
     name: 'CheatcodesNavigationSignUp',
-    component: CheatcodesNavigationSignUp,
-    hoc: withAsyncErrorBoundary,
-    path: 'cheatcodes/other/sign-up',
+    component: withAsyncErrorBoundary(CheatcodesNavigationSignUp),
   },
   {
     name: 'CheatcodesNavigationAccountManagement',
-    component: CheatcodesNavigationAccountManagement,
-    path: 'cheatcodes/other/account-management',
-    hoc: withAsyncErrorBoundary,
+    component: withAsyncErrorBoundary(CheatcodesNavigationAccountManagement),
   },
 ]
+
+const CheatcodesStack = createStackNavigator<CheatcodesStackParamList>()
+
+export const CheatcodesStackNavigator = () => (
+  <CheatcodesStack.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+    {routes.map(({ name, component }) => (
+      <CheatcodesStack.Screen name={name} key={name} component={component} />
+    ))}
+  </CheatcodesStack.Navigator>
+)
