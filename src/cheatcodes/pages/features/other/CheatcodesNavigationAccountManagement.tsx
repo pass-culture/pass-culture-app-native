@@ -17,9 +17,7 @@ export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
       <LinkToComponent name="ResetPasswordExpiredLink" />
       <LinkToComponent
         name="ResetPasswordEmailSent"
-        navigationParams={{
-          email: 'jean.dupont@gmail.com',
-        }}
+        navigationParams={{ email: 'jean.dupont@gmail.com' }}
       />
       <LinkToComponent name="DeleteProfileAccountNotDeletable" />
       <LinkToComponent name="DeleteProfileAccountHacked" />

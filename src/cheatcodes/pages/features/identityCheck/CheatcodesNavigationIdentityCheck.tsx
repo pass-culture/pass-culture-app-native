@@ -32,34 +32,24 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
     <CheatcodesTemplateScreen title="IdentityCheck 🎨">
       <LinkToComponent
         title="NewIdentificationFlow 🎨"
-        onPress={() => navigate('CheatcodesNavigationNewIdentificationFlow')}
+        name="CheatcodesNavigationNewIdentificationFlow"
       />
-      <LinkToComponent name="Stepper" title="Stepper" />
-      <LinkToComponent
-        title="Too many codes"
-        onPress={() => navigate('PhoneValidationTooManyAttempts')}
-      />
-      <LinkToComponent
-        title="Too many SMS sent"
-        onPress={() => navigate('PhoneValidationTooManySMSSent')}
-      />
-
-      <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
+      <LinkToComponent name="Stepper" />
+      <LinkToComponent name="PhoneValidationTooManyAttempts" />
+      <LinkToComponent name="PhoneValidationTooManySMSSent" />
+      <LinkToComponent name="SetPhoneNumber" />
       <LinkToComponent name="SetPhoneNumberWithoutValidation" />
       <LinkToComponent
         title="PhoneValidation tips Modal"
         onPress={() => setPhoneValidationTipsModalVisible(true)}
       />
-      <LinkToComponent
-        title="New SetPhoneValidationCode"
-        onPress={() => navigate('SetPhoneValidationCode')}
-      />
-      <LinkToComponent name="SetStatus" title="SetStatus" />
+      <LinkToComponent name="SetPhoneValidationCode" />
+      <LinkToComponent name="SetStatus" />
       <LinkToComponent name="IdentityCheckUnavailable" />
       <LinkToComponent name="IdentityCheckPending" />
       <LinkToComponent name="SetName" />
-      <LinkToComponent name="SetAddress" title="SetAddress" />
-      <LinkToComponent name="SetCity" title="SetCity" />
+      <LinkToComponent name="SetAddress" />
+      <LinkToComponent name="SetCity" />
       <LinkToComponent name="IdentityCheckEnd" />
       <LinkToComponent name="IdentityCheckHonor" />
       <LinkToComponent name="EduConnectForm" />
@@ -92,11 +82,8 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />
-      <LinkToComponent title="VerifyEligibility" onPress={() => navigate('VerifyEligibility')} />
-      <LinkToComponent
-        title="Beneficiary request sent"
-        onPress={() => navigate('BeneficiaryRequestSent')}
-      />
+      <LinkToComponent name="VerifyEligibility" />
+      <LinkToComponent name="BeneficiaryRequestSent" />
       <LinkToComponent name="IdentificationFork" />
       <Spacer.BottomScreen />
       <PhoneValidationTipsModal

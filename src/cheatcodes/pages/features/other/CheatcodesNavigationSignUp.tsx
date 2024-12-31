@@ -1,10 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
 import { useSomeOfferId } from 'cheatcodes/hooks/useSomeOfferId'
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
@@ -12,7 +11,6 @@ import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscript
 import { useModal } from 'ui/components/modals/useModal'
 
 export function CheatcodesNavigationSignUp(): React.JSX.Element {
-  const { navigate } = useNavigation<UseNavigationType>()
   const offerId = useSomeOfferId()
 
   const {
@@ -20,16 +18,19 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
     showModal: showFinishSubscriptionModal,
     hideModal: hideFinishSubscriptionModal,
   } = useModal(false)
+
   const {
     visible: authenticationModalVisible,
     showModal: showAuthenticationModal,
     hideModal: hideAuthenticationModal,
   } = useModal(false)
+
   const {
     visible: applicationProcessingModalVisible,
     showModal: showApplicationProcessingModal,
     hideModal: hideApplicationProcessingModal,
   } = useModal(false)
+
   const {
     visible: errorApplicationModalVisible,
     showModal: showErrorApplicationModal,
@@ -39,35 +40,24 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="SignUp 🎨">
       <LinkToComponent
-        title="Account confirmation lien expiré"
-        onPress={() =>
-          navigate('SignupConfirmationExpiredLink', {
-            email: 'john@wick.com',
-          })
-        }
+        name="SignupConfirmationExpiredLink"
+        navigationParams={{ email: 'john@wick.com' }}
       />
       <LinkToComponent
-        title="Validate Email"
-        onPress={() =>
-          navigate('AfterSignupEmailValidationBuffer', {
-            token: 'whichTokenDoYouWantReally',
-            expiration_timestamp: 456789123,
-            email: 'john@wick.com',
-          })
-        }
+        name="AfterSignupEmailValidationBuffer"
+        navigationParams={{
+          token: 'whichTokenDoYouWantReally',
+          expiration_timestamp: 456789123,
+          email: 'john@wick.com',
+        }}
       />
-      <LinkToComponent title="Account Created" onPress={() => navigate('AccountCreated')} />
+      <LinkToComponent name="AccountCreated" />
+      <LinkToComponent name="BeneficiaryAccountCreated" />
       <LinkToComponent
-        title="BeneficiaryAccountCreated"
-        onPress={() => navigate('BeneficiaryAccountCreated')}
-      />
-      <LinkToComponent
-        title={"C'est pour bientôt"}
-        onPress={() =>
-          navigate('NotYetUnderageEligibility', {
-            eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
-          })
-        }
+        name="NotYetUnderageEligibility"
+        navigationParams={{
+          eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
+        }}
       />
       <LinkToComponent title="Finish subscription modal" onPress={showFinishSubscriptionModal} />
       <FinishSubscriptionModal

@@ -10,37 +10,21 @@ export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="NewIdentificationFlow 🎨">
-      <LinkToComponent
-        name="SelectIDOrigin"
-        title="SelectIDOrigin"
-        onPress={() => navigate('SelectIDOrigin')}
-      />
-      <LinkToComponent
-        name="SelectIDStatus"
-        title="SelectIDStatus"
-        onPress={() => navigate('SelectIDStatus')}
-      />
-      <LinkToComponent
-        name="SelectPhoneStatus"
-        title="SelectPhoneStatus"
-        onPress={() => navigate('SelectPhoneStatus')}
-      />
+      <LinkToComponent name="SelectIDOrigin" />
+      <LinkToComponent name="SelectIDStatus" />
+      <LinkToComponent name="SelectPhoneStatus" />
       <LinkToComponent
         name="DMSIntroduction"
-        title="DMS FR"
+        title="DMS français"
         onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: false })}
       />
       <LinkToComponent
         name="DMSIntroduction"
-        title="DMS ETR"
+        title="DMS étranger"
         onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: true })}
       />
-      <LinkToComponent
-        name="ExpiredOrLostID"
-        title="ExpiredOrLostID"
-        onPress={() => navigate('ExpiredOrLostID')}
-      />
-      <LinkToComponent name="ComeBackLater" title="Reviens plus tard" />
+      <LinkToComponent name="ExpiredOrLostID" />
+      <LinkToComponent name="ComeBackLater" />
     </CheatcodesTemplateScreen>
   )
 }
