@@ -29,8 +29,11 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
 
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
+./scripts/setup_android.sh
 direnv reload
 ```
+
+This can take several minutes (~4 minutes).
 
 ### 🔥 Firebase setup
 
