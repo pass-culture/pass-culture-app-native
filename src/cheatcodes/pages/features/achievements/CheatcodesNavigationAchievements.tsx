@@ -23,7 +23,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Achievements 🏆">
-      <LinkToComponent name="Achievements" navigationParams={{ from: 'cheatcodes' }} />
+      <LinkToComponent screen="Achievements" navigationParams={{ from: 'cheatcodes' }} />
       <LinkToComponent
         title="AchievementSuccessModal (1 unlocked)"
         onPress={showModalOneAchievement}

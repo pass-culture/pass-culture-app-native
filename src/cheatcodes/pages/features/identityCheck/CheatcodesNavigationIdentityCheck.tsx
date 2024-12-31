@@ -32,30 +32,30 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
     <CheatcodesTemplateScreen title="IdentityCheck 🎨">
       <LinkToComponent
         title="NewIdentificationFlow 🎨"
-        name="CheatcodesNavigationNewIdentificationFlow"
+        screen="CheatcodesNavigationNewIdentificationFlow"
       />
-      <LinkToComponent name="Stepper" />
-      <LinkToComponent name="PhoneValidationTooManyAttempts" />
-      <LinkToComponent name="PhoneValidationTooManySMSSent" />
-      <LinkToComponent name="SetPhoneNumber" />
-      <LinkToComponent name="SetPhoneNumberWithoutValidation" />
+      <LinkToComponent screen="Stepper" />
+      <LinkToComponent screen="PhoneValidationTooManyAttempts" />
+      <LinkToComponent screen="PhoneValidationTooManySMSSent" />
+      <LinkToComponent screen="SetPhoneNumber" />
+      <LinkToComponent screen="SetPhoneNumberWithoutValidation" />
       <LinkToComponent
         title="PhoneValidation tips Modal"
         onPress={() => setPhoneValidationTipsModalVisible(true)}
       />
-      <LinkToComponent name="SetPhoneValidationCode" />
-      <LinkToComponent name="SetStatus" />
-      <LinkToComponent name="IdentityCheckUnavailable" />
-      <LinkToComponent name="IdentityCheckPending" />
-      <LinkToComponent name="SetName" />
-      <LinkToComponent name="SetAddress" />
-      <LinkToComponent name="SetCity" />
-      <LinkToComponent name="IdentityCheckEnd" />
-      <LinkToComponent name="IdentityCheckHonor" />
-      <LinkToComponent name="EduConnectForm" />
-      <LinkToComponent name="IdentityCheckDMS" />
+      <LinkToComponent screen="SetPhoneValidationCode" />
+      <LinkToComponent screen="SetStatus" />
+      <LinkToComponent screen="IdentityCheckUnavailable" />
+      <LinkToComponent screen="IdentityCheckPending" />
+      <LinkToComponent screen="SetName" />
+      <LinkToComponent screen="SetAddress" />
+      <LinkToComponent screen="SetCity" />
+      <LinkToComponent screen="IdentityCheckEnd" />
+      <LinkToComponent screen="IdentityCheckHonor" />
+      <LinkToComponent screen="EduConnectForm" />
+      <LinkToComponent screen="IdentityCheckDMS" />
       <LinkToComponent
-        name="EduConnectValidation"
+        screen="EduConnectValidation"
         navigationParams={{
           firstName: 'firstName',
           lastName: 'lastName',
@@ -82,9 +82,9 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />
-      <LinkToComponent name="VerifyEligibility" />
-      <LinkToComponent name="BeneficiaryRequestSent" />
-      <LinkToComponent name="IdentificationFork" />
+      <LinkToComponent screen="VerifyEligibility" />
+      <LinkToComponent screen="BeneficiaryRequestSent" />
+      <LinkToComponent screen="IdentificationFork" />
       <Spacer.BottomScreen />
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}

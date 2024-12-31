@@ -40,21 +40,21 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="SignUp 🎨">
       <LinkToComponent
-        name="SignupConfirmationExpiredLink"
+        screen="SignupConfirmationExpiredLink"
         navigationParams={{ email: 'john@wick.com' }}
       />
       <LinkToComponent
-        name="AfterSignupEmailValidationBuffer"
+        screen="AfterSignupEmailValidationBuffer"
         navigationParams={{
           token: 'whichTokenDoYouWantReally',
           expiration_timestamp: 456789123,
           email: 'john@wick.com',
         }}
       />
-      <LinkToComponent name="AccountCreated" />
-      <LinkToComponent name="BeneficiaryAccountCreated" />
+      <LinkToComponent screen="AccountCreated" />
+      <LinkToComponent screen="BeneficiaryAccountCreated" />
       <LinkToComponent
-        name="NotYetUnderageEligibility"
+        screen="NotYetUnderageEligibility"
         navigationParams={{
           eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
         }}

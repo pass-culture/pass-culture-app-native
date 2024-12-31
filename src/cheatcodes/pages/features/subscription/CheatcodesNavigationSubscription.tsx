@@ -52,7 +52,7 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Subscription 🔔">
-      <LinkToComponent name="OnboardingSubscription" />
+      <LinkToComponent screen="OnboardingSubscription" />
       <LinkToComponent title="Modale Cinéma" onPress={showCinemaModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.CINEMA}

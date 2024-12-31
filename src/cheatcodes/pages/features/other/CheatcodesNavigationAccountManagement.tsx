@@ -6,21 +6,21 @@ import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
 export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Account Management ⚙️">
-      <LinkToComponent name="FraudulentSuspendedAccount" />
-      <LinkToComponent name="SuspendedAccountUponUserRequest" />
-      <LinkToComponent name="AccountReactivationSuccess" />
-      <LinkToComponent name="DeleteProfileReason" />
-      <LinkToComponent name="ConfirmDeleteProfile" />
-      <LinkToComponent name="DeactivateProfileSuccess" />
-      <LinkToComponent name="DeleteProfileSuccess" />
-      <LinkToComponent name="DeleteProfileConfirmation" />
-      <LinkToComponent name="ResetPasswordExpiredLink" />
+      <LinkToComponent screen="FraudulentSuspendedAccount" />
+      <LinkToComponent screen="SuspendedAccountUponUserRequest" />
+      <LinkToComponent screen="AccountReactivationSuccess" />
+      <LinkToComponent screen="DeleteProfileReason" />
+      <LinkToComponent screen="ConfirmDeleteProfile" />
+      <LinkToComponent screen="DeactivateProfileSuccess" />
+      <LinkToComponent screen="DeleteProfileSuccess" />
+      <LinkToComponent screen="DeleteProfileConfirmation" />
+      <LinkToComponent screen="ResetPasswordExpiredLink" />
       <LinkToComponent
-        name="ResetPasswordEmailSent"
+        screen="ResetPasswordEmailSent"
         navigationParams={{ email: 'jean.dupont@gmail.com' }}
       />
-      <LinkToComponent name="DeleteProfileAccountNotDeletable" />
-      <LinkToComponent name="DeleteProfileAccountHacked" />
+      <LinkToComponent screen="DeleteProfileAccountNotDeletable" />
+      <LinkToComponent screen="DeleteProfileAccountHacked" />
     </CheatcodesTemplateScreen>
   )
 }

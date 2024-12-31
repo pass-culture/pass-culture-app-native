@@ -16,38 +16,38 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Onboarding 🛶">
-      <LinkToComponent name="OnboardingGeneralPublicWelcome" />
-      <LinkToComponent name="OnboardingWelcome" />
-      <LinkToComponent name="OnboardingGeolocation" />
+      <LinkToComponent screen="OnboardingGeneralPublicWelcome" />
+      <LinkToComponent screen="OnboardingWelcome" />
+      <LinkToComponent screen="OnboardingGeolocation" />
       <LinkToComponent
-        name="AgeSelectionFork"
+        screen="AgeSelectionFork"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
       <LinkToComponent
-        name="EligibleUserAgeSelection"
+        screen="EligibleUserAgeSelection"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
       <LinkToComponent
-        name="AgeSelectionOther"
+        screen="AgeSelectionOther"
         navigationParams={{ type: TutorialTypes.ONBOARDING }}
       />
       <LinkToComponent
-        name="OnboardingAgeInformation"
+        screen="OnboardingAgeInformation"
         title="AgeInfo - 15 ans"
         navigationParams={{ age: 15 }}
       />
       <LinkToComponent
-        name="OnboardingAgeInformation"
+        screen="OnboardingAgeInformation"
         title="AgeInfo - 16 ans"
         navigationParams={{ age: 16 }}
       />
       <LinkToComponent
-        name="OnboardingAgeInformation"
+        screen="OnboardingAgeInformation"
         title="AgeInfo - 17 ans"
         navigationParams={{ age: 17 }}
       />
       <LinkToComponent
-        name="OnboardingAgeInformation"
+        screen="OnboardingAgeInformation"
         title="AgeInfo - 18 ans"
         navigationParams={{ age: 18 }}
       />

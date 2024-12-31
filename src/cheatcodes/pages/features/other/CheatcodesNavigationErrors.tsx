@@ -49,7 +49,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
 
   return (
     <CheatcodesTemplateScreen title="Errors 👾">
-      <LinkToComponent name="BannedCountryError" />
+      <LinkToComponent screen="BannedCountryError" />
       <LinkToComponent
         title={
           asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT

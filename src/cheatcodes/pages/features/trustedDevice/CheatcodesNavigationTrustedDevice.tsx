@@ -20,11 +20,11 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Trusted device 📱">
-      <LinkToComponent name="CheatcodesScreenTrustedDeviceInfos" />
-      <LinkToComponent name="SuspensionChoice" />
-      <LinkToComponent name="SuspensionChoiceExpiredLink" />
-      <LinkToComponent name="SuspiciousLoginSuspendedAccount" />
-      <LinkToComponent name="AccountSecurity" navigationParams={ROUTE_PARAMS} />
+      <LinkToComponent screen="CheatcodesScreenTrustedDeviceInfos" />
+      <LinkToComponent screen="SuspensionChoice" />
+      <LinkToComponent screen="SuspensionChoiceExpiredLink" />
+      <LinkToComponent screen="SuspiciousLoginSuspendedAccount" />
+      <LinkToComponent screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
       <BufferContainer>
         <ButtonPrimary
           wording="AccountSecurityBuffer"

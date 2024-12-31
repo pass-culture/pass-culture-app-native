@@ -6,9 +6,9 @@ import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
 export function CheatcodesNavigationCulturalSurvey(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="CulturalSurvey 🎨">
-      <LinkToComponent name="CulturalSurveyIntro" />
-      <LinkToComponent name="CulturalSurveyQuestions" />
-      <LinkToComponent name="CulturalSurveyThanks" />
+      <LinkToComponent screen="CulturalSurveyIntro" />
+      <LinkToComponent screen="CulturalSurveyQuestions" />
+      <LinkToComponent screen="CulturalSurveyThanks" />
     </CheatcodesTemplateScreen>
   )
 }

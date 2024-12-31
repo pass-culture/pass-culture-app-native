@@ -14,15 +14,15 @@ export function CheatcodesNavigationProfile(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Profile 🎨">
-      <LinkToComponent name="Login" />
-      <LinkToComponent name="FeedbackInApp" />
-      <LinkToComponent name="ChangeCity" />
-      <LinkToComponent name="ChangeEmail" />
-      <LinkToComponent name="ChangeStatus" />
-      <LinkToComponent name="ChangeEmailSetPassword" navigationParams={{ token: 'token' }} />
-      <LinkToComponent name="ConsentSettings" />
-      <LinkToComponent name="NotificationsSettings" />
-      <LinkToComponent name="ChangeEmailExpiredLink" />
+      <LinkToComponent screen="Login" />
+      <LinkToComponent screen="FeedbackInApp" />
+      <LinkToComponent screen="ChangeCity" />
+      <LinkToComponent screen="ChangeEmail" />
+      <LinkToComponent screen="ChangeStatus" />
+      <LinkToComponent screen="ChangeEmailSetPassword" navigationParams={{ token: 'token' }} />
+      <LinkToComponent screen="ConsentSettings" />
+      <LinkToComponent screen="NotificationsSettings" />
+      <LinkToComponent screen="ChangeEmailExpiredLink" />
       <LinkToComponent title="Modal Crédit Expiré" onPress={showExpiredCreditModal} />
       <ExpiredCreditModal visible={expiredCreditModalVisible} hideModal={hideExpiredCreditModal} />
     </CheatcodesTemplateScreen>

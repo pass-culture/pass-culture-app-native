@@ -53,30 +53,33 @@ export function CheatcodesMenu(): React.JSX.Element {
         <SeparatorWithText label="FEATURES" />
       </StyledView>
 
-      <LinkToComponent title="Achievements 🏆" name="CheatcodesNavigationAchievements" />
-      <LinkToComponent title="BookOffer 🎫" name="CheatcodesNavigationBookOffer" />
-      <LinkToComponent title="Cultural Survey 🎨" name="CheatcodesNavigationCulturalSurvey" />
+      <LinkToComponent title="Achievements 🏆" screen="CheatcodesNavigationAchievements" />
+      <LinkToComponent title="BookOffer 🎫" screen="CheatcodesNavigationBookOffer" />
+      <LinkToComponent title="Cultural Survey 🎨" screen="CheatcodesNavigationCulturalSurvey" />
       <LinkToComponent title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
-      <LinkToComponent title="Home 🏠" name="CheatcodesNavigationHome" />
-      <LinkToComponent title="IdentityCheck 🎨" name="CheatcodesNavigationIdentityCheck" />
-      <LinkToComponent title="Internal (Maketing) 🎯" name="CheatcodesNavigationInternal" />
-      <LinkToComponent title="Profile 👤" name="CheatcodesNavigationProfile" />
-      <LinkToComponent title="Share 🔗" name="CheatcodesNavigationShare" />
-      <LinkToComponent title="Subscription 🔔" name="CheatcodesNavigationSubscription" />
-      <LinkToComponent title="Trusted device 📱" name="CheatcodesNavigationTrustedDevice" />
-      <LinkToComponent title="Tutorial ❔" name="CheatcodesNavigationTutorial" />
+      <LinkToComponent title="Home 🏠" screen="CheatcodesNavigationHome" />
+      <LinkToComponent title="IdentityCheck 🎨" screen="CheatcodesNavigationIdentityCheck" />
+      <LinkToComponent title="Internal (Maketing) 🎯" screen="CheatcodesNavigationInternal" />
+      <LinkToComponent title="Profile 👤" screen="CheatcodesNavigationProfile" />
+      <LinkToComponent title="Share 🔗" screen="CheatcodesNavigationShare" />
+      <LinkToComponent title="Subscription 🔔" screen="CheatcodesNavigationSubscription" />
+      <LinkToComponent title="Trusted device 📱" screen="CheatcodesNavigationTrustedDevice" />
+      <LinkToComponent title="Tutorial ❔" screen="CheatcodesNavigationTutorial" />
 
       <StyledView>
         <SeparatorWithText label="AUTRES" />
       </StyledView>
 
-      <LinkToComponent title="Nouvelle-Calédonie 🇳🇨" name="CheatcodesScreenNewCaledonia" />
-      <LinkToComponent title="Debug informations 🪲" name="CheatcodesScreenDebugInformations" />
-      <LinkToComponent title="Errors 👾" name="CheatcodesNavigationErrors" />
-      <LinkToComponent title="Pages non écrans ❌" name="CheatcodesNavigationNotScreensPages" />
-      <LinkToComponent title="AccesLibre 🌈" name="CheatcodesScreenAccesLibre" />
-      <LinkToComponent title="SignUp 🎨" name="CheatcodesNavigationSignUp" />
-      <LinkToComponent title="Account Management ⚙️" name="CheatcodesNavigationAccountManagement" />
+      <LinkToComponent title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
+      <LinkToComponent title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
+      <LinkToComponent title="Errors 👾" screen="CheatcodesNavigationErrors" />
+      <LinkToComponent title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />
+      <LinkToComponent title="AccesLibre 🌈" screen="CheatcodesScreenAccesLibre" />
+      <LinkToComponent title="SignUp 🎨" screen="CheatcodesNavigationSignUp" />
+      <LinkToComponent
+        title="Account Management ⚙️"
+        screen="CheatcodesNavigationAccountManagement"
+      />
       <LinkToComponent title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
       <LinkToComponent title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
     </CheatcodesTemplateScreen>

@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { padding } from 'ui/theme'
 
 interface LinkToComponentProps {
-  name?: RootScreenNames
+  screen?: RootScreenNames
   onPress?: () => void
   title?: string
   navigationParams?: RootStackParamList[RootScreenNames]
@@ -15,7 +15,7 @@ interface LinkToComponentProps {
 }
 
 export const LinkToComponent = ({
-  name = 'CheatcodesMenu',
+  screen = 'CheatcodesMenu',
   onPress,
   title,
   navigationParams,
@@ -23,12 +23,12 @@ export const LinkToComponent = ({
 }: LinkToComponentProps) => (
   <Row>
     {onPress ? (
-      <ButtonPrimary wording={title ?? name} onPress={onPress} disabled={disabled} />
+      <ButtonPrimary wording={title ?? screen} onPress={onPress} disabled={disabled} />
     ) : (
       <InternalTouchableLink
         as={ButtonPrimary}
-        wording={title ?? name}
-        navigateTo={{ screen: name, params: navigationParams }}
+        wording={title ?? screen}
+        navigateTo={{ screen, params: navigationParams }}
         disabled={disabled}
       />
     )}

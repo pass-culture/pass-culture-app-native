@@ -6,8 +6,8 @@ import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
 export function CheatcodesNavigationInternal(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Internal (Maketing) 🎯">
-      <LinkToComponent name="DeeplinksGenerator" />
-      <LinkToComponent name="UTMParameters" />
+      <LinkToComponent screen="DeeplinksGenerator" />
+      <LinkToComponent screen="UTMParameters" />
     </CheatcodesTemplateScreen>
   )
 }
