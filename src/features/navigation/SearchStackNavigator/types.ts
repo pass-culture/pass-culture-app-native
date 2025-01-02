@@ -1,6 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState } from 'features/search/types'
 
 export type SearchStackRouteName = keyof SearchStackParamList
@@ -14,7 +15,11 @@ export const hasAThematicSearch = [
 
 type HasAThematicSearch = typeof hasAThematicSearch
 
-type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
+export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
+
+export const isThematicSearchCategory = (
+  categoryKey: CategoryKey
+): categoryKey is ThematicSearchCategories => categoryKey in hasAThematicSearch
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
