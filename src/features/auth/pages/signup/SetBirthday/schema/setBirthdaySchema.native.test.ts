@@ -3,6 +3,10 @@ import { ValidationError } from 'yup'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { analytics } from 'libs/analytics'
 
+const today = new Date()
+const lessThanFifteenYearsOldBirthdate = new Date()
+lessThanFifteenYearsOldBirthdate.setFullYear(today.getFullYear() - 14)
+
 describe('setBirthdaySchema', () => {
   it('should validate when valid birthdate is provided', async () => {
     const input = { birthdate: new Date('2005-01-01') }
@@ -21,7 +25,7 @@ describe('setBirthdaySchema', () => {
   })
 
   it('should reject when user is under 15 years old', async () => {
-    const input = { birthdate: new Date('2010-01-01') }
+    const input = { birthdate: lessThanFifteenYearsOldBirthdate }
     const result = setBirthdaySchema.validate(input)
 
     await expect(result).rejects.toEqual(
@@ -30,7 +34,7 @@ describe('setBirthdaySchema', () => {
   })
 
   it('should log analytics if user is under 15 years old', async () => {
-    const input = { birthdate: new Date('2010-01-01') }
+    const input = { birthdate: lessThanFifteenYearsOldBirthdate }
     const result = setBirthdaySchema.validate(input)
 
     await expect(result).rejects.toBeTruthy()
