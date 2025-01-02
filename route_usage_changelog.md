@@ -31,6 +31,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/account/suspend_for_hack_suspicion
 - /native/v1/account/suspend_for_suspicious_login
 - /native/v1/account/unsuspend
+- /native/v1/achievements/mark_as_seen
 - /native/v1/bookings
 - /native/v1/bookings/{booking_id}/cancel
 - /native/v1/bookings/{booking_id}/toggle_display
