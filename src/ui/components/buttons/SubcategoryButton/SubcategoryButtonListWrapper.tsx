@@ -4,13 +4,15 @@ import { useTheme } from 'styled-components/native'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import {
+  SearchStackRouteName,
+  ThematicSearchCategories,
+} from 'features/navigation/SearchStackNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CATEGORY_APPEARANCE } from 'features/search/enums'
 import {
   BaseCategory,
   buildSearchPayloadValues,
-  CategoryKey,
   getCategoryChildren,
   sortCategoriesPredicate,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
@@ -22,7 +24,7 @@ import {
 } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 type Props = {
-  category: CategoryKey
+  category: ThematicSearchCategories
 }
 
 export const SubcategoryButtonListWrapper: React.FC<Props> = ({ category }) => {
