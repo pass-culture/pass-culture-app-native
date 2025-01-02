@@ -35,7 +35,7 @@ export function AutocompleteOffer({
               sendEvent={sendEvent}
               addSearchHistory={addSearchHistory}
               shouldShowCategory
-              offerCategories={offerCategories || []}
+              contextCategories={offerCategories || []}
             />
           </Li>
         ))}
