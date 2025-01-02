@@ -1,7 +1,6 @@
 import { SubcategoryIdEnumv2 } from 'api/gen'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
-import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypesValues'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -25,7 +24,7 @@ export const adaptOffersPlaylistParameters = (
   // We receive category labels from contentful. We first have to map to facetFilters used for search
   const offerCategories = (parameters.categories ?? [])
     .map(getCategoriesFacetFilters)
-    .sort(sortCategories)
+    .sort((a, b) => a.localeCompare(b))
 
   const offerSubcategories = (parameters.subcategories ?? [])
     .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])

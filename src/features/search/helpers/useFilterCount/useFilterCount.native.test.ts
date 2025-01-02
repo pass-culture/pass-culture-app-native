@@ -1,6 +1,6 @@
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { DEFAULT_TIME_RANGE, MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
@@ -9,7 +9,7 @@ import { renderHook } from 'tests/utils'
 import { useFilterCount } from './useFilterCount'
 
 const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
-const timeRange = DEFAULT_TIME_RANGE
+const timeRange = [8, 24]
 const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
