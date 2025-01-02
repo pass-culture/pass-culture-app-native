@@ -4,8 +4,8 @@ import { renderHook } from 'tests/utils'
 import {
   categoriesSortPredicate,
   MappingOutput,
-  useSortedSearchCategories,
-} from './useSortedSearchCategories'
+  useSearchLandingButtonProps,
+} from './useSearchLandingButtonsProps'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -13,25 +13,25 @@ describe('useSortedSearchCategories', () => {
   const options = { initialProps: jest.fn() }
 
   it('should return all categories', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSearchLandingButtonProps, options)
 
     expect(result.current).toHaveLength(13)
   })
 
   it("should format category's label", () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSearchLandingButtonProps, options)
 
     expect(result.current[0]?.label).toEqual('Concerts & festivals')
   })
 
   it('should set illustration for category', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSearchLandingButtonProps, options)
 
     expect(result.current[0]?.Illustration).toEqual(SearchCategoriesIllustrations.ConcertsFestivals)
   })
 
   it('should sort search group names by the key position', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSearchLandingButtonProps, options)
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
 

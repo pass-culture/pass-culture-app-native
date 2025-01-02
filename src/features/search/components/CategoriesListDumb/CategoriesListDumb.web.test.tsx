@@ -11,7 +11,7 @@ describe('CategoriesListDumb', () => {
   it('should not display venue map block when is "web"', () => {
     render(
       <CategoriesListDumb
-        sortedCategories={[]}
+        categoriesProps={[]}
         shouldDisplayVenueMap={false}
         isMapWithoutPositionAndNotLocated={false}
         showVenueMapLocationModal={jest.fn()}

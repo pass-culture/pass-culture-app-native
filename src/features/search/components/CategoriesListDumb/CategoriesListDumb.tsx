@@ -26,7 +26,7 @@ export type CategoryButtonProps = {
 export type ListCategoryButtonProps = CategoryButtonProps[]
 
 type Props = {
-  sortedCategories: ListCategoryButtonProps
+  categoriesProps: ListCategoryButtonProps
   shouldDisplayVenueMap: boolean
   isMapWithoutPositionAndNotLocated: boolean
   showVenueMapLocationModal: () => void
@@ -41,7 +41,7 @@ const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
-  sortedCategories,
+  categoriesProps,
   shouldDisplayVenueMap,
   isMapWithoutPositionAndNotLocated,
   showVenueMapLocationModal,
@@ -67,7 +67,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
       ) : null}
       <CategoriesTitleV2 />
       <CategoriesButtonsContainer>
-        {sortedCategories.map((item) => (
+        {categoriesProps.map((item) => (
           <StyledCategoryButton key={item.label} {...item} />
         ))}
       </CategoriesButtonsContainer>
