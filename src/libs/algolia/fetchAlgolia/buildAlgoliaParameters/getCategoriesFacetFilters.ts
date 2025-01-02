@@ -1,5 +1,4 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 
 // Mapping from contentful label to corresponding search group
 const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
@@ -21,7 +20,5 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
 }
 
 export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnumv2 => {
-  const searchGroup = CONTENTFUL_LABELS[categoryLabel]
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  return CATEGORY_CRITERIA[searchGroup]?.facetFilter ?? SearchGroupNameEnumv2.NONE
+  return CONTENTFUL_LABELS[categoryLabel] ?? SearchGroupNameEnumv2.NONE
 }
