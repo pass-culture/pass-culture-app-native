@@ -5,6 +5,7 @@ import { api } from 'api/api'
 import { SettingsResponse } from 'api/gen'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 
 export interface ISettingsContext {
   data: UseQueryResult<SettingsResponse>['data']
@@ -12,7 +13,7 @@ export interface ISettingsContext {
 }
 
 const SettingsContext = React.createContext<ISettingsContext>({
-  data: undefined,
+  data: defaultSettings,
   isLoading: false,
 })
 
@@ -25,7 +26,7 @@ export const SettingsWrapper = memo(function SettingsWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const { data, isLoading } = useAppSettings()
+  const { data = defaultSettings, isLoading } = { data: defaultSettings, isLoading: false }
 
   const value = useMemo(() => ({ data, isLoading }), [data, isLoading])
 

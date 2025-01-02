@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { CategoryCriteria } from 'features/search/enums'
+import { CategoryAppearance } from 'features/search/enums'
 import {
   useAvailableCategories,
   useAvailableThematicSearchCategories,
@@ -19,7 +19,7 @@ type CategoryChoicesProps = {
 }
 
 type CategoryChoicesWithCategoryCriteria = CategoryChoicesProps & {
-  categories: ReadonlyArray<CategoryCriteria>
+  categories: ReadonlyArray<CategoryAppearance>
 }
 
 export const OfferCategoryChoices = (props: CategoryChoicesProps) => {

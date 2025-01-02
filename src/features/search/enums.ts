@@ -16,7 +16,7 @@ import { MusicalInstruments } from 'ui/svg/icons/categories/MusicalInstruments'
 import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
 import { Shows } from 'ui/svg/icons/categories/Shows'
 import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
-import { AccessibleIcon, AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon, AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
@@ -53,53 +53,41 @@ export const SearchCategoriesIllustrations = {
 
 export type Gradient = Array<ColorsEnum>
 
-export type CategoryCriteria = {
-  icon: React.FC<AccessibleBicolorIcon>
+export type CategoryAppearance = {
   illustration: React.FC<AccessibleIcon>
-  facetFilter: SearchGroupNameEnumv2
   baseColor: ColorsEnum
   gradients: Gradient
-  position: number
-  // v2 App Design
   fillColor: ColorsEnum
   borderColor: ColorsEnum
   textColor: ColorsEnum
 }
 
-type CategoryCriteriaWithNone = {
-  [category in SearchGroupNameEnumv2]: category extends SearchGroupNameEnumv2.NONE
-    ? {
-        icon: React.FC<AccessibleBicolorIcon>
-        illustration: undefined
-        facetFilter: SearchGroupNameEnumv2
-        baseColor: undefined
-        gradients: undefined
-        position: undefined
-        // v2 App Design
-        fillColor: undefined
-        borderColor: undefined
-        textColor: undefined
-      }
-    : CategoryCriteria
+export const CATEGORY_ICONS: Record<SearchGroupNameEnumv2, React.FC<AccessibleBicolorIcon>> = {
+  NONE: categoriesIcons.All,
+  CONCERTS_FESTIVALS: categoriesIcons.Conference,
+  FILMS_SERIES_CINEMA: categoriesIcons.Cinema,
+  CINEMA: categoriesIcons.Cinema,
+  FILMS_DOCUMENTAIRES_SERIES: categoriesIcons.Cinema,
+  LIVRES: categoriesIcons.Book,
+  CD_VINYLE_MUSIQUE_EN_LIGNE: categoriesIcons.Disk,
+  MUSIQUE: categoriesIcons.Disk,
+  ARTS_LOISIRS_CREATIFS: categoriesIcons.Palette,
+  SPECTACLES: categoriesIcons.Show,
+  MUSEES_VISITES_CULTURELLES: categoriesIcons.Museum,
+  JEUX_JEUX_VIDEOS: categoriesIcons.VideoGame,
+  INSTRUMENTS: categoriesIcons.Instrument,
+  MEDIA_PRESSE: categoriesIcons.Press,
+  CARTES_JEUNES: categoriesIcons.Card,
+  RENCONTRES_CONFERENCES: categoriesIcons.Microphone,
+  EVENEMENTS_EN_LIGNE: categoriesIcons.LiveEvent,
 }
 
-export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
-  [SearchGroupNameEnumv2.NONE]: {
-    icon: categoriesIcons.All,
-    illustration: undefined,
-    facetFilter: SearchGroupNameEnumv2.NONE,
-    baseColor: undefined,
-    gradients: undefined,
-    position: undefined,
-    textColor: undefined,
-    borderColor: undefined,
-    fillColor: undefined,
-  },
+export const CATEGORY_APPEARANCE: Record<
+  Exclude<SearchGroupNameEnumv2, SearchGroupNameEnumv2.NONE>,
+  CategoryAppearance
+> = {
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
-    icon: categoriesIcons.Conference,
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
-    facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-    position: 1,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.lilacDark,
@@ -107,21 +95,15 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.goldLight100,
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
-    icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-    facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-    position: 2,
-    baseColor: theme.colors.skyBlueDark,
-    gradients: gradientColorsMapping.SkyBlue,
-    textColor: theme.colors.coralDark,
-    borderColor: theme.colors.skyBlue,
-    fillColor: theme.colors.skyBlueLight,
+    baseColor: theme.colors.aquamarineDark,
+    gradients: gradientColorsMapping.Aquamarine,
+    textColor: theme.colors.skyBlueDark,
+    borderColor: theme.colors.coral,
+    fillColor: theme.colors.coralLight,
   },
   [SearchGroupNameEnumv2.CINEMA]: {
-    icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-    facetFilter: SearchGroupNameEnumv2.CINEMA,
-    position: 2,
     baseColor: theme.colors.skyBlueDark,
     gradients: gradientColorsMapping.SkyBlue,
     textColor: theme.colors.coralDark,
@@ -129,10 +111,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.skyBlueLight,
   },
   [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
-    icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-    facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
-    position: 3,
     baseColor: theme.colors.lilacDark,
     gradients: gradientColorsMapping.Lilac,
     textColor: theme.colors.deepPinkDark,
@@ -140,10 +119,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.lilacLight,
   },
   [SearchGroupNameEnumv2.LIVRES]: {
-    icon: categoriesIcons.Book,
     illustration: SearchCategoriesIllustrations.Books,
-    facetFilter: SearchGroupNameEnumv2.LIVRES,
-    position: 4,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.skyBlueDark,
@@ -151,10 +127,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.coralLight,
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
-    icon: categoriesIcons.Disk,
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
-    facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-    position: 5,
     baseColor: theme.colors.coralDark,
     gradients: gradientColorsMapping.Coral,
     textColor: theme.colors.lilacDark,
@@ -162,10 +135,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.aquamarineLight,
   },
   [SearchGroupNameEnumv2.MUSIQUE]: {
-    icon: categoriesIcons.Disk,
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
-    facetFilter: SearchGroupNameEnumv2.MUSIQUE,
-    position: 5,
     baseColor: theme.colors.coralDark,
     gradients: gradientColorsMapping.Coral,
     textColor: theme.colors.lilacDark,
@@ -173,10 +143,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.aquamarineLight,
   },
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
-    icon: categoriesIcons.Palette,
     illustration: SearchCategoriesIllustrations.ArtsCrafts,
-    facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-    position: 6,
     baseColor: theme.colors.deepPinkDark,
     gradients: gradientColorsMapping.DeepPink,
     textColor: theme.colors.aquamarineDark,
@@ -184,10 +151,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.deepPinkLight,
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
-    icon: categoriesIcons.Show,
     illustration: SearchCategoriesIllustrations.Shows,
-    facetFilter: SearchGroupNameEnumv2.SPECTACLES,
-    position: 7,
     baseColor: theme.colors.aquamarineDark,
     gradients: gradientColorsMapping.Aquamarine,
     textColor: theme.colors.lilacDark,
@@ -195,10 +159,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.goldLight100,
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
-    icon: categoriesIcons.Museum,
     illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
-    facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
-    position: 8,
     baseColor: theme.colors.skyBlueDark,
     gradients: gradientColorsMapping.SkyBlue,
     textColor: theme.colors.coralDark,
@@ -206,10 +167,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.skyBlueLight,
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
-    icon: categoriesIcons.VideoGame,
     illustration: SearchCategoriesIllustrations.GamesVideoGames,
-    facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-    position: 9,
     baseColor: theme.colors.lilacDark,
     gradients: gradientColorsMapping.Lilac,
     textColor: theme.colors.deepPinkDark,
@@ -217,10 +175,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.lilacLight,
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
-    icon: categoriesIcons.Instrument,
     illustration: SearchCategoriesIllustrations.MusicalInstruments,
-    facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
-    position: 10,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.skyBlueDark,
@@ -228,10 +183,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.coralLight,
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
-    icon: categoriesIcons.Press,
     illustration: SearchCategoriesIllustrations.MediaPress,
-    facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
-    position: 10,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.skyBlueDark,
@@ -239,10 +191,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.coralLight,
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
-    icon: categoriesIcons.Card,
     illustration: SearchCategoriesIllustrations.YouthCards,
-    facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
-    position: 11,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.lilacDark,
@@ -250,10 +199,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.aquamarineLight,
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
-    icon: categoriesIcons.Microphone,
     illustration: SearchCategoriesIllustrations.ConferencesMeetings,
-    facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
-    position: 12,
     baseColor: theme.colors.deepPinkDark,
     gradients: gradientColorsMapping.DeepPink,
     textColor: theme.colors.aquamarineDark,
@@ -261,10 +207,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     fillColor: theme.colors.deepPinkLight,
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
-    icon: categoriesIcons.LiveEvent,
     illustration: SearchCategoriesIllustrations.OnlineEvents,
-    position: 13,
-    facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     textColor: theme.colors.lilacDark,

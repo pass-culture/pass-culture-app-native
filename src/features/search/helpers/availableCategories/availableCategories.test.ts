@@ -1,14 +1,14 @@
 import omit from 'lodash/omit'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_APPEARANCE } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 
 describe('availableCategories', () => {
   it('should return all searchable categories from CATEGORY_CRITERIA - without NONE, FILMS_SERIES_CINEMA, INSTRUMENTS, CD_VINYLE_MUSIQUE_EN_LIGNE', () => {
     expect(availableCategories).toEqual(
       omit(
-        CATEGORY_CRITERIA,
+        CATEGORY_APPEARANCE,
         SearchGroupNameEnumv2.NONE,
         SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         SearchGroupNameEnumv2.INSTRUMENTS,

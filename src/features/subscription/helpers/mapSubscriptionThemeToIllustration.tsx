@@ -1,4 +1,4 @@
-import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_APPEARANCE } from 'features/search/enums'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 
@@ -12,16 +12,16 @@ export const mapSubscriptionThemeToIllustration = (
 ): IllustrationFeatures => {
   switch (thematic) {
     case SubscriptionTheme.CINEMA:
-      return CATEGORY_CRITERIA.CINEMA
+      return CATEGORY_APPEARANCE.CINEMA
     case SubscriptionTheme.LECTURE:
-      return CATEGORY_CRITERIA.LIVRES
+      return CATEGORY_APPEARANCE.LIVRES
     case SubscriptionTheme.MUSIQUE:
-      return CATEGORY_CRITERIA.CONCERTS_FESTIVALS
+      return CATEGORY_APPEARANCE.CONCERTS_FESTIVALS
     case SubscriptionTheme.SPECTACLES:
-      return CATEGORY_CRITERIA.SPECTACLES
+      return CATEGORY_APPEARANCE.SPECTACLES
     case SubscriptionTheme.VISITES:
-      return CATEGORY_CRITERIA.MUSEES_VISITES_CULTURELLES
+      return CATEGORY_APPEARANCE.MUSEES_VISITES_CULTURELLES
     case SubscriptionTheme.ACTIVITES:
-      return CATEGORY_CRITERIA.ARTS_LOISIRS_CREATIFS
+      return CATEGORY_APPEARANCE.ARTS_LOISIRS_CREATIFS
   }
 }

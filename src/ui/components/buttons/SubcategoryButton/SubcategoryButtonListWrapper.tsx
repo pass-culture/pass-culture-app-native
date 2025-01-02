@@ -10,7 +10,7 @@ import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/t
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
 import {
-  handleCategoriesSearchPress,
+  buildFormPayload,
   sortCategoriesPredicate,
   useNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
@@ -76,11 +76,11 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
     const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
     const form: CategoriesModalFormProps = {
       category: offerCategories?.[0] as SearchGroupNameEnumv2,
-      currentView: CategoriesModalView.GENRES,
+      currentIndex: CategoriesModalView.GENRES,
       genreType: null,
       nativeCategory,
     }
-    const searchPayload = handleCategoriesSearchPress(form, subcategories)
+    const searchPayload = buildFormPayload(form, subcategories)
 
     const additionalSearchState: SearchState = {
       ...searchState,
