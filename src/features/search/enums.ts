@@ -1,5 +1,4 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
@@ -63,7 +62,7 @@ export type CategoryAppearance = {
   textColor: ColorsEnum
 }
 
-export const CATEGORY_ICONS: Record<CategoryKey, React.FC<AccessibleBicolorIcon>> = {
+export const CATEGORY_ICONS: Record<SearchGroupNameEnumv2, React.FC<AccessibleBicolorIcon>> = {
   NONE: categoriesIcons.All,
   CONCERTS_FESTIVALS: categoriesIcons.Conference,
   FILMS_SERIES_CINEMA: categoriesIcons.Cinema,
@@ -83,7 +82,10 @@ export const CATEGORY_ICONS: Record<CategoryKey, React.FC<AccessibleBicolorIcon>
   EVENEMENTS_EN_LIGNE: categoriesIcons.LiveEvent,
 }
 
-export const CATEGORY_APPEARANCE: Record<CategoryKey, CategoryAppearance> = {
+export const CATEGORY_APPEARANCE: Record<
+  Exclude<SearchGroupNameEnumv2, SearchGroupNameEnumv2.NONE>,
+  CategoryAppearance
+> = {
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     baseColor: theme.colors.goldDark,

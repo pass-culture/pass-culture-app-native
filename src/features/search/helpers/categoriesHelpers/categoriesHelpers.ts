@@ -27,6 +27,9 @@ export type BaseCategory = {
   nbResultsFacet?: number
 }
 export type CategoriesMapping = Record<CategoryKey, BaseCategory>
+export type TopLevelCategory = BaseCategory & {
+  key: Exclude<SearchGroupNameEnumv2, SearchGroupNameEnumv2.NONE>
+}
 
 export const ROOT_ALL: BaseCategory = {
   children: [],
@@ -89,8 +92,11 @@ export const getCategoryParents = (categoryKey: CategoryKey) => {
   return Object.values(mapping).filter((category) => category.children.includes(categoryKey))
 }
 
+export const isTopLevelCategory = (category: BaseCategory): category is TopLevelCategory =>
+  category.key in SearchGroupNameEnumv2 && category.key !== SearchGroupNameEnumv2.NONE
+
 export const getTopLevelCategories = () => {
-  return getCategoryChildren(ROOT.key)
+  return getCategoryChildren(ROOT.key).filter(isTopLevelCategory)
 }
 
 export const categoryExists = (categoryKey: CategoryKey) => {
