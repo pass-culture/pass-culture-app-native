@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
+import { CheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
@@ -37,6 +38,7 @@ const RootStackNavigator = withWebWrapper(
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+          <RootStack.Screen name="CheatcodesStackNavigator" component={CheatcodesStackNavigator} />
           {isWeb ? null : (
             <RootStack.Screen
               name="VenueMapFiltersStackNavigator"
@@ -52,7 +54,6 @@ const RootStackNavigator = withWebWrapper(
               }}
             />
           )}
-
           {RootScreens}
         </RootStack.Navigator>
       </IconFactoryProvider>

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
@@ -30,74 +30,61 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="IdentityCheck 🎨">
-      <LinkToComponent
+      <LinkToScreen
         title="NewIdentificationFlow 🎨"
-        onPress={() => navigate('CheatcodesNavigationNewIdentificationFlow')}
+        screen="CheatcodesNavigationNewIdentificationFlow"
       />
-      <LinkToComponent name="Stepper" title="Stepper" />
-      <LinkToComponent
-        title="Too many codes"
-        onPress={() => navigate('PhoneValidationTooManyAttempts')}
-      />
-      <LinkToComponent
-        title="Too many SMS sent"
-        onPress={() => navigate('PhoneValidationTooManySMSSent')}
-      />
-
-      <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
-      <LinkToComponent name="SetPhoneNumberWithoutValidation" />
-      <LinkToComponent
+      <LinkToScreen screen="Stepper" />
+      <LinkToScreen screen="PhoneValidationTooManyAttempts" />
+      <LinkToScreen screen="PhoneValidationTooManySMSSent" />
+      <LinkToScreen screen="SetPhoneNumber" />
+      <LinkToScreen screen="SetPhoneNumberWithoutValidation" />
+      <LinkToScreen
         title="PhoneValidation tips Modal"
         onPress={() => setPhoneValidationTipsModalVisible(true)}
       />
-      <LinkToComponent
-        title="New SetPhoneValidationCode"
-        onPress={() => navigate('SetPhoneValidationCode')}
-      />
-      <LinkToComponent name="SetStatus" title="SetStatus" />
-      <LinkToComponent name="IdentityCheckUnavailable" />
-      <LinkToComponent name="IdentityCheckPending" />
-      <LinkToComponent name="SetName" />
-      <LinkToComponent name="SetAddress" title="SetAddress" />
-      <LinkToComponent name="SetCity" title="SetCity" />
-      <LinkToComponent name="IdentityCheckEnd" />
-      <LinkToComponent name="IdentityCheckHonor" />
-      <LinkToComponent name="EduConnectForm" />
-      <LinkToComponent name="IdentityCheckDMS" />
-      <LinkToComponent
-        name="EduConnectValidation"
+      <LinkToScreen screen="SetPhoneValidationCode" />
+      <LinkToScreen screen="SetStatus" />
+      <LinkToScreen screen="IdentityCheckUnavailable" />
+      <LinkToScreen screen="IdentityCheckPending" />
+      <LinkToScreen screen="SetName" />
+      <LinkToScreen screen="SetAddress" />
+      <LinkToScreen screen="SetCity" />
+      <LinkToScreen screen="IdentityCheckEnd" />
+      <LinkToScreen screen="IdentityCheckHonor" />
+      <LinkToScreen screen="EduConnectForm" />
+      <LinkToScreen screen="IdentityCheckDMS" />
+      <LinkToScreen
+        screen="EduConnectValidation"
         navigationParams={{
           firstName: 'firstName',
           lastName: 'lastName',
           dateOfBirth: '2021-12-01',
         }}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserAgeNotValid Educonnect Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserAgeNotValid18YearsOld Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="UserTypeNotStudent Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="DuplicateUser Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.DuplicateUser)}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />
-      <LinkToComponent title="VerifyEligibility" onPress={() => navigate('VerifyEligibility')} />
-      <LinkToComponent
-        title="Beneficiary request sent"
-        onPress={() => navigate('BeneficiaryRequestSent')}
-      />
-      <LinkToComponent name="IdentificationFork" />
+      <LinkToScreen screen="VerifyEligibility" />
+      <LinkToScreen screen="BeneficiaryRequestSent" />
+      <LinkToScreen screen="IdentificationFork" />
       <Spacer.BottomScreen />
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}

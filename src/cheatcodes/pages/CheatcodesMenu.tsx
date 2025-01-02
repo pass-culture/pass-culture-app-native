@@ -1,13 +1,11 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -20,7 +18,6 @@ import { getSpacing } from 'ui/theme'
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
 export function CheatcodesMenu(): React.JSX.Element {
-  const { navigate } = useNavigation<UseNavigationType>()
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const { showInfoSnackBar } = useSnackBarContext()
@@ -56,71 +53,32 @@ export function CheatcodesMenu(): React.JSX.Element {
         <SeparatorWithText label="FEATURES" />
       </StyledView>
 
-      <LinkToComponent
-        title="Achievements 🏆"
-        onPress={() => navigate('CheatcodesNavigationAchievements')}
-      />
-      <LinkToComponent
-        title="BookOffer 🎫"
-        onPress={() => navigate('CheatcodesNavigationBookOffer')}
-      />
-      <LinkToComponent
-        title="Cultural Survey 🎨"
-        onPress={() => navigate('CheatcodesNavigationCulturalSurvey')}
-      />
-      <LinkToComponent title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
-      <LinkToComponent title="Home 🏠" onPress={() => navigate('CheatcodesNavigationHome')} />
-      <LinkToComponent
-        title="IdentityCheck 🎨"
-        onPress={() => navigate('CheatcodesNavigationIdentityCheck')}
-      />
-      <LinkToComponent
-        title="Internal (Maketing) 🎯"
-        onPress={() => navigate('CheatcodesNavigationInternal')}
-      />
-      <LinkToComponent title="Profile 👤" onPress={() => navigate('CheatcodesNavigationProfile')} />
-      <LinkToComponent title="Share 🔗" onPress={() => navigate('CheatcodesNavigationShare')} />
-      <LinkToComponent
-        title="Subscription 🔔"
-        onPress={() => navigate('CheatcodesNavigationSubscription')}
-      />
-      <LinkToComponent
-        title="Trusted device 📱"
-        onPress={() => navigate('CheatcodesNavigationTrustedDevice')}
-      />
-      <LinkToComponent
-        title="Tutorial ❔"
-        onPress={() => navigate('CheatcodesNavigationTutorial')}
-      />
+      <LinkToScreen title="Achievements 🏆" screen="CheatcodesNavigationAchievements" />
+      <LinkToScreen title="BookOffer 🎫" screen="CheatcodesNavigationBookOffer" />
+      <LinkToScreen title="Cultural Survey 🎨" screen="CheatcodesNavigationCulturalSurvey" />
+      <LinkToScreen title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
+      <LinkToScreen title="Home 🏠" screen="CheatcodesNavigationHome" />
+      <LinkToScreen title="IdentityCheck 🎨" screen="CheatcodesNavigationIdentityCheck" />
+      <LinkToScreen title="Internal (Maketing) 🎯" screen="CheatcodesNavigationInternal" />
+      <LinkToScreen title="Profile 👤" screen="CheatcodesNavigationProfile" />
+      <LinkToScreen title="Share 🔗" screen="CheatcodesNavigationShare" />
+      <LinkToScreen title="Subscription 🔔" screen="CheatcodesNavigationSubscription" />
+      <LinkToScreen title="Trusted device 📱" screen="CheatcodesNavigationTrustedDevice" />
+      <LinkToScreen title="Tutorial ❔" screen="CheatcodesNavigationTutorial" />
 
       <StyledView>
         <SeparatorWithText label="AUTRES" />
       </StyledView>
 
-      <LinkToComponent
-        title="Nouvelle-Calédonie 🇳🇨"
-        onPress={() => navigate('CheatcodesScreenNewCaledonia')}
-      />
-      <LinkToComponent
-        title="Debug informations 🪲"
-        onPress={() => navigate('CheatcodesScreenDebugInformations')}
-      />
-      <LinkToComponent title="Errors 👾" onPress={() => navigate('CheatcodesNavigationErrors')} />
-      <LinkToComponent
-        title="Pages non écrans ❌"
-        onPress={() => navigate('CheatcodesNavigationNotScreensPages')}
-      />
-      <LinkToComponent
-        title="AccesLibre 🌈"
-        onPress={() => navigate('CheatcodesScreenAccesLibre')}
-      />
-      <LinkToComponent title="SignUp 🎨" onPress={() => navigate('CheatcodesNavigationSignUp')} />
-      <LinkToComponent
-        title="Account Management ⚙️"
-        onPress={() => navigate('CheatcodesNavigationAccountManagement')}
-      />
-      <LinkToComponent title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
-      <LinkToComponent title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
+      <LinkToScreen title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
+      <LinkToScreen title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
+      <LinkToScreen title="Errors 👾" screen="CheatcodesNavigationErrors" />
+      <LinkToScreen title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />
+      <LinkToScreen title="AccesLibre 🌈" screen="CheatcodesScreenAccesLibre" />
+      <LinkToScreen title="SignUp 🎨" screen="CheatcodesNavigationSignUp" />
+      <LinkToScreen title="Account Management ⚙️" screen="CheatcodesNavigationAccountManagement" />
+      <LinkToScreen title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
+      <LinkToScreen title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
     </CheatcodesTemplateScreen>
   )
 }

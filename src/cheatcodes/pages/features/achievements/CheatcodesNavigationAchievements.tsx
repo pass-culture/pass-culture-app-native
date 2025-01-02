@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
@@ -23,8 +23,8 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Achievements 🏆">
-      <LinkToComponent name="Achievements" navigationParams={{ from: 'cheatcodes' }} />
-      <LinkToComponent
+      <LinkToScreen screen="Achievements" navigationParams={{ from: 'cheatcodes' }} />
+      <LinkToScreen
         title="AchievementSuccessModal (1 unlocked)"
         onPress={showModalOneAchievement}
       />
@@ -33,7 +33,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
         visible={visibleOneAchievement}
         hideModal={hideModalOneAchievement}
       />
-      <LinkToComponent
+      <LinkToScreen
         title="AchievementSuccessModal (2+ unlocked)"
         onPress={showModalSeveralAchievements}
       />

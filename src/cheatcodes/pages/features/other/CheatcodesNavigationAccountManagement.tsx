@@ -1,28 +1,26 @@
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToComponent } from 'cheatcodes/components/LinkToComponent'
+import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 
 export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Account Management ⚙️">
-      <LinkToComponent name="FraudulentSuspendedAccount" />
-      <LinkToComponent name="SuspendedAccountUponUserRequest" />
-      <LinkToComponent name="AccountReactivationSuccess" />
-      <LinkToComponent name="DeleteProfileReason" />
-      <LinkToComponent name="ConfirmDeleteProfile" />
-      <LinkToComponent name="DeactivateProfileSuccess" />
-      <LinkToComponent name="DeleteProfileSuccess" />
-      <LinkToComponent name="DeleteProfileConfirmation" />
-      <LinkToComponent name="ResetPasswordExpiredLink" />
-      <LinkToComponent
-        name="ResetPasswordEmailSent"
-        navigationParams={{
-          email: 'jean.dupont@gmail.com',
-        }}
+      <LinkToScreen screen="FraudulentSuspendedAccount" />
+      <LinkToScreen screen="SuspendedAccountUponUserRequest" />
+      <LinkToScreen screen="AccountReactivationSuccess" />
+      <LinkToScreen screen="DeleteProfileReason" />
+      <LinkToScreen screen="ConfirmDeleteProfile" />
+      <LinkToScreen screen="DeactivateProfileSuccess" />
+      <LinkToScreen screen="DeleteProfileSuccess" />
+      <LinkToScreen screen="DeleteProfileConfirmation" />
+      <LinkToScreen screen="ResetPasswordExpiredLink" />
+      <LinkToScreen
+        screen="ResetPasswordEmailSent"
+        navigationParams={{ email: 'jean.dupont@gmail.com' }}
       />
-      <LinkToComponent name="DeleteProfileAccountNotDeletable" />
-      <LinkToComponent name="DeleteProfileAccountHacked" />
+      <LinkToScreen screen="DeleteProfileAccountNotDeletable" />
+      <LinkToScreen screen="DeleteProfileAccountHacked" />
     </CheatcodesTemplateScreen>
   )
 }

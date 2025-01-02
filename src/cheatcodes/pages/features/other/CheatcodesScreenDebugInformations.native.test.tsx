@@ -17,11 +17,6 @@ beforeAll(() => {
 })
 
 jest.mock('features/auth/context/AuthContext')
-
-const navigation = {
-  dispatch: jest.fn(),
-} as any // eslint-disable-line @typescript-eslint/no-explicit-any
-
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<CheatcodesScreenDebugInformations/>', () => {
@@ -56,5 +51,5 @@ describe('<CheatcodesScreenDebugInformations/>', () => {
 })
 
 function renderCheatCodes() {
-  render(reactQueryProviderHOC(<CheatcodesScreenDebugInformations navigation={navigation} />))
+  render(reactQueryProviderHOC(<CheatcodesScreenDebugInformations />))
 }
