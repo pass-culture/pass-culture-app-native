@@ -1,5 +1,4 @@
 import {
-  BookSubType,
   BookType,
   GenreType,
   NativeCategoryIdEnumv2,
@@ -10,202 +9,113 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
-import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
-import {
-  BaseCategory,
-  MappingTree,
-  createMappingTree,
-  getBooksGenreTypes,
-  getBooksNativeCategories,
-  getKeyFromStringLabel,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import {
-  BooksNativeCategoriesEnum,
-  DescriptionContext,
-  NativeCategoryEnum,
-  SearchState,
-} from 'features/search/types'
+import { NativeCategoryEnum } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
-type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
+export type CategoryKey = NativeCategoryIdEnumv2 | SearchGroupNameEnumv2 | string
 
-function isBookNativeCategory(
-  category: NativeCategoryEnum | null
-): category is BooksNativeCategoriesEnum {
-  return (category as BooksNativeCategoriesEnum) !== undefined
+export type BaseCategory = {
+  children: CategoryKey[]
+  label: string
+  key: CategoryKey
+  position?: number
+  searchFilter?: string
+  searchValue?: string
+  nbResultsFacet?: number
+}
+export type CategoriesMapping = Record<CategoryKey, BaseCategory>
+
+export const ROOT_ALL: BaseCategory = {
+  children: [],
+  label: ALL_CATEGORIES_LABEL,
+  key: 'ROOT_ALL',
+  position: -Infinity,
+}
+export const ALL: BaseCategory = {
+  children: [],
+  label: 'Tout',
+  key: 'ALL',
+  position: -Infinity,
+}
+export const ROOT: BaseCategory = {
+  children: [ROOT_ALL.key],
+  label: 'Catégories',
+  key: 'ROOT',
+  position: -Infinity,
 }
 
-function isNativeCategory(category: NativeCategoryEnum | null): category is NativeCategoryIdEnumv2 {
-  return (category as NativeCategoryIdEnumv2) !== undefined
+const getCategoriesMapping = () => {
+  const categories = [
+    { key: 'CINEMA', label: 'Cinéma', position: 2, children: ['SEANCE'] },
+    { key: 'LIVRES', label: 'Livres', position: 1, children: [] },
+    { key: 'MUSIQUE', label: 'Musique', position: 3, children: ['SEANCE'] },
+    { key: 'SEANCE', label: 'Séance de cinéma', position: 1, children: ['THRILLER'] },
+    { key: 'THRILLER', label: 'Thriller', position: 1, children: [] },
+  ]
+
+  const mapping = categories.reduce<CategoriesMapping>((mapping, category) => {
+    mapping[category.key] = category
+    mapping[category.key]?.children.push(ALL.key)
+    return mapping
+  }, {} as CategoriesMapping)
+  mapping[ROOT.key] = ROOT
+
+  const childrenCategories = categories.map((category) => category.children).flat()
+  const rootCategories = categories
+    .filter((category) => !childrenCategories.includes(category.key))
+    .map((category) => category.key)
+  mapping[ROOT.key]?.children.push(...rootCategories)
+  return mapping
 }
 
-export const buildBookSearchPayloadValues = (
-  data: SubcategoriesResponseModelv2,
-  form: CategoriesModalFormProps
-) => {
-  const bookTrees = data.genreTypes.find((genreType) => genreType.name === GenreType.BOOK)
-    ?.trees as BookType[]
-
-  const buildNativeCategoryGtls = (nativeCategory: typeof form.nativeCategory) => {
-    const nativeCat = bookTrees.find(
-      (category: BookType) => getKeyFromStringLabel(category.label) === nativeCategory
-    )
-    return nativeCat?.gtls
-  }
-
-  const buildGenreTypeGtls = (
-    nativeCategory: typeof form.nativeCategory,
-    genreType: typeof form.genreType
-  ) => {
-    const nativeCat = bookTrees.find(
-      (category: BookType) => getKeyFromStringLabel(category.label) === nativeCategory
-    )
-    return nativeCat?.children.find((genre) => getKeyFromStringLabel(genre.label) === genreType)
-      ?.gtls
-  }
-
-  const buildBookGenreType = (genreType?: BookSubType) => {
-    const genreKey = getKeyFromStringLabel(genreType?.label)
-    if (!!genreType && !!genreKey) {
-      return [
-        {
-          name: genreKey,
-          value: genreType.label,
-          key: GenreType.BOOK,
-        },
-      ]
-    }
-    return undefined
-  }
-
-  let gtls
-  const natCatGtls = buildNativeCategoryGtls(form.nativeCategory)
-  const genreTypeGtls = buildGenreTypeGtls(form.nativeCategory, form.genreType)
-
-  if (form.genreType) {
-    gtls = genreTypeGtls?.map((gtl) => gtl)
-  } else if (form.nativeCategory) {
-    gtls = natCatGtls?.map((gtl) => gtl)
-  }
-
-  const nativeCat = bookTrees.find(
-    (category: BookType) => getKeyFromStringLabel(category.label) === form.nativeCategory
-  )
-
-  const genreType = nativeCat?.children.find(
-    (genre) => getKeyFromStringLabel(genre.label) === form.genreType
-  )
-
-  const offerNativeCategories =
-    form.nativeCategory && isNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
-  const offerBookNativeCategories =
-    form.nativeCategory && isBookNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
-
-  const offerGenericNativeCategories = offerBookNativeCategories ? offerNativeCategories : []
-
-  return {
-    offerCategories: [form.category],
-    offerNativeCategories: offerGenericNativeCategories,
-    offerGenreTypes: buildBookGenreType(genreType),
-    gtls,
-  }
+export const getCategory = (categoryKey: CategoryKey) => {
+  const mapping = getCategoriesMapping()
+  return mapping[categoryKey]
 }
 
-function buildSearchPayloadValues(
-  data: SubcategoriesResponseModelv2,
-  form: CategoriesModalFormProps
-) {
-  const buildGenreType = (genreTypeId: typeof form.genreType) => {
-    if (genreTypeId === null) return []
-    const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    if (!genreType) return undefined
-
-    const genreTypeKey = data.genreTypes.find((genreType) =>
-      genreType.values.map((v) => v.name).includes(genreTypeId)
-    )?.name
-    if (!genreTypeKey) return undefined
-
-    return [{ name: genreTypeId, value: genreType.value, key: genreTypeKey }]
-  }
-
-  if (form.category === SearchGroupNameEnumv2.LIVRES) {
-    return buildBookSearchPayloadValues(data, form)
-  }
-
-  const genreType = buildGenreType(form.genreType)
-  if (!genreType) return undefined
-
-  const offerNativeCategories =
-    form.nativeCategory && isNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
-  const offerBookNativeCategories =
-    form.nativeCategory && isBookNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
-
-  const offerGenericNativeCategories = offerBookNativeCategories ? offerNativeCategories : []
-
-  return {
-    offerCategories: form.category === SearchGroupNameEnumv2.NONE ? [] : [form.category],
-    offerNativeCategories: offerGenericNativeCategories,
-    offerGenreTypes: genreType,
-    gtls: [],
-  }
+export const getCategoryChildren = (categoryKey: CategoryKey) => {
+  const mapping = getCategoriesMapping()
+  const category = getCategory(categoryKey)
+  return (category?.children ?? [])
+    .map((category) => mapping[category])
+    .filter((category) => !!category)
 }
 
-/**
- * Returns unique objects in array distinct by object key
- */
-function getUniqueBy<T>(arr: T[], key: keyof T) {
-  return [...new Map(arr.map((item) => [item[key], item])).values()]
+export const getCategoryParents = (categoryKey: CategoryKey) => {
+  const mapping = getCategoriesMapping()
+  return Object.values(mapping).filter((category) => category.children.includes(categoryKey))
 }
 
-function getCategoryFromEnum(data: undefined, enumValue: undefined): undefined
-function getCategoryFromEnum(data: undefined, enumValue: SearchGroupNameEnumv2): undefined
-function getCategoryFromEnum(data: SubcategoriesResponseModelv2, enumValue: undefined): undefined
-function getCategoryFromEnum(
-  data: SubcategoriesResponseModelv2,
-  enumValue: SearchGroupNameEnumv2
-): SearchGroupResponseModelv2
-function getCategoryFromEnum(
-  data: SubcategoriesResponseModelv2 | undefined,
-  enumValue?: SearchGroupNameEnumv2
-) {
-  if (data && enumValue) {
-    return data.searchGroups.find((category) => category.name === enumValue)
-  }
-
-  return undefined
+export const getTopLevelCategories = () => {
+  return getCategoryChildren(ROOT.key)
 }
 
-/**
- * Returns correct icon for a category.
- */
-export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
-  return CATEGORY_CRITERIA[item]?.icon
+export const categoryExists = (categoryKey: CategoryKey) => {
+  return Object.keys(getCategoriesMapping()).includes(categoryKey)
 }
 
-export function getCategoriesModalTitle(
-  data: SubcategoriesResponseModelv2,
-  currentView: CategoriesModalView,
-  categoryId: SearchGroupNameEnumv2,
-  nativeCategoryId: NativeCategoryEnum | null
-) {
-  switch (currentView) {
-    case CategoriesModalView.CATEGORIES:
-      return 'Catégories'
-    case CategoriesModalView.NATIVE_CATEGORIES: {
-      const category = getCategoryFromEnum(data, categoryId)
-      return category?.value ?? 'Sous-catégories'
-    }
-    case CategoriesModalView.GENRES: {
-      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId ?? undefined)
-      return nativeCategory?.value ?? 'Genres'
-    }
-    default:
-      return 'Catégories'
-  }
+export const isChild = (childKey: CategoryKey, parentKey: CategoryKey) => {
+  return getCategoriesMapping()[parentKey]?.children.includes(childKey) ?? false
+}
+
+export function buildSearchPayloadValues(categories: BaseCategory[]) {
+  return categories.reduce((payload: Record<string, string>, category: BaseCategory) => {
+    if (category.searchFilter && category.searchValue)
+      payload[category.searchFilter] = category.searchValue
+    return payload
+  }, {})
+}
+
+export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
+  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+
+  return bookTree.map((bookCategory) => {
+    const categoryName = getKeyFromStringLabel(bookCategory.label)
+    return { name: categoryName, value: bookCategory.label, genreType: GenreType.BOOK }
+  })
 }
 
 /**
@@ -213,7 +123,7 @@ export function getCategoriesModalTitle(
  */
 export function getNativeCategoryFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
-  enumValue: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | undefined
+  enumValue: NativeCategoryEnum | undefined
 ) {
   if (data && enumValue) {
     return (
@@ -225,55 +135,30 @@ export function getNativeCategoryFromEnum(
   return undefined
 }
 
-function getGenreTypeFromEnum(data: SubcategoriesResponseModelv2 | undefined, genreType?: string) {
-  if (data && genreType) {
-    const genre = data.genreTypes
-      .map((gt) => gt.values)
-      .flat()
-      .find((genreTypeValue) => genreTypeValue.name === genreType)
-
-    const bookGenre = getBooksGenreTypes(data).find(
-      (genreTypeValue) => genreTypeValue.name === genreType
-    )
-    return genre ?? bookGenre
-  }
-
-  return undefined
+/**
+ * Returns unique objects in array distinct by object key
+ */
+function getUniqueBy<T>(arr: T[], key: keyof T) {
+  return [...new Map(arr.map((item) => [item[key], item])).values()]
 }
 
-/**
- * Returns whether the category or native category is only online or not.
- * @param data
- * @param categoryId
- * @param nativeCategoryId
- */
-export function isOnlyOnline(
-  data: SubcategoriesResponseModelv2,
-  categoryId?: SearchGroupNameEnumv2,
-  nativeCategoryId?: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
-) {
-  if (!categoryId && !nativeCategoryId) {
-    return false
-  }
-
+export function isOnlyOnline(categoryKeys: CategoryKey[]) {
+  const { data = PLACEHOLDER_DATA } = useSubcategories()
   const platforms: OnlineOfflinePlatformChoicesEnumv2[] = [
     ...new Set(
       data.subcategories
         .filter((subcategory) =>
-          nativeCategoryId
-            ? subcategory.nativeCategoryId === nativeCategoryId
-            : subcategory.searchGroupName === categoryId
+          categoryKeys.some((categoryKey) => subcategory.searchGroupName.includes(categoryKey))
         )
         .map((subcategory) => subcategory.onlineOfflinePlatform)
     ),
   ]
 
-  const isOnlyOnline =
+  return (
     platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE) &&
     !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE) &&
     !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.OFFLINE)
-
-  return isOnlyOnline
+  )
 }
 
 /**
@@ -337,35 +222,6 @@ export function getNativeCategories(
   )
 
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
-}
-
-type Entries<T> = {
-  [K in keyof T]: [K, T[K]]
-}[keyof T][]
-
-function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
-  return Object.entries(obj) as Entries<T>
-}
-
-export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
-  const { data: subcategories } = useSubcategories()
-  const { facets } = useSearchResults()
-  if (!searchGroup || !subcategories) return []
-
-  const tree = createMappingTree(subcategories, facets)
-  if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
-
-  const nativeCategories = typedEntries(tree[searchGroup].children)
-  if (searchGroup !== SearchGroupNameEnumv2.LIVRES) return nativeCategories
-
-  const bookNativeCategories = nativeCategories.filter(
-    ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
-  )
-  const additionalBookNativeCategories = nativeCategories.filter(
-    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
-  )
-
-  return [...bookNativeCategories, ...additionalBookNativeCategories]
 }
 
 export const useSubcategoryIdsFromSearchGroups = (
@@ -570,22 +426,17 @@ export function getNbResultsFacetLabel(nbResultsFacet?: number) {
   }
 }
 
-export const handleCategoriesSearchPress = (
-  form: CategoriesModalFormProps,
-  data: SubcategoriesResponseModelv2
-) => {
-  const payload = buildSearchPayloadValues(data, form)
-  if (!payload) return
-
-  let isFullyDigitalOffersCategory = false
-  if (payload.offerNativeCategories.length > 0) {
-    isFullyDigitalOffersCategory = isOnlyOnline(data, undefined, payload.offerNativeCategories[0])
-  } else if (payload.offerCategories.length > 0) {
-    isFullyDigitalOffersCategory = isOnlyOnline(data, payload.offerCategories[0])
-  }
-
-  return { payload, isFullyDigitalOffersCategory }
-}
-
 export const sortCategoriesPredicate = (a: BaseCategory, b: BaseCategory) =>
   (a.position ?? Infinity) - (b.position ?? Infinity) || a.label.localeCompare(b.label)
+
+export function getKeyFromStringLabel(input?: string | null): string | null {
+  if (!input) return null
+  return input
+    .toUpperCase()
+    .replace('&', 'ET')
+    .replace('-', '_')
+    .replace(',', '')
+    .replace(/ /g, '_')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+}
