@@ -37,7 +37,8 @@
 			<array>
 				<string>https</string>
 				<string>app.passculture</string>
-				<string>app.passculture.$(ENV)</string>
+				<string>app.passculture.staging</string>
+				<string>app.passculture.test</string>
 				<string>$(GOOGLE_IOS_REVERSED_CLIENT_ID)</string>
 			</array>
 		</dict>

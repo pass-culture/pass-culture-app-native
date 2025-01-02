@@ -10,7 +10,7 @@ import { customGetPathFromState } from './getPathFromState'
 import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
-const PASS_CULTURE_PREFIX_URL = [`app.passculture.*://`, 'app.passculture://']
+const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
 export const linking: RequireField<
   LinkingOptions<RootStackParamList>,
@@ -19,7 +19,7 @@ export const linking: RequireField<
   prefixes: [
     // must NOT be empty
     WEBAPP_V2_URL,
-    ...PASS_CULTURE_PREFIX_URL,
+    PASS_CULTURE_PREFIX_URL,
   ],
   getInitialURL: getInitialURL,
   subscribe: subscribe,
