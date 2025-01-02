@@ -230,7 +230,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
         offerCategories: searchState.offerCategories,
-        offerNativeCategories: searchState.offerNativeCategories,
         gtls: searchState.gtls,
         priceRange: searchState.priceRange,
         searchId,
@@ -242,7 +241,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         partialSearchState = {
           ...partialSearchState,
           offerCategories,
-          offerNativeCategories: undefined,
           gtls: [],
         }
       }
@@ -264,7 +262,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.locationFilter,
       searchState.venue,
       searchState.offerCategories,
-      searchState.offerNativeCategories,
       searchState.gtls,
       searchState.priceRange,
       pushWithSearch,
