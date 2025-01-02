@@ -2,12 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Spacer, TypoDS } from 'ui/theme'
-
-const MIN_RADIUS = 0
-const MAX_RADIUS = 100
 
 interface LocationSearchFiltersProps {
   onValuesChange: (newValues: number[]) => void
@@ -33,7 +31,7 @@ export const LocationSearchFilters = ({
       <Slider
         showValues={false}
         values={[aroundRadius]}
-        min={MIN_RADIUS}
+        min={0}
         max={MAX_RADIUS}
         onValuesChange={onValuesChange}
         shouldShowMinMaxValues
