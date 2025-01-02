@@ -165,8 +165,10 @@ jobs:
           key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install --immutable --cwd server
-      - run: yarn --cwd server test:unit:ci
+      - name: Install packages for proxy
+        run: cd server && yarn install && cd ..
+      - name: Run proxy unit tests
+        run: cd server && yarn test:unit:ci && cd ..
       - name: Get secrets for SonarCloud
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
