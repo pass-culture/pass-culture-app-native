@@ -83,24 +83,7 @@ describe('IncomingReactionModalContainer', () => {
       isCookiesListUpToDate: false,
       cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
     })
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
 
     render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
 
@@ -117,24 +100,7 @@ describe('IncomingReactionModalContainer', () => {
       isCookiesListUpToDate: true,
       cookiesLastUpdate: undefined,
     })
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
 
     render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
 
@@ -147,24 +113,7 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies consent up-to-date', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
 
     render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
 
@@ -177,24 +126,7 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should send reaction from offer has subcategory in reactionCategories remote config', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
 
     render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
 
@@ -219,42 +151,8 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should send reaction with NO_REACTION when closing modal from offer has subcategory in reactionCategories remote config', async () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
+    mockUseBookingsReturnValueOnce(dateUsed)
 
     render(reactQueryProviderHOC(<IncomingReactionModalContainer />))
 
@@ -403,26 +301,30 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should not render the modal if less than 24 hours have passed', () => {
     const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS + 1000).toISOString()
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          {
-            ...bookingsSnap.ended_bookings[0],
-            userReaction: null,
-            dateUsed,
-            stock: {
-              ...bookingsSnap.ended_bookings[0].stock,
-              offer: {
-                ...bookingsSnap.ended_bookings[0].stock.offer,
-                subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-              },
-            },
-          },
-        ],
-      },
-    })
+    mockUseBookingsReturnValueOnce(dateUsed)
     render(<IncomingReactionModalContainer />)
 
     expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
   })
 })
+
+function mockUseBookingsReturnValueOnce(dateUsed: string) {
+  mockUseBookings.mockReturnValueOnce({
+    data: {
+      ended_bookings: [
+        {
+          ...bookingsSnap.ended_bookings[0],
+          userReaction: null,
+          dateUsed,
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: {
+              ...bookingsSnap.ended_bookings[0].stock.offer,
+              subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+            },
+          },
+        },
+      ],
+    },
+  })
+}
