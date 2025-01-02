@@ -193,4 +193,5 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logVideoPaused: jest.fn(),
   logDisplayAchievements: jest.fn(),
   logConsultAchievementModal: jest.fn(),
+  logViewedBookingPage: jest.fn(),
 }

@@ -708,4 +708,6 @@ export const logEventAnalytics = {
     homeEntryId: string
     moduleId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VIDEO_PAUSED }, params),
+  logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }

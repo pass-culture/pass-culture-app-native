@@ -3,12 +3,14 @@ import { mergeWith } from 'lodash'
 
 import {
   BookingOfferResponse,
+  BookingReponse,
   BookingVenueResponse,
   OfferResponseV2,
   OfferStockResponse,
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { createDateBuilder } from 'features/offer/components/MoviesScreeningCalendar/createBuilder'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { mockedBookingOfferResponse } from 'fixtures/booking'
@@ -82,6 +84,7 @@ export const mockBuilder = {
   searchResponseOffer: createMockBuilder<SearchResponse<Offer>>(searchResponseOffer),
   bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),
   bookingOfferResponse: createMockBuilder<BookingOfferResponse>(mockedBookingOfferResponse),
+  bookingResponse: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
 }
 
 export const dateBuilder = createDateBuilder()

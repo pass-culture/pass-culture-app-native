@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
@@ -8,7 +9,7 @@ import { theme } from 'theme'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface LocationSearchInputProps {
   selectedPlace: SuggestedPlace | null
@@ -38,8 +39,7 @@ export const LocationSearchInput = ({
   const shouldShowSuggestedPlaces = isQueryProvided && !selectedPlace
 
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={4} />
+    <StyledView>
       <SearchInput
         autoFocus
         LeftIcon={StyledMagnifyingGlass}
@@ -53,15 +53,16 @@ export const LocationSearchInput = ({
         }
       />
       {shouldShowSuggestedPlaces ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <StyledView>
           <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={onSetSelectedPlace} />
-        </React.Fragment>
+        </StyledView>
       ) : null}
-    </React.Fragment>
+    </StyledView>
   )
 }
 
 const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
+
+const StyledView = styled(View)({ paddingTop: getSpacing(4) })

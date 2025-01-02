@@ -16,7 +16,7 @@ import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchR
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -100,7 +100,6 @@ export const SearchSuggestions = ({
       keyboardShouldPersistTaps="handled"
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
-      <Spacer.Column numberOfSpaces={4} />
       <SearchHistory
         history={filteredHistory}
         queryHistory={queryHistory}
@@ -117,12 +116,13 @@ export const SearchSuggestions = ({
         />
         <AutocompleteVenue onItemPress={onVenuePress} />
       </Index>
-      <Spacer.Column numberOfSpaces={3} />
     </StyledScrollView>
   )
 }
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  paddingTop: getSpacing(4),
+  paddingBottom: getSpacing(3),
   flex: 1,
   paddingLeft: getSpacing(6),
   paddingRight: getSpacing(6),

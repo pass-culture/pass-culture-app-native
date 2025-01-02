@@ -122,6 +122,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     style={
       [
         {
+          "gap": 16,
           "paddingBottom": 40,
         },
       ]
@@ -214,16 +215,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       accessibilityLabel="Partager l’offre"
       accessibilityState={
         {
@@ -313,16 +304,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View
       accessibilityLabel="Retourner à l’accueil"
       accessibilityState={
