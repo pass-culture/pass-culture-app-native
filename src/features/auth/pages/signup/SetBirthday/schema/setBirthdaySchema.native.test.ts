@@ -1,9 +1,16 @@
+import mockdate from 'mockdate'
 import { ValidationError } from 'yup'
 
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { analytics } from 'libs/analytics'
 
+const Today = new Date(2020, 10, 1)
+
 describe('setBirthdaySchema', () => {
+  beforeAll(() => {
+    mockdate.set(Today)
+  })
+
   it('should validate when valid birthdate is provided', async () => {
     const input = { birthdate: new Date('2005-01-01') }
     const result = setBirthdaySchema.validate(input)
