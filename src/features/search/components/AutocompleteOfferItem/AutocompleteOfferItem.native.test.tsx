@@ -105,7 +105,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -122,7 +122,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -139,7 +139,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -242,7 +242,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-          offerCategories={[SearchGroupNameEnumv2.LIVRES]}
+          contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -739,7 +739,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-          offerCategories={[]}
+          contextCategories={[]}
         />,
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),

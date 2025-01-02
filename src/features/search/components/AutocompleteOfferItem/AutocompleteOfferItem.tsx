@@ -10,12 +10,12 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
-  getNativeCategoryFromEnum,
-  getSearchGroupsEnumArrayFromNativeCategoryEnum,
+  categoryExists,
+  getCategoryChildren,
+  getCategoryParents,
+  isChild,
   isNativeCategoryOfCategory,
-  useNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
@@ -30,7 +30,7 @@ type AutocompleteOfferItemProps = {
   sendEvent: SendEventForHits
   addSearchHistory: (item: CreateHistoryItem) => void
   shouldShowCategory?: boolean
-  offerCategories?: SearchGroupNameEnumv2[]
+  contextCategories?: SearchGroupNameEnumv2[]
 }
 
 export function AutocompleteOfferItem({
@@ -38,7 +38,7 @@ export function AutocompleteOfferItem({
   sendEvent,
   addSearchHistory,
   shouldShowCategory,
-  offerCategories = [],
+  contextCategories = [],
 }: Readonly<AutocompleteOfferItemProps>) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
@@ -47,7 +47,7 @@ export function AutocompleteOfferItem({
     ['offer.nativeCategoryId']: nativeCategories = [],
   } = indexInfos?.facets?.analytics || {}
 
-  const mappedNativeCategories = useNativeCategories(offerCategories[0])
+  const contextChildren = contextCategories[0] ? getCategoryChildren(contextCategories[0]) : []
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const routes = useNavigationState((state) => state.routes)
@@ -56,57 +56,40 @@ export function AutocompleteOfferItem({
   const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
 
-  const availableCategories = useAvailableCategories()
-
-  const availableCategoriesList: SearchGroupNameEnumv2[] = availableCategories.map(
-    (availableCategory) => availableCategory.facetFilter
-  )
-
   const filteredCategories = categories
-    .sort((a, b) => b.count - a.count)
-    .filter((category) => availableCategoriesList.includes(category.value))
+    .toSorted((a, b) => b.count - a.count)
+    .filter((category) => categoryExists(category.value))
 
   const searchGroupLabel = useSearchGroupLabel(
     filteredCategories[0]?.value ?? SearchGroupNameEnumv2.NONE
   )
+  nativeCategories.sort((a, b) => b.count - a.count)
 
-  const orderedNativeCategories = nativeCategories.sort((a, b) => b.count - a.count)
+  const isQueryFromThematicSearch = !!contextCategories.length
 
-  const isQueryFromThematicSearch = !!offerCategories.length
-
-  const isNativeCategoryRelatedToSearchGroup = useMemo(() => {
-    return mappedNativeCategories.some(
-      (searchGroupNativeCategory) =>
-        orderedNativeCategories[0] &&
-        searchGroupNativeCategory[0] === orderedNativeCategories[0].value
-    )
-  }, [mappedNativeCategories, orderedNativeCategories])
+  const areCategoriesRelated = useMemo(
+    () =>
+      nativeCategories[0] && contextCategories[0]
+        ? isChild(nativeCategories[0].value, contextCategories[0])
+        : false,
+    [contextChildren, nativeCategories]
+  )
 
   const hasMostPopularHitNativeCategory =
-    orderedNativeCategories[0]?.value && orderedNativeCategories[0].value in NativeCategoryIdEnumv2
+    nativeCategories[0]?.value && nativeCategories[0].value in NativeCategoryIdEnumv2
 
   const mostPopularNativeCategoryId = hasMostPopularHitNativeCategory
-    ? orderedNativeCategories[0]?.value
+    ? nativeCategories[0]?.value
     : undefined
 
-  const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
-    data,
-    mostPopularNativeCategoryId
-  )?.value
-
+  const mostPopularNativeCategoryValue = undefined
   const hasMostPopularHitCategory =
     filteredCategories[0]?.value && filteredCategories[0].value in SearchGroupNameEnumv2
 
-  const searchGroupFromNativeCategory = useMemo(
-    () =>
-      getSearchGroupsEnumArrayFromNativeCategoryEnum(
-        data,
-        mostPopularNativeCategoryId,
-        availableCategoriesList
-      ),
-    [data, mostPopularNativeCategoryId, availableCategoriesList]
+  const nativeCategoryParents = useMemo(
+    () => (mostPopularNativeCategoryId ? getCategoryParents(mostPopularNativeCategoryId) : []),
+    [mostPopularNativeCategoryId]
   )
-  const hasSeveralCategoriesFromNativeCategory = searchGroupFromNativeCategory.length > 1
   const isAssociatedMostPopularNativeCategoryToMostPopularCategory = useMemo(
     () =>
       isNativeCategoryOfCategory(data, filteredCategories[0]?.value, mostPopularNativeCategoryId),
@@ -115,38 +98,35 @@ export function AutocompleteOfferItem({
 
   const shouldDisplayNativeCategory =
     hasMostPopularHitNativeCategory &&
-    ((isQueryFromThematicSearch && isNativeCategoryRelatedToSearchGroup) ||
-      !isQueryFromThematicSearch) &&
-    !hasSeveralCategoriesFromNativeCategory
+    ((isQueryFromThematicSearch && areCategoriesRelated) || !isQueryFromThematicSearch) &&
+    nativeCategoryParents.length <= 1
 
   const isLivresPapierNativeCategory =
-    orderedNativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
+    nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
 
   const shouldUseSearchGroupInsteadOfNativeCategory =
     !shouldDisplayNativeCategory ||
     isLivresPapierNativeCategory ||
-    (isQueryFromThematicSearch && !isNativeCategoryRelatedToSearchGroup)
+    (isQueryFromThematicSearch && !areCategoriesRelated)
 
   const mostPopularCategory = useMemo(() => {
     if (
-      hasSeveralCategoriesFromNativeCategory ||
+      nativeCategoryParents.length > 1 ||
       !hasMostPopularHitNativeCategory ||
       shouldUseSearchGroupInsteadOfNativeCategory
     ) {
       return filteredCategories[0]?.value && filteredCategories[0].value in SearchGroupNameEnumv2
-        ? [filteredCategories[0].value]
-        : []
+        ? filteredCategories[0].value
+        : undefined
     } else {
-      return searchGroupFromNativeCategory[0] &&
-        searchGroupFromNativeCategory[0] in SearchGroupNameEnumv2
-        ? [searchGroupFromNativeCategory[0]]
-        : []
+      return nativeCategoryParents[0] && nativeCategoryParents[0].key in SearchGroupNameEnumv2
+        ? nativeCategoryParents[0].key
+        : undefined
     }
   }, [
     filteredCategories,
-    searchGroupFromNativeCategory,
+    nativeCategoryParents,
     hasMostPopularHitNativeCategory,
-    hasSeveralCategoriesFromNativeCategory,
     shouldUseSearchGroupInsteadOfNativeCategory,
   ])
 
@@ -162,27 +142,27 @@ export function AutocompleteOfferItem({
       shouldShowCategory &&
       hasMostPopularHitNativeCategory &&
       !shouldUseSearchGroupInsteadOfNativeCategory &&
-      ((hasSeveralCategoriesFromNativeCategory &&
+      ((nativeCategoryParents.length > 1 &&
         isAssociatedMostPopularNativeCategoryToMostPopularCategory) ||
-        !hasSeveralCategoriesFromNativeCategory)
+        nativeCategoryParents.length <= 1)
     const newSearchState: SearchState = {
       ...searchState,
       query,
       searchId,
       isAutocomplete: true,
       offerGenreTypes: undefined,
-      offerNativeCategories:
-        shouldFilterOnNativeCategory && orderedNativeCategories[0]?.value
-          ? [orderedNativeCategories[0].value]
-          : undefined,
-      offerCategories: shouldShowCategory ? mostPopularCategory : [],
+      // offerNativeCategories:
+      //   shouldFilterOnNativeCategory && orderedNativeCategories[0]?.value
+      //     ? [orderedNativeCategories[0].value]
+      //     : undefined,
+      offerCategories: shouldShowCategory && mostPopularCategory ? [mostPopularCategory] : [],
       isFromHistory: undefined,
       gtls: [],
     }
     addSearchHistory({
       query,
-      nativeCategory: shouldFilterOnNativeCategory ? orderedNativeCategories[0]?.value : undefined,
-      category: shouldShowCategory ? mostPopularCategory[0] : undefined,
+      nativeCategory: shouldFilterOnNativeCategory ? nativeCategories[0]?.value : undefined,
+      category: shouldShowCategory ? mostPopularCategory : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
     if (

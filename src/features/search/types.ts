@@ -7,7 +7,6 @@ import {
   GenreTypeContentModel,
   GTL,
   NativeCategoryIdEnumv2,
-  SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
@@ -17,7 +16,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
-import { BaseCategory, CategoryKey } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -97,8 +96,8 @@ export interface SearchListProps {
 
 export type CreateHistoryItem = {
   query: string
-  nativeCategory?: NativeCategoryIdEnumv2
-  category?: SearchGroupNameEnumv2
+  nativeCategory?: CategoryKey
+  category?: CategoryKey
 }
 
 export type Highlighted<TItem> = TItem & {
