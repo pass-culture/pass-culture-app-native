@@ -31,7 +31,7 @@ export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
   </BodyWrapper>
 )
 Default.args = {
-  sortedCategories: [
+  categoriesButtonsProps: [
     {
       label: 'CD, vinyles, musique en ligne',
       Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
