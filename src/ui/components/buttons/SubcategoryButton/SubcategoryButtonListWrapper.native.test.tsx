@@ -21,7 +21,7 @@ describe('<SubcategoryButtonListWrapper/>', () => {
   it('should display "Films à l’affiche" when offerCategory is "Cinema"', async () => {
     render(
       reactQueryProviderHOC(
-        <SubcategoryButtonListWrapper offerCategory={SearchGroupNameEnumv2.CINEMA} />
+        <SubcategoryButtonListWrapper category={SearchGroupNameEnumv2.CINEMA} />
       )
     )
 
@@ -31,7 +31,7 @@ describe('<SubcategoryButtonListWrapper/>', () => {
   it('should display "Romans et littérature" when offerCategory is "Livres"', async () => {
     render(
       reactQueryProviderHOC(
-        <SubcategoryButtonListWrapper offerCategory={SearchGroupNameEnumv2.LIVRES} />
+        <SubcategoryButtonListWrapper category={SearchGroupNameEnumv2.LIVRES} />
       )
     )
 

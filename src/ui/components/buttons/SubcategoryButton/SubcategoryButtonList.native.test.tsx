@@ -15,17 +15,17 @@ const subcategoryButtonContent: SubcategoryButtonItem[] = [
   {
     label: 'Romans et littérature',
     ...colors,
-    nativeCategory: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
+    categoryKey: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
   },
   {
     label: 'Mangas',
     ...colors,
-    nativeCategory: BooksNativeCategoriesEnum.MANGAS,
+    categoryKey: BooksNativeCategoriesEnum.MANGAS,
   },
   {
     label: 'BD & Comics',
     ...colors,
-    nativeCategory: BooksNativeCategoriesEnum.BD_ET_COMICS,
+    categoryKey: BooksNativeCategoriesEnum.BD_ET_COMICS,
   },
 ]
 
