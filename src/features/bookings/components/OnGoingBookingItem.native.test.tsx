@@ -9,7 +9,7 @@ import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
@@ -20,6 +20,8 @@ const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: S
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
 
@@ -28,25 +30,21 @@ describe('OnGoingBookingItem', () => {
   it('should navigate to the booking details page', async () => {
     renderOnGoingBookingItem(initialBooking)
 
-    const item = screen.getByTestId(/Réservation de l’offre/)
-    fireEvent.press(item)
+    const item = await screen.findByTestId(/Réservation de l’offre/)
+    await userEvent.press(item)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
-    })
+    expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
   })
 
   it('should log analytic logViewedBookingPage when click on CTA', async () => {
     renderOnGoingBookingItem(initialBooking)
 
-    const item = screen.getByTestId(/Réservation de l’offre/)
-    fireEvent.press(item)
+    const item = await screen.findByTestId(/Réservation de l’offre/)
+    await userEvent.press(item)
 
-    await waitFor(() => {
-      expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
-        offerId: initialBooking.stock.offer.id,
-        from: 'bookings',
-      })
+    expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
+      offerId: initialBooking.stock.offer.id,
+      from: 'bookings',
     })
   })
 
@@ -194,7 +192,7 @@ describe('OnGoingBookingItem', () => {
     const shareButton = await screen.findByLabelText(
       `Partager l’offre ${initialBooking.stock.offer.name}`
     )
-    fireEvent.press(shareButton)
+    await userEvent.press(shareButton)
 
     expect(mockNativeShare).toHaveBeenCalledTimes(1)
   })
@@ -205,7 +203,7 @@ describe('OnGoingBookingItem', () => {
     const shareButton = await screen.findByLabelText(
       `Partager l’offre ${initialBooking.stock.offer.name}`
     )
-    fireEvent.press(shareButton)
+    await userEvent.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',

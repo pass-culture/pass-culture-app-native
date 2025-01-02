@@ -7,7 +7,7 @@ import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewI
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, userEvent, render, screen } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
@@ -102,7 +102,7 @@ describe('<BookingConfirmation />', () => {
 
       await act(async () => {
         const shareButton = await screen.findByText('Partager l’offre')
-        fireEvent.press(shareButton)
+        await userEvent.press(shareButton)
       })
 
       expect(share).toHaveBeenCalledTimes(1)
@@ -112,8 +112,8 @@ describe('<BookingConfirmation />', () => {
       render(<BookingConfirmation />)
 
       await act(async () => {
-        const shareButton = screen.getByText('Partager l’offre')
-        fireEvent.press(shareButton)
+        const shareButton = await screen.findByText('Partager l’offre')
+        await userEvent.press(shareButton)
       })
 
       expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
@@ -125,48 +125,42 @@ describe('<BookingConfirmation />', () => {
 
     it('should go to Bookings when click on CTA', async () => {
       render(<BookingConfirmation />)
-      fireEvent.press(screen.getByText('Voir ma réservation'))
+      await userEvent.press(await screen.findByText('Voir ma réservation'))
 
-      await waitFor(() => {
-        expect(reset).toHaveBeenCalledWith({
-          index: 1,
-          routes: [
-            {
-              name: 'TabNavigator',
-              state: {
-                routes: [{ name: 'Bookings' }],
-                index: 0,
-              },
+      expect(reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [
+          {
+            name: 'TabNavigator',
+            state: {
+              routes: [{ name: 'Bookings' }],
+              index: 0,
             },
-            {
-              name: 'BookingDetails',
-              params: {
-                id: 345,
-              },
+          },
+          {
+            name: 'BookingDetails',
+            params: {
+              id: 345,
             },
-          ],
-        })
+          },
+        ],
       })
     })
 
     it('should log analytic logSeeMyBooking when click on CTA', async () => {
       render(<BookingConfirmation />)
-      fireEvent.press(screen.getByText('Voir ma réservation'))
+      await userEvent.press(await screen.findByText('Voir ma réservation'))
 
-      await waitFor(() => {
-        expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
-      })
+      expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
     })
 
     it('should log analytic logViewedBookingPage when click on CTA', async () => {
       render(<BookingConfirmation />)
-      fireEvent.press(screen.getByText('Voir ma réservation'))
+      await userEvent.press(await screen.findByText('Voir ma réservation'))
 
-      await waitFor(() => {
-        expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
-          offerId: mockOfferId,
-          from: 'bookingconfirmation',
-        })
+      expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
+        offerId: mockOfferId,
+        from: 'bookingconfirmation',
       })
     })
 
@@ -175,7 +169,7 @@ describe('<BookingConfirmation />', () => {
       async (buttonWording) => {
         render(<BookingConfirmation />)
 
-        fireEvent.press(screen.getByText(buttonWording))
+        await userEvent.press(await screen.findByText(buttonWording))
 
         expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_booked')
       }
