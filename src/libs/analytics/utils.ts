@@ -42,7 +42,7 @@ export const isCloseToBottom = ({
 // we just cast it to string.
 export const prepareLogEventParams = (params: Record<string, unknown>) =>
   Object.keys(params).reduce((acc: Record<string, unknown>, key) => {
-    acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
+    acc[key] = typeof params[key] === 'number' ? params[key].toString() : params[key]
     return acc
   }, {})
 
@@ -83,7 +83,7 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
   const formattedDisability = Object.fromEntries(
     Object.entries(disabilities).map(([key, value]) => [
       formatAccessibilityFilters[key],
-      value === undefined ? false : value,
+      value ?? false,
     ])
   )
 
@@ -130,10 +130,6 @@ export const buildPerformSearchState = (
 
   if (searchState.offerIsFree) {
     state.searchOfferIsFree = searchState.offerIsFree
-  }
-
-  if (searchState.offerNativeCategories && searchState.offerNativeCategories.length > 0) {
-    state.searchNativeCategories = JSON.stringify(searchState.offerNativeCategories)
   }
 
   if (searchState.query !== '') {

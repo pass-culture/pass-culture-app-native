@@ -12,7 +12,6 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
@@ -20,6 +19,7 @@ import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { GtlLevel } from 'shared/gtl/types'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
 interface AlgoliaGeoloc {
   lat?: number | null
@@ -120,13 +120,13 @@ export type SearchQueryParameters = {
   maxPrice?: string
   minBookingsThreshold?: number
   minPrice?: string
-  offerCategories: SearchGroupNameEnumv2[]
+  offerCategories: CategoryKey[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string
   offerGtlLevel?: GtlLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
-  offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
+  offerNativeCategories?: CategoryKey[]
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean
   page?: number

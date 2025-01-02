@@ -65,7 +65,7 @@ export const SearchSuggestions = ({
         isFromHistory: true,
         isAutocomplete: undefined,
         offerGenreTypes: undefined,
-        offerNativeCategories: item.nativeCategory ? [item.nativeCategory] : undefined,
+        offerNativeCategories: item.nativeCategory ? [item.nativeCategory] : [],
         offerCategories: offerCategories ?? (item.category ? [item.category] : []),
         gtls: [],
       }
