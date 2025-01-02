@@ -25,7 +25,7 @@ export type ParamConfig = {
     | 'priceRange'
     | 'boolean'
     | 'offerCategories'
-    | 'offerNativeCategories'
+    | 'offerSubcategories'
     | 'date'
     | 'locationFilter'
     | 'thematicSearchCategories'
@@ -46,7 +46,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: 'Identifiant unique de l’offre.',
-      serverValidator: (value: unknown) => api.getNativeV1OfferofferId(Number(value)),
+      serverValidator: (value: unknown) => api.getNativeV2OfferofferId(Number(value)),
     },
   },
   VenueMap: {},
@@ -96,7 +96,7 @@ export const SCREENS_CONFIG: {
       description: 'Categories',
     },
     offerNativeCategories: {
-      type: 'offerNativeCategories',
+      type: 'offerSubcategories',
       required: false,
       description: 'Sous-catégories',
     },
