@@ -8,7 +8,6 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
-import { NativeCategoryEnum } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -136,7 +135,7 @@ export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
  */
 export function getNativeCategoryFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
-  enumValue: NativeCategoryEnum | undefined
+  enumValue?: CategoryKey
 ) {
   if (data && enumValue) {
     return (

@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { HISTORY_KEY, MAX_HISTORY_RESULTS, MIN_HISTORY_RESULTS } from 'features/search/constants'
-import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
@@ -12,6 +11,10 @@ import { LogTypeEnum } from 'libs/monitoring/errors'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import {
+  getCategory,
+  getNativeCategoryFromEnum,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -87,7 +90,7 @@ export function useSearchHistory() {
           currentHistory = await getHistoryFromStorage()
         }
 
-        const categoryLabel = item.category ? searchGroupLabelMapping[item.category] : undefined
+        const categoryLabel = item.category ? getCategory(item.category)?.label : undefined
         const nativeCategoryLabel =
           getNativeCategoryFromEnum(subcategoriesData, item.nativeCategory)?.value ?? undefined
 
