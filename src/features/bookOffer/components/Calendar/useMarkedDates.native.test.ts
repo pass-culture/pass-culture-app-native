@@ -32,14 +32,12 @@ describe('useMarkedDates()', () => {
   it('should mark selected date correctly', () => {
     let hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(hook.result.current['2021-01-01'].selected).toBe(true)
+    expect(hook.result.current['2021-01-01']?.selected).toBe(true)
 
     mockBookingState.date = new Date(2021, 4, 4)
     hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(hook.result.current['2021-01-01'].selected).toBe(false)
+    expect(hook.result.current['2021-01-01']?.selected).toBe(false)
   })
 
   it('should skip stocks without date', () => {
@@ -56,10 +54,8 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].price).toEqual(2000)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].status).toEqual('BOOKABLE')
+    expect(result.current['2021-01-01']?.price).toEqual(2000)
+    expect(result.current['2021-01-01']?.status).toEqual('BOOKABLE')
   })
 
   it('should return the correct status and price for non bookable stocks', () => {
@@ -69,10 +65,8 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].price).toEqual(200)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
+    expect(result.current['2021-01-01']?.price).toEqual(200)
+    expect(result.current['2021-01-01']?.status).toEqual('NOT_BOOKABLE')
   })
 
   it('should select the bookable stock for a particular date even if not enough credit', () => {
@@ -82,9 +76,7 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 200))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].price).toEqual(2000)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
+    expect(result.current['2021-01-01']?.price).toEqual(2000)
+    expect(result.current['2021-01-01']?.status).toEqual('NOT_BOOKABLE')
   })
 })

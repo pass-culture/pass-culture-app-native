@@ -73,8 +73,7 @@ export function VenueSelectionListItem({ index, style, data }: Readonly<RowProps
           <SelectableListItem
             // @ts-expect-error: because of noUncheckedIndexedAccess
             onSelect={() => data.onItemSelect(data.items[index].offerId)}
-            // @ts-expect-error: because of noUncheckedIndexedAccess
-            isSelected={data.selectedItem === data.items[index].offerId}
+            isSelected={data.selectedItem === data.items[index]?.offerId}
             testID="venue-selection-list-item"
             render={({ isHover }) => (
               <VenueDetails

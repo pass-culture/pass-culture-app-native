@@ -10,19 +10,13 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
   }
   const navigationState = linking.getStateFromPath(pathWithQueryString, linking.config)
   const route = getLastRouteFromState(navigationState)
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const screen = route.name
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  let params = route.params
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  if (route.state) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+  const screen = route?.name
+  let params = route?.params
+  if (route?.state) {
     const nestedRoute = getLastRouteFromState(route.state)
     params = {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      screen: nestedRoute.name,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      params: nestedRoute.params,
+      screen: nestedRoute?.name,
+      params: nestedRoute?.params,
     }
   }
   return { screen, params } as DeeplinkParts
