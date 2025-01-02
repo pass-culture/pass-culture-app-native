@@ -2,14 +2,16 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import { getNbResultsFacetLabel } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import {
+  BaseCategory,
+  getNbResultsFacetLabel,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
-import { BaseCategory } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 
 interface CategoriesSectionItemProps {
   isSelected: boolean

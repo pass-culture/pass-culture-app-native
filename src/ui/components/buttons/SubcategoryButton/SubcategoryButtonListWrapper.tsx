@@ -1,48 +1,39 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useMemo } from 'react'
-import { ScrollViewProps, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_APPEARANCE } from 'features/search/enums'
 import {
-  buildFormPayload,
+  BaseCategory,
+  buildSearchPayloadValues,
+  CategoryKey,
+  getCategoryChildren,
   sortCategoriesPredicate,
-  useNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import { NativeCategoryEnum, SearchState } from 'features/search/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { SearchState } from 'features/search/types'
 import {
   SubcategoryButtonItem,
   SubcategoryButtonList,
 } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-type StyledScrollViewProps = ScrollViewProps & {
-  contentContainerStyle?: ViewStyle
-}
-
 type Props = {
-  offerCategory: SearchGroupNameEnumv2
-  scrollViewProps?: StyledScrollViewProps
+  category: CategoryKey
 }
 
-export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory }) => {
-  const { data: subcategories } = useSubcategories()
-
+export const SubcategoryButtonListWrapper: React.FC<Props> = ({ category }) => {
   const { colors } = useTheme()
-  const nativeCategories = useNativeCategories(offerCategory)
+  const subcategories: BaseCategory[] = getCategoryChildren(category)
   const offerCategoryTheme = useMemo(
     () => ({
-      backgroundColor: CATEGORY_CRITERIA[offerCategory]?.fillColor,
-      borderColor: CATEGORY_CRITERIA[offerCategory]?.borderColor,
+      backgroundColor: CATEGORY_APPEARANCE[category]?.fillColor,
+      borderColor: CATEGORY_APPEARANCE[category]?.borderColor,
     }),
-    [offerCategory]
+    [category]
   )
 
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
@@ -50,21 +41,21 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { dispatch, searchState } = useSearch()
   const subcategoryButtonContent = useMemo(
     () =>
-      nativeCategories
+      subcategories
+        .toSorted((a, b) => sortCategoriesPredicate(a, b))
         .map(
-          (nativeCategory): SubcategoryButtonItem => ({
-            label: nativeCategory[1].label,
-            backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
-            borderColor: offerCategoryTheme.borderColor || colors.black,
-            nativeCategory: nativeCategory[0] as NativeCategoryEnum,
-            position: nativeCategory[1].position,
+          (subcategory): SubcategoryButtonItem => ({
+            label: subcategory.label,
+            backgroundColor: offerCategoryTheme.backgroundColor ?? colors.white,
+            borderColor: offerCategoryTheme.borderColor ?? colors.black,
+            categoryKey: subcategory.key,
+            position: subcategory.position,
           })
-        )
-        .sort((a, b) => sortCategoriesPredicate(a, b)),
+        ),
     [
       colors.black,
       colors.white,
-      nativeCategories,
+      subcategories,
       offerCategoryTheme.backgroundColor,
       offerCategoryTheme.borderColor,
     ]
@@ -72,21 +63,14 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
 
   if (!subcategories) return null
 
-  const handleSubcategoryButtonPress = (nativeCategory: NativeCategoryEnum) => {
-    const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
-    const form: CategoriesModalFormProps = {
-      category: offerCategories?.[0] as SearchGroupNameEnumv2,
-      currentIndex: CategoriesModalView.GENRES,
-      genreType: null,
-      nativeCategory,
-    }
-    const searchPayload = buildFormPayload(form, subcategories)
+  const handleSubcategoryButtonPress = () => {
+    const offerCategories = params?.offerCategories ?? []
+    const searchPayload = buildSearchPayloadValues(subcategories)
 
     const additionalSearchState: SearchState = {
       ...searchState,
-      ...searchPayload?.payload,
+      ...searchPayload,
       offerCategories,
-      isFullyDigitalOffersCategory: searchPayload?.isFullyDigitalOffersCategory || undefined,
     }
 
     dispatch({ type: 'SET_STATE', payload: additionalSearchState })

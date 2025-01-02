@@ -3,40 +3,32 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour } from 'features/search/enums'
+import { CATEGORY_ICONS, FilterBehaviour } from 'features/search/enums'
 import {
-  getIcon,
-  buildFormPayload as buildFormSearchData,
+  ALL,
+  buildSearchPayloadValues,
+  getCategoryChildren,
+  getCategory,
+  ROOT,
   sortCategoriesPredicate,
+  CategoryKey,
+  BaseCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { VerticalUl } from 'ui/components/Ul'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
-import { VerticalUl } from 'ui/components/Ul'
-import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 
 const titleId = uuidv4()
-
-export type CategoryKey = string
-
-export type BaseCategory = {
-  children: CategoryKey[]
-  label: string
-  key: CategoryKey
-  position?: number
-  searchFilter?: string
-  searchValue?: string
-  nbResultsFacet?: number
-}
-export type CategoriesMapping = Record<CategoryKey, BaseCategory>
 
 export interface CategoriesModalProps {
   accessibilityLabel: string
@@ -64,49 +56,10 @@ export const CategoriesModal = ({
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
-  const ROOT_ALL: BaseCategory = {
-    children: [],
-    label: 'Toutes les catégories',
-    key: 'ROOT_ALL',
-    position: -Infinity,
+  function getIcon(item?: BaseCategory) {
+    if (!item) return undefined
+    return CATEGORY_ICONS[item.key]
   }
-  const ALL: BaseCategory = {
-    children: [],
-    label: 'Tout',
-    key: 'ALL',
-    position: -Infinity,
-  }
-  const ROOT: BaseCategory = {
-    children: [ROOT_ALL.key],
-    label: 'Catégories',
-    key: 'ROOT',
-    position: -Infinity,
-  }
-  const createMapping = () => {
-    const categories = [
-      { key: 'CINEMA', label: 'Cinéma', position: 2, children: ['SEANCE'] },
-      { key: 'LIVRES', label: 'Livres', position: 1, children: [] },
-      { key: 'MUSIQUE', label: 'Musique', position: 3, children: ['SEANCE'] },
-      { key: 'SEANCE', label: 'Séance de cinéma', position: 1, children: ['THRILLER'] },
-      { key: 'THRILLER', label: 'Thriller', position: 1, children: [] },
-    ]
-
-    const mapping = categories.reduce<CategoriesMapping>((mapping, category) => {
-      mapping[category.key] = category
-      mapping[category.key]?.children.push(ALL.key)
-      return mapping
-    }, {} as CategoriesMapping)
-    mapping[ROOT.key] = ROOT
-
-    const childrenCategories = categories.map((category) => category.children).flat()
-    const rootCategories = categories
-      .filter((category) => !childrenCategories.includes(category.key))
-      .map((category) => category.key)
-    mapping[ROOT.key]?.children.push(...rootCategories)
-    return mapping
-  }
-
-  const tree = useMemo(createMapping, [])
 
   const getDefaultFormValues = (searchState: SearchState): CategoriesModalFormProps => ({
     categoryStack: [ROOT.key, ...searchState.offerCategories.map((category) => category)],
@@ -147,18 +100,16 @@ export const CategoriesModal = ({
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
-      const formSearchData = buildFormSearchData(form, data)
-      if (!formSearchData) {
+      const categories = form.categoryStack
+        .map((categoryKey) => getCategory(categoryKey))
+        .filter((category) => !!category)
+      const searchPayload = buildSearchPayloadValues(categories)
+      if (!searchPayload) {
         hideModal()
         return
       }
 
-      const newSearchState: SearchState = {
-        ...searchState,
-        ...formSearchData.payload,
-        isFullyDigitalOffersCategory: formSearchData.isFullyDigitalOffersCategory,
-      }
-
+      const newSearchState: SearchState = { ...searchState, ...searchPayload }
       dispatch({ type: 'SET_STATE', payload: newSearchState })
       hideModal()
     },
@@ -188,19 +139,16 @@ export const CategoriesModal = ({
     reset(getDefaultFormValues(searchState))
   }, [reset])
 
-  const currentItem = useMemo(
-    () => (categoryStack[currentIndex] && tree[categoryStack[currentIndex]]) || ROOT,
-    [tree, categoryStack, currentIndex]
+  const currentItem =
+    (categoryStack[currentIndex] && getCategory(categoryStack[currentIndex])) || ROOT
+  const children = getCategoryChildren(currentItem.key).toSorted((a, b) =>
+    sortCategoriesPredicate(a, b)
   )
-  const children = currentItem.children
-    .map((categoryKey) => tree[categoryKey])
-    .filter((category) => !!category)
-    .toSorted((a, b) => sortCategoriesPredicate(a, b))
 
   const selectedChild = useMemo(() => {
     const next = currentIndex + 1
-    return (categoryStack[next] && tree[categoryStack[next]]) || ALL
-  }, [tree, categoryStack, currentIndex])
+    return (categoryStack[next] && getCategory(categoryStack[next])) || ALL
+  }, [categoryStack, currentIndex])
 
   const shouldDisplayBackButton =
     currentIndex > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
