@@ -1,28 +1,31 @@
 import React, { useState } from 'react'
-import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
+import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 
-const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
+type ButtonProps = {
+  title: string
+  screen?: RootScreenNames
+  onPress?: () => void
+}
 
 export function CheatcodesMenu(): React.JSX.Element {
-  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
-  const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
-  const { showInfoSnackBar } = useSnackBarContext()
-  const { logType } = useLogTypeFromRemoteConfig()
+  const [filter, setFilter] = useState('')
+  const resetSearch = () => setFilter('')
 
+  const { showInfoSnackBar } = useSnackBarContext()
   const onPressSentry = () => {
     const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
     eventMonitoring.captureException(new Error(message))
@@ -32,58 +35,88 @@ export function CheatcodesMenu(): React.JSX.Element {
     })
   }
 
-  const onPressDistanceToEiffelTower = () => {
-    Alert.alert(distanceToEiffelTower || 'Authorize geolocation first')
+  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
+  const { logType } = useLogTypeFromRemoteConfig()
+  const onPressForceUpdate = () => {
+    setScreenError(new ScreenError('Test force update page', { Screen: ForceUpdate, logType }))
   }
 
-  const onPressForceUpdate = () => {
-    setScreenError(
-      new ScreenError('Test force update page', {
-        Screen: ForceUpdate,
-        logType,
-      })
-    )
-  }
+  const featuresButtons: ButtonProps[] = [
+    { title: 'Achievements 🏆', screen: 'CheatcodesNavigationAchievements' },
+    { title: 'BookOffer 🎫', screen: 'CheatcodesNavigationBookOffer' },
+    { title: 'Cultural Survey 🎨', screen: 'CheatcodesNavigationCulturalSurvey' },
+    { title: 'ForceUpdate 🆙', onPress: onPressForceUpdate },
+    { title: 'Home 🏠', screen: 'CheatcodesNavigationHome' },
+    { title: 'IdentityCheck 🎨', screen: 'CheatcodesNavigationIdentityCheck' },
+    { title: 'Internal (Marketing) 🎯', screen: 'CheatcodesNavigationInternal' },
+    { title: 'Profile 👤', screen: 'CheatcodesNavigationProfile' },
+    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
+  ]
+
+  const otherButtons: ButtonProps[] = [
+    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
+    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
+    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
+    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
+    { title: 'Errors 👾', screen: 'CheatcodesNavigationErrors' },
+    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
+    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre' },
+    { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry },
+  ]
 
   if (screenError) throw screenError
 
+  const filteredFeaturesButtons = featuresButtons.filter((button) =>
+    button.title.toLowerCase().includes(filter.toLowerCase())
+  )
+  const filteredOtherButtons = otherButtons.filter((button) =>
+    button.title.toLowerCase().includes(filter.toLowerCase())
+  )
+
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
+      <StyledSearchInput
+        placeholder="Rechercher..."
+        value={filter}
+        onChangeText={setFilter}
+        onPressRightIcon={resetSearch}
+      />
+
       <StyledView>
         <SeparatorWithText label="FEATURES" />
       </StyledView>
 
-      <LinkToScreen title="Achievements 🏆" screen="CheatcodesNavigationAchievements" />
-      <LinkToScreen title="BookOffer 🎫" screen="CheatcodesNavigationBookOffer" />
-      <LinkToScreen title="Cultural Survey 🎨" screen="CheatcodesNavigationCulturalSurvey" />
-      <LinkToScreen title="ForceUpdate 🆙" onPress={onPressForceUpdate} />
-      <LinkToScreen title="Home 🏠" screen="CheatcodesNavigationHome" />
-      <LinkToScreen title="IdentityCheck 🎨" screen="CheatcodesNavigationIdentityCheck" />
-      <LinkToScreen title="Internal (Maketing) 🎯" screen="CheatcodesNavigationInternal" />
-      <LinkToScreen title="Profile 👤" screen="CheatcodesNavigationProfile" />
-      <LinkToScreen title="Share 🔗" screen="CheatcodesNavigationShare" />
-      <LinkToScreen title="Subscription 🔔" screen="CheatcodesNavigationSubscription" />
-      <LinkToScreen title="Trusted device 📱" screen="CheatcodesNavigationTrustedDevice" />
-      <LinkToScreen title="Tutorial ❔" screen="CheatcodesNavigationTutorial" />
+      {filteredFeaturesButtons.map((button, index) => (
+        <LinkToScreen
+          key={index}
+          title={button.title}
+          screen={button.screen}
+          onPress={button.onPress}
+        />
+      ))}
 
       <StyledView>
         <SeparatorWithText label="AUTRES" />
       </StyledView>
 
-      <LinkToScreen title="Nouvelle-Calédonie 🇳🇨" screen="CheatcodesScreenNewCaledonia" />
-      <LinkToScreen title="Features flags 🏳️" screen="CheatcodesScreenFeatureFlags" />
-      <LinkToScreen title="Remote config 📊" screen="CheatcodesScreenRemoteConfig" />
-      <LinkToScreen title="Debug informations 🪲" screen="CheatcodesScreenDebugInformations" />
-      <LinkToScreen title="Errors 👾" screen="CheatcodesNavigationErrors" />
-      <LinkToScreen title="Pages non écrans ❌" screen="CheatcodesNavigationNotScreensPages" />
-      <LinkToScreen title="AccesLibre 🌈" screen="CheatcodesScreenAccesLibre" />
-      <LinkToScreen title="SignUp 🎨" screen="CheatcodesNavigationSignUp" />
-      <LinkToScreen title="Account Management ⚙️" screen="CheatcodesNavigationAccountManagement" />
-      <LinkToScreen title="Distance to Eiffel Tower 🗼" onPress={onPressDistanceToEiffelTower} />
-      <LinkToScreen title="Envoyer une erreur Sentry 📤" onPress={onPressSentry} />
+      {filteredOtherButtons.map((button, index) => (
+        <LinkToScreen
+          key={index}
+          title={button.title}
+          screen={button.screen}
+          onPress={button.onPress}
+        />
+      ))}
     </CheatcodesTemplateScreen>
   )
 }
+
+const StyledSearchInput = styled(SearchInput).attrs({
+  inputContainerStyle: {
+    flex: 1,
+    marginBottom: getSpacing(4),
+  },
+})``
 
 const StyledView = styled.View({
   width: '100%',
