@@ -1,7 +1,11 @@
 import React, { useCallback } from 'react'
 
-import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
+import {
+  BookingsResponse,
+  PostOneReactionRequest,
+  PostReactionRequest,
+  ReactionTypeEnum,
+} from 'api/gen'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
@@ -13,11 +17,10 @@ import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigP
 import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const IncomingReactionModalContainer = () => {
+export const IncomingReactionModalContainer = ({ bookings }: { bookings: BookingsResponse }) => {
   const { reactionCategories } = useRemoteConfigContext()
   const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
-  const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
   const subcategoriesMapping = useSubcategoriesMapping()
