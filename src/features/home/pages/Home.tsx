@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { useShouldShowReactionModal } from 'features/home/components/helpers/useShouldShowReactionModal'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
@@ -17,8 +18,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -72,8 +71,6 @@ export const Home: FunctionComponent = () => {
     }
   }, [shouldShowAchievementSuccessModal, showAchievementModal])
 
-  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-
   useEffect(() => {
     if (id) {
       analytics.logConsultHome({ homeEntryId: id })
@@ -109,6 +106,10 @@ export const Home: FunctionComponent = () => {
 
   const { data: bookings } = useBookings()
 
+  const { shouldShowReactionModal } = useShouldShowReactionModal(
+    bookings ?? { ended_bookings: [], ongoing_bookings: [], hasBookingsAfter18: false }
+  )
+
   useEffect(() => {
     const editor = BatchProfile.editor()
     editor.setAttribute('app_version', getAppVersion())
@@ -139,7 +140,7 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
-      {isReactionFeatureActive && bookings ? (
+      {shouldShowReactionModal && bookings ? (
         <IncomingReactionModalContainer bookings={bookings} />
       ) : null}
       <AchievementSuccessModal
