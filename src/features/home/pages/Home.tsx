@@ -137,9 +137,7 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
-      {shouldShowReactionModal && bookings ? (
-        <IncomingReactionModalContainer bookings={bookings} />
-      ) : null}
+      {shouldShowReactionModal ? <IncomingReactionModalContainer bookings={bookings} /> : null}
       <AchievementSuccessModal
         achievementsToShow={achievementsToShow}
         visible={visibleAchievementModal}

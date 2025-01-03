@@ -16,7 +16,15 @@ import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigP
 import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const IncomingReactionModalContainer = ({ bookings }: { bookings: BookingsResponse }) => {
+export const IncomingReactionModalContainer = ({
+  bookings = {
+    ended_bookings: [],
+    ongoing_bookings: [],
+    hasBookingsAfter18: false,
+  },
+}: {
+  bookings?: BookingsResponse
+}) => {
   const { reactionCategories } = useRemoteConfigContext()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
