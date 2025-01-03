@@ -14,7 +14,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type AutocompleteOfferProps = UseInfiniteHitsProps & {
   addSearchHistory: (item: CreateHistoryItem) => void
   offerCategories?: SearchGroupNameEnumv2[]
-  shouldShowCategory?: boolean
 }
 
 export function AutocompleteOffer({
@@ -34,7 +33,6 @@ export function AutocompleteOffer({
               hit={item as unknown as AlgoliaSuggestionHit}
               sendEvent={sendEvent}
               addSearchHistory={addSearchHistory}
-              shouldShowCategory
               contextCategories={offerCategories || []}
             />
           </Li>

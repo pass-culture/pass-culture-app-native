@@ -42,7 +42,7 @@ export interface SearchState {
   hitsPerPage: number | null
   locationFilter: LocationFilter
   offerCategories: CategoryKey[]
-  offerNativeCategories: CategoryKey[]
+  offerNativeCategories: NativeCategoryIdEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean

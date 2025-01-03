@@ -65,7 +65,6 @@ describe('AutocompleteOfferItem component', () => {
       <AutocompleteOfferItem
         hit={mockHit}
         sendEvent={mockSendEvent}
-        shouldShowCategory
         addSearchHistory={jest.fn()}
       />,
       {
@@ -103,7 +102,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitRelevantResults}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
           contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
@@ -120,7 +118,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitIrrelevantResult}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
           contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
@@ -137,7 +134,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitRelevantResults}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
           contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
@@ -240,7 +236,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitsWithDifferentCounts}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
           contextCategories={[SearchGroupNameEnumv2.LIVRES]}
         />,
@@ -264,7 +259,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHit}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -296,7 +290,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -328,7 +321,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithoutAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -359,7 +351,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitWithOnlyCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -390,7 +381,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategoryAndCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -423,7 +413,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -454,7 +443,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -488,7 +476,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHit}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -504,7 +491,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -522,7 +508,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitWithoutCategoryAndNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -540,7 +525,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategoryAndCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -560,7 +544,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithoutAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -578,7 +561,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -598,7 +580,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -616,7 +597,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -634,7 +614,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -654,7 +633,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithoutAssociationToNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -670,7 +648,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitWithOnlyCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -686,7 +663,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitUnknownNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -702,7 +678,6 @@ describe('AutocompleteOfferItem component', () => {
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToBooksNativeCategory}
             sendEvent={mockSendEvent}
-            shouldShowCategory
             addSearchHistory={jest.fn()}
           />,
           {
@@ -719,7 +694,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitWithUnavailableCategory}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
         />,
         {
@@ -737,7 +711,6 @@ describe('AutocompleteOfferItem component', () => {
         <AutocompleteOfferItem
           hit={mockHitWithNativeCategory}
           sendEvent={mockSendEvent}
-          shouldShowCategory
           addSearchHistory={jest.fn()}
           contextCategories={[]}
         />,
