@@ -62,8 +62,6 @@
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53
 ./src/libs/itinerary/useItinerary.native.test.ts:61
-./src/libs/itinerary/useItinerary.ts:101
-./src/libs/itinerary/useItinerary.ts:77
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:11
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:15
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:17
