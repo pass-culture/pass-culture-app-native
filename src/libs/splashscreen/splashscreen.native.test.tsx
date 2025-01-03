@@ -1,56 +1,30 @@
-import mockdate from 'mockdate'
+import React, { PropsWithChildren } from 'react'
 
+import { eventBus } from 'events/eventBus'
+import { EventBusProvider } from 'events/EventBusProvider'
+import { SPLASHSCREEN_EVENTS } from 'events/eventNames'
 import { SplashScreenProvider, useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { renderHook, act } from 'tests/utils'
 
-const MIN_SPLASHSCREEN_DURATION_IN_MS = 2000
-
-const TODAY = new Date('2022-10-14')
-
-jest.useFakeTimers()
-
 describe('useSplashScreenContext()', () => {
-  beforeEach(() => {
-    mockdate.set(TODAY)
-    jest.clearAllTimers()
-  })
-
-  it('should hide splashscreen without waiting when it has been shown for long enough', () => {
+  it('should hide splashscreen when "splashscreen.hide" event is emitted', async () => {
     const { result } = renderSplashScreenHook()
-    mockdate.set(TODAY.getTime() + MIN_SPLASHSCREEN_DURATION_IN_MS)
-
     act(() => {
-      result.current.hideSplashScreen?.()
-    })
-
-    expect(result.current.isSplashScreenHidden).toBe(true)
-  })
-
-  it('should not hide splashscreen when it has not been shown for long enough', () => {
-    const { result } = renderSplashScreenHook()
-
-    act(() => {
-      result.current.hideSplashScreen?.()
-      jest.advanceTimersByTime(MIN_SPLASHSCREEN_DURATION_IN_MS - 1)
-    })
-
-    expect(result.current.isSplashScreenHidden).toBe(false)
-  })
-
-  it('should hide splashscreen when it has been shown for long enough', () => {
-    const { result } = renderSplashScreenHook()
-
-    act(() => {
-      result.current.hideSplashScreen?.()
-      jest.advanceTimersByTime(MIN_SPLASHSCREEN_DURATION_IN_MS)
+      eventBus.emit(SPLASHSCREEN_EVENTS.HIDE)
     })
 
     expect(result.current.isSplashScreenHidden).toBe(true)
   })
 })
 
+const Wrapper = ({ children }: PropsWithChildren) => (
+  <EventBusProvider>
+    <SplashScreenProvider>{children}</SplashScreenProvider>
+  </EventBusProvider>
+)
+
 function renderSplashScreenHook() {
   return renderHook(useSplashScreenContext, {
-    wrapper: SplashScreenProvider,
+    wrapper: Wrapper,
   })
 }

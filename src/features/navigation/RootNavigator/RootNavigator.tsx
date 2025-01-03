@@ -10,7 +10,6 @@ import { CheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNav
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
-import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
@@ -18,7 +17,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { determineAccessibilityRole } from './determineAccessibilityRole'
@@ -31,7 +29,7 @@ import { RootStack } from './Stack'
 const isWeb = Platform.OS === 'web'
 
 const RootStackNavigator = withWebWrapper(
-  ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
+  ({ initialRouteName }: { initialRouteName?: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
     return (
       <IconFactoryProvider>
@@ -61,14 +59,12 @@ const RootStackNavigator = withWebWrapper(
   }
 )
 
-export const RootNavigator: React.ComponentType = () => {
+export const RootNavigator = ({ initialScreen }: { initialScreen?: RootScreenNames }) => {
   const mainId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { isSplashScreenHidden } = useSplashScreenContext()
-
-  const initialScreen = useInitialScreen()
 
   const currentRoute = useCurrentRoute()
   const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
@@ -87,10 +83,6 @@ export const RootNavigator: React.ComponentType = () => {
       incrementLoggedInSessionCount()
     }
   }, [isLoggedIn])
-
-  if (!initialScreen) {
-    return <LoadingPage />
-  }
 
   const mainAccessibilityRole: AccessibilityRole | undefined =
     determineAccessibilityRole(currentRoute)

@@ -317,6 +317,7 @@ module.exports = {
           ['types', './src/types'],
           ['ui', './src/ui'],
           ['web', './src/web'],
+          ['events', './src/events'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.mjs'],
       },

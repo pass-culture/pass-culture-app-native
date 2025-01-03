@@ -8,9 +8,11 @@ import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
+import { NAVIGATION_EVENTS } from 'events/eventNames'
+import { useEventBus } from 'events/useEventBus'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -33,11 +35,14 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 }
 
 export const AppNavigationContainer = () => {
-  const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
+  const eventBus = useEventBus()
 
   const [isNavReady, setIsNavReady] = useState(false)
+  const [navigationStateLoaded, setNavigationStateLoaded] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
+
+  const initialScreen = useInitialScreen()
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
@@ -50,34 +55,29 @@ export const AppNavigationContainer = () => {
 
         setInitialNavigationState(savedState)
       } finally {
-        setIsNavReady(true)
+        setNavigationStateLoaded(true)
       }
     }
     restoreNavStateOnReload()
   }, [])
 
-  useEffect(() => {
-    if (isNavReady) {
-      hideSplashScreen?.()
-    }
-  }, [isNavReady, hideSplashScreen])
-
-  if (!isNavReady) {
-    return <LoadingPage />
+  if (isNavReady && navigationStateLoaded && initialScreen) {
+    eventBus.emit(NAVIGATION_EVENTS.READY)
   }
 
-  return (
+  return initialScreen ? (
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
       onStateChange={onNavigationStateChange}
+      onReady={() => setIsNavReady(true)}
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
-      <RootNavigator />
+      <RootNavigator initialScreen={initialScreen} />
     </NavigationContainer>
-  )
+  ) : null
 }
 
 export default AppNavigationContainer

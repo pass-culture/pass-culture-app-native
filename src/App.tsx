@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import 'react-native-gesture-handler' // @react-navigation
-import 'react-native-get-random-values' // required for `uuid` module to work
 import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
+import { onlineManager } from 'react-query'
 
+import 'react-native-get-random-values' // required for `uuid` module to work
+import 'react-native-gesture-handler' // @react-navigation
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 if (process.env.NODE_ENV === 'development') {
@@ -13,6 +14,14 @@ if (process.env.NODE_ENV === 'development') {
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
+import { eventBus } from 'events/eventBus'
+import { EventBusProvider } from 'events/EventBusProvider'
+import {
+  NAVIGATION_EVENTS,
+  NETWORK_EVENTS,
+  SNACKBAR_EVENTS,
+  SPLASHSCREEN_EVENTS,
+} from 'events/eventNames'
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
@@ -81,54 +90,55 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <RemoteConfigProvider>
-      <ReactQueryClientProvider>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AnalyticsInitializer>
-                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-                <NetInfoWrapper>
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
-                                        <PushNotificationsWrapper>
-                                          <ShareAppWrapper>
-                                            <OnboardingWrapper>
-                                              <OfflineModeContainer>
-                                                <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
-                                                </ScreenErrorProvider>
-                                              </OfflineModeContainer>
-                                            </OnboardingWrapper>
-                                          </ShareAppWrapper>
-                                        </PushNotificationsWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
-                </NetInfoWrapper>
-              </AnalyticsInitializer>
-            </ErrorBoundary>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </ReactQueryClientProvider>
-    </RemoteConfigProvider>
+    <EventBusProvider>
+      <SplashScreenProvider>
+        <RemoteConfigProvider>
+          <ReactQueryClientProvider>
+            <ThemeProvider theme={theme}>
+              <SafeAreaProvider>
+                <SnackBarProvider>
+                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                    <NetInfoWrapper>
+                      <AnalyticsInitializer>
+                        <SettingsWrapper>
+                          <AuthWrapper>
+                            <LocationWrapper>
+                              <AccessibilityFiltersWrapper>
+                                <FavoritesWrapper>
+                                  <SearchAnalyticsWrapper>
+                                    <SearchWrapper>
+                                      <CulturalSurveyContextProvider>
+                                        <SubscriptionContextProvider>
+                                          <PushNotificationsWrapper>
+                                            <ShareAppWrapper>
+                                              <OnboardingWrapper>
+                                                <OfflineModeContainer>
+                                                  <ScreenErrorProvider>
+                                                    <AppNavigationContainer />
+                                                  </ScreenErrorProvider>
+                                                </OfflineModeContainer>
+                                              </OnboardingWrapper>
+                                            </ShareAppWrapper>
+                                          </PushNotificationsWrapper>
+                                        </SubscriptionContextProvider>
+                                      </CulturalSurveyContextProvider>
+                                    </SearchWrapper>
+                                  </SearchAnalyticsWrapper>
+                                </FavoritesWrapper>
+                              </AccessibilityFiltersWrapper>
+                            </LocationWrapper>
+                          </AuthWrapper>
+                        </SettingsWrapper>
+                      </AnalyticsInitializer>
+                    </NetInfoWrapper>
+                  </ErrorBoundary>
+                </SnackBarProvider>
+              </SafeAreaProvider>
+            </ThemeProvider>
+          </ReactQueryClientProvider>
+        </RemoteConfigProvider>
+      </SplashScreenProvider>
+    </EventBusProvider>
   )
 }
 
@@ -139,6 +149,25 @@ const AppWithMonitoring = eventMonitoring.wrap(AppWithoutMonitoring) as React.Co
   tab?: string
 }>
 const AppWithCodepush = __DEV__ ? AppWithMonitoring : CodePush(config)(AppWithMonitoring)
+
+// SIDE EFFECTS
+eventBus.on(NETWORK_EVENTS.OFFLINE, () => {
+  onlineManager.setOnline(false)
+  eventBus.emit(SPLASHSCREEN_EVENTS.HIDE)
+  eventBus.emit(SNACKBAR_EVENTS.SHOW, {
+    type: 'info',
+    message: 'Aucune connexion internet. Réessaie plus tard',
+  })
+})
+
+eventBus.on(NETWORK_EVENTS.ONLINE, () => {
+  onlineManager.setOnline(true)
+  eventBus.emit(SNACKBAR_EVENTS.HIDE)
+})
+
+eventBus.once(NAVIGATION_EVENTS.READY, () => {
+  eventBus.emit(SPLASHSCREEN_EVENTS.HIDE)
+})
 
 /**
  * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!! :

@@ -1,18 +1,37 @@
 // eslint-disable-next-line no-restricted-imports
 import { NetInfoStateType } from '@react-native-community/netinfo'
 import React from 'react'
+import { View } from 'react-native'
 
+import { NETWORK_EVENTS } from 'events/eventNames'
+import * as useEventBus from 'events/useEventBus'
 import { analytics } from 'libs/analytics'
 import { NetInfoWrapper, useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 const mockedUseNetInfo = useNetInfo as unknown as jest.Mock<{
-  isConnected: boolean
-  isInternetReachable: boolean
+  isConnected: boolean | null
+  isInternetReachable: boolean | null
   type: NetInfoStateType
   details?: Record<string, unknown>
 }>
+
+const mockEventBus = {
+  on: jest.fn(),
+  off: jest.fn(),
+  emit: jest.fn(),
+  addListener: jest.fn(),
+  listeners: jest.fn(),
+  listenerCount: jest.fn(),
+  once: jest.fn(),
+  removeListener: jest.fn(),
+  removeAllListeners: jest.fn(),
+  eventNames: jest.fn(),
+}
+
+const useEventBusSpy = jest.spyOn(useEventBus, 'useEventBus')
+useEventBusSpy.mockReturnValue(mockEventBus)
 
 describe('NetInfoWrapper', () => {
   describe('useNetInfoContext', () => {
@@ -33,23 +52,6 @@ describe('NetInfoWrapper', () => {
       expect(onConnectionLost).not.toHaveBeenCalled()
     })
 
-    it('should call onConnectionLost', () => {
-      mockedUseNetInfo.mockReturnValueOnce({
-        isConnected: false,
-        isInternetReachable: true,
-        type: NetInfoStateType.wifi,
-      })
-      renderNetInfoWrapper({
-        onInternetConnection,
-        onInternetConnectionLost,
-        onConnection,
-        onConnectionLost,
-      })
-
-      expect(onConnection).not.toHaveBeenCalled()
-      expect(onConnectionLost).toHaveBeenCalledTimes(1)
-    })
-
     it('should call onInternetConnection', () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: true,
@@ -63,25 +65,9 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
+      expect(mockEventBus.emit).toHaveBeenCalledWith(NETWORK_EVENTS.ONLINE)
       expect(onInternetConnection).toHaveBeenCalledTimes(1)
       expect(onInternetConnectionLost).not.toHaveBeenCalled()
-    })
-
-    it('should call onInternetConnectionLost', () => {
-      mockedUseNetInfo.mockReturnValueOnce({
-        isConnected: true,
-        isInternetReachable: false,
-        type: NetInfoStateType.wifi,
-      })
-      renderNetInfoWrapper({
-        onInternetConnection,
-        onInternetConnectionLost,
-        onConnection,
-        onConnectionLost,
-      })
-
-      expect(onInternetConnection).not.toHaveBeenCalled()
-      expect(onInternetConnectionLost).toHaveBeenCalledTimes(1)
     })
 
     it('should log network information when wifi is used', async () => {
@@ -97,7 +83,24 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
+      expect(mockEventBus.emit).toHaveBeenCalledWith(NETWORK_EVENTS.OFFLINE)
       expect(analytics.logConnectionInfo).toHaveBeenCalledWith({ type: 'wifi' })
+    })
+
+    it('should emit no event on event bus if network info is null', () => {
+      mockedUseNetInfo.mockReturnValueOnce({
+        isConnected: null,
+        isInternetReachable: null,
+        type: NetInfoStateType.wifi,
+      })
+      renderNetInfoWrapper({
+        onInternetConnection,
+        onInternetConnectionLost,
+        onConnection,
+        onConnectionLost,
+      })
+
+      expect(mockEventBus.emit).not.toHaveBeenCalled()
     })
 
     it('should log network information when cellular is used', async () => {
@@ -137,6 +140,22 @@ describe('NetInfoWrapper', () => {
 
       expect(analytics.logConnectionInfo).not.toHaveBeenCalled()
     })
+
+    it('should not display children if there is no network', () => {
+      mockedUseNetInfo.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+        type: NetInfoStateType.unknown,
+      })
+      renderNetInfoWrapper({
+        onInternetConnection,
+        onInternetConnectionLost,
+        onConnection,
+        onConnectionLost,
+      })
+
+      expect(screen.queryByTestId('dumbComponent')).toBeNull()
+    })
   })
 })
 
@@ -160,7 +179,7 @@ const DumbComponent = ({
     onInternetConnectionLost,
   })
 
-  return null
+  return <View testID="dumbComponent" />
 }
 
 function renderNetInfoWrapper({
