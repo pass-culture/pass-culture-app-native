@@ -1,8 +1,11 @@
 import React, { useCallback } from 'react'
 
-import { PostOneReactionRequest, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
-import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
+import {
+  BookingsResponse,
+  PostOneReactionRequest,
+  PostReactionRequest,
+  ReactionTypeEnum,
+} from 'api/gen'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -13,11 +16,16 @@ import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigP
 import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const IncomingReactionModalContainer = () => {
+export const IncomingReactionModalContainer = ({
+  bookings = {
+    ended_bookings: [],
+    ongoing_bookings: [],
+    hasBookingsAfter18: false,
+  },
+}: {
+  bookings?: BookingsResponse
+}) => {
   const { reactionCategories } = useRemoteConfigContext()
-  const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
-  const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
-  const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
   const subcategoriesMapping = useSubcategoriesMapping()
@@ -69,7 +77,7 @@ export const IncomingReactionModalContainer = () => {
     hideReactionModal()
   }
 
-  if (!firstBooking || !isCookieConsentChecked) return null
+  if (!firstBooking) return null
 
   const { stock, dateUsed } = firstBooking
   const { offer } = stock
