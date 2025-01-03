@@ -121,6 +121,17 @@ describe('useShouldShowAchievementSuccessModal', () => {
       expect(result.current.shouldShowAchievementSuccessModal).toBeTruthy()
     })
 
+    it('should return false if another modal is open even if there are achievements to show to the user', () => {
+      mockAuthContextWithUser({
+        ...beneficiaryUser,
+        achievements: achievements,
+      })
+
+      const { result } = renderHook(() => useShouldShowAchievementSuccessModal(true))
+
+      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+    })
+
     it('should return an array with the achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,

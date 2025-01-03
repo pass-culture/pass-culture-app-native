@@ -57,8 +57,13 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
+  const { data: bookings } = useBookings()
+
+  const { shouldShowReactionModal } = useShouldShowReactionModal(
+    bookings ?? { ended_bookings: [], ongoing_bookings: [], hasBookingsAfter18: false }
+  )
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
-    useShouldShowAchievementSuccessModal()
+    useShouldShowAchievementSuccessModal(shouldShowReactionModal)
   const {
     visible: visibleAchievementModal,
     showModal: showAchievementModal,
@@ -103,12 +108,6 @@ export const Home: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
-
-  const { data: bookings } = useBookings()
-
-  const { shouldShowReactionModal } = useShouldShowReactionModal(
-    bookings ?? { ended_bookings: [], ongoing_bookings: [], hasBookingsAfter18: false }
-  )
 
   useEffect(() => {
     const editor = BatchProfile.editor()
