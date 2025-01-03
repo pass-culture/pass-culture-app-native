@@ -72,32 +72,27 @@ describe('getScreensAndConfig()', () => {
       _DeeplinkOnlyLogin1: { path: 'connexion', parse },
     })
     expect(Screens).toHaveLength(5)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(Screens[0].props).toEqual({
+    expect(Screens[0]?.props).toEqual({
       name: 'Offer',
       component: expect.any(Object),
       options: { title: 'Offer title' },
     })
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(Screens[1].props).toEqual({
+    expect(Screens[1]?.props).toEqual({
       name: '_DeeplinkOnlyOffer1',
       component: expect.any(Object),
       options: { title: 'Offer title' },
     })
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(Screens[2].props).toEqual({
+    expect(Screens[2]?.props).toEqual({
       name: '_DeeplinkOnlyOffer2',
       component: expect.any(Object),
       options: { title: 'Offer title' },
     })
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(Screens[3].props).toEqual({
+    expect(Screens[3]?.props).toEqual({
       name: 'Login',
       component: expect.any(Object),
       options: { title: 'Login title' },
     })
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(Screens[4].props).toEqual({
+    expect(Screens[4]?.props).toEqual({
       name: '_DeeplinkOnlyLogin1',
       component: expect.any(Object),
       options: { title: 'Login title' },

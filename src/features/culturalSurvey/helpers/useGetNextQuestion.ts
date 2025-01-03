@@ -7,12 +7,9 @@ export const useGetNextQuestion = (currentQuestion: CulturalSurveyQuestionEnum) 
   const nextQuestionIndex = questionsToDisplay.indexOf(currentQuestion) + 1
 
   const isCurrentQuestionLastQuestion = nextQuestionIndex === questionsToDisplay.length
-  let nextQuestion = currentQuestion
-
-  if (!isCurrentQuestionLastQuestion) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    nextQuestion = questionsToDisplay[nextQuestionIndex]
-  }
+  const nextQuestion = isCurrentQuestionLastQuestion
+    ? currentQuestion
+    : questionsToDisplay[nextQuestionIndex]
 
   return { isCurrentQuestionLastQuestion, nextQuestion }
 }
