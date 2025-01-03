@@ -40,7 +40,6 @@
     "ios:staging": "yarn ios --scheme PassCulture-Staging",
     "ios:testing": "yarn ios --scheme PassCulture-Testing",
     "postinstall": "patch-package && jetify",
-    "prepush": "git pull --rebase origin master",
     "start": "react-native start",
     "start:web": "vite",
     "start:web:development": "yarn start:web --mode=development",
@@ -82,11 +81,6 @@
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
     "update:tools": "nix flake update && direnv exec . devbox update && git commit --only flake.lock devbox.lock --message '(BSR) chore(deps): update tools'"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn prepush"
-    }
   },
   "dependencies": {
     "@algolia/client-search": "^4.24.0",
