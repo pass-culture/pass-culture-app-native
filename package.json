@@ -16,7 +16,7 @@
   "homepage": ".",
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "react-native run-android",
+    "android": "yarn preandroid && react-native run-android",
     "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
@@ -35,7 +35,7 @@
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client.sh",
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "preios": "./scripts/check_xcode_version.sh",
-    "ios": "react-native run-ios",
+    "ios": "yarn preios && react-native run-ios",
     "ios:prod": "yarn ios --scheme PassCulture-Production",
     "ios:staging": "yarn ios --scheme PassCulture-Staging",
     "ios:testing": "yarn ios --scheme PassCulture-Testing",
