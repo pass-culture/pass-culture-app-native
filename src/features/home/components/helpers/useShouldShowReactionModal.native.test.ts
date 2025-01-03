@@ -58,7 +58,7 @@ describe('useShouldShowReactionModal', () => {
     setFeatureFlags()
 
     const { result } = renderHook(() =>
-      useShouldShowReactionModal(bookingsWithEndedBookingWithReaction)
+      useShouldShowReactionModal(endedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
     )
 
     expect(result.current.shouldShowReactionModal).toBeFalsy()
@@ -70,9 +70,7 @@ describe('useShouldShowReactionModal', () => {
     })
 
     it('should return false if there are no bookings to react to', () => {
-      const { result } = renderHook(() =>
-        useShouldShowReactionModal(bookingsWithEndedBookingWithReaction)
-      )
+      const { result } = renderHook(() => useShouldShowReactionModal(endedBookingWithReaction))
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
     })
@@ -81,7 +79,7 @@ describe('useShouldShowReactionModal', () => {
       cookiesNotAccepted()
 
       const { result } = renderHook(() =>
-        useShouldShowReactionModal(bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
+        useShouldShowReactionModal(endedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
       )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
@@ -89,7 +87,7 @@ describe('useShouldShowReactionModal', () => {
 
     it('should return true if there are bookings to react to', () => {
       const { result } = renderHook(() =>
-        useShouldShowReactionModal(bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
+        useShouldShowReactionModal(endedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
       )
 
       expect(result.current.shouldShowReactionModal).toBeTruthy()
@@ -104,7 +102,7 @@ function cookiesNotAccepted() {
   })
 }
 
-const bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo: BookingsResponse = {
+const endedBookingWithoutReactionAndDateUsedMoreThan24hAgo: BookingsResponse = {
   ended_bookings: [
     {
       ...bookingsSnap.ended_bookings[0],
@@ -123,7 +121,7 @@ const bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo: Bookings
   hasBookingsAfter18: false,
 }
 
-const bookingsWithEndedBookingWithReaction: BookingsResponse = {
+const endedBookingWithReaction: BookingsResponse = {
   ended_bookings: [{ ...bookingsSnap.ended_bookings[0], userReaction: ReactionTypeEnum.LIKE }],
   ongoing_bookings: [],
   hasBookingsAfter18: false,
