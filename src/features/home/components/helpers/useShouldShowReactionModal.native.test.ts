@@ -38,7 +38,7 @@ const mockUseIsCookiesListUpToDate = jest
     isCookiesListUpToDate: true,
     cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
   })
-jest.mock('libs/firebase/analytics/analytics') // mocking analytics in useIsCookiesListUpToDate
+jest.mock('libs/firebase/analytics/analytics') // mocking analytics used in useIsCookiesListUpToDate
 
 jest.useFakeTimers()
 
@@ -91,10 +91,7 @@ describe('useShouldShowReactionModal', () => {
 
     it('should return false if cookies where not accepted', () => {
       const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
-      mockUseIsCookiesListUpToDate.mockReturnValueOnce({
-        isCookiesListUpToDate: true,
-        cookiesLastUpdate: undefined,
-      })
+      cookiesNotAccepted()
       mockUseBookingsReturnValueOnce(dateUsed)
 
       const { result } = renderHook(useShouldShowReactionModal)
@@ -113,6 +110,13 @@ describe('useShouldShowReactionModal', () => {
     })
   })
 })
+
+function cookiesNotAccepted() {
+  mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+    isCookiesListUpToDate: true,
+    cookiesLastUpdate: undefined,
+  })
+}
 
 function mockUseBookingsReturnValueOnce(dateUsed: string) {
   mockUseBookings.mockReturnValueOnce({
