@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4.2.1
         with:
           ref: ${{ inputs.REF }}
@@ -67,7 +69,7 @@ jobs:
           key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install --immutable
+      - run: yarn install
       - run: yarn build:${{ inputs.ENV }}
         env:
           # By default NodeJS processes are limited to 512MB of memory
