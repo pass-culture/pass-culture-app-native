@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
@@ -24,28 +25,15 @@ const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-useFeatureFlagSpy.mockReturnValue(false)
 
 const navigationParams = {
   params: {
     params: {
-      beginningDatetime: undefined,
-      date: null,
-      endingDatetime: undefined,
-      hitsPerPage: 20,
-      locationFilter: { locationType: 'EVERYWHERE' },
+      ...initialSearchState,
       offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
-      offerIsDuo: false,
-      offerIsFree: false,
-      offerSubcategories: [],
-      isDigital: false,
       priceRange: [0, 300],
       query: 'Big flo et Oli',
-      tags: [],
-      timeRange: null,
       searchId,
-      gtls: [],
       accessibilityFilter: {
         isAudioDisabilityCompliant: undefined,
         isMentalDisabilityCompliant: undefined,
@@ -61,7 +49,7 @@ const navigationParams = {
 describe('useShowResultsForCategory', () => {
   describe('Category does not have ThematicSearch', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+      setFeatureFlags()
       mockSearchState = {
         ...initialSearchState,
         locationFilter: { locationType: LocationMode.EVERYWHERE },
@@ -108,7 +96,7 @@ describe('useShowResultsForCategory', () => {
 
   describe('Category has a ThematicSearch', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
       mockSearchState = {
         ...initialSearchState,
         locationFilter: { locationType: LocationMode.EVERYWHERE },
@@ -123,7 +111,7 @@ describe('useShowResultsForCategory', () => {
       }
     })
 
-    it('should navigate to ThematicSearch', () => {
+    it('should navigate to ThematicSearch (livres)', () => {
       const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
       resultCallback.current(SearchGroupNameEnumv2.LIVRES)

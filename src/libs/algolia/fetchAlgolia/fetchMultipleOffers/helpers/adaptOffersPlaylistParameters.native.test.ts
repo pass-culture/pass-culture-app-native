@@ -25,7 +25,17 @@ const defaultSearchParameters = omit(
     offerGtlLabel: undefined,
     offerGtlLevel: undefined,
   },
-  ['offerIsFree', 'view', 'venue', 'locationFilter', 'gtls']
+  [
+    'offerIsFree',
+    'view',
+    'venue',
+    'locationFilter',
+    'gtls',
+    'minPrice',
+    'maxPrice',
+    'defaultMaxPrice',
+    'defaultMinPrice',
+  ]
 )
 
 jest.mock('libs/firebase/analytics/analytics')

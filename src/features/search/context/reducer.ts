@@ -6,20 +6,24 @@ import { SuggestedPlace } from 'libs/place/types'
 export const initialSearchState: SearchState = {
   beginningDatetime: undefined,
   date: null,
+  defaultMaxPrice: '',
+  defaultMinPrice: '',
   endingDatetime: undefined,
+  gtls: [],
   hitsPerPage: 20,
+  isDigital: false,
   locationFilter: { locationType: LocationMode.EVERYWHERE },
+  maxPrice: undefined,
+  minPrice: undefined,
   offerCategories: [],
-  offerSubcategories: [],
   offerIsDuo: false,
   offerIsFree: false,
-  isDigital: false,
+  offerSubcategories: [],
   priceRange: null,
   query: '',
   tags: [],
   timeRange: null,
   venue: undefined,
-  gtls: [],
 }
 
 export type Action =
