@@ -59,9 +59,7 @@ export const Home: FunctionComponent = () => {
   })
   const { data: bookings } = useBookings()
 
-  const { shouldShowReactionModal } = useShouldShowReactionModal(
-    bookings ?? { ended_bookings: [], ongoing_bookings: [], hasBookingsAfter18: false }
-  )
+  const { shouldShowReactionModal } = useShouldShowReactionModal(bookings)
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal(shouldShowReactionModal)
   const {

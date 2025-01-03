@@ -6,7 +6,13 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 
-export const useShouldShowReactionModal = (bookings: BookingsResponse) => {
+export const useShouldShowReactionModal = (
+  bookings: BookingsResponse = {
+    ended_bookings: [],
+    ongoing_bookings: [],
+    hasBookingsAfter18: false,
+  }
+) => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const subcategoriesMapping = useSubcategoriesMapping()
   const { reactionCategories } = useRemoteConfigContext()
