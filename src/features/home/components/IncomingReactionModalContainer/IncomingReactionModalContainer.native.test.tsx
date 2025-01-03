@@ -9,7 +9,6 @@ import {
 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -36,13 +35,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const mockUseIsCookiesListUpToDate = jest
-  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
-  .mockReturnValue({
-    isCookiesListUpToDate: true,
-    cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-  })
-
 jest.useFakeTimers()
 
 describe('IncomingReactionModalContainer', () => {
@@ -65,49 +57,7 @@ describe('IncomingReactionModalContainer', () => {
     expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
   })
 
-  it('should not render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies consent not up-to-date', async () => {
-    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
-      isCookiesListUpToDate: false,
-      cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-    })
-
-    render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookings={endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
-        />
-      )
-    )
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
-
-  it('should not render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies last update not received', async () => {
-    mockUseIsCookiesListUpToDate.mockReturnValueOnce({
-      isCookiesListUpToDate: true,
-      cookiesLastUpdate: undefined,
-    })
-
-    render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookings={endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
-        />
-      )
-    )
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
-
-  it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config and cookies consent up-to-date', async () => {
+  it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config', async () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
