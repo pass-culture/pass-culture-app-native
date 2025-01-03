@@ -1,6 +1,6 @@
 import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
 import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
 import { TypoDS } from 'ui/theme'
@@ -40,7 +40,7 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <TypoDS.Body
         onTextLayout={handleOnTextLayout}
         numberOfLines={expanded ? undefined : currentNumberOfLines}>
@@ -50,6 +50,10 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
       {shouldDisplayButton ? (
         <CollapsibleTextButton expanded={expanded} onPress={onButtonPress} />
       ) : null}
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  overflow: 'hidden',
+})
