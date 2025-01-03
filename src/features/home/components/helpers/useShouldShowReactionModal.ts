@@ -1,4 +1,5 @@
 import { useBookings } from 'features/bookings/api'
+import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -10,10 +11,12 @@ export const useShouldShowReactionModal = () => {
   const { data: bookings } = useBookings()
   const subcategoriesMapping = useSubcategoriesMapping()
   const { reactionCategories } = useRemoteConfigContext()
+  const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
+  const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
   let shouldShowReactionModal = false
 
-  if (!isReactionFeatureActive) return { shouldShowReactionModal }
+  if (!isReactionFeatureActive || !isCookieConsentChecked) return { shouldShowReactionModal }
 
   const eligibleBookingsWithoutReaction =
     bookings?.ended_bookings?.filter((booking) =>
