@@ -23,6 +23,10 @@ export class ServiceRegistry {
     this.factories.set(name, serviceFactory)
   }
 
+  hasFactory(name: ServiceName): boolean {
+    return this.factories.has(name)
+  }
+
   get<T extends ServiceName>(name: T): Service<T> {
     let service = this.services.get(name)
 

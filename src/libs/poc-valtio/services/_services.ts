@@ -1,5 +1,5 @@
-import { creditService } from 'libs/poc-valtio/services/credit.service'
-import { userService } from 'libs/poc-valtio/services/user.service'
+import { creditService } from './credit.service'
+import { userService } from './user.service'
 
 export const services = {
   credit: creditService,
