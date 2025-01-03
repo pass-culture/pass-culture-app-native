@@ -11,7 +11,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AutocompleteOfferProps = UseInfiniteHitsProps & {
+type AutocompleteOfferProps = UseInfiniteHitsProps<AlgoliaSuggestionHit> & {
   addSearchHistory: (item: CreateHistoryItem) => void
   offerCategories?: SearchGroupNameEnumv2[]
 }
@@ -21,7 +21,7 @@ export function AutocompleteOffer({
   offerCategories,
   ...props
 }: AutocompleteOfferProps) {
-  const { hits, sendEvent } = useInfiniteHits(props)
+  const { hits, sendEvent } = useInfiniteHits<AlgoliaSuggestionHit>(props)
 
   return hits.length > 0 ? (
     <React.Fragment>
@@ -30,7 +30,7 @@ export function AutocompleteOffer({
         {hits.map((item) => (
           <Li key={item.objectID}>
             <AutocompleteOfferItem
-              hit={item as unknown as AlgoliaSuggestionHit}
+              hit={item}
               sendEvent={sendEvent}
               addSearchHistory={addSearchHistory}
               contextCategories={offerCategories || []}
