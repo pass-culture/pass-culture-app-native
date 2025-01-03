@@ -1,13 +1,13 @@
 import mockdate from 'mockdate'
 
 import {
+  BookingsResponse,
   NativeCategoryIdEnumv2,
   ReactionTypeEnum,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useShouldShowReactionModal } from 'features/home/components/helpers/useShouldShowReactionModal'
@@ -20,8 +20,6 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.mock('features/bookings/api')
-const mockUseBookings = useBookings as jest.Mock
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
@@ -58,15 +56,10 @@ describe('useShouldShowReactionModal', () => {
 
   it('should return false when FF wipReactionFeature is false', () => {
     setFeatureFlags()
-    mockUseBookings.mockReturnValueOnce({
-      data: {
-        ended_bookings: [
-          { ...bookingsSnap.ended_bookings[0], userReaction: ReactionTypeEnum.LIKE },
-        ],
-      },
-    })
 
-    const { result } = renderHook(useShouldShowReactionModal)
+    const { result } = renderHook(() =>
+      useShouldShowReactionModal(bookingsWithEndedBookingWithReaction)
+    )
 
     expect(result.current.shouldShowReactionModal).toBeFalsy()
   })
@@ -77,34 +70,27 @@ describe('useShouldShowReactionModal', () => {
     })
 
     it('should return false if there are no bookings to react to', () => {
-      mockUseBookings.mockReturnValueOnce({
-        data: {
-          ended_bookings: [
-            { ...bookingsSnap.ended_bookings[0], userReaction: ReactionTypeEnum.LIKE },
-          ],
-        },
-      })
-      const { result } = renderHook(useShouldShowReactionModal)
+      const { result } = renderHook(() =>
+        useShouldShowReactionModal(bookingsWithEndedBookingWithReaction)
+      )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
     })
 
     it('should return false if cookies where not accepted', () => {
-      const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
       cookiesNotAccepted()
-      mockUseBookingsReturnValueOnce(dateUsed)
 
-      const { result } = renderHook(useShouldShowReactionModal)
+      const { result } = renderHook(() =>
+        useShouldShowReactionModal(bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
+      )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
     })
 
     it('should return true if there are bookings to react to', () => {
-      const dateUsed = new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString()
-
-      mockUseBookingsReturnValueOnce(dateUsed)
-
-      const { result } = renderHook(useShouldShowReactionModal)
+      const { result } = renderHook(() =>
+        useShouldShowReactionModal(bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo)
+      )
 
       expect(result.current.shouldShowReactionModal).toBeTruthy()
     })
@@ -118,23 +104,27 @@ function cookiesNotAccepted() {
   })
 }
 
-function mockUseBookingsReturnValueOnce(dateUsed: string) {
-  mockUseBookings.mockReturnValueOnce({
-    data: {
-      ended_bookings: [
-        {
-          ...bookingsSnap.ended_bookings[0],
-          userReaction: null,
-          dateUsed,
-          stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: {
-              ...bookingsSnap.ended_bookings[0].stock.offer,
-              subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-            },
-          },
+const bookingsWithEndedBookingWithoutReactionAndDateUsedMoreThan24hAgo: BookingsResponse = {
+  ended_bookings: [
+    {
+      ...bookingsSnap.ended_bookings[0],
+      userReaction: null,
+      dateUsed: new Date(CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000).toISOString(),
+      stock: {
+        ...bookingsSnap.ended_bookings[0].stock,
+        offer: {
+          ...bookingsSnap.ended_bookings[0].stock.offer,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
         },
-      ],
+      },
     },
-  })
+  ],
+  ongoing_bookings: [],
+  hasBookingsAfter18: false,
+}
+
+const bookingsWithEndedBookingWithReaction: BookingsResponse = {
+  ended_bookings: [{ ...bookingsSnap.ended_bookings[0], userReaction: ReactionTypeEnum.LIKE }],
+  ongoing_bookings: [],
+  hasBookingsAfter18: false,
 }
