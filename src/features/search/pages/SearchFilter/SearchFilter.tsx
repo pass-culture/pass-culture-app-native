@@ -86,7 +86,6 @@ export const SearchFilter: React.FC = () => {
         minPrice: undefined,
         maxPrice: undefined,
         offerGenreTypes: undefined,
-        offerNativeCategories: undefined,
         beginningDatetime: undefined,
         date: null,
         endingDatetime: undefined,

@@ -2,7 +2,6 @@ import omit from 'lodash/omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { ControlledFilterSwitch } from 'features/internal/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/internal/atoms/DateChoice'
@@ -11,7 +10,7 @@ import {
   OfferCategoryChoices,
   ThematicSearchCategoryChoices,
 } from 'features/internal/atoms/OfferCategoryChoices'
-import { OfferNativeCategoryChoices } from 'features/internal/atoms/OfferNativeCategoryChoices'
+import { OfferSubcategoryChoices } from 'features/internal/atoms/OfferSubcategoryChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -41,6 +40,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
 export interface GeneratedDeeplink {
   universalLink: string
@@ -157,7 +157,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    function onChangeOfferCategories(categories: SearchGroupNameEnumv2[]) {
+    function onChangeOfferCategories(categories: CategoryKey[]) {
       setScreenParams((prevPageParams) => {
         return {
           ...prevPageParams,
@@ -167,12 +167,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       })
     }
 
-    function onChangeOfferNativeCategories(nativeCategories: NativeCategoryIdEnumv2[]) {
+    function onChangeOfferSubcategories(subcategories: CategoryKey[]) {
       setScreenParams((prevPageParams) =>
-        nativeCategories.length
+        subcategories.length
           ? {
               ...prevPageParams,
-              [name]: nativeCategories,
+              [name]: subcategories,
             }
           : omit(prevPageParams, name)
       )
@@ -238,19 +238,19 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         {config.type === 'offerCategories' ? (
           <OfferCategoryChoices
             onChange={onChangeOfferCategories}
-            selection={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+            selection={screenParams.offerCategories as CategoryKey[]}
           />
         ) : null}
-        {config.type === 'offerNativeCategories' && screenParams.offerCategories ? (
-          <OfferNativeCategoryChoices
-            categories={screenParams.offerCategories as SearchGroupNameEnumv2[]}
-            onChange={onChangeOfferNativeCategories}
+        {config.type === 'offerSubcategories' && screenParams.offerCategories ? (
+          <OfferSubcategoryChoices
+            categories={screenParams.offerCategories as CategoryKey[]}
+            onChange={onChangeOfferSubcategories}
           />
         ) : null}
         {config.type === 'thematicSearchCategories' ? (
           <ThematicSearchCategoryChoices
             onChange={onChangeOfferCategories}
-            selection={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+            selection={screenParams.offerCategories as CategoryKey[]}
           />
         ) : null}
         {config.type === 'date' ? (

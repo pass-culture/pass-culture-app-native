@@ -4,9 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { OnPressCategory } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
+import { OnPressCategory } from 'features/search/helpers/useSortedSearchCategories/useSearchLandingButtonsProps'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -29,14 +28,14 @@ export const useShowResultsForCategory = (): OnPressCategory => {
   const enableWipPageThematicSearchMusic = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_MUSIC
   )
-  const THEMATIC_SEARCH_CATEGORIES: (keyof typeof SearchGroupNameEnumv2 | undefined)[] = useMemo(
+  const THEMATIC_SEARCH_CATEGORIES: (SearchGroupNameEnumv2 | undefined)[] = useMemo(
     () => [
-      enableWipPageThematicSearchBooks ? 'LIVRES' : undefined,
-      enableWipPageThematicSearchCinema ? 'CINEMA' : undefined,
+      enableWipPageThematicSearchBooks ? SearchGroupNameEnumv2.LIVRES : undefined,
+      enableWipPageThematicSearchCinema ? SearchGroupNameEnumv2.CINEMA : undefined,
       enableWipPageThematicSearchFilmsDocumentairesEtSeries
-        ? 'FILMS_DOCUMENTAIRES_SERIES'
+        ? SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
         : undefined,
-      enableWipPageThematicSearchMusic ? 'MUSIQUE' : undefined,
+      enableWipPageThematicSearchMusic ? SearchGroupNameEnumv2.MUSIQUE : undefined,
     ],
     [
       enableWipPageThematicSearchBooks,
@@ -54,13 +53,14 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         ...searchState,
         offerCategories: [pressedCategory],
         offerSubcategories: [],
-        offerNativeCategories: undefined,
         offerGenreTypes: undefined,
         searchId,
-        isFullyDigitalOffersCategory: isOnlyOnline(data, pressedCategory) || undefined,
         isFromHistory: undefined,
       }
-      if (THEMATIC_SEARCH_CATEGORIES.includes(pressedCategory)) {
+      if (
+        pressedCategory in SearchGroupNameEnumv2 &&
+        THEMATIC_SEARCH_CATEGORIES.includes(pressedCategory as SearchGroupNameEnumv2)
+      ) {
         dispatch({
           type: 'SET_STATE',
           payload: newSearchState,

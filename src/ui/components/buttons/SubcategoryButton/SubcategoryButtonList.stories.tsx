@@ -25,47 +25,47 @@ Default.args = {
     {
       label: 'Société & Politique',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.SOCIETE_ET_POLITIQUE,
+      categoryKey: BooksNativeCategoriesEnum.SOCIETE_ET_POLITIQUE,
     },
     {
       label: 'Romans & Littérature',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
+      categoryKey: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
     },
     {
       label: 'Mangas',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.MANGAS,
+      categoryKey: BooksNativeCategoriesEnum.MANGAS,
     },
     {
       label: 'BD & Comics',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.BD_ET_COMICS,
+      categoryKey: BooksNativeCategoriesEnum.BD_ET_COMICS,
     },
     {
       label: 'Compétences générales',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.COMPETENCES_GENERALES,
+      categoryKey: BooksNativeCategoriesEnum.COMPETENCES_GENERALES,
     },
     {
       label: 'Loisirs & Bien-être',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE,
+      categoryKey: BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE,
     },
     {
       label: 'Mode & Art',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.MODE_ET_ART,
+      categoryKey: BooksNativeCategoriesEnum.MODE_ET_ART,
     },
     {
       label: 'Théâtre, poésie et essais',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.THEATRE_POESIE_ET_ESSAIS,
+      categoryKey: BooksNativeCategoriesEnum.THEATRE_POESIE_ET_ESSAIS,
     },
     {
       label: 'Tourisme & Voyage',
       ...colors,
-      nativeCategory: BooksNativeCategoriesEnum.TOURISME_ET_VOYAGES,
+      categoryKey: BooksNativeCategoriesEnum.TOURISME_ET_VOYAGES,
     },
   ],
 }

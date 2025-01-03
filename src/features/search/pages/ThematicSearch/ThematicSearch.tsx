@@ -9,7 +9,10 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import {
+  isThematicSearchCategory,
+  SearchStackRouteName,
+} from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -61,8 +64,9 @@ export const ThematicSearch: React.FC = () => {
     [selectedLocationMode]
   )
 
-  const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
-  const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
+  const offerCategories = params?.offerCategories
+  const offerCategory = offerCategories?.[0] ?? SearchGroupNameEnumv2.LIVRES
+
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
   const isCinemaCategory = offerCategory === SearchGroupNameEnumv2.CINEMA
   const isFilmsCategory = offerCategory === SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
@@ -90,16 +94,18 @@ export const ThematicSearch: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isWeb, params?.offerCategories])
 
+  if (!isThematicSearchCategory(offerCategory)) return null
+
   return (
     <ThematicSearchBar
-      offerCategories={offerCategories}
+      offerCategories={[offerCategory]}
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
       {arePlaylistsLoading ? (
         <ThematicSearchSkeleton />
       ) : (
         <ScrollView>
-          <SubcategoryButtonListWrapper offerCategory={offerCategory} />
+          <SubcategoryButtonListWrapper category={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
             <VenuePlaylist
               venuePlaylistTitle={venuePlaylistTitle}
