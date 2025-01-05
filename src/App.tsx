@@ -37,6 +37,8 @@ import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
+import { createCore } from 'libs/poc-valtio/core'
+import { CoreProvider } from 'libs/poc-valtio/CoreProvider'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -105,7 +107,9 @@ const App: FunctionComponent = function () {
                                             <OnboardingWrapper>
                                               <OfflineModeContainer>
                                                 <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
+                                                  <CoreProvider coreInstance={createCore()}>
+                                                    <AppNavigationContainer />
+                                                  </CoreProvider>
                                                 </ScreenErrorProvider>
                                               </OfflineModeContainer>
                                             </OnboardingWrapper>
