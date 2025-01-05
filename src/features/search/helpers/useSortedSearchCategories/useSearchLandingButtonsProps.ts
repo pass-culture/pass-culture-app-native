@@ -1,4 +1,4 @@
-import { CategoryButtonProps } from 'features/search/components/CategoryButton/CategoryButton'
+import { CategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { CATEGORY_APPEARANCE } from 'features/search/enums'
 import {
   CategoryKey,
