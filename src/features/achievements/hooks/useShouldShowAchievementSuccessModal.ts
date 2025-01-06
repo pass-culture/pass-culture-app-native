@@ -4,7 +4,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
-export const useShouldShowAchievementSuccessModal = () => {
+export const useShouldShowAchievementSuccessModal = (isAnotherModalOpen = false) => {
   const areAchievementsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const { displayAchievements } = useRemoteConfigContext()
   const { user } = useAuthContext()
@@ -15,7 +15,8 @@ export const useShouldShowAchievementSuccessModal = () => {
     !areAchievementsEnabled ||
     !displayAchievements ||
     !user?.achievements ||
-    user?.achievements.length === 0
+    user?.achievements.length === 0 ||
+    isAnotherModalOpen
   )
     return { shouldShowAchievementSuccessModal, achievementsToShow }
 
