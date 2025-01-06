@@ -82,7 +82,7 @@ export function CheatcodesMenu(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
       <StyledSearchInput
-        placeholder="Rechercher..."
+        placeholder="Rechercher dans cette page..."
         value={filter}
         onChangeText={setFilter}
         onPressRightIcon={resetSearch}
