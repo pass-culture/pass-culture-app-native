@@ -14,12 +14,12 @@ export const useShouldShowAchievementSuccessModal = (
   const { user } = useAuthContext()
 
   const unseenAchievements = useMemo(
-    () => user?.achievements.filter((achievement) => !achievement.seenDate),
+    () => user?.achievements?.filter((achievement) => !achievement.seenDate),
     [user?.achievements]
   )
 
   const isThereAtLeastOneUnseenAchievement = useMemo(
-    () => user?.achievements.some((achievement) => !achievement.seenDate),
+    () => user?.achievements?.some((achievement) => !achievement.seenDate),
     [user?.achievements]
   )
 
