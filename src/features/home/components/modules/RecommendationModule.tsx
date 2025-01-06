@@ -67,12 +67,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         height={height}
         moduleId={moduleId}
         moduleName={moduleName}
+        homeEntryId={homeEntryId}
         apiRecoParams={recommendationApiParams}
         analyticsFrom="home"
         variant={isNewOfferTileDisplayed ? 'new' : 'default'}
       />
     ),
-    [isNewOfferTileDisplayed, moduleId, moduleName, recommendationApiParams]
+    [isNewOfferTileDisplayed, moduleId, moduleName, recommendationApiParams, homeEntryId]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
