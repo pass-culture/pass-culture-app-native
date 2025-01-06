@@ -71,12 +71,13 @@ export function CheatcodesMenu(): React.JSX.Element {
 
   if (screenError) throw screenError
 
-  const filteredFeaturesButtons = featuresButtons.filter((button) =>
-    button.title.toLowerCase().includes(filter.toLowerCase())
-  )
-  const filteredOtherButtons = otherButtons.filter((button) =>
-    button.title.toLowerCase().includes(filter.toLowerCase())
-  )
+  const filteredFeaturesButtons = featuresButtons
+    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
+    .sort((a, b) => a.title.localeCompare(b.title))
+
+  const filteredOtherButtons = otherButtons
+    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
+    .sort((a, b) => a.title.localeCompare(b.title))
 
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
