@@ -1,75 +1,61 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
-import { CategoriesMapping } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import {
-  getDescription,
+  BaseCategory,
   getNbResultsFacetLabel,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { DescriptionContext } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
 
-type CategoriesMappingItem = {
-  label: string
-  nbResultsFacet?: number
-  children?: CategoriesMapping
+interface CategoriesSectionItemProps {
+  icon?: React.FC<AccessibleBicolorIcon>
+  item: BaseCategory
+  isSelected: boolean
+  onSelect: VoidFunction
 }
 
-interface CategoriesSectionItemProps<N> {
-  value: N
-  k: string
-  item: CategoriesMappingItem
-  descriptionContext: DescriptionContext
-  handleSelect: (key: N) => void
-  handleGetIcon: (category: SearchGroupNameEnumv2) => React.FC<AccessibleBicolorIcon> | undefined
-}
-
-export const CategoriesSectionItem = <N,>({
-  value,
-  k,
+export const CategoriesSectionItem = ({
+  icon,
+  isSelected,
   item,
-  descriptionContext,
-  handleSelect,
-  handleGetIcon,
-}: CategoriesSectionItemProps<N>) => {
-  const { data: subcategoriesData } = useSubcategories()
+  onSelect,
+}: CategoriesSectionItemProps) => {
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
   )
+  const nbResultsFacet = displaySearchNbFacetResults
+    ? getNbResultsFacetLabel(item.nbResultsFacet)
+    : undefined
 
-  const shouldHideArrow = !Object.keys(item.children ?? {})?.length
-  const itemKey = k as N
-  const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
+  const shouldHideArrow = !item.children.length
 
   return (
     <ListItem>
       {shouldHideArrow ? (
         <RadioButton
           label={item.label}
-          isSelected={itemKey === value}
-          onSelect={() => handleSelect(itemKey)}
-          icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-          complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+          isSelected={isSelected}
+          onSelect={onSelect}
+          icon={icon}
+          complement={nbResultsFacet}
         />
       ) : (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={3} />
           <FilterRow
-            icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+            icon={icon}
             shouldColorIcon
             title={item.label}
-            description={getDescription(subcategoriesData, descriptionContext, k)}
-            onPress={() => handleSelect(itemKey)}
-            captionId={k}
-            complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+            description={undefined}
+            onPress={onSelect}
+            captionId={item.key}
+            complement={nbResultsFacet}
           />
           <Spacer.Column numberOfSpaces={3} />
         </React.Fragment>

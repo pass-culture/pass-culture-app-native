@@ -39,8 +39,8 @@ export const Category = ({ onClose }: Props) => {
   }, [searchState.offerCategories, searchState.offerGenreTypes, searchState.offerNativeCategories])
 
   const description = useMemo(
-    () => getDescription(data, descriptionContext),
-    [data, descriptionContext]
+    () => 'Ceci est une mauvaise description',
+    [descriptionContext] //getDescription(data, descriptionContext),
   )
 
   return (

@@ -1,4 +1,5 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
@@ -61,6 +62,9 @@ export type CategoryAppearance = {
   borderColor: ColorsEnum
   textColor: ColorsEnum
 }
+
+export const hasIcon = (categoryKey: CategoryKey): categoryKey is SearchGroupNameEnumv2 =>
+  categoryKey in SearchGroupNameEnumv2
 
 export const CATEGORY_ICONS: Record<SearchGroupNameEnumv2, React.FC<AccessibleBicolorIcon>> = {
   NONE: categoriesIcons.All,
