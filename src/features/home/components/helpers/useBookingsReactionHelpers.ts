@@ -1,4 +1,4 @@
-import { BookingsResponse } from 'api/gen'
+import { BookingReponse, BookingsResponse } from 'api/gen'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -6,7 +6,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 
-export const useShouldShowReactionModal = (
+export const useBookingsReactionHelpers = (
   bookings: BookingsResponse = {
     ended_bookings: [],
     ongoing_bookings: [],
@@ -20,19 +20,28 @@ export const useShouldShowReactionModal = (
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
   let shouldShowReactionModal = false
+  let bookingsWithoutReactionFromEligibleCategories: Array<BookingReponse> = []
 
-  if (!isReactionFeatureActive || !isCookieConsentChecked) return { shouldShowReactionModal }
+  if (!isReactionFeatureActive || !isCookieConsentChecked)
+    return {
+      shouldShowReactionModal,
+      bookingsWithoutReactionFromEligibleCategories,
+    }
 
-  const eligibleBookingsWithoutReaction =
+  bookingsWithoutReactionFromEligibleCategories =
     bookings?.ended_bookings?.filter((booking) =>
       filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
     ) ?? []
 
-  const firstBookingWithoutReaction = eligibleBookingsWithoutReaction[0]
+  const firstBookingWithoutReaction = bookingsWithoutReactionFromEligibleCategories[0]
 
-  if (!firstBookingWithoutReaction) return { shouldShowReactionModal }
+  if (!firstBookingWithoutReaction)
+    return {
+      shouldShowReactionModal,
+      bookingsWithoutReactionFromEligibleCategories,
+    }
 
   shouldShowReactionModal = true
 
-  return { shouldShowReactionModal }
+  return { shouldShowReactionModal, bookingsWithoutReactionFromEligibleCategories }
 }

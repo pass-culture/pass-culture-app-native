@@ -9,7 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { useShouldShowReactionModal } from 'features/home/components/helpers/useShouldShowReactionModal'
+import { useBookingsReactionHelpers } from 'features/home/components/helpers/useBookingsReactionHelpers'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
@@ -59,7 +59,8 @@ export const Home: FunctionComponent = () => {
   })
   const { data: bookings } = useBookings()
 
-  const { shouldShowReactionModal } = useShouldShowReactionModal(bookings)
+  const { shouldShowReactionModal, bookingsWithoutReactionFromEligibleCategories } =
+    useBookingsReactionHelpers(bookings)
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal(shouldShowReactionModal)
   const {
@@ -137,7 +138,13 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
-      {shouldShowReactionModal ? <IncomingReactionModalContainer bookings={bookings} /> : null}
+      {shouldShowReactionModal ? (
+        <IncomingReactionModalContainer
+          bookingsWithoutReactionFromEligibleCategories={
+            bookingsWithoutReactionFromEligibleCategories
+          }
+        />
+      ) : null}
       <AchievementSuccessModal
         achievementsToShow={achievementsToShow}
         visible={visibleAchievementModal}

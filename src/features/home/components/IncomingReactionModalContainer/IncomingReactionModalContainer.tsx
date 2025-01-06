@@ -1,51 +1,40 @@
 import React, { useCallback } from 'react'
 
 import {
-  BookingsResponse,
+  BookingReponse,
   PostOneReactionRequest,
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
-import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const IncomingReactionModalContainer = ({
-  bookings = {
-    ended_bookings: [],
-    ongoing_bookings: [],
-    hasBookingsAfter18: false,
-  },
+  bookingsWithoutReactionFromEligibleCategories = [],
 }: {
-  bookings?: BookingsResponse
+  bookingsWithoutReactionFromEligibleCategories?: Array<BookingReponse>
 }) => {
-  const { reactionCategories } = useRemoteConfigContext()
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
-  const subcategoriesMapping = useSubcategoriesMapping()
   const mapping = useCategoryIdMapping()
 
-  const bookingsWithoutReaction =
-    bookings?.ended_bookings?.filter((booking) =>
-      filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
-    ) ?? []
-
-  const offerImages: OfferImageBasicProps[] = bookingsWithoutReaction.map((current) => {
-    return {
-      imageUrl: current.stock.offer.image?.url ?? '',
-      categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
+  const offerImages: OfferImageBasicProps[] = bookingsWithoutReactionFromEligibleCategories.map(
+    (current) => {
+      return {
+        imageUrl: current.stock.offer.image?.url ?? '',
+        categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
+      }
     }
-  })
+  )
 
-  const firstBooking = bookingsWithoutReaction[0]
+  const firstBooking = bookingsWithoutReactionFromEligibleCategories[0]
   const reactionChoiceModalBodyType =
-    bookingsWithoutReaction.length === 1
+    bookingsWithoutReactionFromEligibleCategories.length === 1
       ? ReactionChoiceModalBodyEnum.VALIDATION
       : ReactionChoiceModalBodyEnum.REDIRECTION
 
@@ -61,10 +50,10 @@ export const IncomingReactionModalContainer = ({
   )
 
   const handleCloseModalWithUpdate = (triggerUpdate?: boolean) => {
-    if (bookingsWithoutReaction.length === 0) return
+    if (bookingsWithoutReactionFromEligibleCategories.length === 0) return
 
     if (triggerUpdate) {
-      const reactions = bookingsWithoutReaction.map((booking) => ({
+      const reactions = bookingsWithoutReactionFromEligibleCategories.map((booking) => ({
         offerId: booking.stock.offer.id,
         reactionType: ReactionTypeEnum.NO_REACTION,
       }))

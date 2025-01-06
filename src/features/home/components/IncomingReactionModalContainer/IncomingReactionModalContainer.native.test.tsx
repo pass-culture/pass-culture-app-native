@@ -51,17 +51,13 @@ describe('IncomingReactionModalContainer', () => {
     mockdate.set(CURRENT_DATE)
   })
 
-  it('should not render the modal if no bookings without reactions', () => {
-    render(<IncomingReactionModalContainer bookings={endedBookingWithReaction} />)
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
-
   it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config', async () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookings={endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
+          bookingsWithoutReactionFromEligibleCategories={
+            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+          }
         />
       )
     )
@@ -77,7 +73,9 @@ describe('IncomingReactionModalContainer', () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookings={endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
+          bookingsWithoutReactionFromEligibleCategories={
+            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+          }
         />
       )
     )
@@ -105,7 +103,9 @@ describe('IncomingReactionModalContainer', () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookings={endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
+          bookingsWithoutReactionFromEligibleCategories={
+            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+          }
         />
       )
     )
@@ -131,7 +131,9 @@ describe('IncomingReactionModalContainer', () => {
   it('should not send reaction with NO_REACTION when closing modal from offers have subcategory in reactionCategories remote config and pressing "Donner mon avis" button', async () => {
     render(
       reactQueryProviderHOC(
-        <IncomingReactionModalContainer bookings={bookingsWith2EndedBookings} />
+        <IncomingReactionModalContainer
+          bookingsWithoutReactionFromEligibleCategories={bookingsWith2EndedBookings}
+        />
       )
     )
 
@@ -143,159 +145,50 @@ describe('IncomingReactionModalContainer', () => {
 
     expect(mockMutate).not.toHaveBeenCalled()
   })
-
-  it('should not render the modal if there is a booking without reaction after 24 hours and subcategory is not in reactionCategories remote config', async () => {
-    render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookings={endedBookingForInstrumentWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate}
-        />
-      )
-    )
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
-
-  it('should not render the modal if booking has userReaction', () => {
-    render(
-      <IncomingReactionModalContainer
-        bookings={endedBookingWithReactionAndDateUsedMoreThan24hAfterCurrentDate}
-      />
-    )
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
-
-  it('should not render the modal if less than 24 hours have passed', () => {
-    render(
-      <IncomingReactionModalContainer
-        bookings={endedBookingWithoutReactionAndDateUsedLessThan24hAfterCurrentDate}
-      />
-    )
-
-    expect(screen.queryByText('Choix de réaction')).not.toBeOnTheScreen()
-  })
 })
 
-const lessThan24hAfterCurrentDate = new Date(
-  CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS + 1000
-).toISOString()
 const moreThan24hAfterCurrentDate = new Date(
   CURRENT_DATE.getTime() - TWENTY_FOUR_HOURS - 1000
 ).toISOString()
 
-const endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate = {
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: null,
-      dateUsed: moreThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        },
+const endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate = [
+  {
+    ...bookingsSnap.ended_bookings[0],
+    userReaction: null,
+    dateUsed: moreThan24hAfterCurrentDate,
+    stock: {
+      ...bookingsSnap.ended_bookings[0].stock,
+      offer: {
+        ...bookingsSnap.ended_bookings[0].stock.offer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },
-  ],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
-const endedBookingForInstrumentWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate = {
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: null,
-      dateUsed: moreThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.ACHAT_INSTRUMENT,
-        },
-      },
-    },
-  ],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
+  },
+]
 
-const endedBookingWithoutReactionAndDateUsedLessThan24hAfterCurrentDate = {
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: null,
-      dateUsed: lessThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        },
+const bookingsWith2EndedBookings = [
+  {
+    ...bookingsSnap.ended_bookings[0],
+    userReaction: null,
+    dateUsed: moreThan24hAfterCurrentDate,
+    stock: {
+      ...bookingsSnap.ended_bookings[0].stock,
+      offer: {
+        ...bookingsSnap.ended_bookings[0].stock.offer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },
-  ],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
-
-const bookingsWith2EndedBookings = {
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: null,
-      dateUsed: moreThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        },
+  },
+  {
+    ...bookingsSnap.ended_bookings[0],
+    userReaction: null,
+    dateUsed: moreThan24hAfterCurrentDate,
+    stock: {
+      ...bookingsSnap.ended_bookings[0].stock,
+      offer: {
+        ...bookingsSnap.ended_bookings[0].stock.offer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: null,
-      dateUsed: moreThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        },
-      },
-    },
-  ],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
-
-const endedBookingWithReaction = {
-  ended_bookings: [{ ...bookingsSnap.ended_bookings[0], userReaction: ReactionTypeEnum.LIKE }],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
-
-const endedBookingWithReactionAndDateUsedMoreThan24hAfterCurrentDate = {
-  ended_bookings: [
-    {
-      ...bookingsSnap.ended_bookings[0],
-      userReaction: ReactionTypeEnum.LIKE,
-      dateUsed: moreThan24hAfterCurrentDate,
-      stock: {
-        ...bookingsSnap.ended_bookings[0].stock,
-        offer: {
-          ...bookingsSnap.ended_bookings[0].stock.offer,
-          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        },
-      },
-    },
-  ],
-  ongoing_bookings: [],
-  hasBookingsAfter18: false,
-}
+  },
+]
