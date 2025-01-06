@@ -13,14 +13,11 @@ export function useAchievementsMarkAsSeen(
     (achievementIds: number[]) => api.postNativeV1AchievementsMarkAsSeen({ achievementIds }),
     {
       onSuccess: () => {
-        queriesToInvalidateOnMarkAsSeen.forEach((queryKey) =>
-          queryClient.invalidateQueries([queryKey])
-        )
+        queryClient.invalidateQueries([QueryKeys.USER_PROFILE]) // To re-fetch the user's achievements
+
         if (onSuccess) onSuccess()
       },
       onError,
     }
   )
 }
-
-const queriesToInvalidateOnMarkAsSeen: QueryKeys[] = [QueryKeys.USER_PROFILE] // To re-fetch the user's achievements
