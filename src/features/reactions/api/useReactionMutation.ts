@@ -71,6 +71,7 @@ export const useReactionMutation = () => {
       onSettled: (_data, _error, reactionRequest) => {
         queryClient.invalidateQueries([QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId])
         queryClient.invalidateQueries([QueryKeys.BOOKINGS])
+        queryClient.invalidateQueries([QueryKeys.AVAILABLE_REACTION])
       },
     }
   )
