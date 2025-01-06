@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
@@ -13,7 +13,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { ScreenError } from 'libs/monitoring/errors'
 import { Spacer } from 'ui/theme'
 
-export const cheatcodesNavigationIdentityCheckButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'IdentityCheck 🎨',
     screen: 'CheatcodesNavigationIdentityCheck',

@@ -2,9 +2,9 @@ import React from 'react'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 
-export const cheatcodesNavigationHomeButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationHomeButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Home 🏠',
     screen: 'CheatcodesNavigationHome',

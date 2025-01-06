@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Spacer, getSpacing } from 'ui/theme'
 
-export const cheatcodesNavigationTrustedDeviceButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationTrustedDeviceButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Trusted device 📱',
     screen: 'CheatcodesNavigationTrustedDevice',

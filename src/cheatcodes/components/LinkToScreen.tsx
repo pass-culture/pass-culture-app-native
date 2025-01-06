@@ -38,7 +38,7 @@ export const LinkToScreen = ({
         />
       ) : (
         <InternalTouchableLink
-          as={isSubscreen ? ButtonSecondary : ButtonPrimary}
+          as={Button}
           wording={title ?? screen}
           navigateTo={{ screen, params: navigationParams }}
           disabled={disabled}

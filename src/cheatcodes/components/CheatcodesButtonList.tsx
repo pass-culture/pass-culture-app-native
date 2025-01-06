@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 
 type Props = {
-  buttons: ButtonsWithSubscreensProps[]
+  buttons: CheatcodesButtonsWithSubscreensProps[]
 }
 
 export const CheatcodesButtonList: React.FC<Props> = ({ buttons }) => (

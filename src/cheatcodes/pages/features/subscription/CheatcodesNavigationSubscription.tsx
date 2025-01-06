@@ -3,14 +3,14 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationSubscriptionButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationSubscriptionButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Subscription 🔔',
     screen: 'CheatcodesNavigationSubscription',

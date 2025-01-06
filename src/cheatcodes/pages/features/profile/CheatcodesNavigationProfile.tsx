@@ -3,11 +3,11 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationProfileButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Profile 🎨',
     screen: 'CheatcodesNavigationProfile',

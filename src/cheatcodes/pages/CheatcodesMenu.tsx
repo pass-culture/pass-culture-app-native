@@ -15,7 +15,7 @@ import { cheatcodesNavigationProfileButtons } from 'cheatcodes/pages/features/pr
 import { cheatcodesNavigationSubscriptionButtons } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { cheatcodesNavigationTutorialButtons } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -46,7 +46,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     setScreenError(new ScreenError('Test force update page', { Screen: ForceUpdate, logType }))
   }
 
-  const featuresButtons: ButtonsWithSubscreensProps[] = [
+  const featuresButtons: CheatcodesButtonsWithSubscreensProps[] = [
     ...cheatcodesNavigationAchievementsButtons,
     ...cheatcodesNavigationBookOfferButtons,
     ...cheatcodesNavigationCulturalSurveyButtons,
@@ -61,7 +61,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
   ]
 
-  const otherButtons: ButtonsWithSubscreensProps[] = [
+  const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
     { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
     { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
     { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },

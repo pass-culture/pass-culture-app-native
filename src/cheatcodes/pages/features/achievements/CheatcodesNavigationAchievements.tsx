@@ -3,7 +3,7 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
@@ -11,7 +11,7 @@ import {
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationAchievementsButtons: [ButtonsWithSubscreensProps] = [
+export const cheatcodesNavigationAchievementsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Achievements 🏆',
     screen: 'CheatcodesNavigationAchievements',

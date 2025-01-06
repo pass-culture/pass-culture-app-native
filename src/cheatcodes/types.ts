@@ -1,13 +1,13 @@
 import { RootScreenNames, RootStackParamList } from 'features/navigation/RootNavigator/types'
 
-export type ButtonProps = {
+type CheatcodesButtonProps = {
   title?: string
   screen?: RootScreenNames
   onPress?: () => void
   navigationParams?: RootStackParamList[RootScreenNames]
 }
 
-export type ButtonsWithSubscreensProps = Omit<ButtonProps, 'title'> & {
+export type CheatcodesButtonsWithSubscreensProps = Omit<CheatcodesButtonProps, 'title'> & {
   title: string
-  subscreens?: ButtonProps[]
+  subscreens?: CheatcodesButtonProps[]
 }
