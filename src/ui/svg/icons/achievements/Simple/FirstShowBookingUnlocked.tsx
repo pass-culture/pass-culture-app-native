@@ -16,7 +16,7 @@ function FirstShowBookingUnlockedSvg({ size, accessibilityLabel, testID }: Acces
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <G fill="none" fillRule="evenodd">
-        <G clip-path="url(#clip0_8631_20849)">
+        <G clipPath="url(#clip0_8631_20849)">
           <Rect width="100" height="100" fill="none" />
           <Path
             d="M84.5601 76.664C84.5601 76.664 53.1652 89.087 50.3505 89.087C47.5358 89.087 16.0683 76.7899 16.0683 76.7899C14.6937 76.7919 14.6202 23.9074 15.9958 23.9054C15.9958 23.9054 48.425 10 50.3515 10C52.278 10 84.4886 23.7795 84.4886 23.7795C85.12 23.7795 85.1925 76.663 84.5611 76.664H84.5601Z"
