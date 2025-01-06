@@ -3,8 +3,10 @@ import React, { createElement, FunctionComponent, useState } from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
+import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -13,6 +15,14 @@ import { AsyncError, ScreenError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { Typo } from 'ui/theme'
+
+export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreensProps] = [
+  {
+    title: 'Errors 👾',
+    screen: 'CheatcodesNavigationErrors',
+    subscreens: [{ screen: 'BannedCountryError' }],
+  },
+]
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 
@@ -26,10 +36,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     [QueryKeys.ERROR_ASYNC],
     () => errorAsync(),
-    {
-      cacheTime: 0,
-      enabled: false,
-    }
+    { cacheTime: 0, enabled: false }
   )
 
   async function errorAsync() {
@@ -48,8 +55,9 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   }
 
   return (
-    <CheatcodesTemplateScreen title="Errors 👾">
-      <LinkToScreen screen="BannedCountryError" />
+    <CheatcodesTemplateScreen title={cheatcodesNavigationErrorsButtons[0].title}>
+      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationErrorsButtons} />
+
       <LinkToScreen
         title={
           asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
@@ -59,6 +67,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
         disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
         onPress={() => errorAsyncQuery()}
       />
+
       <LinkToScreen
         title="Contentful KO error"
         onPress={() =>
@@ -70,10 +79,12 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
           )
         }
       />
+
       <LinkToScreen
         title="Offre inexistante"
         onPress={() => navigate('Offer', { id: 0, from: 'searchresults' })}
       />
+
       <LinkToScreen
         title="Maintenance Page"
         onPress={() =>
@@ -87,6 +98,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
           )
         }
       />
+
       <LinkToScreen
         title="Erreur rendering"
         onPress={() => {

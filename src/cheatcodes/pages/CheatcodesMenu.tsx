@@ -15,6 +15,9 @@ import { cheatcodesNavigationProfileButtons } from 'cheatcodes/pages/features/pr
 import { cheatcodesNavigationSubscriptionButtons } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { cheatcodesNavigationTutorialButtons } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
+import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
+import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
+import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { env } from 'libs/environment'
@@ -62,16 +65,16 @@ export function CheatcodesMenu(): React.JSX.Element {
   ]
 
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
-    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
-    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
-    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
-    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
-    { title: 'Errors 👾', screen: 'CheatcodesNavigationErrors' },
-    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
+    ...cheatcodesNavigationAccountManagementButtons,
+    ...cheatcodesNavigationErrorsButtons,
+    ...cheatcodesNavigationSignUpButtons,
     { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre' },
-    { title: 'SignUp 🎨', screen: 'CheatcodesNavigationSignUp' },
-    { title: 'Account Management ⚙️', screen: 'CheatcodesNavigationAccountManagement' },
+    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
     { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry },
+    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
+    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
+    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
+    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
   ]
 
   if (screenError) throw screenError
