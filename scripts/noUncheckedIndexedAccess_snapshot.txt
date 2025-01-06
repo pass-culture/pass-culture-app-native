@@ -57,7 +57,7 @@
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:20
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:31
-./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:25
+./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:26
 ./src/libs/hooks/useShowReview.native.test.tsx:114
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53
