@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { RootScreenNames, RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { padding } from 'ui/theme'
 
@@ -12,6 +13,8 @@ interface Props {
   title?: string
   navigationParams?: RootStackParamList[RootScreenNames]
   disabled?: boolean
+  buttonHeight?: 'extraSmall' | 'small'
+  isSubscreen?: boolean
 }
 
 export const LinkToScreen = ({
@@ -20,20 +23,31 @@ export const LinkToScreen = ({
   title,
   navigationParams,
   disabled = false,
-}: Props) => (
-  <Row>
-    {onPress ? (
-      <ButtonPrimary wording={title ?? screen} onPress={onPress} disabled={disabled} />
-    ) : (
-      <InternalTouchableLink
-        as={ButtonPrimary}
-        wording={title ?? screen}
-        navigateTo={{ screen, params: navigationParams }}
-        disabled={disabled}
-      />
-    )}
-  </Row>
-)
+  buttonHeight = 'small',
+  isSubscreen = false,
+}: Props) => {
+  const Button = isSubscreen ? ButtonSecondary : ButtonPrimary
+  return (
+    <Row>
+      {onPress ? (
+        <Button
+          wording={title ?? screen}
+          onPress={onPress}
+          disabled={disabled}
+          buttonHeight={buttonHeight}
+        />
+      ) : (
+        <InternalTouchableLink
+          as={isSubscreen ? ButtonSecondary : ButtonPrimary}
+          wording={title ?? screen}
+          navigateTo={{ screen, params: navigationParams }}
+          disabled={disabled}
+          buttonHeight={buttonHeight}
+        />
+      )}
+    </Row>
+  )
+}
 
 const Row = styled.View(({ theme }) => ({
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
