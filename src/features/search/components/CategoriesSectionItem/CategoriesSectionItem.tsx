@@ -18,6 +18,7 @@ interface CategoriesSectionItemProps {
   item: BaseCategory
   isSelected: boolean
   onSelect: VoidFunction
+  subtitle?: string
 }
 
 export const CategoriesSectionItem = ({
@@ -25,6 +26,7 @@ export const CategoriesSectionItem = ({
   isSelected,
   item,
   onSelect,
+  subtitle,
 }: CategoriesSectionItemProps) => {
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
@@ -52,7 +54,7 @@ export const CategoriesSectionItem = ({
             icon={icon}
             shouldColorIcon
             title={item.label}
-            description={undefined}
+            description={subtitle}
             onPress={onSelect}
             captionId={item.key}
             complement={nbResultsFacet}

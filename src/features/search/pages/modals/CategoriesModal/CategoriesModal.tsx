@@ -146,6 +146,13 @@ export const CategoriesModal = ({
     return (categoryStack[next] && getCategory(categoryStack[next])) || ALL
   }, [categoryStack, currentIndex])
 
+  const preselections = categoryStack.slice(currentIndex + 2) // we want to start at currently selected child's child
+  if (preselections.length >= 2 && preselections.at(-1) == ALL.key) preselections.pop() // we don't the label to be '`child` - Tout', just 'child'
+
+  const preselectionLabel = preselections
+    .map((categoryKey) => getCategory(categoryKey)?.label)
+    .join(' - ')
+
   const shouldDisplayBackButton =
     currentIndex > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
@@ -187,8 +194,10 @@ export const CategoriesModal = ({
             <CategoriesSectionItem
               isSelected={selectedChild.key === item.key}
               item={item}
+              key={item.key}
               onSelect={() => handleSelect(item)}
               icon={getIcon(item.key)}
+              subtitle={selectedChild.key === item.key ? preselectionLabel : undefined}
             />
           ))}
         </VerticalUl>
