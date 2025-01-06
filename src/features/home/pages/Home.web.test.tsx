@@ -35,7 +35,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
   isCookiesListUpToDate: true,
   cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-}) // Cookies hook used in useShouldShowReactionModal
+}) // Cookies hook used in useBookingsReactionHelpers
 
 describe('<Home/>', () => {
   beforeEach(() => {
@@ -52,7 +52,7 @@ describe('<Home/>', () => {
       mockUseHomepageData.mockReturnValueOnce({
         modules: [formattedBusinessModule],
         homeEntryId: 'fakeEntryId',
-      }) // Adding useShouldShowReactionModal to Home.tsx caused an extra render
+      }) // Adding useBookingsReactionHelpers to Home.tsx caused an extra render
 
       const { container } = render(<Home />, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),

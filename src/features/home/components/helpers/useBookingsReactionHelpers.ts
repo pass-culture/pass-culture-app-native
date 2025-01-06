@@ -1,4 +1,6 @@
-import { BookingReponse, BookingsResponse } from 'api/gen'
+import { useMemo } from 'react'
+
+import { BookingsResponse } from 'api/gen'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -19,29 +21,30 @@ export const useBookingsReactionHelpers = (
   const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
-  let shouldShowReactionModal = false
-  let bookingsEligibleToReaction: Array<BookingReponse> = []
+  const bookingsEligibleToReaction = useMemo(
+    () =>
+      bookings?.ended_bookings?.filter((booking) =>
+        filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
+      ) ?? [],
+    [bookings?.ended_bookings, reactionCategories, subcategoriesMapping]
+  )
+
+  const firstBookingWithoutReaction = useMemo(
+    () => bookingsEligibleToReaction[0],
+    [bookingsEligibleToReaction]
+  )
 
   if (!isReactionFeatureActive || !isCookieConsentChecked)
     return {
-      shouldShowReactionModal,
-      bookingsEligibleToReaction,
+      shouldShowReactionModal: false,
+      bookingsEligibleToReaction: [],
     }
-
-  bookingsEligibleToReaction =
-    bookings?.ended_bookings?.filter((booking) =>
-      filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
-    ) ?? []
-
-  const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
 
   if (!firstBookingWithoutReaction)
     return {
-      shouldShowReactionModal,
+      shouldShowReactionModal: false,
       bookingsEligibleToReaction,
     }
 
-  shouldShowReactionModal = true
-
-  return { shouldShowReactionModal, bookingsEligibleToReaction }
+  return { shouldShowReactionModal: true, bookingsEligibleToReaction }
 }
