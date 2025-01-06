@@ -20,28 +20,28 @@ export const useBookingsReactionHelpers = (
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
   let shouldShowReactionModal = false
-  let bookingsWithoutReactionFromEligibleCategories: Array<BookingReponse> = []
+  let bookingsEligibleToReaction: Array<BookingReponse> = []
 
   if (!isReactionFeatureActive || !isCookieConsentChecked)
     return {
       shouldShowReactionModal,
-      bookingsWithoutReactionFromEligibleCategories,
+      bookingsEligibleToReaction,
     }
 
-  bookingsWithoutReactionFromEligibleCategories =
+  bookingsEligibleToReaction =
     bookings?.ended_bookings?.filter((booking) =>
       filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
     ) ?? []
 
-  const firstBookingWithoutReaction = bookingsWithoutReactionFromEligibleCategories[0]
+  const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
 
   if (!firstBookingWithoutReaction)
     return {
       shouldShowReactionModal,
-      bookingsWithoutReactionFromEligibleCategories,
+      bookingsEligibleToReaction,
     }
 
   shouldShowReactionModal = true
 
-  return { shouldShowReactionModal, bookingsWithoutReactionFromEligibleCategories }
+  return { shouldShowReactionModal, bookingsEligibleToReaction }
 }

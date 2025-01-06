@@ -59,7 +59,7 @@ export const Home: FunctionComponent = () => {
   })
   const { data: bookings } = useBookings()
 
-  const { shouldShowReactionModal, bookingsWithoutReactionFromEligibleCategories } =
+  const { shouldShowReactionModal, bookingsEligibleToReaction } =
     useBookingsReactionHelpers(bookings)
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal(shouldShowReactionModal)
@@ -139,11 +139,7 @@ export const Home: FunctionComponent = () => {
         dismissModal={hideOnboardingSubscriptionModal}
       />
       {shouldShowReactionModal ? (
-        <IncomingReactionModalContainer
-          bookingsWithoutReactionFromEligibleCategories={
-            bookingsWithoutReactionFromEligibleCategories
-          }
-        />
+        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
       ) : null}
       <AchievementSuccessModal
         achievementsToShow={achievementsToShow}

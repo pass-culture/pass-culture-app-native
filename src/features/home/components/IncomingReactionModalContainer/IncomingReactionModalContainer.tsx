@@ -15,26 +15,24 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const IncomingReactionModalContainer = ({
-  bookingsWithoutReactionFromEligibleCategories = [],
+  bookingsEligibleToReaction = [],
 }: {
-  bookingsWithoutReactionFromEligibleCategories?: Array<BookingReponse>
+  bookingsEligibleToReaction?: Array<BookingReponse>
 }) => {
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)
   const mapping = useCategoryIdMapping()
 
-  const offerImages: OfferImageBasicProps[] = bookingsWithoutReactionFromEligibleCategories.map(
-    (current) => {
-      return {
-        imageUrl: current.stock.offer.image?.url ?? '',
-        categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
-      }
+  const offerImages: OfferImageBasicProps[] = bookingsEligibleToReaction.map((current) => {
+    return {
+      imageUrl: current.stock.offer.image?.url ?? '',
+      categoryId: mapping[current.stock.offer.subcategoryId] ?? null,
     }
-  )
+  })
 
-  const firstBooking = bookingsWithoutReactionFromEligibleCategories[0]
+  const firstBooking = bookingsEligibleToReaction[0]
   const reactionChoiceModalBodyType =
-    bookingsWithoutReactionFromEligibleCategories.length === 1
+    bookingsEligibleToReaction.length === 1
       ? ReactionChoiceModalBodyEnum.VALIDATION
       : ReactionChoiceModalBodyEnum.REDIRECTION
 
@@ -50,10 +48,10 @@ export const IncomingReactionModalContainer = ({
   )
 
   const handleCloseModalWithUpdate = (triggerUpdate?: boolean) => {
-    if (bookingsWithoutReactionFromEligibleCategories.length === 0) return
+    if (bookingsEligibleToReaction.length === 0) return
 
     if (triggerUpdate) {
-      const reactions = bookingsWithoutReactionFromEligibleCategories.map((booking) => ({
+      const reactions = bookingsEligibleToReaction.map((booking) => ({
         offerId: booking.stock.offer.id,
         reactionType: ReactionTypeEnum.NO_REACTION,
       }))

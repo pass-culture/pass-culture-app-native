@@ -62,7 +62,7 @@ describe('useBookingsReactionHelpers', () => {
     )
 
     expect(result.current.shouldShowReactionModal).toBeFalsy()
-    expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+    expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
   })
 
   describe('when FF wipReactionFeature is true', () => {
@@ -74,7 +74,7 @@ describe('useBookingsReactionHelpers', () => {
       const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithReaction))
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
     })
 
     it('should return false if the bookings already have reactions', () => {
@@ -83,7 +83,7 @@ describe('useBookingsReactionHelpers', () => {
       )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
     })
 
     it('should return false if cookies where not accepted', () => {
@@ -94,7 +94,7 @@ describe('useBookingsReactionHelpers', () => {
       )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
     })
 
     it('should return false if there is a booking without reaction after 24 hours but the subcategory of the booking is not in reactionCategories remote config', async () => {
@@ -105,7 +105,7 @@ describe('useBookingsReactionHelpers', () => {
       )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
     })
 
     it('should return false if less than 24 hours have passed', () => {
@@ -116,7 +116,7 @@ describe('useBookingsReactionHelpers', () => {
       )
 
       expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toHaveLength(0)
+      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
     })
 
     it('should return true if there are bookings to react to', () => {
@@ -125,7 +125,7 @@ describe('useBookingsReactionHelpers', () => {
       )
 
       expect(result.current.shouldShowReactionModal).toBeTruthy()
-      expect(result.current.bookingsWithoutReactionFromEligibleCategories).toEqual(
+      expect(result.current.bookingsEligibleToReaction).toEqual(
         endedBookingWithoutReactionAndDateUsedMoreThan24hAgo.ended_bookings
       )
     })

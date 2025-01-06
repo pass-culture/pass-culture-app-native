@@ -55,7 +55,7 @@ describe('IncomingReactionModalContainer', () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookingsWithoutReactionFromEligibleCategories={
+          bookingsEligibleToReaction={
             endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
           }
         />
@@ -73,7 +73,7 @@ describe('IncomingReactionModalContainer', () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookingsWithoutReactionFromEligibleCategories={
+          bookingsEligibleToReaction={
             endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
           }
         />
@@ -103,7 +103,7 @@ describe('IncomingReactionModalContainer', () => {
     render(
       reactQueryProviderHOC(
         <IncomingReactionModalContainer
-          bookingsWithoutReactionFromEligibleCategories={
+          bookingsEligibleToReaction={
             endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
           }
         />
@@ -131,9 +131,7 @@ describe('IncomingReactionModalContainer', () => {
   it('should not send reaction with NO_REACTION when closing modal from offers have subcategory in reactionCategories remote config and pressing "Donner mon avis" button', async () => {
     render(
       reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookingsWithoutReactionFromEligibleCategories={bookingsWith2EndedBookings}
-        />
+        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsWith2EndedBookings} />
       )
     )
 
