@@ -51,6 +51,9 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Internal (Marketing) 🎯', screen: 'CheatcodesNavigationInternal' },
     { title: 'Profile 👤', screen: 'CheatcodesNavigationProfile' },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
+    { title: 'Subscription 🔔', screen: 'CheatcodesNavigationSubscription' },
+    { title: 'Trusted device 📱', screen: 'CheatcodesNavigationTrustedDevice' },
+    { title: 'Tutorial ❔', screen: 'CheatcodesNavigationTutorial' },
   ]
 
   const otherButtons: ButtonProps[] = [
@@ -60,23 +63,26 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
     { title: 'Errors 👾', screen: 'CheatcodesNavigationErrors' },
     { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
-    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre' },
+    { title: 'AccesLibre 🌈', screen: 'CheatcodesNavigationSignUp' },
+    { title: 'SignUp 🎨', screen: 'CheatcodesScreenAccesLibre' },
+    { title: 'Account Management ⚙️', screen: 'CheatcodesNavigationAccountManagement' },
     { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry },
   ]
 
   if (screenError) throw screenError
 
-  const filteredFeaturesButtons = featuresButtons.filter((button) =>
-    button.title.toLowerCase().includes(filter.toLowerCase())
-  )
-  const filteredOtherButtons = otherButtons.filter((button) =>
-    button.title.toLowerCase().includes(filter.toLowerCase())
-  )
+  const filteredFeaturesButtons = featuresButtons
+    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
+    .sort((a, b) => a.title.localeCompare(b.title))
+
+  const filteredOtherButtons = otherButtons
+    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
+    .sort((a, b) => a.title.localeCompare(b.title))
 
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
       <StyledSearchInput
-        placeholder="Rechercher..."
+        placeholder="Rechercher dans cette page..."
         value={filter}
         onChangeText={setFilter}
         onPressRightIcon={resetSearch}
