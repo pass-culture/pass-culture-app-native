@@ -7,6 +7,7 @@ export type ButtonProps = {
   navigationParams?: RootStackParamList[RootScreenNames]
 }
 
-export type ButtonsWithSubscreensProps = ButtonProps & {
+export type ButtonsWithSubscreensProps = Omit<ButtonProps, 'title'> & {
+  title: string
   subscreens?: ButtonProps[]
 }

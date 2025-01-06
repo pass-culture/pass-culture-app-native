@@ -1,26 +1,28 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
+
+export const cheatcodesNavigationHomeButtons: [ButtonsWithSubscreensProps] = [
+  {
+    title: 'Home 🏠',
+    screen: 'CheatcodesNavigationHome',
+    subscreens: [
+      {
+        title: 'HighlightThematicHomeHeader',
+        screen: 'CheatcodesScreenHighlightThematicHomeHeader',
+      },
+      { title: 'DefaultThematicHomeHeader', screen: 'CheatcodesScreenDefaultThematicHomeHeader' },
+      { title: 'CategoryThematicHomeHeader', screen: 'CheatcodesScreenCategoryThematicHomeHeader' },
+    ],
+  },
+]
 
 export const CheatcodesNavigationHome = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
   return (
-    <CheatcodesTemplateScreen title="Home 🏠">
-      <LinkToScreen
-        title="HighlightThematicHomeHeader"
-        onPress={() => navigate('CheatcodesScreenHighlightThematicHomeHeader')}
-      />
-      <LinkToScreen
-        title="DefaultThematicHomeHeader"
-        onPress={() => navigate('CheatcodesScreenDefaultThematicHomeHeader')}
-      />
-      <LinkToScreen
-        title="CategoryThematicHomeHeader"
-        onPress={() => navigate('CheatcodesScreenCategoryThematicHomeHeader')}
-      />
+    <CheatcodesTemplateScreen title={cheatcodesNavigationHomeButtons[0].title}>
+      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationHomeButtons} />
     </CheatcodesTemplateScreen>
   )
 }

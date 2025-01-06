@@ -2,13 +2,28 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
+import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Spacer, getSpacing } from 'ui/theme'
+
+export const cheatcodesNavigationTrustedDeviceButtons: [ButtonsWithSubscreensProps] = [
+  {
+    title: 'Trusted device 📱',
+    screen: 'CheatcodesNavigationTrustedDevice',
+    subscreens: [
+      { screen: 'CheatcodesScreenTrustedDeviceInfos' },
+      { screen: 'SuspensionChoice' },
+      { screen: 'SuspensionChoiceExpiredLink' },
+      { screen: 'SuspiciousLoginSuspendedAccount' },
+    ],
+  },
+]
 
 export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
   const [value, setValue] = useState('')
@@ -19,12 +34,11 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
   }
 
   return (
-    <CheatcodesTemplateScreen title="Trusted device 📱">
-      <LinkToScreen screen="CheatcodesScreenTrustedDeviceInfos" />
-      <LinkToScreen screen="SuspensionChoice" />
-      <LinkToScreen screen="SuspensionChoiceExpiredLink" />
-      <LinkToScreen screen="SuspiciousLoginSuspendedAccount" />
+    <CheatcodesTemplateScreen title={cheatcodesNavigationTrustedDeviceButtons[0].title}>
+      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationTrustedDeviceButtons} />
+
       <LinkToScreen screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
+
       <BufferContainer>
         <ButtonPrimary
           wording="AccountSecurityBuffer"

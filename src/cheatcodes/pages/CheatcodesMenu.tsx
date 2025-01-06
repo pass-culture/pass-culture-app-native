@@ -2,10 +2,21 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { CheatcodesButtonList } from 'cheatcodes/components/CheatcodesButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { filterAndSortCheatcodesButtons } from 'cheatcodes/hooks/filterAndSortCheatcodesButtons'
+import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
+import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
+import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
+import { cheatcodesNavigationHomeButtons } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
+import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
+import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
+import { cheatcodesNavigationProfileButtons } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
+import { cheatcodesNavigationSubscriptionButtons } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
+import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
+import { cheatcodesNavigationTutorialButtons } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
+import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
-import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
@@ -14,12 +25,6 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
-
-type ButtonProps = {
-  title: string
-  screen?: RootScreenNames
-  onPress?: () => void
-}
 
 export function CheatcodesMenu(): React.JSX.Element {
   const [filter, setFilter] = useState('')
@@ -41,22 +46,22 @@ export function CheatcodesMenu(): React.JSX.Element {
     setScreenError(new ScreenError('Test force update page', { Screen: ForceUpdate, logType }))
   }
 
-  const featuresButtons: ButtonProps[] = [
-    { title: 'Achievements 🏆', screen: 'CheatcodesNavigationAchievements' },
-    { title: 'BookOffer 🎫', screen: 'CheatcodesNavigationBookOffer' },
-    { title: 'Cultural Survey 🎨', screen: 'CheatcodesNavigationCulturalSurvey' },
+  const featuresButtons: ButtonsWithSubscreensProps[] = [
+    ...cheatcodesNavigationAchievementsButtons,
+    ...cheatcodesNavigationBookOfferButtons,
+    ...cheatcodesNavigationCulturalSurveyButtons,
+    ...cheatcodesNavigationHomeButtons,
+    ...cheatcodesNavigationIdentityCheckButtons,
+    ...cheatcodesNavigationInternalButtons,
+    ...cheatcodesNavigationProfileButtons,
+    ...cheatcodesNavigationSubscriptionButtons,
+    ...cheatcodesNavigationTrustedDeviceButtons,
+    ...cheatcodesNavigationTutorialButtons,
     { title: 'ForceUpdate 🆙', onPress: onPressForceUpdate },
-    { title: 'Home 🏠', screen: 'CheatcodesNavigationHome' },
-    { title: 'IdentityCheck 🎨', screen: 'CheatcodesNavigationIdentityCheck' },
-    { title: 'Internal (Marketing) 🎯', screen: 'CheatcodesNavigationInternal' },
-    { title: 'Profile 👤', screen: 'CheatcodesNavigationProfile' },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
-    { title: 'Subscription 🔔', screen: 'CheatcodesNavigationSubscription' },
-    { title: 'Trusted device 📱', screen: 'CheatcodesNavigationTrustedDevice' },
-    { title: 'Tutorial ❔', screen: 'CheatcodesNavigationTutorial' },
   ]
 
-  const otherButtons: ButtonProps[] = [
+  const otherButtons: ButtonsWithSubscreensProps[] = [
     { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
     { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
     { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
@@ -71,13 +76,8 @@ export function CheatcodesMenu(): React.JSX.Element {
 
   if (screenError) throw screenError
 
-  const filteredFeaturesButtons = featuresButtons
-    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
-    .sort((a, b) => a.title.localeCompare(b.title))
-
-  const filteredOtherButtons = otherButtons
-    .filter((button) => button.title.toLowerCase().includes(filter.toLowerCase()))
-    .sort((a, b) => a.title.localeCompare(b.title))
+  const filteredFeaturesButtons = filterAndSortCheatcodesButtons(filter, featuresButtons)
+  const filteredOtherButtons = filterAndSortCheatcodesButtons(filter, otherButtons)
 
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
@@ -87,32 +87,14 @@ export function CheatcodesMenu(): React.JSX.Element {
         onChangeText={setFilter}
         onPressRightIcon={resetSearch}
       />
-
       <StyledView>
         <SeparatorWithText label="FEATURES" />
       </StyledView>
-
-      {filteredFeaturesButtons.map((button, index) => (
-        <LinkToScreen
-          key={index}
-          title={button.title}
-          screen={button.screen}
-          onPress={button.onPress}
-        />
-      ))}
-
+      <CheatcodesButtonList buttons={filteredFeaturesButtons} />
       <StyledView>
         <SeparatorWithText label="AUTRES" />
       </StyledView>
-
-      {filteredOtherButtons.map((button, index) => (
-        <LinkToScreen
-          key={index}
-          title={button.title}
-          screen={button.screen}
-          onPress={button.onPress}
-        />
-      ))}
+      <CheatcodesButtonList buttons={filteredOtherButtons} />
     </CheatcodesTemplateScreen>
   )
 }

@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { ButtonsWithSubscreensProps } from 'cheatcodes/types'
 import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
@@ -9,12 +11,21 @@ import {
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useModal } from 'ui/components/modals/useModal'
 
+export const cheatcodesNavigationAchievementsButtons: [ButtonsWithSubscreensProps] = [
+  {
+    title: 'Achievements 🏆',
+    screen: 'CheatcodesNavigationAchievements',
+    subscreens: [{ screen: 'Achievements', navigationParams: { from: 'cheatcodes' } }],
+  },
+]
+
 export function CheatcodesNavigationAchievements(): React.JSX.Element {
   const {
     visible: visibleOneAchievement,
     showModal: showModalOneAchievement,
     hideModal: hideModalOneAchievement,
   } = useModal(false)
+
   const {
     visible: visibleSeveralAchievements,
     showModal: showModalSeveralAchievements,
@@ -22,8 +33,9 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
   } = useModal(false)
 
   return (
-    <CheatcodesTemplateScreen title="Achievements 🏆">
-      <LinkToScreen screen="Achievements" navigationParams={{ from: 'cheatcodes' }} />
+    <CheatcodesTemplateScreen title={cheatcodesNavigationAchievementsButtons[0].title}>
+      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationAchievementsButtons} />
+
       <LinkToScreen
         title="AchievementSuccessModal (1 unlocked)"
         onPress={showModalOneAchievement}
@@ -33,6 +45,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
         visible={visibleOneAchievement}
         hideModal={hideModalOneAchievement}
       />
+
       <LinkToScreen
         title="AchievementSuccessModal (2+ unlocked)"
         onPress={showModalSeveralAchievements}
