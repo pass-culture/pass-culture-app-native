@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 // eslint-disable-next-line no-restricted-imports
-import { create, StateCreator } from 'zustand'
+import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 type Options = {
@@ -8,34 +8,14 @@ type Options = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- we don't want to restrict the payload type
-export const createStore = <State, Actions extends Record<string, (payload: any) => void>>(
-  name: string,
-  defaultState: State,
-  getActions: StateCreator<State & { actions: Actions }, [], [], Actions>,
-  options?: Options
-) =>
-  create<State & { actions: Actions }>()(
-    devtools(
-      options?.persist
-        ? persist(
-            (setState, getState, store) => ({
-              ...defaultState,
-              actions: getActions(setState, getState, store),
-            }),
-            {
-              name,
-              storage: createJSONStorage(() => AsyncStorage),
-              partialize: (state) => {
-                const stateWithoutActions = { ...state, actions: undefined }
-                delete stateWithoutActions.actions
-                return stateWithoutActions
-              },
-            }
-          )
-        : (setState, getState, store) => ({
-            ...defaultState,
-            actions: getActions(setState, getState, store),
-          }),
-      { enabled: false, name }
-    )
+export const createStore = <State>(name: string, defaultState: State, options?: Options) => {
+  const store = () => defaultState
+  const persistedStore = persist(store, {
+    name,
+    storage: createJSONStorage(() => AsyncStorage),
+  })
+
+  return create<State>()(
+    devtools(options?.persist ? persistedStore : store, { enabled: false, name })
   )
+}
