@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
-import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
+import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
@@ -21,7 +21,7 @@ export const ChangeCity = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const storedCity = useCity()
-  const { setCity } = useCityActions()
+  const { setCity } = cityActions
   const {
     control,
     formState: { isValid },

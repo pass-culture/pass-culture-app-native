@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useCreditStore } from 'features/identityCheck/api/useCreditActivation'
+import { creditActions } from 'features/identityCheck/api/useCreditActivation'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -31,7 +31,6 @@ export function BeneficiaryAccountCreated() {
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
-  const { actions } = useCreditStore()
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -45,8 +44,8 @@ export function BeneficiaryAccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
-    actions.setActivationDate(new Date())
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey, actions])
+    creditActions.setActivationDate(new Date())
+  }, [showShareAppModal, user?.needsToFillCulturalSurvey])
 
   useEnterKeyAction(navigateToHome)
 

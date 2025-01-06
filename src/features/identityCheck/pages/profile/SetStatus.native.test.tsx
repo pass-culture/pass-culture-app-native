@@ -5,12 +5,9 @@ import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
-import {
-  useAddress,
-  useAddressActions,
-} from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
+import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
@@ -36,15 +33,12 @@ const profile = {
 jest.mock('libs/jwt/jwt')
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
 ;(useName as jest.Mock).mockReturnValue(profile.name)
-;(useNameActions as jest.Mock).mockReturnValue({ resetName: jest.fn() })
 
 jest.mock('features/identityCheck/pages/profile/store/cityStore')
 ;(useCity as jest.Mock).mockReturnValue(profile.city)
-;(useCityActions as jest.Mock).mockReturnValue({ resetCity: jest.fn() })
 
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
 ;(useAddress as jest.Mock).mockReturnValue(profile.address)
-;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: jest.fn() })
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
