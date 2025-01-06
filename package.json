@@ -16,7 +16,7 @@
   "homepage": ".",
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "react-native run-android",
+    "android": "yarn preandroid && react-native run-android",
     "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
@@ -35,12 +35,11 @@
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client.sh",
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "preios": "./scripts/check_xcode_version.sh",
-    "ios": "react-native run-ios",
+    "ios": "yarn preios && react-native run-ios",
     "ios:prod": "yarn ios --scheme PassCulture-Production",
     "ios:staging": "yarn ios --scheme PassCulture-Staging",
     "ios:testing": "yarn ios --scheme PassCulture-Testing",
     "postinstall": "patch-package && jetify",
-    "prepush": "git pull --rebase origin master",
     "start": "react-native start",
     "start:web": "vite",
     "start:web:development": "yarn start:web --mode=development",
@@ -50,9 +49,9 @@
     "start:web:testing": "yarn start:web --mode=testing",
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' TZ=UTC start-storybook --static-dir ./public -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
-    "test:deadcode": "yarn --silent ts-prune",
+    "test:deadcode": "yarn ts-prune",
     "test:deadcode:count": "yarn test:deadcode | wc -l",
-    "test:deadcode:update": "yarn --silent test:deadcode > scripts/dead_code_snapshot.txt",
+    "test:deadcode:update": "yarn test:deadcode > scripts/dead_code_snapshot.txt",
     "test:e2e:android:staging": "./scripts/run_e2e_tests.sh test android staging",
     "test:e2e:ios:staging": "./scripts/run_e2e_tests.sh test ios staging",
     "test:e2e:web:staging": "./scripts/run_e2e_tests.sh test web staging",
@@ -69,7 +68,7 @@
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:types:noUncheckedIndexedAccess": "grep --recursive --line-number ./src --regexp '// @ts-expect-error: because of noUncheckedIndexedAccess' | awk -F: '{print $1\":\"$2}' | sort",
-    "test:types:noUncheckedIndexedAccess:update": "yarn --silent test:types:noUncheckedIndexedAccess > scripts/noUncheckedIndexedAccess_snapshot.txt",
+    "test:types:noUncheckedIndexedAccess:update": "yarn test:types:noUncheckedIndexedAccess > scripts/noUncheckedIndexedAccess_snapshot.txt",
     "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
     "test:unit:ci": "yarn test:unit --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
@@ -82,11 +81,6 @@
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
     "update:tools": "nix flake update && direnv exec . devbox update && git commit --only flake.lock devbox.lock --message '(BSR) chore(deps): update tools'"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn prepush"
-    }
   },
   "dependencies": {
     "@algolia/client-search": "^4.24.0",
@@ -320,7 +314,7 @@
     "react-native-web-linear-gradient": "^1.1.2",
     "react-query-native-devtools": "^3.0.1",
     "react-test-renderer": "18.2.0",
-    "reassure": "^0.7.2",
+    "reassure": "1.1.0",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
@@ -364,5 +358,6 @@
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }

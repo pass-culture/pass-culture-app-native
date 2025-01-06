@@ -26,6 +26,8 @@ jobs:
       matrix:
         shard: [1, 2, 3]
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
@@ -62,6 +64,8 @@ jobs:
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7]
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
@@ -105,6 +109,8 @@ jobs:
     runs-on: ubuntu-22.04
     needs: yarn_test_native
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
@@ -145,6 +151,8 @@ jobs:
   yarn_test_proxy:
     runs-on: ubuntu-22.04
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -165,8 +173,10 @@ jobs:
           key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install --immutable --cwd server
-      - run: yarn --cwd server test:unit:ci
+      - name: Install packages for proxy
+        run: cd server && yarn install && cd ..
+      - name: Run proxy unit tests
+        run: cd server && yarn test:unit:ci && cd ..
       - name: Get secrets for SonarCloud
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'

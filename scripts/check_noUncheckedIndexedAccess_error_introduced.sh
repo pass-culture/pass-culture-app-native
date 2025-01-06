@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-yarn --silent test:types:noUncheckedIndexedAccess >scripts/noUncheckedIndexedAccess_current.txt
+yarn test:types:noUncheckedIndexedAccess >scripts/noUncheckedIndexedAccess_current.txt
 
 current_count=$(wc -l <scripts/noUncheckedIndexedAccess_current.txt)
 snapshot_count=$(wc -l <scripts/noUncheckedIndexedAccess_snapshot.txt)
