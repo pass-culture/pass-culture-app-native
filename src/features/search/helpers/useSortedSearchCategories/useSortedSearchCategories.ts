@@ -1,41 +1,41 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   CategoryButtonProps,
   ListCategoryButtonProps,
 } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
-import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { CATEGORY_APPEARANCE } from 'features/search/enums'
+import {
+  CategoryKey,
+  getTopLevelCategories,
+  sortCategoriesPredicate,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
-export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
+export type OnPressCategory = (pressedCategory: CategoryKey) => void
 
 export type MappingOutput = CategoryButtonProps & { position: number | undefined }
-
-export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): number {
-  const positionA: number = a?.position || 0
-  const positionB: number = b?.position || 0
-  return positionA - positionB
-}
 
 export const useSortedSearchCategories = (
   onPressCategory: OnPressCategory
 ): ListCategoryButtonProps => {
-  const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const categories = useAvailableCategories()
+  const categories = getTopLevelCategories()
 
   return categories
-    .map<MappingOutput>((category) => ({
-      label: searchGroupLabelMapping?.[category.facetFilter] || '',
-      Icon: category.icon,
-      Illustration: category.illustration,
-      onPress() {
-        onPressCategory(category.facetFilter)
-      },
-      baseColor: category.baseColor,
-      gradients: category.gradients,
-      position: category.position,
-      textColor: category.textColor,
-      borderColor: category.borderColor,
-      fillColor: category.fillColor,
-    }))
-    .sort(categoriesSortPredicate)
+    .toSorted(sortCategoriesPredicate)
+    .map<MappingOutput | undefined>((category) => {
+      const appearance = CATEGORY_APPEARANCE[category.key]
+      if (!appearance) return undefined
+      return {
+        label: category.label,
+        Illustration: appearance.illustration,
+        onPress() {
+          onPressCategory(category.key)
+        },
+        baseColor: appearance.baseColor,
+        gradients: appearance.gradients,
+        position: category.position,
+        textColor: appearance.textColor,
+        borderColor: appearance.borderColor,
+        fillColor: appearance.fillColor,
+      }
+    })
+    .filter((mappingOutput) => !!mappingOutput)
 }

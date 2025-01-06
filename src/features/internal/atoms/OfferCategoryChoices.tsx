@@ -1,35 +1,37 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { CategoryAppearance } from 'features/search/enums'
-import {
-  useAvailableCategories,
-  useAvailableThematicSearchCategories,
-} from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
+import {
+  CategoryKey,
+  getTopLevelCategories,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { hasAThematicSearch } from 'features/navigation/SearchStackNavigator/types'
 
 type CategoryChoicesProps = {
-  onChange: (selection: SearchGroupNameEnumv2[]) => void
-  selection: SearchGroupNameEnumv2[]
+  onChange: (selection: CategoryKey[]) => void
+  selection: CategoryKey[]
 }
 
 type CategoryChoicesWithCategoryCriteria = CategoryChoicesProps & {
-  categories: ReadonlyArray<CategoryAppearance>
+  categories: CategoryKey[]
 }
 
 export const OfferCategoryChoices = (props: CategoryChoicesProps) => {
-  const categories = useAvailableCategories()
+  const categories = getTopLevelCategories().map((category) => category.key)
   return <CategoryChoices {...props} categories={categories} />
 }
 
 export const ThematicSearchCategoryChoices = (props: CategoryChoicesProps) => {
-  const categories = useAvailableThematicSearchCategories()
-  return <CategoryChoices {...props} categories={categories} />
+  return (
+    <CategoryChoices
+      {...props}
+      categories={hasAThematicSearch.map((category) => category.valueOf())}
+    />
+  )
 }
 
 const CategoryChoices = ({
@@ -37,8 +39,6 @@ const CategoryChoices = ({
   selection,
   categories,
 }: CategoryChoicesWithCategoryCriteria) => {
-  const searchGroupLabelMapping = useSearchGroupLabelMapping()
-
   if (categories.length === 0) {
     return null
   }
@@ -46,17 +46,17 @@ const CategoryChoices = ({
   return (
     <BodyContainer>
       <StyledUl>
-        {categories.map((category) => (
-          <Li key={category.facetFilter}>
-            <SelectionLabel
-              label={searchGroupLabelMapping[category.facetFilter]}
-              selected={!!selection?.includes(category.facetFilter)}
-              onPress={() =>
-                onChange(selection?.includes(category.facetFilter) ? [] : [category.facetFilter])
-              }
-            />
-          </Li>
-        ))}
+        {categories.map((categoryKey) => {
+          return (
+            <Li key={categoryKey}>
+              <SelectionLabel
+                label={categoryKey}
+                selected={!!selection?.includes(categoryKey)}
+                onPress={() => onChange(selection?.includes(categoryKey) ? [] : [categoryKey])}
+              />
+            </Li>
+          )
+        })}
       </StyledUl>
     </BodyContainer>
   )
