@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -13,14 +11,10 @@ export const useShouldShowAchievementSuccessModal = (
   const { displayAchievements } = useRemoteConfigContext()
   const { user } = useAuthContext()
 
-  const unseenAchievements = useMemo(
-    () => user?.achievements?.filter((achievement) => !achievement.seenDate),
-    [user?.achievements]
-  )
+  const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
 
-  const isThereAtLeastOneUnseenAchievement = useMemo(
-    () => user?.achievements?.some((achievement) => !achievement.seenDate),
-    [user?.achievements]
+  const isThereAtLeastOneUnseenAchievement = user?.achievements?.some(
+    (achievement) => !achievement.seenDate
   )
 
   if (
