@@ -68,8 +68,8 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
     { title: 'Errors 👾', screen: 'CheatcodesNavigationErrors' },
     { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
-    { title: 'AccesLibre 🌈', screen: 'CheatcodesNavigationSignUp' },
-    { title: 'SignUp 🎨', screen: 'CheatcodesScreenAccesLibre' },
+    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre' },
+    { title: 'SignUp 🎨', screen: 'CheatcodesNavigationSignUp' },
     { title: 'Account Management ⚙️', screen: 'CheatcodesNavigationAccountManagement' },
     { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry },
   ]
@@ -82,7 +82,7 @@ export function CheatcodesMenu(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
       <StyledSearchInput
-        placeholder="Rechercher dans cette page..."
+        placeholder="Rechercher..."
         value={filter}
         onChangeText={setFilter}
         onPressRightIcon={resetSearch}
