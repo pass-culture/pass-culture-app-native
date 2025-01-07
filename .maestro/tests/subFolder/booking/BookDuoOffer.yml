@@ -91,9 +91,8 @@ env:
             text: "Prochaine séance\_:"
 
 - tapOn:
-    enabled: true
-    below:
-      id: VenuePreviewImage
+    id: event-card
+    index: 0
 
 - runFlow: #Si différentes gamme de prix pour l'offre
     when:

@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - local
-  - cloud
+  - fix
 ---
 - runFlow:
     when:

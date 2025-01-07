@@ -1,6 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
+- scrollUntilVisible:
+    element:
+      text: "MUSIQUE"
 - tapOn: "MUSIQUE"
 
 - tapOn: 'CDs'
