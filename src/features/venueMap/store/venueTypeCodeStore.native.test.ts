@@ -1,8 +1,5 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import {
-  useVenueTypeCode,
-  useVenueTypeCodeActions,
-} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { act, renderHook } from 'tests/utils'
 
 describe('venueTypeCodeStore', () => {
@@ -14,10 +11,9 @@ describe('venueTypeCodeStore', () => {
 
   it('should handle setVenueTypeCode', async () => {
     const { result: venueTypeCode } = renderHook(useVenueTypeCode)
-    const { result: actions } = renderHook(useVenueTypeCodeActions)
 
-    await act(async () => {
-      actions.current.setVenueTypeCode(VenueTypeCodeKey.MOVIE)
+    await act(() => {
+      venueTypeCodeActions.setVenueTypeCode(VenueTypeCodeKey.MOVIE)
     })
 
     expect(venueTypeCode.current).toEqual(VenueTypeCodeKey.MOVIE)

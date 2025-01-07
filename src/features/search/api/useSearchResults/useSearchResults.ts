@@ -10,8 +10,8 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { doAlgoliaRedirect } from 'libs/algolia/doAlgoliaRedirect'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
@@ -43,8 +43,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
-  const { setInitialVenues } = useInitialVenuesActions()
-  const { removeSelectedVenue } = useSelectedVenueActions()
+  const { setInitialVenues } = initialVenuesActions
+  const { removeSelectedVenue } = selectedVenueActions
   const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const { aroundPrecision } = useRemoteConfigContext()
 

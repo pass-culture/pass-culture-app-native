@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
-import { useVenuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
@@ -38,7 +38,7 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
   const { title, filterGroup } = route.params
   const { navigate } = useNavigation<UseNavigationType>()
   const { activeFilters: venueFilters, toggleMacroFilter } = useVenueMapFilters()
-  const { addVenuesFilters, removeVenuesFilters } = useVenuesFilterActions()
+  const { addVenuesFilters, removeVenuesFilters } = venuesFilterActions
 
   const hasAllFilters = FILTERS_VENUE_TYPE_MAPPING[filterGroup].every((filter) =>
     venueFilters.includes(filter)

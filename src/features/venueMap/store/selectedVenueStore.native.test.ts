@@ -1,7 +1,4 @@
-import {
-  useSelectedVenue,
-  useSelectedVenueActions,
-} from 'features/venueMap/store/selectedVenueStore'
+import { selectedVenueActions, useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
 import { geolocatedVenuesFixture } from 'fixtures/geolocatedVenues'
 import { act, renderHook } from 'tests/utils'
 
@@ -14,11 +11,10 @@ describe('selectedVenueStore', () => {
 
   it('should handle setSelectedVenue', async () => {
     const { result: selectedVenue } = renderHook(useSelectedVenue)
-    const { result: actions } = renderHook(useSelectedVenueActions)
 
     await act(async () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
-      actions.current.setSelectedVenue(geolocatedVenuesFixture[0])
+      selectedVenueActions.setSelectedVenue(geolocatedVenuesFixture[0])
     })
 
     expect(selectedVenue.current).toEqual(geolocatedVenuesFixture[0])
@@ -26,14 +22,10 @@ describe('selectedVenueStore', () => {
 
   it('should handle removeSelectedVenue', async () => {
     const { result: selectedVenue } = renderHook(useSelectedVenue)
-    const { result: actions } = renderHook(useSelectedVenueActions)
     await act(async () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
-      actions.current.setSelectedVenue(geolocatedVenuesFixture[0])
-    })
-
-    await act(async () => {
-      actions.current.removeSelectedVenue()
+      selectedVenueActions.setSelectedVenue(geolocatedVenuesFixture[0])
+      selectedVenueActions.removeSelectedVenue()
     })
 
     expect(selectedVenue.current).toEqual(null)

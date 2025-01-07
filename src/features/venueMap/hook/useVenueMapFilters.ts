@@ -3,11 +3,11 @@ import {
   getActiveMacroFilters,
   getFiltersByMacro,
 } from 'features/venueMap/helpers/filtersVenueType/filtersVenueType'
-import { useVenuesFilter, useVenuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { useVenuesFilter, venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 
 export const useVenueMapFilters = () => {
   const activeFilters = useVenuesFilter()
-  const { setVenuesFilters, addVenuesFilters, removeVenuesFilters } = useVenuesFilterActions()
+  const { setVenuesFilters, addVenuesFilters, removeVenuesFilters } = venuesFilterActions
 
   const addMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
     const filters = getFiltersByMacro(macro)

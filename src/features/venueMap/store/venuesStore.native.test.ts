@@ -1,4 +1,4 @@
-import { useVenues, useVenuesActions } from 'features/venueMap/store/venuesStore'
+import { useVenues, venuesActions } from 'features/venueMap/store/venuesStore'
 import { geolocatedVenuesFixture } from 'fixtures/geolocatedVenues'
 import { act, renderHook } from 'tests/utils'
 
@@ -11,10 +11,9 @@ describe('venuesStore', () => {
 
   it('should handle setVenues', async () => {
     const { result: venues } = renderHook(useVenues)
-    const { result: actions } = renderHook(useVenuesActions)
 
-    await act(async () => {
-      actions.current.setVenues(geolocatedVenuesFixture)
+    await act(() => {
+      venuesActions.setVenues(geolocatedVenuesFixture)
     })
 
     expect(venues.current).toEqual(geolocatedVenuesFixture)

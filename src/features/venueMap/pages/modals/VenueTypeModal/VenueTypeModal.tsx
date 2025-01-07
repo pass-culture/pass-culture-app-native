@@ -13,10 +13,7 @@ import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/g
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
 import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
 import { useVenues } from 'features/venueMap/store/venuesStore'
-import {
-  useVenueTypeCode,
-  useVenueTypeCodeActions,
-} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { analytics } from 'libs/analytics'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
@@ -46,7 +43,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
   const venues = useVenues()
   const selectedVenue = useSelectedVenue()
   const defaultVenueTypeCode = useVenueTypeCode()
-  const { setVenueTypeCode } = useVenueTypeCodeActions()
+  const { setVenueTypeCode } = venueTypeCodeActions
 
   const {
     formState: { isSubmitting },

@@ -1,10 +1,7 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import {
-  useVenueTypeCode,
-  useVenueTypeCodeActions,
-} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { parseType } from 'libs/parsers/venueType'
 import { ellipseString } from 'shared/string/ellipseString'
 import { render, screen } from 'tests/utils'
@@ -12,11 +9,7 @@ import { render, screen } from 'tests/utils'
 import { SingleFilterBannerContainer } from './SingleFilterBannerContainer'
 
 jest.mock('features/venueMap/store/venueTypeCodeStore')
-const mockSetVenueTypeCode = jest.fn()
 const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
-const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
-
-mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
 
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 

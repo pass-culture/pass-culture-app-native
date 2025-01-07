@@ -1,7 +1,4 @@
-import {
-  useInitialVenues,
-  useInitialVenuesActions,
-} from 'features/venueMap/store/initialVenuesStore'
+import { initialVenuesActions, useInitialVenues } from 'features/venueMap/store/initialVenuesStore'
 import { geolocatedVenuesFixture } from 'fixtures/geolocatedVenues'
 import { act, renderHook } from 'tests/utils'
 
@@ -14,10 +11,9 @@ describe('initialVenuesStore', () => {
 
   it('should handle setInitialVenues', async () => {
     const { result: venues } = renderHook(useInitialVenues)
-    const { result: actions } = renderHook(useInitialVenuesActions)
 
     await act(async () => {
-      actions.current.setInitialVenues(geolocatedVenuesFixture)
+      initialVenuesActions.setInitialVenues(geolocatedVenuesFixture)
     })
 
     expect(venues.current).toEqual(geolocatedVenuesFixture)
