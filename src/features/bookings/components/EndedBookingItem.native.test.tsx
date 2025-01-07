@@ -133,9 +133,11 @@ describe('EndedBookingItem', () => {
 
   it('should log logViewedBookingPage when click on offer digital without expiration date and not cancelled', async () => {
     renderEndedBookingItem({
-      ...bookingsSnap.ended_bookings[0],
-      cancellationDate: null,
-      cancellationReason: null,
+      booking: {
+        ...bookingsSnap.ended_bookings[0],
+        cancellationDate: null,
+        cancellationReason: null,
+      },
     })
 
     const item = screen.getByText('Réservation archivée')
