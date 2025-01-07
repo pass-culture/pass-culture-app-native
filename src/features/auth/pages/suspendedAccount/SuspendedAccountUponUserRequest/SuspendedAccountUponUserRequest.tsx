@@ -17,7 +17,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
 const addDaysToDate = (date: Date, days: number) => {
@@ -90,7 +90,7 @@ export const SuspendedAccountUponUserRequest = () => {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

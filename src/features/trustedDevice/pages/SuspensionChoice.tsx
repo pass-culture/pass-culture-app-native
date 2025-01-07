@@ -65,7 +65,7 @@ export const SuspensionChoice = () => {
       <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
       <VerticalUl>
         <BulletListItem>
-          <Typo.Body>
+          <TypoDS.Body>
             tes réservations seront annulées sauf pour certains cas précisés dans les{SPACE}
             <ExternalTouchableLink
               as={StyledButtonInsideText}
@@ -73,17 +73,17 @@ export const SuspensionChoice = () => {
               icon={ExternalSiteFilled}
               externalNav={{ url: env.CGU_LINK }}
             />
-          </Typo.Body>
+          </TypoDS.Body>
         </BulletListItem>
         <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau." />
         <BulletListItem text="tu n’auras plus accès au catalogue." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.ButtonText>Les données que nous conservons&nbsp;:</Typo.ButtonText>
-      <Typo.Body>
+      <TypoDS.Body>
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <ButtonContainer>
         <ButtonPrimary

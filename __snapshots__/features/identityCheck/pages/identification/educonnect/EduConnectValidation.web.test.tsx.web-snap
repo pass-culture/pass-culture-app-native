@@ -210,7 +210,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-1472mwg"
               />
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Ton prénom
@@ -229,7 +229,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-z80fyv"
               />
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Ton nom de famille
@@ -248,7 +248,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-z80fyv"
               />
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Ta date de naissance

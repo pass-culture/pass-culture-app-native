@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { user } = useAuthContext()
@@ -46,7 +46,7 @@ export function BeneficiaryRequestSent() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

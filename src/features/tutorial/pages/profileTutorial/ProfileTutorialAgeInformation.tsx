@@ -24,7 +24,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'ProfileTutorialAgeInformation'>
@@ -139,6 +139,6 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

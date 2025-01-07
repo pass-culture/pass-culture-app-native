@@ -138,9 +138,9 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
         [
           {
             "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
             "textAlign": "center",
           },
         ]
@@ -163,9 +163,9 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
         [
           {
             "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
             "textAlign": "center",
           },
         ]

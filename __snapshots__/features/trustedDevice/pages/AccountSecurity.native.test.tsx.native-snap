@@ -82,9 +82,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -259,9 +259,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -705,9 +705,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -882,9 +882,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -1228,9 +1228,9 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }
@@ -1405,9 +1405,9 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
         },
       ]
     }

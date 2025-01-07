@@ -65,11 +65,11 @@ const SelectIDStatusContent: FunctionComponent = () => {
       <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
       <Spacer.Column numberOfSpaces={4} />
       <StyledText>
-        <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
+        <TypoDS.Body>Tu dois avoir ta pièce d’identité </TypoDS.Body>
         <Typo.ButtonText>originale </Typo.ButtonText>
-        <Typo.Body>et </Typo.Body>
+        <TypoDS.Body>et </TypoDS.Body>
         <Typo.ButtonText>en cours de validité </Typo.ButtonText>
-        <Typo.Body>avec toi.</Typo.Body>
+        <TypoDS.Body>avec toi.</TypoDS.Body>
       </StyledText>
       <Spacer.Column numberOfSpaces={12} />
       {MainOptionButton}

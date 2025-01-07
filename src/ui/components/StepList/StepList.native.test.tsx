@@ -3,24 +3,24 @@ import { View } from 'react-native'
 
 import { render, screen } from 'tests/utils'
 import { Step } from 'ui/components/Step/Step'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { StepList } from './StepList'
 
 const children = [
   <Step key={0}>
     <View>
-      <Typo.Body>Past</Typo.Body>
+      <TypoDS.Body>Past</TypoDS.Body>
     </View>
   </Step>,
   <Step key={1}>
     <View>
-      <Typo.Body>Current</Typo.Body>
+      <TypoDS.Body>Current</TypoDS.Body>
     </View>
   </Step>,
   <Step key={2}>
     <View>
-      <Typo.Body>Future</Typo.Body>
+      <TypoDS.Body>Future</TypoDS.Body>
     </View>
   </Step>,
 ]

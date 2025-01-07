@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type PropsWithChildren = {
   title: string
@@ -27,7 +27,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       {subtitle ? (
         <SubtitleContainer>
           <Spacer.Column numberOfSpaces={1} />
-          {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
+          {typeof subtitle === 'string' ? <TypoDS.Body>{subtitle}</TypoDS.Body> : subtitle}
         </SubtitleContainer>
       ) : null}
       {bannerText ? (

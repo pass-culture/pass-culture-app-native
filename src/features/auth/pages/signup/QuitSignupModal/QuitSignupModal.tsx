@@ -11,7 +11,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -62,7 +62,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

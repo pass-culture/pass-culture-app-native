@@ -18,7 +18,7 @@ const tests = {
     { code: '<Typo.ButtonTextNeutralInfo>toto</Typo.ButtonTextNeutralInfo>' },
     { code: '<Typo.ButtonTextPrimary>toto</Typo.ButtonTextPrimary>' },
     { code: '<Typo.ButtonTextSecondary>toto</Typo.ButtonTextSecondary>' },
-    { code: '<Typo.Body>toto</Typo.Body>' },
+    { code: '<TypoDS.Body>toto</TypoDS.Body>' },
     { code: '<Typo.Caption>toto</Typo.Caption>' },
     { code: '<Typo.CaptionPrimary>toto</Typo.CaptionPrimary>' },
     { code: '<Typo.CaptionSecondary>toto</Typo.CaptionSecondary>' },

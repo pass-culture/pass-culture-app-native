@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const OfflinePage = () => {
@@ -33,7 +33,7 @@ const StyledTitle2 = styled(TypoDS.Title2).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
+const StyledBody = styled(TypoDS.Body).attrs(() => getHeadingAttrs(2))({
   textAlign: 'center',
 })
 

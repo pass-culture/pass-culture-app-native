@@ -13,7 +13,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   selectedCountry: Country
@@ -85,7 +85,7 @@ const VerticalSeparator = styled.View(({ theme }) => ({
   borderRightColor: theme.colors.greyDark,
 }))
 
-const CallingCodeText = styled(Typo.Body)({
+const CallingCodeText = styled(TypoDS.Body)({
   marginLeft: -getSpacing(1), // To compensate for the Flag component right margin
   marginRight: getSpacing(1),
 })

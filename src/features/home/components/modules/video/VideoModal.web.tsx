@@ -153,7 +153,7 @@ const StyledCaptionDate = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

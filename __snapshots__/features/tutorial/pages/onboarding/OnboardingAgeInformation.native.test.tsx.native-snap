@@ -371,9 +371,9 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1092,10 +1092,10 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
                       "justifyContent": "center",
-                      "lineHeight": 20,
+                      "lineHeight": 25.6,
                       "marginLeft": 6,
                       "marginVertical": 8,
                     },
@@ -2258,9 +2258,9 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2726,10 +2726,10 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
                       "justifyContent": "center",
-                      "lineHeight": 20,
+                      "lineHeight": 25.6,
                       "marginLeft": 6,
                       "marginVertical": 8,
                     },
@@ -4132,9 +4132,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -4347,10 +4347,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
                       "justifyContent": "center",
-                      "lineHeight": 20,
+                      "lineHeight": 25.6,
                       "marginLeft": 6,
                       "marginVertical": 8,
                     },
@@ -5984,9 +5984,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }

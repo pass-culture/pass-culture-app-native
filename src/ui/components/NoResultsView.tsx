@@ -7,7 +7,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 type Props = {
   explanations: string
@@ -80,7 +80,7 @@ const CaptionTitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   textAlign: 'center',
 }))

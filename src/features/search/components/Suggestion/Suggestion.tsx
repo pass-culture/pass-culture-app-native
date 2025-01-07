@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Again } from 'ui/svg/icons/Again'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type SuggestionProps = {
   suggestion: string
@@ -32,6 +32,6 @@ const AgainIcon = styled(Again).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   marginLeft: getSpacing(2),
 })

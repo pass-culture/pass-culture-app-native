@@ -321,9 +321,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                         "textAlign": "center",
                       },
                     ]
@@ -483,9 +483,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             [
                               {
                                 "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
                                 "marginLeft": -4,
                                 "marginRight": 4,
                               },

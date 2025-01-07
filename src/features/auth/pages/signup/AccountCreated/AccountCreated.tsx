@@ -12,7 +12,7 @@ import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export function AccountCreated() {
   const { user } = useAuthContext()
@@ -54,7 +54,7 @@ export function AccountCreated() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

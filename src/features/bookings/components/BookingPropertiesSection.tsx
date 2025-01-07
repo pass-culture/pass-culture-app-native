@@ -14,7 +14,7 @@ import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -113,7 +113,7 @@ const IconDuoContainer = styled.View({
   marginVertical: -getSpacing(1.5),
 })
 
-const Title = styled(Typo.Body)``
+const Title = styled(TypoDS.Body)``
 
 const Calendar = styled(DefaultCalendar).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

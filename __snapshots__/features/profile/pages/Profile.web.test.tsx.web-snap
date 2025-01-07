@@ -236,7 +236,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-view-175oi2r r-height-hdaws3"
               />
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Tu as entre 15 et 18 ans ?
@@ -246,7 +246,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginHorizontal-1hy1u7s r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-7xmw5f"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Identifie-toi pour bénéficier de ton crédit pass Culture
@@ -281,7 +281,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                     dir="ltr"
                   >
                     Déjà un compte ?
@@ -1394,7 +1394,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-height-hdaws3"
               />
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Tu as entre 15 et 18 ans ?
@@ -1404,7 +1404,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginHorizontal-1hy1u7s r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Identifie-toi pour bénéficier de ton crédit pass Culture
@@ -1439,7 +1439,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                     dir="ltr"
                   >
                     Déjà un compte ?

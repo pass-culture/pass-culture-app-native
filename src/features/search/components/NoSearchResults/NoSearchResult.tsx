@@ -7,7 +7,7 @@ import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateTo
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function NoSearchResult() {
@@ -83,15 +83,15 @@ const MainTitle = styled(TypoDS.Title4).attrs({
   marginTop: getSpacing(4),
 }))
 
-const MainTitleComplement = styled(Typo.Body)(({ theme }) => ({
+const MainTitleComplement = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({
+const DescriptionErrorText = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const DescriptionErrorTextContainer = styled(Typo.Body)({
+const DescriptionErrorTextContainer = styled(TypoDS.Body)({
   marginTop: getSpacing(6),
   textAlign: 'center',
 })

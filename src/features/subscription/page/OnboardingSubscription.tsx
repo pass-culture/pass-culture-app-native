@@ -25,7 +25,7 @@ import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -154,10 +154,10 @@ export const OnboardingSubscription = () => {
           <React.Fragment>
             <StyledTitle3>Choisis des thèmes à suivre</StyledTitle3>
             <Spacer.Column numberOfSpaces={4} />
-            <Typo.Body>
+            <TypoDS.Body>
               Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et
               actus&nbsp;!
-            </Typo.Body>
+            </TypoDS.Body>
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         }

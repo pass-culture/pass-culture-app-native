@@ -7,7 +7,7 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 import { AgeButton } from './AgeButton'
 
@@ -17,7 +17,7 @@ const BicolorAll = styled(All).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 

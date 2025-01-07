@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const onBeforeSignupNavigate = () => {
   analytics.logSignUpFromFavorite()
@@ -54,7 +54,7 @@ const ButtonContainer = styled.View({
   minHeight: getSpacing(31), // To avoid button getting smashed on "square" screens
 })
 
-const CenteredText = styled(Typo.Body)({
+const CenteredText = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

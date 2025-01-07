@@ -8,7 +8,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -60,6 +60,6 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
   </AppModal>
 )
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

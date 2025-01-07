@@ -7,7 +7,7 @@ import { HeaderWithGreyContainer } from 'features/profile/components/Header/Head
 import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
@@ -19,7 +19,7 @@ export function LoggedOutHeader() {
 
   return (
     <HeaderWithGreyContainer title="Mon profil" subtitle="Tu as entre 15 et 18 ans&nbsp;?">
-      <Typo.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</Typo.Body>
+      <TypoDS.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</TypoDS.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink

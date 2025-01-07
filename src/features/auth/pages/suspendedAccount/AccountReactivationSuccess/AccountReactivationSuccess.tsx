@@ -6,7 +6,7 @@ import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const AccountReactivationSuccess = () => (
   <GenericInfoPageWhite
@@ -30,6 +30,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

@@ -7,7 +7,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export const PageNotFound: React.FC = () => {
   const helmetTitle = 'Page introuvable | pass Culture'
@@ -33,7 +33,7 @@ export const PageNotFound: React.FC = () => {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

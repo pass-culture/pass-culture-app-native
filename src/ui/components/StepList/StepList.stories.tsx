@@ -8,7 +8,7 @@ import { theme } from 'theme'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { Step } from '../Step/Step'
 
@@ -46,17 +46,17 @@ export function UsageExample({ currentStepIndex = 0 }) {
     <StepList currentStepIndex={currentStepIndex}>
       <Step>
         <View style={[styles.content, currentStepIndex === 0 && styles.contentActive]}>
-          <Typo.Body>Play with</Typo.Body>
+          <TypoDS.Body>Play with</TypoDS.Body>
         </View>
       </Step>
       <Step>
         <View style={[styles.content, currentStepIndex === 1 && styles.contentActive]}>
-          <Typo.Body>`currentStepIndex` control</Typo.Body>
+          <TypoDS.Body>`currentStepIndex` control</TypoDS.Body>
         </View>
       </Step>
       <Step>
         <View style={[styles.content, currentStepIndex === 2 && styles.contentActive]}>
-          <Typo.Body>on Storybook</Typo.Body>
+          <TypoDS.Body>on Storybook</TypoDS.Body>
         </View>
       </Step>
     </StepList>

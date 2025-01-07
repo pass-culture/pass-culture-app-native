@@ -6,7 +6,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Offers } from 'ui/svg/icons/Offers'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const EmptyCredit = ({ age }: { age: number }) => {
   const { homeEntryIdFreeOffers } = useRemoteConfigContext()
@@ -23,10 +23,10 @@ export const EmptyCredit = ({ age }: { age: number }) => {
 
   return (
     <React.Fragment>
-      <Typo.Body>
+      <TypoDS.Body>
         Ton prochain crédit de <HighlightedBody>{incomingCreditMap[age]}</HighlightedBody> sera
         débloqué à {age + 1} ans. En attendant…
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonWithLinearGradient}
@@ -41,7 +41,7 @@ export const EmptyCredit = ({ age }: { age: number }) => {
   )
 }
 
-const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
+const HighlightedBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 

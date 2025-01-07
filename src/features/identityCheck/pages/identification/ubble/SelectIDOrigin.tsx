@@ -36,7 +36,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <HeroButtonList
         Title={
           <Text>
-            <Typo.Body>J’ai une carte d’identité ou un passeport </Typo.Body>
+            <TypoDS.Body>J’ai une carte d’identité ou un passeport </TypoDS.Body>
             <Typo.ButtonText>français</Typo.ButtonText>
           </Text>
         }
@@ -80,6 +80,6 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
 const StyledTitle4 = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

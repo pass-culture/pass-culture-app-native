@@ -11,7 +11,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { useNotEligibleEduConnectErrorData } from '../hooks/useNotEligibleEduConnectErrorData'
 
@@ -79,7 +79,7 @@ export const NotEligibleEduConnect = ({
 type TextBodyProps = TextProps & {
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
-const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
+const Body = styled(TypoDS.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
   ({ theme, textAlign }) => ({
     ...theme.typography.body,
     textAlign,

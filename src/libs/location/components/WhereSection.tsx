@@ -101,7 +101,7 @@ export const WhereSection: React.FC<Props> = ({
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>Distance</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body>{distanceToLocation}</Typo.Body>
+          <TypoDS.Body>{distanceToLocation}</TypoDS.Body>
         </React.Fragment>
       ) : null}
       {venueFullAddress ? (
@@ -128,7 +128,7 @@ const VenueNameContainer = styled(InternalTouchableLink)({
   alignItems: 'center',
 })
 
-const StyledAddress = styled(Typo.Body)({
+const StyledAddress = styled(TypoDS.Body)({
   textTransform: 'capitalize',
 })
 

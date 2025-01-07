@@ -15,7 +15,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 type ForceUpdateProps = {
   resetErrorBoundary: () => void
@@ -78,7 +78,7 @@ export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))

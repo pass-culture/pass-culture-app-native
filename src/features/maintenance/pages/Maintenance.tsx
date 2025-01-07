@@ -5,7 +5,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPassCulture'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type MaintenanceProps = {
   message?: string
@@ -32,7 +32,7 @@ export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

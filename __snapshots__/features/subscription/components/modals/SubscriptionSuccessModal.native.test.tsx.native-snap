@@ -374,9 +374,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
@@ -1036,9 +1036,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
@@ -1698,9 +1698,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
@@ -2360,9 +2360,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
@@ -3022,9 +3022,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
@@ -3684,9 +3684,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "textAlign": "center",
                     },
                   ]
