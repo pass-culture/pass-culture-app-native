@@ -30,8 +30,8 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { getSpacing } from 'ui/theme'
 
 export function CheatcodesMenu(): React.JSX.Element {
-  const [filter, setFilter] = useState('')
-  const resetSearch = () => setFilter('')
+  const [searchValue, setSearchValue] = useState('')
+  const resetSearch = () => setSearchValue('')
 
   const { showInfoSnackBar } = useSnackBarContext()
   const onPressSentry = () => {
@@ -79,15 +79,15 @@ export function CheatcodesMenu(): React.JSX.Element {
 
   if (screenError) throw screenError
 
-  const filteredFeaturesButtons = filterAndSortCheatcodesButtons(filter, featuresButtons)
-  const filteredOtherButtons = filterAndSortCheatcodesButtons(filter, otherButtons)
+  const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)
+  const filteredOtherButtons = filterAndSortCheatcodesButtons(searchValue, otherButtons)
 
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
       <StyledSearchInput
         placeholder="Rechercher..."
-        value={filter}
-        onChangeText={setFilter}
+        value={searchValue}
+        onChangeText={setSearchValue}
         onPressRightIcon={resetSearch}
       />
       <StyledView>

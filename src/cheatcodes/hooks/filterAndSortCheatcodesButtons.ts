@@ -1,23 +1,26 @@
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 
-const isMatching = (filter: string, str?: string): boolean =>
-  (str ?? '').toLowerCase().includes(filter.toLowerCase())
+const isMatching = (searchValue: string, str?: string): boolean =>
+  (str ?? '').toLowerCase().includes(searchValue.toLowerCase())
 
 export const filterAndSortCheatcodesButtons = (
-  filter: string,
+  searchValue: string,
   buttons: CheatcodesButtonsWithSubscreensProps[]
 ): CheatcodesButtonsWithSubscreensProps[] =>
   buttons
     .filter((button) => button.title || button.screen)
     .map((button): CheatcodesButtonsWithSubscreensProps | null => {
       const filteredSubscreens = button.subscreens?.filter(
-        (subscreen) => isMatching(filter, subscreen.title) || isMatching(filter, subscreen.screen)
+        (subscreen) =>
+          isMatching(searchValue, subscreen.title) || isMatching(searchValue, subscreen.screen)
       )
       const isButtonMatching =
-        isMatching(filter, button.title) ||
-        isMatching(filter, button.screen) ||
+        isMatching(searchValue, button.title) ||
+        isMatching(searchValue, button.screen) ||
         (filteredSubscreens && filteredSubscreens.length > 0)
-      return isButtonMatching ? { ...button, subscreens: filter ? filteredSubscreens : [] } : null
+      return isButtonMatching
+        ? { ...button, subscreens: searchValue ? filteredSubscreens : [] }
+        : null
     })
     .filter((button): button is CheatcodesButtonsWithSubscreensProps => button !== null)
     .sort((a, b) =>
