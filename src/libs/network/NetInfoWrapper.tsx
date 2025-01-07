@@ -5,6 +5,7 @@ import { Platform } from 'react-native'
 import { onlineManager } from 'react-query'
 
 import { analytics } from 'libs/analytics'
+import { updateFirestoreNetworkState } from 'libs/network/helpers/updateFirestoreNetworkState/updateFirestoreNetworkState'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -19,6 +20,7 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
   useEffect(() => {
     const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
     onlineManager.setOnline(isConnected)
+    updateFirestoreNetworkState(isConnected)
     if (isConnected === false) {
       showInfoSnackBar({
         message: 'Aucune connexion internet. Réessaie plus tard',
