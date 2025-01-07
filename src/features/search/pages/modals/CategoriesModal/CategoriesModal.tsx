@@ -45,6 +45,18 @@ export type CategoriesModalFormProps = {
   currentIndex: number
 }
 
+export const getPreselectionLabel = (preselections: CategoryKey[]) => {
+  const endIndex =
+    preselections.length >= 2 && preselections.at(-1) === ALL.key // we don't the label to be '`child` - Tout', just 'child'
+      ? preselections.length - 1
+      : preselections.length
+
+  return preselections
+    .slice(0, endIndex)
+    .map((categoryKey) => getCategory(categoryKey)?.label)
+    .join(' - ')
+}
+
 export const CategoriesModal = ({
   accessibilityLabel,
   filterBehaviour,
@@ -79,13 +91,6 @@ export const CategoriesModal = ({
     return hasIcon(categoryKey) ? CATEGORY_ICONS[categoryKey] : undefined
   }
 
-  const getPreselectionLabel = () => {
-    const preselections = categoryStack.slice(currentIndex + 2) // we want to start at currently selected child's child
-    if (preselections.length >= 2 && preselections.at(-1) == ALL.key) preselections.pop() // we don't the label to be '`child` - Tout', just 'child'
-
-    return preselections.map((categoryKey) => getCategory(categoryKey)?.label).join(' - ')
-  }
-
   const isRootLevel = currentIndex === 0
 
   const currentItem =
@@ -95,7 +100,7 @@ export const CategoriesModal = ({
   const next = currentIndex + 1 // helps typing on next line
   const selectedChild = (categoryStack[next] && getCategory(categoryStack[next])) || ALL
 
-  const preselectionLabel = getPreselectionLabel()
+  const preselectionLabel = getPreselectionLabel(categoryStack.slice(currentIndex + 2)) // we want to start at currently selected child's child
 
   const shouldRenderBlocks = children.some((child) => child.showChildren)
 
