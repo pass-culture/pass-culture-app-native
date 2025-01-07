@@ -124,6 +124,9 @@ export const CategoriesModal = ({
         category.key !== previousSelection
           ? [...categoryStack.slice(0, currentIndex + 1), category.key]
           : categoryStack
+      if (category.key !== previousSelection && hasChildren)
+        // we want to preselect 'Tout' if possible
+        newStack.push(ALL.key)
 
       setValue('currentIndex', newIndex)
       setValue('categoryStack', newStack)
@@ -155,6 +158,8 @@ export const CategoriesModal = ({
 
   const shouldDisplayBackButton =
     currentIndex > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+
+  console.log(categoryStack, currentIndex)
 
   return (
     <AppModal
