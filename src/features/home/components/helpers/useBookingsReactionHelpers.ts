@@ -1,4 +1,4 @@
-import { BookingReponse, BookingsResponse } from 'api/gen'
+import { BookingsResponse } from 'api/gen'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { filterBookingsWithoutReaction } from 'features/home/components/helpers/filterBookingsWithoutReaction/filterBookingsWithoutReaction'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -19,29 +19,24 @@ export const useBookingsReactionHelpers = (
   const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
   const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
-  let shouldShowReactionModal = false
-  let bookingsEligibleToReaction: Array<BookingReponse> = []
-
-  if (!isReactionFeatureActive || !isCookieConsentChecked)
-    return {
-      shouldShowReactionModal,
-      bookingsEligibleToReaction,
-    }
-
-  bookingsEligibleToReaction =
+  const bookingsEligibleToReaction =
     bookings?.ended_bookings?.filter((booking) =>
       filterBookingsWithoutReaction(booking, subcategoriesMapping, reactionCategories)
     ) ?? []
 
   const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
 
+  if (!isReactionFeatureActive || !isCookieConsentChecked)
+    return {
+      shouldShowReactionModal: false,
+      bookingsEligibleToReaction: [],
+    }
+
   if (!firstBookingWithoutReaction)
     return {
-      shouldShowReactionModal,
+      shouldShowReactionModal: false,
       bookingsEligibleToReaction,
     }
 
-  shouldShowReactionModal = true
-
-  return { shouldShowReactionModal, bookingsEligibleToReaction }
+  return { shouldShowReactionModal: true, bookingsEligibleToReaction }
 }

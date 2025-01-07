@@ -6,7 +6,7 @@ import { AchievementSuccessModal } from 'features/achievements/pages/Achievement
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const achievementArtLesson: AchievementResponse = {
   name: AchievementEnum.FIRST_ART_LESSON_BOOKING,
@@ -23,6 +23,8 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const apiPostAchievementsMarkAsSeen = jest.spyOn(API.api, 'postNativeV1AchievementsMarkAsSeen')
+
+jest.useFakeTimers()
 
 describe('AchievementSuccessModal', () => {
   beforeEach(() => {
@@ -66,10 +68,23 @@ describe('AchievementSuccessModal', () => {
     ])
   })
 
-  it('should call backend to mark achievements as seen', async () => {
+  it('should not mark achievements as seen when showing the modal', async () => {
     renderAchievementSuccessModal([achievementArtLesson, achievementInstrument])
 
     await screen.findByText('Tu as débloqué plusieurs succès !')
+
+    expect(apiPostAchievementsMarkAsSeen).not.toHaveBeenCalled()
+  })
+
+  it('should mark achievements as seen when closing the modal', async () => {
+    renderAchievementSuccessModal([achievementArtLesson, achievementInstrument])
+
+    await screen.findByText('Tu as débloqué plusieurs succès !')
+
+    const exitButton = await screen.findByText('Accéder à mes succès')
+
+    const user = userEvent.setup()
+    await user.press(exitButton)
 
     expect(apiPostAchievementsMarkAsSeen).toHaveBeenCalledWith({ achievementIds: [1, 2] })
   })

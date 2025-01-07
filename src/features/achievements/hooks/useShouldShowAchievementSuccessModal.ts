@@ -4,31 +4,32 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
-export const useShouldShowAchievementSuccessModal = (isAnotherModalOpen = false) => {
+export const useShouldShowAchievementSuccessModal = (
+  isAnotherModalOpen = false
+): { shouldShowAchievementSuccessModal: boolean; achievementsToShow: AchievementResponse[] } => {
   const areAchievementsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const { displayAchievements } = useRemoteConfigContext()
   const { user } = useAuthContext()
 
-  let shouldShowAchievementSuccessModal = false
-  let achievementsToShow: AchievementResponse[] = []
+  const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
+
+  const isThereAtLeastOneUnseenAchievement = user?.achievements?.some(
+    (achievement) => !achievement.seenDate
+  )
+
   if (
     !areAchievementsEnabled ||
     !displayAchievements ||
     !user?.achievements ||
     user?.achievements.length === 0 ||
+    !isThereAtLeastOneUnseenAchievement ||
     isAnotherModalOpen
   )
-    return { shouldShowAchievementSuccessModal, achievementsToShow }
+    return { shouldShowAchievementSuccessModal: false, achievementsToShow: [] }
 
-  const isThereAtLeastOneUnseenAchievement = user?.achievements.some(
-    (achievement) => !achievement.seenDate
-  )
-  if (isThereAtLeastOneUnseenAchievement) shouldShowAchievementSuccessModal = true
-  else return { shouldShowAchievementSuccessModal, achievementsToShow }
-
-  const unseenAchievements = user?.achievements.filter((achievement) => !achievement.seenDate)
-
-  if (unseenAchievements && unseenAchievements?.length > 0) achievementsToShow = unseenAchievements
-
-  return { shouldShowAchievementSuccessModal, achievementsToShow }
+  return {
+    shouldShowAchievementSuccessModal: isThereAtLeastOneUnseenAchievement,
+    achievementsToShow:
+      unseenAchievements && unseenAchievements?.length > 0 ? unseenAchievements : [],
+  }
 }
