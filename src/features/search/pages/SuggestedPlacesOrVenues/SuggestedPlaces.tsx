@@ -91,10 +91,9 @@ const NotLongEnough = ({ show }: { show: boolean }) =>
     </StyledBody>
   ) : null
 
-const ListIconWrapper = styled.View(({ theme }) => ({
-  marginTop: (theme.typography.body.fontSize * 15) / 100,
+const ListIconWrapper = styled.View({
   marginRight: getSpacing(0.5),
-}))
+})
 
 const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
