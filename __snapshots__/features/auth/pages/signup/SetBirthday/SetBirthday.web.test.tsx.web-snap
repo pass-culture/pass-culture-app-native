@@ -92,9 +92,9 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c3 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
+  font-family: Montserrat-Medium;
+  font-size: 1rempx;
+  line-height: 1.6rem;
   color: #161617;
   width: 100%;
   padding-right: 16px;
@@ -118,9 +118,9 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c6 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
+  font-family: Montserrat-Medium;
+  font-size: 1rempx;
+  line-height: 1.6rem;
   color: #161617;
   width: 100%;
   padding-right: 16px;
@@ -144,9 +144,9 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c7 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
+  font-family: Montserrat-Medium;
+  font-size: 1rempx;
+  line-height: 1.6rem;
   color: #161617;
   width: 100%;
   padding-right: 16px;
