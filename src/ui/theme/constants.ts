@@ -39,3 +39,5 @@ export const ILLUSTRATION_ICON_SIZE = getSpacing(35) // 140
 export const FULLPAGE_ILLUSTRATION_ICON_SIZE = getSpacing(50)
 // small illustrations should be imported with ILLUSTRATION_SMALL_SIZE
 export const ILLUSTRATION_SMALL_SIZE = getSpacing(25)
+
+export const REM_TO_PX = 16

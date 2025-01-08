@@ -5,8 +5,9 @@ import { ThemeProvider } from 'styled-components/native'
 import { computedTheme } from 'tests/computedTheme'
 import { act, renderHook } from 'tests/utils/web'
 import { useIsTextEllipsis } from 'ui/components/CollapsibleText/useIsTextEllipsis'
+import { REM_TO_PX } from 'ui/theme/constants'
 
-const LINE_HEIGHT = Number(computedTheme.typography.body.lineHeight.slice(0, -2))
+const LINE_HEIGHT = parseFloat(computedTheme.designSystem.typography.body.lineHeight) * REM_TO_PX
 
 describe('useIsTextEllipsis', () => {
   it('should return the text ends with ellipsis when the text takes more lines than the max', async () => {
