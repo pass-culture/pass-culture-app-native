@@ -12,5 +12,5 @@ const useVenueTypeCodeStore = createStore({ name: 'venue-map-venue-type-code', d
 
 export const useVenueTypeCode = () => useVenueTypeCodeStore((state) => state.venueTypeCode)
 export const venueTypeCodeActions = createActions(useVenueTypeCodeStore, (set) => ({
-  setVenueTypeCode: (payload: VenueTypeCode | null) => set({ venueTypeCode: payload }),
+  setVenueTypeCode: (venueTypeCode: VenueTypeCode | null) => set({ venueTypeCode }),
 }))

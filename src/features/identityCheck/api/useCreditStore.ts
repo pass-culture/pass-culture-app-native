@@ -9,7 +9,11 @@ const defaultState: CreditState = {
   activationDate: undefined,
 }
 
-const useCreditStore = createStore({ name: 'credit', defaultState, options: { persist: true } })
+const useCreditStore = createStore({
+  name: 'credit',
+  defaultState,
+  options: { persist: true },
+})
 
 export const creditActions = createActions(useCreditStore, (set) => ({
   setActivationDate: (activationDate: Date) => set({ activationDate }),

@@ -18,13 +18,13 @@ export const useVenuesFilter = () => useVenuesFilterStore((state) => state.venue
 
 export const venuesFilterActions = createActions(useVenuesFilterStore, (set) => ({
   setVenuesFilters: (venuesFilters: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters })),
-  addVenuesFilters: (VenueTypeCodeKeys: VenueTypeCodeKey[]) =>
+  addVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
     set((state: State) => ({
-      venuesFilters: Array.from(new Set([...state.venuesFilters, ...VenueTypeCodeKeys])),
+      venuesFilters: Array.from(new Set([...state.venuesFilters, ...venueTypeCodeKeys])),
     })),
-  removeVenuesFilters: (VenueTypeCodeKeys: VenueTypeCodeKey[]) =>
+  removeVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
     set((state: State) => ({
-      venuesFilters: difference(state.venuesFilters, VenueTypeCodeKeys),
+      venuesFilters: difference(state.venuesFilters, venueTypeCodeKeys),
     })),
   reset: () => set((_) => ({ venuesFilters: [] })),
 }))
