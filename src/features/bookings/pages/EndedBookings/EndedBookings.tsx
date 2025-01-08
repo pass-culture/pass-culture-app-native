@@ -30,7 +30,7 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -203,7 +203,7 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const EndedBookingsCount = styled(TypoDS.Body).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
   paddingBottom: getSpacing(5.5),
 }))

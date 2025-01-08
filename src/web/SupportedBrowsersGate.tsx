@@ -60,14 +60,14 @@ export const BrowserNotSupportedPage: React.FC<{
       <Container>
         <Title>{title}</Title>
         <Spacer.Column numberOfSpaces={5} />
-        <Typo.Body>
+        <TypoDS.Body>
           Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une
           expérience optimale.
-        </Typo.Body>
+        </TypoDS.Body>
         <Spacer.Column numberOfSpaces={5} />
-        <Typo.Body>
+        <TypoDS.Body>
           Voici ceux que nous te conseillons pour profiter pleinement du pass Culture&nbsp;:
-        </Typo.Body>
+        </TypoDS.Body>
         <VerticalUl>
           {supportedBrowsers.map(({ browser, version }) => {
             let displayedMessage = `- ${browser}`
@@ -113,6 +113,6 @@ const Title = styled(TypoDS.Title3)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   padding: getSpacing(5),
 })

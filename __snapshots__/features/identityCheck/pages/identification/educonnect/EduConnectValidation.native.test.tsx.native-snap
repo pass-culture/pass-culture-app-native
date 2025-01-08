@@ -300,9 +300,9 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   [
                     {
                       "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -349,9 +349,9 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   [
                     {
                       "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -398,9 +398,9 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   [
                     {
                       "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }

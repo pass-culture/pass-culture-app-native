@@ -3,7 +3,7 @@ import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment, FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 import { displayOnFocus } from './displayOnFocus'
 
@@ -33,11 +33,11 @@ const SomeComponentThatDisplayOnFocus: React.FC<PropsWithChildren> =
 
 const Template: ComponentStory<FunctionComponent> = () => (
   <Fragment>
-    <Typo.Body>
+    <TypoDS.Body>
       {body1}
       <Typo.Caption>{caption}</Typo.Caption>
       {body2}
-    </Typo.Body>
+    </TypoDS.Body>
     <RelativeWrapper>
       <SomeComponentThatDisplayOnFocus>{buttonText}</SomeComponentThatDisplayOnFocus>
     </RelativeWrapper>

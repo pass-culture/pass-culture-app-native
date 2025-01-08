@@ -249,7 +249,7 @@ export function BookingDetails() {
             <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
               <InfoContainer gap={4}>
                 <TypoDS.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</TypoDS.Title4>
-                <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
+                <TypoDS.Body testID="withdrawalDetails">{offer.withdrawalDetails}</TypoDS.Body>
               </InfoContainer>
             </SectionWithDivider>
           ) : null}

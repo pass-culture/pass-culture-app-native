@@ -12,7 +12,7 @@ import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 const oldAccesstoken =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDc1OTE1MzUsIm5iZiI6MTYwNzU5MTUzNSwianRpIjoiNjM' +
@@ -77,9 +77,9 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
       <Text>Batch installation ID: {batchInstallationId}</Text>
       <Text>User ID: {userId}</Text>
       <Spacer.Flex />
-      <Typo.Body>{someOfferDescription}</Typo.Body>
+      <TypoDS.Body>{someOfferDescription}</TypoDS.Body>
       <Spacer.Flex />
-      <Typo.Body>{ParsedDescription}</Typo.Body>
+      <TypoDS.Body>{ParsedDescription}</TypoDS.Body>
       <Spacer.Flex />
       {env.ENV === 'testing' ? <CodePushButton /> : null}
     </SecondaryPageWithBlurHeader>

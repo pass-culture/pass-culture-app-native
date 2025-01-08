@@ -10,7 +10,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export function PhoneValidationTooManyAttempts() {
   return (
@@ -41,7 +41,7 @@ export function PhoneValidationTooManyAttempts() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

@@ -139,9 +139,9 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
             "textAlign": "center",
           },
         ]
@@ -290,9 +290,9 @@ exports[`OnboardingWelcome should render correctly 1`] = `
           [
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "textAlign": "center",
             },
           ]

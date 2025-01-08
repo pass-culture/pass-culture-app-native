@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type AutocompleteVenueItemProps = {
   hit: AlgoliaVenue
@@ -32,7 +32,7 @@ export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemPro
       </LocationBuildingIconContainer>
       <StyledText numberOfLines={2} ellipsizeMode="tail">
         <Highlight venueHit={hit} attribute="name" />
-        <Typo.Body>{city}</Typo.Body>
+        <TypoDS.Body>{city}</TypoDS.Body>
       </StyledText>
     </AutocompleteItemTouchable>
   )

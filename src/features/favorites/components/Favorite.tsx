@@ -29,7 +29,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -303,12 +303,12 @@ export const FavoriteButtonsContainer = styled.View(({ theme }) => {
   }
 })
 
-const Distance = styled(Typo.Body)(({ theme }) => ({
+const Distance = styled(TypoDS.Body)(({ theme }) => ({
   textAlign: 'right',
   color: theme.colors.greyDark,
 }))
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

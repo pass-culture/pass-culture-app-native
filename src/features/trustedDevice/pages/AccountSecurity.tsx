@@ -36,10 +36,10 @@ export const AccountSecurity = () => {
       titleComponent={TypoDS.Title3}
       icon={BicolorUserBlocked}
       separateIconFromTitle={false}>
-      <Typo.Body>
+      <TypoDS.Body>
         Tu as indiqué <Typo.ButtonText>ne pas être à l’origine</Typo.ButtonText> de cette
         connexion&nbsp;:
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <DeviceInformationsBanner
         osAndSource={osAndSource}
@@ -47,12 +47,12 @@ export const AccountSecurity = () => {
         loginDate={loginDate}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
+      <TypoDS.Body>
         Pour des raisons de <Typo.ButtonText>sécurité,</Typo.ButtonText> nous te conseillons de
         {isLoggedOutOrHasPassword
           ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
           : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
-      </Typo.Body>
+      </TypoDS.Body>
       {isLoggedOutOrHasPassword ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />

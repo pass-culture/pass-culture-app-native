@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { CreditStatus } from 'features/tutorial/enums'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 type Props = {
   age: number
@@ -31,6 +31,6 @@ export const AgeCreditBlock: FunctionComponent<Props> = ({
   )
 }
 
-const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+const BodySecondary = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

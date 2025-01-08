@@ -5,9 +5,9 @@ import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Tab } from 'features/venue/types'
 import { fireEvent, render, screen } from 'tests/utils'
 import { Map } from 'ui/svg/icons/Map'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
-const ExampleText = styled(Typo.Body)``
+const ExampleText = styled(TypoDS.Body)``
 const tabPanels = {
   [Tab.OFFERS]: <ExampleText>Offres disponibles content</ExampleText>,
   [Tab.INFOS]: <ExampleText>Infos pratiques content</ExampleText>,

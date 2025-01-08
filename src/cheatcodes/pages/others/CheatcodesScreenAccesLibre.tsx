@@ -50,7 +50,7 @@ export const CheatcodesScreenAccesLibre = () => {
                 {Object.entries(detail.description).map(([key, value]) => (
                   <View key={key}>
                     <Typo.ButtonText>{key}</Typo.ButtonText>
-                    <Typo.Body>{value}</Typo.Body>
+                    <TypoDS.Body>{value}</TypoDS.Body>
                   </View>
                 ))}
                 <Spacer.Column numberOfSpaces={2} />

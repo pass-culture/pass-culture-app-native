@@ -7,7 +7,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const CulturalSurveyThanks: React.FC = () => {
   const enableCulturalSurveyMandatory = useFeatureFlag(
@@ -35,6 +35,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

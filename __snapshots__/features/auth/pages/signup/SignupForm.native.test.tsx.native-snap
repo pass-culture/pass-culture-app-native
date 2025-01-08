@@ -1537,9 +1537,9 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -2384,9 +2384,9 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "textAlign": "center",
                 },
               ]

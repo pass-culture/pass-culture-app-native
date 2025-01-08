@@ -3,7 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 export const VideoErrorView: React.FC<{
   style: StyleProp<ViewStyle>
@@ -41,7 +41,7 @@ const StyledTitle = styled(TypoDS.Title2)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

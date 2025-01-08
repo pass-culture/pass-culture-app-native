@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {
   const { test_param } = useRemoteConfigContext()
@@ -14,7 +14,7 @@ export const ABTestingPOC: React.FC = () => {
     <StyledView>
       <TypoDS.Title2>{message}</TypoDS.Title2>
       <Spacer.Column numberOfSpaces={5} />
-      <Typo.Body>{instructionsText}</Typo.Body>
+      <TypoDS.Body>{instructionsText}</TypoDS.Body>
     </StyledView>
   )
 }

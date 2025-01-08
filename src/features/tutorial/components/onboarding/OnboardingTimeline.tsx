@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Spacer, Typo, getSpacing, getSpacingString } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -35,7 +35,7 @@ const CreditBlockContent = () => {
 
 const CreditResetBlock = () => <StyledBody>Remise à 0 du crédit</StyledBody>
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   marginVertical: getSpacing(2),
   marginLeft: getSpacing(1.5),
   justifyContent: 'center',

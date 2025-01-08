@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
@@ -20,7 +20,7 @@ const Container = styled.View({
   gap: getSpacing(4),
 })
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

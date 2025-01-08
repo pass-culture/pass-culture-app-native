@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export function IdentityCheckPending() {
   return (
@@ -36,7 +36,7 @@ export function IdentityCheckPending() {
 
 const IdCardError: React.FC<AccessibleIcon> = (props) => <BicolorIdCardError {...props} />
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

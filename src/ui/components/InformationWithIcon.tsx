@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const InformationWithIcon: FunctionComponent<{
   Icon: React.FC<AccessibleBicolorIcon>
@@ -34,7 +34,7 @@ const InfoContainer = styled.View({
   alignItems: 'center',
 })
 
-const Info = styled(Typo.Body)({
+const Info = styled(TypoDS.Body)({
   flex: 1,
 })
 

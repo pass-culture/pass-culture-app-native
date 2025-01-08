@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { TextProps } from 'ui/theme/typography'
 
 export function ValidateEmailChangeSubtitleComponent(props: TextProps) {
   return (
     <Wrapper>
-      <Typo.Body>Nouvelle adresse e-mail&nbsp;:</Typo.Body>
+      <TypoDS.Body>Nouvelle adresse e-mail&nbsp;:</TypoDS.Body>
       <Typo.ButtonText {...props} />
       <Spacer.Column numberOfSpaces={4} />
       <Separator.Horizontal />

@@ -17,11 +17,11 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
     <React.Fragment>
       <AccordionContainer>
         <StyledAccordionItem>
-          <Typo.Body>
+          <TypoDS.Body>
             Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu
             peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données
             collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
-          </Typo.Body>
+          </TypoDS.Body>
         </StyledAccordionItem>
       </AccordionContainer>
       <Spacer.Column numberOfSpaces={8} />
@@ -29,12 +29,14 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
       <Spacer.Column numberOfSpaces={8} />
       <TypoDS.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</TypoDS.Title4>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
+      <TypoDS.Body>
         Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
         confidentialité de ton profil à tout moment.
-      </Typo.Body>
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
+      <TypoDS.Body>
+        On te redemandera bien sûr ton consentement si notre politique évolue.
+      </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
         {buttonText}

@@ -14,7 +14,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Typo, getSpacing } from 'ui/theme'
+import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Typo, TypoDS, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -184,7 +184,7 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

@@ -7,7 +7,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -47,7 +47,7 @@ const StyledIcon = styled(BicolorRingingBell).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))

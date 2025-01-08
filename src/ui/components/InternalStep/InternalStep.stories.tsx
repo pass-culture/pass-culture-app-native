@@ -7,7 +7,7 @@ import { StepCard } from 'features/profile/components/StepCard/StepCard'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { StepVariant } from '../VerticalStepper/types'
 
@@ -32,10 +32,10 @@ Complete.args = {
   variant: StepVariant.complete,
   children: (
     <View style={styles.exampleWrapper}>
-      <Typo.Body>Example text</Typo.Body>
-      <Typo.Body>Example text</Typo.Body>
-      <Typo.Body>Example text</Typo.Body>
-      <Typo.Body>Example text</Typo.Body>
+      <TypoDS.Body>Example text</TypoDS.Body>
+      <TypoDS.Body>Example text</TypoDS.Body>
+      <TypoDS.Body>Example text</TypoDS.Body>
+      <TypoDS.Body>Example text</TypoDS.Body>
     </View>
   ),
 }
