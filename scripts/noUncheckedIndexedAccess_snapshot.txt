@@ -1,3 +1,4 @@
+$ grep --recursive --line-number ./src --regexp '// @ts-expect-error: because of noUncheckedIndexedAccess' | awk -F: '{print $1":"$2}' | sort
 ./src/features/bookOffer/helpers/useReviewInAppInformation.ts:16
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:234
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
@@ -20,10 +21,6 @@
 ./src/features/navigation/sanitizeNavigationState.ts:5
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:110
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:76
-./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:74
-./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:80
-./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:82
-./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:84
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:43
@@ -35,14 +32,6 @@
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53
 ./src/libs/itinerary/useItinerary.native.test.ts:61
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:11
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:15
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:17
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:22
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:24
-./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:9
-./src/libs/itinerary/useItinerary.ts:101
-./src/libs/itinerary/useItinerary.ts:77
 ./src/libs/parsers/formatDates.ts:105
 ./src/libs/parsers/formatDates.ts:107
 ./src/libs/parsers/formatDates.ts:112
@@ -82,4 +71,3 @@
 ./src/ui/components/inputs/Slider.tsx:99
 ./src/ui/hooks/useArrowNavigationForRadioButton.web.ts:20
 ./src/ui/hooks/useArrowNavigationForRadioButton.web.ts:32
-
