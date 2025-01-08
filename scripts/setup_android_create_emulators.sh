@@ -49,6 +49,7 @@ image_for_sdk() {
 install_platforms_and_image() {
 	local SDK_VERSION="$1"
 
+	echo "Downloading Android SDK $SDK_VERSION"
 	sdkmanager_install_accepting_licence \
 		--install \
 		"sources;android-$SDK_VERSION" \
@@ -117,6 +118,7 @@ sdkmanager_install_accepting_licence \
 
 	wait
 
+	echo "Waiting ${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED}s while device are booting"
 	sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
 
 	kill_all_emulators
