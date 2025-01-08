@@ -1,4 +1,3 @@
-$ grep --recursive --line-number ./src --regexp '// @ts-expect-error: because of noUncheckedIndexedAccess' | awk -F: '{print $1":"$2}' | sort
 ./src/features/bookOffer/helpers/useReviewInAppInformation.ts:16
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:234
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
