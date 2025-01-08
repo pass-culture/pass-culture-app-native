@@ -29,7 +29,7 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
 
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
-./scripts/setup_android.sh
+./scripts/setup_android_create_emulators.sh
 direnv reload
 ```
 
