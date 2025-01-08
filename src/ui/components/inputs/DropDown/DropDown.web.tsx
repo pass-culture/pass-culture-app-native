@@ -105,7 +105,7 @@ const StyledSelect = styled.select<SelectProps>`
       : `${theme.borderRadius.button}px`
     const { fontFamily, fontSize, color, lineHeight } = isEmpty
       ? theme.typography.placeholder
-      : theme.typography.body
+      : theme.designSystem.typography.body
     return `
     font-family: ${fontFamily};
     font-size: ${fontSize}px;
