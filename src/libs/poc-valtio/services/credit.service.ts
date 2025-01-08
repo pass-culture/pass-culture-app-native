@@ -1,4 +1,5 @@
-import { proxy } from 'valtio'
+// eslint-disable-next-line no-restricted-imports
+import { create } from 'zustand'
 
 import { serviceRegistry } from 'libs/poc-valtio/serviceRegistry'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -9,17 +10,17 @@ type CreditState = {
 }
 
 export const creditService = (_getService: typeof serviceRegistry.get) => {
-  const state = proxy<CreditState>({ activationDate: undefined, currentCredit: 0 })
+  const initialState: CreditState = { activationDate: undefined, currentCredit: 0 }
+  const store = create<CreditState>(() => initialState)
 
   return {
-    state,
-    actions: {
-      useFetchCredits: () => {
-        useAvailableCredit()
-      },
-      incrementCredits: () => {
-        state.currentCredit += 1
-      },
+    store,
+    getState: store.getState,
+    useFetchCredits: () => {
+      useAvailableCredit()
+    },
+    incrementCredits: () => {
+      store.setState((state) => ({ ...state, currentCredit: state.currentCredit + 1 }))
     },
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { proxy } from 'valtio'
+// eslint-disable-next-line no-restricted-imports
+import { create } from 'zustand'
 
 import { serviceRegistry } from 'libs/poc-valtio/serviceRegistry'
 
@@ -11,30 +12,30 @@ type UserState = {
 }
 
 export const userService = (getService: typeof serviceRegistry.get) => {
-  const state = proxy<UserState>({
+  const initialState: UserState = {
     firstname: '',
     lastname: '',
     birthdate: null,
     isLoggedIn: false,
-  })
+  }
+  const store = create<UserState>(() => initialState)
 
   return {
-    state,
-    actions: {
-      login: async () => {
-        state.isLoggedIn = true
-      },
-      logout: () => {
-        state.isLoggedIn = false
-      },
-      callsCreditService: () => {
-        getService('credit').actions.incrementCredits()
-      },
-      useMyHook: () => {
-        useEffect(() => {
-          state.firstname = 'xavier'
-        }, [])
-      },
+    store,
+    getState: store.getState,
+    login: async () => {
+      store.setState({ isLoggedIn: true })
+    },
+    logout: () => {
+      store.setState({ isLoggedIn: false })
+    },
+    callsCreditService: () => {
+      getService('credit').incrementCredits()
+    },
+    useMyHook: () => {
+      useEffect(() => {
+        store.setState({ firstname: 'xavier' })
+      }, [])
     },
   }
 }

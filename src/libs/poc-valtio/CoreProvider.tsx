@@ -1,5 +1,4 @@
 import React, { Context, ReactNode, createContext, useContext, useEffect } from 'react'
-import { useSnapshot } from 'valtio'
 
 import { createCore } from 'libs/poc-valtio/core'
 
@@ -23,15 +22,16 @@ export function useAppContext<T>(): T {
 }
 
 function generateTypedHooks<
-  T extends Record<string, { state: object; actions: Record<string, VoidFunction> }>,
+  T extends Record<string, Record<string, VoidFunction> & { store: VoidFunction; getState: any }>,
 >() {
-  const useStore = <U extends keyof T>(service: U): T[U]['state'] => {
+  // Record<string, VoidFunction>> doit inclure le store et le state
+  const useStore = <U extends keyof T>(service: U): ReturnType<T[U]['store']> => {
     const instance = useAppContext<T>()
     const serviceInstance = instance[service]
     if (!serviceInstance) {
       throw new Error(`Service ${String(service)} not found`)
     }
-    return useSnapshot(serviceInstance.state)
+    return serviceInstance.store() as ReturnType<T[U]['store']>
   }
 
   const useAction = <U extends keyof T>(service: U): T[U]['actions'] => {

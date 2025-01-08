@@ -11,27 +11,27 @@ describe('core', () => {
   it('should modify the store through an action call', () => {
     const core = createCore()
 
-    expect(core.user.state.isLoggedIn).toBeFalsy()
+    expect(core.user.getState().isLoggedIn).toBeFalsy()
 
-    core.user.actions.login()
+    core.user.login()
 
-    expect(core.user.state.isLoggedIn).toBeTruthy()
+    expect(core.user.getState().isLoggedIn).toBeTruthy()
   })
 
   it('should render a hook', async () => {
     const core = createCore()
 
-    renderHook(() => core.user.actions.useMyHook())
+    renderHook(() => core.user.useMyHook())
 
     await act(async () => {})
 
-    expect(core.user.state.firstname).toBe('xavier')
+    expect(core.user.getState().firstname).toBe('xavier')
   })
 
   it('should call another service action', () => {
     const core = createCore()
-    core.user.actions.callsCreditService()
+    core.user.callsCreditService()
 
-    expect(core.credit.state.currentCredit).toBe(1)
+    expect(core.credit.getState().currentCredit).toBe(1)
   })
 })
