@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || true)"
+SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || echo '')"
 
 SCRIPT_FOLDER="$(dirname "$(realpath "$0")")"
 
@@ -45,7 +45,7 @@ add_certificate_safe() {
 	fi
 }
 
-if [ -f "$SSL_CERT_FILE" ]; then
+if [ -n "${SSL_CERT_FILE+x}" ]; then
 	SSL_CERT_DIR="$(dirname "$SSL_CERT_FILE")"
 	SSL_CERT_TENANT="$(realpath "$SSL_CERT_DIR"/*tenantcert.pem)"
 	SSL_CERT_BUNDLE_FILE="$SSL_CERT_DIR/cert-bundle.pem"
