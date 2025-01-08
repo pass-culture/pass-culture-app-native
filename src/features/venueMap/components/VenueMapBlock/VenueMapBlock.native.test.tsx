@@ -2,23 +2,16 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-  }),
-}))
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({
-    setInitialVenues: mockSetInitialVenues,
-  }),
-}))
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
+
+const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
 
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {

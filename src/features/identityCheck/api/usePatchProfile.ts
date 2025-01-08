@@ -4,14 +4,12 @@ import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionState } from 'features/identityCheck/context/types'
-import { useResetProfileStores } from 'features/identityCheck/pages/profile/store/useResetProfileStores'
+import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
-
-  const resetProfileStores = useResetProfileStores()
 
   return useMutation(
     (profile: SubscriptionState['profile']) => {

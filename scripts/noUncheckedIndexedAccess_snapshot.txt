@@ -55,8 +55,8 @@
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:43
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
-./src/features/venueMap/store/selectedVenueStore.native.test.ts:20
-./src/features/venueMap/store/selectedVenueStore.native.test.ts:31
+./src/features/venueMap/store/selectedVenueStore.native.test.ts:16
+./src/features/venueMap/store/selectedVenueStore.native.test.ts:26
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:26
 ./src/libs/hooks/useShowReview.native.test.tsx:114
 ./src/libs/hooks/useTimer.native.test.ts:34

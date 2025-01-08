@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -34,12 +35,7 @@ const mockUseLocation = jest.fn(() => ({
 jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-  }),
-}))
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
 
 describe('<VenueListModule />', () => {
   it('should display venue list', () => {

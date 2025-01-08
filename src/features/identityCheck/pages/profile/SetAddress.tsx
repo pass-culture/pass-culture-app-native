@@ -10,10 +10,7 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
-import {
-  useAddress,
-  useAddressActions,
-} from 'features/identityCheck/pages/profile/store/addressStore'
+import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -38,7 +35,7 @@ export const SetAddress = () => {
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
   const storedCity = useCity()
-  const { setAddress: setStoreAddress } = useAddressActions()
+  const { setAddress: setStoreAddress } = addressActions
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')

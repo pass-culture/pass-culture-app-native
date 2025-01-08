@@ -6,7 +6,7 @@ import { object, string } from 'yup'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
+import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics'
@@ -29,7 +29,7 @@ export const cityResolver = object().shape({
 export const SetCity = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
-  const { setCity } = useCityActions()
+  const { setCity } = cityActions
   const {
     control,
     formState: { isValid },

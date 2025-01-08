@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterBannerContainer } from 'features/venueMap/components/FilterBannerContainer/FilterBannerContainer'
-import { useVenueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMapBase: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
-  const { setVenueTypeCode } = useVenueTypeCodeActions()
+  const { setVenueTypeCode } = venueTypeCodeActions
 
   const handleGoBack = () => {
     setVenueTypeCode(null)

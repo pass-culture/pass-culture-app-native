@@ -8,8 +8,8 @@ import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { LocationMode } from 'libs/location/types'
 
@@ -69,8 +69,8 @@ export const VenueMapLocationModal = ({
     ...locationSubmitProps,
   })
 
-  const { removeSelectedVenue } = useSelectedVenueActions()
-  const { setInitialVenues } = useInitialVenuesActions()
+  const { removeSelectedVenue } = selectedVenueActions
+  const { setInitialVenues } = initialVenuesActions
 
   useEffect(() => {
     setInitialVenues([])

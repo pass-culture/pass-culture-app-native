@@ -6,7 +6,7 @@ import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import { useSelectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -34,7 +34,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     visible: venueMapLocationModalVisible,
     hideModal: hideVenueMapLocationModal,
   } = useModal()
-  const { removeSelectedVenue } = useSelectedVenueActions()
+  const { removeSelectedVenue } = selectedVenueActions
 
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb

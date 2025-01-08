@@ -10,6 +10,7 @@ import { SearchResultsContent } from 'features/search/components/SearchResultsCo
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, UserData } from 'features/search/types'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
@@ -40,12 +41,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
-
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
-  useInitialVenues: jest.fn(),
-}))
 
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
@@ -174,14 +169,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-    setSelectedVenue: jest.fn(),
-  }),
-  useSelectedVenue: jest.fn(),
-}))
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
 
 jest.mock('libs/subcategories/useSubcategories')
 

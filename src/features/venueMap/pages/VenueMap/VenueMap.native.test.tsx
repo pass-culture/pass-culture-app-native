@@ -4,10 +4,7 @@ import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import {
-  useVenueTypeCodeActions,
-  useVenueTypeCode,
-} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -22,11 +19,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('features/venueMap/store/venueTypeCodeStore')
-const mockSetVenueTypeCode = jest.fn()
+const mockSetVenueTypeCode = jest.spyOn(venueTypeCodeActions, 'setVenueTypeCode')
 const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
-const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
-
-mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
 
 jest.mock('@gorhom/bottom-sheet', () => {
   const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
