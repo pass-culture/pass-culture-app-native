@@ -1,14 +1,16 @@
 {
   "packages": [
-    "nodejs@20.10.0",
-    "jq@latest",
-    "watchman@latest",
-    "ruby@2.7.5",
-    "python3@latest",
-    "git@latest",
-    "maestro@latest",
+    // needed to debug pipeline locally
     "act@latest",
     "gh@latest",
-    "podman@latest"
-  ]
+    "podman@latest",
+    // others stuffs
+    "git@latest",
+    "nodejs@20.10.0",
+    "watchman@latest",
+    "jq@latest", // needed by some scripts run in the pipeline
+    "ruby@2.7.5", // needed to install iOS dependencies and to run fastlane
+    "python3@latest", // needed by scripts/add_tracker.py
+    "maestro@latest", // needed to run end to end test locally
+  ],
 }
