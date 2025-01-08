@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -17,16 +17,17 @@ import {
   sortCategoriesPredicate,
   CategoryKey,
   BaseCategory,
+  ROOT_ALL,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { VerticalUl } from 'ui/components/Ul'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
+import { CategoriesSectionBlock } from 'features/search/components/CategoriesSectionBlock/CategoriesSectionBlock'
 
 const titleId = uuidv4()
 
@@ -52,13 +53,8 @@ export const CategoriesModal = ({
   onClose,
   facets,
 }: CategoriesModalProps) => {
-  const data = PLACEHOLDER_DATA
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
-
-  function getIcon(categoryKey: CategoryKey) {
-    return hasIcon(categoryKey) ? CATEGORY_ICONS[categoryKey] : undefined
-  }
 
   const getDefaultFormValues = (searchState: SearchState): CategoriesModalFormProps => ({
     categoryStack: [ROOT.key, ...searchState.offerCategories.map((category) => category)],
@@ -79,6 +75,32 @@ export const CategoriesModal = ({
     reset(getDefaultFormValues(searchState))
   }, [reset, searchState])
 
+  const getIcon = (categoryKey: CategoryKey) => {
+    return hasIcon(categoryKey) ? CATEGORY_ICONS[categoryKey] : undefined
+  }
+
+  const getPreselectionLabel = () => {
+    const preselections = categoryStack.slice(currentIndex + 2) // we want to start at currently selected child's child
+    if (preselections.length >= 2 && preselections.at(-1) == ALL.key) preselections.pop() // we don't the label to be '`child` - Tout', just 'child'
+
+    return preselections.map((categoryKey) => getCategory(categoryKey)?.label).join(' - ')
+  }
+
+  const isRootLevel = currentIndex === 0
+
+  const currentItem =
+    (categoryStack[currentIndex] && getCategory(categoryStack[currentIndex])) || ROOT
+  const children = getCategoryChildren(currentItem.key).toSorted(sortCategoriesPredicate)
+
+  const next = currentIndex + 1 // helps typing on next line
+  const selectedChild = (categoryStack[next] && getCategory(categoryStack[next])) || ALL
+
+  const preselectionLabel = getPreselectionLabel()
+
+  const shouldRenderBlocks = children.some((child) => child.showChildren)
+
+  const isSelected = (item: BaseCategory) => item.key === selectedChild.key
+
   const handleModalClose = useCallback(() => {
     reset(getDefaultFormValues(searchState))
     hideModal()
@@ -92,7 +114,7 @@ export const CategoriesModal = ({
   }, [handleModalClose, onClose])
 
   const handleGoBack = useCallback(() => {
-    const newIndex = currentIndex - 1
+    const newIndex = Math.max(currentIndex - 1, 0)
     setValue('currentIndex', newIndex)
   }, [currentIndex, setValue])
 
@@ -102,36 +124,32 @@ export const CategoriesModal = ({
         .map((categoryKey) => getCategory(categoryKey))
         .filter((category) => !!category)
       const searchPayload = buildSearchPayloadValues(categories)
-      if (!searchPayload) {
-        hideModal()
-        return
+      if (searchPayload) {
+        const newSearchState = { ...searchState, ...searchPayload }
+        dispatch({ type: 'SET_STATE', payload: newSearchState })
       }
 
-      const newSearchState: SearchState = { ...searchState, ...searchPayload }
-      dispatch({ type: 'SET_STATE', payload: newSearchState })
       hideModal()
     },
-    [data, dispatch, hideModal, searchState]
+    [dispatch, hideModal, searchState]
   )
 
   const handleSelect = useCallback(
     (category: BaseCategory) => {
       const hasChildren = category.children.length
-      const newIndex = hasChildren ? currentIndex + 1 : currentIndex
-
-      const previousSelection = categoryStack[currentIndex + 1]
-      const newStack =
-        category.key !== previousSelection
-          ? [...categoryStack.slice(0, currentIndex + 1), category.key]
-          : categoryStack
-      if (category.key !== previousSelection && hasChildren)
-        // we want to preselect 'Tout' if possible
-        newStack.push(ALL.key)
-
-      setValue('currentIndex', newIndex)
-      setValue('categoryStack', newStack)
-
-      handleSubmit(handleSearchPress)
+      if (!hasChildren) {
+        const newStack = [...categoryStack.slice(0, currentIndex + 1), category.key]
+        setValue('categoryStack', newStack)
+        handleSubmit(handleSearchPress)
+      } else {
+        const previousSelection = categoryStack[currentIndex + 1]
+        if (category.key !== previousSelection) {
+          const newStack = [...categoryStack.slice(0, currentIndex + 1), category.key, ALL.key]
+          setValue('categoryStack', newStack)
+        }
+        const newIndex = currentIndex + 1
+        setValue('currentIndex', newIndex)
+      }
     },
     [categoryStack, currentIndex, setValue]
   )
@@ -140,24 +158,64 @@ export const CategoriesModal = ({
     reset(getDefaultFormValues(searchState))
   }, [reset])
 
-  const currentItem =
-    (categoryStack[currentIndex] && getCategory(categoryStack[currentIndex])) || ROOT
-  const children = getCategoryChildren(currentItem.key).toSorted(sortCategoriesPredicate)
+  const renderDefaultItem = () => {
+    const defaultItem = isRootLevel ? ROOT_ALL : ALL
+    return (
+      <CategoriesSectionItem
+        isSelected={isSelected(defaultItem)}
+        item={defaultItem}
+        key={defaultItem.key}
+        onSelect={() => handleSelect(defaultItem)}
+        icon={getIcon(defaultItem.key)}
+        subtitle={isSelected(defaultItem) ? preselectionLabel : undefined}
+      />
+    )
+  }
 
-  const selectedChild = useMemo(() => {
-    const next = currentIndex + 1
-    return (categoryStack[next] && getCategory(categoryStack[next])) || ALL
-  }, [categoryStack, currentIndex])
+  const renderItems = () => {
+    const items = children.map((item) => (
+      <CategoriesSectionItem
+        isSelected={isSelected(item)}
+        item={item}
+        key={item.key}
+        onSelect={() => handleSelect(item)}
+        icon={getIcon(item.key)}
+        subtitle={isSelected(item) ? preselectionLabel : undefined}
+      />
+    ))
+    return [renderDefaultItem(), ...items]
+  }
 
-  const preselections = categoryStack.slice(currentIndex + 2) // we want to start at currently selected child's child
-  if (preselections.length >= 2 && preselections.at(-1) == ALL.key) preselections.pop() // we don't the label to be '`child` - Tout', just 'child'
-
-  const preselectionLabel = preselections
-    .map((categoryKey) => getCategory(categoryKey)?.label)
-    .join(' - ')
-
-  const shouldDisplayBackButton =
-    currentIndex > 0 || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+  const renderBlocks = () => {
+    const blocks = children
+      .filter((child) => child.children.length && child.showChildren)
+      .map((item) => (
+        <CategoriesSectionBlock
+          key={item.key}
+          items={getCategoryChildren(item.key).toSorted(sortCategoriesPredicate)}
+          onSelect={handleSelect}
+          getIcon={getIcon}
+          selectionKey={selectedChild.key}
+          selectionSubtitle={preselectionLabel}
+          title={item.label}
+        />
+      ))
+    const otherItems = children.filter(
+      (child) => (!child.children.length || !child.showChildren) && child.key !== ALL.key
+    )
+    const otherItemsBlock = (
+      <CategoriesSectionBlock
+        key={currentItem.key}
+        items={otherItems}
+        onSelect={handleSelect}
+        getIcon={getIcon}
+        selectionKey={selectedChild.key}
+        selectionSubtitle={preselectionLabel}
+        title={'Autres'}
+      />
+    )
+    return [renderDefaultItem(), ...blocks, otherItemsBlock]
+  }
 
   console.log(categoryStack, currentIndex)
 
@@ -169,7 +227,7 @@ export const CategoriesModal = ({
           title={currentItem.label}
           onGoBack={handleGoBack}
           onClose={handleClose}
-          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayBackButton={!isRootLevel && filterBehaviour === FilterBehaviour.SEARCH}
           shouldDisplayCloseButton
         />
       }
@@ -194,18 +252,7 @@ export const CategoriesModal = ({
       }>
       <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
-        <VerticalUl>
-          {children.map((item) => (
-            <CategoriesSectionItem
-              isSelected={selectedChild.key === item.key}
-              item={item}
-              key={item.key}
-              onSelect={() => handleSelect(item)}
-              icon={getIcon(item.key)}
-              subtitle={selectedChild.key === item.key ? preselectionLabel : undefined}
-            />
-          ))}
-        </VerticalUl>
+        <VerticalUl>{shouldRenderBlocks ? renderBlocks() : renderItems()}</VerticalUl>
       </Form.MaxWidth>
     </AppModal>
   )

@@ -22,6 +22,7 @@ export type BaseCategory = {
   searchFilter?: string
   searchValue?: string
   nbResultsFacet?: number
+  showChildren?: boolean
 }
 export type CategoriesMapping = Record<CategoryKey, BaseCategory>
 export type TopLevelCategory = BaseCategory & {
@@ -41,7 +42,7 @@ export const ALL: BaseCategory = {
   position: -Infinity,
 }
 export const ROOT: BaseCategory = {
-  children: [ROOT_ALL.key],
+  children: [],
   label: 'Catégories',
   key: 'ROOT',
   position: -Infinity,
@@ -56,7 +57,49 @@ export type CategoryResponseModel = {
 
 const DEFAULT_CATEGORIES = [
   { key: 'CINEMA', label: 'Cinéma', position: 2, children: ['SEANCE'] },
-  { key: 'LIVRES', label: 'Livres', position: 1, children: [] },
+  {
+    key: 'LIVRES',
+    label: 'Livres',
+    position: 1,
+    children: ['BIBLIOTHEQUE', 'LIVRES_PAPIER', 'LIVRES_AUDIO'],
+  },
+  {
+    key: 'LIVRES_PAPIER',
+    label: 'Livres papier',
+    position: 1,
+    children: ['ROMANS_ET_LITTERATURE', 'MANGAS'],
+    showChildren: true,
+  },
+  {
+    key: 'LIVRES_AUDIO',
+    label: 'Livres audio',
+    position: 2,
+    children: [],
+  },
+  {
+    key: 'BIBLIOTHEQUE',
+    label: 'Bibliothèque',
+    position: 3,
+    children: [],
+  },
+  {
+    key: 'ROMANS_ET_LITTERATURE',
+    label: 'Romans et littérature',
+    position: 1,
+    children: ['ROMANCE'],
+  },
+  {
+    key: 'MANGAS',
+    label: 'Mangas',
+    position: 2,
+    children: [],
+  },
+  {
+    key: 'ROMANCE',
+    label: 'Romance',
+    position: 1,
+    children: [],
+  },
   { key: 'MUSIQUE', label: 'Musique', position: 3, children: ['SEANCE'] },
   { key: 'SEANCE', label: 'Séance de cinéma', position: 1, children: ['THRILLER'] },
   { key: 'THRILLER', label: 'Thriller', position: 1, children: [] },
@@ -65,7 +108,6 @@ const DEFAULT_CATEGORIES = [
 export const getCategoriesMapping = (categories: CategoryResponseModel[] = DEFAULT_CATEGORIES) => {
   const mapping = categories.reduce<CategoriesMapping>((mapping, category) => {
     mapping[category.key] = structuredClone(category)
-    if (mapping[category.key]?.children.length) mapping[category.key]?.children.unshift(ALL.key)
     return mapping
   }, {} as CategoriesMapping)
   mapping[ROOT.key] = structuredClone(ROOT)
