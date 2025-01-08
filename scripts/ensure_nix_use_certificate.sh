@@ -41,6 +41,6 @@ ensure_nix_use_certificate() {
 	restart_nix
 }
 
-if ./is_proxy_enabled.sh; then
+if sh ./is_proxy_enabled.sh; then
 	ensure_nix_use_certificate
 fi

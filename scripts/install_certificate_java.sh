@@ -52,7 +52,7 @@ if [ -f "$SSL_CERT_FILE" ]; then
 
 	# remove_certificate_safe # to be able to debug, remove everything done, comment this when not debugging
 
-	if "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
+	if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 		if [ -f "$SSL_CERT_TENANT" ]; then
 			echo "Adding certificate for proxy in Java's keytool system requires root password"
 
