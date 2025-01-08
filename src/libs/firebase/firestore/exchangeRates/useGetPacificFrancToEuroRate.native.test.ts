@@ -1,3 +1,5 @@
+import { onlineManager } from 'react-query'
+
 import { getExchangeRates } from 'libs/firebase/firestore/exchangeRates/getExchangeRates'
 import {
   DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
@@ -30,5 +32,17 @@ describe('useGetPacificFrancToEuroRate', () => {
     const { result } = renderHook(() => useGetPacificFrancToEuroRate())
 
     expect(result.current).toBe(0.05)
+  })
+
+  it('should return default rate when connection is disabled', () => {
+    onlineManager.setOnline(false)
+    mockGetExchangeRates.mockImplementationOnce((pacificFrancToEuroRate) => {
+      pacificFrancToEuroRate(0.05)
+      return jest.fn()
+    })
+
+    const { result } = renderHook(() => useGetPacificFrancToEuroRate())
+
+    expect(result.current).toBe(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
   })
 })

@@ -1,4 +1,5 @@
 import mockdate from 'mockdate'
+import { onlineManager } from 'react-query'
 
 import {
   CookiesLastUpdate,
@@ -147,6 +148,18 @@ describe('isCookiesListUpToDate', () => {
     await waitFor(() => {
       expect(result.current).toEqual({
         cookiesLastUpdate: { ...defaultMockFirestore, lastUpdated: TOMORROW },
+        isCookiesListUpToDate: true,
+      })
+    })
+  })
+
+  it('should not fetch data when connection is disabled', async () => {
+    onlineManager.setOnline(false)
+
+    const { result } = renderHook(useIsCookiesListUpToDate)
+    await waitFor(() => {
+      expect(result.current).toEqual({
+        cookiesLastUpdate: undefined,
         isCookiesListUpToDate: true,
       })
     })

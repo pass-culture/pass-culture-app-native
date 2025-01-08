@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { onlineManager } from 'react-query'
 
 import {
   MAINTENANCE,
@@ -12,6 +13,9 @@ export const useMaintenance = (): Maintenance => {
     message: undefined,
   })
   useEffect(() => {
+    if (onlineManager.isOnline()) {
+      return
+    }
     const subscriber = maintenanceStatusListener(setMaintenance)
 
     // Stop listening for updates when no longer required

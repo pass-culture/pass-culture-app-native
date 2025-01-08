@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { onlineManager } from 'react-query'
 
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
@@ -25,6 +26,10 @@ export const useIsCookiesListUpToDate = () => {
       if (lastUpdate) {
         setCookiesLastUpdate(lastUpdate)
       }
+    }
+
+    if (!onlineManager.isOnline()) {
+      return
     }
 
     fetchData()

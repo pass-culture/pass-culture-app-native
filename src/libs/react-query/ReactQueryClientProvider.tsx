@@ -1,6 +1,10 @@
 import React from 'react'
 import { AppState, AppStateStatus } from 'react-native'
-import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
+import {
+  QueryClientProvider,
+  onlineManager,
+  focusManager as reactQueryFocusManager,
+} from 'react-query'
 
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
@@ -28,6 +32,8 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
     subscription.remove()
   }
 })
+
+onlineManager.setOnline(false)
 
 export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Element }) => {
   usePrefetchQueries()
