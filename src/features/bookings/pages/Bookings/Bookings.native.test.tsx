@@ -2,29 +2,23 @@ import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  BookingsResponse,
-  NativeCategoryIdEnumv2,
-  ReactionTypeEnum,
-  SubcategoriesResponseModelv2,
-} from 'api/gen'
+import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
+import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
 jest.mock('libs/network/NetInfoWrapper')
 
 const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 useBookingsSpy.mockReturnValue({
   data: bookingsSnap,
@@ -50,16 +44,17 @@ jest.mock('features/reactions/api/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
 }))
 
-describe('Bookings', () => {
-  beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      reactionCategories: {
-        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-      },
-    })
-  })
+jest.mock('features/reactions/api/useAvailableReaction')
+const mockUseAvailableReaction = useAvailableReaction as jest.Mock
+mockUseAvailableReaction.mockReturnValue({
+  data: { numberOfReactableBookings: 0, bookings: [] },
+})
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
+describe('Bookings', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
@@ -77,8 +72,8 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookings is called nine times
-    expect(useBookingsSpy).toHaveBeenCalledTimes(9)
+    //Due to multiple renders useBookings is called three times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(3)
   })
 
   it('should display the right number of ongoing bookings', async () => {
@@ -98,12 +93,6 @@ describe('Bookings', () => {
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
-      .mockReturnValueOnce(useBookingsResultMock)
     renderBookings()
 
     await screen.findByText('Mes réservations')
@@ -113,6 +102,7 @@ describe('Bookings', () => {
 
   it('should display ended bookings CTA with the right number', async () => {
     renderBookings()
+
     await screen.findByText('Mes réservations')
 
     expect(screen.getByText('2')).toBeOnTheScreen()
@@ -123,7 +113,7 @@ describe('Bookings', () => {
     renderBookings()
 
     const cta = await screen.findByText('Réservations terminées')
-    fireEvent.press(cta)
+    await user.press(cta)
 
     expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
   })
@@ -149,7 +139,7 @@ describe('Bookings', () => {
     it('should change on "Terminées" tab and have one ended booking', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
       expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
     })
@@ -157,9 +147,9 @@ describe('Bookings', () => {
     it('should call updateReactions when switching from COMPLETED tab', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
-      fireEvent.press(await screen.findByText('En cours'))
+      await user.press(await screen.findByText('En cours'))
 
       expect(mockMutate).toHaveBeenCalledTimes(1)
     })
@@ -167,14 +157,14 @@ describe('Bookings', () => {
     it('should update reactions for ended bookings without user reaction', async () => {
       renderBookings()
 
-      fireEvent.press(await screen.findByText('Terminées'))
+      await user.press(await screen.findByText('Terminées'))
 
-      fireEvent.press(await screen.findByText('En cours'))
+      await user.press(await screen.findByText('En cours'))
 
       expect(mockMutate).toHaveBeenCalledWith({
         reactions: [
           { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
-          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
+          { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
         ],
       })
     })
@@ -184,6 +174,10 @@ describe('Bookings', () => {
         RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
         RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       ])
+      mockUseAvailableReaction.mockReturnValueOnce({
+        data: availableReactionsSnap,
+      })
+
       renderBookings()
 
       await screen.findByText('Mes réservations')
@@ -213,11 +207,8 @@ describe('Bookings', () => {
         },
         isFetching: false,
       } as unknown as QueryObserverResult<BookingsResponse, unknown>
-      // Due to multiple renders we need to mock useBookings six times
+      // Due to multiple renders we need to mock useBookings three times
       useBookingsSpy
-        .mockReturnValueOnce(useBookingsResultMock)
-        .mockReturnValueOnce(useBookingsResultMock)
-        .mockReturnValueOnce(useBookingsResultMock)
         .mockReturnValueOnce(useBookingsResultMock)
         .mockReturnValueOnce(useBookingsResultMock)
         .mockReturnValueOnce(useBookingsResultMock)

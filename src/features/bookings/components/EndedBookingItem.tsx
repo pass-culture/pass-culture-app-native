@@ -118,7 +118,6 @@ export const EndedBookingItem = ({
       </ContentContainer>
       <EndedBookingInteractionButtons
         booking={booking}
-        nativeCategoryId={subcategory.nativeCategoryId}
         handlePressShareOffer={pressShareOffer}
         handleShowReactionModal={() => handleShowReactionModal && handleShowReactionModal(booking)}
       />

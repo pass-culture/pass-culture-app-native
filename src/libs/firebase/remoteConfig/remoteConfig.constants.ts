@@ -18,9 +18,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   reactionFakeDoorCategories: {
     categories: [],
   },
-  reactionCategories: {
-    categories: [],
-  },
   sameAuthorPlaylist: '',
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,

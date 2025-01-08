@@ -19,8 +19,6 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -70,22 +68,11 @@ const useArtistResultsSpy = jest
     artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()
 
 describe('<OfferBody />', () => {
-  beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      reactionCategories: {
-        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-      },
-    })
-  })
-
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setFeatureFlags([
