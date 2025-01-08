@@ -3,7 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
 
@@ -16,11 +16,11 @@ export default meta
 const SectionContent: React.JSX.Element = (
   <View>
     <TypoDS.Title4>Section with divider</TypoDS.Title4>
-    <Typo.Body>
+    <TypoDS.Body>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quas aut laborum, dolor
       sapiente quos doloribus sequi reprehenderit ullam porro rem corrupti libero repellendus nam
       vel suscipit consequuntur blanditiis omnis.
-    </Typo.Body>
+    </TypoDS.Body>
   </View>
 )
 

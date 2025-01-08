@@ -8,38 +8,25 @@ import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { Subcategory } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   offer: OfferResponseV2
-  subcategory: Subcategory
 }
 
-export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcategory }) => {
+export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { reactionCategories } = useRemoteConfigContext()
   const { isLoggedIn, user } = useAuthContext()
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
 
   const userBooking = useMemo(
-    () =>
-      bookings?.ended_bookings?.find(
-        (booking) => booking.stock.offer.id === offer.id && !booking.cancellationDate
-      ),
+    () => bookings?.ended_bookings?.find((booking) => booking.stock.offer.id === offer.id),
     [bookings, offer.id]
   )
 
-  const shouldDisplayReactionButtons =
-    isLoggedIn &&
-    user?.isBeneficiary &&
-    reactionCategories.categories.includes(subcategory.nativeCategoryId) &&
-    !!userBooking
-
   const canDisplayReactionSection =
-    isReactionFeatureActive && (offer.reactionsCount.likes > 0 || shouldDisplayReactionButtons)
+    isReactionFeatureActive && (offer.reactionsCount.likes > 0 || userBooking?.canReact)
 
   const handleSaveReaction = useCallback(
     (reactionType: ReactionTypeEnum) => {
@@ -64,11 +51,11 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer, subcateg
         user={user}
         isLoggedIn={isLoggedIn}
         offer={offer}
-        userCanReact={shouldDisplayReactionButtons}
+        userCanReact={userBooking?.canReact}
         userBooking={userBooking}
       />
 
-      {shouldDisplayReactionButtons ? (
+      {userBooking?.canReact ? (
         <ReactionChoiceValidation
           handleOnPressReactionButton={handleSaveReaction}
           reactionStatus={userBooking?.userReaction}

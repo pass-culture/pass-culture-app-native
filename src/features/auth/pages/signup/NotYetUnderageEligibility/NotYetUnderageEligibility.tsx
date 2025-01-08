@@ -9,7 +9,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
@@ -33,7 +33,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))

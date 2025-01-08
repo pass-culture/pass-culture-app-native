@@ -5,7 +5,7 @@ import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStat
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   useWhiteStatusBarWithoutReactNavigation()
@@ -41,7 +41,7 @@ const StyledLottieView = styled(LottieView)({
   height: 150,
 })
 
-const LoadingText = styled(Typo.Body)(({ theme }) => ({
+const LoadingText = styled(TypoDS.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
   color: theme.colors.white,

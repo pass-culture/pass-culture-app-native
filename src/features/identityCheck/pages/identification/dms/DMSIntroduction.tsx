@@ -85,7 +85,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
   marginBottom: getSpacing(5),
 })

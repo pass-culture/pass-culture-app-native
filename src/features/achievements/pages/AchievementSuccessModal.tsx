@@ -21,6 +21,8 @@ interface Props {
   achievementsToShow: AchievementResponse[]
 }
 
+const ANIMATION_END_FRAME = 62
+
 export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow }: Props) => {
   const logoRef = useRef<LottieView>(null)
   const { mutate: markAchievementsAsSeen } = useAchievementsMarkAsSeen()
@@ -33,8 +35,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
   useEffect(() => {
     if (visible) {
       analytics.logConsultAchievementsSuccessModal(achievementNames)
-      logoRef.current?.play(0, 62)
-      markAchievementsAsSeen(achievementIds)
+      logoRef.current?.play(0, ANIMATION_END_FRAME)
     }
     // The effect should only run when `visible` changes because`names` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,10 +45,15 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
 
   const severalAchievementsUnlocked = achievementsToShow.length >= 2
 
+  const hideModalAndMarkAsSeen = () => {
+    markAchievementsAsSeen(achievementIds)
+    hideModal()
+  }
+
   return (
     <AppInformationModal
       title="Félicitations&nbsp;!"
-      onCloseIconPress={hideModal}
+      onCloseIconPress={hideModalAndMarkAsSeen}
       visible={visible}>
       <StyledViewGap gap={2}>
         <AchievementView
@@ -68,16 +74,14 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
           as={ButtonPrimary}
           wording="Accéder à mes succès"
           navigateTo={{ screen: 'Achievements', params: { from: 'success' } }}
-          onBeforeNavigate={() => {
-            hideModal()
-          }}
+          onBeforeNavigate={hideModalAndMarkAsSeen}
         />
 
         <ButtonTertiaryBlack
           wording="Fermer"
           accessibilityLabel="Fermer la modale"
           icon={Invalidate}
-          onPress={hideModal}
+          onPress={hideModalAndMarkAsSeen}
         />
       </StyledViewGap>
     </AppInformationModal>

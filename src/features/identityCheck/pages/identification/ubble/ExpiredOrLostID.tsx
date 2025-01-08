@@ -9,7 +9,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
@@ -55,7 +55,7 @@ const StyledBicolorIdCardError = styled(BicolorIdCardError).attrs(({ theme }) =>
   color2: theme.colors.primary,
 }))``
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
   marginBottom: getSpacing(5),
 })

@@ -10,6 +10,7 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -80,31 +81,14 @@ export const SearchFilter: React.FC = () => {
     dispatch({
       type: 'SET_STATE',
       payload: {
-        ...searchState,
+        ...initialSearchState,
         locationFilter: getLocationFilter(),
-        venue: undefined,
-        minPrice: undefined,
-        maxPrice: undefined,
-        offerGenreTypes: undefined,
-        offerNativeCategories: undefined,
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        offerCategories: [],
-        offerSubcategories: [],
-        offerIsDuo: false,
-        offerIsFree: false,
-        priceRange: null,
-        tags: [],
-        timeRange: null,
-        gtls: [],
       },
     })
     setDisabilities(defaultDisabilitiesProperties)
     logReinitializeFilters()
   }, [
     dispatch,
-    searchState,
     logReinitializeFilters,
     selectedLocationMode,
     place,

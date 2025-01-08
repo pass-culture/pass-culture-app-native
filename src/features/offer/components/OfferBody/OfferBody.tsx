@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -15,13 +15,7 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
-import {
-  ARTIST_SURVEY_MODAL_DATA,
-  COMMA_OR_SEMICOLON_REGEX,
-  DEFAULT_SURVEY_MODAL_DATA,
-  EXCLUDED_ARTISTS,
-  FAKE_DOOR_ARTIST_SEARCH_GROUPS,
-} from 'features/offer/helpers/constants'
+import { COMMA_OR_SEMICOLON_REGEX, EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
@@ -36,13 +30,10 @@ import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { SurveyModal } from 'ui/components/modals/SurveyModal'
-import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -58,19 +49,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   trackEventHasSeenOfferOnce,
 }) => {
   const { isDesktopViewport } = useTheme()
-  const { visible, showModal, hideModal } = useModal()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
-  const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-
-  const shouldDisplayFakeDoorArtist =
-    hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -116,89 +101,73 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   const handleArtistLinkPress = () => {
-    if (shouldDisplayFakeDoorArtist) {
-      setSurveyModalState(ARTIST_SURVEY_MODAL_DATA)
-      analytics.logConsultArtistFakeDoor()
-      showModal()
-    } else {
-      const mainArtistName = artists?.split(',')[0] ?? ''
-      analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
-      navigate('Artist', { fromOfferId: offer.id })
-    }
+    const mainArtistName = artists?.split(',')[0] ?? ''
+    analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
+    navigate('Artist', { fromOfferId: offer.id })
   }
 
   return (
-    <React.Fragment>
-      <Container>
-        <MarginContainer gap={6}>
-          <GroupWithoutGap>
-            <ViewGap gap={4}>
-              <InformationTags tags={tags} />
-              <ViewGap gap={2}>
-                <OfferTitle offerName={offer.name} />
-                {artists ? (
-                  <OfferArtists
-                    artists={artists}
-                    onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
-                  />
-                ) : null}
-              </ViewGap>
+    <Container>
+      <MarginContainer gap={6}>
+        <GroupWithoutGap>
+          <ViewGap gap={4}>
+            <InformationTags tags={tags} />
+            <ViewGap gap={2}>
+              <OfferTitle offerName={offer.name} />
+              {artists ? (
+                <OfferArtists
+                  artists={artists}
+                  onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
+                />
+              ) : null}
             </ViewGap>
-          </GroupWithoutGap>
+          </ViewGap>
+        </GroupWithoutGap>
 
-          {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
+        {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
 
-          <OfferReactionSection offer={offer} subcategory={subcategory} />
+        <OfferReactionSection offer={offer} />
 
-          <GroupWithSeparator
-            showTopComponent={offer.venue.isPermanent}
-            TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
-            showBottomComponent={summaryInfoItems.length > 0}
-            BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
-          />
-
-          {isDesktopViewport ? (
-            <OfferCTAButton
-              offer={offer}
-              subcategory={subcategory}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
-          ) : null}
-        </MarginContainer>
-
-        {shouldDisplayAboutSection ? (
-          <MarginContainer gap={0}>
-            <OfferAbout
-              offer={offer}
-              metadata={metadata}
-              hasMetadata={hasMetadata}
-              shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
-            />
-          </MarginContainer>
-        ) : null}
-
-        <OfferPlace offer={offer} subcategory={subcategory} />
+        <GroupWithSeparator
+          showTopComponent={offer.venue.isPermanent}
+          TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
+          showBottomComponent={summaryInfoItems.length > 0}
+          BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
+        />
 
         {isDesktopViewport ? (
-          <View testID="messagingApp-container-without-divider">
-            <OfferMessagingApps offer={offer} />
-          </View>
-        ) : (
-          <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
-            <OfferMessagingApps offer={offer} />
-            <Spacer.Column numberOfSpaces={4} />
-          </SectionWithDivider>
-        )}
-      </Container>
-      <SurveyModal
-        title={surveyModalState.title}
-        visible={visible}
-        hideModal={hideModal}
-        surveyDescription={surveyModalState.description}
-        surveyUrl={surveyModalState.surveyURL}
-        Icon={BicolorCircledClock}
-      />
-    </React.Fragment>
+          <OfferCTAButton
+            offer={offer}
+            subcategory={subcategory}
+            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+          />
+        ) : null}
+      </MarginContainer>
+
+      {shouldDisplayAboutSection ? (
+        <MarginContainer gap={0}>
+          <OfferAbout
+            offer={offer}
+            metadata={metadata}
+            hasMetadata={hasMetadata}
+            shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
+          />
+        </MarginContainer>
+      ) : null}
+
+      <OfferPlace offer={offer} subcategory={subcategory} />
+
+      {isDesktopViewport ? (
+        <View testID="messagingApp-container-without-divider">
+          <OfferMessagingApps offer={offer} />
+        </View>
+      ) : (
+        <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
+          <OfferMessagingApps offer={offer} />
+          <Spacer.Column numberOfSpaces={4} />
+        </SectionWithDivider>
+      )}
+    </Container>
   )
 }
 

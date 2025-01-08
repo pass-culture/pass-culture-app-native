@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -81,6 +81,6 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 const StyledButtonContainer = styled.View({
   width: '100%',
 })
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

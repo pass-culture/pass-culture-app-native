@@ -8,43 +8,18 @@ import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snack
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 import { UseItineraryResult } from './types'
 
-enum AppEnum {
-  APPLE_MAPS = 'apple_maps',
-  GOOGLE_MAPS = 'google_maps',
-  WAZE = 'waze',
-  CITYMAPPER = 'citymapper',
-  NAVIGON = 'navigon',
-  TRANSIT_APP = 'transit_app',
-  YANDEX = 'yandex',
-  UBER = 'uber',
-  TOMTOM = 'tomtom',
-  BING_MAPS = 'bing_maps',
-  SYGIC = 'sygic',
-  HERE_MAPS = 'here_maps',
-  MOOVIT = 'moovit',
-  LYFT = 'lyft',
-  MAPS_ME = 'maps_me',
-  CABIFY = 'cabify',
-  BAIDU = 'baidu',
-  TAXIS_99 = 'taxis_99',
-  GAODE = 'gaode',
-}
-
-const appEnumTypeGuard = (app: string): app is AppEnum =>
-  Object.values<string>(AppEnum).includes(app)
-
 enum BackupSolution {
   GOOGLE_MAPS_WEB,
   SNACKBAR_ERROR,
 }
 
 export const useItinerary = (): UseItineraryResult => {
-  const availableAppsRef = useRef<AppEnum[] | undefined>(undefined)
+  const availableAppsRef = useRef<string[] | undefined>(undefined)
   const { showInfoSnackBar } = useSnackBarContext()
 
   const navigateToWithApp = async (
     address: string,
-    app: AppEnum,
+    app: string,
     backupSolution: BackupSolution
   ) => {
     try {
@@ -73,8 +48,7 @@ export const useItinerary = (): UseItineraryResult => {
       openGoogleMapsItinerary(address)
       return
     }
-    if (availableAppsRef.current.length === 1) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
+    if (availableAppsRef.current.length === 1 && availableAppsRef.current[0]) {
       navigateToWithApp(address, availableAppsRef.current[0], BackupSolution.GOOGLE_MAPS_WEB)
       return
     }
@@ -96,11 +70,7 @@ export const useItinerary = (): UseItineraryResult => {
 
     LN.getAvailableApps()
       .then((appsAvailability) => {
-        const appsKeys = Object.keys(appsAvailability)
-        const apps = appsKeys.filter(
-          // @ts-expect-error: because of noUncheckedIndexedAccess
-          (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
-        )
+        const apps = Object.keys(appsAvailability).filter((appName) => appsAvailability[appName])
         if (isMounted) availableAppsRef.current = apps
       })
       .catch(() => {

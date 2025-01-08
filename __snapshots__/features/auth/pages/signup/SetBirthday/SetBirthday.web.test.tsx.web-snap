@@ -1596,7 +1596,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           data-testid="styled-input-container"
         >
           <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"
           >

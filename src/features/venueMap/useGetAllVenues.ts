@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
-import { useVenuesActions } from 'features/venueMap/store/venuesStore'
+import { venuesActions } from 'features/venueMap/store/venuesStore'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { LocationMode } from 'libs/location/types'
 import { Region } from 'libs/maps/maps'
@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
-  const { setVenues } = useVenuesActions()
+  const { setVenues } = venuesActions
 
   const { data: fetchedVenues } = useQuery<Venue[]>(
     [QueryKeys.VENUES, region],

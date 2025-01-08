@@ -4,7 +4,7 @@ import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 import { Accordion } from './Accordion'
 
@@ -25,7 +25,7 @@ const children = 'children'
 
 const baseProps = {
   title: 'My accordion',
-  children: <Typo.Body>{children}</Typo.Body>,
+  children: <TypoDS.Body>{children}</TypoDS.Body>,
 }
 
 const variantConfig: Variants<typeof Accordion> = [

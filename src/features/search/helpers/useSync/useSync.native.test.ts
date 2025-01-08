@@ -73,15 +73,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 mockUseLocation.mockReturnValue(everywhereUseLocation)
 
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-    setSelectedVenue: jest.fn(),
-  }),
-  useSelectedVenue: jest.fn(),
-}))
-
 // eslint-disable-next-line jest/no-disabled-tests
 describe.skip('useSync', () => {
   it('should update search state with locationType params when user has geolocPosition', async () => {

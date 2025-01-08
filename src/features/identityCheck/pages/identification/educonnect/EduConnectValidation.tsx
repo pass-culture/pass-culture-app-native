@@ -10,7 +10,7 @@ import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export function EduConnectValidation() {
   const { identification } = useSubscriptionContext()
@@ -59,7 +59,7 @@ export function EduConnectValidation() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

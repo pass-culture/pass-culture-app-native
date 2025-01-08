@@ -209,11 +209,13 @@ exports[`EndedBookings should render correctly 1`] = `
     data={
       [
         {
+          "canReact": true,
           "cancellationDate": "2021-03-15T23:01:37.925926",
           "cancellationReason": "BENEFICIARY",
           "confirmationDate": "2021-02-15T23:01:37.925926",
           "dateCreated": "2021-02-15T23:01:37.925926",
           "dateUsed": null,
+          "enablePopUpReaction": true,
           "expirationDate": null,
           "id": 321,
           "quantity": 10,
@@ -267,9 +269,11 @@ exports[`EndedBookings should render correctly 1`] = `
           "userReaction": null,
         },
         {
+          "canReact": false,
           "confirmationDate": "2021-02-15T23:01:37.925926",
           "dateCreated": "2021-02-15T23:01:37.925926",
           "dateUsed": "2021-03-15T23:01:37.925926",
+          "enablePopUpReaction": false,
           "expirationDate": null,
           "id": 322,
           "quantity": 10,
@@ -295,7 +299,7 @@ exports[`EndedBookings should render correctly 1`] = `
               },
               "bookingContact": null,
               "extraData": null,
-              "id": 147874,
+              "id": 147875,
               "isDigital": true,
               "isPermanent": false,
               "name": "Avez-vous déjà vu ?",
@@ -372,9 +376,9 @@ exports[`EndedBookings should render correctly 1`] = `
             [
               {
                 "color": "#696A6F",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "paddingBottom": 22,
               },
             ]
@@ -765,11 +769,13 @@ exports[`EndedBookings should render correctly 1`] = `
           highlighted={false}
           leadingItem={
             {
+              "canReact": true,
               "cancellationDate": "2021-03-15T23:01:37.925926",
               "cancellationReason": "BENEFICIARY",
               "confirmationDate": "2021-02-15T23:01:37.925926",
               "dateCreated": "2021-02-15T23:01:37.925926",
               "dateUsed": null,
+              "enablePopUpReaction": true,
               "expirationDate": null,
               "id": 321,
               "quantity": 10,

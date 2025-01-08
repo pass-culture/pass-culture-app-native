@@ -6,7 +6,7 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapTypeFilter } from 'features/venueMap/components/VenueMapTypeFilter/VenueMapTypeFilter'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
-import { useVenuesFilter, useVenuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { useVenuesFilter, venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockGoBack = jest.fn()
@@ -38,15 +38,8 @@ jest.mock('features/venueMap/store/venuesFilterStore')
 const mockUseVenuesFilter = useVenuesFilter as jest.Mock
 mockUseVenuesFilter.mockReturnValue([])
 
-const mockAddVenuesFilters = jest.fn()
-const mockRemoveVenuesFilters = jest.fn()
-const mockSetVenuesFilters = jest.fn()
-const mockUseVenuesFilterActions = useVenuesFilterActions as jest.Mock
-mockUseVenuesFilterActions.mockReturnValue({
-  addVenuesFilters: mockAddVenuesFilters,
-  removeVenuesFilters: mockRemoveVenuesFilters,
-  setVenuesFilters: mockSetVenuesFilters,
-})
+const mockAddVenuesFilters = jest.spyOn(venuesFilterActions, 'addVenuesFilters')
+const mockRemoveVenuesFilters = jest.spyOn(venuesFilterActions, 'removeVenuesFilters')
 
 const user = userEvent.setup()
 

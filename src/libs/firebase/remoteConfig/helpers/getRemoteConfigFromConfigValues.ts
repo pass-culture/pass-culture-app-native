@@ -27,7 +27,6 @@ export const getRemoteConfigFromConfigValues = (
   reactionFakeDoorCategories: JSON.parse(
     getConfigValue(parameters.reactionFakeDoorCategories).asString()
   ),
-  reactionCategories: JSON.parse(getConfigValue(parameters.reactionCategories).asString()),
   sameAuthorPlaylist: getConfigValue(parameters.sameAuthorPlaylist).asString(),
   shouldDisplayReassuranceMention: getConfigValue(
     parameters.shouldDisplayReassuranceMention

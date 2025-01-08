@@ -7,7 +7,7 @@ import {
   getStartMessage,
 } from 'features/bookings/components/TicketBody/ticketBodyMessages'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   withdrawalType: Exclude<WithdrawalTypeEnum, WithdrawalTypeEnum.no_ticket>
@@ -52,12 +52,12 @@ const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
   color2: theme.colors.secondary,
 }))``
 
-const WithDrawalContainer = styled(Typo.Body)({
+const WithDrawalContainer = styled(TypoDS.Body)({
   textAlign: 'center',
   maxWidth: '100%',
   paddingBottom: getSpacing(6),
 })
 
-const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
+const TicketWithdrawalDelay = styled(TypoDS.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,
 }))

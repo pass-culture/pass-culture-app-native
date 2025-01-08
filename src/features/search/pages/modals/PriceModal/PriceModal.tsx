@@ -66,6 +66,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const conversionRate = getConversionRate(currency, euroToPacificFrancRate)
 
+  const [previousCurrency, setPreviousCurrency] = useState(currency)
+
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
 
@@ -249,7 +251,26 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       },
       { keepDefaultValues: true }
     )
-  }, [reset])
+    dispatch({
+      type: 'SET_STATE',
+      payload: {
+        ...searchState,
+        priceRange: null,
+        minPrice: undefined,
+        maxPrice: undefined,
+        defaultMinPrice: '',
+        defaultMaxPrice: '',
+        offerIsFree: false,
+      },
+    })
+  }, [dispatch, reset, searchState])
+
+  useEffect(() => {
+    if (currency !== previousCurrency) {
+      onResetPress()
+      setPreviousCurrency(currency)
+    }
+  }, [currency, previousCurrency, onResetPress])
 
   const disabled = !isValid || (!isValidating && isSubmitting)
   const isKeyboardOpen = keyboardHeight > 0

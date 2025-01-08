@@ -4,4 +4,4 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-VERSION=$(yarn --silent json -f package.json version)
+VERSION=$(node --print "require('./package.json').version")

@@ -89,12 +89,14 @@ exports[`BookingDetails should render correctly 1`] = `
             <TicketWithContent
               booking={
                 {
+                  "canReact": false,
                   "cancellationDate": null,
                   "cancellationReason": null,
                   "completedUrl": "https://example.com",
                   "confirmationDate": "2021-03-15T23:01:37.925926",
                   "dateCreated": "2021-02-15T23:01:37.925926",
                   "dateUsed": null,
+                  "enablePopUpReaction": false,
                   "expirationDate": null,
                   "externalBookings": [],
                   "id": 123,
@@ -619,9 +621,9 @@ exports[`BookingDetails should render correctly 1`] = `
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -736,9 +738,9 @@ exports[`BookingDetails should render correctly 1`] = `
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -748,9 +750,9 @@ exports[`BookingDetails should render correctly 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -763,9 +765,9 @@ exports[`BookingDetails should render correctly 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -782,9 +784,9 @@ exports[`BookingDetails should render correctly 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -798,9 +800,9 @@ exports[`BookingDetails should render correctly 1`] = `
                         [
                           {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           },
                         ]
                       }
@@ -1305,9 +1307,9 @@ exports[`BookingDetails should render correctly 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }

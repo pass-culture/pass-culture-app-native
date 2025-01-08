@@ -19,8 +19,6 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -49,24 +47,6 @@ jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
   navigate: mockNavigate,
 }))
 
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({
-    reactionFakeDoorCategories: {
-      categories: [
-        'SEANCES_DE_CINEMA',
-        'CD',
-        'MUSIQUE_EN_LIGNE',
-        'VINYLES',
-        'LIVRES_AUDIO_PHYSIQUES',
-        'LIVRES_NUMERIQUE_ET_AUDIO',
-        'LIVRES_PAPIER',
-        'DVD_BLU_RAY',
-        'FILMS_SERIES_EN_LIGNE',
-      ],
-    },
-  }),
-}))
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('ui/components/anchor/AnchorContext', () => ({
@@ -88,26 +68,14 @@ const useArtistResultsSpy = jest
     artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-
 const user = userEvent.setup()
 
 jest.useFakeTimers()
 
 describe('<OfferBody />', () => {
-  beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      reactionCategories: {
-        categories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-      },
-    })
-  })
-
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setFeatureFlags([
-      RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST,
       RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR,
@@ -638,23 +606,6 @@ describe('<OfferBody />', () => {
     await user.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
-  })
-
-  it('should display artist fakedoor if FF enabled and category is CINEMA', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      extraData: { stageDirector: 'Stephen King' },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategory,
-    })
-
-    await user.press(await screen.findByText('Stephen King'))
-
-    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
   })
 })
 

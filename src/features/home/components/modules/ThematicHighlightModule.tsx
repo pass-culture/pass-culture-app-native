@@ -167,7 +167,7 @@ const Title = styled(TypoDS.Title3)(({ theme }) => ({
   flexShrink: 1,
 }))
 
-const Subtitle = styled(Typo.Body)(({ theme }) => ({
+const Subtitle = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

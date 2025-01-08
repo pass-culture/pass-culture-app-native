@@ -19,7 +19,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
@@ -108,7 +108,7 @@ const StyledSubtitle = styled(TypoDS.Title4).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

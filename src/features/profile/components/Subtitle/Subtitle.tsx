@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 type Props = {
   startSubtitle: string
@@ -11,7 +11,7 @@ type Props = {
 export const Subtitle = ({ startSubtitle, boldEndSubtitle }: Props) => {
   return (
     <Row>
-      <Typo.Body>{startSubtitle}</Typo.Body>
+      <TypoDS.Body>{startSubtitle}</TypoDS.Body>
       {boldEndSubtitle ? <Typo.ButtonText>&nbsp;{boldEndSubtitle}</Typo.ButtonText> : null}
     </Row>
   )

@@ -17,7 +17,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BirthdayForm = {
@@ -90,10 +90,10 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       {isSSOSubscriptionFromLogin ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Body>
+          <TypoDS.Body>
             Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
             continuer, tu peux créer un compte.
-          </Typo.Body>
+          </TypoDS.Body>
         </React.Fragment>
       ) : null}
       <Spacer.Column numberOfSpaces={4} />

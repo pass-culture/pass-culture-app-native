@@ -8,7 +8,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type Props = {
@@ -43,7 +43,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
         {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
         <DescriptionContainer gap={1}>
           <Typo.ButtonText>{title}</Typo.ButtonText>
-          <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>
+          <TypoDS.Body numberOfLines={2}>{subtitle}</TypoDS.Body>
         </DescriptionContainer>
         <View>
           <StyledArrowRightIcon />

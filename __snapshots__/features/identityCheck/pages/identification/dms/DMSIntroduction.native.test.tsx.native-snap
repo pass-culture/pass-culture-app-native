@@ -144,9 +144,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
             "marginBottom": 20,
             "textAlign": "center",
           },
@@ -212,9 +212,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -279,9 +279,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -346,9 +346,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -415,9 +415,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -751,9 +751,9 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
             "marginBottom": 20,
             "textAlign": "center",
           },
@@ -819,9 +819,9 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -886,9 +886,9 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
@@ -955,9 +955,9 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }

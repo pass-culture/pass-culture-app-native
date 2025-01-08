@@ -3,10 +3,7 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import { useVenues } from 'features/venueMap/store/venuesStore'
-import {
-  useVenueTypeCode,
-  useVenueTypeCodeActions,
-} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { analytics } from 'libs/analytics'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -15,9 +12,7 @@ const mockHideModal = jest.fn()
 
 jest.mock('features/venueMap/store/venueTypeCodeStore')
 const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
-const mockSetVenueTypeCode = jest.fn()
-const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
-mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
+const mockSetVenueTypeCode = jest.spyOn(venueTypeCodeActions, 'setVenueTypeCode')
 
 jest.mock('features/venueMap/store/venuesStore')
 const mockUseVenues = useVenues as jest.Mock

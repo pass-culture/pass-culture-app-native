@@ -25,7 +25,7 @@ export const ComeBackLater: FunctionComponent = () => {
       headerGoBack
       mobileBottomFlex={0.5}>
       <StyledText>
-        <Typo.Body>Pour profiter du pass Culture, tu dois avoir </Typo.Body>
+        <TypoDS.Body>Pour profiter du pass Culture, tu dois avoir </TypoDS.Body>
         <Typo.ButtonText>
           ta pièce d’identité originale et en cours de validité avec toi.
         </Typo.ButtonText>
@@ -44,7 +44,7 @@ export const ComeBackLater: FunctionComponent = () => {
   )
 }
 
-const StyledText = styled(Typo.Body)({
+const StyledText = styled(TypoDS.Body)({
   textAlign: 'center',
   marginBottom: getSpacing(6),
 })

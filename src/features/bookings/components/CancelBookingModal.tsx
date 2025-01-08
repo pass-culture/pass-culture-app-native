@@ -23,7 +23,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -117,7 +117,7 @@ const OfferName = styled(Typo.ButtonText)({
   textAlign: 'center',
 })
 
-const Refund = styled(Typo.Body)({
+const Refund = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK as LINE_BREAK } from 'ui/theme/constants'
 
 export function ExpiredOrExhaustedCreditModalContent() {
   return (
     <ModalChildrenContainer>
-      <Typo.Body>
+      <TypoDS.Body>
         {`Pas de panique, l’aventure continue\u00a0!`}
         {LINE_BREAK}
         {`Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.`}
-      </Typo.Body>
+      </TypoDS.Body>
     </ModalChildrenContainer>
   )
 }

@@ -6,6 +6,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { DEFAULT_RADIUS } from 'features/search/constants'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
@@ -62,18 +64,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-  }),
-}))
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({
-    setInitialVenues: mockSetInitialVenues,
-  }),
-}))
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
+
+const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
 
 const user = userEvent.setup()
 jest.useFakeTimers()

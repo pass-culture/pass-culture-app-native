@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CreditStatus } from 'features/tutorial/enums'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 import { AgeCreditBlock } from './AgeCreditBlock'
 
@@ -57,7 +57,7 @@ withDescription.args = {
     <React.Fragment>
       <TypoDS.Title3>300&nbsp;€</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</Typo.Body>
+      <TypoDS.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</TypoDS.Body>
     </React.Fragment>
   ),
   age: 18,

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useCreditStore } from 'features/identityCheck/api/useCreditActivation'
+import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -20,7 +20,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
@@ -31,7 +31,6 @@ export function BeneficiaryAccountCreated() {
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
-  const { actions } = useCreditStore()
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -45,8 +44,8 @@ export function BeneficiaryAccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
-    actions.setActivationDate(new Date())
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey, actions])
+    creditActions.setActivationDate(new Date())
+  }, [showShareAppModal, user?.needsToFillCulturalSurvey])
 
   useEnterKeyAction(navigateToHome)
 
@@ -87,7 +86,7 @@ const StyledSubtitle = styled(TypoDS.Title4).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
 

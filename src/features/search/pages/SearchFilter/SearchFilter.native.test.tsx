@@ -13,7 +13,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
@@ -64,6 +64,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
@@ -144,19 +147,13 @@ describe('<SearchFilter/>', () => {
       renderSearchFilter()
 
       await screen.findByText('Filtres')
-
-      fireEvent.press(screen.getByText('Réinitialiser'))
+      await user.press(screen.getByText('Réinitialiser'))
 
       expect(mockStateDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-          minPrice: undefined,
-          maxPrice: undefined,
-          offerGenreTypes: undefined,
-          offerNativeCategories: undefined,
-          gtls: [],
         },
       })
     })
@@ -172,18 +169,13 @@ describe('<SearchFilter/>', () => {
       renderSearchFilter()
 
       await screen.findByText('Filtres')
-
-      fireEvent.press(screen.getByText('Réinitialiser'))
+      await user.press(screen.getByText('Réinitialiser'))
 
       expect(mockStateDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
           locationFilter: { locationType: LocationMode.EVERYWHERE },
-          minPrice: undefined,
-          maxPrice: undefined,
-          offerGenreTypes: undefined,
-          offerNativeCategories: undefined,
         },
       })
     })
@@ -193,8 +185,7 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
 
     await screen.findByText('Filtres')
-
-    fireEvent.press(screen.getByText('Réinitialiser'))
+    await user.press(screen.getByText('Réinitialiser'))
 
     expect(analytics.logReinitializeFilters).toHaveBeenCalledTimes(1)
   })

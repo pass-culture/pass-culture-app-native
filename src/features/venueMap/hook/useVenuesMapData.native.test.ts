@@ -1,26 +1,13 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { Venue } from 'features/venue/types'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
-import { useVenuesActions } from 'features/venueMap/store/venuesStore'
-import { useVenueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
-  useInitialVenues: jest.fn(),
-}))
-
 jest.mock('features/venueMap/store/venueTypeCodeStore')
-const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
-mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: jest.fn() })
 
-const mockSetVenues = jest.fn()
 jest.mock('features/venueMap/store/venuesStore')
-const mockUseVenuesActions = useVenuesActions as jest.MockedFunction<typeof useVenuesActions>
-mockUseVenuesActions.mockReturnValue({ setVenues: mockSetVenues })
 
 describe('useVenuesMapData', () => {
   it('should return default values without transformVenues', () => {

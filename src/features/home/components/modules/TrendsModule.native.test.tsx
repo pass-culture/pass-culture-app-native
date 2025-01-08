@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
@@ -34,12 +35,7 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-  }),
-}))
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')

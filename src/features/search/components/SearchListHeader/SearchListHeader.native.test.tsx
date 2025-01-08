@@ -77,12 +77,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
-  useInitialVenues: jest.fn(),
-}))
-
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {

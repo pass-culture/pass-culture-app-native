@@ -1,14 +1,43 @@
 import React from 'react'
 
+import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { useSomeOfferId } from 'cheatcodes/hooks/useSomeOfferId'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { useModal } from 'ui/components/modals/useModal'
+
+export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreensProps] = [
+  {
+    title: 'SignUp 🎨',
+    screen: 'CheatcodesNavigationSignUp',
+    subscreens: [
+      { screen: 'AccountCreated' },
+      { screen: 'BeneficiaryAccountCreated' },
+      { screen: 'SignupConfirmationExpiredLink', navigationParams: { email: 'john@wick.com' } },
+      {
+        screen: 'NotYetUnderageEligibility',
+        navigationParams: {
+          eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
+        },
+      },
+
+      {
+        screen: 'AfterSignupEmailValidationBuffer',
+        navigationParams: {
+          token: 'whichTokenDoYouWantReally',
+          expiration_timestamp: 456789123,
+          email: 'john@wick.com',
+        },
+      },
+    ],
+  },
+]
 
 export function CheatcodesNavigationSignUp(): React.JSX.Element {
   const offerId = useSomeOfferId()
@@ -38,33 +67,16 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
   } = useModal(false)
 
   return (
-    <CheatcodesTemplateScreen title="SignUp 🎨">
-      <LinkToScreen
-        screen="SignupConfirmationExpiredLink"
-        navigationParams={{ email: 'john@wick.com' }}
-      />
-      <LinkToScreen
-        screen="AfterSignupEmailValidationBuffer"
-        navigationParams={{
-          token: 'whichTokenDoYouWantReally',
-          expiration_timestamp: 456789123,
-          email: 'john@wick.com',
-        }}
-      />
-      <LinkToScreen screen="AccountCreated" />
-      <LinkToScreen screen="BeneficiaryAccountCreated" />
-      <LinkToScreen
-        screen="NotYetUnderageEligibility"
-        navigationParams={{
-          eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
-        }}
-      />
+    <CheatcodesTemplateScreen title={cheatcodesNavigationSignUpButtons[0].title}>
+      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSignUpButtons} />
+
       <LinkToScreen title="Finish subscription modal" onPress={showFinishSubscriptionModal} />
       <FinishSubscriptionModal
         visible={finishSubscriptionModalVisible}
         hideModal={hideFinishSubscriptionModal}
         from={StepperOrigin.OFFER}
       />
+
       <LinkToScreen title="Authentication modal from offer" onPress={showAuthenticationModal} />
       <AuthenticationModal
         visible={authenticationModalVisible}
@@ -72,12 +84,14 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
         offerId={offerId}
         from={StepperOrigin.FAVORITE}
       />
+
       <LinkToScreen title="Application Processing Modal" onPress={showApplicationProcessingModal} />
       <ApplicationProcessingModal
         visible={applicationProcessingModalVisible}
         hideModal={hideApplicationProcessingModal}
         offerId={offerId}
       />
+
       <LinkToScreen title="Error Application Modal" onPress={showErrorApplicationModal} />
       <ErrorApplicationModal
         visible={errorApplicationModalVisible}

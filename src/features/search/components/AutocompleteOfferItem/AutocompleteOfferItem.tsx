@@ -23,7 +23,7 @@ import { env } from 'libs/environment'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 
 type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
@@ -232,7 +232,7 @@ const SuggestionContainer: FunctionComponent<{
 
 const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ categoryToDisplay }) => (
   <React.Fragment>
-    <Typo.Body> dans </Typo.Body>
+    <TypoDS.Body> dans </TypoDS.Body>
     <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
   </React.Fragment>
 )

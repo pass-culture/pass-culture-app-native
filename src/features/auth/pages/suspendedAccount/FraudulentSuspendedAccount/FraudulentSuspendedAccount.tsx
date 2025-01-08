@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
 import { analytics } from 'libs/analytics'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const FraudulentSuspendedAccount = () => (
   <GenericSuspendedAccount onBeforeNavigateContactFraudTeam={onBeforeNavigateContactFraudTeam}>
@@ -19,6 +19,6 @@ const onBeforeNavigateContactFraudTeam = () => {
   analytics.logContactFraudTeam({ from: 'fraudulentsuspendedaccount' })
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))

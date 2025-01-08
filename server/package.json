@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc --build && cp package.json build",
     "predeploy": "yarn build",
-    "deploy": "gcloud app deploy --quiet",
+    "deploy": "yarn predeploy && gcloud app deploy --quiet",
     "deploy:testing": "cat .env.testing > .env && sed -i.back -e '/web-proxy-testing/! s/web-proxy/web-proxy-testing/g' app.yaml && yarn deploy",
     "deploy:perf": "cat .env.perf > .env && sed -i.back -e '/web-proxy-perf/! s/web-proxy/web-proxy-perf/g' app.yaml && yarn deploy",
     "deploy:staging": "cat .env.staging > .env  && sed -i.back -e '/web-proxy-staging/! s/web-proxy/web-proxy-staging/g' app.yaml && yarn deploy",
@@ -73,5 +73,6 @@
   },
   "resolutions": {
     "semver": "^7.5.2"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }

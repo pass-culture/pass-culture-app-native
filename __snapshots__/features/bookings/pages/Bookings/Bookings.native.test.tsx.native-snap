@@ -99,11 +99,13 @@ exports[`Bookings should render correctly 1`] = `
       data={
         [
           {
+            "canReact": false,
             "cancellationDate": null,
             "cancellationReason": null,
             "confirmationDate": "2021-03-15T23:01:37.925926",
             "dateCreated": "2021-02-15T23:01:37.925926",
             "dateUsed": null,
+            "enablePopUpReaction": false,
             "expirationDate": null,
             "externalBookings": [],
             "id": 123,
@@ -158,11 +160,13 @@ exports[`Bookings should render correctly 1`] = `
             "totalAmount": 1900,
           },
           {
+            "canReact": false,
             "cancellationDate": null,
             "cancellationReason": null,
             "confirmationDate": "2021-03-15T23:01:37.925926",
             "dateCreated": "2021-02-15T23:01:37.925926",
             "dateUsed": null,
+            "enablePopUpReaction": false,
             "expirationDate": null,
             "externalBookings": [
               {
@@ -438,9 +442,9 @@ exports[`Bookings should render correctly 1`] = `
                   [
                     {
                       "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
@@ -741,9 +745,9 @@ exports[`Bookings should render correctly 1`] = `
                   [
                     {
                       "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }

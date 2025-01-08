@@ -6,6 +6,8 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { Action, initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import * as doAlgoliaRedirect from 'libs/algolia/doAlgoliaRedirect'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
@@ -41,17 +43,9 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
-  useInitialVenues: jest.fn(),
-}))
-const mockRemoveSelectedVenue = jest.fn()
-jest.mock('features/venueMap/store/selectedVenueStore', () => ({
-  useSelectedVenueActions: () => ({
-    removeSelectedVenue: mockRemoveSelectedVenue,
-  }),
-}))
+const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
+
+const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
 
 const mockDispatch = jest.fn()
 const mockFetchSearchResultsResponse = {

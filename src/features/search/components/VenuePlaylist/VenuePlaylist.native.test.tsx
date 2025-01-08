@@ -6,6 +6,7 @@ import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
+import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -20,10 +21,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const mockSetVenueTypeCode = jest.fn()
-jest.mock('features/venueMap/store/venueTypeCodeStore', () => ({
-  useVenueTypeCodeActions: () => ({ setVenueTypeCode: mockSetVenueTypeCode }),
-}))
+const mockSetVenueTypeCode = jest.spyOn(venueTypeCodeActions, 'setVenueTypeCode')
 
 const user = userEvent.setup()
 

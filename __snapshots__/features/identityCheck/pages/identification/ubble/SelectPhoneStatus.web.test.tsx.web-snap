@@ -165,7 +165,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                 class="css-view-175oi2r r-height-10ptun7"
               />
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                 dir="ltr"
               >
                 Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
@@ -212,7 +212,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                           class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             J’ai un smartphone à proximité
@@ -273,7 +273,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                           class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Je n’ai pas de smartphone à proximité

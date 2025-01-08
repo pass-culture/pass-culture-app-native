@@ -6,7 +6,7 @@ import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   date: Date
@@ -23,7 +23,7 @@ export function DateInputDisplay({ date, isError }: Props) {
       </LabelContainer>
       <Spacer.Column numberOfSpaces={2} />
       <InputContainer isError={isError}>
-        <Typo.Body nativeID={dateInputID}>{formatToFrenchDate(date)}</Typo.Body>
+        <TypoDS.Body nativeID={dateInputID}>{formatToFrenchDate(date)}</TypoDS.Body>
       </InputContainer>
     </ContainerWithMaxWidth>
   )

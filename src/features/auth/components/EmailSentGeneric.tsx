@@ -9,7 +9,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -39,14 +39,14 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
-      <Typo.Body>{email}</Typo.Body>
+      <TypoDS.Body>Tu as reçu un lien à l’adresse&nbsp;:</TypoDS.Body>
+      <TypoDS.Body>{email}</TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
+      <TypoDS.Body>L’e-mail peut prendre quelques minutes pour arriver.</TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
+      <TypoDS.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
       <ExternalTouchableLink
         as={ButtonTertiaryBlack}

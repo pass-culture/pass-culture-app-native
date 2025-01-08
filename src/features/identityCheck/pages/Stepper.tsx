@@ -20,7 +20,7 @@ import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
@@ -161,7 +161,7 @@ const QuitButtonContainer = styled.View({
 const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
-    <Typo.Body>{subtitle}</Typo.Body>
+    <TypoDS.Body>{subtitle}</TypoDS.Body>
     <Spacer.Column numberOfSpaces={8} />
   </React.Fragment>
 )

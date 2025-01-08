@@ -1,7 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { renderHook } from 'tests/utils'
 
-import { useVenuesFilter, useVenuesFilterActions } from './venuesFilterStore'
+import { useVenuesFilter, venuesFilterActions } from './venuesFilterStore'
 
 describe('venuesFilterStore', () => {
   it('should get venuesFilters', async () => {
@@ -11,8 +11,7 @@ describe('venuesFilterStore', () => {
   })
 
   it('should set venuesFilters', async () => {
-    const { result } = renderHook(() => useVenuesFilterActions())
-    result.current.setVenuesFilters([VenueTypeCodeKey.MOVIE])
+    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
 
     const { result: state } = renderHook(() => useVenuesFilter())
 
@@ -20,10 +19,9 @@ describe('venuesFilterStore', () => {
   })
 
   it('should add venuesFilters', async () => {
-    const { result } = renderHook(() => useVenuesFilterActions())
-    result.current.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    result.current.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE, VenueTypeCodeKey.MUSEUM])
-    result.current.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
+    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
+    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE, VenueTypeCodeKey.MUSEUM])
+    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
 
     const { result: state } = renderHook(() => useVenuesFilter())
 
@@ -35,10 +33,9 @@ describe('venuesFilterStore', () => {
   })
 
   it('should remove venuesFilter', async () => {
-    const { result } = renderHook(() => useVenuesFilterActions())
-    result.current.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    result.current.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
-    result.current.removeVenuesFilters([
+    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
+    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
+    venuesFilterActions.removeVenuesFilters([
       VenueTypeCodeKey.BOOKSTORE,
       VenueTypeCodeKey.MOVIE,
       VenueTypeCodeKey.MUSEUM,
@@ -50,10 +47,9 @@ describe('venuesFilterStore', () => {
   })
 
   it('should reset venuesFilter', async () => {
-    const { result } = renderHook(() => useVenuesFilterActions())
-    result.current.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    result.current.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
-    result.current.reset()
+    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
+    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
+    venuesFilterActions.reset()
 
     const { result: state } = renderHook(() => useVenuesFilter())
 

@@ -8,7 +8,7 @@ import { MarketingModal } from 'ui/components/modals/MarketingModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Share } from 'ui/svg/icons/BicolorShare'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -46,6 +46,6 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, close, share 
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

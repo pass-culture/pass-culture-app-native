@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { Typo } from 'ui/theme'
+import { Typo, TypoDS } from 'ui/theme'
 
 const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 
@@ -60,6 +60,6 @@ const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledBodyText = styled(Typo.Body)(({ theme }) => ({
+const StyledBodyText = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))

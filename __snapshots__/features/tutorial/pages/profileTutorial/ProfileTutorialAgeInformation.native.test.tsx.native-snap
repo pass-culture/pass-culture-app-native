@@ -229,9 +229,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -2364,9 +2364,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "textAlign": "center",
               },
             ]
@@ -2499,9 +2499,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "textAlign": "center",
                 },
               ]
@@ -2848,9 +2848,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
@@ -3123,9 +3123,9 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -5483,9 +5483,9 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }

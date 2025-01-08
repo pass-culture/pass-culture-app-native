@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { useBookingsReactionHelpers } from 'features/home/components/helpers/useBookingsReactionHelpers'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
@@ -17,8 +18,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -58,8 +57,12 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
+  const { data: bookings } = useBookings()
+
+  const { shouldShowReactionModal, bookingsEligibleToReaction } =
+    useBookingsReactionHelpers(bookings)
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
-    useShouldShowAchievementSuccessModal()
+    useShouldShowAchievementSuccessModal(shouldShowReactionModal)
   const {
     visible: visibleAchievementModal,
     showModal: showAchievementModal,
@@ -71,8 +74,6 @@ export const Home: FunctionComponent = () => {
       showAchievementModal()
     }
   }, [shouldShowAchievementSuccessModal, showAchievementModal])
-
-  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   useEffect(() => {
     if (id) {
@@ -107,8 +108,6 @@ export const Home: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
 
-  const { data: bookings } = useBookings()
-
   useEffect(() => {
     const editor = BatchProfile.editor()
     editor.setAttribute('app_version', getAppVersion())
@@ -139,7 +138,9 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
-      {isReactionFeatureActive ? <IncomingReactionModalContainer /> : null}
+      {shouldShowReactionModal ? (
+        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
+      ) : null}
       <AchievementSuccessModal
         achievementsToShow={achievementsToShow}
         visible={visibleAchievementModal}

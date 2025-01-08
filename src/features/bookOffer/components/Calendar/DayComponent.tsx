@@ -6,7 +6,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { DiagonalStripe } from 'features/bookOffer/components/Calendar/DiagonalStripe'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 
 interface Props {
   status: OfferStatus
@@ -78,7 +78,7 @@ function getStatusColor({ colors }: DefaultTheme, status: OfferStatus) {
   return colors.greyDark
 }
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

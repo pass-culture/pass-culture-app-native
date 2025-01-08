@@ -172,7 +172,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         class="css-view-175oi2r r-height-z80fyv"
       />
       <div
-        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
         dir="ltr"
       >
         Une erreur s’est produite pendant le chargement.

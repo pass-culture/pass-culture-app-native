@@ -17,7 +17,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, TypoDS } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -107,14 +107,14 @@ export function CreditHeader({
           {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <Typo.Body>
+              <TypoDS.Body>
                 {
                   /* @ts-expect-error: because of noUncheckedIndexedAccess */
                   incomingCreditLabelsMap[age].label
                 }
                 {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
                 <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
-              </Typo.Body>
+              </TypoDS.Body>
             </React.Fragment>
           ) : null}
           {isCreditEmpty ? <EmptyCredit age={age} /> : null}
@@ -126,10 +126,10 @@ export function CreditHeader({
   )
 }
 
-const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
+const HighlightedBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

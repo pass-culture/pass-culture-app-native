@@ -13,7 +13,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -106,4 +106,4 @@ const Container = styled.View({
   alignContent: 'center',
   alignItems: 'center',
 })
-const StyledBody = styled(Typo.Body)({ textAlign: 'center', paddingHorizontal: getSpacing(6) })
+const StyledBody = styled(TypoDS.Body)({ textAlign: 'center', paddingHorizontal: getSpacing(6) })

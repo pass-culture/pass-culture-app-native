@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { checkAccessibilityFor, render, act } from 'tests/utils/web'
+import { checkAccessibilityFor, render, act, screen } from 'tests/utils/web'
 
 import { VenueModal } from './VenueModal'
 
@@ -19,6 +19,8 @@ describe('<VenueModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<VenueModal visible dismissModal={dismissModalMock} />)
+
+      await screen.findByText('Trouver un lieu culturel')
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

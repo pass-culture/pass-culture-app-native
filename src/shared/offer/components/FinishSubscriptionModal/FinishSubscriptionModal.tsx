@@ -13,7 +13,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Typo, Spacer } from 'ui/theme'
+import { Typo, Spacer, TypoDS } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -91,6 +91,6 @@ const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   </StyledBody>
 )
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })

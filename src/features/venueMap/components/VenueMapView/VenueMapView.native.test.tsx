@@ -12,6 +12,7 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -22,11 +23,7 @@ import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import * as constants from '../../constant'
 
-const mockSetInitialVenues = jest.fn()
-jest.mock('features/venueMap/store/initialVenuesStore', () => ({
-  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
-  useInitialVenues: jest.fn(),
-}))
+const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
-import { CheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
@@ -15,6 +14,7 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { env } from 'libs/environment'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
@@ -30,6 +30,13 @@ import { RootStack } from './Stack'
 
 const isWeb = Platform.OS === 'web'
 
+const CheatcodesStackNavigator = lazy(async () => {
+  const module = await import(
+    'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigator'
+  )
+  return { default: module.CheatcodesStackNavigator }
+})
+
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
@@ -38,7 +45,15 @@ const RootStackNavigator = withWebWrapper(
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-          <RootStack.Screen name="CheatcodesStackNavigator" component={CheatcodesStackNavigator} />
+          {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
+            <RootStack.Screen name="CheatcodesStackNavigator">
+              {() => (
+                <Suspense fallback={<LoadingPage />}>
+                  <CheatcodesStackNavigator />
+                </Suspense>
+              )}
+            </RootStack.Screen>
+          ) : null}
           {isWeb ? null : (
             <RootStack.Screen
               name="VenueMapFiltersStackNavigator"
@@ -106,8 +121,7 @@ export const RootNavigator: React.ComponentType = () => {
           <AccessibleTabBar id={tabBarId} />
         </View>
       ) : null}
-      {/* The components below are those for which we do not want
-      their rendering to happen while the splash is displayed. */}
+      {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
     </TabNavigationStateProvider>
   )

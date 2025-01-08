@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
-import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -25,7 +25,7 @@ type FormValues = {
 }
 export const SetName = () => {
   const storedName = useName()
-  const { setName: setStoredName } = useNameActions()
+  const { setName: setStoredName } = nameActions
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { control, formState, handleSubmit, watch } = useForm<FormValues>({

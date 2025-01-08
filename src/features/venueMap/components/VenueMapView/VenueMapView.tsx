@@ -24,7 +24,7 @@ import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackMapSessionDuration'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
-import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
+import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -74,7 +74,7 @@ export const VenueMapView: FunctionComponent<Props> = ({
   const { tabBarHeight } = useCustomSafeInsets()
   const { bottom } = useSafeAreaInsets()
 
-  const { setInitialVenues } = useInitialVenuesActions()
+  const { setInitialVenues } = initialVenuesActions
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const shouldDisplayPinV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2)
   const shouldNavigateToVenueOnFling = useFeatureFlag(
