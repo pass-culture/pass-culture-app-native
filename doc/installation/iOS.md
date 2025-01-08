@@ -89,28 +89,6 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 ### 😤 Troubleshooting
 
 <details>
-  <summary>env: node: No such file or directory
-  Command PhaseScriptExecution failed with a nonzero exit code</summary>
-
-If this error pops up while trying to build with Xcode it means that Xcode can’t find Node because the sym-link to Node is not made.
-
-#### First option
-
-Run `ln -s "\$(which node)" /usr/local/bin/node`
-
-If it says “File exists”, `rm /usr/local/bin/node` and rerun the command above.
-
-Drawback ❌: This sym-link will be obsolete as soon as the path of your node instance changes. To prevent this, you can command above to your .bashrc. Thus, the command will be run each time you open a new terminal
-
-#### Second option
-
-Add node with brew: `brew install node`
-
-Drawback ❌: If you were using a node version manager (nvm, fnm, ...) you will now have two different node instances
-
-</details>
-
-<details>
   <summary>❌ error: An organization slug is required (provide with --org)</summary>
 
 This error means that the ~/.sentryclirc file has not been added correctly. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli)
