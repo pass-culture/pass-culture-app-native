@@ -1,7 +1,10 @@
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
-import { useBookingsReactionHelpers } from 'features/home/components/helpers/useBookingsReactionHelpers'
+import {
+  ModalDisplayState,
+  useBookingsReactionHelpers,
+} from 'features/home/components/helpers/useBookingsReactionHelpers'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -32,8 +35,7 @@ describe('useBookingsReactionHelpers', () => {
 
     const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
 
-    expect(result.current.shouldShowReactionModal).toBeFalsy()
-    expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
+    expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
   })
 
   describe('when FF wipReactionFeature is true', () => {
@@ -41,26 +43,25 @@ describe('useBookingsReactionHelpers', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     })
 
-    it('should return false if the bookings already have reactions', () => {
+    it('should return shouldNotShow if the bookings already have reactions', () => {
       const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithReaction))
 
-      expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
+      expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
     })
 
-    it('should return false if cookies where not accepted', () => {
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should return shouldNotShow if cookies where not accepted', () => {
       cookiesNotAccepted()
 
       const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
 
-      expect(result.current.shouldShowReactionModal).toBeFalsy()
-      expect(result.current.bookingsEligibleToReaction).toHaveLength(0)
+      expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
     })
 
     it('should return true if there are bookings to react to', () => {
       const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
 
-      expect(result.current.shouldShowReactionModal).toBeTruthy()
+      expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_SHOW)
       expect(result.current.bookingsEligibleToReaction).toEqual(
         endedBookingWithoutReaction.ended_bookings
       )

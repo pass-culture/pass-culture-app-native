@@ -1,18 +1,20 @@
-import { BookingsResponse } from 'api/gen'
-import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
+import { BookingReponse, BookingsResponse } from 'api/gen'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
+export enum ModalDisplayState {
+  PENDING = 'pending',
+  SHOULD_SHOW = 'shouldShow',
+  SHOULD_NOT_SHOW = 'shouldNotShow',
+}
+
 export const useBookingsReactionHelpers = (
-  bookings: BookingsResponse = {
-    ended_bookings: [],
-    ongoing_bookings: [],
-    hasBookingsAfter18: false,
-  }
-) => {
+  bookings: BookingsResponse | undefined = undefined
+): {
+  shouldShowReactionModal: ModalDisplayState
+  bookingsEligibleToReaction: Array<BookingReponse> | undefined
+} => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { isCookiesListUpToDate, cookiesLastUpdate } = useIsCookiesListUpToDate()
-  const isCookieConsentChecked = cookiesLastUpdate && isCookiesListUpToDate
 
   const bookingsEligibleToReaction =
     bookings?.ended_bookings?.filter(
@@ -21,17 +23,20 @@ export const useBookingsReactionHelpers = (
 
   const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
 
-  if (!isReactionFeatureActive || !isCookieConsentChecked)
+  if (bookings === undefined) {
     return {
-      shouldShowReactionModal: false,
+      shouldShowReactionModal: ModalDisplayState.PENDING,
+      bookingsEligibleToReaction: [],
+    }
+  }
+
+  // There is an issue with !isCookieConsentChecked it goes to true for an instant and disrupts the modal conflict management hook
+
+  if (!isReactionFeatureActive || !firstBookingWithoutReaction)
+    return {
+      shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,
       bookingsEligibleToReaction: [],
     }
 
-  if (!firstBookingWithoutReaction)
-    return {
-      shouldShowReactionModal: false,
-      bookingsEligibleToReaction,
-    }
-
-  return { shouldShowReactionModal: true, bookingsEligibleToReaction }
+  return { shouldShowReactionModal: ModalDisplayState.SHOULD_SHOW, bookingsEligibleToReaction }
 }
