@@ -10,7 +10,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { CATEGORY_ICONS, FilterBehaviour, hasIcon } from 'features/search/enums'
 import {
   ALL,
-  buildSearchPayloadValues,
   getCategoryChildren,
   getCategory,
   ROOT,
@@ -129,15 +128,11 @@ export const CategoriesModal = ({
 
   const handleSearchPress = useCallback(
     (form: CategoriesModalFormProps) => {
-      const categories = form.categoryStack
-        .map((categoryKey) => getCategory(categoryKey))
-        .filter((category) => !!category)
-      const searchPayload = buildSearchPayloadValues(categories)
-      if (searchPayload) {
-        const newSearchState = { ...searchState, ...searchPayload }
-        dispatch({ type: 'SET_STATE', payload: newSearchState })
-      }
-
+      const offerCategories = form.categoryStack.filter(
+        (categoryKey) => ![ROOT.key, ROOT_ALL.key, ALL.key].includes(categoryKey)
+      )
+      const newSearchState = { ...searchState, offerCategories }
+      dispatch({ type: 'SET_STATE', payload: newSearchState })
       hideModal()
     },
     [dispatch, hideModal, searchState]

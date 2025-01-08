@@ -156,14 +156,6 @@ export const isChild = (childKey: CategoryKey, parentKey: CategoryKey) => {
   return getCategoriesMapping()[parentKey]?.children.includes(childKey) ?? false
 }
 
-export function buildSearchPayloadValues(categories: BaseCategory[]) {
-  return categories.reduce((payload: Record<string, string>, category: BaseCategory) => {
-    if (category.searchFilter && category.searchValue)
-      payload[category.searchFilter] = category.searchValue
-    return payload
-  }, {})
-}
-
 export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
 
