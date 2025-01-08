@@ -4,6 +4,8 @@ set -o errexit -o nounset -o pipefail
 SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || true)"
 NIX_CONF="/etc/nix/nix.conf"
 
+SCRIPT_FOLDER="$(dirname "$(realpath "$0")")"
+
 is_nix_using_certificate() {
 	[ ! -e "$NIX_CONF" ] ||
 		grep "ssl-cert-file" "$NIX_CONF" >/dev/null
@@ -41,6 +43,6 @@ ensure_nix_use_certificate() {
 	restart_nix
 }
 
-if ./is_proxy_enabled.sh; then
+if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 	ensure_nix_use_certificate
 fi
