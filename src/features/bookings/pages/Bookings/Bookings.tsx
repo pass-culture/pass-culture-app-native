@@ -1,6 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
@@ -14,7 +13,6 @@ import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { QueryKeys } from 'libs/queryKeys'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -27,7 +25,6 @@ export function Bookings() {
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { data: bookings } = useBookings()
   const { mutate: addReaction } = useReactionMutation()
-  const queryClient = useQueryClient()
 
   const { ended_bookings: endedBookings = [] } = bookings ?? {}
 
@@ -50,16 +47,9 @@ export function Bookings() {
       reactionType: ReactionTypeEnum.NO_REACTION,
     }))
     if (mutationPayload.length > 0) {
-      addReaction(
-        { reactions: mutationPayload },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries([QueryKeys.AVAILABLE_REACTION])
-          },
-        }
-      )
+      addReaction({ reactions: mutationPayload })
     }
-  }, [addReaction, endedBookings, queryClient])
+  }, [addReaction, endedBookings])
 
   useFocusEffect(
     useCallback(() => {

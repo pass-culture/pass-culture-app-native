@@ -161,17 +161,12 @@ describe('Bookings', () => {
 
       await user.press(await screen.findByText('En cours'))
 
-      expect(mockMutate).toHaveBeenCalledWith(
-        {
-          reactions: [
-            { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
-            { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
-          ],
-        },
-        {
-          onSuccess: expect.any(Function),
-        }
-      )
+      expect(mockMutate).toHaveBeenCalledWith({
+        reactions: [
+          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
+          { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
+        ],
+      })
     })
 
     it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {
