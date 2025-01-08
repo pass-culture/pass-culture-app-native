@@ -16,7 +16,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-// import * as selectedVenueModule from
 
 jest.useFakeTimers()
 
