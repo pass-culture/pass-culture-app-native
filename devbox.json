@@ -1,5 +1,6 @@
 {
   "packages": [
+    // Chris utilise java -version 17 et peut build en local
     // needed to debug pipeline locally
     "act@latest",
     "gh@latest",
