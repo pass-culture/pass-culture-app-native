@@ -29,11 +29,13 @@ remove_certificate_safe() {
 	fi
 }
 
+set_password_and_accept_trusting_the_certificate() {
+	echo "${KEYTOOL_PASSWORD}"
+	echo "oui"
+}
+
 add_certificate() {
-	{
-		echo "${KEYTOOL_PASSWORD}"
-		echo "oui"
-	} |
+	set_password_and_accept_trusting_the_certificate |
 		sudo keytool -import -cacerts -file "$SSL_CERT_BUNDLE_FILE" >/dev/null
 }
 
