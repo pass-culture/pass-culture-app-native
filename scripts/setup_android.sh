@@ -42,6 +42,7 @@ image_for_sdk() {
 		ARCHITECTURE_SUFFIX="x86_64"
 	fi
 
+	# echo "system-images;android-$SDK_VERSION;default;$ARCHITECTURE_SUFFIX"
 	echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
 }
 
@@ -50,6 +51,7 @@ install_platforms_and_image() {
 
 	sdkmanager_install_accepting_licence \
 		--install \
+		"sources;android-$SDK_VERSION" \
 		"platforms;android-$SDK_VERSION" \
 		"$(image_for_sdk "$SDK_VERSION")"
 }
@@ -96,7 +98,9 @@ sdkmanager_install_accepting_licence \
 sdkmanager_install_accepting_licence \
 	--install \
 	"emulator" \
-	"platform-tools"
+	"platform-tools" \
+	"ndk;$(get_version 'ndkVersion')" \
+	"build-tools;$(get_version 'buildToolsVersion')"
 
 {
 	recreate_emulator \
