@@ -111,7 +111,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
   const navigateToNextQuestion = () => {
     if (isCurrentQuestionLastQuestion) {
       postCulturalSurveyAnswers({ answers })
-    } else {
+    } else if (nextQuestion) {
       push('CulturalSurveyQuestions', { question: nextQuestion })
     }
   }

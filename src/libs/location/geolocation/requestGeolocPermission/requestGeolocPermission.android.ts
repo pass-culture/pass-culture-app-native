@@ -4,25 +4,22 @@ import { AskGeolocPermission } from 'libs/location/types'
 
 import { GeolocPermissionState } from '../enums'
 
+const ACCESS_FINE_LOCATION = 'android.permission.ACCESS_FINE_LOCATION'
+const ACCESS_COARSE_LOCATION = 'android.permission.ACCESS_COARSE_LOCATION'
+
 const requestGeolocPermissionSystem: AskGeolocPermission = async () => {
   const permissions = await PermissionsAndroid.requestMultiple([
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+    ACCESS_FINE_LOCATION,
+    ACCESS_COARSE_LOCATION,
   ])
   if (
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] === 'granted' ||
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'granted'
+    permissions[ACCESS_FINE_LOCATION] === 'granted' ||
+    permissions[ACCESS_COARSE_LOCATION] === 'granted'
   ) {
     return GeolocPermissionState.GRANTED
   } else if (
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] === 'never_ask_again' ||
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'never_ask_again'
+    permissions[ACCESS_FINE_LOCATION] === 'never_ask_again' ||
+    permissions[ACCESS_COARSE_LOCATION] === 'never_ask_again'
   ) {
     return GeolocPermissionState.NEVER_ASK_AGAIN
   }
