@@ -26,7 +26,11 @@ export function useQueryDecorator(story, { parameters }) {
 }
 
 export const useQueryClient = () => {
-    return {
-        setQueryData: () => {}
-    }
+  return {
+    setQueryData: () => {},
+  }
+}
+
+export const onlineManager = {
+  isOnline: () => true,
 }
