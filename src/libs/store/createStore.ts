@@ -7,8 +7,13 @@ type Options = {
   persist?: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- we don't want to restrict the payload type
-export const createStore = <State>(name: string, defaultState: State, options?: Options) => {
+type Params<State> = {
+  name: string
+  defaultState: State
+  options?: Options
+}
+
+export const createStore = <State>({ name, defaultState, options }: Params<State>) => {
   const store = () => defaultState
   const persistedStore = persist(store, {
     name,

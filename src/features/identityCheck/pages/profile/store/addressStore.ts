@@ -7,10 +7,14 @@ type State = {
 
 const defaultState: State = { address: null }
 
-const useAddressStore = createStore('profile-address', defaultState, { persist: true })
+const useAddressStore = createStore({
+  name: 'profile-address',
+  defaultState,
+  options: { persist: true },
+})
 
 export const addressActions = createActions(useAddressStore, (set) => ({
-  setAddress: (payload: string) => set({ address: payload }),
+  setAddress: (address: string) => set({ address }),
   resetAddress: () => set(defaultState),
 }))
 

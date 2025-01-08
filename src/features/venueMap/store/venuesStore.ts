@@ -8,10 +8,10 @@ type State = {
 
 const defaultState: State = { venues: [] }
 
-const useVenuesStore = createStore('venue-map-venues', defaultState)
+const useVenuesStore = createStore({ name: 'venue-map-venues', defaultState })
 
 export const useVenues = () => useVenuesStore((state) => state.venues)
 
-export const venuesActions = createActions(useVenuesStore, (set: (payload: State) => void) => ({
-  setVenues: (payload: Venue[]) => set({ venues: payload }),
+export const venuesActions = createActions(useVenuesStore, (set) => ({
+  setVenues: (venues: Venue[]) => set({ venues }),
 }))

@@ -8,7 +8,7 @@ type State = {
 
 const defaultState: State = { venueTypeCode: null }
 
-const useVenueTypeCodeStore = createStore('venue-map-venue-type-code', defaultState)
+const useVenueTypeCodeStore = createStore({ name: 'venue-map-venue-type-code', defaultState })
 
 export const useVenueTypeCode = () => useVenueTypeCodeStore((state) => state.venueTypeCode)
 export const venueTypeCodeActions = createActions(useVenueTypeCodeStore, (set) => ({

@@ -10,11 +10,11 @@ type State = { name: Name | null }
 
 const defaultState: State = { name: null }
 
-const useNameStore = createStore('profile-name', defaultState, { persist: true })
+const useNameStore = createStore({ name: 'profile-name', defaultState, options: { persist: true } })
 
 export const useName = () => useNameStore((state) => state.name)
 
 export const nameActions = createActions(useNameStore, (set) => ({
-  setName: (payload: Name) => set({ name: payload }),
+  setName: (name: Name) => set({ name }),
   resetName: () => set(defaultState),
 }))

@@ -8,10 +8,14 @@ type State = {
 
 const defaultState: State = { initialVenues: [] }
 
-const useInitialVenuesStore = createStore('venue-map-store', defaultState, { persist: true })
+const useInitialVenuesStore = createStore({
+  name: 'venue-map-store',
+  defaultState,
+  options: { persist: true },
+})
 
 export const useInitialVenues = () => useInitialVenuesStore((state) => state.initialVenues)
 
 export const initialVenuesActions = createActions(useInitialVenuesStore, (set) => ({
-  setInitialVenues: (payload: Venue[]) => set({ initialVenues: payload }),
+  setInitialVenues: (initialVenues: Venue[]) => set({ initialVenues }),
 }))

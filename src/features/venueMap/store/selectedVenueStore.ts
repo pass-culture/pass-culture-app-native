@@ -8,14 +8,11 @@ type State = {
 
 const defaultState: State = { selectedVenue: null }
 
-const useSelectedVenueStore = createStore('venue-map-selected-venue', defaultState)
+const useSelectedVenueStore = createStore({ name: 'venue-map-selected-venue', defaultState })
 
 export const useSelectedVenue = () => useSelectedVenueStore((state) => state.selectedVenue)
 
-export const selectedVenueActions = createActions(
-  useSelectedVenueStore,
-  (set: (payload: State) => void) => ({
-    setSelectedVenue: (payload: GeolocatedVenue) => set({ selectedVenue: payload }),
-    removeSelectedVenue: () => set(defaultState),
-  })
-)
+export const selectedVenueActions = createActions(useSelectedVenueStore, (set) => ({
+  setSelectedVenue: (selectedVenue: GeolocatedVenue) => set({ selectedVenue }),
+  removeSelectedVenue: () => set(defaultState),
+}))

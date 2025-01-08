@@ -12,19 +12,19 @@ const defaultState: State = {
   venuesFilters: [],
 }
 
-const useVenuesFilterStore = createStore('venue-VenuesFilterilter', defaultState)
+const useVenuesFilterStore = createStore({ name: 'venue-filter', defaultState })
 
 export const useVenuesFilter = () => useVenuesFilterStore((state) => state.venuesFilters)
 
 export const venuesFilterActions = createActions(useVenuesFilterStore, (set) => ({
-  setVenuesFilters: (payload: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters: payload })),
-  addVenuesFilters: (payload: VenueTypeCodeKey[]) =>
+  setVenuesFilters: (venuesFilters: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters })),
+  addVenuesFilters: (VenueTypeCodeKeys: VenueTypeCodeKey[]) =>
     set((state: State) => ({
-      venuesFilters: Array.from(new Set([...state.venuesFilters, ...payload])),
+      venuesFilters: Array.from(new Set([...state.venuesFilters, ...VenueTypeCodeKeys])),
     })),
-  removeVenuesFilters: (payload: VenueTypeCodeKey[]) =>
+  removeVenuesFilters: (VenueTypeCodeKeys: VenueTypeCodeKey[]) =>
     set((state: State) => ({
-      venuesFilters: difference(state.venuesFilters, payload),
+      venuesFilters: difference(state.venuesFilters, VenueTypeCodeKeys),
     })),
   reset: () => set((_) => ({ venuesFilters: [] })),
 }))
