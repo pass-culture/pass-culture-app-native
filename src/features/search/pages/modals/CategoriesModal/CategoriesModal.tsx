@@ -90,7 +90,7 @@ export const CategoriesModal = ({
 
   const currentItem =
     (categoryStack[currentIndex] && getCategory(categoryStack[currentIndex])) || ROOT
-  const children = getCategoryChildren(currentItem.key).toSorted(sortCategoriesPredicate)
+  const children = getCategoryChildren(currentItem.key)
 
   const next = currentIndex + 1 // helps typing on next line
   const selectedChild = (categoryStack[next] && getCategory(categoryStack[next])) || ALL
@@ -114,8 +114,12 @@ export const CategoriesModal = ({
   }, [handleModalClose, onClose])
 
   const handleGoBack = useCallback(() => {
-    const newIndex = Math.max(currentIndex - 1, 0)
-    setValue('currentIndex', newIndex)
+    if (isRootLevel) {
+      handleModalClose()
+    } else {
+      const newIndex = Math.max(currentIndex - 1, 0)
+      setValue('currentIndex', newIndex)
+    }
   }, [currentIndex, setValue])
 
   const handleSearchPress = useCallback(
@@ -227,7 +231,9 @@ export const CategoriesModal = ({
           title={currentItem.label}
           onGoBack={handleGoBack}
           onClose={handleClose}
-          shouldDisplayBackButton={!isRootLevel && filterBehaviour === FilterBehaviour.SEARCH}
+          shouldDisplayBackButton={
+            !isRootLevel || filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+          }
           shouldDisplayCloseButton
         />
       }

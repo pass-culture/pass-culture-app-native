@@ -133,6 +133,7 @@ export const getCategoryChildren = (categoryKey: CategoryKey) => {
   return (category?.children ?? [])
     .map((category) => mapping[category])
     .filter((category) => !!category)
+    .sort(sortCategoriesPredicate)
 }
 
 export const getCategoryParents = (categoryKey: CategoryKey) => {
