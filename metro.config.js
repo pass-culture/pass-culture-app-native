@@ -7,19 +7,22 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
  * @type {import('metro-config').MetroConfig}
  */
 const config = {
-  resolver: {
-    blockList: [
-      /*
-      Removes the following error that appears sometimes when starting metro
+  // resolver: {
+  //   blockList: [
+  //     /*
+  //     Removes the following error that appears sometimes when starting metro
 
-      metro-file-map: Haste module naming collision: @pass-culture/web-proxy
-      The following files share their name; please adjust your hasteImpl:
-          * <rootDir>/server/package.json
-          * <rootDir>/server/build/package.json
-      */
-      /^\/server/, // ça résout rien du tout, c'est flaky as fuck
-    ]
-  }
+  //     metro-file-map: Haste module naming collision: @pass-culture/web-proxy
+  //     The following files share their name; please adjust your hasteImpl:
+  //         * <rootDir>/server/package.json
+  //         * <rootDir>/server/build/package.json
+  //     */
+  //     // /^\/server\//, // ça résout rien du tout, c'est flaky as fuck
+  //     // /^server\//, // ça résout rien du tout, c'est flaky as fuck
+  //     // /server\/package\.json/, // ça résout rien du tout, c'est flaky as fuck
+  //     // /\/server\//, // ça résout rien du tout, c'est flaky as fuck
+  //   ]
+  // }
 }
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config)
