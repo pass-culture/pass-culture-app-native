@@ -5,8 +5,7 @@ import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/he
 import { ListCategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematicPageList/useHasAThematicPageList'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
@@ -23,28 +22,9 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categories = useAvailableCategories()
   const { data } = useSubcategories()
-  const enableWipPageThematicSearchBooks = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1
-  )
-  const enableWipPageThematicSearchCinema = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_SEARCH_N1_CINEMA
-  )
-  const enableWipPageThematicSearchFilmsDocumentairesEtSeries = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES
-  )
-  const enableWipPageThematicSearchMusic = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_MUSIC
-  )
-  const hasAThematicSearch = [
-    enableWipPageThematicSearchBooks ? 'LIVRES' : undefined,
-    enableWipPageThematicSearchCinema ? 'CINEMA' : undefined,
-    enableWipPageThematicSearchFilmsDocumentairesEtSeries
-      ? 'FILMS_DOCUMENTAIRES_SERIES'
-      : undefined,
-    enableWipPageThematicSearchMusic ? 'MUSIQUE' : undefined,
-  ]
+  const hasAThematicSearch = useHasAThematicPageList()
 
-  const navigateToSearch = (facetFilter: SearchGroupNameEnumv2) => {
+  const navigateTo = (facetFilter: SearchGroupNameEnumv2) => {
     const searchTabConfig = getNavigateToConfig(
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
@@ -62,7 +42,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   return categories
     .map<MappingOutput>((category) => ({
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
-      navigateTo: navigateToSearch(category.facetFilter),
+      navigateTo: navigateTo(category.facetFilter),
       position: category.position,
       textColor: category.textColor,
       borderColor: category.borderColor,
