@@ -1,5 +1,6 @@
 import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
+import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -9,6 +10,7 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/firebase/analytics/analytics')
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const achievements: AchievementResponse[] = [
@@ -37,13 +39,15 @@ describe('useShouldShowAchievementSuccessModal', () => {
       useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
-    it('should return false', () => {
+    it('should return shouldNotShow', () => {
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
-    it('should return false even if there are achievements to show to the user', () => {
+    it('should return shouldNotShow even if there are achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: achievements,
@@ -51,7 +55,9 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
   })
 
@@ -71,13 +77,15 @@ describe('useShouldShowAchievementSuccessModal', () => {
       useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
-    it('should return false', () => {
+    it('should return shouldNotShow', () => {
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
-    it('should return false if there no achievements to show to the user', () => {
+    it('should return shouldNotShow if there no achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: [],
@@ -85,10 +93,12 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
-    it('should return false if the achievements are undefined', () => {
+    it('should return shouldNotShow if the achievements are undefined', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: undefined as unknown as AchievementResponse[],
@@ -96,7 +106,9 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
     it('should return an empty array if there are no achievements to show to the user', () => {
@@ -110,7 +122,7 @@ describe('useShouldShowAchievementSuccessModal', () => {
       expect(result.current.achievementsToShow).toEqual([])
     })
 
-    it('should return true if there are achievements to show to the user', () => {
+    it('should return shouldShow if there are achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: achievements,
@@ -118,18 +130,9 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeTruthy()
-    })
-
-    it('should return false if another modal is open even if there are achievements to show to the user', () => {
-      mockAuthContextWithUser({
-        ...beneficiaryUser,
-        achievements: achievements,
-      })
-
-      const { result } = renderHook(() => useShouldShowAchievementSuccessModal(true))
-
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_SHOW
+      )
     })
 
     it('should return an array with the achievements to show to the user', () => {
@@ -159,13 +162,15 @@ describe('useShouldShowAchievementSuccessModal', () => {
       useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
-    it('should return false', () => {
+    it('should return shouldNotShow', () => {
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
-    it('should return false even if there are achievements to show to the user', () => {
+    it('should return shouldNotShow even if there are achievements to show to the user', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: achievements,
@@ -173,7 +178,9 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toBeFalsy()
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
+        ModalDisplayState.SHOULD_NOT_SHOW
+      )
     })
 
     it('should return an array even if there are achievements to show to the user', () => {

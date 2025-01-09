@@ -53,6 +53,10 @@ describe('<Home/>', () => {
         modules: [formattedBusinessModule],
         homeEntryId: 'fakeEntryId',
       }) // Adding useBookingsReactionHelpers to Home.tsx caused an extra render
+      mockUseHomepageData.mockReturnValueOnce({
+        modules: [formattedBusinessModule],
+        homeEntryId: 'fakeEntryId',
+      }) // Adding useWhichModalToShow to Home.tsx caused an extra render
 
       const { container } = render(<Home />, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
