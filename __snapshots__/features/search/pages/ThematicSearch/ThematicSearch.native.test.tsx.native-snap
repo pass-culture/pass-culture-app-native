@@ -434,7 +434,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                             "marginLeft": 4,
                             "maxWidth": 100,
                           },
@@ -614,7 +614,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -698,7 +698,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -782,7 +782,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -866,7 +866,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -950,7 +950,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1034,7 +1034,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1118,7 +1118,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1202,7 +1202,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1286,7 +1286,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1370,7 +1370,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1454,7 +1454,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1538,7 +1538,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -1622,7 +1622,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -4248,7 +4248,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#161617",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -4262,7 +4262,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#696A6F",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -4373,7 +4373,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                                   "color": "#ffffff",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
-                                                  "lineHeight": 16,
+                                                  "lineHeight": 19.2,
                                                 },
                                               ]
                                             }
@@ -4715,7 +4715,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#161617",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -4729,7 +4729,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#696A6F",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -4840,7 +4840,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                                   "color": "#ffffff",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
-                                                  "lineHeight": 16,
+                                                  "lineHeight": 19.2,
                                                 },
                                               ]
                                             }
@@ -5182,7 +5182,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#161617",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -5196,7 +5196,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#696A6F",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -5307,7 +5307,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                                   "color": "#ffffff",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
-                                                  "lineHeight": 16,
+                                                  "lineHeight": 19.2,
                                                 },
                                               ]
                                             }
@@ -5649,7 +5649,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#161617",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -5663,7 +5663,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#696A6F",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -5774,7 +5774,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                                   "color": "#ffffff",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
-                                                  "lineHeight": 16,
+                                                  "lineHeight": 19.2,
                                                 },
                                               ]
                                             }
@@ -6116,7 +6116,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#161617",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -6130,7 +6130,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#696A6F",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }
@@ -6241,7 +6241,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                                   "color": "#ffffff",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
-                                                  "lineHeight": 16,
+                                                  "lineHeight": 19.2,
                                                 },
                                               ]
                                             }
@@ -6599,7 +6599,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           "color": "#161617",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
-                                          "lineHeight": 16,
+                                          "lineHeight": 19.2,
                                         },
                                       ]
                                     }
@@ -6613,7 +6613,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
-                                          "lineHeight": 16,
+                                          "lineHeight": 19.2,
                                         },
                                       ]
                                     }
@@ -6724,7 +6724,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                               "color": "#ffffff",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
-                                              "lineHeight": 16,
+                                              "lineHeight": 19.2,
                                             },
                                           ]
                                         }

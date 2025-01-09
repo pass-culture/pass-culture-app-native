@@ -348,7 +348,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -398,7 +398,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     "color": "#90949D",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                   },
                 ]
               }
@@ -617,7 +617,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           "color": "#0E8474",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                           "marginBottom": 4,
                         },
                       ]
@@ -648,7 +648,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                           "marginBottom": 4,
                         },
                       ]

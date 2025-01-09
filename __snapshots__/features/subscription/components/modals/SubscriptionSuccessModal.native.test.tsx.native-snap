@@ -401,7 +401,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]
@@ -1063,7 +1063,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]
@@ -1725,7 +1725,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]
@@ -2387,7 +2387,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]
@@ -3049,7 +3049,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]
@@ -3711,7 +3711,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "textAlign": "center",
                     },
                   ]

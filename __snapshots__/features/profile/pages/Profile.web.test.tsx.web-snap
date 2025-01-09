@@ -332,7 +332,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -495,7 +495,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -614,7 +614,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -802,7 +802,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -854,7 +854,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Instagram
@@ -892,7 +892,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               X
@@ -930,7 +930,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Tiktok
@@ -968,7 +968,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Facebook
@@ -1084,7 +1084,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         CGU utilisateurs
@@ -1122,7 +1122,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         Charte des données personnelles
@@ -1490,7 +1490,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1653,7 +1653,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1772,7 +1772,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1960,7 +1960,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -2012,7 +2012,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Instagram
@@ -2050,7 +2050,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               X
@@ -2088,7 +2088,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Tiktok
@@ -2126,7 +2126,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-height-hdaws3"
                             />
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Facebook
@@ -2242,7 +2242,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         CGU utilisateurs
@@ -2280,7 +2280,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         Charte des données personnelles

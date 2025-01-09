@@ -268,7 +268,7 @@ const OfferDetails = styled.View(({ theme }) => ({
 
 const StyledOfferTitle = styled(Typo.ButtonText)``
 
-const AdditionalDetail = styled(Typo.Caption)(({ theme }) => ({
+const AdditionalDetail = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   marginTop: getSpacing(1),
 }))

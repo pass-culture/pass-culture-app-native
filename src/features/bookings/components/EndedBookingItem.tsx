@@ -20,7 +20,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   booking: Booking
@@ -111,7 +111,7 @@ export const EndedBookingItem = ({
                 booking={booking}
                 isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
               />
-              <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
+              <CaptionNeutralInfo>{endedBookingDateLabel}</CaptionNeutralInfo>
             </EndedReasonAndDate>
           </AttributesView>
         </ContentContainerGap>
@@ -151,3 +151,7 @@ const EndedReasonAndDate = styled(ViewGap)({
   alignItems: 'center',
   flexWrap: 'wrap',
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

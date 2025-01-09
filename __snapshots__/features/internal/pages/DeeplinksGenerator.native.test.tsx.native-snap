@@ -1994,7 +1994,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -2265,7 +2265,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -2385,7 +2385,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -2505,7 +2505,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -2625,7 +2625,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -2746,7 +2746,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -3017,7 +3017,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           "color": "#CBCDD2",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -3086,7 +3086,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "color": "#b60025",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "paddingVertical": 6,
                   },
                 ]

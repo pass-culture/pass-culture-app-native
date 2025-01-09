@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type SupportedBrowsers = Array<{
   browser: string
@@ -82,7 +82,9 @@ export const BrowserNotSupportedPage: React.FC<{
           })}
         </VerticalUl>
         <Spacer.Column numberOfSpaces={5} />
-        <Typo.Caption>Mets vite à jour ton navigateur en allant dans les paramètres</Typo.Caption>
+        <TypoDS.BodyAccentXs>
+          Mets vite à jour ton navigateur en allant dans les paramètres
+        </TypoDS.BodyAccentXs>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
           wording="J’accède au pass Culture sans mettre à jour mon navigateur"

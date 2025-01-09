@@ -7,7 +7,7 @@ import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -41,7 +41,7 @@ export const CheckboxBlock = ({
         {LeftIcon ? <LeftIcon /> : null}
         <View>
           <Typo.ButtonText>{label}</Typo.ButtonText>
-          {sublabel ? <Typo.CaptionNeutralInfo>{sublabel}</Typo.CaptionNeutralInfo> : null}
+          {sublabel ? <CaptionNeutralInfo>{sublabel}</CaptionNeutralInfo> : null}
         </View>
       </InnerContainer>
       <Box checked={checked}>{checked ? <CheckboxMark /> : null}</Box>
@@ -84,4 +84,8 @@ const Box = styled.View<{ checked: boolean }>(({ checked, theme }) => ({
   borderWidth: getSpacing(0.25),
   borderColor: checked ? theme.colors.primary : theme.colors.greySemiDark,
   backgroundColor: checked ? theme.colors.primary : theme.colors.white,
+}))
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

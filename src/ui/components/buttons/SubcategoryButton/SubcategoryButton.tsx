@@ -3,7 +3,7 @@ import { Platform, useWindowDimensions } from 'react-native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getShadow, Typo } from 'ui/theme'
+import { getShadow, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import type { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -72,7 +72,7 @@ const StyledTouchable = styledButton(Touchable)<{
   padding: getSpacing(2),
 }))
 
-const StyledText = styledButton(Typo.Caption).attrs({
+const StyledText = styledButton(TypoDS.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),

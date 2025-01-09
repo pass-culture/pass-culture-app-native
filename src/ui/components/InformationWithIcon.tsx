@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const InformationWithIcon: FunctionComponent<{
   Icon: React.FC<AccessibleBicolorIcon>
@@ -38,9 +38,10 @@ const Info = styled(TypoDS.Body)({
   flex: 1,
 })
 
-const Subtitle = styled(Typo.CaptionNeutralInfo)({
+const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
   flex: 1,
-})
+}))
 
 const TextContainer = styled.View({
   flexDirection: 'column',

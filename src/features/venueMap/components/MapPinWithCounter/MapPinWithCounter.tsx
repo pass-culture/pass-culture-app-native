@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { MapPin } from 'ui/svg/icons/MapPin'
-import { getShadow, getSpacing, Typo } from 'ui/theme'
+import { getShadow, getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   count: number
@@ -20,7 +20,7 @@ export const MapPinWithCounter: FunctionComponent<Props> = ({ count }) => {
       <MapPin />
 
       <NumberContainer testID="numberContainer">
-        <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
+        <TypoDS.BodyAccentXs>{count < 100 ? String(count) : '99+'}</TypoDS.BodyAccentXs>
       </NumberContainer>
     </Container>
   )

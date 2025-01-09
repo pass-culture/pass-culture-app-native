@@ -4,7 +4,7 @@ import { OfferStockResponse } from 'api/gen'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 interface PriceLineProps {
   quantity?: number
@@ -26,8 +26,8 @@ export function PriceLine({
   const totalPrice = formatCurrencyFromCents(quantity * unitPrice, currency, euroToPacificFrancRate)
   const price = formatCurrencyFromCents(unitPrice, currency, euroToPacificFrancRate)
 
-  const MainText = shouldDisabledStyles ? TypoDS.Body : Typo.Caption
-  const SecondaryText = shouldDisabledStyles ? TypoDS.Body : Typo.CaptionNeutralInfo
+  const MainText = shouldDisabledStyles ? TypoDS.Body : TypoDS.BodyAccentXs
+  const SecondaryText = shouldDisabledStyles ? TypoDS.Body : TypoDS.BodyAccentXs
 
   const shouldDisplayAttributes = attributes?.length
 

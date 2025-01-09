@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Typo, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 interface HeaderIconProps {
   wording: 'Fermer' | 'Quitter' | 'Annuler'
@@ -12,7 +12,7 @@ interface HeaderIconProps {
 export const RightButtonText: FunctionComponent<HeaderIconProps> = ({ onClose, wording }) => {
   return (
     <StyledTouchable onPress={onClose}>
-      <Typo.Caption>{wording}</Typo.Caption>
+      <TypoDS.BodyAccentXs>{wording}</TypoDS.BodyAccentXs>
     </StyledTouchable>
   )
 }

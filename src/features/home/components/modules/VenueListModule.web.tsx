@@ -7,7 +7,7 @@ import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type ModuleProps = {
   moduleId: string
@@ -37,9 +37,9 @@ const ListHeaderComponent: FunctionComponent<ModuleProps> = ({
 
   return (
     <StyledView {...focusProps}>
-      <Typo.Caption numberOfLines={1}>
+      <TypoDS.BodyAccentXs numberOfLines={1}>
         {'Les lieux culturels à proximité'.toUpperCase()}
-      </Typo.Caption>
+      </TypoDS.BodyAccentXs>
       <SeeMoreWithEye
         title="liste des lieux"
         titleSeeMoreLink={{

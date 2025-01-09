@@ -1,20 +1,25 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export function ChangeEmailDisclaimer() {
   return (
     <React.Fragment>
-      <Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>
         Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
-      </Typo.CaptionNeutralInfo>
+      </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>
         Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
-      </Typo.CaptionNeutralInfo>
+      </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
       <Separator.Horizontal />
     </React.Fragment>
   )
 }
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

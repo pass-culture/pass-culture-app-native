@@ -6,7 +6,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type ButtonWithCaptionProps = {
   onPress: () => void
@@ -47,7 +47,7 @@ const ButtonWithCaptionContainer = styled.View({
   alignItems: 'center',
 })
 
-const ButtonCaption = styled(Typo.Caption)(({ theme }) => ({
+const ButtonCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

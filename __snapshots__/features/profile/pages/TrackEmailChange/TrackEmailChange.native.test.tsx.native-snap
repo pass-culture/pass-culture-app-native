@@ -673,7 +673,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -1383,7 +1383,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -2797,7 +2797,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -3731,7 +3731,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -4441,7 +4441,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -5883,7 +5883,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }
@@ -7529,7 +7529,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
-                            "lineHeight": 16,
+                            "lineHeight": 19.2,
                           },
                         ]
                       }

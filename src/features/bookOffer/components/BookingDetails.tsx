@@ -227,7 +227,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={LocationBuilding}
         message={
           <VenueContainer>
-            <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+            <TypoDS.BodyAccentXs testID="venueName">{venueName}</TypoDS.BodyAccentXs>
             <Spacer.Column numberOfSpaces={1} />
             <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
           </VenueContainer>
@@ -313,10 +313,11 @@ const Separator = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const Caption = styled(Typo.CaptionNeutralInfo)({
+const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
 
 const VenueTitleContainer = styled.View({
   flexDirection: 'row',

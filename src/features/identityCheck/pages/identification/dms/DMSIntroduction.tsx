@@ -18,7 +18,7 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
@@ -90,7 +90,7 @@ const StyledBody = styled(TypoDS.Body)({
   marginBottom: getSpacing(5),
 })
 
-const StyledCaption = styled(Typo.Caption)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)({
   textAlign: 'center',
 })
 

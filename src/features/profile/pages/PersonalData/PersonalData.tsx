@@ -16,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
@@ -52,14 +52,14 @@ export function PersonalData() {
     <SecondaryPageWithBlurHeader title="Informations personnelles">
       {user?.isBeneficiary ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>Prénom et nom</Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <TypoDS.Body>{fullname}</TypoDS.Body>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
 
-      <Typo.CaptionNeutralInfo>Adresse e-mail</Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>Adresse e-mail</CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
@@ -75,7 +75,7 @@ export function PersonalData() {
 
       {user?.isBeneficiary && user?.phoneNumber ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>Numéro de téléphone</Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Numéro de téléphone</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <TypoDS.Body>{user?.phoneNumber}</TypoDS.Body>
           <StyledSeparator />
@@ -84,7 +84,7 @@ export function PersonalData() {
 
       {user?.hasPassword ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>Mot de passe</Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Mot de passe</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
             <EditText>{'*'.repeat(12)}</EditText>
@@ -100,7 +100,7 @@ export function PersonalData() {
 
       {user?.isBeneficiary ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Statut</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
             <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
@@ -116,7 +116,7 @@ export function PersonalData() {
 
       {user?.isBeneficiary ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Ville de résidence</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
             <EditText numberOfLines={2}>{city}</EditText>
@@ -167,3 +167,7 @@ const EditText = styled(TypoDS.Body)({
   flexShrink: 1,
   marginRight: getSpacing(2),
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

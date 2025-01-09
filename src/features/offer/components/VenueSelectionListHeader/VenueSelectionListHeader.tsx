@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -44,6 +44,6 @@ const ListHeaderContainer = styled.View({
   width: '100%',
 })
 
-const HeaderMessageText = styled(Typo.Caption)(({ theme }) => ({
+const HeaderMessageText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

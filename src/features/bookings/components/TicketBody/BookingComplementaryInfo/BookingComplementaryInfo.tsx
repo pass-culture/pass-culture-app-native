@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   title: string
@@ -10,8 +10,8 @@ type Props = {
 
 export const BookingComplementaryInfo: FunctionComponent<Props> = ({ title, value }) => (
   <Container testID="bookingComplementaryInfo">
-    <Typo.Caption>{title}&nbsp;</Typo.Caption>
-    <Typo.CaptionNeutralInfo>{value}</Typo.CaptionNeutralInfo>
+    <TypoDS.BodyAccentXs>{title}&nbsp;</TypoDS.BodyAccentXs>
+    <CaptionNeutralInfo>{value}</CaptionNeutralInfo>
   </Container>
 )
 
@@ -21,3 +21,7 @@ const Container = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

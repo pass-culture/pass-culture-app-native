@@ -654,7 +654,7 @@ exports[`EndedBookings should render correctly 1`] = `
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1108,7 +1108,7 @@ exports[`EndedBookings should render correctly 1`] = `
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }

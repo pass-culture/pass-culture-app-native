@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   value: number
@@ -32,7 +32,7 @@ const Wrapper = styled.View({
   paddingHorizontal: getSpacing(0.5),
 })
 
-const Caption = styled(Typo.Caption)(({ theme }) => ({
+const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))

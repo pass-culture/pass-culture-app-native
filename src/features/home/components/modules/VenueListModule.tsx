@@ -16,7 +16,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type HeaderProps = {
   onPress?: VoidFunction
@@ -45,7 +45,7 @@ const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
   return (
     <React.Fragment>
       <Component {...props} {...focusProps}>
-        <Typo.Caption>{'Les lieux culturels à proximité'.toUpperCase()}</Typo.Caption>
+        <TypoDS.BodyAccentXs>{'Les lieux culturels à proximité'.toUpperCase()}</TypoDS.BodyAccentXs>
         <ArrowRightIcon testID="arrow-right" />
       </Component>
       <Spacer.Column numberOfSpaces={4} />

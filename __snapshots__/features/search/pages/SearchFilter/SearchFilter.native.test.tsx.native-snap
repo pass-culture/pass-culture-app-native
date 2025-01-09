@@ -1338,7 +1338,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
-                "lineHeight": 16,
+                "lineHeight": 19.2,
                 "maxWidth": "100%",
               },
             ]

@@ -68,9 +68,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
       <Spacer.Column numberOfSpaces={6} />
       {isUserTransitioningTo18 ? (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>
-            Ton crédit précédent a été remis à {zero}.
-          </Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>Ton crédit précédent a été remis à {zero}.</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}
@@ -94,3 +92,7 @@ const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

@@ -26,7 +26,7 @@ import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -175,7 +175,7 @@ export const Calendar: React.FC<Props> = ({
 // Only works for iOS but still useful
 const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
-const Caption = styled(Typo.Caption)<{ status: OfferStatus }>(({ status, theme }) => ({
+const Caption = styled(TypoDS.BodyAccentXs)<{ status: OfferStatus }>(({ status, theme }) => ({
   color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
   textAlign: 'center',
 }))

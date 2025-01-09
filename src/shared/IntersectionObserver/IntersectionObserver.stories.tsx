@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 
 import { theme } from 'theme'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { IntersectionObserver } from './IntersectionObserver'
 
@@ -32,13 +32,13 @@ const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
   return (
     <IntersectionObserverScrollView style={styles.scrollView}>
       <View style={styles.stateObserverView}>
-        <Typo.Caption>
+        <TypoDS.BodyAccentXs>
           {inView ? 'Observer visible' : 'Observer not visible'} - scroll to test
-        </Typo.Caption>
+        </TypoDS.BodyAccentXs>
       </View>
       <IntersectionObserver onChange={handleChange} threshold={props.threshold}>
         <View style={styles.observerView}>
-          <Typo.Caption>The observer</Typo.Caption>
+          <TypoDS.BodyAccentXs>The observer</TypoDS.BodyAccentXs>
         </View>
       </IntersectionObserver>
     </IntersectionObserverScrollView>

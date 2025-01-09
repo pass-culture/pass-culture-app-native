@@ -204,7 +204,7 @@ export const Favorite: React.FC<Props> = (props) => {
                   {displayPrice ? (
                     <React.Fragment>
                       <Spacer.Column numberOfSpaces={1} />
-                      <Typo.Caption>{displayPrice}</Typo.Caption>
+                      <TypoDS.BodyAccentXs>{displayPrice}</TypoDS.BodyAccentXs>
                     </React.Fragment>
                   ) : null}
                 </LeftContent>

@@ -13,7 +13,7 @@ import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiar
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategory } from 'libs/subcategories'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export interface BookingDetailsCancelButtonProps {
@@ -92,7 +92,8 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   )
 }
 
-const StyledCaption = styled(Typo.CaptionNeutralInfo)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   marginBottom: getSpacing(6),
-})
+  color: theme.colors.greyDark,
+}))

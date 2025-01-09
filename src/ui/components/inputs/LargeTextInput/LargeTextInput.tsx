@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
@@ -58,9 +58,9 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
           />
         </InputErrorContainer>
         <CountContainer>
-          <Typo.CaptionNeutralInfo>
+          <CaptionNeutralInfo>
             {value ? value.length : 0} / {maxValueLength}
-          </Typo.CaptionNeutralInfo>
+          </CaptionNeutralInfo>
         </CountContainer>
       </FooterContainer>
     </React.Fragment>
@@ -83,3 +83,7 @@ const CountContainer = styled.View({
   textAlign: 'end',
   width: getSpacing(18),
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

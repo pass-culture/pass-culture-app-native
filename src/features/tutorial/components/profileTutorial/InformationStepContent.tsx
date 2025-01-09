@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   title: string
@@ -22,7 +22,7 @@ const StyledButtonText = styled(Typo.ButtonText).attrs({ numberOfLines: 3 })({
   marginLeft: getSpacing(1.5),
   justifyContent: 'center',
 })
-const StyledCaption = styled(Typo.Caption)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)({
   marginLeft: getSpacing(1.5),
   justifyContent: 'center',
 })

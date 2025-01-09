@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { StepButtonState } from 'ui/components/StepButton/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 
 interface StepCardProps extends ViewProps {
   title: string
@@ -36,9 +36,7 @@ export function StepCard({
         </IconContainer>
         <TextContainter>
           <Title type={type}>{title}</Title>
-          {shouldDisplaySubtitle ? (
-            <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
-          ) : null}
+          {shouldDisplaySubtitle ? <CaptionNeutralInfo>{subtitle}</CaptionNeutralInfo> : null}
         </TextContainter>
       </Container>
     </Parent>
@@ -74,6 +72,10 @@ const TextContainter = styled.View({
 
 const Title = styled(Typo.ButtonText)<{ type: StepButtonState }>(({ theme, type }) => ({
   color: type === StepButtonState.CURRENT ? theme.colors.black : theme.colors.greyDark,
+}))
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 function getIconWithColors(icon: ReactElement, type: StepButtonState, theme: DefaultTheme) {

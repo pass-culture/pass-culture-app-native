@@ -2,7 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo, GUTTER_DP, getSpacing } from 'ui/theme'
+import { GUTTER_DP, getSpacing, TypoDS } from 'ui/theme'
 
 interface ImageCaptionProps {
   categoryLabel: string | null
@@ -31,11 +31,11 @@ export const ImageCaption = ({ categoryLabel, height, width, distance }: ImageCa
   )
 }
 
-const CategoryLabel = styled(Typo.Caption)(({ theme }) => ({
+const CategoryLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Distance = styled(Typo.Caption)(({ theme }) => ({
+const Distance = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

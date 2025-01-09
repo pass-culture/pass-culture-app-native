@@ -8,7 +8,7 @@ import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGenerat
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, padding, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, padding, Spacer, TypoDS } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
   history: Readonly<GeneratedDeeplink[]>
@@ -104,7 +104,9 @@ export const DeeplinksHistory = ({
 
 const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {
   const indice = `#${index}`
-  return <DeeplinkItem before={<Typo.Caption>{indice}</Typo.Caption>} deeplink={item} />
+  return (
+    <DeeplinkItem before={<TypoDS.BodyAccentXs>{indice}</TypoDS.BodyAccentXs>} deeplink={item} />
+  )
 }
 
 const flatListStyle = { marginVertical: getSpacing(4) }

@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export interface CodeNotReceivedModalProps {
   isVisible: boolean
@@ -78,7 +78,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
         <Spacer.Column numberOfSpaces={8} />
         <BottomContentContainer>
           <WarningContainer>
-            <Typo.CaptionNeutralInfo>Attention, il te reste&nbsp;: </Typo.CaptionNeutralInfo>
+            <CaptionNeutralInfo>Attention, il te reste&nbsp;: </CaptionNeutralInfo>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording}
             </WarningRemainingAttempts>
@@ -108,8 +108,12 @@ const WarningContainer = styled.View({
   flexDirection: 'row',
 })
 
-const WarningRemainingAttempts = styled(Typo.Caption)<{ isLastAttempt: boolean }>(
+const WarningRemainingAttempts = styled(TypoDS.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
     color: isLastAttempt ? theme.colors.error : theme.colors.black,
   })
 )
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

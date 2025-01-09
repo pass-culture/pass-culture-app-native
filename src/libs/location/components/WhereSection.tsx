@@ -91,7 +91,7 @@ export const WhereSection: React.FC<Props> = ({
       {address ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>Adresse</Typo.Caption>
+          <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
           <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
@@ -99,7 +99,7 @@ export const WhereSection: React.FC<Props> = ({
       {distanceToLocation ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>Distance</Typo.Caption>
+          <TypoDS.BodyAccentXs>Distance</TypoDS.BodyAccentXs>
           <Spacer.Column numberOfSpaces={1} />
           <TypoDS.Body>{distanceToLocation}</TypoDS.Body>
         </React.Fragment>

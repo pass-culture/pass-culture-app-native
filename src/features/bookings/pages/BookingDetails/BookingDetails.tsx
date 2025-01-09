@@ -46,7 +46,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -208,9 +208,9 @@ export function BookingDetails() {
                 <ViewGap gap={2.5}>
                   <TypoDS.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</TypoDS.Title4>
 
-                  <Typo.CaptionNeutralInfo>
+                  <CaptionNeutralInfo>
                     Si tu n’as pas reçu tes billets, contacte l’organisateur
-                  </Typo.CaptionNeutralInfo>
+                  </CaptionNeutralInfo>
 
                   <SendEmailContainer>
                     <ExternalTouchableLink
@@ -297,9 +297,10 @@ const StyledScrollView = styled.ScrollView.attrs({
   },
 })``
 
-const OfferRules = styled(Typo.CaptionNeutralInfo)({
+const OfferRules = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
   textAlign: 'center',
-})
+}))
 
 const InfoContainer = styled(ViewGap)({
   paddingHorizontal: getSpacing(6),
@@ -317,3 +318,7 @@ const SendEmailContainer = styled.View({
 const StyledHeaderWithImage = styled(HeaderWithImage)({
   marginBottom: getSpacing(offerImageContainerMarginTop),
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

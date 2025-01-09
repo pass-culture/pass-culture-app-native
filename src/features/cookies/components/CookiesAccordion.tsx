@@ -11,7 +11,7 @@ import { Accordion } from 'ui/components/Accordion'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Separator } from 'ui/components/Separator'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const CookiesAccordion = ({
   cookie,
@@ -71,10 +71,10 @@ const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
     <IconContainer>
       <StyledInfo />
     </IconContainer>
-    <Typo.CaptionNeutralInfo>
+    <CaptionNeutralInfo>
       <IconSpacer />
       {children}
-    </Typo.CaptionNeutralInfo>
+    </CaptionNeutralInfo>
   </View>
 )
 
@@ -102,3 +102,7 @@ const StyledAccordionItem = styled(Accordion).attrs({
     paddingHorizontal: 0,
   },
 })``
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

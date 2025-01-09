@@ -12,7 +12,7 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const checkboxID = uuidv4()
@@ -59,7 +59,7 @@ export const CookiesSettings = ({
       </TypoDS.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
-        <StyledCaptionNeutralInfo>Je choisis mes cookies</StyledCaptionNeutralInfo>
+        <CaptionNeutralInfo>Je choisis mes cookies</CaptionNeutralInfo>
         <AcceptAllContainer>
           <StyledInputLabel id={labelID} htmlFor={checkboxID}>
             {inputLabel}
@@ -93,9 +93,10 @@ const ChoiceContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const StyledCaptionNeutralInfo = styled(Typo.CaptionNeutralInfo)`
-  flex-shrink: 1;
-`
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  flexShrink: 1,
+}))
 
 const AcceptAllContainer = styled.View({
   flexDirection: 'row',
@@ -103,6 +104,6 @@ const AcceptAllContainer = styled.View({
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.typography.caption,
+  ...theme.designSystem.typography.bodyAccentXs,
   color: theme.colors.greyDark,
 }))

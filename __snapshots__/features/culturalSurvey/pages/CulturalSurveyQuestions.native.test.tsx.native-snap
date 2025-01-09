@@ -238,7 +238,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                       "marginLeft": 8,
                     },
                   ]
@@ -327,7 +327,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
-                "lineHeight": 16,
+                "lineHeight": 19.2,
               },
             ]
           }
@@ -502,7 +502,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -669,7 +669,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -836,7 +836,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1003,7 +1003,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1476,7 +1476,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1643,7 +1643,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -1810,7 +1810,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "lineHeight": 16,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
