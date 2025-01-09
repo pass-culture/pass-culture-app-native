@@ -7,105 +7,21 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
+import {
+  ALL,
+  BaseCategory,
+  CategoriesMapping,
+  CategoryKey,
+  DEFAULT_CATEGORIES,
+  ROOT,
+  ROOT_ALL,
+  TopLevelCategory,
+} from 'features/search/helpers/categoriesHelpers/categories'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
-export type CategoryKey = NativeCategoryIdEnumv2 | SearchGroupNameEnumv2 | string
-
-export type BaseCategory = {
-  children: CategoryKey[]
-  label: string
-  key: CategoryKey
-  position?: number
-  searchFilter?: string
-  searchValue?: string
-  nbResultsFacet?: number
-  showChildren?: boolean
-}
-export type CategoriesMapping = Record<CategoryKey, BaseCategory>
-export type TopLevelCategory = BaseCategory & {
-  key: Exclude<SearchGroupNameEnumv2, SearchGroupNameEnumv2.NONE>
-}
-
-export const ROOT_ALL: BaseCategory = {
-  children: [],
-  label: ALL_CATEGORIES_LABEL,
-  key: 'NONE',
-  position: -Infinity,
-}
-export const ALL: BaseCategory = {
-  children: [],
-  label: 'Tout',
-  key: 'ALL',
-  position: -Infinity,
-}
-export const ROOT: BaseCategory = {
-  children: [],
-  label: 'Catégories',
-  key: 'ROOT',
-  position: -Infinity,
-}
-
-export type CategoryResponseModel = {
-  key: CategoryKey
-  label: string
-  position?: number
-  children: CategoryKey[]
-}
-
-const DEFAULT_CATEGORIES = [
-  { key: 'CINEMA', label: 'Cinéma', position: 2, children: ['SEANCE'] },
-  {
-    key: 'LIVRES',
-    label: 'Livres',
-    position: 1,
-    children: ['BIBLIOTHEQUE', 'LIVRES_PAPIER', 'LIVRES_AUDIO'],
-  },
-  {
-    key: 'LIVRES_PAPIER',
-    label: 'Livres papier',
-    position: 1,
-    children: ['ROMANS_ET_LITTERATURE', 'MANGAS'],
-    showChildren: true,
-  },
-  {
-    key: 'LIVRES_AUDIO',
-    label: 'Livres audio',
-    position: 2,
-    children: [],
-  },
-  {
-    key: 'BIBLIOTHEQUE',
-    label: 'Bibliothèque',
-    position: 3,
-    children: [],
-  },
-  {
-    key: 'ROMANS_ET_LITTERATURE',
-    label: 'Romans et littérature',
-    position: 1,
-    children: ['ROMANCE'],
-  },
-  {
-    key: 'MANGAS',
-    label: 'Mangas',
-    position: 2,
-    children: [],
-  },
-  {
-    key: 'ROMANCE',
-    label: 'Romance',
-    position: 1,
-    children: [],
-  },
-  { key: 'MUSIQUE', label: 'Musique', position: 3, children: ['SEANCE'] },
-  { key: 'SEANCE', label: 'Séance de cinéma', position: 1, children: ['THRILLER'] },
-  { key: 'THRILLER', label: 'Thriller', position: 1, children: [] },
-]
-
-export const getCategoriesMapping = (categories: CategoryResponseModel[] = DEFAULT_CATEGORIES) => {
+export const getCategoriesMapping = (categories: BaseCategory[] = DEFAULT_CATEGORIES) => {
   const mapping = categories.reduce<CategoriesMapping>((mapping, category) => {
     mapping[category.key] = structuredClone(category)
     return mapping

@@ -1,11 +1,6 @@
-import {
-  GenreType,
-  GTL,
-  NativeCategoryIdEnumv2,
-  SearchGroupNameEnumv2,
-  SubcategoryIdEnumv2,
-} from 'api/gen'
+import { GenreType, GTL, NativeCategoryIdEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { BaseCategory } from 'features/search/helpers/categoriesHelpers/categories'
 import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'

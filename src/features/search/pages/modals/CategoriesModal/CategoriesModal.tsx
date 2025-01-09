@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { CategoriesSectionBlock } from 'features/search/components/CategoriesSectionBlock/CategoriesSectionBlock'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -10,13 +11,15 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { CATEGORY_ICONS, FilterBehaviour, hasIcon } from 'features/search/enums'
 import {
   ALL,
-  getCategoryChildren,
-  getCategory,
-  ROOT,
-  sortCategoriesPredicate,
-  CategoryKey,
   BaseCategory,
+  CategoryKey,
+  ROOT,
   ROOT_ALL,
+} from 'features/search/helpers/categoriesHelpers/categories'
+import {
+  getCategory,
+  getCategoryChildren,
+  sortCategoriesPredicate,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
@@ -26,7 +29,6 @@ import { VerticalUl } from 'ui/components/Ul'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
-import { CategoriesSectionBlock } from 'features/search/components/CategoriesSectionBlock/CategoriesSectionBlock'
 
 const titleId = uuidv4()
 

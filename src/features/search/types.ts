@@ -16,7 +16,8 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
-import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { CategoryKey } from 'features/search/helpers/categoriesHelpers/categories'
+
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string

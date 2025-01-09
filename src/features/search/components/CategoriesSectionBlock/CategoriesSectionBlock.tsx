@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 
-import { BaseCategory } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
+import { BaseCategory } from 'features/search/helpers/categoriesHelpers/categories'
 import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
-import { Spacer, TypoDS } from 'ui/theme'
 import { Separator } from 'ui/components/Separator'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { Spacer, TypoDS } from 'ui/theme'
 
 interface CategoriesSectionBlockProps {
   getIcon: (categoryKey: string) => FC<AccessibleBicolorIcon> | undefined

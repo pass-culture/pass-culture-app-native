@@ -2,10 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import {
-  BaseCategory,
-  getNbResultsFacetLabel,
-} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { BaseCategory } from 'features/search/helpers/categoriesHelpers/categories'
+import { getNbResultsFacetLabel } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'

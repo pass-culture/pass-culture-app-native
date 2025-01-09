@@ -1,4 +1,5 @@
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { getCategory } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildAccessibiltyFiltersPredicate,
