@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryButton } from 'features/home/components/modules/categories/CategoryButton'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 

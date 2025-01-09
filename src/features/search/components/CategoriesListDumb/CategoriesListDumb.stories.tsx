@@ -1,11 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchCategoriesIllustrations } from 'features/search/enums'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
@@ -33,53 +32,79 @@ export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
 Default.args = {
   sortedCategories: [
     {
-      label: 'CD, vinyles, musique en ligne',
-      Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
-      onPress: action('Musique'),
-      baseColor: theme.colors.skyBlueDark,
-      gradients: [theme.colors.skyBlue, theme.colors.skyBlueDark],
+      label: 'Concerts & Festivals',
+      navigateTo: {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.CONCERTS_FESTIVALS },
+          isFullyDigitalOffersCategory: false,
+          withPush: true,
+        },
+      },
+      textColor: theme.colors.lilacDark,
+      fillColor: theme.colors.goldLight100,
+      borderColor: theme.colors.goldLight200,
+    },
+    {
+      label: 'Cinéma',
+      navigateTo: {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.CINEMA },
+          isFullyDigitalOffersCategory: false,
+          withPush: true,
+        },
+      },
       textColor: theme.colors.coralDark,
       borderColor: theme.colors.skyBlue,
       fillColor: theme.colors.skyBlueLight,
     },
     {
-      label: 'Cinéma',
-      Illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-      onPress: action('Cinéma'),
-      baseColor: theme.colors.aquamarineDark,
-      gradients: [theme.colors.aquamarine, theme.colors.aquamarineDark],
+      label: 'Films, séries et documentaires',
+      navigateTo: {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES },
+          isFullyDigitalOffersCategory: false,
+          withPush: true,
+        },
+      },
+      textColor: theme.colors.deepPinkDark,
+      borderColor: theme.colors.lilac,
+      fillColor: theme.colors.lilacLight,
+    },
+    {
+      label: 'Livres',
+      navigateTo: {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.LIVRES },
+          isFullyDigitalOffersCategory: false,
+          withPush: true,
+        },
+      },
       textColor: theme.colors.skyBlueDark,
       borderColor: theme.colors.coral,
       fillColor: theme.colors.coralLight,
     },
     {
-      label: 'Conférences, rencontres',
-      Illustration: SearchCategoriesIllustrations.ConferencesMeetings,
-      onPress: action('Livre'),
-      baseColor: theme.colors.goldDark,
-      gradients: [theme.colors.gold, theme.colors.goldDark],
-      textColor: theme.colors.aquamarineDark,
-      borderColor: theme.colors.deepPink,
-      fillColor: theme.colors.deepPinkLight,
-    },
-    {
-      label: 'Théâtre',
-      Illustration: SearchCategoriesIllustrations.Shows,
-      onPress: action('Théâtre'),
-      baseColor: theme.colors.coralDark,
-      gradients: [theme.colors.coral, theme.colors.coralDark],
-      textColor: theme.colors.skyBlueDark,
-      borderColor: theme.colors.coral,
-      fillColor: theme.colors.coralLight,
-    },
-    {
-      label: 'Concerts & festivals',
-      Illustration: SearchCategoriesIllustrations.ConcertsFestivals,
+      label: 'Musique',
+      navigateTo: {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.MUSIQUE },
+          isFullyDigitalOffersCategory: false,
+          withPush: true,
+        },
+      },
       textColor: theme.colors.lilacDark,
-      gradients: [theme.colors.gold, theme.colors.goldDark],
-      onPress: action('Concerts & festivals'),
-      fillColor: theme.colors.goldLight100,
-      borderColor: theme.colors.goldLight200,
+      borderColor: theme.colors.aquamarineDark,
+      fillColor: theme.colors.aquamarineLight,
     },
   ],
 }

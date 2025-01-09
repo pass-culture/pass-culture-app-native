@@ -500,6 +500,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
         >
           <View
             accessibilityLabel="Catégorie Concerts & festivals"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -532,6 +533,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
@@ -592,6 +594,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Cinéma"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -624,6 +627,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
@@ -684,6 +688,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Films, séries et documentaires"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -716,6 +721,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#EAE3FF",
                     "borderColor": "#AD87FF",
@@ -776,6 +782,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Livres"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -808,6 +815,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFDECC",
                     "borderColor": "#F8733D",
@@ -868,6 +876,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Musique"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -900,6 +909,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#DBFFEA",
                     "borderColor": "#0E8474",
@@ -960,6 +970,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Arts & loisirs créatifs"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -992,6 +1003,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFD7E9",
                     "borderColor": "#EC3478",
@@ -1052,6 +1064,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Spectacles"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1084,6 +1097,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
@@ -1144,6 +1158,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Musées & visites culturelles"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1176,6 +1191,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
@@ -1236,6 +1252,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Jeux & jeux vidéos"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1268,6 +1285,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#EAE3FF",
                     "borderColor": "#AD87FF",
@@ -1328,6 +1346,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Médias & presse"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1360,6 +1379,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFDECC",
                     "borderColor": "#F8733D",
@@ -1420,6 +1440,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Cartes jeunes"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1452,6 +1473,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#DBFFEA",
                     "borderColor": "#0E8474",
@@ -1512,6 +1534,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Conférences & rencontres"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1544,6 +1567,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFD7E9",
                     "borderColor": "#EC3478",
@@ -1604,6 +1628,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           </View>
           <View
             accessibilityLabel="Catégorie Évènements en ligne"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1636,6 +1661,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   {
                     "userSelect": "auto",
                   },
+                  {},
                   {
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { push } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { CategoriesList } from './CategoriesList'
@@ -73,9 +73,11 @@ describe('CategoriesList', () => {
     render(<CategoriesList />)
 
     const categoryButton = screen.getByText('Spectacles'.toUpperCase())
-    fireEvent.press(categoryButton)
+    await act(async () => {
+      fireEvent.press(categoryButton)
+    })
     await waitFor(async () => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      expect(push).toHaveBeenCalledWith('TabNavigator', {
         params: {
           params: {
             ...mockSearchState,

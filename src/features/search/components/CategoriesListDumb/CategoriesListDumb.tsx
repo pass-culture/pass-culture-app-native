@@ -2,27 +2,12 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { CategoryButton } from 'features/search/components/Buttons/CategoryButton'
-import { Gradient } from 'features/search/enums'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { CategoryButton, CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export type CategoryButtonProps = {
-  label: string
-  Illustration?: FunctionComponent<AccessibleIcon>
-  baseColor?: ColorsEnum
-  gradients: Gradient
-  onPress: () => void
-  children?: never
-  // v2 App Design
-  textColor: ColorsEnum
-  fillColor: ColorsEnum
-  borderColor: ColorsEnum
-}
 export type ListCategoryButtonProps = CategoryButtonProps[]
 
 type Props = {
