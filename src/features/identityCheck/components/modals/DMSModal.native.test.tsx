@@ -43,7 +43,7 @@ describe('<DMSModal/>', () => {
     expect(mockedOpenUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
-  it('should open DSM french citizen when clicking on "Je suis de nationalité étrangère" button', async () => {
+  it('should open DSM foreign citizen when clicking on "Je suis de nationalité étrangère" button', async () => {
     render(<DMSModal visible hideModal={hideModalMock} />)
     const foreignCitizenDMSButton = screen.getByText('Je suis de nationalité étrangère')
     await fireEvent.press(foreignCitizenDMSButton)
