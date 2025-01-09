@@ -9,7 +9,8 @@ export enum ModalDisplayState {
 }
 
 export const useBookingsReactionHelpers = (
-  bookings: BookingsResponse | undefined = undefined
+  bookings: BookingsResponse | undefined,
+  isBookingsLoading: boolean
 ): {
   shouldShowReactionModal: ModalDisplayState
   bookingsEligibleToReaction: Array<BookingReponse> | undefined
@@ -23,7 +24,7 @@ export const useBookingsReactionHelpers = (
 
   const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
 
-  if (bookings === undefined) {
+  if (isBookingsLoading || bookings === undefined) {
     return {
       shouldShowReactionModal: ModalDisplayState.PENDING,
       bookingsEligibleToReaction: [],

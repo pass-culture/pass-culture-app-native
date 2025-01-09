@@ -56,13 +56,12 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings } = useBookings()
+  const { data: bookings, isLoading } = useBookings()
 
-  const {
-    achievementsToShow,
-    bookingsEligibleToReaction,
-    showModal: modalToShow,
-  } = useWhichModalToShow(bookings)
+  const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
+    bookings,
+    isLoading
+  )
 
   const {
     visible: visibleAchievementModal,

@@ -44,9 +44,9 @@ describe('useWhichModalToShow', () => {
       achievements: achievements,
     })
 
-    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction))
+    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction, false))
 
-    expect(result.current.showModal).toEqual(ModalToShow.ACHIEVEMENT)
+    expect(result.current.modalToShow).toEqual(ModalToShow.ACHIEVEMENT)
   })
 
   it('should return reaction if the reaction modal should be shown and the achievement modal should not be shown', () => {
@@ -55,9 +55,9 @@ describe('useWhichModalToShow', () => {
       achievements: [],
     })
 
-    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction))
+    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
 
-    expect(result.current.showModal).toEqual(ModalToShow.REACTION)
+    expect(result.current.modalToShow).toEqual(ModalToShow.REACTION)
   })
 
   it('should return reaction if the reaction modal should be show, even if the achievement modal should be shown', () => {
@@ -66,9 +66,9 @@ describe('useWhichModalToShow', () => {
       achievements: achievements,
     })
 
-    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction))
+    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
 
-    expect(result.current.showModal).toEqual(ModalToShow.REACTION)
+    expect(result.current.modalToShow).toEqual(ModalToShow.REACTION)
   })
 
   it('should return none if the reaction and achievement both should not be shown', () => {
@@ -77,9 +77,9 @@ describe('useWhichModalToShow', () => {
       achievements: [],
     })
 
-    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction))
+    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction, false))
 
-    expect(result.current.showModal).toEqual(ModalToShow.NONE)
+    expect(result.current.modalToShow).toEqual(ModalToShow.NONE)
   })
 })
 
