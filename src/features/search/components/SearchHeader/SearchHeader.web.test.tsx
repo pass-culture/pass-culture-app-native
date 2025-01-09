@@ -121,6 +121,22 @@ describe('SearchHeader component', () => {
     })
   })
 
+  it('should reset search state on go back', async () => {
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+        withArrow
+      />
+    )
+    userEvent.click(screen.getByTestId('Revenir en arrière'))
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
+    })
+  })
+
   it('should not have focus on search main input', async () => {
     render(
       <SearchHeader
