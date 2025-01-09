@@ -82,8 +82,12 @@ export const MovieCalendarProvider: React.FC<{
   const { dates, selectedDate, setSelectedDate, setDates } = useDaysSelector(initialDates)
   const [disabledDates, setDisabledDates] = useState<Date[]>([])
   const flatListRef = useRef<FlatList | null>(null)
-  const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
-  const { width: itemWidth, onLayout: onItemLayout } = useLayout()
+  const {
+    width: flatListWidth,
+    onLayout: onFlatListLayout,
+    width: itemWidth,
+    onLayout: onItemLayout,
+  } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
   const [isVisible, setIsVisible] = useState<boolean>(true)
 
@@ -101,7 +105,7 @@ export const MovieCalendarProvider: React.FC<{
 
   useEffect(() => {
     const currentIndex = dates.findIndex(
-      (date) => (date as Date).toDateString() === selectedDate.toDateString()
+      (date) => date.toDateString() === selectedDate.toDateString()
     )
 
     scrollToMiddleElement(currentIndex)

@@ -8,29 +8,26 @@ import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserL
 export const useGetVenuesByDay = (date: Date, offers: OfferResponseV2[]) => {
   const location = useUserLocation()
 
+  const totot = moviesOfferBuilder(offers).sortedByDistance(location).build()
+
   const dayOffers = useMemo(
     () =>
-      moviesOfferBuilder(offers)
-        .sortedByDistance(location)
-        .withScreeningsOnDay(date)
-        .withoutScreeningsAfterNbDays(15)
-        .build(),
-    [date, location, offers]
+      moviesOfferBuilder(totot).withScreeningsOnDay(date).withoutScreeningsAfterNbDays(15).build(),
+    [date, totot]
   )
 
   const nextOffers = useMemo(() => {
-    return moviesOfferBuilder(offers)
+    return moviesOfferBuilder(totot)
       .withoutScreeningsAfterNbDays(15)
       .withoutScreeningsOnDay(date)
       .withNextScreeningFromDate(date)
       .sortedByDistance(location)
       .build()
-  }, [date, location, offers])
+  }, [date, location, totot])
 
   const after15DaysOffers = useMemo(
-    () =>
-      moviesOfferBuilder(offers).sortedByDistance(location).withScreeningsAfterNbDays(15).build(),
-    [location, offers]
+    () => moviesOfferBuilder(totot).withScreeningsAfterNbDays(15).build(),
+    [totot]
   )
 
   const movieOffers = useMemo(

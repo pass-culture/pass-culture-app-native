@@ -17,7 +17,7 @@ import { VenueOffers } from 'features/venue/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
@@ -62,7 +62,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     [offer.id, venueOffers.hits]
   )
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       <View>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
@@ -76,7 +76,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         ) : null}
       </View>
-      <Spacer.Column numberOfSpaces={4} />
       {nextScreeningDate ? (
         <View>
           <NextScreeningButton
@@ -91,11 +90,9 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           offerId={Number(offerScreeningOnSelectedDates?.objectID)}
         />
       )}
-      <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
-      <Spacer.Column numberOfSpaces={4} />
       {CTAOfferModal}
-    </React.Fragment>
+    </ViewGap>
   )
 }
 

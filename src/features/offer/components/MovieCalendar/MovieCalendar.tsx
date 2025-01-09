@@ -102,7 +102,8 @@ export const MovieCalendar: React.FC<Props> = ({
         />
         {isDesktopViewport ? (
           <React.Fragment>
-            <FadeLeft /> <FadeRight />
+            <FadeLeft />
+            <FadeRight />
           </React.Fragment>
         ) : null}
       </View>
@@ -121,12 +122,12 @@ const contentContainerStyle = {
   paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
-const FadeComponent = styled(LinearGradient)`
-  position: absolute;
-  top: 0;
-  bottom: ${getSpacing(1)}px;
-  width: ${getSpacing(20)}px;
-`
+const FadeComponent = styled(LinearGradient)({
+  position: 'absolute',
+  top: 0,
+  bottom: getSpacing(1),
+  width: getSpacing(20),
+})
 
 const FadeLeft = styled(FadeComponent).attrs({
   colors: ['white', 'transparent'],

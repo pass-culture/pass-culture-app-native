@@ -53,9 +53,9 @@ export const OfferCineContent: FC<{
             offer={item.offer}
             onSeeVenuePress={onSeeVenuePress}
             nextDate={item.nextDate}
-            withDivider
           />
         )}
+        ItemSeparatorComponent={Divider}
       />
       {hasReachedEnd ? null : (
         <SeeMoreContainer>
@@ -75,10 +75,22 @@ export const OfferCineContent: FC<{
   )
 }
 
+const Toto = styled(ExpandingFlatList).attrs(({
+  theme
+})=>({
+  contentContainerStyle:getSpacing(theme.isDesktopViewport ? 6 : 4)
+}))``
+
 const SeeMoreContainer = styled.View(({ theme }) => ({
   alignItems: theme.isMobileViewport ? 'center' : undefined,
 }))
 
 const Text = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
+}))
+
+const Divider = styled.View(({ theme }) => ({
+  height: 1,
+  backgroundColor: theme.colors.greyMedium,
+  marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
 }))

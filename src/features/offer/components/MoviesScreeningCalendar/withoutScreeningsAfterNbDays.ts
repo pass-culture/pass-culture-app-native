@@ -1,40 +1,92 @@
 import {
-  addDays,
-  differenceInMilliseconds,
-  isAfter,
-  isBefore,
   isSameDay,
+  isAfter,
+  addDays,
   startOfDay,
+  isBefore,
+  differenceInMilliseconds,
 } from 'date-fns'
 
-import { OfferResponseV2, OfferStockResponse } from 'api/gen'
-import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
-import { GeoCoordinates } from 'libs/location'
+import type { OfferResponseV2, OfferStockResponse } from 'api/gen'
+import type { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import type { GeoCoordinates } from 'libs/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
-export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
+export const withoutScreeningsAfterNbDays =
+  (nbDays: number) =>
+  ({ offer }: MovieOffer) =>
+    offer.stocks.some((stock) => {
+      if (!stock.beginningDatetime) {
+        return false
+      }
+      if (isDateNotWithinNextNbDays(new Date(), new Date(stock.beginningDatetime), nbDays)) {
+        return false
+      }
+      if (isDateBeforeToday(new Date(), new Date(stock.beginningDatetime))) {
+        return false
+      }
+      return true
+    })
+
+type Predicate = (toto: MovieOffer) => boolean
+
+const mergeFilter = (filter1: Predicate, filter2: Predicate) => {
+  return (toto: MovieOffer) => filter1(toto) && filter2(toto)
+}
+
+const predicatInverse = (filter: Predicate) => {
+  const lePrédicatInversé: Predicate = (movieOffer) => !filter(movieOffer)
+  return lePrédicatInversé
+}
+
+export const withoutScreeningsOnDay =
+  (selectedDate: Date) =>
+  ({ offer }: MovieOffer) =>
+    !offer.stocks.some((stock) => {
+      if (!stock.beginningDatetime) {
+        return true
+      }
+      if (isSameDay(new Date(stock.beginningDatetime), selectedDate)) {
+        return isAfter(new Date(stock.beginningDatetime), selectedDate)
+      }
+      return false
+    })
+
+export const withNextScreeningFromDate = (selectedDate: Date) => {
+  return ({ offer }: MovieOffer) => {
+    const nextDate = getNextDate(offer, selectedDate) ?? getUpcomingDate(offer)
+    return !!nextDate
+  }
+}
+
+export const withoutNextScreeningFromDate = (selectedDate: Date) => {
+  const précidat = withNextScreeningFromDate(selectedDate)
+  return predicatInverse(précidat)
+}
+
+export const sortedByLast30DaysBooking = (a: MovieOffer, b: MovieOffer) => {
+  const aValue = a.offer.last30DaysBookings
+  const bValue = b.offer.last30DaysBookings
+
+  if (aValue === null || aValue === undefined) return 1
+  if (bValue === null || bValue === undefined) return -1
+
+  if (bValue === aValue) {
+    const aEarliestDate = getEarliestDate(a.offer.stocks)
+    const bEarliestDate = getEarliestDate(b.offer.stocks)
+
+    return aEarliestDate - bEarliestDate
+  }
+
+  return bValue - aValue
+}
+const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
   let movieOffers: MovieOffer[] = offersWithStocks.map((offer) => ({
     offer,
     isUpcoming: false,
   }))
 
   const builderObject = {
-    withoutScreeningsOnDay: (selectedDate: Date) => {
-      movieOffers = movieOffers.filter(
-        ({ offer }) =>
-          !offer.stocks.some((stock) => {
-            if (!stock.beginningDatetime) {
-              return true
-            }
-            if (isSameDay(new Date(stock.beginningDatetime), selectedDate)) {
-              return isAfter(new Date(stock.beginningDatetime), selectedDate)
-            }
-            return false
-          })
-      )
-      return builderObject
-    },
-
     withScreeningsOnDay: (selectedDate: Date) => {
       movieOffers = movieOffers
         .map(({ offer, ...rest }) => ({
@@ -58,27 +110,6 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
           },
         }))
         .filter(({ offer }) => offer.stocks.length > 0)
-
-      return builderObject
-    },
-
-    sortedByLast30DaysBooking: () => {
-      movieOffers = movieOffers.sort((a, b) => {
-        const aValue = a.offer.last30DaysBookings
-        const bValue = b.offer.last30DaysBookings
-
-        if (aValue === null || aValue === undefined) return 1
-        if (bValue === null || bValue === undefined) return -1
-
-        if (bValue === aValue) {
-          const aEarliestDate = getEarliestDate(a.offer.stocks)
-          const bEarliestDate = getEarliestDate(b.offer.stocks)
-
-          return aEarliestDate - bEarliestDate
-        }
-
-        return bValue - aValue
-      })
 
       return builderObject
     },
@@ -109,24 +140,6 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
         })
         .filter(({ offer }) => offer.stocks.length > 0)
 
-      return builderObject
-    },
-
-    withoutScreeningsAfterNbDays: (nbDays: number) => {
-      movieOffers = movieOffers.filter(({ offer }) =>
-        offer.stocks.some((stock) => {
-          if (!stock.beginningDatetime) {
-            return false
-          }
-          if (isDateNotWithinNextNbDays(new Date(), new Date(stock.beginningDatetime), nbDays)) {
-            return false
-          }
-          if (isDateBeforeToday(new Date(), new Date(stock.beginningDatetime))) {
-            return false
-          }
-          return true
-        })
-      )
       return builderObject
     },
 
@@ -161,7 +174,6 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
 
   return builderObject
 }
-
 function sortOffersByDistanceThenDate(
   location: GeoCoordinates
 ): ((a: MovieOffer, b: MovieOffer) => number) | undefined {
@@ -178,7 +190,6 @@ function sortOffersByDistanceThenDate(
     return aDistance - bDistance
   }
 }
-
 function toto(b: MovieOffer, location: GeoCoordinates) {
   return computeDistanceInMeters(
     b.offer.venue.coordinates.latitude ?? 0,
@@ -197,11 +208,9 @@ export const isDateNotWithinNextNbDays = (
 
   return isAfter(targetDate, datePlusNbDays)
 }
-
 const isDateBeforeToday = (referenceDate: Date, targetDate: Date) => {
   return isBefore(targetDate, referenceDate)
 }
-
 const getNextDate = (offer: OfferResponseV2, date: Date) => {
   const dates = offer.stocks
     .filter((stock) => stock.beginningDatetime)
@@ -214,7 +223,6 @@ const getNextDate = (offer: OfferResponseV2, date: Date) => {
   }
   return findClosestFutureDate(dates, date)
 }
-
 const findClosestFutureDate = (datesArray: Date[], referenceDate: Date) => {
   const futureDates = datesArray.filter((date) => isAfter(date, referenceDate))
 
@@ -233,11 +241,9 @@ const findClosestFutureDate = (datesArray: Date[], referenceDate: Date) => {
     return currentDifference < closestDifference ? currentDate : closestDate
   }, futureDates[0])
 }
-
 const getUpcomingDate = (offer: OfferResponseV2) => {
   return getNextDate(offer, new Date())
 }
-
 const getEarliestDate = (stocks: OfferStockResponse[]) => {
   return stocks.reduce((earliest, stock) => {
     if (!stock.beginningDatetime) return earliest

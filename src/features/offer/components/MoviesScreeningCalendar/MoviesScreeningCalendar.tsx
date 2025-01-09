@@ -30,7 +30,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
   const nonScreeningOffers = venueOffers.hits.filter(
-    (offer) => offer.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
+    (hit) => hit.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
   )
 
   const next15Dates = getDates(new Date(), 15)
