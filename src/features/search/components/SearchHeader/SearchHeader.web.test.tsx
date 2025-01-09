@@ -3,7 +3,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchState } from 'features/search/types'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
@@ -21,17 +21,19 @@ jest.mock('react-instantsearch-core', () => ({
 
 const searchInputID = uuidv4()
 
-let mockSearchState: SearchState = initialSearchState
 const mockDispatch = jest.fn()
 const mockShowSuggestions = jest.fn()
-let mockIsFocusOnSuggestions = false
+const mockIsFocusOnSuggestions = false
+
+const initialMockUseSearch = {
+  searchState: initialSearchState,
+  dispatch: mockDispatch,
+  showSuggestions: mockShowSuggestions,
+  isFocusOnSuggestions: mockIsFocusOnSuggestions,
+}
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-    showSuggestions: mockShowSuggestions,
-    isFocusOnSuggestions: mockIsFocusOnSuggestions,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -41,11 +43,7 @@ jest.mock('features/navigation/TabBar/routes')
 describe('SearchHeader component', () => {
   beforeEach(() => {
     setFeatureFlags()
-  })
-
-  afterEach(() => {
-    mockSearchState = initialSearchState
-    mockIsFocusOnSuggestions = false
+    mockUseSearch.mockReturnValue(initialMockUseSearch)
   })
 
   it('should contain a button to go to the search suggestions view', async () => {
@@ -103,24 +101,6 @@ describe('SearchHeader component', () => {
     expect(mockShowSuggestions).toHaveBeenNthCalledWith(1, expect.anything())
   })
 
-  it('should not render a button to focus on suggestion when being focus on suggestion', async () => {
-    mockSearchState = { ...mockSearchState, query: 'la fnac' }
-    mockIsFocusOnSuggestions = true
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
-    )
-    await act(async () => {})
-
-    await waitFor(() => {
-      expect(screen.queryByText('Recherche par mots-clés')).not.toBeInTheDocument()
-    })
-  })
-
   it('should reset search state on go back', async () => {
     render(
       <SearchHeader
@@ -154,5 +134,31 @@ describe('SearchHeader component', () => {
     const searchMainInput = screen.getByRole('searchbox', { hidden: true })
 
     expect(searchMainInput).not.toHaveFocus()
+  })
+
+  describe('when being focus on suggestion', () => {
+    beforeEach(() => {
+      mockUseSearch.mockReturnValue({
+        ...initialMockUseSearch,
+        searchState: { ...initialSearchState, query: 'la fnac' },
+        isFocusOnSuggestions: true,
+      })
+    })
+
+    it('should not render a button to focus on suggestion', async () => {
+      render(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          shouldDisplaySubtitle
+        />
+      )
+      await act(async () => {})
+
+      await waitFor(() => {
+        expect(screen.queryByText('Recherche par mots-clés')).not.toBeInTheDocument()
+      })
+    })
   })
 })
