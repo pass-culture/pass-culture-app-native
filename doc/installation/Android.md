@@ -35,7 +35,7 @@ KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper se
 
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
-./scripts/setup_android_create_emulators.sh
+./scripts/setup_android_create_emulators.sh # this can take several minutes (~4 minutes)
 direnv reload
 ```
 
