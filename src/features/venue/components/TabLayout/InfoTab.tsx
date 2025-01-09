@@ -6,7 +6,7 @@ import { PastilleType } from 'features/venue/types'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
 
@@ -90,6 +90,6 @@ const PastilleContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(1),
 }))
 
-const Counter = styled(Typo.Hint)(({ theme }) => ({
+const Counter = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))

@@ -35,7 +35,7 @@ import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -328,7 +328,7 @@ const VenueTitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 
-const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
+const VenueAddress = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

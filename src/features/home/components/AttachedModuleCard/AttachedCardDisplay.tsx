@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferName } from 'ui/components/tiles/OfferName'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface AttachedCardDisplayProps {
   title: string
@@ -46,7 +46,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
       <RightColumn>
         {rightTagLabel ? (
           <TagWrapper label={rightTagLabel}>
-            <Typo.Hint>{rightTagLabel}</Typo.Hint>
+            <TypoDS.BodyAccentXs>{rightTagLabel}</TypoDS.BodyAccentXs>
           </TagWrapper>
         ) : null}
         <Spacer.Flex />
