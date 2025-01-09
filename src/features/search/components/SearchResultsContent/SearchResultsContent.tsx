@@ -393,7 +393,6 @@ export const SearchResultsContent: React.FC = () => {
                 navigateTo={{ screen: 'SearchFilter' }}
               />
             </StyledLi>
-
             <StyledLi>
               <StyledSingleFilterButton
                 label={
@@ -414,7 +413,6 @@ export const SearchResultsContent: React.FC = () => {
                 isSelected={appliedFilters.includes(FILTER_TYPES.CATEGORIES)}
               />
             </StyledLi>
-
             <StyledLi>
               <StyledSingleFilterButton
                 label="Prix"
@@ -423,7 +421,6 @@ export const SearchResultsContent: React.FC = () => {
                 isSelected={appliedFilters.includes(FILTER_TYPES.PRICES)}
               />
             </StyledLi>
-
             {hasDuoOfferToggle ? (
               <StyledLi>
                 <StyledSingleFilterButton
