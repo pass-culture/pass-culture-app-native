@@ -25,19 +25,15 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const hasAThematicSearch = useHasAThematicPageList()
 
   const navigateTo = (facetFilter: SearchGroupNameEnumv2) => {
-    const searchTabConfig = getNavigateToConfig(
+    return getNavigateToConfig(
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
         offerCategories: [facetFilter],
         isFullyDigitalOffersCategory: (data && isOnlyOnline(data, facetFilter)) || undefined,
-        offerSubcategories: [],
-        offerNativeCategories: undefined,
-        offerGenreTypes: undefined,
+
         searchId: uuidv4(),
-        isFromHistory: undefined,
       }
     )
-    return { ...searchTabConfig, withPush: true }
   }
   return categories
     .map<MappingOutput>((category) => ({

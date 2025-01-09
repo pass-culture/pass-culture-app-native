@@ -56,12 +56,8 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[0]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFromHistory: undefined,
             isFullyDigitalOffersCategory: undefined,
             offerCategories: ['CONCERTS_FESTIVALS'],
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-            offerSubcategories: [],
             searchId: 'testUuidV4',
           },
           screen: 'SearchResults',
@@ -76,12 +72,8 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[12]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFromHistory: undefined,
             isFullyDigitalOffersCategory: true,
             offerCategories: ['EVENEMENTS_EN_LIGNE'],
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-            offerSubcategories: [],
             searchId: 'testUuidV4',
           },
           screen: 'SearchResults',
@@ -99,12 +91,8 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[3]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFromHistory: undefined,
             isFullyDigitalOffersCategory: undefined,
             offerCategories: ['LIVRES'],
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-            offerSubcategories: [],
             searchId: 'testUuidV4',
           },
           screen: 'ThematicSearch',
@@ -120,12 +108,8 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[3]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFromHistory: undefined,
             isFullyDigitalOffersCategory: undefined,
             offerCategories: ['LIVRES'],
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-            offerSubcategories: [],
             searchId: 'testUuidV4',
           },
           screen: 'SearchResults',

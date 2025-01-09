@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -77,23 +77,12 @@ describe('CategoriesList', () => {
       fireEvent.press(categoryButton)
     })
     await waitFor(async () => {
-      expect(push).toHaveBeenCalledWith('TabNavigator', {
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
           params: {
-            ...mockSearchState,
-            offerSubcategories: [],
-            offerNativeCategories: undefined,
-            offerGenreTypes: undefined,
             searchId: 'testUuidV4',
             isFullyDigitalOffersCategory: undefined,
-            isFromHistory: undefined,
             offerCategories: ['SPECTACLES'],
-            accessibilityFilter: {
-              isAudioDisabilityCompliant: undefined,
-              isMentalDisabilityCompliant: undefined,
-              isMotorDisabilityCompliant: undefined,
-              isVisualDisabilityCompliant: undefined,
-            },
           },
           screen: 'SearchResults',
         },
