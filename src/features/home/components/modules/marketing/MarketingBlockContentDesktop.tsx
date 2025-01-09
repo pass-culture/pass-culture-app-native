@@ -9,7 +9,7 @@ import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const MarketingBlockContentDesktop = ({
   navigateTo,
@@ -30,7 +30,6 @@ export const MarketingBlockContentDesktop = ({
             </ImagePlaceholder>
           )}
         </BackgroundImageContainer>
-        <Spacer.Row numberOfSpaces={10} />
         <StyledTouchableLink
           navigateTo={navigateTo}
           onBeforeNavigate={onBeforeNavigate}
@@ -101,6 +100,7 @@ const AttachedOfferCardContainer = styled.View({
 })
 
 const StyledTouchableLink = styled(InternalTouchableLink)({
+  marginLeft: getSpacing(10),
   flex: 1,
 })
 
