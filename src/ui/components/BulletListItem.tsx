@@ -5,6 +5,7 @@ import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing, TypoDS } from 'ui/theme'
+import { REM_TO_PX } from 'ui/theme/constants'
 
 // Use with Ul or VerticalUl to be accessible in web
 export const BulletListItem: React.FC<{
@@ -70,7 +71,9 @@ const NestedBullet = styled(Dot).attrs(({ theme }) => ({
 }))``
 
 const BulletContainer = styled.View(({ theme }) => ({
-  height: theme.designSystem.typography.body.lineHeight,
+  height: theme.isDesktopViewport
+    ? parseFloat(theme.designSystem.typography.body.lineHeight) * REM_TO_PX
+    : parseFloat(theme.designSystem.typography.body.lineHeight),
   justifyContent: 'center',
 }))
 

@@ -81,7 +81,6 @@ type TextBodyProps = TextProps & {
 }
 const Body = styled(TypoDS.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
   ({ theme, textAlign }) => ({
-    ...theme.typography.body,
     textAlign,
     color: theme.colors.white,
   })
