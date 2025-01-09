@@ -15,6 +15,7 @@
         pkgs.mkShellNoCC {
           packages = [
             pkgs.devbox
+            pkgs.sdkmanager
           ];
         };
     });
