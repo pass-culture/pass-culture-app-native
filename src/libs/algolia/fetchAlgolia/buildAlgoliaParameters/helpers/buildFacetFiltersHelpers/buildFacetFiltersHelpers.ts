@@ -7,8 +7,10 @@ import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { GtlLevel } from 'shared/gtl/types'
 
-export const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
-  searchGroups.map((searchGroup) => `${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
+export const buildOfferCategoriesPredicate = (categories: BaseCategory[]): string[] =>
+  categories
+    .filter((category) => !!category.searchFilter && !!category.searchValue)
+    .map((category) => `${category.searchFilter}:${category.searchValue}`)
 
 export const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[]): string[] =>
   subcategoryIds.map(

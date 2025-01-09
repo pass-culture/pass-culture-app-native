@@ -64,7 +64,11 @@ export const buildFacetFilters = ({
   if (isUserUnderage) facetFilters.push(...underageFilter)
 
   if (offerCategories.length > 0) {
-    const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
+    const categoriesPredicate = buildOfferCategoriesPredicate(
+      offerCategories
+        .map((categoryKey) => getCategory(categoryKey))
+        .filter((category) => !!category)
+    )
     facetFilters.push(categoriesPredicate)
   }
 
