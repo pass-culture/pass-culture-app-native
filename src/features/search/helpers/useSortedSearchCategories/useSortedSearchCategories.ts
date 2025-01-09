@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { ListCategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
@@ -45,7 +45,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   ]
 
   const navigateToSearch = (facetFilter: SearchGroupNameEnumv2) => {
-    const searchTabConfig = getSearchStackConfig(
+    const searchTabConfig = getNavigateToConfig(
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
         offerCategories: [facetFilter],
@@ -57,9 +57,8 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
         isFromHistory: undefined,
       }
     )
-    return { screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true } // check if vraiment true
+    return { ...searchTabConfig, withPush: true }
   }
-
   return categories
     .map<MappingOutput>((category) => ({
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
