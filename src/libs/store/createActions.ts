@@ -1,8 +1,11 @@
-import { StoreApi, UseBoundStore } from 'zustand'
+import type { StoreApi, UseBoundStore } from 'zustand'
 
 type Store<State> = UseBoundStore<StoreApi<State>>
 
-type Actions<State, ActionsType> = (set: Store<State>['setState']) => ActionsType
+type Actions<State, ActionsType> = (
+  set: Store<State>['setState'],
+  get: Store<State>['getState']
+) => ActionsType
 
 export const createActions = <
   State,
@@ -12,5 +15,5 @@ export const createActions = <
   store: Store<State>,
   actions: Actions<State, ActionsType>
 ): Readonly<ActionsType> => {
-  return actions(store.setState)
+  return actions(store.setState, store.getState)
 }
