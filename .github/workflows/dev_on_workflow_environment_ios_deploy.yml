@@ -20,6 +20,8 @@ jobs:
     name: 'Install runtime environment and dependencies iOS deploy'
     runs-on: macos-14
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - name: Is deployment targeting ehp or production
         id: cloudenv
         run: |
