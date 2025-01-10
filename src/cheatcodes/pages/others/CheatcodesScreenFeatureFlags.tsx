@@ -13,6 +13,10 @@ export const CheatcodesScreenFeatureFlags = () => {
 
   return (
     <CheatcodesTemplateScreen title="Feature Flags 🏳️" flexDirection="column">
+      <TypoDS.BodyItalicAccent>
+        Nombre de feature flags&nbsp;: {featureFlagsArray.length}
+      </TypoDS.BodyItalicAccent>
+      <StyledSeparator />
       <FlatList
         data={featureFlagsArray}
         keyExtractor={([featureFlag]) => featureFlag}

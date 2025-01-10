@@ -48,6 +48,6 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
   color: selected ? undefined : theme.colors.greyDark,
   size: theme.icons.sizes.small,
   thin: true,
-})) <{ selected?: boolean }>``
+}))<{ selected?: boolean }>``
 
 const BicolorSelectorPlaceholder = styled.View({ height: GRADIENT_HEIGHT })
