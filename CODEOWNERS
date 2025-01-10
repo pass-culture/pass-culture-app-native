@@ -1,6 +1,7 @@
 # also update on Sentry https://sentry.passculture.team/settings/sentry/projects/application-native/ownership/
 
 src/features/accessibility/                          @pass-culture/jeunes-conversion
+src/features/achievements/                           @pass-culture/jeunes-activation
 src/features/artist/                                 @pass-culture/jeunes-decouverte
 src/features/auth/                                   @pass-culture/jeunes-activation
 src/features/birthdayNotifications/                  @pass-culture/jeunes-conversion
