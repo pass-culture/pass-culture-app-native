@@ -190,6 +190,7 @@ exports[`LegalNotices should render correctly 1`] = `
         "width": "100%",
       }
     }
+    noMaxWidth={false}
     scrollEnabled={true}
     style={
       [

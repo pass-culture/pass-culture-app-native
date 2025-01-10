@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -17,10 +16,6 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-const actionPlanScreen: { screen: RootNavigateParams[0] } = {
-  screen: 'AccessibilityActionPlan',
-}
 
 const webappUrl = { url: WEBAPP_V2_URL }
 const homeUrl = { url: `${WEBAPP_V2_URL}/accueil` }
@@ -40,7 +35,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 
 export function AccessibilityDeclaration() {
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité">
+    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité" noMaxWidth>
       <TypoDS.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
@@ -53,9 +48,9 @@ export function AccessibilityDeclaration() {
             <InternalTouchableLink
               as={ButtonInsideText}
               typography="BodyAccentXs"
-              wording="Schéma pluriannuel d’accessibilité 2022 - 2024"
+              wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
               icon={PlainArrowNext}
-              navigateTo={actionPlanScreen}
+              navigateTo={{ screen: 'AccessibilityActionPlan' }}
             />
           </TypoDS.BodyXs>
         </BulletListItem>
@@ -64,9 +59,9 @@ export function AccessibilityDeclaration() {
             <InternalTouchableLink
               as={ButtonInsideText}
               typography="BodyAccentXs"
-              wording="Actions réalisées en 2022 et 2023"
+              wording="Actions réalisées depuis 2022"
               icon={PlainArrowNext}
-              navigateTo={actionPlanScreen}
+              navigateTo={{ screen: 'AccessibilityActionPlan' }}
             />
           </TypoDS.BodyXs>
         </BulletListItem>
@@ -77,7 +72,7 @@ export function AccessibilityDeclaration() {
               typography="BodyAccentXs"
               wording="Plan d’actions 2024"
               icon={PlainArrowNext}
-              navigateTo={actionPlanScreen}
+              navigateTo={{ screen: 'AccessibilityActionPlan' }}
             />
           </TypoDS.BodyXs>
         </BulletListItem>

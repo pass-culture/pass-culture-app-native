@@ -13,7 +13,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityEngagement() {
   return (
-    <SecondaryPageWithBlurHeader title="Les engagements du pass Culture" scrollable>
+    <SecondaryPageWithBlurHeader title="Les engagements du pass Culture" noMaxWidth>
       <TypoDS.BodyItalic>Date de publication&nbsp;: 19 mai 2022</TypoDS.BodyItalic>
       <Spacer.Column numberOfSpaces={6} />
       <TypoDS.Body>

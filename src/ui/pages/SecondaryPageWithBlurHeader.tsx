@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactNode } from 'react'
-import { ScrollView, ScrollViewProps } from 'react-native'
+import { ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -15,6 +15,7 @@ type Props = PropsWithChildren<{
   RightButton?: ReactNode
   scrollable?: boolean
   scrollViewProps?: Omit<ScrollViewProps, 'contentContainerStyle'>
+  noMaxWidth?: boolean
 }>
 
 export const SecondaryPageWithBlurHeader = ({
@@ -25,6 +26,7 @@ export const SecondaryPageWithBlurHeader = ({
   children,
   scrollable = true,
   scrollViewProps = {},
+  noMaxWidth = false,
 }: Props) => {
   const headerHeight = useGetHeaderHeight()
 
@@ -36,7 +38,7 @@ export const SecondaryPageWithBlurHeader = ({
         onGoBack={onGoBack}
         RightButton={RightButton}
       />
-      <StyledScrollView {...scrollViewProps} scrollEnabled={scrollable}>
+      <StyledScrollView {...scrollViewProps} scrollEnabled={scrollable} noMaxWidth={noMaxWidth}>
         <Placeholder height={headerHeight} />
         {children}
       </StyledScrollView>
@@ -45,15 +47,20 @@ export const SecondaryPageWithBlurHeader = ({
   )
 }
 
-const StyledScrollView = styled(ScrollView).attrs(({ theme }) => ({
-  contentContainerStyle: {
-    paddingHorizontal: theme.contentPage.marginHorizontal,
-    paddingVertical: theme.contentPage.marginVertical,
-    maxWidth: theme.contentPage.maxWidth,
-    width: '100%',
-    alignSelf: 'center',
-  },
-}))``
+interface StyledScrollViewProps {
+  noMaxWidth: boolean
+}
+const StyledScrollView = styled.ScrollView.attrs<StyledScrollViewProps>(
+  ({ theme, noMaxWidth }) => ({
+    contentContainerStyle: {
+      paddingHorizontal: theme.contentPage.marginHorizontal,
+      paddingVertical: theme.contentPage.marginVertical,
+      maxWidth: noMaxWidth ? '100%' : theme.contentPage.maxWidth,
+      width: '100%',
+      alignSelf: 'center',
+    },
+  })
+)<StyledScrollViewProps>({})
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
