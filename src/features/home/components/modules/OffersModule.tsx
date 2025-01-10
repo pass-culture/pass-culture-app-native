@@ -7,7 +7,7 @@ import {
   OffersModule as OffersModuleType,
   RecommendedOffersModule,
 } from 'features/home/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics'
@@ -73,7 +73,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     locationParams,
     hitsPerPage: 20,
   }
-  const searchTabConfig = getSearchStackConfig('SearchResults', searchParams)
+  const searchTabConfig = getNavigateToConfig('SearchResults', searchParams)
 
   const moduleName = displayParameters.title ?? parameters?.title
 
@@ -122,7 +122,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     ({ width, height }: ItemDimensions) => {
       return showSeeMore ? (
         <SeeMore
-          navigateTo={{ screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true }}
+          navigateTo={{ ...searchTabConfig, withPush: true }}
           width={width}
           height={height}
           onPress={onPressSeeMore as () => void}
@@ -186,7 +186,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       onPressSeeMore={onPressSeeMore}
-      titleSeeMoreLink={{ screen: searchTabConfig[0], params: searchTabConfig[1] }}
+      titleSeeMoreLink={{ ...searchTabConfig }}
       renderItem={renderItem}
       renderFooter={renderFooter}
       keyExtractor={keyExtractor}

@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
+import { initialSearchState } from 'features/search/context/reducer'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { CreateHistoryItem } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -32,6 +34,15 @@ export const SearchHeader = memo(function SearchHeader({
   placeholder,
 }: Props) {
   const { goBack } = useNavigation()
+  const { dispatch } = useSearch()
+
+  const onGoBack = () => {
+    dispatch({
+      type: 'SET_STATE',
+      payload: initialSearchState,
+    })
+    goBack()
+  }
 
   return (
     <React.Fragment>
@@ -40,7 +51,7 @@ export const SearchHeader = memo(function SearchHeader({
         <RowContainer>
           {withArrow ? (
             <StyledView>
-              <BackButton onGoBack={goBack} />
+              <BackButton onGoBack={onGoBack} />
             </StyledView>
           ) : null}
           <SearchTitleAndWidget

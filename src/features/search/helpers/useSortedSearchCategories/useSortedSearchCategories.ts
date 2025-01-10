@@ -1,12 +1,14 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
-import {
-  CategoryButtonProps,
-  ListCategoryButtonProps,
-} from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
-import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { v4 as uuidv4 } from 'uuid'
 
-export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { ListCategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
+import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
+import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematicPageList/useHasAThematicPageList'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 
 export type MappingOutput = CategoryButtonProps & { position: number | undefined }
 
@@ -16,24 +18,28 @@ export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): num
   return positionA - positionB
 }
 
-export const useSortedSearchCategories = (
-  onPressCategory: OnPressCategory
-): ListCategoryButtonProps => {
+export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categories = useAvailableCategories()
+  const { data } = useSubcategories()
+  const hasAThematicSearch = useHasAThematicPageList()
 
+  const navigateTo = (facetFilter: SearchGroupNameEnumv2) => {
+    const searchTabConfig = getNavigateToConfig(
+      hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
+      {
+        offerCategories: [facetFilter],
+        isFullyDigitalOffersCategory: data && isOnlyOnline(data, facetFilter),
+        searchId: uuidv4(),
+      }
+    )
+    return { ...searchTabConfig, withPush: true }
+  }
   return categories
     .map<MappingOutput>((category) => ({
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
-      Icon: category.icon,
-      Illustration: category.illustration,
-      onPress() {
-        onPressCategory(category.facetFilter)
-      },
-      baseColor: category.baseColor,
-      gradients: category.gradients,
+      navigateTo: navigateTo(category.facetFilter),
       position: category.position,
-      textColor: category.textColor,
       borderColor: category.borderColor,
       fillColor: category.fillColor,
     }))

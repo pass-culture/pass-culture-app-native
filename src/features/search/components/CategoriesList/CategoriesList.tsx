@@ -2,17 +2,15 @@ import React, { memo } from 'react'
 import { Platform } from 'react-native'
 
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
-import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const CategoriesList = memo(function CategoriesButtons() {
-  const showResultsForCategory = useShowResultsForCategory()
   const isWeb = Platform.OS === 'web'
 
-  const sortedCategories = useSortedSearchCategories(showResultsForCategory)
+  const sortedCategories = useSortedSearchCategories()
   const { shouldDisplayVenueMap, selectedLocationMode } = useShouldDisplayVenueMap()
 
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE

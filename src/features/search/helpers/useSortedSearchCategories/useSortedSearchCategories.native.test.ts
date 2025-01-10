@@ -1,4 +1,5 @@
-import { SearchCategoriesIllustrations } from 'features/search/enums'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
 import {
@@ -10,28 +11,24 @@ import {
 jest.mock('libs/subcategories/useSubcategories')
 
 describe('useSortedSearchCategories', () => {
-  const options = { initialProps: jest.fn() }
+  beforeEach(() => {
+    setFeatureFlags()
+  })
 
   it('should return all categories', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSortedSearchCategories)
 
     expect(result.current).toHaveLength(13)
   })
 
   it("should format category's label", () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSortedSearchCategories)
 
     expect(result.current[0]?.label).toEqual('Concerts & festivals')
   })
 
-  it('should set illustration for category', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
-
-    expect(result.current[0]?.Illustration).toEqual(SearchCategoriesIllustrations.ConcertsFestivals)
-  })
-
   it('should sort search group names by the key position', () => {
-    const { result } = renderHook(useSortedSearchCategories, options)
+    const { result } = renderHook(useSortedSearchCategories)
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
 
@@ -50,6 +47,76 @@ describe('useSortedSearchCategories', () => {
       'Conférences & rencontres',
       'Évènements en ligne',
     ])
+  })
+
+  describe('Category does not have ThematicSearch', () => {
+    it('should navigate to search results with search param when a category is selected', async () => {
+      const { result } = renderHook(useSortedSearchCategories)
+
+      expect(result.current[0]?.navigateTo.params).toEqual({
+        params: {
+          params: {
+            isFullyDigitalOffersCategory: false,
+            offerCategories: ['CONCERTS_FESTIVALS'],
+            searchId: 'testUuidV4',
+          },
+          screen: 'SearchResults',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    })
+
+    it('should navigate to search results with isFullyDigitalOffersCategory param when category selected is only online platform', async () => {
+      const { result } = renderHook(useSortedSearchCategories)
+
+      expect(result.current[12]?.navigateTo.params).toEqual({
+        params: {
+          params: {
+            isFullyDigitalOffersCategory: true,
+            offerCategories: ['EVENEMENTS_EN_LIGNE'],
+            searchId: 'testUuidV4',
+          },
+          screen: 'SearchResults',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    })
+  })
+
+  describe('Category has a ThematicSearch', () => {
+    it('should navigate to ThematicSearch when FF on', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
+      const { result } = renderHook(useSortedSearchCategories)
+
+      expect(result.current[3]?.navigateTo.params).toEqual({
+        params: {
+          params: {
+            isFullyDigitalOffersCategory: false,
+            offerCategories: ['LIVRES'],
+            searchId: 'testUuidV4',
+          },
+          screen: 'ThematicSearch',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    })
+
+    it('should navigate to SearchResult when FF off', () => {
+      setFeatureFlags()
+      const { result } = renderHook(useSortedSearchCategories)
+
+      expect(result.current[3]?.navigateTo.params).toEqual({
+        params: {
+          params: {
+            isFullyDigitalOffersCategory: false,
+            offerCategories: ['LIVRES'],
+            searchId: 'testUuidV4',
+          },
+          screen: 'SearchResults',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    })
   })
 })
 

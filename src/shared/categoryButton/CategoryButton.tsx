@@ -1,33 +1,35 @@
 import React, { FunctionComponent } from 'react'
-import { TouchableOpacityProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import {
+  InternalNavigationProps,
+  InternalTouchableLinkProps,
+} from 'ui/components/touchableLink/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-type CategoryButtonProps = {
+export type CategoryButtonProps = {
   label: string
-  textColor: ColorsEnum
+  navigateTo: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
+  height?: number
+  style?: InternalTouchableLinkProps['style']
   fillColor: ColorsEnum
   borderColor: ColorsEnum
-  height?: number
-  style?: TouchableOpacityProps['style']
-  onPress?: () => void
-  children?: never
 }
-//TODO(PC-33718): Fix A11y by using InternalTouchableLink and merge with Home's CategoryButton
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   fillColor,
   borderColor,
   style,
-  onPress,
+  navigateTo,
+  onBeforeNavigate,
   height,
 }) => {
   const focusProps = useHandleFocus()
@@ -37,8 +39,9 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
     <TouchableContainer
       {...focusProps}
       {...hoverProps}
-      onMouseDown={(e) => e.preventDefault()} // Prevent focus on click
-      onPress={onPress}
+      onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
+      navigateTo={navigateTo}
+      onBeforeNavigate={onBeforeNavigate}
       accessibilityLabel={`Catégorie ${label}`}
       baseColor={fillColor}
       borderColor={borderColor}
@@ -51,7 +54,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 }
 
-const TouchableContainer = styled(TouchableOpacity)<{
+const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
   onMouseDown: (e: Event) => void
   isFocus: boolean
   isHover: boolean

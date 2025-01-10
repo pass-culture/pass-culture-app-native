@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -7,28 +8,40 @@ import { render, screen } from 'tests/utils'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-const fixtureSortedCategories = [
+const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sortedCategories'] = [
   {
-    label: 'Concerts & festivals',
-    textColor: ColorsEnum.LILAC_DARK,
-    position: 1,
-    gradients: [ColorsEnum.GOLD, ColorsEnum.GOLD_DARK],
-    onPress: jest.fn(),
+    label: 'Concerts & Festivals',
+    navigateTo: {
+      screen: 'TabNavigator',
+      params: {
+        screen: 'SearchStackNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.CONCERTS_FESTIVALS },
+        },
+      },
+    },
     fillColor: ColorsEnum.GOLD_LIGHT_100,
     borderColor: ColorsEnum.GOLD_LIGHT_200,
   },
   {
     label: 'Cinéma',
-    textColor: ColorsEnum.SKY_BLUE_DARK,
-    position: 2,
-    gradients: [ColorsEnum.AQUAMARINE, ColorsEnum.AQUAMARINE_DARK],
-    onPress: jest.fn(),
+    navigateTo: {
+      screen: 'TabNavigator',
+      params: {
+        screen: 'SearchStackNavigator',
+        params: {
+          screen: 'ThematicSearch',
+          params: { offerCategories: SearchGroupNameEnumv2.CINEMA },
+        },
+      },
+    },
     fillColor: ColorsEnum.CORAL_LIGHT,
     borderColor: ColorsEnum.CORAL,
   },
 ]
 
-const initialProps = {
+const initialProps: ComponentProps<typeof CategoriesListDumb> = {
   sortedCategories: fixtureSortedCategories,
   showVenueMapLocationModal: jest.fn(),
   venueMapLocationModalVisible: false,
@@ -61,7 +74,7 @@ describe('CategoriesListDumb', () => {
     { isMapWithoutPositionAndNotLocated: true, shouldDisplayVenueMap: true },
     { isMapWithoutPositionAndNotLocated: false, shouldDisplayVenueMap: true },
     { isMapWithoutPositionAndNotLocated: true, shouldDisplayVenueMap: false },
-  ])('should  display venue map block', async (props) => {
+  ])('should display venue map block', async (props) => {
     render(<CategoriesListDumb {...initialProps} {...props} />)
 
     expect(screen.getByText('Explore la carte')).toBeOnTheScreen()
