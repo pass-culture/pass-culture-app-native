@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { MarketingBlockProps } from 'features/home/components/modules/marketing/MarketingBlock'
-import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -17,15 +16,19 @@ export const MarketingBlockContentDesktop = ({
   AttachedCardComponent,
   backgroundImageUrl,
   accessibilityLabel,
+  comingSoon,
 }: MarketingBlockProps) => {
   return (
     <View testID="MarketingBlockContentDesktop">
       <Container>
         <BackgroundImageContainer>
           {backgroundImageUrl ? (
-            <Image url={backgroundImageUrl} />
+            <SmallImageBackground source={{ uri: backgroundImageUrl }}>
+              {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+            </SmallImageBackground>
           ) : (
             <ImagePlaceholder>
+              {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
               <StyledAll />
             </ImagePlaceholder>
           )}
@@ -39,11 +42,15 @@ export const MarketingBlockContentDesktop = ({
       </Container>
       <BackgroundContainer>
         {backgroundImageUrl ? (
-          <ImageBackground source={{ uri: backgroundImageUrl }}>
-            <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE}>
-              <BlackGradient height="100%" />
-            </StyledBlurryWrapper>
-          </ImageBackground>
+          <BigImageBackground source={{ uri: backgroundImageUrl }}>
+            {comingSoon ? (
+              <BlackGradient height="100%" testID="black-gradient">
+                <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE} />
+              </BlackGradient>
+            ) : (
+              <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE} />
+            )}
+          </BigImageBackground>
         ) : (
           <BackgroundImagePlaceholder>
             <BlackGradient height="100%" />
@@ -73,21 +80,20 @@ const BackgroundImageContainer = styled.View(({ theme }) => ({
   borderRadius: getSpacing(2),
 }))
 
-const Image = styled(FastImage)({
-  borderRadius: getSpacing(2),
-  flex: 1,
-})
-
 const ImagePlaceholder = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
   flex: 1,
 })
 
-const ImageBackground = styled.ImageBackground({
+const BigImageBackground = styled.ImageBackground({
   height: '100%',
   width: '100%',
   overflow: 'hidden',
+})
+
+const SmallImageBackground = styled(BigImageBackground)({
+  borderRadius: getSpacing(2),
 })
 
 const BackgroundImagePlaceholder = styled.View(({ theme }) => ({

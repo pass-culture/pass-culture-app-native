@@ -28,4 +28,16 @@ describe('MarketingBlock', () => {
 
     expect(screen.getByTestId('MarketingBlockContentDesktop')).toBeOnTheScreen()
   })
+
+  it('should display a darkened backgroundImage when comingSoon is true', async () => {
+    render(<MarketingBlock {...props} comingSoon="Bientôt disponible" />)
+
+    expect(screen.getByTestId('black-gradient')).toBeOnTheScreen()
+  })
+
+  it('should not  display a darkened backgroundImage when comingSoon is true', async () => {
+    render(<MarketingBlock {...props} />)
+
+    expect(screen.queryByTestId('black-gradient')).not.toBeOnTheScreen()
+  })
 })

@@ -2,8 +2,8 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BlackGradient } from 'features/home/components/BlackGradient'
 import { MarketingBlockProps } from 'features/home/components/modules/marketing/MarketingBlock'
-import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { getSpacing } from 'ui/theme'
@@ -15,6 +15,7 @@ export const MarketingBlockContent = ({
   AttachedCardComponent,
   backgroundImageUrl,
   accessibilityLabel,
+  comingSoon,
 }: MarketingBlockProps) => {
   return (
     <InternalTouchableLink
@@ -23,9 +24,12 @@ export const MarketingBlockContent = ({
       accessibilityLabel={accessibilityLabel}>
       <BackgroundImageContainer>
         {backgroundImageUrl ? (
-          <StyledFastImage url={backgroundImageUrl} />
+          <ImageBackground source={{ uri: backgroundImageUrl }}>
+            {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+          </ImageBackground>
         ) : (
           <ImagePlaceholder>
+            {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
             <StyledAll />
           </ImagePlaceholder>
         )}
@@ -42,9 +46,10 @@ const BackgroundImageContainer = styled.View(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const StyledFastImage = styled(FastImage)({
+const ImageBackground = styled.ImageBackground({
   height: '100%',
   width: '100%',
+  overflow: 'hidden',
 })
 
 const ImagePlaceholder = styled.View({

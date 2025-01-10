@@ -15,9 +15,10 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 type Props = {
   offer: Offer
   shouldFixHeight?: boolean
+  comingSoon?: string
 }
 
-export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) => {
+export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, comingSoon }) => {
   const { offer: attachedOffer } = offer
   const { user } = useAuthContext()
   const mapping = useCategoryIdMapping()
@@ -58,6 +59,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) =
       details={details}
       rightTagLabel={distanceLabel}
       accessibilityLabel={accessibilityLabel}
+      bottomBannerText={comingSoon}
       LeftImageComponent={() => (
         <OfferImage
           imageUrl={attachedOffer?.thumbUrl}

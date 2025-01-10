@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferName } from 'ui/components/tiles/OfferName'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface AttachedCardDisplayProps {
@@ -13,11 +14,13 @@ interface AttachedCardDisplayProps {
   bottomRightElement?: React.ReactNode
   accessibilityLabel?: string
   shouldFixHeight?: boolean
+  bottomBannerText?: string
 }
 
 const BORDER_WIDTH = getSpacing(0.25)
 const OFFER_CARD_HEIGHT = getSpacing(25)
 const OFFER_CARD_PADDING = getSpacing(4)
+const BORDER_RADIUS = getSpacing(3)
 
 export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   title,
@@ -27,39 +30,65 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   rightTagLabel,
   bottomRightElement,
   accessibilityLabel,
+  bottomBannerText,
   shouldFixHeight = false,
 }: AttachedCardDisplayProps) => {
   return (
-    <Container accessibilityLabel={accessibilityLabel} shouldFixHeight={shouldFixHeight}>
-      {LeftImageComponent ? (
-        <ImageContainer>
-          <LeftImageComponent />
-        </ImageContainer>
+    <React.Fragment>
+      <Container
+        accessibilityLabel={accessibilityLabel}
+        shouldFixHeight={shouldFixHeight}
+        bottomBannerText={bottomBannerText}>
+        {LeftImageComponent ? (
+          <ImageContainer>
+            <LeftImageComponent />
+          </ImageContainer>
+        ) : null}
+        <CentralColumn>
+          {subtitle ? <TypoDS.BodyAccentXs>{subtitle}</TypoDS.BodyAccentXs> : null}
+          <OfferName title={title} />
+          {details
+            ? details?.map((detail) => (
+                <CaptionNeutralInfo key={detail}>{detail}</CaptionNeutralInfo>
+              ))
+            : null}
+        </CentralColumn>
+        <RightColumn>
+          {rightTagLabel ? (
+            <TagWrapper label={rightTagLabel}>
+              <TypoDS.BodyAccentXs>{rightTagLabel}</TypoDS.BodyAccentXs>
+            </TagWrapper>
+          ) : null}
+          <Spacer.Flex />
+          {bottomRightElement ? (
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={1} />
+              {bottomRightElement}
+            </React.Fragment>
+          ) : null}
+        </RightColumn>
+      </Container>
+      {bottomBannerText ? (
+        <BottomBanner testId="bottom-banner">
+          <ClockFilled />
+          <TypoDS.BodyAccentXs>{bottomBannerText}</TypoDS.BodyAccentXs>
+        </BottomBanner>
       ) : null}
-      <CentralColumn>
-        {subtitle ? <TypoDS.BodyAccentXs>{subtitle}</TypoDS.BodyAccentXs> : null}
-        <OfferName title={title} />
-        {details
-          ? details?.map((detail) => <CaptionNeutralInfo key={detail}>{detail}</CaptionNeutralInfo>)
-          : null}
-      </CentralColumn>
-      <RightColumn>
-        {rightTagLabel ? (
-          <TagWrapper label={rightTagLabel}>
-            <TypoDS.BodyAccentXs>{rightTagLabel}</TypoDS.BodyAccentXs>
-          </TagWrapper>
-        ) : null}
-        <Spacer.Flex />
-        {bottomRightElement ? (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={1} />
-            {bottomRightElement}
-          </React.Fragment>
-        ) : null}
-      </RightColumn>
-    </Container>
+    </React.Fragment>
   )
 }
+
+const BottomBanner = styled.View(({ theme }) => ({
+  paddingHorizontal: getSpacing(4),
+  paddingVertical: getSpacing(2),
+  height: getSpacing(10),
+  gap: getSpacing(2),
+  backgroundColor: theme.colors.goldLight200,
+  borderBottomLeftRadius: BORDER_RADIUS,
+  borderBottomRightRadius: BORDER_RADIUS,
+  flexDirection: 'row',
+  alignItems: 'center',
+}))
 
 const TagWrapper = styled.View(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
@@ -87,17 +116,22 @@ const ImageContainer = styled.View({
   justifyContent: 'center',
 })
 
-const Container = styled.View<{ shouldFixHeight: boolean }>(({ theme, shouldFixHeight }) => ({
-  backgroundColor: theme.colors.white,
-  borderRadius: getSpacing(3),
-  borderWidth: BORDER_WIDTH,
-  borderColor: theme.colors.greyMedium,
-  gap: getSpacing(2),
-  flexDirection: 'row',
-  padding: OFFER_CARD_PADDING,
-  flexWrap: 'wrap',
-  height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
-}))
+const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: string }>(
+  ({ theme, shouldFixHeight, bottomBannerText }) => ({
+    backgroundColor: theme.colors.white,
+    borderTopLeftRadius: BORDER_RADIUS,
+    borderTopRightRadius: BORDER_RADIUS,
+    borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
+    borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
+    borderWidth: BORDER_WIDTH,
+    borderColor: theme.colors.greyMedium,
+    gap: getSpacing(2),
+    flexDirection: 'row',
+    padding: OFFER_CARD_PADDING,
+    flexWrap: 'wrap',
+    height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
+  })
+)
 
 const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,

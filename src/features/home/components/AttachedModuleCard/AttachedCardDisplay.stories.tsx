@@ -61,6 +61,21 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
       ),
     },
   },
+  {
+    label: 'AttachedCardDisplay with coming soon info',
+    props: {
+      bottomBannerText: 'Disponible le 17 février',
+      details: ['Du 12/06 au 24/06', 'Duo'],
+      LeftImageComponent: () => (
+        <OfferImage
+          imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
+          categoryId={CategoryIdEnum.BEAUX_ARTS}
+          borderRadius={5}
+          withStroke
+        />
+      ),
+    },
+  },
 ]
 
 const Template: VariantsStory<typeof AttachedCardDisplay> = (args) => (
