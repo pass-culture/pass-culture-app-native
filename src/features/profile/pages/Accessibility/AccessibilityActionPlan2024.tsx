@@ -31,16 +31,16 @@ export const AccessibilityActionPlan2024 = () => (
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://passculture.pro/' }}
           />
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
+          <ActionPlanTag status={ActionPlanStatus.DONE} />
         </TypoDS.Body>
       </BulletListItem>
 
       <BulletListItem text="Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux">
-        <ActionPlanTag status={ActionPlanStatus.ONGOING} />
+        <ActionPlanTag status={ActionPlanStatus.DONE} />
       </BulletListItem>
 
       <BulletListItem text="Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux">
-        <ActionPlanTag status={ActionPlanStatus.TODO} />
+        <ActionPlanTag status={ActionPlanStatus.DONE} />
       </BulletListItem>
 
       <BulletListItem>
@@ -53,7 +53,7 @@ export const AccessibilityActionPlan2024 = () => (
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://pass.culture.fr/' }}
           />
-          <ActionPlanTag status={ActionPlanStatus.TODO} />
+          <ActionPlanTag status={ActionPlanStatus.DONE} />
         </TypoDS.Body>
       </BulletListItem>
 
@@ -67,11 +67,19 @@ export const AccessibilityActionPlan2024 = () => (
             icon={ExternalSiteFilled}
             externalNav={{ url: 'https://passculture.pro/' }}
           />
-          <ActionPlanTag status={ActionPlanStatus.TODO} />
+          <ActionPlanTag status={ActionPlanStatus.DONE} />
         </TypoDS.Body>
       </BulletListItem>
 
+      <BulletListItem text="Sensibilisation des équipes internes aux enjeux d’accessibilité">
+        <ActionPlanTag status={ActionPlanStatus.DONE} />
+      </BulletListItem>
+
       <BulletListItem text="Mettre en place une charte graphique 100% accessible">
+        <ActionPlanTag status={ActionPlanStatus.TODO} />
+      </BulletListItem>
+
+      <BulletListItem text="Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe">
         <ActionPlanTag status={ActionPlanStatus.TODO} />
       </BulletListItem>
 
@@ -86,16 +94,12 @@ export const AccessibilityActionPlan2024 = () => (
             externalNav={{ url: 'https://passculture.app/' }}
           />{' '}
           100% accessible
-          <ActionPlanTag status={ActionPlanStatus.TODO} />
+          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
         </TypoDS.Body>
       </BulletListItem>
 
       <BulletListItem text="Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre">
-        <ActionPlanTag status={ActionPlanStatus.TODO} />
-      </BulletListItem>
-
-      <BulletListItem text="Sensibilisation des équipes internes aux enjeux d’accessibilité">
-        <ActionPlanTag status={ActionPlanStatus.TODO} />
+        <ActionPlanTag status={ActionPlanStatus.ONGOING} />
       </BulletListItem>
     </VerticalUl>
   </React.Fragment>

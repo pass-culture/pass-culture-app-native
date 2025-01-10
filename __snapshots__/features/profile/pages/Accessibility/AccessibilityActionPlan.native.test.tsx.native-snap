@@ -3334,11 +3334,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
-                  done={false}
+                  done={true}
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#15884f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3347,7 +3347,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   }
                 >
                    - 
-                  En cours
+                  Réalisé
                 </Text>
               </Text>
             </Text>
@@ -3413,11 +3413,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             >
               Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux
               <Text
-                done={false}
+                done={true}
                 style={
                   [
                     {
-                      "color": "#161617",
+                      "color": "#15884f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -3426,7 +3426,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 }
               >
                  - 
-                En cours
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3491,11 +3491,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             >
               Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux
               <Text
-                done={false}
+                done={true}
                 style={
                   [
                     {
-                      "color": "#161617",
+                      "color": "#15884f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -3504,7 +3504,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 }
               >
                  - 
-                Prochainement
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3679,11 +3679,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
-                  done={false}
+                  done={true}
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#15884f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3692,7 +3692,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   }
                 >
                    - 
-                  Prochainement
+                  Réalisé
                 </Text>
               </Text>
             </Text>
@@ -3868,11 +3868,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
-                  done={false}
+                  done={true}
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#15884f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3881,7 +3881,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   }
                 >
                    - 
-                  Prochainement
+                  Réalisé
                 </Text>
               </Text>
             </Text>
@@ -3945,7 +3945,163 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 ]
               }
             >
+              Sensibilisation des équipes internes aux enjeux d’accessibilité
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
               Mettre en place une charte graphique 100% accessible
+              <Text
+                done={false}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Prochainement
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe
               <Text
                 done={false}
                 style={
@@ -4150,7 +4306,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   }
                 >
                    - 
-                  Prochainement
+                  En cours
                 </Text>
               </Text>
             </Text>
@@ -4229,85 +4385,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 }
               >
                  - 
-                Prochainement
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Sensibilisation des équipes internes aux enjeux d’accessibilité
-              <Text
-                done={false}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 - 
-                Prochainement
+                En cours
               </Text>
             </Text>
           </View>
