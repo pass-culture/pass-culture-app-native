@@ -9,7 +9,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
+import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 
 type QueryProps = {
   query?: string
@@ -82,7 +82,7 @@ const StyledSearchInput = styled(SearchInput).attrs({
   },
 })({})
 
-const SearchIcon = styled(BicolorSearchV2).attrs(({ theme }) => ({
+const SearchIcon = styled(BicolorSearch).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   size: theme.icons.sizes.smaller,
 }))``

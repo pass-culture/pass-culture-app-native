@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { BicolorBookingsCountV2 } from 'features/bookings/components/BicolorBookingsCountV2'
-import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
-import { BicolorFavoriteV2 } from 'ui/svg/icons/BicolorFavoriteV2'
+import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
-import { BicolorTabBarProfileV2 } from 'ui/svg/icons/BicolorTabBarProfileV2'
+import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
+import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
 import { TabRouteName } from './types'
@@ -19,18 +19,18 @@ export function mapTabRouteToBicolorIcon({
   route,
   enableReactionFeature,
 }: Props): React.FC<AccessibleBicolorIcon> {
-  const BicolorBookingsIcon = enableReactionFeature ? BicolorBookingsCountV2 : BicolorBookingsV2
+  const BicolorBookingsIcon = enableReactionFeature ? BicolorBookingsCountV2 : BicolorBookings
   switch (route) {
     case 'Home':
       return BicolorLogo
     case 'SearchStackNavigator':
-      return BicolorSearchV2
+      return BicolorSearch
     case 'Bookings':
       return BicolorBookingsIcon
     case 'Favorites':
-      return BicolorFavoriteV2
+      return BicolorFavorite
     case 'Profile':
-      return BicolorTabBarProfileV2
+      return BicolorTabBarProfile
     default:
       return BicolorLogo
   }
