@@ -98,7 +98,7 @@ describe('useShouldShowAchievementSuccessModal', () => {
       )
     })
 
-    it('should return shouldNotShow if the achievements are undefined', () => {
+    it('should return pending if the achievements are undefined', () => {
       mockAuthContextWithUser({
         ...beneficiaryUser,
         achievements: undefined as unknown as AchievementResponse[],
@@ -106,9 +106,7 @@ describe('useShouldShowAchievementSuccessModal', () => {
 
       const { result } = renderHook(useShouldShowAchievementSuccessModal)
 
-      expect(result.current.shouldShowAchievementSuccessModal).toEqual(
-        ModalDisplayState.SHOULD_NOT_SHOW
-      )
+      expect(result.current.shouldShowAchievementSuccessModal).toEqual(ModalDisplayState.PENDING)
     })
 
     it('should return an empty array if there are no achievements to show to the user', () => {

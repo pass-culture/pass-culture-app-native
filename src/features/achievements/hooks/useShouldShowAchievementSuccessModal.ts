@@ -11,7 +11,7 @@ export const useShouldShowAchievementSuccessModal = (): {
 } => {
   const areAchievementsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const { displayAchievements } = useRemoteConfigContext()
-  const { user } = useAuthContext()
+  const { user, isUserLoading } = useAuthContext()
 
   const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
 
@@ -19,10 +19,15 @@ export const useShouldShowAchievementSuccessModal = (): {
     (achievement) => !achievement.seenDate
   )
 
+  if (!user || isThereAtLeastOneUnseenAchievement === undefined || isUserLoading)
+    return {
+      shouldShowAchievementSuccessModal: ModalDisplayState.PENDING,
+      achievementsToShow: [],
+    }
+
   if (
     !areAchievementsEnabled ||
     !displayAchievements ||
-    !user?.achievements ||
     user?.achievements.length === 0 ||
     !isThereAtLeastOneUnseenAchievement
   )

@@ -33,7 +33,9 @@ describe('useBookingsReactionHelpers', () => {
   it('should return false when FF wipReactionFeature is false', () => {
     setFeatureFlags()
 
-    const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
+    const { result } = renderHook(() =>
+      useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+    )
 
     expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
   })
@@ -44,7 +46,9 @@ describe('useBookingsReactionHelpers', () => {
     })
 
     it('should return shouldNotShow if the bookings already have reactions', () => {
-      const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithReaction))
+      const { result } = renderHook(() =>
+        useBookingsReactionHelpers(endedBookingWithReaction, false)
+      )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
     })
@@ -53,13 +57,17 @@ describe('useBookingsReactionHelpers', () => {
     it.skip('should return shouldNotShow if cookies where not accepted', () => {
       cookiesNotAccepted()
 
-      const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
+      const { result } = renderHook(() =>
+        useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+      )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
     })
 
     it('should return true if there are bookings to react to', () => {
-      const { result } = renderHook(() => useBookingsReactionHelpers(endedBookingWithoutReaction))
+      const { result } = renderHook(() =>
+        useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+      )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_SHOW)
       expect(result.current.bookingsEligibleToReaction).toEqual(
