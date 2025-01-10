@@ -184,12 +184,13 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "maxWidth": 500,
+        "maxWidth": "100%",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
         "width": "100%",
       }
     }
+    enableMaxWidth={false}
     scrollEnabled={true}
     style={
       [
@@ -315,7 +316,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               >
                 <View>
                   <View
-                    accessibilityLabel="Schéma pluriannuel d’accessibilité 2022 - 2024"
+                    accessibilityLabel="Schéma pluriannuel d’accessibilité 2022 - 2025"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -358,7 +359,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Schéma pluriannuel d’accessibilité 2022 - 2024"
+                    testID="Schéma pluriannuel d’accessibilité 2022 - 2025"
                   >
                     <View
                       paddingForIcon={0}
@@ -404,7 +405,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         }
                         typography="BodyAccentXs"
                       >
-                        Schéma pluriannuel d’accessibilité 2022 - 2024
+                        Schéma pluriannuel d’accessibilité 2022 - 2025
                       </Text>
                     </View>
                   </View>
@@ -485,7 +486,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               >
                 <View>
                   <View
-                    accessibilityLabel="Actions réalisées en 2022 et 2023"
+                    accessibilityLabel="Actions réalisées depuis 2022"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -528,7 +529,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Actions réalisées en 2022 et 2023"
+                    testID="Actions réalisées depuis 2022"
                   >
                     <View
                       paddingForIcon={0}
@@ -574,7 +575,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         }
                         typography="BodyAccentXs"
                       >
-                        Actions réalisées en 2022 et 2023
+                        Actions réalisées depuis 2022
                       </Text>
                     </View>
                   </View>

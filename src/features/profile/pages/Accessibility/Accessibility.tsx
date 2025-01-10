@@ -42,7 +42,7 @@ const sections = [
 
 export function Accessibility() {
   return (
-    <SecondaryPageWithBlurHeader title="Accessibilité">
+    <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false}>
       <AccessibleUnorderedList items={sections} Separator={<Separator.Horizontal />} />
     </SecondaryPageWithBlurHeader>
   )

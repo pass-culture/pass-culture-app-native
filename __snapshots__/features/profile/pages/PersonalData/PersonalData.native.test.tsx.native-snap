@@ -190,6 +190,7 @@ exports[`PersonalData should render personal data success 1`] = `
         "width": "100%",
       }
     }
+    enableMaxWidth={true}
     scrollEnabled={true}
     style={
       [

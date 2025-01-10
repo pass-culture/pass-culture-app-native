@@ -184,12 +184,13 @@ exports[`RecommendedPaths should render correctly 1`] = `
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "maxWidth": 500,
+        "maxWidth": "100%",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
         "width": "100%",
       }
     }
+    enableMaxWidth={false}
     scrollEnabled={true}
     style={
       [

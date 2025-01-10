@@ -190,6 +190,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         "width": "100%",
       }
     }
+    enableMaxWidth={true}
     scrollEnabled={true}
     style={
       [

@@ -3,7 +3,7 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityDeclaration } from 'features/profile/pages/Accessibility/AccessibilityDeclaration'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, userEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -14,6 +14,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('AccessibilityDeclaration', () => {
   it('should render correctly', () => {
@@ -35,11 +38,11 @@ describe('AccessibilityDeclaration', () => {
     ${`${WEBAPP_V2_URL}/accessibilite/declaration`}        | ${'Déclaration d’accessibilité'}
     ${'https://formulaire.defenseurdesdroits.fr/'}         | ${'Défenseur des droits'}
     ${'https://www.defenseurdesdroits.fr/saisir/delegues'} | ${'Défenseur des droits dans votre région'}
-  `('should open $url when $title is clicked', ({ url, title }) => {
+  `('should open $url when $title is clicked', async ({ url, title }) => {
     render(<AccessibilityDeclaration />)
 
     const link = screen.getByTestId(title)
-    fireEvent.press(link)
+    await user.press(link)
 
     expect(openURLSpy).toHaveBeenCalledWith(url, undefined, true)
   })

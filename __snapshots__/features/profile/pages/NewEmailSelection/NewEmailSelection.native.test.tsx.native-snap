@@ -190,6 +190,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
         "width": "100%",
       }
     }
+    enableMaxWidth={true}
     scrollEnabled={true}
     style={
       [
