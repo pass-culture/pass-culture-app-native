@@ -75,14 +75,6 @@ export const AccessibilityActionPlan2024 = () => (
         <ActionPlanTag status={ActionPlanStatus.DONE} />
       </BulletListItem>
 
-      <BulletListItem text="Mettre en place une charte graphique 100% accessible">
-        <ActionPlanTag status={ActionPlanStatus.TODO} />
-      </BulletListItem>
-
-      <BulletListItem text="Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe">
-        <ActionPlanTag status={ActionPlanStatus.TODO} />
-      </BulletListItem>
-
       <BulletListItem>
         <TypoDS.Body>
           Rendre le site{' '}
@@ -94,12 +86,20 @@ export const AccessibilityActionPlan2024 = () => (
             externalNav={{ url: 'https://passculture.app/' }}
           />{' '}
           100% accessible
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
+          <ActionPlanTag status={ActionPlanStatus.ONGOING} details="poursuivi en 2025" />
         </TypoDS.Body>
       </BulletListItem>
 
       <BulletListItem text="Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre">
-        <ActionPlanTag status={ActionPlanStatus.ONGOING} />
+        <ActionPlanTag status={ActionPlanStatus.ONGOING} details="poursuivi en 2025" />
+      </BulletListItem>
+
+      <BulletListItem text="Mettre en place une charte graphique 100% accessible">
+        <ActionPlanTag status={ActionPlanStatus.TODO} details="a faire en 2025" />
+      </BulletListItem>
+
+      <BulletListItem text="Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe">
+        <ActionPlanTag status={ActionPlanStatus.TODO} details="a faire en 2025" />
       </BulletListItem>
     </VerticalUl>
   </React.Fragment>
