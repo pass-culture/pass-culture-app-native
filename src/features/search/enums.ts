@@ -51,19 +51,14 @@ export const SearchCategoriesIllustrations = {
   YouthCards,
 }
 
-export type Gradient = Array<ColorsEnum>
-
 export type CategoryCriteria = {
   icon: React.FC<AccessibleBicolorIcon>
   illustration: React.FC<AccessibleIcon>
   facetFilter: SearchGroupNameEnumv2
-  baseColor: ColorsEnum
-  gradients: Gradient
+  gradients: Array<ColorsEnum>
   position: number
-  // v2 App Design
   fillColor: ColorsEnum
   borderColor: ColorsEnum
-  textColor: ColorsEnum
 }
 
 type CategoryCriteriaWithNone = {
@@ -72,13 +67,10 @@ type CategoryCriteriaWithNone = {
         icon: React.FC<AccessibleBicolorIcon>
         illustration: undefined
         facetFilter: SearchGroupNameEnumv2
-        baseColor: undefined
         gradients: undefined
         position: undefined
-        // v2 App Design
         fillColor: undefined
         borderColor: undefined
-        textColor: undefined
       }
     : CategoryCriteria
 }
@@ -88,10 +80,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.All,
     illustration: undefined,
     facetFilter: SearchGroupNameEnumv2.NONE,
-    baseColor: undefined,
     gradients: undefined,
     position: undefined,
-    textColor: undefined,
     borderColor: undefined,
     fillColor: undefined,
   },
@@ -100,9 +90,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     position: 1,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.goldLight200,
     fillColor: theme.colors.goldLight100,
   },
@@ -111,9 +99,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     position: 2,
-    baseColor: theme.colors.skyBlueDark,
+
     gradients: gradientColorsMapping.SkyBlue,
-    textColor: theme.colors.coralDark,
     borderColor: theme.colors.skyBlue,
     fillColor: theme.colors.skyBlueLight,
   },
@@ -122,9 +109,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.CINEMA,
     position: 2,
-    baseColor: theme.colors.skyBlueDark,
+
     gradients: gradientColorsMapping.SkyBlue,
-    textColor: theme.colors.coralDark,
     borderColor: theme.colors.skyBlue,
     fillColor: theme.colors.skyBlueLight,
   },
@@ -133,9 +119,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     position: 3,
-    baseColor: theme.colors.lilacDark,
     gradients: gradientColorsMapping.Lilac,
-    textColor: theme.colors.deepPinkDark,
     borderColor: theme.colors.lilac,
     fillColor: theme.colors.lilacLight,
   },
@@ -144,9 +128,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.Books,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     position: 4,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.skyBlueDark,
     borderColor: theme.colors.coral,
     fillColor: theme.colors.coralLight,
   },
@@ -155,9 +137,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
     position: 5,
-    baseColor: theme.colors.coralDark,
     gradients: gradientColorsMapping.Coral,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.aquamarineDark,
     fillColor: theme.colors.aquamarineLight,
   },
@@ -166,9 +146,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.MUSIQUE,
     position: 5,
-    baseColor: theme.colors.coralDark,
     gradients: gradientColorsMapping.Coral,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.aquamarineDark,
     fillColor: theme.colors.aquamarineLight,
   },
@@ -177,9 +155,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ArtsCrafts,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     position: 6,
-    baseColor: theme.colors.deepPinkDark,
     gradients: gradientColorsMapping.DeepPink,
-    textColor: theme.colors.aquamarineDark,
     borderColor: theme.colors.deepPink,
     fillColor: theme.colors.deepPinkLight,
   },
@@ -188,9 +164,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.Shows,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     position: 7,
-    baseColor: theme.colors.aquamarineDark,
     gradients: gradientColorsMapping.Aquamarine,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.goldLight200,
     fillColor: theme.colors.goldLight100,
   },
@@ -199,9 +173,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     position: 8,
-    baseColor: theme.colors.skyBlueDark,
     gradients: gradientColorsMapping.SkyBlue,
-    textColor: theme.colors.coralDark,
     borderColor: theme.colors.skyBlue,
     fillColor: theme.colors.skyBlueLight,
   },
@@ -210,9 +182,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.GamesVideoGames,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     position: 9,
-    baseColor: theme.colors.lilacDark,
     gradients: gradientColorsMapping.Lilac,
-    textColor: theme.colors.deepPinkDark,
     borderColor: theme.colors.lilac,
     fillColor: theme.colors.lilacLight,
   },
@@ -221,9 +191,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.MusicalInstruments,
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
     position: 10,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.skyBlueDark,
     borderColor: theme.colors.coral,
     fillColor: theme.colors.coralLight,
   },
@@ -232,9 +200,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.MediaPress,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     position: 10,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.skyBlueDark,
     borderColor: theme.colors.coral,
     fillColor: theme.colors.coralLight,
   },
@@ -243,9 +209,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.YouthCards,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     position: 11,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.aquamarineDark,
     fillColor: theme.colors.aquamarineLight,
   },
@@ -254,9 +218,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ConferencesMeetings,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     position: 12,
-    baseColor: theme.colors.deepPinkDark,
     gradients: gradientColorsMapping.DeepPink,
-    textColor: theme.colors.aquamarineDark,
     borderColor: theme.colors.deepPink,
     fillColor: theme.colors.deepPinkLight,
   },
@@ -265,9 +227,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.OnlineEvents,
     position: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
-    baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
-    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.goldLight200,
     fillColor: theme.colors.goldLight100,
   },

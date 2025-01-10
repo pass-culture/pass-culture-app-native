@@ -46,7 +46,6 @@ export const CategoryListModule = ({
             key={item.id}
             label={item.title}
             height={BLOCK_HEIGHT}
-            textColor={colorMapping[item.color].text}
             fillColor={colorMapping[item.color].fill}
             borderColor={colorMapping[item.color].border}
             onBeforeNavigate={() => {

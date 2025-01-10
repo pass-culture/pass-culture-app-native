@@ -81,7 +81,7 @@ describe('CategoriesList', () => {
         params: {
           params: {
             searchId: 'testUuidV4',
-            isFullyDigitalOffersCategory: undefined,
+            isFullyDigitalOffersCategory: false,
             offerCategories: ['SPECTACLES'],
           },
           screen: 'SearchResults',

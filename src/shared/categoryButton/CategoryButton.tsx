@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { Gradient } from 'features/search/enums'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -9,7 +8,6 @@ import {
   InternalNavigationProps,
   InternalTouchableLinkProps,
 } from 'ui/components/touchableLink/types'
-import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -18,16 +16,10 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export type CategoryButtonProps = {
   label: string
-  Illustration?: FunctionComponent<AccessibleIcon>
-  baseColor?: ColorsEnum
-  gradients?: Gradient
   navigateTo: InternalNavigationProps['navigateTo']
   onBeforeNavigate?: () => void
-  children?: never
   height?: number
   style?: InternalTouchableLinkProps['style']
-  // v2 App Design
-  textColor: ColorsEnum
   fillColor: ColorsEnum
   borderColor: ColorsEnum
 }

@@ -40,7 +40,6 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
       navigateTo: navigateTo(category.facetFilter),
       position: category.position,
-      textColor: category.textColor,
       borderColor: category.borderColor,
       fillColor: category.fillColor,
     }))
