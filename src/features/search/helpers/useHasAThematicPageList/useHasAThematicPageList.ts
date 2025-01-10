@@ -1,3 +1,4 @@
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
@@ -15,11 +16,11 @@ export const useHasAThematicPageList = () => {
     RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_MUSIC
   )
   return [
-    enableWipPageThematicSearchBooks ? 'LIVRES' : undefined,
-    enableWipPageThematicSearchCinema ? 'CINEMA' : undefined,
+    enableWipPageThematicSearchBooks ? SearchGroupNameEnumv2.LIVRES : undefined,
+    enableWipPageThematicSearchCinema ? SearchGroupNameEnumv2.CINEMA : undefined,
     enableWipPageThematicSearchFilmsDocumentairesEtSeries
-      ? 'FILMS_DOCUMENTAIRES_SERIES'
+      ? SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
       : undefined,
-    enableWipPageThematicSearchMusic ? 'MUSIQUE' : undefined,
+    enableWipPageThematicSearchMusic ? SearchGroupNameEnumv2.MUSIQUE : undefined,
   ]
 }
