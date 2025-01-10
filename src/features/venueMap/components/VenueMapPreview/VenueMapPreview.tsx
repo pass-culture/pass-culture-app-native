@@ -1,11 +1,13 @@
 import React, { ComponentProps, FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { Image } from 'libs/resizing-image-on-demand/Image'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
+import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -32,6 +34,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   withRightArrow,
   ...touchableProps
 }) => {
+  const theme = useTheme()
   const Wrapper = noBorder ? InternalTouchableLink : Container
   return (
     <Wrapper {...touchableProps}>
@@ -40,13 +43,25 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
         <StyledCloseButton onClose={onClose} size={iconSize} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
-      <VenuePreview
-        venueName={venueName}
-        address={address}
-        bannerUrl={bannerUrl}
-        imageWidth={VENUE_THUMBNAIL_SIZE}
-        imageHeight={VENUE_THUMBNAIL_SIZE}
-        withRightArrow={withRightArrow}
+      <InfoHeader
+        title={venueName}
+        subtitle={address}
+        defaultThumbnailSize={VENUE_THUMBNAIL_SIZE}
+        rightComponent={
+          withRightArrow ? (
+            <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+          ) : null
+        }
+        thumbnailComponent={
+          bannerUrl ? (
+            <VenueThumbnail
+              url={bannerUrl}
+              height={VENUE_THUMBNAIL_SIZE}
+              width={VENUE_THUMBNAIL_SIZE}
+              testID="VenuePreviewImage"
+            />
+          ) : null
+        }
       />
     </Wrapper>
   )
@@ -80,3 +95,9 @@ const StyledCloseButton = styledButton(CloseButton)({
 const StyledInformationTags = styled(InformationTags)({
   flexGrow: 1,
 })
+
+const VenueThumbnail = styled(Image)<{ height: number; width: number }>(({ height, width }) => ({
+  borderRadius: 4,
+  height,
+  width,
+}))

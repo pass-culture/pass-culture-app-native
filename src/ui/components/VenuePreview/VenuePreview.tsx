@@ -17,6 +17,7 @@ type Props = PropsWithChildren<{
   imageWidth: number
 }>
 
+// TODO(PC-00000): remove with VenueListModule
 export const VenuePreview: FunctionComponent<Props> = ({
   address,
   bannerUrl,
