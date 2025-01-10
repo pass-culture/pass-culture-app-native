@@ -2,10 +2,16 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { GetAvailableReactionsResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useAvailableReaction = () => {
-  return useQuery<GetAvailableReactionsResponse>([QueryKeys.AVAILABLE_REACTION], () =>
-    api.getNativeV1ReactionAvailable()
+  const { isLoggedIn } = useAuthContext()
+  return useQuery<GetAvailableReactionsResponse>(
+    [QueryKeys.AVAILABLE_REACTION],
+    () => api.getNativeV1ReactionAvailable(),
+    {
+      enabled: isLoggedIn,
+    }
   )
 }
