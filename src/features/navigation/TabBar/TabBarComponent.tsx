@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { menu } from 'features/navigation/TabBar/menu'
-import { TabBarInnerComponentV2 } from 'features/navigation/TabBar/TabBarInnerComponentV2'
+import { TabBarInnerComponent } from 'features/navigation/TabBar/TabBarInnerComponent'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -42,7 +42,7 @@ export const TabBarComponent: React.FC<Props> = ({
       accessibilityLabel={menu[tabName].accessibilityLabel}
       testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
       accessibilityCurrent={isSelected ? 'page' : undefined}>
-      <TabBarInnerComponentV2
+      <TabBarInnerComponent
         tabName={tabName}
         isSelected={isSelected}
         BicolorIcon={BicolorIcon}
