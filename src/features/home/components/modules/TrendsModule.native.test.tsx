@@ -5,9 +5,9 @@ import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -39,26 +39,21 @@ const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelected
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 describe('TrendsModule', () => {
-  it('should not log analytics on render when FF is disabled', () => {
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
-
-    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
-  })
-
-  it('should log analytics on render when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should log analytics on render', () => {
     const trackingPropsWithoutRedesign = {
       ...trackingProps,
       homeEntryId: 'homeEntryId',
     }
-    render(<TrendsModule {...formattedTrendsModule} {...trackingPropsWithoutRedesign} />)
+    render(
+      reactQueryProviderHOC(
+        <TrendsModule {...formattedTrendsModule} {...trackingPropsWithoutRedesign} />
+      )
+    )
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith({
       moduleId: 'g6VpeYbOosfALeqR55Ah6',
@@ -69,8 +64,7 @@ describe('TrendsModule', () => {
   })
 
   it('should redirect to VenueMap when pressing venue map block content type and user location is not everywhere', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -78,8 +72,7 @@ describe('TrendsModule', () => {
   })
 
   it('should reset selected venue in store when pressing venue map block content type and user location is not everywhere', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -87,7 +80,6 @@ describe('TrendsModule', () => {
   })
 
   it('should open venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     useModalAPISpy.mockReturnValueOnce({
       visible: false,
       showModal: mockShowModal,
@@ -100,7 +92,7 @@ describe('TrendsModule', () => {
       place: mockedPlace,
       onModalHideRef: jest.fn(),
     })
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -108,8 +100,7 @@ describe('TrendsModule', () => {
   })
 
   it('should redirect to thematic home when pressing trend block content type', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Tendance 1'))
 
@@ -121,9 +112,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log analytics when pressing venue map block content type and user location is not everywhere', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -131,7 +120,6 @@ describe('TrendsModule', () => {
   })
 
   it('should not log analytics when pressing venue map block content type and user location is everywhere', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     useModalAPISpy.mockReturnValueOnce({
       visible: false,
       showModal: mockShowModal,
@@ -144,7 +132,7 @@ describe('TrendsModule', () => {
       place: mockedPlace,
       onModalHideRef: jest.fn(),
     })
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -152,8 +140,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log trends block clicked when pressing a trend', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Tendance 1'))
 
@@ -166,8 +153,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log trends block clicked when pressing venue map block content type', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
 
     await user.press(screen.getByText('Accès carte des lieux'))
 

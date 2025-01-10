@@ -3,8 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const trackingProps = {
@@ -17,8 +16,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('TrendsModule', () => {
   it('should redirect to thematic home when content type is venue map block', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS])
-    render(<TrendsModule {...trackingProps} {...formattedTrendsModule} />)
+    render(reactQueryProviderHOC(<TrendsModule {...trackingProps} {...formattedTrendsModule} />))
 
     fireEvent.click(screen.getByText('Accès carte des lieux'))
 
