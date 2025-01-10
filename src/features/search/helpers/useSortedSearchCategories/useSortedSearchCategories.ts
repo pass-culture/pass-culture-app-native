@@ -29,7 +29,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
         offerCategories: [facetFilter],
-        isFullyDigitalOffersCategory: (data && isOnlyOnline(data, facetFilter)) || undefined,
+        isFullyDigitalOffersCategory: data && isOnlyOnline(data, facetFilter),
         searchId: uuidv4(),
       }
     )

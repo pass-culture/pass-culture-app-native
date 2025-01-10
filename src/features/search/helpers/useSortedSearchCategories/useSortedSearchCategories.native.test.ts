@@ -56,7 +56,7 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[0]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFullyDigitalOffersCategory: undefined,
+            isFullyDigitalOffersCategory: false,
             offerCategories: ['CONCERTS_FESTIVALS'],
             searchId: 'testUuidV4',
           },
@@ -91,7 +91,7 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[3]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFullyDigitalOffersCategory: undefined,
+            isFullyDigitalOffersCategory: false,
             offerCategories: ['LIVRES'],
             searchId: 'testUuidV4',
           },
@@ -108,7 +108,7 @@ describe('useSortedSearchCategories', () => {
       expect(result.current[3]?.navigateTo.params).toEqual({
         params: {
           params: {
-            isFullyDigitalOffersCategory: undefined,
+            isFullyDigitalOffersCategory: false,
             offerCategories: ['LIVRES'],
             searchId: 'testUuidV4',
           },
