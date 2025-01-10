@@ -20,8 +20,6 @@ jobs:
     name: 'Install runtime environment and dependencies iOS deploy'
     runs-on: macos-14
     steps:
-      - name: Enable Corepack
-        run: corepack enable
       - name: Is deployment targeting ehp or production
         id: cloudenv
         run: |
@@ -36,6 +34,8 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Setup yarn
         run: npm install -g yarn
+      - name: Enable Corepack
+        run: corepack enable
       - name: Setup java
         uses: actions/setup-java@v4
         with:
