@@ -5,6 +5,7 @@ import { ContactSupportButton } from 'features/profile/components/Buttons/Contac
 import { AccessibilityActionPlan2022 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2022'
 import { AccessibilityActionPlan2023 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2023'
 import { AccessibilityActionPlan2024 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2024'
+import { AccessibilityActionPlan2025 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2025'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'
@@ -335,6 +336,8 @@ export function AccessibilityActionPlan() {
         icon={ExternalSiteFilled}
         externalNav={{ url: 'https://passculture.pro/' }}
       />
+      <StyledSeparator />
+      <AccessibilityActionPlan2025 />
       <StyledSeparator />
       <AccessibilityActionPlan2024 />
       <StyledSeparator />

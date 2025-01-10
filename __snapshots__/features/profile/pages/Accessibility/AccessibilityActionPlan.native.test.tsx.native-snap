@@ -3239,7 +3239,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                  
                 - 
-                Prochainement
+                En cours
               </Text>
             </Text>
           </View>
@@ -3539,7 +3539,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 ]
               }
             >
-              Atteindre 100%  d’accessibilité de la version web sur les parcours clés
+              Atteindre 100% d’accessibilité de la version web sur les parcours clés
               <Text
                 done={false}
                 style={
