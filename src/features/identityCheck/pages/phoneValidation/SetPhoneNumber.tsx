@@ -31,7 +31,7 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
@@ -163,11 +163,11 @@ export const SetPhoneNumber = () => {
       fixedBottomChildren={
         <BottomContentContainer>
           <RemainingAttemptsContainer>
-            <Typo.CaptionNeutralInfo>Il te reste </Typo.CaptionNeutralInfo>
+            <CaptionNeutralInfo>Il te reste </CaptionNeutralInfo>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
-            <Typo.CaptionNeutralInfo>de code de validation</Typo.CaptionNeutralInfo>
+            <CaptionNeutralInfo>de code de validation</CaptionNeutralInfo>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
@@ -203,8 +203,12 @@ const InputContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
 }))
 
-const WarningRemainingAttempts = styled(Typo.Caption)<{ isLastAttempt: boolean }>(
+const WarningRemainingAttempts = styled(TypoDS.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
     color: isLastAttempt ? theme.colors.error : theme.colors.black,
   })
 )
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

@@ -5,7 +5,7 @@ import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGenerat
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Share as DefaultShare } from 'ui/svg/icons/BicolorShare'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   deeplink: GeneratedDeeplink
@@ -28,7 +28,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
         <Spacer.Flex flex={0.85}>
           <ExternalTouchableLink
             externalNav={{ url: deeplink.universalLink, params: { shouldLogEvent: false } }}>
-            <Typo.Caption>{deeplink.universalLink}</Typo.Caption>
+            <TypoDS.BodyAccentXs>{deeplink.universalLink}</TypoDS.BodyAccentXs>
           </ExternalTouchableLink>
         </Spacer.Flex>
 
@@ -45,7 +45,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
         <Spacer.Flex flex={0.85}>
           <ExternalTouchableLink
             externalNav={{ url: deeplink.firebaseLink, params: { shouldLogEvent: false } }}>
-            <Typo.Caption>{deeplink.firebaseLink}</Typo.Caption>
+            <TypoDS.BodyAccentXs>{deeplink.firebaseLink}</TypoDS.BodyAccentXs>
           </ExternalTouchableLink>
         </Spacer.Flex>
 

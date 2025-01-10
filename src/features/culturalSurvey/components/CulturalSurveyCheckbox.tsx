@@ -7,7 +7,7 @@ import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, TypoDS } from 'ui/theme'
 
 type CulturalSurveyCheckboxProps = {
   title: string
@@ -53,9 +53,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
         ) : null}
         <DescriptionContainer>
           <Typo.ButtonText>{props.title}</Typo.ButtonText>
-          {props.subtitle ? (
-            <Typo.CaptionNeutralInfo>{props.subtitle}</Typo.CaptionNeutralInfo>
-          ) : null}
+          {props.subtitle ? <CaptionNeutralInfo>{props.subtitle}</CaptionNeutralInfo> : null}
         </DescriptionContainer>
         {isSelected ? (
           <ValidateIconContainer>
@@ -105,3 +103,7 @@ const ActivityIconContainer = styled.View({
   alignContent: 'center',
   marginLeft: getSpacing(4),
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

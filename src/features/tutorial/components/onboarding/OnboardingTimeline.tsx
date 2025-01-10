@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Spacer, Typo, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -17,7 +17,7 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   return <CreditTimeline age={age} stepperProps={stepperProps} type={TutorialTypes.ONBOARDING} />
 }
 
-const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
+const DescriptionText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
   color: theme.colors.greyDark,

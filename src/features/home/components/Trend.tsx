@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type TrendProps = TrendBlock &
   TrendNavigationProps & {
@@ -28,7 +28,7 @@ const Item = styled(InternalTouchableLink)(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const StyledText = styled(Typo.Caption).attrs({
+const StyledText = styled(TypoDS.BodyAccentXs).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   textAlign: 'center',

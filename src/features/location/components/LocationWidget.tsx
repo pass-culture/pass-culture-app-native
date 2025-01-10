@@ -18,7 +18,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(25)
 const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
@@ -109,7 +109,7 @@ const StyledTouchable = styledButton(Touchable)({
   marginLeft: getSpacing(2),
 })
 
-const StyledCaption = styled(Typo.Caption)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)({
   paddingTop: getSpacing(1),
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
 })

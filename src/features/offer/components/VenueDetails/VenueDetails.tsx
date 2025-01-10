@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueDetail } from 'features/offer/types'
 import { Tag } from 'ui/components/Tag/Tag'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
@@ -62,7 +62,7 @@ const Title = styled(Typo.ButtonText).attrs({
   ...getHoverStyle(theme.colors.black, isHover),
 }))
 
-const VenueAddress = styled(Typo.Caption).attrs({
+const VenueAddress = styled(TypoDS.BodyAccentXs).attrs({
   numberOfLines: 2,
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({

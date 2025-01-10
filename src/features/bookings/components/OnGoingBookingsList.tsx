@@ -20,7 +20,7 @@ import {
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -154,7 +154,7 @@ const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   height: '100%',
 }))
 
-const BookingsCount = styled(Typo.Caption).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
+const BookingsCount = styled(TypoDS.BodyAccentXs).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
   color: theme.colors.greyDark,

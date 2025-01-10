@@ -113,7 +113,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
-                  "lineHeight": 16,
+                  "lineHeight": 19.2,
                   "marginTop": 4,
                 },
               ]
@@ -208,7 +208,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "lineHeight": 16,
+                    "lineHeight": 19.2,
                     "maxWidth": 100,
                     "paddingTop": 4,
                   },

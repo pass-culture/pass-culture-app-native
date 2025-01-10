@@ -10,7 +10,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
 import { Parameters } from 'ui/svg/icons/Parameters'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -56,7 +56,7 @@ const StyledButtonContainer = styled.View({
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))

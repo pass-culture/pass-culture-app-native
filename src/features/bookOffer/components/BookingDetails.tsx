@@ -35,7 +35,7 @@ import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -227,7 +227,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={LocationBuilding}
         message={
           <VenueContainer>
-            <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+            <TypoDS.BodyAccentXs testID="venueName">{venueName}</TypoDS.BodyAccentXs>
             <Spacer.Column numberOfSpaces={1} />
             <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
           </VenueContainer>
@@ -313,10 +313,11 @@ const Separator = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const Caption = styled(Typo.CaptionNeutralInfo)({
+const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
 
 const VenueTitleContainer = styled.View({
   flexDirection: 'row',
@@ -327,7 +328,7 @@ const VenueTitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 
-const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
+const VenueAddress = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -10,7 +10,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
@@ -46,7 +46,7 @@ export const IdentityCheckDMS = () => {
               onBeforeNavigate={onDMSFrenchCitizenPress}
               icon={ExternalSiteFilled}
             />
-            <StyledCaption>Carte d’identité ou passeport.</StyledCaption>
+            <CaptionNeutralInfo>Carte d’identité ou passeport.</CaptionNeutralInfo>
             <StyledSeparatorWithText>
               <SeparatorWithText label="ou" />
             </StyledSeparatorWithText>
@@ -57,7 +57,7 @@ export const IdentityCheckDMS = () => {
               onBeforeNavigate={onDMSForeignCitizenPress}
               icon={ExternalSiteFilled}
             />
-            <StyledCaption>Titre de séjour, carte d’identité ou passeport.</StyledCaption>
+            <CaptionNeutralInfo>Titre de séjour, carte d’identité ou passeport.</CaptionNeutralInfo>
           </ButtonContainer>
           <Spacer.BottomScreen />
         </Container>
@@ -85,6 +85,7 @@ const StyledSeparatorWithText = styled.View({
   marginVertical: getSpacing(6),
 })
 
-const StyledCaption = styled(Typo.CaptionNeutralInfo)({
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))

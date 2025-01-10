@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type CulturalSurveyProgressBarProps = {
   progress: number
@@ -43,7 +43,7 @@ const PercentageContainer = styled.View({
   alignSelf: 'center',
 })
 
-const SurveyProgressPercentage = styled(Typo.Caption)({
+const SurveyProgressPercentage = styled(TypoDS.BodyAccentXs)({
   marginLeft: getSpacing(2),
 })
 

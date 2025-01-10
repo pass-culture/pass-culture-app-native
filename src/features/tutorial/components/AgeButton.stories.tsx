@@ -21,6 +21,10 @@ const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
 const meta: ComponentMeta<typeof AgeButton> = {
   title: 'features/tutorial/AgeButton',
   component: AgeButton,
@@ -48,9 +52,9 @@ const TextExample = ({ withSubtitle = false }) => (
     {withSubtitle ? (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.CaptionNeutralInfo numberOfLines={2}>
+        <CaptionNeutralInfo numberOfLines={2}>
           j’ai moins de 15 ans ou plus de 18 ans
-        </Typo.CaptionNeutralInfo>
+        </CaptionNeutralInfo>
       </React.Fragment>
     ) : null}
   </React.Fragment>

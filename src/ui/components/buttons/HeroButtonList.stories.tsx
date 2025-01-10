@@ -43,7 +43,7 @@ const description2 = (
 const caption = (
   <Text>
     <Emoji.Warning withSpaceAfter />
-    <Typo.Caption>Les copies ne sont pas acceptées </Typo.Caption>
+    <TypoDS.BodyAccentXs>Les copies ne sont pas acceptées </TypoDS.BodyAccentXs>
   </Text>
 )
 

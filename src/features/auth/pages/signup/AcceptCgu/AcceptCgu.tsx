@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Text } from 'react-native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -20,7 +21,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -149,10 +150,10 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         required
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>
         <Text accessibilityHidden>*obligatoires pour créer ton compte. </Text>
         En cochant ces 2 cases tu assures avoir lu&nbsp;:
-      </Typo.CaptionNeutralInfo>
+      </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <ExternalTouchableLink
         as={ButtonQuaternaryBlack}
@@ -188,7 +189,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         relatedInputId={checkCGUErrorId}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>
         Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à
         collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de
         l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes
@@ -196,8 +197,12 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         suppression), tu peux te reporter à la charte des données personnelles. Tu peux également
         gérer certaines préférences concernant tes données depuis les paramètres de ton compte,
         comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
-      </Typo.CaptionNeutralInfo>
+      </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>
   )
 }
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

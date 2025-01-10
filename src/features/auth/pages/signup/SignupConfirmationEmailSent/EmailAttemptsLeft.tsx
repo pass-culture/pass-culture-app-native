@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 interface Props {
   attemptsLeft?: number
@@ -21,15 +21,16 @@ export const EmailAttemptsLeft: FunctionComponent<Props> = ({ attemptsLeft }) =>
   }
   return (
     <StyledCaption>
-      Attention, il te reste&nbsp;: <Typo.Caption>{`${attemptsLeft} demandes`}</Typo.Caption>
+      Attention, il te reste&nbsp;:{' '}
+      <TypoDS.BodyAccentXs>{`${attemptsLeft} demandes`}</TypoDS.BodyAccentXs>
     </StyledCaption>
   )
 }
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const StyledErrorText = styled(Typo.Caption)(({ theme }) => ({
+const StyledErrorText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.error,
 }))

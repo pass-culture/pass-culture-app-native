@@ -522,7 +522,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                                 "color": "#161617",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               },
                             ]
                           }
@@ -735,7 +735,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                                 "color": "#161617",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               },
                             ]
                           }
@@ -878,7 +878,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                                 "color": "#161617",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               },
                             ]
                           }

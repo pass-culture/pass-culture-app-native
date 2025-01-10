@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 // no need to provide inline style property if BlackCaption is used as a styled component
 // const StyledBlackCaption = styled(BlackCaption)({ // add style here })
@@ -23,6 +23,6 @@ const BlackCaptionContainer = styled(View)(({ theme }) => ({
   padding: getSpacing(1),
 }))
 
-const BlackCaptionLabel = styled(Typo.Caption)(({ theme }) => ({
+const BlackCaptionLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))

@@ -18,7 +18,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
   offers: Offer[]
@@ -145,11 +145,11 @@ const StyledTagBackground = styled(View)<{ color: string }>(({ color }) => ({
   borderRadius: theme.borderRadius.checkbox,
 }))
 
-const StyledCaptionTag = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaptionTag = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledCaptionDate = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaptionDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))
 

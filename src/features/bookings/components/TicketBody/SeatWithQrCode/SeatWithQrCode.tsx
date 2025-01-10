@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 export type SeatWithQrCodeProps = {
   seatIndex?: string
@@ -21,7 +21,7 @@ export const SeatWithQrCode: FunctionComponent<SeatWithQrCodeProps> = ({
   return (
     <React.Fragment>
       <SeatContainer>
-        {seatIndex ? <Typo.Caption>{currentSeatWithIndex}</Typo.Caption> : null}
+        {seatIndex ? <TypoDS.BodyAccentXs>{currentSeatWithIndex}</TypoDS.BodyAccentXs> : null}
         {seat ? <Seat>{currentSeat}</Seat> : null}
       </SeatContainer>
       <QrCode qrCode={barcode} />

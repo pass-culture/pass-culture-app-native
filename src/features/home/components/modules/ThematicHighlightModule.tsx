@@ -14,7 +14,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const TILE_HEIGHT = 244
 
@@ -150,7 +150,7 @@ const DateRangeCaptionContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(2),
 }))
 
-const DateRangeCaption = styled(Typo.Hint)(({ theme }) => ({
+const DateRangeCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

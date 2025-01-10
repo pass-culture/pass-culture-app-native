@@ -8,7 +8,7 @@ import { Separator } from 'ui/components/Separator'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse | BookingOfferResponse
@@ -62,11 +62,11 @@ const SubtitleContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const UsedText = styled(Typo.Caption)(({ theme }) => ({
+const UsedText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greenValid,
 }))
 
-const DateUsedText = styled(Typo.Caption)(({ theme }) => ({
+const DateUsedText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

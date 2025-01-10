@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
@@ -38,6 +38,6 @@ const TitleContainer = styled.View({
   flexShrink: 1,
 })
 
-const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
+const CaptionSubtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

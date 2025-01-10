@@ -14,7 +14,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
@@ -112,7 +112,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   )
 }
 
-const CenteredText = styled(Typo.Caption)({
+const CenteredText = styled(TypoDS.BodyAccentXs)({
   width: '100%',
   textAlign: 'center',
 })

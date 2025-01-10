@@ -38,7 +38,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
         On te redemandera bien sûr ton consentement si notre politique évolue.
       </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.CaptionNeutralInfo>
+      <CaptionNeutralInfo>
         {buttonText}
         <Spacer.Row numberOfSpaces={1} />
         <ExternalTouchableLink
@@ -48,7 +48,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           icon={ExternalSiteFilled}
           typography="BodyAccentXs"
         />
-      </Typo.CaptionNeutralInfo>
+      </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
     </React.Fragment>
   )
@@ -71,3 +71,7 @@ const AccordionContainer = styled.View({
   borderRadius: ACCORDION_BORDER_RADIUS,
   overflow: 'hidden',
 })
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

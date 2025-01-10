@@ -16,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -96,6 +96,6 @@ const StyledExternalTouchableLinkContainer = styled.View({
   marginTop: getSpacing(3),
 })
 
-const StyledCaption = styled(Typo.Caption)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)({
   color: theme.colors.greyDark,
 })

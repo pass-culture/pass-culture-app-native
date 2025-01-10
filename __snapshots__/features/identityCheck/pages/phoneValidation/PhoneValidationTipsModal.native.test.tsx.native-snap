@@ -442,7 +442,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }
@@ -527,7 +527,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                       },
                     ]
                   }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferName } from 'ui/components/tiles/OfferName'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface AttachedCardDisplayProps {
   title: string
@@ -37,18 +37,16 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         </ImageContainer>
       ) : null}
       <CentralColumn>
-        {subtitle ? <Typo.Caption>{subtitle}</Typo.Caption> : null}
+        {subtitle ? <TypoDS.BodyAccentXs>{subtitle}</TypoDS.BodyAccentXs> : null}
         <OfferName title={title} />
         {details
-          ? details?.map((detail) => (
-              <Typo.CaptionNeutralInfo key={detail}>{detail}</Typo.CaptionNeutralInfo>
-            ))
+          ? details?.map((detail) => <CaptionNeutralInfo key={detail}>{detail}</CaptionNeutralInfo>)
           : null}
       </CentralColumn>
       <RightColumn>
         {rightTagLabel ? (
           <TagWrapper label={rightTagLabel}>
-            <Typo.Hint>{rightTagLabel}</Typo.Hint>
+            <TypoDS.BodyAccentXs>{rightTagLabel}</TypoDS.BodyAccentXs>
           </TagWrapper>
         ) : null}
         <Spacer.Flex />
@@ -99,4 +97,8 @@ const Container = styled.View<{ shouldFixHeight: boolean }>(({ theme, shouldFixH
   padding: OFFER_CARD_PADDING,
   flexWrap: 'wrap',
   height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
+}))
+
+const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

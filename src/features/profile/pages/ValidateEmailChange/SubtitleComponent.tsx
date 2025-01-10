@@ -26,6 +26,7 @@ const Wrapper = styled.View({
   alignItems: 'center',
 })
 
-const StyledCaption = styled(Typo.CaptionNeutralInfo)({
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))

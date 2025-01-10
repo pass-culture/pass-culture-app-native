@@ -18,7 +18,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSwipeDirection } from 'ui/components/modals/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YoutubeIframeRef>(null)
@@ -147,11 +147,11 @@ const StyledTagBackground = styled(View)<{ color: string }>(({ color }) => ({
   borderRadius: theme.borderRadius.checkbox,
 }))
 
-const StyledCaptionTag = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaptionTag = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledCaptionDate = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaptionDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))
 

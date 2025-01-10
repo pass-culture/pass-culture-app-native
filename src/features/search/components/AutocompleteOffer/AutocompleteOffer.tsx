@@ -8,7 +8,7 @@ import { CreateHistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteOfferProps = UseInfiniteHitsProps & {
@@ -48,6 +48,8 @@ const StyledVerticalUl = styled(VerticalUl)({
   marginTop: getSpacing(4),
 })
 
-const AutocompleteOfferTitleText = styled(Typo.Caption).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
+const AutocompleteOfferTitleText = styled(TypoDS.BodyAccentXs).attrs(getHeadingAttrs(2))(
+  ({ theme }) => ({
+    color: theme.colors.greyDark,
+  })
+)

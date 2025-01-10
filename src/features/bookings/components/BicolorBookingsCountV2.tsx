@@ -6,7 +6,7 @@ import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesA
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 export const BicolorBookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
   size,
@@ -50,6 +50,6 @@ const PastilleContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(1),
 }))
 
-const Counter = styled(Typo.Hint)(({ theme }) => ({
+const Counter = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))

@@ -956,7 +956,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 16,
+                        "lineHeight": 19.2,
                         "maxWidth": "100%",
                       },
                     ]
