@@ -21,9 +21,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   children,
 }) => (
   <StyledView>
-    {thumbnailComponent ? (
-      thumbnailComponent
-    ) : (
+    {thumbnailComponent || (
       <ThumbnailPlaceholder
         width={defaultThumbnailSize}
         height={defaultThumbnailSize}
@@ -34,7 +32,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
       {children}
       <TitleContainer>
         <Title>{title}</Title>
-        {rightComponent ? rightComponent : null}
+        {rightComponent || null}
       </TitleContainer>
       {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
     </RightContainer>
