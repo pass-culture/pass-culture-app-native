@@ -7,7 +7,6 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
-  const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
   const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
@@ -21,17 +20,12 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const isSmallScreen = useMediaQuery({ maxHeight: minScreenHeight })
   const showLabels = useMediaQuery({ minWidth: tabBarLabelMinScreenWidth })
   const showTabBar = theme.isTouch || !!isMobileViewport
-  const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
   return useMemo<AppThemeType>(
     () => ({
       ...theme,
-      tabBar: {
-        ...theme.tabBar,
-        showLabels,
-        height: tabBarHeight,
-      },
+      tabBar: { ...theme.tabBar, showLabels, height: theme.tabBar.heightV2 },
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
@@ -48,7 +42,6 @@ export function useComputedTheme(theme: BaseAppThemeType) {
       showLabels,
       showTabBar,
       appContentWidth,
-      enableTabBarV2,
       enableNewOfferTile,
     ]
   )

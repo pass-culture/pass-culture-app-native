@@ -69,10 +69,7 @@ describe('Header', () => {
   })
 
   it('should render correctly when FF is enabled', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
-      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     expect(await screen.findByText('Favoris')).toBeInTheDocument()

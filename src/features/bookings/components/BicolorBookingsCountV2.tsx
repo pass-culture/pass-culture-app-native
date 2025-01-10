@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
-import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
+import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
 
@@ -18,14 +18,14 @@ export const BicolorBookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
   const scale = useScaleAnimation(badgeValue)
 
   if (!badgeValue || badgeValue === 0) {
-    return <BicolorBookingsV2 size={size} color={color} color2={color2} testID={testID} />
+    return <BicolorBookings size={size} color={color} color2={color2} testID={testID} />
   }
 
   const { fullCountLabel, accessibilityLabel } = createLabels(badgeValue, 'réservations')
 
   return (
     <Container>
-      <BicolorBookingsV2 size={size} color={color} color2={color2} />
+      <BicolorBookings size={size} color={color} color2={color2} />
       <StyledAnimatedView style={{ transform: [{ scale }] }}>
         <PastilleContainer accessibilityLabel={accessibilityLabel}>
           <Counter>{fullCountLabel}</Counter>

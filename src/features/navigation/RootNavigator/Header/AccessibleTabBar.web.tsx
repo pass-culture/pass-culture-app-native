@@ -14,8 +14,6 @@ import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 
@@ -24,14 +22,13 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   const currentRoute = useCurrentRoute()
   const { searchState, hideSuggestions } = useSearch()
   const { disabilities } = useAccessibilityFiltersContext()
-  const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
   const routeBadgeMap = useTabBarItemBadges()
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
   return (
     <AccessibleTabBarContainer id={id}>
-      <TabBarContainer v2={!!enableTabBarV2}>
+      <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
             let tabNavConfig = getTabNavConfig(route.name)
@@ -56,7 +53,6 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
                   tabName={route.name}
                   isSelected={route.isSelected}
                   badgeValue={routeBadgeMap[route.name]}
-                  v2={!!enableTabBarV2}
                 />
               </LinkContainer>
             )

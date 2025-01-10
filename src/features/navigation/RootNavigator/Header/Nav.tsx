@@ -27,7 +27,6 @@ type Props = {
 }
 
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap }) => {
-  const enableNavBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { tabRoutes } = useTabNavigationContext()
   const {
@@ -58,11 +57,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}
-                BicolorIcon={mapTabRouteToBicolorIcon({
-                  route: route.name,
-                  v2: enableNavBarV2,
-                  enableReactionFeature,
-                })}
+                BicolorIcon={mapTabRouteToBicolorIcon({ route: route.name, enableReactionFeature })}
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }

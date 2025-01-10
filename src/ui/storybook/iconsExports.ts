@@ -11,14 +11,12 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
-import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
-import { BicolorFavoriteV2 } from 'ui/svg/icons/BicolorFavoriteV2'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
@@ -31,12 +29,10 @@ import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
-import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
 import { BicolorShare, Share } from 'ui/svg/icons/BicolorShare'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
-import { BicolorTabBarProfileV2 } from 'ui/svg/icons/BicolorTabBarProfileV2'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -160,14 +156,12 @@ export const SecondaryAndBiggerIcons = {
   BellFilled,
   BicolorAroundMe,
   BicolorBookings,
-  BicolorBookingsV2,
   BicolorClock,
   BicolorConfirmation,
   BicolorEarth,
   BicolorEmailIcon,
   BicolorEverywhere,
   BicolorFavorite,
-  BicolorFavoriteV2,
   BicolorFrance,
   BicolorIdCard,
   BicolorLocationBuilding,
@@ -180,12 +174,10 @@ export const SecondaryAndBiggerIcons = {
   BicolorOffers,
   BicolorProfile,
   BicolorSearch,
-  BicolorSearchV2,
   BicolorShare,
   BicolorSignal,
   BicolorSmartphone,
   BicolorTabBarProfile,
-  BicolorTabBarProfileV2,
   BicolorUnlock,
   BicolorWarning,
   Booking,
