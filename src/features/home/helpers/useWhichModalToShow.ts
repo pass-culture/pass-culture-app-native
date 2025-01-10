@@ -14,25 +14,29 @@ export enum ModalToShow {
   NONE = 'none',
 }
 
-export const useWhichModalToShow = (bookings: BookingsResponse | undefined = undefined) => {
-  const [showModal, setShowModal] = useState<ModalToShow>(ModalToShow.PENDING)
-  const { shouldShowReactionModal, bookingsEligibleToReaction } =
-    useBookingsReactionHelpers(bookings)
+export const useWhichModalToShow = (
+  bookings: BookingsResponse | undefined,
+  isBookingsLoading: boolean
+) => {
+  const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
+  const { shouldShowReactionModal, bookingsEligibleToReaction } = useBookingsReactionHelpers(
+    bookings,
+    isBookingsLoading
+  )
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal()
-
-  if (bookings !== undefined && showModal === ModalToShow.PENDING) {
+  if (!isBookingsLoading && modalToShow === ModalToShow.PENDING) {
     if (shouldShowReactionModal === ModalDisplayState.SHOULD_SHOW) {
-      setShowModal(ModalToShow.REACTION)
+      setModalToShow(ModalToShow.REACTION)
     } else if (shouldShowAchievementSuccessModal === ModalDisplayState.SHOULD_SHOW) {
-      setShowModal(ModalToShow.ACHIEVEMENT)
+      setModalToShow(ModalToShow.ACHIEVEMENT)
     } else if (
       shouldShowReactionModal === ModalDisplayState.SHOULD_NOT_SHOW &&
       shouldShowAchievementSuccessModal === ModalDisplayState.SHOULD_NOT_SHOW
     ) {
-      setShowModal(ModalToShow.NONE)
+      setModalToShow(ModalToShow.NONE)
     }
   }
 
-  return { showModal, bookingsEligibleToReaction, achievementsToShow }
+  return { modalToShow, bookingsEligibleToReaction, achievementsToShow }
 }

@@ -7,6 +7,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export const useAvailableReaction = () => {
   const { isLoggedIn } = useAuthContext()
+
   return useQuery<GetAvailableReactionsResponse>(
     [QueryKeys.AVAILABLE_REACTION],
     () => api.getNativeV1ReactionAvailable(),
