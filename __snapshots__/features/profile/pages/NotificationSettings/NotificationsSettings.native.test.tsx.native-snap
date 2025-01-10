@@ -190,7 +190,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         "width": "100%",
       }
     }
-    noMaxWidth={false}
+    enableMaxWidth={true}
     scrollEnabled={true}
     style={
       [
@@ -2575,7 +2575,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         "width": "100%",
       }
     }
-    noMaxWidth={false}
+    enableMaxWidth={true}
     scrollEnabled={true}
     style={
       [

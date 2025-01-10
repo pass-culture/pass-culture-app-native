@@ -190,7 +190,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
         "width": "100%",
       }
     }
-    noMaxWidth={true}
+    enableMaxWidth={false}
     scrollEnabled={true}
     style={
       [

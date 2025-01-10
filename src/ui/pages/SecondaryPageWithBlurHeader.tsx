@@ -15,7 +15,7 @@ type Props = PropsWithChildren<{
   RightButton?: ReactNode
   scrollable?: boolean
   scrollViewProps?: Omit<ScrollViewProps, 'contentContainerStyle'>
-  noMaxWidth?: boolean
+  enableMaxWidth?: boolean
 }>
 
 export const SecondaryPageWithBlurHeader = ({
@@ -26,7 +26,7 @@ export const SecondaryPageWithBlurHeader = ({
   children,
   scrollable = true,
   scrollViewProps = {},
-  noMaxWidth = false,
+  enableMaxWidth = true,
 }: Props) => {
   const headerHeight = useGetHeaderHeight()
 
@@ -38,7 +38,10 @@ export const SecondaryPageWithBlurHeader = ({
         onGoBack={onGoBack}
         RightButton={RightButton}
       />
-      <StyledScrollView {...scrollViewProps} scrollEnabled={scrollable} noMaxWidth={noMaxWidth}>
+      <StyledScrollView
+        {...scrollViewProps}
+        scrollEnabled={scrollable}
+        enableMaxWidth={enableMaxWidth}>
         <Placeholder height={headerHeight} />
         {children}
       </StyledScrollView>
@@ -48,14 +51,14 @@ export const SecondaryPageWithBlurHeader = ({
 }
 
 interface StyledScrollViewProps {
-  noMaxWidth: boolean
+  enableMaxWidth: boolean
 }
 const StyledScrollView = styled.ScrollView.attrs<StyledScrollViewProps>(
-  ({ theme, noMaxWidth }) => ({
+  ({ theme, enableMaxWidth }) => ({
     contentContainerStyle: {
       paddingHorizontal: theme.contentPage.marginHorizontal,
       paddingVertical: theme.contentPage.marginVertical,
-      maxWidth: noMaxWidth ? '100%' : theme.contentPage.maxWidth,
+      maxWidth: enableMaxWidth ? theme.contentPage.maxWidth : '100%',
       width: '100%',
       alignSelf: 'center',
     },

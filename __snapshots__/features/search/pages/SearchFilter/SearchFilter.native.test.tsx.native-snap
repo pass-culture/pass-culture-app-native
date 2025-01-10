@@ -198,8 +198,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         "width": "100%",
       }
     }
+    enableMaxWidth={true}
     keyboardShouldPersistTaps="always"
-    noMaxWidth={false}
     scrollEnabled={true}
     style={
       [

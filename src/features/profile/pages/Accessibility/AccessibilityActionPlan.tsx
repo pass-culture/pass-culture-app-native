@@ -19,7 +19,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityActionPlan() {
   return (
-    <SecondaryPageWithBlurHeader title="Schéma pluriannuel" noMaxWidth>
+    <SecondaryPageWithBlurHeader title="Schéma pluriannuel" enableMaxWidth={false}>
       <TypoDS.BodyItalic>Schéma pluriannuel d’accessibilité 2022 - 2024</TypoDS.BodyItalic>
       <Spacer.Column numberOfSpaces={6} />
       <TypoDS.Body>
