@@ -50,10 +50,7 @@ describe('AccessibleTabBar', () => {
   })
 
   it('renders correclty when FF is enabled', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR,
-      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     renderTabBar()
 
     expect(await screen.findByText('99+')).toBeInTheDocument()
