@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
+import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
@@ -40,13 +40,12 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
         <StyledCloseButton onClose={onClose} size={iconSize} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
-      <VenuePreview
-        venueName={venueName}
-        address={address}
-        bannerUrl={bannerUrl}
-        imageWidth={VENUE_THUMBNAIL_SIZE}
-        imageHeight={VENUE_THUMBNAIL_SIZE}
-        withRightArrow={withRightArrow}
+      <VenueInfoHeader
+        title={venueName}
+        subtitle={address}
+        imageSize={VENUE_THUMBNAIL_SIZE}
+        showArrow={withRightArrow}
+        imageURL={bannerUrl}
       />
     </Wrapper>
   )

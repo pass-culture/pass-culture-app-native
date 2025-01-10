@@ -7,7 +7,7 @@ import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenu
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
+import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(14)
@@ -49,13 +49,12 @@ export function VenueBlock({ onSeeVenuePress, offer }: Readonly<Props>) {
       <TouchableContainer
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={onSeeVenuePress}>
-        <VenuePreview
-          address={venueAddress}
-          bannerUrl={venue.bannerUrl}
-          withRightArrow={hasVenuePage}
-          venueName={venueName}
-          imageWidth={VENUE_THUMBNAIL_SIZE}
-          imageHeight={VENUE_THUMBNAIL_SIZE}
+        <VenueInfoHeader
+          title={venueName}
+          subtitle={venueAddress}
+          imageSize={VENUE_THUMBNAIL_SIZE}
+          showArrow={hasVenuePage}
+          imageURL={venue.bannerUrl ?? undefined}
         />
       </TouchableContainer>
     </React.Fragment>
