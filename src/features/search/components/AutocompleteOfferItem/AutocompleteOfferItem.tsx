@@ -40,6 +40,7 @@ export function AutocompleteOfferItem({
   shouldShowCategory,
   offerCategories = [],
 }: Readonly<AutocompleteOfferItemProps>) {
+  // There is a BPMN describing the business rules for this component at ./AutocompleteOfferItem.mmd
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const {
