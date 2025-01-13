@@ -55,5 +55,5 @@ const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
 }))
 
 const PublicationDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.colors.greyDark,
 }))
