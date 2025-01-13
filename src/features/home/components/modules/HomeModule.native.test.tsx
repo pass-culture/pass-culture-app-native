@@ -229,7 +229,7 @@ describe('<HomeModule />', () => {
     })
   })
 
-  it('should display trends module when FF is enabled', async () => {
+  it('should display trends module', async () => {
     renderHomeModule(formattedTrendsModule)
 
     expect(await screen.findByText('Tendance 1')).toBeOnTheScreen()
