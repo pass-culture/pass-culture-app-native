@@ -1,26 +1,72 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-// eslint-disable-next-line no-restricted-imports
-import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
+import { StoreApi, UseBoundStore } from 'zustand'
+
+import { createConfiguredStore } from './createConfiguredStore'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyFunction = (...args: any[]) => any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type CurriedAnyFunction<State> = (...args: any[]) => (state: State) => any
 
 type Options = {
   persist?: boolean
 }
 
-type Params<State> = {
+type SliceConfig<
+  State,
+  Actions extends Record<string, AnyFunction>,
+  Selectors extends Record<string, CurriedAnyFunction<State>>,
+> = {
   name: string
   defaultState: State
+  actions: (
+    setState: (
+      partial: Partial<State> | ((state: State) => Partial<State>),
+      replace?: boolean
+    ) => void
+  ) => Actions
+  selectors: Selectors
   options?: Options
 }
 
-export const createStore = <State>({ name, defaultState, options }: Params<State>) => {
-  const store = () => defaultState
-  const persistedStore = persist(store, {
-    name,
-    storage: createJSONStorage(() => AsyncStorage),
+type Slice<
+  State,
+  Actions extends Record<string, AnyFunction>,
+  Selectors extends Record<string, CurriedAnyFunction<State>>,
+> = {
+  useStore: UseBoundStore<StoreApi<State>>
+  actions: Actions
+  selectors: Selectors
+  select: <T>(selector: (state: State) => T) => T
+}
+
+export function createStore<
+  State,
+  Actions extends Record<string, AnyFunction>,
+  Selectors extends Record<string, CurriedAnyFunction<State>>,
+>({
+  name,
+  defaultState,
+  actions: createActions,
+  selectors,
+  options,
+}: SliceConfig<State, Actions, Selectors>): Slice<State, Actions, Selectors> {
+  const store = createConfiguredStore({
+    name: name,
+    defaultState: defaultState,
+    options,
   })
 
-  return create<State>()(
-    devtools(options?.persist ? persistedStore : store, { enabled: false, name })
-  )
+  const actions = createActions(store.setState)
+
+  const select = <T>(selector: (state: State) => T): T => {
+    const state = store.getState()
+    return selector(state)
+  }
+
+  return {
+    useStore: store,
+    actions,
+    selectors,
+    select,
+  }
 }

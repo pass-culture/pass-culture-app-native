@@ -1,12 +1,12 @@
 import { SuggestedCity } from 'libs/place/types'
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type State = { city: SuggestedCity | null }
 
 const defaultState: State = { city: null }
 
-const useCityStore = createStore({
+const useCityStore = createConfiguredStore({
   name: 'profile-city',
   defaultState,
   options: {

@@ -1,6 +1,6 @@
 import { Venue } from 'features/venue/types'
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type State = {
   initialVenues: Venue[]
@@ -8,7 +8,7 @@ type State = {
 
 const defaultState: State = { initialVenues: [] }
 
-const useInitialVenuesStore = createStore({
+const useInitialVenuesStore = createConfiguredStore({
   name: 'venue-map-store',
   defaultState,
   options: { persist: true },

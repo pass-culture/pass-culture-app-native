@@ -1,5 +1,5 @@
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type CreditState = {
   activationDate: Date | undefined
@@ -9,7 +9,7 @@ const defaultState: CreditState = {
   activationDate: undefined,
 }
 
-const useCreditStore = createStore({
+const useCreditStore = createConfiguredStore({
   name: 'credit',
   defaultState,
   options: { persist: true },

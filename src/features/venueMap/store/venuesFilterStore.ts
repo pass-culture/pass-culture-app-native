@@ -2,7 +2,7 @@ import { difference } from 'lodash'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type State = {
   venuesFilters: VenueTypeCodeKey[]
@@ -12,7 +12,7 @@ const defaultState: State = {
   venuesFilters: [],
 }
 
-const useVenuesFilterStore = createStore({ name: 'venue-filter', defaultState })
+const useVenuesFilterStore = createConfiguredStore({ name: 'venue-filter', defaultState })
 
 export const useVenuesFilter = () => useVenuesFilterStore((state) => state.venuesFilters)
 

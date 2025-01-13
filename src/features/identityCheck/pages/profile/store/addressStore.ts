@@ -1,5 +1,5 @@
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type State = {
   address: string | null
@@ -7,7 +7,7 @@ type State = {
 
 const defaultState: State = { address: null }
 
-const useAddressStore = createStore({
+const useAddressStore = createConfiguredStore({
   name: 'profile-address',
   defaultState,
   options: { persist: true },

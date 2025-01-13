@@ -1,6 +1,6 @@
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { createActions } from 'libs/store/createActions'
-import { createStore } from 'libs/store/createStore'
+import { createConfiguredStore } from 'libs/store/createConfiguredStore'
 
 type State = {
   selectedVenue: GeolocatedVenue | null
@@ -8,7 +8,10 @@ type State = {
 
 const defaultState: State = { selectedVenue: null }
 
-const useSelectedVenueStore = createStore({ name: 'venue-map-selected-venue', defaultState })
+const useSelectedVenueStore = createConfiguredStore({
+  name: 'venue-map-selected-venue',
+  defaultState,
+})
 
 export const useSelectedVenue = () => useSelectedVenueStore((state) => state.selectedVenue)
 
