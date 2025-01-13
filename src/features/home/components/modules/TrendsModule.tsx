@@ -9,8 +9,6 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -25,8 +23,6 @@ type Trends = {
 const isWeb = Platform.OS === 'web'
 
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
-  const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
-
   const { width } = useWindowDimensions()
   const { selectedLocationMode } = useShouldDisplayVenueMap()
   const {
@@ -40,16 +36,14 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
 
   useEffect(() => {
-    if (enableTrendsModule) {
-      analytics.logModuleDisplayedOnHomepage({
-        moduleId,
-        moduleType: ContentTypes.TRENDS,
-        index,
-        homeEntryId,
-      })
-    }
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId,
+      moduleType: ContentTypes.TRENDS,
+      index,
+      homeEntryId,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enableTrendsModule])
+  }, [])
 
   const handleLogTrendsBlockClicked = (props: TrendBlock) =>
     analytics.logTrendsBlockClicked({
@@ -86,8 +80,6 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
       },
     }
   }
-
-  if (!enableTrendsModule) return null
 
   return (
     <React.Fragment>
