@@ -20,7 +20,8 @@ import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/ty
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -29,8 +30,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
-
-const featureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
@@ -121,6 +120,7 @@ jest.mock('@shopify/flash-list', () => {
 
 describe('<HomeModule />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -214,7 +214,7 @@ describe('<HomeModule />', () => {
   })
 
   it('should display AppV2VenuesModule', async () => {
-    featureFlagSpy.mockReturnValueOnce(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
     renderHomeModule(
       {
         ...formattedVenuesModule,
@@ -229,14 +229,7 @@ describe('<HomeModule />', () => {
     })
   })
 
-  it('should not display trends module when FF is disabled', async () => {
-    renderHomeModule(formattedTrendsModule)
-
-    expect(screen.queryByText('Tendance 1')).not.toBeOnTheScreen()
-  })
-
   it('should display trends module when FF is enabled', async () => {
-    featureFlagSpy.mockReturnValueOnce(true)
     renderHomeModule(formattedTrendsModule)
 
     expect(await screen.findByText('Tendance 1')).toBeOnTheScreen()
