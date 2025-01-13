@@ -67,7 +67,7 @@ describe('TrendsModule', () => {
   })
 
   it('should redirect to VenueMap when pressing venue map block content type and user location is not everywhere', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -75,7 +75,7 @@ describe('TrendsModule', () => {
   })
 
   it('should reset selected venue in store when pressing venue map block content type and user location is not everywhere', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -95,7 +95,7 @@ describe('TrendsModule', () => {
       place: mockedPlace,
       onModalHideRef: jest.fn(),
     })
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -103,7 +103,7 @@ describe('TrendsModule', () => {
   })
 
   it('should redirect to thematic home when pressing trend block content type', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Tendance 1'))
 
@@ -115,7 +115,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log analytics when pressing venue map block content type and user location is not everywhere', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -135,7 +135,7 @@ describe('TrendsModule', () => {
       place: mockedPlace,
       onModalHideRef: jest.fn(),
     })
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -143,7 +143,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log trends block clicked when pressing a trend', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Tendance 1'))
 
@@ -156,7 +156,7 @@ describe('TrendsModule', () => {
   })
 
   it('should log trends block clicked when pressing venue map block content type', async () => {
-    render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+    renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
@@ -168,3 +168,7 @@ describe('TrendsModule', () => {
     })
   })
 })
+
+function renderTrendsModule() {
+  render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+}
