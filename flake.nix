@@ -8,7 +8,7 @@
     , flake-utils
     }:
     flake-utils.lib.eachDefaultSystem (system: {
-      devShells.default =
+      devShell =
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
