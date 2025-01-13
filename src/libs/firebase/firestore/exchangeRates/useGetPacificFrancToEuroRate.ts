@@ -1,31 +1,14 @@
-import { useEffect, useState } from 'react'
-import { onlineManager } from 'react-query'
+import { onlineManager, useQuery } from 'react-query'
 
 import { getExchangeRates } from 'libs/firebase/firestore/exchangeRates/getExchangeRates'
 
 export const DEFAULT_PACIFIC_FRANC_TO_EURO_RATE = 0.00838
 
 export const useGetPacificFrancToEuroRate = (): number => {
-  const [pacificFrancToEuroRate, setPacificFrancToEuroRate] = useState(
-    DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
-  )
+  const { data: pacificFrancToEuroRate } = useQuery('EXCHANGE_RATES', getExchangeRates, {
+    staleTime: 1000 * 30,
+    enabled: onlineManager.isOnline(),
+  })
 
-  useEffect(() => {
-    if (!onlineManager.isOnline()) {
-      return
-    }
-
-    const subscriber = getExchangeRates((currentRate) => {
-      if (currentRate === undefined) {
-        setPacificFrancToEuroRate(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
-      } else {
-        setPacificFrancToEuroRate(currentRate)
-      }
-    })
-
-    // Stop listening for updates when no longer required
-    return () => subscriber()
-  }, [])
-
-  return pacificFrancToEuroRate
+  return pacificFrancToEuroRate ?? DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
 }
