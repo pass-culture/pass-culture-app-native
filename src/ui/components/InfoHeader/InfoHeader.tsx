@@ -42,6 +42,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
 const StyledView = styled.View({
   flexShrink: 1,
   flexDirection: 'row',
+  alignItems: 'center',
   columnGap: getSpacing(2),
 })
 
