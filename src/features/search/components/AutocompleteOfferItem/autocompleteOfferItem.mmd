@@ -1,0 +1,15 @@
+flowchart LR
+    A(( )) --> C{Is there a suggestion?}
+    C --> |YES| D{Is there a subcategory suggested?}
+    C --> |NO| E[display '$query']
+    D --> |YES| F{Does suggested subcategory fit in context?}
+    D --> |NO| G{Is there a top level category suggested?}
+    E --> L((( )))
+    F --> |YES| H{Has suggested subcategory exactly 1 parent?}
+    F --> |NO| G
+    G --> |YES| K[display '$query dans $category']
+    G --> |NO| E
+    H --> |YES| J[display '$query dans $subcategory']
+    H --> |NO| G
+    J --> M((( )))
+    K --> N((( )))
