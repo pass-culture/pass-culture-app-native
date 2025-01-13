@@ -5,6 +5,7 @@ import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { analytics } from 'libs/analytics'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -44,6 +45,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('TrendsModule', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should log analytics on render', () => {
     const trackingPropsWithoutRedesign = {
       ...trackingProps,
