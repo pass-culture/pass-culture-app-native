@@ -1,5 +1,4 @@
-import { createActions } from 'libs/store/createActions'
-import { createConfiguredStore } from 'libs/store/createConfiguredStore'
+import { createStore } from 'libs/store/createStore'
 
 interface Name {
   firstName: string
@@ -10,15 +9,15 @@ type State = { name: Name | null }
 
 const defaultState: State = { name: null }
 
-const useNameStore = createConfiguredStore({
+const nameStore = createStore({
   name: 'profile-name',
   defaultState,
+  actions: (set) => ({
+    setName: (name: Name) => set({ name }),
+    resetName: () => set(defaultState),
+  }),
   options: { persist: true },
 })
 
-export const useName = () => useNameStore((state) => state.name)
-
-export const nameActions = createActions(useNameStore, (set) => ({
-  setName: (name: Name) => set({ name }),
-  resetName: () => set(defaultState),
-}))
+export const nameActions = nameStore.actions
+export const useName = () => nameStore.useStore((state) => state.name)

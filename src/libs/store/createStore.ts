@@ -11,24 +11,24 @@ type Options = {
   persist?: boolean
 }
 
-type SliceConfig<
+type StoreConfig<
   State,
   Actions extends Record<string, AnyFunction>,
   Selectors extends Record<string, CurriedAnyFunction<State>>,
 > = {
   name: string
   defaultState: State
-  actions: (
+  actions?: (
     setState: (
       partial: Partial<State> | ((state: State) => Partial<State>),
       replace?: boolean
     ) => void
   ) => Actions
-  selectors: Selectors
+  selectors?: Selectors
   options?: Options
 }
 
-type Slice<
+type Store<
   State,
   Actions extends Record<string, AnyFunction>,
   Selectors extends Record<string, CurriedAnyFunction<State>>,
@@ -47,16 +47,16 @@ export function createStore<
   name,
   defaultState,
   actions: createActions,
-  selectors,
+  selectors = {} as Selectors,
   options,
-}: SliceConfig<State, Actions, Selectors>): Slice<State, Actions, Selectors> {
+}: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
   const store = createConfiguredStore({
     name: name,
     defaultState: defaultState,
     options,
   })
 
-  const actions = createActions(store.setState)
+  const actions = createActions?.(store.setState) || ({} as Actions)
 
   const select = <T>(selector: (state: State) => T): T => {
     const state = store.getState()
