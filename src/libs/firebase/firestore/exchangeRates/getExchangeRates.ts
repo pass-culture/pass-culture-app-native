@@ -1,4 +1,5 @@
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import {
   FIRESTORE_ROOT_COLLECTION,
   RemoteStoreDocuments,
@@ -6,16 +7,18 @@ import {
 } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 
-export const getExchangeRates = async (): Promise<number | null> => {
+export const getExchangeRates = async (): Promise<number> => {
   try {
     const docSnapshot = await firestoreRemoteStore
       .collection(FIRESTORE_ROOT_COLLECTION)
       .doc(RemoteStoreDocuments.EXCHANGE_RATES)
       .get()
 
+    if (!docSnapshot.exists) return DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
+
     return docSnapshot.get<number>(RemoteStoreExchangeRates.PACIFIC_FRANC_TO_EURO_RATE)
   } catch (error) {
     captureMonitoringError((error as Error).message, 'firestore_not_available')
-    return null
+    return DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
   }
 }

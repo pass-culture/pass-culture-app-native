@@ -3,6 +3,7 @@ import { onlineManager, useQuery } from 'react-query'
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
 import { getAppBuildVersion } from 'libs/packageJson'
+import { QueryKeys } from 'libs/queryKeys'
 
 export interface CookiesLastUpdate {
   lastUpdated: Date
@@ -15,7 +16,9 @@ export const useIsCookiesListUpToDate = () => {
     return { consent, lastUpdate }
   }
 
-  const { data } = useQuery('COOKIES_DATA', fetchCookiesData, {
+  const { data } = useQuery(QueryKeys.COOKIES_DATA, fetchCookiesData, {
+    staleTime: 1000 * 30,
+    cacheTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
   })
 
