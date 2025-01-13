@@ -6,7 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -29,6 +29,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('MarketingBlockExclusivity', () => {
   beforeEach(() => {
@@ -39,25 +42,27 @@ describe('MarketingBlockExclusivity', () => {
     render(<MarketingBlockExclusivity {...props} />)
 
     const titlelink = screen.getByText('La nuit des temps')
-    fireEvent.press(titlelink)
+    user.press(titlelink)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', { id: '102280' })
     })
   })
 
-  it('should log consult offer when pressed', () => {
+  it('should log consult offer when pressed', async () => {
     render(<MarketingBlockExclusivity {...props} homeEntryId="fakeEntryId" />)
 
     const titlelink = screen.getByText('La nuit des temps')
-    fireEvent.press(titlelink)
+    user.press(titlelink)
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      from: 'home',
-      moduleId: '1',
-      homeEntryId: 'fakeEntryId',
-      moduleName: 'La nuit des temps',
-      offerId: 102280,
+    await waitFor(() => {
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        from: 'home',
+        moduleId: '1',
+        homeEntryId: 'fakeEntryId',
+        moduleName: 'La nuit des temps',
+        offerId: 102280,
+      })
     })
   })
 })
