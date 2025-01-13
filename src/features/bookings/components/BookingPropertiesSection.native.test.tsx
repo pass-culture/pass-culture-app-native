@@ -14,6 +14,8 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('<BookingPropertiesSection />', () => {
   beforeEach(() => {
     setFeatureFlags()

@@ -216,6 +216,8 @@ jest.mock('@gorhom/bottom-sheet', () => {
   }
 })
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()

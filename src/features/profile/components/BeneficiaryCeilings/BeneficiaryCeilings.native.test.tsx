@@ -9,13 +9,14 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { render, waitFor, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest
   .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
   .mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('BeneficiaryCeilings', () => {
   beforeEach(() => {

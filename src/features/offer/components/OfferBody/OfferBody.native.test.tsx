@@ -60,6 +60,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 const useArtistResultsSpy = jest
   .spyOn(useArtistResults, 'useArtistResults')
   .mockImplementation()

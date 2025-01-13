@@ -47,6 +47,8 @@ const mockArtist = {
   bio: 'chanteuse',
 }
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('<ArtistBody />', () => {
   beforeEach(() => {
     setFeatureFlags()

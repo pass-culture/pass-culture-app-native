@@ -30,6 +30,8 @@ mockAuthContextWithUser({
   },
 })
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('<RecreditBirthdayNotification />', () => {
   beforeAll(() => {
     mockdate.set(new Date('2023-02-28'))

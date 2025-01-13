@@ -9,7 +9,7 @@ import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { render, waitFor, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
@@ -47,6 +47,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 const user = userEvent.setup()
 jest.useFakeTimers()

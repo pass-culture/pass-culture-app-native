@@ -7,7 +7,7 @@ import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewI
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
-import { act, userEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
@@ -46,6 +46,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
