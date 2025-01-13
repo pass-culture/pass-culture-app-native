@@ -2,9 +2,9 @@ import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
-import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
+import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
-import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
+import { MAINTENANCE } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
