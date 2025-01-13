@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { onlineManager } from 'react-query'
+import { onlineManager, useQuery } from 'react-query'
 
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
@@ -11,29 +10,18 @@ export interface CookiesLastUpdate {
 }
 
 export const useIsCookiesListUpToDate = () => {
-  const [cookiesLastUpdate, setCookiesLastUpdate] = useState<CookiesLastUpdate>()
-  const [consentBuildVersion, setConsentBuildVersion] = useState<number>()
-  const [consentChoiceDatetime, setConsentChoiceDatetime] = useState<string>()
+  const fetchCookiesData = async () => {
+    const [consent, lastUpdate] = await Promise.all([getCookiesChoice(), getCookiesLastUpdate()])
+    return { consent, lastUpdate }
+  }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const [consent, lastUpdate] = await Promise.all([getCookiesChoice(), getCookiesLastUpdate()])
+  const { data } = useQuery('COOKIES_DATA', fetchCookiesData, {
+    enabled: onlineManager.isOnline(),
+  })
 
-      if (consent) {
-        setConsentBuildVersion(consent.buildVersion)
-        setConsentChoiceDatetime(consent.choiceDatetime)
-      }
-      if (lastUpdate) {
-        setCookiesLastUpdate(lastUpdate)
-      }
-    }
-
-    if (!onlineManager.isOnline()) {
-      return
-    }
-
-    fetchData()
-  }, [])
+  const cookiesLastUpdate = data?.lastUpdate
+  const consentBuildVersion = data?.consent?.buildVersion
+  const consentChoiceDatetime = data?.consent?.choiceDatetime
 
   const isUpToDate = () => {
     // If no data from Firestore, consider that the cookie list is up to date

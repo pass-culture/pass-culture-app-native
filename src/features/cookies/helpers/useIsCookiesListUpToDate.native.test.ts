@@ -8,6 +8,7 @@ import {
 import * as Firestore from 'libs/firebase/firestore/getCookiesLastUpdate'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const buildVersion = 10010005
@@ -41,7 +42,7 @@ describe('isCookiesListUpToDate', () => {
       buildVersion: buildVersion,
     })
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
 
     await waitFor(() => {
       expect(result.current).toEqual({
@@ -56,7 +57,7 @@ describe('isCookiesListUpToDate', () => {
       choiceDatetime: TODAY,
     })
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
 
     await waitFor(() => {
       expect(result.current).toEqual({
@@ -74,7 +75,7 @@ describe('isCookiesListUpToDate', () => {
         choiceDatetime: choiceDatetime.toISOString(),
       })
 
-      const { result } = renderHook(useIsCookiesListUpToDate)
+      const { result } = renderUseIsCookiesListUpToDate()
 
       await waitFor(() => {
         expect(result.current).toEqual({
@@ -88,7 +89,7 @@ describe('isCookiesListUpToDate', () => {
   it('should be true if no data from firestore', async () => {
     mockFirestore.mockResolvedValueOnce(undefined)
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
 
     await waitFor(() => {
       expect(result.current).toEqual({
@@ -104,7 +105,7 @@ describe('isCookiesListUpToDate', () => {
       choiceDatetime: TODAY,
     })
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
     await waitFor(() => {
       expect(result.current).toEqual({
         cookiesLastUpdate: defaultMockFirestore,
@@ -124,7 +125,7 @@ describe('isCookiesListUpToDate', () => {
       choiceDatetime: TODAY,
     })
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
     await waitFor(() => {
       expect(result.current).toEqual({
         cookiesLastUpdate: {
@@ -144,7 +145,7 @@ describe('isCookiesListUpToDate', () => {
       choiceDatetime: TODAY,
     })
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
     await waitFor(() => {
       expect(result.current).toEqual({
         cookiesLastUpdate: { ...defaultMockFirestore, lastUpdated: TOMORROW },
@@ -156,7 +157,7 @@ describe('isCookiesListUpToDate', () => {
   it('should not fetch data when connection is disabled', async () => {
     onlineManager.setOnline(false)
 
-    const { result } = renderHook(useIsCookiesListUpToDate)
+    const { result } = renderUseIsCookiesListUpToDate()
     await waitFor(() => {
       expect(result.current).toEqual({
         cookiesLastUpdate: undefined,
@@ -165,3 +166,8 @@ describe('isCookiesListUpToDate', () => {
     })
   })
 })
+
+const renderUseIsCookiesListUpToDate = () =>
+  renderHook(useIsCookiesListUpToDate, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
