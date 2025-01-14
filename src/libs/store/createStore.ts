@@ -64,10 +64,10 @@ export function createStore<
   )
 
   return {
-    useStore: store,
+    store,
     actions,
     selectors: selectorsWithState,
-    hooks,
+    hooks: { useStore: store, ...hooks },
   }
 }
 
