@@ -1,43 +1,9 @@
-import { StoreApi, UseBoundStore } from 'zustand'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+// eslint-disable-next-line no-restricted-imports
+import { create } from 'zustand'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
-import { createConfiguredStore } from './createConfiguredStore'
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyFunction = (...args: any[]) => any
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type CurriedAnyFunction<State> = (...args: any[]) => (state: State) => any
-
-type Options = {
-  persist?: boolean
-}
-
-type StoreConfig<
-  State,
-  Actions extends Record<string, AnyFunction>,
-  Selectors extends Record<string, CurriedAnyFunction<State>>,
-> = {
-  name: string
-  defaultState: State
-  actions?: (
-    setState: (
-      partial: Partial<State> | ((state: State) => Partial<State>),
-      replace?: boolean
-    ) => void
-  ) => Actions
-  selectors?: Selectors
-  options?: Options
-}
-
-type Store<
-  State,
-  Actions extends Record<string, AnyFunction>,
-  Selectors extends Record<string, CurriedAnyFunction<State>>,
-> = {
-  useStore: UseBoundStore<StoreApi<State>>
-  actions: Actions
-  selectors: Selectors
-  select: <T>(selector: (state: State) => T) => T
-}
+import { AnyFunction, CurriedAnyFunction, StoreConfig, Store } from './store.types'
 
 export function createStore<
   State,
@@ -46,17 +12,22 @@ export function createStore<
 >({
   name,
   defaultState,
-  actions: createActions,
-  selectors = {} as Selectors,
+  actions: createActions = createEmptyActions<Actions>,
+  selectors = createEmptySelectors<Selectors>(),
   options,
 }: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
-  const store = createConfiguredStore({
-    name: name,
-    defaultState: defaultState,
-    options,
+  const defaultStore = () => defaultState
+
+  const persistedStore = persist(defaultStore, {
+    name,
+    storage: createJSONStorage(() => AsyncStorage),
   })
 
-  const actions = createActions?.(store.setState) || ({} as Actions)
+  const store = create<State>()(
+    devtools(options?.persist ? persistedStore : defaultStore, { enabled: false, name })
+  )
+
+  const actions = createActions(store.setState)
 
   const select = <T>(selector: (state: State) => T): T => {
     const state = store.getState()
@@ -70,3 +41,7 @@ export function createStore<
     select,
   }
 }
+
+const createEmptyActions = <T extends Record<string, AnyFunction>>(): T => Object.create(null)
+const createEmptySelectors = <T extends Record<string, CurriedAnyFunction<never>>>(): T =>
+  Object.create(null)
