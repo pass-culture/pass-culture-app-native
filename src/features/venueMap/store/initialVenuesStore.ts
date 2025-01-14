@@ -13,10 +13,12 @@ const initialVenuesStore = createStore({
   actions: (set) => ({
     setInitialVenues: (initialVenues: Venue[]) => set({ initialVenues }),
   }),
+  selectors: {
+    selectInitialVenues: () => (state) => state.initialVenues,
+  },
   options: { persist: true },
 })
 
-const useInitialVenuesStore = initialVenuesStore.useStore
 export const initialVenuesActions = initialVenuesStore.actions
 
-export const useInitialVenues = () => useInitialVenuesStore((state) => state.initialVenues)
+export const { useInitialVenues } = initialVenuesStore.hooks

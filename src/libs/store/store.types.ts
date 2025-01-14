@@ -10,7 +10,7 @@ type StoreType<State> = UseBoundStore<StoreApi<State>>
 export type StoreConfig<
   State,
   Actions extends Record<string, AnyFunction>,
-  Selectors extends Record<string, CurriedAnyFunction<State>>,
+  Selectors extends Record<`select${string}`, CurriedAnyFunction<State>>,
 > = {
   name: string
   defaultState: State

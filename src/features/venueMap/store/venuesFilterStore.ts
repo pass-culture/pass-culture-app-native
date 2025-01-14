@@ -26,8 +26,11 @@ const venuesFilterStore = createStore({
       })),
     reset: () => set((_) => ({ venuesFilters: [] })),
   }),
+  selectors: {
+    selectVenuesFilter: () => (state) => state.venuesFilters,
+  },
 })
 
 export const venuesFilterActions = venuesFilterStore.actions
 
-export const useVenuesFilter = () => venuesFilterStore.useStore((state) => state.venuesFilters)
+export const { useVenuesFilter } = venuesFilterStore.hooks

@@ -13,7 +13,10 @@ const venueTypeCodeStore = createStore({
   actions: (set) => ({
     setVenueTypeCode: (venueTypeCode: VenueTypeCode | null) => set({ venueTypeCode }),
   }),
+  selectors: {
+    selectVenueTypeCode: () => (state) => state.venueTypeCode,
+  },
 })
 
 export const venueTypeCodeActions = venueTypeCodeStore.actions
-export const useVenueTypeCode = () => venueTypeCodeStore.useStore((state) => state.venueTypeCode)
+export const { useVenueTypeCode } = venueTypeCodeStore.hooks
