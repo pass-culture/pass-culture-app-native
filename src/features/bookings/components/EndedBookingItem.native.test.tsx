@@ -4,7 +4,8 @@ import { Share } from 'react-native'
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -50,8 +51,6 @@ const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: S
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -65,6 +64,10 @@ const user = userEvent.setup()
 
 describe('EndedBookingItem', () => {
   jest.useFakeTimers()
+
+  beforeEach(() => {
+    setFeatureFlags()
+  })
 
   it('should display offer title', () => {
     renderEndedBookingItem({ booking: bookingsSnap.ended_bookings[0] })
@@ -206,8 +209,8 @@ describe('EndedBookingItem', () => {
   })
 
   describe('when reaction feature flag is activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     })
 
     it('should handle reaction modal opening when pressing reaction button', async () => {

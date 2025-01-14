@@ -7,7 +7,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -17,7 +17,6 @@ import { act, render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockAnalyticsParams: OfferAnalyticsParams = {
   from: 'home',
@@ -35,6 +34,7 @@ jest.useFakeTimers()
 describe('VideoMonoOfferTile', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    setFeatureFlags()
   })
 
   it('should redirect to an offer when pressing it', async () => {
@@ -66,11 +66,9 @@ describe('VideoMonoOfferTile', () => {
   })
 
   describe('With FF on', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
-
     it('should render properly', async () => {
+      // TODO(PC-33973): test passes with no FF on
+
       renderOfferVideoModule()
 
       expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()

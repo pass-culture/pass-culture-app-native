@@ -2,7 +2,7 @@ import React from 'react'
 import { LogBox } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'
@@ -21,8 +21,6 @@ jest.mock('libs/e2e/getIsMaestro', () => ({
 jest.mock('libs/campaign')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false) // Can't replace by setFeatureFlags (TypeError: A dynamic import callback was invoked without --experimental-vm-modules)
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -31,6 +29,10 @@ jest.mock('react-native-safe-area-context', () => ({
 }))
 
 describe('<App /> with mocked RootNavigator', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it("should override font for Batch's in-app messages", () => {
     renderApp()
 

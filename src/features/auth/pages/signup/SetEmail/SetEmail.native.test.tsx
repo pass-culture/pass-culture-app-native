@@ -5,7 +5,8 @@ import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -19,8 +20,6 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const defaultProps = {
   previousSignupData: {
@@ -57,6 +56,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SetEmail />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should disable validate button when email input is not filled', () => {
     renderSetEmail()
 
@@ -248,12 +251,8 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
-    afterEach(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
-    })
-
     it('should display SSO button when FF is enabled', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
 
       renderSetEmail()
 
@@ -261,12 +260,16 @@ describe('<SetEmail />', () => {
     })
 
     it('should not display SSO button when FF is disabled', () => {
+      setFeatureFlags()
+
       renderSetEmail()
 
       expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
     })
 
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -278,10 +281,6 @@ describe('<SetEmail />', () => {
           },
         },
       })
-
-      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
-      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
-      useFeatureFlagSpy.mockReturnValueOnce(true) // third call in CulturalSurvey
 
       renderSetEmail()
 
@@ -298,6 +297,8 @@ describe('<SetEmail />', () => {
     })
 
     it('should display snackbar when SSO account is invalid', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
+
       mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 400,
@@ -307,10 +308,6 @@ describe('<SetEmail />', () => {
           },
         },
       })
-
-      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
-      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
-      useFeatureFlagSpy.mockReturnValueOnce(true) // third call in CulturalSurvey
 
       renderSetEmail()
 

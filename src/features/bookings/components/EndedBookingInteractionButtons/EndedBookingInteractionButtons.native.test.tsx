@@ -3,14 +3,17 @@ import React from 'react'
 import { BookingReponse, ReactionTypeEnum } from 'api/gen'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 describe('EndedBookingInteractionButtons', () => {
   jest.useFakeTimers()
+
+  beforeEach(() => {
+    setFeatureFlags()
+  })
 
   it('should not display reaction button when reaction feature flag deactivated', async () => {
     renderEndedBookingInteractionButtons(bookingsSnap.ended_bookings[1])
@@ -21,8 +24,8 @@ describe('EndedBookingInteractionButtons', () => {
   })
 
   describe('when reaction feature flag is activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     })
 
     it('should not display reaction button when native category id not included', async () => {

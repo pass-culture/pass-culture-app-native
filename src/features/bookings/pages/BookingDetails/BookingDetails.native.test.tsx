@@ -16,7 +16,8 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -62,8 +63,6 @@ jest.mock('features/bookings/api/useBookings', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 const user = userEvent.setup()
 
 describe('BookingDetails', () => {
@@ -76,6 +75,8 @@ describe('BookingDetails', () => {
 
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+
+    setFeatureFlags()
   })
 
   afterEach(() => {
@@ -458,7 +459,7 @@ describe('BookingDetails', () => {
 
     describe('when booking improve feature flag is activated should display it and navigate to bookings', () => {
       beforeEach(() => {
-        useFeatureFlagSpy.mockReturnValue(true)
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
         useRoute.mockImplementation(() => ({
           params: {
             id: 321,
