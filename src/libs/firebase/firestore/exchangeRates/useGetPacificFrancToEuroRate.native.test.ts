@@ -6,7 +6,7 @@ import {
   useGetPacificFrancToEuroRate,
 } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
 jest.mock('libs/firebase/firestore/exchangeRates/getExchangeRates')
@@ -21,18 +21,18 @@ describe('useGetPacificFrancToEuroRate', () => {
     mockGetExchangeRates.mockReturnValueOnce(undefined)
     const { result } = renderUseGetPacificFrancToEuroRate()
 
-    await act(() => {
-      expect(result.current).toEqual(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
-    })
+    await act(async () => {})
+
+    expect(result.current).toEqual(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
   })
 
   it('should return remote exchange rate from firestore', async () => {
     mockGetExchangeRates.mockReturnValueOnce(0.05)
     const { result } = renderUseGetPacificFrancToEuroRate()
 
-    await waitFor(() => {
-      expect(result.current).toEqual(0.05)
-    })
+    await act(async () => {})
+
+    expect(result.current).toEqual(0.05)
   })
 
   it('should return default rate when connection is disabled', () => {
