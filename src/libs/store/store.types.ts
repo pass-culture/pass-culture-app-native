@@ -38,7 +38,6 @@ export type Store<
       ...args: Parameters<Selectors[K]>
     ) => ReturnType<ReturnType<Selectors[K]>>
   }
-  select: <T>(selector: (state: State) => T) => T
   hooks: {
     [K in keyof Selectors as ReplaceSelectByUse<string & K>]: (
       ...args: Parameters<Selectors[K]>

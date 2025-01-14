@@ -35,11 +35,6 @@ export function createStore<
 
   const actions = createActions(store.setState)
 
-  const select = <T>(selector: (state: State) => T): T => {
-    const state = store.getState()
-    return selector(state)
-  }
-
   const selectorsWithState = Object.entries(selectors).reduce(
     (acc, [key, selector]) => ({
       ...acc,
@@ -72,7 +67,6 @@ export function createStore<
     useStore: store,
     actions,
     selectors: selectorsWithState,
-    select,
     hooks,
   }
 }
