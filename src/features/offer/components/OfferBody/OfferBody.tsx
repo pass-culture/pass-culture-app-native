@@ -30,6 +30,7 @@ import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -52,6 +53,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const hasOfferChronicleSection = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
+  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -106,6 +110,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { fromOfferId: offer.id })
   }
 
+  const handleSeeChroniclesPress = () => {
+    navigate('Chronicles', { offerId: offer.id })
+  }
+
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -156,6 +164,12 @@ export const OfferBody: FunctionComponent<Props> = ({
       ) : null}
 
       <OfferPlace offer={offer} subcategory={subcategory} />
+
+      {hasOfferChronicleSection && !isDesktopViewport ? (
+        <SectionWithDivider visible margin gap={8}>
+          <ButtonSecondaryBlack wording="Voir tous les avis" onPress={handleSeeChroniclesPress} />
+        </SectionWithDivider>
+      ) : null}
 
       {isDesktopViewport ? (
         <View testID="messagingApp-container-without-divider">
