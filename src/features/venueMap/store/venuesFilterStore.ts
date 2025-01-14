@@ -1,7 +1,6 @@
 import { difference } from 'lodash'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { createActions } from 'libs/store/createActions'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
@@ -12,19 +11,23 @@ const defaultState: State = {
   venuesFilters: [],
 }
 
-const useVenuesFilterStore = createStore({ name: 'venue-filter', defaultState })
+const venuesFilterStore = createStore({
+  name: 'venue-filter',
+  defaultState,
+  actions: (set) => ({
+    setVenuesFilters: (venuesFilters: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters })),
+    addVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
+      set((state: State) => ({
+        venuesFilters: Array.from(new Set([...state.venuesFilters, ...venueTypeCodeKeys])),
+      })),
+    removeVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
+      set((state: State) => ({
+        venuesFilters: difference(state.venuesFilters, venueTypeCodeKeys),
+      })),
+    reset: () => set((_) => ({ venuesFilters: [] })),
+  }),
+})
 
-export const useVenuesFilter = () => useVenuesFilterStore((state) => state.venuesFilters)
+export const venuesFilterActions = venuesFilterStore.actions
 
-export const venuesFilterActions = createActions(useVenuesFilterStore, (set) => ({
-  setVenuesFilters: (venuesFilters: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters })),
-  addVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
-    set((state: State) => ({
-      venuesFilters: Array.from(new Set([...state.venuesFilters, ...venueTypeCodeKeys])),
-    })),
-  removeVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
-    set((state: State) => ({
-      venuesFilters: difference(state.venuesFilters, venueTypeCodeKeys),
-    })),
-  reset: () => set((_) => ({ venuesFilters: [] })),
-}))
+export const useVenuesFilter = () => venuesFilterStore.useStore((state) => state.venuesFilters)

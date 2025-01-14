@@ -1,5 +1,4 @@
 import { VenueTypeCode } from 'libs/parsers/venueType'
-import { createActions } from 'libs/store/createActions'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
@@ -8,9 +7,13 @@ type State = {
 
 const defaultState: State = { venueTypeCode: null }
 
-const useVenueTypeCodeStore = createStore({ name: 'venue-map-venue-type-code', defaultState })
+const venueTypeCodeStore = createStore({
+  name: 'venue-map-venue-type-code',
+  defaultState,
+  actions: (set) => ({
+    setVenueTypeCode: (venueTypeCode: VenueTypeCode | null) => set({ venueTypeCode }),
+  }),
+})
 
-export const useVenueTypeCode = () => useVenueTypeCodeStore((state) => state.venueTypeCode)
-export const venueTypeCodeActions = createActions(useVenueTypeCodeStore, (set) => ({
-  setVenueTypeCode: (venueTypeCode: VenueTypeCode | null) => set({ venueTypeCode }),
-}))
+export const venueTypeCodeActions = venueTypeCodeStore.actions
+export const useVenueTypeCode = () => venueTypeCodeStore.useStore((state) => state.venueTypeCode)

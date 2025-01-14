@@ -1,4 +1,3 @@
-import { createActions } from 'libs/store/createActions'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
@@ -7,15 +6,16 @@ type State = {
 
 const defaultState: State = { address: null }
 
-const useAddressStore = createStore({
+const addressStore = createStore({
   name: 'profile-address',
   defaultState,
+  actions: (set) => ({
+    setAddress: (address: string) => set({ address }),
+    resetAddress: () => set(defaultState),
+  }),
   options: { persist: true },
 })
 
-export const addressActions = createActions(useAddressStore, (set) => ({
-  setAddress: (address: string) => set({ address }),
-  resetAddress: () => set(defaultState),
-}))
+export const addressActions = addressStore.actions
 
-export const useAddress = () => useAddressStore((state) => state.address)
+export const useAddress = () => addressStore.useStore((state) => state.address)

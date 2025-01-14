@@ -3,24 +3,45 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
-type Options = {
-  persist?: boolean
-}
+import { AnyFunction, CurriedAnyFunction, StoreConfig, Store } from './store.types'
 
-type Params<State> = {
-  name: string
-  defaultState: State
-  options?: Options
-}
+export function createStore<
+  State,
+  Actions extends Record<string, AnyFunction>,
+  Selectors extends Record<string, CurriedAnyFunction<State>>,
+>({
+  name,
+  defaultState,
+  actions: createActions = createEmptyActions<Actions>,
+  selectors = createEmptySelectors<Selectors>(),
+  options,
+}: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
+  const defaultStore = () => defaultState
 
-export const createStore = <State>({ name, defaultState, options }: Params<State>) => {
-  const store = () => defaultState
-  const persistedStore = persist(store, {
+  const persistedStore = persist(defaultStore, {
     name,
     storage: createJSONStorage(() => AsyncStorage),
   })
 
-  return create<State>()(
-    devtools(options?.persist ? persistedStore : store, { enabled: false, name })
+  const store = create<State>()(
+    devtools(options?.persist ? persistedStore : defaultStore, { enabled: false, name })
   )
+
+  const actions = createActions(store.setState)
+
+  const select = <T>(selector: (state: State) => T): T => {
+    const state = store.getState()
+    return selector(state)
+  }
+
+  return {
+    useStore: store,
+    actions,
+    selectors,
+    select,
+  }
 }
+
+const createEmptyActions = <T extends Record<string, AnyFunction>>(): T => Object.create(null)
+const createEmptySelectors = <T extends Record<string, CurriedAnyFunction<never>>>(): T =>
+  Object.create(null)
