@@ -3,7 +3,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
-import { AnyFunction, CurriedAnyFunction, StoreConfig, Store } from './store.types'
+import {
+  AnyFunction,
+  CurriedAnyFunction,
+  StoreConfig,
+  Store,
+  ReplaceSelectByUse,
+} from './store.types'
 
 export function createStore<
   State,
@@ -49,11 +55,25 @@ export function createStore<
     }
   )
 
+  const hooks = Object.entries(selectors).reduce(
+    (acc, [key, selector]) => ({
+      ...acc,
+      [key.replace('select', 'use')]: (...args: Parameters<typeof selector>) =>
+        store((state) => selector(...args)(state)),
+    }),
+    {} as {
+      [K in keyof Selectors as ReplaceSelectByUse<string & K>]: (
+        ...args: Parameters<Selectors[K]>
+      ) => ReturnType<ReturnType<Selectors[K]>>
+    }
+  )
+
   return {
     useStore: store,
     actions,
     selectors: selectorsWithState,
     select,
+    hooks,
   }
 }
 

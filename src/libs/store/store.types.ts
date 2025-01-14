@@ -5,6 +5,7 @@ export type CurriedAnyFunction<State> = (...args: never[]) => (state: State) => 
 type Options = {
   persist?: boolean
 }
+export type ReplaceSelectByUse<T extends string> = T extends `select${infer U}` ? `use${U}` : never
 type StoreType<State> = UseBoundStore<StoreApi<State>>
 export type StoreConfig<
   State,
@@ -32,6 +33,15 @@ export type Store<
 > = {
   useStore: UseBoundStore<StoreApi<State>>
   actions: Actions
-  selectors: SelectorsWithState<State, Selectors>
+  selectors: {
+    [K in keyof Selectors]: (
+      ...args: Parameters<Selectors[K]>
+    ) => ReturnType<ReturnType<Selectors[K]>>
+  }
   select: <T>(selector: (state: State) => T) => T
+  hooks: {
+    [K in keyof Selectors as ReplaceSelectByUse<string & K>]: (
+      ...args: Parameters<Selectors[K]>
+    ) => ReturnType<ReturnType<Selectors[K]>>
+  }
 }
