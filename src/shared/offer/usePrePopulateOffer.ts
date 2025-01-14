@@ -36,10 +36,10 @@ const mergeOfferData =
     venue: { coordinates: {} } as OfferVenueResponse,
     metadata: prevData?.metadata,
     isExternalBookingsDisabled: false,
-    ...(prevData ?? {}),
     reactionsCount: {
       likes: 0,
     },
+    ...(prevData ?? {}),
   })
 
 export const usePrePopulateOffer = () => {
