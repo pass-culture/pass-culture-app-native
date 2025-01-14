@@ -1,6 +1,10 @@
+import React from 'react'
+
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { captureMonitoringError } from 'libs/monitoring'
-import { updateFirestoreNetworkState } from 'libs/network/helpers/updateFirestoreNetworkState/updateFirestoreNetworkState'
+import { useNetInfo } from 'libs/network/useNetInfo'
+import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/firestore/client')
 jest.mock('libs/monitoring')
@@ -8,9 +12,12 @@ jest.mock('libs/monitoring')
 const mockFirestoreEnableNetwork = firestoreRemoteStore.enableNetwork as jest.Mock
 const mockFirestoreDisableNetwork = firestoreRemoteStore.disableNetwork as jest.Mock
 
-describe('updateFirestoreNetworkState', () => {
+const mockUseNetInfo = useNetInfo as jest.Mock
+
+describe('FirestoreNetworkObserver', () => {
   it('should enable Firestore network when user is connected', () => {
-    updateFirestoreNetworkState(true)
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: true, isInternetReachable: true })
+    render(<FirestoreNetworkObserver />)
 
     expect(mockFirestoreEnableNetwork).toHaveBeenCalledTimes(1)
   })
@@ -20,8 +27,9 @@ describe('updateFirestoreNetworkState', () => {
     mockFirestoreEnableNetwork.mockImplementationOnce(() => {
       throw mockError
     })
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: true, isInternetReachable: true })
 
-    updateFirestoreNetworkState(true)
+    render(<FirestoreNetworkObserver />)
 
     expect(captureMonitoringError).toHaveBeenCalledWith(
       `enableNetwork failed`,
@@ -30,7 +38,8 @@ describe('updateFirestoreNetworkState', () => {
   })
 
   it('should disable Firestore network when user is not connected', () => {
-    updateFirestoreNetworkState(false)
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+    render(<FirestoreNetworkObserver />)
 
     expect(mockFirestoreDisableNetwork).toHaveBeenCalledTimes(1)
   })
@@ -40,8 +49,9 @@ describe('updateFirestoreNetworkState', () => {
     mockFirestoreDisableNetwork.mockImplementationOnce(() => {
       throw mockError
     })
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
 
-    updateFirestoreNetworkState(false)
+    render(<FirestoreNetworkObserver />)
 
     expect(captureMonitoringError).toHaveBeenCalledWith(
       `disableNetwork failed`,
