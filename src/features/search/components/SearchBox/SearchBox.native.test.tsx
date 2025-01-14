@@ -8,7 +8,8 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { GeoCoordinates, Position } from 'libs/location'
@@ -147,13 +148,13 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.useFakeTimers()
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('SearchBox component', () => {
   beforeEach(() => {
+    setFeatureFlags()
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
       key: 'Navigator',
       index: 1,
@@ -394,7 +395,7 @@ describe('SearchBox component', () => {
     'should redirect to ThematicSearch when queryText is `%s` and SearchView is `Landing`',
     (queryText) => {
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
-      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
 
       renderSearchBox()
 
@@ -747,7 +748,7 @@ describe('SearchBox component with ThematicSearch previous route on search resul
 
     it('should update searchState with remote config when current route is searchLanding', async () => {
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
-      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
 
       renderSearchBox()
 
@@ -765,7 +766,7 @@ describe('SearchBox component with ThematicSearch previous route on search resul
 
     it('should not update searchState with remote config when current route is not searchLanding', async () => {
       useRoute.mockReturnValueOnce({ name: SearchView.Results })
-      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
 
       renderSearchBox()
 

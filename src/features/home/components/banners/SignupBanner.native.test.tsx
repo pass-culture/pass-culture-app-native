@@ -4,12 +4,15 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 describe('SignupBanner', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('When wipAppV2SystemBlock deactivated', () => {
     it('should display banner with background', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
@@ -46,7 +49,7 @@ describe('SignupBanner', () => {
 
   describe('When wipAppV2SystemBlock activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
     it('should not display banner with background', () => {

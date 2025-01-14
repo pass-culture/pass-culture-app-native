@@ -1,12 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookingNotFound } from './BookingNotFound'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -15,6 +14,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<BookingNotFound/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />)
 
@@ -29,8 +32,11 @@ describe('<BookingNotFound/>', () => {
   })
 
   describe('when booking improve feature flag is activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
+    })
+
     it('should navigate to bookings when clicking on cta', () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />)
       fireEvent.press(screen.getByText('Mes réservations terminées'))
 

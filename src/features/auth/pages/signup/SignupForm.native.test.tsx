@@ -21,7 +21,8 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,8 +33,6 @@ import { SignupForm } from './SignupForm'
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -85,6 +84,7 @@ describe('Signup Form', () => {
       }
     )
     useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
+    setFeatureFlags()
   })
 
   it.each`
@@ -477,11 +477,8 @@ describe('Signup Form', () => {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
         requestOptions: { persist: true },
       })
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     })
-
-    beforeAll(() => useFeatureFlagSpy.mockReturnValue(true))
-
-    afterAll(() => useFeatureFlagSpy.mockReturnValue(false))
 
     it('should sign in when sso button is clicked and sso account already exists', async () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
