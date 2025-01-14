@@ -34,10 +34,25 @@ export function createStore<
     return selector(state)
   }
 
+  const selectorsWithState = Object.entries(selectors).reduce(
+    (acc, [key, selector]) => ({
+      ...acc,
+      [key]: (...args: Parameters<typeof selector>) => {
+        const state = store.getState()
+        return selector(...args)(state)
+      },
+    }),
+    {} as {
+      [K in keyof Selectors]: (
+        ...args: Parameters<Selectors[K]>
+      ) => ReturnType<ReturnType<Selectors[K]>>
+    }
+  )
+
   return {
     useStore: store,
     actions,
-    selectors,
+    selectors: selectorsWithState,
     select,
   }
 }
