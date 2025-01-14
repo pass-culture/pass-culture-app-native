@@ -18,18 +18,15 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOnboardingContext()', () => {
-  it.each(Object.values(NonEligible))(
-    'should show modal when showNonEligibleModal is called',
-    (userStatus) => {
-      const { result } = renderOnboardingHook()
+  it('should show modal when showNonEligibleModal is called', () => {
+    const { result } = renderOnboardingHook()
 
-      act(() => {
-        result.current.showNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
-      })
+    act(() => {
+      result.current.showNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+    })
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    }
-  )
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
 })
 
 function renderOnboardingHook() {

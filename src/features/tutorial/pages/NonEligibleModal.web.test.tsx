@@ -10,12 +10,12 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<NonEligibleModal/>', () => {
   describe('Accessibility', () => {
-    it('should render correctly for onboarding non-eligible under 15', async () => {
+    it('should render correctly for onboarding', async () => {
       const { container } = render(
         <NonEligibleModal
           visible
-          hideModal={jest.fn()}
           userStatus={NonEligible.UNDER_15}
+          hideModal={jest.fn()}
           type={TutorialTypes.ONBOARDING}
         />
       )
@@ -25,42 +25,12 @@ describe('<NonEligibleModal/>', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should render correctly for profile tutorial non-eligible under 15', async () => {
+    it('should render correctly for profile tutorial', async () => {
       const { container } = render(
         <NonEligibleModal
-          visible
-          hideModal={jest.fn()}
           userStatus={NonEligible.UNDER_15}
-          type={TutorialTypes.PROFILE_TUTORIAL}
-        />
-      )
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should render correctly for onboarding non-eligible over 18', async () => {
-      const { container } = render(
-        <NonEligibleModal
           visible
           hideModal={jest.fn()}
-          userStatus={NonEligible.OVER_18}
-          type={TutorialTypes.ONBOARDING}
-        />
-      )
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should render correctly for profile tutorial non-eligible over 18', async () => {
-      const { container } = render(
-        <NonEligibleModal
-          visible
-          hideModal={jest.fn()}
-          userStatus={NonEligible.OVER_18}
           type={TutorialTypes.PROFILE_TUTORIAL}
         />
       )

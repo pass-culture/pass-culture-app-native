@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
-import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, TypoDS } from 'ui/theme'
 
@@ -19,13 +19,8 @@ type Props = {
   type: TutorialTypes
 }
 
-export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props) => {
-  const { title, firstParagraph, secondParagraph, withFAQLink, Illustration } =
-    getModalInfoForNonEligible(userStatus, type)
-
-  const StyledIllustration = styled(Illustration).attrs(({ theme }) => ({
-    size: theme.illustrations.sizes.fullPage,
-  }))``
+export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
+  const withFAQLink = type === TutorialTypes.ONBOARDING
 
   const onPress = useCallback(() => {
     openUrl(env.FAQ_LINK_CREDIT)
@@ -36,30 +31,44 @@ export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props
     if (type === TutorialTypes.PROFILE_TUTORIAL) navigateToHome()
   }
 
-  return (
-    <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
-      <Spacer.Column numberOfSpaces={2} />
-      <StyledIllustration />
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{firstParagraph}</StyledBody>
-      {withFAQLink ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryBlack
-            wording="comment ça marche&nbsp;?"
-            icon={ExternalSiteFilled}
-            onPress={onPress}
-          />
-        </React.Fragment>
-      ) : null}
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{secondParagraph}</StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary onPress={onButtonPress} wording="Explorer le catalogue" />
-    </AppInformationModal>
-  )
+  if (userStatus === NonEligible.UNDER_15)
+    return (
+      <AppInformationModal
+        visible={visible}
+        title="Encore un peu de patience&nbsp;!"
+        onCloseIconPress={hideModal}>
+        <Spacer.Column numberOfSpaces={2} />
+        <StyledIllustration />
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledBody>
+          Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.
+        </StyledBody>
+        {withFAQLink ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <ButtonTertiaryBlack
+              wording="comment ça marche&nbsp;?"
+              icon={ExternalSiteFilled}
+              onPress={onPress}
+            />
+          </React.Fragment>
+        ) : null}
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledBody>
+          En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels
+          autour de toi.
+        </StyledBody>
+        <Spacer.Column numberOfSpaces={8} />
+        <ButtonPrimary onPress={onButtonPress} wording="Explorer le catalogue" />
+      </AppInformationModal>
+    )
+  return null
 }
 
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
 })
+
+const StyledIllustration = styled(BicolorBirthdayCake).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
