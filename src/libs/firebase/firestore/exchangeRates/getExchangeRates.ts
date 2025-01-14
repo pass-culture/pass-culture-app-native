@@ -6,6 +6,7 @@ import {
   RemoteStoreExchangeRates,
 } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getExchangeRates = async (): Promise<number> => {
   try {
@@ -18,7 +19,7 @@ export const getExchangeRates = async (): Promise<number> => {
 
     return docSnapshot.get<number>(RemoteStoreExchangeRates.PACIFIC_FRANC_TO_EURO_RATE)
   } catch (error) {
-    captureMonitoringError((error as Error).message, 'firestore_not_available')
+    captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
     return DEFAULT_PACIFIC_FRANC_TO_EURO_RATE
   }
 }

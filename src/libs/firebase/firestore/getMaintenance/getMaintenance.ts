@@ -2,6 +2,7 @@ import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMaintenance = async (): Promise<
   FirebaseFirestoreTypes.DocumentData | undefined
@@ -14,7 +15,7 @@ export const getMaintenance = async (): Promise<
 
     return docSnapshot.data()
   } catch (error) {
-    captureMonitoringError((error as Error).message, 'firestore_not_available')
+    captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
     return undefined
   }
 }

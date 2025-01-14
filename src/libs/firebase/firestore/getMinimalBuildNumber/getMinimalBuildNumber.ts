@@ -5,6 +5,7 @@ import {
   RemoteStoreDocuments,
 } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMinimalBuildNumber = async (): Promise<number | undefined> => {
   try {
@@ -15,7 +16,7 @@ export const getMinimalBuildNumber = async (): Promise<number | undefined> => {
 
     return docSnapshot.get<number>(RemoteStoreAppVersion.MINIMAL_BUILD_NUMBER)
   } catch (error) {
-    captureMonitoringError((error as Error).message, 'firestore_not_available')
+    captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
     return undefined
   }
 }

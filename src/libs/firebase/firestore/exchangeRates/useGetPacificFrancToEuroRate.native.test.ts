@@ -6,7 +6,7 @@ import {
   useGetPacificFrancToEuroRate,
 } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
 jest.mock('libs/firebase/firestore/exchangeRates/getExchangeRates')
@@ -21,7 +21,7 @@ describe('useGetPacificFrancToEuroRate', () => {
     mockGetExchangeRates.mockReturnValueOnce(undefined)
     const { result } = renderUseGetPacificFrancToEuroRate()
 
-    await waitFor(() => {
+    await act(() => {
       expect(result.current).toEqual(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
     })
   })
