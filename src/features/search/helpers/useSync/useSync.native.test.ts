@@ -1,6 +1,7 @@
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location'
 import { LocationMode, Position } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -21,8 +22,6 @@ jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-useFeatureFlagSpy.mockReturnValue(false)
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
@@ -73,8 +72,13 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 mockUseLocation.mockReturnValue(everywhereUseLocation)
 
+// TODO(PC-33123): fix test
 // eslint-disable-next-line jest/no-disabled-tests
 describe.skip('useSync', () => {
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+  })
+
   it('should update search state with locationType params when user has geolocPosition', async () => {
     mockUseLocation
       .mockReturnValueOnce({

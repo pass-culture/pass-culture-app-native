@@ -3,7 +3,6 @@ import React from 'react'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -13,8 +12,6 @@ import { SignupConfirmationEmailSentPage } from './SignupConfirmationEmailSentPa
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
 } as StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

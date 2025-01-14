@@ -15,13 +15,12 @@ import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchCarouselVideo
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockFetchCarouselVideoOffers = jest
   .spyOn(fetchAlgoliaOffer, 'fetchCarouselVideoOffers')
@@ -32,15 +31,16 @@ const DEFAULT_ITEM_WITH_TAG = videoCarouselModuleFixture.items[1]
 const DEFAULT_ITEM_WITH_HOME_ENTRY_ID = videoCarouselModuleFixture.items[2]
 const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
-describe('<VideoCarouselModule />', () => {
+// TODO(PC-33562): fix flaky tests
+// eslint-disable-next-line jest/no-disabled-tests
+describe.skip('<VideoCarouselModule />', () => {
   beforeEach(() => {
     MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
     MockedYouTubePlayer.setError(false)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should call fetchCarouselVideoOffers with properly formatted data', async () => {
+  it('should call fetchCarouselVideoOffers with properly formatted data', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -75,9 +75,7 @@ describe('<VideoCarouselModule />', () => {
     ])
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should call fetchCarouselVideoOffers with empty array when item has homeEntryId', async () => {
+  it('should call fetchCarouselVideoOffers with empty array when item has homeEntryId', async () => {
     const VIDEO_CAROUSEL_MODULE_FIXTURE_WITH_ITEM_HAVING_HOMEENTRYID = {
       ...videoCarouselModuleFixture,
       items: [DEFAULT_ITEM_WITH_HOME_ENTRY_ID],
@@ -90,9 +88,7 @@ describe('<VideoCarouselModule />', () => {
     expect(mockFetchCarouselVideoOffers).toHaveBeenCalledWith([])
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not render carousel with only one item', async () => {
+  it('should not render carousel with only one item', async () => {
     const VIDEO_CAROUSEL_MODULE_FIXTURE_WITH_ONE_ITEM = {
       ...videoCarouselModuleFixture,
       items: [DEFAULT_ITEM_WITH_OFFER_ID],
@@ -105,9 +101,7 @@ describe('<VideoCarouselModule />', () => {
     expect(screen.queryByTestId('videoCarousel')).not.toBeOnTheScreen()
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should render carousel with multiple items', async () => {
+  it('should render carousel with multiple items', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -115,9 +109,7 @@ describe('<VideoCarouselModule />', () => {
     expect(screen.getByTestId('videoCarousel')).toBeOnTheScreen()
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should render video player correctly', async () => {
+  it('should render video player correctly', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -129,9 +121,7 @@ describe('<VideoCarouselModule />', () => {
     expect(verticalVideoPlayerButton).toBeOnTheScreen()
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should redirect to thematic home when item has an homeEntryId', async () => {
+  it('should redirect to thematic home when item has an homeEntryId', async () => {
     const HOME_ENTRY_ID = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.homeEntryId
     const THEMATIC_HOME_TITLE = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.thematicHomeTitle
     const MODULE_ITEM_ID = DEFAULT_ITEM_WITH_HOME_ENTRY_ID.id
@@ -152,9 +142,7 @@ describe('<VideoCarouselModule />', () => {
     })
   })
 
-  // TODO(PC-33562): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should redirect to offer based on offerId', async () => {
+  it('should redirect to offer based on offerId', async () => {
     const OFFER_NAME = MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name
     const OFFER_ID = MOCKED_ALGOLIA_RESPONSE_OFFER.objectID
 
@@ -172,9 +160,7 @@ describe('<VideoCarouselModule />', () => {
   })
 
   describe('tracking', () => {
-    // TODO(PC-33562): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should send logConsultVideo when video starts autoplay', async () => {
+    it('should send logConsultVideo when video starts autoplay', async () => {
       renderVideoCarouselModule(videoCarouselModuleFixture)
 
       await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
@@ -187,9 +173,7 @@ describe('<VideoCarouselModule />', () => {
       })
     })
 
-    // TODO(PC-33562): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should send logConsultVideo event when user presses `next video button`', async () => {
+    it('should send logConsultVideo event when user presses `next video button`', async () => {
       MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
 
       renderVideoCarouselModule(videoCarouselModuleFixture)
@@ -209,9 +193,7 @@ describe('<VideoCarouselModule />', () => {
       })
     })
 
-    // TODO(PC-33562): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should send logConsultOffer event when user presses on offer', async () => {
+    it('should send logConsultOffer event when user presses on offer', async () => {
       const OFFER_NAME = MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name
       const OFFER_ID = MOCKED_ALGOLIA_RESPONSE_OFFER.objectID
 
@@ -231,9 +213,7 @@ describe('<VideoCarouselModule />', () => {
       })
     })
 
-    // TODO(PC-33562): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should send logModuleDisplayedOnHomepage event', async () => {
+    it('should send logModuleDisplayedOnHomepage event', async () => {
       const OFFER_NAME = MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name
 
       renderVideoCarouselModule(videoCarouselModuleFixture)

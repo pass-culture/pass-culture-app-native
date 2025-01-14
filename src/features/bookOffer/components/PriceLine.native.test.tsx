@@ -1,14 +1,16 @@
 import React from 'react'
 
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, screen } from 'tests/utils'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 
 describe('<PriceLine />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should show total price', () => {
     render(<PriceLine unitPrice={500} quantity={1} />)
 

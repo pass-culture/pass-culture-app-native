@@ -3,7 +3,8 @@ import React, { ComponentProps } from 'react'
 import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule.web'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { Layout } from 'libs/contentful/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -24,23 +25,27 @@ const props = {
 }
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-const mockFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<AppV2VenuesModule />', () => {
   it('should return 6 venues maximum on web desktop', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
+
     renderAppV2VenuesModule({ isDesktopViewport: true })
 
     expect(screen.getByText('Le Petit Rintintin 5')).toBeInTheDocument()
   })
 
   it('should return 4 venues maximum on web mobile', () => {
+    setFeatureFlags()
+
     renderAppV2VenuesModule({ isDesktopViewport: false })
 
     expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeInTheDocument()
   })
 
   it('should not render list when feature flag deactivated', () => {
-    mockFeatureFlag.mockReturnValueOnce(false)
+    setFeatureFlags()
+
     renderAppV2VenuesModule()
 
     expect(

@@ -6,13 +6,11 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const randomDatetime = '2020-12-01T00:00:00Z'
 
@@ -45,6 +43,10 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
 const ANY_CHARACTER = /./
 
 describe('<BookingInformations />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should return empty component when no offer', async () => {
     mockUseBookingOffer.mockReturnValueOnce(undefined)
     render(<BookingInformations />)

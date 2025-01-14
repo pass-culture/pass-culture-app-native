@@ -2,12 +2,11 @@ import React from 'react'
 
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { fireEvent, render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
@@ -29,6 +28,13 @@ jest.mock('libs/location', () => ({
 }))
 
 describe('VenueMapModule', () => {
+  beforeEach(() => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+      RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
+    ])
+  })
+
   it('should render venue map block when user is located and feature flag enabled', () => {
     render(<VenueMapModule />)
 
@@ -36,7 +42,7 @@ describe('VenueMapModule', () => {
   })
 
   it('should not render venue map block when feature flag is disabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
+    setFeatureFlags()
     render(<VenueMapModule />)
 
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()

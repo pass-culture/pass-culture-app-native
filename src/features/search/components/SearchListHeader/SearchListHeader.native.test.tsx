@@ -12,7 +12,8 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -34,13 +35,6 @@ const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
-
-const useFeatureFlagSpy = jest
-  .spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-  // venue map FF
-  .mockReturnValue(false)
-  // venue map in search FF
-  .mockReturnValue(false)
 
 const mockDisabilities = {
   [DisplayedDisabilitiesEnum.AUDIO]: false,
@@ -106,8 +100,8 @@ describe('<SearchListHeader />', () => {
   })
 
   describe('When feature flags deactivated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+    beforeEach(() => {
+      setFeatureFlags()
     })
 
     it('should display the number of results', () => {
@@ -457,8 +451,8 @@ describe('<SearchListHeader />', () => {
   })
 
   describe('When wipVenueMapInSearch feature flag activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true).mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
     })
 
     it('should not displayed the button "Voir sur la carte"', () => {
@@ -476,8 +470,8 @@ describe('<SearchListHeader />', () => {
   })
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
     it('should display system banner for geolocation incitation', () => {

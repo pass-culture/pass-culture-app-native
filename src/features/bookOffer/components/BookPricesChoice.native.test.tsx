@@ -4,10 +4,8 @@ import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice
 import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen } from 'tests/utils'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockInitialBookingState = initialBookingState
 
@@ -40,6 +38,7 @@ describe('BookPricesChoice', () => {
       dismissModal: jest.fn(),
       dispatch: mockDispatch,
     })
+    setFeatureFlags()
   })
 
   it('should render prices of stocks in parameter', () => {

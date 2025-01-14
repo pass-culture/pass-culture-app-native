@@ -20,7 +20,8 @@ import {
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Position } from 'libs/location'
@@ -65,8 +66,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
 })
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -167,8 +166,7 @@ describe('<OfferContent />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
-
-    jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
   })
 
   afterEach(cleanup)
