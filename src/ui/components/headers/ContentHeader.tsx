@@ -122,7 +122,7 @@ const Body = styled(TypoDS.Body)(({ theme }) => ({
 }))
 
 const Row = styled.View({
-  flex: 1,
+  ...(Platform.OS === 'web' ? { flex: 1 } : {}),
   flexDirection: 'row',
   alignItems: 'center',
 })
