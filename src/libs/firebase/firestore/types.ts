@@ -33,6 +33,7 @@ export enum RemoteStoreUbble {
 
 export enum RemoteStoreFeatureFlags {
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
+  ENABLE_CREDIT_V3 = 'enableCreditV3',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
@@ -77,8 +78,8 @@ export enum RemoteStoreFeatureFlags {
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
   WIP_VENUE_ARTISTS_PLAYLIST = 'wipVenueArtistsPlaylist',
   WIP_VENUE_MAP = 'wipVenueMap',
-  WIP_VENUE_MAP_TYPE_FILTER_V2 = 'wipVenueMapTypeFilterV2',
   WIP_VENUE_MAP_HIDDEN_POI = 'wipVenueMapHiddenPOI',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
   WIP_VENUE_MAP_PIN_V2 = 'wipVenueMapPinV2',
+  WIP_VENUE_MAP_TYPE_FILTER_V2 = 'wipVenueMapTypeFilterV2',
 }

@@ -13,7 +13,15 @@ describe('SignupBanner', () => {
     setFeatureFlags()
   })
 
-  describe('When wipAppV2SystemBlock deactivated', () => {
+  it('should display banner with credit V2 subtitle', () => {
+    render(<SignupBanner hasGraphicRedesign={false} />)
+
+    const subtitle = 'Crée ton compte si tu as entre 15 et 18 ans\u00a0!'
+
+    expect(screen.getByText(subtitle)).toBeOnTheScreen()
+  })
+
+  describe('when wipAppV2SystemBlock deactivated', () => {
     it('should display banner with background', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
 
@@ -47,7 +55,7 @@ describe('SignupBanner', () => {
     })
   })
 
-  describe('When wipAppV2SystemBlock activated', () => {
+  describe('when wipAppV2SystemBlock activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
@@ -82,6 +90,20 @@ describe('SignupBanner', () => {
       await waitFor(() =>
         expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
       )
+    })
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3])
+    })
+
+    it('should display banner with credit V3 subtitle', () => {
+      render(<SignupBanner hasGraphicRedesign={false} />)
+
+      const subtitle = 'Crée ton compte si tu as entre 17 et 18 ans\u00a0!'
+
+      expect(screen.getByText(subtitle)).toBeOnTheScreen()
     })
   })
 })
