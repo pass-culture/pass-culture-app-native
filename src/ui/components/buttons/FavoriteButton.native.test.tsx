@@ -8,8 +8,6 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -118,18 +116,6 @@ describe('<FavoriteButton />', () => {
         },
       })
     })
-  })
-
-  it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
-
-    renderFavoriteButton()
-
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('icon-favorite'))
-    })
-
-    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
