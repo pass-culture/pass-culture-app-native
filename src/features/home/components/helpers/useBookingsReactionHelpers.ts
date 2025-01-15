@@ -22,7 +22,7 @@ export const useBookingsReactionHelpers = (
       (booking) => booking.enablePopUpReaction && !booking.userReaction
     ) ?? []
 
-  const firstBookingWithoutReaction = bookingsEligibleToReaction[0]
+  const firstBookingEligibleToReaction = bookingsEligibleToReaction[0]
 
   if (isBookingsLoading || bookings === undefined) {
     return {
@@ -31,13 +31,12 @@ export const useBookingsReactionHelpers = (
     }
   }
 
+  if (isReactionFeatureActive && firstBookingEligibleToReaction)
+    return { shouldShowReactionModal: ModalDisplayState.SHOULD_SHOW, bookingsEligibleToReaction }
+
   // There is an issue with !isCookieConsentChecked it goes to true for an instant and disrupts the modal conflict management hook
-
-  if (!isReactionFeatureActive || !firstBookingWithoutReaction)
-    return {
-      shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,
-      bookingsEligibleToReaction: [],
-    }
-
-  return { shouldShowReactionModal: ModalDisplayState.SHOULD_SHOW, bookingsEligibleToReaction }
+  return {
+    shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,
+    bookingsEligibleToReaction: [],
+  }
 }
