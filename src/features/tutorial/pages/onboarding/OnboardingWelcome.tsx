@@ -7,6 +7,8 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -25,37 +27,40 @@ const onLoginPress = () => {
   setHasSeenTutorials()
 }
 
-export const OnboardingWelcome: FunctionComponent = () => (
-  <Container>
-    <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
-    <Spacer.Flex />
-    <Gradient />
-    <Content>
-      <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>
-        Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
-        entre 15 et 18 ans.
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
-      <InternalTouchableLink
-        as={ButtonWithLinearGradient}
-        wording="C’est parti&nbsp;!"
-        icon={PlainArrowNext}
-        iconAfterWording
-        navigateTo={{ screen: 'OnboardingGeolocation' }}
-        onBeforeNavigate={onStartPress}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton
-        type="login"
-        onAdditionalPress={onLoginPress}
-        params={{ from: StepperOrigin.ONBOARDING }}
-      />
-      <Spacer.BottomScreen />
-    </Content>
-  </Container>
-)
+export const OnboardingWelcome: FunctionComponent = () => {
+  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
+  ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
+
+  return (
+    <Container>
+      <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
+      <Spacer.Flex />
+      <Gradient />
+      <Content>
+        <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledBody>{subtitle}</StyledBody>
+        <Spacer.Column numberOfSpaces={6} />
+        <InternalTouchableLink
+          as={ButtonWithLinearGradient}
+          wording="C’est parti&nbsp;!"
+          icon={PlainArrowNext}
+          iconAfterWording
+          navigateTo={{ screen: 'OnboardingGeolocation' }}
+          onBeforeNavigate={onStartPress}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledAuthenticationButton
+          type="login"
+          onAdditionalPress={onLoginPress}
+          params={{ from: StepperOrigin.ONBOARDING }}
+        />
+        <Spacer.BottomScreen />
+      </Content>
+    </Container>
+  )
+}
 
 const Container = styled.View({
   flex: 1,
