@@ -13,32 +13,25 @@ export const useShouldShowAchievementSuccessModal = (): {
   const { displayAchievements } = useRemoteConfigContext()
   const { user, isUserLoading } = useAuthContext()
 
-  const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
+  const unseenAchievements =
+    user?.achievements?.filter((achievement) => !achievement.seenDate) || []
 
-  const isThereAtLeastOneUnseenAchievement = user?.achievements?.some(
-    (achievement) => !achievement.seenDate
-  )
+  const isThereAtLeastOneUnseenAchievement = unseenAchievements.length
 
-  if (!user || isThereAtLeastOneUnseenAchievement === undefined || isUserLoading)
+  if (isUserLoading)
     return {
       shouldShowAchievementSuccessModal: ModalDisplayState.PENDING,
       achievementsToShow: [],
     }
 
-  if (
-    !areAchievementsEnabled ||
-    !displayAchievements ||
-    user?.achievements.length === 0 ||
-    !isThereAtLeastOneUnseenAchievement
-  )
+  if (areAchievementsEnabled && displayAchievements && isThereAtLeastOneUnseenAchievement)
     return {
-      shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_NOT_SHOW,
-      achievementsToShow: [],
+      shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_SHOW,
+      achievementsToShow: unseenAchievements,
     }
 
   return {
-    shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_SHOW,
-    achievementsToShow:
-      unseenAchievements && unseenAchievements?.length > 0 ? unseenAchievements : [],
+    shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_NOT_SHOW,
+    achievementsToShow: [],
   }
 }
