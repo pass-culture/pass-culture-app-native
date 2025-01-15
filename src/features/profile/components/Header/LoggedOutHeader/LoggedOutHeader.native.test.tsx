@@ -15,7 +15,7 @@ jest.useFakeTimers()
 describe('LoggedOutHeader', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should display banner with credit V2 subtitle', () => {
+  it('should display subtitle with credit V2', () => {
     render(<LoggedOutHeader />)
 
     const subtitle = 'Tu as entre 15 et 18 ans\u00a0?'
@@ -58,7 +58,7 @@ describe('LoggedOutHeader', () => {
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
 
-    it('should display banner with credit V3 subtitle', () => {
+    it('should display subtitle with credit V3', () => {
       render(<LoggedOutHeader />)
 
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'

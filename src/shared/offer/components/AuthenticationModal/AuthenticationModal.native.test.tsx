@@ -24,7 +24,7 @@ jest.useFakeTimers()
 describe('<AuthenticationModal />', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should display banner with credit V2 subtitle', () => {
+  it('should display subtitle with credit V2', () => {
     render(
       <AuthenticationModal
         visible
@@ -163,7 +163,7 @@ describe('<AuthenticationModal />', () => {
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
 
-    it('should display banner with credit V3 subtitle', () => {
+    it('should display subtitle with credit V3', () => {
       render(
         <AuthenticationModal
           visible
