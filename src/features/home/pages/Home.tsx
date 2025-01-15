@@ -3,15 +3,13 @@ import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { HomeModals } from 'features/home/components/HomeModals'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
-import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
@@ -56,24 +54,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading } = useBookings()
-
-  const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
-    bookings,
-    isLoading
-  )
-
-  const {
-    visible: visibleAchievementModal,
-    showModal: showAchievementModal,
-    hideModal: hideAchievementModal,
-  } = useModal(false)
-
-  useEffect(() => {
-    if (modalToShow === ModalToShow.ACHIEVEMENT) {
-      showAchievementModal()
-    }
-  }, [showAchievementModal, modalToShow])
+  const { data: bookings } = useBookings()
 
   useEffect(() => {
     if (id) {
@@ -138,14 +119,7 @@ export const Home: FunctionComponent = () => {
         visible={onboardingSubscriptionModalVisible}
         dismissModal={hideOnboardingSubscriptionModal}
       />
-      {modalToShow === ModalToShow.REACTION ? (
-        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
-      ) : null}
-      <AchievementSuccessModal
-        achievementsToShow={achievementsToShow}
-        visible={visibleAchievementModal}
-        hideModal={hideAchievementModal}
-      />
+      <HomeModals />
     </React.Fragment>
   )
 }
