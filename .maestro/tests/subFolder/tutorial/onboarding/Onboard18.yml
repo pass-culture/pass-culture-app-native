@@ -12,12 +12,10 @@ appId: ${MAESTRO_APP_ID}
     optional: true
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
-- tapOn: 'j’ai 18 ans'
+- tapOn: "J’ai entre 15 et 18 ans"
+- tapOn: 'J’ai 18 ans'
 
 - assertVisible: "À 18 ans, profite de ton pass Culture\_!"
 - tapOn: 'Plus tard'
 
-- extendedWaitUntil:
-    visible: 
-        id: "intersectionObserver"
-    timeout: 20000
+- waitForAnimationToEnd

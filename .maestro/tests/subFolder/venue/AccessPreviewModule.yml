@@ -5,17 +5,27 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: offerBodyImage
 
-- assertVisible:
-    text: 1/2
-    index: 1
-- swipe:
-    direction: LEFT
+- runFlow:
+    when:
+        visible: "1/2"
+    commands:
+    - assertVisible:
+        text: 1/2
+        index: 1
+    - swipe:
+        direction: LEFT
+    - assertVisible:
+        text: 2/2
+        index: 1
+    - swipe:
+        direction: RIGHT
 
-- assertVisible:
-    text: 2/2
-    index: 1
-- swipe:
-    direction: RIGHT
+- runFlow:
+    when:
+        notVisible: "1/2"
+    commands:
+    - assertVisible:
+        text: 1/1
 
 - tapOn: Revenir en arrière
 - tapOn: Revenir en arrière

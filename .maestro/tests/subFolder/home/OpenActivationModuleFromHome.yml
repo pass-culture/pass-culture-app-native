@@ -9,8 +9,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: "Débloque ton crédit"
 - runFlow: # Si affichage de la Home avec player
     when:
-      visible:
-        id: 'intersectionObserver'
+      notVisible: 'Playlist hybride'
     commands:
       - tapOn: "Débloque ton crédit"
 

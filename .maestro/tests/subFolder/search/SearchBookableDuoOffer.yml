@@ -40,7 +40,17 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     file: ../../subFolder/cloud/commands/SwipeOnDatePicker.yml
-- tapOn: 'Valider la date'
+- tapOn: 
+    text: 'Valider la date'
+    retryTapIfNoChange: true
 
-- tapOn: 'Appliquer le filtre'
+- runFlow: 
+    when:
+      visible: 'Choisis une date'
+    commands:
+        - tapOn: 'Valider la date'
+
+- tapOn: 
+    text: 'Appliquer le filtre'
+    retryTapIfNoChange: true
 - tapOn: 'Rechercher'

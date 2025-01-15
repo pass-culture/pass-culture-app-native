@@ -47,5 +47,5 @@ appId: ${MAESTRO_APP_ID}
 
 - scrollUntilVisible:
     element:
-      text: 'Informations personnelles'
+      text: "Paramètres du compte"
     direction: UP
