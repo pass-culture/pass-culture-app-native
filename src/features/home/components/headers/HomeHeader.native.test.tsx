@@ -46,6 +46,7 @@ mockUseAuthContext.mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('HomeHeader', () => {
   beforeEach(() => {

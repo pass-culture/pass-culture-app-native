@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 const DELAY_BEFORE_VALUE_SHOULD_BE_SET_IN_MS = 15000
 
 export const useMustUpdateApp = () => {
-  const minimalBuildNumber = useRef<null | number>(null)
+  const minimalBuildNumber = useRef<number | undefined>(undefined)
   minimalBuildNumber.current = useMinimalBuildNumber()
   const mustUpdateApp =
     !!minimalBuildNumber.current && getAppBuildVersion() < minimalBuildNumber.current

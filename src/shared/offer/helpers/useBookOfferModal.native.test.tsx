@@ -7,7 +7,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, render, screen } from 'tests/utils'
+import { render, renderHook, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 const mockBookingOfferModal = <Text>BookingOfferModal</Text>
@@ -35,6 +35,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('useOfferModal', () => {
   beforeEach(() => {

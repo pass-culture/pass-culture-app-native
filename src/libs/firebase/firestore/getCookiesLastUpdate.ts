@@ -1,10 +1,11 @@
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import {
-  RemoteStoreDocuments,
-  RemoteStoreCookies,
   FIRESTORE_ROOT_COLLECTION,
+  RemoteStoreCookies,
+  RemoteStoreDocuments,
 } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getCookiesLastUpdate = async (): Promise<
   | void
@@ -31,6 +32,6 @@ export const getCookiesLastUpdate = async (): Promise<
       return { lastUpdated, lastUpdateBuildVersion }
     })
     .catch((error) => {
-      captureMonitoringError(error.message, 'firestore_not_available')
+      captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
     })
 }

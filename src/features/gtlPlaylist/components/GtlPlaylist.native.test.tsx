@@ -11,7 +11,7 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, userEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -57,6 +57,8 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 jest.useFakeTimers()
 

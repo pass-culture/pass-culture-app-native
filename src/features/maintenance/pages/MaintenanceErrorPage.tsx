@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 
-import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
+import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
-import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
+import { MAINTENANCE } from 'libs/firebase/firestore/types'
 
 type Props = {
   resetErrorBoundary: () => void

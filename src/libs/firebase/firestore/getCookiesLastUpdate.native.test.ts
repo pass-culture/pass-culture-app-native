@@ -56,9 +56,7 @@ describe('[method] getCookiesLastUpdate', () => {
   })
 
   it('should log error when firestore cannot retrieve collection', async () => {
-    mockFirestoreDocumentGet.mockRejectedValueOnce({
-      message: 'ERROR',
-    })
+    mockFirestoreDocumentGet.mockRejectedValueOnce(new Error('ERROR'))
 
     await getCookiesLastUpdate()
 

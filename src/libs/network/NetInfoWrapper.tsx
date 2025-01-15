@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
-import React, { createContext, memo, useContext, useEffect } from 'react'
+import React, { PropsWithChildren, createContext, memo, useContext, useEffect } from 'react'
 import { Platform } from 'react-native'
 import { onlineManager } from 'react-query'
 
@@ -8,11 +8,7 @@ import { analytics } from 'libs/analytics'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export const NetInfoWrapper = memo(function NetInfoWrapper({
-  children,
-}: {
-  children: React.JSX.Element
-}) {
+export const NetInfoWrapper = memo(function NetInfoWrapper({ children }: PropsWithChildren) {
   const networkInfo = useNetInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 

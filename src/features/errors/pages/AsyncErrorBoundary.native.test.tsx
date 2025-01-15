@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { ApiError } from 'api/ApiError'
+import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -27,6 +28,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('features/maintenance/helpers/useMaintenance/useMaintenance')
+const mockUseMaintenance = useMaintenance as jest.Mock
 
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {
@@ -177,6 +181,7 @@ describe('AsyncErrorBoundary component', () => {
         Screen: MaintenanceErrorPage,
         logType: LogTypeEnum.IGNORED,
       })
+      mockUseMaintenance.mockReturnValueOnce(error)
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
@@ -189,6 +194,7 @@ describe('AsyncErrorBoundary component', () => {
         Screen: MaintenanceErrorPage,
         logType: LogTypeEnum.INFO,
       })
+      mockUseMaintenance.mockReturnValueOnce(error)
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith('error-1', { level: 'info' })

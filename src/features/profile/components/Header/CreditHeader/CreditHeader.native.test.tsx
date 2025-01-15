@@ -35,6 +35,8 @@ const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('CreditHeader', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

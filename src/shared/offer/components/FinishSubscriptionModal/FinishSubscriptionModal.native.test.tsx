@@ -37,6 +37,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('<FinishSubscriptionModal />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

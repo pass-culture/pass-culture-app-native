@@ -31,6 +31,26 @@ export enum RemoteStoreUbble {
   UBBLE_ETA_MESSAGE = 'etaMessage',
 }
 
+export enum MAINTENANCE {
+  UNKNOWN = 'UNKNOWN',
+  OFF = 'OFF',
+  ON = 'ON',
+}
+
+export type Maintenance =
+  | {
+      status: MAINTENANCE.UNKNOWN
+      message: undefined
+    }
+  | {
+      status: MAINTENANCE.OFF
+      message: undefined
+    }
+  | {
+      status: MAINTENANCE.ON
+      message: string
+    }
+
 export enum RemoteStoreFeatureFlags {
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CREDIT_V3 = 'enableCreditV3',

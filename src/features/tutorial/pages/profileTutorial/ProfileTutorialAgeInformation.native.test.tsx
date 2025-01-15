@@ -10,13 +10,15 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 

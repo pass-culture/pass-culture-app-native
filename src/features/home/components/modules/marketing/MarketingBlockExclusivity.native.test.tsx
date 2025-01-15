@@ -6,7 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { render, screen, fireEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -28,6 +28,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('MarketingBlockExclusivity', () => {
   beforeEach(() => {

@@ -6,6 +6,8 @@ import { renderHook } from 'tests/utils'
 
 import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 const TODAY = '2022-10-24'
 mockdate.set(new Date(TODAY))
 

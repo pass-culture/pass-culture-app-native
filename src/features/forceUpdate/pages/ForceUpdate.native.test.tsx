@@ -19,6 +19,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber')
+
 describe('<ForceUpdate/>', () => {
   it('should match snapshot', async () => {
     await render(<ForceUpdate resetErrorBoundary={() => null} />)

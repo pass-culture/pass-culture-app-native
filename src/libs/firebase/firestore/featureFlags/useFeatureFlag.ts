@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { onlineManager, useQuery } from 'react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
@@ -16,6 +16,7 @@ const appBuildVersion = getAppBuildVersion()
 export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean => {
   const { data: docSnapshot } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
     staleTime: 1000 * 30, // 30 seconds
+    enabled: onlineManager.isOnline(),
   })
   const { logType } = useLogTypeFromRemoteConfig()
 

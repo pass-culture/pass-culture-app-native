@@ -1,17 +1,17 @@
+import 'intl'
+import 'intl/locale-data/jsonp/en'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import 'react-native-gesture-handler' // @react-navigation
-import 'react-native-get-random-values' // required for `uuid` module to work
 import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
+import 'react-native-gesture-handler' // @react-navigation
+import 'react-native-get-random-values' // required for `uuid` module to work
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 if (process.env.NODE_ENV === 'development') {
   import('react-native-devsettings')
 }
-import 'intl'
-import 'intl/locale-data/jsonp/en'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
@@ -32,6 +32,7 @@ import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
+import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
@@ -89,6 +90,7 @@ const App: FunctionComponent = function () {
               <AnalyticsInitializer>
                 {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
+                  <FirestoreNetworkObserver />
                   <SettingsWrapper>
                     <AuthWrapper>
                       <LocationWrapper>

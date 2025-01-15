@@ -42,6 +42,8 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
 // This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.
 const ANY_CHARACTER = /./
 
+jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
 describe('<BookingInformations />', () => {
   beforeEach(() => {
     setFeatureFlags()
