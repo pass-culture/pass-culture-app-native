@@ -19,12 +19,8 @@ export const useWhichModalToShow = (
   isBookingsLoading: boolean
 ) => {
   const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
-  const { shouldShowReactionModal, bookingsEligibleToReaction } = useBookingsReactionHelpers(
-    bookings,
-    isBookingsLoading
-  )
-  const { shouldShowAchievementSuccessModal, achievementsToShow } =
-    useShouldShowAchievementSuccessModal()
+  const { shouldShowReactionModal } = useBookingsReactionHelpers(bookings, isBookingsLoading)
+  const { shouldShowAchievementSuccessModal } = useShouldShowAchievementSuccessModal()
   if (!isBookingsLoading && modalToShow === ModalToShow.PENDING) {
     if (shouldShowReactionModal === ModalDisplayState.SHOULD_SHOW) {
       setModalToShow(ModalToShow.REACTION)
@@ -38,5 +34,5 @@ export const useWhichModalToShow = (
     }
   }
 
-  return { modalToShow, bookingsEligibleToReaction, achievementsToShow }
+  return { modalToShow }
 }

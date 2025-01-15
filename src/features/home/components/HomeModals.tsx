@@ -9,14 +9,19 @@ import { useModal } from 'ui/components/modals/useModal'
 
 export const HomeModals: FC = () => {
   const { data: bookings, isLoading: isBookingsLoading } = useBookings()
-  const { isUserLoading } = useAuthContext()
+  const { isUserLoading, user } = useAuthContext()
 
   const isModalContainerReady = !isUserLoading && !isBookingsLoading
 
-  const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
-    bookings,
-    isBookingsLoading
-  )
+  const { modalToShow } = useWhichModalToShow(bookings, isBookingsLoading)
+
+  const achievementsToShow =
+    user?.achievements?.filter((achievement) => !achievement.seenDate) || []
+
+  const bookingsEligibleToReaction =
+    bookings?.ended_bookings?.filter(
+      (booking) => booking.enablePopUpReaction && !booking.userReaction
+    ) ?? []
 
   const {
     visible: visibleAchievementModal,
