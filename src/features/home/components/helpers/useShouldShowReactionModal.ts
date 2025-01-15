@@ -1,4 +1,4 @@
-import { BookingReponse, BookingsResponse } from 'api/gen'
+import { BookingsResponse } from 'api/gen'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
@@ -8,13 +8,10 @@ export enum ModalDisplayState {
   SHOULD_NOT_SHOW = 'shouldNotShow',
 }
 
-export const useBookingsReactionHelpers = (
+export const useShouldShowReactionModal = (
   bookings: BookingsResponse | undefined,
   isBookingsLoading: boolean
-): {
-  shouldShowReactionModal: ModalDisplayState
-  bookingsEligibleToReaction: Array<BookingReponse> | undefined
-} => {
+): ModalDisplayState => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const bookingsEligibleToReaction =
@@ -25,18 +22,12 @@ export const useBookingsReactionHelpers = (
   const firstBookingEligibleToReaction = bookingsEligibleToReaction[0]
 
   if (isBookingsLoading || bookings === undefined) {
-    return {
-      shouldShowReactionModal: ModalDisplayState.PENDING,
-      bookingsEligibleToReaction: [],
-    }
+    return ModalDisplayState.PENDING
   }
 
   if (isReactionFeatureActive && firstBookingEligibleToReaction)
-    return { shouldShowReactionModal: ModalDisplayState.SHOULD_SHOW, bookingsEligibleToReaction }
+    return ModalDisplayState.SHOULD_SHOW
 
   // There is an issue with !isCookieConsentChecked it goes to true for an instant and disrupts the modal conflict management hook
-  return {
-    shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,
-    bookingsEligibleToReaction: [],
-  }
+  return ModalDisplayState.SHOULD_NOT_SHOW
 }

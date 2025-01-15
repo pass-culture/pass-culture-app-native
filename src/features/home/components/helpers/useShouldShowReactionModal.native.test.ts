@@ -3,8 +3,8 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import {
   ModalDisplayState,
-  useBookingsReactionHelpers,
-} from 'features/home/components/helpers/useBookingsReactionHelpers'
+  useShouldShowReactionModal,
+} from 'features/home/components/helpers/useShouldShowReactionModal'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -34,7 +34,7 @@ describe('useBookingsReactionHelpers', () => {
     setFeatureFlags()
 
     const { result } = renderHook(() =>
-      useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+      useShouldShowReactionModal(endedBookingWithoutReaction, false)
     )
 
     expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
@@ -47,7 +47,7 @@ describe('useBookingsReactionHelpers', () => {
 
     it('should return shouldNotShow if the bookings already have reactions', () => {
       const { result } = renderHook(() =>
-        useBookingsReactionHelpers(endedBookingWithReaction, false)
+        useShouldShowReactionModal(endedBookingWithReaction, false)
       )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
@@ -58,7 +58,7 @@ describe('useBookingsReactionHelpers', () => {
       cookiesNotAccepted()
 
       const { result } = renderHook(() =>
-        useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+        useShouldShowReactionModal(endedBookingWithoutReaction, false)
       )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
@@ -66,7 +66,7 @@ describe('useBookingsReactionHelpers', () => {
 
     it('should return true if there are bookings to react to', () => {
       const { result } = renderHook(() =>
-        useBookingsReactionHelpers(endedBookingWithoutReaction, false)
+        useShouldShowReactionModal(endedBookingWithoutReaction, false)
       )
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_SHOW)
