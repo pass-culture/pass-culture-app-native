@@ -8,7 +8,8 @@ import {
   CurriedAnyFunction,
   StoreConfig,
   Store,
-  ReplaceSelectByUse,
+  HookSelectors,
+  SelectorsWithState,
 } from './store.types'
 
 export function createStore<
@@ -18,8 +19,8 @@ export function createStore<
 >({
   name,
   defaultState,
-  actions: createActions = createEmptyActions<Actions>,
-  selectors = createEmptySelectors<Selectors>(),
+  actions: createActions,
+  selectors = createTypedEmptyObject<Selectors>(),
   options,
 }: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
   const defaultStore = () => defaultState
@@ -43,11 +44,7 @@ export function createStore<
         return selector(...args)(state)
       },
     }),
-    {} as {
-      [K in keyof Selectors]: (
-        ...args: Parameters<Selectors[K]>
-      ) => ReturnType<ReturnType<Selectors[K]>>
-    }
+    createTypedEmptyObject<SelectorsWithState<State, Selectors>>()
   )
 
   const hooks = Object.entries(selectors).reduce(
@@ -56,11 +53,7 @@ export function createStore<
       [key.replace('select', 'use')]: (...args: Parameters<typeof selector>) =>
         store((state) => selector(...args)(state)),
     }),
-    {} as {
-      [K in keyof Selectors as ReplaceSelectByUse<string & K>]: (
-        ...args: Parameters<Selectors[K]>
-      ) => ReturnType<ReturnType<Selectors[K]>>
-    }
+    createTypedEmptyObject<HookSelectors<State, Selectors>>()
   )
 
   return {
@@ -71,6 +64,6 @@ export function createStore<
   }
 }
 
-const createEmptyActions = <T extends Record<string, AnyFunction>>(): T => Object.create(null)
-const createEmptySelectors = <T extends Record<string, CurriedAnyFunction<never>>>(): T =>
-  Object.create(null)
+const createTypedEmptyObject = <T>(): T => {
+  return Object.create(null)
+}
