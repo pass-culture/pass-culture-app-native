@@ -43,7 +43,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
       keyExtractor={keyExtractor}
       ListHeaderComponent={
         <React.Fragment>
-          <TypoDS.Title3>Ses offres populaires</TypoDS.Title3>
+          <TypoDS.Title3>Ses oeuvres populaires</TypoDS.Title3>
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       }
