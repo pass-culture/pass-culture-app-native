@@ -6,6 +6,7 @@ export enum CreditStatus {
 
 export enum NonEligible {
   UNDER_15 = 'under_15',
+  UNDER_17 = 'under_17',
   OVER_18 = 'over_18',
 }
 

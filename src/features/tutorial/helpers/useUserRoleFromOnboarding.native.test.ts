@@ -10,7 +10,7 @@ describe('useUserRoleFromOnboarding', () => {
     storage.clear(USER_AGE_KEY)
   })
 
-  it.each([NonEligible.UNDER_15, 15, 16, 17])(
+  it.each([NonEligible.UNDER_15, NonEligible.UNDER_17, 15, 16, 17])(
     'should return underage when user is %s',
     async (age) => {
       storage.saveObject(USER_AGE_KEY, age)
