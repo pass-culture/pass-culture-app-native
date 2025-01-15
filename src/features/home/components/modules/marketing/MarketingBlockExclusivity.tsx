@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { formatToReadableFrenchDate } from 'libs/dates'
+import { formatPublicationDate } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
@@ -13,7 +13,6 @@ type AttachedOfferCardProps = {
   homeEntryId?: string
   backgroundImageUrl?: string
   shouldDisplayPublicationDate?: boolean
-  publicationDate?: Date
 }
 
 const UnmemoizedMarketingBlockExclusivity = ({
@@ -22,7 +21,6 @@ const UnmemoizedMarketingBlockExclusivity = ({
   homeEntryId,
   backgroundImageUrl,
   shouldDisplayPublicationDate,
-  publicationDate,
 }: AttachedOfferCardProps) => {
   const logConsultOffer = () => {
     triggerConsultOfferLog({
@@ -33,14 +31,10 @@ const UnmemoizedMarketingBlockExclusivity = ({
       moduleId,
     })
   }
-
-  const comingSoonText =
-    publicationDate && shouldDisplayPublicationDate
-      ? `Disponible le ${formatToReadableFrenchDate(publicationDate)}`
-      : 'Bientôt disponible'
-
-  const comingSoon =
-    publicationDate && new Date().getTime() < publicationDate.getTime() ? comingSoonText : undefined
+  const publicationDate = offer.offer.publicationDate
+  const comingSoon = publicationDate
+    ? formatPublicationDate(new Date(publicationDate * 1000), shouldDisplayPublicationDate)
+    : undefined
 
   return (
     <MarketingBlock

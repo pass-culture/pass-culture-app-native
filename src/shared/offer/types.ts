@@ -18,6 +18,7 @@ export type HitOffer = {
   releaseDate?: number | string
   bookFormat?: string | null
   artist?: string
+  publicationDate?: number
 }
 
 export interface Offer {

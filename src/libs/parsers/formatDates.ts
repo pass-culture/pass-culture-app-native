@@ -73,6 +73,22 @@ export const formatReleaseDate = (releaseDate: Date): string => {
   return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : `Sorti le ${formattedDate}`
 }
 
+/**
+ * @param publicationDate: Date
+ */
+export const formatPublicationDate = (
+  publicationDate: Date,
+  shouldDisplayPublicationDate?: boolean
+): string | undefined => {
+  if (isAfter(publicationDate, new Date())) {
+    return shouldDisplayPublicationDate
+      ? `Disponible le ${formatToFrenchDateWithoutYear(publicationDate)}`
+      : 'Bientôt disponible'
+  }
+
+  return undefined
+}
+
 type MonthDays = number[]
 type YearGroup = Partial<Record<FullMonth, MonthDays>>
 export type GroupResult = Record<number, YearGroup>

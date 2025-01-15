@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -15,9 +16,11 @@ import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
-
 const offerFixture = offersFixture[0]
 const duoOfferFixture = offersFixture[2]
+
+const today = 1736870746
+const tomorrow = 1736957146
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/home/api/useHighlightOffer')
@@ -38,6 +41,7 @@ jest.useFakeTimers()
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
+    mockdate.set(new Date(today * 1000))
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
       page: 1,
@@ -193,6 +197,52 @@ describe('HighlightOfferModule', () => {
     })
   })
 
+  it('should display publication date when displayPublicationDate is true and has a publicationDate in future', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+      offer: { ...offerFixture.offer, publicationDate: tomorrow },
+    })
+
+    render(
+      reactQueryProviderHOC(
+        <HighlightOfferModule
+          {...highlightOfferModuleFixture}
+          index={0}
+          homeEntryId="entryId"
+          displayPublicationDate
+        />
+      )
+    )
+
+    await act(async () => {
+      expect(screen.getByText('Disponible le 15 janvier')).toBeOnTheScreen()
+    })
+  })
+
+  it('should not display publication date when displayPublicationDate is false and has a publicationDate in future', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+      offer: { ...offerFixture.offer, publicationDate: tomorrow },
+    })
+
+    render(
+      reactQueryProviderHOC(
+        <HighlightOfferModule
+          {...highlightOfferModuleFixture}
+          index={0}
+          homeEntryId="entryId"
+          displayPublicationDate={false}
+        />
+      )
+    )
+
+    await act(async () => {
+      expect(screen.getByText('Bientôt disponible')).toBeOnTheScreen()
+    })
+  })
+
   it('should render old design when feature flag is disabled', async () => {
     mockUseHighlightOffer.mockReturnValueOnce({
       ...offerFixture,
@@ -206,10 +256,15 @@ describe('HighlightOfferModule', () => {
   })
 })
 
-const renderHighlightModule = (homeEntryId = 'entryId') => {
+const renderHighlightModule = (homeEntryId = 'entryId', displayPublicationDate = false) => {
   return render(
     reactQueryProviderHOC(
-      <HighlightOfferModule {...highlightOfferModuleFixture} index={0} homeEntryId={homeEntryId} />
+      <HighlightOfferModule
+        {...highlightOfferModuleFixture}
+        index={0}
+        homeEntryId={homeEntryId}
+        displayPublicationDate={displayPublicationDate}
+      />
     )
   )
 }

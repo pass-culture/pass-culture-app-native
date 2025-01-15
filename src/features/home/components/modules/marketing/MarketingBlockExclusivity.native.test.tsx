@@ -11,13 +11,18 @@ import { render, screen, waitFor, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
-const today = new Date('2025-02-16T03:24:00')
-const tomorrow = new Date('2025-02-17T03:24:00')
-const yesterday = new Date('2025-02-15T03:24:00')
+const today = 1736870746 // 14/01/2025 - 17:05:46
+const tomorrow = 1736870746 + 24 * 60 * 60
+const yesterday = 1736870746 - 24 * 60 * 60
 
 const props = {
   moduleId: '1',
   offer: offersFixture[0],
+}
+
+const propsWithPublicationDateTomorrow = {
+  moduleId: '1',
+  offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
 }
 
 jest.mock('libs/location/hooks/useDistance')
@@ -76,24 +81,23 @@ describe('MarketingBlockExclusivity', () => {
     it('should display a text with date when shouldDisplayPublicationDate is true', async () => {
       render(
         <MarketingBlockExclusivity
-          {...props}
-          publicationDate={tomorrow}
+          {...propsWithPublicationDateTomorrow}
           shouldDisplayPublicationDate
         />
       )
       await screen.findByText('La nuit des temps')
 
-      expect(screen.getByText('Disponible le 17 février')).toBeOnTheScreen()
+      expect(screen.getByText('Disponible le 15 janvier')).toBeOnTheScreen()
     })
 
     it('should display a generic text when shouldDisplayPublicationDate is false', async () => {
       render(
         <MarketingBlockExclusivity
-          {...props}
-          publicationDate={tomorrow}
+          {...propsWithPublicationDateTomorrow}
           shouldDisplayPublicationDate={false}
         />
       )
+
       await screen.findByText('La nuit des temps')
 
       expect(screen.getByText('Bientôt disponible')).toBeOnTheScreen()
@@ -102,7 +106,17 @@ describe('MarketingBlockExclusivity', () => {
 
   describe('publicationDate is today', () => {
     it('should not display bottomBanner with comingSoon information', () => {
-      render(<MarketingBlockExclusivity {...props} publicationDate={today} />)
+      render(
+        <MarketingBlockExclusivity
+          {...{
+            ...props,
+            offer: {
+              ...offersFixture[0],
+              offer: { ...offersFixture[0].offer, publicationDate: today },
+            },
+          }}
+        />
+      )
 
       expect(screen.queryByTestId('bottom-banner')).not.toBeOnTheScreen()
     })
@@ -110,7 +124,17 @@ describe('MarketingBlockExclusivity', () => {
 
   describe('publicationDate is yesterday', () => {
     it('should not display bottomBanner with comingSoon information', () => {
-      render(<MarketingBlockExclusivity {...props} publicationDate={yesterday} />)
+      render(
+        <MarketingBlockExclusivity
+          {...{
+            ...props,
+            offer: {
+              ...offersFixture[0],
+              offer: { ...offersFixture[0].offer, publicationDate: yesterday },
+            },
+          }}
+        />
+      )
 
       expect(screen.queryByTestId('bottom-banner')).not.toBeOnTheScreen()
     })

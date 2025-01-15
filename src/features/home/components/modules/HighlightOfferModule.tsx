@@ -43,7 +43,18 @@ type HighlightOfferModuleProps = HighlightOfferModuleType & {
 }
 
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
-  const { id, offerId, offerEan, offerTag, isGeolocated, aroundRadius, index, homeEntryId } = props
+  const {
+    id,
+    offerId,
+    offerEan,
+    offerTag,
+    isGeolocated,
+    aroundRadius,
+    index,
+    homeEntryId,
+    displayPublicationDate,
+  } = props
+
   const highlightOffer = useHighlightOffer({
     id,
     offerId,
@@ -93,9 +104,6 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]
 
-  const shouldDisplayPublicationDate = false
-  const publicationDate = new Date('2025-02-17T03:24:00')
-
   return (
     <Container>
       <StyledTitleContainer>
@@ -108,8 +116,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           homeEntryId={homeEntryId}
           backgroundImageUrl={props.image}
           moduleId={props.id}
-          shouldDisplayPublicationDate={shouldDisplayPublicationDate}
-          publicationDate={publicationDate}
+          shouldDisplayPublicationDate={displayPublicationDate}
         />
       ) : (
         <View>
