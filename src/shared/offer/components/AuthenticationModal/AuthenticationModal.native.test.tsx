@@ -173,7 +173,7 @@ describe('<AuthenticationModal />', () => {
         />
       )
 
-      const subtitle = 'Tu as entre 17 et 18 ans\u00a0?'
+      const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
       expect(screen.getByText(subtitle)).toBeOnTheScreen()
     })

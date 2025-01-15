@@ -28,7 +28,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   from,
 }) => {
   const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
-  const title = `Tu as entre ${enableCreditV3 ? '17 et 18' : '15 et 18'} ans\u00a0?`
+  const title = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
 
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)

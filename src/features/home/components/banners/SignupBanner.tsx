@@ -22,7 +22,7 @@ export const SignupBanner: FunctionComponent<Props> = ({ hasGraphicRedesign }) =
   const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
 
   const title = 'Débloque ton crédit'
-  const subtitle = `Crée ton compte si tu as entre ${enableCreditV3 ? '17 et 18' : '15 et 18'} ans\u00a0!`
+  const subtitle = `Crée ton compte si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0!`
 
   const onSystemBannerPress = () => {
     onBeforeNavigate()

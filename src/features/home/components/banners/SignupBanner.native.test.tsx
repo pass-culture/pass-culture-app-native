@@ -90,7 +90,7 @@ describe('SignupBanner', () => {
     it('should display banner with credit V3 subtitle', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
 
-      const subtitle = 'Crée ton compte si tu as entre 17 et 18 ans\u00a0!'
+      const subtitle = 'Crée ton compte si tu as 17 ou 18 ans\u00a0!'
 
       expect(screen.getByText(subtitle)).toBeOnTheScreen()
     })
