@@ -5,6 +5,8 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { env } from 'libs/environment/fixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -23,6 +25,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NonEligibleModal', () => {
+  beforeEach(() => setFeatureFlags())
+
+  it('should display subtitle with credit V2', () => {
+    renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+
+    const subtitle = 'Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.'
+
+    expect(screen.getByText(subtitle)).toBeOnTheScreen()
+  })
+
   describe('for user over 18 years old', () => {
     it('should return null', () => {
       renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
@@ -87,6 +99,19 @@ describe('NonEligibleModal', () => {
       await user.press(button)
 
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_CREDIT)
+    })
+
+    describe('when enableCreditV3 activated', () => {
+      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+
+      it('should display subtitle with credit V3', () => {
+        renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+
+        const subtitle =
+          'Tu peux bénéficier de ton crédit sur l’application à partir de tes 17 ans.'
+
+        expect(screen.getByText(subtitle)).toBeOnTheScreen()
+      })
     })
   })
 })

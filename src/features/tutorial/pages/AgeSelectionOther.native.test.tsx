@@ -9,6 +9,7 @@ import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { analytics } from 'libs/analytics'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -39,6 +40,7 @@ jest.useFakeTimers()
 
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {
+    setFeatureFlags()
     await storage.clear('user_age')
   })
 

@@ -3,6 +3,7 @@ import {
   useOnboardingContext,
 } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -18,6 +19,8 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOnboardingContext()', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should show modal when showNonEligibleModal is called', () => {
     const { result } = renderOnboardingHook()
 
