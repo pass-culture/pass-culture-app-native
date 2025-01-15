@@ -25,13 +25,13 @@ describe('ArtistTopOffers', () => {
       )
     )
 
-    expect(screen.getByText('Ses offres populaires')).toBeOnTheScreen()
+    expect(screen.getByText('Ses oeuvres populaires')).toBeOnTheScreen()
   })
 
   it('should not display top offers when there is not some offer from this artist', async () => {
     render(reactQueryProviderHOC(<ArtistTopOffers artistName="Céline Dion" items={[]} />))
 
-    expect(screen.queryByText('Ses offres populaires')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Ses oeuvres populaires')).not.toBeOnTheScreen()
   })
 
   it('should display subtitles when bookFormat is defined', () => {
