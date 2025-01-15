@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -25,6 +27,9 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   offerId,
   from,
 }) => {
+  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const title = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
+
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)
     hideModal()
@@ -47,7 +52,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
       hideModal={closeModal}>
-      <Typo.ButtonText>Tu as entre 15 et 18 ans&nbsp;?</Typo.ButtonText>
+      <Typo.ButtonText>{title}</Typo.ButtonText>
       <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
         Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
