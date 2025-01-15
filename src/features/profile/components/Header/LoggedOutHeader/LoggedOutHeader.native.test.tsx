@@ -3,11 +3,23 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
 
 describe('LoggedOutHeader', () => {
+  beforeEach(() => setFeatureFlags())
+
+  it('should display banner with credit V2 subtitle', () => {
+    render(<LoggedOutHeader />)
+
+    const subtitle = 'Tu as entre 15 et 18 ans\u00a0?'
+
+    expect(screen.getByText(subtitle)).toBeOnTheScreen()
+  })
+
   it('should navigate to the SignupForm page', async () => {
     render(<LoggedOutHeader />)
 
@@ -38,5 +50,16 @@ describe('LoggedOutHeader', () => {
 
     expect(analytics.logProfilSignUp).toHaveBeenCalledTimes(1)
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'profile' })
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    it('should display banner with credit V3 subtitle', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3])
+      render(<LoggedOutHeader />)
+
+      const subtitle = 'Tu as entre 17 et 18 ans\u00a0?'
+
+      expect(screen.getByText(subtitle)).toBeOnTheScreen()
+    })
   })
 })
