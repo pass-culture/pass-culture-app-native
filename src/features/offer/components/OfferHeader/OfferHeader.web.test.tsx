@@ -4,7 +4,6 @@ import { Animated } from 'react-native'
 import { PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils/web'
@@ -12,8 +11,6 @@ import { act, render, screen, userEvent } from 'tests/utils/web'
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
 jest.mock('features/auth/context/AuthContext')
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

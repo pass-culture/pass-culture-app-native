@@ -2,14 +2,18 @@ import React from 'react'
 
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('ArtistPlaylist', () => {
+describe('ArtistTopOffers', () => {
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES])
+  })
+
   it('should display top offers when there is some offer from this artist', () => {
     render(
       reactQueryProviderHOC(

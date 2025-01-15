@@ -1,10 +1,9 @@
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { renderHook } from 'tests/utils/web'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
@@ -25,6 +24,8 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('useShouldDisplayVenueMap', () => {
   it('should not render venue map on web', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+
     const { result } = renderHook(useShouldDisplayVenueMap)
 
     expect(result.current).toEqual({

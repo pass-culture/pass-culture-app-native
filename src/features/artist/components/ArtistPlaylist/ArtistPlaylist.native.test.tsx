@@ -3,11 +3,10 @@ import React from 'react'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
@@ -26,6 +25,10 @@ jest.mock('@shopify/flash-list', () => {
 })
 
 describe('ArtistPlaylist', () => {
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES])
+  })
+
   it('should display artist playlist when there is some offer from this artist', () => {
     render(
       reactQueryProviderHOC(

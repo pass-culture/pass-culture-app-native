@@ -11,7 +11,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
@@ -21,8 +21,6 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails, BookingDetailsProps } from './BookingDetails'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -173,6 +171,7 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
+      setFeatureFlags()
     })
 
     it('should initialize correctly state when offer isDigital', async () => {

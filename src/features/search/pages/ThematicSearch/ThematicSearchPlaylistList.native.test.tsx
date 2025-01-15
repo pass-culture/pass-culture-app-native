@@ -2,12 +2,11 @@ import React from 'react'
 
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, cleanup } from 'tests/utils'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx
 
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
@@ -36,6 +35,10 @@ const DEFAULT_PLAYLIST_WITHOUT_HITS = {
 }
 
 describe('ThematicSearchPlaylistList', () => {
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+  })
+
   afterEach(cleanup)
 
   it('should render playlist properly', async () => {

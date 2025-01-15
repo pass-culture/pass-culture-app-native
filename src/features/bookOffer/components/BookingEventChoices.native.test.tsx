@@ -5,15 +5,13 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -35,6 +33,7 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 describe('<BookingEventChoices />', () => {
   beforeEach(() => {
     mockServer.getApi<OfferResponseV2>(`/v2/offer/116656`, offerResponseSnap)
+    setFeatureFlags()
   })
 
   beforeAll(() => {

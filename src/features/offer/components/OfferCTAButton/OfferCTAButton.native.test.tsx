@@ -9,7 +9,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockedBookingApi } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -22,9 +22,6 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/subcategories/useSubcategories')
-
-// feature flag wipPricesByCategories
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
@@ -78,6 +75,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
+    setFeatureFlags() // No tests for WIP_APP_V2_CATEGORY_BLOCK
   })
 
   it('should open booking modal when login after booking attempt', async () => {

@@ -2,7 +2,8 @@ import React from 'react'
 
 import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
 import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -12,8 +13,6 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
@@ -33,7 +32,11 @@ const useThematicSearchPlaylistsSpy = jest
     playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_OFFERS }],
   })
 
-describe('Films', () => {
+describe('FilmsPlaylist', () => {
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+  })
+
   it('should render playlist when algolia returns offers', async () => {
     renderFilms()
 

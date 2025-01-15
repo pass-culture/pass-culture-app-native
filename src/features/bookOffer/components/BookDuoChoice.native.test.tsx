@@ -2,12 +2,10 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockStep = Step.DUO
 
@@ -44,6 +42,10 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
 }))
 
 describe('BookDuoChoice', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display two blocs if offer is duo', () => {
     render(<BookDuoChoice />)
 

@@ -5,12 +5,10 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
@@ -60,6 +58,7 @@ describe('BookHourChoice when hour is already selected', () => {
       dismissModal: jest.fn(),
       dispatch: mockDispatch,
     })
+    setFeatureFlags()
   })
 
   it('should change step to Hour', () => {

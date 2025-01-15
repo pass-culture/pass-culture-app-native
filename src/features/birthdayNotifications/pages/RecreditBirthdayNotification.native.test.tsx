@@ -2,14 +2,13 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { underageBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({
@@ -34,6 +33,10 @@ mockAuthContextWithUser({
 describe('<RecreditBirthdayNotification />', () => {
   beforeAll(() => {
     mockdate.set(new Date('2023-02-28'))
+  })
+
+  beforeEach(() => {
+    setFeatureFlags()
   })
 
   it('should have correct text', async () => {

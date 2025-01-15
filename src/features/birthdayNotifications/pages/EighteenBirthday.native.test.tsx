@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,7 +10,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { EighteenBirthday } from './EighteenBirthday'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('features/auth/context/AuthContext')
 
 afterEach(() => {
@@ -24,6 +23,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<EighteenBirthday />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render eighteen birthday', () => {
     render(reactQueryProviderHOC(<EighteenBirthday />))
 

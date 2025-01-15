@@ -8,7 +8,8 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -40,7 +41,6 @@ mockedUseSnackBarContext.mockReturnValue({
   showErrorSnackBar,
 })
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 const useAddFavoriteSpy = jest.spyOn(useAddFavoriteAPI, 'useAddFavorite')
 const useRemoveFavoriteSpy = jest.spyOn(useRemoveFavoriteAPI, 'useRemoveFavorite')
 
@@ -121,7 +121,8 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE])
+
     renderFavoriteButton()
 
     await act(async () => {

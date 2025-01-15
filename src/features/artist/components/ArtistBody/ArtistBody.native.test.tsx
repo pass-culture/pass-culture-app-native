@@ -9,7 +9,7 @@ import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -40,8 +40,6 @@ useRoute.mockReturnValue({
   },
 })
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
-
 const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
 
 const mockArtist = {
@@ -51,6 +49,7 @@ const mockArtist = {
 
 describe('<ArtistBody />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     spyUseArtistResults.mockReturnValue({
       artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
       artistPlaylist: [],
