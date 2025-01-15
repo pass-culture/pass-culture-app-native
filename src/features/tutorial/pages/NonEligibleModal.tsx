@@ -36,7 +36,7 @@ export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props
     if (type === TutorialTypes.PROFILE_TUTORIAL) navigateToHome()
   }
 
-  if (userStatus === NonEligible.UNDER_15)
+  if (userStatus === NonEligible.UNDER_15 || userStatus === NonEligible.UNDER_17)
     return (
       <AppInformationModal
         visible={visible}

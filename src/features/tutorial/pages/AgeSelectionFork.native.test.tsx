@@ -6,6 +6,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -17,6 +19,7 @@ jest.useFakeTimers()
 
 describe('AgeSelectionFork', () => {
   beforeEach(async () => {
+    setFeatureFlags()
     await storage.clear('user_age')
   })
 
@@ -39,6 +42,7 @@ describe('AgeSelectionFork', () => {
 
       expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, {
         type: TutorialTypes.ONBOARDING,
+        screen: 'Home',
       })
     })
 
@@ -100,6 +104,7 @@ describe('AgeSelectionFork', () => {
 
       expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, {
         type: TutorialTypes.PROFILE_TUTORIAL,
+        screen: 'Home',
       })
     })
 
@@ -122,6 +127,69 @@ describe('AgeSelectionFork', () => {
 
       expect(navigate).toHaveBeenCalledWith('OnboardingGeneralPublicWelcome', {
         type: TutorialTypes.PROFILE_TUTORIAL,
+      })
+    })
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+
+    describe('onboarding', () => {
+      beforeEach(() => {
+        useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
+      })
+
+      it('should render correctly', () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        expect(screen).toMatchSnapshot()
+      })
+
+      it('should navigate to Home page when pressing "J’ai 16 ans ou moins"', async () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByLabelText('J’ai 16 ans ou moins')
+        await user.press(button)
+
+        expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, {
+          type: TutorialTypes.ONBOARDING,
+          screen: 'Home',
+        })
+      })
+
+      it('should save user age to local storage when pressing "J’ai 16 ans ou moins"', async () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByLabelText('J’ai 16 ans ou moins')
+        await user.press(button)
+
+        const userAge = await storage.readObject('user_age')
+
+        expect(userAge).toBe(NonEligible.UNDER_17)
+      })
+
+      it('should navigate to OnboardingAgeInformation page when pressing "J’ai 17 ans"', async () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByLabelText('J’ai 17 ans')
+        await user.press(button)
+
+        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
+          age: 17,
+          type: TutorialTypes.ONBOARDING,
+        })
+      })
+
+      it('should navigate to OnboardingAgeInformation page when pressing "J’ai 18 ans"', async () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByLabelText('J’ai 18 ans')
+        await user.press(button)
+
+        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
+          age: 18,
+          type: TutorialTypes.ONBOARDING,
+        })
       })
     })
   })

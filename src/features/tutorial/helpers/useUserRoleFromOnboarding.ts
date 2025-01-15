@@ -16,6 +16,7 @@ export const useUserRoleFromOnboarding = () => {
         setOnboardingRole(UserOnboardingRole.EIGHTEEN)
         break
       case NonEligible.UNDER_15:
+      case NonEligible.UNDER_17:
       case 15:
       case 16:
       case 17:

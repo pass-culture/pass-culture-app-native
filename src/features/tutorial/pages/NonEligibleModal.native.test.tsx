@@ -105,7 +105,7 @@ describe('NonEligibleModal', () => {
       beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
 
       it('should display subtitle with credit V3', () => {
-        renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+        renderNonEligibleModal(NonEligible.UNDER_17, TutorialTypes.ONBOARDING)
 
         const subtitle =
           'Tu peux bénéficier de ton crédit sur l’application à partir de tes 17 ans.'
