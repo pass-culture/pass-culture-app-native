@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -50,9 +50,7 @@ export const ContentHeader = ({
           </BlurNativeContainer>
         )
       }
-      <Spacer.Column numberOfSpaces={2} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
+      <Row marginRight={RightElement ? getSpacing(6) : getSpacing(16)}>
         <RoundedButton
           animationState={animationState}
           iconName="back"
@@ -70,16 +68,8 @@ export const ContentHeader = ({
           <Body>{headerTitle}</Body>
         </Title>
         <Spacer.Flex />
-        {RightElement ? (
-          <React.Fragment>
-            {RightElement}
-            <Spacer.Row numberOfSpaces={6} />
-          </React.Fragment>
-        ) : (
-          <Spacer.Row numberOfSpaces={16} />
-        )}
+        {RightElement ? <React.Fragment>{RightElement}</React.Fragment> : null}
       </Row>
-      <Spacer.Column numberOfSpaces={2} />
     </HeaderContainer>
   )
 }
@@ -121,8 +111,11 @@ const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const Row = styled.View({
+const Row = styled.View<{ marginRight: number }>(({ marginRight }) => ({
   ...(Platform.OS === 'web' ? { flex: 1 } : {}),
   flexDirection: 'row',
   alignItems: 'center',
-})
+  marginVertical: getSpacing(2),
+  marginLeft: getSpacing(6),
+  marginRight,
+}))
