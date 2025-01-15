@@ -1,14 +1,13 @@
 import React, { FC, useState } from 'react'
 
-import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
-import {
-  ModalDisplayState,
-  useShouldShowReactionModal,
-} from 'features/home/components/helpers/useShouldShowReactionModal'
+import { ModalDisplayState } from 'features/home/components/helpers/useShouldShowReactionModal'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
 enum ModalToShow {
   PENDING = 'pending',
@@ -32,8 +31,30 @@ export const HomeModals: FC = () => {
     ) ?? []
 
   const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
-  const shouldShowReactionModal = useShouldShowReactionModal(bookings, isBookingsLoading)
-  const shouldShowAchievementSuccessModal = useShouldShowAchievementSuccessModal()
+
+  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+
+  const firstBookingEligibleToReaction = bookingsEligibleToReaction[0]
+
+  // There is an issue with !isCookieConsentChecked it goes to true for an instant and disrupts the modal conflict management hook
+  const shouldShowReactionModal =
+    isReactionFeatureActive && firstBookingEligibleToReaction
+      ? ModalDisplayState.SHOULD_SHOW
+      : ModalDisplayState.SHOULD_NOT_SHOW
+
+  const areAchievementsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
+  const { displayAchievements } = useRemoteConfigContext()
+
+  const unseenAchievements =
+    user?.achievements?.filter((achievement) => !achievement.seenDate) || []
+
+  const isThereAtLeastOneUnseenAchievement = unseenAchievements.length
+
+  const shouldShowAchievementSuccessModal =
+    areAchievementsEnabled && displayAchievements && isThereAtLeastOneUnseenAchievement
+      ? ModalDisplayState.SHOULD_SHOW
+      : ModalDisplayState.SHOULD_NOT_SHOW
+
   if (!isBookingsLoading && modalToShow === ModalToShow.PENDING) {
     if (shouldShowReactionModal === ModalDisplayState.SHOULD_SHOW) {
       setModalToShow(ModalToShow.REACTION)
