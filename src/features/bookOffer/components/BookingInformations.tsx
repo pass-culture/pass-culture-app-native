@@ -17,7 +17,7 @@ const ExpirationDate: React.FC<{
 }> = ({ expirationDate }) => {
   if (!expirationDate) return null
 
-  const activationText = `À activer avant le ${formatToFrenchDate(expirationDate)}`
+  const activationText = `À activer avant le ${formatToFrenchDate(new Date(expirationDate))}`
 
   return <Item Icon={Calendar} message={activationText} />
 }

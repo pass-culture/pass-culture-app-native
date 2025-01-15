@@ -58,7 +58,7 @@ describe('useOfferDates', () => {
       },
     })
 
-    expect(result.current).toBe('Dès le 1 novembre 2020')
+    expect(result.current).toBe('Dès le 1er novembre 2020')
   })
 
   it('should return undefined if no dates or release date are provided', () => {

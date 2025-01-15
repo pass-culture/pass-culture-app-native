@@ -89,7 +89,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <TypoDS.Title3>{props.title}</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
-          props.videoPublicationDate
+          new Date(props.videoPublicationDate)
         )}`}</StyledCaptionDate>
         {props.videoDescription ? (
           <React.Fragment>

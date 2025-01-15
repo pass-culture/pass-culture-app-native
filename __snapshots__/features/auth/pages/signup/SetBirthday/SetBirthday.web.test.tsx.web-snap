@@ -1600,7 +1600,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             dir="ltr"
             id="testUuidV4"
           >
-            1 décembre 2006
+            1er décembre 2006
           </div>
         </div>
       </div>

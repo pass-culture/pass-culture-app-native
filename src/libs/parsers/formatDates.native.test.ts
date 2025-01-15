@@ -16,6 +16,7 @@ import {
   formatGroupedDates,
   capitalizeFirstLetter,
   formatReleaseDate,
+  formatToFrenchDateWithoutYear,
 } from './formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -329,20 +330,22 @@ describe('formatDates', () => {
 })
 
 describe('formatToFrenchDate', () => {
-  beforeAll(() => {
-    mockdate.set(NOVEMBER_1_2020)
-  })
-
   it.each`
-    date                                        | expected
-    ${NOVEMBER_12_2020}                         | ${'12 novembre 2020'}
-    ${OCTOBER_5_2020}                           | ${'5 octobre 2020'}
-    ${OCTOBER_5_2020.valueOf()}                 | ${'5 octobre 2020'}
-    ${{ day: 5, month: 'octobre', year: 2020 }} | ${'5 octobre 2020'}
-    ${'2030-02-05T00:00:00Z'}                   | ${'5 février 2030'}
-    ${NOVEMBER_12_2020.toString()}              | ${'12 novembre 2020'}
+    date               | expected
+    ${OCTOBER_5_2020}  | ${'5 octobre 2020'}
+    ${NOVEMBER_1_2020} | ${'1er novembre 2020'}
   `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
     expect(formatToFrenchDate(date)).toEqual(expected)
+  })
+})
+
+describe('formatToFrenchDateWithoutYear', () => {
+  it.each`
+    date               | expected
+    ${OCTOBER_5_2020}  | ${'5 octobre'}
+    ${NOVEMBER_1_2020} | ${'1er novembre'}
+  `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
+    expect(formatToFrenchDateWithoutYear(date)).toEqual(expected)
   })
 })
 
@@ -494,14 +497,14 @@ describe('formatReleaseDate', () => {
   })
 
   it('should format date properly when given date is today', () => {
-    const TODAY = NOVEMBER_1_2020.valueOf()
+    const TODAY = NOVEMBER_1_2020
     const result = formatReleaseDate(TODAY)
 
     expect(result).toEqual(`Sorti le 1er novembre 2020`)
   })
 
   it('should format date properly when given date is before today', () => {
-    const BEFORE_TODAY = OCTOBER_5_2020.valueOf()
+    const BEFORE_TODAY = OCTOBER_5_2020
 
     const result = formatReleaseDate(BEFORE_TODAY)
 
@@ -509,7 +512,7 @@ describe('formatReleaseDate', () => {
   })
 
   it('should format date properly when given date is after today', () => {
-    const AFTER_TODAY = NOVEMBER_12_2020.valueOf()
+    const AFTER_TODAY = NOVEMBER_12_2020
 
     const result = formatReleaseDate(AFTER_TODAY)
 

@@ -7,7 +7,7 @@ describe('useFavoriteFormattedDate', () => {
     const offerWithDate = favoriteOfferResponseSnap
     const { result } = renderHook(() => useFavoriteFormattedDate({ offer: offerWithDate }))
 
-    expect(result.current).toEqual('1 avril 2021')
+    expect(result.current).toEqual('1er avril 2021')
   })
 
   it('should return formatted date with prefix "Dès le" when offer started date is provided', () => {

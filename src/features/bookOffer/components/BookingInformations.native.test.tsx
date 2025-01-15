@@ -78,7 +78,7 @@ describe('<BookingInformations />', () => {
     mockUseBookingOffer.mockReturnValueOnce(cinePleinAirOffer)
     render(<BookingInformations />)
 
-    expect(await screen.findByText('Mardi 1 décembre 2020, 01h00 - Durée : 1h')).toBeOnTheScreen()
+    expect(await screen.findByText('Mardi 1er décembre 2020, 01h00 - Durée : 1h')).toBeOnTheScreen()
   })
 
   it('should display `Gratuit` if price is 0', async () => {
@@ -171,7 +171,7 @@ describe('<BookingInformations />', () => {
     mockUseBookingOffer.mockReturnValueOnce(carteCineOfferDigital)
     render(<BookingInformations />)
 
-    expect(await screen.findByText('À activer avant le 1 décembre 2020')).toBeOnTheScreen()
+    expect(await screen.findByText('À activer avant le 1er décembre 2020')).toBeOnTheScreen()
   })
 
   it("shouldn't display expirationDate section when offer is digital and has no expirationDate", async () => {
@@ -184,7 +184,7 @@ describe('<BookingInformations />', () => {
     })
     render(<BookingInformations />)
 
-    expect(screen.queryByText('À activer avant le 1 décembre 2020')).not.toBeOnTheScreen()
+    expect(screen.queryByText('À activer avant le 1er décembre 2020')).not.toBeOnTheScreen()
   })
 
   it('should display only date if it has no duration information', async () => {
@@ -199,7 +199,7 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(await screen.findByText('Mardi 1 décembre 2020, 01h00')).toBeOnTheScreen()
+    expect(await screen.findByText('Mardi 1er décembre 2020, 01h00')).toBeOnTheScreen()
   })
 
   describe('formatDateTimezone()', () => {

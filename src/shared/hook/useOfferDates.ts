@@ -3,8 +3,7 @@ import { formatDates, formatReleaseDate } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'
 
 export const useOfferDates = (offer: Offer): string | undefined => {
-  const { offer: offerDetails } = offer
-  const { subcategoryId, dates, releaseDate } = offerDetails
+  const { subcategoryId, dates, releaseDate } = offer.offer
 
   const isOfferAMovieScreeningWithAReleaseDate =
     subcategoryId === SubcategoryIdEnum.SEANCE_CINE && typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
@@ -12,6 +11,6 @@ export const useOfferDates = (offer: Offer): string | undefined => {
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
 
   return isOfferAMovieScreeningWithAReleaseDate
-    ? formatReleaseDate(releaseDate * 1000)
+    ? formatReleaseDate(new Date(releaseDate * 1000))
     : formatDates(timestampsInMillis)
 }

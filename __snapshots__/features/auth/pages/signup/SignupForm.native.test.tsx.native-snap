@@ -1544,7 +1544,7 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
                   ]
                 }
               >
-                1 décembre 2006
+                1er décembre 2006
               </Text>
             </View>
           </View>
