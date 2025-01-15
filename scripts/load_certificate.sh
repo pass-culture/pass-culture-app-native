@@ -9,12 +9,12 @@ if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 echo proxy enabled
 	export SSL_CERT_FILE="$SSL_CERT_FILE"
 	export NODE_EXTRA_CA_CERTS="$SSL_CERT_FILE"
-	# export NIX_SSL_CERT_FILE="$SSL_CERT_FILE"
+	export NIX_SSL_CERT_FILE="$SSL_CERT_FILE"
     # sdkmanager installé via devbox override NIX_SSL_CERT_FILE
     # sdkmanager installé via Nix n'override pas la variable
     # sdkmanager installé via Nix fail au runtime à cause des certificats
     # NIX_SSL_CERT_FILE overridé par sdkmanager fait que git échoue au runtime
-	export GIT_SSL_CAINFO="$SSL_CERT_FILE"
+	# export GIT_SSL_CAINFO="$SSL_CERT_FILE"
 else
 echo proxy disabled
 fi

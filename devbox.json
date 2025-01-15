@@ -7,7 +7,7 @@
     "podman@latest",
     // needed to build Android app from the CLI
     "jdk@17",
-    "sdkmanager@latest",
+    // "sdkmanager@latest",
     "toybox@latest", // needed by ours Android's scripts
     // others stuffs
     "git@latest",

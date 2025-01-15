@@ -3,14 +3,15 @@ set -o errexit -o nounset -o pipefail
 
 # "latest" is not reproductible
 # how to manage better this version ?
-ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="9.0"
+ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="17.0"
 
 # first emulator boot is usually slower
 ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED="${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED:-60}"
 
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 
-PATH="$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$PATH"
+PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin || echo '/dev/null'):$PATH" # to get previous version
+PATH="$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$PATH" # to get the pinned version
 PATH="$ANDROID_HOME/platform-tools:$PATH"
 PATH="$ANDROID_HOME/emulator:$PATH"
 export PATH
@@ -88,7 +89,7 @@ recreate_emulator() {
 
 mkdir --parents "$(dirname "$ANDROID_HOME")"
 
-# use sdkmanager currently installed (legacy or with devbox)
+# use sdkmanager currently installed (legacy)
 # to install the specified version of sdkmanager
 sdkmanager_install_accepting_licence \
 	--install \
