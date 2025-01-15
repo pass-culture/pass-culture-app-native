@@ -8,6 +8,8 @@ import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -25,6 +27,8 @@ type AgeButtonProps = {
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
+  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+
   const type = route.params.type
   const isOnboarding = type === TutorialTypes.ONBOARDING
 
@@ -35,12 +39,17 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
     if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_15)
   }, [type, isOnboarding, showNonEligibleModal])
 
+  const onUnder17Press = useCallback(async () => {
+    showNonEligibleModal(NonEligible.UNDER_17, type)
+    if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_17)
+  }, [type, isOnboarding, showNonEligibleModal])
+
   const onOver18Press = useCallback(async () => {
     showNonEligibleModal(NonEligible.OVER_18, type)
     if (isOnboarding) await storage.saveObject('user_age', NonEligible.OVER_18)
   }, [type, isOnboarding, showNonEligibleModal])
 
-  const ageButtons: AgeButtonProps[] = [
+  const ageButtonsV2: AgeButtonProps[] = [
     {
       startButtonTitle: 'J’ai ',
       age: '14 ans',
@@ -63,6 +72,37 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
     },
   ]
 
+  const ageButtonsV3: AgeButtonProps[] = [
+    {
+      startButtonTitle: 'J’ai ',
+      age: '16 ans',
+      endButtonTitle: ' ou moins',
+      navigateTo: navigateToHomeConfig,
+      onBeforeNavigate: onUnder17Press,
+    },
+    {
+      startButtonTitle: 'J’ai ',
+      age: '17 ans',
+      endButtonTitle: '',
+      navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 17 } },
+    },
+    {
+      startButtonTitle: 'J’ai ',
+      age: '18 ans',
+      endButtonTitle: '',
+      navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 18 } },
+    },
+    {
+      startButtonTitle: 'J’ai ',
+      age: '19 ans',
+      endButtonTitle: ' ou plus',
+      navigateTo: { screen: 'OnboardingGeneralPublicWelcome' },
+      onBeforeNavigate: onOver18Press,
+    },
+  ]
+
+  const ageButtons = enableCreditV3 ? ageButtonsV3 : ageButtonsV2
+
   return (
     <TutorialPage title="Pour commencer, peux-tu nous dire ton âge&nbsp;?">
       <AccessibleUnorderedList
@@ -70,7 +110,10 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
           <AgeButton
             key={button.age}
             onBeforeNavigate={button.onBeforeNavigate}
-            navigateTo={{ screen: button.navigateTo.screen, params: { type } }}
+            navigateTo={{
+              screen: button.navigateTo.screen,
+              params: { ...button.navigateTo.params, type },
+            }}
             accessibilityLabel={`${button.startButtonTitle}${button.age}${button.endButtonTitle}`}>
             <StyledBody>
               {button.startButtonTitle}
