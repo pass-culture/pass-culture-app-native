@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import { BookingsResponse } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
+import { useBookings } from 'features/bookings/api'
 import {
   ModalDisplayState,
-  useBookingsReactionHelpers,
-} from 'features/home/components/helpers/useBookingsReactionHelpers'
+  useShouldShowReactionModal,
+} from 'features/home/components/helpers/useShouldShowReactionModal'
 
 export enum ModalToShow {
   PENDING = 'pending',
@@ -14,15 +14,10 @@ export enum ModalToShow {
   NONE = 'none',
 }
 
-export const useWhichModalToShow = (
-  bookings: BookingsResponse | undefined,
-  isBookingsLoading: boolean
-) => {
+export const useWhichModalToShow = () => {
   const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
-  const { shouldShowReactionModal, bookingsEligibleToReaction } = useBookingsReactionHelpers(
-    bookings,
-    isBookingsLoading
-  )
+  const { isLoading: isBookingsLoading } = useBookings()
+  const shouldShowReactionModal = useShouldShowReactionModal()
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal()
   if (!isBookingsLoading && modalToShow === ModalToShow.PENDING) {
@@ -38,5 +33,5 @@ export const useWhichModalToShow = (
     }
   }
 
-  return { modalToShow, bookingsEligibleToReaction, achievementsToShow }
+  return { modalToShow, achievementsToShow }
 }

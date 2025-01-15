@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { useBookingsEligibleToReactions } from 'features/home/components/helpers/useShouldShowReactionModal'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
@@ -56,12 +57,11 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading } = useBookings()
+  const { data: bookings } = useBookings()
 
-  const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
-    bookings,
-    isLoading
-  )
+  const { achievementsToShow, modalToShow } = useWhichModalToShow()
+
+  const bookingsEligibleToReaction = useBookingsEligibleToReactions()
 
   const {
     visible: visibleAchievementModal,

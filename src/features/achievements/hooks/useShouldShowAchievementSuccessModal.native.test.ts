@@ -1,6 +1,6 @@
 import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
-import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
+import { ModalDisplayState } from 'features/home/components/helpers/useShouldShowReactionModal'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
