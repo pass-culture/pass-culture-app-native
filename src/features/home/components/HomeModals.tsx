@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
@@ -9,7 +9,6 @@ import {
   useShouldShowReactionModal,
 } from 'features/home/components/helpers/useShouldShowReactionModal'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
-import { useModal } from 'ui/components/modals/useModal'
 
 enum ModalToShow {
   PENDING = 'pending',
@@ -48,18 +47,6 @@ export const HomeModals: FC = () => {
     }
   }
 
-  const {
-    visible: visibleAchievementModal,
-    showModal: showAchievementModal,
-    hideModal: hideAchievementModal,
-  } = useModal(false)
-
-  useEffect(() => {
-    if (modalToShow === ModalToShow.ACHIEVEMENT) {
-      showAchievementModal()
-    }
-  }, [showAchievementModal, modalToShow])
-
   if (isModalContainerReady) {
     return null
   }
@@ -69,11 +56,13 @@ export const HomeModals: FC = () => {
       {modalToShow === ModalToShow.REACTION ? (
         <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
       ) : null}
-      <AchievementSuccessModal
-        achievementsToShow={achievementsToShow}
-        visible={visibleAchievementModal}
-        hideModal={hideAchievementModal}
-      />
+      {modalToShow === ModalToShow.ACHIEVEMENT ? (
+        <AchievementSuccessModal
+          achievementsToShow={achievementsToShow}
+          visible
+          hideModal={() => setModalToShow(ModalToShow.NONE)}
+        />
+      ) : null}
     </React.Fragment>
   )
 }
