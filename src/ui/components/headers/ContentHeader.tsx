@@ -59,7 +59,7 @@ export const ContentHeader = ({
           finalColor={theme.colors.black}
           initialColor={theme.colors.black}
         />
-        {LeftElement ? <React.Fragment>{LeftElement}</React.Fragment> : null}
+        {LeftElement}
         <Spacer.Flex />
         <Title
           testID={titleTestID}
@@ -68,7 +68,7 @@ export const ContentHeader = ({
           <Body>{headerTitle}</Body>
         </Title>
         <Spacer.Flex />
-        {RightElement ? <React.Fragment>{RightElement}</React.Fragment> : null}
+        {RightElement}
       </Row>
     </HeaderContainer>
   )

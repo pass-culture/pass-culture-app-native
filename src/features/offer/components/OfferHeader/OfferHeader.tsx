@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Animated } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
@@ -13,6 +13,7 @@ import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Spacer } from 'ui/theme'
 
 interface Props {
@@ -57,7 +58,7 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
         onBackPress={goBack}
         LeftElement={<Spacer.Row numberOfSpaces={13} />}
         RightElement={
-          <React.Fragment>
+          <ButtonsWrapper gap={3}>
             <RoundedButton
               animationState={animationState}
               iconName="share"
@@ -65,9 +66,8 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
               accessibilityLabel="Partager"
               finalColor={theme.colors.black}
             />
-            <Spacer.Row numberOfSpaces={3} />
             <FavoriteButton animationState={animationState} offerId={offer.id} />
-          </React.Fragment>
+          </ButtonsWrapper>
         }
       />
       {shareContent ? (
@@ -81,3 +81,8 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
     </React.Fragment>
   )
 }
+
+const ButtonsWrapper = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
