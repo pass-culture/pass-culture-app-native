@@ -41,6 +41,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const USER_AGE_KEY = 'user_age'
+const GENERAL_PUBLIC_MESSAGE =
+  'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
+const ELIGIBLE_MESSAGE =
+  'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
 
 describe('<SetBirthday />', () => {
   beforeEach(async () => {
@@ -130,9 +134,7 @@ describe('<SetBirthday />', () => {
       storage.saveObject('user_age', NonEligible.OVER_18)
       render(<SetBirthday {...props} />)
 
-      const bannerMessage = await screen.findByText(
-        'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
-      )
+      const bannerMessage = await screen.findByText(GENERAL_PUBLIC_MESSAGE)
 
       expect(bannerMessage).toBeTruthy()
     })
@@ -141,9 +143,7 @@ describe('<SetBirthday />', () => {
       storage.saveObject('user_age', 16)
       render(<SetBirthday {...props} />)
 
-      const bannerMessage = await screen.findByText(
-        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
-      )
+      const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
       expect(bannerMessage).toBeTruthy()
     })
@@ -152,9 +152,16 @@ describe('<SetBirthday />', () => {
       storage.saveObject('user_age', NonEligible.UNDER_15)
       render(<SetBirthday {...props} />)
 
-      const bannerMessage = await screen.findByText(
-        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
-      )
+      const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
+
+      expect(bannerMessage).toBeTruthy()
+    })
+
+    it('should display the eligible message when userAge is UNDER_17', async () => {
+      storage.saveObject('user_age', NonEligible.UNDER_17)
+      render(<SetBirthday {...props} />)
+
+      const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
       expect(bannerMessage).toBeTruthy()
     })
@@ -163,9 +170,7 @@ describe('<SetBirthday />', () => {
       storage.saveObject('user_age', null)
       render(<SetBirthday {...props} />)
 
-      const bannerMessage = await screen.findByText(
-        'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
-      )
+      const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
       expect(bannerMessage).toBeTruthy()
     })
