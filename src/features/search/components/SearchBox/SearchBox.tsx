@@ -23,6 +23,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
+import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -46,6 +47,7 @@ type Props = UseSearchBoxProps & {
 const accessibilityDescribedBy = uuidv4()
 
 const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
+const CINEMA_KEYWORD_PATTERN = /\bCINEMAS?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
   searchInputID,
@@ -220,11 +222,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       addSearchHistory({ query: queryText })
       const searchId = uuidv4()
 
-      const hasSearchedForBookKeyword =
-        enableWipPageThematicSearch &&
-        currentView === SearchView.Landing &&
-        BOOK_KEYWORD_PATTERN.test(queryText.trim())
-
       let partialSearchState: Partial<SearchState> = {
         query: queryText,
         locationFilter: searchState.locationFilter,
@@ -247,13 +244,31 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         }
       }
 
-      if (hasSearchedForBookKeyword) {
-        partialSearchState = {
-          ...partialSearchState,
-          query: queryText.trim(),
-          offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      let hasSearchedForBookKeyword = false
+
+      if (currentView === SearchView.Landing) {
+        hasSearchedForBookKeyword =
+          enableWipPageThematicSearch && BOOK_KEYWORD_PATTERN.test(queryText.trim())
+
+        if (hasSearchedForBookKeyword) {
+          partialSearchState = {
+            ...partialSearchState,
+            query: queryText.trim(),
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+          }
+        } else if (
+          shouldRedirectToThematicSearch &&
+          CINEMA_KEYWORD_PATTERN.test(
+            queryText
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .trim()
+          )
+        ) {
+          analytics.logSearchedCinema()
         }
       }
+
       pushWithSearch(partialSearchState, {}, hasSearchedForBookKeyword)
       hideSuggestions()
     },
@@ -271,6 +286,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       hideSuggestions,
       showErrorSnackBar,
       offerCategories,
+      shouldRedirectToThematicSearch,
     ]
   )
 

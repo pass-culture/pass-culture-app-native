@@ -8,6 +8,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
+import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -15,7 +16,7 @@ import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/Remote
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -147,6 +148,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.useFakeTimers()
+const user = userEvent.setup()
 
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
@@ -163,6 +165,8 @@ describe('SearchBox component', () => {
       type: 'tab',
       stale: false,
     })
+
+    setFeatureFlags()
   })
 
   afterEach(() => {
@@ -187,9 +191,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
-    })
+    await user.type(searchInput, 'jazzaza', { submitEditing: true })
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -208,11 +210,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', {
-        nativeEvent: { text: queryWithMoreThan150characters },
-      })
-    })
+    await user.type(searchInput, queryWithMoreThan150characters, { submitEditing: true })
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Ta recherche ne peut pas faire plus de 150 caractères.',
@@ -225,9 +223,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
-    })
+    await user.type(searchInput, 'jazzaza', { submitEditing: true })
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       params: {
@@ -260,7 +256,7 @@ describe('SearchBox component', () => {
     renderSearchBox()
 
     const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
-    fireEvent.press(resetSearchInputButton)
+    await user.press(resetSearchInputButton)
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -303,7 +299,7 @@ describe('SearchBox component', () => {
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
-    fireEvent(searchInput, 'onChangeText', 'Some text')
+    await user.type(searchInput, 'Some text')
 
     expect(searchInput.props.value).toBe('Some text')
   })
@@ -313,7 +309,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+    await user.type(searchInput, '')
 
     expect(mockDispatch).not.toHaveBeenCalled()
   })
@@ -355,7 +351,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
       const previousButton = screen.getByTestId('Revenir en arrière')
 
-      fireEvent.press(previousButton)
+      await user.press(previousButton)
 
       expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
@@ -368,7 +364,7 @@ describe('SearchBox component', () => {
 
       const previousButton = screen.getByTestId('Revenir en arrière')
 
-      fireEvent.press(previousButton)
+      await user.press(previousButton)
 
       expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
@@ -383,7 +379,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
 
       const resetIcon = await screen.findByTestId('Réinitialiser la recherche')
-      fireEvent.press(resetIcon)
+      await user.press(resetIcon)
 
       expect(screen.queryByText('Some text')).not.toBeOnTheScreen()
 
@@ -393,15 +389,15 @@ describe('SearchBox component', () => {
 
   it.each(['LIVRE', 'Livre ', 'livre', 'LIVRES', 'Livres', 'livres '])(
     'should redirect to ThematicSearch when queryText is `%s` and SearchView is `Landing`',
-    (queryText) => {
-      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+    async (queryText) => {
+      // TODO(PC-00000): useRoute is called every time a letter is inputted +1 (sic!)
+      useRoute.mockReturnValue({ name: SearchView.Landing })
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
 
       renderSearchBox()
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
-
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: queryText } })
+      await user.type(searchInput, queryText, { submitEditing: true })
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
@@ -427,9 +423,38 @@ describe('SearchBox component', () => {
     }
   )
 
+  it.each(['CINÉMA', 'Cinéma ', 'cinéma', 'cinémas', 'CINEMA', 'Cinema ', 'cinéma', 'cinémas'])(
+    'should log HasSearchedCinemaQuery analytic when queryText is `%s` and SearchView is `Landing`',
+    async (queryText) => {
+      // TODO(PC-00000): useRoute & useRemoteConfigContext are called every time a letter is inputted +1
+      useRoute.mockReturnValue({ name: SearchView.Landing })
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldRedirectToThematicSearch: true,
+      })
+
+      renderSearchBox()
+
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+      await user.type(searchInput, queryText, { submitEditing: true })
+
+      expect(analytics.logSearchedCinema).toHaveBeenCalledTimes(1)
+    }
+  )
+
   describe('Without autocomplete', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldRedirectToThematicSearch: false,
+      })
+    })
+
+    beforeEach(() => {
+      setFeatureFlags()
+      useRoute.mockReturnValue({ name: SearchView.Results })
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -439,12 +464,14 @@ describe('SearchBox component', () => {
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-      fireEvent(searchInput, 'onFocus')
+      await user.type(searchInput, '')
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
     it('should reset input when user click on reset icon when being focus on the suggestions view', async () => {
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
       mockIsFocusOnSuggestions = true
       mockSearchState = {
         ...mockSearchState,
@@ -454,7 +481,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
 
       const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-      fireEvent.press(resetIcon)
+      await user.press(resetIcon)
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -477,7 +504,7 @@ describe('SearchBox component', () => {
       renderSearchBox(true)
 
       const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-      fireEvent.press(resetIcon)
+      await user.press(resetIcon)
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -501,7 +528,7 @@ describe('SearchBox component', () => {
     renderSearchBox(true)
 
     const goBackIcon = screen.getByTestId('icon-back')
-    fireEvent.press(goBackIcon)
+    await user.press(goBackIcon)
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -510,11 +537,13 @@ describe('SearchBox component', () => {
   })
 
   it('should execute a search if input is not empty', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    await user.type(searchInput, 'jazzaza', { submitEditing: true })
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -529,11 +558,12 @@ describe('SearchBox component', () => {
   })
 
   it('should display suggestions when focusing search input and no search executed', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Landing })
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    fireEvent(searchInput, 'onFocus')
+    await user.type(searchInput, '')
 
     expect(mockShowSuggestions).toHaveBeenNthCalledWith(1)
   })
@@ -605,6 +635,7 @@ describe('SearchBox component with venue previous route on search results', () =
       stale: false,
     })
     useRoute.mockReturnValue({ name: SearchView.Results })
+    setFeatureFlags()
   })
 
   it('should unselect the venue and set the view to Landing when current route is search and previous route is Venue when the user press the back button', async () => {
@@ -612,7 +643,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    fireEvent.press(previousButton)
+    await user.press(previousButton)
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
@@ -625,7 +656,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    fireEvent.press(previousButton)
+    await user.press(previousButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -648,9 +679,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
-    })
+    await user.type(searchInput, 'harry potter', { submitEditing: true })
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
@@ -676,20 +705,30 @@ describe('SearchBox component with ThematicSearch previous route on search resul
       type: 'tab',
       stale: false,
     })
-    useRoute.mockReturnValue({ name: SearchView.Results })
+    useRoute.mockReturnValue({ name: SearchView.Thematic })
+    setFeatureFlags()
   })
 
   it('should execute go back when current route is search and previous route is ThematicSearch', async () => {
+    useRoute.mockReturnValueOnce({
+      name: SearchView.Results,
+    })
+
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    fireEvent.press(previousButton)
+    await user.press(previousButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on ThematicSearch', async () => {
+    // TODO(PC-00000): useRoute is called every time a letter is inputted +1
+    useRoute.mockReturnValueOnce({
+      name: SearchView.Thematic,
+    })
+
     const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
     const BOOK_SEARCH_BOX_PLACEHOLDER = 'Livres'
 
@@ -712,17 +751,11 @@ describe('SearchBox component with ThematicSearch previous route on search resul
       ],
     }
 
-    useRoute.mockReturnValueOnce({
-      name: SearchView.Thematic,
-    })
-
     renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)
 
     const searchInput = screen.getByPlaceholderText(BOOK_SEARCH_BOX_PLACEHOLDER)
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
-    })
+    await user.type(searchInput, 'harry potter', { submitEditing: true })
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
@@ -740,21 +773,28 @@ describe('SearchBox component with ThematicSearch previous route on search resul
 
   describe('shouldRedirectToThematicSearch remote config', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValueOnce({
+      useRemoteConfigContextSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldRedirectToThematicSearch: true,
       })
     })
 
-    it('should update searchState with remote config when current route is searchLanding', async () => {
-      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+    beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
+    })
+
+    it('should update searchState with remote config when current route is searchLanding', async () => {
+      // TODO(PC-00000): useRoute is called every time a letter is inputted +1 (sic!)
+      useRoute
+        .mockReturnValueOnce({ name: SearchView.Landing })
+        .mockReturnValueOnce({ name: SearchView.Landing })
+        .mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'Harry potter' } })
+      await user.type(searchInput, 'HP', { submitEditing: true })
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -765,14 +805,17 @@ describe('SearchBox component with ThematicSearch previous route on search resul
     })
 
     it('should not update searchState with remote config when current route is not searchLanding', async () => {
-      useRoute.mockReturnValueOnce({ name: SearchView.Results })
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
+      // TODO(PC-00000): useRoute is called every time a letter is inputted +1 (sic!)
+      useRoute
+        .mockReturnValueOnce({ name: SearchView.Results })
+        .mockReturnValueOnce({ name: SearchView.Results })
+        .mockReturnValueOnce({ name: SearchView.Results })
 
       renderSearchBox()
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'Harry potter' } })
+      await user.type(searchInput, 'HP', { submitEditing: true })
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -784,11 +827,11 @@ describe('SearchBox component with ThematicSearch previous route on search resul
   })
 })
 
-function renderSearchBox(
+const renderSearchBox = (
   isDesktopViewport?: boolean,
   offerCategories?: SearchGroupNameEnumv2[],
   placeholder?: string
-) {
+) => {
   return render(
     <DummySearchBox offerCategories={offerCategories} placeholder={placeholder} />,
 
