@@ -9,13 +9,11 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
-import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
-import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -38,7 +36,7 @@ const CheatcodesStackNavigator = lazy(async () => {
 })
 
 const RootStackNavigator = withWebWrapper(
-  ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
+  ({ initialRouteName }: { initialRouteName?: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
     return (
       <IconFactoryProvider>
@@ -76,14 +74,16 @@ const RootStackNavigator = withWebWrapper(
   }
 )
 
-export const RootNavigator: React.ComponentType = () => {
+interface RootNavigatorProps {
+  initialScreen?: RootScreenNames
+  showPrivacyPolicy?: boolean
+}
+
+export const RootNavigator = ({ initialScreen, showPrivacyPolicy }: RootNavigatorProps) => {
   const mainId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
-  const { isSplashScreenHidden } = useSplashScreenContext()
-
-  const initialScreen = useInitialScreen()
 
   const currentRoute = useCurrentRoute()
   const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
@@ -103,10 +103,6 @@ export const RootNavigator: React.ComponentType = () => {
     }
   }, [isLoggedIn])
 
-  if (!initialScreen) {
-    return <LoadingPage />
-  }
-
   const mainAccessibilityRole: AccessibilityRole | undefined =
     determineAccessibilityRole(currentRoute)
 
@@ -121,8 +117,9 @@ export const RootNavigator: React.ComponentType = () => {
           <AccessibleTabBar id={tabBarId} />
         </View>
       ) : null}
-      {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden ? <PrivacyPolicy /> : null}
+      {/* The components below are those for which we do not want
+      their rendering to happen while the splash is displayed. */}
+      {showPrivacyPolicy ? <PrivacyPolicy /> : null}
     </TabNavigationStateProvider>
   )
 }

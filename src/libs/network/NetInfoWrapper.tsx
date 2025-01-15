@@ -2,11 +2,11 @@
 import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
 import React, { createContext, memo, useContext, useEffect } from 'react'
 import { Platform } from 'react-native'
-import { onlineManager } from 'react-query'
 
 import { analytics } from 'libs/analytics'
+import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { setNetworkAvailable } from 'store/useAppStore'
 
 export const NetInfoWrapper = memo(function NetInfoWrapper({
   children,
@@ -14,19 +14,13 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
   children: React.JSX.Element
 }) {
   const networkInfo = useNetInfo()
-  const { showInfoSnackBar } = useSnackBarContext()
+  const isConnected = networkInfo.isConnected && networkInfo.isInternetReachable
 
   useEffect(() => {
-    const isConnected = !!networkInfo.isConnected && !!networkInfo.isInternetReachable
-    onlineManager.setOnline(isConnected)
-    if (isConnected === false) {
-      showInfoSnackBar({
-        message: 'Aucune connexion internet. Réessaie plus tard',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    }
+    setNetworkAvailable(isConnected)
+    // setNetworkAvailable is not necessary in dependency array
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [networkInfo.isConnected, networkInfo.isInternetReachable])
+  }, [isConnected])
 
   useEffect(() => {
     const connectionType = networkInfo.type
@@ -43,7 +37,11 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.type])
 
-  return <NetInfoContext.Provider value={networkInfo}>{children}</NetInfoContext.Provider>
+  return (
+    <NetInfoContext.Provider value={networkInfo}>
+      {isConnected ? children : <OfflinePage />}
+    </NetInfoContext.Provider>
+  )
 })
 
 const isWeb = Platform.OS === 'web'
