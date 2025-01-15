@@ -8,7 +8,7 @@ on:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 14 * * *'
 
 permissions:
   contents: read
