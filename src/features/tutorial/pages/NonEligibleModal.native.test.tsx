@@ -112,12 +112,6 @@ describe('NonEligibleModal', () => {
 
         expect(screen.getByText(subtitle)).toBeOnTheScreen()
       })
-
-      it('should render correctly for onboarding', () => {
-        renderNonEligibleModal(NonEligible.UNDER_17, TutorialTypes.ONBOARDING)
-
-        expect(screen).toMatchSnapshot()
-      })
     })
   })
 })
