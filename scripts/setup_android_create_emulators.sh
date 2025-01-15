@@ -103,23 +103,21 @@ sdkmanager_install_accepting_licence \
 	"ndk;$(get_version 'ndkVersion')" \
 	"build-tools;$(get_version 'buildToolsVersion')"
 
-{
-	recreate_emulator \
-		"SDK_minimum_supporte" \
-		"$(get_version 'minSdkVersion')" \
-		"Galaxy Nexus" \
-		&
+recreate_emulator \
+	"SDK_minimum_supporte" \
+	"$(get_version 'minSdkVersion')" \
+	"Galaxy Nexus" \
+	&
 
-	recreate_emulator \
-		"SDK_cible" \
-		"$(get_version 'targetSdkVersion')" \
-		"pixel_6_pro" \
-		&
+recreate_emulator \
+	"SDK_cible" \
+	"$(get_version 'targetSdkVersion')" \
+	"pixel_6_pro" \
+	&
 
-	wait
+wait
 
-	echo "Waiting ${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED}s while device are booting"
-	sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
+echo "Waiting ${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED}s while device are booting"
+sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
 
-	kill_all_emulators
-}
+kill_all_emulators
