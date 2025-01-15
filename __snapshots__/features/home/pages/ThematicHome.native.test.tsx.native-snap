@@ -394,38 +394,19 @@ exports[`ThematicHome should render correctly 1`] = `
       />
     </View>
     <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      marginRight={24}
       style={
         [
           {
             "alignItems": "center",
-            "flexBasis": 0,
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "marginLeft": 24,
+            "marginRight": 24,
+            "marginVertical": 8,
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
@@ -797,27 +778,7 @@ exports[`ThematicHome should render correctly 1`] = `
           />
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
   <View
     collapsable={false}

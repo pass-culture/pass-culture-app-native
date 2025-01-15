@@ -1134,38 +1134,19 @@ exports[`BookingDetails should render correctly 1`] = `
       />
     </View>
     <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      marginRight={64}
       style={
         [
           {
             "alignItems": "center",
-            "flexBasis": 0,
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "marginLeft": 24,
+            "marginRight": 64,
+            "marginVertical": 8,
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
@@ -1328,27 +1309,7 @@ exports[`BookingDetails should render correctly 1`] = `
           ]
         }
       />
-      <View
-        numberOfSpaces={16}
-        style={
-          [
-            {
-              "width": 64,
-            },
-          ]
-        }
-      />
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
   <Modal
     accessibilityLabelledBy="testUuidV4"
