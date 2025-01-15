@@ -44,6 +44,12 @@ appId: ${MAESTRO_APP_ID}
     text: 'Valider la date'
     retryTapIfNoChange: true
 
+- runFlow: 
+    when:
+      visible: 'Choisis une date'
+    commands:
+        - tapOn: 'Valider la date'
+
 - tapOn: 
     text: 'Appliquer le filtre'
     retryTapIfNoChange: true
