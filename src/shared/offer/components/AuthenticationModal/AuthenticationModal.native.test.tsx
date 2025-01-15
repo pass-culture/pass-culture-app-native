@@ -5,7 +5,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { AuthenticationModal } from './AuthenticationModal'
 
@@ -18,10 +18,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<AuthenticationModal />', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
+  beforeEach(() => setFeatureFlags())
 
   it('should display banner with credit V2 subtitle', () => {
     render(
@@ -62,14 +63,11 @@ describe('<AuthenticationModal />', () => {
     )
 
     const signupButton = screen.getByLabelText('Créer un compte')
+    await user.press(signupButton)
 
-    fireEvent.press(signupButton)
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SignupForm', {
-        offerId: OFFER_ID,
-        from: StepperOrigin.BOOKING,
-      })
+    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      offerId: OFFER_ID,
+      from: StepperOrigin.BOOKING,
     })
   })
 
@@ -84,14 +82,11 @@ describe('<AuthenticationModal />', () => {
     )
 
     const signupButton = screen.getByLabelText('Créer un compte')
+    await user.press(signupButton)
 
-    fireEvent.press(signupButton)
-
-    await waitFor(() => {
-      expect(analytics.logSignUpFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
-      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
-        from: 'offer_booking',
-      })
+    expect(analytics.logSignUpFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
+      from: 'offer_booking',
     })
   })
 
@@ -106,12 +101,9 @@ describe('<AuthenticationModal />', () => {
     )
 
     const signinButton = screen.getByText('Se connecter')
+    await user.press(signinButton)
 
-    fireEvent.press(signinButton)
-
-    await waitFor(() => {
-      expect(analytics.logSignInFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
-    })
+    expect(analytics.logSignInFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
   it('should go to Login from booking with offerId', async () => {
@@ -125,14 +117,11 @@ describe('<AuthenticationModal />', () => {
     )
 
     const signinButton = screen.getByText('Se connecter')
+    await user.press(signinButton)
 
-    fireEvent.press(signinButton)
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
-        offerId: OFFER_ID,
-        from: StepperOrigin.BOOKING,
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+      offerId: OFFER_ID,
+      from: StepperOrigin.BOOKING,
     })
   })
 
@@ -147,14 +136,11 @@ describe('<AuthenticationModal />', () => {
     )
 
     const signinButton = screen.getByText('Se connecter')
+    await user.press(signinButton)
 
-    fireEvent.press(signinButton)
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
-        offerId: OFFER_ID,
-        from: StepperOrigin.FAVORITE,
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+      offerId: OFFER_ID,
+      from: StepperOrigin.FAVORITE,
     })
   })
 
@@ -169,18 +155,13 @@ describe('<AuthenticationModal />', () => {
     )
 
     const closeButton = screen.getByLabelText('Fermer la modale')
+    await user.press(closeButton)
 
-    fireEvent.press(closeButton)
-
-    await waitFor(() => {
-      expect(analytics.logQuitAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
-    })
+    expect(analytics.logQuitAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
   describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3])
-    })
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
 
     it('should display banner with credit V3 subtitle', () => {
       render(

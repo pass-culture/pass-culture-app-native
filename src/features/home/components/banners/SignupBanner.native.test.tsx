@@ -6,12 +6,13 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SignupBanner', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
+  beforeEach(() => setFeatureFlags())
 
   it('should display banner with credit V2 subtitle', () => {
     render(<SignupBanner hasGraphicRedesign={false} />)
@@ -37,28 +38,22 @@ describe('SignupBanner', () => {
     it('should redirect to signup form on press', async () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
 
-      fireEvent.press(screen.getByText('Débloque ton crédit'))
+      await user.press(screen.getByText('Débloque ton crédit'))
 
-      await waitFor(() =>
-        expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
-      )
+      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
     })
 
     it('should log analytics on press', async () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
 
-      fireEvent.press(screen.getByText('Débloque ton crédit'))
+      await user.press(screen.getByText('Débloque ton crédit'))
 
-      await waitFor(() =>
-        expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
-      )
+      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
     })
   })
 
   describe('when wipAppV2SystemBlock activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
-    })
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK]))
 
     it('should not display banner with background', () => {
       render(<SignupBanner hasGraphicRedesign />)
@@ -75,28 +70,22 @@ describe('SignupBanner', () => {
     it('should redirect to signup form on press', async () => {
       render(<SignupBanner hasGraphicRedesign />)
 
-      fireEvent.press(screen.getByText('Débloque ton crédit'))
+      await user.press(screen.getByText('Débloque ton crédit'))
 
-      await waitFor(() =>
-        expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
-      )
+      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
     })
 
     it('should log analytics on press', async () => {
       render(<SignupBanner hasGraphicRedesign />)
 
-      fireEvent.press(screen.getByText('Débloque ton crédit'))
+      await user.press(screen.getByText('Débloque ton crédit'))
 
-      await waitFor(() =>
-        expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
-      )
+      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
     })
   })
 
   describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3])
-    })
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
 
     it('should display banner with credit V3 subtitle', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
