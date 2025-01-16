@@ -13,7 +13,7 @@ import { analytics } from 'libs/analytics'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { formatDates } from 'libs/parsers/formatDates'
+import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -67,7 +67,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
     />
   )
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
-    const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+    const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     return (
       <OfferTile
         analyticsFrom="venue"

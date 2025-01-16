@@ -5,7 +5,7 @@ import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { formatDates } from 'libs/parsers/formatDates'
+import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -29,8 +29,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
   const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
   const details = []
 
-  const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const date = formatDates(timestampsInMillis)
+  const date = attachedOffer.dates && formatDates(getTimeStampInMillis(attachedOffer.dates))
   const price = getDisplayedPrice(
     attachedOffer.prices,
     currency,

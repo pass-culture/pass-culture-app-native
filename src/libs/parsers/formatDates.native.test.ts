@@ -18,6 +18,7 @@ import {
   formatReleaseDate,
   formatToFrenchDateWithoutYear,
   formatPublicationDate,
+  getTimeStampInMillis,
 } from './formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -542,4 +543,12 @@ describe('formatPublicationDate', () => {
       expect(formatPublicationDate(date, displayPublicationDate)).toBe(expected)
     }
   )
+})
+
+describe('getTimeStampInMillis', () => {
+  it('should return an array of number multiplied each by 1000', () => {
+    expect(getTimeStampInMillis([1736870746, 1736870749, 1736970749])).toEqual([
+      1736870746000, 1736870749000, 1736970749000,
+    ])
+  })
 })

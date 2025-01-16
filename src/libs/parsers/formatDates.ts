@@ -9,6 +9,10 @@ export const pad = (num: number): string => {
   return res.length === 1 ? '0' + res : res
 }
 
+export const getTimeStampInMillis = (dates: number[]) => {
+  return dates?.map((timestampInSec) => timestampInSec * 1000)
+}
+
 export function formatToHour(date: Date) {
   return `${pad(date.getHours())}h${pad(date.getMinutes())}`
 }
