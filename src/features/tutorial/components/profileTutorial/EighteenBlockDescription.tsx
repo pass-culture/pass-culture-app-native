@@ -6,6 +6,7 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT } from 'shared/credits/defaultCredits'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -22,7 +23,12 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
   const { isLoggedIn, user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const oneHundredEuros = formatCurrencyFromCents(100_00, currency, euroToPacificFrancRate)
+
+  const digitalCredit = formatCurrencyFromCents(
+    DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT,
+    currency,
+    euroToPacificFrancRate
+  )
 
   const defaultItems = [
     <BlockDescriptionItem
@@ -38,7 +44,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
     <BlockDescriptionItem
       key={3}
       icon={<SmallNumeric bicolor={ongoingCredit} />}
-      text={`La limite de ${oneHundredEuros} est là pour t’encourager à tester des offres culturelles variées.`}
+      text={`La limite de ${digitalCredit} est là pour t’encourager à tester des offres culturelles variées.`}
     />,
   ]
   const items =
@@ -49,7 +55,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
       <CreditProgressBar progress={1} />
       <Spacer.Column numberOfSpaces={2} />
       <StyledCaption>
-        dont {oneHundredEuros} en offres numériques (streaming, presse en ligne, …)
+        dont {digitalCredit} en offres numériques (streaming, presse en ligne, …)
       </StyledCaption>
       <Spacer.Column numberOfSpaces={4} />
       <AccessibleUnorderedList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
