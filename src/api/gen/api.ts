@@ -2989,6 +2989,17 @@ export interface ProfileUpdateRequest {
 }
 /**
  * @export
+ * @interface Rates
+ */
+export interface Rates {
+  /**
+   * @type {number}
+   * @memberof Rates
+   */
+  pacificFrancToEuro?: number
+}
+/**
+ * @export
  * @interface ReactionCount
  */
 export interface ReactionCount {
@@ -3304,6 +3315,11 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   objectStorageUrl: string
+  /**
+   * @type {Rates}
+   * @memberof SettingsResponse
+   */
+  rates?: Rates
 }
 /**
  * @export
