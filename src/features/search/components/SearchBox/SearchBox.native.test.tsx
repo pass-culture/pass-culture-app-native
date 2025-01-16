@@ -165,8 +165,6 @@ describe('SearchBox component', () => {
       type: 'tab',
       stale: false,
     })
-
-    setFeatureFlags()
   })
 
   afterEach(() => {
@@ -210,7 +208,7 @@ describe('SearchBox component', () => {
 
         await user.type(searchInput, queryText, { submitEditing: true })
 
-        expect(analytics.logSearchedCinema).toHaveBeenCalledTimes(1)
+        expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(1)
       }
     )
 
@@ -270,10 +268,6 @@ describe('SearchBox component', () => {
         mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
       })
 
-      beforeEach(() => {
-        setFeatureFlags()
-      })
-
       it('should stay on the current view when focusing search input and being on the %s view', async () => {
         useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
@@ -294,7 +288,6 @@ describe('SearchBox component', () => {
           ...mockSearchState,
           query: 'Some text',
         }
-        mockQuery = 'Some text'
         renderSearchBox()
 
         const resetIcon = screen.getByTestId('Réinitialiser la recherche')
@@ -317,7 +310,6 @@ describe('SearchBox component', () => {
         }
         useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
-        mockQuery = 'Some text'
         renderSearchBox(true)
 
         const resetIcon = screen.getByTestId('Réinitialiser la recherche')
@@ -598,7 +590,7 @@ describe('SearchBox component', () => {
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
-      expect(analytics.logSearchedCinema).toHaveBeenCalledTimes(0)
+      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(0)
     })
 
     it('should reset searchState when user go goBack to Landing', async () => {
@@ -702,9 +694,7 @@ describe('SearchBox component', () => {
       mockPosition = DEFAULT_POSITION
       renderSearchBox()
 
-      await act(async () => {})
-
-      expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
+      expect(await screen.findByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     })
 
     jest.mock('libs/firebase/analytics/analytics')
@@ -720,7 +710,6 @@ describe('SearchBox component', () => {
           stale: false,
         })
         useRoute.mockReturnValueOnce({ name: SearchView.Results })
-        setFeatureFlags()
       })
 
       it('should unselect the venue and set the view to Landing when current route is search and previous route is Venue when the user press the back button', async () => {
@@ -793,7 +782,6 @@ describe('SearchBox component', () => {
           stale: false,
         })
         useRoute.mockReturnValueOnce({ name: SearchView.Thematic })
-        setFeatureFlags()
       })
 
       it('should execute go back when current route is search and previous route is ThematicSearch', async () => {

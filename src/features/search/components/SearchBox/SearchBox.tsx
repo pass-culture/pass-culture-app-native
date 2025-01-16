@@ -265,7 +265,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               .trim()
           )
         ) {
-          analytics.logSearchedCinema()
+          analytics.logHasSearchedCinemaQuery()
         }
       }
 
