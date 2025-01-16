@@ -47,7 +47,6 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
-  const SpaceBetweenBlock = type === TutorialTypes.ONBOARDING ? 1 : 3
 
   const CreditBlockTitle =
     type === TutorialTypes.ONBOARDING ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
@@ -65,9 +64,9 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
               variant={StepVariant.future}
               isLast={isLast}
               iconComponent={iconComponent}>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Spacer.Column numberOfSpaces={2} />
               {props.children}
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Spacer.Column numberOfSpaces={2} />
             </InternalStep>
           )
         }
@@ -81,9 +80,9 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
               variant={StepVariant.complete}
               isFirst={isFirst}
               iconComponent={iconComponent}>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Spacer.Column numberOfSpaces={2} />
               <CreditBlock creditStatus={CreditStatus.GONE}>{props.children}</CreditBlock>
-              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <Spacer.Column numberOfSpaces={2} />
             </InternalStep>
           )
         }
@@ -97,7 +96,7 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
             iconComponent={getStepperIconFromCreditStatus(creditStatus)}
             isFirst={isFirst}
             isLast={isLast}>
-            <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            <Spacer.Column numberOfSpaces={2} />
             <AgeCreditBlock
               creditStatus={creditStatus}
               age={props.creditStep}
@@ -110,7 +109,7 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
               {props.children}
             </AgeCreditBlock>
 
-            <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            <Spacer.Column numberOfSpaces={2} />
           </InternalStep>
         )
       })}

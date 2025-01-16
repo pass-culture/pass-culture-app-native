@@ -173,11 +173,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -596,11 +596,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -715,11 +715,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -985,11 +985,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -1104,11 +1104,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -1374,11 +1374,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -1493,11 +1493,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -1566,11 +1566,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             />
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -1685,11 +1685,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -2145,11 +2145,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -2255,11 +2255,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -2318,11 +2318,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               Tu peux continuer à réserver des offres gratuites autour de chez toi.
             </Text>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -3067,11 +3067,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -3490,11 +3490,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -3609,11 +3609,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -3879,11 +3879,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -3998,11 +3998,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -4268,11 +4268,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -4387,11 +4387,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -4460,11 +4460,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               }
             />
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -4579,11 +4579,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -5039,11 +5039,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               </View>
             </View>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -5149,11 +5149,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
@@ -5212,11 +5212,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               Tu peux continuer à réserver des offres gratuites autour de chez toi.
             </Text>
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 12,
+                    "height": 8,
                   },
                 ]
               }
