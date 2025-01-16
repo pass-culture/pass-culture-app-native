@@ -17,7 +17,8 @@ export function useLogoutRoutine(): () => Promise<void> {
 
   return useCallback(async () => {
     try {
-      BatchProfile.identify(null)
+      handleBatchProfileReset()
+
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries([queryKey])
       })
@@ -35,6 +36,15 @@ export function useLogoutRoutine(): () => Promise<void> {
       setIsLoggedIn(false)
     }
   }, [queryClient, setIsLoggedIn])
+}
+
+function handleBatchProfileReset() {
+  BatchProfile.identify(null)
+  const editor = BatchProfile.editor()
+  editor.setAttribute('app_version', null)
+  editor.setAttribute('last_booking_date', null)
+  editor.setAttribute('credit_activation_date', null)
+  editor.save()
 }
 
 // List of keys that are accessible only when logged in to clean when logging out
