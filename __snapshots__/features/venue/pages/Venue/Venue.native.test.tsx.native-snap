@@ -488,6 +488,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           LinearTransition {
             "build": [Function],
             "callbackV": undefined,
+            "dampingRatioV": undefined,
             "dampingV": undefined,
             "delayV": undefined,
             "durationV": 200,
@@ -496,6 +497,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             "massV": undefined,
             "overshootClampingV": undefined,
             "randomizeDelay": false,
+            "reduceMotionV": "system",
             "restDisplacementThresholdV": undefined,
             "restSpeedThresholdV": undefined,
             "rotateV": undefined,
@@ -5387,6 +5389,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           LinearTransition {
             "build": [Function],
             "callbackV": undefined,
+            "dampingRatioV": undefined,
             "dampingV": undefined,
             "delayV": undefined,
             "durationV": 200,
@@ -5395,6 +5398,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             "massV": undefined,
             "overshootClampingV": undefined,
             "randomizeDelay": false,
+            "reduceMotionV": "system",
             "restDisplacementThresholdV": undefined,
             "restSpeedThresholdV": undefined,
             "rotateV": undefined,
