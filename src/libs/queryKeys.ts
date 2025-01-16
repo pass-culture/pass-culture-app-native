@@ -17,7 +17,6 @@ export enum QueryKeys {
   EMAIL_UPDATE_STATUS = 'emailUpdateStatus',
   EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
   EMAIL_VALIDATION_REMAINING_ATTEMPTS = 'emailValidationRemainingAttempts',
-  EXCHANGE_RATES = 'exchangeRates',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',

@@ -3,7 +3,6 @@ export const FIRESTORE_ROOT_COLLECTION = 'root'
 export enum RemoteStoreDocuments {
   APPLICATION_VERSIONS = 'applicationVersions',
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
-  EXCHANGE_RATES = 'exchangeRates',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
   UBBLE = 'ubble',

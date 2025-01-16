@@ -1,6 +1,4 @@
-import { onlineManager } from 'react-query'
-
-import { getExchangeRates } from 'libs/firebase/firestore/exchangeRates/getExchangeRates'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import {
   DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
   useGetPacificFrancToEuroRate,
@@ -8,17 +6,16 @@ import {
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('@react-native-firebase/firestore')
-jest.mock('libs/firebase/firestore/exchangeRates/getExchangeRates')
-const mockGetExchangeRates = getExchangeRates as jest.Mock
+const mockSettings = jest.fn().mockReturnValue({ data: defaultSettings })
+jest.mock('features/auth/context/SettingsContext', () => ({
+  useSettingsContext: jest.fn(() => mockSettings()),
+}))
 
 describe('useGetPacificFrancToEuroRate', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
+  beforeEach(() => jest.clearAllMocks())
 
   it('should initialize with the default rate', async () => {
-    mockGetExchangeRates.mockReturnValueOnce(undefined)
+    mockSettings.mockReturnValueOnce({ data: undefined })
     const { result } = renderUseGetPacificFrancToEuroRate()
 
     await act(async () => {})
@@ -26,22 +23,15 @@ describe('useGetPacificFrancToEuroRate', () => {
     expect(result.current).toEqual(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
   })
 
-  it('should return remote exchange rate from firestore', async () => {
-    mockGetExchangeRates.mockReturnValueOnce(0.05)
+  it('should return exchange rate from backend', async () => {
+    mockSettings.mockReturnValueOnce({
+      data: { ...defaultSettings, rates: { pacificFrancToEuro: 0.05 } },
+    })
     const { result } = renderUseGetPacificFrancToEuroRate()
 
     await act(async () => {})
 
     expect(result.current).toEqual(0.05)
-  })
-
-  it('should return default rate when connection is disabled', () => {
-    onlineManager.setOnline(false)
-    mockGetExchangeRates.mockReturnValueOnce(0.05)
-
-    const { result } = renderUseGetPacificFrancToEuroRate()
-
-    expect(result.current).toEqual(DEFAULT_PACIFIC_FRANC_TO_EURO_RATE)
   })
 })
 

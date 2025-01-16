@@ -55,10 +55,10 @@ export const CheatcodesScreenNewCaledonia = () => {
       <TypoDS.Body>Devise affichée à l’utilisateur&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{currency}</TypoDS.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change sur Firestore&nbsp;:</TypoDS.Body>
+      <TypoDS.Body>Taux de change depuis le backend&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{pacificFrancToEuroRate}</TypoDS.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change dans le code&nbsp;:</TypoDS.Body>
+      <TypoDS.Body>Taux de change par défaut côté frontend&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</TypoDS.Title3>
       <StyledSeparator />
       <TextInput
