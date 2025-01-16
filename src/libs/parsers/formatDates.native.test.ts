@@ -20,7 +20,6 @@ import {
   formatPublicationDate,
 } from './formatDates'
 
-const OCTOBER_4_2020 = new Date(2020, 9, 4)
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
 const NOVEMBER_1_2020 = new Date(2020, 10, 1)
 const NOVEMBER_12_2020 = new Date(2020, 10, 12)
@@ -523,55 +522,24 @@ describe('formatReleaseDate', () => {
 })
 
 describe('formatPublicationDate', () => {
-  beforeAll(() => {
-    mockdate.set(OCTOBER_5_2020)
-  })
-
-  const YESTERDAY = OCTOBER_4_2020
   const TODAY = OCTOBER_5_2020
   const AFTER_TODAY = NOVEMBER_12_2020
   const DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH = NOVEMBER_1_2020
 
-  describe('displayPublicationDate is true', () => {
-    const displayPublicationDate = true
-
-    it('should return undefined when given date is today', () => {
-      const result = formatPublicationDate(TODAY, displayPublicationDate)
-
-      expect(result).toEqual(undefined)
-    })
-
-    it('should return undefined when given date is before today', () => {
-      const result = formatPublicationDate(YESTERDAY, displayPublicationDate)
-
-      expect(result).toEqual(undefined)
-    })
-
-    it('should format date properly when given date is after today', () => {
-      const result = formatPublicationDate(AFTER_TODAY, displayPublicationDate)
-
-      expect(result).toEqual(`Disponible le 12 novembre`)
-    })
-
-    it('should format date properly when given date is after today and a first', () => {
-      const displayPublicationDate = true
-
-      const result = formatPublicationDate(
-        DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH,
-        displayPublicationDate
-      )
-
-      expect(result).toEqual(`Disponible le 1er novembre`)
-    })
+  beforeAll(() => {
+    mockdate.set(TODAY)
   })
 
-  describe('displayPublicationDate is false', () => {
-    const displayPublicationDate = false
-
-    it('should return "Bientôt disponible"', () => {
-      const result = formatPublicationDate(AFTER_TODAY, displayPublicationDate)
-
-      expect(result).toEqual(`Bientôt disponible`)
-    })
-  })
+  it.each`
+    displayPublicationDate | date                                   | expected
+    ${true}                | ${TODAY}                               | ${undefined}
+    ${true}                | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
+    ${true}                | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
+    ${false}               | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
+  `(
+    'getFavoriteDisplayPrice({ price: $price, startPrice: $startPrice }) \t= $expected',
+    ({ displayPublicationDate, date, expected }) => {
+      expect(formatPublicationDate(date, displayPublicationDate)).toBe(expected)
+    }
+  )
 })
