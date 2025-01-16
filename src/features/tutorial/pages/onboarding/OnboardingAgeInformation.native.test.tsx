@@ -127,6 +127,16 @@ describe('OnboardingAgeInformation', () => {
       type: 'account_creation_skipped',
     })
   })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+
+    it.each(AGES)('should render correctly for %s-year-old', (age) => {
+      renderOnboardingAgeInformation({ age })
+
+      expect(screen).toMatchSnapshot()
+    })
+  })
 })
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
