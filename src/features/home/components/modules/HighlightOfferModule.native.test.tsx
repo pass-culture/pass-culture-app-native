@@ -92,17 +92,8 @@ describe('HighlightOfferModule', () => {
       ...offerFixture,
       offer: { ...offerFixture.offer, publicationDate: tomorrow },
     })
-
-    render(
-      reactQueryProviderHOC(
-        <HighlightOfferModule
-          {...highlightOfferModuleFixture}
-          index={0}
-          homeEntryId="entryId"
-          displayPublicationDate
-        />
-      )
-    )
+    const displayPublicationDate = true
+    renderHighlightModule(displayPublicationDate)
 
     await act(async () => {
       expect(screen.getByText('Disponible le 15 janvier')).toBeOnTheScreen()
@@ -115,16 +106,8 @@ describe('HighlightOfferModule', () => {
       offer: { ...offerFixture.offer, publicationDate: tomorrow },
     })
 
-    render(
-      reactQueryProviderHOC(
-        <HighlightOfferModule
-          {...highlightOfferModuleFixture}
-          index={0}
-          homeEntryId="entryId"
-          displayPublicationDate={false}
-        />
-      )
-    )
+    const displayPublicationDate = false
+    renderHighlightModule(displayPublicationDate)
 
     await act(async () => {
       expect(screen.getByText('Bientôt disponible')).toBeOnTheScreen()
@@ -132,13 +115,13 @@ describe('HighlightOfferModule', () => {
   })
 })
 
-const renderHighlightModule = (homeEntryId = 'entryId', displayPublicationDate = false) => {
+const renderHighlightModule = (displayPublicationDate = false) => {
   return render(
     reactQueryProviderHOC(
       <HighlightOfferModule
         {...highlightOfferModuleFixture}
         index={0}
-        homeEntryId={homeEntryId}
+        homeEntryId="entryId"
         displayPublicationDate={displayPublicationDate}
       />
     )
