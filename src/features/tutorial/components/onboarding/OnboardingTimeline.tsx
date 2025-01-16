@@ -47,7 +47,7 @@ const stepperPropsMappingV1 = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} key={1} /> },
     ],
   ],
   [
@@ -57,7 +57,7 @@ const stepperPropsMappingV1 = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} key={2} /> },
     ],
   ],
   [
@@ -67,7 +67,7 @@ const stepperPropsMappingV1 = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} key={3} /> },
     ],
   ],
   [
@@ -76,14 +76,26 @@ const stepperPropsMappingV1 = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} key={4} /> },
     ],
   ],
 ])
 
 const stepperPropsMappingV2 = new Map<Props['age'], CreditComponentProps[]>([
-  [17, [{ creditStep: 17 }, { creditStep: 18, children: <CreditBlockContent enableCreditV3 /> }]],
-  [18, [{ creditStep: 17 }, { creditStep: 18, children: <CreditBlockContent enableCreditV3 /> }]],
+  [
+    17,
+    [
+      { creditStep: 17 },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3 key={1} /> },
+    ],
+  ],
+  [
+    18,
+    [
+      { creditStep: 17 },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3 key={2} /> },
+    ],
+  ],
 ])
 
 const StyledBody = styled(TypoDS.Body)({
