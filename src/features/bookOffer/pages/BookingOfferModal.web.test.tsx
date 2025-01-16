@@ -11,8 +11,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 

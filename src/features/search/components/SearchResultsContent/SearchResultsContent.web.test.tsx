@@ -16,8 +16,6 @@ import { render, screen } from 'tests/utils/web'
 
 import { SearchResultsContent } from './SearchResultsContent'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

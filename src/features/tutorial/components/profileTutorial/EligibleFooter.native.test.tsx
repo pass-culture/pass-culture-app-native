@@ -6,8 +6,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('<EligibleFooter />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

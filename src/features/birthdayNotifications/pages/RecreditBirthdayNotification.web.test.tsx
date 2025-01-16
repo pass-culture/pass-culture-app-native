@@ -7,8 +7,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 

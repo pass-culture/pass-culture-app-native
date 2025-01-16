@@ -28,8 +28,6 @@ import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils
 
 import { HomeModule } from './HomeModule'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 

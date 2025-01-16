@@ -7,8 +7,6 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))

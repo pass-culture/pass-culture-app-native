@@ -12,8 +12,6 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
     .mockReturnValue({ homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' }),
 }))
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('<EmptyCredit />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

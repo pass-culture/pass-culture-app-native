@@ -22,10 +22,6 @@ export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
 }
 
-export enum RemoteStoreExchangeRates {
-  PACIFIC_FRANC_TO_EURO_RATE = 'pacificFrancToEuroRate',
-}
-
 export enum RemoteStoreUbble {
   UBBLE_ETA_MESSAGE = 'etaMessage',
 }

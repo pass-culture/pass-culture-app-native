@@ -134,8 +134,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))

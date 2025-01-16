@@ -40,8 +40,6 @@ jest.mock('libs/location/hooks/useDistance')
 const mockUseDistance = useDistance as jest.Mock
 mockUseDistance.mockReturnValue('10 km')
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('AttachedOfferCard', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

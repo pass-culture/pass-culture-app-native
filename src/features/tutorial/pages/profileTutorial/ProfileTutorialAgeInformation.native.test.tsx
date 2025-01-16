@@ -18,8 +18,6 @@ import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 jest.mock('features/auth/context/AuthContext')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 
 const navProps = { route: { params: { age: 15 } } } as StackScreenProps<

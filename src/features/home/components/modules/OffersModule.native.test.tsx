@@ -72,8 +72,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('OffersModule', () => {
   beforeEach(() => {
     setFeatureFlags()

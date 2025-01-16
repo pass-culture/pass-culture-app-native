@@ -26,8 +26,6 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('BookPricesChoice', () => {
   beforeEach(() => {
     mockUseBookingContext.mockReturnValueOnce({

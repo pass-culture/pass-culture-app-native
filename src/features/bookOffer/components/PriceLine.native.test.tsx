@@ -6,8 +6,6 @@ import { render, screen } from 'tests/utils'
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 describe('<PriceLine />', () => {
   beforeEach(() => {
     setFeatureFlags()

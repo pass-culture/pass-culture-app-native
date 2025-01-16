@@ -12,8 +12,6 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockShouldShowSkeleton = false

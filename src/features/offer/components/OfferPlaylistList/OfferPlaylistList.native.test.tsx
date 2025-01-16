@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -13,7 +14,7 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -48,7 +49,9 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<OfferPlaylistList />', () => {
   describe('Similar offers', () => {
@@ -74,8 +77,7 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+        await user.press(screen.queryAllByText('La nuit des temps')[0] as ReactTestInstance)
 
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
@@ -108,8 +110,7 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+        await user.press(screen.queryAllByText('La nuit des temps')[0] as ReactTestInstance)
 
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',

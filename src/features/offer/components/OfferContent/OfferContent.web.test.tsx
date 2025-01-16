@@ -19,8 +19,6 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockShowModal = jest.fn()

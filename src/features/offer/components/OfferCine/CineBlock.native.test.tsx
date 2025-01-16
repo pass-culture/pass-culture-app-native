@@ -25,8 +25,6 @@ jest.mock('libs/subcategories/mappings', () => ({
   useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
 }))
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 const mockUseOfferCTAButton = useOfferCTAButton as jest.MockedFunction<typeof useOfferCTAButton>
 
 const mockOfferTitle = 'CINEMA DE LA RUE'

@@ -31,7 +31,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 const user = userEvent.setup()
 
