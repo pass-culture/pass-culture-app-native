@@ -3,7 +3,9 @@ set -o errexit -o nounset -o pipefail
 
 # "latest" is not reproductible
 # how to manage better this version ?
-ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="17.0"
+# must works with minimum and target SDK
+ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
+# Chris est en 12.0
 
 # first emulator boot is usually slower
 ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED="${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED:-60}"
