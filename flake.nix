@@ -44,6 +44,7 @@
           buildInputs = [ pkgs.makeWrapper ];
           postInstall = ''
             mkdir --parents "$out/bin"
+            cp "${pkgs.sdkmanager}/bin/sdkmanager" "$out/bin/sdkmanager"
             wrapProgram "$out/bin/sdkmanager" \
               --set NIX_SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
           '';
