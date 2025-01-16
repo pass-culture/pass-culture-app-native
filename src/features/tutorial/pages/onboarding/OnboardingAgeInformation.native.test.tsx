@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -27,6 +27,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('OnboardingAgeInformation', () => {
   beforeEach(() => {
@@ -66,23 +69,21 @@ describe('OnboardingAgeInformation', () => {
       renderOnboardingAgeInformation({ age })
       const signupButton = screen.getByTestId('Créer un compte')
 
-      fireEvent.press(signupButton)
+      await user.press(signupButton)
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('SignupForm', {
-          from: StepperOrigin.TUTORIAL,
-        })
+      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+        from: StepperOrigin.TUTORIAL,
       })
     }
   )
 
   it.each(AGES)(
     'should reset navigation on go to Home when pressing "Plus tard" for %s-year-old',
-    (age) => {
+    async (age) => {
       renderOnboardingAgeInformation({ age })
       const laterButton = screen.getByTestId('Plus tard')
 
-      fireEvent.press(laterButton)
+      await user.press(laterButton)
 
       expect(reset).toHaveBeenCalledWith({
         index: 0,
@@ -91,22 +92,22 @@ describe('OnboardingAgeInformation', () => {
     }
   )
 
-  it.each(AGES)('should log analytics when attempting to click on credit block', (age) => {
+  it.each(AGES)('should log analytics when attempting to click on credit block', async (age) => {
     renderOnboardingAgeInformation({ age })
 
     const creditBlock = screen.getByText(`à ${age} ans`)
 
-    fireEvent.press(creditBlock)
+    await user.press(creditBlock)
 
     expect(analytics.logTrySelectDeposit).toHaveBeenCalledWith(age)
   })
 
-  it.each(AGES)('should log analytics when clicking on signup button', (age) => {
+  it.each(AGES)('should log analytics when clicking on signup button', async (age) => {
     renderOnboardingAgeInformation({ age })
 
     const signupButton = screen.getByText('Créer un compte')
 
-    fireEvent.press(signupButton)
+    await user.press(signupButton)
 
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation',
@@ -116,12 +117,12 @@ describe('OnboardingAgeInformation', () => {
     })
   })
 
-  it.each(AGES)('should log analytics when clicking on skip button', (age) => {
+  it.each(AGES)('should log analytics when clicking on skip button', async (age) => {
     renderOnboardingAgeInformation({ age })
 
     const laterButton = screen.getByText('Plus tard')
 
-    fireEvent.press(laterButton)
+    await user.press(laterButton)
 
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation_skipped',
