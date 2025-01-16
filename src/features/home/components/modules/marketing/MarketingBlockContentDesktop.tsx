@@ -17,6 +17,7 @@ export const MarketingBlockContentDesktop = ({
   backgroundImageUrl,
   accessibilityLabel,
   withGradient,
+  gradientHeight,
 }: MarketingBlockProps) => {
   return (
     <View testID="MarketingBlockContentDesktop">
@@ -24,11 +25,15 @@ export const MarketingBlockContentDesktop = ({
         <BackgroundImageContainer>
           {backgroundImageUrl ? (
             <SmallImageBackground source={{ uri: backgroundImageUrl }}>
-              {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+              {withGradient ? (
+                <BlackGradient height={gradientHeight} testID="black-gradient" />
+              ) : null}
             </SmallImageBackground>
           ) : (
             <ImagePlaceholder>
-              {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+              {withGradient ? (
+                <BlackGradient height={gradientHeight} testID="black-gradient" />
+              ) : null}
               <StyledAll />
             </ImagePlaceholder>
           )}

@@ -16,6 +16,7 @@ export const MarketingBlockContent = ({
   backgroundImageUrl,
   accessibilityLabel,
   withGradient,
+  gradientHeight,
 }: MarketingBlockProps) => {
   return (
     <InternalTouchableLink
@@ -25,11 +26,15 @@ export const MarketingBlockContent = ({
       <BackgroundImageContainer>
         {backgroundImageUrl ? (
           <ImageBackground source={{ uri: backgroundImageUrl }}>
-            {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+            {withGradient ? (
+              <BlackGradient height={gradientHeight} testID="black-gradient" />
+            ) : null}
           </ImageBackground>
         ) : (
           <ImagePlaceholder>
-            {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+            {withGradient ? (
+              <BlackGradient height={gradientHeight} testID="black-gradient" />
+            ) : null}
             <StyledAll />
           </ImagePlaceholder>
         )}
