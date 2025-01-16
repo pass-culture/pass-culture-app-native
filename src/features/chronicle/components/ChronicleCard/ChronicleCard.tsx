@@ -8,8 +8,10 @@ import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
+export const CHRONICLE_ITEM_WIDTH = 327
 
-type ChronicleCardProps = {
+export type ChronicleCardProps = {
+  id: number
   title: string
   subtitle: string
   description: string
@@ -42,9 +44,11 @@ const Container = styled(ViewGap)(({ theme }) => ({
   borderRadius: getSpacing(2),
   border: 1,
   borderColor: theme.colors.greyMedium,
+  maxWidth: CHRONICLE_ITEM_WIDTH,
+  backgroundColor: theme.colors.white,
   ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(3) },
-    shadowRadius: getSpacing(12),
+    shadowOffset: { width: 0, height: getSpacing(1) },
+    shadowRadius: getSpacing(6),
     shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
