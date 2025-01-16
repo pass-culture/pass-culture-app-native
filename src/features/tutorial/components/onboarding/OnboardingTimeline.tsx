@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
 
@@ -11,37 +13,33 @@ interface Props {
 }
 
 export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
+  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const stepperPropsMapping = enableCreditV3 ? stepperPropsMappingV2 : stepperPropsMappingV1
+
   const stepperProps = stepperPropsMapping.get(age)
   if (!stepperProps) return null
 
   return <CreditTimeline age={age} stepperProps={stepperProps} type={TutorialTypes.ONBOARDING} />
 }
 
-const DescriptionText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  fontSize: theme.tabBar.fontSize,
-  lineHeight: getSpacingString(3),
-  color: theme.colors.greyDark,
-}))
-
-const CreditBlockContent = () => {
+const CreditBlockContent: FunctionComponent<{ enableCreditV3: boolean }> = ({ enableCreditV3 }) => {
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
+
+  const description = enableCreditV3
+    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser ton crédit.'
+    : `Tu auras 2 ans pour utiliser tes ${eighteenYearsOldDeposit}`
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={1} />
-      <DescriptionText>Tu auras 2 ans pour utiliser tes {eighteenYearsOldDeposit}</DescriptionText>
+      <DescriptionText>{description}</DescriptionText>
     </React.Fragment>
   )
 }
 
 const CreditResetBlock = () => <StyledBody>Remise à 0 du crédit</StyledBody>
 
-const StyledBody = styled(TypoDS.Body)({
-  marginVertical: getSpacing(2),
-  marginLeft: getSpacing(1.5),
-  justifyContent: 'center',
-})
-
-const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
+const stepperPropsMappingV1 = new Map<Props['age'], CreditComponentProps[]>([
   [
     15,
     [
@@ -49,7 +47,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
     ],
   ],
   [
@@ -59,7 +57,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
     ],
   ],
   [
@@ -69,7 +67,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 16 },
       { creditStep: 17 },
       { creditStep: 'information', children: <CreditResetBlock /> },
-      { creditStep: 18, children: <CreditBlockContent /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
     ],
   ],
   [
@@ -78,7 +76,24 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
-      { creditStep: 18, children: <CreditBlockContent /> },
+      { creditStep: 18, children: <CreditBlockContent enableCreditV3={false} /> },
     ],
   ],
 ])
+
+const stepperPropsMappingV2 = new Map<Props['age'], CreditComponentProps[]>([
+  [17, [{ creditStep: 17 }, { creditStep: 18, children: <CreditBlockContent enableCreditV3 /> }]],
+  [18, [{ creditStep: 17 }, { creditStep: 18, children: <CreditBlockContent enableCreditV3 /> }]],
+])
+
+const StyledBody = styled(TypoDS.Body)({
+  marginVertical: getSpacing(2),
+  marginLeft: getSpacing(1.5),
+  justifyContent: 'center',
+})
+
+const DescriptionText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  fontSize: theme.tabBar.fontSize,
+  lineHeight: getSpacingString(3),
+  color: theme.colors.greyDark,
+}))
