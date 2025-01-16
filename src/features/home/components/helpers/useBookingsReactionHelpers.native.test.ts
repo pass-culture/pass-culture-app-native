@@ -1,6 +1,5 @@
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import {
   ModalDisplayState,
   useBookingsReactionHelpers,
@@ -19,12 +18,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const mockUseIsCookiesListUpToDate = jest
-  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
-  .mockReturnValue({
-    isCookiesListUpToDate: true,
-    cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-  })
 jest.mock('libs/firebase/analytics/analytics') // mocking analytics used in useIsCookiesListUpToDate
 
 jest.useFakeTimers()
@@ -53,18 +46,7 @@ describe('useBookingsReactionHelpers', () => {
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should return shouldNotShow if cookies where not accepted', () => {
-      cookiesNotAccepted()
-
-      const { result } = renderHook(() =>
-        useBookingsReactionHelpers(endedBookingWithoutReaction, false)
-      )
-
-      expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_NOT_SHOW)
-    })
-
-    it('should return true if there are bookings to react to', () => {
+    it('should return shouldShow if there are bookings to react to', () => {
       const { result } = renderHook(() =>
         useBookingsReactionHelpers(endedBookingWithoutReaction, false)
       )
@@ -76,13 +58,6 @@ describe('useBookingsReactionHelpers', () => {
     })
   })
 })
-
-function cookiesNotAccepted() {
-  mockUseIsCookiesListUpToDate.mockReturnValueOnce({
-    isCookiesListUpToDate: true,
-    cookiesLastUpdate: undefined,
-  })
-}
 
 const endedBookingWithoutReaction: BookingsResponse = {
   ended_bookings: [

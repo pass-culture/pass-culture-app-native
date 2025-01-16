@@ -31,8 +31,6 @@ export const useBookingsReactionHelpers = (
     }
   }
 
-  // There is an issue with !isCookieConsentChecked it goes to true for an instant and disrupts the modal conflict management hook
-
   if (!isReactionFeatureActive || !firstBookingWithoutReaction)
     return {
       shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,

@@ -16,7 +16,7 @@ export const useIsCookiesListUpToDate = () => {
     return { consent, lastUpdate }
   }
 
-  const { data } = useQuery(QueryKeys.COOKIES_DATA, fetchCookiesData, {
+  const { data, isLoading } = useQuery(QueryKeys.COOKIES_DATA, fetchCookiesData, {
     staleTime: 1000 * 30,
     cacheTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
@@ -58,5 +58,6 @@ export const useIsCookiesListUpToDate = () => {
   return {
     isCookiesListUpToDate: isUpToDate(),
     cookiesLastUpdate,
+    isLoading,
   }
 }

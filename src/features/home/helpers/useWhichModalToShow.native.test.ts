@@ -14,10 +14,13 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
-jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
-  isCookiesListUpToDate: true,
-  cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-})
+const mockUseIsCookiesListUpToDate = jest
+  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
+  .mockReturnValue({
+    isCookiesListUpToDate: true,
+    cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
+    isLoading: false,
+  })
 
 describe('useWhichModalToShow', () => {
   beforeEach(() => {
@@ -36,6 +39,19 @@ describe('useWhichModalToShow', () => {
 
   afterAll(() => {
     useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+  })
+
+  it('should return pending if the cookies modal should show', () => {
+    cookiesNotAccepted()
+
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      achievements: achievements,
+    })
+
+    const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
+
+    expect(result.current.modalToShow).toEqual(ModalToShow.NONE)
   })
 
   it('should return achievement if the achievement modal should be shown and the reaction modal should not be shown', () => {
@@ -114,4 +130,12 @@ const endedBookingWithReaction: BookingsResponse = {
   ],
   ongoing_bookings: [],
   hasBookingsAfter18: false,
+}
+
+function cookiesNotAccepted() {
+  mockUseIsCookiesListUpToDate.mockReturnValueOnce({
+    isCookiesListUpToDate: false,
+    cookiesLastUpdate: undefined,
+    isLoading: false,
+  })
 }

@@ -19,7 +19,7 @@ const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
 jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
-  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined })
+  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined, isLoading: false })
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.unmock('@react-navigation/native')
 jest.mock('features/auth/context/AuthContext')

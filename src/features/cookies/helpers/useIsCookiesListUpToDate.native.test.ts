@@ -48,6 +48,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: defaultMockFirestore,
         isCookiesListUpToDate: false,
+        isLoading: false,
       })
     })
   })
@@ -63,6 +64,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: defaultMockFirestore,
         isCookiesListUpToDate: false,
+        isLoading: false,
       })
     })
   })
@@ -81,6 +83,7 @@ describe('isCookiesListUpToDate', () => {
         expect(result.current).toEqual({
           cookiesLastUpdate: defaultMockFirestore,
           isCookiesListUpToDate: false,
+          isLoading: false,
         })
       })
     }
@@ -95,6 +98,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: undefined,
         isCookiesListUpToDate: true,
+        isLoading: false,
       })
     })
   })
@@ -110,6 +114,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: defaultMockFirestore,
         isCookiesListUpToDate: true,
+        isLoading: false,
       })
     })
   })
@@ -133,6 +138,7 @@ describe('isCookiesListUpToDate', () => {
           lastUpdateBuildVersion: buildVersion + 1,
         },
         isCookiesListUpToDate: true,
+        isLoading: false,
       })
     })
   })
@@ -150,6 +156,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: { ...defaultMockFirestore, lastUpdated: TOMORROW },
         isCookiesListUpToDate: true,
+        isLoading: false,
       })
     })
   })
@@ -162,6 +169,7 @@ describe('isCookiesListUpToDate', () => {
       expect(result.current).toEqual({
         cookiesLastUpdate: undefined,
         isCookiesListUpToDate: true,
+        isLoading: false,
       })
     })
   })

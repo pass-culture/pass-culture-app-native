@@ -56,11 +56,11 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading } = useBookings()
+  const { data: bookings, isLoading: isBookingsLoading } = useBookings()
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,
-    isLoading
+    isBookingsLoading
   )
 
   const {
