@@ -15,7 +15,7 @@ export const MarketingBlockContent = ({
   AttachedCardComponent,
   backgroundImageUrl,
   accessibilityLabel,
-  comingSoon,
+  withGradient,
 }: MarketingBlockProps) => {
   return (
     <InternalTouchableLink
@@ -25,11 +25,11 @@ export const MarketingBlockContent = ({
       <BackgroundImageContainer>
         {backgroundImageUrl ? (
           <ImageBackground source={{ uri: backgroundImageUrl }}>
-            {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+            {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
           </ImageBackground>
         ) : (
           <ImagePlaceholder>
-            {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+            {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
             <StyledAll />
           </ImagePlaceholder>
         )}

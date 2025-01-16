@@ -16,7 +16,7 @@ export const MarketingBlockContentDesktop = ({
   AttachedCardComponent,
   backgroundImageUrl,
   accessibilityLabel,
-  comingSoon,
+  withGradient,
 }: MarketingBlockProps) => {
   return (
     <View testID="MarketingBlockContentDesktop">
@@ -24,11 +24,11 @@ export const MarketingBlockContentDesktop = ({
         <BackgroundImageContainer>
           {backgroundImageUrl ? (
             <SmallImageBackground source={{ uri: backgroundImageUrl }}>
-              {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+              {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
             </SmallImageBackground>
           ) : (
             <ImagePlaceholder>
-              {comingSoon ? <BlackGradient height="100%" testID="black-gradient" /> : null}
+              {withGradient ? <BlackGradient height="100%" testID="black-gradient" /> : null}
               <StyledAll />
             </ImagePlaceholder>
           )}
@@ -43,7 +43,7 @@ export const MarketingBlockContentDesktop = ({
       <BackgroundContainer>
         {backgroundImageUrl ? (
           <BigImageBackground source={{ uri: backgroundImageUrl }}>
-            {comingSoon ? (
+            {withGradient ? (
               <BlackGradient height="100%" testID="black-gradient">
                 <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE} />
               </BlackGradient>

@@ -35,13 +35,14 @@ const UnmemoizedMarketingBlockExclusivity = ({
   const comingSoon = publicationDate
     ? formatPublicationDate(new Date(publicationDate * 1000), shouldDisplayPublicationDate)
     : undefined
+  const withGradient = !!comingSoon
 
   return (
     <MarketingBlock
       navigateTo={{ screen: 'Offer', params: { id: offer.objectID } }}
       onBeforeNavigate={logConsultOffer}
       backgroundImageUrl={backgroundImageUrl}
-      comingSoon={comingSoon}
+      withGradient={withGradient}
       AttachedCardComponent={
         <ShadowWrapper>
           <AttachedOfferCard offer={offer} comingSoon={comingSoon} />

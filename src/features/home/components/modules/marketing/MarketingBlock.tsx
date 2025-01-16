@@ -11,7 +11,7 @@ export type MarketingBlockProps = {
   accessibilityLabel?: string
   backgroundImageUrl?: string
   AttachedCardComponent: React.ReactNode
-  comingSoon?: string
+  withGradient?: boolean
 }
 
 export const MarketingBlock = (props: MarketingBlockProps) => {
