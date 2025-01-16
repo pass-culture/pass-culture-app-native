@@ -17,11 +17,52 @@ const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useLogoutRoutine', () => {
-  it('should remove batch identifier', async () => {
-    await renderUseLogoutRoutine()
+const mockSetAttribute = jest.fn()
+const mockSave = jest.fn()
+const mockEditor = { setAttribute: mockSetAttribute, save: mockSave }
 
-    expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, null)
+describe('useLogoutRoutine', () => {
+  describe('Batch', () => {
+    it('should remove batch identifier', async () => {
+      await renderUseLogoutRoutine()
+
+      expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, null)
+    })
+
+    it('should set app_version to null in BatchProfile editor', async () => {
+      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
+
+      await renderUseLogoutRoutine()
+
+      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
+      expect(mockSetAttribute).toHaveBeenCalledWith('app_version', null)
+    })
+
+    it('should set last_booking_date to null in BatchProfile editor', async () => {
+      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
+
+      await renderUseLogoutRoutine()
+
+      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
+      expect(mockSetAttribute).toHaveBeenCalledWith('last_booking_date', null)
+    })
+
+    it('should set credit_activation_date to null in BatchProfile editor', async () => {
+      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
+
+      await renderUseLogoutRoutine()
+
+      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
+      expect(mockSetAttribute).toHaveBeenCalledWith('credit_activation_date', null)
+    })
+
+    it('should save BatchProfile', async () => {
+      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
+
+      await renderUseLogoutRoutine()
+
+      expect(mockSave).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should log analytics', async () => {
