@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -28,6 +29,8 @@ import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS, getSpacing } from 'ui/theme
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
+
+const OFFERS_PLAYLIST_SIMILAR_SPACING = Platform.OS === 'android' ? getSpacing(8) : getSpacing(14)
 
 export const VenueOffersList: React.FC<VenueOffersProps> = ({
   venue,
@@ -115,6 +118,12 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
       />
+      {shouldDisplayArtistsPlaylist ? (
+        <ArtistsPlaylistContainer gap={2}>
+          <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
+          <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
+        </ArtistsPlaylistContainer>
+      ) : null}
       {shouldDisplayGtlPlaylist ? (
         <React.Fragment>
           {playlists?.map((playlist) => (
@@ -128,17 +137,15 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
           ))}
         </React.Fragment>
       ) : null}
-      {shouldDisplayArtistsPlaylist ? (
-        <ViewGap gap={2}>
-          <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
-        </ViewGap>
-      ) : null}
     </React.Fragment>
   )
 }
 
 const PlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
+
+const ArtistsPlaylistContainer = styled(ViewGap)({
+  paddingBottom: OFFERS_PLAYLIST_SIMILAR_SPACING,
+})
 
 const ArtistsPlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))({
   marginHorizontal: getSpacing(6),
