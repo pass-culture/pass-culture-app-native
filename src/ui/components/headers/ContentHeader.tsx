@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -61,14 +61,14 @@ export const ContentHeader = ({
           initialColor={theme.colors.black}
         />
         {LeftElement}
-        <Spacer.Flex />
-        <Title
-          testID={titleTestID}
-          style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
-          accessibilityHidden={ariaHiddenTitle}>
-          <Body>{headerTitle}</Body>
-        </Title>
-        <Spacer.Flex />
+        <TitleContainer>
+          <Title
+            testID={titleTestID}
+            style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
+            accessibilityHidden={ariaHiddenTitle}>
+            <Body>{headerTitle}</Body>
+          </Title>
+        </TitleContainer>
         {RightElement}
       </Row>
     </HeaderContainer>
@@ -99,6 +99,10 @@ const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, heig
   borderBottomWidth: 1,
 }))
 
+const TitleContainer = styled.View({
+  flex: 1,
+})
+
 const Title = styled(Animated.Text).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
@@ -117,6 +121,7 @@ const Row = styled.View<{ marginRight: number; marginTop: number }>(
     ...(Platform.OS === 'web' ? { flex: 1 } : {}),
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop,
     marginBottom: getSpacing(2),
     marginLeft: getSpacing(6),

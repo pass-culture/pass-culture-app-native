@@ -1130,6 +1130,7 @@ exports[`BookingDetails should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
             "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 64,
@@ -1260,46 +1261,36 @@ exports[`BookingDetails should render correctly 1`] = `
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
+            }
           }
         >
-          Avez-vous déjà vu ?
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Avez-vous déjà vu ?
+          </Text>
         </Text>
-      </Text>
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
+      </View>
     </View>
   </View>
   <Modal

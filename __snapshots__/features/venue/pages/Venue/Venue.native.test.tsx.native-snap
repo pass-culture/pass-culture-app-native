@@ -4456,6 +4456,7 @@ d’options
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
             "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 24,
@@ -4586,47 +4587,37 @@ d’options
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
-        testID="venueHeaderName"
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
-          }
-        >
-          Le Petit Rintintin 1
-        </Text>
-      </Text>
-      <View
-        style={
-          [
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
+              "color": "#ffffff",
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+              "opacity": 0,
+              "textAlign": "center",
+            }
+          }
+          testID="venueHeaderName"
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Le Petit Rintintin 1
+          </Text>
+        </Text>
+      </View>
       <View
         accessibilityLabel="Partager"
         accessibilityRole="button"
@@ -8164,6 +8155,7 @@ d’options
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
             "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 24,
@@ -8294,47 +8286,37 @@ d’options
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
-        testID="venueHeaderName"
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
-          }
-        >
-          Le Petit Rintintin 1
-        </Text>
-      </Text>
-      <View
-        style={
-          [
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
+              "color": "#ffffff",
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+              "opacity": 0,
+              "textAlign": "center",
+            }
+          }
+          testID="venueHeaderName"
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Le Petit Rintintin 1
+          </Text>
+        </Text>
+      </View>
       <View
         accessibilityLabel="Partager"
         accessibilityRole="button"
