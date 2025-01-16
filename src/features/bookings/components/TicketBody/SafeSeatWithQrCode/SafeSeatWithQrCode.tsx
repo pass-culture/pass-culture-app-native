@@ -36,9 +36,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
     categoriesToHide,
   })
 
-  if (!shouldQrCodeBeHidden) {
-    return <SeatWithQrCode {...seatWithQrCodeProps} />
-  }
+  if (!shouldQrCodeBeHidden) return <SeatWithQrCode {...seatWithQrCodeProps} />
 
   return (
     <DashedContainer>

@@ -3,6 +3,7 @@ import React from 'react'
 import type { BookingsResponse } from 'api/gen'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
@@ -13,6 +14,8 @@ const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoi
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<TicketSwiper/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should display ticket without external bookings information if there are no external bookings (externalBookings is null)', () => {
     booking.externalBookings = null
 

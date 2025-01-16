@@ -2,6 +2,8 @@ import mockdate from 'mockdate'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
 import { useSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { renderHook } from 'tests/utils'
 
@@ -16,6 +18,8 @@ const venue = mockBuilder.bookingVenueResponse()
 describe('useSafeSeatWithQrCode', () => {
   describe('reservation in a category that should not be hidden', () => {
     const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
+
+    beforeEach(() => setFeatureFlags())
 
     describe('before it should be visible', () => {
       beforeAll(() => {
@@ -55,42 +59,63 @@ describe('useSafeSeatWithQrCode', () => {
   describe('reservation in a category that should be hidden', () => {
     const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
 
-    describe('before it should be visible', () => {
-      beforeAll(() => {
-        mockdate.set(beforeEventIsVisible)
-      })
+    describe('when FF enableHideTicket is on', () => {
+      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET]))
 
-      it('should hide Qr Code', () => {
-        const { result } = renderUseSafeSeatWithQrCode({
-          beginningDatetime: eventDay,
-          qrCodeVisibilityHoursBeforeEvent,
-          venue,
-          subcategoryId,
-          categoriesToHide: [subcategoryId],
+      describe('before it should be visible', () => {
+        beforeAll(() => {
+          mockdate.set(beforeEventIsVisible)
         })
 
-        expect(result.current.shouldQrCodeBeHidden).toBeTruthy()
-      })
+        it('should hide Qr Code', () => {
+          const { result } = renderUseSafeSeatWithQrCode({
+            beginningDatetime: eventDay,
+            qrCodeVisibilityHoursBeforeEvent,
+            venue,
+            subcategoryId,
+            categoriesToHide: [subcategoryId],
+          })
 
-      it('should display the right day', () => {
-        const { result } = renderUseSafeSeatWithQrCode({
-          beginningDatetime: eventDay,
-          qrCodeVisibilityHoursBeforeEvent,
-          venue,
-          subcategoryId,
-          categoriesToHide: [subcategoryId],
+          expect(result.current.shouldQrCodeBeHidden).toBeTruthy()
         })
 
-        expect(result.current.day).toEqual('14 janvier 2024 à 02h00')
+        it('should display the right day', () => {
+          const { result } = renderUseSafeSeatWithQrCode({
+            beginningDatetime: eventDay,
+            qrCodeVisibilityHoursBeforeEvent,
+            venue,
+            subcategoryId,
+            categoriesToHide: [subcategoryId],
+          })
+
+          expect(result.current.day).toEqual('14 janvier 2024 à 02h00')
+        })
+      })
+
+      describe('when it should be visible', () => {
+        beforeAll(() => {
+          mockdate.set(whenEventIsVisible)
+        })
+
+        it('should display Qr Code', () => {
+          const { result } = renderUseSafeSeatWithQrCode({
+            beginningDatetime: eventDay,
+            qrCodeVisibilityHoursBeforeEvent,
+            venue,
+            subcategoryId,
+            categoriesToHide: [subcategoryId],
+          })
+
+          expect(result.current.shouldQrCodeBeHidden).toBeFalsy()
+        })
       })
     })
 
-    describe('when it should be visible', () => {
-      beforeAll(() => {
-        mockdate.set(whenEventIsVisible)
-      })
+    describe('when FF enableHideTicket is off', () => {
+      setFeatureFlags()
+      mockdate.set(beforeEventIsVisible)
 
-      it('should display Qr Code', () => {
+      it('should not hide Qr Code', () => {
         const { result } = renderUseSafeSeatWithQrCode({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,

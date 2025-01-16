@@ -3,6 +3,8 @@ import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { render, screen } from 'tests/utils'
 
@@ -51,31 +53,37 @@ describe('TicketBody', () => {
 
   describe('QrCode for external bookings', () => {
     describe('concert or festival', () => {
-      it('should be hidden until 2 days before the event', () => {
-        render(
-          <TicketBody
-            {...initialProps}
-            subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
-            externalBookings={{ barcode: 'barcode' }}
-            venue={venue}
-          />
-        )
+      describe('when FF enableHideTicket is true', () => {
+        beforeEach(() => {
+          setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET])
+        })
 
-        expect(screen.queryByTestId('qr-code')).not.toBeOnTheScreen()
-      })
+        it('should be hidden until 2 days before the event', () => {
+          render(
+            <TicketBody
+              {...initialProps}
+              subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
+              externalBookings={{ barcode: 'barcode' }}
+              venue={venue}
+            />
+          )
 
-      it('should be displayed 2 days before the event', () => {
-        render(
-          <TicketBody
-            {...initialProps}
-            beginningDatetime="2021-03-11T20:00:00"
-            subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
-            externalBookings={{ barcode: 'barcode' }}
-            venue={venue}
-          />
-        )
+          expect(screen.queryByTestId('qr-code')).not.toBeOnTheScreen()
+        })
 
-        expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
+        it('should be displayed 2 days before the event', () => {
+          render(
+            <TicketBody
+              {...initialProps}
+              beginningDatetime="2021-03-11T20:00:00"
+              subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
+              externalBookings={{ barcode: 'barcode' }}
+              venue={venue}
+            />
+          )
+
+          expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
+        })
       })
 
       it('should display the availability date', () => {
@@ -90,6 +98,25 @@ describe('TicketBody', () => {
         )
 
         expect(screen.getByText('11 mars 2021 à 21h00')).toBeOnTheScreen()
+      })
+
+      describe('when FF enableHideTicket is false', () => {
+        beforeEach(() => {
+          setFeatureFlags()
+        })
+
+        it('should not be hidden even until 2 days before the event', () => {
+          render(
+            <TicketBody
+              {...initialProps}
+              subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
+              externalBookings={{ barcode: 'barcode' }}
+              venue={venue}
+            />
+          )
+
+          expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
+        })
       })
     })
 
