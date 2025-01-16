@@ -19,7 +19,8 @@
             pkgs.devbox
             # self.packages."${system}".jdk
             # self.packages."${system}".sdkmanager
-            self.packages."${system}".create-certificate-bundle
+            # self.packages."${system}".create-certificate-bundle
+            self.packages."${system}".nix-certificate
           ];
 
           # shellHook = ''
@@ -33,17 +34,24 @@
           # '';
         };
 
+        packages.nix-certificate = pkgs.writeShellApplication {
+          name = "nix-certificate";
+          text = ''
+            echo "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+          '';
+        };
+
         packages.create-certificate-bundle = pkgs.writeShellApplication {
           name = "create-certificate-bundle";
           text = ''
-            set -x
-            env
             if [ -n "$SSL_CERT_FILE" ]; then
               export CERTIFICATE_BUNDLE_FILE="/tmp/certificates.crt"
               cat "$SSL_CERT_FILE" "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" >"$CERTIFICATE_BUNDLE_FILE"
-              export SSL_CERT_FILE="$CERTIFICATE_BUNDLE_FILE"
-              export NODE_EXTRA_CA_CERTS="$CERTIFICATE_BUNDLE_FILE"
-              export NIX_SSL_CERT_FILE="$CERTIFICATE_BUNDLE_FILE"
+              echo "
+              export SSL_CERT_FILE=\"$CERTIFICATE_BUNDLE_FILE\"
+              export NODE_EXTRA_CA_CERTS=\"$CERTIFICATE_BUNDLE_FILE\"
+              export NIX_SSL_CERT_FILE=\"$CERTIFICATE_BUNDLE_FILE\"
+              "
             fi
           '';
         };
