@@ -309,11 +309,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -453,11 +453,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -572,11 +572,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -706,11 +706,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -825,11 +825,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -959,11 +959,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -1078,11 +1078,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -1105,11 +1105,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -1215,11 +1215,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -1322,8 +1322,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                       ]
                     }
                   >
-                    Tu auras 2 ans pour utiliser tes 
-                    300 €
+                    Tu auras 2 ans pour utiliser tes 300 €
                   </Text>
                 </View>
                 <View
@@ -1374,11 +1373,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -1954,11 +1953,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2088,11 +2087,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2196,11 +2195,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2340,11 +2339,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2459,11 +2458,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2593,11 +2592,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2712,11 +2711,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2739,11 +2738,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2849,11 +2848,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -2956,8 +2955,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                       ]
                     }
                   >
-                    Tu auras 2 ans pour utiliser tes 
-                    300 €
+                    Tu auras 2 ans pour utiliser tes 300 €
                   </Text>
                 </View>
                 <View
@@ -3008,11 +3006,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -3588,11 +3586,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -3722,11 +3720,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -3828,11 +3826,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -3962,11 +3960,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4070,11 +4068,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4214,11 +4212,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4333,11 +4331,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4360,11 +4358,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4470,11 +4468,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -4577,8 +4575,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       ]
                     }
                   >
-                    Tu auras 2 ans pour utiliser tes 
-                    300 €
+                    Tu auras 2 ans pour utiliser tes 300 €
                   </Text>
                 </View>
                 <View
@@ -4629,11 +4626,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5209,11 +5206,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5343,11 +5340,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5449,11 +5446,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5583,11 +5580,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5689,11 +5686,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5823,11 +5820,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -5922,11 +5919,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
@@ -6039,8 +6036,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       ]
                     }
                   >
-                    Tu auras 2 ans pour utiliser tes 
-                    300 €
+                    Tu auras 2 ans pour utiliser tes 300 €
                   </Text>
                 </View>
                 <View
@@ -6091,11 +6087,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={1}
+                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 4,
+                      "height": 8,
                     },
                   ]
                 }
