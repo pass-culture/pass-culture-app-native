@@ -12,9 +12,9 @@ export const HomeModals: FC = () => {
   const { data: bookings, isLoading: isBookingsLoading } = useBookings()
   const { isUserLoading, user } = useAuthContext()
 
-  const areModalReady = !isUserLoading && !isBookingsLoading
+  const areModalsReady = !isUserLoading && !isBookingsLoading
 
-  const achievementsToShow =
+  const unseenAchievements =
     user?.achievements?.filter((achievement) => !achievement.seenDate) || []
 
   const bookingsEligibleToReaction =
@@ -25,9 +25,9 @@ export const HomeModals: FC = () => {
   const { visible: visibleAchievementModal, hideModal: hideAchievementModal } = useModal(true)
 
   const shouldShowReactionModal = useShouldShowReactionModal(bookingsEligibleToReaction)
-  const shouldShowAchievementSuccessModal = useShouldShowAchievementSuccessModal()
+  const shouldShowAchievementSuccessModal = useShouldShowAchievementSuccessModal(unseenAchievements)
 
-  if (areModalReady) {
+  if (areModalsReady) {
     return null
   }
 
@@ -40,7 +40,7 @@ export const HomeModals: FC = () => {
   if (shouldShowAchievementSuccessModal) {
     return (
       <AchievementSuccessModal
-        achievementsToShow={achievementsToShow}
+        achievementsToShow={unseenAchievements}
         visible={visibleAchievementModal}
         hideModal={hideAchievementModal}
       />
