@@ -36,4 +36,38 @@ describe('<OfferImageContainer />', () => {
 
     expect(screen.getByTestId('offerImageContainerCarousel')).toBeInTheDocument()
   })
+
+  it('should apply sticky styles when on desktop', () => {
+    render(
+      <OfferImageContainer
+        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        categoryId={CategoryIdEnum.CINEMA}
+        onPress={mockOnPress}
+      />,
+      { theme: { isDesktopViewport: true } }
+    )
+
+    const container = screen.getByTestId('imageRenderer')
+
+    expect(container).toHaveStyle({
+      position: 'sticky',
+    })
+  })
+
+  it('should not have sticky position on mobile', () => {
+    render(
+      <OfferImageContainer
+        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        categoryId={CategoryIdEnum.CINEMA}
+        onPress={mockOnPress}
+      />,
+      { theme: { isDesktopViewport: false } }
+    )
+
+    const container = screen.getByTestId('imageRenderer')
+
+    expect(container).not.toHaveStyle({
+      position: 'sticky',
+    })
+  })
 })

@@ -55,6 +55,7 @@ exports[`BookingDetails should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "position": "absolute",
+                "top": 0,
               },
             ]
           }

@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import Animated, { FadeIn, FadeOut, SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
@@ -13,6 +14,7 @@ type Props = {
   placeholderImage?: string
   progressValue: SharedValue<number>
   onPress?: (index: number) => void
+  style?: StyleProp<ViewStyle>
 }
 
 export const OfferImageRenderer: FunctionComponent<Props> = ({
@@ -21,6 +23,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
   placeholderImage,
   categoryId,
   onPress,
+  style,
 }) => {
   const [carouselReady, setCarouselReady] = useState(false)
 
@@ -29,7 +32,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
   }, [setCarouselReady])
 
   return (
-    <Animated.View entering={FadeIn}>
+    <Animated.View entering={FadeIn} style={style} testID="imageRenderer">
       <StyledOfferImageCarousel
         progressValue={progressValue}
         offerImages={offerImages}
