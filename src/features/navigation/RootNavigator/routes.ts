@@ -21,6 +21,7 @@ import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pag
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
+import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -535,5 +536,15 @@ export const routes: RootRoute[] = [
     name: 'Achievements',
     component: Achievements,
     path: 'profile/achievements',
+  },
+  {
+    name: 'Chronicles',
+    component: Chronicles,
+    pathConfig: {
+      path: 'avis-du-book-club/:offerId/:chronicleId',
+      deeplinkPaths: ['chronicles/:offerId/:chronicleId'],
+      parse: screenParamsParser['Chronicles'],
+    },
+    options: { title: 'Avis du book club' },
   },
 ]

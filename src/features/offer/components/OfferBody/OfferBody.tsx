@@ -30,8 +30,10 @@ import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -52,6 +54,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const hasOfferChronicleSection = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
+  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -156,6 +161,16 @@ export const OfferBody: FunctionComponent<Props> = ({
       ) : null}
 
       <OfferPlace offer={offer} subcategory={subcategory} />
+
+      {hasOfferChronicleSection && !isDesktopViewport ? (
+        <SectionWithDivider visible margin gap={8}>
+          <InternalTouchableLink
+            as={ButtonSecondaryBlack}
+            wording="Voir tous les avis"
+            navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
+          />
+        </SectionWithDivider>
+      ) : null}
 
       {isDesktopViewport ? (
         <View testID="messagingApp-container-without-divider">

@@ -205,6 +205,7 @@ export type RootStackParamList = {
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
+  Chronicles: { offerId: number; chronicleId?: number }
   CulturalSurvey: undefined
   DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined

@@ -82,6 +82,7 @@ describe('<OfferBody />', () => {
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR,
       RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK,
+      RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
     ])
   })
 
@@ -608,6 +609,40 @@ describe('<OfferBody />', () => {
     await user.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  describe('Chronicles section', () => {
+    it('should display "Voir tous les avis" button when wipOfferChronicleSection feature flag activated and viewport is not desktop', async () => {
+      renderOfferBody({})
+
+      expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
+    })
+
+    it('should not display "Voir tous les avis" button when wipOfferChronicleSection feature flag activated and viewport is desktop', async () => {
+      renderOfferBody({ isDesktopViewport: true })
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Voir tous les avis')).not.toBeOnTheScreen()
+    })
+
+    it('should not display "Voir tous les avis" button when wipOfferChronicleSection feature flag deactivated', async () => {
+      setFeatureFlags()
+
+      renderOfferBody({})
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Voir tous les avis')).not.toBeOnTheScreen()
+    })
+
+    it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
+      renderOfferBody({})
+
+      await user.press(await screen.findByText('Voir tous les avis'))
+
+      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', { offerId: 116656 })
+    })
   })
 })
 
