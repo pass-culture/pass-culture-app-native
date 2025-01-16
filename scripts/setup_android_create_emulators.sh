@@ -53,9 +53,9 @@ install_platforms_and_image() {
 	echo "Downloading Android SDK $SDK_VERSION"
 	sdkmanager_install_accepting_licence \
 		--install \
-		"sources;android-$SDK_VERSION" \
 		"platforms;android-$SDK_VERSION" \
 		"$(image_for_sdk "$SDK_VERSION")"
+		# "sources;android-$SDK_VERSION" \
 }
 
 kill_all_emulators() {
@@ -100,9 +100,9 @@ sdkmanager_install_accepting_licence \
 sdkmanager_install_accepting_licence \
 	--install \
 	"emulator" \
-	"platform-tools" \
-	"ndk;$(get_version 'ndkVersion')" \
-	"build-tools;$(get_version 'buildToolsVersion')"
+	"platform-tools"
+	# "ndk;$(get_version 'ndkVersion')" \
+	# "build-tools;$(get_version 'buildToolsVersion')"
 
 recreate_emulator \
 	"SDK_minimum_supporte" \
