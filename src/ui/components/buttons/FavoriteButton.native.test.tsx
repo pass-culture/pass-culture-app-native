@@ -10,7 +10,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
   hideSnackBar,
@@ -57,6 +57,7 @@ const mockUseRemoveFavorite = () => {
     isLoading: true,
   }))
 }
+const user = userEvent.setup()
 
 jest.useFakeTimers()
 
@@ -74,7 +75,7 @@ describe('<FavoriteButton />', () => {
     renderFavoriteButton()
 
     await act(async () => {
-      fireEvent.press(screen.getByTestId('icon-favorite'))
+      user.press(screen.getByTestId('icon-favorite'))
     })
 
     expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
@@ -93,28 +94,28 @@ describe('<FavoriteButton />', () => {
     renderFavoriteButton({
       id: favoriteResponseSnap.offer.id,
     })
-    fireEvent.press(screen.getByTestId('icon-favorite'))
+    await act(async () => {
+      user.press(screen.getByTestId('icon-favorite'))
+    })
 
-    await waitFor(() => {
-      const mutateData = queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse
+    const mutateData = queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse
 
-      expect(
-        mutateData.favorites?.find(
-          (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
-        )?.offer.id
-      ).toEqual(favoriteResponseSnap.offer.id)
+    expect(
+      mutateData.favorites?.find(
+        (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
+      )?.offer.id
+    ).toEqual(favoriteResponseSnap.offer.id)
 
-      expect(
-        (queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse).favorites?.find(
-          (f: FavoriteResponse) => f.id === 1000
-        )
-      ).toEqual({
-        ...favoriteResponseSnap,
-        offer: {
-          ...favoriteResponseSnap.offer,
-          date: favoriteResponseSnap.offer.date,
-        },
-      })
+    expect(
+      (queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse).favorites?.find(
+        (f: FavoriteResponse) => f.id === 1000
+      )
+    ).toEqual({
+      ...favoriteResponseSnap,
+      offer: {
+        ...favoriteResponseSnap.offer,
+        date: favoriteResponseSnap.offer.date,
+      },
     })
   })
 
@@ -126,7 +127,7 @@ describe('<FavoriteButton />', () => {
     })
 
     await act(async () => {
-      fireEvent.press(await screen.findByTestId('icon-favorite-filled'))
+      user.press(await screen.findByTestId('icon-favorite-filled'))
     })
 
     expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -141,13 +142,13 @@ describe('<FavoriteButton />', () => {
       id: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(screen.getByTestId('icon-favorite'))
+    await act(async () => {
+      user.press(screen.getByTestId('icon-favorite'))
+    })
 
-    await waitFor(() => {
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    expect(showErrorSnackBar).toHaveBeenCalledWith({
+      message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
@@ -165,14 +166,14 @@ describe('<FavoriteButton />', () => {
       renderFavoriteButton({
         id: offerId,
       })
-      fireEvent.press(screen.getByTestId('icon-favorite'))
+      await act(async () => {
+        user.press(screen.getByTestId('icon-favorite'))
+      })
 
-      await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-          from,
-          offerId,
-          moduleName,
-        })
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        from,
+        offerId,
+        moduleName,
       })
     })
 
@@ -189,14 +190,14 @@ describe('<FavoriteButton />', () => {
       renderFavoriteButton({
         id: offerId,
       })
-      fireEvent.press(screen.getByTestId('icon-favorite'))
+      await act(async () => {
+        user.press(screen.getByTestId('icon-favorite'))
+      })
 
-      await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-          from,
-          offerId,
-          searchId,
-        })
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        from,
+        offerId,
+        searchId,
       })
     })
 
@@ -222,14 +223,14 @@ describe('<FavoriteButton />', () => {
       renderFavoriteButton({
         id: offerId,
       })
-      fireEvent.press(screen.getByTestId('icon-favorite'))
+      await act(async () => {
+        user.press(screen.getByTestId('icon-favorite'))
+      })
 
-      await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-          offerId,
-          ...apiRecoParams,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        })
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        offerId,
+        ...apiRecoParams,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       })
     })
   })
