@@ -38,9 +38,10 @@ export const ContentHeader = ({
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
+  const marginTopHeader = Platform.OS === 'ios' ? top : top + getSpacing(2)
+
   return (
     <HeaderContainer style={containerStyle} height={headerHeight}>
-      <Spacer.TopScreen />
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         // https://github.com/Kureev/react-native-blur/issues/511
@@ -50,7 +51,7 @@ export const ContentHeader = ({
           </BlurNativeContainer>
         )
       }
-      <Row marginRight={RightElement ? getSpacing(6) : getSpacing(16)}>
+      <Row marginRight={RightElement ? getSpacing(6) : getSpacing(16)} marginTop={marginTopHeader}>
         <RoundedButton
           animationState={animationState}
           iconName="back"
@@ -111,11 +112,14 @@ const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const Row = styled.View<{ marginRight: number }>(({ marginRight }) => ({
-  ...(Platform.OS === 'web' ? { flex: 1 } : {}),
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginVertical: getSpacing(2),
-  marginLeft: getSpacing(6),
-  marginRight,
-}))
+const Row = styled.View<{ marginRight: number; marginTop: number }>(
+  ({ marginRight, marginTop }) => ({
+    ...(Platform.OS === 'web' ? { flex: 1 } : {}),
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop,
+    marginBottom: getSpacing(2),
+    marginLeft: getSpacing(6),
+    marginRight,
+  })
+)

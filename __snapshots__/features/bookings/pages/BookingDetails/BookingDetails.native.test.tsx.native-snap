@@ -1089,17 +1089,6 @@ exports[`BookingDetails should render correctly 1`] = `
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -1135,14 +1124,16 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
     <View
       marginRight={64}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 64,
-            "marginVertical": 8,
+            "marginTop": 16,
           },
         ]
       }

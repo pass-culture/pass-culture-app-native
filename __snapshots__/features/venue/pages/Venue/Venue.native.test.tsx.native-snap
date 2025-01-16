@@ -4415,17 +4415,6 @@ d’options
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -4461,14 +4450,16 @@ d’options
     </View>
     <View
       marginRight={24}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 24,
-            "marginVertical": 8,
+            "marginTop": 16,
           },
         ]
       }
@@ -8132,17 +8123,6 @@ d’options
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -8178,14 +8158,16 @@ d’options
     </View>
     <View
       marginRight={24}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "marginBottom": 8,
             "marginLeft": 24,
             "marginRight": 24,
-            "marginVertical": 8,
+            "marginTop": 16,
           },
         ]
       }
