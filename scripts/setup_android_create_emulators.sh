@@ -10,7 +10,7 @@ ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED="${ANDROID_EMULATOR_WAIT_FIRST_BOOT_C
 
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 
-PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin || echo '/dev/null'):$PATH" # to get previous version
+PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo '/dev/null'):$PATH" # to get previous version
 PATH="$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$PATH" # to get the pinned version
 PATH="$ANDROID_HOME/platform-tools:$PATH"
 PATH="$ANDROID_HOME/emulator:$PATH"

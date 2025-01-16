@@ -21,13 +21,29 @@
           ];
         };
 
-        packages.sdkmanager = pkgs.stdenv.mkDerivation {
+        packages.sdkmanager = pkgs.writeShellApplication {
+          name = "sdkmanager";
+          runtimeInputs = [ pkgs.makeWrapper ];
+          text = ''
+            # mkdir --parents "$out/bin"
+            # cp "${pkgs.sdkmanager}/bin/sdkmanager" "$out/bin/sdkmanager"
+            #   --set NIX_SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+            # wrapProgram "$out/bin/sdkmanager" \
+            #   --set NIX_SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+
+            TEMP="$(mktemp)"
+            cat "$NIX_SSL_CERT_FILE" "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" >"$TEMP"
+            export NIX_SSL_CERT_FILE="$TEMP"
+            exec -a "$0" "${pkgs.sdkmanager}/bin/sdkmanager" "$@"
+          '';
+        };
+
+        packages.sdkmanager2 = pkgs.stdenv.mkDerivation {
           name = "sdkmanager-with-certificates";
           src = pkgs.sdkmanager;
           buildInputs = [ pkgs.makeWrapper ];
           postInstall = ''
             mkdir --parents "$out/bin"
-            cp "${pkgs.sdkmanager}/bin/sdkmanager" "$out/bin/sdkmanager"
             wrapProgram "$out/bin/sdkmanager" \
               --set NIX_SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
           '';
