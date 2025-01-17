@@ -8,7 +8,8 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,7 +17,6 @@ import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.useFakeTimers()
 jest.mock('libs/address/useFormatFullAddress')
 const offerVenues = [
   {
@@ -71,8 +71,6 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   useSearchVenueOffers: () => mockUseSearchVenueOffers(),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
-
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
@@ -102,13 +100,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<OfferPlace />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockDistance = null
     mockdate.set(new Date('2021-01-01'))
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
-    useFeatureFlagSpy.mockReturnValue(false) // this value corresponds to TARGET_XP_CINE_FROM_OFFER feature flag
   })
 
   it('should display change venue button when offer subcategory is "Livres audio", offer has an EAN and that there are other venues offering the same offer', () => {
@@ -125,7 +124,8 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display new xp cine block when offer subcategory is "Seance cine" and FF is on', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // this value corresponds to TARGET_XP_CINE_FROM_OFFER feature flag
+    setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
+
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {

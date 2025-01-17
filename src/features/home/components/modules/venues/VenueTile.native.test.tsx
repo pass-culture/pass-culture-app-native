@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
@@ -23,21 +23,24 @@ jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('VenueTile component', () => {
+  afterEach(() => (mockDistance = null))
+
   it('should navigate to the venue when clicking on the venue tile', async () => {
     renderVenueTile()
 
-    fireEvent.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByTestId(/Lieu/))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
-    })
+    expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
   })
 
-  it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
+  it('should log analytics event ConsultVenue when pressing on the venue tile', async () => {
     renderVenueTile()
 
-    fireEvent.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
@@ -47,10 +50,10 @@ describe('VenueTile component', () => {
     })
   })
 
-  it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
+  it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
     renderVenueTile({ homeEntryId: 'abcd' })
 
-    fireEvent.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,

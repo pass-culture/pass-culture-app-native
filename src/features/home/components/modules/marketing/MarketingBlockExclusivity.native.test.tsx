@@ -4,10 +4,9 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { render, screen, waitFor, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -25,9 +24,10 @@ const propsWithPublicationDateTomorrow = {
   offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
 }
 
-jest.mock('libs/location/hooks/useDistance')
-const mockUseDistance = useDistance as jest.Mock
-mockUseDistance.mockReturnValue('10 km')
+const mockDistance: string | null = null
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
 
 jest.mock('libs/subcategories/useSubcategory')
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
@@ -41,10 +41,10 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const user = userEvent.setup()
 jest.useFakeTimers()
-mockdate.set(new Date(today))
 
 describe('MarketingBlockExclusivity', () => {
   beforeEach(() => {
+    mockdate.set(new Date(today))
     setFeatureFlags()
   })
 
@@ -52,27 +52,23 @@ describe('MarketingBlockExclusivity', () => {
     render(<MarketingBlockExclusivity {...props} />)
 
     const titlelink = screen.getByText('La nuit des temps')
-    user.press(titlelink)
+    await user.press(titlelink)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', { id: '102280' })
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', { id: '102280' })
   })
 
   it('should log consult offer when pressed', async () => {
     render(<MarketingBlockExclusivity {...props} homeEntryId="fakeEntryId" />)
 
     const titlelink = screen.getByText('La nuit des temps')
-    user.press(titlelink)
+    await user.press(titlelink)
 
-    await waitFor(() => {
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        from: 'home',
-        moduleId: '1',
-        homeEntryId: 'fakeEntryId',
-        moduleName: 'La nuit des temps',
-        offerId: 102280,
-      })
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'home',
+      moduleId: '1',
+      homeEntryId: 'fakeEntryId',
+      moduleName: 'La nuit des temps',
+      offerId: 102280,
     })
   })
 
@@ -86,7 +82,7 @@ describe('MarketingBlockExclusivity', () => {
       )
       await screen.findByText('La nuit des temps')
 
-      expect(screen.getByText('Disponible le 15 janvier')).toBeOnTheScreen()
+      expect(await screen.findByText('Disponible le 15 janvier')).toBeOnTheScreen()
     })
 
     it('should display a generic text when shouldDisplayPublicationDate is false', async () => {

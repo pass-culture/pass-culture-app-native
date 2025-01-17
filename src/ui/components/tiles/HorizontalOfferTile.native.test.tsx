@@ -9,7 +9,6 @@ import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -27,9 +26,10 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   searchId: '539b285e',
 }
 
-jest.mock('libs/location/hooks/useDistance')
-const mockUseDistance = useDistance as jest.Mock
-mockUseDistance.mockReturnValue(null)
+let mockDistance: string | null = null
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
 
 const spyLogClickOnOffer = jest.fn()
 const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
@@ -42,14 +42,15 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('HorizontalOfferTile component', () => {
-  jest.useFakeTimers()
-
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
+
+  afterEach(() => (mockDistance = null))
 
   it('should navigate to the offer when pressing an offer', async () => {
     renderHorizontalOfferTile({
@@ -105,10 +106,8 @@ describe('HorizontalOfferTile component', () => {
     })
   })
 
-  // TODO(PC-33565): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should show distance if geolocation enabled', async () => {
-    mockUseDistance.mockReturnValueOnce('10 km')
+  it('should show distance if geolocation enabled', async () => {
+    mockDistance = '10 km'
 
     renderHorizontalOfferTile({
       offer: mockOffer,
@@ -119,7 +118,8 @@ describe('HorizontalOfferTile component', () => {
   })
 
   it('should not show distance if user has an unprecise location (type municipality or locality)', async () => {
-    mockUseDistance.mockReturnValueOnce(null)
+    mockDistance = null
+
     renderHorizontalOfferTile({
       offer: mockOffer,
       analyticsParams: mockAnalyticsParams,

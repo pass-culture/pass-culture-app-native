@@ -1,5 +1,4 @@
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -12,7 +11,7 @@ import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -22,11 +21,6 @@ const mockDistance: string | null = null
 jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
-
-jest
-  .spyOn(useFeatureFlag, 'useFeatureFlag')
-  // this value corresponds to WIP_NEW_OFFER_TILE feature flag
-  .mockReturnValue(false)
 
 const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
 
@@ -54,6 +48,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<OfferPlaylistList />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Similar offers', () => {
     describe('Same category playlist', () => {
       it('should not display same category playlist when offer has not it', () => {
@@ -77,7 +75,7 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        await user.press(screen.queryAllByText('La nuit des temps')[0] as ReactTestInstance)
+        await user.press(screen.getByText('La nuit des temps'))
 
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
@@ -110,7 +108,7 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
-        await user.press(screen.queryAllByText('La nuit des temps')[0] as ReactTestInstance)
+        await user.press(screen.getByText('La nuit des temps'))
 
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
