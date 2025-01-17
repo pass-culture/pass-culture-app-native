@@ -10,7 +10,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -27,6 +27,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.useFakeTimers()
+const user = userEvent.setup()
 
 describe('VideoModal', () => {
   beforeEach(() => {
@@ -49,9 +52,7 @@ describe('VideoModal', () => {
 
     const closeButton = screen.getByTestId('Fermer la modale vidéo')
 
-    await act(async () => {
-      fireEvent.press(closeButton)
-    })
+    await user.press(closeButton)
 
     expect(analytics.logHasDismissedModal).toHaveBeenNthCalledWith(1, {
       moduleId: 'abcd',
@@ -59,13 +60,6 @@ describe('VideoModal', () => {
       videoDuration: 267,
       seenDuration: 135,
     })
-  })
-
-  it('should render properly with FF on', async () => {
-    // TODO(PC-33973): test passes with no FF on
-    renderVideoModal()
-
-    expect(await screen.findByText('Découvre Lujipeka')).toBeOnTheScreen()
   })
 })
 

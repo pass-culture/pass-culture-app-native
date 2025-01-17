@@ -9,7 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -25,20 +25,29 @@ const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('VideoModule', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
+  it('should render properly', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    renderVideoModule()
+
+    expect(await screen.findByText(offerFixture.offer.name)).toBeOnTheScreen()
+  })
+
   it('should show modal when pressing video thumbnail', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
-    await act(async () => {})
 
     const button = screen.getByTestId('video-thumbnail')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -47,7 +56,7 @@ describe('VideoModule', () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
-    await act(async () => {})
+    await screen.findByText(offerFixture.offer.name)
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
       moduleId: videoModuleFixture.id,
@@ -62,9 +71,7 @@ describe('VideoModule', () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [] })
     renderVideoModule()
 
-    await waitFor(() => {
-      expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
-    })
+    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should render multi offer component if multiples offers', async () => {
@@ -73,7 +80,7 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
 
-    await act(async () => {})
+    await screen.findByText(videoModuleFixture.title)
 
     expect(multiOfferList).toBeOnTheScreen()
   })
@@ -84,7 +91,7 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('mobile-video-module')
 
-    await act(async () => {})
+    await screen.findByText(offerFixture.offer.name)
 
     expect(multiOfferList).toBeOnTheScreen()
   })
@@ -95,18 +102,9 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('desktop-video-module')
 
-    await act(async () => {})
+    await screen.findByText(offerFixture.offer.name)
 
     expect(multiOfferList).toBeOnTheScreen()
-  })
-
-  it('should render properly with FF on', async () => {
-    // TODO(PC-33973): test passes with no FF on
-
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
-
-    expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
   })
 })
 
