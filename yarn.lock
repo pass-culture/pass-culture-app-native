@@ -12990,7 +12990,7 @@ __metadata:
     eslint-plugin-typescript-sort-keys: ^2.3.0
     eslint-plugin-unused-imports: ^3.0.0
     file-loader: ^6.2.0
-    firebase: ^11.0.2
+    firebase: ^11.1.0
     flipper-plugin-react-query-native-devtools: ^3.0.0
     fs-extra: ^9.1.0
     geckodriver: ^3.2.0
@@ -19661,7 +19661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase@npm:^11.0.2":
+"firebase@npm:^11.1.0":
   version: 11.2.0
   resolution: "firebase@npm:11.2.0"
   dependencies:
