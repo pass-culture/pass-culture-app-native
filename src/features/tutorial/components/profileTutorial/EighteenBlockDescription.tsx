@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
-import { DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT } from 'shared/credits/defaultCredits'
+import { DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT_V2 } from 'shared/credits/defaultCredits'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -25,7 +25,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   const digitalCredit = formatCurrencyFromCents(
-    DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT,
+    DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT_V2,
     currency,
     euroToPacificFrancRate
   )
