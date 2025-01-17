@@ -26,7 +26,7 @@ const CreditBlockContent: FunctionComponent<{ enableCreditV3: boolean }> = ({ en
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
 
   const description = enableCreditV3
-    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser ton crédit.'
+    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
     : `Tu auras 2 ans pour utiliser tes ${eighteenYearsOldDeposit}`
 
   return (

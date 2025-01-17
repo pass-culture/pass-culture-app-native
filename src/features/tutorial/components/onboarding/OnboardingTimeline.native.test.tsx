@@ -94,7 +94,7 @@ describe('OnboardingTimeline', () => {
       render(<OnboardingTimeline age={18} />)
 
       const description = screen.getByText(
-        'Tu as jusqu’à la veille de tes 21 ans pour utiliser ton crédit.'
+        'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
       )
 
       expect(description).toBeOnTheScreen()
