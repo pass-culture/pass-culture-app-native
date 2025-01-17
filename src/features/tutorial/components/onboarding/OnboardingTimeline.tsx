@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
 
@@ -13,7 +12,8 @@ interface Props {
 }
 
 export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
-  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
   const stepperPropsMapping = enableCreditV3 ? stepperPropsMappingV2 : stepperPropsMappingV1
 
   const stepperProps = stepperPropsMapping.get(age)

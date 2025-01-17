@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
@@ -85,7 +87,12 @@ describe('SignupBanner', () => {
   })
 
   describe('when enableCreditV3 activated', () => {
-    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+    beforeEach(() => {
+      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
+        data: { ...defaultSettings, wipEnableCreditV3: true },
+        isLoading: false,
+      })
+    })
 
     it('should display banner with credit V3 subtitle', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)
