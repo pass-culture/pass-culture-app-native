@@ -1,6 +1,5 @@
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-
-export const DEFAULT_PACIFIC_FRANC_TO_EURO_RATE = 0.00838
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 export const useGetPacificFrancToEuroRate = (): number => {
   const { data: settings } = useSettingsContext()

@@ -1,6 +1,6 @@
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
-import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 import { getDayDescription, getMinAvailableDate } from './Calendar'
 import { Marking } from './useMarkedDates'

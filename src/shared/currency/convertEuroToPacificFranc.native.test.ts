@@ -1,4 +1,4 @@
-import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 import { convertEuroToPacificFranc, RoundUnit } from './convertEuroToPacificFranc'
 

@@ -1,5 +1,5 @@
 import { SettingsResponse } from 'api/gen'
-import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 export const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 export const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')

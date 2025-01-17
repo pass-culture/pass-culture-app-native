@@ -1,8 +1,6 @@
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
-import {
-  DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
-  useGetPacificFrancToEuroRate,
-} from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 

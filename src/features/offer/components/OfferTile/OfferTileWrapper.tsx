@@ -3,11 +3,11 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 
 type Props = Omit<

@@ -7,9 +7,9 @@ import {
   MovieScreeningBookingData,
   MovieScreeningUserData,
 } from 'features/offer/components/MovieScreeningCalendar/types'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 const mapScreeningsToEventCardProps = (

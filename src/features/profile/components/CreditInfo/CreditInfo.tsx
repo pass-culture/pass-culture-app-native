@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Spacer } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
