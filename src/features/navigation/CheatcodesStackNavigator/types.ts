@@ -1,5 +1,3 @@
-export type CheatcodesStackRouteName = keyof CheatcodesStackParamList
-
 export type CheatcodesStackParamList = {
   // Menu
   CheatcodesMenu: undefined
