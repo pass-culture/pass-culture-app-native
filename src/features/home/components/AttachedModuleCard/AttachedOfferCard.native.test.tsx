@@ -6,7 +6,6 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -36,9 +35,10 @@ mockUseSubcategories.mockReturnValue({
 
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
-jest.mock('libs/location/hooks/useDistance')
-const mockUseDistance = useDistance as jest.Mock
-mockUseDistance.mockReturnValue('10 km')
+const mockDistance: string | null = '10 km'
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
 
 describe('AttachedOfferCard', () => {
   beforeEach(() => {

@@ -3,8 +3,7 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useDistanceModule from 'libs/location/hooks/useDistance'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
@@ -24,7 +23,13 @@ const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEA
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const distanceSpy = jest.spyOn(useDistanceModule, 'useDistance')
+let mockDistance: string | null = null
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<OfferVenueBlock />', () => {
   mockUseVenueBlock.mockReturnValue({
@@ -34,8 +39,10 @@ describe('<OfferVenueBlock />', () => {
     onCopyAddressPress: mockOnCopyAddressPress,
   })
 
+  afterEach(() => (mockDistance = null))
+
   it('should display title and distance', () => {
-    distanceSpy.mockReturnValueOnce('1,1 km')
+    mockDistance = '1,1 km'
 
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
@@ -56,7 +63,7 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should render distance', () => {
-    distanceSpy.mockReturnValueOnce('1,1 km')
+    mockDistance = '1,1 km'
 
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
@@ -105,7 +112,7 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()
   })
 
-  it("should handle 'Changer le lieu de retrait' button press", () => {
+  it("should handle 'Changer le lieu de retrait' button press", async () => {
     const onChangeVenuePress = jest.fn()
     render(
       <OfferVenueBlock
@@ -115,7 +122,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Changer le lieu de retrait'))
+    await user.press(screen.getByText('Changer le lieu de retrait'))
 
     expect(onChangeVenuePress).toHaveBeenCalledTimes(1)
   })
@@ -138,10 +145,10 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.queryByText('Copier l’adresse')).not.toBeOnTheScreen()
   })
 
-  it('should handle copy address button press', () => {
+  it('should handle copy address button press', async () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
-    fireEvent.press(screen.getByText('Copier l’adresse'))
+    await user.press(screen.getByText('Copier l’adresse'))
 
     expect(mockOnCopyAddressPress).toHaveBeenCalledTimes(1)
   })
@@ -158,7 +165,7 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
   })
 
-  it('should handle see itinerary button press', () => {
+  it('should handle see itinerary button press', async () => {
     const onSeeItineraryPress = jest.fn()
     render(
       <OfferVenueBlock
@@ -168,7 +175,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+    await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(onSeeItineraryPress).toHaveBeenCalledTimes(1)
   })
@@ -230,7 +237,7 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
 
-  it('should handle see venue button press', () => {
+  it('should handle see venue button press', async () => {
     const onSeeVenuePress = jest.fn()
     render(
       <OfferVenueBlock
@@ -240,7 +247,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText(offerResponseSnap.venue.name))
+    await user.press(screen.getByText(offerResponseSnap.venue.name))
 
     expect(onSeeVenuePress).toHaveBeenCalledTimes(1)
   })
@@ -261,10 +268,8 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+    await user.press(screen.getByText('Voir l’itinéraire'))
 
-    await waitFor(() => {
-      expect(mockNavigateToItinerary).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
-    })
+    expect(mockNavigateToItinerary).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
   })
 })

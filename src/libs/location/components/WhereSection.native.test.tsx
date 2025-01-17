@@ -4,7 +4,7 @@ import { offerVenueResponseSnap as venue } from 'features/offer/fixtures/offerVe
 import { mockedFullAddress as address } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WhereSection } from 'libs/location/components/WhereSection'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, act, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
@@ -19,8 +19,11 @@ const beforeNavigateToItinerary = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('WhereSection', () => {
-  it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
+  it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', async () => {
     render(
       reactQueryProviderHOC(
         <WhereSection
@@ -33,9 +36,7 @@ describe('WhereSection', () => {
       )
     )
 
-    act(() => {
-      fireEvent.press(screen.getByText('Voir l’itinéraire'))
-    })
+    await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(beforeNavigateToItinerary).toHaveBeenCalledTimes(1)
   })

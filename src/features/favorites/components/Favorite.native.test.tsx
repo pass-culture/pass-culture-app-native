@@ -19,7 +19,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, userEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -67,6 +67,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const userAction = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<Favorite /> component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
@@ -78,7 +81,7 @@ describe('<Favorite /> component', () => {
 
     const offre = screen.getByText(favorite.offer.name)
     await act(async () => {
-      fireEvent.press(offre)
+      userAction.press(offre)
     })
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -101,7 +104,7 @@ describe('<Favorite /> component', () => {
     mockDistance = '10 km'
     renderFavorite()
 
-    fireEvent.press(screen.getByText('Supprimer'))
+    await userAction.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
@@ -118,7 +121,7 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    fireEvent.press(screen.getByText('Supprimer'))
+    await userAction.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
@@ -134,7 +137,7 @@ describe('<Favorite /> component', () => {
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
     await act(async () => {
-      fireEvent.press(shareButton)
+      userAction.press(shareButton)
     })
 
     expect(shareSpy).toHaveBeenCalledTimes(1)
@@ -145,7 +148,7 @@ describe('<Favorite /> component', () => {
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
     await act(async () => {
-      fireEvent.press(shareButton)
+      userAction.press(shareButton)
     })
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {

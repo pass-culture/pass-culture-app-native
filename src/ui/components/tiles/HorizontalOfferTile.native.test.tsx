@@ -42,14 +42,15 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('HorizontalOfferTile component', () => {
-  jest.useFakeTimers()
-
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
+
+  afterEach(() => (mockDistance = null))
 
   it('should navigate to the offer when pressing an offer', async () => {
     renderHorizontalOfferTile({

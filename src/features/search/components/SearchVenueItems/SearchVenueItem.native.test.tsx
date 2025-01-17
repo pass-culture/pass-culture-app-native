@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
@@ -45,7 +45,12 @@ const ITEM_HEIGHT = 96
 const ITEM_WIDTH = 144
 const searchId = uuidv4()
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SearchVenueItem />', () => {
+  afterEach(() => (mockDistance = null))
+
   it('should render venue item correctly', () => {
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
@@ -65,14 +70,12 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByTestId(/Lieu/))
 
-    await waitFor(() => {
-      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
-        venueId: Number(mockAlgoliaVenue.objectID),
-        searchId,
-        from: 'searchVenuePlaylist',
-      })
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      venueId: Number(mockAlgoliaVenue.objectID),
+      searchId,
+      from: 'searchVenuePlaylist',
     })
   })
 
@@ -103,14 +106,12 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId(/Lieu/))
+    await user.press(screen.getByTestId(/Lieu/))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Venue', {
-        id: Number(mockAlgoliaVenue.objectID),
-        from: 'venue',
-        searchId: 'testUuidV4',
-      })
+    expect(navigate).toHaveBeenCalledWith('Venue', {
+      id: Number(mockAlgoliaVenue.objectID),
+      from: 'venue',
+      searchId: 'testUuidV4',
     })
   })
 
