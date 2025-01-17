@@ -7956,7 +7956,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                       ]
                     }
                   >
-                    Tu as jusqu’à la veille de tes 21 ans pour utiliser ton crédit.
+                    Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
                   </Text>
                 </View>
                 <View
@@ -8937,7 +8937,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                       ]
                     }
                   >
-                    Tu as jusqu’à la veille de tes 21 ans pour utiliser ton crédit.
+                    Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
                   </Text>
                 </View>
                 <View
