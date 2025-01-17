@@ -14,7 +14,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useOfferDates } from 'shared/hook/useOfferDates'
+import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -48,7 +48,11 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const prePopulateOffer = usePrePopulateOffer()
   const theme = useTheme()
 
-  const displayDate = useOfferDates(offer)
+  const displayDate = getOfferDates(
+    offer.offer.subcategoryId,
+    offer.offer.dates,
+    offer.offer.releaseDate
+  )
 
   const displayPrice = getDisplayedPrice(
     offer?.offer?.prices,

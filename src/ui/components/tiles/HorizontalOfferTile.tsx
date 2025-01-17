@@ -13,7 +13,7 @@ import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useOfferDates } from 'shared/hook/useOfferDates'
+import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
@@ -52,7 +52,11 @@ export const HorizontalOfferTile = ({
 
   const offerId = Number(objectID)
 
-  const formattedDate = useOfferDates(offer)
+  const formattedDate = getOfferDates(
+    offerDetails.subcategoryId,
+    offerDetails.dates,
+    offerDetails.releaseDate
+  )
 
   const formattedPrice = getDisplayedPrice(
     prices,
