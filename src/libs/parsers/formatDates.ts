@@ -62,8 +62,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
   const firstUnique = uniques[0]
   if (firstUnique) {
-    if (uniques.length === 1) return formatToFrenchDate(new Date(firstUnique))
-    return `Dès le ${formatToFrenchDate(new Date(firstUnique))}`
+    return `${uniques.length === 1 ? '' : 'Dès le '}${formatToFrenchDate(new Date(firstUnique))}`
   }
   return undefined
 }

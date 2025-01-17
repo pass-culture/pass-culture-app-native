@@ -31,9 +31,9 @@
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53
 ./src/libs/itinerary/useItinerary.native.test.ts:61
-./src/libs/parsers/formatDates.ts:115
-./src/libs/parsers/formatDates.ts:117
-./src/libs/parsers/formatDates.ts:122
+./src/libs/parsers/formatDates.ts:118
+./src/libs/parsers/formatDates.ts:120
+./src/libs/parsers/formatDates.ts:125
 ./src/libs/parsers/highlightLinks.native.test.tsx:34
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
