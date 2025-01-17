@@ -50,6 +50,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CREDIT_V3 = 'enableCreditV3',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
+  ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',

@@ -1,7 +1,13 @@
 import { isBefore, subHours } from 'date-fns'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { formatToCompleteFrenchDateTime, getTimeZonedDate } from 'libs/parsers/formatDates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  formatToCompleteFrenchDate,
+  formatToHour,
+  getTimeZonedDate,
+} from 'libs/parsers/formatDates'
 
 type Parameters = {
   subcategoryId: SubcategoryIdEnum
@@ -18,19 +24,22 @@ export const useSafeSeatWithQrCode = ({
   venue,
   categoriesToHide = [],
 }: Parameters) => {
+  const enableHideTicket = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET)
+
   const now = new Date()
   const isAmongCategoriesToHide = categoriesToHide.includes(subcategoryId)
   const isBeforeHoursOffset = isBefore(
     now,
     subHours(new Date(beginningDatetime || ''), qrCodeVisibilityHoursBeforeEvent)
   )
-  const shouldbeHidden = isAmongCategoriesToHide && isBeforeHoursOffset
+  const shouldbeHidden = isAmongCategoriesToHide && isBeforeHoursOffset && enableHideTicket
 
   const timezonedDate = getTimeZonedDate(
     subHours(new Date(beginningDatetime), qrCodeVisibilityHoursBeforeEvent),
     venue?.timezone
   )
-  const day = formatToCompleteFrenchDateTime(timezonedDate, false)
+  const day = formatToCompleteFrenchDate(timezonedDate, false)
+  const time = formatToHour(timezonedDate)
 
-  return { shouldQrCodeBeHidden: shouldbeHidden, day }
+  return { shouldQrCodeBeHidden: shouldbeHidden, day, time }
 }

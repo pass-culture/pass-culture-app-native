@@ -28,7 +28,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
   venue,
   ...seatWithQrCodeProps
 }) => {
-  const { day, shouldQrCodeBeHidden } = useSafeSeatWithQrCode({
+  const { day, time, shouldQrCodeBeHidden } = useSafeSeatWithQrCode({
     beginningDatetime,
     qrCodeVisibilityHoursBeforeEvent,
     subcategoryId,
@@ -36,9 +36,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
     categoriesToHide,
   })
 
-  if (!shouldQrCodeBeHidden) {
-    return <SeatWithQrCode {...seatWithQrCodeProps} />
-  }
+  if (!shouldQrCodeBeHidden) return <SeatWithQrCode {...seatWithQrCodeProps} />
 
   return (
     <DashedContainer>
@@ -49,6 +47,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
           <View>
             <StyledBody>Ton billet sera disponible ici le</StyledBody>
             <StyledBody>{day}</StyledBody>
+            <StyledBody>à {time}</StyledBody>
           </View>
         </ContentContainer>
       </BlurredQrCodeContainer>
