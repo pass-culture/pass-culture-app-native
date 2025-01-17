@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { ComponentType } from 'react'
+import React from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
@@ -31,13 +31,14 @@ import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/Cheatcodes
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import {
-  CheatcodesStackParamList,
-  CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/types'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
+import { GenericRoute } from 'features/navigation/RootNavigator/types'
 
-const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: ComponentType }> = [
+export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
+
+const routes: CheatcodesStackRoute[] = [
   /**** MENU ****/
   {
     name: 'CheatcodesMenu',
@@ -161,10 +162,10 @@ const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: Compone
 
 const CheatcodesStack = createStackNavigator<CheatcodesStackParamList>()
 
+const { Screens } = getScreensAndConfig(routes, CheatcodesStack.Screen)
+
 export const CheatcodesStackNavigator = () => (
   <CheatcodesStack.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    {routes.map(({ name, component }) => (
-      <CheatcodesStack.Screen name={name} key={name} component={component} />
-    ))}
+    {Screens}
   </CheatcodesStack.Navigator>
 )
