@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -32,11 +31,6 @@ jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
-  isCookiesListUpToDate: true,
-  cookiesLastUpdate: { lastUpdated: new Date('10/12/2022'), lastUpdateBuildVersion: 10208002 },
-}) // Cookies hook used in useBookingsReactionHelpers
-
 describe('<Home/>', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
@@ -49,10 +43,6 @@ describe('<Home/>', () => {
         modules: [formattedBusinessModule],
         homeEntryId: 'fakeEntryId',
       })
-      mockUseHomepageData.mockReturnValueOnce({
-        modules: [formattedBusinessModule],
-        homeEntryId: 'fakeEntryId',
-      }) // Adding useBookingsReactionHelpers to Home.tsx caused an extra render
       mockUseHomepageData.mockReturnValueOnce({
         modules: [formattedBusinessModule],
         homeEntryId: 'fakeEntryId',

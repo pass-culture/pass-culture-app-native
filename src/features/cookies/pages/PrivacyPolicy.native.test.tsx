@@ -26,7 +26,7 @@ const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(default
 
 const mockUseIsCookiesListUpToDate = jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
-  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined })
+  .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined, isLoading: false })
 
 jest.mock('features/navigation/navigationRef')
 
@@ -67,6 +67,7 @@ describe('<PrivacyPolicy />', () => {
     mockUseIsCookiesListUpToDate.mockReturnValueOnce({
       isCookiesListUpToDate: true,
       cookiesLastUpdate: undefined,
+      isLoading: false,
     })
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,
@@ -86,6 +87,7 @@ describe('<PrivacyPolicy />', () => {
     mockUseIsCookiesListUpToDate.mockReturnValueOnce({
       isCookiesListUpToDate: false,
       cookiesLastUpdate: undefined,
+      isLoading: false,
     })
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,

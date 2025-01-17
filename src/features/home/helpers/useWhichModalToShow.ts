@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { BookingsResponse } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
+import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import {
   ModalDisplayState,
   useBookingsReactionHelpers,
@@ -25,8 +26,14 @@ export const useWhichModalToShow = (
   )
   const { shouldShowAchievementSuccessModal, achievementsToShow } =
     useShouldShowAchievementSuccessModal()
-  if (!isBookingsLoading && modalToShow === ModalToShow.PENDING) {
-    if (shouldShowReactionModal === ModalDisplayState.SHOULD_SHOW) {
+  const { isCookiesListUpToDate, isLoading: isCookiesListUpToDateLoading } =
+    useIsCookiesListUpToDate()
+  const shouldShowCookiesModal = !isCookiesListUpToDate
+
+  if (!isCookiesListUpToDateLoading && !isBookingsLoading && modalToShow === ModalToShow.PENDING) {
+    if (shouldShowCookiesModal) {
+      setModalToShow(ModalToShow.NONE)
+    } else if (shouldShowReactionModal === ModalDisplayState.SHOULD_SHOW) {
       setModalToShow(ModalToShow.REACTION)
     } else if (shouldShowAchievementSuccessModal === ModalDisplayState.SHOULD_SHOW) {
       setModalToShow(ModalToShow.ACHIEVEMENT)
