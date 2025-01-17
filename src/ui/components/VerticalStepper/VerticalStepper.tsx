@@ -21,6 +21,7 @@ export type VerticalStepperProps = FirstOrLastProps &
      * Use this if you want to override middle icon.
      */
     iconComponent?: React.JSX.Element
+    addMoreSpacingToIcons?: boolean
   }
 
 type CustomComponentProps = FirstOrLastProps & {
@@ -36,6 +37,7 @@ export const VerticalStepper = memo(function VerticalStepper({
   iconComponent,
   isFirst,
   isLast,
+  addMoreSpacingToIcons,
 }: VerticalStepperProps) {
   const theme = useTheme()
 
@@ -109,7 +111,7 @@ export const VerticalStepper = memo(function VerticalStepper({
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
-      <IconWrapper>
+      <IconWrapper addMoreSpacingToIcons={addMoreSpacingToIcons}>
         <Icon testID="icon" />
       </IconWrapper>
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
@@ -153,6 +155,8 @@ const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))
 
-const IconWrapper = styled.View({
-  marginVertical: getSpacing(0.5),
-})
+const IconWrapper = styled.View<{ addMoreSpacingToIcons: boolean }>(
+  ({ addMoreSpacingToIcons }) => ({
+    marginVertical: addMoreSpacingToIcons ? getSpacing(2.5) : getSpacing(0.5),
+  })
+)

@@ -37,6 +37,8 @@ import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Bulb } from 'ui/svg/icons/Bulb'
+import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
+import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
@@ -182,6 +184,8 @@ export const SecondaryAndBiggerIcons = {
   BicolorWarning,
   Booking,
   Bulb,
+  CakeOneCandle,
+  CakeTwoCandles,
   Calendar,
   CalendarS,
   Check,

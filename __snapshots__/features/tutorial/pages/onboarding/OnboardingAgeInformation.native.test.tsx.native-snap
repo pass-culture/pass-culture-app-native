@@ -257,6 +257,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -515,6 +516,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -768,6 +770,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1021,6 +1024,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1167,6 +1171,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1903,6 +1908,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2143,6 +2149,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2401,6 +2408,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2654,6 +2662,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2800,6 +2809,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3536,6 +3546,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3776,6 +3787,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4016,6 +4028,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4274,6 +4287,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4420,6 +4434,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5156,6 +5171,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5396,6 +5412,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5636,6 +5653,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5876,6 +5894,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -7543,6 +7562,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -7801,6 +7821,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -8537,6 +8558,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -8777,6 +8799,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {

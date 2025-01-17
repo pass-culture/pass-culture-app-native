@@ -5,6 +5,7 @@ import { Share } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import * as SettingsContext from 'features/auth/context/SettingsContext'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
@@ -50,6 +51,8 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
   refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
+
+const mockUseSettingContext = jest.spyOn(SettingsContext, 'useSettingsContext')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
@@ -315,6 +318,22 @@ describe('Profile component', () => {
       await user.press(howItWorkButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+    })
+
+    it('should navigate to Age Information V3 when tutorial row is clicked, user is logged in and enableCreditV3 is true', async () => {
+      mockUseSettingContext.mockReturnValueOnce({
+        data: {
+          wipEnableCreditV3: true,
+        },
+      } as SettingsContext.ISettingsContext)
+
+      mockdate.set(CURRENT_DATE)
+      renderProfile()
+
+      const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
+      await user.press(howItWorkButton)
+
+      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
     })
 
     it('should navigate when the faq row is clicked', async () => {
