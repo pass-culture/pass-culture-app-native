@@ -377,6 +377,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
   logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
+  logHasSearchedCinemaQuery: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEARCHED_CINEMA_QUERY }),
   logHasSeenAllVideo: (params: {
     moduleId: string
     seenDuration?: number
