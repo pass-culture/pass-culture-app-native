@@ -65,9 +65,18 @@ describe('AttachedOfferCard', () => {
 
   it('should display price if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
+
     const price = screen.getByText('Dès 34 €')
 
     expect(price).toBeOnTheScreen()
+  })
+
+  it('should display bottomBannerText if offer has one', () => {
+    render(<AttachedOfferCard offer={offer} comingSoon="Disponible le 17 février" />)
+
+    const comingSoon = screen.getByText('Disponible le 17 février')
+
+    expect(comingSoon).toBeOnTheScreen()
   })
 
   it('should have accessibility label', () => {

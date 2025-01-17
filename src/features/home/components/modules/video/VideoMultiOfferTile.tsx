@@ -13,7 +13,7 @@ import { useDistance } from 'libs/location/hooks/useDistance'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useOfferDates } from 'shared/hook/useOfferDates'
+import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -48,8 +48,11 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     offer.offer.isDuo && user?.isBeneficiary
   )
 
-  const displayDate = useOfferDates(offer)
-
+  const displayDate = getOfferDates(
+    offer.offer.subcategoryId,
+    offer.offer.dates,
+    offer.offer.releaseDate
+  )
   const displayDistance = useDistance(offer._geoloc)
 
   const categoryId = mapping[offer.offer.subcategoryId]

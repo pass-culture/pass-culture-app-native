@@ -20,7 +20,7 @@ describe('<SuspendedAccountUponUserRequest/>', () => {
       })
       const { container } = render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-      await screen.findByText('Tu as jusqu’au 1 juillet 2022 à 00h00 pour réactiver ton compte.')
+      await screen.findByText('Tu as jusqu’au 1er juillet 2022 à 00h00 pour réactiver ton compte.')
 
       const results = await checkAccessibilityFor(container)
 

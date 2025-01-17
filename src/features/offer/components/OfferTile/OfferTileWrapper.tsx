@@ -7,7 +7,7 @@ import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRa
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useOfferDates } from 'shared/hook/useOfferDates'
+import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 
 type Props = Omit<
@@ -25,7 +25,11 @@ export const OfferTileWrapper = (props: Props) => {
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const formattedDate = useOfferDates(item)
+  const formattedDate = getOfferDates(
+    item.offer.subcategoryId,
+    item.offer.dates,
+    item.offer.releaseDate
+  )
   const formattedPrice = getDisplayedPrice(
     item.offer?.prices,
     currency,

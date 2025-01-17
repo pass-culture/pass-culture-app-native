@@ -9,6 +9,10 @@ export const pad = (num: number): string => {
   return res.length === 1 ? '0' + res : res
 }
 
+export const getTimeStampInMillis = (dates: number[]) => {
+  return dates?.map((timestampInSec) => timestampInSec * 1000)
+}
+
 export function formatToHour(date: Date) {
   return `${pad(date.getHours())}h${pad(date.getMinutes())}`
 }
@@ -30,18 +34,15 @@ export const decomposeDate = (timestamp: number) => {
   return { day, month, year }
 }
 
-// a-t-on encore besoin du type Date ?
-export const formatToFrenchDate = (
-  date: Date | number | string | { day: number; month: string; year: number },
-  shouldFormatFirstDayOfTheMonth?: boolean
-) => {
-  const formatedDate = typeof date === 'string' ? new Date(date) : date
-  const timestamp = formatedDate instanceof Date ? formatedDate.getTime() : formatedDate
-  const { day, month, year } = typeof timestamp === 'number' ? decomposeDate(timestamp) : timestamp
+export const formatToFrenchDate = (date: Date) => {
+  const { year } = decomposeDate(date.getTime())
+  return `${formatToFrenchDateWithoutYear(date)} ${year}`
+}
 
-  if (shouldFormatFirstDayOfTheMonth) return `${day}er ${month} ${year}`
-
-  return `${day} ${month} ${year}`
+export const formatToFrenchDateWithoutYear = (date: Date) => {
+  const { day, month } = decomposeDate(date.getTime())
+  const suffix = isFirstDayOfMonth(date) ? 'er' : ''
+  return `${day}${suffix} ${month}`
 }
 
 /**
@@ -59,24 +60,36 @@ export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): num
  */
 export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
-  if (uniques.length === 0) return
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  if (uniques.length === 1) return formatToFrenchDate(uniques[0])
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  return `Dès le ${formatToFrenchDate(uniques[0])}`
+  const firstUnique = uniques[0]
+  if (firstUnique) {
+    return `${uniques.length === 1 ? '' : 'Dès le '}${formatToFrenchDate(new Date(firstUnique))}`
+  }
+  return undefined
 }
 
 /**
- * @param releaseDate: A timestamp in millisecond
+ * @param releaseDate: Date
  */
-export const formatReleaseDate = (releaseDate: number): string => {
-  const formattedDate = formatToFrenchDate(releaseDate, isFirstDayOfMonth(releaseDate))
+export const formatReleaseDate = (releaseDate: Date): string => {
+  const formattedDate = formatToFrenchDate(releaseDate)
 
-  if (isAfter(releaseDate, new Date())) {
-    return `Dès le ${formattedDate}`
+  return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : `Sorti le ${formattedDate}`
+}
+
+/**
+ * @param publicationDate: Date
+ */
+export const formatPublicationDate = (
+  publicationDate: Date,
+  shouldDisplayPublicationDate?: boolean
+): string | undefined => {
+  if (isAfter(publicationDate, new Date())) {
+    return shouldDisplayPublicationDate
+      ? `Disponible le ${formatToFrenchDateWithoutYear(publicationDate)}`
+      : 'Bientôt disponible'
   }
 
-  return `Sorti le ${formattedDate}`
+  return undefined
 }
 
 type MonthDays = number[]
@@ -155,8 +168,7 @@ export const getFormattedDates = (dates: string[] | undefined) => {
 
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
   if (timestamps.length === 0) return
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  if (timestamps.length === 1) return formatToFrenchDate(timestamps[0])
+  if (timestamps.length === 1 && timestamps[0]) return formatToFrenchDate(new Date(timestamps[0]))
 
   const decomposedDates = timestamps.map(decomposeDate)
 
@@ -177,14 +189,17 @@ export const getFormattedDates = (dates: string[] | undefined) => {
   return joinArrayElement(formatDates)
 }
 
-export const formatDatePeriod = (timestamps: number[]) => {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const first = decomposeDate(timestamps[0])
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const last = decomposeDate(timestamps.slice(-1)[0])
-  const formattedEndDate = formatToFrenchDate(last)
+export const formatDatePeriod = (timestamps: number[]): string => {
+  const lastTimestamp = timestamps.at(-1)
+  const firstTimestamp = timestamps[0]
+  if (timestamps.length < 1 || !firstTimestamp || !lastTimestamp)
+    throw new Error('timestamps is missing in formatDatePeriod argument')
+  const first = decomposeDate(firstTimestamp)
+  const last = decomposeDate(lastTimestamp)
+  const formattedEndDate = formatToFrenchDate(new Date(lastTimestamp))
 
-  if (first.year !== last.year) return `Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
+  if (first.year !== last.year)
+    return `Du ${formatToFrenchDate(new Date(firstTimestamp))} au ${formattedEndDate}`
   if (first.month !== last.month) return `Du ${first.day} ${first.month} au ${formattedEndDate}`
   if (first.day !== last.day) return `Du ${first.day} au ${formattedEndDate}`
   return formattedEndDate

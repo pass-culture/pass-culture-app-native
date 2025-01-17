@@ -382,6 +382,7 @@ export type HighlightOfferModule = {
   color: Color
   isGeolocated?: boolean
   aroundRadius?: number
+  displayPublicationDate?: boolean
 }
 
 export type OffersPlaylistParameters = PlaylistOffersParams[]

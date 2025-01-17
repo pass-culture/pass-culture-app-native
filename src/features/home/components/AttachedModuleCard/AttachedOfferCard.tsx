@@ -5,7 +5,7 @@ import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import { formatDates } from 'libs/parsers/formatDates'
+import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -15,9 +15,10 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 type Props = {
   offer: Offer
   shouldFixHeight?: boolean
+  comingSoon?: string
 }
 
-export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) => {
+export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, comingSoon }) => {
   const { offer: attachedOffer } = offer
   const { user } = useAuthContext()
   const mapping = useCategoryIdMapping()
@@ -28,8 +29,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) =
   const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
   const details = []
 
-  const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const date = formatDates(timestampsInMillis)
+  const date = attachedOffer.dates && formatDates(getTimeStampInMillis(attachedOffer.dates))
   const price = getDisplayedPrice(
     attachedOffer.prices,
     currency,
@@ -58,6 +58,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) =
       details={details}
       rightTagLabel={distanceLabel}
       accessibilityLabel={accessibilityLabel}
+      bottomBannerText={comingSoon}
       LeftImageComponent={() => (
         <OfferImage
           imageUrl={attachedOffer?.thumbUrl}

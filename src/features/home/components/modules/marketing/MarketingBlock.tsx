@@ -11,13 +11,17 @@ export type MarketingBlockProps = {
   accessibilityLabel?: string
   backgroundImageUrl?: string
   AttachedCardComponent: React.ReactNode
+  withGradient?: boolean
+  gradientHeight?: string
 }
+
+const GRADIENT_HEIGHT = '100%'
 
 export const MarketingBlock = (props: MarketingBlockProps) => {
   const { isDesktopViewport } = useTheme()
 
   if (isDesktopViewport) {
-    return <MarketingBlockContentDesktop {...props} />
+    return <MarketingBlockContentDesktop {...props} gradientHeight={GRADIENT_HEIGHT} />
   }
-  return <MarketingBlockContent {...props} />
+  return <MarketingBlockContent {...props} gradientHeight={GRADIENT_HEIGHT} />
 }

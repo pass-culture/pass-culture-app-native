@@ -114,7 +114,7 @@ describe('<BookingDetailsCancelButton />', () => {
 
     expect(
       screen.getByText(
-        'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a01 novembre 2020'
+        'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er novembre 2020'
       )
     ).toBeOnTheScreen()
   })
@@ -130,7 +130,7 @@ describe('<BookingDetailsCancelButton />', () => {
 
     expect(
       screen.getByText(
-        'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
+        'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er novembre 2020'
       )
     ).toBeOnTheScreen()
   })

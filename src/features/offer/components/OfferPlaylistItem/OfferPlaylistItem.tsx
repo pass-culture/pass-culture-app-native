@@ -5,7 +5,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
-import { formatDates } from 'libs/parsers/formatDates'
+import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
@@ -45,7 +45,7 @@ export const OfferPlaylistItem = ({
   priceDisplay,
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
-    const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+    const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const categoryLabel = item.offer.bookFormat || labelMapping[offer.subcategoryId] || ''
     const categoryId = categoryMapping[offer.subcategoryId]
 

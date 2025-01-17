@@ -18,6 +18,7 @@ type UseHightlightOfferParams = {
   offerTag?: string
   isGeolocated?: boolean
   aroundRadius?: number
+  publicationDate?: number
 }
 
 enum QueryMode {

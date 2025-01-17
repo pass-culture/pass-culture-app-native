@@ -209,7 +209,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             ]
           }
         >
-          1 décembre 2006
+          1er décembre 2006
         </Text>
       </View>
     </View>
@@ -602,7 +602,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             ]
           }
         >
-          1 décembre 2006
+          1er décembre 2006
         </Text>
       </View>
     </View>
