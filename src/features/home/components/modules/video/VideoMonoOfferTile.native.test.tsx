@@ -12,7 +12,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -28,7 +28,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
 const hideModalMock = jest.fn()
 
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 describe('VideoMonoOfferTile', () => {
@@ -37,10 +36,16 @@ describe('VideoMonoOfferTile', () => {
     setFeatureFlags()
   })
 
+  it('should render properly', async () => {
+    renderOfferVideoModule()
+
+    expect(await screen.findByText(mockOffer.offer.name)).toBeOnTheScreen()
+  })
+
   it('should redirect to an offer when pressing it', async () => {
     renderOfferVideoModule()
 
-    await user.press(screen.getByText('La nuit des temps'))
+    await user.press(screen.getByText(mockOffer.offer.name))
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: 102_280 })
   })
@@ -49,7 +54,7 @@ describe('VideoMonoOfferTile', () => {
     const offerWithoutImage = omit(mockOffer, 'offer.thumbUrl')
     renderOfferVideoModule(offerWithoutImage)
 
-    await act(async () => {})
+    await screen.findByText(mockOffer.offer.name)
 
     expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
   })
@@ -57,21 +62,11 @@ describe('VideoMonoOfferTile', () => {
   it('should log ConsultOffer on when pressing it', async () => {
     renderOfferVideoModule()
 
-    await user.press(screen.getByText('La nuit des temps'))
+    await user.press(screen.getByText(mockOffer.offer.name))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: +mockOffer.objectID,
       ...mockAnalyticsParams,
-    })
-  })
-
-  describe('With FF on', () => {
-    it('should render properly', async () => {
-      // TODO(PC-33973): test passes with no FF on
-
-      renderOfferVideoModule()
-
-      expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
     })
   })
 })
