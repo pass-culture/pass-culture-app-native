@@ -3320,6 +3320,11 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   rates?: Rates
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  wipEnableCreditV3: boolean
 }
 /**
  * @export
