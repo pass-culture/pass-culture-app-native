@@ -21,4 +21,5 @@ export const defaultSettings: SettingsResponse = {
   isRecaptchaEnabled: true,
   objectStorageUrl: 'https://localhost-storage',
   rates: { pacificFrancToEuro: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE },
+  wipEnableCreditV3: false,
 }
