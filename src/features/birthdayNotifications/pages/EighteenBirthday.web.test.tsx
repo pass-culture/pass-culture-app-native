@@ -7,8 +7,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EighteenBirthday } from './EighteenBirthday'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('shared/user/useDepositAmountsByAge')
 const mockUseDepositAmountsByAge = useDepositAmountsByAge as jest.Mock
 mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' })

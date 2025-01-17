@@ -10,8 +10,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.setTimeout(20000) // to avoid exceeded timeout
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

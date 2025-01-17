@@ -6,8 +6,6 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext')

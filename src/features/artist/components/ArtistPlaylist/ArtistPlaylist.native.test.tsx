@@ -23,7 +23,6 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('ArtistPlaylist', () => {
   beforeEach(() => {

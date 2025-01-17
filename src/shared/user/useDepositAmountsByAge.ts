@@ -1,5 +1,4 @@
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import {
   DEFAULT_FIFTEEN_YEARS_OLD_AMOUNT,
   DEFAULT_SIXTEEN_YEARS_OLD_AMOUNT,
@@ -8,6 +7,7 @@ import {
 } from 'shared/credits/defaultCredits'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 
 export function useDepositAmountsByAge() {
   const { data: settings } = useSettingsContext()

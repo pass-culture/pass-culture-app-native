@@ -3,7 +3,6 @@ export const FIRESTORE_ROOT_COLLECTION = 'root'
 export enum RemoteStoreDocuments {
   APPLICATION_VERSIONS = 'applicationVersions',
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
-  EXCHANGE_RATES = 'exchangeRates',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
   UBBLE = 'ubble',
@@ -21,10 +20,6 @@ export enum RemoteStoreCookies {
 
 export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
-}
-
-export enum RemoteStoreExchangeRates {
-  PACIFIC_FRANC_TO_EURO_RATE = 'pacificFrancToEuroRate',
 }
 
 export enum RemoteStoreUbble {

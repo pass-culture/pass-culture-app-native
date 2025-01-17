@@ -4,15 +4,13 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
-  useGetPacificFrancToEuroRate,
-} from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
@@ -55,10 +53,10 @@ export const CheatcodesScreenNewCaledonia = () => {
       <TypoDS.Body>Devise affichée à l’utilisateur&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{currency}</TypoDS.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change sur Firestore&nbsp;:</TypoDS.Body>
+      <TypoDS.Body>Taux de change depuis le backend&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{pacificFrancToEuroRate}</TypoDS.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change dans le code&nbsp;:</TypoDS.Body>
+      <TypoDS.Body>Taux de change par défaut côté frontend&nbsp;:</TypoDS.Body>
       <TypoDS.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</TypoDS.Title3>
       <StyledSeparator />
       <TextInput

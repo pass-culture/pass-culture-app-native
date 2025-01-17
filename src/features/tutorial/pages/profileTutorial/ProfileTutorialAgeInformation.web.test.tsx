@@ -9,8 +9,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'

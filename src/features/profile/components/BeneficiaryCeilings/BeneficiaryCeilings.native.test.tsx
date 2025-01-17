@@ -16,7 +16,6 @@ const mockUseIsUserUnderageBeneficiary = jest
   .mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
 
 describe('BeneficiaryCeilings', () => {
   beforeEach(() => {

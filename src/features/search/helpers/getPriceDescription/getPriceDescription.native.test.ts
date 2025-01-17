@@ -1,6 +1,6 @@
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
-import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 describe('getPriceDescription', () => {
   it('should return an empty string when minimum price is 0 and maximum price undefined', () => {

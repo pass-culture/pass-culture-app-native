@@ -1,5 +1,5 @@
-import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 import { formatCurrencyFromCentsWithoutCurrencySymbol } from './formatCurrencyFromCentsWithoutCurrencySymbol'
 

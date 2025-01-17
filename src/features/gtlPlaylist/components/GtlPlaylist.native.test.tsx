@@ -58,8 +58,6 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.useFakeTimers()
 
 const user = userEvent.setup()

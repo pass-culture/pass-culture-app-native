@@ -2,8 +2,6 @@ import { convertToMinutes } from 'features/offer/components/MovieScreeningCalend
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('convertToMinutes', () => {

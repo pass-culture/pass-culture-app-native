@@ -38,9 +38,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-const user = userEvent.setup()
 
+const user = userEvent.setup()
 jest.useFakeTimers()
 mockdate.set(new Date(today))
 

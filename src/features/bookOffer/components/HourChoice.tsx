@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { useGetPacificFrancToEuroRate } from 'libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { getSpacing } from 'ui/theme'
 

@@ -16,8 +16,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
-jest.mock('libs/firebase/firestore/exchangeRates/useGetPacificFrancToEuroRate')
-
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/subcategories/useSubcategory')
