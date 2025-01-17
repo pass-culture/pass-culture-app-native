@@ -97,7 +97,21 @@ describe('TicketBody', () => {
           />
         )
 
-        expect(screen.getByText('11 mars 2021 à 21h00')).toBeOnTheScreen()
+        expect(screen.getByText('11 mars 2021')).toBeOnTheScreen()
+      })
+
+      it('should display the availability time', () => {
+        render(
+          <TicketBody
+            {...initialProps}
+            beginningDatetime="2021-03-13T20:00:00"
+            subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
+            externalBookings={{ barcode: 'barcode' }}
+            venue={venue}
+          />
+        )
+
+        expect(screen.getByText('à 21h00')).toBeOnTheScreen()
       })
 
       describe('when FF enableHideTicket is false', () => {

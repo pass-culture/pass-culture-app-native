@@ -3,7 +3,11 @@ import { isBefore, subHours } from 'date-fns'
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { formatToCompleteFrenchDateTime, getTimeZonedDate } from 'libs/parsers/formatDates'
+import {
+  formatToCompleteFrenchDate,
+  formatToHour,
+  getTimeZonedDate,
+} from 'libs/parsers/formatDates'
 
 type Parameters = {
   subcategoryId: SubcategoryIdEnum
@@ -34,7 +38,8 @@ export const useSafeSeatWithQrCode = ({
     subHours(new Date(beginningDatetime), qrCodeVisibilityHoursBeforeEvent),
     venue?.timezone
   )
-  const day = formatToCompleteFrenchDateTime(timezonedDate, false)
+  const day = formatToCompleteFrenchDate(timezonedDate, false)
+  const time = formatToHour(timezonedDate)
 
-  return { shouldQrCodeBeHidden: shouldbeHidden, day }
+  return { shouldQrCodeBeHidden: shouldbeHidden, day, time }
 }

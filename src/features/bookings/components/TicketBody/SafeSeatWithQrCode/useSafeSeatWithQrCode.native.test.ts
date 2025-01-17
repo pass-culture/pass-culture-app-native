@@ -88,7 +88,19 @@ describe('useSafeSeatWithQrCode', () => {
             categoriesToHide: [subcategoryId],
           })
 
-          expect(result.current.day).toEqual('14 janvier 2024 à 02h00')
+          expect(result.current.day).toEqual('14 janvier 2024')
+        })
+
+        it('should display the right time', () => {
+          const { result } = renderUseSafeSeatWithQrCode({
+            beginningDatetime: eventDay,
+            qrCodeVisibilityHoursBeforeEvent,
+            venue,
+            subcategoryId,
+            categoriesToHide: [subcategoryId],
+          })
+
+          expect(result.current.time).toEqual('02h00')
         })
       })
 
