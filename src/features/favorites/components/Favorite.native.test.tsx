@@ -19,7 +19,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, userEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -34,7 +34,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const credit: Credit = { amount: 100, isExpired: false }
 
-const user: UserProfileResponse = {
+const userProfile: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
@@ -67,7 +67,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const userAction = userEvent.setup()
+const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<Favorite /> component', () => {
@@ -80,9 +80,7 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const offre = screen.getByText(favorite.offer.name)
-    await act(async () => {
-      userAction.press(offre)
-    })
+    await user.press(offre)
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       from: 'favorites',
@@ -104,7 +102,7 @@ describe('<Favorite /> component', () => {
     mockDistance = '10 km'
     renderFavorite()
 
-    await userAction.press(screen.getByText('Supprimer'))
+    await user.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
@@ -121,7 +119,7 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    await userAction.press(screen.getByText('Supprimer'))
+    await user.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
@@ -136,9 +134,7 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
-    await act(async () => {
-      userAction.press(shareButton)
-    })
+    await user.press(shareButton)
 
     expect(shareSpy).toHaveBeenCalledTimes(1)
   })
@@ -147,9 +143,7 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
-    await act(async () => {
-      userAction.press(shareButton)
-    })
+    await user.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
@@ -182,7 +176,7 @@ function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
 const DEFAULT_PROPS = {
   credit,
   favorite,
-  user,
+  userProfile,
   onInAppBooking,
 }
 
@@ -192,10 +186,10 @@ type RenderFavoriteParams = {
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
-  const { favorite, user } = { ...DEFAULT_PROPS, ...props }
+  const { favorite, userProfile } = { ...DEFAULT_PROPS, ...props }
   return render(
     reactQueryProviderHOC(
-      <Favorite favorite={favorite} user={user} onInAppBooking={onInAppBooking} />
+      <Favorite favorite={favorite} user={userProfile} onInAppBooking={onInAppBooking} />
     )
   )
 }
