@@ -351,6 +351,7 @@ exports[`VenueModal should render correctly 1`] = `
           style={
             [
               {
+                "marginTop": 24,
                 "paddingHorizontal": 24,
               },
             ]
@@ -358,21 +359,12 @@ exports[`VenueModal should render correctly 1`] = `
         >
           <View>
             <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 8,
                   },
                 ]
               }
@@ -386,16 +378,6 @@ exports[`VenueModal should render correctly 1`] = `
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -456,6 +438,7 @@ exports[`VenueModal should render correctly 1`] = `
                   [
                     {
                       "flexShrink": 0,
+                      "marginRight": 8,
                     },
                   ]
                 }
@@ -469,16 +452,6 @@ exports[`VenueModal should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
               <TextInput
                 accessibilityHidden={false}
                 autoCorrect={false}

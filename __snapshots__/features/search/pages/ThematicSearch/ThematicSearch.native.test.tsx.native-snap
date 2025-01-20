@@ -285,6 +285,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     [
                       {
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -298,16 +299,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     </Text>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={true}

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
@@ -9,7 +9,7 @@ import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useO
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export type CineBlockProps = {
   offer: OfferResponseV2
@@ -25,7 +25,6 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   withDivider,
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
-  const theme = useTheme()
 
   const subcategoriesMapping = useSubcategoriesMapping()
 
@@ -37,39 +36,37 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   return (
     <React.Fragment>
       <CineBlockContainer>
-        <Spacer.Column numberOfSpaces={6} />
         <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
-        <Spacer.Column numberOfSpaces={4} />
-        {nextDate ? (
-          <NextScreeningButton
-            date={nextDate}
-            onPress={
-              isDateNotWithinNextNbDays(new Date(), nextDate, 15)
-                ? () => onPressOfferCTA()
-                : () => goToDate(nextDate)
-            }
-          />
-        ) : (
-          <OfferEventCardList offer={offer} selectedDate={selectedDate} />
-        )}
-        {CTAOfferModal}
-      </CineBlockContainer>
-      {withDivider ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={theme.isDesktopViewport ? 6 : 4} />
-          <Divider />
+          {nextDate ? (
+            <NextScreeningButton
+              date={nextDate}
+              onPress={
+                isDateNotWithinNextNbDays(new Date(), nextDate, 15)
+                  ? () => onPressOfferCTA()
+                  : () => goToDate(nextDate)
+              }
+            />
+          ) : (
+            <OfferEventCardList offer={offer} selectedDate={selectedDate} />
+          )}
+          {CTAOfferModal}
         </React.Fragment>
-      ) : null}
+      </CineBlockContainer>
+      {withDivider ? <Divider /> : null}
     </React.Fragment>
   )
 }
 
 const CineBlockContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  paddingTop: getSpacing(6),
+  gap: getSpacing(4),
 }))
 
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
   marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
+  marginTop: getSpacing(theme.isDesktopViewport ? 6 : 4),
 }))
