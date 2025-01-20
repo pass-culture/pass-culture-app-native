@@ -19,13 +19,14 @@ export type ChronicleCardProps = {
 }
 
 export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
+  id,
   title,
   subtitle,
   description,
   date,
 }) => {
   return (
-    <Container gap={3}>
+    <Container gap={3} key={id}>
       <InfoHeader
         title={title}
         subtitle={subtitle}
