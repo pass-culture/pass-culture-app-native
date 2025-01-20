@@ -12,5 +12,6 @@
     "ruby@2.7.5", // needed to install iOS dependencies and to run fastlane
     "python3@latest", // needed by scripts/add_tracker.py
     "maestro@latest", // needed to run end to end test locally
+    "jdk@17",
   ],
 }
