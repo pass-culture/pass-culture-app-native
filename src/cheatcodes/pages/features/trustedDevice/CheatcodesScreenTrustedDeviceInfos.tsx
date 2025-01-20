@@ -1,8 +1,9 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const CheatcodesScreenTrustedDeviceInfos = () => {
   const deviceInfo = useDeviceInfo()
@@ -26,12 +27,20 @@ type DataProps = {
 const Data = ({ title, data }: DataProps) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
-    <Typo.ButtonText>{title}</Typo.ButtonText>
+    <TypoDS.Button>{title}</TypoDS.Button>
     {data ? (
-      <Typo.ButtonTextSecondary>{data}</Typo.ButtonTextSecondary>
+      <ButtonTextSecondary>{data}</ButtonTextSecondary>
     ) : (
-      <Typo.ButtonTextPrimary>Information non disponible</Typo.ButtonTextPrimary>
+      <ButtonTextPrimary>Information non disponible</ButtonTextPrimary>
     )}
     <Spacer.Column numberOfSpaces={2} />
   </React.Fragment>
 )
+
+const ButtonTextPrimary = styled(TypoDS.Button)(({ theme }) => ({
+  color: theme.colors.primary,
+}))
+
+const ButtonTextSecondary = styled(TypoDS.Button)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))

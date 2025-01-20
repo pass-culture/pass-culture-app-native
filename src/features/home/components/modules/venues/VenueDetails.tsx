@@ -28,7 +28,7 @@ const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
   position: 'relative',
 }))
 
-const VenueName = styled(Typo.ButtonText).attrs({
+const VenueName = styled(TypoDS.BodyAccent).attrs({
   numberOfLines: 2,
 })({})
 

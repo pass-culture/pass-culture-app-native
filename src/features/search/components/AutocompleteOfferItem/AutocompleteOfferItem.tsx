@@ -23,7 +23,7 @@ import { env } from 'libs/environment'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
@@ -233,7 +233,7 @@ const SuggestionContainer: FunctionComponent<{
 const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ categoryToDisplay }) => (
   <React.Fragment>
     <TypoDS.Body> dans </TypoDS.Body>
-    <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
+    <StyledBodyAccent>{categoryToDisplay}</StyledBodyAccent>
   </React.Fragment>
 )
 
@@ -253,3 +253,7 @@ const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }
 const StyledText = styled(Text)({
   marginLeft: getSpacing(2),
 })
+
+const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
+  color: theme.colors.primary,
+}))

@@ -16,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -33,7 +33,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
       <IdentificationForkButton
-        Title={<Typo.ButtonText>Mes codes ÉduConnect</Typo.ButtonText>}
+        Title={<TypoDS.BodyAccent>Mes codes ÉduConnect</TypoDS.BodyAccent>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Marianne}
         navigateTo={{ screen: 'EduConnectForm' }}
@@ -54,7 +54,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         <SeparatorWithText label="ou" />
       </StyledSeparatorWithText>
       <IdentificationForkButton
-        Title={<Typo.ButtonText>Ma pièce d’identité</Typo.ButtonText>}
+        Title={<TypoDS.BodyAccent>Ma pièce d’identité</TypoDS.BodyAccent>}
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
         icon={Ubble}
         navigateTo={{ screen: 'SelectIDOrigin' }}

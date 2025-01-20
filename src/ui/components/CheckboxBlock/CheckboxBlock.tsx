@@ -7,7 +7,7 @@ import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -40,7 +40,7 @@ export const CheckboxBlock = ({
       <InnerContainer>
         {LeftIcon ? <LeftIcon /> : null}
         <View>
-          <Typo.ButtonText>{label}</Typo.ButtonText>
+          <TypoDS.BodyAccent>{label}</TypoDS.BodyAccent>
           {sublabel ? <CaptionNeutralInfo>{sublabel}</CaptionNeutralInfo> : null}
         </View>
       </InnerContainer>

@@ -256,7 +256,7 @@ const StyledTitle4 = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

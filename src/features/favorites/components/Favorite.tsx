@@ -197,7 +197,7 @@ export const Favorite: React.FC<Props> = (props) => {
               <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
               <ContentContainer>
                 <LeftContent>
-                  <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
+                  <TypoDS.BodyAccent numberOfLines={2}>{offer.name}</TypoDS.BodyAccent>
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{searchGroupLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}

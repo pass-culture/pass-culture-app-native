@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -60,7 +60,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
     alignSelf: 'flex-start',
   })
 )
-const Label = styled(Typo.ButtonText)<{ selected: boolean }>(({ theme, selected }) => ({
+const Label = styled(TypoDS.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
   marginVertical: getSpacing(2.5),
   color: selected ? theme.colors.white : theme.colors.black,
 }))

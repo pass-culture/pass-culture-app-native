@@ -8,7 +8,7 @@ import { Emoji } from 'ui/components/Emoji'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { iconSizes } from 'ui/theme/iconSizes'
@@ -29,14 +29,14 @@ export default meta
 const description = (
   <Text>
     <TypoDS.Body>J’ai une carte d’identité, un passeport </TypoDS.Body>
-    <Typo.ButtonText>étranger</Typo.ButtonText>
+    <TypoDS.BodyAccent>étranger</TypoDS.BodyAccent>
     <TypoDS.Body> ou un titre séjour français</TypoDS.Body>
   </Text>
 )
 const description2 = (
   <Text>
     <TypoDS.Body>J’ai ma pièce d’identité </TypoDS.Body>
-    <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
+    <TypoDS.BodyAccent>en cours de validité avec moi</TypoDS.BodyAccent>
   </Text>
 )
 

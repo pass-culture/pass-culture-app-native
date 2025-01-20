@@ -21,7 +21,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
@@ -62,7 +62,7 @@ export const SuspensionChoice = () => {
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       separateIconFromTitle={false}
       icon={BicolorUserError}>
-      <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
+      <TypoDS.BodyAccent>Les conséquences&nbsp;:</TypoDS.BodyAccent>
       <VerticalUl>
         <BulletListItem>
           <TypoDS.Body>
@@ -79,7 +79,7 @@ export const SuspensionChoice = () => {
         <BulletListItem text="tu n’auras plus accès au catalogue." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.ButtonText>Les données que nous conservons&nbsp;:</Typo.ButtonText>
+      <TypoDS.BodyAccent>Les données que nous conservons&nbsp;:</TypoDS.BodyAccent>
       <TypoDS.Body>
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.

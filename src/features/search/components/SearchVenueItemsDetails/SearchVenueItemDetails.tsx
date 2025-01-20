@@ -2,7 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo, GUTTER_DP, TypoDS } from 'ui/theme'
+import { GUTTER_DP, TypoDS } from 'ui/theme'
 
 interface SearchVenueItemDetailsProps {
   width: number
@@ -33,7 +33,7 @@ const Container = styled.View<{ maxWidth: number; minHeight: number }>(
   })
 )
 
-const VenueName = styled(Typo.ButtonText).attrs({
+const VenueName = styled(TypoDS.BodyAccent).attrs({
   numberOfLines: 2,
 })({})
 

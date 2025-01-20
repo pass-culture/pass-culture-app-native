@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 interface Props {
@@ -16,7 +16,7 @@ export const OnboardingCreditBlockTitle = ({
   deposit,
 }: Props): React.ReactElement => {
   const TitleText: React.JSXElementConstructor<{ children: string }> =
-    age === userAge ? TitleSecondary : Typo.ButtonText
+    age === userAge ? TitleSecondary : TypoDS.BodyAccent
 
   if (age !== 18 && age > userAge) {
     return <TitleText>{`+ ${deposit}`}</TitleText>

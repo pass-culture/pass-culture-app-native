@@ -7,7 +7,7 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 import { AgeButton } from './AgeButton'
 
@@ -23,6 +23,10 @@ const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
 
 const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
+}))
+
+const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
+  color: theme.colors.secondary,
 }))
 
 const meta: ComponentMeta<typeof AgeButton> = {
@@ -47,7 +51,7 @@ export default meta
 const TextExample = ({ withSubtitle = false }) => (
   <React.Fragment>
     <StyledBody>
-      j’ai <Typo.ButtonTextSecondary>17 ans</Typo.ButtonTextSecondary>
+      j’ai <StyledBodyAccent>17 ans</StyledBodyAccent>
     </StyledBody>
     {withSubtitle ? (
       <React.Fragment>

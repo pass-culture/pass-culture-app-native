@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   url: string
@@ -50,7 +50,7 @@ const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{
   display: 'inline',
 })
 
-const ButtonText = styled(Typo.ButtonText)<{ primary?: boolean }>(({ primary, theme }) => ({
+const ButtonText = styled(TypoDS.Button)<{ primary?: boolean }>(({ primary, theme }) => ({
   color: primary ? theme.colors.primary : undefined,
 }))
 

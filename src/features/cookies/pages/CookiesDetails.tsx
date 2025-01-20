@@ -56,7 +56,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
 
 const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
-  title: <Typo.ButtonText>Qu’est-ce que les cookies&nbsp;?</Typo.ButtonText>,
+  title: <TypoDS.BodyAccent>Qu’est-ce que les cookies&nbsp;?</TypoDS.BodyAccent>,
   titleStyle: {
     backgroundColor: theme.colors.greyLight,
     paddingVertical: getSpacing(4),

@@ -4,7 +4,7 @@ import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { Accordion } from './Accordion'
 
@@ -43,7 +43,7 @@ const variantConfig: Variants<typeof Accordion> = [
   },
   {
     label: 'Accordion with custom title component',
-    props: { ...baseProps, titleComponent: Typo.ButtonText },
+    props: { ...baseProps, titleComponent: TypoDS.BodyAccent },
   },
 ]
 
