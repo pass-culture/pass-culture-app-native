@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { env } from 'libs/environment'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -22,7 +21,8 @@ type Props = {
 }
 
 export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
-  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu peux bénéficier de ton crédit sur l’application à partir de tes ${enableCreditV3 ? '17' : '15'} ans.`
 
   const withFAQLink = type === TutorialTypes.ONBOARDING

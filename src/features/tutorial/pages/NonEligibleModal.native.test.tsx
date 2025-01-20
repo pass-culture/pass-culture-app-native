@@ -1,12 +1,13 @@
 import React from 'react'
 
+import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -102,7 +103,12 @@ describe('NonEligibleModal', () => {
     })
 
     describe('when enableCreditV3 activated', () => {
-      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+      beforeEach(() => {
+        jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
+          data: { ...defaultSettings, wipEnableCreditV3: true },
+          isLoading: false,
+        })
+      })
 
       it('should display subtitle with credit V3', () => {
         renderNonEligibleModal(NonEligible.UNDER_17, TutorialTypes.ONBOARDING)
