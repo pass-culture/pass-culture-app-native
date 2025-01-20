@@ -1,12 +1,11 @@
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
-import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { SeeMoreWithEye } from './SeeMoreWithEye'
@@ -83,18 +82,13 @@ export const PassPlaylist = ({
   }
   return (
     <Container gap={4} {...props}>
-      <View>
+      <ViewGap gap={1}>
         <StyledView>
           <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
           {renderTitleSeeMore()}
         </StyledView>
-        {subtitle ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <StyledSubtitle>{subtitle}</StyledSubtitle>
-          </React.Fragment>
-        ) : null}
-      </View>
+        {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
+      </ViewGap>
       <Playlist
         testID="offersModuleList"
         data={data}

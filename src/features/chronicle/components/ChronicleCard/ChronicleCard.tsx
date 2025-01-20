@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { CHRONICLE_ITEM_WIDTH } from 'features/chronicle/constant'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -9,21 +11,15 @@ import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
-type ChronicleCardProps = {
-  title: string
-  subtitle: string
-  description: string
-  date: string
-}
-
-export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
+export const ChronicleCard: FunctionComponent<ChronicleCardData> = ({
+  id,
   title,
   subtitle,
   description,
   date,
 }) => {
   return (
-    <Container gap={3}>
+    <Container gap={3} testID={`chronicle-${id.toString()}`}>
       <InfoHeader
         title={title}
         subtitle={subtitle}
@@ -42,9 +38,11 @@ const Container = styled(ViewGap)(({ theme }) => ({
   borderRadius: getSpacing(2),
   border: 1,
   borderColor: theme.colors.greyMedium,
+  maxWidth: CHRONICLE_ITEM_WIDTH,
+  backgroundColor: theme.colors.white,
   ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(3) },
-    shadowRadius: getSpacing(12),
+    shadowOffset: { width: 0, height: getSpacing(1) },
+    shadowRadius: getSpacing(6),
     shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),

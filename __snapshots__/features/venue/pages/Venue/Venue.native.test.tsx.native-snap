@@ -805,7 +805,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <View>
+                <View
+                  gap={1}
+                  style={
+                    [
+                      {
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
                   <View
                     style={
                       [
@@ -2520,7 +2529,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  <View>
+                  <View
+                    gap={1}
+                    style={
+                      [
+                        {
+                          "gap": 4,
+                        },
+                      ]
+                    }
+                  >
                     <View
                       style={
                         [

@@ -1688,7 +1688,16 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 ]
               }
             >
-              <View>
+              <View
+                gap={1}
+                style={
+                  [
+                    {
+                      "gap": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   style={
                     [

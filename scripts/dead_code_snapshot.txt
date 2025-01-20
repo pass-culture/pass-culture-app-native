@@ -6,4 +6,3 @@ src/shared/credits/defaultCreditByAge.ts:22 - ReadonlyDeep (used in module)
 src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
-src/features/chronicle/components/ChronicleCard/ChronicleCard.tsx:19 - ChronicleCard
