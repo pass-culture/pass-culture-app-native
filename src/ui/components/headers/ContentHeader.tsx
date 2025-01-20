@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -38,9 +38,10 @@ export const ContentHeader = ({
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
+  const marginTopHeader = Platform.OS === 'ios' ? top : top + getSpacing(2)
+
   return (
     <HeaderContainer style={containerStyle} height={headerHeight}>
-      <Spacer.TopScreen />
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         // https://github.com/Kureev/react-native-blur/issues/511
@@ -50,9 +51,7 @@ export const ContentHeader = ({
           </BlurNativeContainer>
         )
       }
-      <Spacer.Column numberOfSpaces={2} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
+      <Row marginRight={RightElement ? getSpacing(6) : getSpacing(16)} marginTop={marginTopHeader}>
         <RoundedButton
           animationState={animationState}
           iconName="back"
@@ -61,25 +60,17 @@ export const ContentHeader = ({
           finalColor={theme.colors.black}
           initialColor={theme.colors.black}
         />
-        {LeftElement ? <React.Fragment>{LeftElement}</React.Fragment> : null}
-        <Spacer.Flex />
-        <Title
-          testID={titleTestID}
-          style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
-          accessibilityHidden={ariaHiddenTitle}>
-          <Body>{headerTitle}</Body>
-        </Title>
-        <Spacer.Flex />
-        {RightElement ? (
-          <React.Fragment>
-            {RightElement}
-            <Spacer.Row numberOfSpaces={6} />
-          </React.Fragment>
-        ) : (
-          <Spacer.Row numberOfSpaces={16} />
-        )}
+        {LeftElement}
+        <TitleContainer>
+          <Title
+            testID={titleTestID}
+            style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
+            accessibilityHidden={ariaHiddenTitle}>
+            <Body>{headerTitle}</Body>
+          </Title>
+        </TitleContainer>
+        {RightElement}
       </Row>
-      <Spacer.Column numberOfSpaces={2} />
     </HeaderContainer>
   )
 }
@@ -108,6 +99,10 @@ const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, heig
   borderBottomWidth: 1,
 }))
 
+const TitleContainer = styled.View({
+  flex: 1,
+})
+
 const Title = styled(Animated.Text).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
@@ -121,8 +116,15 @@ const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const Row = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-})
+const Row = styled.View<{ marginRight: number; marginTop: number }>(
+  ({ marginRight, marginTop }) => ({
+    ...(Platform.OS === 'web' ? { flex: 1 } : {}),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop,
+    marginBottom: getSpacing(2),
+    marginLeft: getSpacing(6),
+    marginRight,
+  })
+)

@@ -349,17 +349,6 @@ exports[`ThematicHome should render correctly 1`] = `
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -394,38 +383,22 @@ exports[`ThematicHome should render correctly 1`] = `
       />
     </View>
     <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      marginRight={24}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
-            "flexBasis": 0,
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 24,
+            "marginRight": 24,
+            "marginTop": 16,
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
@@ -548,46 +521,36 @@ exports[`ThematicHome should render correctly 1`] = `
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
+            }
           }
         >
-          HeaderTitle
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            HeaderTitle
+          </Text>
         </Text>
-      </Text>
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
+      </View>
       <View
         collapsable={false}
         style={
@@ -797,27 +760,7 @@ exports[`ThematicHome should render correctly 1`] = `
           />
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
   <View
     collapsable={false}

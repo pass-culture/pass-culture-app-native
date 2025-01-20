@@ -2630,17 +2630,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -2675,38 +2664,22 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
       />
     </View>
     <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      marginRight={64}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
-            "flexBasis": 0,
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 24,
+            "marginRight": 64,
+            "marginTop": 16,
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
@@ -2829,67 +2802,37 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
+            }
           }
         >
-          Le pass Culture à 15 ans
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Le pass Culture à 15 ans
+          </Text>
         </Text>
-      </Text>
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={16}
-        style={
-          [
-            {
-              "width": 64,
-            },
-          ]
-        }
-      />
+      </View>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;
@@ -5265,17 +5208,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
     }
   >
     <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       collapsable={false}
       height={80}
       style={
@@ -5310,38 +5242,22 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
       />
     </View>
     <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      marginRight={64}
+      marginTop={16}
       style={
         [
           {
             "alignItems": "center",
-            "flexBasis": 0,
             "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 24,
+            "marginRight": 64,
+            "marginTop": 16,
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "width": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
@@ -5464,67 +5380,37 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             },
           ]
         }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={2}
-        style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
       >
         <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
+            }
           }
         >
-          Comment ça marche ?
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Comment ça marche ?
+          </Text>
         </Text>
-      </Text>
-      <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={16}
-        style={
-          [
-            {
-              "width": 64,
-            },
-          ]
-        }
-      />
+      </View>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;
