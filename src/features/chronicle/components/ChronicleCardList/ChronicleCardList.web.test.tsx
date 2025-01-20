@@ -5,19 +5,21 @@ import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 describe('ChronicleCardList', () => {
-  it('should render the ChronicleCardList correctly with horizontal mode', () => {
+  it('should render the ChronicleCardList correctly', () => {
     render(<ChronicleCardList data={chroniclesSnap} />)
 
     expect(screen.getByText('Le Voyage Extraordinaire')).toBeInTheDocument()
     expect(screen.getByText('L’Art de la Cuisine')).toBeInTheDocument()
+  })
+
+  it('should render the ChronicleCardList with horizontal mode', () => {
+    render(<ChronicleCardList data={chroniclesSnap} />)
 
     expect(screen.getByTestId('chronicle-list-right-arrow')).toBeInTheDocument()
   })
 
-  it('should render the ChronicleCardList correctly with vertical mode', () => {
+  it('should render the ChronicleCardList with vertical mode', () => {
     render(<ChronicleCardList data={chroniclesSnap} horizontal={false} />)
-
-    expect(screen.getByText('Le Voyage Extraordinaire')).toBeInTheDocument()
 
     expect(screen.queryByTestId('chronicle-list-left-arrow')).not.toBeInTheDocument()
     expect(screen.queryByTestId('chronicle-list-right-arrow')).not.toBeInTheDocument()

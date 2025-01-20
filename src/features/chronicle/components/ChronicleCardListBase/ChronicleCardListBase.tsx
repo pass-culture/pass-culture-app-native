@@ -1,23 +1,21 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { FlatList } from 'react-native'
 
-import {
-  CHRONICLE_ITEM_WIDTH,
-  ChronicleCard,
-  ChronicleCardProps,
-} from 'features/chronicle/components/ChronicleCard/ChronicleCard'
+import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
+import { CHRONICLE_ITEM_WIDTH } from 'features/chronicle/constant'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { Spacer, getSpacing } from 'ui/theme'
 
 const SEPARATOR_VALUE = 2
-const keyExtractor = (item: ChronicleCardProps) => item.id.toString()
+const keyExtractor = (item: ChronicleCardData) => item.id.toString()
 
 type ChronicleCardListProps = {
-  data: ChronicleCardProps[]
+  data: ChronicleCardData[]
   indexItem?: number
   horizontal?: boolean
 }
 
-const renderItem = ({ item }: { item: ChronicleCardProps }) => {
+const renderItem = ({ item }: { item: ChronicleCardData }) => {
   return (
     <ChronicleCard
       id={item.id}

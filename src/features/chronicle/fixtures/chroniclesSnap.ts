@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ChronicleCardProps } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { toMutable } from 'shared/types/toMutable'
 
 export const chroniclesSnap = toMutable([
@@ -125,4 +125,4 @@ export const chroniclesSnap = toMutable([
     description: 'Un hommage aux protecteurs des écosystèmes forestiers à travers le globe.',
     date: 'Avril 2025',
   },
-] as const satisfies ReadonlyDeep<ChronicleCardProps[]>)
+] as const satisfies ReadonlyDeep<ChronicleCardData[]>)

@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { CHRONICLE_ITEM_WIDTH } from 'features/chronicle/constant'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -8,17 +10,8 @@ import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
-export const CHRONICLE_ITEM_WIDTH = 327
 
-export type ChronicleCardProps = {
-  id: number
-  title: string
-  subtitle: string
-  description: string
-  date: string
-}
-
-export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
+export const ChronicleCard: FunctionComponent<ChronicleCardData> = ({
   id,
   title,
   subtitle,
@@ -26,7 +19,7 @@ export const ChronicleCard: FunctionComponent<ChronicleCardProps> = ({
   date,
 }) => {
   return (
-    <Container gap={3} key={id}>
+    <Container gap={3} testID={`chronicle-${id.toString()}`}>
       <InfoHeader
         title={title}
         subtitle={subtitle}

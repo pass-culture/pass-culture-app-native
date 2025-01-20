@@ -1,0 +1,1 @@
+export const CHRONICLE_ITEM_WIDTH = 327

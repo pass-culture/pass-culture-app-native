@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { ChronicleCardProps } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
 import { ChronicleCardListBase } from 'features/chronicle/components/ChronicleCardListBase/ChronicleCardListBase'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
 type ChronicleCardListProps = {
-  data: ChronicleCardProps[]
+  data: ChronicleCardData[]
   horizontal?: boolean
 }
 
