@@ -85,7 +85,7 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
     return null
 
   return (
-    <SectionWithDivider visible gap={0}>
+    <SectionWithDivider visible gap={6}>
       <ThematicSubscriptionBlock
         thematic={thematic}
         isSubscribeButtonActive={isSubscribeButtonActive}

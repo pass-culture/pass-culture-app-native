@@ -4,17 +4,29 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
+import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
+import {
+  VenueMoviesOffersResponseSnap,
+  VenueOffersResponseSnap,
+} from 'features/venue/fixtures/venueOffersResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { Network } from 'libs/share/types'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
+import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
 
@@ -28,6 +40,8 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/venue/api/useVenueOffers')
+const mockUseVenueOffers = useVenueOffers as jest.Mock
+
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location')
 
@@ -83,7 +97,19 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
+const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+
+const user = userEvent.setup()
+
 describe('<Venue />', () => {
+  beforeAll(() => {
+    mockUseVenueOffers.mockReturnValue({
+      isLoading: false,
+      data: { hits: VenueOffersResponseSnap, nbHits: 3 },
+    })
+  })
+
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
@@ -93,7 +119,7 @@ describe('<Venue />', () => {
   it('should match snapshot', async () => {
     renderVenue(venueId)
 
-    await screen.findByText('Infos pratiques')
+    await screen.findByText(`Envoyer sur ${Network.instagram}`)
 
     expect(screen).toMatchSnapshot()
   })
@@ -101,9 +127,50 @@ describe('<Venue />', () => {
   it('should match snapshot with practical information', async () => {
     renderVenue(venueId)
 
-    fireEvent.press(await screen.findByText('Infos pratiques'))
+    await user.press(await screen.findByText('Infos pratiques'))
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should display default background image when no banner for venue', async () => {
+    renderVenue(venueId)
+
+    expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
+  })
+
+  describe('CTA', () => {
+    it('should not display CTA if venueTypeCode is Movie', async () => {
+      const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+      mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
+
+      renderVenue(venueId)
+
+      await screen.findAllByText('Le Petit Rintintin 1')
+
+      expect(screen.queryByText('Rechercher une offre')).not.toBeOnTheScreen()
+    })
+
+    it('should display CTA if venueTypeCode is not Movie and venueOffers hits have length', async () => {
+      mockUseGTLPlaylists.mockReturnValueOnce({
+        isLoading: false,
+        gtlPlaylists: [],
+      })
+
+      renderVenue(venueId)
+
+      expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
+    })
+
+    it('should display CTA if venueTypeCode is not Movie and gtlPlaylists have length', async () => {
+      mockUseVenueOffers.mockReturnValueOnce({
+        isLoading: false,
+        data: { hits: {}, nbHits: 0 },
+      })
+
+      renderVenue(venueId)
+
+      expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
+    })
   })
 
   describe('analytics', () => {
@@ -135,6 +202,91 @@ describe('<Venue />', () => {
       await screen.findByText('Infos pratiques')
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('movie screening access button', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: true,
+      })
+
+      mockUseVenueOffers.mockReturnValue({
+        isLoading: false,
+        data: { hits: VenueMoviesOffersResponseSnap, nbHits: 4 },
+      })
+    })
+
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE])
+
+      // Mock API Calls
+      const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+      mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
+      mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, {})
+    })
+
+    it('should show button by default', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Les films à l’affiche')
+
+      expect(await screen.findByTestId(CineContentCTAID)).toBeOnTheScreen()
+    })
+
+    it('should not show button when in View', async () => {
+      const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
+
+      const mockUseOfferReturnValue = {
+        wording: '',
+        onPress: jest.fn(),
+        setButton: jest.fn(),
+        showButton: jest.fn(),
+        isButtonVisible: true,
+      }
+      useOfferCTASpy
+        .mockReturnValueOnce({
+          ...mockUseOfferReturnValue,
+          isButtonVisible: false,
+        })
+        .mockReturnValueOnce({
+          ...mockUseOfferReturnValue,
+          isButtonVisible: false,
+        })
+
+      renderVenue(venueId)
+
+      await screen.findByText('Les films à l’affiche')
+
+      expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
+    })
+
+    it('should scroll to anchor', async () => {
+      renderVenue(venueId)
+
+      const button = await screen.findByTestId(CineContentCTAID)
+
+      await userEvent.press(button)
+
+      expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
+    })
+
+    describe('remote config flag is deactivated', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: false,
+        })
+      })
+
+      it('should not display the button if the remote config flag is deactivated', async () => {
+        renderVenue(venueId)
+
+        await screen.findByText('Les films à l’affiche')
+
+        expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
+      })
     })
   })
 })
