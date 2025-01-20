@@ -191,7 +191,9 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               testID="videoCarousel"
               vertical={false}
               height={CAROUSEL_HEIGHT}
-              panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
+              onConfigurePanGesture={(gestureChain) => {
+                gestureChain.activeOffsetX([-5, 5])
+              }}
               width={windowWidth}
               loop={false}
               scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
