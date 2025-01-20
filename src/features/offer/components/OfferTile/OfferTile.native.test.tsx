@@ -96,6 +96,7 @@ describe('OfferTile component', () => {
       metadata: undefined,
       isExternalBookingsDisabled: false,
       reactionsCount: { likes: 0 },
+      chronicles: [],
     })
   })
 
