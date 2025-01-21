@@ -563,9 +563,9 @@ exports[`EndedBookings should render correctly 1`] = `
                       [
                         {
                           "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1017,9 +1017,9 @@ exports[`EndedBookings should render correctly 1`] = `
                       [
                         {
                           "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }

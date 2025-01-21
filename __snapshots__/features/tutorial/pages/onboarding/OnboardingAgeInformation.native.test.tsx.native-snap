@@ -648,9 +648,9 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -901,9 +901,9 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1291,9 +1291,9 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -1620,8 +1620,8 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -2029,9 +2029,9 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2534,9 +2534,9 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -2924,9 +2924,9 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -3253,8 +3253,8 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -3662,9 +3662,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -3902,9 +3902,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -4544,9 +4544,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -4873,8 +4873,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -5282,9 +5282,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -5522,9 +5522,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -5762,9 +5762,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -6334,8 +6334,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -6797,8 +6797,8 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -7260,8 +7260,8 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -7925,9 +7925,9 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -8254,8 +8254,8 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -8663,9 +8663,9 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
@@ -9235,8 +9235,8 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]

@@ -478,8 +478,8 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                           {
                             "color": "#ffffff",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                             "maxWidth": "100%",
                           },
                         ]
@@ -606,8 +606,8 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                             "maxWidth": "100%",
                           },
                         ]

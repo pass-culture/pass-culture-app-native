@@ -95,9 +95,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -272,9 +272,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -369,8 +369,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -469,8 +469,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -597,8 +597,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -718,9 +718,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -895,9 +895,9 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -992,8 +992,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -1120,8 +1120,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -1241,9 +1241,9 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -1418,9 +1418,9 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
           },
         ]
       }
@@ -1515,8 +1515,8 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -1615,8 +1615,8 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
@@ -1743,8 +1743,8 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "fontSize": 16,
+              "lineHeight": 25.6,
               "maxWidth": "100%",
             },
           ]
