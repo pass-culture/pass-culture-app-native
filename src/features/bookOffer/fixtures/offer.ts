@@ -128,6 +128,7 @@ export const mockOffer = toMutable({
   reactionsCount: {
     likes: 0,
   },
+  chronicles: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)
 
 export const mockDigitalOffer = toMutable({
@@ -223,4 +224,5 @@ export const mockDigitalOffer = toMutable({
   reactionsCount: {
     likes: 0,
   },
+  chronicles: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

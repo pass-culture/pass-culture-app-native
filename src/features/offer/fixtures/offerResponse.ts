@@ -91,4 +91,5 @@ export const offerResponseSnap = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
+  chronicles: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

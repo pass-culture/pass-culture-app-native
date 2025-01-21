@@ -11,6 +11,7 @@ const meta: ComponentMeta<typeof ChronicleCard> = {
 export default meta
 
 const baseProps = {
+  id: 1,
   title: 'Olivier, 15 ans',
   subtitle: 'Membre du book club',
   description:

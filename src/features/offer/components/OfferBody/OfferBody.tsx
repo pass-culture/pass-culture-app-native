@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
+import { CHRONICLE_ITEM_WIDTH } from 'features/chronicle/constant'
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
@@ -167,7 +168,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       {hasOfferChronicleSection && !isDesktopViewport ? (
         <SectionWithDivider visible margin gap={8}>
           {/* To remove with the data from the back */}
-          <ChronicleCardList data={chroniclesSnap} />
+          <ChronicleCardList data={chroniclesSnap} cardWidth={CHRONICLE_ITEM_WIDTH} />
           <InternalTouchableLink
             as={ButtonSecondaryBlack}
             wording="Voir tous les avis"

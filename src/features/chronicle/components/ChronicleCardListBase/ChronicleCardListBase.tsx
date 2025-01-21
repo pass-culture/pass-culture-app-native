@@ -13,9 +13,10 @@ type ChronicleCardListProps = {
   data: ChronicleCardData[]
   indexItem?: number
   horizontal?: boolean
+  cardWidth?: number
 }
 
-const renderItem = ({ item }: { item: ChronicleCardData }) => {
+const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: number }) => {
   return (
     <ChronicleCard
       id={item.id}
@@ -23,6 +24,7 @@ const renderItem = ({ item }: { item: ChronicleCardData }) => {
       subtitle={item.subtitle}
       description={item.description}
       date={item.date}
+      cardWidth={cardWidth}
     />
   )
 }
@@ -31,6 +33,7 @@ export const ChronicleCardListBase: FunctionComponent<ChronicleCardListProps> = 
   data,
   indexItem = 0,
   horizontal = true,
+  cardWidth,
 }) => {
   const listRef = useRef<FlatList>(null)
 
@@ -46,7 +49,7 @@ export const ChronicleCardListBase: FunctionComponent<ChronicleCardListProps> = 
     <FlatList
       ref={listRef}
       data={data}
-      renderItem={renderItem}
+      renderItem={({ item }) => renderItem({ item, cardWidth })}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={horizontal ? RowSeparator : ColumnSeparator}
       contentContainerStyle={contentContainerStyle}

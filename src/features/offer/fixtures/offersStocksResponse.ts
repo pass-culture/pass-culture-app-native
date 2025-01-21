@@ -192,6 +192,7 @@ export const offersStocksResponseSnap = toMutable({
       reactionsCount: {
         likes: 0,
       },
+      chronicles: [],
     },
     {
       id: 2054,
@@ -306,6 +307,7 @@ export const offersStocksResponseSnap = toMutable({
       reactionsCount: {
         likes: 0,
       },
+      chronicles: [],
     },
     {
       id: 2055,
@@ -495,6 +497,7 @@ export const offersStocksResponseSnap = toMutable({
       reactionsCount: {
         likes: 0,
       },
+      chronicles: [],
     },
     {
       id: 2243,
@@ -609,6 +612,7 @@ export const offersStocksResponseSnap = toMutable({
       reactionsCount: {
         likes: 0,
       },
+      chronicles: [],
     },
   ],
 } as const satisfies ReadonlyDeep<OffersStocksResponseV2>)
