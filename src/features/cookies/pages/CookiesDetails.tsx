@@ -8,7 +8,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {

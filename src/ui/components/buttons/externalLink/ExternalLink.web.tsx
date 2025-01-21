@@ -39,7 +39,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
 const Text = webStyled.span(({ theme }) => ({
   whiteSpace: 'nowrap',
   verticalAlign: 'middle',
-  ...theme.typography.buttonText,
+  ...theme.designSystem.typography.button,
 }))
 
 const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{

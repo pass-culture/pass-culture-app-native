@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 interface Props {
   title: string

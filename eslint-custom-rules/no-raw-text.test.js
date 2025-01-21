@@ -9,7 +9,7 @@ const tests = {
   valid: [
     // <Text>string</Text>
     { code: '<Text>toto</Text>' },
-    // <Typo.***>string</Typo.***>
+    // <TypoDS.***>string</TypoDS.***>
     { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
     { code: '<TypoDS.Title2>toto</TypoDS.Title2>' },
     { code: '<TypoDS.Title3>toto</TypoDS.Title3>' },

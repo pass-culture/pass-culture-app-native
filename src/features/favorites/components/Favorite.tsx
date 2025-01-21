@@ -29,7 +29,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
