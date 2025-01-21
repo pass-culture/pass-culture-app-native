@@ -258,6 +258,8 @@ export type VenuesModuleParameters = {
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 export type ModuleData = {

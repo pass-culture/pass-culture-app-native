@@ -5,18 +5,22 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
 
 type Params = {
-  paramsList: VenuesModuleParameters[]
-  buildLocationParameterParams: BuildLocationParameterParams
+  paramsList: (VenuesModuleParameters & BuildLocationParameterParams)[]
 }
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
-export const buildVenuesModulesQueries = ({ paramsList, buildLocationParameterParams }: Params) =>
+export const buildVenuesModulesQueries = ({ paramsList }: Params) =>
   paramsList.map((params) => ({
     indexName: env.ALGOLIA_VENUES_INDEX_NAME,
     query: '',
     params: {
-      ...buildVenuesQueryOptions(params, buildLocationParameterParams),
+      ...buildVenuesQueryOptions(params, {
+        userLocation: params.userLocation,
+        selectedLocationMode: params.selectedLocationMode,
+        aroundMeRadius: params.aroundMeRadius,
+        aroundPlaceRadius: params.aroundPlaceRadius,
+      }),
       ...buildHitsPerPage(params.hitsPerPage),
       attributesToHighlight,
     },
