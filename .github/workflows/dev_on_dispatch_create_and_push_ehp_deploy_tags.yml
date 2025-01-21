@@ -110,6 +110,7 @@ jobs:
           cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
       - name: 'Get routes used by app version'
         run: |
+          TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           ./scripts/get_used_routes.sh "v${TESTING_VERSION}"
       - name: 'Commit changes'
         run: |
