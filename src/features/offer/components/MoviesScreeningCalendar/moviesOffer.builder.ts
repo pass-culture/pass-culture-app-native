@@ -125,6 +125,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
               ...offer,
               stocks: filteredStocks,
             },
+            isUpcoming: false,
           }
         })
         .filter(({ offer }) => offer?.stocks?.length > 0)
