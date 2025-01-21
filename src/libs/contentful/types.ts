@@ -284,6 +284,8 @@ interface VenuesParametersFields {
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/displayParameters/fields

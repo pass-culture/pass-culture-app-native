@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { AppV2VenuesModule, VenuesModule, VenuesModuleParameters } from 'features/home/types'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
@@ -10,21 +11,26 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useGetVenuesData = (modules: (VenuesModule | AppV2VenuesModule)[]) => {
   const { userLocation, selectedLocationMode } = useLocation()
 
-  const venuesParameters: VenuesModuleParameters[] = []
+  const venuesParameters: (VenuesModuleParameters & BuildLocationParameterParams)[] = []
   const venuesModuleIds: string[] = []
 
   modules.forEach((module) => {
-    venuesParameters.push(module.venuesParameters)
+    const radius =
+      module.venuesParameters.isGeolocated && module.venuesParameters.aroundRadius
+        ? module.venuesParameters.aroundRadius
+        : 'all'
+    venuesParameters.push({
+      ...module.venuesParameters,
+      userLocation,
+      selectedLocationMode,
+      aroundMeRadius: radius,
+      aroundPlaceRadius: radius,
+    })
     venuesModuleIds.push(module.id)
   })
 
   const venuesQuery = async () => {
-    const result = await fetchVenuesModules(venuesParameters, {
-      userLocation,
-      selectedLocationMode,
-      aroundMeRadius: 'all',
-      aroundPlaceRadius: 'all',
-    })
+    const result = await fetchVenuesModules(venuesParameters)
     return {
       hits: result,
       moduleId: venuesModuleIds,
