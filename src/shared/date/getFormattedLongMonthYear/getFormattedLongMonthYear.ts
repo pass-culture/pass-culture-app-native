@@ -1,5 +1,5 @@
-export function getFormattedChronicleDate(chronicleDate: string) {
-  const date = new Date(chronicleDate)
+export function getFormattedLongMonthYear(dateString: string) {
+  const date = new Date(dateString)
   const formattedDate = new Intl.DateTimeFormat('fr-FR', {
     month: 'long',
     year: 'numeric',

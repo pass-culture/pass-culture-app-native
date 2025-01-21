@@ -1,10 +1,10 @@
+import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
 import { chroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
-import { transformOfferChroniclesToChronicleCardData } from 'features/chronicle/helpers/transformOfferChroniclesToChronicleCardData/transformOfferChroniclesToChronicleCardData'
 
 describe('transformOfferChroniclesToChronicleCardData', () => {
   it('should transform offer chronicles to chronicle card data', () => {
     const chronicles = [...chroniclesFixture]
-    const result = transformOfferChroniclesToChronicleCardData(chronicles)
+    const result = offerChroniclesToChronicleCardData(chronicles)
 
     expect(result).toEqual([
       {

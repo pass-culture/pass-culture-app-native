@@ -4,11 +4,11 @@ import { ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
 import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicles'
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
 import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader/ChroniclesHeader'
 import { ChroniclesWebMetaHeader } from 'features/chronicle/components/ChroniclesWebMetaHeader/ChroniclesWebMetaHeader'
-import { transformOfferChroniclesToChronicleCardData } from 'features/chronicle/helpers/transformOfferChroniclesToChronicleCardData/transformOfferChroniclesToChronicleCardData'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -33,7 +33,7 @@ export const Chronicles: FunctionComponent = () => {
   if (!offer || !offerChronicles) return null
 
   const title = `Tous les avis sur "${offer.name}"`
-  const transformedChronicles: ChronicleCardData[] = transformOfferChroniclesToChronicleCardData(
+  const transformedChronicles: ChronicleCardData[] = offerChroniclesToChronicleCardData(
     offerChronicles.chronicles
   )
 

@@ -1,4 +1,4 @@
-import { getChronicleCardTitle } from 'features/chronicle/helpers/getChronicleCardTitle/getChronicleCardTitle'
+import { getChronicleCardTitle } from 'shared/chronicle/getChronicleCardTitle/getChronicleCardTitle'
 
 describe('getChronicleCardTitle', () => {
   it('should return "Membre du Book Club" when author not defined', () => {
