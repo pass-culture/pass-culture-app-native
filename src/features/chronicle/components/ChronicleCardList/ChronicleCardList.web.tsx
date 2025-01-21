@@ -8,11 +8,13 @@ import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 type ChronicleCardListProps = {
   data: ChronicleCardData[]
   horizontal?: boolean
+  cardWidth?: number
 }
 
 export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   data,
   horizontal = true,
+  cardWidth,
 }) => {
   const [indexItem, setIndexItem] = useState(0)
 
@@ -40,7 +42,12 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
           ) : null}
         </React.Fragment>
       ) : null}
-      <ChronicleCardListBase data={data} indexItem={indexItem} horizontal={horizontal} />
+      <ChronicleCardListBase
+        data={data}
+        indexItem={indexItem}
+        horizontal={horizontal}
+        cardWidth={cardWidth}
+      />
     </FlatListContainer>
   )
 }
