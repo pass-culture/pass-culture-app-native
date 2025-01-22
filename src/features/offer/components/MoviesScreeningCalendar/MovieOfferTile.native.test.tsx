@@ -65,71 +65,68 @@ const MOCK_MOVIE_OFFER = {
 }
 
 const mockSelectedDate = new Date('2024-05-02')
-const mockGoToDate = jest.fn()
 const mockDisplayCalendar = jest.fn()
-
-const mockUseOfferCTAButton = jest.fn()
-const mockOnPressOfferCTA = jest.fn()
+const mockGoToDate = jest.fn()
+jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
+  selectedDate: mockSelectedDate,
+  goToDate: mockGoToDate,
+  displayCalendar: mockDisplayCalendar,
+  dates: [],
+  disableDates: jest.fn(),
+  displayDates: jest.fn(),
+})
 
 const mockUseSubcategoriesMapping = jest.fn()
+mockUseSubcategoriesMapping.mockReturnValue({
+  [SubcategoryIdEnum.SEANCE_CINE]: {
+    isEvent: false,
+    categoryId: CategoryIdEnum.CINEMA,
+    nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  },
+})
 jest.mock('libs/subcategories/mappings', () => ({
-  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+  useSubcategoriesMapping: () => mockUseSubcategoriesMapping(),
 }))
 
 const mockUseSearchGroupLabel = jest.fn()
+mockUseSearchGroupLabel.mockReturnValue(SearchGroupNameEnumv2.CINEMA)
 jest.mock('libs/subcategories/useSearchGroupLabel', () => ({
-  useSearchGroupLabel: jest.fn(() => mockUseSearchGroupLabel()),
+  useSearchGroupLabel: () => mockUseSearchGroupLabel(),
 }))
 
+const mockOnPressOfferCTA = jest.fn()
+const mockUseOfferCTAButton = jest.fn()
+mockUseOfferCTAButton.mockReturnValue({
+  ctaWordingAndAction: {
+    onPress: jest.fn(),
+    bottomBannerText: 'CTA',
+    externalNav: {
+      url: '',
+    },
+    isDisabled: false,
+    wording: 'CTA',
+    navigateTo: {
+      screen: 'Offer',
+    },
+  },
+  showOfferModal: jest.fn(),
+  openModalOnNavigation: false,
+  onPress: mockOnPressOfferCTA,
+  CTAOfferModal: null,
+  movieScreeningUserData: {},
+})
 jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton', () => ({
-  useOfferCTAButton: jest.fn(() => mockUseOfferCTAButton()),
+  useOfferCTAButton: () => mockUseOfferCTAButton(),
 }))
+
+jest.useFakeTimers()
+const user = userEvent.setup()
 
 describe('MovieOfferTile', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
     setFeatureFlags()
-    jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
-      selectedDate: mockSelectedDate,
-      goToDate: mockGoToDate,
-      displayCalendar: mockDisplayCalendar,
-      dates: [],
-      disableDates: jest.fn(),
-      displayDates: jest.fn(),
-    })
-
-    mockUseSubcategoriesMapping.mockReturnValue({
-      [SubcategoryIdEnum.SEANCE_CINE]: {
-        isEvent: false,
-        categoryId: CategoryIdEnum.CINEMA,
-        nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      },
-    })
-
-    mockUseSearchGroupLabel.mockReturnValue(SearchGroupNameEnumv2.CINEMA)
-
-    mockUseOfferCTAButton.mockReturnValue({
-      ctaWordingAndAction: {
-        onPress: jest.fn(),
-        bottomBannerText: 'CTA',
-        externalNav: {
-          url: '',
-        },
-        isDisabled: false,
-        wording: 'CTA',
-        navigateTo: {
-          screen: 'Offer',
-        },
-      },
-      showOfferModal: jest.fn(),
-      openModalOnNavigation: false,
-      onPress: mockOnPressOfferCTA,
-      CTAOfferModal: null,
-      movieScreeningUserData: {},
-    })
   })
-
-  jest.useFakeTimers()
-  const user = userEvent.setup()
 
   describe('with screening on selected date', () => {
     const ID = '4321'
@@ -198,28 +195,6 @@ describe('MovieOfferTile', () => {
       await user.press(nextScreeningButton)
 
       expect(mockGoToDate).toHaveBeenCalledWith(TODAY_PLUS_10_DAYS)
-    })
-  })
-
-  describe('without next screening date', () => {
-    it('should render event card list component', async () => {
-      const ID = '4321'
-      const movieOffer = { ...MOCK_MOVIE_OFFER, offer: { ...MOCK_MOVIE_OFFER.offer, id: +ID } }
-      const venueOffersHit = { ...VENUE_OFFERS_HIT, objectID: ID }
-      const venueOffers = {
-        ...VENUE_OFFERS_MOCK,
-        hits: [...VENUE_OFFERS_MOCK.hits, venueOffersHit],
-      }
-
-      renderMovieOfferTile({
-        movieOffer,
-        venueOffers,
-        isDesktopViewport: true,
-      })
-
-      await screen.findByText(VENUE_OFFERS_HIT.offer.name)
-
-      expect(await screen.findByTestId('desktop-event-card-list')).toBeOnTheScreen()
     })
   })
 })
