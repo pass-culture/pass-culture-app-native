@@ -26,8 +26,12 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
             if (!stock.beginningDatetime) {
               return true
             }
-            if (isSameDay(new Date(stock.beginningDatetime), selectedDate)) {
-              return isAfter(new Date(stock.beginningDatetime), selectedDate)
+            const isSameDate = isSameDay(new Date(stock.beginningDatetime), selectedDate)
+            if (
+              isSameDate ||
+              (isSameDate && isAfter(new Date(stock.beginningDatetime), selectedDate))
+            ) {
+              return true
             }
             return false
           })
@@ -106,6 +110,14 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
 
         return aDistance - bDistance
       })
+      return builderObject
+    },
+
+    sortedByDate: () => {
+      movieOffers = movieOffers.sort(
+        (a, b) => new Date(a.nextDate ?? 0).getTime() - new Date(b.nextDate ?? 0).getTime()
+      )
+
       return builderObject
     },
 
