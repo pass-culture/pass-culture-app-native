@@ -65,6 +65,7 @@ export const fetchOffersByArtist = async ({
     },
   ]
 
+  // TODO(PC-33464): point of vigilance when we will use a hook which get the artists from Algolia
   if (
     !artists ||
     EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||

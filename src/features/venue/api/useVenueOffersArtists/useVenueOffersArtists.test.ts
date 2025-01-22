@@ -48,7 +48,7 @@ describe('useVenueOffersArtists', () => {
               isDuo: false,
               name: 'I want something more',
               prices: [28.0],
-              subcategoryId: SubcategoryIdEnum.CONCERT,
+              subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
               thumbUrl:
                 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
               artist: 'Céline Dion',
@@ -71,7 +71,7 @@ describe('useVenueOffersArtists', () => {
               isDuo: false,
               name: 'I want something more',
               prices: [28.0],
-              subcategoryId: SubcategoryIdEnum.CONCERT,
+              subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
               thumbUrl:
                 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
               artist: 'Céline Dion',
@@ -117,6 +117,7 @@ describe('useVenueOffersArtists', () => {
         artist: `Artist ${index % 35}`,
         thumbUrl:
           'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+        subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
       },
     }))
 
