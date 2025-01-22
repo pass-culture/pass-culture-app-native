@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { theme } from 'theme'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 
@@ -48,7 +48,9 @@ WithComponentAsSubtitle.args = {
   subtitle: (
     <Row>
       <TypoDS.Body>Profite de ton crédit jusqu’au&nbsp;</TypoDS.Body>
-      <Typo.ButtonText>{formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}</Typo.ButtonText>
+      <TypoDS.BodyAccent>
+        {formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}
+      </TypoDS.BodyAccent>
     </Row>
   ),
 }

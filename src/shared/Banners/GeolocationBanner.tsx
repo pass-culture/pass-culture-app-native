@@ -9,7 +9,7 @@ import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
-import { Typo, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
@@ -52,7 +52,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
       accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={<LocationIcon />} testID="genericBanner">
         <ViewGap gap={1}>
-          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
           <TypoDS.Body numberOfLines={2}>{subtitle}</TypoDS.Body>
         </ViewGap>
       </GenericBanner>

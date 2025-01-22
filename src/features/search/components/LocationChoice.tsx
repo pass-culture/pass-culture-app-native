@@ -9,7 +9,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   onPress?: () => void
@@ -96,7 +96,7 @@ const SecondPart = styled.View({
   height: '100%',
 })
 
-const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+const ButtonText = styled(TypoDS.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
 

@@ -10,7 +10,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export enum IDOrigin {
@@ -37,7 +37,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
         Title={
           <Text>
             <TypoDS.Body>J’ai une carte d’identité ou un passeport </TypoDS.Body>
-            <Typo.ButtonText>français</Typo.ButtonText>
+            <TypoDS.BodyAccent>français</TypoDS.BodyAccent>
           </Text>
         }
         Icon={<BicolorFrance />}

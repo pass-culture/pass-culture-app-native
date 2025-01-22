@@ -13,7 +13,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Typo, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -84,7 +84,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
 const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   <StyledBody>
     {SPACE}
-    tes <Typo.ButtonText>{depositAmountByAge}</Typo.ButtonText>
+    tes <TypoDS.BodyAccent>{depositAmountByAge}</TypoDS.BodyAccent>
     {SPACE}
   </StyledBody>
 )

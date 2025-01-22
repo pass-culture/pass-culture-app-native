@@ -29,7 +29,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -197,7 +197,7 @@ export const Favorite: React.FC<Props> = (props) => {
               <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
               <ContentContainer>
                 <LeftContent>
-                  <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
+                  <TypoDS.BodyAccent numberOfLines={2}>{offer.name}</TypoDS.BodyAccent>
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{searchGroupLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}

@@ -16,7 +16,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
@@ -37,7 +37,7 @@ export const AccountSecurity = () => {
       icon={BicolorUserBlocked}
       separateIconFromTitle={false}>
       <TypoDS.Body>
-        Tu as indiqué <Typo.ButtonText>ne pas être à l’origine</Typo.ButtonText> de cette
+        Tu as indiqué <TypoDS.BodyAccent>ne pas être à l’origine</TypoDS.BodyAccent> de cette
         connexion&nbsp;:
       </TypoDS.Body>
       <Spacer.Column numberOfSpaces={4} />
@@ -48,7 +48,7 @@ export const AccountSecurity = () => {
       />
       <Spacer.Column numberOfSpaces={4} />
       <TypoDS.Body>
-        Pour des raisons de <Typo.ButtonText>sécurité,</Typo.ButtonText> nous te conseillons de
+        Pour des raisons de <TypoDS.BodyAccent>sécurité,</TypoDS.BodyAccent> nous te conseillons de
         {isLoggedOutOrHasPassword
           ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
           : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}

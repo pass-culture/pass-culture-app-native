@@ -3,12 +3,12 @@ import React from 'react'
 import { fireEvent, render, screen } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { AppButton } from './AppButton'
 
 const baseProps = {
-  title: Typo.ButtonText,
+  title: TypoDS.Button,
   loadingIndicator: InitialLoadingIndicator,
   wording: 'Testing Disabled',
   icon: Close,

@@ -15,7 +15,7 @@ import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const TOOLTIP_WIDTH = getSpacing(58)
 const WIDGET_HEIGHT = getSpacing(5 + 1) // textSize + padding
@@ -152,7 +152,7 @@ const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ them
   size: theme.icons.sizes.small,
 }))({})
 
-const LocationTitle = styled(Typo.ButtonText).attrs({
+const LocationTitle = styled(TypoDS.BodyAccent).attrs({
   numberOfLines: 1,
 })({
   flexShrink: 1,

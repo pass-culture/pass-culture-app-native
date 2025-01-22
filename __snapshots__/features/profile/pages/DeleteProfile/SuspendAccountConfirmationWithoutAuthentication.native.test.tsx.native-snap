@@ -518,8 +518,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -636,8 +636,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]

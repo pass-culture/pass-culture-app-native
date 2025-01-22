@@ -13,7 +13,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, TypoDS, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -135,7 +135,7 @@ const StyledAddress = styled(TypoDS.Body)({
 const iconSize = getSpacing(8)
 const iconSpacing = Math.round(iconSize / 5)
 
-const StyledVenueName = styled(Typo.ButtonText)({
+const StyledVenueName = styled(TypoDS.BodyAccent)({
   textTransform: 'capitalize',
   flexShrink: 1,
   left: -iconSpacing,

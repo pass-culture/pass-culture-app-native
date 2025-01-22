@@ -9,15 +9,12 @@ const tests = {
   valid: [
     // <Text>string</Text>
     { code: '<Text>toto</Text>' },
-    // <Typo.***>string</Typo.***>
+    // <TypoDS.***>string</TypoDS.***>
     { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
     { code: '<TypoDS.Title2>toto</TypoDS.Title2>' },
     { code: '<TypoDS.Title3>toto</TypoDS.Title3>' },
     { code: '<TypoDS.Title4>toto</TypoDS.Title4>' },
-    { code: '<Typo.ButtonText>toto</Typo.ButtonText>' },
-    { code: '<Typo.ButtonTextNeutralInfo>toto</Typo.ButtonTextNeutralInfo>' },
-    { code: '<Typo.ButtonTextPrimary>toto</Typo.ButtonTextPrimary>' },
-    { code: '<Typo.ButtonTextSecondary>toto</Typo.ButtonTextSecondary>' },
+    { code: '<TypoDS.Button>toto</TypoDS.Button>' },
     { code: '<TypoDS.Body>toto</TypoDS.Body>' },
     { code: '<TypoDS.BodyAccentXs>toto</TypoDS.BodyAccentXs>' },
     // <Styled***>string</Styled***>

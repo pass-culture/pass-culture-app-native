@@ -5,7 +5,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
+import { getSpacing, Spacer, getShadow, TypoDS } from 'ui/theme'
 
 interface SeeMoreProps {
   height: number
@@ -32,7 +32,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onP
         </Row>
         <Spacer.Column numberOfSpaces={2} />
         <Row>
-          <Typo.ButtonTextPrimary>En voir plus</Typo.ButtonTextPrimary>
+          <StyledBodyAccent>En voir plus</StyledBodyAccent>
         </Row>
       </ClickableArea>
     </Container>
@@ -104,3 +104,7 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.standard,
 }))``
+
+const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
+  color: theme.colors.primary,
+}))

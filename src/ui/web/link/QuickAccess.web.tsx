@@ -15,7 +15,7 @@ export const QuickAccess = ({ href, title }: QuickAccessProps) => (
 
 const StyledA: React.FC<{ href: string; children: string }> = displayOnFocus(
   styled.a(({ theme }) => ({
-    ...theme.typography.buttonText,
+    ...theme.designSystem.typography.button,
     color: theme.uniqueColors.brand,
     backgroundColor: theme.colors.white,
     textDecoration: 'none',
