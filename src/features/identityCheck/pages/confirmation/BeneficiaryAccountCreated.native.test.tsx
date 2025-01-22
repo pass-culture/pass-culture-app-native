@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
@@ -10,7 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -26,6 +28,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {
@@ -52,7 +57,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
 
   it('should track Batch event when button is clicked', async () => {
     renderBeneficiaryAccountCreated()
-    fireEvent.press(await screen.findByLabelText('C’est parti !'))
+    await user.press(await screen.findByLabelText('C’est parti !'))
 
     expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
   })
@@ -66,14 +71,15 @@ describe('<BeneficiaryAccountCreated/>', () => {
     )
     renderBeneficiaryAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('C’est parti !'))
+    await user.press(await screen.findByLabelText('C’est parti !'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 
   it('should not show share app modal when user is supposed to see cultural survey', async () => {
     renderBeneficiaryAccountCreated()
-    fireEvent.press(await screen.findByLabelText('C’est parti !'))
+
+    await user.press(await screen.findByLabelText('C’est parti !'))
 
     expect(mockShowAppModal).not.toHaveBeenCalled()
   })
@@ -84,18 +90,62 @@ describe('<BeneficiaryAccountCreated/>', () => {
       { ...beneficiaryUser, needsToFillCulturalSurvey: true },
       { persist: true }
     )
-    fireEvent.press(await screen.findByLabelText('C’est parti !'))
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
-    })
+
+    await user.press(await screen.findByLabelText('C’est parti !'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
   })
 
   it('should redirect to home page when "C’est parti !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     renderBeneficiaryAccountCreated()
-    fireEvent.press(await screen.findByLabelText('C’est parti !'))
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', { screen: 'Home' })
+
+    await user.press(await screen.findByLabelText('C’est parti !'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', { screen: 'Home' })
+  })
+
+  it('should have correct credit information text for beneficiary user', async () => {
+    mockAuthContextWithUser({ ...beneficiaryUser }, { persist: true })
+    renderBeneficiaryAccountCreated()
+
+    const recreditText = screen.getByText('Tu as deux ans pour profiter de ton crédit.')
+
+    await act(() => {
+      expect(recreditText).toBeOnTheScreen()
+    })
+  })
+
+  it('should have correct credit information text for underage beneficiary', async () => {
+    renderBeneficiaryAccountCreated()
+
+    const recreditText = screen.getByText(
+      'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
+    )
+
+    await act(() => {
+      expect(recreditText).toBeOnTheScreen()
+    })
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => {
+      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
+        data: { ...defaultSettings, wipEnableCreditV3: true },
+        isLoading: false,
+      })
+    })
+
+    it('should have correct credit information text', async () => {
+      renderBeneficiaryAccountCreated()
+
+      const recreditText = screen.getByText(
+        'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
+      )
+
+      await act(() => {
+        expect(recreditText).toBeOnTheScreen()
+      })
     })
   })
 })

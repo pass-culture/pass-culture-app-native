@@ -245,7 +245,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         ]
       }
     >
-      Tu as deux ans pour profiter de ton budget.
+      Tu as deux ans pour profiter de ton crédit.
     </Text>
     <View
       numberOfSpaces={5}
@@ -623,7 +623,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         ]
       }
     >
-      Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.
+      Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.
     </Text>
     <View
       numberOfSpaces={5}

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
@@ -25,6 +26,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
+  const { data: settings } = useSettingsContext()
 
   const age = getAge(user?.birthDate)
 
@@ -76,6 +78,11 @@ export const RecreditBirthdayNotification = () => {
     ? `Pour tes ${age} ans, ${creditedAmount} ont été ajoutés à ton compte. Tu disposes maintenant de\u00a0:`
     : ''
 
+  const enableCreditV3 = settings?.wipEnableCreditV3
+  const text = enableCreditV3
+    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
+    : 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
+
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
       <StyledSubtitle testID="recreditMessage">{recreditMessage}</StyledSubtitle>
@@ -91,7 +98,7 @@ export const RecreditBirthdayNotification = () => {
         <Amount>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.</StyledBody>
+      <StyledBody>{text}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
         <ButtonPrimary
