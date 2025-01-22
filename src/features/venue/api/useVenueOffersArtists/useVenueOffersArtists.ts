@@ -6,6 +6,7 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { isArtistPageCompatible } from 'features/venue/helpers/isArtistPageCompatible/isArtistPageCompatible'
 import { Artist, VenueOffersArtists } from 'features/venue/types'
 
+// TODO(PC-33464): Code to delete if correctly managed on backend (to be replaced by a hook which get the artists from Algolia)
 export const useVenueOffersArtists = (
   venue?: VenueResponse
 ): Partial<UseQueryResult<VenueOffersArtists>> => {
