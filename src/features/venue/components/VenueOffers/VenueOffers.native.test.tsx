@@ -20,13 +20,12 @@ import {
 } from 'features/venue/fixtures/venueOffersResponseSnap'
 import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
-
-const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueDataTest
@@ -108,6 +107,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VenueOffers />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
@@ -220,8 +223,8 @@ describe('<VenueOffers />', () => {
   })
 
   describe('Cinema venue', () => {
-    beforeAll(() => {
-      mockFeatureFlag.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE])
     })
 
     it('should display movie screening calendar if at least one offer is a movie screening', async () => {
@@ -236,8 +239,8 @@ describe('<VenueOffers />', () => {
 
   describe('Artist playlist', () => {
     describe('When wipVenueArtistsPlaylist feature flag activated', () => {
-      beforeAll(() => {
-        mockFeatureFlag.mockReturnValue(true)
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST])
       })
 
       it('should display artists playlist when venue offers have artists', () => {
@@ -277,10 +280,6 @@ describe('<VenueOffers />', () => {
     })
 
     describe('When wipVenueArtistsPlaylist feature flag deactivated', () => {
-      beforeAll(() => {
-        mockFeatureFlag.mockReturnValue(false)
-      })
-
       it('should not display artists playlist when venue offers have artists', () => {
         renderVenueOffers({
           venue: venueDataTest,
