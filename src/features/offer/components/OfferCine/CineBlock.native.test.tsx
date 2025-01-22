@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThemeProvider } from 'styled-components'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import * as MovieCalendarContext from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
@@ -6,9 +7,11 @@ import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreenin
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { computedTheme } from 'tests/computedTheme'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
+import { theme } from 'theme'
 
 import { CineBlock, CineBlockProps } from './CineBlock'
 
@@ -134,10 +137,33 @@ describe('CineBlock', () => {
 
     expect(mockOnPressOfferCTA).toHaveBeenCalledWith()
   })
+
+  it('should not display Divider if withDivider is false', () => {
+    renderCineBlock({ withDivider: false })
+
+    expect(screen.queryByTestId('divider')).not.toBeOnTheScreen()
+  })
+
+  it('should display Divider with mobile style', async () => {
+    renderCineBlock({ withDivider: true })
+
+    expect(screen.getByTestId('divider')).toHaveStyle({ marginHorizontal: 24 })
+  })
+
+  it('should display Divider with desktop style', async () => {
+    renderCineBlock({ withDivider: true }, true)
+
+    expect(screen.getByTestId('divider')).toHaveStyle({ marginTop: 16 })
+  })
 })
 
-const renderCineBlock = (props: Partial<CineBlockProps>) => {
+const renderCineBlock = (props: Partial<CineBlockProps>, isDesktopViewport?: boolean) => {
   return render(<CineBlock {...props} offer={mockOffer} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+    wrapper: ({ children }) =>
+      reactQueryProviderHOC(
+        <ThemeProvider theme={{ ...theme, ...computedTheme, isDesktopViewport }}>
+          {children}
+        </ThemeProvider>
+      ),
   })
 }

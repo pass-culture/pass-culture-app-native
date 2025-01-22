@@ -53,7 +53,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           {CTAOfferModal}
         </React.Fragment>
       </CineBlockContainer>
-      {withDivider ? <Divider /> : null}
+      {withDivider ? <Divider testID="divider" /> : null}
     </React.Fragment>
   )
 }
