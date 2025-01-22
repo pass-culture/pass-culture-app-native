@@ -12,6 +12,9 @@ const BEFORE_SELECTED_DATE = '2023-05-07T00:00:00.000Z'
 const SELECTED_DATE = '2023-05-15T00:00:00.000Z'
 const AFTER_SELECTED_DATE = '2023-05-20T00:00:00.000Z'
 const AT_LEAST_15_DAYS_AFTER_SELECTED_DATE = '2023-06-20T00:00:00.000Z'
+const SELECTED_DATE_PLUS_1_SECOND = '2023-05-15T00:00:01.000Z'
+const SELECTED_DATE_PLUS_2_SECOND = '2023-05-15T00:00:02.000Z'
+const SELECTED_DATE_PLUS_3_SECOND = '2023-05-15T00:00:03.000Z'
 
 describe('useVenueMovieOffers', () => {
   beforeEach(() => {
@@ -24,17 +27,23 @@ describe('useVenueMovieOffers', () => {
         mockBuilder.offerResponseV2({
           id: 1,
           last30DaysBookings: 400,
-          stocks: [mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE })],
+          stocks: [
+            mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE_PLUS_1_SECOND }),
+          ],
         }),
         mockBuilder.offerResponseV2({
           id: 2,
           last30DaysBookings: 200,
-          stocks: [mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE })],
+          stocks: [
+            mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE_PLUS_2_SECOND }),
+          ],
         }),
         mockBuilder.offerResponseV2({
           id: 3,
           last30DaysBookings: 300,
-          stocks: [mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE })],
+          stocks: [
+            mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE_PLUS_3_SECOND }),
+          ],
         }),
       ],
     }
@@ -58,7 +67,9 @@ describe('useVenueMovieOffers', () => {
       offers: [
         mockBuilder.offerResponseV2({
           id: 1,
-          stocks: [mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE })],
+          stocks: [
+            mockBuilder.offerStockResponse({ beginningDatetime: SELECTED_DATE_PLUS_1_SECOND }),
+          ],
         }),
         mockBuilder.offerResponseV2({
           id: 2,
@@ -119,7 +130,7 @@ describe('useVenueMovieOffers', () => {
           id: 1,
           stocks: [
             mockBuilder.offerStockResponse({
-              beginningDatetime: SELECTED_DATE,
+              beginningDatetime: SELECTED_DATE_PLUS_1_SECOND,
             }),
           ],
         }),

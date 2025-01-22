@@ -27,12 +27,10 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
               return true
             }
             const isSameDate = isSameDay(new Date(stock.beginningDatetime), selectedDate)
-            if (
-              isSameDate ||
-              (isSameDate && isAfter(new Date(stock.beginningDatetime), selectedDate))
-            ) {
-              return true
+            if (isSameDate) {
+              return isAfter(new Date(stock.beginningDatetime), selectedDate)
             }
+
             return false
           })
       )

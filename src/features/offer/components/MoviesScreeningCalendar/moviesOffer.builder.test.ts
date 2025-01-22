@@ -1,4 +1,4 @@
-import { addDays } from 'date-fns'
+import { addDays, addSeconds } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { mockBuilder } from 'tests/mockBuilder'
@@ -36,8 +36,11 @@ describe('moviesOfferBuilder', () => {
 
   describe('withoutMoviesOnDay', () => {
     it('should not return movies of the selected day', () => {
+      const selectedDatePlus1Second = addSeconds(selectedDate, 1)
       const offer1 = mockBuilder.offerResponseV2({
-        stocks: [mockBuilder.offerStockResponse({ beginningDatetime: selectedDate.toString() })],
+        stocks: [
+          mockBuilder.offerStockResponse({ beginningDatetime: selectedDatePlus1Second.toString() }),
+        ],
       })
       const offer2 = mockBuilder.offerResponseV2({
         stocks: [
