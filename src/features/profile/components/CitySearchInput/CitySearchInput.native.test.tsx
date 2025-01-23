@@ -5,7 +5,7 @@ import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/network/NetInfoWrapper')
@@ -23,13 +23,11 @@ describe('<CitySearchInput />', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await user.type(input, POSTAL_CODE)
 
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
-        )
-      ).toBeOnTheScreen()
-    })
+    expect(
+      screen.getByText(
+        'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display an ineligible postal code message', async () => {
