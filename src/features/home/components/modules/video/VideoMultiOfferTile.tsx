@@ -8,7 +8,8 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -34,6 +35,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -53,7 +55,11 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     offer.offer.dates,
     offer.offer.releaseDate
   )
-  const displayDistance = useDistance(offer._geoloc)
+  const displayDistance = getDistance(offer._geoloc, {
+    userLocation,
+    selectedPlace,
+    selectedLocationMode,
+  })
 
   const categoryId = mapping[offer.offer.subcategoryId]
 
