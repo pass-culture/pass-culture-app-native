@@ -8,6 +8,7 @@ import { filterAndSortCheatcodesButtons } from 'cheatcodes/hooks/filterAndSortCh
 import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
+import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
 import { cheatcodesNavigationHomeButtons } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
@@ -19,11 +20,8 @@ import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/o
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
-import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { env } from 'libs/environment'
-import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
-import { ScreenError } from 'libs/monitoring/errors'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -43,12 +41,6 @@ export function CheatcodesMenu(): React.JSX.Element {
     })
   }
 
-  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
-  const { logType } = useLogTypeFromRemoteConfig()
-  const onPressForceUpdate = () => {
-    setScreenError(new ScreenError('Test force update page', { Screen: ForceUpdate, logType }))
-  }
-
   const featuresButtons: CheatcodesButtonsWithSubscreensProps[] = [
     ...cheatcodesNavigationAchievementsButtons,
     ...cheatcodesNavigationBookOfferButtons,
@@ -60,7 +52,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
-    { title: 'ForceUpdate 🆙', onPress: onPressForceUpdate },
+    ...cheatcodesNavigationForceUpdateButtons,
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
   ]
 
@@ -76,8 +68,6 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
     { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
   ]
-
-  if (screenError) throw screenError
 
   const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)
   const filteredOtherButtons = filterAndSortCheatcodesButtons(searchValue, otherButtons)

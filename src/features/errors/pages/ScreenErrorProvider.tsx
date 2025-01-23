@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
-import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
+import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
@@ -19,7 +19,7 @@ export const ScreenErrorProvider = ({
 
   if (mustUpdateApp) {
     throw new ScreenError('Must update app', {
-      Screen: ForceUpdate,
+      Screen: ForceUpdateWithResetErrorBoundary,
       logType,
     })
   }
