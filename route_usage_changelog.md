@@ -1,4 +1,4 @@
-# v
+# v1.325.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -13,6 +13,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/me/favorites
 - /native/v1/oauth/state
 - /native/v1/offer/{offer_id}
+- /native/v1/offer/{offer_id}/chronicles
 - /native/v1/phone_validation/remaining_attempts
 - /native/v1/profile/token_expiration
 - /native/v1/reaction/available
