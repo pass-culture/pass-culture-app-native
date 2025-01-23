@@ -1,9 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import * as SettingsContext from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { analytics } from 'libs/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+const mockUseSettingContext = jest.spyOn(SettingsContext, 'useSettingsContext')
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -41,6 +45,19 @@ describe('<CreditExplanation/>', () => {
       await act(() => fireEvent.press(explanationButton))
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+    })
+
+    it('should navigate to tutorial CreditV3 when button is triggered and enableCreditV3 is true', async () => {
+      mockUseSettingContext.mockReturnValueOnce({
+        data: { ...defaultSettings, wipEnableCreditV3: true },
+        isLoading: false,
+      })
+
+      render(<CreditExplanation isDepositExpired={false} age={18} />)
+      const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
+      await act(() => fireEvent.press(explanationButton))
+
+      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
     })
 
     it('should navigate to 17 years old tutorial when button is triggered and user is 17', async () => {

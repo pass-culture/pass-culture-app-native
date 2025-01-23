@@ -243,6 +243,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -474,6 +475,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -757,6 +759,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1185,6 +1188,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1467,6 +1471,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -1717,6 +1722,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2145,6 +2151,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2376,6 +2383,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -2608,6 +2616,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3069,6 +3078,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3300,6 +3310,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3532,6 +3543,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -3815,6 +3827,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4243,6 +4256,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4525,6 +4539,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -4775,6 +4790,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5025,6 +5041,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5453,6 +5470,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5684,6 +5702,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -5967,6 +5986,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -6217,6 +6237,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   />
                 </View>
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -6645,6 +6666,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -6876,6 +6898,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -7108,6 +7131,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {
@@ -7340,6 +7364,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   testID="top-line"
                 />
                 <View
+                  addMoreSpacingToIcons={false}
                   style={
                     [
                       {

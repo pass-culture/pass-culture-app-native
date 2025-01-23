@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
@@ -55,6 +56,8 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const OnlineProfile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -80,10 +83,14 @@ const OnlineProfile: React.FC = () => {
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
 
-  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
-    userAge && userAge < 19 && userAge > 14
-      ? { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-      : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
+    : { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
+  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
+    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+  const tutorialNavigateTo =
+    userAge && userAge < 19 && userAge > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
 
   useFocusEffect(
     useCallback(() => {
