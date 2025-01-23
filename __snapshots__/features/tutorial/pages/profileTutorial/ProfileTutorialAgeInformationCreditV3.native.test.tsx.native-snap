@@ -1050,10 +1050,10 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
                     "justifyContent": "center",
-                    "lineHeight": 20,
+                    "lineHeight": 25.6,
                     "marginLeft": 6,
                   },
                 ]
