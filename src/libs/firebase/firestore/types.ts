@@ -47,13 +47,14 @@ export type Maintenance =
     }
 
 export enum RemoteStoreFeatureFlags {
-  SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN = 'showForceUpdateAfterSplashScreen',
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
+  SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN = 'showForceUpdateAfterSplashScreen',
+  SHOW_FORCE_UPDATE_BANNER = 'showForceUpdateBanner',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',

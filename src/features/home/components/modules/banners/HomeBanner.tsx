@@ -3,6 +3,7 @@ import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'r
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
+import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
@@ -54,6 +55,7 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
+  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
@@ -70,7 +72,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     [navigate]
   )
 
-  const renderBanner = useCallback(
+  const renderActivationBanner = useCallback(
     (Icon: FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
       <BannerContainer>
         <ActivationBanner title={title} subtitle={subtitle} icon={Icon} from={StepperOrigin.HOME} />
@@ -94,11 +96,11 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       banner.title &&
       banner.text
     ) {
-      return renderBanner(bannerIcons[banner.name], banner.title, banner.text)
+      return renderActivationBanner(bannerIcons[banner.name], banner.title, banner.text)
     }
 
     return null
-  }, [isLoggedIn, banner, shouldRenderSystemBanner, renderBanner, enableSystemBanner])
+  }, [isLoggedIn, banner, shouldRenderSystemBanner, renderActivationBanner, enableSystemBanner])
 
   const renderSystemBanner = useCallback(
     (Icon: ComponentType, title: string, subtitle: string) => (
@@ -136,6 +138,14 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
     return null
   }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, enableSystemBanner])
+
+  if (showForceUpdateBanner) {
+    return (
+      <BannerContainer>
+        <ForceUpdateBanner />
+      </BannerContainer>
+    )
+  }
 
   return enableSystemBanner ? SystemBanner : Banner
 }

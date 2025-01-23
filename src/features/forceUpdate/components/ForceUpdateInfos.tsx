@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BUTTON_TEXT, DESCRIPTION, TITLE } from 'features/forceUpdate/constants'
+import { BUTTON_TEXT_SCREEN, DESCRIPTION, TITLE } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -26,7 +26,11 @@ export const ForceUpdateInfos = () => {
         title={TITLE}
         icon={AgainIllustration}
         buttons={[
-          <ButtonPrimaryWhite key={BUTTON_TEXT} wording={BUTTON_TEXT} onPress={onPressStoreLink} />,
+          <ButtonPrimaryWhite
+            key={BUTTON_TEXT_SCREEN}
+            wording={BUTTON_TEXT_SCREEN}
+            onPress={onPressStoreLink}
+          />,
           isWeb ? null : (
             <ExternalTouchableLink
               as={ButtonTertiaryWhite}

@@ -185,7 +185,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Télécharger la dernière version."
+        accessibilityLabel="Télécharger la dernière version"
         accessibilityState={
           {
             "busy": undefined,
@@ -239,7 +239,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
             },
           ]
         }
-        testID="Télécharger la dernière version."
+        testID="Télécharger la dernière version"
       >
         <View
           style={
@@ -266,7 +266,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
               ]
             }
           >
-            Télécharger la dernière version.
+            Télécharger la dernière version
           </Text>
         </View>
       </View>
