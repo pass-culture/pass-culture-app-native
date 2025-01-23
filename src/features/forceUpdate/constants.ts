@@ -12,8 +12,8 @@ export const STORE_LINK = Platform.select({
 })
 
 export const TITLE = Platform.select({
-  default: 'Mise à jour de l’application',
-  web: 'Mise à jour de l’application',
+  default: 'Mise à jour requise\u00a0!',
+  web: 'Mise à jour requise\u00a0!',
 })
 
 export const DESCRIPTION = Platform.select({

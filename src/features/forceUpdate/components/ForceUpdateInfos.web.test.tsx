@@ -9,11 +9,11 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber')
 
 describe('<ForceUpdateInfos/>', () => {
-    it('should not display the web app button', () => {
-        render(<ForceUpdateInfos />)
+  it('should not display the web app button', () => {
+    render(<ForceUpdateInfos />)
 
-        const goToWebappButton = screen.queryByText('Utiliser la version web')
+    const goToWebappButton = screen.queryByText('Utiliser la version web')
 
-        expect(goToWebappButton).not.toBeInTheDocument()
-    })
+    expect(goToWebappButton).not.toBeInTheDocument()
+  })
 })
