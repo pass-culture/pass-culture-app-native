@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CookiesDetails/> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "marginBottom": 32,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -197,48 +205,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>,
-  <View
-    numberOfSpaces={8}
-    style={
-      [
-        {
-          "height": 32,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 17,
-          "lineHeight": 27.2,
-        },
-      ]
-    }
-  >
-    À quoi servent tes cookies et tes données ?
-  </Text>,
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />,
+  </View>
   <View
     style={
       [
         {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "paddingVertical": 32,
         },
       ]
     }
@@ -247,34 +219,43 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       style={
         [
           {
-            "color": "#696A6F",
-            "flexShrink": 1,
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
           },
         ]
       }
     >
-      Je choisis mes cookies
+      À quoi servent tes cookies et tes données ?
     </Text>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
     <View
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
       <Text
-        htmlFor="testUuidV4"
-        id="testUuidV4"
         style={
           [
             {
               "color": "#696A6F",
+              "flexShrink": 1,
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -282,19 +263,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           ]
         }
       >
-        Tout accepter
+        Je choisis mes cookies
       </Text>
       <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "width": 8,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
@@ -305,465 +276,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         }
       >
         <Text
-          accessibilityHidden={true}
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Case à cocher - 
-          non cochée
-        </Text>
-        <View
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Interrupteur Tout accepter"
-        >
-          <View
-            active={false}
-            style={
-              [
-                {
-                  "backgroundColor": "#90949D",
-                  "borderRadius": 16,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
-          >
-            <View
-              disabled={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  },
-                  {
-                    "marginLeft": 2,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>,
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "width": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-            "paddingVertical": 20,
-          },
-          {
-            "paddingHorizontal": 0,
-            "paddingVertical": 16,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          accessibilityHidden={true}
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Case à cocher - 
-          non cochée
-        </Text>
-        <View
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Interrupteur Personnaliser ta navigation"
-        >
-          <View
-            active={false}
-            style={
-              [
-                {
-                  "backgroundColor": "#90949D",
-                  "borderRadius": 16,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
-          >
-            <View
-              disabled={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  },
-                  {
-                    "marginLeft": 2,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "width": 8,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": false,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="accordionTouchable"
-    >
-      <View
-        nativeID="testUuidV4"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            {
-              "paddingHorizontal": 0,
-              "paddingVertical": 16,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Personnaliser ta navigation
-          </Text>
-        </Text>
-        <View
-          style={
-            [
-              {
-                "marginLeft": 8,
-              },
-              {
-                "transform": [
-                  {
-                    "rotateZ": "1.5707963267948966rad",
-                  },
-                ],
-              },
-            ]
-          }
-          testID="accordionArrow"
-        >
-          <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "overflow": "hidden",
-        },
-        {
-          "height": 0,
-        },
-      ]
-    }
-    testID="accordionBody"
-  >
-    <View
-      accessibilityLabelledBy="testUuidV4"
-      hidden={true}
-      nativeID="testUuidV4"
-      onLayout={[Function]}
-      style={
-        [
-          {
-            "bottom": 0,
-            "display": "none",
-            "paddingBottom": 24,
-            "paddingHorizontal": 24,
-            "paddingTop": 0,
-            "position": "absolute",
-            "width": "100%",
-          },
-          {
-            "paddingBottom": 16,
-            "paddingHorizontal": 0,
-          },
-        ]
-      }
-      testID="accordionBodyContainer"
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View>
-        <View
-          style={
-            [
-              {
-                "position": "absolute",
-              },
-            ]
-          }
-        >
-          <View
-            fill="#eb0055"
-            height={16}
-            width={16}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
+          htmlFor="testUuidV4"
+          id="testUuidV4"
           style={
             [
               {
@@ -775,1001 +289,149 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
-        </Text>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "backgroundColor": "#F1F1F4",
-          "height": 1,
-          "width": "100%",
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-            "paddingVertical": 20,
-          },
-          {
-            "paddingHorizontal": 0,
-            "paddingVertical": 16,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          accessibilityHidden={true}
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Case à cocher - 
-          non cochée
+          Tout accepter
         </Text>
         <View
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          numberOfSpaces={2}
           style={
             [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
               {
-                "opacity": 1,
+                "width": 8,
               },
             ]
           }
-          testID="Interrupteur Enregistrer des statistiques de navigation"
-        >
-          <View
-            active={false}
-            style={
-              [
-                {
-                  "backgroundColor": "#90949D",
-                  "borderRadius": 16,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
-          >
-            <View
-              disabled={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  },
-                  {
-                    "marginLeft": 2,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "width": 8,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": false,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="accordionTouchable"
-    >
-      <View
-        nativeID="testUuidV4"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            {
-              "paddingHorizontal": 0,
-              "paddingVertical": 16,
-            },
-          ]
-        }
-      >
-        <Text
+        />
+        <View
           style={
             [
               {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <Text
+            accessibilityHidden={true}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "display": "none",
                 },
               ]
             }
           >
-            Enregistrer des statistiques de navigation
+            Case à cocher - 
+            non cochée
           </Text>
-        </Text>
-        <View
-          style={
-            [
-              {
-                "marginLeft": 8,
-              },
-              {
-                "transform": [
-                  {
-                    "rotateZ": "1.5707963267948966rad",
-                  },
-                ],
-              },
-            ]
-          }
-          testID="accordionArrow"
-        >
           <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "overflow": "hidden",
-        },
-        {
-          "height": 0,
-        },
-      ]
-    }
-    testID="accordionBody"
-  >
-    <View
-      accessibilityLabelledBy="testUuidV4"
-      hidden={true}
-      nativeID="testUuidV4"
-      onLayout={[Function]}
-      style={
-        [
-          {
-            "bottom": 0,
-            "display": "none",
-            "paddingBottom": 24,
-            "paddingHorizontal": 24,
-            "paddingTop": 0,
-            "position": "absolute",
-            "width": "100%",
-          },
-          {
-            "paddingBottom": 16,
-            "paddingHorizontal": 0,
-          },
-        ]
-      }
-      testID="accordionBodyContainer"
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View>
-        <View
-          style={
-            [
+            accessibilityRole="checkbox"
+            accessibilityState={
               {
-                "position": "absolute",
-              },
-            ]
-          }
-        >
-          <View
-            fill="#eb0055"
-            height={16}
-            width={16}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
-        </Text>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "backgroundColor": "#F1F1F4",
-          "height": 1,
-          "width": "100%",
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-            "paddingVertical": 20,
-          },
-          {
-            "paddingHorizontal": 0,
-            "paddingVertical": 16,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          accessibilityHidden={true}
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Case à cocher - 
-          non cochée
-        </Text>
-        <View
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Interrupteur Mesurer l’efficacité de nos publicités"
-        >
-          <View
-            active={false}
-            style={
-              [
-                {
-                  "backgroundColor": "#90949D",
-                  "borderRadius": 16,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
-          >
-            <View
-              disabled={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  },
-                  {
-                    "marginLeft": 2,
-                  },
-                ]
+                "busy": undefined,
+                "checked": false,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "width": 8,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": false,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="accordionTouchable"
-    >
-      <View
-        nativeID="testUuidV4"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            {
-              "paddingHorizontal": 0,
-              "paddingVertical": 16,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
+            }
+            accessibilityValue={
               {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
-          }
-        >
-          <Text
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Mesurer l’efficacité de nos publicités
-          </Text>
-        </Text>
-        <View
-          style={
-            [
-              {
-                "marginLeft": 8,
-              },
-              {
-                "transform": [
+                [
                   {
-                    "rotateZ": "1.5707963267948966rad",
+                    "userSelect": "auto",
                   },
                 ],
-              },
-            ]
-          }
-          testID="accordionArrow"
-        >
-          <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "overflow": "hidden",
-        },
-        {
-          "height": 0,
-        },
-      ]
-    }
-    testID="accordionBody"
-  >
-    <View
-      accessibilityLabelledBy="testUuidV4"
-      hidden={true}
-      nativeID="testUuidV4"
-      onLayout={[Function]}
-      style={
-        [
-          {
-            "bottom": 0,
-            "display": "none",
-            "paddingBottom": 24,
-            "paddingHorizontal": 24,
-            "paddingTop": 0,
-            "position": "absolute",
-            "width": "100%",
-          },
-          {
-            "paddingBottom": 16,
-            "paddingHorizontal": 0,
-          },
-        ]
-      }
-      testID="accordionBodyContainer"
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View>
-        <View
-          style={
-            [
-              {
-                "position": "absolute",
-              },
-            ]
-          }
-        >
-          <View
-            fill="#eb0055"
-            height={16}
-            width={16}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
                 {
-                  "width": 20,
+                  "opacity": 1,
                 },
               ]
             }
-          />
-          En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
-        </Text>
-      </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "backgroundColor": "#F1F1F4",
-          "height": 1,
-          "width": "100%",
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-            "paddingVertical": 20,
-          },
-          {
-            "paddingHorizontal": 0,
-            "paddingVertical": 16,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          accessibilityHidden={true}
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Case à cocher - 
-          cochée
-        </Text>
-        <View
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": true,
-              "disabled": true,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
-        >
-          <View
-            active={true}
-            style={
-              [
-                {
-                  "backgroundColor": "#15884f",
-                  "borderRadius": 16,
-                  "height": 32,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
+            testID="Interrupteur Tout accepter"
           >
             <View
-              disabled={true}
+              active={false}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
+                    "backgroundColor": "#90949D",
+                    "borderRadius": 16,
+                    "height": 32,
                     "justifyContent": "center",
-                    "width": 28,
-                  },
-                  {
-                    "marginLeft": 26,
+                    "width": 56,
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Désactivé"
-                height={16}
-                width={16}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+                disabled={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "shadowColor": "#161617",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 28,
+                    },
+                    {
+                      "marginLeft": 2,
+                    },
+                  ]
+                }
+              />
             </View>
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "width": 8,
-            },
-          ]
-        }
-      />
     </View>
     <View
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": false,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      numberOfSpaces={4}
       style={
         [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
           {
-            "opacity": 1,
+            "width": 16,
           },
         ]
       }
-      testID="accordionTouchable"
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
     >
       <View
-        nativeID="testUuidV4"
         style={
           [
             {
@@ -1786,296 +448,133 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           ]
         }
       >
-        <Text
+        <View
           style={
             [
               {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <Text
+            accessibilityHidden={true}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "display": "none",
                 },
               ]
             }
           >
-            Assurer la sécurité, prévenir la fraude et corriger les bugs
+            Case à cocher - 
+            non cochée
           </Text>
-        </Text>
+          <View
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Interrupteur Personnaliser ta navigation"
+          >
+            <View
+              active={false}
+              style={
+                [
+                  {
+                    "backgroundColor": "#90949D",
+                    "borderRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  },
+                ]
+              }
+            >
+              <View
+                disabled={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "shadowColor": "#161617",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 28,
+                    },
+                    {
+                      "marginLeft": 2,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
         <View
+          numberOfSpaces={2}
           style={
             [
               {
-                "marginLeft": 8,
-              },
-              {
-                "transform": [
-                  {
-                    "rotateZ": "1.5707963267948966rad",
-                  },
-                ],
+                "width": 8,
               },
             ]
           }
-          testID="accordionArrow"
-        >
-          <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
+        />
       </View>
-    </View>
-  </View>,
-  <View
-    style={
-      [
-        {
-          "overflow": "hidden",
-        },
-        {
-          "height": 0,
-        },
-      ]
-    }
-    testID="accordionBody"
-  >
-    <View
-      accessibilityLabelledBy="testUuidV4"
-      hidden={true}
-      nativeID="testUuidV4"
-      onLayout={[Function]}
-      style={
-        [
-          {
-            "bottom": 0,
-            "display": "none",
-            "paddingBottom": 24,
-            "paddingHorizontal": 24,
-            "paddingTop": 0,
-            "position": "absolute",
-            "width": "100%",
-          },
-          {
-            "paddingBottom": 16,
-            "paddingHorizontal": 0,
-          },
-        ]
-      }
-      testID="accordionBodyContainer"
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
-      </Text>
-    </View>
-  </View>,
-  <View>
-    <View
-      style={
-        [
-          {
-            "position": "absolute",
-          },
-        ]
-      }
-    >
       <View
-        fill="#eb0055"
-        height={16}
-        width={16}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <Text
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "width": 20,
-            },
-          ]
-        }
-      />
-      Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
-    </Text>
-  </View>,
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      [
-        {
-          "backgroundColor": "#F1F1F4",
-          "height": 1,
-          "width": "100%",
-        },
-      ]
-    }
-  />,
-  <View
-    numberOfSpaces={8}
-    style={
-      [
-        {
-          "height": 32,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 17,
-          "lineHeight": 27.2,
-        },
-      ]
-    }
-  >
-    Tu as la main dessus
-  </Text>,
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
-  </Text>,
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    On te redemandera bien sûr ton consentement si notre politique évolue.
-  </Text>,
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 19.2,
-        },
-      ]
-    }
-  >
-    Pour plus d’informations, nous t’invitons à consulter notre
-    <View
-      numberOfSpaces={1}
-      style={
-        [
-          {
-            "width": 4,
-          },
-        ]
-      }
-    />
-    <View>
-      <View
-        accessibilityLabel="Politique de gestion des cookies"
-        accessibilityRole="link"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
             "checked": undefined,
             "disabled": undefined,
-            "expanded": undefined,
+            "expanded": false,
             "selected": undefined,
           }
         }
@@ -2087,7 +586,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -2103,7 +602,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "userSelect": "auto",
               },
               {
-                "top": 3,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ],
             {
@@ -2111,68 +612,1536 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Politique de gestion des cookies"
+        testID="accordionTouchable"
       >
         <View
-          paddingForIcon={0}
+          nativeID="testUuidV4"
           style={
             [
               {
                 "alignItems": "center",
                 "flexDirection": "row",
-                "top": 0,
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              {
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
               },
             ]
           }
         >
-          <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon"
-            width={16}
-          >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "width": 4,
-                },
-              ]
-            }
-          />
           <Text
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Personnaliser ta navigation
+            </Text>
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "marginLeft": 8,
+                },
+                {
+                  "transform": [
+                    {
+                      "rotateZ": "1.5707963267948966rad",
+                    },
+                  ],
+                },
+              ]
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": 0,
+          },
+        ]
+      }
+      testID="accordionBody"
+    >
+      <View
+        accessibilityLabelledBy="testUuidV4"
+        hidden={true}
+        nativeID="testUuidV4"
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "bottom": 0,
+              "display": "none",
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 0,
+              "position": "absolute",
+              "width": "100%",
+            },
+            {
+              "paddingBottom": 16,
+              "paddingHorizontal": 0,
+            },
+          ]
+        }
+        testID="accordionBodyContainer"
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View>
+          <View
+            style={
+              [
+                {
+                  "position": "absolute",
+                },
+              ]
+            }
+          >
+            <View
+              fill="#eb0055"
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
                 },
               ]
             }
-            typography="BodyAccentXs"
           >
-            Politique de gestion des cookies
+            <View
+              style={
+                [
+                  {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
           </Text>
         </View>
       </View>
     </View>
-  </Text>,
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityHidden={true}
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Case à cocher - 
+            non cochée
+          </Text>
+          <View
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Interrupteur Enregistrer des statistiques de navigation"
+          >
+            <View
+              active={false}
+              style={
+                [
+                  {
+                    "backgroundColor": "#90949D",
+                    "borderRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  },
+                ]
+              }
+            >
+              <View
+                disabled={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "shadowColor": "#161617",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 28,
+                    },
+                    {
+                      "marginLeft": 2,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="accordionTouchable"
+      >
+        <View
+          nativeID="testUuidV4"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              {
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Enregistrer des statistiques de navigation
+            </Text>
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "marginLeft": 8,
+                },
+                {
+                  "transform": [
+                    {
+                      "rotateZ": "1.5707963267948966rad",
+                    },
+                  ],
+                },
+              ]
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": 0,
+          },
+        ]
+      }
+      testID="accordionBody"
+    >
+      <View
+        accessibilityLabelledBy="testUuidV4"
+        hidden={true}
+        nativeID="testUuidV4"
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "bottom": 0,
+              "display": "none",
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 0,
+              "position": "absolute",
+              "width": "100%",
+            },
+            {
+              "paddingBottom": 16,
+              "paddingHorizontal": 0,
+            },
+          ]
+        }
+        testID="accordionBodyContainer"
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View>
+          <View
+            style={
+              [
+                {
+                  "position": "absolute",
+                },
+              ]
+            }
+          >
+            <View
+              fill="#eb0055"
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityHidden={true}
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Case à cocher - 
+            non cochée
+          </Text>
+          <View
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Interrupteur Mesurer l’efficacité de nos publicités"
+          >
+            <View
+              active={false}
+              style={
+                [
+                  {
+                    "backgroundColor": "#90949D",
+                    "borderRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  },
+                ]
+              }
+            >
+              <View
+                disabled={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "shadowColor": "#161617",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 28,
+                    },
+                    {
+                      "marginLeft": 2,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="accordionTouchable"
+      >
+        <View
+          nativeID="testUuidV4"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              {
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Mesurer l’efficacité de nos publicités
+            </Text>
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "marginLeft": 8,
+                },
+                {
+                  "transform": [
+                    {
+                      "rotateZ": "1.5707963267948966rad",
+                    },
+                  ],
+                },
+              ]
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": 0,
+          },
+        ]
+      }
+      testID="accordionBody"
+    >
+      <View
+        accessibilityLabelledBy="testUuidV4"
+        hidden={true}
+        nativeID="testUuidV4"
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "bottom": 0,
+              "display": "none",
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 0,
+              "position": "absolute",
+              "width": "100%",
+            },
+            {
+              "paddingBottom": 16,
+              "paddingHorizontal": 0,
+            },
+          ]
+        }
+        testID="accordionBodyContainer"
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View>
+          <View
+            style={
+              [
+                {
+                  "position": "absolute",
+                },
+              ]
+            }
+          >
+            <View
+              fill="#eb0055"
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityHidden={true}
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Case à cocher - 
+            cochée
+          </Text>
+          <View
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": true,
+                "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
+          >
+            <View
+              active={true}
+              style={
+                [
+                  {
+                    "backgroundColor": "#15884f",
+                    "borderRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  },
+                ]
+              }
+            >
+              <View
+                disabled={true}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "width": 28,
+                    },
+                    {
+                      "marginLeft": 26,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Désactivé"
+                  height={16}
+                  width={16}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="accordionTouchable"
+      >
+        <View
+          nativeID="testUuidV4"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              {
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Assurer la sécurité, prévenir la fraude et corriger les bugs
+            </Text>
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "marginLeft": 8,
+                },
+                {
+                  "transform": [
+                    {
+                      "rotateZ": "1.5707963267948966rad",
+                    },
+                  ],
+                },
+              ]
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": 0,
+          },
+        ]
+      }
+      testID="accordionBody"
+    >
+      <View
+        accessibilityLabelledBy="testUuidV4"
+        hidden={true}
+        nativeID="testUuidV4"
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "bottom": 0,
+              "display": "none",
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 0,
+              "position": "absolute",
+              "width": "100%",
+            },
+            {
+              "paddingBottom": 16,
+              "paddingHorizontal": 0,
+            },
+          ]
+        }
+        testID="accordionBodyContainer"
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
+        </Text>
+      </View>
+    </View>
+    <View>
+      <View
+        style={
+          [
+            {
+              "position": "absolute",
+            },
+          ]
+        }
+      >
+        <View
+          fill="#eb0055"
+          height={16}
+          width={16}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+  </View>
   <View
-    numberOfSpaces={8}
+    gap={4}
     style={
       [
         {
-          "height": 32,
+          "gap": 16,
         },
       ]
     }
-  />,
-]
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+          },
+        ]
+      }
+    >
+      Tu as la main dessus
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          },
+        ]
+      }
+    >
+      Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          },
+        ]
+      }
+    >
+      On te redemandera bien sûr ton consentement si notre politique évolue.
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          },
+        ]
+      }
+    >
+      Pour plus d’informations, nous t’invitons à consulter notre
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "width": 4,
+            },
+          ]
+        }
+      />
+      <View>
+        <View
+          accessibilityLabel="Politique de gestion des cookies"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "top": 3,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Politique de gestion des cookies"
+        >
+          <View
+            paddingForIcon={0}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                [
+                  {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  },
+                ]
+              }
+              typography="BodyAccentXs"
+            >
+              Politique de gestion des cookies
+            </Text>
+          </View>
+        </View>
+      </View>
+    </Text>
+  </View>
+</View>
 `;

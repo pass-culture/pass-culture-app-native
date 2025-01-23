@@ -22,7 +22,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -131,7 +131,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
           control={control}
           name="postalCode"
           render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <React.Fragment>
+            <StyledView>
               <SearchInput
                 autoFocus
                 onChangeText={(text) => {
@@ -153,19 +153,17 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 visible={!!error}
                 relatedInputId={postalCodeInputId}
               />
-            </React.Fragment>
+            </StyledView>
           )}
         />
-        <Spacer.Column numberOfSpaces={2} />
       </Form.MaxWidth>
       {isPostalCodeIneligible ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <InfoBannerContainer>
           <InfoBanner
             icon={Error}
             message="Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture."
           />
-        </React.Fragment>
+        </InfoBannerContainer>
       ) : (
         <React.Fragment>
           {isLoading ? <Spinner /> : null}
@@ -195,3 +193,7 @@ const CitiesContainer = styled.View({
   overflowY: 'scroll',
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
+
+const InfoBannerContainer = styled.View({ marginTop: getSpacing(4) })
+
+const StyledView = styled.View({ marginBottom: getSpacing(2) })

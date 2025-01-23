@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, getSpacingString, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, getSpacingString, TypoDS } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
@@ -20,10 +20,9 @@ export function Tag({ label, Icon, ...props }: TagProps) {
   return (
     <Wrapper {...props}>
       {Icon ? (
-        <React.Fragment>
+        <IconContainer>
           <Icon testID="tagIcon" />
-          <Spacer.Row numberOfSpaces={1} />
-        </React.Fragment>
+        </IconContainer>
       ) : null}
       <LabelText>{label}</LabelText>
     </Wrapper>
@@ -43,3 +42,7 @@ const LabelText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
 }))
+
+const IconContainer = styled(View)({
+  marginRight: getSpacing(1),
+})

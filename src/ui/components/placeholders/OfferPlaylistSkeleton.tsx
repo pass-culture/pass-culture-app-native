@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
-import { getSpacing, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
+import { getSpacing, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export enum TileSize {
@@ -35,19 +35,14 @@ export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: nu
 
   return (
     <Container testID="OfferPlaylistSkeleton">
-      <Spacer.Row numberOfSpaces={6} />
-      <View>
-        <Spacer.Column numberOfSpaces={1} />
-        <ModuleTitlePlaceholder />
-        <Spacer.Column numberOfSpaces={5} />
-        <FlatList
-          horizontal
-          data={data}
-          renderItem={renderPlaceholder}
-          ItemSeparatorComponent={Separator}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
+      <ModuleTitlePlaceholder />
+      <FlatList
+        horizontal
+        data={data}
+        renderItem={renderPlaceholder}
+        ItemSeparatorComponent={Separator}
+        showsHorizontalScrollIndicator={false}
+      />
     </Container>
   )
 }
@@ -61,11 +56,10 @@ const OfferTilePlaceholder = ({ size }: { size: number }) => {
   return (
     <View>
       <BasePlaceholder height={size} width={width} />
-      <Spacer.Column numberOfSpaces={3} />
-      <TextPlaceholder width={0.8 * width} />
-      <Spacer.Column numberOfSpaces={2} />
-      <TextPlaceholder width={0.3 * width} />
-      <Spacer.Column numberOfSpaces={3} />
+      <StyledView>
+        <TextPlaceholder width={0.8 * width} />
+        <TextPlaceholder width={0.3 * width} />
+      </StyledView>
     </View>
   )
 }
@@ -78,6 +72,18 @@ export const TextPlaceholder = ({ width, height }: { width: number; height?: num
   <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
 )
 
-const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
+const Container = styled.View({
+  flexDirection: 'column',
+  paddingHorizontal: getSpacing(6),
+  gap: getSpacing(5),
+  marginTop: getSpacing(1),
+})
 
-const Separator = () => <Spacer.Row numberOfSpaces={4} />
+const Separator = () => <StyledSeparator />
+
+const StyledView = styled.View({
+  gap: getSpacing(2),
+  marginVertical: getSpacing(3),
+})
+
+const StyledSeparator = styled.View({ width: getSpacing(4) })

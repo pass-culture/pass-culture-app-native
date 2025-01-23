@@ -348,6 +348,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     [
                       {
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -361,16 +362,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                     </Text>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={true}

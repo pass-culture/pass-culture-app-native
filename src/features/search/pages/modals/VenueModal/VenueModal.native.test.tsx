@@ -8,7 +8,7 @@ import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -39,6 +39,9 @@ const mockedSearchWrapper = {
   isFocusOnSuggestions: false,
 }
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
 mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 
@@ -61,7 +64,7 @@ describe('VenueModal', () => {
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const closeButton = screen.getByLabelText('Fermer la modale')
-    fireEvent.press(closeButton)
+    await user.press(closeButton)
 
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
@@ -72,13 +75,13 @@ describe('VenueModal', () => {
 
     const venueSearchInput = screen.getByTestId('searchInput')
 
-    fireEvent.changeText(venueSearchInput, mockVenues[0].label)
+    await user.type(venueSearchInput, mockVenues[0].label) // userEvent.type does more than fireEvent.replaceText so the next fireEvent can't be remove until we find how to properly use userEvent in this case
 
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
     const validateButton = screen.getByText('Rechercher')
-    fireEvent.press(validateButton)
+    await user.press(validateButton)
 
     expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: mockVenues[0].label })
   })
@@ -86,7 +89,7 @@ describe('VenueModal', () => {
   it('should be initialized with the venue label when a venue is already selected and venue modal is opened', async () => {
     mockedUseSearch
       .mockReturnValueOnce(mockedSearchWrapper)
-      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper) // it rerenders multiple(2) time so it needs multiple(2) mocks
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
@@ -99,9 +102,7 @@ describe('VenueModal', () => {
   })
 
   it('should be initialized with the venue label when a venue is already selected, input was cleared, modal was closed and then opened', async () => {
-    mockedUseSearch // it rerenders multiple(4) time so it needs multiple(4) mocks
-      .mockReturnValueOnce(mockedSearchWrapper)
-      .mockReturnValueOnce(mockedSearchWrapper)
+    mockedUseSearch // it rerenders multiple(2) time so it needs multiple(2) mocks
       .mockReturnValueOnce(mockedSearchWrapper)
       .mockReturnValueOnce(mockedSearchWrapper)
 
@@ -113,17 +114,16 @@ describe('VenueModal', () => {
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label) // because of forwardRef, it's not possible to do a getbytext so we use an expect to be sure that Venue label is there
 
     const clearInput = screen.getByRole('button', { name: 'Réinitialiser la recherche' })
-    fireEvent.press(clearInput)
+    await user.press(clearInput)
 
     const closeButton = screen.getByRole('button', { name: 'Fermer la modale' })
-    fireEvent.press(closeButton)
+    await user.press(closeButton)
 
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
 
   it('should not display venue suggestion when a venue is already selected before opening the modal', async () => {
-    mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
-      .mockReturnValueOnce(mockedSearchWrapper)
+    mockedUseSearch // it rerenders multiple(2) time so it needs multiple(2) mocks
       .mockReturnValueOnce(mockedSearchWrapper)
       .mockReturnValueOnce(mockedSearchWrapper)
 
@@ -143,22 +143,18 @@ describe('VenueModal', () => {
 
     const venueSearchInput = screen.getByTestId('searchInput')
 
-    fireEvent.changeText(venueSearchInput, mockVenues[0].label)
+    await user.type(venueSearchInput, mockVenues[0].label)
 
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
-    await act(() => {
-      const validateButton = screen.getByText('Rechercher')
-      fireEvent.press(validateButton)
-    })
+    const validateButton = screen.getByText('Rechercher')
+    await user.press(validateButton)
 
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
 
     const setLocationVenueUndefinedButton = screen.getByText('setLocationVenueUndefined')
-    fireEvent.press(setLocationVenueUndefinedButton)
-
-    await act(() => {})
+    await user.press(setLocationVenueUndefinedButton)
 
     expect(venueSearchInput.props.value).toEqual('')
   })

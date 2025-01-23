@@ -7,7 +7,7 @@ import { Tag } from 'ui/components/Tag/Tag'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 export type HorizontalTileProps = PropsWithChildren<{
@@ -40,12 +40,7 @@ export const HorizontalTile: FC<HorizontalTileProps> = ({
               <OfferNameContainer>
                 <OfferName title={title} />
               </OfferNameContainer>
-              {withRightArrow ? (
-                <React.Fragment>
-                  <Spacer.Row numberOfSpaces={1} />
-                  <RightIcon testID="RightFilled" />
-                </React.Fragment>
-              ) : null}
+              {withRightArrow ? <RightIcon testID="RightFilled" /> : null}
             </Row>
           )}
           {children}
@@ -86,6 +81,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))({
   flexShrink: 0,
+  marginLeft: getSpacing(1),
 })
 
 const OfferNameContainer = styled.View({

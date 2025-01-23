@@ -209,6 +209,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     [
                       {
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -222,16 +223,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     </Text>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={true}
