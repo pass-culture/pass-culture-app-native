@@ -9,15 +9,16 @@ import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getAge } from 'shared/user/getAge'
 
 export const useLoginAndRedirect = () => {
+  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const { replace } = useNavigation<UseNavigationType>()
   const delayedReplace: typeof replace = useCallback(
     (...args) => {
-      setTimeout(() => {
-        replace(...args)
-      }, 2000)
+      setTimeout(() => replace(...args), 2000)
     },
     [replace]
   )
@@ -49,10 +50,16 @@ export const useLoginAndRedirect = () => {
           })
         }
 
+        if (disableActivation) {
+          delayedReplace('ForceUpdate')
+          return
+        }
+
         if (user.isEligibleForBeneficiaryUpgrade) {
           delayedReplace('VerifyEligibility')
           return
         }
+
         if (
           user.eligibilityStartDatetime &&
           new Date(user.eligibilityStartDatetime) >= new Date()
@@ -67,6 +74,6 @@ export const useLoginAndRedirect = () => {
         delayedReplace('AccountCreated')
       }
     },
-    [delayedReplace, loginRoutine]
+    [delayedReplace, disableActivation, loginRoutine]
   )
 }
