@@ -20,7 +20,7 @@ type Age = 17 | 18
 
 type CreditStep = 17 | 18 | 'information'
 
-export type CreditComponentPropsV3 = {
+type CreditComponentPropsV3 = {
   creditStep: CreditStep
   iconComponent?: React.JSX.Element
   children?: React.ReactNode
