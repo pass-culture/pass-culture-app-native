@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList.web'
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
+
+import { ChronicleCardList } from './ChronicleCardList'
 
 describe('ChronicleCardList', () => {
   it('should render the ChronicleCardList correctly', () => {
@@ -36,15 +37,26 @@ describe('ChronicleCardList', () => {
     expect(screen.queryByText('L’Odyssée des Espèces')).not.toBeInTheDocument()
   })
 
-  it('should go to previous page when left arrow is pressed', () => {
+  it('should go to previous page when left arrow is pressed', async () => {
     render(<ChronicleCardList data={chroniclesSnap} horizontal />)
 
+    const listElement = screen.getByTestId('chronicle-list')
+    Object.defineProperty(listElement, 'scrollWidth', { get: () => 900 })
+    Object.defineProperty(listElement, 'offsetWidth', { get: () => 300 })
+
     fireEvent.click(screen.getByTestId('chronicle-list-right-arrow'))
+    // We have to force scroll event. onScroll is not triggered when using scrollToOffset via ref
+    fireEvent.scroll(listElement)
+
+    await screen.findByTestId('chronicle-list-left-arrow')
 
     fireEvent.click(screen.getByTestId('chronicle-list-left-arrow'))
+    fireEvent.scroll(listElement)
 
-    expect(screen.getByText('Le Voyage Extraordinaire')).toBeInTheDocument()
-    expect(screen.getByText('Explorateur du monde')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText('Le Voyage Extraordinaire')).toBeInTheDocument()
+      expect(screen.getByText('Explorateur du monde')).toBeInTheDocument()
+    })
   })
 
   it('should disable the left arrow when on the first item', () => {
@@ -54,16 +66,19 @@ describe('ChronicleCardList', () => {
     expect(screen.queryByTestId('chronicle-list-left-arrow')).not.toBeInTheDocument()
   })
 
-  it('should disable the right arrow when on the last item', () => {
-    render(<ChronicleCardList data={chroniclesSnap} horizontal />)
+  it('should disable the right arrow when on the last item', async () => {
+    render(<ChronicleCardList data={chroniclesSnap.slice(0, 2)} horizontal />)
 
-    const rightArrow = screen.getByTestId('chronicle-list-right-arrow')
+    const listElement = screen.getByTestId('chronicle-list')
+    Object.defineProperty(listElement, 'scrollWidth', { get: () => 900 })
+    Object.defineProperty(listElement, 'offsetWidth', { get: () => 300 })
 
-    // Simulate clicks until the right arrow button is no longer visible
-    while (rightArrow && rightArrow.isConnected) {
-      fireEvent.click(rightArrow)
-    }
+    fireEvent.scroll(listElement, {
+      target: { scrollLeft: 600 },
+    })
 
-    expect(screen.queryByTestId('chronicle-list-right-arrow')).not.toBeInTheDocument()
+    await waitFor(() =>
+      expect(screen.queryByTestId('chronicle-list-right-arrow')).not.toBeInTheDocument()
+    )
   })
 })
