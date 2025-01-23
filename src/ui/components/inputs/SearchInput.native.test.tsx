@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, fireEvent, screen, userEvent } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 
 const onChangeText = jest.fn()
 const onReset = jest.fn()
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SearchInput component', () => {
   it('should set value when user input some text', async () => {
@@ -22,7 +25,7 @@ describe('SearchInput component', () => {
 
     const resetIcon = screen.getByTestId('Réinitialiser la recherche')
 
-    fireEvent.press(resetIcon)
+    await user.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
   })
