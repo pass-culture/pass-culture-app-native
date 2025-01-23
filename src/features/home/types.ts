@@ -152,7 +152,6 @@ export type OffersModuleParameters = {
   aroundRadius?: number
   gtlLevel?: GtlLevel
   gtlLabel?: string
-  enrichPlaylistWithRecoOffers?: boolean
 }
 
 export type PlaylistOffersParams = {
