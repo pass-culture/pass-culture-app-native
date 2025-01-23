@@ -69,6 +69,7 @@ const Column = Flex
 
 const Row = styled(Flex).attrs({
   flexDirection: 'row',
+  alignItems: 'center',
 })``
 
 const Container = styled(Row).attrs({

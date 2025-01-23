@@ -8,7 +8,7 @@ import {
 } from 'date-fns'
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
-import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { GeoCoordinates } from 'libs/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
@@ -22,13 +22,15 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     withoutScreeningsOnDay: (selectedDate: Date) => {
       movieOffers = movieOffers.filter(
         ({ offer }) =>
-          !offer.stocks.some((stock) => {
+          !offer?.stocks?.some((stock) => {
             if (!stock.beginningDatetime) {
               return true
             }
-            if (isSameDay(new Date(stock.beginningDatetime), selectedDate)) {
+            const isSameDate = isSameDay(new Date(stock.beginningDatetime), selectedDate)
+            if (isSameDate) {
               return isAfter(new Date(stock.beginningDatetime), selectedDate)
             }
+
             return false
           })
       )
@@ -41,7 +43,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
           ...rest,
           offer: {
             ...offer,
-            stocks: offer.stocks.filter((stock) => {
+            stocks: offer?.stocks?.filter((stock) => {
               if (!stock.beginningDatetime) {
                 return false
               }
@@ -57,22 +59,22 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
             }),
           },
         }))
-        .filter(({ offer }) => offer.stocks.length > 0)
+        .filter(({ offer }) => offer?.stocks?.length > 0)
 
       return builderObject
     },
 
     sortedByLast30DaysBooking: () => {
       movieOffers = movieOffers.sort((a, b) => {
-        const aValue = a.offer.last30DaysBookings
-        const bValue = b.offer.last30DaysBookings
+        const aValue = a?.offer?.last30DaysBookings
+        const bValue = b?.offer?.last30DaysBookings
 
         if (aValue === null || aValue === undefined) return 1
         if (bValue === null || bValue === undefined) return -1
 
         if (bValue === aValue) {
-          const aEarliestDate = getEarliestDate(a.offer.stocks)
-          const bEarliestDate = getEarliestDate(b.offer.stocks)
+          const aEarliestDate = getEarliestDate(a?.offer?.stocks)
+          const bEarliestDate = getEarliestDate(b?.offer?.stocks)
 
           return aEarliestDate - bEarliestDate
         }
@@ -86,26 +88,33 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     sortedByDistance: (location: GeoCoordinates) => {
       movieOffers = movieOffers.sort((a, b) => {
         const aDistance = computeDistanceInMeters(
-          a.offer.venue.coordinates.latitude ?? 0,
-          a.offer.venue.coordinates.longitude ?? 0,
+          a.offer?.venue?.coordinates?.latitude ?? 0,
+          a.offer?.venue?.coordinates?.longitude ?? 0,
           location?.latitude,
           location?.longitude
         )
         const bDistance = computeDistanceInMeters(
-          b.offer.venue.coordinates.latitude ?? 0,
-          b.offer.venue.coordinates.longitude ?? 0,
+          b.offer?.venue?.coordinates?.latitude ?? 0,
+          b.offer?.venue?.coordinates?.longitude ?? 0,
           location?.latitude,
           location?.longitude
         )
 
         if (aDistance === bDistance) {
-          const aEarliestDate = getEarliestDate(a.offer.stocks)
-          const bEarliestDate = getEarliestDate(b.offer.stocks)
+          const aEarliestDate = getEarliestDate(a?.offer?.stocks)
+          const bEarliestDate = getEarliestDate(b?.offer?.stocks)
           return aEarliestDate - bEarliestDate
         }
 
         return aDistance - bDistance
       })
+      return builderObject
+    },
+
+    sortedByDate: () => {
+      movieOffers = movieOffers.sort(
+        (a, b) => new Date(a.nextDate ?? 0).getTime() - new Date(b.nextDate ?? 0).getTime()
+      )
 
       return builderObject
     },
@@ -113,7 +122,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     withScreeningsAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers
         .map(({ offer }) => {
-          const filteredStocks = offer.stocks.filter((stock) => {
+          const filteredStocks = offer?.stocks?.filter((stock) => {
             if (!stock.beginningDatetime) {
               return false
             }
@@ -121,21 +130,21 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
             return isDateNotWithinNextNbDays(new Date(), new Date(stock.beginningDatetime), nbDays)
           })
           return {
-            nextDate: new Date(filteredStocks[0]?.beginningDatetime as string),
+            nextDate: new Date(filteredStocks?.[0]?.beginningDatetime as string),
             offer: {
               ...offer,
               stocks: filteredStocks,
             },
+            isUpcoming: false,
           }
         })
-        .filter(({ offer }) => offer.stocks.length > 0)
-
+        .filter(({ offer }) => offer?.stocks?.length > 0)
       return builderObject
     },
 
     withoutScreeningsAfterNbDays: (nbDays: number) => {
       movieOffers = movieOffers.filter(({ offer }) =>
-        offer.stocks.some((stock) => {
+        offer?.stocks?.some((stock) => {
           if (!stock.beginningDatetime) {
             return false
           }
@@ -198,7 +207,7 @@ const isDateBeforeToday = (referenceDate: Date, targetDate: Date) => {
 }
 
 const getNextDate = (offer: OfferResponseV2, date: Date) => {
-  const dates = offer.stocks
+  const dates = offer?.stocks
     .filter((stock) => stock.beginningDatetime)
     .map((stock) => new Date(stock.beginningDatetime as string))
 
@@ -234,7 +243,7 @@ const getUpcomingDate = (offer: OfferResponseV2) => {
 }
 
 const getEarliestDate = (stocks: OfferStockResponse[]) => {
-  return stocks.reduce((earliest, stock) => {
+  return stocks?.reduce((earliest, stock) => {
     if (!stock.beginningDatetime) return earliest
     const stockDate = new Date(stock.beginningDatetime).getTime()
     return stockDate < earliest ? stockDate : earliest
