@@ -4,26 +4,25 @@ import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/S
 import { Venue } from 'features/venue/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
-const mockedSuggestedVenues: Venue[] = [
-  {
-    _geoloc: { lat: 48.94083, lng: 2.47987 },
-    info: 'Paris',
-    label: 'La librairie quantique DATA',
-    venueId: 9384,
-  },
-  {
-    _geoloc: { lat: 48.94083, lng: 2.47987 },
-    info: 'Paris',
-    label: 'La librairie quantique',
-    venueId: 9299,
-  },
-]
-
-let mockVenues: Venue[] = []
-
-let mockIsLoading = false
+const firstVenue = {
+  _geoloc: { lat: 48.94083, lng: 2.47987 },
+  info: 'Paris',
+  label: 'La librairie quantique DATA',
+  venueId: 9384,
+}
+const secondVenue = {
+  _geoloc: { lat: 48.94083, lng: 2.47987 },
+  info: 'Paris',
+  label: 'La librairie quantique',
+  venueId: 9299,
+}
+const mockedSuggestedVenues: Venue[] = [firstVenue, secondVenue]
+const mockVenues: Venue[] = []
+const useVenuesWithoutData = { data: mockVenues, isLoading: false }
+const useVenuesWithData = { data: mockedSuggestedVenues, isLoading: false }
+const mockUseVenues = jest.fn(() => useVenuesWithoutData)
 jest.mock('libs/place/useVenues', () => ({
-  useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
+  useVenues: () => mockUseVenues(),
 }))
 
 const mockSetSelectedVenue = jest.fn()
@@ -35,29 +34,24 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SuggestedVenues/>', () => {
-  it('should call setSelectedVenue when selecting a venue', () => {
-    mockVenues = mockedSuggestedVenues
-
+  it('should call setSelectedVenue when selecting a venue', async () => {
+    mockUseVenues.mockReturnValueOnce(useVenuesWithData)
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    fireEvent.press(screen.getByTestId(`${mockVenues[1].label} ${mockVenues[1].info}`))
+    fireEvent.press(screen.getByText('La librairie quantique DATA'))
 
-    expect(mockSetSelectedVenue).toHaveBeenCalledWith(mockVenues[1])
+    expect(mockSetSelectedVenue).toHaveBeenCalledWith(firstVenue)
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
-    mockVenues = []
-    mockIsLoading = false
-
+    mockUseVenues.mockReturnValueOnce(useVenuesWithoutData)
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
     expect(screen.getByText('Aucun lieu culturel ne correspond à ta recherche')).toBeOnTheScreen()
   })
 
   it('should not show empty component if the query is empty and the results are not loading', () => {
-    mockVenues = []
-    mockIsLoading = false
+    mockUseVenues.mockReturnValueOnce(useVenuesWithData)
 
     render(<SuggestedVenues query="" setSelectedVenue={mockSetSelectedVenue} />)
 
@@ -67,8 +61,7 @@ describe('<SuggestedVenues/>', () => {
   })
 
   it('should not show empty component if the results are still loading', () => {
-    mockVenues = []
-    mockIsLoading = true
+    mockUseVenues.mockReturnValueOnce({ ...useVenuesWithData, isLoading: true })
 
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
