@@ -10,7 +10,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { computedTheme } from 'tests/computedTheme'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 import { CineBlock, CineBlockProps } from './CineBlock'
@@ -43,6 +43,9 @@ const mockGoToDate = jest.fn()
 const mockDisplayCalendar = jest.fn()
 
 const mockOnPressOfferCTA = jest.fn()
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CineBlock', () => {
   beforeEach(() => {
@@ -104,12 +107,12 @@ describe('CineBlock', () => {
     expect(screen.getByTestId('offer-event-card-list')).toBeOnTheScreen()
   })
 
-  it('should call onSeeVenuePress when provided', () => {
+  it('should call onSeeVenuePress when provided', async () => {
     const mockOnSeeVenuePress = jest.fn()
     renderCineBlock({ onSeeVenuePress: mockOnSeeVenuePress })
     const seeVenueButton = screen.getByText(mockOfferTitle)
 
-    fireEvent.press(seeVenueButton)
+    await user.press(seeVenueButton)
 
     expect(mockOnSeeVenuePress).toHaveBeenCalledTimes(1)
   })
@@ -119,7 +122,7 @@ describe('CineBlock', () => {
     renderCineBlock({ nextDate })
     const nextScreeningButton = await screen.findByText(NEXT_SCREENING_WORDING)
 
-    fireEvent.press(nextScreeningButton)
+    await user.press(nextScreeningButton)
 
     expect(mockGoToDate).toHaveBeenCalledWith(nextDate)
   })
@@ -133,7 +136,7 @@ describe('CineBlock', () => {
 
     const nextScreeningButton = await screen.findByText(NEXT_SCREENING_WORDING)
 
-    fireEvent.press(nextScreeningButton)
+    await user.press(nextScreeningButton)
 
     expect(mockOnPressOfferCTA).toHaveBeenCalledWith()
   })
