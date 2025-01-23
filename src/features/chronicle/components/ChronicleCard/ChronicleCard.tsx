@@ -23,7 +23,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   cardWidth,
 }) => {
   return (
-    <Container gap={3} testID={`chronicle-${id.toString()}`} maxWidth={cardWidth}>
+    <Container gap={3} testID={`chronicle-${id.toString()}`} width={cardWidth}>
       <InfoHeader
         title={title}
         subtitle={subtitle}
@@ -37,12 +37,12 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(ViewGap)<{ maxWidth?: number }>(({ theme, maxWidth }) => ({
+const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   padding: getSpacing(6),
   borderRadius: getSpacing(2),
   border: 1,
   borderColor: theme.colors.greyMedium,
-  maxWidth,
+  ...(width === undefined ? undefined : { width }),
 
   backgroundColor: theme.colors.white,
   ...getShadow({
@@ -55,6 +55,7 @@ const Container = styled(ViewGap)<{ maxWidth?: number }>(({ theme, maxWidth }) =
 
 const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
   color: theme.colors.greyDark,
+  flexGrow: 1,
 }))
 
 const PublicationDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({

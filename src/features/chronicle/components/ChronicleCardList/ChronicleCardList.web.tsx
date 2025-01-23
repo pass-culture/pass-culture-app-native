@@ -1,31 +1,72 @@
 import React, { FunctionComponent, useState } from 'react'
+import {
+  LayoutChangeEvent,
+  LayoutRectangle,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { ChronicleCardListBase } from 'features/chronicle/components/ChronicleCardListBase/ChronicleCardListBase'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
-type ChronicleCardListProps = {
-  data: ChronicleCardData[]
-  horizontal?: boolean
-  cardWidth?: number
-}
+import {
+  ChronicleCardListBase,
+  ChronicleCardListProps,
+  SEPARATOR_DEFAULT_VALUE,
+} from './ChronicleCardListBase'
 
 export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   data,
   horizontal = true,
   cardWidth,
+  contentContainerStyle,
+  headerComponent,
+  separatorSize = SEPARATOR_DEFAULT_VALUE,
 }) => {
-  const [indexItem, setIndexItem] = useState(0)
+  const [userOffset, setUserOffset] = useState(0)
+  const [scrollOffset, setScrollOffset] = useState(0)
+  const [layout, setLayout] = useState<LayoutRectangle>()
+  const [leftArrowVisible, setLeftArrowVisible] = useState(false)
+  const [rightArrowVisible, setRightArrowVisible] = useState(true)
 
-  const goToPreviousPage = () => setIndexItem((prev) => Math.max(prev - 1, 0))
-  const goToNextPage = () => setIndexItem((prev) => Math.min(prev + 1, data.length - 1))
+  const { isDesktopViewport } = useTheme()
+
+  const pageWidth = isDesktopViewport ? layout?.width ?? 0 : CHRONICLE_CARD_WIDTH
+  const goToPreviousPage = () => setUserOffset(Math.max(scrollOffset - pageWidth, 0))
+  const goToNextPage = () => setUserOffset(scrollOffset + pageWidth)
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    setLayout(event.nativeEvent.layout)
+  }
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentSize, layoutMeasurement, contentOffset } = event.nativeEvent
+    const progress = contentOffset.x / (contentSize.width - layoutMeasurement.width)
+
+    setScrollOffset(contentOffset.x)
+
+    switch (progress) {
+      case 0:
+        setLeftArrowVisible(false)
+        setRightArrowVisible(true)
+        break
+      case 1:
+        setLeftArrowVisible(true)
+        setRightArrowVisible(false)
+        break
+      default:
+        setLeftArrowVisible(true)
+        setRightArrowVisible(true)
+    }
+  }
 
   return (
-    <FlatListContainer>
+    <FlatListContainer onLayout={handleLayout}>
       {horizontal ? (
         <React.Fragment>
-          {indexItem > 0 ? (
+          {leftArrowVisible ? (
             <PlaylistArrowButton
               direction="left"
               onPress={goToPreviousPage}
@@ -33,7 +74,7 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
             />
           ) : null}
 
-          {indexItem < data.length - 1 ? (
+          {rightArrowVisible ? (
             <PlaylistArrowButton
               direction="right"
               onPress={goToNextPage}
@@ -44,9 +85,14 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
       ) : null}
       <ChronicleCardListBase
         data={data}
-        indexItem={indexItem}
+        offset={userOffset}
         horizontal={horizontal}
         cardWidth={cardWidth}
+        onScroll={handleScroll}
+        headerComponent={headerComponent}
+        separatorSize={separatorSize}
+        contentContainerStyle={contentContainerStyle}
+        snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
       />
     </FlatListContainer>
   )
