@@ -3,7 +3,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
-import { AnyFunction, CurriedAnyFunction, StoreConfig, Store } from './store.types'
+import {
+  AnyFunction,
+  CurriedAnyFunction,
+  StoreConfig,
+  Store,
+  HookSelectors,
+  SelectorsWithState,
+} from './store.types'
 
 export function createStore<
   State,
@@ -12,8 +19,8 @@ export function createStore<
 >({
   name,
   defaultState,
-  actions: createActions = createEmptyActions<Actions>,
-  selectors = createEmptySelectors<Selectors>(),
+  actions: createActions,
+  selectors = createTypedEmptyObject<Selectors>(),
   options,
 }: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
   const defaultStore = () => defaultState
@@ -29,19 +36,34 @@ export function createStore<
 
   const actions = createActions(store.setState)
 
-  const select = <T>(selector: (state: State) => T): T => {
-    const state = store.getState()
-    return selector(state)
-  }
+  const selectorsWithState = Object.entries(selectors).reduce(
+    (acc, [key, selector]) => ({
+      ...acc,
+      [key]: (...args: Parameters<typeof selector>) => {
+        const state = store.getState()
+        return selector(...args)(state)
+      },
+    }),
+    createTypedEmptyObject<SelectorsWithState<State, Selectors>>()
+  )
+
+  const hooks = Object.entries(selectors).reduce(
+    (acc, [key, selector]) => ({
+      ...acc,
+      [key.replace('select', 'use')]: (...args: Parameters<typeof selector>) =>
+        store((state) => selector(...args)(state)),
+    }),
+    createTypedEmptyObject<HookSelectors<State, Selectors>>()
+  )
 
   return {
-    useStore: store,
+    store,
     actions,
-    selectors,
-    select,
+    selectors: selectorsWithState,
+    hooks: { useStore: store, ...hooks },
   }
 }
 
-const createEmptyActions = <T extends Record<string, AnyFunction>>(): T => Object.create(null)
-const createEmptySelectors = <T extends Record<string, CurriedAnyFunction<never>>>(): T =>
-  Object.create(null)
+const createTypedEmptyObject = <T>(): T => {
+  return Object.create(null)
+}

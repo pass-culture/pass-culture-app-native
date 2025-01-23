@@ -16,8 +16,11 @@ const nameStore = createStore({
     setName: (name: Name) => set({ name }),
     resetName: () => set(defaultState),
   }),
+  selectors: {
+    selectName: () => (state) => state.name,
+  },
   options: { persist: true },
 })
 
 export const nameActions = nameStore.actions
-export const useName = () => nameStore.useStore((state) => state.name)
+export const { useName } = nameStore.hooks

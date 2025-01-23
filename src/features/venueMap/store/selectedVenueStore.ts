@@ -14,8 +14,11 @@ const selectedVenueStore = createStore({
     setSelectedVenue: (selectedVenue: GeolocatedVenue) => set({ selectedVenue }),
     removeSelectedVenue: () => set(defaultState),
   }),
+  selectors: {
+    selectSelectedVenue: () => (state) => state.selectedVenue,
+  },
 })
 
 export const selectedVenueActions = selectedVenueStore.actions
 
-export const useSelectedVenue = () => selectedVenueStore.useStore((state) => state.selectedVenue)
+export const { useSelectedVenue } = selectedVenueStore.hooks
