@@ -3400,6 +3400,11 @@ export interface SettingsResponse {
    */
   idCheckAddressAutocompletion: boolean
   /**
+   * @type {Array<string>}
+   * @memberof SettingsResponse
+   */
+  ineligiblePostalCodes: Array<string>
+  /**
    * @type {boolean}
    * @memberof SettingsResponse
    */

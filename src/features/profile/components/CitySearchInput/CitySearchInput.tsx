@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -33,27 +34,9 @@ type CitySearchInputProps = {
 
 type PostalCodeForm = { postalCode: string }
 
-const NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE = [
-  '98825',
-  '98860',
-  '98833',
-  '98817',
-  '98850',
-  '98821',
-  '98824',
-  '98815',
-  '98831',
-  '98822',
-  '98823',
-  '98816',
-  '98818',
-  '98813',
-  '98826',
-  '98811',
-]
-
 export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
+  const { data: settings } = useSettingsContext()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
@@ -100,7 +83,9 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
 
   const handlePostalCodeChange = (postalCode: string) => {
     setPostalCodeQuery(postalCode)
-    setIsPostalCodeIneligible(NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE.includes(postalCode))
+    if (settings) {
+      setIsPostalCodeIneligible(settings.ineligiblePostalCodes.includes(postalCode))
+    }
   }
 
   useEffect(() => {
