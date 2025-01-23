@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -18,17 +19,30 @@ const props: VenueTileProps = {
   height: 100,
 }
 
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
+const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
+
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+}
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+}
+
+const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
 }))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('VenueTile component', () => {
-  afterEach(() => (mockDistance = null))
-
   it('should navigate to the venue when clicking on the venue tile', async () => {
     renderVenueTile()
 
@@ -70,12 +84,18 @@ describe('VenueTile component', () => {
     expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
 
-  it('should show distance prop when provided', () => {
-    mockDistance = '10km'
-
+  it('should show distance when user has chosen geolocation', () => {
+    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
     renderVenueTile()
 
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
+  })
+
+  it("should not show distance when user has chosen 'France Entière'", () => {
+    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
+    renderVenueTile()
+
+    expect(screen.queryByTestId('distance-tag')).toBeFalsy()
   })
 })
 

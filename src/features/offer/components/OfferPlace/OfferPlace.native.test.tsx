@@ -76,17 +76,24 @@ const offerPlaceProps: OfferPlaceProps = {
   subcategory: mockSubcategory,
 }
 
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
+const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
 
-const mockUseLocation = jest.fn(
-  (): Partial<ILocationContext> => ({
-    selectedLocationMode: LocationMode.EVERYWHERE,
-    place: null,
-  })
-)
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+  place: null,
+}
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+  place: null,
+}
+
+const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
 jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
@@ -105,7 +112,6 @@ jest.useFakeTimers()
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockDistance = null
     mockdate.set(new Date('2021-01-01'))
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
@@ -344,18 +350,21 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display venue tag distance when user share his position', () => {
+    mockUseLocation
+      .mockReturnValueOnce(AROUND_ME_POSITION)
+      .mockReturnValueOnce(AROUND_ME_POSITION)
+      .mockReturnValueOnce(AROUND_ME_POSITION)
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    mockDistance = '7 km'
     renderOfferPlace({})
 
-    expect(screen.getByText('à 7 km')).toBeOnTheScreen()
+    expect(screen.getByText('à 73 km')).toBeOnTheScreen()
   })
 
   it('should not display venue tag distance when user not share his position', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({})
 
-    expect(screen.queryByText('à 7 km')).not.toBeOnTheScreen()
+    expect(screen.queryByText('à 73 km')).not.toBeOnTheScreen()
   })
 
   describe('Venue is permanent', () => {
@@ -549,7 +558,11 @@ describe('<OfferPlace />', () => {
             selectedLocationMode: locationMode,
             place,
           })
-        mockDistance = null
+          .mockReturnValueOnce({
+            selectedLocationMode: locationMode,
+            place,
+          })
+
         renderOfferPlace({
           subcategory: mockSubcategory,
           offer: {

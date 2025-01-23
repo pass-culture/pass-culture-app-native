@@ -10,7 +10,8 @@ import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/V
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -44,8 +45,12 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { venue, width, height } = props
   const queryClient = useQueryClient()
   const { colors } = useTheme()
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const distance = useDistance({ lat: venue.latitude, lng: venue.longitude })
+  const distance = getDistance(
+    { lat: venue.latitude, lng: venue.longitude },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
 

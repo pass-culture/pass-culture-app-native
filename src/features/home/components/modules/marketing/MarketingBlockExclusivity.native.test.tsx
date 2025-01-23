@@ -24,11 +24,6 @@ const propsWithPublicationDateTomorrow = {
   offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
 }
 
-const mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
-
 jest.mock('libs/subcategories/useSubcategory')
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({

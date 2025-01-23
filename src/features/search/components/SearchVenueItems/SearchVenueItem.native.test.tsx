@@ -3,16 +3,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
-import { AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
+import { ILocationContext } from 'libs/location'
+import { SuggestedPlace } from 'libs/place/types'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
-
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
 
 const mockAlgoliaVenue: AlgoliaVenue = {
   objectID: '5543',
@@ -36,8 +33,8 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   snapchat: null,
   banner_url: null,
   _geoloc: {
-    lat: null,
-    lng: null,
+    lat: 48.1,
+    lng: 1.9,
   },
 }
 
@@ -45,14 +42,46 @@ const ITEM_HEIGHT = 96
 const ITEM_WIDTH = 144
 const searchId = uuidv4()
 
+const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
+const DEFAULT_SELECTED_PLACE: SuggestedPlace | null = {
+  type: 'municipality',
+  label: 'Kourou',
+  info: 'Kourou',
+  geolocation: DEFAULT_USER_LOCATION,
+}
+
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+}
+
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+  place: null,
+}
+const MUNICIPALITY_AROUND_PLACE_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: DEFAULT_SELECTED_PLACE,
+  selectedLocationMode: LocationMode.AROUND_PLACE,
+  geolocPosition: undefined,
+}
+
+const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
+jest.mock('libs/location', () => ({
+  useLocation: () => mockUseLocation(),
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SearchVenueItem />', () => {
-  afterEach(() => (mockDistance = null))
-
   it('should render venue item correctly', () => {
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+    renderSearchVenueItem(mockAlgoliaVenue)
 
     expect(screen.getByText(mockAlgoliaVenue.name)).toBeOnTheScreen()
     expect(
@@ -61,14 +90,7 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should log to analytics', async () => {
-    render(
-      <SearchVenueItem
-        venue={mockAlgoliaVenue}
-        width={ITEM_WIDTH}
-        height={ITEM_HEIGHT}
-        searchId={searchId}
-      />
-    )
+    renderSearchVenueItem(mockAlgoliaVenue, searchId)
 
     await user.press(screen.getByTestId(/Lieu/))
 
@@ -80,7 +102,7 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should render a venue type tile icon when banner_url is not provided', () => {
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+    renderSearchVenueItem(mockAlgoliaVenue)
 
     expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
@@ -91,21 +113,13 @@ describe('<SearchVenueItem />', () => {
       banner_url:
         'https://www.gamewallpapers.com/wallpapers_slechte_compressie/wallpaper_magic_the_gathering_arena_01_1920x1080.jpg',
     }
-    render(<SearchVenueItem venue={venueWithBanner} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+    renderSearchVenueItem(venueWithBanner)
 
     expect(screen.getByTestId('tileImage')).toBeOnTheScreen()
   })
 
   it('should navigate to the venue when pressing a search venue item', async () => {
-    render(
-      <SearchVenueItem
-        venue={mockAlgoliaVenue}
-        width={ITEM_WIDTH}
-        height={ITEM_HEIGHT}
-        searchId="testUuidV4"
-      />
-    )
-
+    renderSearchVenueItem(mockAlgoliaVenue, 'testUuidV4')
     await user.press(screen.getByTestId(/Lieu/))
 
     expect(navigate).toHaveBeenCalledWith('Venue', {
@@ -115,41 +129,43 @@ describe('<SearchVenueItem />', () => {
     })
   })
 
-  it('should display the distance tag when distance is available', () => {
-    mockDistance = '10 km'
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+  it('should display the distance when user choose geolocation', () => {
+    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
 
-    expect(screen.getByText('à 10 km')).toBeOnTheScreen()
+    renderSearchVenueItem(mockAlgoliaVenue)
+
+    expect(screen.getByText('à 13 km')).toBeOnTheScreen()
   })
 
-  it('should not display the distance tag when distance is not available', () => {
-    mockDistance = null
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+  it('should no display the distance tag when user chose an unprecise location (type municipality or locality)', () => {
+    mockUseLocation.mockReturnValueOnce(MUNICIPALITY_AROUND_PLACE_POSITION)
+    renderSearchVenueItem(mockAlgoliaVenue)
 
-    expect(screen.queryByText('à 10 km')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('distance_tag')).not.toBeOnTheScreen()
+  })
+
+  it("should not display the distance tag when user chose 'France Entière'", () => {
+    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
+    renderSearchVenueItem(mockAlgoliaVenue)
+
+    expect(screen.queryByTestId('distance_tag')).not.toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is null', () => {
-    render(
-      <SearchVenueItem
-        venue={{ ...mockAlgoliaVenue, postalCode: null }}
-        width={ITEM_WIDTH}
-        height={ITEM_HEIGHT}
-      />
-    )
+    renderSearchVenueItem({ ...mockAlgoliaVenue, postalCode: null })
 
     expect(screen.getByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is an empty string', () => {
-    render(
-      <SearchVenueItem
-        venue={{ ...mockAlgoliaVenue, postalCode: '' }}
-        width={ITEM_WIDTH}
-        height={ITEM_HEIGHT}
-      />
-    )
+    renderSearchVenueItem({ ...mockAlgoliaVenue, postalCode: '' })
 
     expect(screen.getByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 })
+
+const renderSearchVenueItem = (venue: AlgoliaVenue, searchId?: string) => {
+  render(
+    <SearchVenueItem width={ITEM_WIDTH} height={ITEM_HEIGHT} venue={venue} searchId={searchId} />
+  )
+}
