@@ -8,7 +8,8 @@ import { SearchVenueItemDetails } from 'features/search/components/SearchVenueIt
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
@@ -36,12 +37,16 @@ const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefi
 })
 
 const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVenueItemProps) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { colors } = useTheme()
   const { lat, lng } = venue._geoloc
-  const distance = useDistance({ lat, lng })
+  const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
 
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, {
+    ...venue,
+    distance,
+  })
 
   const hasVenueImage = !!venue.banner_url
   const imageUri = venue.banner_url ?? ''

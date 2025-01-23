@@ -9,6 +9,9 @@ import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { userProps } from 'libs/location/getDistance'
+import { LocationMode, Position } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -16,6 +19,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
+
+type props = userProps & { geolocPosition: Position | undefined }
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockOffer.objectID)
@@ -25,11 +30,6 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   index: 0,
   searchId: '539b285e',
 }
-
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
 
 const spyLogClickOnOffer = jest.fn()
 const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
@@ -41,6 +41,43 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
+
+const EVERYWHERE_USER_POSITION: props = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+}
+const AROUND_ME_POSITION: props = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+}
+
+const DEFAULT_SELECTED_PLACE: SuggestedPlace | null = {
+  type: 'municipality',
+  label: 'Kourou',
+  info: 'Kourou',
+  geolocation: DEFAULT_USER_LOCATION,
+}
+const MUNICIPALITY_AROUND_PLACE_POSITION: props = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: DEFAULT_SELECTED_PLACE,
+  selectedLocationMode: LocationMode.AROUND_PLACE,
+  geolocPosition: undefined,
+}
+const AROUND_PLACE_POSITION: props = {
+  ...MUNICIPALITY_AROUND_PLACE_POSITION,
+  selectedPlace: { ...DEFAULT_SELECTED_PLACE, type: 'housenumber' },
+}
+
+const mockUseLocation = jest.fn(() => EVERYWHERE_USER_POSITION)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -49,8 +86,6 @@ describe('HorizontalOfferTile component', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
-
-  afterEach(() => (mockDistance = null))
 
   it('should navigate to the offer when pressing an offer', async () => {
     renderHorizontalOfferTile({
@@ -104,30 +139,6 @@ describe('HorizontalOfferTile component', () => {
       objectID: '102280',
       position: 0,
     })
-  })
-
-  it('should show distance if geolocation enabled', async () => {
-    mockDistance = '10 km'
-
-    renderHorizontalOfferTile({
-      offer: mockOffer,
-      analyticsParams: mockAnalyticsParams,
-    })
-
-    expect(await screen.findByText('à 10 km')).toBeOnTheScreen()
-  })
-
-  it('should not show distance if user has an unprecise location (type municipality or locality)', async () => {
-    mockDistance = null
-
-    renderHorizontalOfferTile({
-      offer: mockOffer,
-      analyticsParams: mockAnalyticsParams,
-    })
-
-    expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
-
-    expect(screen.queryByText('à 10 km')).not.toBeOnTheScreen()
   })
 
   describe('When pressing an offer without object id', () => {
@@ -251,6 +262,73 @@ describe('HorizontalOfferTile component', () => {
       await screen.findByText(defaultMovieName)
 
       expect(await screen.findByText('12 novembre 2020')).toBeOnTheScreen()
+    })
+  })
+
+  describe('distances', () => {
+    describe("user has chosen 'FranceEntière'", () => {
+      beforeEach(() => {
+        mockUseLocation.mockReturnValue(EVERYWHERE_USER_POSITION)
+      })
+
+      it('should not show distance', async () => {
+        renderHorizontalOfferTile({
+          offer: mockOffer,
+          analyticsParams: mockAnalyticsParams,
+        })
+
+        await screen.findByText('La nuit des temps')
+
+        expect(screen.queryByText('à 111 km')).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('user has chosen geolocation', () => {
+      beforeEach(() => {
+        mockUseLocation.mockReturnValue(AROUND_ME_POSITION)
+      })
+
+      it('should show distance', async () => {
+        renderHorizontalOfferTile({
+          offer: mockOffer,
+          analyticsParams: mockAnalyticsParams,
+        })
+
+        expect(await screen.findByText('à 111 km')).toBeOnTheScreen()
+      })
+    })
+
+    describe('user has an unprecise location (type municipality or locality)', () => {
+      beforeEach(() => {
+        mockUseLocation.mockReturnValue(MUNICIPALITY_AROUND_PLACE_POSITION)
+      })
+
+      it('should not show distance', async () => {
+        renderHorizontalOfferTile({
+          offer: mockOffer,
+          analyticsParams: mockAnalyticsParams,
+        })
+
+        await screen.findByText('La nuit des temps')
+
+        expect(screen.queryByText('à 111 km')).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('user has a precise location (type housenumber or street)', () => {
+      beforeEach(() => {
+        mockUseLocation.mockReturnValue(AROUND_PLACE_POSITION)
+      })
+
+      it('should show distance', async () => {
+        renderHorizontalOfferTile({
+          offer: mockOffer,
+          analyticsParams: mockAnalyticsParams,
+        })
+        await screen.findByText('La nuit des temps')
+
+        expect(screen.getByText('à 111 km')).toBeOnTheScreen()
+      })
     })
   })
 })

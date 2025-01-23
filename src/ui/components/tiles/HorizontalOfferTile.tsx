@@ -6,7 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -46,13 +47,18 @@ export const HorizontalOfferTile = ({
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, prices, thumbUrl, name } = offerDetails
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
-  const distanceToOffer = useDistance(_geoloc)
+  const distanceToOffer = getDistance(_geoloc, {
+    userLocation,
+    selectedPlace,
+    selectedLocationMode,
+  })
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
@@ -144,7 +150,9 @@ export const HorizontalOfferTile = ({
               ))}
             {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
           </Column>
-          {distanceToOffer ? <DistanceTag label={`à ${distanceToOffer}`} /> : null}
+          {distanceToOffer ? (
+            <DistanceTag testID="distance_tag" label={`à ${distanceToOffer}`} />
+          ) : null}
         </Row>
       </HorizontalTile>
     </Container>
