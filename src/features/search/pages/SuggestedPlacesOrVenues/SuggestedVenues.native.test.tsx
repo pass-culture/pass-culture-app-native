@@ -37,7 +37,7 @@ describe('<SuggestedVenues/>', () => {
   it('should call setSelectedVenue when selecting a venue', async () => {
     mockUseVenues.mockReturnValueOnce(useVenuesWithData)
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
-
+    // TO-DO(PC-34194): simply replacing by a userEvent is not working, should be investigated
     fireEvent.press(screen.getByText('La librairie quantique DATA'))
 
     expect(mockSetSelectedVenue).toHaveBeenCalledWith(firstVenue)
