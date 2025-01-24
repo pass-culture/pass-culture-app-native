@@ -1,3 +1,4 @@
+import { useNavigationState } from '@react-navigation/native'
 import React, { useMemo } from 'react'
 import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -8,6 +9,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { LocationMode } from 'libs/location/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -47,15 +49,26 @@ export const HorizontalOfferTile = ({
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const { geolocPosition, userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, prices, thumbUrl, name } = offerDetails
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes?.[routes?.length - 1]?.name
+
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
+
+  const userPosition =
+    currentRoute === 'SearchResults' &&
+    selectedLocationMode === LocationMode.EVERYWHERE &&
+    geolocPosition
+      ? geolocPosition
+      : userLocation
+
   const distanceToOffer = getDistance(_geoloc, {
-    userLocation,
+    userLocation: userPosition,
     selectedPlace,
     selectedLocationMode,
   })

@@ -2,7 +2,7 @@ import { LocationMode, Position } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { SuggestedPlace } from 'libs/place/types'
 
-export type userProps = {
+export type UserProps = {
   userLocation: Position
   selectedPlace: SuggestedPlace | null
   selectedLocationMode: LocationMode
@@ -13,7 +13,7 @@ export const getDistance = (
     lat?: number | null
     lng?: number | null
   },
-  user: userProps
+  user: UserProps
 ): string | undefined => {
   if (!user.userLocation) return undefined
   if (
