@@ -29,8 +29,7 @@ const onLoginPress = () => {
 export const OnboardingWelcome: FunctionComponent = () => {
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
-  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
-  ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
+  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
 
   return (
     <Container>
