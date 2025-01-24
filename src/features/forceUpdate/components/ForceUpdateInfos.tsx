@@ -16,35 +16,33 @@ import { TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
-export const ForceUpdateInfos = () => {
-  return (
-    <React.Fragment>
-      <Helmet>
-        <title>{TITLE}</title>
-      </Helmet>
-      <GenericInfoPage
-        title={TITLE}
-        icon={AgainIllustration}
-        buttons={[
-          <ButtonPrimaryWhite
-            key={BUTTON_TEXT_SCREEN}
-            wording={BUTTON_TEXT_SCREEN}
-            onPress={onPressStoreLink}
-          />,
-          isWeb ? null : (
-            <ExternalTouchableLink
-              as={ButtonTertiaryWhite}
-              wording="Utiliser la version web"
-              externalNav={{ url: WEBAPP_V2_URL }}
-              icon={ExternalSiteFilled}
-            />
-          ),
-        ]}>
-        <StyledBody>{DESCRIPTION}</StyledBody>
-      </GenericInfoPage>
-    </React.Fragment>
-  )
-}
+export const ForceUpdateInfos = () => (
+  <React.Fragment>
+    <Helmet>
+      <title>{TITLE}</title>
+    </Helmet>
+    <GenericInfoPage
+      title={TITLE}
+      icon={AgainIllustration}
+      buttons={[
+        <ButtonPrimaryWhite
+          key={BUTTON_TEXT_SCREEN}
+          wording={BUTTON_TEXT_SCREEN}
+          onPress={onPressStoreLink}
+        />,
+        isWeb ? null : (
+          <ExternalTouchableLink
+            as={ButtonTertiaryWhite}
+            wording="Utiliser la version web"
+            externalNav={{ url: WEBAPP_V2_URL }}
+            icon={ExternalSiteFilled}
+          />
+        ),
+      ]}>
+      <StyledBody>{DESCRIPTION}</StyledBody>
+    </GenericInfoPage>
+  </React.Fragment>
+)
 
 const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
   textAlign: 'center',
