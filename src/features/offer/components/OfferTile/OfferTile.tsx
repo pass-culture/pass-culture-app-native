@@ -75,7 +75,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     <View {...getHeadingAttrs(3)}>
       <StyledTouchableLink
         highlight
-        height={height + theme.tiles.maxCaptionHeight.newOfferTile}
+        height={height + theme.tiles.maxCaptionHeight.offerTile}
         navigateTo={{
           screen: 'Offer',
           params: {
