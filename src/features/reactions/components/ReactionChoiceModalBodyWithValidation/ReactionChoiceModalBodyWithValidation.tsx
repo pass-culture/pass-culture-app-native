@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingOfferResponse, OfferResponse, ReactionTypeEnum } from 'api/gen'
@@ -6,6 +7,7 @@ import { ReactionChoiceValidation } from 'features/reactions/components/Reaction
 import { useSubcategory } from 'libs/subcategories'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
+import { OfferName } from 'ui/components/tiles/OfferName'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -33,12 +35,19 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
         <ViewGap gap={4}>
           <Separator.Horizontal />
           <HorizontalTileContainer gap={4}>
-            <HorizontalTile title={offer.name} categoryId={categoryId} imageUrl={offer.image?.url}>
-              <SubtitleContainer gap={1}>
-                <ValidationMark isValid />
-                <UsedText>Utilisé</UsedText>
-                <DateUsedText>{dateUsed}</DateUsedText>
-              </SubtitleContainer>
+            <HorizontalTile categoryId={categoryId} imageUrl={offer.image?.url}>
+              <Column flex={1}>
+                <Row>
+                  <OfferNameContainer>
+                    <OfferName title={offer.name} />
+                  </OfferNameContainer>
+                </Row>
+                <SubtitleContainer gap={1}>
+                  <ValidationMark isValid />
+                  <UsedText>Utilisé</UsedText>
+                  <DateUsedText>{dateUsed}</DateUsedText>
+                </SubtitleContainer>
+              </Column>
             </HorizontalTile>
           </HorizontalTileContainer>
           <Separator.Horizontal />
@@ -72,4 +81,23 @@ const DateUsedText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
 
 const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)({
   marginBottom: getSpacing(12),
+})
+
+const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({
+  flexDirection,
+  flex,
+  alignItems,
+  justifyContent,
+  gap,
+}))
+
+const Column = Flex
+
+const Row = styled(Flex).attrs({
+  flexDirection: 'row',
+  alignItems: 'center',
+})``
+
+const OfferNameContainer = styled.View({
+  flexShrink: 1,
 })

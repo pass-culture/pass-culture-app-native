@@ -238,6 +238,7 @@ export const theme = {
     button: BorderRadiusEnum.BUTTON,
     radius: BorderRadiusEnum.BORDER_RADIUS,
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
+    tile: BorderRadiusEnum.TILE,
   },
   zIndex: {
     background: zIndex.background,
