@@ -47,6 +47,7 @@ export type Maintenance =
     }
 
 export enum RemoteStoreFeatureFlags {
+  SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN = 'showForceUpdateAfterSplashScreen',
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_HIDE_TICKET = 'enableHideTicket',

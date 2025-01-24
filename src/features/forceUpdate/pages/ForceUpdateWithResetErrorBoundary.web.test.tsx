@@ -2,15 +2,18 @@ import React from 'react'
 
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { ForceUpdate } from './ForceUpdate'
+import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBoundary'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
-describe('<ForceUpdate/>', () => {
+describe('<ForceUpdateWithResetErrorBoundary/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ForceUpdate />)
+      const { container } = render(
+        <ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />
+      )
 
       const results = await checkAccessibilityFor(container)
 
