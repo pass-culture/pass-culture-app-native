@@ -1,5 +1,7 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
@@ -13,7 +15,7 @@ import { subscribe } from './subscribe'
 const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
 export const linking: RequireField<
-  LinkingOptions<RootStackParamList>,
+  LinkingOptions<RootStackParamList | CheatcodesStackParamList>,
   'getStateFromPath' | 'getPathFromState'
 > = {
   prefixes: [
@@ -25,5 +27,5 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: rootScreensConfig },
+  config: { screens: { ...rootScreensConfig, ...cheatcodesStackNavigatorConfig } },
 }
