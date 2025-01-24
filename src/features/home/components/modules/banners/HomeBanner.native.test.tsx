@@ -207,14 +207,8 @@ describe('<HomeBanner/>', () => {
   })
 })
 
-function renderHomeBanner({
-  hasGeolocPosition = true,
-  isLoggedIn = true,
-}: {
-  hasGeolocPosition?: boolean
-  isLoggedIn?: boolean
-}) {
-  return render(<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />, {
+function renderHomeBanner({ isLoggedIn = true }: { isLoggedIn?: boolean }) {
+  return render(<HomeBanner isLoggedIn={isLoggedIn} />, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

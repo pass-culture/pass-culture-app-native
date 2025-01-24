@@ -18,7 +18,6 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type HomeBannerProps = {
-  hasGeolocPosition: boolean
   isLoggedIn: boolean
 }
 
