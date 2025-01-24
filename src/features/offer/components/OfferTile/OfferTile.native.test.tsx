@@ -7,8 +7,6 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -48,10 +46,6 @@ const props = {
 }
 
 describe('OfferTile component', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
-  })
-
   afterAll(() => jest.resetAllMocks())
 
   it('should navigate to the offer when clicking on the image', async () => {

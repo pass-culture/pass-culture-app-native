@@ -43,7 +43,6 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
         labelMapping,
         currency,
         euroToPacificFrancRate,
-        variant: 'new',
         analyticsFrom: 'artist',
         artistName,
         priceDisplay: (item: Offer) =>

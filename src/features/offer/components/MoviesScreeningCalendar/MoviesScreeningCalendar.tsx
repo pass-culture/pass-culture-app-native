@@ -8,8 +8,6 @@ import { MovieCalendarProvider } from 'features/offer/components/MoviesScreening
 import { VenueCalendar } from 'features/offer/components/MoviesScreeningCalendar/VenueCalendar'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { VenueOffers } from 'features/venue/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDates } from 'shared/date/getDates'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -26,7 +24,6 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
   const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
   const nonScreeningOffers = venueOffers.hits.filter(
@@ -44,7 +41,6 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         width={width}
         height={height}
         searchId={routeParams?.searchId}
-        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
       />
     )
   }

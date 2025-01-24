@@ -41,7 +41,6 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const { user } = useAuthContext()
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -93,7 +92,6 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
         width={width}
         height={height}
         searchId={routeParams?.searchId}
-        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
       />
     )
   }
