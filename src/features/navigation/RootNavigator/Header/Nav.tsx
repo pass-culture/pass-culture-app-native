@@ -1,13 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList } from 'features/navigation/TabBar/types'
-import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -29,10 +26,7 @@ type Props = {
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap }) => {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { tabRoutes } = useTabNavigationContext()
-  const {
-    searchState: { locationFilter },
-    hideSuggestions,
-  } = useSearch()
+  const { searchState, hideSuggestions } = useSearch()
 
   return (
     <NavItemsContainer
@@ -42,15 +36,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
       noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => {
-          let tabNavConfig = getTabNavConfig(route.name)
-
-          if (route.isSelected && route.name === 'SearchStackNavigator') {
-            tabNavConfig = getSearchStackConfig('SearchLanding', {
-              ...initialSearchState,
-              locationFilter,
-              accessibilityFilter: defaultDisabilitiesProperties,
-            })
-          }
+          const tabNavConfig = getTabNavigatorConfig(route, searchState)
           return (
             <StyledLi key={`key-tab-nav-${route.name}`}>
               {index > 0 ? <Spacer.Row numberOfSpaces={1.5} /> : null}
