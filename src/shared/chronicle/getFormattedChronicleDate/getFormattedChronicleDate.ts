@@ -1,4 +1,4 @@
-export function getFormattedLongMonthYear(dateString: string) {
+export function getFormattedChronicleDate(dateString: string) {
   const date = new Date(dateString)
   const formattedDate = new Intl.DateTimeFormat('fr-FR', {
     month: 'long',

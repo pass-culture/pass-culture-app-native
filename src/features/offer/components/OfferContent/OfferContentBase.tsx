@@ -18,11 +18,15 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
+import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
+import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
+import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -35,11 +39,17 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
+import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { getSpacing, TypoDS } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type OfferContentBaseProps = OfferContentProps & {
   BodyWrapper: FunctionComponent
   onOfferPreviewPress: (index?: number) => void
   footer?: ReactElement | null
+  chronicles?: ChronicleCardData[]
   contentContainerStyle?: StyleProp<ViewStyle>
 }
 
@@ -50,6 +60,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   searchGroupList,
   subcategory,
   footer,
+  chronicles,
   onOfferPreviewPress,
   contentContainerStyle,
   BodyWrapper = React.Fragment,
@@ -149,6 +160,29 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
             />
           </BodyWrapper>
+          {chronicles?.length ? (
+            <StyledSectionWithDivider visible gap={8}>
+              <ChroniclesTitle {...getHeadingAttrs(3)}>{"L'avis du book club"}</ChroniclesTitle>
+              <StyledChronicleCardlist data={chronicles} />
+              <Gutter>
+                <InternalTouchableLink
+                  as={ButtonSecondaryBlack}
+                  wording="Voir tous les avis"
+                  navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
+                  // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  style={{ alignSelf: 'center' }}
+                />
+              </Gutter>
+            </StyledSectionWithDivider>
+          ) : null}
+          <StyledSectionWithDivider
+            visible
+            margin
+            testID="messagingApp-container-with-divider"
+            gap={8}>
+            <OfferMessagingApps offer={offer} />
+          </StyledSectionWithDivider>
           <OfferPlaylistList
             offer={offer}
             sameCategorySimilarOffers={sameCategorySimilarOffers}
@@ -169,8 +203,29 @@ const Container = styled.View({
   flex: 1,
 })
 
+const StyledChronicleCardlist = styled(ChronicleCardList).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginHorizontal,
+  },
+  cardWidth: CHRONICLE_CARD_WIDTH,
+  snapToInterval: CHRONICLE_CARD_WIDTH,
+}))``
+
+const ChroniclesTitle = styled(TypoDS.Title3)(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const Gutter = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
+
 const ScrollViewContainer = React.memo(
   styled(IntersectionObserverScrollView)({
     overflow: 'visible',
   })
 )
+
+const StyledSectionWithDivider = styled(SectionWithDivider)({
+  paddingBottom: getSpacing(8),
+})

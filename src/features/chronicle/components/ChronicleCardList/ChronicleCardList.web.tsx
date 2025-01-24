@@ -1,52 +1,77 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
+import { useWindowDimensions } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { ChronicleCardListBase } from 'features/chronicle/components/ChronicleCardListBase/ChronicleCardListBase'
-import { ChronicleCardData } from 'features/chronicle/type'
+import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
+import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
-type ChronicleCardListProps = {
-  data: ChronicleCardData[]
-  horizontal?: boolean
-  cardWidth?: number
-}
+import {
+  ChronicleCardListBase,
+  ChronicleCardListProps,
+  SEPARATOR_DEFAULT_VALUE,
+} from './ChronicleCardListBase'
 
 export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   data,
   horizontal = true,
   cardWidth,
+  contentContainerStyle,
+  headerComponent,
+  separatorSize = SEPARATOR_DEFAULT_VALUE,
 }) => {
-  const [indexItem, setIndexItem] = useState(0)
+  const { isDesktopViewport } = useTheme()
+  const { width: windowWidth } = useWindowDimensions()
 
-  const goToPreviousPage = () => setIndexItem((prev) => Math.max(prev - 1, 0))
-  const goToNextPage = () => setIndexItem((prev) => Math.min(prev + 1, data.length - 1))
+  const listRef = useRef<FlatList>(null)
+
+  const {
+    onScroll,
+    handleScrollNext,
+    handleScrollPrevious,
+    onContainerLayout,
+    isEnd,
+    isStart,
+    onContentSizeChange,
+  } = useHorizontalFlatListScroll({
+    ref: listRef,
+    scrollRatio: isDesktopViewport ? 1 : (cardWidth ?? CHRONICLE_CARD_WIDTH) / windowWidth,
+  })
 
   return (
-    <FlatListContainer>
+    <FlatListContainer onLayout={onContainerLayout}>
       {horizontal ? (
         <React.Fragment>
-          {indexItem > 0 ? (
+          {isStart ? null : (
             <PlaylistArrowButton
               direction="left"
-              onPress={goToPreviousPage}
+              onPress={handleScrollPrevious}
               testID="chronicle-list-left-arrow"
             />
-          ) : null}
+          )}
 
-          {indexItem < data.length - 1 ? (
+          {isEnd ? null : (
             <PlaylistArrowButton
               direction="right"
-              onPress={goToNextPage}
+              onPress={handleScrollNext}
               testID="chronicle-list-right-arrow"
             />
-          ) : null}
+          )}
         </React.Fragment>
       ) : null}
       <ChronicleCardListBase
         data={data}
-        indexItem={indexItem}
+        ref={listRef}
         horizontal={horizontal}
         cardWidth={cardWidth}
+        onScroll={onScroll}
+        onContentSizeChange={onContentSizeChange}
+        headerComponent={headerComponent}
+        separatorSize={separatorSize}
+        contentContainerStyle={contentContainerStyle}
+        snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
       />
     </FlatListContainer>
   )

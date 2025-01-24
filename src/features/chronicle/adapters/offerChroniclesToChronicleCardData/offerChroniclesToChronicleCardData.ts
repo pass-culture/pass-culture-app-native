@@ -1,7 +1,7 @@
 import { OfferChronicle } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { getChronicleCardTitle } from 'shared/chronicle/getChronicleCardTitle/getChronicleCardTitle'
-import { getFormattedLongMonthYear } from 'shared/date/getFormattedLongMonthYear/getFormattedLongMonthYear'
+import { getFormattedChronicleDate } from 'shared/chronicle/getFormattedChronicleDate/getFormattedChronicleDate'
 
 export function offerChroniclesToChronicleCardData(
   chronicles: OfferChronicle[]
@@ -11,6 +11,6 @@ export function offerChroniclesToChronicleCardData(
     title: getChronicleCardTitle(author),
     subtitle: author?.firstName ? 'Membre du Book Club' : '',
     description: content,
-    date: getFormattedLongMonthYear(dateCreated),
+    date: getFormattedChronicleDate(dateCreated),
   }))
 }

@@ -403,46 +403,6 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should display social network section', async () => {
-    renderOfferBody({})
-
-    expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
-  })
-
-  it('should display container with divider on mobile', async () => {
-    renderOfferBody({})
-
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.getByTestId('messagingApp-container-with-divider')).toBeOnTheScreen()
-  })
-
-  it('should not display container with divider on desktop', async () => {
-    renderOfferBody({ isDesktopViewport: true })
-
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.queryByTestId('messagingApp-container-with-divider')).not.toBeOnTheScreen()
-  })
-
-  it('should display container without divider on desktop', async () => {
-    renderOfferBody({
-      isDesktopViewport: true,
-    })
-
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.getByTestId('messagingApp-container-without-divider')).toBeOnTheScreen()
-  })
-
-  it('should not display container without divider on mobile', async () => {
-    renderOfferBody({})
-
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
-  })
-
   it('should redirect to artist page when FF is enabled, artist not contain a comma or a semicolon, and artist name is not collectif/s', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
@@ -609,56 +569,22 @@ describe('<OfferBody />', () => {
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
-  describe('Chronicles section', () => {
-    it('should display "Voir tous les avis" button when wipOfferChronicleSection feature flag activated and viewport is not desktop', async () => {
-      renderOfferBody({})
+  type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
+    isDesktopViewport?: boolean
+  }
 
-      expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
-    })
-
-    it('should not display "Voir tous les avis" button when wipOfferChronicleSection feature flag activated and viewport is desktop', async () => {
-      renderOfferBody({ isDesktopViewport: true })
-
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Voir tous les avis')).not.toBeOnTheScreen()
-    })
-
-    it('should not display "Voir tous les avis" button when wipOfferChronicleSection feature flag deactivated', async () => {
-      setFeatureFlags()
-
-      renderOfferBody({})
-
-      await screen.findByText(offerResponseSnap.name)
-
-      expect(screen.queryByText('Voir tous les avis')).not.toBeOnTheScreen()
-    })
-
-    it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
-      renderOfferBody({})
-
-      await user.press(await screen.findByText('Voir tous les avis'))
-
-      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', { offerId: 116656 })
-    })
-  })
+  function renderOfferBody({
+    offer = offerResponseSnap,
+    subcategory = mockSubcategory,
+    isDesktopViewport,
+  }: RenderOfferBodyType) {
+    render(
+      reactQueryProviderHOC(
+        <OfferBody offer={offer} subcategory={subcategory} trackEventHasSeenOfferOnce={jest.fn()} />
+      ),
+      {
+        theme: { isDesktopViewport: isDesktopViewport ?? false },
+      }
+    )
+  }
 })
-
-type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
-  isDesktopViewport?: boolean
-}
-
-function renderOfferBody({
-  offer = offerResponseSnap,
-  subcategory = mockSubcategory,
-  isDesktopViewport,
-}: RenderOfferBodyType) {
-  render(
-    reactQueryProviderHOC(
-      <OfferBody offer={offer} subcategory={subcategory} trackEventHasSeenOfferOnce={jest.fn()} />
-    ),
-    {
-      theme: { isDesktopViewport: isDesktopViewport ?? false },
-    }
-  )
-}
