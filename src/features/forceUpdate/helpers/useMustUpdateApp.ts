@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber'
+import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
 

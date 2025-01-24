@@ -6,8 +6,7 @@ import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBo
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
-jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber')
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
 describe('<ForceUpdateWithResetErrorBoundary/>', () => {
   describe('Accessibility', () => {

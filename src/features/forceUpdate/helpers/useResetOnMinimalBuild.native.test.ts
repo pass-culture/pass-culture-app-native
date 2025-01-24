@@ -1,4 +1,4 @@
-import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber'
+import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import * as packageJson from 'libs/packageJson'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'

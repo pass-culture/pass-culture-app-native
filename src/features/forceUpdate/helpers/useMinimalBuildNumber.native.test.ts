@@ -1,6 +1,6 @@
 import { onlineManager } from 'react-query'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber'
+import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { getMinimalBuildNumber } from 'libs/firebase/firestore/getMinimalBuildNumber/getMinimalBuildNumber'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'

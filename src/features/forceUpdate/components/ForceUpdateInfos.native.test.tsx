@@ -4,7 +4,7 @@ import { Linking } from 'react-native'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import * as PackageJson from 'libs/packageJson'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { ForceUpdateInfos } from './ForceUpdateInfos'
 
@@ -12,18 +12,21 @@ const build = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(build)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber/useMinimalBuildNumber')
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<ForceUpdateInfos/>', () => {
   it('should log click force update when pressing "Télécharger la dernière version" button', async () => {
     await render(<ForceUpdateInfos />)
 
-    fireEvent.press(screen.getByText('Télécharger la dernière version'))
+    await user.press(screen.getByText('Télécharger la dernière version'))
 
     expect(analytics.logClickForceUpdate).toHaveBeenNthCalledWith(1, build)
   })
@@ -32,7 +35,7 @@ describe('<ForceUpdateInfos/>', () => {
     await render(<ForceUpdateInfos />)
 
     const goToWebappButton = screen.getByText('Utiliser la version web')
-    fireEvent.press(goToWebappButton)
+    await user.press(goToWebappButton)
 
     expect(Linking.openURL).toHaveBeenCalledWith(WEBAPP_V2_URL)
   })
