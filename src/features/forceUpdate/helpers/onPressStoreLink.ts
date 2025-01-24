@@ -12,5 +12,5 @@ async function openStore() {
 
 export const onPressStoreLink = Platform.select({
   web: () => globalThis?.window?.location?.reload(),
-  default: async () => openStore(),
+  default: openStore,
 })

@@ -23,7 +23,12 @@ export const DESCRIPTION = Platform.select({
   Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.`,
 })
 
-export const BUTTON_TEXT = Platform.select({
+export const BUTTON_TEXT_BANNER = Platform.select({
+  default: 'Télécharger la dernière version de l’application',
+  web: 'Actualiser la page',
+})
+
+export const BUTTON_TEXT_SCREEN = Platform.select({
   default: 'Télécharger la dernière version',
   web: 'Actualiser la page',
 })
