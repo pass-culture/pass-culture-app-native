@@ -28,7 +28,7 @@ export const SectionWithDivider = ({
   return (
     <ViewGap onLayout={onLayout} testID={testID} gap={gap} style={style}>
       <Divider />
-      {margin ? <MarginContainer>{children}</MarginContainer> : children}
+      {margin ? <Wrapper>{children}</Wrapper> : children}
     </ViewGap>
   )
 }
@@ -38,6 +38,6 @@ const Divider = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const MarginContainer = styled.View({
+const Wrapper = styled.View({
   paddingHorizontal: getSpacing(6),
 })

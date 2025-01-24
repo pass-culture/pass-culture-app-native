@@ -1,11 +1,12 @@
-import React, { FunctionComponent, ReactElement, useEffect, useMemo, useRef } from 'react'
-import {
-  FlatList,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  StyleProp,
-  ViewStyle,
-} from 'react-native'
+import React, {
+  ReactElement,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react'
+import { FlatList, FlatListProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -17,17 +18,19 @@ export const SEPARATOR_DEFAULT_VALUE = 2
 
 const keyExtractor = (item: ChronicleCardData) => item.id.toString()
 
-export type ChronicleCardListProps = {
-  data: ChronicleCardData[]
+export type ChronicleCardListProps = Pick<
+  FlatListProps<ChronicleCardData>,
+  | 'data'
+  | 'contentContainerStyle'
+  | 'horizontal'
+  | 'snapToInterval'
+  | 'onScroll'
+  | 'onContentSizeChange'
+> & {
   offset?: number
-  horizontal?: boolean
   cardWidth?: number
-  contentContainerStyle?: StyleProp<ViewStyle>
-  snapToInterval?: number
-  scrollEnabled?: boolean
   separatorSize?: number
   headerComponent?: ReactElement
-  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
 }
 
 const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: number }) => {
@@ -43,19 +46,29 @@ const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: 
   )
 }
 
-export const ChronicleCardListBase: FunctionComponent<ChronicleCardListProps> = ({
-  data,
-  offset,
-  horizontal = true,
-  cardWidth,
-  contentContainerStyle,
-  onScroll,
-  snapToInterval,
-  scrollEnabled,
-  headerComponent,
-  separatorSize = SEPARATOR_DEFAULT_VALUE,
-}) => {
+export const ChronicleCardListBase = forwardRef<
+  Partial<FlatList<ChronicleCardData>>,
+  ChronicleCardListProps
+>(function ChronicleCardListBase(
+  {
+    data,
+    offset,
+    horizontal = true,
+    cardWidth,
+    contentContainerStyle,
+    onScroll,
+    snapToInterval,
+    headerComponent,
+    onContentSizeChange,
+    separatorSize = SEPARATOR_DEFAULT_VALUE,
+  },
+  ref
+) {
   const listRef = useRef<FlatList>(null)
+
+  useImperativeHandle(ref, () => ({
+    scrollToOffset: (params) => listRef.current?.scrollToOffset(params),
+  }))
 
   useEffect(() => {
     if (listRef.current && offset !== undefined) {
@@ -81,14 +94,14 @@ export const ChronicleCardListBase: FunctionComponent<ChronicleCardListProps> = 
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={Separator}
       contentContainerStyle={contentContainerStyle}
+      onContentSizeChange={onContentSizeChange}
       showsHorizontalScrollIndicator={false}
       onScroll={onScroll}
       scrollEventThrottle={100}
-      scrollEnabled={scrollEnabled}
       horizontal={horizontal}
       decelerationRate="fast"
       snapToInterval={snapToInterval}
       testID="chronicle-list"
     />
   )
-}
+})
