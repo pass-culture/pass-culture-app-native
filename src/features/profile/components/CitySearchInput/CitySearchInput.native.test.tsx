@@ -1,5 +1,7 @@
 import React from 'react'
 
+import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
@@ -16,12 +18,24 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<CitySearchInput />', () => {
+  beforeEach(() => {
+    jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
+      data: {
+        ...defaultSettings,
+        ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE],
+      },
+      isLoading: false,
+    })
+  })
+
   it('should display error message when the user enters a valid postal code but no city found', async () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, [])
     render(reactQueryProviderHOC(<CitySearchInput />))
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await user.type(input, POSTAL_CODE)
+
+    await waitForScreenToBeLoaded()
 
     expect(
       screen.getByText(
@@ -37,6 +51,8 @@ describe('<CitySearchInput />', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await user.type(input, NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE)
 
+    await waitForScreenToBeLoaded()
+
     expect(
       screen.getByText(
         'Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture.'
@@ -50,6 +66,8 @@ describe('<CitySearchInput />', () => {
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await user.type(input, POSTAL_CODE)
+
+    await waitForScreenToBeLoaded()
 
     expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
     expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
@@ -65,6 +83,12 @@ describe('<CitySearchInput />', () => {
     const resetIcon = screen.getByTestId('Réinitialiser la recherche')
     await user.press(resetIcon)
 
+    await waitForScreenToBeLoaded()
+
     expect(input.props.value).toBe('')
   })
 })
+
+const waitForScreenToBeLoaded = () => {
+  return screen.findByText('Indique ton code postal et choisis ta ville')
+}
