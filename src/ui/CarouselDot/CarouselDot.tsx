@@ -1,6 +1,7 @@
 import React from 'react'
 import Animated, {
   Extrapolation,
+  SharedValue,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -9,7 +10,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 type Props = {
   index: number
-  animValue: Animated.SharedValue<number>
+  animValue: SharedValue<number>
 }
 
 const SMALL_DOT_SIZE = 6
