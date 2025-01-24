@@ -4,10 +4,12 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, userEvent, screen } from 'tests/utils'
 
 import { VerifyEligibility } from './VerifyEligibility'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
@@ -21,6 +23,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VerifyEligibility />', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should show the correct deposit amount', () => {
     render(<VerifyEligibility />)
 
