@@ -624,7 +624,9 @@ describe('<OfferContent />', () => {
           },
         })
 
-        await waitFor(() => expect(screen.queryByText("L'avis du book club")).not.toBeOnTheScreen())
+        await screen.findByText('Passe le bon plan\u00a0!')
+
+        expect(screen.queryByText("L'avis du book club")).not.toBeOnTheScreen()
       })
 
       it('should display "Voir tous les avis" button', async () => {

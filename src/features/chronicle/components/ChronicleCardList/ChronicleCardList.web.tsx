@@ -1,14 +1,11 @@
-import React, { FunctionComponent, useState } from 'react'
-import {
-  LayoutChangeEvent,
-  LayoutRectangle,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native'
+import React, { FunctionComponent, useRef } from 'react'
+import { useWindowDimensions } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
+import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
 import {
@@ -25,70 +22,52 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   headerComponent,
   separatorSize = SEPARATOR_DEFAULT_VALUE,
 }) => {
-  const [userOffset, setUserOffset] = useState(0)
-  const [scrollOffset, setScrollOffset] = useState(0)
-  const [layout, setLayout] = useState<LayoutRectangle>()
-  const [leftArrowVisible, setLeftArrowVisible] = useState(false)
-  const [rightArrowVisible, setRightArrowVisible] = useState(true)
-
   const { isDesktopViewport } = useTheme()
+  const { width: windowWidth } = useWindowDimensions()
 
-  const pageWidth = isDesktopViewport ? layout?.width ?? 0 : CHRONICLE_CARD_WIDTH
-  const goToPreviousPage = () => setUserOffset(Math.max(scrollOffset - pageWidth, 0))
-  const goToNextPage = () => setUserOffset(scrollOffset + pageWidth)
+  const listRef = useRef<FlatList>(null)
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    setLayout(event.nativeEvent.layout)
-  }
-
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const { contentSize, layoutMeasurement, contentOffset } = event.nativeEvent
-    const progress = contentOffset.x / (contentSize.width - layoutMeasurement.width)
-
-    setScrollOffset(contentOffset.x)
-
-    switch (progress) {
-      case 0:
-        setLeftArrowVisible(false)
-        setRightArrowVisible(true)
-        break
-      case 1:
-        setLeftArrowVisible(true)
-        setRightArrowVisible(false)
-        break
-      default:
-        setLeftArrowVisible(true)
-        setRightArrowVisible(true)
-    }
-  }
+  const {
+    onScroll,
+    handleScrollNext,
+    handleScrollPrevious,
+    onContainerLayout,
+    isEnd,
+    isStart,
+    onContentSizeChange,
+  } = useHorizontalFlatListScroll({
+    ref: listRef,
+    scrollRatio: isDesktopViewport ? 1 : (cardWidth ?? CHRONICLE_CARD_WIDTH) / windowWidth,
+  })
 
   return (
-    <FlatListContainer onLayout={handleLayout}>
+    <FlatListContainer onLayout={onContainerLayout}>
       {horizontal ? (
         <React.Fragment>
-          {leftArrowVisible ? (
+          {isStart ? null : (
             <PlaylistArrowButton
               direction="left"
-              onPress={goToPreviousPage}
+              onPress={handleScrollPrevious}
               testID="chronicle-list-left-arrow"
             />
-          ) : null}
+          )}
 
-          {rightArrowVisible ? (
+          {isEnd ? null : (
             <PlaylistArrowButton
               direction="right"
-              onPress={goToNextPage}
+              onPress={handleScrollNext}
               testID="chronicle-list-right-arrow"
             />
-          ) : null}
+          )}
         </React.Fragment>
       ) : null}
       <ChronicleCardListBase
         data={data}
-        offset={userOffset}
+        ref={listRef}
         horizontal={horizontal}
         cardWidth={cardWidth}
-        onScroll={handleScroll}
+        onScroll={onScroll}
+        onContentSizeChange={onContentSizeChange}
         headerComponent={headerComponent}
         separatorSize={separatorSize}
         contentContainerStyle={contentContainerStyle}
