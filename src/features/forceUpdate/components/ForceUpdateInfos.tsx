@@ -3,11 +3,9 @@ import { Helmet } from 'react-helmet'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BUTTON_TEXT, DESCRIPTION, STORE_LINK, TITLE } from 'features/forceUpdate/constants'
-import { openUrl } from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/analytics'
+import { BUTTON_TEXT, DESCRIPTION, TITLE } from 'features/forceUpdate/constants'
+import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { getAppBuildVersion } from 'libs/packageJson'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -17,20 +15,6 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
-
-async function openStore() {
-  await analytics.logClickForceUpdate(getAppBuildVersion())
-  await openUrl(STORE_LINK)
-}
-
-const onPressStoreLink = Platform.select({
-  default: () => {
-    void (async () => {
-      await openStore()
-    })()
-  },
-  web: () => globalThis?.window?.location?.reload(),
-})
 
 export const ForceUpdateInfos = () => {
   return (
