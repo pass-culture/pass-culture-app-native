@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -16,8 +16,11 @@ import { getOfferDates } from 'shared/date/getOfferDates'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { Tag } from 'ui/components/Tag/Tag'
+import { OfferName } from 'ui/components/tiles/OfferName'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
@@ -29,6 +32,8 @@ interface Props extends Partial<HorizontalTileProps> {
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
+  price?: string
+  withRightArrow?: boolean
 }
 
 export const HorizontalOfferTile = ({
@@ -37,6 +42,8 @@ export const HorizontalOfferTile = ({
   onPress,
   style,
   subtitles,
+  price,
+  withRightArrow,
   ...horizontalTileProps
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
@@ -112,23 +119,33 @@ export const HorizontalOfferTile = ({
       enableNavigate={!!offerId}
       from={analyticsParams.from}
       style={style}>
-      <HorizontalTile
-        {...horizontalTileProps}
-        categoryId={categoryId}
-        title={name}
-        imageUrl={thumbUrl}
-        distanceToOffer={distanceToOffer}
-        price={formattedPrice}>
-        {!!generatedSubtitles?.length &&
-          generatedSubtitles?.map((subtitle, index) => (
-            <Body
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              testID="native-category-value"
-              key={subtitle ? `${subtitle}_${index}` : index}>
-              {subtitle}
-            </Body>
-          ))}
+      <HorizontalTile {...horizontalTileProps} categoryId={categoryId} imageUrl={thumbUrl}>
+        <Row flex={1} gap={getSpacing(4)} alignItems="space-between">
+          <Column flex={1}>
+            {distanceToOffer ? (
+              <OfferName title={name ?? ''} />
+            ) : (
+              <Row>
+                <OfferNameContainer>
+                  <OfferName title={name ?? ''} />
+                </OfferNameContainer>
+                {withRightArrow ? <RightIcon testID="RightFilled" /> : null}
+              </Row>
+            )}
+            {!!generatedSubtitles?.length &&
+              generatedSubtitles?.map((subtitle, index) => (
+                <Body
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  testID="native-category-value"
+                  key={subtitle ? `${subtitle}_${index}` : index}>
+                  {subtitle}
+                </Body>
+              ))}
+            {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
+          </Column>
+          {distanceToOffer ? <DistanceTag label={`à ${distanceToOffer}`} /> : null}
+        </Row>
       </HorizontalTile>
     </Container>
   )
@@ -143,4 +160,34 @@ const Container = styled(InternalTouchableLink)({
 
 const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
+}))
+
+const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({
+  flexDirection,
+  flex,
+  alignItems,
+  justifyContent,
+  gap,
+}))
+
+const Column = Flex
+
+const Row = styled(Flex).attrs({
+  flexDirection: 'row',
+  alignItems: 'center',
+})``
+
+const OfferNameContainer = styled.View({
+  flexShrink: 1,
+})
+
+const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))({
+  flexShrink: 0,
+  marginLeft: getSpacing(1),
+})
+
+const DistanceTag = styled(Tag)(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
 }))
