@@ -7,7 +7,8 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -41,10 +42,15 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const theme = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
   const { offerId, name, date, price, categoryId, thumbUrl, offerLocation } = props
 
-  const distanceFromOffer = useDistance(offerLocation)
+  const distanceFromOffer = getDistance(offerLocation, {
+    userLocation,
+    selectedPlace,
+    selectedLocationMode,
+  })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
