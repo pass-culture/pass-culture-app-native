@@ -7,8 +7,6 @@ import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileW
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { Offer } from 'shared/offer/types'
@@ -26,7 +24,6 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
@@ -70,10 +67,9 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         homeEntryId={homeEntryId}
         apiRecoParams={recommendationApiParams}
         analyticsFrom="home"
-        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
       />
     ),
-    [isNewOfferTileDisplayed, moduleId, moduleName, recommendationApiParams, homeEntryId]
+    [moduleId, moduleName, recommendationApiParams, homeEntryId]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

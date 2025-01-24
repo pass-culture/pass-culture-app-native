@@ -79,7 +79,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
   WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
-  WIP_NEW_OFFER_TILE = 'wipNewOfferTile',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',

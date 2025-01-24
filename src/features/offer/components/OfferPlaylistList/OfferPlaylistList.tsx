@@ -10,8 +10,6 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -43,7 +41,6 @@ export function OfferPlaylistList({
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -122,7 +119,6 @@ export function OfferPlaylistList({
                 currency,
                 euroToPacificFrancRate,
                 apiRecoParams: playlist.apiRecoParams,
-                variant: isNewOfferTileDisplayed ? 'new' : 'default',
                 priceDisplay: (item: Offer) =>
                   getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
               })}

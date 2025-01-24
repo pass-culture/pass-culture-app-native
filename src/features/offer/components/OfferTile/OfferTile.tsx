@@ -4,8 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -14,7 +12,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { OldPlaylistCardOffer } from './OldPlaylistCardOffer'
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 
 const UnmemoizedOfferTile = (props: OfferTileProps) => {
@@ -32,12 +29,10 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     searchId,
     apiRecoParams,
     index,
-    variant = 'default',
     artistName,
     ...offer
   } = props
 
-  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const theme = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
@@ -58,10 +53,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       prePopulateOffer(offer)
     }
   }, [offer, prePopulateOffer])
-
-  const MAX_OFFER_CAPTION_HEIGHT = enableNewOfferTile
-    ? theme.tiles.maxCaptionHeight.newOfferTile
-    : theme.tiles.maxCaptionHeight.offer
 
   function handlePressOffer() {
     triggerConsultOfferLog({
@@ -84,7 +75,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     <View {...getHeadingAttrs(3)}>
       <StyledTouchableLink
         highlight
-        height={height + MAX_OFFER_CAPTION_HEIGHT}
+        height={height + theme.tiles.maxCaptionHeight.newOfferTile}
         navigateTo={{
           screen: 'Offer',
           params: {
@@ -104,31 +95,17 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         onBlur={onBlur}
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
-        {variant == 'new' ? (
-          <PlaylistCardOffer
-            categoryId={categoryId}
-            thumbnailUrl={thumbUrl}
-            distance={distanceFromOffer}
-            name={name}
-            date={date}
-            price={price}
-            categoryLabel={categoryLabel}
-            width={width}
-            height={height}
-          />
-        ) : (
-          <OldPlaylistCardOffer
-            name={name}
-            date={date}
-            categoryId={categoryId}
-            distance={distanceFromOffer}
-            thumbnailUrl={thumbUrl}
-            width={width}
-            height={height}
-            categoryLabel={categoryLabel}
-            price={price}
-          />
-        )}
+        <PlaylistCardOffer
+          categoryId={categoryId}
+          thumbnailUrl={thumbUrl}
+          distance={distanceFromOffer}
+          name={name}
+          date={date}
+          price={price}
+          categoryLabel={categoryLabel}
+          width={width}
+          height={height}
+        />
       </StyledTouchableLink>
     </View>
   )

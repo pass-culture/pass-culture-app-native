@@ -36,7 +36,6 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
-  variant?: 'default' | 'new'
   artistName?: string
 }
 

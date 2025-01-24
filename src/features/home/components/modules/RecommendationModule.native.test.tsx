@@ -9,7 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 
@@ -41,22 +41,6 @@ describe('RecommendationModule', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should display V2 playlist when FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
-    renderRecommendationModule()
-
-    expect(await screen.findByTestId('playlist-card-offer-v2')).toBeOnTheScreen()
-  })
-
-  it('should NOT display V2 playlist when FF deactivated', async () => {
-    setFeatureFlags()
-    renderRecommendationModule()
-
-    await act(async () => {})
-
-    expect(screen.queryByTestId('playlist-card-offer-v2')).not.toBeTruthy()
-  })
-
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
     setFeatureFlags()
     renderRecommendationModule()
@@ -85,7 +69,6 @@ describe('RecommendationModule', () => {
   })
 
   it('should not display RecommendationModule if no offer', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
     mockUseHomeRecommendedOffers.mockReturnValueOnce({
       offers: [],
       recommendationApiParams: defaultRecommendationApiParams,
