@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useNavigationState } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { userProps } from 'libs/location/getDistance'
+import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -20,7 +20,7 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
-type props = userProps & { geolocPosition: Position | undefined }
+type Props = UserProps & { geolocPosition: Position | undefined }
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockOffer.objectID)
@@ -43,13 +43,21 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
 
-const EVERYWHERE_USER_POSITION: props = {
+const EVERYWHERE_USER_POSITION: Props = {
   userLocation: null,
   selectedPlace: null,
   selectedLocationMode: LocationMode.EVERYWHERE,
   geolocPosition: undefined,
 }
-const AROUND_ME_POSITION: props = {
+
+const EVERYWHERE_WITH_GEOLOC_USER_POSITION: Props = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: DEFAULT_USER_LOCATION,
+}
+
+const AROUND_ME_POSITION: Props = {
   userLocation: DEFAULT_USER_LOCATION,
   selectedPlace: null,
   selectedLocationMode: LocationMode.AROUND_ME,
@@ -62,13 +70,13 @@ const DEFAULT_SELECTED_PLACE: SuggestedPlace | null = {
   info: 'Kourou',
   geolocation: DEFAULT_USER_LOCATION,
 }
-const MUNICIPALITY_AROUND_PLACE_POSITION: props = {
+const MUNICIPALITY_AROUND_PLACE_POSITION: Props = {
   userLocation: DEFAULT_USER_LOCATION,
   selectedPlace: DEFAULT_SELECTED_PLACE,
   selectedLocationMode: LocationMode.AROUND_PLACE,
   geolocPosition: undefined,
 }
-const AROUND_PLACE_POSITION: props = {
+const AROUND_PLACE_POSITION: Props = {
   ...MUNICIPALITY_AROUND_PLACE_POSITION,
   selectedPlace: { ...DEFAULT_SELECTED_PLACE, type: 'housenumber' },
 }
@@ -77,6 +85,11 @@ const mockUseLocation = jest.fn(() => EVERYWHERE_USER_POSITION)
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+const defaultProps = {
+  offer: mockOffer,
+  analyticsParams: mockAnalyticsParams,
+}
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -88,10 +101,7 @@ describe('HorizontalOfferTile component', () => {
   })
 
   it('should navigate to the offer when pressing an offer', async () => {
-    renderHorizontalOfferTile({
-      offer: mockOffer,
-      analyticsParams: mockAnalyticsParams,
-    })
+    renderHorizontalOfferTile(defaultProps)
 
     user.press(screen.getByRole('link'))
 
@@ -125,10 +135,7 @@ describe('HorizontalOfferTile component', () => {
   })
 
   it('should notify Algolia when pressing an offer', async () => {
-    renderHorizontalOfferTile({
-      offer: mockOffer,
-      analyticsParams: mockAnalyticsParams,
-    })
+    renderHorizontalOfferTile(defaultProps)
 
     const hitComponent = screen.getByRole('link')
     user.press(hitComponent)
@@ -266,20 +273,49 @@ describe('HorizontalOfferTile component', () => {
   })
 
   describe('distances', () => {
-    describe("user has chosen 'FranceEntière'", () => {
+    describe('onSearchResults', () => {
+      useNavigationState.mockImplementation(() => [{ name: 'SearchResults' }])
+
+      describe('user has chosen FranceEntière', () => {
+        beforeEach(() => {
+          mockUseLocation.mockReturnValue(EVERYWHERE_USER_POSITION)
+        })
+
+        it('should not show distance', async () => {
+          renderHorizontalOfferTile(defaultProps)
+
+          await screen.findByText('La nuit des temps')
+
+          expect(screen.queryByText('à 111 km')).not.toBeOnTheScreen()
+        })
+      })
+
+      describe('user has chosen FranceEntière but has geolocation activated', () => {
+        beforeEach(() => {
+          mockUseLocation.mockReturnValue(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
+        })
+
+        it('should show distance', async () => {
+          renderHorizontalOfferTile(defaultProps)
+
+          await screen.findByText('La nuit des temps')
+
+          expect(screen.getByText('à 111 km')).toBeOnTheScreen()
+        })
+      })
+    })
+
+    describe('user has chosen FranceEntière but has geolocation activated', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(EVERYWHERE_USER_POSITION)
+        mockUseLocation.mockReturnValue(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
       })
 
       it('should not show distance', async () => {
-        renderHorizontalOfferTile({
-          offer: mockOffer,
-          analyticsParams: mockAnalyticsParams,
-        })
+        renderHorizontalOfferTile(defaultProps)
 
         await screen.findByText('La nuit des temps')
 
-        expect(screen.queryByText('à 111 km')).not.toBeOnTheScreen()
+        expect(screen.getByText('à 111 km')).toBeOnTheScreen()
       })
     })
 
@@ -289,10 +325,7 @@ describe('HorizontalOfferTile component', () => {
       })
 
       it('should show distance', async () => {
-        renderHorizontalOfferTile({
-          offer: mockOffer,
-          analyticsParams: mockAnalyticsParams,
-        })
+        renderHorizontalOfferTile(defaultProps)
 
         expect(await screen.findByText('à 111 km')).toBeOnTheScreen()
       })
@@ -304,10 +337,7 @@ describe('HorizontalOfferTile component', () => {
       })
 
       it('should not show distance', async () => {
-        renderHorizontalOfferTile({
-          offer: mockOffer,
-          analyticsParams: mockAnalyticsParams,
-        })
+        renderHorizontalOfferTile(defaultProps)
 
         await screen.findByText('La nuit des temps')
 
@@ -321,10 +351,7 @@ describe('HorizontalOfferTile component', () => {
       })
 
       it('should show distance', async () => {
-        renderHorizontalOfferTile({
-          offer: mockOffer,
-          analyticsParams: mockAnalyticsParams,
-        })
+        renderHorizontalOfferTile(defaultProps)
         await screen.findByText('La nuit des temps')
 
         expect(screen.getByText('à 111 km')).toBeOnTheScreen()
