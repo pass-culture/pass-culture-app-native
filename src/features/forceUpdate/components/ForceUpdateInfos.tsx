@@ -25,13 +25,10 @@ export const ForceUpdateInfos = () => (
       title={TITLE}
       icon={AgainIllustration}
       buttons={[
-        <ButtonPrimaryWhite
-          key={BUTTON_TEXT_SCREEN}
-          wording={BUTTON_TEXT_SCREEN}
-          onPress={onPressStoreLink}
-        />,
+        <ButtonPrimaryWhite key={1} wording={BUTTON_TEXT_SCREEN} onPress={onPressStoreLink} />,
         isWeb ? null : (
           <ExternalTouchableLink
+            key={2}
             as={ButtonTertiaryWhite}
             wording="Utiliser la version web"
             externalNav={{ url: WEBAPP_V2_URL }}
