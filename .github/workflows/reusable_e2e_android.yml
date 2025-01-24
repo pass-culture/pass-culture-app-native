@@ -1,0 +1,104 @@
+name: 'Reusable E2E Android Workflow'
+
+on:
+  workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  maestro-cloud:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Yarn install
+        run: yarn install
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
+            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
+            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+
+      - name: Create a directory for keystores
+        run: mkdir --parents android/keystores/
+
+      - name: Setup android keystore for staging environment
+        run: |
+          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/staging.keystore
+
+      - name: Setup android keystore properties for staging environment
+        uses: chuhlomin/render-template@v1.9
+        with:
+          template: templates_github_ci/staging.keystore.properties
+          vars: |
+            ENVIRONMENT: staging
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/staging.keystore.properties
+
+      - name: Setup android Google services config
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+
+      - name: Build android apk
+        run: cd android && ENVFILE=.env.staging ./gradlew assembleDebug
+
+      - name: Run Maestro Tests
+        uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
+        with:
+          api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
+          project-id: proj_01javz1ncreqb9dcshv3y4da44
+          app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
+          device-locale: fr_FR
+          android-api-level: 34
+          workspace: .maestro/tests/
+          include-tags: cloud
+          env: |
+            MAESTRO_APP_ID=app.passculture.staging
+            MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
+            MAESTRO_VALID_EMAIL=dev-tests-e2e@passculture.team
+            MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
+            MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
+            MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
+            MAESTRO_NUMBER_PHONE=0607080910
+            MAESTRO_RUN_TRACKING_TESTS=false
+            MAESTRO_RUN_CLOUD_COMMANDS=true
