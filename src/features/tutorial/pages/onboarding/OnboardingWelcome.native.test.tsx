@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics'
@@ -94,10 +93,7 @@ describe('OnboardingWelcome', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
     })
 
     it('should display subtitle with credit V3', () => {

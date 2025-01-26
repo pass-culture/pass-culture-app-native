@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -81,11 +82,6 @@ jest.mock('react-instantsearch-core', () => ({
     refine: jest.fn,
     clear: mockClear,
   }),
-}))
-
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
@@ -265,7 +261,7 @@ describe('SearchBox component', () => {
 
     describe('Without autocomplete', () => {
       beforeAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+        setSettings({ appEnableAutocomplete: false })
       })
 
       it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -328,11 +324,11 @@ describe('SearchBox component', () => {
 
     describe('With autocomplete', () => {
       beforeAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
+        setSettings({ appEnableAutocomplete: true })
       })
 
       afterAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+        setSettings()
       })
 
       it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {

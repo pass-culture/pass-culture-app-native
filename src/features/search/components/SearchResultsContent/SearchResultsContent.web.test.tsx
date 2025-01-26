@@ -35,11 +35,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResult(),
 }))
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
-
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: Position = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
