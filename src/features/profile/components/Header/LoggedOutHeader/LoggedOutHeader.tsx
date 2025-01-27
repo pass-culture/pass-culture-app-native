@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -10,12 +10,16 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
+type Props = {
+  showForceUpdateBanner: boolean
+}
+
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
   analytics.logSignUpClicked({ from: 'profile' })
 }
 
-export function LoggedOutHeader() {
+export const LoggedOutHeader: FunctionComponent<Props> = ({ showForceUpdateBanner }) => {
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
@@ -23,7 +27,10 @@ export function LoggedOutHeader() {
   const { isDesktopViewport, colors } = useTheme()
 
   return (
-    <HeaderWithGreyContainer title="Mon profil" subtitle={subtitle}>
+    <HeaderWithGreyContainer
+      showForceUpdateBanner={showForceUpdateBanner}
+      title="Mon profil"
+      subtitle={subtitle}>
       <TypoDS.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</TypoDS.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>

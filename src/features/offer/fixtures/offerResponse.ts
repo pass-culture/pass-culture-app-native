@@ -27,6 +27,32 @@ export const offerResponseSnap = toMutable({
   reactionsCount: {
     likes: 1,
   },
+  chronicles: [
+    {
+      id: 1,
+      contentPreview: 'Le Voyage Extraordinaire',
+      dateCreated: '2025-01-20T23:32:13.978038Z',
+      author: {
+        firstName: 'John',
+        age: 14,
+      },
+    },
+    {
+      id: 2,
+      contentPreview: 'L’Art de la Cuisine',
+      dateCreated: '2025-02-20T23:32:13.978038Z',
+      author: {
+        firstName: 'Bob',
+        age: 12,
+      },
+    },
+    {
+      id: 3,
+      contentPreview: 'Le Futur de la Technologie',
+      dateCreated: '2025-03-20T23:32:13.978038Z',
+      author: null,
+    },
+  ],
   stocks: [
     {
       id: 118929,
@@ -91,5 +117,4 @@ export const offerResponseSnap = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
-  chronicles: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

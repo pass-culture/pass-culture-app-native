@@ -10,6 +10,8 @@ import { render, userEvent, screen } from 'tests/utils'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -17,7 +19,7 @@ describe('LoggedOutHeader', () => {
   beforeEach(() => setFeatureFlags())
 
   it('should display subtitle with credit V2', () => {
-    render(<LoggedOutHeader />)
+    render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
     const subtitle = 'Tu as entre 15 et 18 ans\u00a0?'
 
@@ -25,7 +27,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the SignupForm page', async () => {
-    render(<LoggedOutHeader />)
+    render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -36,7 +38,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the Login page', async () => {
-    render(<LoggedOutHeader />)
+    render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
@@ -47,7 +49,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {
-    render(<LoggedOutHeader />)
+    render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -65,7 +67,7 @@ describe('LoggedOutHeader', () => {
     })
 
     it('should display subtitle with credit V3', () => {
-      render(<LoggedOutHeader />)
+      render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 

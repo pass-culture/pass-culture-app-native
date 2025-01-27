@@ -1,1 +1,1 @@
-export const CHRONICLE_ITEM_WIDTH = 327
+export const CHRONICLE_CARD_WIDTH = 327

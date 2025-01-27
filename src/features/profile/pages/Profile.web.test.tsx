@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
@@ -16,9 +16,9 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-
 describe('<Profile/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderProfile()

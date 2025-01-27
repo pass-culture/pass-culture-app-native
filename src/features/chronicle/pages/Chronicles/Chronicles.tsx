@@ -21,7 +21,10 @@ export const Chronicles: FunctionComponent = () => {
   const offerId = route.params?.offerId
   const { goBack } = useGoBack('Offer', { id: offerId })
   const { data: offer } = useOffer({ offerId })
-  const { data: offerChronicles } = useChronicles({ offerId })
+  const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
+    offerId,
+    select: ({ chronicles }) => offerChroniclesToChronicleCardData(chronicles),
+  })
 
   const { headerTransition, onScroll } = useOpacityTransition()
   const { appBarHeight } = useTheme()
@@ -30,12 +33,9 @@ export const Chronicles: FunctionComponent = () => {
 
   const scrollViewRef = useRef<ScrollView>(null)
 
-  if (!offer || !offerChronicles) return null
+  if (!offer || !chronicleCardsData) return null
 
   const title = `Tous les avis sur "${offer.name}"`
-  const transformedChronicles: ChronicleCardData[] = offerChroniclesToChronicleCardData(
-    offerChronicles.chronicles
-  )
 
   return (
     <React.Fragment>
@@ -48,13 +48,21 @@ export const Chronicles: FunctionComponent = () => {
         onScroll={onScroll}
         contentContainerStyle={{ paddingTop: headerHeight, paddingBottom: getSpacing(10) }}>
         <ChroniclesContainer>
-          <TypoDS.Title2>Tous les avis</TypoDS.Title2>
-          <ChronicleCardList data={transformedChronicles} horizontal={false} />
+          <ChronicleCardList
+            data={chronicleCardsData}
+            horizontal={false}
+            separatorSize={6}
+            headerComponent={<StyledTitle2>Tous les avis</StyledTitle2>}
+          />
         </ChroniclesContainer>
       </ScrollView>
     </React.Fragment>
   )
 }
+
+const StyledTitle2 = styled(TypoDS.Title2)({
+  marginBottom: getSpacing(6),
+})
 
 const ChroniclesContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(4),
