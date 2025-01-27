@@ -119,7 +119,7 @@ export const HorizontalOfferTile = ({
       enableNavigate={!!offerId}
       from={analyticsParams.from}
       style={style}>
-      <HorizontalTile {...horizontalTileProps} categoryId={categoryId} imageUrl={thumbUrl}>
+      <StyledHorizontalTile {...horizontalTileProps} categoryId={categoryId} imageUrl={thumbUrl}>
         <Row flex={1} gap={getSpacing(4)} alignItems="space-between">
           <Column flex={1}>
             {distanceToOffer ? (
@@ -146,10 +146,14 @@ export const HorizontalOfferTile = ({
           </Column>
           {distanceToOffer ? <DistanceTag label={`à ${distanceToOffer}`} /> : null}
         </Row>
-      </HorizontalTile>
+      </StyledHorizontalTile>
     </Container>
   )
 }
+
+const StyledHorizontalTile = styled(HorizontalTile)({
+  flex: 1,
+})
 
 const Container = styled(InternalTouchableLink)({
   flexDirection: 'row',
