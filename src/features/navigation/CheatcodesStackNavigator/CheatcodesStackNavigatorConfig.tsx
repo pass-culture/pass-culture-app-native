@@ -31,6 +31,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenAccesLibre: 'cheatcodes/other/acces-libre',
       CheatcodesNavigationSignUp: 'cheatcodes/other/sign-up',
       CheatcodesNavigationAccountManagement: 'cheatcodes/other/account-management',
+      CheatcodesNavigationForceUpdate: 'cheatcodes/other/force-update',
     },
   },
 }
