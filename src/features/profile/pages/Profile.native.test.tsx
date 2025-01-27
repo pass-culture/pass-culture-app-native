@@ -16,6 +16,7 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -124,6 +125,7 @@ describe('Profile component', () => {
   })
 
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture

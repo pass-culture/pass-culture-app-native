@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { ComponentType, FunctionComponent, memo, PropsWithChildren } from 'react'
+import React, { FunctionComponent, memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
+import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
@@ -12,8 +13,6 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Badges/Sub
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
@@ -22,11 +21,13 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
+  featureFlags: { enableSystemBanner: boolean; disableActivation: boolean }
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
 }
 
 function NonBeneficiaryHeaderComponent({
+  featureFlags,
   eligibilityEndDatetime,
   eligibilityStartDatetime,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -34,6 +35,7 @@ function NonBeneficiaryHeaderComponent({
     <React.Fragment>
       <PageHeader title="Mon profil" />
       <NonBeneficiaryBanner
+        featureFlags={featureFlags}
         eligibilityEndDatetime={eligibilityEndDatetime}
         eligibilityStartDatetime={eligibilityStartDatetime}
       />
@@ -70,7 +72,10 @@ const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
 }))``
 
 const systemBannerIcons: {
-  [key in Exclude<BannerName, 'geolocation_banner' | 'retry_identity_check_banner'>]: ComponentType
+  [key in Exclude<
+    BannerName,
+    'geolocation_banner' | 'retry_identity_check_banner'
+  >]: React.FunctionComponent<AccessibleIcon>
 } = {
   [BannerName.activation_banner]: StyledBicolorUnlock,
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
@@ -111,12 +116,12 @@ function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: Ban
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
 function NonBeneficiaryBanner({
+  featureFlags,
   eligibilityStartDatetime,
   eligibilityEndDatetime,
 }: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const { data: subscription } = useGetStepperInfo()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
   const { banner } = useActivationBanner()
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
@@ -151,14 +156,25 @@ function NonBeneficiaryBanner({
     banner.name === BannerName.activation_banner ||
     banner.name === BannerName.transition_17_18_banner
   ) {
-    const BannerComponent = enableSystemBanner ? SystemBanner : BannerWithBackground
-    const Icon = enableSystemBanner
-      ? (systemBannerIcons[banner?.name] as FunctionComponent<AccessibleIcon>)
-      : bannerIcons[banner?.name]
+    if (featureFlags.disableActivation) {
+      return (
+        <BannerContainer>
+          <Spacer.Column numberOfSpaces={2} />
+          <ForceUpdateBanner />
+        </BannerContainer>
+      )
+    }
+
+    const ActivationBannerComponent = featureFlags.enableSystemBanner
+      ? SystemBanner
+      : BannerWithBackground
+    const ActivationBannerIcon = featureFlags.enableSystemBanner
+      ? systemBannerIcons[banner.name]
+      : bannerIcons[banner.name]
 
     return (
-      <BannerComponent
-        Icon={Icon}
+      <ActivationBannerComponent
+        Icon={ActivationBannerIcon}
         homeBanner={banner as Banner} // Use this as because API typing return Banner | null but it's never null
         formattedEligibilityEndDatetime={formattedEligibilityEndDatetime}
       />

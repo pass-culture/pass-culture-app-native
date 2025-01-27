@@ -8,24 +8,26 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { getAge } from 'shared/user/getAge'
 import { Spacer, getSpacing } from 'ui/theme'
 
 type ProfileHeaderProps = {
+  featureFlags: {
+    enableAchievements: boolean
+    enableSystemBanner: boolean
+    disableActivation: boolean
+  }
   user?: UserProfileResponse
 }
 
 export function ProfileHeader(props: ProfileHeaderProps) {
-  const { user } = props
+  const { featureFlags, user } = props
   const { isLoggedIn } = useAuthContext()
 
-  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const { displayAchievements } = useRemoteConfigContext()
   const shouldShowAchievementsBanner =
-    enableAchievements && displayAchievements && user?.isBeneficiary
+    featureFlags.enableAchievements && displayAchievements && user?.isBeneficiary
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
@@ -35,6 +37,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
       return (
         <NonBeneficiaryHeader
+          featureFlags={featureFlags}
           eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
           eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
         />
@@ -58,7 +61,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
         ) : null}
       </React.Fragment>
     )
-  }, [isLoggedIn, shouldShowAchievementsBanner, user])
+  }, [isLoggedIn, featureFlags, shouldShowAchievementsBanner, user])
 
   return (
     <React.Fragment>
