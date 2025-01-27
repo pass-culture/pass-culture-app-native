@@ -115,15 +115,16 @@ export function groupByYearAndMonth(decomposedDates: ReturnType<typeof decompose
     }
 
     // If this is the first date we've seen for this month in this year, create an empty array for it
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    if (!acc[year][month]) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      acc[year][month] = []
+    const yearGroup = acc[year]
+    if (yearGroup && !yearGroup[month]) {
+      yearGroup[month] = []
     }
 
     // Add the day to the array for this month in this year
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    acc[year][month]?.push(day)
+    const monthDays = yearGroup?.[month]
+    if (monthDays) {
+      monthDays.push(day)
+    }
 
     // Return the updated accumulator object for the reduce function
     return acc
