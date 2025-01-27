@@ -7,6 +7,7 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { Subcategory } from 'libs/subcategories/types'
@@ -60,4 +61,5 @@ export type OfferContentProps = {
   offer: OfferResponseV2
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
+  chronicles?: ChronicleCardData[]
 }

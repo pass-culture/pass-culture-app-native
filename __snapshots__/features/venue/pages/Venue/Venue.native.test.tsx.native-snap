@@ -3675,7 +3675,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             style={
               [
                 {
-                  "marginHorizontal": 24,
+                  "paddingHorizontal": 24,
                 },
               ]
             }
@@ -7374,7 +7374,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             style={
               [
                 {
-                  "marginHorizontal": 24,
+                  "paddingHorizontal": 24,
                 },
               ]
             }

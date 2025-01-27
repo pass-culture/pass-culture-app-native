@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -11,6 +11,7 @@ interface SectionProps {
   onLayout?: (event: LayoutChangeEvent) => void
   testID?: string
   gap: number
+  style?: StyleProp<ViewStyle>
 }
 
 export const SectionWithDivider = ({
@@ -19,14 +20,15 @@ export const SectionWithDivider = ({
   margin = false,
   onLayout,
   testID,
+  style,
   gap,
 }: SectionProps) => {
   if (!visible) return null
 
   return (
-    <ViewGap onLayout={onLayout} testID={testID} gap={gap}>
+    <ViewGap onLayout={onLayout} testID={testID} gap={gap} style={style}>
       <Divider />
-      {margin ? <MarginContainer>{children}</MarginContainer> : children}
+      {margin ? <Wrapper>{children}</Wrapper> : children}
     </ViewGap>
   )
 }
@@ -36,6 +38,6 @@ const Divider = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const MarginContainer = styled.View({
-  marginHorizontal: getSpacing(6),
+const Wrapper = styled.View({
+  paddingHorizontal: getSpacing(6),
 })

@@ -1,3 +1,3 @@
-import { ChronicleCardListBase } from 'features/chronicle/components/ChronicleCardListBase/ChronicleCardListBase'
+import { ChronicleCardListBase } from './ChronicleCardListBase'
 
 export const ChronicleCardList = ChronicleCardListBase
