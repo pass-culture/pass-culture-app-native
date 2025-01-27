@@ -4,7 +4,7 @@ import { renderHook } from '@testing-library/react-native'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { setSettings } from 'features/auth/tests/setSettings'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 
 jest.mock('libs/environment')
@@ -22,10 +22,10 @@ const mockDefaultSettings = {
   enableFrontImageResizing: true,
   objectStorageUrl: 'https://localhost-storage',
 }
+const mockUseSettingsContext = useSettingsContext as jest.Mock
+mockUseSettingsContext.mockReturnValue({ data: mockDefaultSettings })
 
 describe('useResizeImageURL hook', () => {
-  beforeEach(() => setSettings(mockDefaultSettings))
-
   it('should return a smaller resized image URL on a small screen', () => {
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL({ imageURL }))
@@ -61,8 +61,9 @@ describe('useResizeImageURL hook', () => {
   })
 
   it('should return the given image URL when the feature flag is off', () => {
-    setSettings({ enableFrontImageResizing: false })
-
+    mockUseSettingsContext.mockReturnValueOnce({
+      data: { ...mockDefaultSettings, enableFrontImageResizing: false },
+    })
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
