@@ -20,6 +20,7 @@ import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export type CreditHeaderProps = {
+  showForceUpdateBanner: boolean
   firstName?: string | null
   lastName?: string | null
   age?: number
@@ -28,6 +29,7 @@ export type CreditHeaderProps = {
 }
 
 export function CreditHeader({
+  showForceUpdateBanner,
   firstName,
   lastName,
   age,
@@ -78,6 +80,7 @@ export function CreditHeader({
 
   return (
     <HeaderWithGreyContainer
+      showForceUpdateBanner={showForceUpdateBanner}
       title={name}
       bannerText={bannerText}
       subtitle={<Subtitle {...subtitleProps} />}

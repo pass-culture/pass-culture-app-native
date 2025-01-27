@@ -5,9 +5,9 @@ import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils/web'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const user: UserProfileResponse = {
@@ -46,22 +46,40 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('ProfileHeader', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setFeatureFlags()
     mockdate.set('2021-07-01T00:00:00Z')
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    render(<ProfileHeader user={user} />)
+    render(
+      <ProfileHeader
+        featureFlags={{
+          enableAchievements: false,
+          enableSystemBanner: true,
+          disableActivation: false,
+          showForceUpdateBanner: false,
+        }}
+        user={user}
+      />
+    )
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeInTheDocument()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    render(<ProfileHeader user={exBeneficiaryUser} />)
+    render(
+      <ProfileHeader
+        featureFlags={{
+          enableAchievements: false,
+          enableSystemBanner: true,
+          disableActivation: false,
+          showForceUpdateBanner: false,
+        }}
+        user={exBeneficiaryUser}
+      />
+    )
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
   })

@@ -26,13 +26,21 @@ const Template: ComponentStory<typeof HeaderWithGreyContainer> = (props) => (
   <HeaderWithGreyContainer {...props} />
 )
 
+export const WithActivationBanner = Template.bind({})
+WithActivationBanner.args = {
+  showForceUpdateBanner: true,
+  title: 'Jean Dubois',
+}
+
 export const WithTitle = Template.bind({})
 WithTitle.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
 }
 
 export const WithStringSubtitle = Template.bind({})
 WithStringSubtitle.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
 }
@@ -44,6 +52,7 @@ const Row = styled.View({
 
 export const WithComponentAsSubtitle = Template.bind({})
 WithComponentAsSubtitle.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
   subtitle: (
     <Row>
@@ -57,12 +66,14 @@ WithComponentAsSubtitle.args = {
 
 export const WithInfoBanner = Template.bind({})
 WithInfoBanner.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
   bannerText: 'Some really important information',
 }
 
 export const WithLargeContent = Template.bind({})
 WithLargeContent.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: (
@@ -76,6 +87,7 @@ WithLargeContent.args = {
 
 export const WithSmallContent = Template.bind({})
 WithSmallContent.args = {
+  showForceUpdateBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: <TypoDS.Body>Lorem ipsum dolor, sit amet consectetur</TypoDS.Body>,
