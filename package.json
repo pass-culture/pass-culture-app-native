@@ -16,7 +16,7 @@
   "homepage": ".",
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "yarn preandroid && react-native run-android",
+    "android": "react-native run-android",
     "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
@@ -173,8 +173,8 @@
     "react-native-modal": "^13.0.0",
     "react-native-permissions": "^3.8.0",
     "react-native-qrcode-svg": "^6.1.2",
-    "react-native-reanimated": "3.3.0",
-    "react-native-reanimated-carousel": "^3.5.1",
+    "react-native-reanimated": "3.6.3",
+    "react-native-reanimated-carousel": "4.0.0-canary.22",
     "react-native-safe-area-context": "3.4.1",
     "react-native-screens": "^3.32.0",
     "react-native-share": "^8.2.2",
@@ -329,6 +329,9 @@
     "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
+    "@babel/plugin-transform-typescript": "^7.23.6",
+    "@babel/plugin-syntax-typescript": "^7.23.3",
+    "@babel/types": "^7.23.6",
     "@react-navigation/core": "6.2.2",
     "@sentry/cli": "^2.33.1",
     "@sentry/core": "7.62.0",
