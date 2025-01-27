@@ -5,8 +5,6 @@ import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
@@ -14,10 +12,6 @@ import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSu
 import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
-  const showForceUpdateAfterSplashScreen = useFeatureFlag(
-    RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN
-  )
-
   const { isLoggedIn, user } = useAuthContext()
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
 
@@ -28,7 +22,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
     if (showCulturalSurvey === undefined) return
 
-    getInitialScreen({ isLoggedIn, showCulturalSurvey, showForceUpdateAfterSplashScreen, user })
+    getInitialScreen({ isLoggedIn, showCulturalSurvey, user })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -37,7 +31,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('TabNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, user, shouldShowCulturalSurvey, showForceUpdateAfterSplashScreen])
+  }, [isLoggedIn, user, shouldShowCulturalSurvey])
 
   return initialScreen
 }
@@ -45,12 +39,10 @@ export function useInitialScreen(): RootScreenNames | undefined {
 async function getInitialScreen({
   isLoggedIn,
   showCulturalSurvey,
-  showForceUpdateAfterSplashScreen,
   user,
 }: {
   isLoggedIn: boolean
   showCulturalSurvey: boolean
-  showForceUpdateAfterSplashScreen: boolean
   user?: UserProfileResponse
 }): Promise<RootScreenNames> {
   if (isLoggedIn && user) {
@@ -79,10 +71,6 @@ async function getInitialScreen({
     }
   } catch {
     return homeNavConfig[0]
-  }
-
-  if (showForceUpdateAfterSplashScreen) {
-    return 'ForceUpdate'
   }
 
   return 'OnboardingWelcome'

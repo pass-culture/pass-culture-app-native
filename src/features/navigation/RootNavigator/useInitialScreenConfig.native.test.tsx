@@ -3,7 +3,6 @@ import React from 'react'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -24,19 +23,6 @@ describe('useInitialScreen()', () => {
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')
     await storage.clear('has_seen_eligible_card')
-  })
-
-  it('should return ForceUpdate when feature flag showForceUpdateAfterSplashScreen is enable', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN])
-    mockAuthContextWithoutUser({ persist: true })
-
-    const result = await renderUseInitialScreen()
-
-    await waitFor(() => {
-      expect(result.current).toEqual('ForceUpdate')
-    })
-
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'ForceUpdate')
   })
 
   it('should return TabNavigator when logged in user has seen tutorials and eligible card without need to fill cultural survey', async () => {
