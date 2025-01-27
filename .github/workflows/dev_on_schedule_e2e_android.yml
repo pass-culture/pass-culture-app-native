@@ -1,4 +1,4 @@
-name: 'Reusable E2E Android Workflow'
+name: '0 [on_schedule] Dev on schedule e2e android'
 
 on:
   workflow_call:
