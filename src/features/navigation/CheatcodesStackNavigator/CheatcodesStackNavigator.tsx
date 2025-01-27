@@ -32,7 +32,6 @@ import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/Cheatcodes
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
-import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 
@@ -162,10 +161,10 @@ const routes: CheatcodesStackRoute[] = [
 
 const CheatcodesStack = createStackNavigator<CheatcodesStackParamList>()
 
-const { Screens } = getScreensAndConfig(routes, CheatcodesStack.Screen)
-
 export const CheatcodesStackNavigator = () => (
   <CheatcodesStack.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    {Screens}
+    {routes.map(({ name, component }) => (
+      <CheatcodesStack.Screen name={name} key={name} component={component} />
+    ))}
   </CheatcodesStack.Navigator>
 )
