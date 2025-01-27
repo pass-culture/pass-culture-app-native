@@ -10,7 +10,6 @@ import { nonBeneficiaryUser } from 'fixtures/user'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
@@ -47,16 +46,6 @@ describe('useLoginAndRedirect', () => {
     await loginAndRedirect()
 
     expect(loginRoutine).toHaveBeenCalledTimes(1)
-  })
-
-  it('should redirect to ForceUpdate when disableActivation is true', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
-    mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
-    await loginAndRedirect()
-
-    jest.advanceTimersByTime(2000)
-
-    expect(replace).toHaveBeenCalledWith('ForceUpdate')
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {

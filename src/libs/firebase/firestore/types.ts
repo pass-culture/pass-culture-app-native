@@ -54,7 +54,6 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
-  SHOW_FORCE_UPDATE_AFTER_SPLASH_SCREEN = 'showForceUpdateAfterSplashScreen',
   SHOW_FORCE_UPDATE_BANNER = 'showForceUpdateBanner',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',

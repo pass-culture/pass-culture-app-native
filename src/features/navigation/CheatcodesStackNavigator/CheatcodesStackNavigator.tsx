@@ -5,7 +5,6 @@ import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
-import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
 import { CheatcodesNavigationHome } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { CheatcodesScreenCategoryThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenCategoryThematicHomeHeader'
 import { CheatcodesScreenDefaultThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenDefaultThematicHomeHeader'
@@ -95,10 +94,6 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesNavigationTrustedDevice',
     component: CheatcodesNavigationTrustedDevice,
-  },
-  {
-    name: 'CheatcodesNavigationForceUpdate',
-    component: CheatcodesNavigationForceUpdate,
   },
   {
     name: 'CheatcodesScreenTrustedDeviceInfos',

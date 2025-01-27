@@ -50,11 +50,6 @@ export const useLoginAndRedirect = () => {
           })
         }
 
-        if (disableActivation) {
-          delayedReplace('ForceUpdate')
-          return
-        }
-
         if (user.isEligibleForBeneficiaryUpgrade) {
           delayedReplace('VerifyEligibility')
           return

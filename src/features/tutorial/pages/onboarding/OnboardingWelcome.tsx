@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics'
@@ -27,6 +28,7 @@ const onLoginPress = () => {
 }
 
 export const OnboardingWelcome: FunctionComponent = () => {
+  useShowForceUpdateWhenDisableActivation()
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`

@@ -221,7 +221,6 @@ export type RootStackParamList = {
   EndedBookings: undefined
   FavoritesSorts: undefined
   FeedbackInApp: undefined
-  ForceUpdate: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
   LegalNotices: undefined

@@ -8,7 +8,6 @@ import { filterAndSortCheatcodesButtons } from 'cheatcodes/hooks/filterAndSortCh
 import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
-import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
 import { cheatcodesNavigationHomeButtons } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
@@ -52,7 +51,6 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
-    ...cheatcodesNavigationForceUpdateButtons,
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
   ]
 
