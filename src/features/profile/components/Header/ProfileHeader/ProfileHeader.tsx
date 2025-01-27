@@ -17,6 +17,7 @@ type ProfileHeaderProps = {
     enableAchievements: boolean
     enableSystemBanner: boolean
     disableActivation: boolean
+    showForceUpdateBanner: boolean
   }
   user?: UserProfileResponse
 }
@@ -31,7 +32,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader />
+      return <LoggedOutHeader showForceUpdateBanner={featureFlags.showForceUpdateBanner} />
     }
 
     if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
@@ -47,6 +48,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     return (
       <React.Fragment>
         <CreditHeader
+          showForceUpdateBanner={featureFlags.showForceUpdateBanner}
           firstName={user.firstName}
           lastName={user.lastName}
           age={getAge(user.birthDate)}
@@ -72,6 +74,8 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 }
 
 const AchievementBannerContainer = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
+  marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(4),
+  width: theme.isDesktopViewport ? 'fit-content' : undefined,
+  minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
 }))

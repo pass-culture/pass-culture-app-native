@@ -88,6 +88,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user: undefined,
     })
@@ -103,6 +104,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user,
     })
@@ -117,6 +119,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user,
     })
@@ -130,6 +133,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user: exBeneficiaryUser,
     })
@@ -151,6 +155,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user: notBeneficiaryUser,
     })
@@ -165,6 +170,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: false,
         disableActivation: false,
+        showForceUpdateBanner: false,
       },
       user: exUnderageBeneficiaryUser,
     })
@@ -181,6 +187,7 @@ const renderProfileHeader = ({
     enableAchievements: boolean
     enableSystemBanner: boolean
     disableActivation: boolean
+    showForceUpdateBanner: boolean
   }
   user?: UserProfileResponse
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

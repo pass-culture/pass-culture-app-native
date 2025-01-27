@@ -1,12 +1,14 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
+import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type PropsWithChildren = {
+  showForceUpdateBanner: boolean
   title: string
   subtitle?: ReactNode | string
   withGreyContainer?: boolean
@@ -15,6 +17,7 @@ type PropsWithChildren = {
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
+  showForceUpdateBanner,
   title,
   subtitle,
   bannerText,
@@ -29,6 +32,12 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
           <Spacer.Column numberOfSpaces={1} />
           {typeof subtitle === 'string' ? <TypoDS.Body>{subtitle}</TypoDS.Body> : subtitle}
         </SubtitleContainer>
+      ) : null}
+      {showForceUpdateBanner ? (
+        <BannerContainer>
+          <ForceUpdateBanner />
+          <Spacer.Column numberOfSpaces={6} />
+        </BannerContainer>
       ) : null}
       {bannerText ? (
         <BannerContainer>

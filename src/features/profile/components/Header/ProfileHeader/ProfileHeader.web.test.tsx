@@ -59,6 +59,7 @@ describe('ProfileHeader', () => {
           enableAchievements: false,
           enableSystemBanner: true,
           disableActivation: false,
+          showForceUpdateBanner: false,
         }}
         user={user}
       />
@@ -74,6 +75,7 @@ describe('ProfileHeader', () => {
           enableAchievements: false,
           enableSystemBanner: true,
           disableActivation: false,
+          showForceUpdateBanner: false,
         }}
         user={exBeneficiaryUser}
       />

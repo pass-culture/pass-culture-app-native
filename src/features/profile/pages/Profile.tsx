@@ -59,6 +59,7 @@ const OnlineProfile: React.FC = () => {
   const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
@@ -164,7 +165,12 @@ const OnlineProfile: React.FC = () => {
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
             <ProfileHeader
-              featureFlags={{ enableAchievements, enableSystemBanner, disableActivation }}
+              featureFlags={{
+                enableAchievements,
+                enableSystemBanner,
+                disableActivation,
+                showForceUpdateBanner,
+              }}
               user={user}
             />
             <ProfileContainer>
