@@ -66,4 +66,6 @@ describe('<SubscriptionMessageBadge />', () => {
 })
 
 const renderSubscriptionMessageBadge = (subscriptionMessage: SubscriptionMessage) =>
-  render(<SubscriptionMessageBadge subscriptionMessage={subscriptionMessage} />)
+  render(
+    <SubscriptionMessageBadge disableActivation={false} subscriptionMessage={subscriptionMessage} />
+  )

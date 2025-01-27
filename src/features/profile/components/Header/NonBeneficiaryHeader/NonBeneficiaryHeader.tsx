@@ -147,7 +147,10 @@ function NonBeneficiaryBanner({
   if (subscription?.subscriptionMessage) {
     return (
       <BannerContainer>
-        <SubscriptionMessageBadge subscriptionMessage={subscription.subscriptionMessage} />
+        <SubscriptionMessageBadge
+          disableActivation={featureFlags.disableActivation}
+          subscriptionMessage={subscription.subscriptionMessage}
+        />
       </BannerContainer>
     )
   }
