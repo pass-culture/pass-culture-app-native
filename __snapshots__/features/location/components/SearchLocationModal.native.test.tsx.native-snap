@@ -368,22 +368,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             style={
               [
                 {
+                  "marginTop": 24,
                   "paddingHorizontal": 24,
                 },
               ]
             }
           >
             <View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityRole="button"
                 accessibilityState={
@@ -467,32 +458,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginVertical": 24,
                       "width": "100%",
-                    },
-                  ]
-                }
-              />
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
                     },
                   ]
                 }

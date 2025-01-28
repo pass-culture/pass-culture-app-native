@@ -13,7 +13,6 @@ import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
-import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -122,7 +121,6 @@ export const LocationModal = ({
         />
       }>
       <StyledScrollView>
-        <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
           onPress={selectLocationMode(LocationMode.AROUND_ME)}
           icon={PositionFilled}
@@ -131,17 +129,14 @@ export const LocationModal = ({
           subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
         {shouldShowAroundMeRadiusSlider ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
+          <SliderContainer>
             <LocationSearchFilters
               aroundRadius={tempAroundMeRadius}
               onValuesChange={onTempAroundMeRadiusValueChange}
             />
-          </React.Fragment>
+          </SliderContainer>
         ) : null}
-        <Spacer.Column numberOfSpaces={6} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={6} />
+        <StyledSeparator />
         <LocationModalButton
           onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
           icon={MagnifyingGlassFilled}
@@ -160,13 +155,12 @@ export const LocationModal = ({
               onSetSelectedPlace={onSetSelectedPlace}
             />
             {shouldShowAroundPlaceRadiusSlider ? (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={4} />
+              <SliderContainer>
                 <LocationSearchFilters
                   aroundRadius={tempAroundPlaceRadius}
                   onValuesChange={onTempAroundPlaceRadiusValueChange}
                 />
-              </React.Fragment>
+              </SliderContainer>
             ) : null}
           </React.Fragment>
         ) : null}
@@ -188,6 +182,7 @@ export const LocationModal = ({
 
 const StyledScrollView = styled.ScrollView({
   paddingHorizontal: getSpacing(6),
+  marginTop: getSpacing(6),
 })
 
 const HeaderContainer = styled.View({
@@ -198,4 +193,12 @@ const HeaderContainer = styled.View({
 const StyledView = styled(View)({
   marginTop: getSpacing(6),
   gap: getSpacing(6),
+})
+
+const SliderContainer = styled.View({
+  marginTop: getSpacing(4),
+})
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(6),
 })
