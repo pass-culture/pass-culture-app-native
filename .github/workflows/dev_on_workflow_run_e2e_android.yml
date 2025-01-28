@@ -10,7 +10,7 @@ on:
 
 jobs:
   e2e-tests:
-    uses: ./.github/workflows/reusable_e2e_android.yml
+    uses: ./.github/workflows/dev_on_schedule_e2e_android.yml
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
