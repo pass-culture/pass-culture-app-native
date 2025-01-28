@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react'
-import { FlatList, FlatListProps } from 'react-native'
+import { FlatList, FlatListProps, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -31,6 +31,7 @@ export type ChronicleCardListProps = Pick<
   cardWidth?: number
   separatorSize?: number
   headerComponent?: ReactElement
+  style?: StyleProp<ViewStyle>
 }
 
 const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: number }) => {
@@ -60,6 +61,7 @@ export const ChronicleCardListBase = forwardRef<
     snapToInterval,
     headerComponent,
     onContentSizeChange,
+    style,
     separatorSize = SEPARATOR_DEFAULT_VALUE,
   },
   ref
@@ -89,6 +91,7 @@ export const ChronicleCardListBase = forwardRef<
     <FlatList
       ref={listRef}
       data={data}
+      style={style}
       ListHeaderComponent={headerComponent}
       renderItem={({ item }) => renderItem({ item, cardWidth })}
       keyExtractor={keyExtractor}

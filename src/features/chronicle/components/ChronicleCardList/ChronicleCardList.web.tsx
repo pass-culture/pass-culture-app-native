@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -21,6 +21,8 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   contentContainerStyle,
   headerComponent,
   separatorSize = SEPARATOR_DEFAULT_VALUE,
+  onScroll,
+  style,
 }) => {
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
@@ -28,7 +30,7 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   const listRef = useRef<FlatList>(null)
 
   const {
-    onScroll,
+    onScroll: internalScrollHandler,
     handleScrollNext,
     handleScrollPrevious,
     onContainerLayout,
@@ -40,44 +42,45 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
     scrollRatio: isDesktopViewport ? 1 : (cardWidth ?? CHRONICLE_CARD_WIDTH) / windowWidth,
   })
 
-  return (
-    <FlatListContainer onLayout={onContainerLayout}>
-      {horizontal ? (
-        <React.Fragment>
-          {isStart ? null : (
-            <PlaylistArrowButton
-              direction="left"
-              onPress={handleScrollPrevious}
-              testID="chronicle-list-left-arrow"
-            />
-          )}
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    internalScrollHandler(event)
+    onScroll?.(event)
+  }
 
-          {isEnd ? null : (
-            <PlaylistArrowButton
-              direction="right"
-              onPress={handleScrollNext}
-              testID="chronicle-list-right-arrow"
-            />
-          )}
-        </React.Fragment>
+  return (
+    <Container onLayout={onContainerLayout} style={style}>
+      {horizontal && !isStart ? (
+        <PlaylistArrowButton
+          direction="left"
+          onPress={handleScrollPrevious}
+          testID="chronicle-list-left-arrow"
+        />
       ) : null}
+
+      {horizontal && !isEnd ? (
+        <PlaylistArrowButton
+          direction="right"
+          onPress={handleScrollNext}
+          testID="chronicle-list-right-arrow"
+        />
+      ) : null}
+
       <ChronicleCardListBase
         data={data}
         ref={listRef}
         horizontal={horizontal}
         cardWidth={cardWidth}
-        onScroll={onScroll}
+        onScroll={handleScroll}
         onContentSizeChange={onContentSizeChange}
         headerComponent={headerComponent}
         separatorSize={separatorSize}
         contentContainerStyle={contentContainerStyle}
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
       />
-    </FlatListContainer>
+    </Container>
   )
 }
 
-const FlatListContainer = styled.View<{ minHeight?: number }>({
-  position: 'relative',
-  width: '100%',
+const Container = styled.View({
+  justifyContent: 'center',
 })
