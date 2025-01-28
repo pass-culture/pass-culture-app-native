@@ -174,7 +174,7 @@ export function AutocompleteOfferItem({
       offerNativeCategories:
         shouldFilterOnNativeCategory && orderedNativeCategories[0]?.value
           ? [orderedNativeCategories[0].value]
-          : undefined,
+          : [],
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
       gtls: [],

@@ -239,7 +239,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         partialSearchState = {
           ...partialSearchState,
           offerCategories,
-          offerNativeCategories: undefined,
+          offerNativeCategories: [],
           gtls: [],
         }
       }

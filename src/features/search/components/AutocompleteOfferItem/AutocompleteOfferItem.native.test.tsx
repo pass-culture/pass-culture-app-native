@@ -227,8 +227,8 @@ describe('AutocompleteOfferItem component', () => {
           priceRange: mockSearchState.priceRange,
           searchId,
           isAutocomplete: true,
-          offerNativeCategories: undefined,
-          offerGenreTypes: undefined,
+          offerNativeCategories: [],
+          isFromHistory: undefined,
         },
       })
     })
@@ -408,7 +408,6 @@ describe('AutocompleteOfferItem component', () => {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [],
-            offerNativeCategories: undefined,
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
@@ -471,7 +470,7 @@ describe('AutocompleteOfferItem component', () => {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
-            offerNativeCategories: undefined,
+            offerNativeCategories: [],
             locationFilter: mockSearchState.locationFilter,
             priceRange: mockSearchState.priceRange,
             searchId,

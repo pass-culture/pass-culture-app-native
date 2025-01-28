@@ -562,7 +562,6 @@ describe('SearchBox component', () => {
               ...initialSearchState,
               query: queryText.trim(),
               offerCategories: [SearchGroupNameEnumv2.LIVRES],
-              offerNativeCategories: undefined,
               searchId,
               accessibilityFilter: {
                 isAudioDisabilityCompliant: undefined,
@@ -840,7 +839,6 @@ describe('SearchBox component', () => {
             ...initialSearchState,
             query: 'HP',
             offerCategories: BOOK_OFFER_CATEGORIES,
-            offerNativeCategories: undefined,
             gtls: [],
             priceRange: mockSearchState.priceRange,
             searchId,

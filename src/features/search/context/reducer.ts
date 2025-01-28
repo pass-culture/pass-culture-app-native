@@ -24,6 +24,7 @@ export const initialSearchState: SearchState = {
   tags: [],
   timeRange: null,
   venue: undefined,
+  offerNativeCategories: [],
 }
 
 export type Action =

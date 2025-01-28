@@ -132,6 +132,9 @@ describe('OffersModule', () => {
           query: '',
           tags: [],
           timeRange: null,
+          offerGtlLabel: undefined,
+          offerGtlLevel: undefined,
+          offerNativeCategories: [],
         },
       },
     })
