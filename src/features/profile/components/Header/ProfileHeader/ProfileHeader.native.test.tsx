@@ -83,9 +83,16 @@ describe('ProfileHeader', () => {
   })
 
   it('should not display subtitle with passForAll enabled', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
-
-    renderProfileHeader({ user: undefined })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: true,
+      },
+      user: undefined,
+    })
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
@@ -99,6 +106,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: undefined,
     })
@@ -117,6 +125,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user,
     })
@@ -132,6 +141,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user,
     })
@@ -146,6 +156,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: exBeneficiaryUser,
     })
@@ -168,6 +179,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: notBeneficiaryUser,
     })
@@ -183,6 +195,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: false,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: exUnderageBeneficiaryUser,
     })
@@ -200,6 +213,7 @@ const renderProfileHeader = ({
     enableSystemBanner: boolean
     disableActivation: boolean
     showForceUpdateBanner: boolean
+    enablePassForAll: boolean
   }
   user?: UserProfileResponse
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

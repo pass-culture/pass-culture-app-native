@@ -78,7 +78,7 @@ describe('LoggedOutHeader', () => {
     it('should not display subtitle with passForAll enabled', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
 
-      render(<LoggedOutHeader />)
+      render(<LoggedOutHeader showForceUpdateBanner={false} />)
 
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
