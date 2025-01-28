@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const stepperPropsMapping = enableCreditV3 ? stepperPropsMappingV2 : stepperPropsMappingV1
 

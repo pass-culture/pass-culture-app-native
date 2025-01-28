@@ -15,7 +15,6 @@ if (process.env.NODE_ENV === 'development') {
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -91,39 +90,37 @@ const App: FunctionComponent = function () {
                 {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
-                                        <PushNotificationsWrapper>
-                                          <ShareAppWrapper>
-                                            <OnboardingWrapper>
-                                              <OfflineModeContainer>
-                                                <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
-                                                </ScreenErrorProvider>
-                                              </OfflineModeContainer>
-                                            </OnboardingWrapper>
-                                          </ShareAppWrapper>
-                                        </PushNotificationsWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
+                  <AuthWrapper>
+                    <LocationWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
+                          </SearchAnalyticsWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
+                    </LocationWrapper>
+                  </AuthWrapper>
                 </NetInfoWrapper>
               </AnalyticsInitializer>
             </ErrorBoundary>

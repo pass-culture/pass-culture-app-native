@@ -3,6 +3,7 @@ import React from 'react'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { Favorites } from 'features/favorites/pages/Favorites'
@@ -38,6 +39,8 @@ offerIds.forEach((offerId) => {
 
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('libs/network/NetInfoWrapper')
+
+mockServer.getApi('/v1/settings', defaultSettings)
 
 describe('<Favorites />', () => {
   beforeEach(() => {

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/analytics/provider'
@@ -23,7 +23,7 @@ const onBeforeNavigate = () => {
 
 export const LoggedOutHeader: FunctionComponent<Props> = ({ showForceUpdateBanner }) => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
   const bodyText = `Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`

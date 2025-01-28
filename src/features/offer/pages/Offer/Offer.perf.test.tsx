@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
@@ -58,6 +59,8 @@ mockGetInstalledApps.mockResolvedValue([Network.snapchat])
 // Performance measuring is run 10 times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 20000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
+
+mockServer.getApi('/v1/settings', defaultSettings)
 
 describe('<Offer />', () => {
   beforeEach(() => {

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
@@ -14,6 +15,8 @@ const props = {
   homeEntryId: 'abcd',
   index: 1,
 }
+
+setSettings()
 
 describe('ExclusivityBanner component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
