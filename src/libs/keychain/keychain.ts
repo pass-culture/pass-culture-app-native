@@ -15,7 +15,7 @@ function handleKeychainError(error: unknown, operation: string): never {
 
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {
   if (!refreshToken) {
-    throw Error('No refresh token to save')
+    throw Error('[Keychain]: No refresh token to save')
   }
   try {
     await Keychain.setGenericPassword(REFRESH_TOKEN_KEY, refreshToken, keychainOptions)
