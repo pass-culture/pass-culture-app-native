@@ -1,12 +1,13 @@
-name: '4 [on_workflow] Build and upload to Maestro Cloud (Android)'
+name: '[Daily] Run E2E tests on Android'
 
 on:
-  workflow_call:
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
+  schedule:
+    # 00:00 Paris UTC
+    - cron: '* 22 * * *'
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   e2e-tests:
