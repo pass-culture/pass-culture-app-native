@@ -7,13 +7,13 @@ tags:
     when:
       true: ${MAESTRO_RUN_CLOUD_COMMANDS == 'false'}
     commands:
-      - runFlow: subFolder/LaunchApp.yml
+      - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow:
     when:
       true: ${MAESTRO_RUN_CLOUD_COMMANDS}
     commands:
-      - runFlow: subFolder/LaunchAppWithPermissions.yml
+      - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 
@@ -37,10 +37,10 @@ tags:
     file: subFolder/analytics/clear.js
 
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 
-- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableCinemaOffer.yml
 - runScript:
     when:
@@ -81,4 +81,4 @@ tags:
     label: 'Clear tracking storage'
     file: subFolder/analytics/clear.js
 
-- runFlow: subFolder/StopApp.yml
+- runFlow: subFolder/commons/StopApp.yml
