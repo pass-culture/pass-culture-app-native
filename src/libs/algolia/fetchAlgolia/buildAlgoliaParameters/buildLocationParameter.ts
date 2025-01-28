@@ -12,13 +12,18 @@ export type BuildLocationParameterParams = {
   userLocation: Position
   aroundMeRadius: number | 'all'
   aroundPlaceRadius: number | 'all'
+  geolocPosition?: Position
+  forSearch?: boolean
 }
 export const buildLocationParameter = ({
   selectedLocationMode,
   userLocation,
   aroundMeRadius,
   aroundPlaceRadius,
+  forSearch,
+  geolocPosition,
 }: BuildLocationParameterParams): AlgoliaPositionParams | undefined => {
+  console.log({ userLocation }) // WIP : userLocation est forcement undefined si locationmode=> everywhere. Verifier aussi la geoloc ici ?
   if (!userLocation) return
   const positionParams: AlgoliaPositionParams = {
     aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
@@ -38,6 +43,9 @@ export const buildLocationParameter = ({
           : computeAroundRadiusInMeters(aroundPlaceRadius)
       break
     case LocationMode.EVERYWHERE:
+      if (forSearch && geolocPosition) {
+        positionParams.aroundRadius = RADIUS_FILTERS.UNLIMITED_RADIUS
+      }
       break
   }
   return positionParams

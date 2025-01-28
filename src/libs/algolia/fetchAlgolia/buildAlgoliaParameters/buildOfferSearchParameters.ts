@@ -53,7 +53,6 @@ export const buildOfferSearchParameters = (
     venue || isFullyDigitalOffersCategory
       ? {}
       : buildLocationParameter(buildLocationParameterParams)
-
   return {
     ...buildFacetFilters({
       eanList,
