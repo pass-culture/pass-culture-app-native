@@ -82,6 +82,16 @@ describe('ProfileHeader', () => {
     )
   })
 
+  it('should not display subtitle with passForAll enabled', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+
+    renderProfileHeader({ user: undefined })
+
+    const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
+
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
+  })
+
   it('should display the LoggedOutHeader if no user', () => {
     renderProfileHeader({
       featureFlags: {
@@ -94,7 +104,9 @@ describe('ProfileHeader', () => {
     })
 
     expect(
-      screen.getByText('Identifie-toi pour bénéficier de ton crédit pass Culture')
+      screen.getByText(
+        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+      )
     ).toBeOnTheScreen()
   })
 
