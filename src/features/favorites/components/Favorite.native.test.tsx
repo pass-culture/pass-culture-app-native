@@ -12,7 +12,7 @@ import {
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { ILocationContext, LocationMode } from 'libs/location/types'

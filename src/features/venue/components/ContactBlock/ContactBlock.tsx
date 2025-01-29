@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenueContactModel, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

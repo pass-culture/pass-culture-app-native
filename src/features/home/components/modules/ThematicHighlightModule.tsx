@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { MarketingBlockHighlight } from 'features/home/components/modules/marketing/MarketingBlockHighlight'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 
 export type ThematicHighlightModuleProps = {

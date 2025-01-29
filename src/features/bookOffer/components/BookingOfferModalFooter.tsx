@@ -7,7 +7,7 @@ import {
   getButtonState,
   getButtonWording,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
 

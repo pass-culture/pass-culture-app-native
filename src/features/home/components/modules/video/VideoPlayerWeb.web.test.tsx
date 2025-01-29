@@ -5,7 +5,7 @@ import MockedYouTubePlayer from '__mocks__/react-youtube'
 import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils/web'
 

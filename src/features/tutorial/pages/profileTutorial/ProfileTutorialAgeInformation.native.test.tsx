@@ -7,7 +7,7 @@ import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/ge
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'

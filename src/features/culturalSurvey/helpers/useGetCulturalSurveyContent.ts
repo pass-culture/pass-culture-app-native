@@ -4,7 +4,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 

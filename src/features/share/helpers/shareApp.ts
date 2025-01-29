@@ -1,6 +1,6 @@
 import { Platform, Share, ShareAction } from 'react-native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { share } from 'libs/share/share'
 

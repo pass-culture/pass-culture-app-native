@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'

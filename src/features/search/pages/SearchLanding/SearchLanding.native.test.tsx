@@ -10,7 +10,7 @@ import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistor
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

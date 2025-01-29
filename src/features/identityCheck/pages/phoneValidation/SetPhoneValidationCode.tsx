@@ -16,7 +16,7 @@ import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'

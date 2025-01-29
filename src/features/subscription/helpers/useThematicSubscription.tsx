@@ -5,7 +5,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }

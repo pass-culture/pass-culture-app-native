@@ -8,7 +8,7 @@ import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'

@@ -11,7 +11,7 @@ import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useReh
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'

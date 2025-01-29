@@ -22,7 +22,7 @@ import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'

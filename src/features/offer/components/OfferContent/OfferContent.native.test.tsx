@@ -20,7 +20,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'

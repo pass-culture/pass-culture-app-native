@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { AmplitudeEvent } from 'libs/amplitude/events'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'

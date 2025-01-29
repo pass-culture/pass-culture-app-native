@@ -3,7 +3,7 @@ import { Share } from 'react-native'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

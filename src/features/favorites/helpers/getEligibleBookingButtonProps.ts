@@ -1,5 +1,5 @@
 import { SubscriptionStatus, YoungStatusResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { OfferModal } from 'shared/offer/enums'
 
 const subscriptionTracker = {

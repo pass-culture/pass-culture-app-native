@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'

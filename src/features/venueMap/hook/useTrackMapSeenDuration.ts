@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useTrackDuration } from 'shared/hook/useTrackDuration'
 
 export const useTrackMapSeenDuration = () => {

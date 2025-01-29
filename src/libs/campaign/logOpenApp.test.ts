@@ -1,6 +1,6 @@
 import { TrackingStatus } from 'react-native-tracking-transparency'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { logOpenAppRef, logOpenApp } from 'libs/campaign/logOpenApp'
 // eslint-disable-next-line no-restricted-imports

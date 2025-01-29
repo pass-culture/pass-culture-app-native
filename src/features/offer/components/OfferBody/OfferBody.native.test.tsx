@@ -16,7 +16,7 @@ import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mo
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'

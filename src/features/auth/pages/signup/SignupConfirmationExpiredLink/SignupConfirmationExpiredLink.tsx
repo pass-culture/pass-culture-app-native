@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AsyncError } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'

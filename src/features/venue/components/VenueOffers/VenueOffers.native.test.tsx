@@ -19,7 +19,7 @@ import {
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
 import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'

@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 

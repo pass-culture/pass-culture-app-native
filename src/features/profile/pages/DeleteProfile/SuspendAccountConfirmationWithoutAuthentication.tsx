@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAccountSuspendForHackSuspicion } from 'features/auth/api/useAccountSuspendForHackSuspicion'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'

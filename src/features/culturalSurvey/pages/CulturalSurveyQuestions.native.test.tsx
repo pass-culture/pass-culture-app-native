@@ -13,7 +13,7 @@ import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/co
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {

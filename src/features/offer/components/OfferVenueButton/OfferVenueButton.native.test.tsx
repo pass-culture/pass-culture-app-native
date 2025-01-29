@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferVenueResponse } from 'api/gen'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 describe('<OfferVenueButton />', () => {

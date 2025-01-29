@@ -1,7 +1,7 @@
 import { Share } from 'react-native'
 
 import { shareApp } from 'features/share/helpers/shareApp'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 const shareMockReturnValue = { action: Share.sharedAction, activityType: 'copy' }
 const shareMock = jest.spyOn(Share, 'share').mockResolvedValue(shareMockReturnValue)

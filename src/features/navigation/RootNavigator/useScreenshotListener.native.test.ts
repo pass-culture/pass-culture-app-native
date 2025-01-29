@@ -1,5 +1,5 @@
 import { onScreenshot } from 'features/navigation/RootNavigator/useScreenshotListener'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 describe('useScreenshotListener()', () => {
   describe('onScreenshot()', () => {

@@ -8,7 +8,7 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'

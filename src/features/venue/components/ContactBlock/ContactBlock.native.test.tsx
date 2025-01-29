@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ContactBlock } from './ContactBlock'

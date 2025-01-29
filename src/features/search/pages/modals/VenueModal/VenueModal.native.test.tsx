@@ -6,7 +6,7 @@ import * as SearchWrapper from 'features/search/context/SearchWrapper'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
 

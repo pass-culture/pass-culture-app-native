@@ -1,7 +1,7 @@
 import React, { memo, useContext, useEffect, useMemo, useRef } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'

@@ -9,7 +9,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'

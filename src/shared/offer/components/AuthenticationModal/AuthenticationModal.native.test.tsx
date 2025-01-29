@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 

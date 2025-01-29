@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 const schema = yup.object().shape({

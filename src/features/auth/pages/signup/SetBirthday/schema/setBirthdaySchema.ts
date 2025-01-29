@@ -1,6 +1,6 @@
 import { date, object } from 'yup'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { dateDiffInFullYears } from 'libs/dates'
 
 export const setBirthdaySchema = object().shape({

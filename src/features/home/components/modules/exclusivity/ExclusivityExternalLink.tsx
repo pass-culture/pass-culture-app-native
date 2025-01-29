@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

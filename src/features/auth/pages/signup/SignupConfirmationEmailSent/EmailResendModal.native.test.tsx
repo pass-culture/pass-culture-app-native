@@ -2,7 +2,7 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'

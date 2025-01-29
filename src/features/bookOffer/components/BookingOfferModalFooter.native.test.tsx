@@ -3,7 +3,7 @@ import React from 'react'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { IBookingContext } from 'features/bookOffer/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockDispatch = jest.fn()

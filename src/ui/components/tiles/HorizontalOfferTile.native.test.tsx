@@ -5,7 +5,7 @@ import { navigate, useNavigationState } from '__mocks__/@react-navigation/native
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

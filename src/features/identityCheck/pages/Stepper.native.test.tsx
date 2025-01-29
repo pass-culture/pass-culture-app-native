@@ -11,7 +11,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

@@ -1,5 +1,5 @@
 import { ContactSupport } from 'features/auth/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { eventMonitoring } from 'libs/monitoring'
 

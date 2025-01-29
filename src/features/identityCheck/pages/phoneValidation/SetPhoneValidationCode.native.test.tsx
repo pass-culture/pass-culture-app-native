@@ -6,7 +6,7 @@ import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'

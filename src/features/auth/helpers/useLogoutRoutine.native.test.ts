@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as ReactQueryAPI from 'react-query'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'

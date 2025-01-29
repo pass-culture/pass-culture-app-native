@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { Spacer, TypoDS } from 'ui/theme'
 

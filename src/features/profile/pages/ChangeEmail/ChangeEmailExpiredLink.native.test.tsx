@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 

@@ -12,7 +12,7 @@ import {
 import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'

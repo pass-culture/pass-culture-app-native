@@ -8,7 +8,7 @@ import {
   highlightHeaderFixture,
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'

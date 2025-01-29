@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { setSettings } from 'features/auth/tests/setSettings'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'

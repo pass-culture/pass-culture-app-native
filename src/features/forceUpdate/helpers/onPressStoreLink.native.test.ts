@@ -1,6 +1,6 @@
 import { STORE_LINK } from 'features/forceUpdate/constants'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import * as PackageJson from 'libs/packageJson'
 
 import { onPressStoreLink } from './onPressStoreLink'

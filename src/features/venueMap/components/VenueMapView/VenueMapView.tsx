@@ -25,7 +25,7 @@ import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenD
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackMapSessionDuration'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import MapView, { MapViewProps, Map, MarkerPressEvent, Region } from 'libs/maps/maps'

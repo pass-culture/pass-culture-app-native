@@ -10,7 +10,7 @@ import {
 import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

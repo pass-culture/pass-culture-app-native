@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'

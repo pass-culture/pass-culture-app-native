@@ -21,8 +21,9 @@ import {
   offerImageContainerMarginTop,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

@@ -4,7 +4,7 @@ import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

@@ -1,5 +1,5 @@
-import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { eventMonitoring } from 'libs/monitoring'
 

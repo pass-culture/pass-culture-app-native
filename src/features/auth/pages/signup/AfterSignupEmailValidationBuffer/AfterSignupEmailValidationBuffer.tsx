@@ -7,7 +7,7 @@ import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLogin
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

@@ -7,7 +7,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useOffer } from 'features/offer/api/useOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'

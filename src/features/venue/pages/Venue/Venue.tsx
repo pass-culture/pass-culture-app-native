@@ -8,7 +8,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()

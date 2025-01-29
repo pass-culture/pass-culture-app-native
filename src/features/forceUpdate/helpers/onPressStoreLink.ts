@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 
 import { STORE_LINK } from 'features/forceUpdate/constants'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 async function openStore() {

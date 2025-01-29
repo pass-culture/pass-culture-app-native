@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 // eslint-disable-next-line no-restricted-imports
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

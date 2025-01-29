@@ -2,8 +2,8 @@ import { Alert, Linking, NativeModules, Platform } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { analytics } from 'libs/analytics'
 import { OfferAnalyticsData } from 'libs/analytics/logEventAnalytics'
+import { analytics } from 'libs/analytics/provider'
 
 import { isAppUrl } from './isAppUrl'
 import { navigateToHome } from './navigateToHome'

@@ -5,7 +5,7 @@ import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { setSettings } from 'features/auth/tests/setSettings'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

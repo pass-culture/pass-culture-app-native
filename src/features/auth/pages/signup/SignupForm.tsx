@@ -14,7 +14,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
