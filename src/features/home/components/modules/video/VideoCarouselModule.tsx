@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import { Platform, View, ViewStyle, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -23,12 +22,12 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
+import { Carousel } from 'ui/components/Carousel/Carousel'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
-const CAROUSEL_HEIGHT = getSpacing(35)
-const CAROUSEL_ANIMATION_DURATION = 500
+const CAROUSEL_PADDING = getSpacing(10)
 
 interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
   index: number
@@ -41,7 +40,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const mapping = useCategoryIdMapping()
 
   const { width: windowWidth } = useWindowDimensions()
-  const carouselRef = React.useRef<ICarouselInstance>(null)
+  const CAROUSEL_WIDTH = windowWidth - CAROUSEL_PADDING
   const progressValue = useSharedValue<number>(0)
   const carouselDotId = uuidv4()
 
@@ -87,10 +86,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     let nextIndex
     if (currentIndex + 1 < itemsWithRelatedData.length) {
       nextIndex = currentIndex + 1
-      carouselRef.current?.next()
     } else {
       nextIndex = 0
-      carouselRef.current?.scrollTo({ index: nextIndex })
     }
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
@@ -128,7 +125,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         : undefined
 
       return (
-        <StyledInternalTouchableLink key={index} {...containerProps}>
+        <StyledInternalTouchableLink key={index} {...containerProps} width={CAROUSEL_WIDTH}>
           <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
       )
@@ -148,7 +145,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     }
 
     return (
-      <StyledInternalTouchableLink key={index} {...containerProps}>
+      <StyledInternalTouchableLink key={index} {...containerProps} width={CAROUSEL_WIDTH}>
         <AttachedThematicCard
           title={thematicHomeTitle ?? ''}
           subtitle={thematicHomeSubtitle}
@@ -184,30 +181,24 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       />
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (
-          <React.Fragment>
+          <CarouselContainer width={CAROUSEL_WIDTH}>
             <Carousel
-              ref={carouselRef}
-              mode="parallax"
               testID="videoCarousel"
-              vertical={false}
-              height={CAROUSEL_HEIGHT}
-              panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
-              width={windowWidth}
-              loop={false}
-              scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
-              onProgressChange={(_, absoluteProgress) => {
-                progressValue.value = absoluteProgress
-                setCurrentIndex(Math.round(absoluteProgress))
-              }}
               data={itemsWithRelatedData}
               renderItem={renderItem}
+              currentIndex={currentIndex}
+              setIndex={setCurrentIndex}
+              width={CAROUSEL_WIDTH}
+              progressValue={progressValue}
+              style={CarouselStyle}
+              shouldHandleAutoScroll
             />
             <DotContainer>
               {itemsWithRelatedData.map((_, index) => (
                 <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
               ))}
             </DotContainer>
-          </React.Fragment>
+          </CarouselContainer>
         ) : (
           <SingleAttachedItem />
         )}
@@ -224,20 +215,24 @@ const ColoredAttachedTileContainer = styled.View<{
   color: Color
 }>(({ color }) => ({
   backgroundColor: colorMapping[color].fill,
+  alignItems: 'center',
 }))
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
-  paddingHorizontal: getSpacing(1),
-}))
+const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ width: number }>(
+  ({ theme, width }) => ({
+    ...getShadow({
+      shadowOffset: {
+        width: 0,
+        height: getSpacing(3),
+      },
+      shadowRadius: getSpacing(12),
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.15,
+    }),
+    width: width,
+    paddingHorizontal: getSpacing(1),
+  })
+)
 
 const SingleItemContainer = styled.View({
   marginHorizontal: getSpacing(5),
@@ -245,11 +240,14 @@ const SingleItemContainer = styled.View({
 })
 
 const DotContainer = styled.View({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
   flexDirection: 'row',
   justifyContent: 'center',
-  paddingBottom: getSpacing(1),
+  paddingVertical: getSpacing(2),
 })
+
+const CarouselContainer = styled(View)<{ width: number }>(({ width }) => ({
+  marginTop: getSpacing(2),
+  width,
+}))
+
+const CarouselStyle: ViewStyle = { overflow: 'visible' }
