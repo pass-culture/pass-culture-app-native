@@ -13,6 +13,12 @@ export enum RemoteStoreBanner {
   TITLE = 'title',
   SUBTITLE = 'subtitle',
   REDIRECTION_URL = 'redirectionUrl',
+  REDIRECTION_TYPE = 'redirectionType',
+}
+
+export enum RemoteStoreBannerRedirectionType {
+  STORE = 'store',
+  EXTERNAL = 'external',
 }
 
 export enum RemoteStoreMaintenance {

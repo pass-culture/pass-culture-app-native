@@ -14,5 +14,6 @@ export const useBanner = () => {
     title: data?.[RemoteStoreBanner.TITLE],
     subtitle: data?.[RemoteStoreBanner.SUBTITLE],
     redirectionUrl: data?.[RemoteStoreBanner.REDIRECTION_URL],
+    redirectionType: data?.[RemoteStoreBanner.REDIRECTION_TYPE],
   }
 }
