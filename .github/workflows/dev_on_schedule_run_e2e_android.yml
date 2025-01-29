@@ -2,8 +2,8 @@ name: '[Daily] Run E2E tests on Android'
 
 on:
   schedule:
-    # 00:00 Paris UTC
-    - cron: '* 22 * * *'
+    # 00:00 Paris in UTC
+    - cron: '* 23 * * *'
 
 permissions:
   contents: read
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   e2e-tests:
-    uses: ./.github/workflows/reusable_e2e_android.yml
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
