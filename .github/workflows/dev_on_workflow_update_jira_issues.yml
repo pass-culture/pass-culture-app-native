@@ -9,7 +9,6 @@ on:
         required: true
 
 env:
-  IMPROPRE_FIELD: customfield_10044
   SAFE_TO_DEPLOY_FIELD: customfield_10086
   COMMIT_NUMBER_FIELD: customfield_10059
   COMMIT_HASH_FIELD: customfield_10060
@@ -135,7 +134,7 @@ jobs:
         if: ${{ steps.get_previous_commit_number.outputs.value != null && steps.get_previous_commit_number.outputs.value != '<no value>' }}
         # If previous_commit_number is not null, it means this push-to-master is a fix.
         # All commits with number between previous_commit_number and this commit number are therefore not safe to deploy.
-        # So mark them as "impropre: true".
+        # So mark them as "safeToDeploy: false".
 
         # The echo command is to clear jira config.yml file set in get jira issue step
         # The jira edit command uses .jira.d/templates/edit template by default
@@ -143,7 +142,6 @@ jobs:
           echo "issue:" >> $HOME/.jira.d/config.yml
           jira edit \
             --query='"Numéro de commit[Number]" > ${{ steps.get_previous_commit_number.outputs.value }} AND "Repository[Short text]" ~ "pass-culture-app-native"' \
-            --override $IMPROPRE_FIELD=true \
             --override $SAFE_TO_DEPLOY_FIELD=false \
             --noedit
 
@@ -152,7 +150,6 @@ jobs:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
         run: |
           jira edit ${{ needs.issue-number.outputs.status }} \
-            --override $IMPROPRE_FIELD=false \
             --override $SAFE_TO_DEPLOY_FIELD=true \
             --override $COMMIT_NUMBER_FIELD=${{ needs.issue-number.outputs.commit-number }} \
             --override $COMMIT_HASH_FIELD=${{ needs.issue-number.outputs.commit-hash }} \
