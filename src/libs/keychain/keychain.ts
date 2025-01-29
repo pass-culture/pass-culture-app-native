@@ -8,22 +8,27 @@ const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 // firebase sometimes overrides the default keychain credentials on iOS, see https://github.com/oblador/react-native-keychain/issues/363
 const keychainOptions = Platform.OS === 'ios' ? { service: env.IOS_APP_ID } : {}
 
+function handleKeychainError(error: unknown, operation: string): never {
+  const errorMessage = error instanceof Error ? error.message : 'unknown error'
+  throw Error(`[Keychain]: ${operation} error: ${errorMessage}`)
+}
+
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {
   if (!refreshToken) {
-    throw Error('Aucun refresh token à sauvegarder')
+    throw Error('[Keychain]: No refresh token to save')
   }
   try {
     await Keychain.setGenericPassword(REFRESH_TOKEN_KEY, refreshToken, keychainOptions)
-  } catch {
-    throw Error('Keychain non accessible')
+  } catch (error: unknown) {
+    handleKeychainError(error, 'saving')
   }
 }
 
 export async function clearRefreshToken(): Promise<void> {
   try {
     await Keychain.resetGenericPassword(keychainOptions)
-  } catch {
-    throw Error('Keychain non accessible')
+  } catch (error: unknown) {
+    handleKeychainError(error, 'deletion')
   }
 }
 
@@ -34,7 +39,7 @@ export async function getRefreshToken(): Promise<string | null> {
       return credentials.password
     }
     return null
-  } catch {
-    throw Error('Keychain non accessible')
+  } catch (error: unknown) {
+    handleKeychainError(error, 'access')
   }
 }
