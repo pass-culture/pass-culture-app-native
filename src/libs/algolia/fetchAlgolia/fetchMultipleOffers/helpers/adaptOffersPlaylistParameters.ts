@@ -58,6 +58,7 @@ export const adaptOffersPlaylistParameters = (
     offerGenreTypes,
     offerGtlLabel: parameters.gtlLabel,
     offerGtlLevel: parameters.gtlLevel,
+    offerNativeCategories: [],
   }
 }
 
