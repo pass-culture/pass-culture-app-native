@@ -9,6 +9,12 @@ export enum RemoteStoreDocuments {
   UBBLE = 'ubble',
 }
 
+export enum RemoteStoreBanner {
+  TITLE = 'title',
+  SUBTITLE = 'subtitle',
+  REDIRECTION_URL = 'redirectionUrl',
+}
+
 export enum RemoteStoreMaintenance {
   MAINTENANCE_IS_ON = 'maintenanceIsOn',
   MAINTENANCE_MESSAGE = 'message',
