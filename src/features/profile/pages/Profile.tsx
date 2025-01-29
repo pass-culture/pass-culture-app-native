@@ -17,6 +17,8 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
@@ -54,6 +56,12 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
+  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
+  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
   const { data: settings } = useSettingsContext()
@@ -157,7 +165,16 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader user={user} />
+            <ProfileHeader
+              featureFlags={{
+                enableAchievements,
+                enableSystemBanner,
+                disableActivation,
+                showForceUpdateBanner,
+                enablePassForAll,
+              }}
+              user={user}
+            />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>

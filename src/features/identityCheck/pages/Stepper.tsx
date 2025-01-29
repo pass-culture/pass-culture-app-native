@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
@@ -24,6 +25,8 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
+  useShowForceUpdateWhenDisableActivation()
+
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Stepper'>>()

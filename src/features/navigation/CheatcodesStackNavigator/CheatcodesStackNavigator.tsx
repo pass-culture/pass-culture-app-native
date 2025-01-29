@@ -1,10 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { ComponentType } from 'react'
+import React from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
+import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
 import { CheatcodesNavigationHome } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { CheatcodesScreenCategoryThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenCategoryThematicHomeHeader'
 import { CheatcodesScreenDefaultThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenDefaultThematicHomeHeader'
@@ -30,13 +31,13 @@ import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/Cheatcodes
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import {
-  CheatcodesStackParamList,
-  CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/types'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
+import { GenericRoute } from 'features/navigation/RootNavigator/types'
 
-const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: ComponentType }> = [
+export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
+
+const routes: CheatcodesStackRoute[] = [
   /**** MENU ****/
   {
     name: 'CheatcodesMenu',
@@ -94,6 +95,10 @@ const routes: ReadonlyArray<{ name: CheatcodesStackRouteName; component: Compone
   {
     name: 'CheatcodesNavigationTrustedDevice',
     component: CheatcodesNavigationTrustedDevice,
+  },
+  {
+    name: 'CheatcodesNavigationForceUpdate',
+    component: CheatcodesNavigationForceUpdate,
   },
   {
     name: 'CheatcodesScreenTrustedDeviceInfos',

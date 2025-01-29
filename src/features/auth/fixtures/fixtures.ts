@@ -22,4 +22,5 @@ export const defaultSettings: SettingsResponse = {
   objectStorageUrl: 'https://localhost-storage',
   rates: { pacificFrancToEuro: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE },
   wipEnableCreditV3: false,
+  ineligiblePostalCodes: [],
 }

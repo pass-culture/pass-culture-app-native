@@ -17,6 +17,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
+  chronicles,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const handlePress = (defaultIndex = 0) => {
@@ -44,6 +45,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePress}
         BodyWrapper={BodyWrapper}
         footer={footer}
+        chronicles={chronicles}
         subcategory={subcategory}
       />
     </OfferCTAProvider>

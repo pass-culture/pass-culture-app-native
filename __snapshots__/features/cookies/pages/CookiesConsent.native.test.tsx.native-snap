@@ -286,78 +286,59 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         testID="fullscreenModalScrollView"
       >
         <View>
-          <Text
+          <View
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "gap": 16,
+                  "paddingBottom": 16,
                 },
               ]
             }
           >
-            Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  },
+                ]
+              }
+            >
+              Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
+            </Text>
+          </View>
         </View>
       </RCTScrollView>
       <View

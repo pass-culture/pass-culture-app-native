@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -12,6 +13,8 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
+  useShowForceUpdateWhenDisableActivation()
+
   return (
     <GenericOfficialPage
       title="Vérifie ton identité pour débloquer ton crédit"

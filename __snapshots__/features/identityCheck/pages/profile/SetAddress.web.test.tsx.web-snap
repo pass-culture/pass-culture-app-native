@@ -226,23 +226,24 @@ exports[`<SetAddress/> should render correctly 1`] = `
               <div
                 class="css-view-175oi2r r-height-z80fyv"
               />
-              <label
-                class="c3 c4"
+              <div
+                class="css-view-175oi2r r-marginBottom-5oul0u"
               >
-                <div
-                  class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+                <label
+                  class="c3 c4"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                   >
-                    Entre ton adresse
+                    <div
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      dir="ltr"
+                    >
+                      Entre ton adresse
+                    </div>
                   </div>
-                </div>
-              </label>
-              <div
-                class="css-view-175oi2r r-height-3da1kt"
-              />
+                </label>
+              </div>
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                 data-testid="styled-input-container"

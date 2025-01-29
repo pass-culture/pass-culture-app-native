@@ -12,8 +12,8 @@ export const STORE_LINK = Platform.select({
 })
 
 export const TITLE = Platform.select({
-  default: 'Mise à jour de l’application',
-  web: 'Mise à jour de l’application',
+  default: 'Mise à jour requise\u00a0!',
+  web: 'Mise à jour requise\u00a0!',
 })
 
 export const DESCRIPTION = Platform.select({
@@ -23,7 +23,12 @@ export const DESCRIPTION = Platform.select({
   Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.`,
 })
 
-export const BUTTON_TEXT = Platform.select({
+export const BUTTON_TEXT_BANNER = Platform.select({
+  default: 'Télécharger la dernière version de l’application',
+  web: 'Actualiser la page',
+})
+
+export const BUTTON_TEXT_SCREEN = Platform.select({
   default: 'Télécharger la dernière version',
   web: 'Actualiser la page',
 })

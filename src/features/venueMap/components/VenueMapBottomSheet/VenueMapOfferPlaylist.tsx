@@ -49,7 +49,6 @@ export const VenueMapOfferPlaylist = ({
         price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}
-        variant="new"
         playlistType={playlistType}
       />
     ),

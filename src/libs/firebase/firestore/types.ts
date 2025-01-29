@@ -47,12 +47,14 @@ export type Maintenance =
     }
 
 export enum RemoteStoreFeatureFlags {
+  DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_ACHIEVEMENTS = 'enableAchievements',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
+  SHOW_FORCE_UPDATE_BANNER = 'showForceUpdateBanner',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
@@ -76,10 +78,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
-  WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
-  WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
-  WIP_NEW_OFFER_TILE = 'wipNewOfferTile',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',

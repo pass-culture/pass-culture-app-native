@@ -2,7 +2,7 @@
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:234
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
-./src/features/home/components/modules/OffersModule.tsx:69
+./src/features/home/components/modules/OffersModule.tsx:66
 ./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
@@ -20,7 +20,6 @@
 ./src/features/navigation/sanitizeNavigationState.ts:5
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
-./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:43
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:16
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:26

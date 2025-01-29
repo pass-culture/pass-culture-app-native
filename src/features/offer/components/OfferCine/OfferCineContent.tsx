@@ -19,7 +19,7 @@ import { useListExpander } from 'features/offer/helpers/useListExpander/useListE
 import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 export const OfferCineContent: FC<{
   offer: OfferResponseV2
@@ -59,9 +59,7 @@ export const OfferCineContent: FC<{
       />
       {hasReachedEnd ? null : (
         <SeeMoreContainer>
-          <Spacer.Column numberOfSpaces={6} />
           <Text>Aucune séance ne te correspond&nbsp;?</Text>
-          <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondary
             mediumWidth
             icon={PlainMore}
@@ -77,6 +75,8 @@ export const OfferCineContent: FC<{
 
 const SeeMoreContainer = styled.View(({ theme }) => ({
   alignItems: theme.isMobileViewport ? 'center' : undefined,
+  marginTop: getSpacing(6),
+  gap: getSpacing(4),
 }))
 
 const Text = styled(TypoDS.Body)(({ theme }) => ({

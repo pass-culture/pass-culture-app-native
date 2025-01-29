@@ -4,7 +4,6 @@ import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
-import { OfferTileProps } from 'features/offer/types'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   CategoryHomeLabelMapping,
@@ -18,7 +17,6 @@ type OfferPlaylistItemProps = {
   offer: OfferResponseV2
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
-  variant: OfferTileProps['variant']
   currency: Currency
   euroToPacificFrancRate: number
   artistName?: string
@@ -38,7 +36,6 @@ export const OfferPlaylistItem = ({
   offer,
   categoryMapping,
   labelMapping,
-  variant,
   artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
@@ -66,7 +63,6 @@ export const OfferPlaylistItem = ({
         fromOfferId={analyticsFrom === 'offer' ? offer.id : undefined}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
-        variant={variant}
         artistName={artistName}
       />
     )

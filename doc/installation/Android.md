@@ -27,10 +27,18 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
 
 ### Install
 
+In the `.env.local` file, add
+
+```sh
+KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
+```
+
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
 direnv reload
 ```
+
+If it fails [see troubleshooting](./setup.md#troubleshooting)
 
 ### 🔥 Firebase setup
 

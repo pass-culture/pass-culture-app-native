@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.324.1",
-  "build": 10324001,
+  "version": "1.325.0",
+  "build": 10325000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -126,7 +126,7 @@
     "date-fns-tz": "^2.0.0",
     "deprecated-react-native-prop-types": "^5.0.0",
     "design-system": "https://github.com/pass-culture/design-system.git#v0.0.14",
-    "firebase": "^11.1.0",
+    "firebase": "^9.6.11",
     "geojson": "^0.5.0",
     "globalthis": "^1.0.2",
     "highlight-words-core": "^1.2.2",

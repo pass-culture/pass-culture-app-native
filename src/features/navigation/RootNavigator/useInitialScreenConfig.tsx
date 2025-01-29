@@ -3,12 +3,11 @@ import { Platform } from 'react-native'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
-
-import { homeNavConfig } from '../TabBar/helpers'
 
 import { RootScreenNames } from './types'
 
@@ -23,7 +22,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
     if (showCulturalSurvey === undefined) return
 
-    getInitialScreen({ isLoggedIn, user, showCulturalSurvey })
+    getInitialScreen({ isLoggedIn, showCulturalSurvey, user })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -39,8 +38,8 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
 async function getInitialScreen({
   isLoggedIn,
-  user,
   showCulturalSurvey,
+  user,
 }: {
   isLoggedIn: boolean
   showCulturalSurvey: boolean

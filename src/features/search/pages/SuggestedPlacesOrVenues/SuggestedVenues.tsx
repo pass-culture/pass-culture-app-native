@@ -44,7 +44,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
   const hasResults = filteredVenues.length > 0
 
   return (
-    <React.Fragment>
+    <StyledView>
       <HiddenAccessibleResultNumber nbResults={filteredVenues.length} show={hasResults} />
       <View accessibilityRole={AccessibilityRole.STATUS}>
         <NoSuggestedVenues show={!hasResults && isQueryProvided} />
@@ -67,7 +67,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
           })}
         </VerticalUl>
       ) : null}
-    </React.Fragment>
+    </StyledView>
   )
 }
 
@@ -91,3 +91,5 @@ const BuildingIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
   color: theme.colors.greyDark,
 }))``
+
+const StyledView = styled.View({ marginTop: getSpacing(4) })

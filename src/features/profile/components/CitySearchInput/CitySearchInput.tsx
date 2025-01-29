@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -22,7 +23,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -33,27 +34,9 @@ type CitySearchInputProps = {
 
 type PostalCodeForm = { postalCode: string }
 
-const NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE = [
-  '98825',
-  '98860',
-  '98833',
-  '98817',
-  '98850',
-  '98821',
-  '98824',
-  '98815',
-  '98831',
-  '98822',
-  '98823',
-  '98816',
-  '98818',
-  '98813',
-  '98826',
-  '98811',
-]
-
 export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
+  const { data: settings } = useSettingsContext()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
@@ -100,7 +83,9 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
 
   const handlePostalCodeChange = (postalCode: string) => {
     setPostalCodeQuery(postalCode)
-    setIsPostalCodeIneligible(NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE.includes(postalCode))
+    if (settings) {
+      setIsPostalCodeIneligible(settings.ineligiblePostalCodes.includes(postalCode))
+    }
   }
 
   useEffect(() => {
@@ -131,7 +116,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
           control={control}
           name="postalCode"
           render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <React.Fragment>
+            <StyledView>
               <SearchInput
                 autoFocus
                 onChangeText={(text) => {
@@ -153,19 +138,17 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 visible={!!error}
                 relatedInputId={postalCodeInputId}
               />
-            </React.Fragment>
+            </StyledView>
           )}
         />
-        <Spacer.Column numberOfSpaces={2} />
       </Form.MaxWidth>
       {isPostalCodeIneligible ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <InfoBannerContainer>
           <InfoBanner
             icon={Error}
             message="Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture."
           />
-        </React.Fragment>
+        </InfoBannerContainer>
       ) : (
         <React.Fragment>
           {isLoading ? <Spinner /> : null}
@@ -195,3 +178,7 @@ const CitiesContainer = styled.View({
   overflowY: 'scroll',
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
+
+const InfoBannerContainer = styled.View({ marginTop: getSpacing(4) })
+
+const StyledView = styled.View({ marginBottom: getSpacing(2) })

@@ -84,7 +84,7 @@ export const theme = {
     borderRadius: getSpacing(1),
     maxCaptionHeight: {
       venue: getSpacing(18),
-      newOfferTile: getSpacing(32),
+      offerTile: getSpacing(32),
       offer: getSpacing(18),
       videoModuleOffer: getSpacing(14),
     },
@@ -238,6 +238,7 @@ export const theme = {
     button: BorderRadiusEnum.BUTTON,
     radius: BorderRadiusEnum.BORDER_RADIUS,
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
+    tile: BorderRadiusEnum.TILE,
   },
   zIndex: {
     background: zIndex.background,
