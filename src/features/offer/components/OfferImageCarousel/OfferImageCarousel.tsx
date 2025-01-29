@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactElement, useCallback, useRef, useState } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
@@ -10,6 +9,7 @@ import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarousel
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
 import { TypoDS, getSpacing } from 'ui/theme'
+import { Carousel } from 'ui/components/Carousel/Carousel'
 
 type Props = {
   progressValue: SharedValue<number>
@@ -26,16 +26,15 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   offerImages,
   onItemPress,
   onLoad,
-  style,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const { borderRadius } = useTheme()
-  const carouselRef = useRef<ICarouselInstance>(null)
+  const [index, setIndex] = useState(0)
   const carouselStyle = useRef({
     borderRadius: borderRadius.radius,
+    height: imageStyle.height,
   }).current
   const imagesLoadedCount = useRef(0)
-  const [currentIndex, setCurrentIndex] = useState(0)
 
   // TODO(PC-000): this method should be excluded in a dedicated .web file
   const handlePressButton = (direction: 1 | -1) => {
@@ -44,8 +43,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       direction,
       maxIndex: offerImages.length - 1,
     })
-    progressValue.value = newIndex
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
+    setIndex(newIndex)
   }
 
   const handleImageLoad = useCallback(() => {
@@ -73,26 +71,19 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     )
 
   const offerImagesUrl = offerImages.map((image) => image.url)
-  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
+  const currentCredit = offerImages[Math.round(index)]?.credit
 
   return (
-    <View style={style}>
+    <CarouselContainer width={imageStyle.width}>
       <Carousel
-        ref={carouselRef}
-        testID="offerImageContainerCarousel"
-        vertical={false}
-        height={imageStyle.height}
+        currentIndex={index}
         width={imageStyle.width}
-        loop={false}
-        enabled={!isWeb && offerImages.length > 1}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setCurrentIndex(absoluteProgress)
-        }}
+        setIndex={setIndex}
         data={offerImages}
         renderItem={renderItem}
-        style={carouselStyle}
+        scrollEnabled={!isWeb && offerImages.length > 1}
+        style={{ ...carouselStyle }}
+        progressValue={progressValue}
       />
 
       <Container>
@@ -106,7 +97,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
           handlePressButton={handlePressButton}
         />
       ) : null}
-    </View>
+    </CarouselContainer>
   )
 }
 
@@ -118,4 +109,8 @@ const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
 const Container = styled.View(({ theme }) => ({
   height: getSpacing(5),
   marginBottom: theme.isDesktopViewport ? getSpacing(2) : 0,
+}))
+
+const CarouselContainer = styled(View)<{ width: number }>(({ width }) => ({
+  width,
 }))
