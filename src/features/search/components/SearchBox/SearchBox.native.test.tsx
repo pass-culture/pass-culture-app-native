@@ -579,7 +579,7 @@ describe('SearchBox component', () => {
       }
     )
 
-    it('should not log HasSearchedCinemaQuery analytic when shouldRedirectToThematicSearch is disabled', async () => {
+    it('should log HasSearchedCinemaQuery analytic when shouldRedirectToThematicSearch is disabled', async () => {
       // TODO(PC-32646): useRoute & useRemoteConfigContext are called every time a letter is inputted +1
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
@@ -589,7 +589,7 @@ describe('SearchBox component', () => {
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
-      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(0)
+      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(1)
     })
 
     it('should reset searchState when user go goBack to Landing', async () => {
