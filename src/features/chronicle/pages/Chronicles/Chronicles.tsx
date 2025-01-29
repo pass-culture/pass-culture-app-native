@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
-import { ScrollView } from 'react-native'
+import { FlatList } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -19,6 +19,7 @@ import { TypoDS, getSpacing } from 'ui/theme'
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const offerId = route.params?.offerId
+  const chronicleId = route.params?.chronicleId
   const { goBack } = useGoBack('Offer', { id: offerId })
   const { data: offer } = useOffer({ offerId })
   const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
@@ -29,9 +30,12 @@ export const Chronicles: FunctionComponent = () => {
   const { headerTransition, onScroll } = useOpacityTransition()
   const { appBarHeight } = useTheme()
   const { top } = useSafeAreaInsets()
+  const { contentPage } = useTheme()
   const headerHeight = appBarHeight + top
 
-  const scrollViewRef = useRef<ScrollView>(null)
+  const chroniclesListRef = useRef<FlatList<ChronicleCardData>>(null)
+
+  const selectedChronicle = chronicleCardsData?.find((item) => item.id === chronicleId)
 
   if (!offer || !chronicleCardsData) return null
 
@@ -41,21 +45,21 @@ export const Chronicles: FunctionComponent = () => {
     <React.Fragment>
       <ChroniclesWebMetaHeader title={title} />
       <ChroniclesHeader headerTransition={headerTransition} title={title} handleGoBack={goBack} />
-      <ScrollView
-        scrollEventThrottle={16}
-        bounces={false}
-        ref={scrollViewRef}
+      <ChronicleCardList
+        data={chronicleCardsData}
+        horizontal={false}
+        separatorSize={6}
+        headerComponent={<StyledTitle2>Tous les avis</StyledTitle2>}
+        ref={chroniclesListRef}
         onScroll={onScroll}
-        contentContainerStyle={{ paddingTop: headerHeight, paddingBottom: getSpacing(10) }}>
-        <ChroniclesContainer>
-          <ChronicleCardList
-            data={chronicleCardsData}
-            horizontal={false}
-            separatorSize={6}
-            headerComponent={<StyledTitle2>Tous les avis</StyledTitle2>}
-          />
-        </ChroniclesContainer>
-      </ScrollView>
+        contentContainerStyle={{
+          paddingTop: headerHeight,
+          paddingBottom: getSpacing(10),
+          marginTop: getSpacing(4),
+          marginHorizontal: contentPage.marginHorizontal,
+        }}
+        selectedChronicle={selectedChronicle}
+      />
     </React.Fragment>
   )
 }
@@ -63,8 +67,3 @@ export const Chronicles: FunctionComponent = () => {
 const StyledTitle2 = styled(TypoDS.Title2)({
   marginBottom: getSpacing(6),
 })
-
-const ChroniclesContainer = styled.View(({ theme }) => ({
-  marginTop: getSpacing(4),
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
