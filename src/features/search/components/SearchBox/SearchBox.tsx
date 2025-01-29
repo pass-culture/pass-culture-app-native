@@ -256,8 +256,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             query: queryText.trim(),
             offerCategories: [SearchGroupNameEnumv2.LIVRES],
           }
-        } else if (
-          shouldRedirectToThematicSearch &&
+        }
+
+        if (
           CINEMA_KEYWORD_PATTERN.test(
             queryText
               .normalize('NFD')
@@ -286,7 +287,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       hideSuggestions,
       showErrorSnackBar,
       offerCategories,
-      shouldRedirectToThematicSearch,
     ]
   )
 
