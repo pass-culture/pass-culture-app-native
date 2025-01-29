@@ -7,7 +7,7 @@ import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { campaignTracker } from 'libs/campaign'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 
 type AppAccountRequest = AccountRequest | GoogleAccountRequest
 

@@ -8,7 +8,7 @@ import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
