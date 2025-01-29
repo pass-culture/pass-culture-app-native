@@ -2,6 +2,7 @@ export const FIRESTORE_ROOT_COLLECTION = 'root'
 
 export enum RemoteStoreDocuments {
   APPLICATION_VERSIONS = 'applicationVersions',
+  BANNER = 'banner',
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
