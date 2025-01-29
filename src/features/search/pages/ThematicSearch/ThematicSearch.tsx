@@ -19,7 +19,7 @@ import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsP
 import { MusicPlaylist } from 'features/search/pages/ThematicSearch/Music/MusicPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'

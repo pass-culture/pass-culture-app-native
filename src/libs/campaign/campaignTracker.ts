@@ -4,7 +4,7 @@ import { getTrackingStatus, TrackingStatus } from 'react-native-tracking-transpa
 import { analytics } from 'libs/analytics'
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { logOpenApp } from 'libs/campaign/logOpenApp'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { captureMonitoringError } from 'libs/monitoring'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/requestIdfaTrackingConsent'
 

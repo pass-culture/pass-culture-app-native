@@ -6,7 +6,7 @@ import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 

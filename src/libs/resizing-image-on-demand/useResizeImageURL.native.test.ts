@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components/native'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 
-jest.mock('libs/environment')
+jest.mock('libs/environment/env')
 jest.mock('react-native', () => ({ useWindowDimensions: jest.fn() }))
 jest.mock('styled-components/native')
 jest.mock('features/auth/context/SettingsContext')

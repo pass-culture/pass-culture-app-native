@@ -5,7 +5,7 @@ import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 

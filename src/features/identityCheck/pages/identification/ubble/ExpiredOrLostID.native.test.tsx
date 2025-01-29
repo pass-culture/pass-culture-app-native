@@ -3,7 +3,7 @@ import React from 'react'
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

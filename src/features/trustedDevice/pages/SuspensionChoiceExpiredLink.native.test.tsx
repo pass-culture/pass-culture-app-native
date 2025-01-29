@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { render, screen, fireEvent } from 'tests/utils'
 
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')

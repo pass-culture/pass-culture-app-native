@@ -11,7 +11,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'

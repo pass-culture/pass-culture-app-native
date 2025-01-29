@@ -5,7 +5,7 @@ import { IdentificationForkButton } from 'features/identityCheck/components/Iden
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'

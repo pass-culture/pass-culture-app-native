@@ -969,7 +969,7 @@ exports[`Bookings should render correctly 1`] = `
                           "alignSelf": "center",
                           "backgroundColor": "#eb0055",
                           "borderColor": "#ffffff",
-                          "borderRadius": 12,
+                          "borderRadius": 16,
                           "borderStyle": "solid",
                           "borderWidth": 1,
                         },
@@ -994,7 +994,7 @@ exports[`Bookings should render correctly 1`] = `
                               "color": "#ffffff",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "lineHeight": 16,
                               "textAlign": "center",
                             },
                           ]

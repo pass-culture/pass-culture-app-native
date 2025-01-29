@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Headers } from 'libs/fetch'
 import { getTokenStatus } from 'libs/jwt/jwt'
 import { eventMonitoring } from 'libs/monitoring'

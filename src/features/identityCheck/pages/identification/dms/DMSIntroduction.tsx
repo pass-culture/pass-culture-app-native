@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'

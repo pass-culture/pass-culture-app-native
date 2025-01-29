@@ -7,7 +7,7 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {

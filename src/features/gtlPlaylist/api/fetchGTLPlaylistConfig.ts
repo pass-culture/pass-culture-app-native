@@ -4,7 +4,7 @@ import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { adaptGtlPlaylist } from 'libs/contentful/adapters/adaptGtlPlaylist'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { GtlPlaylist } from 'libs/contentful/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { getExternal } from 'libs/fetch'
 
 const PARAMS = `?content_type=gtlPlaylist&access_token=${env.CONTENTFUL_PUBLIC_ACCESS_TOKEN}`

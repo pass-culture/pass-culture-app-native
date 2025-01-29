@@ -1,7 +1,7 @@
 import { Platform, Share } from 'react-native'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 import { getShareOffer } from './getShareOffer'
 

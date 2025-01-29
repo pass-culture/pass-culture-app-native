@@ -1,4 +1,4 @@
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { mockServer } from 'tests/mswServer'

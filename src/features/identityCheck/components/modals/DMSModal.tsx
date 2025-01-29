@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

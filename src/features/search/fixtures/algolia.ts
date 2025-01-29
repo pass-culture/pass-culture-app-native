@@ -1,5 +1,5 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { toMutable } from 'shared/types/toMutable'
 
 export const mockSuggestionHits = toMutable([

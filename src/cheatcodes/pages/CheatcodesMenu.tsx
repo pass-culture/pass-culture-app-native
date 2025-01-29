@@ -20,7 +20,7 @@ import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/o
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { eventMonitoring } from 'libs/monitoring'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'

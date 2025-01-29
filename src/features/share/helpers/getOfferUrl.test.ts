@@ -1,5 +1,5 @@
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 import { getOfferUrl } from './getOfferUrl'
 

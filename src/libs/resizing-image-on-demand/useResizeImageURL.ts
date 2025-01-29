@@ -2,7 +2,7 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432

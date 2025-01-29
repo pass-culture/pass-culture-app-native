@@ -8,7 +8,7 @@ import {
   StepperOrigin,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 

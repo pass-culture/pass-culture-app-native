@@ -6,7 +6,7 @@ import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/content
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'

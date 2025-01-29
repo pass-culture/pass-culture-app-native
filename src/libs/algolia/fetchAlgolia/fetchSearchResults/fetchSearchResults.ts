@@ -11,7 +11,7 @@ import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurr
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Offer } from 'shared/offer/types'
 

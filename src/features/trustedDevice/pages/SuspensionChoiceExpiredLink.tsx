@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

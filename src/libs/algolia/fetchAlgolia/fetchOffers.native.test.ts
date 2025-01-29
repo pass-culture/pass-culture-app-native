@@ -7,7 +7,7 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { Range } from 'libs/typesUtils/typeHelpers'
 

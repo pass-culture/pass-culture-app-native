@@ -15,7 +15,7 @@ import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCr
 import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'

@@ -10,7 +10,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'

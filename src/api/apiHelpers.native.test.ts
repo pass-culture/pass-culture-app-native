@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
 import * as NavigationRef from 'features/navigation/navigationRef'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
