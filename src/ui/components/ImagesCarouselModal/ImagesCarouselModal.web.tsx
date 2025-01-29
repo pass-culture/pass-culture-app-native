@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { Carousel } from 'ui/components/Carousel/Carousel'
 import { AppModal } from 'ui/components/modals/AppModal'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
@@ -28,10 +28,6 @@ type ImagesCarouselModalProps = {
   defaultIndex?: number
 }
 
-const renderCarouselItem = ({ item: image, index }: { item: string; index: number }) => (
-  <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
-)
-
 export const ImagesCarouselModal = ({
   imagesURL,
   hideModal,
@@ -40,19 +36,18 @@ export const ImagesCarouselModal = ({
   isVisible = false,
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
-  const carouselRef = useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
-  const { isDesktopViewport } = useTheme()
+  const [index, setIndex] = React.useState(defaultIndex)
+  const progressValue = useSharedValue<number>(0)
 
   const getTitleLabel = useCallback(
     (progressValue: number) => `${Math.round(progressValue) + 1}/${imagesURL.length}`,
     [imagesURL]
   )
 
-  const [title, setTitle] = useState(getTitleLabel(progressValue.value))
+  const [title, setTitle] = useState(getTitleLabel(index))
 
-  const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : getSpacing(12)
+  const CAROUSEL_ITEM_PADDING = getSpacing(16)
 
   const handleCloseModal = () => {
     hideModal()
@@ -62,22 +57,14 @@ export const ImagesCarouselModal = ({
   const handlePressButton = useCallback(
     (direction: 1 | -1) => {
       const newIndex = calculateCarouselIndex({
-        currentIndex: progressValue.value,
+        currentIndex: index,
         direction,
         maxIndex: imagesURL.length - 1,
       })
-      progressValue.value = newIndex
-      carouselRef.current?.scrollTo({ index: newIndex, animated: true })
+      setIndex(newIndex)
+      setTitle(getTitleLabel(newIndex))
     },
-    [imagesURL, progressValue]
-  )
-
-  const handleProgressChange = useCallback(
-    (_: unknown, absoluteProgress: number) => {
-      progressValue.value = absoluteProgress
-      setTitle(getTitleLabel(absoluteProgress))
-    },
-    [getTitleLabel, progressValue]
+    [imagesURL, index, setIndex, getTitleLabel]
   )
 
   const displayModalBody = useCallback(() => {
@@ -95,18 +82,21 @@ export const ImagesCarouselModal = ({
           />
           {carouselSize ? (
             <Carousel
-              ref={carouselRef}
-              testID="imagesCarouselContainer"
-              vertical={false}
-              width={carouselSize.width}
-              height={carouselSize.height}
-              loop={false}
-              defaultIndex={defaultIndex}
-              enabled={false}
-              scrollAnimationDuration={500}
-              onProgressChange={handleProgressChange}
+              currentIndex={index}
+              setIndex={setIndex}
               data={imagesURL}
-              renderItem={renderCarouselItem}
+              style={{ width: carouselSize.width }}
+              width={carouselSize.width}
+              scrollEnabled={false}
+              progressValue={progressValue}
+              renderItem={({ item: image, index }: { item: string; index: number }) => (
+                <CarouselImage
+                  source={{ uri: image }}
+                  accessibilityLabel={`Image ${index + 1}`}
+                  height={carouselSize.height}
+                  width={carouselSize.width}
+                />
+              )}
             />
           ) : null}
           <RoundedButton
@@ -119,7 +109,7 @@ export const ImagesCarouselModal = ({
     }
 
     return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
-  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange])
+  }, [carouselSize, imagesURL, handlePressButton, index, progressValue])
 
   const desktopConstraints = useMemo(
     () => ({
@@ -154,10 +144,13 @@ export const ImagesCarouselModal = ({
 /**
  * We use RN Image component because it renders better with resizeMode in web mode than FastImage
  */
-const CarouselImage = styled(Image).attrs({ resizeMode: 'contain' })({
-  width: '100%',
-  height: '100%',
-})
+const CarouselImage = styled(Image).attrs({ resizeMode: 'contain' })<{
+  height?: number
+  width?: number
+}>(({ height, width }) => ({
+  width: width ?? '100%',
+  height: height ?? '100%',
+}))
 
 const ModalBody = styled.View({
   flexDirection: 'row',

@@ -1,13 +1,13 @@
 import React, { FunctionComponent, ReactElement, useCallback, useRef } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { Carousel } from 'ui/components/Carousel/Carousel'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -25,13 +25,13 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   offerImages,
   onItemPress,
   onLoad,
-  style,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const { borderRadius, isDesktopViewport } = useTheme()
-  const carouselRef = useRef<ICarouselInstance>(null)
+  const [index, setIndex] = React.useState(0)
   const carouselStyle = useRef({
     borderRadius: borderRadius.radius,
+    height: imageStyle.height,
   }).current
   const imagesLoadedCount = useRef(0)
 
@@ -42,8 +42,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       direction,
       maxIndex: offerImages.length - 1,
     })
-    progressValue.value = newIndex
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
+    setIndex(newIndex)
   }
 
   const handleImageLoad = useCallback(() => {
@@ -71,22 +70,16 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     )
 
   return (
-    <View style={style}>
+    <CarouselContainer width={imageStyle.width}>
       <Carousel
-        ref={carouselRef}
-        testID="offerImageContainerCarousel"
-        vertical={false}
-        height={imageStyle.height}
+        currentIndex={index}
         width={imageStyle.width}
-        loop={false}
-        enabled={!isWeb && offerImages.length > 1}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-        }}
+        setIndex={setIndex}
         data={offerImages}
         renderItem={renderItem}
-        style={carouselStyle}
+        scrollEnabled={!isWeb && offerImages.length > 1}
+        style={{ ...carouselStyle }}
+        progressValue={progressValue}
       />
       {offerImages.length > 1 && progressValue ? (
         <React.Fragment>
@@ -99,6 +92,10 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
           />
         </React.Fragment>
       ) : null}
-    </View>
+    </CarouselContainer>
   )
 }
+
+const CarouselContainer = styled(View)<{ width: number }>(({ width }) => ({
+  width,
+}))
