@@ -60,6 +60,7 @@ const OnlineProfile: React.FC = () => {
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
@@ -170,6 +171,7 @@ const OnlineProfile: React.FC = () => {
                 enableSystemBanner,
                 disableActivation,
                 showForceUpdateBanner,
+                enablePassForAll,
               }}
               user={user}
             />

@@ -32,7 +32,9 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
           <Spacer.Column numberOfSpaces={1} />
           {typeof subtitle === 'string' ? <TypoDS.Body>{subtitle}</TypoDS.Body> : subtitle}
         </SubtitleContainer>
-      ) : null}
+      ) : (
+        <Spacer.Column numberOfSpaces={6} />
+      )}
       {showForceUpdateBanner ? (
         <BannerContainer>
           <ForceUpdateBanner />

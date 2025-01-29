@@ -6,6 +6,7 @@ import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, userEvent, screen } from 'tests/utils'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
@@ -72,6 +73,16 @@ describe('LoggedOutHeader', () => {
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
       expect(screen.getByText(subtitle)).toBeOnTheScreen()
+    })
+
+    it('should not display subtitle with passForAll enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+
+      render(<LoggedOutHeader showForceUpdateBanner={false} />)
+
+      const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
+
+      expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
     })
   })
 })

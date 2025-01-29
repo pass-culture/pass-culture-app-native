@@ -18,6 +18,7 @@ type ProfileHeaderProps = {
     enableSystemBanner: boolean
     disableActivation: boolean
     showForceUpdateBanner: boolean
+    enablePassForAll: boolean
   }
   user?: UserProfileResponse
 }

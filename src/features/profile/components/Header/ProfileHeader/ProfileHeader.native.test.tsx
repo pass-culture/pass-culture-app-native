@@ -82,6 +82,23 @@ describe('ProfileHeader', () => {
     )
   })
 
+  it('should not display subtitle with passForAll enabled', () => {
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: true,
+      },
+      user: undefined,
+    })
+
+    const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
+
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
+  })
+
   it('should display the LoggedOutHeader if no user', () => {
     renderProfileHeader({
       featureFlags: {
@@ -89,12 +106,15 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: undefined,
     })
 
     expect(
-      screen.getByText('Identifie-toi pour bénéficier de ton crédit pass Culture')
+      screen.getByText(
+        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+      )
     ).toBeOnTheScreen()
   })
 
@@ -105,6 +125,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user,
     })
@@ -120,6 +141,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user,
     })
@@ -134,6 +156,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: exBeneficiaryUser,
     })
@@ -156,6 +179,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: true,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: notBeneficiaryUser,
     })
@@ -171,6 +195,7 @@ describe('ProfileHeader', () => {
         enableSystemBanner: false,
         disableActivation: false,
         showForceUpdateBanner: false,
+        enablePassForAll: false,
       },
       user: exUnderageBeneficiaryUser,
     })
@@ -188,6 +213,7 @@ const renderProfileHeader = ({
     enableSystemBanner: boolean
     disableActivation: boolean
     showForceUpdateBanner: boolean
+    enablePassForAll: boolean
   }
   user?: UserProfileResponse
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))
