@@ -1,26 +1,26 @@
-import React, { FC, PropsWithChildren } from 'react'
+import React, { ComponentProps, FunctionComponent, PropsWithChildren } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { getSpacing } from 'ui/theme'
 
-export type HorizontalTileProps = PropsWithChildren<{
-  categoryId: CategoryIdEnum
-  imageUrl?: string
-  style?: StyleProp<ViewStyle>
-}>
+export type HorizontalTileProps = PropsWithChildren<
+  {
+    style?: StyleProp<ViewStyle>
+  } & Pick<ComponentProps<typeof OfferImage>, 'size' | 'categoryId' | 'imageUrl'>
+>
 
-export const HorizontalTile: FC<HorizontalTileProps> = ({
+export const HorizontalTile: FunctionComponent<HorizontalTileProps> = ({
   categoryId,
   imageUrl,
   children,
+  size,
   style,
 }) => {
   return (
     <Container style={style}>
-      <OfferImage imageUrl={imageUrl} categoryId={categoryId} />
+      <OfferImage imageUrl={imageUrl} categoryId={categoryId} size={size} />
       {children}
     </Container>
   )
