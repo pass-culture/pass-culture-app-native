@@ -1,4 +1,4 @@
-name: '0 [on_schedule] Dev on schedule e2e android'
+name: '0 [on_workflow] Dev on workflow call e2e android'
 
 on:
   workflow_call:
