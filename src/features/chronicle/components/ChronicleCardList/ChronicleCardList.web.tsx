@@ -23,6 +23,9 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   separatorSize = SEPARATOR_DEFAULT_VALUE,
   onScroll,
   style,
+  offerId,
+  shouldShowSeeMoreButton,
+  selectedChronicle,
 }) => {
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
@@ -76,6 +79,9 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
         separatorSize={separatorSize}
         contentContainerStyle={contentContainerStyle}
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
+        offerId={offerId}
+        shouldShowSeeMoreButton={shouldShowSeeMoreButton}
+        selectedChronicle={selectedChronicle}
       />
     </Container>
   )
