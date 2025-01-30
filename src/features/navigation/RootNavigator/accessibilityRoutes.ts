@@ -4,6 +4,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
+import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobile'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
@@ -22,21 +23,27 @@ export const accessibilityRoutes: GenericRoute<AccessibilityRootStackParamList>[
     options: { title: 'Engagement' },
   },
   {
-    name: 'RecommendedPaths',
-    component: RecommendedPaths,
-    path: 'accessibilite/parcours-recommandes',
-    options: { title: 'Parcours recommandés' },
+    name: 'AccessibilityActionPlan',
+    component: AccessibilityActionPlan,
+    path: 'accessibilite/plan-d-actions',
+    options: { title: 'Plan d’actions' },
   },
   {
-    name: 'AccessibilityDeclaration',
+    name: 'AccessibilityDeclarationMobile',
+    component: AccessibilityDeclarationMobile,
+    path: 'accessibilite/declaration-accessibilite-mobile',
+    options: { title: 'Déclaration d’accessibilité des applications iOS et Android' },
+  },
+  {
+    name: 'AccessibilityDeclarationWeb',
     component: AccessibilityDeclarationWeb,
     path: 'accessibilite/declaration-accessibilite-web',
     options: { title: 'Déclaration d’accessibilité de la version web' },
   },
   {
-    name: 'AccessibilityActionPlan',
-    component: AccessibilityActionPlan,
-    path: 'accessibilite/plan-d-actions',
-    options: { title: 'Plan d’actions' },
+    name: 'RecommendedPaths',
+    component: RecommendedPaths,
+    path: 'accessibilite/parcours-recommandes',
+    options: { title: 'Parcours recommandés' },
   },
 ]
