@@ -157,7 +157,7 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
             ]
           }
         >
-          Déclaration d’accessibilité des applications iOS et Android
+          Déclaration d’accessibilité mobile
         </Text>
         <View
           positionInHeader="right"

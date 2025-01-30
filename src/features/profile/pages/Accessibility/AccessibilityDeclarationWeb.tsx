@@ -36,9 +36,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 
 export function AccessibilityDeclarationWeb() {
   return (
-    <SecondaryPageWithBlurHeader
-      title="Déclaration d’accessibilité de la version web"
-      enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité web" enableMaxWidth={false}>
       <TypoDS.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les

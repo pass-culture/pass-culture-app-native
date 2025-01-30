@@ -157,7 +157,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             ]
           }
         >
-          Déclaration d’accessibilité de la version web
+          Déclaration d’accessibilité web
         </Text>
         <View
           positionInHeader="right"

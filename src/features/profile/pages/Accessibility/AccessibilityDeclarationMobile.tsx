@@ -27,9 +27,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 
 export function AccessibilityDeclarationMobile() {
   return (
-    <SecondaryPageWithBlurHeader
-      title="Déclaration d’accessibilité des applications iOS et Android"
-      enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité mobile" enableMaxWidth={false}>
       <ViewGap gap={6}>
         <TypoDS.BodyItalic>Cette déclaration a été établie le 30 janvier 2025.</TypoDS.BodyItalic>
         <TypoDS.Body>
