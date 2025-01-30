@@ -34,16 +34,4 @@ describe('ChronicleCardListBase', () => {
 
     expect(screen.getByText('La Nature Sauvage')).toBeOnTheScreen()
   })
-
-  it('should scroll to the selected chronicle when defined', () => {
-    render(
-      <ChronicleCardListBase
-        data={chroniclesSnap}
-        selectedChronicle={chroniclesSnap[4]}
-        ref={ref}
-      />
-    )
-
-    expect(screen.getByText('La Magie des Étoiles')).toBeOnTheScreen()
-  })
 })

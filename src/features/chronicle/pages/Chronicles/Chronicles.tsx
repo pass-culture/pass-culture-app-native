@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
-import { FlatList } from 'react-native'
+import React, { FunctionComponent, useCallback, useRef } from 'react'
+import { FlatList, InteractionManager } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -35,7 +35,19 @@ export const Chronicles: FunctionComponent = () => {
 
   const chroniclesListRef = useRef<FlatList<ChronicleCardData>>(null)
 
-  const selectedChronicle = chronicleCardsData?.find((item) => item.id === chronicleId)
+  const selectedChronicle = chronicleCardsData?.findIndex((item) => item.id === chronicleId) ?? -1
+
+  const handleLayout = useCallback(() => {
+    if (selectedChronicle !== -1) {
+      InteractionManager.runAfterInteractions(() => {
+        chroniclesListRef.current?.scrollToIndex({
+          index: selectedChronicle,
+          animated: true,
+          viewOffset: headerHeight,
+        })
+      })
+    }
+  }, [selectedChronicle, headerHeight])
 
   if (!offer || !chronicleCardsData) return null
 
@@ -58,7 +70,7 @@ export const Chronicles: FunctionComponent = () => {
           marginTop: getSpacing(4),
           marginHorizontal: contentPage.marginHorizontal,
         }}
-        selectedChronicle={selectedChronicle}
+        onLayout={handleLayout}
       />
     </React.Fragment>
   )

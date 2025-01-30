@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import LinearGradient from 'react-native-linear-gradient'
@@ -7,6 +7,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
@@ -16,23 +17,34 @@ import {
   SEPARATOR_DEFAULT_VALUE,
 } from './ChronicleCardListBase'
 
-export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
-  data,
-  horizontal = true,
-  cardWidth,
-  contentContainerStyle,
-  headerComponent,
-  separatorSize = SEPARATOR_DEFAULT_VALUE,
-  onScroll,
-  style,
-  offerId,
-  shouldShowSeeMoreButton,
-  selectedChronicle,
-}) => {
+export const ChronicleCardList = forwardRef<
+  Partial<FlatList<ChronicleCardData>>,
+  ChronicleCardListProps
+>(function ChronicleCardList(
+  {
+    data,
+    horizontal = true,
+    cardWidth,
+    contentContainerStyle,
+    onScroll,
+    headerComponent,
+    style,
+    separatorSize = SEPARATOR_DEFAULT_VALUE,
+    shouldShowSeeMoreButton,
+    offerId,
+    onLayout,
+  },
+  ref
+) {
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
 
   const listRef = useRef<FlatList>(null)
+
+  useImperativeHandle(ref, () => ({
+    scrollToOffset: (params) => listRef.current?.scrollToOffset(params),
+    scrollToIndex: (params) => listRef.current?.scrollToIndex(params),
+  }))
 
   const {
     onScroll: internalScrollHandler,
@@ -91,11 +103,11 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
         offerId={offerId}
         shouldShowSeeMoreButton={shouldShowSeeMoreButton}
-        selectedChronicle={selectedChronicle}
+        onLayout={onLayout}
       />
     </View>
   )
-}
+})
 
 const ArrowWrapper = styled.View.attrs({
   pointerEvents: 'box-none',
