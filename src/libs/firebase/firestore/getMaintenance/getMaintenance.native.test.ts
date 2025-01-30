@@ -1,7 +1,7 @@
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')

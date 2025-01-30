@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 
 export const useSignupRecaptcha = ({

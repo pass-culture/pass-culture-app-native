@@ -30,7 +30,7 @@ import {
   isVideoCarouselContentModel,
   isVideoContentModel,
 } from 'libs/contentful/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] => {
   const adaptedHomepageNatifModules = modules.map((module) => {

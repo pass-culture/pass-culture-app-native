@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from 'react'
 
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 

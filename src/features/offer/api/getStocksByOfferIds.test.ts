@@ -1,7 +1,6 @@
 import { api } from 'api/api'
 import { OffersStocksResponseV2 } from 'api/gen'
-import { OfferNotFoundError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { OfferNotFoundError, LogTypeEnum } from 'libs/monitoring/errors'
 import { mockServer } from 'tests/mswServer'
 
 import { getStocksByOfferIds } from './getStocksByOfferIds'

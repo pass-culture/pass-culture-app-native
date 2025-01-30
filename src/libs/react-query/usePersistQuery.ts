@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { QueryKey, UseQueryOptions, UseQueryResult, useQuery } from 'react-query'
 import { QueryFunction } from 'react-query/types/core/types'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 function useGetPersistData<TData, TQueryKey>(queryKey: TQueryKey) {
   const [persistData, setPersistData] = useState<TData | undefined>()

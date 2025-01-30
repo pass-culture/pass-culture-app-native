@@ -27,7 +27,7 @@ import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { captureMonitoringError } from 'libs/monitoring'
+import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -42,7 +42,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRoute')
@@ -54,6 +54,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
+
+const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
 
 const mockShowErrorSnackBar = jest.fn()
 const mockShowInfoSnackBar = jest.fn()

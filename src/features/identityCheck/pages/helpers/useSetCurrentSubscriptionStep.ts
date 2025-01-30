@@ -5,7 +5,7 @@ import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 export const getIdentityCheckStep = (
   subscriptionStep: SubscriptionStep | null

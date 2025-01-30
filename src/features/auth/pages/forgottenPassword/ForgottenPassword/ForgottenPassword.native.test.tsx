@@ -3,7 +3,8 @@ import React from 'react'
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockServer } from 'tests/mswServer'
@@ -15,7 +16,8 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { ForgottenPassword } from './ForgottenPassword'
 
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
+jest.mock('libs/monitoring/errors')
 jest.useFakeTimers()
 jest.mock('libs/network/NetInfoWrapper')
 

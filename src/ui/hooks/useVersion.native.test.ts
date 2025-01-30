@@ -1,6 +1,6 @@
 import CodePush, { LocalPackage } from 'react-native-code-push'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { act, renderHook, waitFor } from 'tests/utils'
 

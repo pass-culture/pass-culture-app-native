@@ -1,8 +1,7 @@
 import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
-import { AsyncError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'

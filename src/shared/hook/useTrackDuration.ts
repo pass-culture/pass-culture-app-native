@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { AppState, AppStateStatus, NativeEventSubscription } from 'react-native'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 /**
  * Use it in a useEffect or useFocusEffect, The passed callback should be wrapped in React.useCallback to avoid running the effect too often.

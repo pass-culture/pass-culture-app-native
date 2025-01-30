@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export type TokenInfo = {

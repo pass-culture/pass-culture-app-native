@@ -15,7 +15,7 @@ import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithoutUser({ persist: true })

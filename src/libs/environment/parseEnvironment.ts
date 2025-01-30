@@ -2,7 +2,7 @@ import { NativeConfig } from '@bam.tech/react-native-config'
 import { ValidationError } from 'yup'
 
 import { Environment, EnvironmentSchema } from 'libs/environment/schema'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 const isValidationError = (error: unknown): error is ValidationError =>

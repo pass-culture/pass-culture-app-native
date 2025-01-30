@@ -1,6 +1,6 @@
 import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
   if (!params.offerId) {

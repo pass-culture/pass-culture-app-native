@@ -1,8 +1,8 @@
 import '@sentry/tracing'
 import { Span, Transaction } from '@sentry/types'
 
-import { eventMonitoring } from 'libs/monitoring'
 import { getCurrentHub } from 'libs/monitoring/sentry'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 const transactionsRef: { [key: string]: { transaction: Transaction; span: Span } | undefined } = {}
 

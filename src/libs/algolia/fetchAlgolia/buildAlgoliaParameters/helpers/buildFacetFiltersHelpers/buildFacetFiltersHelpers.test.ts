@@ -18,7 +18,7 @@ import {
   buildOfferSubcategoriesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 describe('buildOfferCategoriesPredicate', () => {
   it('should return an offer categories predicate formatted for Algolia API', () => {

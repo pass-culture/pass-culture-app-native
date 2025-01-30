@@ -7,8 +7,8 @@ import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErro
 import * as useGoBack from 'features/navigation/useGoBack'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { AsyncError, eventMonitoring, MonitoringError, ScreenError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'

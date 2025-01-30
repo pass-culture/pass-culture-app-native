@@ -8,7 +8,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { analytics } from 'libs/analytics/provider'
 import { act } from 'tests/utils'
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/RootNavigator/linking')
 

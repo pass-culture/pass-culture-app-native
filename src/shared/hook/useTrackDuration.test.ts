@@ -1,6 +1,6 @@
 import { AppState } from 'react-native'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { act, renderHook } from 'tests/utils'
 
 import { useTrackDuration } from './useTrackDuration'

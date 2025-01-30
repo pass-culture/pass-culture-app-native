@@ -3,7 +3,7 @@ import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOf
 import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment/fixtures'
 import { EmptyResponse } from 'libs/fetch'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
