@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { AccessibilityDeclaration } from 'features/profile/pages/Accessibility/AccessibilityDeclaration'
+import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { render, userEvent, screen } from 'tests/utils'
 
@@ -18,9 +18,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('AccessibilityDeclaration', () => {
+describe('AccessibilityDeclarationWeb', () => {
   it('should render correctly', () => {
-    render(<AccessibilityDeclaration />)
+    render(<AccessibilityDeclarationWeb />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -39,7 +39,7 @@ describe('AccessibilityDeclaration', () => {
     ${'https://formulaire.defenseurdesdroits.fr/'}         | ${'Défenseur des droits'}
     ${'https://www.defenseurdesdroits.fr/saisir/delegues'} | ${'Défenseur des droits dans votre région'}
   `('should open $url when $title is clicked', async ({ url, title }) => {
-    render(<AccessibilityDeclaration />)
+    render(<AccessibilityDeclarationWeb />)
 
     const link = screen.getByTestId(title)
     await user.press(link)

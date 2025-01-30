@@ -34,9 +34,11 @@ const accessibilityUrl = { url: `${WEBAPP_V2_URL}/accessibilite/declaration` }
 const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
-export function AccessibilityDeclaration() {
+export function AccessibilityDeclarationWeb() {
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      title="Déclaration d’accessibilité de la version web"
+      enableMaxWidth={false}>
       <TypoDS.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
@@ -338,7 +340,8 @@ export function AccessibilityDeclaration() {
           </BulletListItem>
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>
+      <StyledSeparator />
+      <TitleText>
         Retour d’information et contact
         {DOUBLE_LINE_BREAK}
         <TypoDS.Body>
@@ -346,7 +349,7 @@ export function AccessibilityDeclaration() {
           responsable de l’application pour être orienté vers une alternative accessible ou obtenir
           le contenu sous une autre forme.
         </TypoDS.Body>
-      </TypoDS.BodyAccent>
+      </TitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Contacter l’équipe support à l’adresse ">

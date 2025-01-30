@@ -4,7 +4,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
-import { AccessibilityDeclaration } from 'features/profile/pages/Accessibility/AccessibilityDeclaration'
+import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 
@@ -29,9 +29,9 @@ export const accessibilityRoutes: GenericRoute<AccessibilityRootStackParamList>[
   },
   {
     name: 'AccessibilityDeclaration',
-    component: AccessibilityDeclaration,
-    path: 'accessibilite/declaration',
-    options: { title: 'Déclaration d’accessibilité' },
+    component: AccessibilityDeclarationWeb,
+    path: 'accessibilite/declaration-accessibilite-web',
+    options: { title: 'Déclaration d’accessibilité de la version web' },
   },
   {
     name: 'AccessibilityActionPlan',
