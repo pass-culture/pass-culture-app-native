@@ -32,7 +32,10 @@ describe('useResetOnMinimalBuild', () => {
   })
 
   it('should not call resetErrorBoundary if minimalBuildNumber is null', () => {
-    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce(undefined)
+    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      minimalBuildNumber: undefined,
+      isLoading: false,
+    })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 
     renderHookWithProvider(() => useResetOnMinimalBuild(mockResetErrorBoundary))
@@ -41,7 +44,10 @@ describe('useResetOnMinimalBuild', () => {
   })
 
   it('should not call resetErrorBoundary if minimalBuildNumber is greater than app build version', () => {
-    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce(200)
+    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      minimalBuildNumber: 200,
+      isLoading: false,
+    })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 
     renderHookWithProvider(() => useResetOnMinimalBuild(mockResetErrorBoundary))
@@ -50,7 +56,10 @@ describe('useResetOnMinimalBuild', () => {
   })
 
   it('should call resetErrorBoundary if minimalBuildNumber is less than or equal to app build version', () => {
-    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce(100)
+    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      minimalBuildNumber: 100,
+      isLoading: false,
+    })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 
     renderHookWithProvider(() => useResetOnMinimalBuild(mockResetErrorBoundary))

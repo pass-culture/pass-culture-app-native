@@ -19,7 +19,7 @@ describe('useMinimalBuildNumber', () => {
     const { result } = renderUseMinimalBuildNumber()
 
     await waitFor(() => {
-      expect(result.current).toEqual(10306000)
+      expect(result.current.minimalBuildNumber).toEqual(10306000)
     })
   })
 
@@ -28,7 +28,7 @@ describe('useMinimalBuildNumber', () => {
 
     const { result } = renderUseMinimalBuildNumber()
 
-    expect(result.current).toEqual(undefined)
+    expect(result.current.minimalBuildNumber).toEqual(undefined)
   })
 })
 
