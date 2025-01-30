@@ -21,26 +21,26 @@ const sections = [
     noTopMargin
   />,
   <StyledSectionRow
-    key={4}
+    key={2}
     title="Schéma pluriannuel"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityActionPlan' }}
   />,
   <StyledSectionRow
     key={3}
-    title="Déclaration d’accessibilité des applications iOS et Android"
+    title="Déclaration d’accessibilité des&nbsp;applications&nbsp;iOS&nbsp;et&nbsp;Android"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityDeclarationMobile' }}
   />,
   <StyledSectionRow
-    key={3}
-    title="Déclaration d’accessibilité de la version web"
+    key={4}
+    title="Déclaration d’accessibilité de&nbsp;la&nbsp;version&nbsp;web"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityDeclarationWeb' }}
   />,
   <StyledSectionRow
-    key={2}
-    title="Parcours recommandés de la version web"
+    key={5}
+    title="Parcours recommandés de&nbsp;la&nbsp;version&nbsp;web"
     type="navigable"
     navigateTo={{ screen: 'RecommendedPaths' }}
   />,

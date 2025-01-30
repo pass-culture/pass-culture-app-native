@@ -496,7 +496,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Déclaration d’accessibilité des applications iOS et Android"
+            accessibilityLabel="Déclaration d’accessibilité des applications iOS et Android"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -537,7 +537,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Déclaration d’accessibilité des applications iOS et Android"
+            testID="Déclaration d’accessibilité des applications iOS et Android"
           >
             <View
               style={
@@ -581,7 +581,7 @@ exports[`Accessibility should render correctly 1`] = `
                     ]
                   }
                 >
-                  Déclaration d’accessibilité des applications iOS et Android
+                  Déclaration d’accessibilité des applications iOS et Android
                 </Text>
               </View>
               <View
@@ -628,7 +628,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Déclaration d’accessibilité de la version web"
+            accessibilityLabel="Déclaration d’accessibilité de la version web"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -669,7 +669,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Déclaration d’accessibilité de la version web"
+            testID="Déclaration d’accessibilité de la version web"
           >
             <View
               style={
@@ -713,7 +713,7 @@ exports[`Accessibility should render correctly 1`] = `
                     ]
                   }
                 >
-                  Déclaration d’accessibilité de la version web
+                  Déclaration d’accessibilité de la version web
                 </Text>
               </View>
               <View
@@ -760,7 +760,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Parcours recommandés de la version web"
+            accessibilityLabel="Parcours recommandés de la version web"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -801,7 +801,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Parcours recommandés de la version web"
+            testID="Parcours recommandés de la version web"
           >
             <View
               style={
@@ -845,7 +845,7 @@ exports[`Accessibility should render correctly 1`] = `
                     ]
                   }
                 >
-                  Parcours recommandés de la version web
+                  Parcours recommandés de la version web
                 </Text>
               </View>
               <View
