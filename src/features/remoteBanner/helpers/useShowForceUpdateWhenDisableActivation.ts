@@ -1,4 +1,4 @@
-import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
+import { ForceUpdateWithResetErrorBoundary } from 'features/remoteBanner/pages/ForceUpdateWithResetErrorBoundary'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ScreenError, LogTypeEnum } from 'libs/monitoring/errors'

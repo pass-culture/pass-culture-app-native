@@ -1,4 +1,4 @@
-import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
+import { useShowForceUpdateWhenDisableActivation } from 'features/remoteBanner/helpers/useShowForceUpdateWhenDisableActivation'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'

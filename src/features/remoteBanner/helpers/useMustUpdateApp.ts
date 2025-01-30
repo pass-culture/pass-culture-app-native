@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
-import { eventMonitoring } from 'libs/monitoring/services'
+import { useMinimalBuildNumber } from 'features/remoteBanner/helpers/useMinimalBuildNumber'
 import { getAppBuildVersion } from 'libs/packageJson'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 const DELAY_BEFORE_VALUE_SHOULD_BE_SET_IN_MS = 15000
 

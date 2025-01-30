@@ -2,19 +2,19 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import { ForceUpdate } from './ForceUpdate'
+import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBoundary'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
+jest.mock('features/remoteBanner/helpers/useMinimalBuildNumber')
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
   }
 })
 
-describe('<ForceUpdate/>', () => {
+describe('<ForceUpdateWithResetErrorBoundary/>', () => {
   it('should match snapshot', async () => {
-    render(<ForceUpdate />)
+    await render(<ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />)
 
     expect(screen).toMatchSnapshot()
   })

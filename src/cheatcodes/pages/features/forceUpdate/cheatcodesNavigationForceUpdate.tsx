@@ -4,7 +4,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
-import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
+import { ForceUpdateWithResetErrorBoundary } from 'features/remoteBanner/pages/ForceUpdateWithResetErrorBoundary'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 

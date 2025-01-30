@@ -1,5 +1,5 @@
-import { STORE_LINK } from 'features/forceUpdate/constants'
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { STORE_LINK } from 'features/remoteBanner/constants'
 import { analytics } from 'libs/analytics/provider'
 import * as PackageJson from 'libs/packageJson'
 
