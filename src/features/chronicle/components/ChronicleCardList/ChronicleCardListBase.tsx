@@ -26,15 +26,28 @@ export type ChronicleCardListProps = Pick<
   | 'snapToInterval'
   | 'onScroll'
   | 'onContentSizeChange'
+  | 'onLayout'
 > & {
   offset?: number
   cardWidth?: number
   separatorSize?: number
   headerComponent?: ReactElement
   style?: StyleProp<ViewStyle>
+  shouldShowSeeMoreButton?: boolean
+  offerId?: number
 }
 
-const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: number }) => {
+const renderItem = ({
+  item,
+  cardWidth,
+  shouldShowSeeMoreButton,
+  offerId,
+}: {
+  item: ChronicleCardData
+  cardWidth?: number
+  shouldShowSeeMoreButton?: boolean
+  offerId?: number
+}) => {
   return (
     <ChronicleCard
       id={item.id}
@@ -43,6 +56,8 @@ const renderItem = ({ item, cardWidth }: { item: ChronicleCardData; cardWidth?: 
       description={item.description}
       date={item.date}
       cardWidth={cardWidth}
+      navigateTo={{ screen: 'Chronicles', params: { offerId, chronicleId: item.id } }}
+      shouldShowSeeMoreButton={shouldShowSeeMoreButton}
     />
   )
 }
@@ -63,6 +78,9 @@ export const ChronicleCardListBase = forwardRef<
     onContentSizeChange,
     style,
     separatorSize = SEPARATOR_DEFAULT_VALUE,
+    shouldShowSeeMoreButton,
+    offerId,
+    onLayout,
   },
   ref
 ) {
@@ -70,6 +88,7 @@ export const ChronicleCardListBase = forwardRef<
 
   useImperativeHandle(ref, () => ({
     scrollToOffset: (params) => listRef.current?.scrollToOffset(params),
+    scrollToIndex: (params) => listRef.current?.scrollToIndex(params),
   }))
 
   useEffect(() => {
@@ -93,7 +112,7 @@ export const ChronicleCardListBase = forwardRef<
       data={data}
       style={style}
       ListHeaderComponent={headerComponent}
-      renderItem={({ item }) => renderItem({ item, cardWidth })}
+      renderItem={({ item }) => renderItem({ item, cardWidth, shouldShowSeeMoreButton, offerId })}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={Separator}
       contentContainerStyle={contentContainerStyle}
@@ -105,6 +124,7 @@ export const ChronicleCardListBase = forwardRef<
       decelerationRate="fast"
       snapToInterval={snapToInterval}
       testID="chronicle-list"
+      onLayout={onLayout}
     />
   )
 })

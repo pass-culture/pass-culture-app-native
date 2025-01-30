@@ -163,7 +163,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           {chronicles?.length ? (
             <StyledSectionWithDivider visible gap={8}>
               <ChroniclesTitle {...getHeadingAttrs(3)}>{"L'avis du book club"}</ChroniclesTitle>
-              <StyledChronicleCardlist data={chronicles} />
+              <StyledChronicleCardList
+                data={chronicles}
+                offerId={offer.id}
+                shouldShowSeeMoreButton
+              />
               <Gutter>
                 <InternalTouchableLink
                   as={ButtonSecondaryBlack}
@@ -203,7 +207,7 @@ const Container = styled.View({
   flex: 1,
 })
 
-const StyledChronicleCardlist = styled(ChronicleCardList).attrs(({ theme }) => ({
+const StyledChronicleCardList = styled(ChronicleCardList).attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
     paddingVertical: theme.contentPage.marginHorizontal,
