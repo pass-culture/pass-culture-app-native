@@ -11,7 +11,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
@@ -29,12 +30,17 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
 }) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
   const { bannerUrl, publicName, name, address, postalCode, city, bannerMeta } = venue
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
 
-  const distanceToVenue = useDistance({ lat: venue.latitude, lng: venue.longitude })
+  const distanceToVenue = getDistance(
+    { lat: venue.latitude, lng: venue.longitude },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
   const venueTypeLabel =
     venue.venueTypeCode && venue.venueTypeCode !== VenueTypeCodeKey.ADMINISTRATIVE
       ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]

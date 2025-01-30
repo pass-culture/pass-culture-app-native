@@ -7,7 +7,8 @@ import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -50,9 +51,15 @@ export const WhereSection: React.FC<Props> = ({
   showVenueBanner,
   locationCoordinates,
 }) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
   const queryClient = useQueryClient()
   const { latitude: lat, longitude: lng } = locationCoordinates
-  const distanceToLocation = useDistance({ lat, lng })
+
+  const distanceToLocation = getDistance(
+    { lat, lng },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
   const venueFullAddress = venue.address
     ? formatFullAddress(venue.address, venue.postalCode, venue.city)
     : undefined

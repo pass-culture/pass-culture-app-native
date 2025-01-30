@@ -3,7 +3,8 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -19,6 +20,7 @@ type Props = {
 }
 
 export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, comingSoon }) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: attachedOffer } = offer
   const { user } = useAuthContext()
   const mapping = useCategoryIdMapping()
@@ -36,7 +38,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     euroToPacificFrancRate,
     attachedOffer.isDuo && user?.isBeneficiary
   )
-  const distance = useDistance(offer._geoloc)
+  const distance = getDistance(offer._geoloc, { userLocation, selectedPlace, selectedLocationMode })
   const distanceLabel = distance ? `à ${distance}` : undefined
 
   if (date) details.push(date)

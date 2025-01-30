@@ -15,6 +15,7 @@ import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/fa
 import { analytics } from 'libs/analytics'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
@@ -44,11 +45,6 @@ const userProfile: UserProfileResponse = {
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
-
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
@@ -66,6 +62,29 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const DEFAULT_USER_LOCATION = { latitude: 48, longitude: -1 }
+
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+}
+
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+  place: null,
+}
+
+const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
+  () => EVERYWHERE_USER_POSITION
+)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
+}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -88,18 +107,23 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  it('should show distance if geolocation enabled', async () => {
-    mockDistance = '10 km'
-    renderFavorite()
-    await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
+  describe('user has chosen geolocation', () => {
+    beforeEach(() => {
+      mockUseLocation.mockReturnValue(AROUND_ME_POSITION)
+    })
 
-    expect(await screen.findByText('10 km')).toBeOnTheScreen()
+    it('should show distance', async () => {
+      renderFavorite()
+      await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
+
+      expect(await screen.findByText('19 km')).toBeOnTheScreen()
+    })
   })
 
   it('should delete favorite on button click', async () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     simulateBackend()
-    mockDistance = '10 km'
+
     renderFavorite()
 
     await user.press(screen.getByText('Supprimer'))
@@ -114,7 +138,7 @@ describe('<Favorite /> component', () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
-    mockDistance = '10 km'
+
     renderFavorite({
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
