@@ -2,8 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
@@ -134,10 +133,7 @@ describe('AgeSelectionFork', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
     })
 
     describe('onboarding', () => {

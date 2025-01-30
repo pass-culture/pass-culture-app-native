@@ -7,6 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
@@ -32,8 +33,6 @@ const specificUserAges = [15, 16, 17, 18]
 // null is the return value of storage when there is no value corresponding to the key
 const nonSpecificUserAges = [null, NonEligible.UNDER_15, NonEligible.OVER_18]
 
-jest.mock('features/auth/context/SettingsContext')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -50,6 +49,7 @@ describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear(USER_AGE_KEY)
+    setSettings()
   })
 
   it('should render correctly', () => {

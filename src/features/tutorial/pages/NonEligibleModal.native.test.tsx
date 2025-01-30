@@ -1,7 +1,6 @@
 import React from 'react'
 
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -104,10 +103,7 @@ describe('NonEligibleModal', () => {
 
     describe('when enableCreditV3 activated', () => {
       beforeEach(() => {
-        jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-          data: { ...defaultSettings, wipEnableCreditV3: true },
-          isLoading: false,
-        })
+        setSettings({ wipEnableCreditV3: true })
       })
 
       it('should display subtitle with credit V3', () => {

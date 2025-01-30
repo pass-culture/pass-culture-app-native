@@ -112,11 +112,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResults(),
 }))
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
-
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',

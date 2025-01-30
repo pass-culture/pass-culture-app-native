@@ -62,10 +62,6 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: () => ({
     filteredHistory: [],

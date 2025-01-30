@@ -2,8 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -131,10 +130,7 @@ describe('OnboardingAgeInformation', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
     })
 
     it.each(AGES)('should render correctly for %s-year-old', (age) => {

@@ -1,8 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -32,10 +31,7 @@ describe('<RecreditBirthdayNotification />', () => {
 
   beforeEach(() => {
     setFeatureFlags()
-    jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-      data: { ...defaultSettings, wipEnableCreditV3: false },
-      isLoading: false,
-    })
+    setSettings()
   })
 
   it('should have correct credit text', async () => {
@@ -60,10 +56,7 @@ describe('<RecreditBirthdayNotification />', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
     })
 
     it('should have correct credit information text', async () => {

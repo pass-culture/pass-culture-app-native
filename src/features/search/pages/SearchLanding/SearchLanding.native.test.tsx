@@ -65,10 +65,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: () => ({
     filteredHistory: [],

@@ -13,8 +13,7 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -643,9 +642,7 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      return jest
-        .spyOn(SettingsContextAPI, 'useSettingsContext')
-        .mockReturnValue({ data: defaultSettings, isLoading: false })
+      setSettings()
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

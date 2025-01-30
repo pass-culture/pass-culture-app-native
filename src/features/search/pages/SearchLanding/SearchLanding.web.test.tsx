@@ -47,11 +47,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
-
 jest.mock('react-instantsearch-core', () => ({
   ...jest.requireActual('react-instantsearch-core'),
   useSearchBox: () => ({
