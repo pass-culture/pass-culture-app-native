@@ -5,18 +5,9 @@ import React, {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState,
 } from 'react'
-import {
-  FlatList,
-  FlatListProps,
-  LayoutChangeEvent,
-  StyleProp,
-  View,
-  ViewStyle,
-} from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled, { useTheme } from 'styled-components/native'
+import { FlatList, FlatListProps, StyleProp, ViewStyle } from 'react-native'
+import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
 import { getSpacing } from 'ui/theme'
@@ -35,6 +26,7 @@ export type ChronicleCardListProps = Pick<
   | 'snapToInterval'
   | 'onScroll'
   | 'onContentSizeChange'
+  | 'onLayout'
 > & {
   offset?: number
   cardWidth?: number
@@ -43,7 +35,6 @@ export type ChronicleCardListProps = Pick<
   style?: StyleProp<ViewStyle>
   shouldShowSeeMoreButton?: boolean
   offerId?: number
-  selectedChronicle?: ChronicleCardData
 }
 
 const renderItem = ({
@@ -89,29 +80,15 @@ export const ChronicleCardListBase = forwardRef<
     separatorSize = SEPARATOR_DEFAULT_VALUE,
     shouldShowSeeMoreButton,
     offerId,
-    selectedChronicle,
+    onLayout,
   },
   ref
 ) {
   const listRef = useRef<FlatList>(null)
-  const [isFlatListReady, setIsFlatListReady] = useState(false)
-  const [headerHeight, setHeaderHeight] = useState(0)
-  const [listHeight, setListHeight] = useState(1)
-  const { top } = useSafeAreaInsets()
-  const { appBarHeight } = useTheme()
-
-  const handleHeaderLayout = (event: LayoutChangeEvent) => {
-    setHeaderHeight(event.nativeEvent.layout.height)
-  }
-
-  const handleListLayout = (event: LayoutChangeEvent) => {
-    setListHeight(event.nativeEvent.layout.height)
-    setIsFlatListReady(true)
-  }
 
   useImperativeHandle(ref, () => ({
     scrollToOffset: (params) => listRef.current?.scrollToOffset(params),
-    scrollToItem: (params) => listRef.current?.scrollToItem(params),
+    scrollToIndex: (params) => listRef.current?.scrollToIndex(params),
   }))
 
   useEffect(() => {
@@ -119,19 +96,6 @@ export const ChronicleCardListBase = forwardRef<
       listRef.current.scrollToOffset({ offset, animated: true })
     }
   }, [offset])
-
-  useEffect(() => {
-    if (listRef.current && isFlatListReady && !!selectedChronicle) {
-      const flatListTop = top + appBarHeight + headerHeight
-      const viewPosition = flatListTop / listHeight
-
-      listRef.current.scrollToItem({
-        item: selectedChronicle,
-        animated: true,
-        viewPosition,
-      })
-    }
-  }, [appBarHeight, headerHeight, selectedChronicle, isFlatListReady, listHeight, top])
 
   const Separator = useMemo(
     () =>
@@ -147,9 +111,7 @@ export const ChronicleCardListBase = forwardRef<
       ref={listRef}
       data={data}
       style={style}
-      ListHeaderComponent={
-        headerComponent ? <View onLayout={handleHeaderLayout}>{headerComponent}</View> : null
-      }
+      ListHeaderComponent={headerComponent}
       renderItem={({ item }) => renderItem({ item, cardWidth, shouldShowSeeMoreButton, offerId })}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={Separator}
@@ -162,7 +124,7 @@ export const ChronicleCardListBase = forwardRef<
       decelerationRate="fast"
       snapToInterval={snapToInterval}
       testID="chronicle-list"
-      onLayout={handleListLayout}
+      onLayout={onLayout}
     />
   )
 })
