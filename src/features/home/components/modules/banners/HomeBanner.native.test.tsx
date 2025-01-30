@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
-import { useBanner } from 'features/forceUpdate/helpers/useBanner'
+import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -29,19 +29,17 @@ jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
 jest.mock('@react-native-firebase/firestore')
-// jest.mock('libs/firebase/firestore/getBanner/getBanner')
-// const mockGetBanner = getBanner as jest.Mock
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('features/forceUpdate/helpers/useBanner')
-const mockUseBanner = useBanner as jest.Mock
+jest.mock('features/forceUpdate/helpers/useRemoteBanner')
+const mockUseRemoteBanner = useRemoteBanner as jest.Mock
 const bannerData = {
   title: 'title 1',
   subtitle: 'subtitle 1',
   redirectionUrl: 'www.test.fr',
   redirectionType: 'external',
 }
-mockUseBanner.mockReturnValue(bannerData)
+mockUseRemoteBanner.mockReturnValue(bannerData)
 
 jest.useFakeTimers()
 const user = userEvent.setup()

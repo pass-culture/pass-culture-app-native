@@ -4,7 +4,9 @@ import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
-export const getBanner = async (): Promise<FirebaseFirestoreTypes.DocumentData | undefined> => {
+export const getRemoteBanner = async (): Promise<
+  FirebaseFirestoreTypes.DocumentData | undefined
+> => {
   try {
     const docSnapshot = await firestoreRemoteStore
       .collection(FIRESTORE_ROOT_COLLECTION)

@@ -1,4 +1,4 @@
-import { getBanner } from 'libs/firebase/firestore/getBanner/getBanner'
+import { getRemoteBanner } from 'libs/firebase/firestore/getRemoteBanner/getRemoteBanner'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring'
@@ -11,9 +11,9 @@ const { collection } = firestore()
 const { get } = collection(FIRESTORE_ROOT_COLLECTION).doc(RemoteStoreDocuments.BANNER)
 const mockGet = get as jest.Mock
 
-describe('getBanner', () => {
+describe('getRemoteBanner', () => {
   it('should call the right firestore collection: banner', () => {
-    getBanner()
+    getRemoteBanner()
 
     expect(collection).toHaveBeenCalledWith('root')
     expect(collection('root').doc).toHaveBeenCalledWith('banner')
@@ -21,7 +21,7 @@ describe('getBanner', () => {
 
   it('should call captureMonitoringError when Firestore throws an error', async () => {
     mockGet.mockRejectedValueOnce(new Error('Firestore error'))
-    getBanner()
+    getRemoteBanner()
 
     await waitFor(() => {
       expect(captureMonitoringError).toHaveBeenCalledWith(

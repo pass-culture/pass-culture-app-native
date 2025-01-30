@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TITLE, BUTTON_TEXT_BANNER } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
-import { useBanner } from 'features/forceUpdate/helpers/useBanner'
+import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { RemoteStoreBannerRedirectionType } from 'libs/firebase/firestore/types'
@@ -12,7 +12,7 @@ import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { TypoDS } from 'ui/theme'
 
 export const ForceUpdateBanner = () => {
-  const { title, subtitle, redirectionUrl, redirectionType } = useBanner()
+  const { title, subtitle, redirectionUrl, redirectionType } = useRemoteBanner()
   const accessibilityLabel =
     redirectionUrl && redirectionType === RemoteStoreBannerRedirectionType.EXTERNAL
       ? `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`

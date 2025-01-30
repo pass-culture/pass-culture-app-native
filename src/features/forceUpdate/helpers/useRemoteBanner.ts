@@ -1,11 +1,11 @@
 import { onlineManager, useQuery } from 'react-query'
 
-import { getBanner } from 'libs/firebase/firestore/getBanner/getBanner'
+import { getRemoteBanner } from 'libs/firebase/firestore/getRemoteBanner/getRemoteBanner'
 import { RemoteStoreBanner } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useBanner = () => {
-  const { data } = useQuery(QueryKeys.BANNER, getBanner, {
+export const useRemoteBanner = () => {
+  const { data } = useQuery(QueryKeys.REMOTE_BANNER, getRemoteBanner, {
     staleTime: 1000 * 30,
     cacheTime: 1000 * 30,
     enabled: onlineManager.isOnline(),

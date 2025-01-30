@@ -1,13 +1,13 @@
-import { useBanner } from 'features/forceUpdate/helpers/useBanner'
-import { getBanner } from 'libs/firebase/firestore/getBanner/getBanner'
+import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
+import { getRemoteBanner } from 'libs/firebase/firestore/getRemoteBanner/getRemoteBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
-jest.mock('libs/firebase/firestore/getBanner/getBanner')
-const mockGetBanner = getBanner as jest.Mock
+jest.mock('libs/firebase/firestore/getRemoteBanner/getBanner')
+const mockGetBanner = getRemoteBanner as jest.Mock
 
-describe('useBanner', () => {
+describe('useRemoteBanner', () => {
   it('should return banner data', async () => {
     mockGetBanner.mockReturnValueOnce({
       title: 'title 1',
@@ -15,7 +15,7 @@ describe('useBanner', () => {
       redirectionUrl: 'www.test.fr',
     })
 
-    const { result } = renderUseBanner()
+    const { result } = renderUseRemoteBanner()
 
     await waitFor(() => {
       expect(result.current).toEqual({
@@ -27,7 +27,7 @@ describe('useBanner', () => {
   })
 })
 
-const renderUseBanner = () =>
-  renderHook(useBanner, {
+const renderUseRemoteBanner = () =>
+  renderHook(useRemoteBanner, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
