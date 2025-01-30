@@ -3,11 +3,9 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { env } from 'libs/environment'
-import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -41,7 +39,6 @@ export function AccessibilityDeclarationMobile() {
           Cette déclaration d’accessibilité s’applique à{SPACE}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="BodyAccentXs"
             wording="l’application iOS"
             icon={ExternalSiteFilled}
             externalNav={IOS_STORE_LINK}
@@ -49,7 +46,6 @@ export function AccessibilityDeclarationMobile() {
           {SPACE}et à{SPACE}
           <ExternalTouchableLink
             as={ButtonInsideText}
-            typography="BodyAccentXs"
             wording="l’application Android"
             icon={ExternalSiteFilled}
             externalNav={ANDROID_STORE_LINK}
@@ -63,8 +59,8 @@ export function AccessibilityDeclarationMobile() {
       <ViewGap gap={6}>
         <TitleText>État de conformité</TitleText>
         <TypoDS.Body>
-          Les applications iOS et Android pass Culture sont non conformes avec à la norme européenne
-          EN 301 549 et au référentiel RAAM.
+          Les applications iOS et Android pass Culture sont non conformes avec la norme européenne
+          EN 301 549 et le référentiel RAAM.
         </TypoDS.Body>
         <TypoDS.Body>
           Un audit d’accessibilité sera réalisé prochainement afin d’identifier et de corriger les
@@ -84,21 +80,17 @@ export function AccessibilityDeclarationMobile() {
         </TypoDS.Body>
       </TitleText>
 
-      <VerticalUl>
-        <BulletListItem text="Contacter l’équipe support à l’adresse ">
-          <TypoDS.BodyXs>
-            <ExternalTouchableLink
-              as={ButtonInsideText}
-              wording="support@passculture.app"
-              typography="BodyAccentXs"
-              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-              justifyContent="flex-start"
-              externalNav={contactSupport.forGenericQuestion}
-              icon={EmailFilled}
-            />
-          </TypoDS.BodyXs>
-        </BulletListItem>
-      </VerticalUl>
+      <TypoDS.Body>
+        Contacter l’équipe support à l’adresse{SPACE}
+        <ExternalTouchableLink
+          as={ButtonInsideText}
+          wording="support@passculture.app"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+          justifyContent="flex-start"
+          externalNav={contactSupport.forGenericQuestion}
+          icon={EmailFilled}
+        />
+      </TypoDS.Body>
 
       <StyledSeparator />
 
@@ -111,38 +103,30 @@ export function AccessibilityDeclarationMobile() {
           empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu
           de réponse satisfaisante.
         </TypoDS.Body>
-        <VerticalUl>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Écrire un message au{SPACE}
-              <ExternalTouchableLink
-                as={ButtonInsideText}
-                typography="BodyAccentXs"
-                wording="Défenseur des droits"
-                icon={ExternalSiteFilled}
-                externalNav={rightsDefenderUrl}
-              />
-            </TypoDS.BodyXs>
-          </BulletListItem>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Contacter le délégué du{SPACE}
-              <ExternalTouchableLink
-                as={ButtonInsideText}
-                typography="BodyAccentXs"
-                wording="Défenseur des droits dans votre région"
-                icon={ExternalSiteFilled}
-                externalNav={rightsDelegateUrl}
-              />
-            </TypoDS.BodyXs>
-          </BulletListItem>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
-              droits Libre réponse 71120 75342 Paris CEDEX 07
-            </TypoDS.BodyXs>
-          </BulletListItem>
-        </VerticalUl>
+        <ViewGap gap={3}>
+          <TypoDS.Body>
+            Écrire un message au{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDefenderUrl}
+            />
+          </TypoDS.Body>
+          <TypoDS.Body>
+            Contacter le délégué du{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits dans votre région"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDelegateUrl}
+            />
+          </TypoDS.Body>
+          <TypoDS.Body>
+            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits
+            Libre réponse 71120 75342 Paris CEDEX 07
+          </TypoDS.Body>
+        </ViewGap>
       </ViewGap>
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>

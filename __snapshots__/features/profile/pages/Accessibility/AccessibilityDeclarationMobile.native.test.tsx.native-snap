@@ -322,9 +322,9 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
+                  height={20}
                   testID="button-icon"
-                  width={16}
+                  width={20}
                 >
                   <Text>
                     button-icon-SVG-Mock
@@ -345,13 +345,13 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
                     [
                       {
                         "color": "#eb0055",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
-                  typography="BodyAccentXs"
+                  typography="Button"
                 >
                   l’application iOS
                 </Text>
@@ -422,9 +422,9 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
+                  height={20}
                   testID="button-icon"
-                  width={16}
+                  width={20}
                 >
                   <Text>
                     button-icon-SVG-Mock
@@ -445,13 +445,13 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
                     [
                       {
                         "color": "#eb0055",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
-                  typography="BodyAccentXs"
+                  typography="Button"
                 >
                   l’application Android
                 </Text>
@@ -510,7 +510,7 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
             ]
           }
         >
-          Les applications iOS et Android pass Culture sont non conformes avec à la norme européenne EN 301 549 et au référentiel RAAM.
+          Les applications iOS et Android pass Culture sont non conformes avec la norme européenne EN 301 549 et le référentiel RAAM.
         </Text>
         <Text
           style={
@@ -570,189 +570,117 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
           Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de l’application pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.
         </Text>
       </Text>
-      <View
-        accessibilityRole="list"
+      <Text
         style={
           [
             {
-              "flexDirection": "column",
-              "paddingLeft": 0,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
             },
           ]
         }
       >
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
+        Contacter l’équipe support à l’adresse
+         
+        <View>
           <View
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "top": 3,
+                  },
+                ],
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Ouvrir le gestionnaire mail pour contacter le support"
           >
             <View
+              paddingForIcon={0}
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "top": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
+                height={20}
+                testID="button-icon"
+                width={20}
               >
                 <Text>
-                  undefined-SVG-Mock
+                  button-icon-SVG-Mock
                 </Text>
               </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Contacter l’équipe support à l’adresse 
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
               <Text
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     },
                   ]
                 }
+                typography="Button"
               >
-                <View>
-                  <View
-                    accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Ouvrir le gestionnaire mail pour contacter le support"
-                  >
-                    <View
-                      paddingForIcon={0}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "top": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={16}
-                        testID="button-icon"
-                        width={16}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            },
-                          ]
-                        }
-                        typography="BodyAccentXs"
-                      >
-                        support@passculture.app
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                support@passculture.app
               </Text>
-            </Text>
+            </View>
           </View>
         </View>
-      </View>
+      </Text>
       <View
         style={
           [
@@ -808,437 +736,253 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
           Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante.
         </Text>
         <View
-          accessibilityRole="list"
+          gap={3}
           style={
             [
               {
-                "flexDirection": "column",
-                "paddingLeft": 0,
+                "gap": 12,
               },
             ]
           }
         >
-          <View
-            accessibilityRole="none"
+          <Text
             style={
               [
                 {
-                  "display": "flex",
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
-              }
-            >
+            Écrire un message au
+             
+            <View>
               <View
+                accessibilityLabel="Défenseur des droits"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
                     {
-                      "height": 25.6,
-                      "justifyContent": "center",
+                      "opacity": 1,
                     },
                   ]
                 }
+                testID="Défenseur des droits"
               >
                 <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
-                }
-              >
-                <Text
+                  paddingForIcon={0}
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "top": 0,
                       },
                     ]
                   }
                 >
-                  Écrire un message au
-                   
-                  <View>
-                    <View
-                      accessibilityLabel="Défenseur des droits"
-                      accessibilityRole="link"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "top": 3,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Défenseur des droits"
-                    >
-                      <View
-                        paddingForIcon={0}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "top": 0,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
-                          testID="button-icon"
-                          width={16}
-                        >
-                          <Text>
-                            button-icon-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
-                          }
-                          typography="BodyAccentXs"
-                        >
-                          Défenseur des droits
-                        </Text>
-                      </View>
-                    </View>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
                   </View>
-                </Text>
-              </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits
+                  </Text>
+                </View>
+              </View>
             </View>
-          </View>
-          <View
-            accessibilityRole="none"
+          </Text>
+          <Text
             style={
               [
                 {
-                  "display": "flex",
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
-              }
-            >
+            Contacter le délégué du
+             
+            <View>
               <View
+                accessibilityLabel="Défenseur des droits dans votre région"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
                     {
-                      "height": 25.6,
-                      "justifyContent": "center",
+                      "opacity": 1,
                     },
                   ]
                 }
+                testID="Défenseur des droits dans votre région"
               >
                 <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
-                }
-              >
-                <Text
+                  paddingForIcon={0}
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "top": 0,
                       },
                     ]
                   }
                 >
-                  Contacter le délégué du
-                   
-                  <View>
-                    <View
-                      accessibilityLabel="Défenseur des droits dans votre région"
-                      accessibilityRole="link"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "top": 3,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Défenseur des droits dans votre région"
-                    >
-                      <View
-                        paddingForIcon={0}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "top": 0,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
-                          testID="button-icon"
-                          width={16}
-                        >
-                          <Text>
-                            button-icon-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
-                          }
-                          typography="BodyAccentXs"
-                        >
-                          Défenseur des droits dans votre région
-                        </Text>
-                      </View>
-                    </View>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
                   </View>
-                </Text>
-              </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits dans votre région
+                  </Text>
+                </View>
+              </View>
             </View>
-          </View>
-          <View
-            accessibilityRole="none"
+          </Text>
+          <Text
             style={
               [
                 {
-                  "display": "flex",
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                 },
               ]
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
-                </Text>
-              </Text>
-            </View>
-          </View>
+            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
+          </Text>
         </View>
       </View>
       <View
