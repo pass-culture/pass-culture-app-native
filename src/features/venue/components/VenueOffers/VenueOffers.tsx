@@ -10,6 +10,8 @@ import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffe
 import type { VenueOffersArtists, VenueOffers } from 'features/venue/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { Spacer } from 'ui/theme'
 
@@ -18,6 +20,10 @@ export interface VenueOffersProps {
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
   playlists?: GtlPlaylistData[]
+  mapping: CategoryIdMapping
+  labelMapping: CategoryHomeLabelMapping
+  currency: Currency
+  euroToPacificFrancRate: number
 }
 
 const LoadingState: React.FC = () => (
@@ -32,6 +38,10 @@ export function VenueOffers({
   venueArtists,
   venueOffers,
   playlists,
+  mapping,
+  labelMapping,
+  currency,
+  euroToPacificFrancRate,
 }: Readonly<VenueOffersProps>) {
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
   const { isLoading: arePlaylistsLoading } = useGTLPlaylists({
@@ -61,6 +71,10 @@ export function VenueOffers({
       venueArtists={venueArtists}
       venueOffers={venueOffers}
       playlists={playlists}
+      mapping={mapping}
+      labelMapping={labelMapping}
+      currency={currency}
+      euroToPacificFrancRate={euroToPacificFrancRate}
     />
   )
 }

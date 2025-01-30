@@ -13,8 +13,8 @@ export type HeadlineOfferBaseProps = {
   imageUrl: string
   categoryId: CategoryIdEnum
   category: string
-  offerTitle: string
   price: string
+  offerTitle?: string
   distance?: string
 }
 

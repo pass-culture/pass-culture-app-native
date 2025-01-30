@@ -77,7 +77,7 @@ export const offerResponseSnap = toMutable({
   ],
   images: {
     recto: {
-      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
+      url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
       credit: 'Author: photo credit author',
     },
   },
