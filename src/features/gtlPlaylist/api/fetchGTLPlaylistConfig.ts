@@ -7,7 +7,9 @@ import { GtlPlaylist } from 'libs/contentful/types'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 
-const PARAMS = `?include=2&content_type=gtlPlaylist&access_token=${env.CONTENTFUL_PUBLIC_ACCESS_TOKEN}`
+const DEPTH_LEVEL = 2 // ajouter un com explicatif
+
+const PARAMS = `?include=${DEPTH_LEVEL}&content_type=gtlPlaylist&access_token=${env.CONTENTFUL_PUBLIC_ACCESS_TOKEN}`
 const URL = `${CONTENTFUL_BASE_URL}/entries${PARAMS}`
 
 export async function fetchGTLPlaylistConfig() {
