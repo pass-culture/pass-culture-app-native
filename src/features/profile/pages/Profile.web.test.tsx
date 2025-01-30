@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -17,7 +18,9 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
 describe('<Profile/>', () => {
-  beforeEach(() => setFeatureFlags())
+  beforeEach(() => {
+    setFeatureFlags()
+  })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
@@ -58,6 +61,42 @@ describe('<Profile/>', () => {
     await screen.findByText('Centre d’aide')
 
     expect(container).toMatchSnapshot()
+  })
+
+  describe('if enableCreditV3 is true', () => {
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
+
+    it('should see "17 ou 18"', async () => {
+      render(reactQueryProviderHOC(<Profile />), {
+        theme: { isDesktopViewport: true },
+      })
+
+      const text = await screen.findByText(
+        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as 17 ou 18 ans.'
+      )
+
+      expect(text).toBeTruthy()
+    })
+  })
+
+  describe('if enableCreditV3 is false', () => {
+    beforeEach(() => {
+      setSettings()
+    })
+
+    it('should see "15 et 18"', async () => {
+      render(reactQueryProviderHOC(<Profile />), {
+        theme: { isDesktopViewport: true },
+      })
+
+      const text = await screen.findByText(
+        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+      )
+
+      expect(text).toBeTruthy()
+    })
   })
 })
 
