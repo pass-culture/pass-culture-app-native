@@ -1,39 +1,38 @@
 import colorAlpha from 'color-alpha'
-import React, { PropsWithChildren } from 'react'
+import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
-import { TypoDS, getSpacing } from 'ui/theme'
 
-type HeadlineOfferProps = PropsWithChildren & {
+import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
+import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
+
+const HEADLINE_OFFER_LARGE_VIEWPORT = 327
+const HEADLINE_OFFER_SMALL_VIEWPORT = 245
+
+export type HeadlineOfferBaseProps = {
   imageUrl: string
   categoryId: CategoryIdEnum
   category: string
-  offerTitle: string
   price: string
+  offerTitle?: string
+  distance?: string
 }
 
-export const HeadlineOffer = ({
-  imageUrl,
-  categoryId,
-  category,
-  offerTitle,
-  price,
-}: HeadlineOfferProps) => {
+export const HeadlineOffer: FunctionComponent<HeadlineOfferBaseProps> = (props) => {
+  const { isDesktopViewport } = useTheme()
+  const HeadlineOfferContent = isDesktopViewport
+    ? HeadlineOfferLargeViewport
+    : HeadlineOfferSmallViewport
   return (
     <Container>
-      <BackgroundImage url={imageUrl} />
+      <BackgroundImage url={props.imageUrl} />
       <Gradient />
-      <StyledHorizontalTile categoryId={categoryId} imageUrl={imageUrl}>
-        <InfoContainer>
-          <LightGreyText>{category}</LightGreyText>
-          <Title numberOfLines={2}>{offerTitle}</Title>
-          <LightGreyText>{price}</LightGreyText>
-        </InfoContainer>
-      </StyledHorizontalTile>
+      <StyledView>
+        <HeadlineOfferContent {...props} />
+      </StyledView>
     </Container>
   )
 }
@@ -41,10 +40,9 @@ export const HeadlineOffer = ({
 const Container = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.tile,
   overflow: 'hidden',
-  height: 245,
+  height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
   width: '100%',
   justifyContent: 'end',
-  padding: getSpacing(4),
 }))
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
@@ -63,22 +61,11 @@ const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   zIndex: 1,
 })
 
-const StyledHorizontalTile = styled(HorizontalTile)({
+const StyledView = styled.View({
+  height: '100%',
   position: 'relative',
   zIndex: 2,
 })
-
-const InfoContainer = styled.View({
-  flex: 1,
-})
-
-const LightGreyText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyMedium,
-}))
-
-const Title = styled(TypoDS.BodyAccent)(({ theme }) => ({
-  color: theme.colors.white,
-}))
 
 const BackgroundImage = styled(Image).attrs({
   resizeMode: 'cover',

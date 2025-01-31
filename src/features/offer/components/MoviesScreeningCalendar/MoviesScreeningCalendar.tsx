@@ -13,7 +13,7 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -47,7 +47,6 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={4} />
       <MovieCalendarProvider initialDates={next15Dates}>
         <VenueCalendar venueOffers={venueOffers} offerIds={offerIds} />
       </MovieCalendarProvider>

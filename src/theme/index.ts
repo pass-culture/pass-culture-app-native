@@ -105,6 +105,10 @@ export const theme = {
         width: getSpacing(24),
         height: getSpacing(36),
       },
+      xLarge: {
+        width: getSpacing(36.5),
+        height: getSpacing(55),
+      },
     },
   },
   designSystem: designTokens,

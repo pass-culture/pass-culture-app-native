@@ -1,8 +1,8 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
-import { HeadlineOffer } from 'ui/components/HeadlineOffer/HeadlineOffer'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof HeadlineOffer> = {
@@ -16,9 +16,10 @@ const variantConfig: Variants<typeof HeadlineOffer> = [
     label: 'HeadlineOffer default',
     props: {
       category: 'Livre',
-      offerTitle: 'One Piece Tome 108, hahahahhahahahahhahahahahahahahahahahhahahaha',
+      offerTitle: 'One Piece Tome 108',
       imageUrl: SHARE_APP_IMAGE_SOURCE,
       price: '7,20€',
+      distance: '500m',
     },
   },
 ]
