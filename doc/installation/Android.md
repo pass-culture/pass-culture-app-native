@@ -33,6 +33,8 @@ In the `.env.local` file, add
 KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
 ```
 
+then in your terminal run :
+
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
 ./scripts/setup_android_create_emulators.sh # this can take several minutes (~4 minutes)
