@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { BUTTON_TEXT_SCREEN, DESCRIPTION, TITLE } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -12,7 +13,6 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { TypoDS } from 'ui/theme'
-import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 const isWeb = Platform.OS === 'web'
 
