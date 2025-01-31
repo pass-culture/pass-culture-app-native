@@ -10,22 +10,6 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Les engagements du pass Culture'
 - assertVisible:
     id: 'AccessibilityEngagement'
-
-- runFlow:
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    text: 'Parcours recommandés'
-    index: 1
-- assertVisible: 'Parcours recommandés'
-- runFlow:
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    text: 'Déclaration d’accessibilité'
-    index: 1
-- assertVisible:
-    id: 'AccessibilityDeclaration'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
@@ -35,6 +19,27 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Schéma pluriannuel'
 - assertVisible:
     id: 'AccessibilityActionPlan'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- tapOn:
+    text: "Déclaration d’accessibilité des\_applications\_iOS\_et\_Android"
+    index: 1
+- assertVisible: 'Déclaration d’accessibilité mobile'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- tapOn:
+    text: "Déclaration d’accessibilité de\_la\_version\_web"
+    index: 1
+- assertVisible: 'Déclaration d’accessibilité web'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- tapOn:
+    text: "Parcours recommandés de\_la\_version\_web"
+    index: 1
+- assertVisible: 'Parcours recommandés'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 

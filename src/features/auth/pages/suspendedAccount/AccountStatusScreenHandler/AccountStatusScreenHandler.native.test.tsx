@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { render, screen } from 'tests/utils'
@@ -18,7 +19,6 @@ jest.mock('features/auth/api/useAccountUnsuspend', () => ({
   useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
 }))
 jest.mock('features/navigation/helpers/useCurrentRoute')
-jest.mock('features/auth/context/SettingsContext')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
@@ -33,6 +33,10 @@ function mockUseCurrentRoute(name: string) {
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AccountStatusScreenHandler />', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<AccountStatusScreenHandler />)

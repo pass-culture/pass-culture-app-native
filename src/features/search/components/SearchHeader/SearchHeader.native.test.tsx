@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -47,8 +48,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/auth/context/SettingsContext')
-
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 jest.useFakeTimers()
@@ -57,6 +56,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 describe('SearchHeader component', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should render SearchHeader', async () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 

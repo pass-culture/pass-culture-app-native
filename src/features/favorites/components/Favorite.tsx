@@ -12,7 +12,8 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -45,10 +46,15 @@ export const Favorite: React.FC<Props> = (props) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
-  const distanceToOffer = useDistance({
-    lat: offer.coordinates?.latitude,
-    lng: offer.coordinates?.longitude,
-  })
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
+  const distanceToOffer = getDistance(
+    {
+      lat: offer.coordinates?.latitude,
+      lng: offer.coordinates?.longitude,
+    },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 

@@ -5,8 +5,8 @@ import { Share } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import * as SettingsContext from 'features/auth/context/SettingsContext'
-import { CURRENT_DATE, defaultSettings } from 'features/auth/fixtures/fixtures'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
@@ -52,8 +52,6 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
   refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
-
-const mockUseSettingContext = jest.spyOn(SettingsContext, 'useSettingsContext')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
@@ -300,6 +298,10 @@ describe('Profile component', () => {
   })
 
   describe('help section', () => {
+    beforeEach(() => {
+      setSettings()
+    })
+
     it('should navigate to EligibleUserAgeSelection when tutorial row is clicked and user is not logged in', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       renderProfile()
@@ -323,10 +325,7 @@ describe('Profile component', () => {
     })
 
     it('should navigate to Age Information V3 when tutorial row is clicked, user is logged in and enableCreditV3 is true', async () => {
-      mockUseSettingContext.mockReturnValueOnce({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
 
       mockdate.set(CURRENT_DATE)
       renderProfile()

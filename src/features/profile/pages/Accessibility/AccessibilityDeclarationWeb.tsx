@@ -15,7 +15,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const webappUrl = { url: WEBAPP_V2_URL }
@@ -34,9 +34,9 @@ const accessibilityUrl = { url: `${WEBAPP_V2_URL}/accessibilite/declaration` }
 const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
-export function AccessibilityDeclaration() {
+export function AccessibilityDeclarationWeb() {
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité web" enableMaxWidth={false}>
       <TypoDS.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
@@ -48,7 +48,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 icon={PlainArrowNext}
                 navigateTo={{ screen: 'AccessibilityActionPlan' }}
@@ -59,7 +58,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Actions réalisées depuis 2022"
                 icon={PlainArrowNext}
                 navigateTo={{ screen: 'AccessibilityActionPlan' }}
@@ -70,7 +68,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Plan d’actions 2024"
                 icon={PlainArrowNext}
                 navigateTo={{ screen: 'AccessibilityActionPlan' }}
@@ -80,10 +77,9 @@ export function AccessibilityDeclaration() {
         </VerticalUl>
       </StyledView>
       <TypoDS.Body>
-        Cette déclaration d’accessibilité s’applique au site internet{' '}
+        Cette déclaration d’accessibilité s’applique au site internet{SPACE}
         <ExternalTouchableLink
           as={ButtonInsideText}
-          typography="BodyAccentXs"
           wording="https://passculture.app/"
           icon={ExternalSiteFilled}
           externalNav={webappUrl}
@@ -208,7 +204,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Accueil"
                 icon={ExternalSiteFilled}
                 externalNav={homeUrl}
@@ -219,7 +214,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Connexion"
                 icon={ExternalSiteFilled}
                 externalNav={loginUrl}
@@ -230,7 +224,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Inscription - Date de naissance"
                 icon={ExternalSiteFilled}
                 externalNav={signupUrl}
@@ -241,7 +234,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Vérification d’identité"
                 icon={ExternalSiteFilled}
                 externalNav={identityCheckUrl}
@@ -252,7 +244,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Profil"
                 icon={ExternalSiteFilled}
                 externalNav={profileUrl}
@@ -263,7 +254,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Modification de mot de passe"
                 icon={ExternalSiteFilled}
                 externalNav={changePasswordUrl}
@@ -274,7 +264,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Recherche"
                 icon={ExternalSiteFilled}
                 externalNav={searchUrl}
@@ -285,7 +274,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Filtres"
                 icon={ExternalSiteFilled}
                 externalNav={filterUrl}
@@ -296,7 +284,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Résultats de recherche"
                 icon={ExternalSiteFilled}
                 externalNav={searchResultsUrl}
@@ -307,7 +294,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Favoris"
                 icon={ExternalSiteFilled}
                 externalNav={favoritesUrl}
@@ -318,7 +304,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Détails d’une offre"
                 icon={ExternalSiteFilled}
                 externalNav={offerUrl}
@@ -329,7 +314,6 @@ export function AccessibilityDeclaration() {
             <TypoDS.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
-                typography="BodyAccentXs"
                 wording="Déclaration d’accessibilité"
                 icon={ExternalSiteFilled}
                 externalNav={accessibilityUrl}
@@ -338,7 +322,8 @@ export function AccessibilityDeclaration() {
           </BulletListItem>
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>
+      <StyledSeparator />
+      <TitleText>
         Retour d’information et contact
         {DOUBLE_LINE_BREAK}
         <TypoDS.Body>
@@ -346,27 +331,24 @@ export function AccessibilityDeclaration() {
           responsable de l’application pour être orienté vers une alternative accessible ou obtenir
           le contenu sous une autre forme.
         </TypoDS.Body>
-      </TypoDS.BodyAccent>
-      <StyledView>
-        <VerticalUl>
-          <BulletListItem text="Contacter l’équipe support à l’adresse ">
-            <TypoDS.BodyXs>
-              <ExternalTouchableLink
-                as={ButtonInsideText}
-                wording="support@passculture.app"
-                typography="BodyAccentXs"
-                accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-                justifyContent="flex-start"
-                externalNav={contactSupport.forGenericQuestion}
-                icon={EmailFilled}
-              />
-            </TypoDS.BodyXs>
-          </BulletListItem>
-        </VerticalUl>
-        <StyledSeparator />
-        <TitleText>Voie de recours</TitleText>
-      </StyledView>
+      </TitleText>
+
+      <TypoDS.Body>
+        Contacter l’équipe support à l’adresse{SPACE}
+        <ExternalTouchableLink
+          as={ButtonInsideText}
+          wording="support@passculture.app"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+          justifyContent="flex-start"
+          externalNav={contactSupport.forGenericQuestion}
+          icon={EmailFilled}
+        />
+      </TypoDS.Body>
+
+      <StyledSeparator />
+
       <ViewGap gap={6}>
+        <TitleText>Voie de recours</TitleText>
         <TypoDS.Body>
           Cette procédure est à utiliser dans le cas suivant&nbsp;:
           {DOUBLE_LINE_BREAK}
@@ -374,38 +356,30 @@ export function AccessibilityDeclaration() {
           empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu
           de réponse satisfaisante.
         </TypoDS.Body>
-        <VerticalUl>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Écrire un message au{' '}
-              <ExternalTouchableLink
-                as={ButtonInsideText}
-                typography="BodyAccentXs"
-                wording="Défenseur des droits"
-                icon={ExternalSiteFilled}
-                externalNav={rightsDefenderUrl}
-              />
-            </TypoDS.BodyXs>
-          </BulletListItem>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Contacter le délégué du{' '}
-              <ExternalTouchableLink
-                as={ButtonInsideText}
-                typography="BodyAccentXs"
-                wording="Défenseur des droits dans votre région"
-                icon={ExternalSiteFilled}
-                externalNav={rightsDelegateUrl}
-              />
-            </TypoDS.BodyXs>
-          </BulletListItem>
-          <BulletListItem>
-            <TypoDS.BodyXs>
-              Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
-              droits Libre réponse 71120 75342 Paris CEDEX 07
-            </TypoDS.BodyXs>
-          </BulletListItem>
-        </VerticalUl>
+        <ViewGap gap={3}>
+          <TypoDS.Body>
+            Écrire un message au{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDefenderUrl}
+            />
+          </TypoDS.Body>
+          <TypoDS.Body>
+            Contacter le délégué du{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits dans votre région"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDelegateUrl}
+            />
+          </TypoDS.Body>
+          <TypoDS.Body>
+            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits
+            Libre réponse 71120 75342 Paris CEDEX 07
+          </TypoDS.Body>
+        </ViewGap>
       </ViewGap>
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>

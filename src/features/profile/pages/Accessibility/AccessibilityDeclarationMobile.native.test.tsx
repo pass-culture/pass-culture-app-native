@@ -1,11 +1,13 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { AccessibilityDeclaration } from 'features/profile/pages/Accessibility/AccessibilityDeclaration'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobile'
+import { env } from 'libs/environment'
 import { render, userEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
+const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
+const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -18,28 +20,21 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('AccessibilityDeclaration', () => {
+describe('AccessibilityDeclarationMobile', () => {
   it('should render correctly', () => {
-    render(<AccessibilityDeclaration />)
+    render(<AccessibilityDeclarationMobile />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it.each`
     url                                                    | title
-    ${`${WEBAPP_V2_URL}/accueil`}                          | ${'Accueil'}
-    ${`${WEBAPP_V2_URL}/creation-compte`}                  | ${'Inscription - Date de naissance'}
-    ${`${WEBAPP_V2_URL}/connexion`}                        | ${'Connexion'}
-    ${`${WEBAPP_V2_URL}/verification-identite`}            | ${'Vérification d’identité'}
-    ${`${WEBAPP_V2_URL}/profil`}                           | ${'Profil'}
-    ${`${WEBAPP_V2_URL}/profil/modification-mot-de-passe`} | ${'Modification de mot de passe'}
-    ${`${WEBAPP_V2_URL}/favoris`}                          | ${'Favoris'}
-    ${`${WEBAPP_V2_URL}/recherche`}                        | ${'Recherche'}
-    ${`${WEBAPP_V2_URL}/accessibilite/declaration`}        | ${'Déclaration d’accessibilité'}
+    ${IOS_STORE_LINK}                                      | ${'l’application iOS'}
+    ${ANDROID_STORE_LINK}                                  | ${'l’application Android'}
     ${'https://formulaire.defenseurdesdroits.fr/'}         | ${'Défenseur des droits'}
     ${'https://www.defenseurdesdroits.fr/saisir/delegues'} | ${'Défenseur des droits dans votre région'}
   `('should open $url when $title is clicked', async ({ url, title }) => {
-    render(<AccessibilityDeclaration />)
+    render(<AccessibilityDeclarationMobile />)
 
     const link = screen.getByTestId(title)
     await user.press(link)

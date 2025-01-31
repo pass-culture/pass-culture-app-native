@@ -1,3 +1,4 @@
+import { useNavigationState } from '@react-navigation/native'
 import React, { useMemo } from 'react'
 import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,7 +7,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
+import { LocationMode } from 'libs/location/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -46,13 +49,29 @@ export const HorizontalOfferTile = ({
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
+  const { geolocPosition, userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, prices, thumbUrl, name } = offerDetails
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes?.[routes?.length - 1]?.name
+
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
-  const distanceToOffer = useDistance(_geoloc)
+
+  const userPosition =
+    currentRoute === 'SearchResults' &&
+    selectedLocationMode === LocationMode.EVERYWHERE &&
+    geolocPosition
+      ? geolocPosition
+      : userLocation
+
+  const distanceToOffer = getDistance(_geoloc, {
+    userLocation: userPosition,
+    selectedPlace,
+    selectedLocationMode,
+  })
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
@@ -144,7 +163,9 @@ export const HorizontalOfferTile = ({
               ))}
             {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
           </Column>
-          {distanceToOffer ? <DistanceTag label={`à ${distanceToOffer}`} /> : null}
+          {distanceToOffer ? (
+            <DistanceTag testID="distance_tag" label={`à ${distanceToOffer}`} />
+          ) : null}
         </Row>
       </StyledHorizontalTile>
     </Container>

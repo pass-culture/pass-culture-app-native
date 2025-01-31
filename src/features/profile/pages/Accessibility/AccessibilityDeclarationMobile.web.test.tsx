@@ -2,15 +2,15 @@ import React from 'react'
 
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { AccessibilityDeclaration } from './AccessibilityDeclaration'
+import { AccessibilityDeclarationMobile } from './AccessibilityDeclarationMobile'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('<AccessibilityDeclaration />', () => {
+describe('<AccessibilityDeclarationMobile />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<AccessibilityDeclaration />)
+      const { container } = render(<AccessibilityDeclarationMobile />)
 
       const results = await checkAccessibilityFor(container)
 

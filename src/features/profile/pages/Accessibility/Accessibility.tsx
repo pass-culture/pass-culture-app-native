@@ -22,21 +22,27 @@ const sections = [
   />,
   <StyledSectionRow
     key={2}
-    title="Parcours recommandés"
-    type="navigable"
-    navigateTo={{ screen: 'RecommendedPaths' }}
-  />,
-  <StyledSectionRow
-    key={3}
-    title="Déclaration d’accessibilité"
-    type="navigable"
-    navigateTo={{ screen: 'AccessibilityDeclaration' }}
-  />,
-  <StyledSectionRow
-    key={4}
     title="Schéma pluriannuel"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityActionPlan' }}
+  />,
+  <StyledSectionRow
+    key={3}
+    title="Déclaration d’accessibilité des&nbsp;applications&nbsp;iOS&nbsp;et&nbsp;Android"
+    type="navigable"
+    navigateTo={{ screen: 'AccessibilityDeclarationMobile' }}
+  />,
+  <StyledSectionRow
+    key={4}
+    title="Déclaration d’accessibilité de&nbsp;la&nbsp;version&nbsp;web"
+    type="navigable"
+    navigateTo={{ screen: 'AccessibilityDeclarationWeb' }}
+  />,
+  <StyledSectionRow
+    key={5}
+    title="Parcours recommandés de&nbsp;la&nbsp;version&nbsp;web"
+    type="navigable"
+    navigateTo={{ screen: 'RecommendedPaths' }}
   />,
 ]
 

@@ -23,7 +23,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   cardWidth,
 }) => {
   return (
-    <Container gap={3} testID={`chronicle-${id.toString()}`} width={cardWidth}>
+    <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
       <InfoHeader
         title={title}
         subtitle={subtitle}

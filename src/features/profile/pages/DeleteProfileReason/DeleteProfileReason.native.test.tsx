@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
@@ -10,7 +11,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/context/SettingsContext')
 
 const signOutMock = jest.fn()
 jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
@@ -30,6 +30,7 @@ jest.useFakeTimers()
 describe('<DeleteProfileReason />', () => {
   beforeEach(() => {
     jest.setSystemTime(new Date('2020-01-01'))
+    setSettings()
   })
 
   it('should match snapshot', () => {

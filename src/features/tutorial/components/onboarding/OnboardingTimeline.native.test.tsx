@@ -1,7 +1,6 @@
 import React from 'react'
 
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -58,10 +57,7 @@ describe('OnboardingTimeline', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-        data: { ...defaultSettings, wipEnableCreditV3: true },
-        isLoading: false,
-      })
+      setSettings({ wipEnableCreditV3: true })
     })
 
     it('should not display fifteen years old block', () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -14,7 +15,6 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { ForgottenPassword } from './ForgottenPassword'
 
 jest.mock('features/navigation/helpers/navigateToHome')
-jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 jest.useFakeTimers()
 jest.mock('libs/network/NetInfoWrapper')
@@ -35,6 +35,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<ForgottenPassword />', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should match snapshot', () => {
     renderForgottenPassword()
 

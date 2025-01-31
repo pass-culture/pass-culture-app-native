@@ -186,8 +186,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
   logConsultAchievementModal: (params: { achievementName: string; state: 'unlocked' | 'locked' }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENT_MODAL }, params),
-  logConsultAchievementsSuccessModal: (name: AchievementEnum[]) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL }, { name }),
+  logConsultAchievementsSuccessModal: (achievementName: AchievementEnum[]) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL },
+      { achievementName }
+    ),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL },

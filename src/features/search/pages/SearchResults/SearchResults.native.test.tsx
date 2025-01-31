@@ -12,11 +12,13 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ILocationContext, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -29,43 +31,39 @@ const mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 const mockDispatch = jest.fn()
-const mockIsFocusOnSuggestions = false
 
-const mockUseSearch = jest.fn(() => ({
+const DEFAULT_MOCK_USE_SEARCH = {
   searchState: mockSearchState,
   dispatch: mockDispatch,
-  isFocusOnSuggestions: mockIsFocusOnSuggestions,
+  isFocusOnSuggestions: false,
   hideSuggestions: jest.fn(),
-}))
+}
+const mockUseSearch = jest.fn(() => DEFAULT_MOCK_USE_SEARCH)
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
+const initialSearchResults = {
+  data: undefined,
+  hits: [],
+  nbHits: 0,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: true,
+  fetchNextPage: jest.fn(),
+  isFetchingNextPage: false,
+  refetch: jest.fn(),
+}
 
+const mockUseSearchResults = jest.fn(() => initialSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: [],
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-  }),
+  useSearchResults: () => mockUseSearchResults(),
 }))
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: () => ({
     filteredHistory: [],
@@ -180,27 +178,30 @@ mockUseSearchHistory.mockReturnValue({
 })
 
 const searchId = uuidv4()
+const DEFAULT_USER_LOCATION: Position | undefined = { latitude: 5.16186, longitude: -52.669736 }
 
-const mockedPlace: SuggestedPlace = {
+const MOCKED_PLACE: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   type: 'street',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+  geolocation: DEFAULT_USER_LOCATION,
 }
 
-const mockSetPlace = jest.fn()
-const mockSetSelectedLocationMode = jest.fn()
-const mockHasGeolocPosition = false
+const AROUND_PLACE_USER_POSITION: Partial<ILocationContext> = {
+  setPlace: jest.fn(),
+  onModalHideRef: { current: jest.fn() },
+  setSelectedLocationMode: jest.fn(),
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedLocationMode: LocationMode.AROUND_PLACE,
+  geolocPosition: undefined,
+  place: MOCKED_PLACE,
+  selectedPlace: MOCKED_PLACE,
+  hasGeolocPosition: false,
+}
 
+const mockUseLocation = jest.fn(() => AROUND_PLACE_USER_POSITION)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    setPlace: mockSetPlace,
-    place: mockedPlace,
-    onModalHideRef: jest.fn(),
-    isCurrentLocationMode: jest.fn(),
-    setSelectedLocationMode: mockSetSelectedLocationMode,
-    hasGeolocPosition: mockHasGeolocPosition,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockedEmptyHistory = {
@@ -219,17 +220,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<SearchResults/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
-    mockUseSearch.mockReturnValue({
-      searchState: mockSearchState,
-      dispatch: mockDispatch,
-      isFocusOnSuggestions: false,
-      hideSuggestions: jest.fn(),
-    })
+    mockUseSearch.mockReturnValue(DEFAULT_MOCK_USE_SEARCH)
   })
 
   it('should render SearchResults', async () => {
@@ -237,24 +235,17 @@ describe('<SearchResults/>', () => {
 
     await screen.findByText('Rechercher')
 
-    await act(() => {})
-
     expect(screen).toMatchSnapshot()
   })
 
   describe('When SearchResults is focus on suggestions', () => {
     beforeEach(() => {
-      mockUseSearch.mockReturnValue({
-        searchState: mockSearchState,
-        dispatch: mockDispatch,
-        isFocusOnSuggestions: true,
-        hideSuggestions: jest.fn(),
-      })
+      mockUseSearch.mockReturnValue({ ...DEFAULT_MOCK_USE_SEARCH, isFocusOnSuggestions: true })
     })
 
     it('should display offer suggestions', async () => {
       render(<SearchResults />)
-      await act(async () => {})
+      await screen.findByText('Rechercher')
 
       expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
@@ -262,7 +253,8 @@ describe('<SearchResults/>', () => {
 
     it('should display venue suggestions', async () => {
       render(<SearchResults />)
-      await act(async () => {})
+
+      await screen.findByText('Rechercher')
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
@@ -270,11 +262,9 @@ describe('<SearchResults/>', () => {
 
     it('should handle venue press', async () => {
       render(<SearchResults />)
-      await act(async () => {})
+      await screen.findByText('Rechercher')
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
-
-      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+      await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',
@@ -292,7 +282,8 @@ describe('<SearchResults/>', () => {
       }
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(<SearchResults />)
-      await act(async () => {})
+
+      await screen.findByText('Rechercher')
 
       const scrollView = screen.getByTestId('autocompleteScrollView')
       // 1st scroll to bottom => trigger
@@ -304,18 +295,19 @@ describe('<SearchResults/>', () => {
     it('should display search history when it has items', async () => {
       mockdate.set(TODAY_DATE)
       render(<SearchResults />)
-      await act(async () => {})
+      await screen.findByText('Rechercher')
 
       expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
     })
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
-      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
-      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory
+        .mockReturnValueOnce(mockedEmptyHistory)
+        .mockReturnValueOnce(mockedEmptyHistory)
+        .mockReturnValueOnce(mockedEmptyHistory)
       render(<SearchResults />)
-      await act(async () => {})
+      await screen.findByText('Rechercher')
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
@@ -324,9 +316,9 @@ describe('<SearchResults/>', () => {
       mockdate.set(TODAY_DATE)
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(<SearchResults />)
-      await act(async () => {})
+      await screen.findByText('Rechercher')
 
-      fireEvent.press(screen.getByText('manga'))
+      await user.press(screen.getByText('manga'))
 
       expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
     })
@@ -335,9 +327,9 @@ describe('<SearchResults/>', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchResults />)
-        await act(async () => {})
+        await screen.findByText('Rechercher')
 
-        fireEvent.press(screen.getByText('manga'))
+        await user.press(screen.getByText('manga'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -357,9 +349,9 @@ describe('<SearchResults/>', () => {
       it('When it has category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchResults />)
-        await act(async () => {})
+        await screen.findByText('Rechercher')
 
-        fireEvent.press(screen.getByText('tolkien'))
+        await user.press(screen.getByText('tolkien'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -379,9 +371,9 @@ describe('<SearchResults/>', () => {
       it('When it has only a category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchResults />)
-        await act(async () => {})
+        await screen.findByText('Rechercher')
 
-        fireEvent.press(screen.getByText('foresti'))
+        await user.press(screen.getByText('foresti'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -407,10 +399,10 @@ describe('<SearchResults/>', () => {
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
       render(reactQueryProviderHOC(<SearchResults />))
-      await act(async () => {})
-      await act(async () => {})
 
-      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      })
     })
   })
 })
