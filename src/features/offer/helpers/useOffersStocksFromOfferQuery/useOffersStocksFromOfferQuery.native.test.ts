@@ -5,7 +5,6 @@ import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersS
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const TODAY = dateBuilder().withDay(2).withHours(6)
@@ -90,7 +89,4 @@ describe('useOffersStocksFromOfferQuery', () => {
 
 const renderUseOffersStocksFromOfferQuery = (
   ...params: Parameters<typeof useOffersStocksFromOfferQuery>
-) =>
-  renderHook(() => useOffersStocksFromOfferQuery(...params), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+) => renderHook(() => useOffersStocksFromOfferQuery(...params))

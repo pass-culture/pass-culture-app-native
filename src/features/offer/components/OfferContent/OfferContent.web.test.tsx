@@ -13,7 +13,6 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor, userEvent } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -70,13 +69,11 @@ function renderOfferContent({
   isDesktopViewport = false,
 }: RenderOfferContentType) {
   return render(
-    reactQueryProviderHOC(
-      <OfferContent
-        offer={offer}
-        searchGroupList={PLACEHOLDER_DATA.searchGroups}
-        subcategory={subcategory}
-      />
-    ),
+    <OfferContent
+      offer={offer}
+      searchGroupList={PLACEHOLDER_DATA.searchGroups}
+      subcategory={subcategory}
+    />,
     {
       theme: { isDesktopViewport },
     }

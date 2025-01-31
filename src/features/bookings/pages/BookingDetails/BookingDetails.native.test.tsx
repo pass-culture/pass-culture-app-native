@@ -22,7 +22,6 @@ import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -678,5 +677,5 @@ function renderBookingDetails(booking?: Booking, options = {}) {
     error: undefined,
     ...options,
   } as unknown as UseQueryResult<BookingReponse | null>)
-  return render(reactQueryProviderHOC(<BookingDetails />))
+  return render(<BookingDetails />)
 }

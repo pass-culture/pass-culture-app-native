@@ -9,7 +9,6 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -373,7 +372,5 @@ describe('useThematicSubscription', () => {
 })
 
 function renderUseThematicSubscription(props: useThematicSubscriptionProps) {
-  return renderHook(() => useThematicSubscription(props), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return renderHook(() => useThematicSubscription(props))
 }

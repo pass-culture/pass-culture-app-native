@@ -9,7 +9,6 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { env } from 'libs/environment/env'
 import { EmptyResponse } from 'libs/fetch'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
@@ -110,5 +109,5 @@ describe('FavoritesResults component', () => {
 })
 
 function renderFavoritesResults() {
-  return render(reactQueryProviderHOC(<FavoritesResults />))
+  return render(<FavoritesResults />)
 }

@@ -4,7 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext, LocationMode } from 'libs/location/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
@@ -100,4 +99,4 @@ describe('VenueTile component', () => {
 })
 
 const renderVenueTile = (additionalProps: Partial<VenueTileProps> = {}) =>
-  render(reactQueryProviderHOC(<VenueTile {...props} {...additionalProps} />))
+  render(<VenueTile {...props} {...additionalProps} />)

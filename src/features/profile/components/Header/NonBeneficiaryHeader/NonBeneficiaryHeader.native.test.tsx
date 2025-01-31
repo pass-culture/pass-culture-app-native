@@ -15,7 +15,6 @@ import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -265,9 +264,6 @@ function renderNonBeneficiaryHeader({
       featureFlags={featureFlags}
       eligibilityStartDatetime={startDatetime}
       eligibilityEndDatetime={endDatetime}
-    />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
+    />
   )
 }

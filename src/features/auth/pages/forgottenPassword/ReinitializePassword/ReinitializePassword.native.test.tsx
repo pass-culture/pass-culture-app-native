@@ -10,7 +10,6 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -294,5 +293,5 @@ describe('ReinitializePassword Page', () => {
 })
 
 function renderReinitializePassword() {
-  return render(reactQueryProviderHOC(<ReinitializePassword />))
+  return render(<ReinitializePassword />)
 }

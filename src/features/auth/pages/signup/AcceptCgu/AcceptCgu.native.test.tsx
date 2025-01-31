@@ -8,7 +8,6 @@ import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
@@ -273,15 +272,13 @@ function renderAcceptCGU(
   }
 ) {
   return render(
-    reactQueryProviderHOC(
-      <AcceptCgu
-        {...props}
-        isSSOSubscription={isSSOSubscription}
-        previousSignupData={{
-          ...props.previousSignupData,
-          marketingEmailSubscription: previousMarketingData,
-        }}
-      />
-    )
+    <AcceptCgu
+      {...props}
+      isSSOSubscription={isSSOSubscription}
+      previousSignupData={{
+        ...props.previousSignupData,
+        marketingEmailSubscription: previousMarketingData,
+      }}
+    />
   )
 }

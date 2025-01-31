@@ -8,7 +8,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
@@ -56,13 +55,13 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display date selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       expect(await screen.findByTestId('DateStep')).toBeOnTheScreen()
     })
 
     it('should not display hour selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
@@ -70,7 +69,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display duo selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
@@ -78,7 +77,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display price selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
@@ -99,13 +98,13 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display hour selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       expect(await screen.findByTestId('HourStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
@@ -113,7 +112,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display price selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
@@ -121,7 +120,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display duo selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
@@ -143,13 +142,13 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display price selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       expect(await screen.findByTestId('PricesStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
@@ -157,7 +156,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display hour selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
@@ -165,7 +164,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display duo selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
@@ -188,13 +187,13 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display duo selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       expect(await screen.findByTestId('DuoStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
@@ -202,7 +201,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display hour selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
@@ -210,7 +209,7 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should not display price selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+      render(<BookingEventChoices stocks={[]} />)
 
       await waitFor(() => {
         expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()

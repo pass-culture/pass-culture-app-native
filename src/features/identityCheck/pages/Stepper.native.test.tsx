@@ -14,7 +14,6 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
@@ -95,7 +94,7 @@ describe('Stepper navigation', () => {
       step: DeprecatedIdentityCheckStep.IDENTIFICATION,
       identification: { method: null },
     })
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await screen.findByText('Vas-y')
 
@@ -113,7 +112,7 @@ describe('Stepper navigation', () => {
       title: 'Vas-y',
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await screen.findByText('Vas-y')
 
@@ -135,7 +134,7 @@ describe('Stepper navigation', () => {
         data: mockUserProfileData,
       }),
     })
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await screen.findByText('Vas-y')
 
@@ -159,7 +158,7 @@ describe('Stepper navigation', () => {
       ...mockStep,
       nextSubscriptionStep: null,
     }
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
@@ -205,7 +204,7 @@ describe('Stepper navigation', () => {
         identification: { method: null },
       })
 
-      render(reactQueryProviderHOC(<Stepper />))
+      render(<Stepper />)
 
       await screen.findByText('Vas-y')
 
@@ -225,7 +224,7 @@ describe('Stepper navigation', () => {
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
 
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await screen.findByText('Vas-y')
 
@@ -245,7 +244,7 @@ describe('Stepper navigation', () => {
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
 
-    render(reactQueryProviderHOC(<Stepper />))
+    render(<Stepper />)
 
     await screen.findByText('Vas-y')
 

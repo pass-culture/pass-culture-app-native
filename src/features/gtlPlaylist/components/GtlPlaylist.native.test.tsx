@@ -10,7 +10,6 @@ import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
@@ -201,14 +200,7 @@ function renderGtlPlaylist(
   venue?: VenueResponse
 ) {
   return render(
-    reactQueryProviderHOC(
-      <GtlPlaylist
-        playlist={gtlPlaylist}
-        venue={venue}
-        analyticsFrom={analyticsFrom}
-        route={route}
-      />
-    )
+    <GtlPlaylist playlist={gtlPlaylist} venue={venue} analyticsFrom={analyticsFrom} route={route} />
   )
 }
 

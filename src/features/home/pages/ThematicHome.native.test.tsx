@@ -19,7 +19,6 @@ import { GeolocPermissionState, ILocationContext } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -345,5 +344,5 @@ describe('ThematicHome', () => {
 })
 
 const renderThematicHome = () => {
-  render(reactQueryProviderHOC(<ThematicHome />))
+  render(<ThematicHome />)
 }

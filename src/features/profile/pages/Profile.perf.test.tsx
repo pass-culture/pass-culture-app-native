@@ -9,7 +9,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -34,11 +33,9 @@ describe('<Profile />', () => {
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
     await measurePerformance(
-      reactQueryProviderHOC(
-        <AuthWrapper>
-          <Profile />
-        </AuthWrapper>
-      ),
+      <AuthWrapper>
+        <Profile />
+      </AuthWrapper>,
       {
         // Add scenario if necessary
         scenario: async () => {

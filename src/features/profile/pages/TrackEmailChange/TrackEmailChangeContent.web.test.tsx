@@ -4,7 +4,6 @@ import { openInbox } from 'react-native-email-link'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('features/auth/context/AuthContext')
@@ -18,7 +17,7 @@ describe('TrackEmailChangeContent', () => {
       newEmail: 'new_email@test.com',
       hasRecentlyResetPassword: false,
     })
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     fireEvent.click(await screen.findByText('Confirme ta demande'))
 
@@ -32,7 +31,7 @@ describe('TrackEmailChangeContent', () => {
       newEmail: 'new_email@test.com',
       hasRecentlyResetPassword: false,
     })
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     fireEvent.click(await screen.findByText('Valide ta nouvelle adresse'))
 

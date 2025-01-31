@@ -5,7 +5,6 @@ import {
   SubscriptionStepperResponseFixture,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
@@ -44,7 +43,4 @@ describe('useGetStepperInfo', () => {
   })
 })
 
-const renderGetStepperInfo = () =>
-  renderHook(() => useGetStepperInfo(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderGetStepperInfo = () => renderHook(() => useGetStepperInfo())

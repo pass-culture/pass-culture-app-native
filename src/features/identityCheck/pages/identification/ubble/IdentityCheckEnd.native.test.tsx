@@ -7,7 +7,6 @@ import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/f
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -81,4 +80,4 @@ describe('<IdentityCheckEnd/>', () => {
   })
 })
 
-const renderGetStepperInfo = () => render(reactQueryProviderHOC(<IdentityCheckEnd />))
+const renderGetStepperInfo = () => render(<IdentityCheckEnd />)

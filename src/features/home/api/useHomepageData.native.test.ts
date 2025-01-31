@@ -4,7 +4,6 @@ import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomepageData } from './useHomepageData'
@@ -26,9 +25,7 @@ describe('useHomepageModules', () => {
   })
 
   it('calls the API and returns the data', async () => {
-    const { result } = renderHook(useHomepageData, {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(useHomepageData)
 
     const expectedResult = homepageList[0]
 
@@ -39,9 +36,7 @@ describe('useHomepageModules', () => {
 
   it('calls the API and returns the data of a thematic home page', async () => {
     const entryId = homepageEntryIds[1]
-    const { result } = renderHook(() => useHomepageData(entryId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useHomepageData(entryId))
 
     const expectedResult = homepageList[1]
 

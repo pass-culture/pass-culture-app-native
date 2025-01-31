@@ -9,7 +9,6 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -165,7 +164,5 @@ describe('<CodeNotReceivedModal />', () => {
 })
 
 function renderCodeNotReceivedModal(props?: Partial<CodeNotReceivedModalProps>) {
-  return render(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} {...props} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} {...props} />)
 }

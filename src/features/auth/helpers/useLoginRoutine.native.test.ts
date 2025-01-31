@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const method = 'fromLogin'
@@ -127,9 +126,7 @@ describe('useLoginRoutine', () => {
 })
 
 const renderUseLoginRoutine = async (analyticsType?: SSOType) => {
-  const { result } = renderHook(useLoginRoutine, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  const { result } = renderHook(useLoginRoutine)
   const login = result.current
   await act(async () => {
     await login(

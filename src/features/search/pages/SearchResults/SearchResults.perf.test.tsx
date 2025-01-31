@@ -10,7 +10,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -55,9 +54,8 @@ describe('<SearchResults />', () => {
   })
 })
 
-const SearchPage = () =>
-  reactQueryProviderHOC(
-    <SearchWrapper>
-      <SearchResults />
-    </SearchWrapper>
-  )
+const SearchPage = () => (
+  <SearchWrapper>
+    <SearchResults />
+  </SearchWrapper>
+)

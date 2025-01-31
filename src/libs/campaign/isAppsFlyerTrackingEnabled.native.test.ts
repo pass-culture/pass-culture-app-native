@@ -5,7 +5,6 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { EmptyResponse } from 'libs/fetch'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { isAppsFlyerTrackingEnabled } from './isAppsFlyerTrackingEnabled'
@@ -86,7 +85,4 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 })
 
-const renderUseCookies = () =>
-  renderHook(useCookies, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseCookies = () => renderHook(useCookies)

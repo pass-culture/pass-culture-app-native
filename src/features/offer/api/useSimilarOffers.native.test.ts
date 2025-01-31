@@ -7,7 +7,6 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -38,17 +37,13 @@ describe('useSimilarOffers', () => {
     })
 
     it('should call Algolia hook with category included', async () => {
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            position,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          position,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+        })
       )
       await waitFor(() => {
         expect(algoliaSpy).toHaveBeenCalledTimes(1)
@@ -56,17 +51,13 @@ describe('useSimilarOffers', () => {
     })
 
     it('should call Algolia hook with category excluded', async () => {
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            position,
-            categoryExcluded: SearchGroupNameEnumv2.CINEMA,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          position,
+          categoryExcluded: SearchGroupNameEnumv2.CINEMA,
+        })
       )
       await waitFor(() => {
         expect(algoliaSpy).toHaveBeenCalledTimes(1)
@@ -74,17 +65,13 @@ describe('useSimilarOffers', () => {
     })
 
     it('should call similar offers API when offer id provided and user share his position', async () => {
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-            position: { latitude: 10, longitude: 15 },
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: { latitude: 10, longitude: 15 },
+        })
       )
 
       await waitFor(() => {
@@ -108,17 +95,13 @@ describe('useSimilarOffers', () => {
     })
 
     it('should call similar offers API when offer id provided and user not share his position', async () => {
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-            position: null,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: null,
+        })
       )
 
       await waitFor(() => {
@@ -142,17 +125,13 @@ describe('useSimilarOffers', () => {
     })
 
     it('should not call similar offers API when offer id provided, user share his position and shouldFetch is false', () => {
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: false,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-            position: { latitude: 10, longitude: 15 },
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: false,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: { latitude: 10, longitude: 15 },
+        })
       )
 
       expect(fetchApiRecoSpy).not.toHaveBeenCalled()
@@ -164,17 +143,13 @@ describe('useSimilarOffers', () => {
       mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
         responseOptions: { statusCode: 503, data: {} },
       })
-      const { result } = renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-            position: null,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      const { result } = renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: null,
+        })
       )
 
       await waitFor(() => {
@@ -187,17 +162,13 @@ describe('useSimilarOffers', () => {
     mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
       responseOptions: { statusCode: 400, data: {} },
     })
-    renderHook(
-      () =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          shouldFetch: true,
-          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-          position: null,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        shouldFetch: true,
+        categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+        position: null,
+      })
     )
 
     await waitFor(() => {
@@ -229,17 +200,13 @@ describe('useSimilarOffers', () => {
       mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
         responseOptions: { statusCode, data: {} },
       })
-      renderHook(
-        () =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            shouldFetch: true,
-            categoryIncluded: SearchGroupNameEnumv2.CINEMA,
-            position: null,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: null,
+        })
       )
 
       await waitFor(() => {

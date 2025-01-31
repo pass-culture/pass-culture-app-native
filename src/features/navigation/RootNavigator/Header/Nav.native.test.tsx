@@ -15,7 +15,6 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -138,10 +137,8 @@ describe('Nav', () => {
 
 function renderNav() {
   return render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <Nav />
-      </NavigationContainer>
-    )
+    <NavigationContainer>
+      <Nav />
+    </NavigationContainer>
   )
 }

@@ -3,7 +3,6 @@ import React from 'react'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils/web'
 
 const AGES = [15, 16, 17, 18]
@@ -21,5 +20,5 @@ const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
     TutorialRootStackParamList,
     'OnboardingAgeInformation'
   >
-  return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
+  return render(<OnboardingAgeInformation {...navProps} />)
 }

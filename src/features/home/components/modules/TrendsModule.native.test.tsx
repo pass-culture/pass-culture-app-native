@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -52,11 +51,7 @@ describe('TrendsModule', () => {
       ...trackingProps,
       homeEntryId: 'homeEntryId',
     }
-    render(
-      reactQueryProviderHOC(
-        <TrendsModule {...formattedTrendsModule} {...trackingPropsWithoutRedesign} />
-      )
-    )
+    render(<TrendsModule {...formattedTrendsModule} {...trackingPropsWithoutRedesign} />)
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith({
       moduleId: 'g6VpeYbOosfALeqR55Ah6',
@@ -170,5 +165,5 @@ describe('TrendsModule', () => {
 })
 
 function renderTrendsModule() {
-  render(reactQueryProviderHOC(<TrendsModule {...formattedTrendsModule} {...trackingProps} />))
+  render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 }

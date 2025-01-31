@@ -7,7 +7,6 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -39,7 +38,7 @@ describe('TrackEmailChangeContent', () => {
       trackEmailChangeContentFixture
     )
 
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     fireEvent.press(await screen.findByText('Confirme ta demande'))
 
@@ -53,7 +52,7 @@ describe('TrackEmailChangeContent', () => {
       token: 'new_email_selection_token',
     })
 
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     fireEvent.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
 
@@ -69,7 +68,7 @@ describe('TrackEmailChangeContent', () => {
       newEmail: 'new_email@test.com',
     })
 
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     fireEvent.press(await screen.findByText('Valide ta nouvelle adresse'))
 
@@ -82,7 +81,7 @@ describe('TrackEmailChangeContent', () => {
       status: undefined,
       newEmail: 'new_email@test.com',
     })
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     await waitFor(() => {
       expect(replace).toHaveBeenCalledWith(...homeNavConfig)
@@ -94,7 +93,7 @@ describe('TrackEmailChangeContent', () => {
       ...trackEmailChangeContentFixture,
       expired: true,
     })
-    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+    render(<TrackEmailChangeContent />)
 
     await waitFor(() => {
       expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
@@ -116,7 +115,7 @@ describe('TrackEmailChangeContent', () => {
         token: 'new_email_selection_token',
       })
 
-      render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+      render(<TrackEmailChangeContent />)
 
       fireEvent.press(await screen.findByText('Crée ton mot de passe'))
 

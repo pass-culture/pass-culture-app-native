@@ -8,7 +8,6 @@ import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position, LocationMode } from 'libs/location/types'
 import { toMutable } from 'shared/types/toMutable'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -166,18 +165,14 @@ describe('useSearchVenueOffers', () => {
       .mockResolvedValue(mockedAlgoliaResponse)
 
     it('should fetch offers when queryOptions.enabled is true', async () => {
-      renderHook(
-        () =>
-          useSearchVenueOffers({
-            offerId: 10000,
-            venueId: 1,
-            query: '9782070584628',
-            geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            queryOptions: { enabled: true },
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSearchVenueOffers({
+          offerId: 10000,
+          venueId: 1,
+          query: '9782070584628',
+          geolocation: { latitude: 48.94374, longitude: 2.48171 },
+          queryOptions: { enabled: true },
+        })
       )
       await waitFor(() => {
         expect(fetchOfferSpy).toHaveBeenCalledTimes(1)
@@ -185,18 +180,14 @@ describe('useSearchVenueOffers', () => {
     })
 
     it('should not fetch offers when queryOptions.enabled is false', async () => {
-      renderHook(
-        () =>
-          useSearchVenueOffers({
-            offerId: 10000,
-            venueId: 1,
-            query: '9782070584628',
-            geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            queryOptions: { enabled: false },
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useSearchVenueOffers({
+          offerId: 10000,
+          venueId: 1,
+          query: '9782070584628',
+          geolocation: { latitude: 48.94374, longitude: 2.48171 },
+          queryOptions: { enabled: false },
+        })
       )
       await waitFor(() => {
         expect(fetchOfferSpy).not.toHaveBeenCalled()

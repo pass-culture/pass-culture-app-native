@@ -11,7 +11,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
 
@@ -132,14 +131,12 @@ function renderHeader({
   })
 
   return render(
-    reactQueryProviderHOC(
-      <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
-        <ThemeProvider theme={{ ...theme, showTabBar: false }}>
-          <TabNavigationStateProvider>
-            <Header mainId="" />
-          </TabNavigationStateProvider>
-        </ThemeProvider>
-      </WebThemeProvider>
-    )
+    <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
+      <ThemeProvider theme={{ ...theme, showTabBar: false }}>
+        <TabNavigationStateProvider>
+          <Header mainId="" />
+        </TabNavigationStateProvider>
+      </ThemeProvider>
+    </WebThemeProvider>
   )
 }

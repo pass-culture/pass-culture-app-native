@@ -8,7 +8,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
@@ -53,7 +52,7 @@ describe('PersonalData', () => {
   })
 
   it('should render personal data success', async () => {
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     await screen.findByText('Informations personnelles')
 
@@ -61,7 +60,7 @@ describe('PersonalData', () => {
   })
 
   it('should render for beneficiary profile', async () => {
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     await screen.findByText('Informations personnelles')
 
@@ -93,7 +92,7 @@ describe('PersonalData', () => {
         },
       })
 
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     await screen.findByText('Informations personnelles')
 
@@ -123,7 +122,7 @@ describe('PersonalData', () => {
           isBeneficiary: false,
         },
       })
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     await screen.findByText('Informations personnelles')
 
@@ -151,7 +150,7 @@ describe('PersonalData', () => {
         },
       })
 
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     fireEvent.press(await screen.findByTestId('Modifier mot de passe'))
 
@@ -167,7 +166,7 @@ describe('PersonalData', () => {
       },
     })
 
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     fireEvent.press(await screen.findByText('Supprimer mon compte'))
 
@@ -194,7 +193,7 @@ describe('PersonalData', () => {
         },
       })
 
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     await screen.findByText('Informations personnelles')
 
@@ -208,7 +207,7 @@ describe('PersonalData', () => {
       .mockReturnValueOnce(initialAuthContext)
       .mockReturnValueOnce(initialAuthContext)
 
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
 
     fireEvent.press(await screen.findByTestId('Modifier e-mail'))
 
@@ -233,7 +232,7 @@ describe('PersonalData', () => {
           hasPassword: false,
         },
       })
-    render(reactQueryProviderHOC(<PersonalData />))
+    render(<PersonalData />)
     await screen.findByText('Adresse e-mail')
 
     expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()

@@ -13,7 +13,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 const mockSearchState = initialSearchState
@@ -101,7 +100,7 @@ describe('<ThematicSearch/>', () => {
     })
 
     it('should render <ThematicSearch />', async () => {
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
 
       await screen.findByText('Romans et littérature')
 
@@ -114,7 +113,7 @@ describe('<ThematicSearch/>', () => {
         isLoading: true,
       })
 
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
 
       await screen.findByText('Livres')
 
@@ -124,7 +123,7 @@ describe('<ThematicSearch/>', () => {
     describe('Search bar', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        render(<ThematicSearch />)
         const searchInput = screen.getByPlaceholderText('Livres...')
         fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
@@ -147,7 +146,7 @@ describe('<ThematicSearch/>', () => {
 
     describe('Subcategory buttons', () => {
       it('should update SearchState with correct data', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        render(<ThematicSearch />)
         const subcategoryButton = await screen.findByText('Romans et littérature')
         await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
@@ -164,7 +163,7 @@ describe('<ThematicSearch/>', () => {
       })
 
       it('should navigate to search results with the corresponding parameters', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        render(<ThematicSearch />)
         const subcategoryButton = await screen.findByText('Romans et littérature')
         await user.press(subcategoryButton)
         await screen.findByText('Romans et littérature')
@@ -186,7 +185,7 @@ describe('<ThematicSearch/>', () => {
 
     describe('gtl playlists', () => {
       it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        render(<ThematicSearch />)
         await screen.findByText('Romans et littérature')
 
         expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
@@ -194,7 +193,7 @@ describe('<ThematicSearch/>', () => {
 
       it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
         setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX])
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        render(<ThematicSearch />)
         await screen.findByText('Romans et littérature')
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
@@ -208,7 +207,7 @@ describe('<ThematicSearch/>', () => {
   describe('gtl playlists', () => {
     it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Festivals')
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
@@ -218,7 +217,7 @@ describe('<ThematicSearch/>', () => {
   describe('cinema playlists', () => {
     it('should render cinema playlists when offerCategory is `CINEMA`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Cinéma')
 
       expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
@@ -226,7 +225,7 @@ describe('<ThematicSearch/>', () => {
 
     it('should not render cinema playlists when offerCategory is not `CINEMA`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Festivals')
 
       expect(screen.queryByText('Films à l’affiche')).not.toBeOnTheScreen()
@@ -238,7 +237,7 @@ describe('<ThematicSearch/>', () => {
       MockOfferCategoriesParams({
         offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES],
       })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Films, séries et documentaires')
 
       expect(await screen.findByText('DVD, Blu-Ray')).toBeOnTheScreen()
@@ -246,7 +245,7 @@ describe('<ThematicSearch/>', () => {
 
     it('should not render films playlists when offerCategory is not `FILMS_DOCUMENTAIRES_SERIES`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Festivals')
 
       expect(screen.queryByText('DVD, Blu-Ray')).not.toBeOnTheScreen()
@@ -258,7 +257,7 @@ describe('<ThematicSearch/>', () => {
       MockOfferCategoriesParams({
         offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
       })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Musique')
 
       expect(await screen.findByText('Achat & location d‘instrument')).toBeOnTheScreen()
@@ -266,7 +265,7 @@ describe('<ThematicSearch/>', () => {
 
     it('should not render music playlists when offerCategory is not `MUSIQUE`', async () => {
       MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
+      render(<ThematicSearch />)
       await screen.findByText('Livres')
 
       expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()

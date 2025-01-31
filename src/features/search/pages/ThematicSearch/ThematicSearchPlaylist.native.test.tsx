@@ -6,7 +6,6 @@ import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('@shopify/flash-list', () => {
@@ -56,12 +55,6 @@ function renderThematicSearchPlaylist(
   route: Extract<ScreenNames, 'ThematicSearch'>
 ) {
   return render(
-    reactQueryProviderHOC(
-      <ThematicSearchPlaylist
-        playlist={cinemaPlaylist}
-        analyticsFrom={analyticsFrom}
-        route={route}
-      />
-    )
+    <ThematicSearchPlaylist playlist={cinemaPlaylist} analyticsFrom={analyticsFrom} route={route} />
   )
 }

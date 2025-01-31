@@ -11,7 +11,6 @@ import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -37,11 +36,9 @@ describe('<EndedBookings />', () => {
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
     await measurePerformance(
-      reactQueryProviderHOC(
-        <AuthWrapper>
-          <EndedBookings />
-        </AuthWrapper>
-      ),
+      <AuthWrapper>
+        <EndedBookings />
+      </AuthWrapper>,
       {
         scenario: async () => {
           await screen.findByText('2 réservations terminées')

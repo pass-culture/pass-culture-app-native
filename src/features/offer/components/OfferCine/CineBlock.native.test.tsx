@@ -9,7 +9,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { computedTheme } from 'tests/computedTheme'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -162,11 +161,10 @@ describe('CineBlock', () => {
 
 const renderCineBlock = (props: Partial<CineBlockProps>, isDesktopViewport?: boolean) => {
   return render(<CineBlock {...props} offer={mockOffer} />, {
-    wrapper: ({ children }) =>
-      reactQueryProviderHOC(
-        <ThemeProvider theme={{ ...theme, ...computedTheme, isDesktopViewport }}>
-          {children}
-        </ThemeProvider>
-      ),
+    wrapper: ({ children }) => (
+      <ThemeProvider theme={{ ...theme, ...computedTheme, isDesktopViewport }}>
+        {children}
+      </ThemeProvider>
+    ),
   })
 }

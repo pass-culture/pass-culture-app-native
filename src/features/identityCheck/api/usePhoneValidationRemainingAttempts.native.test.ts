@@ -2,7 +2,6 @@ import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { phoneValidationRemainingAttemptsFixture } from 'features/identityCheck/fixtures/phoneValidationRemainingAttemptsFixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
@@ -14,9 +13,7 @@ describe('usePhoneValidationRemainingAttempts', () => {
       phoneValidationRemainingAttemptsFixture
     )
 
-    const { result } = renderHook(usePhoneValidationRemainingAttempts, {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(usePhoneValidationRemainingAttempts)
 
     await act(async () => {})
 

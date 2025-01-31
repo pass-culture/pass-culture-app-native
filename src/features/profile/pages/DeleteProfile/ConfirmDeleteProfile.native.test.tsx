@@ -6,7 +6,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -95,5 +94,5 @@ describe('ConfirmDeleteProfile component', () => {
 })
 
 function renderConfirmDeleteProfile() {
-  return render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+  return render(<ConfirmDeleteProfile />)
 }

@@ -8,7 +8,6 @@ import { IncomingReactionModalContainer } from 'features/home/components/Incomin
 import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -37,13 +36,11 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config', async () => {
     render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookingsEligibleToReaction={
-            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
-          }
-        />
-      )
+      <IncomingReactionModalContainer
+        bookingsEligibleToReaction={
+          endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+        }
+      />
     )
 
     await act(async () => {
@@ -55,13 +52,11 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should send reaction from offer has subcategory in reactionCategories remote config', async () => {
     render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookingsEligibleToReaction={
-            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
-          }
-        />
-      )
+      <IncomingReactionModalContainer
+        bookingsEligibleToReaction={
+          endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+        }
+      />
     )
 
     await act(async () => {
@@ -83,13 +78,11 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should send reaction with NO_REACTION when closing modal from offer has subcategory in reactionCategories remote config', async () => {
     render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer
-          bookingsEligibleToReaction={
-            endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
-          }
-        />
-      )
+      <IncomingReactionModalContainer
+        bookingsEligibleToReaction={
+          endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate
+        }
+      />
     )
 
     await act(async () => {
@@ -110,9 +103,7 @@ describe('IncomingReactionModalContainer', () => {
 
   it('should not send reaction with NO_REACTION when closing modal from offers have subcategory in reactionCategories remote config and pressing "Donner mon avis" button', async () => {
     render(
-      reactQueryProviderHOC(
-        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsWith2EndedBookings} />
-      )
+      <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsWith2EndedBookings} />
     )
 
     await act(async () => {

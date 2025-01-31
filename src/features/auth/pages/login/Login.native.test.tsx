@@ -31,7 +31,6 @@ import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
@@ -818,17 +817,15 @@ const fillInputs = async () => {
 
 function renderLogin() {
   return render(
-    reactQueryProviderHOC(
-      <AuthContext.Provider
-        value={{
-          isLoggedIn: false,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-        }}>
-        <Login />
-      </AuthContext.Provider>
-    )
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      }}>
+      <Login />
+    </AuthContext.Provider>
   )
 }
 

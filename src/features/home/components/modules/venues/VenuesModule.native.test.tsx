@@ -4,7 +4,6 @@ import { VenuesModule } from 'features/home/components/modules/venues/VenuesModu
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { DisplayParametersFields } from 'libs/contentful/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const props = {
@@ -35,4 +34,4 @@ describe('VenuesModule component', () => {
 })
 
 const renderVenuesModule = (additionalProps: { data?: ModuleData } = {}) =>
-  render(reactQueryProviderHOC(<VenuesModule {...props} {...additionalProps} />))
+  render(<VenuesModule {...props} {...additionalProps} />)

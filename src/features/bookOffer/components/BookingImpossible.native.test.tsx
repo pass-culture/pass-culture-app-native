@@ -6,7 +6,6 @@ import { Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
@@ -59,7 +58,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render without CTAs', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       await screen.findByText(generalConditionText)
 
@@ -67,7 +66,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       await screen.findByText(generalConditionText)
 
@@ -75,7 +74,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Voir le détail de l’offre'", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       fireEvent.press(await screen.findByText('Voir le détail de l’offre'))
 
@@ -103,7 +102,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render with CTAs', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       await screen.findByText(generalConditionText)
 
@@ -111,7 +110,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should send email/push notification when adding to favorites', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       await act(async () => {
         const addToFavoriteButton = await screen.findByLabelText('Mettre en favoris')
@@ -124,7 +123,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should log analytics event when adding to favorites', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
 
       fireEvent.press(screen.getByText('Mettre en favoris'))
 
@@ -138,7 +137,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should change booking step from date to confirmation', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
       await screen.findByText(generalConditionText)
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
@@ -148,7 +147,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(<BookingImpossible />)
       await screen.findByText(generalConditionText)
 
       fireEvent.press(await screen.findByText('Retourner à l’offre'))

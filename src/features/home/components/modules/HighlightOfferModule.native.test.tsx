@@ -13,7 +13,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 const offerFixture = offersFixture[0]
 
@@ -116,13 +115,11 @@ describe('HighlightOfferModule', () => {
 
 const renderHighlightModule = (displayPublicationDate = false) => {
   return render(
-    reactQueryProviderHOC(
-      <HighlightOfferModule
-        {...highlightOfferModuleFixture}
-        index={0}
-        homeEntryId="entryId"
-        displayPublicationDate={displayPublicationDate}
-      />
-    )
+    <HighlightOfferModule
+      {...highlightOfferModuleFixture}
+      index={0}
+      homeEntryId="entryId"
+      displayPublicationDate={displayPublicationDate}
+    />
   )
 }

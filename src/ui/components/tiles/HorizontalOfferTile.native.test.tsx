@@ -15,7 +15,6 @@ import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
@@ -115,11 +114,7 @@ describe('HorizontalOfferTile component', () => {
   })
 
   it('should log analytics event when pressing an offer', async () => {
-    render(
-      reactQueryProviderHOC(
-        <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
-      )
-    )
+    render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
     user.press(screen.getByRole('link'))
 
     await screen.findByText(mockOffer.offer.name)
@@ -361,5 +356,5 @@ describe('HorizontalOfferTile component', () => {
 })
 
 function renderHorizontalOfferTile(props: { offer: Offer; analyticsParams: OfferAnalyticsParams }) {
-  return render(reactQueryProviderHOC(<HorizontalOfferTile {...props} />))
+  return render(<HorizontalOfferTile {...props} />)
 }

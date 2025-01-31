@@ -18,7 +18,6 @@ import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/ve
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import * as constants from '../../constant'
@@ -362,7 +361,7 @@ function getVenueMapViewComponent({
   venueTypeCode = VenueTypeCodeKey.VISUAL_ARTS,
   currentRegion = mockCurrentRegion,
 }: RenderVenueMapViewType) {
-  return reactQueryProviderHOC(
+  return (
     <VenueMapView
       from={from}
       venues={venues}

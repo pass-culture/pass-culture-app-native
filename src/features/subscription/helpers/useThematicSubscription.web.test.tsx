@@ -5,7 +5,6 @@ import {
 } from 'features/subscription/helpers/useThematicSubscription'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -109,7 +108,5 @@ describe('useThematicSubscription', () => {
 })
 
 function renderUseThematicSubscription(props: useThematicSubscriptionProps) {
-  return renderHook(() => useThematicSubscription(props), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return renderHook(() => useThematicSubscription(props))
 }

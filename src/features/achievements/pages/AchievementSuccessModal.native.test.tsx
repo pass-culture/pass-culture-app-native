@@ -5,7 +5,6 @@ import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 const achievementArtLesson: AchievementResponse = {
@@ -92,11 +91,9 @@ describe('AchievementSuccessModal', () => {
 
 const renderAchievementSuccessModal = (achievementsToShow: AchievementResponse[]) =>
   render(
-    reactQueryProviderHOC(
-      <AchievementSuccessModal
-        visible
-        hideModal={jest.fn()}
-        achievementsToShow={achievementsToShow}
-      />
-    )
+    <AchievementSuccessModal
+      visible
+      hideModal={jest.fn()}
+      achievementsToShow={achievementsToShow}
+    />
   )

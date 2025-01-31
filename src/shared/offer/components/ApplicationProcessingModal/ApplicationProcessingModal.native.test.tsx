@@ -6,7 +6,6 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { analytics } from 'libs/analytics/provider'
 import { MODAL_TO_HIDE_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
@@ -26,21 +25,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
-    render(
-      reactQueryProviderHOC(
-        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to profile when clicking on button "Aller sur mon profil"', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />)
 
     const button = screen.getByTestId('Aller sur mon profil')
     fireEvent.press(button)
@@ -51,11 +42,7 @@ describe('<ApplicationProcessingModal />', () => {
   })
 
   it('should log analytics when clicking on button "Aller sur mon profil"', () => {
-    render(
-      reactQueryProviderHOC(
-        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByTestId('Aller sur mon profil'))
 
@@ -70,11 +57,7 @@ describe('<ApplicationProcessingModal />', () => {
       '/v1/me/favorites',
       paginatedFavoritesResponseSnap
     )
-    render(
-      reactQueryProviderHOC(
-        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 
@@ -92,11 +75,7 @@ describe('<ApplicationProcessingModal />', () => {
       '/v1/me/favorites',
       paginatedFavoritesResponseSnap
     )
-    render(
-      reactQueryProviderHOC(
-        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 

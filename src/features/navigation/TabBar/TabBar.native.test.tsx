@@ -16,7 +16,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { TabBar } from './TabBar'
@@ -390,10 +389,8 @@ describe('TabBar', () => {
 
 function renderTabBar(tabNavigationState: TabNavigationState<ParamListBase>) {
   render(
-    reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme}>
-        <TabBar navigation={navigation} state={tabNavigationState} />
-      </ThemeProvider>
-    )
+    <ThemeProvider theme={computedTheme}>
+      <TabBar navigation={navigation} state={tabNavigationState} />
+    </ThemeProvider>
   )
 }

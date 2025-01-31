@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, simulateWebviewMessage } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
@@ -70,7 +69,5 @@ describe('<ReCaptcha />', () => {
 })
 
 function renderReCaptcha(reCaptchaProps: React.ComponentProps<typeof ReCaptcha>) {
-  return render(<ReCaptcha {...reCaptchaProps} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<ReCaptcha {...reCaptchaProps} />)
 }

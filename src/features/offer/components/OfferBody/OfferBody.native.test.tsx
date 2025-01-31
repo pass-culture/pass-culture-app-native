@@ -22,7 +22,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
@@ -579,9 +578,7 @@ describe('<OfferBody />', () => {
     isDesktopViewport,
   }: RenderOfferBodyType) {
     render(
-      reactQueryProviderHOC(
-        <OfferBody offer={offer} subcategory={subcategory} trackEventHasSeenOfferOnce={jest.fn()} />
-      ),
+      <OfferBody offer={offer} subcategory={subcategory} trackEventHasSeenOfferOnce={jest.fn()} />,
       {
         theme: { isDesktopViewport: isDesktopViewport ?? false },
       }

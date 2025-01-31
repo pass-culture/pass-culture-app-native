@@ -17,7 +17,6 @@ import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -231,7 +230,7 @@ describe('<SearchResults/>', () => {
   })
 
   it('should render SearchResults', async () => {
-    render(reactQueryProviderHOC(<SearchResults />))
+    render(<SearchResults />)
 
     await screen.findByText('Rechercher')
 
@@ -398,7 +397,7 @@ describe('<SearchResults/>', () => {
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
         .mockReturnValueOnce({ isConnected: false })
-      render(reactQueryProviderHOC(<SearchResults />))
+      render(<SearchResults />)
 
       await waitFor(() => {
         expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()

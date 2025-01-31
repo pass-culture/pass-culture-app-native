@@ -7,7 +7,6 @@ import { UpdateEmailTokenExpiration } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
@@ -103,7 +102,7 @@ describe('<AccountSecurityBuffer/>', () => {
       onError: spy,
     })
     await catchErrorSilently(async () => {
-      render(reactQueryProviderHOC(<Component />))
+      render(<Component />)
 
       await screen.findAllByText('Error')
     })
@@ -112,4 +111,4 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 })
 
-const renderAccountSecurityBuffer = () => render(reactQueryProviderHOC(<AccountSecurityBuffer />))
+const renderAccountSecurityBuffer = () => render(<AccountSecurityBuffer />)

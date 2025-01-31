@@ -8,7 +8,6 @@ import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
@@ -87,11 +86,9 @@ describe('<SignupForm/>', () => {
 
 const renderSignupForm = () =>
   render(
-    reactQueryProviderHOC(
-      <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-        <SafeAreaProvider>
-          <SignupForm />
-        </SafeAreaProvider>
-      </GoogleOAuthProvider>
-    )
+    <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+      <SafeAreaProvider>
+        <SignupForm />
+      </SafeAreaProvider>
+    </GoogleOAuthProvider>
   )

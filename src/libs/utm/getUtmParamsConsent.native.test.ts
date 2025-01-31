@@ -4,7 +4,6 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
@@ -98,7 +97,4 @@ describe('getUtmParamsConsent', () => {
   })
 })
 
-const renderUseCookies = () =>
-  renderHook(useCookies, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseCookies = () => renderHook(useCookies)

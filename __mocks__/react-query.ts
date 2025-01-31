@@ -40,3 +40,5 @@ export const useQueryClient = jest.fn().mockReturnValue({
 export const useQuery = jest.fn().mockResolvedValue({})
 
 export const useIsFetching = jest.fn().mockReturnValue(0)
+
+export const setLogger = jest.fn()

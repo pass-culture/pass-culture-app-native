@@ -5,7 +5,6 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -38,14 +37,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<SuspendedAccountUponUserRequest />', () => {
   it('should match snapshot', () => {
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to reactivation screen on success', async () => {
     mockServer.postApi('/v1/account/unsuspend', {})
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
@@ -54,7 +53,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
 
   it('should log analytics on success', async () => {
     mockServer.postApi('/v1/account/unsuspend', {})
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
@@ -67,7 +66,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
         statusCode: 400,
       },
     })
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
@@ -85,7 +84,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
         statusCode: 400,
       },
     })
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
@@ -97,7 +96,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
   })
 
   it('should go to home page when clicking on "Retourner à l’accueil" button', async () => {
-    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+    render(<SuspendedAccountUponUserRequest />)
 
     const homeButton = screen.getByText('Retourner à l’accueil')
     fireEvent.press(homeButton)

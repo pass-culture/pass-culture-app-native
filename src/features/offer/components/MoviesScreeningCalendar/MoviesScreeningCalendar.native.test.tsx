@@ -15,7 +15,6 @@ import { VenueOffers } from 'features/venue/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -119,11 +118,9 @@ const renderMoviesScreeningCalendar = ({
   venueOffers: VenueOffers
 }) => {
   render(
-    reactQueryProviderHOC(
-      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <MoviesScreeningCalendar venueOffers={venueOffers} />
-      </AnchorProvider>
-    ),
+    <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+      <MoviesScreeningCalendar venueOffers={venueOffers} />
+    </AnchorProvider>,
     {
       theme: { isDesktopViewport },
     }

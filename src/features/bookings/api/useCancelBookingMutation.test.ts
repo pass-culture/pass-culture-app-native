@@ -2,7 +2,6 @@ import * as ReactQueryAPI from 'react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { useCancelBookingMutation } from './useCancelBookingMutation'
@@ -50,8 +49,6 @@ const renderUseCancelBookingMutation = () => {
     result: {
       current: { mutate },
     },
-  } = renderHook(() => useCancelBookingMutation({ onSuccess, onError }), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  } = renderHook(() => useCancelBookingMutation({ onSuccess, onError }))
   return mutate
 }

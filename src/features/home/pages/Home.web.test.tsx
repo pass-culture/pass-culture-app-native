@@ -8,7 +8,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
@@ -53,9 +52,7 @@ describe('<Home/>', () => {
         homeEntryId: 'fakeEntryId',
       }) // Adding useWhichModalToShow to Home.tsx caused an extra render
 
-      const { container } = render(<Home />, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      const { container } = render(<Home />)
 
       let results
       await act(async () => {

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 const mockDismissModal = jest.fn()
@@ -57,12 +56,10 @@ describe('<UnsavedSettingsModal />', () => {
 
 const renderModal = (visible: boolean) => {
   render(
-    reactQueryProviderHOC(
-      <UnsavedSettingsModal
-        visible={visible}
-        dismissModal={mockDismissModal}
-        onPressSaveChanges={mockOnPressSaveChanges}
-      />
-    )
+    <UnsavedSettingsModal
+      visible={visible}
+      dismissModal={mockDismissModal}
+      onPressSaveChanges={mockOnPressSaveChanges}
+    />
   )
 }

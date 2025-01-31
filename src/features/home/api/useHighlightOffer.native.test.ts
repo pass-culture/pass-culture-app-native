@@ -6,7 +6,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { useLocation } from 'libs/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
@@ -142,7 +141,5 @@ type Params = {
 }
 
 function renderUseHighlightOfferHook(params: Params) {
-  return renderHook(() => useHighlightOffer({ id: 'moduleId', ...params }), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return renderHook(() => useHighlightOffer({ id: 'moduleId', ...params }))
 }

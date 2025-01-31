@@ -25,7 +25,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
@@ -908,7 +907,7 @@ describe('Signup Form', () => {
 
 const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
 
-const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))
+const renderSignupForm = () => render(<SignupForm />)
 
 const pressSSOButton = async () => {
   let SSOButton: ReactTestInstance

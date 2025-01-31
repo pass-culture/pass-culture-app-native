@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { SetName } from './SetName'
@@ -20,7 +19,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 describe('<SetName/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<SetName />))
+      const { container } = render(<SetName />)
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()

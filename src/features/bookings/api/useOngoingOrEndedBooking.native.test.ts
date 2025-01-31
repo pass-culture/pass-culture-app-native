@@ -3,7 +3,6 @@ import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
@@ -35,9 +34,7 @@ describe('useOngoingOrEndedBooking', () => {
 
   it('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id))
 
     await waitFor(() => {
       expect(result.current?.data?.id).toEqual(booking.id)
@@ -47,9 +44,7 @@ describe('useOngoingOrEndedBooking', () => {
 
   it('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id))
 
     await waitFor(() => {
       expect(result.current?.data?.id).toEqual(booking.id)
@@ -59,9 +54,7 @@ describe('useOngoingOrEndedBooking', () => {
 
   it('should return null if no ongoing nor ended booking can be found', async () => {
     const bookingId = 1230912039
-    const { result } = renderHook(() => useOngoingOrEndedBooking(bookingId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useOngoingOrEndedBooking(bookingId))
 
     await waitFor(() => {
       expect(result.current.data).toBeNull()

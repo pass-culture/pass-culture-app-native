@@ -14,7 +14,6 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
@@ -164,5 +163,5 @@ describe('<SSOButton />', () => {
 })
 
 const renderSSOButton = (type: 'signup' | 'login' = 'signup') => {
-  render(reactQueryProviderHOC(<SSOButton type={type} onSignInFailure={onSignInFailureSpy} />))
+  render(<SSOButton type={type} onSignInFailure={onSignInFailureSpy} />)
 }

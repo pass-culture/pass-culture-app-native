@@ -3,7 +3,6 @@ import { ActivityIdEnum } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 import { usePatchProfile } from './usePatchProfile'
@@ -36,9 +35,7 @@ describe('usePatchProfile', () => {
   })
 
   it('should call api when profile is complete', async () => {
-    const { result } = renderHook(() => usePatchProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => usePatchProfile())
 
     const { mutateAsync: patchProfile } = result.current
 
@@ -62,9 +59,7 @@ describe('usePatchProfile', () => {
     storage.saveObject('profile-city', profile.city)
     storage.saveObject('profile-address', profile.address)
 
-    const { result } = renderHook(() => usePatchProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => usePatchProfile())
 
     const { mutateAsync: patchProfile } = result.current
 
@@ -85,9 +80,7 @@ describe('usePatchProfile', () => {
     const refetchUserSpy = jest.fn()
     mockAuthContextWithUser(beneficiaryUser, { refetchUser: refetchUserSpy })
 
-    const { result } = renderHook(() => usePatchProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => usePatchProfile())
 
     const { mutateAsync: patchProfile } = result.current
 

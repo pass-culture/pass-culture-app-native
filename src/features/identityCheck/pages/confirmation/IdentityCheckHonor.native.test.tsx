@@ -7,7 +7,6 @@ import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/Id
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
@@ -97,5 +96,5 @@ describe('<IdentityCheckHonor/>', () => {
 })
 
 const renderIdentityCheckHonor = () => {
-  return render(reactQueryProviderHOC(<IdentityCheckHonor />))
+  return render(<IdentityCheckHonor />)
 }

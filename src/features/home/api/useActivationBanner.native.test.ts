@@ -9,7 +9,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
 
 import { useActivationBanner } from './useActivationBanner'
@@ -185,7 +184,4 @@ describe('useActivationBanner', () => {
   })
 })
 
-const renderUseActivationBanner = () =>
-  renderHook(() => useActivationBanner(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseActivationBanner = () => renderHook(() => useActivationBanner())

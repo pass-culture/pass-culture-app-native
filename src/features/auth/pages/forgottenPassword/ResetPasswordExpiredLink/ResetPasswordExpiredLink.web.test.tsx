@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
@@ -17,9 +16,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<ResetPasswordExpiredLink/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(
-        reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />)
-      )
+      const { container } = render(<ResetPasswordExpiredLink {...navigationProps} />)
 
       const results = await checkAccessibilityFor(container)
 

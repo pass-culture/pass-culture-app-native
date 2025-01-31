@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { CategoryThematicHeader, Color, ThematicHeaderType } from 'features/home/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -30,13 +29,11 @@ const categoryThematicHeader: CategoryThematicHeader = {
 describe('ThematicHomeHeader', () => {
   it('should navigate to home page on press go back button', async () => {
     render(
-      reactQueryProviderHOC(
-        <ThematicHomeHeader
-          thematicHeader={categoryThematicHeader}
-          headerTransition={HeaderInterpolation}
-          homeId="fakeEntryId"
-        />
-      )
+      <ThematicHomeHeader
+        thematicHeader={categoryThematicHeader}
+        headerTransition={HeaderInterpolation}
+        homeId="fakeEntryId"
+      />
     )
     const backButton = screen.getByTestId('Revenir en arrière')
 

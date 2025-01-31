@@ -10,7 +10,6 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -58,9 +57,7 @@ describe('<ArtistBody />', () => {
 
   it('should display only the main artist when there are several artists on header title', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
-      )
+      <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
     )
 
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
@@ -68,9 +65,7 @@ describe('<ArtistBody />', () => {
 
   it('should call goBack when pressing the back button', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
-      )
+      <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
     )
     const backButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(backButton)
@@ -80,9 +75,7 @@ describe('<ArtistBody />', () => {
 
   it('should display correct artist avatar', async () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
-      )
+      <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
     )
 
     await screen.findByLabelText('artist avatar')
@@ -98,9 +91,7 @@ describe('<ArtistBody />', () => {
       artistPlaylist: [],
     })
     render(
-      reactQueryProviderHOC(
-        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
-      )
+      <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
     )
 
     expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
@@ -108,9 +99,7 @@ describe('<ArtistBody />', () => {
 
   it('should display artist description', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
-      )
+      <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
     )
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()

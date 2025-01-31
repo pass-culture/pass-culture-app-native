@@ -2,7 +2,6 @@ import React from 'react'
 
 import { setSettings } from 'features/auth/tests/setSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
 
@@ -44,7 +43,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on desktop', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(<Profile />, {
       theme: { isDesktopViewport: true },
     })
 
@@ -54,7 +53,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on mobile browser', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(<Profile />, {
       theme: { isDesktopViewport: false },
     })
 
@@ -69,7 +68,7 @@ describe('<Profile/>', () => {
     })
 
     it('should see "17 ou 18"', async () => {
-      render(reactQueryProviderHOC(<Profile />), {
+      render(<Profile />, {
         theme: { isDesktopViewport: true },
       })
 
@@ -87,7 +86,7 @@ describe('<Profile/>', () => {
     })
 
     it('should see "15 et 18"', async () => {
-      render(reactQueryProviderHOC(<Profile />), {
+      render(<Profile />, {
         theme: { isDesktopViewport: true },
       })
 
@@ -100,4 +99,4 @@ describe('<Profile/>', () => {
   })
 })
 
-const renderProfile = () => render(reactQueryProviderHOC(<Profile />))
+const renderProfile = () => render(<Profile />)

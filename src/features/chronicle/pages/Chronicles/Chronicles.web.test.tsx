@@ -6,7 +6,6 @@ import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 useRoute.mockReturnValue({
@@ -27,7 +26,7 @@ describe('Chronicles', () => {
   })
 
   it('should render correctly in mobile', async () => {
-    render(reactQueryProviderHOC(<Chronicles />), {
+    render(<Chronicles />, {
       theme: {
         isDesktopViewport: false,
       },
@@ -39,7 +38,7 @@ describe('Chronicles', () => {
   })
 
   it('should render correctly in desktop', async () => {
-    render(reactQueryProviderHOC(<Chronicles />), {
+    render(<Chronicles />, {
       theme: {
         isDesktopViewport: true,
       },

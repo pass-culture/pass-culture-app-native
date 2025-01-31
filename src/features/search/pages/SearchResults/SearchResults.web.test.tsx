@@ -13,7 +13,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -88,7 +87,7 @@ describe('<SearchResults/>', () => {
 
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-      const { container } = render(reactQueryProviderHOC(<SearchResults />))
+      const { container } = render(<SearchResults />)
 
       await act(async () => {})
 
@@ -101,7 +100,7 @@ describe('<SearchResults/>', () => {
 
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = render(reactQueryProviderHOC(<SearchResults />))
+      const { container } = render(<SearchResults />)
 
       await act(async () => {})
 

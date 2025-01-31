@@ -18,7 +18,6 @@ import { VenueOffers } from 'features/venue/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { getDates } from 'shared/date/getDates'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -213,18 +212,16 @@ const renderMovieOfferTile = ({
   isDesktopViewport?: boolean
 }) => {
   render(
-    reactQueryProviderHOC(
-      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <MovieCalendarProvider initialDates={next15Dates}>
-          <MovieOfferTile
-            movieOffer={movieOffer}
-            venueOffers={venueOffers}
-            isLast={false}
-            nextScreeningDate={nextScreeningDate}
-          />
-        </MovieCalendarProvider>
-      </AnchorProvider>
-    ),
+    <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+      <MovieCalendarProvider initialDates={next15Dates}>
+        <MovieOfferTile
+          movieOffer={movieOffer}
+          venueOffers={venueOffers}
+          isLast={false}
+          nextScreeningDate={nextScreeningDate}
+        />
+      </MovieCalendarProvider>
+    </AnchorProvider>,
     {
       theme: { isDesktopViewport },
     }

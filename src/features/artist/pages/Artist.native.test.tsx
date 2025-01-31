@@ -8,7 +8,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -57,7 +56,7 @@ describe('<Artist />', () => {
     })
 
     it('should display artist page content', async () => {
-      render(reactQueryProviderHOC(<Artist />))
+      render(<Artist />)
 
       expect((await screen.findAllByText('Céline Dion'))[0]).toBeOnTheScreen()
     })
@@ -69,7 +68,7 @@ describe('<Artist />', () => {
           extraData: undefined,
         },
       })
-      render(reactQueryProviderHOC(<Artist />))
+      render(<Artist />)
 
       expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
     })
@@ -78,7 +77,7 @@ describe('<Artist />', () => {
       mockUseOffer.mockReturnValueOnce({
         data: undefined,
       })
-      render(reactQueryProviderHOC(<Artist />))
+      render(<Artist />)
 
       expect(screen.queryByText('Quelques infos à son sujet')).not.toBeOnTheScreen()
     })

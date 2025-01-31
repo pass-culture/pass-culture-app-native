@@ -14,7 +14,6 @@ import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/book
 import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
@@ -132,5 +131,5 @@ const renderBookings = (bookings: BookingsResponse) => {
       unknown
     >)
 
-  return render(reactQueryProviderHOC(<Bookings />))
+  return render(<Bookings />)
 }

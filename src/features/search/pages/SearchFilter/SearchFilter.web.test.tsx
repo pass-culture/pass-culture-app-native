@@ -6,7 +6,6 @@ import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
@@ -86,6 +85,6 @@ describe('<SearchFilter/>', () => {
 })
 
 const renderSearchFilter = () =>
-  render(reactQueryProviderHOC(<SearchFilter />), {
+  render(<SearchFilter />, {
     theme: { isDesktopViewport: true, isMobileViewport: false },
   })

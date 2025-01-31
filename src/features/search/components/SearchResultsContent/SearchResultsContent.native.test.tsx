@@ -24,7 +24,6 @@ import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -975,7 +974,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should log consult venue map when pressing map tab', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      render(<SearchResultsContent />)
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -987,7 +986,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should reset selected venue in store when pressing map tab', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      render(<SearchResultsContent />)
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1007,7 +1006,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      render(<SearchResultsContent />)
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1016,7 +1015,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display venue map when pressing map tab if user location selected is not everywhere', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      render(<SearchResultsContent />)
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1030,7 +1029,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should open venue map location modal when pressing map tab', async () => {
-        render(reactQueryProviderHOC(<SearchResultsContent />))
+        render(<SearchResultsContent />)
 
         await user.press(await screen.findByText('Carte'))
 
@@ -1038,7 +1037,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display venue map when pressing map tab', async () => {
-        render(reactQueryProviderHOC(<SearchResultsContent />))
+        render(<SearchResultsContent />)
 
         await user.press(await screen.findByText('Carte'))
 

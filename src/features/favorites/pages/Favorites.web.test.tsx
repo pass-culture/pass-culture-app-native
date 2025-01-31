@@ -6,7 +6,6 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Favorites } from './Favorites'
@@ -70,5 +69,5 @@ describe('<Favorites/>', () => {
 })
 
 function renderFavorites() {
-  return render(reactQueryProviderHOC(<Favorites />))
+  return render(<Favorites />)
 }

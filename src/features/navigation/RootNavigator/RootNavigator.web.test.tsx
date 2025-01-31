@@ -9,7 +9,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
@@ -102,10 +101,8 @@ describe('<RootNavigator />', () => {
 
 function renderRootNavigator() {
   render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    )
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
   )
 }

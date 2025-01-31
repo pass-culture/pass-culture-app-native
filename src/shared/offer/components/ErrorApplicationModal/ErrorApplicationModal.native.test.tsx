@@ -6,7 +6,6 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { analytics } from 'libs/analytics/provider'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
@@ -24,21 +23,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should close modal and navigate to profile when pressing "Aller vers la section profil" button', () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
 
@@ -47,11 +38,7 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
 
@@ -63,11 +50,7 @@ describe('<ErrorApplicationModal />', () => {
 
   it('should close modal when clicking on button "Mettre en favori', async () => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 
@@ -78,11 +61,7 @@ describe('<ErrorApplicationModal />', () => {
 
   it('should log analytics when clicking on button "Mettre en favori', async () => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 

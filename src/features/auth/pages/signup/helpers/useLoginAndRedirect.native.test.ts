@@ -12,7 +12,6 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -177,10 +176,7 @@ describe('useLoginAndRedirect', () => {
   })
 })
 
-const renderUseLoginAndRedirect = () =>
-  renderHook(useLoginAndRedirect, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseLoginAndRedirect = () => renderHook(useLoginAndRedirect)
 
 const loginAndRedirect = async () => {
   const { result } = renderUseLoginAndRedirect()

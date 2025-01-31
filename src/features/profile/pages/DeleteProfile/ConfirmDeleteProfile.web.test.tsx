@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
@@ -15,7 +14,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<ConfirmDeleteProfile/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+      const { container } = render(<ConfirmDeleteProfile />)
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

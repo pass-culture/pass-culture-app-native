@@ -14,7 +14,6 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { Network } from 'libs/share/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -81,7 +80,7 @@ describe('<Offer />', () => {
   })
 
   it('Performance test for Offer page', async () => {
-    await measurePerformance(reactQueryProviderHOC(<Offer />), {
+    await measurePerformance(<Offer />, {
       scenario: async () => {
         await screen.findByTestId('offerv2-container', {}, { timeout: TEST_TIMEOUT_IN_MS })
         await act(async () => {})

@@ -15,7 +15,6 @@ import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 const buildVersion = 10010005
@@ -547,7 +546,4 @@ describe('useCookies', () => {
   })
 })
 
-const renderUseCookies = () =>
-  renderHook(useCookies, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseCookies = () => renderHook(useCookies)

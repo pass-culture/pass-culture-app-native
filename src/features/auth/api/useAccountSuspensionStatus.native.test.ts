@@ -1,7 +1,6 @@
 import { AccountState, UserSuspensionStatusResponse } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -38,7 +37,4 @@ describe('useAccountSuspensionStatus', () => {
   })
 })
 
-const renderSuspensionDateHook = () =>
-  renderHook(() => useAccountSuspensionStatus(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderSuspensionDateHook = () => renderHook(() => useAccountSuspensionStatus())

@@ -4,7 +4,6 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/profile/helpers/useEmailUpdateStatus', () => ({
@@ -31,9 +30,7 @@ describe('<ValidationChangeEmail />', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(
-        reactQueryProviderHOC(<ValidateEmailChange navigation={navigation} route={route} />)
-      )
+      const { container } = render(<ValidateEmailChange navigation={navigation} route={route} />)
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
@@ -330,5 +329,5 @@ const renderSetEmail = (props: PreValidationSignupNormalStepProps = defaultProps
     oauthStateToken: 'oauth_state_token',
   })
 
-  render(reactQueryProviderHOC(<SetEmail {...props} />))
+  render(<SetEmail {...props} />)
 }

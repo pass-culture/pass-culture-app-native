@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ChangeEmail } from './ChangeEmail'
@@ -74,4 +73,4 @@ describe('<ChangeEmail/>', () => {
   })
 })
 
-const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
+const renderChangeEmail = () => render(<ChangeEmail />)

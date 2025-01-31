@@ -5,7 +5,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -36,7 +35,7 @@ describe('TrackEmailChange', () => {
       status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
       hasRecentlyResetPassword: false,
     })
-    render(reactQueryProviderHOC(<TrackEmailChange />))
+    render(<TrackEmailChange />)
 
     fireEvent.press(await screen.findByLabelText('Revenir en arrière'))
 
@@ -52,7 +51,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
           hasRecentlyResetPassword: false,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Confirme ta demande')
 
@@ -66,7 +65,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.CONFIRMATION,
           hasRecentlyResetPassword: false,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Choisis ta nouvelle adresse e-mail')
 
@@ -80,7 +79,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.NEW_EMAIL_SELECTION,
           hasRecentlyResetPassword: false,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Valide ta nouvelle adresse')
 
@@ -102,7 +101,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
           hasRecentlyResetPassword: false,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Confirme ta demande')
 
@@ -116,7 +115,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.CONFIRMATION,
           hasRecentlyResetPassword: false,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Crée ton mot de passe')
 
@@ -130,7 +129,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.CONFIRMATION,
           hasRecentlyResetPassword: true,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Choisis ta nouvelle adresse e-mail')
 
@@ -144,7 +143,7 @@ describe('TrackEmailChange', () => {
           status: EmailHistoryEventTypeEnum.NEW_EMAIL_SELECTION,
           hasRecentlyResetPassword: true,
         })
-        render(reactQueryProviderHOC(<TrackEmailChange />))
+        render(<TrackEmailChange />)
 
         await screen.findByText('Valide ta nouvelle adresse')
 

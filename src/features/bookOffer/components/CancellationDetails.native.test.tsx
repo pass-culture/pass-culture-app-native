@@ -4,7 +4,6 @@ import React from 'react'
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { CancellationDetails } from './CancellationDetails'
@@ -52,7 +51,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
-        render(reactQueryProviderHOC(<CancellationDetails />))
+        render(<CancellationDetails />)
 
         expectNotCancellable()
       }
@@ -70,7 +69,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           activationCode: { expirationDate: null },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
-        render(reactQueryProviderHOC(<CancellationDetails />))
+        render(<CancellationDetails />)
 
         expectNotCancellable()
       }
@@ -86,7 +85,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
-      render(reactQueryProviderHOC(<CancellationDetails />))
+      render(<CancellationDetails />)
 
       expectCancellable()
     })
@@ -99,7 +98,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
-      render(reactQueryProviderHOC(<CancellationDetails />))
+      render(<CancellationDetails />)
 
       expectNotCancellable()
     })
@@ -112,7 +111,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponseV2
-      render(reactQueryProviderHOC(<CancellationDetails />))
+      render(<CancellationDetails />)
 
       expectCancellableBefore()
     })

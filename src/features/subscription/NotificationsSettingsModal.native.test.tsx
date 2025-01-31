@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
@@ -137,14 +136,12 @@ describe('<NotificationsSettingsModal />', () => {
 
 const renderModal = (visible: boolean) => {
   render(
-    reactQueryProviderHOC(
-      <NotificationsSettingsModal
-        visible={visible}
-        dismissModal={mockDismissModal}
-        title="S’abonner au thème “Cinéma”"
-        description="Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:"
-        onPressSaveChanges={mockOnPressSaveChanges}
-      />
-    )
+    <NotificationsSettingsModal
+      visible={visible}
+      dismissModal={mockDismissModal}
+      title="S’abonner au thème “Cinéma”"
+      description="Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:"
+      onPressSaveChanges={mockOnPressSaveChanges}
+    />
   )
 }

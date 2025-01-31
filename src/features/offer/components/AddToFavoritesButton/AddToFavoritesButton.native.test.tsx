@@ -6,7 +6,6 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -49,5 +48,5 @@ describe('<AddToFavoriteButton />', () => {
 })
 
 const renderButton = ({ offerId }: { offerId: number }) => {
-  return render(reactQueryProviderHOC(<AddToFavoritesButton offerId={offerId} />))
+  return render(<AddToFavoritesButton offerId={offerId} />)
 }

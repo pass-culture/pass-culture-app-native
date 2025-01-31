@@ -4,7 +4,6 @@ import { useOAuthState } from 'features/auth/api/useOAuthState'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const apiOAuthStateSpy = jest.spyOn(API.api, 'getNativeV1OauthState')
@@ -36,7 +35,4 @@ describe('useOAuthState', () => {
   })
 })
 
-const renderOAuthState = () =>
-  renderHook(useOAuthState, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderOAuthState = () => renderHook(useOAuthState)

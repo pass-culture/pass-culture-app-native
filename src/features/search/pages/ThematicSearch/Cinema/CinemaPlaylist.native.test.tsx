@@ -5,7 +5,6 @@ import { CinemaPlaylist } from 'features/search/pages/ThematicSearch/Cinema/Cine
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -50,4 +49,4 @@ describe('CinemaPlaylist', () => {
   })
 })
 
-const renderCinema = () => render(reactQueryProviderHOC(<CinemaPlaylist />))
+const renderCinema = () => render(<CinemaPlaylist />)

@@ -1,5 +1,4 @@
 import firestore from 'libs/firebase/shims/firestore'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { getUbbleETAMessage, useUbbleETAMessage } from './ubbleETAMessage'
@@ -16,9 +15,7 @@ describe('[method] ubbleETAMessage', () => {
   })
 
   it('should retrieve the ubbleETAMessage', async () => {
-    const { result } = renderHook(useUbbleETAMessage, {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(useUbbleETAMessage)
     await act(async () => {})
 
     // See __mocks__/@react-native-firebase/firestore

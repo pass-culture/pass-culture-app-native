@@ -8,7 +8,6 @@ import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfig
 import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
@@ -222,9 +221,5 @@ const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode
       },
     }
   )
-  render(
-    reactQueryProviderHOC(
-      <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />
-    )
-  )
+  render(<EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />)
 }

@@ -23,7 +23,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -305,17 +304,15 @@ const renderVenueOffers = ({
   playlists?: GtlPlaylistData[]
 }) => {
   return render(
-    reactQueryProviderHOC(
-      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <OfferCTAProvider>
-          <VenueOffers
-            venue={venue}
-            venueOffers={venueOffers}
-            venueArtists={venueArtists}
-            playlists={playlists}
-          />
-        </OfferCTAProvider>
-      </AnchorProvider>
-    )
+    <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+      <OfferCTAProvider>
+        <VenueOffers
+          venue={venue}
+          venueOffers={venueOffers}
+          venueArtists={venueArtists}
+          playlists={playlists}
+        />
+      </OfferCTAProvider>
+    </AnchorProvider>
   )
 }

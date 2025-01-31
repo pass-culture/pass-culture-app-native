@@ -5,7 +5,6 @@ import { EndedBookingInteractionButtons } from 'features/bookings/components/End
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 describe('EndedBookingInteractionButtons', () => {
@@ -73,12 +72,10 @@ describe('EndedBookingInteractionButtons', () => {
 
 function renderEndedBookingInteractionButtons(booking: BookingReponse) {
   return render(
-    reactQueryProviderHOC(
-      <EndedBookingInteractionButtons
-        booking={booking}
-        handlePressShareOffer={jest.fn()}
-        handleShowReactionModal={jest.fn()}
-      />
-    )
+    <EndedBookingInteractionButtons
+      booking={booking}
+      handlePressShareOffer={jest.fn()}
+      handleShowReactionModal={jest.fn()}
+    />
   )
 }

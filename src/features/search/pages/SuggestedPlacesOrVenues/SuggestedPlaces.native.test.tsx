@@ -3,7 +3,6 @@ import React from 'react'
 import { fixtureApiAddressDataGouv } from 'features/search/fixtures/apiAddressDataGouv'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -76,9 +75,7 @@ describe('<SuggestedPlaces/>', () => {
 })
 
 const renderSuggestedPlaces = (query: string) => {
-  render(
-    reactQueryProviderHOC(<SuggestedPlaces query={query} setSelectedPlace={mockSetSelectedPlace} />)
-  )
+  render(<SuggestedPlaces query={query} setSelectedPlace={mockSetSelectedPlace} />)
 }
 
 const mockApiAdresse = (mockResponse: Record<string, unknown>) => {

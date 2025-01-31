@@ -7,7 +7,6 @@ import {
 import * as Firestore from 'libs/firebase/firestore/getCookiesLastUpdate'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const buildVersion = 10010005
@@ -161,7 +160,4 @@ describe('isCookiesListUpToDate', () => {
   })
 })
 
-const renderUseIsCookiesListUpToDate = () =>
-  renderHook(useIsCookiesListUpToDate, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseIsCookiesListUpToDate = () => renderHook(useIsCookiesListUpToDate)

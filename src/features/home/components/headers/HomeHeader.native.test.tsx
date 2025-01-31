@@ -15,7 +15,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { LocationLabel } from 'libs/location/types'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
@@ -139,11 +138,9 @@ describe('HomeHeader', () => {
 
 function renderHomeHeader(isDesktopViewport?: boolean) {
   return render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <HomeHeader />
-      </NavigationContainer>
-    ),
+    <NavigationContainer>
+      <HomeHeader />
+    </NavigationContainer>,
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },
     }

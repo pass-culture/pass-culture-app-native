@@ -17,7 +17,6 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -231,7 +230,5 @@ describe.skip('<VideoCarouselModule />', () => {
 })
 
 const renderVideoCarouselModule = (props: VideoCarouselModuleFixtureType) => {
-  render(<VideoCarouselModule {...props} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  render(<VideoCarouselModule {...props} />)
 }

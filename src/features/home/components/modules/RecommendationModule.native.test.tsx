@@ -8,7 +8,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
@@ -83,12 +82,10 @@ describe('RecommendationModule', () => {
 
 const renderRecommendationModule = (additionalDisplayParams?: DisplayParametersFields) =>
   render(
-    reactQueryProviderHOC(
-      <RecommendationModule
-        index={1}
-        moduleId="abcd"
-        homeEntryId="xyz"
-        displayParameters={additionalDisplayParams || displayParameters}
-      />
-    )
+    <RecommendationModule
+      index={1}
+      moduleId="abcd"
+      homeEntryId="xyz"
+      displayParameters={additionalDisplayParams || displayParameters}
+    />
   )

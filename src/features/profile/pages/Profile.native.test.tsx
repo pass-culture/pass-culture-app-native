@@ -29,7 +29,6 @@ import {
 } from 'libs/location'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
   act,
   bottomScrollEvent,
@@ -504,5 +503,5 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  render(reactQueryProviderHOC(<Profile />), { wrapper })
+  render(<Profile />, { wrapper })
 }

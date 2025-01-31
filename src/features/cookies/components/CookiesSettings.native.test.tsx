@@ -4,7 +4,6 @@ import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/analytics/provider'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
@@ -44,14 +43,12 @@ describe('<CookiesSettings/>', () => {
 
 const renderCookiesSettings = () =>
   render(
-    reactQueryProviderHOC(
-      <CookiesSettings
-        settingsCookiesChoice={{
-          marketing: false,
-          performance: false,
-          customization: false,
-        }}
-        setSettingsCookiesChoice={jest.fn()}
-      />
-    )
+    <CookiesSettings
+      settingsCookiesChoice={{
+        marketing: false,
+        performance: false,
+        customization: false,
+      }}
+      setSettingsCookiesChoice={jest.fn()}
+    />
   )

@@ -3,7 +3,6 @@ import React from 'react'
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
@@ -30,7 +29,7 @@ describe('<IdentityCheckEnd/>', () => {
     )
 
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<IdentityCheckEnd />))
+      const { container } = render(<IdentityCheckEnd />)
 
       await act(async () => {})
       const results = await checkAccessibilityFor(container)

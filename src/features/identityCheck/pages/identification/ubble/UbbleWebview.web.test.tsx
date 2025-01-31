@@ -3,7 +3,6 @@ import React from 'react'
 import { IdentificationSessionResponse, SubscriptionStepperResponseV2 } from 'api/gen'
 import { SubscriptionStepperErrorResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { UbbleWebview } from './UbbleWebview'
@@ -20,7 +19,7 @@ describe('<UbbleWebview/>', () => {
         SubscriptionStepperErrorResponseFixture
       )
 
-      const { container } = render(reactQueryProviderHOC(<UbbleWebview />))
+      const { container } = render(<UbbleWebview />)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

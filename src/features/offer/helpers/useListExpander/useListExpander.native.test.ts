@@ -3,7 +3,6 @@ import mockdate from 'mockdate'
 import { useListExpander } from 'features/offer/helpers/useListExpander/useListExpander'
 import { LocationMode, Position } from 'libs/location/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const TODAY = dateBuilder().withDay(2).withHours(6)
@@ -139,7 +138,7 @@ describe('useListExpander', () => {
 
 const renderUseListExpander = (...params: Parameters<typeof useListExpander>) =>
   renderHook(({ list }) => useListExpander(list, params[1]), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+    wrapper: ({ children }) => children,
     initialProps: { list: params[0] },
   })
 

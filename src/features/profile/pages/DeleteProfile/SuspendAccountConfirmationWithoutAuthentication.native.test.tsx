@@ -4,7 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
@@ -70,7 +69,7 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   })
 
   function renderSuspendAccountConfirmationWithoutAuthentication() {
-    return render(reactQueryProviderHOC(<SuspendAccountConfirmationWithoutAuthentication />))
+    return render(<SuspendAccountConfirmationWithoutAuthentication />)
   }
 
   function simulateAccountSuspendForHackSuspicionSuccess() {

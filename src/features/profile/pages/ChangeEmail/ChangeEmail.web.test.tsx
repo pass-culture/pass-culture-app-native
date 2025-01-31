@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useRoute, replace } from '__mocks__/@react-navigation/native'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor, fireEvent } from 'tests/utils/web'
 
 import { ChangeEmail } from './ChangeEmail'
@@ -21,7 +20,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<ChangeEmail/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<ChangeEmail />))
+      const { container } = render(<ChangeEmail />)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -34,7 +33,7 @@ describe('<ChangeEmail/>', () => {
   describe('DeleteProfileReasonNewEmailModal', () => {
     it('should hide DeleteProfileReasonNewEmailModal when clicking on "Fermer la modale"', async () => {
       useRoute.mockReturnValueOnce({ params: { showModal: true } })
-      render(reactQueryProviderHOC(<ChangeEmail />))
+      render(<ChangeEmail />)
 
       const closeButton = screen.getByLabelText('Fermer la modale')
       fireEvent.click(closeButton)
@@ -46,7 +45,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should update the URL params when the modal is closed', async () => {
       useRoute.mockReturnValueOnce({ params: { showModal: true } })
-      render(reactQueryProviderHOC(<ChangeEmail />))
+      render(<ChangeEmail />)
 
       await screen.findByText('Modifier mon e-mail')
 

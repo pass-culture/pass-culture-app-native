@@ -5,7 +5,6 @@ import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronic
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 useRoute.mockReturnValue({
@@ -21,7 +20,7 @@ describe('Chronicles', () => {
   })
 
   it('should render correctly', async () => {
-    render(reactQueryProviderHOC(<Chronicles />))
+    render(<Chronicles />)
 
     expect(await screen.findByText('Tous les avis')).toBeOnTheScreen()
   })

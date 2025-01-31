@@ -8,7 +8,6 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -48,7 +47,7 @@ describe('<VenueThematicSection/>', () => {
 
   it('should render null if venue has no thematic', async () => {
     const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.ADMINISTRATIVE }
-    render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
+    render(<VenueThematicSection venue={venue} />)
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()
@@ -57,7 +56,7 @@ describe('<VenueThematicSection/>', () => {
 
   it('should render null if user is not eligible', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
-    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+    render(<VenueThematicSection venue={venueFixture} />)
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()
@@ -65,7 +64,7 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should render cinema block when venue is a movie theater', async () => {
-    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+    render(<VenueThematicSection venue={venueFixture} />)
 
     expect(await screen.findByText('Fan de cinéma ?')).toBeOnTheScreen()
   })
@@ -74,7 +73,7 @@ describe('<VenueThematicSection/>', () => {
     it('should notify when subscription succeeds', async () => {
       mockServer.patchApi('/v1/profile', {})
 
-      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+      render(<VenueThematicSection venue={venueFixture} />)
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -91,7 +90,7 @@ describe('<VenueThematicSection/>', () => {
         responseOptions: { statusCode: 400, data: {} },
       })
 
-      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+      render(<VenueThematicSection venue={venueFixture} />)
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -105,7 +104,7 @@ describe('<VenueThematicSection/>', () => {
 
     it('should show logged out modal when user is not logged in', async () => {
       mockAuthContextWithoutUser()
-      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+      render(<VenueThematicSection venue={venueFixture} />)
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -118,7 +117,7 @@ describe('<VenueThematicSection/>', () => {
         subscriptions: { marketingEmail: false, marketingPush: false, subscribedThemes: [] },
       }
       mockAuthContextWithUser(userWithNoNotifications)
-      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+      render(<VenueThematicSection venue={venueFixture} />)
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -128,7 +127,7 @@ describe('<VenueThematicSection/>', () => {
     it('should show unsubscribing confirmation modal when user subscribed and unsubscribe', async () => {
       mockServer.patchApi('/v1/profile', {})
 
-      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+      render(<VenueThematicSection venue={venueFixture} />)
 
       // Due to too many re-renders, we need to mock the auth context globally
       // eslint-disable-next-line local-rules/independent-mocks
@@ -145,7 +144,7 @@ describe('<VenueThematicSection/>', () => {
   it('should log when user login from logged out modal', async () => {
     mockAuthContextWithoutUser()
 
-    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+    render(<VenueThematicSection venue={venueFixture} />)
 
     fireEvent.press(screen.getByText('Suivre le thème'))
 

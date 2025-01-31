@@ -7,7 +7,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
-import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
@@ -49,7 +49,7 @@ describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should navigate to the offer when clicking on the image', async () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    render(<OfferTile {...props} />)
     fireEvent.press(screen.getByTestId('tileImage'))
 
     await waitFor(() => {
@@ -62,7 +62,7 @@ describe('OfferTile component', () => {
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    render(<OfferTile {...props} />)
     fireEvent.press(screen.getByTestId('tileImage'))
 
     const queryHash = JSON.stringify(['offer', OFFER_ID])
@@ -96,7 +96,7 @@ describe('OfferTile component', () => {
 
   describe('Analytics', () => {
     it('should log ConsultOffer that user opened the offer', async () => {
-      render(reactQueryProviderHOC(<OfferTile {...props} />))
+      render(<OfferTile {...props} />)
       fireEvent.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -114,11 +114,7 @@ describe('OfferTile component', () => {
         apiRecoParams,
       }
 
-      render(
-        reactQueryProviderHOC(
-          <OfferTile {...propsFromSimilarOffers} offerLocation={OFFER_LOCATION} />
-        )
-      )
+      render(<OfferTile {...propsFromSimilarOffers} offerLocation={OFFER_LOCATION} />)
       fireEvent.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -132,7 +128,7 @@ describe('OfferTile component', () => {
     })
 
     it('should log ConsultOffer with homeEntryId if provide', async () => {
-      render(reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />))
+      render(<OfferTile {...props} homeEntryId="abcd" />)
       fireEvent.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -158,11 +154,7 @@ describe('OfferTile component', () => {
         thumbUrl: OFFER.thumbUrl,
       }
 
-      render(
-        reactQueryProviderHOC(
-          <OfferTile {...propsFromSearchVenuesPlaylist} offerLocation={OFFER_LOCATION} />
-        )
-      )
+      render(<OfferTile {...propsFromSearchVenuesPlaylist} offerLocation={OFFER_LOCATION} />)
       fireEvent.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -182,7 +174,7 @@ describe('OfferTile component', () => {
         searchId,
       }
 
-      render(reactQueryProviderHOC(<OfferTile {...propsFromThematicSearchGtlPlaylist} />))
+      render(<OfferTile {...propsFromThematicSearchGtlPlaylist} />)
 
       fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -209,7 +201,7 @@ describe('OfferTile component', () => {
         artistName: 'Céline Dion',
       }
 
-      render(reactQueryProviderHOC(<OfferTile {...propsFromArtistPagePlaylist} />))
+      render(<OfferTile {...propsFromArtistPagePlaylist} />)
 
       fireEvent.press(screen.getByTestId('tileImage'))
 

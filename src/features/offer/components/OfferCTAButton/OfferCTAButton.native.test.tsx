@@ -12,7 +12,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -379,12 +378,10 @@ function renderOfferCTAButton({
   trackEventHasSeenOfferOnce = jest.fn(),
 }: RenderOfferCTAButtonType) {
   render(
-    reactQueryProviderHOC(
-      <OfferCTAButton
-        offer={offer}
-        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-        subcategory={subcategory}
-      />
-    )
+    <OfferCTAButton
+      offer={offer}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+      subcategory={subcategory}
+    />
   )
 }

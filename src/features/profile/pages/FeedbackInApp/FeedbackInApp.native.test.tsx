@@ -5,7 +5,6 @@ import * as API from 'api/api'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, fireEvent, act, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -103,7 +102,7 @@ describe('<FeedbackInApp/>', () => {
   })
 
   const renderFeedBackInApp = () => {
-    return render(reactQueryProviderHOC(<FeedbackInApp />))
+    return render(<FeedbackInApp />)
   }
 
   const serverRespondWithSuccess = () => {

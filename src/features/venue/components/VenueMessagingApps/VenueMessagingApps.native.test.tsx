@@ -7,7 +7,6 @@ import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
@@ -22,7 +21,7 @@ describe('<VenueMessagingApps />', () => {
 
   it('should share on instagram', async () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
-    render(reactQueryProviderHOC(<VenueMessagingApps venue={venueDataTest} />))
+    render(<VenueMessagingApps venue={venueDataTest} />)
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 
@@ -40,7 +39,7 @@ describe('<VenueMessagingApps />', () => {
 
   it('should log analytics on share', async () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
-    render(reactQueryProviderHOC(<VenueMessagingApps venue={venueDataTest} />))
+    render(<VenueMessagingApps venue={venueDataTest} />)
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 

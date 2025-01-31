@@ -9,7 +9,6 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, useLocation } from 'libs/location'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -36,7 +35,7 @@ describe('<VenueTopComponent />', () => {
       venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
     }
 
-    render(reactQueryProviderHOC(<VenueTopComponent venue={culturalCenterVenue} />))
+    render(<VenueTopComponent venue={culturalCenterVenue} />)
 
     expect(await screen.findByText('Centre culturel')).toBeOnTheScreen()
   })
@@ -49,7 +48,7 @@ describe('<VenueTopComponent />', () => {
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueDataTest, latitude: 30, longitude: 30 }
 
-    render(reactQueryProviderHOC(<VenueTopComponent venue={locatedVenue} />))
+    render(<VenueTopComponent venue={locatedVenue} />)
 
     expect(await screen.findByText('À 10 km')).toBeOnTheScreen()
   })
@@ -59,13 +58,13 @@ describe('<VenueTopComponent />', () => {
       hasGeolocPosition: false,
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueDataTest, latitude: 30, longitude: 30 }
-    render(reactQueryProviderHOC(<VenueTopComponent venue={locatedVenue} />))
+    render(<VenueTopComponent venue={locatedVenue} />)
 
     expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(<VenueTopComponent venue={venueDataTest} />)
 
     await user.press(screen.getByText('Copier l’adresse'))
 
@@ -78,7 +77,7 @@ describe('<VenueTopComponent />', () => {
     Clipboard.getString = jest
       .fn()
       .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(<VenueTopComponent venue={venueDataTest} />)
 
     await user.press(screen.getByText('Copier l’adresse'))
 
@@ -92,13 +91,13 @@ describe('<VenueTopComponent />', () => {
     mockdate.set(new Date('2024-05-31T08:31:00'))
     jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
 
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(<VenueTopComponent venue={venueDataTest} />)
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(<VenueTopComponent venue={venueDataTest} />)
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
@@ -110,13 +109,13 @@ describe('<VenueTopComponent />', () => {
       openingHours: undefined,
     }
 
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
+    render(<VenueTopComponent venue={venue} />)
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 
   it('should log analytics when pressing Voir l’itinéraire', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(<VenueTopComponent venue={venueDataTest} />)
 
     await user.press(screen.getByText('Voir l’itinéraire'))
 
@@ -128,15 +127,13 @@ describe('<VenueTopComponent />', () => {
 
   it('should navigate to venue preview carousel', async () => {
     render(
-      reactQueryProviderHOC(
-        <VenueTopComponent
-          venue={{
-            ...venueDataTest,
-            bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
-          }}
-        />
-      )
+      <VenueTopComponent
+        venue={{
+          ...venueDataTest,
+          bannerUrl: 'https://image.com',
+          bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+        }}
+      />
     )
 
     await user.press(screen.getByTestId('venueImage'))

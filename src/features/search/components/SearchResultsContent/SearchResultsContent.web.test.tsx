@@ -11,7 +11,6 @@ import {
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 import { SearchResultsContent } from './SearchResultsContent'
@@ -92,7 +91,7 @@ describe('SearchResultsContent component', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
       RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
     ])
-    render(reactQueryProviderHOC(<SearchResultsContent />))
+    render(<SearchResultsContent />)
 
     await screen.findByTestId('searchResultsList')
 

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { IdentityCheckHonor } from './IdentityCheckHonor'
@@ -19,7 +18,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<IdentityCheckHonor/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<IdentityCheckHonor />))
+      const { container } = render(<IdentityCheckHonor />)
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

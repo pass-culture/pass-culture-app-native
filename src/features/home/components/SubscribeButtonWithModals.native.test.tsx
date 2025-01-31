@@ -7,7 +7,6 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -41,7 +40,7 @@ describe('SubscribeButtonWithModals', () => {
   it('should open logged out modal when user is not logged in', async () => {
     mockAuthContextWithoutUser()
 
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
@@ -49,7 +48,7 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show inactive SubscribeButton when user is logged in and not subscribed yet', async () => {
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     expect(await screen.findByText('Suivre')).toBeOnTheScreen()
   })
@@ -64,7 +63,7 @@ describe('SubscribeButtonWithModals', () => {
       },
     })
 
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     expect(await screen.findByText('Déjà suivi')).toBeOnTheScreen()
   })
@@ -79,7 +78,7 @@ describe('SubscribeButtonWithModals', () => {
       },
     })
 
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
@@ -96,7 +95,7 @@ describe('SubscribeButtonWithModals', () => {
       },
     })
 
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await act(async () => fireEvent.press(screen.getByText('Déjà suivi')))
 
@@ -109,7 +108,7 @@ describe('SubscribeButtonWithModals', () => {
     mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
 
     await storage.saveObject('times_user_subscribed_to_a_theme', 1)
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
@@ -121,7 +120,7 @@ describe('SubscribeButtonWithModals', () => {
     mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
 
     await storage.saveObject('times_user_subscribed_to_a_theme', 3)
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
@@ -134,7 +133,7 @@ describe('SubscribeButtonWithModals', () => {
   it('should not show anything when user is not eligible', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
 
-    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+    render(<SubscribeButtonWithModals homeId="fakeEntryId" />)
 
     await waitFor(() => {
       expect(screen.queryByText('Suivre')).toBeNull()

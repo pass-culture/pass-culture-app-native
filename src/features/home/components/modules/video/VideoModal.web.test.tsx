@@ -9,7 +9,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -60,16 +59,14 @@ describe('VideoModal', () => {
 
 function renderVideoModal() {
   render(
-    reactQueryProviderHOC(
-      <VideoModal
-        homeEntryId="xyz"
-        visible
-        hideModal={hideModalMock}
-        offers={mockOffers}
-        moduleId="abcd"
-        isMultiOffer={false}
-        {...videoModuleFixture}
-      />
-    )
+    <VideoModal
+      homeEntryId="xyz"
+      visible
+      hideModal={hideModalMock}
+      offers={mockOffers}
+      moduleId="abcd"
+      isMultiOffer={false}
+      {...videoModuleFixture}
+    />
   )
 }

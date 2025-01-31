@@ -17,7 +17,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
@@ -174,12 +173,10 @@ describe('AccessibleTabBar', () => {
 
 function renderTabBar() {
   return render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <ThemeProvider theme={computedTheme}>
-          <AccessibleTabBar id="tabBarID" />
-        </ThemeProvider>
-      </NavigationContainer>
-    )
+    <NavigationContainer>
+      <ThemeProvider theme={computedTheme}>
+        <AccessibleTabBar id="tabBarID" />
+      </ThemeProvider>
+    </NavigationContainer>
   )
 }

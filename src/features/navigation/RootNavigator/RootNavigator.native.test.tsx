@@ -5,7 +5,6 @@ import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
@@ -109,10 +108,8 @@ describe('<RootNavigator />', () => {
 
 function renderRootNavigator() {
   render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    )
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
   )
 }

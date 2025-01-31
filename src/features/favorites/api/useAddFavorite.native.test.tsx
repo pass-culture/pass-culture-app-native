@@ -5,7 +5,6 @@ import { FavoriteResponse } from 'api/gen'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 import {
   hideSnackBar,
@@ -105,12 +104,11 @@ it('should show snack bar when too many favorites when trying to add favorite', 
 
 const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
   const { result } = renderHook(() => useAddFavorite({ onSuccess }), {
-    wrapper: (props) =>
-      reactQueryProviderHOC(
-        <FavoritesWrapper>
-          <View>{props.children}</View>
-        </FavoritesWrapper>
-      ),
+    wrapper: (props) => (
+      <FavoritesWrapper>
+        <View>{props.children}</View>
+      </FavoritesWrapper>
+    ),
   })
   return result
 }
