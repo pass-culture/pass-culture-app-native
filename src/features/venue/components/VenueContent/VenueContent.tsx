@@ -11,7 +11,8 @@ import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
@@ -95,7 +96,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
       <Container>
         <VenueWebMetaHeader
-          title={venue.publicName || venue.name}
+          title={venue.publicName ?? venue.name}
           description={venue.description}
         />
         <VenueHeaderWrapper

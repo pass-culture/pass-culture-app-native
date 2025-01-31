@@ -111,6 +111,7 @@ const TopContainer = styled.View(({ theme }) => {
     flexDirection: isLargeScreen ? 'row' : 'column',
     marginTop: isLargeScreen ? getSpacing(8) : 0,
     marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
+    marginBottom: isLargeScreen ? getSpacing(10) : getSpacing(6),
   }
 })
 

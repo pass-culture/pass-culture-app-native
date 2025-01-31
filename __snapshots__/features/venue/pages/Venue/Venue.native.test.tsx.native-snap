@@ -38,6 +38,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           [
             {
               "flexDirection": "column",
+              "marginBottom": 24,
               "marginHorizontal": 0,
               "marginTop": 0,
             },
@@ -199,10 +200,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
                         },
                       ]
                     }
@@ -452,8 +452,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                               "maxWidth": "100%",
                             },
                           ]
@@ -548,13 +548,66 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
-                  gap={1}
                   style={
                     [
                       {
-                        "gap": 4,
+                        "backgroundColor": "#F1F1F4",
+                        "bottom": 0,
+                        "height": 4,
+                        "position": "absolute",
+                        "width": "100%",
                       },
                     ]
+                  }
+                />
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityRole="tab"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": true,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": 180,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
                   }
                 >
                   <View
@@ -683,986 +736,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                         ]
                       }
                     >
-                      <View>
-                        <View
-                          style={
-                            {
-                              "flexDirection": "row",
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "paddingLeft": 0,
-                                "paddingTop": 0,
-                              }
-                            }
-                          />
-                          <View
-                            style={
-                              [
-                                undefined,
-                                undefined,
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "width": 24,
-                                  },
-                                ]
-                              }
-                              width={24}
-                            />
-                          </View>
-                          <AutoLayoutView
-                            enableInstrumentation={false}
-                            horizontal={true}
-                            onBlankAreaEvent={[Function]}
-                            onLayout={[Function]}
-                            renderAheadOffset={0}
-                            scrollOffset={0}
-                            style={
-                              {
-                                "height": 250,
-                                "width": 432,
-                              }
-                            }
-                            windowSize={800}
-                          >
-                            <CellContainer
-                              index={1}
-                              onLayout={[Function]}
-                              style={
-                                {
-                                  "alignItems": "stretch",
-                                  "flexDirection": "row",
-                                  "height": 250,
-                                  "left": 144,
-                                  "position": "absolute",
-                                  "top": 0,
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  {
-                                    "flexDirection": "column",
-                                  }
-                                }
-                              >
-                                <View>
-                                  <View
-                                    accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                    accessibilityRole="link"
-                                    accessibilityValue={
-                                      {
-                                        "max": undefined,
-                                        "min": undefined,
-                                        "now": undefined,
-                                        "text": undefined,
-                                      }
-                                    }
-                                    accessible={true}
-                                    focusable={true}
-                                    onClick={[Function]}
-                                    onResponderGrant={[Function]}
-                                    onResponderMove={[Function]}
-                                    onResponderRelease={[Function]}
-                                    onResponderTerminate={[Function]}
-                                    onResponderTerminationRequest={[Function]}
-                                    onStartShouldSetResponder={[Function]}
-                                    style={
-                                      [
-                                        {
-                                          "textDecorationColor": "black",
-                                          "textDecorationLine": "none",
-                                          "textDecorationStyle": "solid",
-                                        },
-                                        {
-                                          "borderRadius": 8,
-                                          "height": 344,
-                                          "marginVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                  >
-                                    <View
-                                      gap={2}
-                                      maxWidth={144}
-                                      style={
-                                        [
-                                          {
-                                            "flexDirection": "column-reverse",
-                                            "gap": 8,
-                                            "maxWidth": 144,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        gap={1}
-                                        style={
-                                          [
-                                            {
-                                              "gap": 4,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          numberOfLines={1}
-                                          style={
-                                            [
-                                              {
-                                                "color": "#696A6F",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 19.2,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Cinéma
-                                        </Text>
-                                        <View>
-                                          <Text
-                                            numberOfLines={2}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Bac Nord - VF
-                                          </Text>
-                                          <Text
-                                            numberOfLines={1}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Dès le 18 août 2021
-                                          </Text>
-                                          <Text
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                            testID="priceIsDuo"
-                                          >
-                                            Gratuit
-                                          </Text>
-                                        </View>
-                                      </View>
-                                      <View
-                                        style={
-                                          [
-                                            {},
-                                          ]
-                                        }
-                                      >
-                                        <View
-                                          style={
-                                            [
-                                              {
-                                                "overflow": "hidden",
-                                              },
-                                              [
-                                                {
-                                                  "backgroundColor": "#F1F1F4",
-                                                },
-                                                {
-                                                  "borderRadius": 8,
-                                                  "height": 216,
-                                                  "width": 144,
-                                                },
-                                              ],
-                                            ]
-                                          }
-                                        >
-                                          <FastImageView
-                                            defaultSource={null}
-                                            resizeMode="cover"
-                                            source={
-                                              {
-                                                "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                              }
-                                            }
-                                            style={
-                                              {
-                                                "bottom": 0,
-                                                "left": 0,
-                                                "position": "absolute",
-                                                "right": 0,
-                                                "top": 0,
-                                              }
-                                            }
-                                            testID="tileImage"
-                                          />
-                                        </View>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                              <View
-                                leadingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223338",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Bac Nord - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                style={
-                                  [
-                                    {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                                trailingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223339",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Black Widow - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                width={16}
-                              />
-                            </CellContainer>
-                            <CellContainer
-                              index={2}
-                              onLayout={[Function]}
-                              style={
-                                {
-                                  "alignItems": "stretch",
-                                  "flexDirection": "row",
-                                  "height": 250,
-                                  "left": 288,
-                                  "position": "absolute",
-                                  "top": 0,
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  {
-                                    "flexDirection": "column",
-                                  }
-                                }
-                              >
-                                <View>
-                                  <View
-                                    accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                    accessibilityRole="link"
-                                    accessibilityValue={
-                                      {
-                                        "max": undefined,
-                                        "min": undefined,
-                                        "now": undefined,
-                                        "text": undefined,
-                                      }
-                                    }
-                                    accessible={true}
-                                    focusable={true}
-                                    onClick={[Function]}
-                                    onResponderGrant={[Function]}
-                                    onResponderMove={[Function]}
-                                    onResponderRelease={[Function]}
-                                    onResponderTerminate={[Function]}
-                                    onResponderTerminationRequest={[Function]}
-                                    onStartShouldSetResponder={[Function]}
-                                    style={
-                                      [
-                                        {
-                                          "textDecorationColor": "black",
-                                          "textDecorationLine": "none",
-                                          "textDecorationStyle": "solid",
-                                        },
-                                        {
-                                          "borderRadius": 8,
-                                          "height": 344,
-                                          "marginVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                  >
-                                    <View
-                                      gap={2}
-                                      maxWidth={144}
-                                      style={
-                                        [
-                                          {
-                                            "flexDirection": "column-reverse",
-                                            "gap": 8,
-                                            "maxWidth": 144,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        gap={1}
-                                        style={
-                                          [
-                                            {
-                                              "gap": 4,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          numberOfLines={1}
-                                          style={
-                                            [
-                                              {
-                                                "color": "#696A6F",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 19.2,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Cinéma
-                                        </Text>
-                                        <View>
-                                          <Text
-                                            numberOfLines={2}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Black Widow - VF
-                                          </Text>
-                                          <Text
-                                            numberOfLines={1}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Dès le 18 août 2021
-                                          </Text>
-                                          <Text
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                            testID="priceIsDuo"
-                                          >
-                                            Gratuit
-                                          </Text>
-                                        </View>
-                                      </View>
-                                      <View
-                                        style={
-                                          [
-                                            {},
-                                          ]
-                                        }
-                                      >
-                                        <View
-                                          style={
-                                            [
-                                              {
-                                                "overflow": "hidden",
-                                              },
-                                              [
-                                                {
-                                                  "backgroundColor": "#F1F1F4",
-                                                },
-                                                {
-                                                  "borderRadius": 8,
-                                                  "height": 216,
-                                                  "width": 144,
-                                                },
-                                              ],
-                                            ]
-                                          }
-                                        >
-                                          <FastImageView
-                                            defaultSource={null}
-                                            resizeMode="cover"
-                                            source={
-                                              {
-                                                "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                              }
-                                            }
-                                            style={
-                                              {
-                                                "bottom": 0,
-                                                "left": 0,
-                                                "position": "absolute",
-                                                "right": 0,
-                                                "top": 0,
-                                              }
-                                            }
-                                            testID="tileImage"
-                                          />
-                                        </View>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                            </CellContainer>
-                            <CellContainer
-                              index={0}
-                              onLayout={[Function]}
-                              style={
-                                {
-                                  "alignItems": "stretch",
-                                  "flexDirection": "row",
-                                  "height": 250,
-                                  "left": 0,
-                                  "position": "absolute",
-                                  "top": 0,
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  {
-                                    "flexDirection": "column",
-                                  }
-                                }
-                              >
-                                <View>
-                                  <View
-                                    accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                    accessibilityRole="link"
-                                    accessibilityValue={
-                                      {
-                                        "max": undefined,
-                                        "min": undefined,
-                                        "now": undefined,
-                                        "text": undefined,
-                                      }
-                                    }
-                                    accessible={true}
-                                    focusable={true}
-                                    onClick={[Function]}
-                                    onResponderGrant={[Function]}
-                                    onResponderMove={[Function]}
-                                    onResponderRelease={[Function]}
-                                    onResponderTerminate={[Function]}
-                                    onResponderTerminationRequest={[Function]}
-                                    onStartShouldSetResponder={[Function]}
-                                    style={
-                                      [
-                                        {
-                                          "textDecorationColor": "black",
-                                          "textDecorationLine": "none",
-                                          "textDecorationStyle": "solid",
-                                        },
-                                        {
-                                          "borderRadius": 8,
-                                          "height": 344,
-                                          "marginVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                  >
-                                    <View
-                                      gap={2}
-                                      maxWidth={144}
-                                      style={
-                                        [
-                                          {
-                                            "flexDirection": "column-reverse",
-                                            "gap": 8,
-                                            "maxWidth": 144,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        gap={1}
-                                        style={
-                                          [
-                                            {
-                                              "gap": 4,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          numberOfLines={1}
-                                          style={
-                                            [
-                                              {
-                                                "color": "#696A6F",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 19.2,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Cinéma
-                                        </Text>
-                                        <View>
-                                          <Text
-                                            numberOfLines={2}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Titane - VF
-                                          </Text>
-                                          <Text
-                                            numberOfLines={1}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Dès le 18 août 2021
-                                          </Text>
-                                          <Text
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                            testID="priceIsDuo"
-                                          >
-                                            Gratuit
-                                          </Text>
-                                        </View>
-                                      </View>
-                                      <View
-                                        style={
-                                          [
-                                            {},
-                                          ]
-                                        }
-                                      >
-                                        <View
-                                          style={
-                                            [
-                                              {
-                                                "overflow": "hidden",
-                                              },
-                                              [
-                                                {
-                                                  "backgroundColor": "#F1F1F4",
-                                                },
-                                                {
-                                                  "borderRadius": 8,
-                                                  "height": 216,
-                                                  "width": 144,
-                                                },
-                                              ],
-                                            ]
-                                          }
-                                        >
-                                          <FastImageView
-                                            defaultSource={null}
-                                            resizeMode="cover"
-                                            source={
-                                              {
-                                                "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                              }
-                                            }
-                                            style={
-                                              {
-                                                "bottom": 0,
-                                                "left": 0,
-                                                "position": "absolute",
-                                                "right": 0,
-                                                "top": 0,
-                                              }
-                                            }
-                                            testID="tileImage"
-                                          />
-                                        </View>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                              <View
-                                leadingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223342",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Titane - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                style={
-                                  [
-                                    {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                                trailingItem={
-                                  {
-                                    "_geoloc": {
-                                      "lat": 47.8898,
-                                      "lng": -2.83593,
-                                    },
-                                    "objectID": "223338",
-                                    "offer": {
-                                      "dates": [
-                                        1629312300,
-                                        1629485100,
-                                        1629657900,
-                                      ],
-                                      "isDigital": false,
-                                      "isDuo": true,
-                                      "name": "Bac Nord - VF",
-                                      "prices": [
-                                        0,
-                                        0,
-                                        0,
-                                      ],
-                                      "subcategoryId": "CINE_PLEIN_AIR",
-                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                    },
-                                    "venue": {},
-                                  }
-                                }
-                                width={16}
-                              />
-                            </CellContainer>
-                          </AutoLayoutView>
-                          <CellContainer
-                            index={-1}
-                            style={
-                              [
-                                undefined,
-                                undefined,
-                              ]
-                            }
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "width": 24,
-                                  },
-                                ]
-                              }
-                              width={24}
-                            />
-                          </CellContainer>
-                          <View
-                            style={
-                              {
-                                "paddingBottom": 0,
-                                "paddingRight": 0,
-                              }
-                            }
-                          />
-                          <View
-                            pointerEvents="none"
-                            style={
-                              {
-                                "opacity": 0,
-                              }
-                            }
-                          >
-                            <View>
-                              <View
-                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                                accessibilityRole="link"
-                                accessibilityValue={
-                                  {
-                                    "max": undefined,
-                                    "min": undefined,
-                                    "now": undefined,
-                                    "text": undefined,
-                                  }
-                                }
-                                accessible={true}
-                                focusable={true}
-                                onClick={[Function]}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                style={
-                                  [
-                                    {
-                                      "textDecorationColor": "black",
-                                      "textDecorationLine": "none",
-                                      "textDecorationStyle": "solid",
-                                    },
-                                    {
-                                      "borderRadius": 8,
-                                      "height": 344,
-                                      "marginVertical": 4,
-                                    },
-                                  ]
-                                }
-                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                              >
-                                <View
-                                  gap={2}
-                                  maxWidth={144}
-                                  style={
-                                    [
-                                      {
-                                        "flexDirection": "column-reverse",
-                                        "gap": 8,
-                                        "maxWidth": 144,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <Text
-                                      numberOfLines={1}
-                                      style={
-                                        [
-                                          {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 19.2,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      Cinéma
-                                    </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Bac Nord - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
-                                  </View>
-                                  <View
-                                    style={
-                                      [
-                                        {},
-                                      ]
-                                    }
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "overflow": "hidden",
-                                          },
-                                          [
-                                            {
-                                              "backgroundColor": "#F1F1F4",
-                                            },
-                                            {
-                                              "borderRadius": 8,
-                                              "height": 216,
-                                              "width": 144,
-                                            },
-                                          ],
-                                        ]
-                                      }
-                                    >
-                                      <FastImageView
-                                        defaultSource={null}
-                                        resizeMode="cover"
-                                        source={
-                                          {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                          }
-                                        }
-                                        style={
-                                          {
-                                            "bottom": 0,
-                                            "left": 0,
-                                            "position": "absolute",
-                                            "right": 0,
-                                            "top": 0,
-                                          }
-                                        }
-                                        testID="tileImage"
-                                      />
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </RCTScrollView>
+                      Infos pratiques
+                    </Text>
                   </View>
                   <View
                     numberOfSpaces={2}
@@ -2440,7 +1515,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 416,
+                                            "height": 344,
                                             "marginVertical": 4,
                                           },
                                         ]
@@ -2449,13 +1524,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     >
                                       <View
                                         gap={2}
-                                        maxWidth={192}
+                                        maxWidth={144}
                                         style={
                                           [
                                             {
                                               "flexDirection": "column-reverse",
                                               "gap": 8,
-                                              "maxWidth": 192,
+                                              "maxWidth": 144,
                                             },
                                           ]
                                         }
@@ -2483,7 +1558,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               ]
                                             }
                                           >
-                                            Livre
+                                            Cinéma
                                           </Text>
                                           <View>
                                             <Text
@@ -2499,7 +1574,22 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                 ]
                                               }
                                             >
-                                              Test
+                                              Bac Nord - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
                                             </Text>
                                             <Text
                                               style={
@@ -2513,7 +1603,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                 ]
                                               }
                                               testID="priceIsDuo"
-                                            />
+                                            >
+                                              Gratuit
+                                            </Text>
                                           </View>
                                         </View>
                                         <View
@@ -2524,21 +1616,18 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           }
                                         >
                                           <View
-                                            height={288}
                                             style={
                                               [
                                                 {
-                                                  "height": 288,
-                                                  "width": 192,
+                                                  "overflow": "hidden",
                                                 },
                                                 [
                                                   {
                                                     "backgroundColor": "#F1F1F4",
                                                   },
                                                   {
-                                                    "borderTopLeftRadius": 8,
-                                                    "borderTopRightRadius": 8,
-                                                    "height": 192,
+                                                    "borderRadius": 8,
+                                                    "height": 216,
                                                     "width": 144,
                                                   },
                                                 ],
@@ -2550,34 +1639,17 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               resizeMode="cover"
                                               source={
                                                 {
-                                                  "x": 0.5,
-                                                  "y": 1,
-                                                }
-                                              }
-                                              locations={null}
-                                              onlyTopBorderRadius={false}
-                                              startPoint={
-                                                {
-                                                  "x": 0.5,
-                                                  "y": 0,
+                                                  "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                                 }
                                               }
                                               style={
-                                                [
-                                                  {
-                                                    "alignItems": "center",
-                                                    "backgroundColor": "#F1F1F4",
-                                                    "borderRadius": 8,
-                                                    "height": "100%",
-                                                    "justifyContent": "center",
-                                                    "width": "100%",
-                                                  },
-                                                  {
-                                                    "borderRadius": 8,
-                                                    "borderTopLeftRadius": 8,
-                                                    "borderTopRightRadius": 8,
-                                                  },
-                                                ]
+                                                {
+                                                  "bottom": 0,
+                                                  "left": 0,
+                                                  "position": "absolute",
+                                                  "right": 0,
+                                                  "top": 0,
+                                                }
                                               }
                                               testID="tileImage"
                                             />
@@ -2703,7 +1775,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 288,
+                                            "height": 344,
                                             "marginVertical": 4,
                                           },
                                         ]
@@ -2711,40 +1783,28 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                     >
                                       <View
+                                        gap={2}
+                                        maxWidth={144}
                                         style={
                                           [
                                             {
                                               "flexDirection": "column-reverse",
+                                              "gap": 8,
+                                              "maxWidth": 144,
                                             },
                                           ]
                                         }
                                       >
                                         <View
-                                          imageWidth={144}
+                                          gap={1}
                                           style={
                                             [
                                               {
-                                                "marginTop": 8,
-                                                "maxWidth": 144,
+                                                "gap": 4,
                                               },
                                             ]
                                           }
                                         >
-                                          <Text
-                                            numberOfLines={2}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Black Widow - VF
-                                          </Text>
                                           <Text
                                             numberOfLines={1}
                                             style={
@@ -2758,25 +1818,63 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               ]
                                             }
                                           >
-                                            Dès le 18 août 2021
+                                            Cinéma
                                           </Text>
-                                          <Text
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#696A6F",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                            testID="priceIsDuo"
-                                          >
-                                            Gratuit
-                                          </Text>
+                                          <View>
+                                            <Text
+                                              numberOfLines={2}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Black Widow - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
+                                            </Text>
+                                            <Text
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                              testID="priceIsDuo"
+                                            >
+                                              Gratuit
+                                            </Text>
+                                          </View>
                                         </View>
-                                        <View>
+                                        <View
+                                          style={
+                                            [
+                                              {},
+                                            ]
+                                          }
+                                        >
                                           <View
                                             style={
                                               [
@@ -2788,9 +1886,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                     "backgroundColor": "#F1F1F4",
                                                   },
                                                   {
-                                                    "borderTopLeftRadius": 8,
-                                                    "borderTopRightRadius": 8,
-                                                    "height": 192,
+                                                    "borderRadius": 8,
+                                                    "height": 216,
                                                     "width": 144,
                                                   },
                                                 ],
@@ -2816,55 +1913,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               }
                                               testID="tileImage"
                                             />
-                                          </View>
-                                          <View
-                                            height={24}
-                                            style={
-                                              [
-                                                {
-                                                  "alignItems": "center",
-                                                  "backgroundColor": "#161617",
-                                                  "borderBottomLeftRadius": 8,
-                                                  "borderBottomRightRadius": 8,
-                                                  "flexDirection": "row",
-                                                  "height": 24,
-                                                  "width": 144,
-                                                },
-                                              ]
-                                            }
-                                            width={144}
-                                          >
-                                            <View
-                                              style={
-                                                [
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexBasis": 0,
-                                                    "flexGrow": 1,
-                                                    "flexShrink": 1,
-                                                    "justifyContent": "center",
-                                                    "paddingHorizontal": 2,
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              <Text
-                                                numberOfLines={1}
-                                                style={
-                                                  [
-                                                    {
-                                                      "color": "#ffffff",
-                                                      "fontFamily": "Montserrat-SemiBold",
-                                                      "fontSize": 12,
-                                                      "lineHeight": 19.2,
-                                                    },
-                                                  ]
-                                                }
-                                                testID="categoryImageCaption"
-                                              >
-                                                Cinéma
-                                              </Text>
-                                            </View>
                                           </View>
                                         </View>
                                       </View>
@@ -2923,7 +1971,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 288,
+                                            "height": 344,
                                             "marginVertical": 4,
                                           },
                                         ]
@@ -2931,40 +1979,28 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                     >
                                       <View
+                                        gap={2}
+                                        maxWidth={144}
                                         style={
                                           [
                                             {
                                               "flexDirection": "column-reverse",
+                                              "gap": 8,
+                                              "maxWidth": 144,
                                             },
                                           ]
                                         }
                                       >
                                         <View
-                                          imageWidth={144}
+                                          gap={1}
                                           style={
                                             [
                                               {
-                                                "marginTop": 8,
-                                                "maxWidth": 144,
+                                                "gap": 4,
                                               },
                                             ]
                                           }
                                         >
-                                          <Text
-                                            numberOfLines={2}
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#161617",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Titane - VF
-                                          </Text>
                                           <Text
                                             numberOfLines={1}
                                             style={
@@ -2978,25 +2014,63 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               ]
                                             }
                                           >
-                                            Dès le 18 août 2021
+                                            Cinéma
                                           </Text>
-                                          <Text
-                                            style={
-                                              [
-                                                {
-                                                  "color": "#696A6F",
-                                                  "fontFamily": "Montserrat-SemiBold",
-                                                  "fontSize": 12,
-                                                  "lineHeight": 19.2,
-                                                },
-                                              ]
-                                            }
-                                            testID="priceIsDuo"
-                                          >
-                                            Gratuit
-                                          </Text>
+                                          <View>
+                                            <Text
+                                              numberOfLines={2}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Titane - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
+                                            </Text>
+                                            <Text
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                              testID="priceIsDuo"
+                                            >
+                                              Gratuit
+                                            </Text>
+                                          </View>
                                         </View>
-                                        <View>
+                                        <View
+                                          style={
+                                            [
+                                              {},
+                                            ]
+                                          }
+                                        >
                                           <View
                                             style={
                                               [
@@ -3008,9 +2082,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                     "backgroundColor": "#F1F1F4",
                                                   },
                                                   {
-                                                    "borderTopLeftRadius": 8,
-                                                    "borderTopRightRadius": 8,
-                                                    "height": 192,
+                                                    "borderRadius": 8,
+                                                    "height": 216,
                                                     "width": 144,
                                                   },
                                                 ],
@@ -3036,55 +2109,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               }
                                               testID="tileImage"
                                             />
-                                          </View>
-                                          <View
-                                            height={24}
-                                            style={
-                                              [
-                                                {
-                                                  "alignItems": "center",
-                                                  "backgroundColor": "#161617",
-                                                  "borderBottomLeftRadius": 8,
-                                                  "borderBottomRightRadius": 8,
-                                                  "flexDirection": "row",
-                                                  "height": 24,
-                                                  "width": 144,
-                                                },
-                                              ]
-                                            }
-                                            width={144}
-                                          >
-                                            <View
-                                              style={
-                                                [
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexBasis": 0,
-                                                    "flexGrow": 1,
-                                                    "flexShrink": 1,
-                                                    "justifyContent": "center",
-                                                    "paddingHorizontal": 2,
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              <Text
-                                                numberOfLines={1}
-                                                style={
-                                                  [
-                                                    {
-                                                      "color": "#ffffff",
-                                                      "fontFamily": "Montserrat-SemiBold",
-                                                      "fontSize": 12,
-                                                      "lineHeight": 19.2,
-                                                    },
-                                                  ]
-                                                }
-                                                testID="categoryImageCaption"
-                                              >
-                                                Cinéma
-                                              </Text>
-                                            </View>
                                           </View>
                                         </View>
                                       </View>
@@ -3223,7 +2247,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       },
                                       {
                                         "borderRadius": 8,
-                                        "height": 416,
+                                        "height": 344,
                                         "marginVertical": 4,
                                       },
                                     ]
@@ -3232,13 +2256,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 >
                                   <View
                                     gap={2}
-                                    maxWidth={192}
+                                    maxWidth={144}
                                     style={
                                       [
                                         {
                                           "flexDirection": "column-reverse",
                                           "gap": 8,
-                                          "maxWidth": 192,
+                                          "maxWidth": 144,
                                         },
                                       ]
                                     }
@@ -3266,7 +2290,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           ]
                                         }
                                       >
-                                        Livre
+                                        Cinéma
                                       </Text>
                                       <View>
                                         <Text
@@ -3282,7 +2306,22 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             ]
                                           }
                                         >
-                                          Test
+                                          Bac Nord - VF
+                                        </Text>
+                                        <Text
+                                          numberOfLines={1}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#161617",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 19.2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Dès le 18 août 2021
                                         </Text>
                                         <Text
                                           style={
@@ -3296,7 +2335,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             ]
                                           }
                                           testID="priceIsDuo"
-                                        />
+                                        >
+                                          Gratuit
+                                        </Text>
                                       </View>
                                     </View>
                                     <View
@@ -3307,21 +2348,18 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       }
                                     >
                                       <View
-                                        height={288}
                                         style={
                                           [
                                             {
-                                              "height": 288,
-                                              "width": 192,
+                                              "overflow": "hidden",
                                             },
                                             [
                                               {
                                                 "backgroundColor": "#F1F1F4",
                                               },
                                               {
-                                                "borderTopLeftRadius": 8,
-                                                "borderTopRightRadius": 8,
-                                                "height": 192,
+                                                "borderRadius": 8,
+                                                "height": 216,
                                                 "width": 144,
                                               },
                                             ],
@@ -3333,34 +2371,17 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           resizeMode="cover"
                                           source={
                                             {
-                                              "x": 0.5,
-                                              "y": 1,
-                                            }
-                                          }
-                                          locations={null}
-                                          onlyTopBorderRadius={false}
-                                          startPoint={
-                                            {
-                                              "x": 0.5,
-                                              "y": 0,
+                                              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                             }
                                           }
                                           style={
-                                            [
-                                              {
-                                                "alignItems": "center",
-                                                "backgroundColor": "#F1F1F4",
-                                                "borderRadius": 8,
-                                                "height": "100%",
-                                                "justifyContent": "center",
-                                                "width": "100%",
-                                              },
-                                              {
-                                                "borderRadius": 8,
-                                                "borderTopLeftRadius": 8,
-                                                "borderTopRightRadius": 8,
-                                              },
-                                            ]
+                                            {
+                                              "bottom": 0,
+                                              "left": 0,
+                                              "position": "absolute",
+                                              "right": 0,
+                                              "top": 0,
+                                            }
                                           }
                                           testID="tileImage"
                                         />
@@ -3414,7 +2435,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      gap={1}
+                      style={
+                        [
+                          {
+                            "gap": 4,
+                          },
+                        ]
+                      }
+                    >
                       <View
                         style={
                           [
@@ -3915,7 +2945,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             },
                                             {
                                               "borderRadius": 8,
-                                              "height": 360,
+                                              "height": 416,
                                               "marginVertical": 4,
                                             },
                                           ]
@@ -3923,41 +2953,30 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         testID="Offre Test de la catégorie Livre,   prix . "
                                       >
                                         <View
+                                          gap={2}
+                                          maxWidth={192}
                                           style={
                                             [
                                               {
                                                 "flexDirection": "column-reverse",
+                                                "gap": 8,
+                                                "maxWidth": 192,
                                               },
                                             ]
                                           }
                                         >
                                           <View
-                                            imageWidth={192}
+                                            gap={1}
                                             style={
                                               [
                                                 {
-                                                  "marginTop": 8,
-                                                  "maxWidth": 192,
+                                                  "gap": 4,
                                                 },
                                               ]
                                             }
                                           >
                                             <Text
-                                              numberOfLines={2}
-                                              style={
-                                                [
-                                                  {
-                                                    "color": "#161617",
-                                                    "fontFamily": "Montserrat-SemiBold",
-                                                    "fontSize": 12,
-                                                    "lineHeight": 19.2,
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              Test
-                                            </Text>
-                                            <Text
+                                              numberOfLines={1}
                                               style={
                                                 [
                                                   {
@@ -3968,16 +2987,53 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                   },
                                                 ]
                                               }
-                                              testID="priceIsDuo"
-                                            />
+                                            >
+                                              Livre
+                                            </Text>
+                                            <View>
+                                              <Text
+                                                numberOfLines={2}
+                                                style={
+                                                  [
+                                                    {
+                                                      "color": "#161617",
+                                                      "fontFamily": "Montserrat-SemiBold",
+                                                      "fontSize": 12,
+                                                      "lineHeight": 19.2,
+                                                    },
+                                                  ]
+                                                }
+                                              >
+                                                Test
+                                              </Text>
+                                              <Text
+                                                style={
+                                                  [
+                                                    {
+                                                      "color": "#161617",
+                                                      "fontFamily": "Montserrat-SemiBold",
+                                                      "fontSize": 12,
+                                                      "lineHeight": 19.2,
+                                                    },
+                                                  ]
+                                                }
+                                                testID="priceIsDuo"
+                                              />
+                                            </View>
                                           </View>
-                                          <View>
+                                          <View
+                                            style={
+                                              [
+                                                {},
+                                              ]
+                                            }
+                                          >
                                             <View
-                                              height={264}
+                                              height={288}
                                               style={
                                                 [
                                                   {
-                                                    "height": 264,
+                                                    "height": 288,
                                                     "width": 192,
                                                   },
                                                 ]
@@ -3999,7 +3055,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                   }
                                                 }
                                                 locations={null}
-                                                onlyTopBorderRadius={true}
+                                                onlyTopBorderRadius={false}
                                                 startPoint={
                                                   {
                                                     "x": 0.5,
@@ -4017,7 +3073,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                       "width": "100%",
                                                     },
                                                     {
-                                                      "borderRadius": 0,
+                                                      "borderRadius": 8,
                                                       "borderTopLeftRadius": 8,
                                                       "borderTopRightRadius": 8,
                                                     },
@@ -4035,55 +3091,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                   </Text>
                                                 </View>
                                               </BVLinearGradient>
-                                            </View>
-                                            <View
-                                              height={24}
-                                              style={
-                                                [
-                                                  {
-                                                    "alignItems": "center",
-                                                    "backgroundColor": "#161617",
-                                                    "borderBottomLeftRadius": 8,
-                                                    "borderBottomRightRadius": 8,
-                                                    "flexDirection": "row",
-                                                    "height": 24,
-                                                    "width": 192,
-                                                  },
-                                                ]
-                                              }
-                                              width={192}
-                                            >
-                                              <View
-                                                style={
-                                                  [
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexBasis": 0,
-                                                      "flexGrow": 1,
-                                                      "flexShrink": 1,
-                                                      "justifyContent": "center",
-                                                      "paddingHorizontal": 2,
-                                                    },
-                                                  ]
-                                                }
-                                              >
-                                                <Text
-                                                  numberOfLines={1}
-                                                  style={
-                                                    [
-                                                      {
-                                                        "color": "#ffffff",
-                                                        "fontFamily": "Montserrat-SemiBold",
-                                                        "fontSize": 12,
-                                                        "lineHeight": 19.2,
-                                                      },
-                                                    ]
-                                                  }
-                                                  testID="categoryImageCaption"
-                                                >
-                                                  Livre
-                                                </Text>
-                                              </View>
                                             </View>
                                           </View>
                                         </View>
@@ -4158,7 +3165,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         },
                                         {
                                           "borderRadius": 8,
-                                          "height": 360,
+                                          "height": 416,
                                           "marginVertical": 4,
                                         },
                                       ]
@@ -4166,41 +3173,30 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     testID="Offre Test de la catégorie Livre,   prix . "
                                   >
                                     <View
+                                      gap={2}
+                                      maxWidth={192}
                                       style={
                                         [
                                           {
                                             "flexDirection": "column-reverse",
+                                            "gap": 8,
+                                            "maxWidth": 192,
                                           },
                                         ]
                                       }
                                     >
                                       <View
-                                        imageWidth={192}
+                                        gap={1}
                                         style={
                                           [
                                             {
-                                              "marginTop": 8,
-                                              "maxWidth": 192,
+                                              "gap": 4,
                                             },
                                           ]
                                         }
                                       >
                                         <Text
-                                          numberOfLines={2}
-                                          style={
-                                            [
-                                              {
-                                                "color": "#161617",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 19.2,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Test
-                                        </Text>
-                                        <Text
+                                          numberOfLines={1}
                                           style={
                                             [
                                               {
@@ -4211,16 +3207,53 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               },
                                             ]
                                           }
-                                          testID="priceIsDuo"
-                                        />
+                                        >
+                                          Livre
+                                        </Text>
+                                        <View>
+                                          <Text
+                                            numberOfLines={2}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#161617",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            Test
+                                          </Text>
+                                          <Text
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#161617",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                            testID="priceIsDuo"
+                                          />
+                                        </View>
                                       </View>
-                                      <View>
+                                      <View
+                                        style={
+                                          [
+                                            {},
+                                          ]
+                                        }
+                                      >
                                         <View
-                                          height={264}
+                                          height={288}
                                           style={
                                             [
                                               {
-                                                "height": 264,
+                                                "height": 288,
                                                 "width": 192,
                                               },
                                             ]
@@ -4242,7 +3275,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               }
                                             }
                                             locations={null}
-                                            onlyTopBorderRadius={true}
+                                            onlyTopBorderRadius={false}
                                             startPoint={
                                               {
                                                 "x": 0.5,
@@ -4260,7 +3293,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                   "width": "100%",
                                                 },
                                                 {
-                                                  "borderRadius": 0,
+                                                  "borderRadius": 8,
                                                   "borderTopLeftRadius": 8,
                                                   "borderTopRightRadius": 8,
                                                 },
@@ -4278,55 +3311,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               </Text>
                                             </View>
                                           </BVLinearGradient>
-                                        </View>
-                                        <View
-                                          height={24}
-                                          style={
-                                            [
-                                              {
-                                                "alignItems": "center",
-                                                "backgroundColor": "#161617",
-                                                "borderBottomLeftRadius": 8,
-                                                "borderBottomRightRadius": 8,
-                                                "flexDirection": "row",
-                                                "height": 24,
-                                                "width": 192,
-                                              },
-                                            ]
-                                          }
-                                          width={192}
-                                        >
-                                          <View
-                                            style={
-                                              [
-                                                {
-                                                  "alignItems": "center",
-                                                  "flexBasis": 0,
-                                                  "flexGrow": 1,
-                                                  "flexShrink": 1,
-                                                  "justifyContent": "center",
-                                                  "paddingHorizontal": 2,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            <Text
-                                              numberOfLines={1}
-                                              style={
-                                                [
-                                                  {
-                                                    "color": "#ffffff",
-                                                    "fontFamily": "Montserrat-SemiBold",
-                                                    "fontSize": 12,
-                                                    "lineHeight": 19.2,
-                                                  },
-                                                ]
-                                              }
-                                              testID="categoryImageCaption"
-                                            >
-                                              Livre
-                                            </Text>
-                                          </View>
                                         </View>
                                       </View>
                                     </View>
@@ -4664,17 +3648,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "paddingHorizontal": 24,
+                  "gap": 24,
                 },
               ]
             }
@@ -4693,7 +3667,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "marginHorizontal": 24,
+                    "paddingHorizontal": 24,
                   },
                 ]
               }
@@ -5831,6 +4805,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           [
             {
               "flexDirection": "column",
+              "marginBottom": 24,
               "marginHorizontal": 0,
               "marginTop": 0,
             },
@@ -5900,2183 +4875,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                  "maxHeight": 56,
-                  "overflow": "hidden",
-                },
-              ]
-            }
-            testID="tagsContainer"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignSelf": "baseline",
-                    "backgroundColor": "#F1F1F4",
-                    "borderRadius": 6,
-                    "flexDirection": "row",
-                    "paddingHorizontal": 8,
-                    "paddingVertical": 4,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Librairie
-              </Text>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            gap={1}
-            style={
-              [
-                {
-                  "gap": 4,
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
-              adjustsFontSizeToFit={true}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
-                  },
-                ]
-              }
-            >
-              Le Petit Rintintin 1
-            </Text>
-            <View
-              gap={3}
-              style={
-                [
-                  {
-                    "gap": 12,
-                  },
-                ]
-              }
-            >
-              <View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Adresse
-                </Text>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  1 boulevard Poissonnière, 75000 Paris
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "#F1F1F4",
-                      "height": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Copier l’adresse"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-                testID="Copier l’adresse"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="button-icon-left"
-                      width={20}
-                    >
-                      <Text>
-                        button-icon-left-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "width": 8,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Copier l’adresse
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Voir l’itinéraire"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 0,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "marginTop": 0,
-                      "maxWidth": 500,
-                      "minHeight": 20,
-                      "opacity": 1,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "userSelect": "auto",
-                      "width": "auto",
-                    }
-                  }
-                  testID="Voir l’itinéraire"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      Voir l’itinéraire
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        animatedStyle={
-          {
-            "value": {},
-          }
-        }
-        collapsable={false}
-        layout={
-          LinearTransition {
-            "build": [Function],
-            "callbackV": undefined,
-            "dampingV": undefined,
-            "delayV": undefined,
-            "durationV": 200,
-            "easingV": undefined,
-            "initialValues": undefined,
-            "massV": undefined,
-            "overshootClampingV": undefined,
-            "randomizeDelay": false,
-            "restDisplacementThresholdV": undefined,
-            "restSpeedThresholdV": undefined,
-            "rotateV": undefined,
-            "stiffnessV": undefined,
-            "type": undefined,
-          }
-        }
-      >
-        <View
-          gap={6}
-          style={
-            [
-              {
-                "gap": 24,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityRole="tablist"
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "#F1F1F4",
-                      "bottom": 0,
-                      "height": 4,
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              />
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "width": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityRole="tab"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": false,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": 180,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <View
-                  gap={2}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "gap": 8,
-                        "justifyContent": "center",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    isHover={false}
-                    isSelected={false}
-                    style={
-                      [
-                        {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Offres disponibles
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 4,
-                        "bottom": 0,
-                        "height": 4,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                accessibilityRole="tab"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": true,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": 180,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <View
-                  gap={2}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "gap": 8,
-                        "justifyContent": "center",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    isHover={false}
-                    isSelected={true}
-                    style={
-                      [
-                        {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Infos pratiques
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  isSelected={true}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#eb0055",
-                        "borderRadius": 4,
-                        "bottom": 0,
-                        "height": 4,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "width": 24,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <View
-              accessibilityRole="none"
-              style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "marginHorizontal": 24,
-                    },
-                  ]
-                }
-              >
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Modalités de retrait
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  How to withdraw, https://test.com
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Description
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Contact
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityLabel="contact@venue.com"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="contact@venue.com"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      contact@venue.com
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="+33102030405"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="+33102030405"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      +33102030405
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="https://my@website.com"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="https://my@website.com"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon-left"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-left-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      https://my@website.com
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Accessibilité
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityRole="list"
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "gap": 0,
-                        "justifyContent": "space-between",
-                        "overflow": "visible",
-                        "paddingLeft": 0,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  testID="BasicAccessibilityInfo"
-                >
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                          "maxWidth": 72,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Handicap visuel : Accessible"
-                      accessibilityRole="image"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                          },
-                        ]
-                      }
-                      testID="accessibilityBadgeContainer"
-                    >
-                      <View
-                        accessibilityHidden={true}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#CBCDD2",
-                              "borderRadius": 8,
-                              "borderWidth": 1,
-                              "height": 48,
-                              "width": 48,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          fill="#161617"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "bottom": -8,
-                                "position": "absolute",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Accessible"
-                            height={16}
-                            testID="valid-icon"
-                            width={16}
-                          >
-                            <Text>
-                              valid-icon-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        numberOfSpaces={4}
-                        style={
-                          [
-                            {
-                              "height": 16,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Handicap visuel
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                          "maxWidth": 72,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
-                      accessibilityRole="image"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                          },
-                        ]
-                      }
-                      testID="accessibilityBadgeContainer"
-                    >
-                      <View
-                        accessibilityHidden={true}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#CBCDD2",
-                              "borderRadius": 8,
-                              "borderWidth": 1,
-                              "height": 48,
-                              "width": 48,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          fill="#161617"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "bottom": -8,
-                                "position": "absolute",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Non accessible"
-                            fill="#696A6F"
-                            height={16}
-                            testID="invalid-icon"
-                            width={16}
-                          >
-                            <Text>
-                              invalid-icon-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        numberOfSpaces={4}
-                        style={
-                          [
-                            {
-                              "height": 16,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Handicap psychique ou cognitif
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                          "maxWidth": 72,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Handicap moteur : Non accessible"
-                      accessibilityRole="image"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                          },
-                        ]
-                      }
-                      testID="accessibilityBadgeContainer"
-                    >
-                      <View
-                        accessibilityHidden={true}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#CBCDD2",
-                              "borderRadius": 8,
-                              "borderWidth": 1,
-                              "height": 48,
-                              "width": 48,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          fill="#161617"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "bottom": -8,
-                                "position": "absolute",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Non accessible"
-                            fill="#696A6F"
-                            height={16}
-                            testID="invalid-icon"
-                            width={16}
-                          >
-                            <Text>
-                              invalid-icon-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        numberOfSpaces={4}
-                        style={
-                          [
-                            {
-                              "height": 16,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Handicap moteur
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                          "maxWidth": 72,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Handicap auditif : Non accessible"
-                      accessibilityRole="image"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                          },
-                        ]
-                      }
-                      testID="accessibilityBadgeContainer"
-                    >
-                      <View
-                        accessibilityHidden={true}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#CBCDD2",
-                              "borderRadius": 8,
-                              "borderWidth": 1,
-                              "height": 48,
-                              "width": 48,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          fill="#161617"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "bottom": -8,
-                                "position": "absolute",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Non accessible"
-                            fill="#696A6F"
-                            height={16}
-                            testID="invalid-icon"
-                            width={16}
-                          >
-                            <Text>
-                              invalid-icon-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        numberOfSpaces={4}
-                        style={
-                          [
-                            {
-                              "height": 16,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Handicap auditif
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                >
-                  Horaires d’ouverture
-                </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityRole="list"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 8,
-                        "paddingLeft": 0,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityLabel="Lundi 09:00 - 19:00"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Lundi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      09:00 - 19:00
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Mardi 09:00 - 12:00  puis  14:00 - 19:00"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Mardi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      09:00 - 12:00 / 14:00 - 19:00
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Mercredi 09:00 - 12:00  puis  14:00 - 19:00"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Mercredi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      09:00 - 12:00 / 14:00 - 19:00
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Jeudi 09:00 - 12:00  puis  14:00 - 19:00"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Jeudi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      09:00 - 12:00 / 14:00 - 19:00
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Vendredi 09:00 - 19:00"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Vendredi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      09:00 - 19:00
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Samedi Fermé"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Samedi
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Fermé
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityLabel="Dimanche Fermé"
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Dimanche
-                    </Text>
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    >
-                      Fermé
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#F1F1F4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View
-          gap={0}
-          style={
-            [
-              {
-                "gap": 0,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
                   "gap": 16,
                 },
               ]
@@ -8127,127 +4925,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 </Text>
               </View>
             </View>
-          </View>
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-        </View>
-        <View
-          gap={6}
-          style={
-            [
-              {
-                "gap": 24,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "paddingHorizontal": 24,
-                },
-              ]
-            }
-          >
             <View
               gap={1}
               style={
@@ -8422,8 +5099,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                             "maxWidth": "100%",
                           },
                         ]
@@ -8542,8 +5219,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                               "maxWidth": "100%",
                             },
                           ]
@@ -9164,8 +5841,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                               "maxWidth": "100%",
                             },
                           ]
@@ -9272,8 +5949,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                               "maxWidth": "100%",
                             },
                           ]
@@ -9381,8 +6058,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                               "maxWidth": "100%",
                             },
                           ]
@@ -10681,7 +7358,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               style={
                 [
                   {
-                    "marginHorizontal": 24,
+                    "paddingHorizontal": 24,
                   },
                 ]
               }

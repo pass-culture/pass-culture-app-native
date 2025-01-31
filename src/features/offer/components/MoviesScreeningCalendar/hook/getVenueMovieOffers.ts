@@ -5,7 +5,7 @@ export const getVenueMovieOffers = (
   selectedDate: Date,
   offersWithStocks: OffersStocksResponseV2 | undefined
 ) => {
-  const movieOffers = offersWithStocks?.offers.filter(
+  const movieOffers = offersWithStocks?.offers?.filter(
     (offer) => offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
 
