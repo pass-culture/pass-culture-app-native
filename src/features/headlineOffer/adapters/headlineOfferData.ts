@@ -5,7 +5,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
-export type HeadlineOfferDataParams = {
+type HeadlineOfferData = {
   offer: Offer
   mapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
@@ -21,9 +21,11 @@ export function headlineOfferData({
   currency,
   euroToPacificFrancRate,
   userLocation,
-}: HeadlineOfferDataParams) {
+}: HeadlineOfferData) {
   if (!offer) return
+
   const { offer: hitOffer, objectID, _geoloc } = offer
+
   if (!hitOffer.thumbUrl) return
 
   const displayedPrice = getDisplayedPrice(hitOffer.prices, currency, euroToPacificFrancRate)

@@ -1076,6 +1076,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                   </View>
                 </View>
                 <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
                   gap={4}
                   style={
                     [

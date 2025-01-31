@@ -24,7 +24,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { LENGTH_M, RATIO_HOME_IMAGE, TypoDS, getSpacing } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -107,6 +107,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   return (
     <React.Fragment>
+      <Spacer.Column numberOfSpaces={6} />
       <PassPlaylist
         testID="offersModuleList"
         title="Toutes les offres"

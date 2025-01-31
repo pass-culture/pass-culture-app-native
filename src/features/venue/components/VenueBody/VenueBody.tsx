@@ -20,6 +20,7 @@ import { offersFixture } from 'shared/offer/offer.fixture'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { TypoDS, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   venue: VenueResponse
@@ -60,7 +61,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       <React.Fragment>
         {headlineData ? (
           <MarginContainer gap={2}>
-            <TypoDS.Title3>À la une</TypoDS.Title3>
+            <TypoDS.Title3 {...getHeadingAttrs(2)}>À la une</TypoDS.Title3>
             <HeadlineOffer {...headlineData} />
           </MarginContainer>
         ) : null}

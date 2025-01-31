@@ -9,6 +9,9 @@ import { Image } from 'libs/resizing-image-on-demand/Image'
 import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
 import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
 
+const HEADLINE_OFFER_LARGE_VIEWPORT = 327
+const HEADLINE_OFFER_SMALL_VIEWPORT = 245
+
 export type HeadlineOfferBaseProps = {
   imageUrl: string
   categoryId: CategoryIdEnum
@@ -37,7 +40,7 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferBaseProps> = (props) 
 const Container = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.tile,
   overflow: 'hidden',
-  height: theme.isDesktopViewport ? 327 : 245,
+  height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
   width: '100%',
   justifyContent: 'end',
 }))
