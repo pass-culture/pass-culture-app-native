@@ -157,7 +157,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
             ]
           }
         >
-          Parcours recommandés
+          Parcours recommandés web
         </Text>
         <View
           positionInHeader="right"

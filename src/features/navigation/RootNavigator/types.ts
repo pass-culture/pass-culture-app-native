@@ -65,7 +65,8 @@ export type ThematicHomeParams = BaseThematicHome &
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
   AccessibilityActionPlan: undefined
-  AccessibilityDeclaration: undefined
+  AccessibilityDeclarationMobile: undefined
+  AccessibilityDeclarationWeb: undefined
   AccessibilityEngagement: undefined
   RecommendedPaths: undefined
 }

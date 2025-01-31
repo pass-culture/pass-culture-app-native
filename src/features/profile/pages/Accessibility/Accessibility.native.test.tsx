@@ -23,11 +23,12 @@ describe('Accessibility', () => {
   })
 
   it.each`
-    route                         | title
-    ${'AccessibilityActionPlan'}  | ${'Schéma pluriannuel'}
-    ${'AccessibilityDeclaration'} | ${'Déclaration d’accessibilité'}
-    ${'AccessibilityEngagement'}  | ${'Les engagements du pass Culture'}
-    ${'RecommendedPaths'}         | ${'Parcours recommandés'}
+    route                               | title
+    ${'AccessibilityActionPlan'}        | ${'Schéma pluriannuel'}
+    ${'AccessibilityEngagement'}        | ${'Les engagements du pass Culture'}
+    ${'AccessibilityDeclarationMobile'} | ${'Déclaration d’accessibilité des applications iOS et Android'}
+    ${'AccessibilityDeclarationWeb'}    | ${'Déclaration d’accessibilité de la version web'}
+    ${'RecommendedPaths'}               | ${'Parcours recommandés de la version web'}
   `('should navigate to $route when $title is clicked', async ({ route, title }) => {
     render(<Accessibility />)
 
