@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useMinimalBuildNumber } from 'features/remoteBanner/helpers/useMinimalBuildNumber'
+import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 export function useResetOnMinimalBuild(resetErrorBoundary: () => void) {

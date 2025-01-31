@@ -12,7 +12,7 @@ const build = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(build)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/remoteBanner/helpers/useMinimalBuildNumber')
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

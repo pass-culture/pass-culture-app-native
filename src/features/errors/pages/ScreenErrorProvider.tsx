@@ -1,12 +1,9 @@
 import React from 'react'
 
+import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
-import {
-  mustUpdateAppState,
-  useMustUpdateApp,
-} from 'features/remoteBanner/helpers/useMustUpdateApp'
-import { ForceUpdateWithResetErrorBoundary } from 'features/remoteBanner/pages/ForceUpdateWithResetErrorBoundary'
+import { mustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'

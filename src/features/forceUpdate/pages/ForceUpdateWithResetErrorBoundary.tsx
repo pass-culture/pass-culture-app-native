@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ForceUpdateInfos } from 'features/remoteBanner/components/ForceUpdateInfos'
-import { useResetOnMinimalBuild } from 'features/remoteBanner/helpers/useResetOnMinimalBuild'
+import { ForceUpdateInfos } from 'features/forceUpdate/components/ForceUpdateInfos'
+import { useResetOnMinimalBuild } from 'features/forceUpdate/helpers/useResetOnMinimalBuild'
 
 type Props = {
   resetErrorBoundary: () => void

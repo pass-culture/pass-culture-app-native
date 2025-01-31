@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { useRemoteBanner } from 'features/remoteBanner/helpers/useRemoteBanner'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
@@ -31,7 +31,7 @@ const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 jest.mock('@react-native-firebase/firestore')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('features/remoteBanner/helpers/useRemoteBanner')
+jest.mock('features/forceUpdate/helpers/useRemoteBanner')
 const mockUseRemoteBanner = useRemoteBanner as jest.Mock
 const bannerData = {
   title: 'title 1',

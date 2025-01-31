@@ -1,10 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import {
-  mustUpdateAppState,
-  useMustUpdateApp,
-} from 'features/remoteBanner/helpers/useMustUpdateApp'
+import { mustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -17,7 +14,7 @@ const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/remoteBanner/helpers/useMustUpdateApp')
+jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.unmock('@react-navigation/native')
 
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })

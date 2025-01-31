@@ -1,8 +1,5 @@
-import * as useMinimalBuildNumber from 'features/remoteBanner/helpers/useMinimalBuildNumber'
-import {
-  mustUpdateAppState,
-  useMustUpdateApp,
-} from 'features/remoteBanner/helpers/useMustUpdateApp'
+import * as useMinimalBuildNumber from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import { mustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import * as PackageJson from 'libs/packageJson'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'

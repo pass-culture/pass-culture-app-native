@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TITLE, BUTTON_TEXT_BANNER } from 'features/forceUpdate/constants'
+import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
+import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { TITLE, BUTTON_TEXT_BANNER } from 'features/remoteBanner/constants'
-import { onPressStoreLink } from 'features/remoteBanner/helpers/onPressStoreLink'
-import { useRemoteBanner } from 'features/remoteBanner/helpers/useRemoteBanner'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { RemoteStoreBannerRedirectionType } from 'libs/firebase/firestore/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { TypoDS } from 'ui/theme'
 
-export const RemoteBanner = () => {
+export const ForceUpdateBanner = () => {
   const { title, subtitle, redirectionUrl, redirectionType } = useRemoteBanner()
   const accessibilityLabel =
     redirectionUrl && redirectionType === RemoteStoreBannerRedirectionType.EXTERNAL
