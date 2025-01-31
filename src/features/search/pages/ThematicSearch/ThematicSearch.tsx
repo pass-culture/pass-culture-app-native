@@ -37,7 +37,7 @@ export const ThematicSearch: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
-  const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
+  const { gtlPlaylists: bookGtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
     searchIndex: isReplicaAlgoliaIndexActive
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
@@ -111,9 +111,9 @@ export const ThematicSearch: React.FC = () => {
             />
           ) : null}
           <PlaylistContainer>
-            {isBookCategory && gtlPlaylists.length > 0 ? (
+            {isBookCategory && bookGtlPlaylists.length > 0 ? (
               <GtlPlaylistContainer>
-                {gtlPlaylists.map((playlist) => (
+                {bookGtlPlaylists.map((playlist) => (
                   <GtlPlaylist
                     key={playlist.entryId}
                     playlist={playlist}
